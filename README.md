@@ -35,8 +35,20 @@
 
 ## 五、运行
 
+### 方式一：使用一键环境（推荐）
+
+1. 安装并启动 **Docker Desktop**；
+2. 下载 [rAthena-env-win](https://github.com/rAthena-ZhCN/rAthena-env-win)，双击 `01-启动环境.bat`
+   （首次会自动创建 `ragnarok` / `ragnarok_log` 并导入表结构）；
+3. 回到本仓库，双击 `runserver.bat`。
+
+本仓库已带好与一键环境匹配的默认 `conf/import`（`ragnarok/ragnarok`、`127.0.0.1:3306`），
+无需再手动配置数据库；改过环境端口/密码时才需要同步修改。
+
+### 方式二：使用自己的 MySQL / MariaDB
+
 1. 准备 MySQL / MariaDB，导入 `sql-files/main.sql` 和 `sql-files/logs.sql`；
-2. 复制 `conf/import-tmpl` 的模板到 `conf/import`（该目录已被 `.gitignore` 忽略），填写数据库账号和 IP；
+2. 复制 `conf/import-tmpl` 的模板到 `conf/import`，填写数据库账号和 IP；
    同时把 `db/import-tmpl` 复制到 `db/import`、`conf/msg_conf/import-tmpl` 复制到 `conf/msg_conf/import`；
 3. 双击 `runserver.bat` 启动 login / char / map / web 四个服务。
 
