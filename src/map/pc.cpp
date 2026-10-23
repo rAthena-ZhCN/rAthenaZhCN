@@ -11056,6 +11056,8 @@ bool pc_jobchange(map_session_data *sd,int32 job, char upper)
 		clif_updatestatus(*sd,SP_MANNER);
 	}
 	status_calc_pc(sd,SCO_FORCE);
+	// pc_jobchange updated status.class_/body above; make sure the new job sprite is sent after recalculation.
+	clif_changelook(sd, LOOK_BASE, sd->vd.look[LOOK_BASE]);
 	pc_checkallowskill(sd);
 	pc_equiplookall(sd);
 	pc_show_questinfo(sd);
