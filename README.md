@@ -1,81 +1,63 @@
-<img src="doc/logo.png" align="right" height="90" />
+# rAthena 中文版（rAthenaZhCN）
 
-# rAthena
-![clang](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_clang.yml?label=clang%20build&logo=llvm) 
-![cmake](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_cmake.yml?label=cmake%20build&logo=cmake)
-![gcc](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_gcc.yml?label=gcc%20build&logo=gnu) 
-![ms](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) 
-![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) 
-![commit activity](https://img.shields.io/github/commit-activity/w/rathena/rathena) 
-![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rathena/rathena)
+> English / 上游原版说明：[README-upstream.md](README-upstream.md)
 
+本仓库基于 [rAthena](https://github.com/rathena/rathena) 官方源码快照（2026-10-06）整理，保留上游目录结构，只叠加中文数据与少量必要配置，方便持续跟进上游更新。
 
-> rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C++, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
+## 一、当前包含的中文内容
 
-[Forum](https://rathena.org/board)|[Discord](https://rathena.org/discord)|[Wiki](https://github.com/rathena/rathena/wiki)|[FluxCP](https://github.com/rathena/FluxCP)|[Crowdfunding](https://rathena.org/board/crowdfunding/)|[Fork and Pull Request Q&A](https://rathena.org/board/topic/86913-pull-request-qa/)
---------|--------|--------|--------|--------|--------
+| 内容 | 位置 | 数量 |
+| --- | --- | --- |
+| 职业/任务 NPC 脚本汉化 | `npc/jobs`、`npc/re/mobs`、`npc/re/jobs/novice/academy.txt` | 140 个文件 |
+| 自定义 NPC 脚本 | `npc/自定义脚本`（已在 `npc/scripts_custom.conf` 注册） | 34 个 |
+| 怪物名称 | `db/re/mob_db.yml` | 2434 条中文（其余 241 条保留英文） |
+| 服务器系统消息 | `conf/msg_conf/map_msg.conf` | 合并 867 条中文，英文兜底 |
+| 客户端封包版本 | `src/custom/defines_pre.hpp` | `PACKETVER 20250402` |
 
-### Table of Contents
-1. [Prerequisites](#1-prerequisites)
-2. [Installation](#2-installation)
-3. [Troubleshooting](#3-troubleshooting)
-4. [More Documentation](#4-more-documentation)
-5. [How to Contribute](#5-how-to-contribute)
-6. [License](#6-license)
+## 二、编码约定（重要）
 
-## 1. Prerequisites
-Before installing rAthena there are certain tools and applications you will need which
-differs between the varying operating systems available.
+- **会发送给客户端的服务端文本必须使用 GBK / CP936**：NPC 脚本、`db/re/mob_db.yml`、`conf/msg_conf/map_msg.conf`，这样中文客户端才能正确显示；
+- 源码、README、配置文件注释使用 UTF-8；
+- 修改上述数据文件时请保持 GBK，否则游戏内会乱码；GitHub 网页直接查看这些文件会显示乱码，属于正常现象。
 
-### Hardware
-Hardware Type | Minimum | Recommended
-------|------|------
-CPU | 1 Core | 2 Cores
-RAM | 1 GB | 2 GB
-Disk Space | 300 MB | 500 MB
+## 三、未包含的内容
 
-### Operating System & Preferred Compiler
-Operating System | Compiler
-------|------
-Linux  | [gcc-6 or newer](https://www.gnu.org/software/gcc/gcc-6/) / [Make](https://www.gnu.org/software/make/)
-Windows | [MS Visual Studio 2017 or newer](https://www.visualstudio.com/downloads/)
+- 旧项目的自定义源码功能（自动连招、AFK 挂机、约 80 项 `battle_config`、99Max 兼容等）。这些是功能改动而不是汉化内容，需要时再单独移植；
+- 客户端文件和客户端汉化（`iteminfo`、`skillinfo`、`msgstringtable` 等）不在本仓库；
+- 物品 / 技能 / 任务数据库名称仍为英文（客户端显示不受影响，如需 `getitemname()` 输出中文再补）；
+- `char_msg.conf`、`login_msg.conf` 尚无中文。
 
-### Required Applications
-Application | Name
-------|------
-Database | [MySQL 5 or newer](https://www.mysql.com/downloads/) / [MariaDB 5 or newer](https://downloads.mariadb.org/)
-Git | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux)
+## 四、构建（Windows + Visual Studio）
 
-### Optional Applications
-Application | Name
-------|------
-Database | [MySQL Workbench 5 or newer](http://www.mysql.com/downloads/workbench/)
+1. 安装 Visual Studio 的「使用 C++ 的桌面开发」工作负载；
+2. 双击 `build_x64.bat`（首次会自动 CMake 配置，构建目录 `out/build/x64-Release`，程序输出到根目录）；
+3. 也可以只编译单个目标：`build_x64.bat map-server`。
 
-## 2. Installation 
+## 五、运行
 
-### Full Installation Instructions
-  * [Windows](https://github.com/rathena/rathena/wiki/Install-on-Windows)
-  * [CentOS](https://github.com/rathena/rathena/wiki/Install-on-Centos)
-  * [Debian](https://github.com/rathena/rathena/wiki/Install-on-Debian)
-  * [FreeBSD](https://github.com/rathena/rathena/wiki/Install-on-FreeBSD)
+1. 准备 MySQL / MariaDB，导入 `sql-files/main.sql` 和 `sql-files/logs.sql`；
+2. 复制 `conf/import-tmpl` 的模板到 `conf/import`（该目录已被 `.gitignore` 忽略），填写数据库账号和 IP；
+   同时把 `db/import-tmpl` 复制到 `db/import`、`conf/msg_conf/import-tmpl` 复制到 `conf/msg_conf/import`；
+3. 双击 `runserver.bat` 启动 login / char / map / web 四个服务。
 
-## 3. Troubleshooting
+## 六、与上游同步
 
-If you're having problems with starting your server, the first thing you should
-do is check what's happening on your consoles. More often that not, all support issues
-can be solved simply by looking at the error messages given. Check out the [wiki](https://github.com/rathena/rathena/wiki)
-or [forums](https://rathena.org/board) if you need more support on troubleshooting.
+```bat
+git remote add upstream https://github.com/rathena/rathena.git
+git fetch upstream
+git merge upstream/master
+```
 
-## 4. More Documentation
-rAthena has a large collection of help files and sample NPC scripts located in the /doc/
-directory. These include detailed explanations of NPC script commands, atcommands (@),
-group permissions, item bonuses, and packet structures, among many other topics. We
-recommend that all users take the time to look over this directory before asking for
-assistance elsewhere.
+冲突通常集中在 `db/re/mob_db.yml` 和 `npc` 下的汉化文件。处理原则：**结构跟上游，文本用中文**。
 
-## 5. How to Contribute
-Details on how to contribute to rAthena can be found in [CONTRIBUTING.md](https://github.com/rathena/rathena/blob/master/.github/CONTRIBUTING.md)!
+## 七、已知限制
 
-## 6. License
-Copyright (c) rAthena Development Team - Licensed under [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)
+- `PACKETVER 20250402` 是本源码支持的最高版本；使用更新的客户端时需要同步升级源码并调整该宏；
+- 241 条怪物名称、部分新增 NPC 仍是英文；
+- 本仓库不含客户端资源，客户端汉化请配合单独的 translation 工程使用。
+
+## 八、致谢与许可
+
+- 服务端：[rAthena](https://github.com/rathena/rathena)
+- 中文文本来源：国服/台服客户端数据与自行整理，详见各文件历史；
+- 许可：与上游一致，GPLv3（见 `LICENSE`）。
