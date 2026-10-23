@@ -1,0 +1,379 @@
+prontera.gat,165,72,3	script	回归的探险者	832,{
+    switch(select("城镇", "野外", "洞穴 (含：幻影洞穴)", "其他")){
+        case 1:
+            callfunc("map_city");
+            end;
+        
+        case 2:
+            callfunc("map_field");
+            end;
+        
+        case 3:
+            callfunc("map_cave");
+            end;
+            
+        case 4:
+            callfunc("map_other");
+            end;
+    }
+
+
+    OnInit:
+        waitingroom "地图传送！",0;
+    end;
+}
+
+
+
+
+
+function	script	map_city	{
+    switch(select("神圣根源", "雪花之地", "灰狼之村", "主线：前置任务地图")){
+		case 1:
+            mes "神圣的根源";
+            mes "EP20城镇地图，其他相关区域请从 ^FF0000洞穴^000000 → ^ff0000普通洞穴^000000 传送。";
+            set .@is_map$, "jor_sanct:150:53";
+            break;
+			
+        case 2:
+			switch(select("雪花之地","伊斯加尔特","兑换：冰川套")){
+				case 1:
+					mes "雪花之地";
+                    mes "EP19村庄地图，^FF0000伊斯加尔特^000000 入口";
+                    set .@is_map$, "icecastle:204:164";
+                    break;
+					
+				case 2:
+					mes "伊斯加尔特";
+                    mes "EP19城镇地图，其他相关区域请从 ^FF0000洞穴^000000 → ^ff0000普通洞穴^000000 传送。";
+                    set .@is_map$, "icas_in:138:187";
+                    break;
+					
+				case 3:
+					mes "伊斯加尔特(内部)";
+					mes "EP19.0地图，可兑换冰川套装";
+					
+					set .@is_map$, "icas_in:168:58";
+					break;
+			}
+			break;
+            
+        case 3:
+            mes "灰狼之村";
+            mes "EP18.0地图，可兑沃特夫套装";
+            mes "^FF0000*需先完成EP18主线任务^000000";
+            
+            set .@is_map$, "wolfvill:163:131";
+            break;
+        
+        case 4:
+            switch(select("霸肋门德", "特别警戒区：柯尔", "邪心猎人军事基地", "普隆德拉行宫", "次元裂缝")){
+                case 1:
+                    mes "霸肋门德";
+                    mes "任务：EP18前置，接任务后 → ^FF0000拉赫^000000 完成任务";
+                    mes "任务：EP19前置，接任务后 → ^FF0000霸肋门德^000000 完成任务";
+                    
+                    switch(select("霸肋门德(登记处)", "任务：EP18前置(前往> 霸肋门德)", "任务：EP19前置(前往> 沃夫村庄)")){
+                        case 1:
+                            set .@is_map$, "ba_maison:68:144";
+                            break;
+                        case 2:
+                            set .@is_map$, "ba_in01:23:261";
+                            break;
+						case 3:
+                            set .@is_map$, "wolfvill:235:80";
+                            break;
+                    }
+					break;
+                    
+                case 2:
+                    mes "特别警戒区：柯尔";
+                    mes "主线任务地图";
+                    set .@is_map$, "sp_cor:113:126";
+                    break;
+                
+                case 3:
+                    mes "邪心猎人军事基地";
+                    mes "主线任务地图";
+                    set .@is_map$, "que_swat:154:56";
+                    break;
+                
+                case 4:
+                    mes "普隆德拉行宫";
+                    mes "主线任务地图";
+                    set .@is_map$, "prt_cas_q:30:78";
+                    break;
+                
+                case 5:
+                    mes "次元裂缝";
+                    mes "主线任务地图";
+                    set .@is_map$, "moc_fild22b:234:197";
+                    break;
+            }
+            break;
+    }
+    
+    
+    menu "前往", go_map;
+    go_map:
+        explode(.@is_warp$, .@is_map$, ":");
+        warp .@is_warp$[0], atoi(.@is_warp$[1]), atoi(.@is_warp$[2]);
+        
+    close;
+}
+
+
+
+function	script	map_field	{
+    switch(select("被冰冻的鳞片丘陵", "灰狼之森", "奥兹峡谷")){
+        case 1:
+            switch(select("地图：冰冻的尾巴(EP19：入口→中→右)", "地图：被冰冻的鳞片丘陵 01", "地图：被冰冻的鳞片丘陵 02", "^FF0000地图：被冰冻的鳞片丘陵 03 (Boss)^000000", "地图：浮冰地带","^FF0000地图：被冰冻的鳞片 海滩 (Boss)^000000", "地图：古代冰峡谷 东部", "地图：古代冰峡谷 西部","^FF0000副本：小树枝巢穴(任务)^000000","^FF0000副本：分离的避难所(任务)^000000")){
+                case 1:
+                    mes "冰冻的尾巴";
+                    mes "EP19原野地图，^FF0000被冰冻的鳞片丘陵^000000 入口";
+                    set .@is_map$, "jor_tail:219:53";
+                    break;
+				case 2:
+                    set .@is_map$, "jor_back1:98:14";
+                    break;
+                case 3:
+                    set .@is_map$, "jor_back2:230:11";
+                    break;
+                case 4:
+                    set .@is_map$, "jor_back3:97:282";
+                    break;
+				case 5:
+                    set .@is_map$, "jor_twice:45:56";
+                    break;
+				case 6:
+                    set .@is_map$, "jor_back4:10:370";
+                    break;
+				case 7:
+                    set .@is_map$, "jor_back5:21:238";
+                    break;
+				case 8:
+                    set .@is_map$, "jor_back6:34:147";
+                    break;
+				case 9:
+                    set .@is_map$, "jor_twice:160:242";
+                    break;
+				case 10:
+                    set .@is_map$, "jor_twig:136:150";
+                    break;
+            }
+            break;
+            
+        case 2:
+            switch(select("地图：灰狼之森原野 01", "地图：灰狼之森原野 02", "^FF0000副本：托尔火山内部(任务)^000000", "^FF0000副本：狼群聚集地 (任务)^000000")){
+                case 1:
+                    mes "灰狼之森原野 01";
+                    mes "EP18日常任务地图，大部分日常任务可在此完成";
+                    set .@is_map$, "gw_fild01:139:18";
+                    break;
+                    
+                case 2:
+                    mes "灰狼之森原野 02";
+                    mes "EP18日常任务地图，^FF0000任务：火风之鹰^000000 可在此完成";
+                    set .@is_map$, "gw_fild02:120:379";
+                    break;
+                    
+                case 3:
+                    mes "托尔火山内部";
+                    mes "EP18前置任务，^FF0000任务：武器的来源^000000 的副本入口";
+                    set .@is_map$, "que_thr:139:54";
+                    break;
+                    
+                case 4:
+                    mes "狼群聚集地";
+                    mes "EP18前置任务，^FF0000任务：需要对话时^000000 的副本入口";
+                    set .@is_map$, "rachel:169:240";
+                    break;
+            }
+            break;
+            
+        case 3:
+            mes "奥兹峡谷";
+            mes "EP18前置任务，接任务后 → 拉赫 → 奥兹峡谷 完成任务";
+            set .@is_map$, "ra_fild10:179:171";
+            break;
+    }
+    
+    
+    menu "前往", go_map;
+    go_map:
+        explode(.@is_warp$, .@is_map$, ":");
+        warp .@is_warp$[0], atoi(.@is_warp$[1]), atoi(.@is_warp$[2]);
+        
+    close;
+}
+
+
+
+function	script	map_cave	{
+    switch(select("普通洞穴", "幻影洞穴")){
+        case 1:
+            switch(select("EP20 蛇神的根","EP19 蛇神的余温","EP18 被舍弃的坑洞","EP18 奥兹迷宫")){
+                case 1:
+					switch(select("地图：蛇神的根 1层", "地图：蛇神的根 2层", "地图：神圣的根源", "地图：蛇神迷宫", "^FF0000副本：流冰区域(任务)^000000")){
+                        case 1:
+                            set .@is_map$, "jor_root1:36:35";
+                            break;
+                            
+                        case 2:
+                            set .@is_map$, "jor_root2:24:18";
+                            break;
+						
+						case 3:
+                            set .@is_map$, "jor_sanct:150:53";
+                            break;
+							
+						case 4:
+                            set .@is_map$, "jor_maze:204:16";
+                            break;
+							
+						case 5:
+                            set .@is_map$, "jor_maze:141:67";
+                            break;
+                    }
+                    break;
+                
+				case 2:
+                    switch(select("蛇巢村庄", "地图：蛇神的余温(一层)", "地图：蛇神的余温(二层)", "地图：蛇神的余温(内部)", "副本：飞空艇破坏行动", "副本：朱希娅模拟战")){
+                        case 1:
+							set .@is_map$, "jor_nest:264:28";
+							break;
+					
+						case 2:
+                            mes "蛇神的余温(一层)";
+                            mes "EP19洞穴地图，可从 ^FF0000被冰冻的鳞片丘陵^000000 进入";
+                            set .@is_map$, "jor_dun01:112:15";
+                            break;
+							
+						case 3:
+                            mes "蛇神的余温(二层)";
+                            mes "EP19副本，掉落 ^C63131冰川套装^000000 兑换道具";
+                            set .@is_map$, "jor_dun02:37:35";
+                            break;
+                            
+						case 4:
+                            mes "蛇神的余温(内部)";
+                            mes "EP19任务地图。";
+                            set .@is_map$, "jor_dun03:59:59";
+                            break;
+							
+                        case 5:
+                            mes "飞空艇破坏行动";
+                            mes "EP19副本，掉落 ^C63131冰川套装^000000 兑换道具";
+                            mes "*需完成EP19主线，否则可能出现报错";
+                            set .@is_map$, "jor_nest:24:252";
+                            break;
+                            
+                        case 6:
+                            mes "朱希娅模拟战";
+                            mes "EP19副本，掉落 ^C63131冰川套装^000000 兑换道具";
+                            set .@is_map$, "jor_nest:61:254";
+                            break;
+                    }
+                    break;
+					
+                case 3:
+                    switch(select("地图：被舍弃的坑洞 1层", "地图：被舍弃的坑洞 2层")){
+                        case 1:
+                            set .@is_map$, "jor_ab01:112:15";
+                            break;
+                            
+                        case 2:
+                            set .@is_map$, "jor_ab02:275:86";
+                            break;
+                    }
+                    break;
+                    
+                case 4:
+                    switch(select("地图：奥兹迷宫 1层", "地图：奥兹迷宫 2层", "^FF0000副本：欺瞒別墅 (任务)^000000")){
+                        case 1:
+                            set .@is_map$, "oz_dun01:116:39";
+                            break;
+                            
+                        case 2:
+                            set .@is_map$, "oz_dun02:143:279";
+                            break;
+                            
+                        case 3:
+                            mes "欺瞒別墅";
+                            mes "EP18任务副本 (非重复性挑战副本)，需要先完成前置任务";
+                            set .@is_map$, "oz_dun01:216:112";
+                            break;
+                    }
+                    break;
+            }
+            break;
+            
+        case 2:
+            switch(select("练级 - 幻影月夜猫", "练级 - 幻影吸血鬼", "练级 - 幻影冰洞", "练级 - 幻影乌龟岛", "练级 - 幻影泰迪熊", "^FF0000练级 - 幻影卢安达 (Lv 200+)^000000", "练级 - 幻影迷藏森林", "练级 - 幻影海底洞穴")){
+                case 1:
+                    set .@is_map$, "pay_d03_i:146:43";
+                    break;
+                    
+                case 2:
+                    set .@is_map$, "gef_d01_i:114:241";
+                    break;
+                    
+                case 3:
+                    set .@is_map$, "ice_d03_i:155:43";
+                    break;
+                    
+                case 4:
+                    set .@is_map$, "tur_d03_i:134:188";
+                    break;  
+                    
+                case 5:
+                    set .@is_map$, "ein_d02_i:166:189";
+                    break;
+                    
+                case 6:
+                    set .@is_map$, "com_d02_i:225:271";
+                    break;
+                    
+                case 7:
+                    set .@is_map$, "prt_mz03_i:178:28";
+                    break;
+                    
+                case 8:
+                    set .@is_map$, "iz_d04_i:131:227";
+                    break;
+            }
+            break;
+    }
+
+    menu "前往", go_map;
+    go_map:
+        explode(.@is_warp$, .@is_map$, ":");
+        warp .@is_warp$[0], atoi(.@is_warp$[1]), atoi(.@is_warp$[2]);
+        
+    close;
+}
+
+
+
+function	script	map_other	{
+    switch(select("装备商人", "宠物商人")){
+        case 1:
+            mes "装备商人";
+            mes "可购买基础装备";
+            set .@is_map$, "prontera:156:246";
+            break;
+        
+        case 2:
+            mes "宠物商人";
+            mes "可购买各种宠物相关道具";
+            set .@is_map$, "prontera:217:207";
+            break;
+    }
+    
+    menu "前往", go_map;
+    go_map:
+        explode(.@is_warp$, .@is_map$, ":");
+        warp .@is_warp$[0], atoi(.@is_warp$[1]), atoi(.@is_warp$[2]);
+    
+    close;
+}

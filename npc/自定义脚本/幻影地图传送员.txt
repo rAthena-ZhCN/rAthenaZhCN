@@ -1,0 +1,129 @@
+prontera,110,69,3	script	幻影地图传送员	604,{
+fuben:
+mes "[幻影地图传送员]";
+mes "亲爱的^FF8000"+ strcharinfo(0) +"^000000您好.";
+next;
+switch(select("传送","离开")) {
+
+case 1:
+	switch(select("幻影月夜猫","幻影吸血鬼","幻影冰洞","幻影乌龟岛","幻影泰迪熊","幻影卢安达","幻影迷藏森林","幻影海底洞穴入口","离开")) {
+		case 1:   //月夜猫
+		mes "传送中别乱动";   
+		next;
+		warp "pay_d03_i",146,43;
+		end;
+		break;
+		case 2: // 吸血鬼
+		mes "传送中别乱动";
+		next;
+		warp "gef_d01_i",114,241;
+		end;
+		break;		
+		case 3: // 冰洞
+		mes "传送中别乱动";
+		next;
+		warp "ice_d03_i",155,43;
+		end;
+		break;		
+		case 4: // 乌龟岛
+		mes "传送中别乱动";
+		next;
+		warp "tur_d03_i",134,188;
+		end;
+		break;
+		case 5:   //泰迪熊
+			switch(select("幻影泰迪熊前置任务步骤1","幻影泰迪熊前置任务步骤2","幻影泰迪熊地图")) {
+				case 1:
+				mes "传送中别乱动";
+				next;
+				warp "einbroch",152,242;
+				end;
+				break;
+				case 2:
+				mes "传送中别乱动";
+				next;
+				warp "ein_dun01",195,77;
+				end;
+				break;				
+				case 3:
+				mes "传送中别乱动";
+				next;
+				warp "ein_d02_i",166,189;
+				end;
+				break;						
+			}
+		case 6:   //卢安达
+		mes "传送中别乱动";
+		next;
+		warp "com_d02_i",225,271;
+		end;
+		break;
+		case 7:      //迷藏森林
+		mes "传送中别乱动";     
+		next;
+		warp "prt_fild01",138,360;
+		end;
+		break;
+			switch(select("幻影迷藏森林前置任务步骤1、3、8","幻影迷藏森林前置任务步骤2","幻影迷藏森林前置任务步骤4","幻影迷藏森林前置任务步骤5","幻影迷藏森林前置任务步骤6","幻影迷藏森林前置任务步骤7","幻影迷藏森林门口")) {
+				case 1:
+				mes "传送中别乱动";
+				next;
+				warp "prt_maze01",99,31;
+				end;
+				break;
+				case 2:
+				mes "传送中别乱动";
+				next;
+				warp "prontera",211,322;
+				end;
+				break;				
+				case 3:
+				mes "传送中别乱动";
+				next;
+				warp "prt_mz03_i",178,28;
+				end;
+				break;		
+				case 4:
+				mes "传送中别乱动";
+				next;
+				warp "prt_mz03_i",14,21;
+				end;
+				break;		
+				case 5:
+				mes "传送中别乱动";
+				next;
+				warp "prt_mz03_i",136,67;
+				end;
+				break;		
+				case 6:
+				mes "传送中别乱动";
+				next;
+				warp "prt_mz03_i",103,104;
+				end;
+				break;		
+				case 7:
+				mes "传送中别乱动";
+				next;
+				warp "prt_fild01",141,367;
+				end;
+				break;						
+			}
+		case 8:    //海底
+		mes "传送中别乱动";
+		next;
+		warp "izlude",130,49;
+		end;
+		break;			
+	}	
+case 2:
+	mes "[幻影地图传送员]";
+	mes "祝您一路顺风";
+	break;
+}
+close;
+
+OnInit:
+waitingroom "幻影地图传送！",0;
+end;
+}
+payon,166,109,3	duplicate(幻影地图传送员)	幻影地图传送员#pay	604

@@ -1,0 +1,250 @@
+prontera.gat,169,51,4	pointshop	Cashshop商店	876,#CASHPOINTS:100,25728:1,25729:3,100572:10,100596:10,100620:10,100621:10,100661:10,100691:10
+
+
+prontera.gat,169,49,4	pointshop	魔物点数商店	876,Mvp_Point:100,987:1,988:2,989:3,1005:5,6596:10
+
+
+prontera.gat,169,47,4	pointshop	Point商店	876,Point:100,39033:1,6417:2,23354:1,23355:5,23356:10
+
+
+prontera.gat,169,45,4	pointshop	在线积分商店	876,paodian:100,9062:1000,9109:3000,9092:3000,9030:5000,9050:5000,9058:5000,9041:7000,9042:7000,9045:7000,9123:10000,9124:10000
+
+
+
+//积分兑换
+prontera,146,80,5	script	小馒头	793,{
+    callfunc "dh_mes";
+	end;
+    
+    Oninit:
+	    waitingroom "货币兑换",0;
+	end;
+}
+
+
+
+/*
++------------------+
+|     兑换函数     |
++------------------+
+
+ - 货币兑换货币
+callsub dh_Point2Point, 兑换货币,获取货币,兑换货币数量,获取货币数量,兑换货币名称(数字：1-5),获取货币名称(数字：1-5)
+
+ - 道具兑换货币
+ callsub dh_Item2Point, 兑换道具ID,获取货币,兑换道具数量,获取货币数量,0,获取货币名称(数字：1-5)
+ 
+ - 货币兑换道具
+ callsub dh_Point2Item, 兑换货币,获取道具ID,兑换货币数量,获取道具数量,兑换货币名称(数字：1-5),0
+*/
+
+
+function	script	dh_mes	{
+    //积分名字
+    setarray $@hb_name$[1], "Zeny","CashPoint","MvpPoint","Point","在线积分";
+    
+    mes "[小馒头]";
+    mes "现承接^0000FF各种货币^000000兑换业务。\n";
+    mes " - " + $@hb_name$[5] + "：^0000FF" + paodian + "^000000\n";
+    mes " - " + $@hb_name$[4] + "：^0000FF" + Point + "^000000\n";
+    mes " - " + $@hb_name$[3] + "：^0000FF" + Mvp_Point + "^000000\n";
+    mes " - " + $@hb_name$[2] + "：^0000FF" + #CASHPOINTS + "^000000\n";
+    mes " - " + $@hb_name$[1] + "：^0000FF" + Zeny + "^000000\n";
+    next;
+    
+    switch (select("[兑换] ^0000FFCashPoint^000000。", "[兑换] ^0000FFPoint^000000。", "[兑换] ^0000FFMvp_Point^000000。", "[兑换] ^0000FF在线积分^000000。", "[兑换] ^0000FF其他^000000。")){
+
+        case 1:
+            callsub dh_Point2Point, Zeny, #CASHPOINTS, 50000, 1, 1, 2;
+            end;
+    
+        case 2:
+            switch (select("使用^FF0000Mvp_Point^000000兑换。", "使用^FF0000CashPoint^000000兑换", "使用^FF0000Zeny^000000兑换", "使用^FF0000" + getitemname(1000104) + "^000000兑换")){
+            
+                case 1:
+                    callsub dh_Point2Point, Mvp_Point, Point, 5, 1, 3, 4;
+        	        end;
+            
+                case 2:
+                    callsub dh_Point2Point, #CASHPOINTS, Point, 12, 1, 2, 4;
+            	    end;
+            
+                case 3:
+                    callsub dh_Point2Point, Zeny, Point, 720000, 1, 1, 4;
+            	    end;
+            
+                case 4:
+                    //魔冻石 兑换Point
+                    callsub dh_Item2Point, 1000104, Point, 1000, 300, 0, 4;
+            	    end;
+            }
+    
+        case 3:
+            switch (select("使用^FF0000" + getitemname(616) + "^000000兑换", "使用^FF0000" + getitemname(617) + "^000000兑换")){
+            
+                case 1:
+                    //卡册 兑换Mvp_Point
+                    callsub dh_Item2Point, 616, Mvp_Point, 15, 1, 0, 3;
+            	    end;
+                case 2:
+                    //神秘紫箱 兑换Mvp_Point
+                    callsub dh_Item2Point, 617, Mvp_Point, 35, 1, 0, 3;
+            	    end;
+            }
+    
+        case 4:
+            callsub dh_Point2Point, Zeny, paodian, 35000, 1, 1, 5;
+        	end;
+    	
+        case 5:
+            switch (select("兑换^FF0000" + getitemname(25729) + "^000000兑换", "兑换^FF0000" + getitemname(7859) + "^000000兑换")){
+            
+                case 1:
+					//Zeny兑换影子神秘金属
+                    callsub dh_Point2Item, Zeny, 25729, 1000000, 1, 1, 0;
+            	    end;
+                case 2:
+					//Zeny兑换神秘的游戏券
+                    callsub dh_Point2Item, Zeny, 7859, 50000, 1, 1, 0;
+            	    end;
+            }
+    }    
+        
+
+    //兑换函数
+    //-----------------------------------------
+    
+    dh_Point2Point:
+        //按顺序： 兑换货币，获取货币，兑换货币数量，获取货币数量，兑换货币名称，获取货币名称
+        //set .@dh_item_id, getarg(0);
+        
+        set .@dh_num, getarg(2);
+        set .@dh_sxf, getarg(3);
+        set .@dh_hb1, getarg(4);
+        set .@dh_hb2, getarg(5);
+    
+        mes "[小馒头]";
+        mes "你目前有^FF0000" + getarg(0) + "^000000" + $@hb_name$[.@dh_hb1] + "。";
+        mes "你目前有^FF0000" + getarg(1) + "^000000" + $@hb_name$[.@dh_hb2] + "。";
+        mes "　";
+        mes "每^FF0000" + .@dh_num + "^000000" + $@hb_name$[.@dh_hb1] + "可兑换^FF0000" + .@dh_sxf + "^000000" + $@hb_name$[.@dh_hb2] + "。";
+        mes "你想兑换多少？";
+        next;
+        input .@sgc;
+        
+        //0为取消兑换
+        if(.@sgc == 0){
+    	    mes "[小馒头]";
+            mes "兑换取消。";
+    	    close;
+        }
+           
+        //没有足够货币
+        if(getarg(0) < .@sgc*.@dh_num){
+            mes "[小馒头]";
+            mes "你没有足够的^0000FF" + $@hb_name$[.@dh_hb1] + "^000000哦。";
+    	    close;
+        }
+        
+        set getarg(0), getarg(0) - .@sgc*.@dh_num;
+        set getarg(1), getarg(1) + .@sgc*.@dh_sxf;
+        mes "[小馒头]";
+        mes "兑换成功。";
+        mes "　";
+        mes "当前" + $@hb_name$[.@dh_hb1] + "：^FF0000" + getarg(0) + "^000000点。";
+        mes "当前" + $@hb_name$[.@dh_hb2] + "：^FF0000" + getarg(1) + "^000000点。";
+        close;
+    
+     
+    
+    dh_Item2Point:
+        //按顺序： 兑换道具ID，获取货币，兑换道具数量，获取货币数量，0, 获取货币名称
+        set .@dh_item_id, getarg(0);
+        
+        set .@dh_num, getarg(2);
+        set .@dh_sxf, getarg(3);
+        //set .@dh_hb1, getarg(4);
+        set .@dh_hb2, getarg(5);
+        
+        mes "[小馒头]";
+        mes "你目前有^FF0000" + countitem(.@dh_item_id) + "^000000[" + getitemname(.@dh_item_id) + "]。";
+        mes "　";
+        mes "每^FF0000" + .@dh_num + "^000000[" + getitemname(.@dh_item_id) + "]可兑换^FF0000" + .@dh_sxf + "^000000" + $@hb_name$[.@dh_hb2] + "。";
+        mes "兑换将默认全部兑换，请留意。";
+        next;
+        
+        //获取道具数量
+        set .@is_item_num, countitem(.@dh_item_id);
+        //没有足够货币
+        if(.@is_item_num < .@dh_num){
+            mes "[小馒头]";
+            mes "你没有足够的^0000FF[" + getitemname(.@dh_item_id) +"]^000000哦。";
+    	    close;
+        }
+        
+        set .@is_dh_num, .@is_item_num/.@dh_num;    //可兑换次数
+        set .@is_item_num, .@is_dh_num*.@dh_num;    //实际应扣除道具数量
+        set .@is_dh_sxf, .@dh_sxf*.@is_dh_num;      //实际获得货币
+        
+        //扣除货币
+        delitem .@dh_item_id,.@is_item_num;
+        set getarg(1), getarg(1) + .@is_dh_sxf;
+        
+        mes "[小馒头]";
+        mes "兑换成功，增加^FF0000" + .@is_dh_sxf + "^000000" + $@hb_name$[.@dh_hb2] + "。";
+        mes "　";
+        mes "当前" + $@hb_name$[.@dh_hb2] + "：^FF0000" + getarg(1) + "^000000点。";
+        mes "当前" + getitemname(.@dh_item_id) + "：^FF0000" + countitem(.@dh_item_id) + "^000000。";
+        close;
+    
+    
+    
+    dh_Point2Item:
+        //按顺序： 兑换货币，获取道具ID，兑换货币数量，获取道具数量，兑换货币名称, 0
+        
+        set .@dh_item_id, getarg(1);
+        set .@dh_num, getarg(2);
+        set .@dh_sxf, getarg(3);
+        set .@dh_hb1, getarg(4);
+        //set .@dh_hb2, getarg(5);
+        
+        mes "[小馒头]";
+        mes "你目前有^FF0000" + getarg(0) + "^000000" + $@hb_name$[.@dh_hb1] + "。";
+        mes "　";
+        mes "每^FF0000" + .@dh_num + "^000000" + $@hb_name$[.@dh_hb1] + "可兑换^FF0000" + .@dh_sxf + "^000000[" + getitemname(.@dh_item_id) + "]。";
+        mes "你想兑换多少？";
+        next;
+        input .@sgc;
+        
+        //0为取消兑换
+        if(.@sgc == 0){
+    	    mes "[小馒头]";
+            mes "兑换取消。";
+    	    close;
+        }
+        
+        //获取道具数量
+        set .@is_hb_num, .@sgc*.@dh_num;        //应扣除货币数量
+        set .@is_item_num, .@sgc*.@dh_sxf;      //实际获取道具数量
+        
+        //没有足够货币
+        if(getarg(0) < .@is_hb_num){
+            mes "[小馒头]";
+            mes "你没有足够的^0000FF" + $@hb_name$[.@dh_hb1] +"^000000哦。";
+    	    close;
+        }
+        
+        
+        
+        //扣除货币
+        set getarg(0), getarg(0) - .@is_hb_num;
+        getitem .@dh_item_id,.@is_item_num;
+        
+        
+        mes "[小馒头]";
+        mes "兑换成功，获得^FF0000" + .@is_item_num + "^000000" + getitemname(.@dh_item_id) + "。";
+        mes "　";
+        mes "当前" + $@hb_name$[.@dh_hb1] + "：^FF0000" + getarg(0) + "^000000点。";
+        mes "当前" + getitemname(.@dh_item_id) + "：^FF0000" + countitem(.@dh_item_id) + "^000000。";
+        close;
+}

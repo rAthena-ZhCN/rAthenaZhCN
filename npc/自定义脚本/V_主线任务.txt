@@ -1,0 +1,715 @@
+prontera,165,60,2	script	欧托莉柯	624,7,7,{
+
+// -----------------------------------
+// -            每日奖励             -
+// -----------------------------------
+    
+    
+    set .@today_data, "" + gettime(7) + gettime(6) + gettime(5) + "";
+    
+    //奖励道具
+    //掉宝、灵魂护符、魔冻石
+    setarray .@JL_item[1], 12210, 6836, 1000104;
+    setarray .@JL_num_min[1], 1, 1, 10;
+    setarray .@JL_num_max[1], 1, 3, 30;
+    
+    setarray .@JL_vip[0], 6836,1;
+    
+    
+    mes "[欧托莉柯]";
+    //mes strcharinfo(0) + (Sex?"小哥哥":"小姐姐") + " 你好，";
+    mes "今日是 ^0000FF" + gettime(7) + "年" + gettime(6) + "月" + gettime(5) + "日 ^000000\n";
+
+	if(Rewards != .@today_data){mes "每日奖励：\n";}
+    else{mes "每日奖励 (^096917本日已领^000000)：\n";}
+	//普通奖励
+	for(set .@i,1; .@i<getarraysize(.@JL_item); set .@i,.@i+1){
+        if(.@JL_num_min[.@i] == .@JL_num_max[.@i]){
+            mes " - ^FF0000" + getitemname(.@JL_item[.@i]) + "×" + .@JL_num_max[.@i] + "^000000";
+        }
+        else{
+            mes " - ^FF0000" + getitemname(.@JL_item[.@i]) + "×" + .@JL_num_min[.@i] + "-" + .@JL_num_max[.@i] + "^000000";
+        }
+    }
+    //vip专属奖励
+    mes " - VIP额外奖励：^fbb217"+ getitemname(.@JL_vip[0]) + "×" + .@JL_vip[1] + "^000000";
+    
+
+// -----------------------------------
+    
+// -----------------------------------
+// -            自主功能             -
+// -----------------------------------
+	switch(select("BUFF服务(^fbb217VIP专属^000000)", "角色相关(^fbb217主线、精炼、负重、改名^000000)", "^F48CBA每日奖励^000000", "^8788EE存储服务^000000")){
+        case 1:
+            callfunc "add_buff";
+            end;
+            break;
+        case 2:
+			switch(select("[1] ^FF8C8C完成主线^000000","[2] 一键精炼","[3] 提升负重","[4] 购买 ^fbb217改名卡^000000")){
+				case 1:
+					clear;
+					callfunc "end_ep_quest";
+					break;
+				case 2:
+					callfunc "ksjl";
+					break;
+				case 3:
+					clear;
+					callfunc "add_Weight";
+					break;
+				case 4:
+					clear;
+					callfunc "ch_name";
+					break;
+			}
+            break;
+        case 3:
+            if(Rewards != .@today_data){
+				set Rewards, .@today_data;
+				
+				for(set .@i,1; .@i<getarraysize(.@JL_item); set .@i,.@i+1){
+					if(.@JL_num_min[.@i] == .@JL_num_max[.@i]){
+						getitem .@JL_item[.@i], .@JL_num_max[.@i];
+					}
+					else{
+						set .@sss, .@JL_num_max[.@i] - .@JL_num_min[.@i];
+						getitem .@JL_item[.@i], (rand(.@sss + 1) + .@JL_num_min[.@i]);
+					}
+				}
+				
+				//vip专属奖励
+				if(vip_status(VIP_STATUS_ACTIVE) > 0 || getgmlevel() > 0){
+					getitem .@JL_vip[0], .@JL_vip[1];
+				}
+				
+				clear;
+				mes "已发放奖励。";
+			}
+			else{
+				clear;
+				mes "每日只能领取 ^8C8CFF1次^000000。";
+			}
+			
+            break;
+        case 4:
+            savepoint "prontera",155,55;
+            break;
+
+    }
+	close;
+	
+	
+// -----------------------------------
+// -            聊天窗口             -
+// -----------------------------------
+	
+	Oninit:
+	    waitingroom "自助服务",0;
+	    
+
+// -----------------------------------
+// -            自动功能             -
+// -----------------------------------
+	OnTouch:
+		if (!playerattached()) end; // 防止非玩家触发时 specialeffect2 报错
+	    //emotion ET_SHY;
+        specialeffect2 312;
+        specialeffect2 313;
+            
+        healap 200;                 //恢复AP
+        percentheal 100, 100;       //百分比回蓝回血
+        repairall;                  //修理全部装备
+        	
+        specialeffect2 37; sc_start SC_INCREASEAGI,1000*600,10; //加速
+        specialeffect2 42; sc_start SC_BLESSING,1000*600,10; //天使之赐福
+        skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,1000*600,10;   //风之步
+	end;
+}
+
+
+function	script	ksjl	{
+    set .@jl_max_num, 6;
+    
+    for(set .@i,1; .@i<=10; set .@i,.@i+1){
+        //判断可以精炼装备
+        if (getequipisenableref(.@i) && getequipisequiped(.@i)){
+        
+            .@equip_refine = getequiprefinerycnt(.@i);
+            while (1) {
+                if(.@equip_refine < .@jl_max_num){
+                    set .@equip_refine, .@equip_refine+1;
+                    successrefitem .@i;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    
+    mes "[欧托莉柯]";
+    mes "都精炼好了。";
+    close;
+}
+
+function	script	end_ep_quest	{
+
+    // 更新了道具数组：第5个元素（EP17.2）设为 1000287，后续道具依次顺延
+    setarray .@ep_end[1], 1000282, 1000282, 1000282, 1000287, 1000287, 1000288, 1001263, 1001214, 1001214;  //通关券
+	
+	clear;
+	mes "通关券会跳至任务最后一步，可前往目的地提交任务或进行下一个任务。\n";
+	next;
+	set .@mes$, ""
+		+ "[01] EP13   " + (ep13_ryu == 100?"(^FF0000已完成^000000)":"")   + ":"
+		+ "[02] EP16.1 " + (PRT_1QUE == 25?"(^FF0000已完成^000000)":"")    + ":"
+		+ "[03] EP16.2 " + (PRT_2QUE == 27?"(^FF0000已完成^000000)":"")    + ":"
+		+ "[04] EP17.1 " + (ep_illusion == 47?"(^FF0000已完成^000000)":"") + ":"
+		+ "[05] EP17.2 " + (ep17_2_main >= 200?"(^FF0000已完成^000000)":"") + ":"
+		+ "[06] EP18.1 " + (ep18_1_main == 57?"(^FF0000已完成^000000)":"") + ":"
+		+ "[07] EP19   " + (ep19_main == 100?"(^FF0000已完成^000000)":"")  + ":"
+		+ "[08] EP20   " + (ep20_main == 100?"(^FF0000已完成^000000)":"")  + ":"
+		+ "[09] EP21   " + (ep21_main == 100?"(^FF0000已完成^000000)":"")  + "";
+		
+	switch(select(.@mes$)){
+		case 1:
+			/*----------
+			EP13--*/
+			if(ep13_ryu < 23){
+				mes "完成EP13: 前往与 ^FF0000三国同盟长 蒙凯洛^000000 对话完成任务。\n";
+				if(ep13_ryu == 22){
+					if(select("前往")){
+						close2;
+						warp "moc_fild22b",232,197;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[1]) > 0){
+						if(select(" - 立即完成 EP13主线")){
+							delitem .@ep_end[1],1;
+							set ep13_ryu, 22;
+							
+							close2;
+							warp "moc_fild22b",232,197;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP13^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[1]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 2:
+			/*----------
+			EP16.1--*/
+			if(ep13_ryu >= 100 && BaseLevel >= 100){
+				mes "完成EP16.1: 前往与 ^FF0000夫利德里希 海伊那^000000 对话完成任务。\n";
+				if(PRT_1QUE == 24){
+					if(select("前往")){
+						close2;
+						warp "prt_cas_q",22,83;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[2]) > 0){
+						if(select(" - 立即完成 EP16.1主线")){
+							delitem .@ep_end[2],1;
+							set PRT_1QUE, 24;
+							
+							close2;
+							warp "prt_cas_q",22,83;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP16.1^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[2]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 3:
+			/*----------
+			EP16.2*/
+			if(PRT_1QUE >= 25 && BaseLevel >= 120){
+				mes "完成EP16.2: 前往与 ^FF0000费罗波特斯^000000 对话完成任务。\n";
+				if(PRT_2QUE == 26){
+					if(select("前往")){
+						close2;
+						warp "que_swat",148,57;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[3]) > 0){
+						if(select(" - 立即完成 EP16.2主线")){
+							delitem .@ep_end[3],1;
+							set PRT_2QUE, 26;
+							
+							close2;
+							warp "que_swat",148,57;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP16.2^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[3]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 4:
+			/*----------
+			EP17.1*/
+			if(PRT_2QUE >= 27 && BaseLevel >= 150){
+				mes "完成EP17.1: 前往与 ^FF0000特别警戒区(反叛者)^000000 对话完成任务。\n";
+				if(ep_illusion == 47){
+					if(select("前往")){
+						close2;
+						warp "sp_cor",107,129;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[4]) > 0){
+						if(select(" - 立即完成 EP17.1主线")){
+							delitem .@ep_end[4],1;
+							set ep_illusion,47;
+							
+							close2;
+							warp "sp_cor",107,129;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP17.1^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[4]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 5:
+			/*----------
+			EP17.2*/
+			if(ep_illusion >= 47){
+				mes "完成EP17.2: EP17.2主線任務完成後就能前往霸勒門德，通過每日任務與NPC兌換裝備。\n";
+				if(ep17_2_main >= 200){
+					if(select("前往")){
+						close2;
+						warp "ba_maison",75,146;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[5]) > 0){
+						if(select(" - 立即完成 EP17.2主线")){
+							delitem .@ep_end[5],1;
+							set ep17_2_main, 200;
+							
+							close2;
+							warp "ba_maison",75,146;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP17.2^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[5]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件 (需先完成EP17.1)";
+				close;
+			}
+			break;
+		case 6:
+			/*----------
+			EP18--*/
+			if(ep17_2_main >= 200 && BaseLevel >= 170){ // 前置已更新为17.2的值
+				mes "完成EP18.1: 前往与 ^FF0000米里亚姆^000000 及 ^FF0000艾莉的形状^000000 对话完成任务。\n";
+				if(ep18_1_main == 55){
+					if(select("前往")){
+						close2;
+						warp "ra_temin",254,127;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[6]) > 0){
+						if(select(" - 立即完成 EP18主线")){
+							delitem .@ep_end[6],1;
+							set ep18_1_main,55;
+							getitem 400127, 1;
+							
+							close2;
+							warp "ra_temin",254,127;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP18^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[6]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件 (需先完成EP17.2)";
+				close;
+			}
+			break;
+		case 7:
+			/*----------
+			EP19--*/
+			//起始任务 warp "wolfvill",218,85;
+			//蠕虫变身 warp "jor_back2",248,30;        getitem 101162, 1;
+			if(ep18_1_main >= 57 && BaseLevel >= 200){
+				mes "完成EP19: 前往与 ^FF0000奥雷利 佩蒂特^000000 对话完成任务。\n";
+				if(ep19_main == 61){
+					if(select("前往")){
+						close2;
+						warp "icas_in",27,181;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[7]) > 0){
+						if(select(" - 立即完成 EP19主线")){
+							delitem .@ep_end[7],1;
+							set ep19_main,61;
+							
+							close2;
+							warp "icas_in",27,181;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP19^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[7]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 8:
+			/*----------
+			EP20--*/
+			if(ep19_main >= 100 && BaseLevel >= 215){
+				//ep20_main == 26 有bug，可跳过至27
+				if(ep20_main == 26){
+					mes "如无法完成任务，可点击继续进行。\n";
+					if(select("接取下一个任务")){
+						set ep20_main,27;
+						close2;
+						warp "jor_sanct",155,171;
+					}
+				}
+				
+				
+				mes "完成EP20: 前往与 ^FF0000沃格林德^000000 对话完成任务 (完成后可接日常)。\n";
+				if(ep20_main == 61){
+					if(select("前往")){
+						close2;
+						warp "icas_in2",248,116;
+					}
+				}
+				else{
+					if(countitem(.@ep_end[8]) > 0){
+						if(select(" - 立即完成 EP20主线")){
+							delitem .@ep_end[8],1;
+							set ep20_main,61;
+							close2;
+							warp "icas_in2",248,116;
+						}
+					}
+					else{
+						mes "- 完成 ^8C8CFFEP20^000000 主线任务需要消耗 ^FF8C8C" + getitemname(.@ep_end[8]) + "^000000 ×1";
+						close;
+					}
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+		case 9:
+			/*----------
+			EP21--*/
+			if(ep20_main >= 100 && BaseLevel >= 235){
+				mes "完成EP21: 未开放。\n";
+				if(ep21_main == 61){
+					if(select("前往")){
+						close2;
+						warp "icas_in2",248,116;
+					}
+				}
+				else{
+					mes "- 任务未开放";
+					close2;
+					warp "jor_tail",230,42;
+				}
+			}
+			else{
+				mes "- 当前未达成条件";
+				close;
+			}
+			break;
+	}
+	
+	end;
+}
+
+
+function	script	add_buff	{
+    set .@buff_zeny, 5000;     //价格
+    set .@buff_times, 1200;     //60为1min
+    
+    //判断是否VIP（不是GM）
+    set .@is_vip, vip_status(VIP_STATUS_ACTIVE);
+    if(.@is_vip == 0 && getgmlevel() == 0){
+        mes "[欧托莉柯]";
+        mes "你不是VIP，无法获得完整的服务。";
+        close;
+    }
+    
+    mes "[欧托莉柯]";
+    mes "本服务有偿提供BUFF增益获取\n";
+    mes "- 购买消耗：^FF0000" + .@buff_zeny + "^000000Zeny\n";
+    mes "- 维持时间：^FF0000" + .@buff_times/60 + "^000000min\n";
+    goto Buff_List;
+    
+    
+    Buff_List:
+        set .@bdur, .@buff_times*1000;
+        
+        if(Zeny >= .@buff_zeny){
+            switch(select(" - ^FF0000保护^000000BUFF", " - ^FF0000物攻^000000BUFF", " - ^FF0000法伤^000000BUFF", " - ^FF0000攻速^000000BUFF", " - ^FF0000料理^000000BUFF", " - ^FF0000药剂^000000BUFF", " - ^FF0000祝福^000000BUFF", " - ^FF0000其他^000000BUFF")){
+                case 1:
+                    //保护
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_CP_WEAPON,.@bdur,10;    //化学武器保护 72
+    				sc_start SC_CP_SHIELD,.@bdur,10;    //化学盾牌保护 73
+    				sc_start SC_CP_ARMOR,.@bdur,10;     //化学铠甲保护 74
+    				sc_start SC_CP_HELM,.@bdur,10;      //化学头盔保护 75
+    				sc_start SC_ASSUMPTIO,.@bdur,10;    //圣母之祈福 115
+    				
+    				clear;
+    				mes "[欧托莉柯]";
+                    mes "已获得^FF0000化学保护^000000和^FF0000圣母祈福^000000。";
+                    break;
+                case 2:
+                    //物攻
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_IMPOSITIO,.@bdur,10;            //神威 35
+                    sc_start SC_WEAPONPERFECTION,.@bdur,10;     //无视体型攻击 44
+                    sc_start SC_LOUD,.@bdur,10;                 //大声呐喊 48
+                    sc_start SC_ATKPOTION,.@bdur,rand(10,100);  //增加ATK 61
+                    //sc_start SC_FULL_SWING_K,.@bdur,10;       //兴奋剂
+                    
+                    clear;
+                    mes "[欧托莉柯]";
+                    mes "已获得^FF0000神威祈福^000000、^FF0000无视体型^000000、^FF0000大声呐喊^000000和^FF0000攻击提升^000000。";
+                    break;
+                case 3:
+                    //法攻
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_ENERGYCOAT,.@bdur,10;           //能量外套 49
+                    sc_start SC_MAGNIFICAT,.@bdur,10;           //圣母之颂歌 40
+                    sc_start SC_SUFFRAGIUM,.@bdur,10;           //牺牲祈福 36
+                    sc_start SC_MATKPOTION,.@bdur,rand(10,100); //增加MATK 62
+                    sc_start SC_MAGICPOWER,.@bdur,10;           //魔力增幅
+                    
+                    clear;
+                    mes "[欧托莉柯]";
+                    mes "已获得^FF0000能量外套^000000、^FF0000圣母颂歌^000000、^FF0000牺牲祈福^000000和^FF0000魔攻提升^000000。";
+                    break;
+                case 4:
+                    //攻速
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_ASPDPOTION2,.@bdur,10;  //菠色克药水 57
+                    sc_start SC_CONCENTRATE,.@bdur,10;  //心神 23
+                    sc_start SC_ADRENALINE2,.@bdur,10;  //所有速度激发 145
+                    
+                    clear;
+                    mes "[欧托莉柯]";
+                    mes "已获得^FF0000攻速提升^000000、^FF0000心神凝聚^000000和^FF0000速度激发^000000。";
+                    break;
+                case 5:
+                    //料理
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_BATKFOOD,.@bdur,35;             //攻击
+                    sc_start SC_MATKFOOD,.@bdur,35;             //魔攻
+                    sc_start SC_HITFOOD,.@bdur,rand(10,30);     //命中
+                    sc_start SC_FLEEFOOD,.@bdur,rand(10,30);    //回避
+                    sc_start SC_CRIFOOD,.@bdur,rand(10,30);     //暴击
+                    
+                    if(getgmlevel()){
+                        sc_start SC_FOOD_DEX_CASH,1800000,15;       //dex
+                        sc_start SC_FOOD_LUK_CASH,1800000,15;       //luk
+                        sc_start SC_FOOD_STR_CASH,1800000,15;       //str
+                        sc_start SC_FOOD_VIT_CASH,1800000,15;       //vit
+                        sc_start SC_FOOD_AGI_CASH,1800000,15;       //agi
+                        sc_start SC_FOOD_INT_CASH,1800000,15;       //int
+                    }
+    				
+    				clear;
+    				mes "[欧托莉柯]";
+                    mes "已获得^FF0000命中^000000、^FF0000回避^000000、^FF0000暴击^000000。";
+                    break;
+                case 6:
+                    //药剂
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_PACKING_ENVELOPE1,.@bdur,5;     //atk
+                    sc_start SC_PACKING_ENVELOPE2,.@bdur,5;     //matk
+                    sc_start SC_PACKING_ENVELOPE3,.@bdur,5;     //hp%
+                    sc_start SC_PACKING_ENVELOPE4,.@bdur,5;     //sp%
+                    sc_start SC_PACKING_ENVELOPE7,.@bdur,35;    //def
+                    sc_start SC_PACKING_ENVELOPE8,.@bdur,35;    //mdef
+    				
+    				clear;
+    				mes "[欧托莉柯]";
+                    mes "已获得^FF0000攻击(物/魔)^000000、^FF0000防御(物/魔)^000000。";
+                    break;
+                case 7:
+                    //祝福
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_INCATKRATE,.@bdur,5;        //atk%
+                    sc_start SC_INCMATKRATE,.@bdur,5;       //matk%
+                    sc_start SC_DORAM_BUF_01,.@bdur,10;      //HP回复%
+                    sc_start SC_DORAM_BUF_02,.@bdur,5;      //SP回复%
+                    //sc_start SC_EP16_2_BUFF_AC,.@bdur,0;      //变动咏唱-80%
+    				
+    				clear;
+    				mes "[欧托莉柯]";
+                    mes "已获得^FF0000攻击(物/魔)^000000、^FF0000恢复力^000000。";
+                    break;
+                case 8:
+                    //其他
+                    Zeny -= .@buff_zeny;
+                    specialeffect2 928;
+                    
+                    sc_start SC_ENDURE,.@bdur,10;   //霸体 21
+                    sc_start SC_ANGELUS,.@bdur,10;  //天使之障壁 29
+                    sc_start SC_GLORIA,.@bdur,10;   //幸运之歌 41
+                    sc_start SC_KAIZEL,.@bdur,10;   //凯易哲 147
+    				sc_start SC_KAUPE,.@bdur,10;    //凯诬仆 149
+    				
+    				clear;
+    				mes "[欧托莉柯]";
+                    mes "已获得^FF0000霸体^000000、^FF0000天使障壁^000000和^FF0000幸运颂歌^000000。";
+                    break;
+            }
+            
+            goto Buff_List;
+        }
+        else{
+            mes "\n";
+            mes "当前^FF0000Zeny不足^000000。";
+            close;
+        }
+}
+
+
+function	script	add_Weight	{
+    setarray .@use_item[0], 7776,1;                //消耗道具
+    
+    mes "[欧托莉柯]";
+    mes "负重提升 需要消耗 ^FF8C8C" + getitemname(.@use_item[0]) + "×" + .@use_item[1] + "^000000。";
+	
+	
+	set .@s_lv, getskilllv(681);
+	if(.@s_lv < 10){
+		mes "最多提升 10次(当前 ^fbb217" + .@s_lv + "^000000 次)";
+		
+		if (select("提升") == 1){
+			clear;
+			set .@item_num, countitem(.@use_item[0]);
+			if(.@s_lv < 1){
+				//未有技能
+				if(.@item_num > 0){
+					if(.@item_num < 11){
+						mes "已提升 " + .@item_num + "次";
+						delitem .@use_item[0], .@item_num;
+						skill 681, .@item_num, 3;
+					}
+					else{
+						mes "已提升 10次";
+						delitem .@use_item[0], 10;
+						skill 681, 10, 3;
+					}
+				}
+				else{
+					mes "没有 " + getitemname(.@use_item[0]);
+				}
+			}
+			else{
+				//已有技能
+				if(.@item_num > 0){
+					if(.@item_num < (10 - .@s_lv)){
+						mes "已提升 " + .@item_num + "次";
+						delitem .@use_item[0], .@item_num;
+						skill 681, (.@s_lv + .@item_num), 3;
+					}
+					else{
+						mes "已提升 " + (10 - .@s_lv) + "次";
+						delitem .@use_item[0], (10 - .@s_lv);
+						skill 681, (.@s_lv + (10 - .@s_lv)), 3;
+					}
+				}
+				else{
+					mes "没有 " + getitemname(.@use_item[0]);
+				}
+			}
+		}
+	}
+	else{
+		mes "最多提升 10次(已满级)";
+	}
+
+    close;
+}
+
+
+function	script	ch_name	{
+    setarray .@buy_item[0], 6923,10;                //消耗道具
+    
+    mes "[欧托莉柯]";
+    mes "购买改名卡需要消耗 ^FF8C8C" + getitemname(.@buy_item[0]) + "×" + .@buy_item[1] + "^000000。";
+    if (select("购买:取消") == 1) {
+        if(countitem(.@buy_item[0]) < .@buy_item[1]){
+            clear;
+	        mes "[欧托莉柯]";
+            mes "^FF0000" + getitemname(.@buy_item[0]) + "^000000不足。";
+		}
+		else{
+		    //购买成功
+		    delitem .@buy_item[0], .@buy_item[1];
+            getitem 12790, 1;
+        }
+    }
+    close;
+}

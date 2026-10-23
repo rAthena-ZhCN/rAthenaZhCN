@@ -1,0 +1,62 @@
+prontera,160,124,3	script	大主教	415,{
+
+	mes "[大主教]";
+	mes "……（輕聲祈禱中）……";
+	next;
+	mes "[大主教]";
+	mes "孩子，你來到此地，";
+	mes "是否願意奉獻 ^FF00001萬 Zeny^000000，";
+	mes "以換取女神一小時的祝福？";
+	next;
+	menu "我願意奉獻 1萬 Zeny",BuffCheck,"我只是路過",BuffEnd;
+
+BuffCheck:
+	if (Zeny < 10000) {
+		mes "[女大主教]";
+		mes "你的奉獻尚不足夠。";
+		mes "請準備 ^FF00001萬 Zeny^000000 再來找我。";
+		close;
+	}
+	set Zeny, Zeny - 10000;
+	goto BuffGo;
+
+BuffGo:
+	mes "[大主教]";
+	mes "奉獻已被接受。";
+	mes "請靜下心來……";
+	close2;
+
+	percentheal 100,100;			
+	sc_end all;					
+
+	sc_start SC_INCREASEAGI,3600000,10;		
+	sc_start SC_BLESSING,3600000,10;		
+	sc_start SC_ENDURE,3600000,10;			
+	sc_start SC_CONCENTRATE,3600000,10;		
+	sc_start SC_ANGELUS,3600000,10;			
+	sc_start SC_IMPOSITIO,3600000,10;		
+	sc_start SC_MAGNIFICAT,3600000,10;		
+	sc_start SC_GLORIA,3600000,10;			
+	sc_start SC_WEAPONPERFECTION,3600000,10;	
+	sc_start SC_MAXIMIZEPOWER,3600000,10;		
+	sc_start SC_ENERGYCOAT,3600000,10;		
+	sc_start SC_ASSUMPTIO,3600000,10;		
+	sc_start SC_ADRENALINE2,3600000,10;		
+	sc_start SC_KAIZEL,3600000,10;			
+	sc_start SC_KAUPE,3600000,10;			
+	
+	
+
+	mes "[大主教]";
+	mes "祝福已完成。";
+	mes "願女神的恩典，";
+	mes "在未來的一小時內";
+	mes "始終與你同行。";
+	close;
+
+BuffEnd:
+	mes "[大主教]";
+	mes "願你所走之路，";
+	mes "終將通往光明。";
+	close;
+}

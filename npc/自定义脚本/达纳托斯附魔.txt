@@ -1,0 +1,242 @@
+// ===================================================
+// 达纳托斯塔 - 饰品附魔大师
+// 适配左右两侧饰品栏及猕猴桃果实(6417)
+// ===================================================
+tha_t01,136,83,4	script	死塔饰品附魔大师#tha	724,{
+
+    mes "[塔台饰品附魔大师]";
+    mes "我可以为你的塔台饰品注入强大的魔力。";
+    mes "让我看看你身上穿戴的饰品...";
+    next;
+
+    set .@id_R, getequipid(EQI_ACC_R);
+    set .@id_L, getequipid(EQI_ACC_L);
+    set .@valid_R, 0;
+    set .@valid_L, 0;
+
+    if (.@id_R >= 490044 && .@id_R <= 490067) set .@valid_R, 1;
+    if (.@id_L >= 490044 && .@id_L <= 490067) set .@valid_L, 1;
+
+    if (!.@valid_R && !.@valid_L) {
+        mes "[塔台饰品附魔大师]";
+        mes "我在你的首饰栏里没有发现可以附魔的塔台饰品哦。";
+        close;
+    }
+
+    mes "[塔台饰品附魔大师]";
+    mes "我发现了以下符合条件的饰品，你想处理哪一个？";
+    
+    setarray .@slot_map[1], 0, 0;
+    set .@idx, 1;
+    set .@menu$, "";
+
+    if (.@valid_R) {
+        set .@menu$, .@menu$ + "- 附魔 " + getitemname(.@id_R) + ":";
+        set .@slot_map[.@idx], EQI_ACC_R;
+        set .@idx, .@idx + 1;
+    }
+    if (.@valid_L) {
+        set .@menu$, .@menu$ + "- 附魔 " + getitemname(.@id_L) + ":";
+        set .@slot_map[.@idx], EQI_ACC_L;
+        set .@idx, .@idx + 1;
+    }
+    set .@menu$, .@menu$ + "- 取消";
+
+    set .@sel, select(.@menu$);
+    if (.@sel == .@idx) close;
+
+    set .@eq_slot, .@slot_map[.@sel];
+    set .@equipid, getequipid(.@eq_slot);
+
+    if (countitem(.@equipid) > 1) {
+        mes "[塔台饰品附魔大师]";
+        mes "你的背包中携带了多件相同的装备。";
+        mes "为了防止附魔错乱，请将多余的同名饰品存入仓库，身上只保留一件。";
+        close2;
+        openstorage;
+        end;
+    }
+
+    // 获取全部装备属性
+    .@refine = getequiprefinerycnt(.@eq_slot);
+    .@grade = getenchantgrade(.@eq_slot);
+    .@card0 = getequipcardid(.@eq_slot,0); 
+    .@card1 = getequipcardid(.@eq_slot,1); 
+    .@card2 = getequipcardid(.@eq_slot,2); 
+    .@card3 = getequipcardid(.@eq_slot,3); 
+
+    if (.@eq_slot == EQI_ACC_R) set .@equipposition, 8;
+    if (.@eq_slot == EQI_ACC_L) set .@equipposition, 128;
+
+    set .@is_satan, 0;
+    set .@is_holy, 0;
+    if (.@equipid >= 490044 && .@equipid <= 490055) set .@is_satan, 1;
+    if (.@equipid >= 490056 && .@equipid <= 490067) set .@is_holy, 1;
+
+    if (.@is_satan) {
+        set .@req_item, 1000257; 
+        set .@req_name$, "罪恶雕像";
+        set .@ench3_min, 310197; set .@ench3_max, 310216; 
+        set .@ench4_min, 310237; set .@ench4_max, 310246; 
+    } else {
+        set .@req_item, 1000263; 
+        set .@req_name$, "善意雕塑";
+        set .@ench3_min, 310217; set .@ench3_max, 310236; 
+        set .@ench4_min, 310247; set .@ench4_max, 310256; 
+    }
+
+    mes "[塔台饰品附魔大师]";
+    mes "当前选定装备: "+mesitemicon(.@equipid)+" <ITEM>"+getitemname(.@equipid)+"<INFO>"+.@equipid+"</INFO></ITEM> ";
+    mes "你需要什么服务？";
+    next;
+
+    set .@choice, select("- 随机附魔双槽 (消耗10个雕塑)","- 指定单槽附魔 (消耗50个雕塑)","- 重置洗除附魔","- 取消");
+    if (.@choice == 4) close;
+
+    // =============== 1. 随机附魔双槽 ===============
+    if (.@choice == 1) {
+        if (.@card2 > 0 || .@card3 > 0) {
+            mes "[塔台饰品附魔大师]";
+            mes "该饰品已经有附魔了，请先【重置】后再来。";
+            close;
+        }
+        mes "[塔台饰品附魔大师]";
+        mes "随机附魔将同时为第3洞和第4洞注入属性。";
+        mes "需要消耗 ^FF000010个 "+.@req_name$+"^000000，确定吗？";
+        next;
+        if (select("- 是","- 否") == 2) close;
+
+        if (countitem(.@req_item) < 10) {
+            mes "[塔台饰品附魔大师]";
+            mes "你的 "+.@req_name$+" 不足 10 个。";
+            close;
+        }
+        delitem .@req_item, 10;
+        
+        set .@new_card2, rand(.@ench3_min, .@ench3_max);
+        set .@new_card3, rand(.@ench4_min, .@ench4_max);
+
+        // 【修正】只用 delequip，去除了报错的 delitem
+        delequip .@eq_slot;
+        getitem2 .@equipid, 1, 1, .@refine, 0, .@card0, .@card1, .@new_card2, .@new_card3;
+        equip .@equipid;
+        atcommand "@grade "+.@equipposition+" "+.@grade+" ";
+        
+        mes "[塔台饰品附魔大师]";
+        mes "附魔完成！";
+        close;
+    }
+
+    // =============== 2. 指定单槽附魔 ===============
+    if (.@choice == 2) {
+        mes "[塔台饰品附魔大师]";
+        mes "请选择你要指定附魔的槽位：";
+        next;
+        set .@slot, select("- 第3槽","- 第4槽","- 取消");
+        if (.@slot == 3) close;
+
+        if (.@slot == 1) {
+            if (.@card2 > 0) {
+                mes "[塔台饰品附魔大师]";
+                mes "第3槽已有附魔，请先重置。";
+                close;
+            }
+            set .@min, .@ench3_min; set .@max, .@ench3_max;
+        } else {
+            if (.@card3 > 0) {
+                mes "[塔台饰品附魔大师]";
+                mes "第4槽已有附魔，请先重置。";
+                close;
+            }
+            set .@min, .@ench4_min; set .@max, .@ench4_max;
+        }
+
+        mes "[塔台饰品附魔大师]";
+        mes "请选择你要指定的属性：";
+        set .@menu$, "";
+        for (set .@i, .@min; .@i <= .@max; set .@i, .@i + 1)
+            set .@menu$, .@menu$ + "- " + getitemname(.@i) + ":";
+        set .@menu$, .@menu$ + "- 取消";
+
+        set .@opt, select(.@menu$) - 1;
+        if (.@opt == (.@max - .@min + 1)) close;
+
+        set .@selected_enchant, .@min + .@opt;
+
+        mes "[塔台饰品附魔大师]";
+        mes "指定附魔需要消耗 ^FF000050个 "+.@req_name$+"^000000，确定吗？";
+        next;
+        if (select("- 是","- 否") == 2) close;
+
+        if (countitem(.@req_item) < 50) {
+            mes "[塔台饰品附魔大师]";
+            mes "你的 "+.@req_name$+" 不足 50 个。";
+            close;
+        }
+        delitem .@req_item, 50;
+
+        if (.@slot == 1) set .@card2, .@selected_enchant;
+        else set .@card3, .@selected_enchant;
+
+        // 【修正】
+        delequip .@eq_slot;
+        getitem2 .@equipid, 1, 1, .@refine, 0, .@card0, .@card1, .@card2, .@card3;
+        equip .@equipid;
+        atcommand "@grade "+.@equipposition+" "+.@grade+" ";
+        
+        mes "[塔台饰品附魔大师]";
+        mes " "+mesitemicon(.@selected_enchant)+" <ITEM>"+getitemname(.@selected_enchant)+"<INFO>"+.@selected_enchant+"</INFO></ITEM> 附魔完成！";
+        close;
+    }
+
+    // =============== 3. 重置洗除附魔 ===============
+    if (.@choice == 3) {
+        if (.@card2 == 0 && .@card3 == 0) {
+            mes "[塔台饰品附魔大师]";
+            mes "该装备暂无附魔,无法重置。";
+            close;
+        }
+        mes "[塔台饰品附魔大师]";
+        mes "洗除附魔有两种方式：";
+        mes "- 支付 1,000,000 Zeny (70% 成功率，^FF0000失败则饰品破碎销毁^000000)";
+        mes "- 消耗 10个 猕猴桃果实 (100% 成功保留装备)";
+        next;
+        
+        set .@fruit_id, 6417; 
+
+        set .@reset_mode, select("- 1,000,000 Zeny (70%成功率)","- 10个 猕猴桃果实 (100%成功率)","- 取消");
+        if (.@reset_mode == 3) close;
+
+        if (.@reset_mode == 1) {
+            if (Zeny < 1000000) {
+                mes "[塔台饰品附魔大师]";
+                mes "你的 Zeny 余额不足。";
+                close;
+            }
+            set Zeny, Zeny - 1000000;
+            if (rand(1, 100) > 70) {
+                delequip .@eq_slot;
+                mes "[塔台饰品附魔大师]";
+                mes "很遗憾，洗除附魔失败，饰品破碎了...";
+                close;
+            }
+        } else {
+            if (countitem(.@fruit_id) < 10) {
+                mes "[塔台饰品附魔大师]";
+                mes "你的 猕猴桃果实 数量不足 10 个。";
+                close;
+            }
+            delitem .@fruit_id, 10;
+        }
+
+        // 【修正】
+        delequip .@eq_slot;
+        getitem2 .@equipid, 1, 1, .@refine, 0, .@card0, .@card1, 0, 0;
+        equip .@equipid;
+        atcommand "@grade "+.@equipposition+" "+.@grade+" ";
+        
+        mes "[塔台饰品附魔大师]";
+        mes "重置成功！附魔词条已完全清空。";
+        close;
+    }
+}

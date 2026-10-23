@@ -18,121 +18,121 @@
 
 valkyrie,53,50,3	script	Biochemist#Valkyrie	122,{
 	if (Class == Job_Creator && bioeth == 13 && getskilllv("AM_BIOETHICS") == 0) {
-		mes "[Biochemist]";
-		mes "Ah, have you come to";
-		mes "retrieve the memories";
-		mes "lost to you? Yes, you";
-		mes "must be here for the";
-		mes "secrets of life that";
-		mes "were once yours...";
+		mes "[生物化学家]";
+		mes "啊，你是不是来";
+		mes "找回失去的记忆的？";
+		mes "是的，你一定是为";
+		mes "生命的秘密而来，";
+		mes "那些曾经属于你的";
+		mes "秘密...";
 		next;
-		if (select("Yes:No") == 1) {
-			mes "[Biochemist]";
-			mes "Close your eyes and";
-			mes "put your mind at rest.";
-			mes "We will return to your";
-			mes "past to recollect the";
-			mes "fragments of your lost";
-			mes "memories.";
+		if (select("是:否") == 1) {
+			mes "[生物化学家]";
+			mes "闭上眼睛，";
+			mes "让心情平静下来。";
+			mes "我们将回到你的";
+			mes "过去，重新收集";
+			mes "你失去记忆的";
+			mes "碎片。";
 			next;
-			mes "[Biochemist]";
-			mes "When you open your eyes,";
-			mes "you will clearly remember";
-			mes "the secret of life. You will";
-			mes "also remember the weight of";
-			mes "responsibility in using these";
-			mes "secrets for the right ends...";
+			mes "[生物化学家]";
+			mes "当你睁开眼睛时，";
+			mes "你会清晰地记起";
+			mes "生命的秘密。你也会";
+			mes "记住使用这些秘密";
+			mes "所肩负的责任，";
+			mes "确保它们用于正确的用途...";
 			next;
 			skill "AM_BIOETHICS",1,SKILL_PERM;
-			mes "[Biochemist]";
-			mes "Open your eyes...";
-			mes "Now that you have";
-			mes "remembered how to";
-			mes "create artificial life, I only";
-			mes "ask that you treat all of your";
-			mes "creations with respect.";
+			mes "[生物化学家]";
+			mes "睁开你的眼睛...";
+			mes "现在你已经";
+			mes "记起了如何";
+			mes "创造人工生命，我只希望";
+			mes "你能尊重所有的";
+			mes "创造物。";
 			close;
 		}
-		mes "[Biochemist]";
-		mes "If you wish to";
-		mes "retrieve your lost";
-		mes "memories, please";
-		mes "come back to me.";
-		mes "The secret to creating";
-		mes "life is no trifling thing...";
+		mes "[生物化学家]";
+		mes "如果你想";
+		mes "找回失去的";
+		mes "记忆，请";
+		mes "随时来找我。";
+		mes "创造生命的";
+		mes "秘密可不是小事...";
 		close;
 	}
 	else if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[Biochemist]";
-			mes "Congratulations.";
-			mes "Honor to the warriors!";
+			mes "[生物化学家]";
+			mes "恭喜你。";
+			mes "向勇士们致敬！";
 			close;
 		}
-		mes "[Biochemist]";
-		mes "It's strange that";
-		mes "someone like me is here.";
-		mes "But even someone skilled";
-		mes "in the ways of science";
-		mes "can manage to be a hero.";
+		mes "[生物化学家]";
+		mes "很奇怪，像我这样";
+		mes "的人会在这里。";
+		mes "但即使是精通科学";
+		mes "之道的人，";
+		mes "也能成为英雄。";
 		next;
-		mes "[Biochemist]";
-		mes "In this instance,";
-		mes "it's not necessarily";
-		mes "the means I've used, but";
-		mes "the ends for which I've";
-		mes "fought that earned me";
-		mes "a place in Valhalla...";
+		mes "[生物化学家]";
+		mes "在这种情况下，";
+		mes "重要的不一定是";
+		mes "我使用的手段，而是";
+		mes "我为之奋斗的";
+		mes "目标，这让我赢得了";
+		mes "一席之地在巴哈拉宫...";
 		close;
 	}
 	else if (ADVJOB == Job_Creator && Class == Job_Merchant_High && JobLevel > 39) {
-		mes "[Biochemist]";
-		mes "Yes...";
-		mes "It's about time.";
-		mes "We need more geniuses";
-		mes "like you on Midgard.";
+		mes "[生物化学家]";
+		mes "是的...";
+		mes "是时候了。";
+		mes "我们需要更多像你这样的";
+		mes "天才来到米德加尔特。";
 		next;
-		mes "[Biochemist]";
-		mes "Would you like to";
-		mes "become a Biochemist?";
+		mes "[生物化学家]";
+		mes "你想成为";
+		mes "一名生物化学家吗？";
 		next;
-		if (select("No.:Yes.") == 1) {
-			mes "[Biochemist]";
-			mes "When you're ready,";
-			mes "feel free to come back.";
-			mes "Honor to the warriors!";
+		if (select("否:是") == 1) {
+			mes "[生物化学家]";
+			mes "当你准备好了，";
+			mes "随时欢迎回来。";
+			mes "向勇士们致敬！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[Biochemist]";
-			mes "It is still possible for you to learn more skills. Please use";
-			mes "all of your remaining Skill Points before returning to me.";
+			mes "[生物化学家]";
+			mes "你仍然有可能学习更多的技能。请先使用";
+			mes "所有剩余的技能点，然后再来找我。";
 			close;
 		}
 		jobchange Job_Creator;
 		if (bioeth == 13)
 			skill "AM_BIOETHICS",1,SKILL_PERM;
 		set ADVJOB,0;
-		mes "[Biochemist]";
-		mes "Congratulations!";
-		mes "As a Biochemist,";
-		mes "I hope you use your";
-		mes "vast knowledge for the";
-		mes "right purposes.";
+		mes "[生物化学家]";
+		mes "恭喜！";
+		mes "作为一名生物化学家，";
+		mes "我希望你能将你的";
+		mes "广博知识用于";
+		mes "正当的目的。";
 		close;
 	}
 	else {
-		mes "[Biochemist]";
-		mes "Welcome";
-		mes "to Valhalla,";
-		mes "the Hall of Honor.";
+		mes "[生物化学家]";
+		mes "欢迎";
+		mes "来到巴哈拉宫，";
+		mes "荣誉殿堂。";
 		next;
-		mes "[Biochemist]";
-		mes "Please make";
-		mes "yourself comfortable";
-		mes "while you are here.";
-		mes "Honor to the warriors!";
+		mes "[生物化学家]";
+		mes "请随意";
+		mes "让自己感到舒适，";
+		mes "在你逗留期间。";
+		mes "向勇士们致敬！";
 		close;
 	}
 }

@@ -15,68 +15,68 @@
 //= 1.3 Now saves/restores all the quest skills [Lupus]
 //============================================================ 
 
-valkyrie,44,42,5	script	High Priest#Valkyrie	60,{
+valkyrie,44,42,5	script	大神官#Valkyrie	60,{
 	if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[High Priest]";
-			mes "Congratulations.";
-			mes "Honor to the warriors!";
+			mes "[大神官]";
+			mes "恭喜您。";
+			mes "向勇士致敬！";
 			close;
 		}
-		mes "[High Priest]";
-		mes "Through the power";
-		mes "of holiness, may we";
-		mes "find peace, strength";
-		mes "and protection. Deliver";
-		mes "us from the forces of evil...";
+		mes "[大神官]";
+		mes "凭借神圣之力，";
+		mes "愿我们能够";
+		mes "找到和平、力量";
+		mes "与庇护。拯救";
+		mes "我们脱离邪恶势力...";
 		close;
 	}
 	else if (ADVJOB == Job_High_Priest && Class == Job_Acolyte_High && JobLevel > 39) {
-		mes "[High Priest]";
-		mes "Our world is in";
-		mes "need of people of";
-		mes "talent and conviction.";
-		mes "Please continue your";
-		mes "good works as an even";
-		mes "greater hero of holiness...";
+		mes "[大神官]";
+		mes "我们的世界";
+		mes "需要有才华";
+		mes "和信念的人们。";
+		mes "请继续您的";
+		mes "善行，成为更伟大的";
+		mes "神圣英雄...";
 		next;
-		mes "[High Priest]";
-		mes "Would you like";
-		mes "to become a High Priest?";
+		mes "[大神官]";
+		mes "您是否想";
+		mes "成为一名大神官？";
 		next;
-		if (select("No.:Yes.") == 1) {
-			mes "[High Priest]";
-			mes "When you're ready,";
-			mes "feel free to come back.";
-			mes "Honor to the warriors!";
+		if (select("否：是。") == 1) {
+			mes "[大神官]";
+			mes "当您准备好了，";
+			mes "随时欢迎回来。";
+			mes "向勇士致敬！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[High Priest]";
-			mes "It is still possible for you to learn more skills. Please use";
-			mes "all of your remaining Skill Points before returning to me.";
+			mes "[大神官]";
+			mes "您仍然可以学习更多技能。请在回到我这里之前，";
+			mes "使用完所有剩余的技能点数。";
 			close;
 		}
 		jobchange Job_High_Priest;
 		set ADVJOB,0;
-		mes "[High Priest]";
-		mes "Congratulations.";
-		mes "As a High Priest,";
-		mes "I hope you will guide";
-		mes "others upon the path";
-		mes "to holiness...";
+		mes "[大神官]";
+		mes "恭喜您。";
+		mes "作为一名大神官，";
+		mes "我希望您能引导";
+		mes "他人走上";
+		mes "神圣之路...";
 		close;
 	}
-	mes "[High Priest]";
-	mes "Welcome";
-	mes "to Valhalla,";
-	mes "the Hall of Honor.";
+	mes "[大神官]";
+	mes "欢迎";
+	mes "来到巴哈拉宫，";
+	mes "荣誉大厅。";
 	next;
-	mes "[High Priest]";
-	mes "Please make";
-	mes "yourself comfortable";
-	mes "while you are here.";
-	mes "Honor to the warriors!";
+	mes "[大神官]";
+	mes "请在此期间";
+	mes "让自己感到舒适，";
+	mes "祝您在这里过得愉快。";
+	mes "向勇士致敬！";
 	close;
 }

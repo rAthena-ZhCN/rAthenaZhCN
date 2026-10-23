@@ -1,0 +1,487 @@
+//修正 29047 是 致命石(头中) , 道具用是 25060
+
+//70,166 to 66,146
+prontera,165,75,3	script	绵绵岛时装附魔	626,{
+
+	callfunc "magic010";
+	end;
+
+Oninit:
+	waitingroom strnpcinfo(1),0;
+	end;
+
+}
+
+
+function	script	magic010	{
+
+
+		set .@defid,39033;
+		
+		set .@reitem,6417;		//重置物品
+		set .@reipcs,25;		//重置数量
+		set .@rerate,50;		//重置机率 50%		
+		set .@bitem,39033;		//防爆物品
+		set .@bipcs,1;			//防爆数量		
+		
+		disable_items;
+		mes "附魔机率: ^0000FF选择后显示^000000";
+		mes "附魔材料: ^0000FF服饰附魔石^000000";
+		mes "防爆材料: ^0000FF"+getitemname(.@defid)+"^000000";
+		mes " ";
+		mes "注意事项:";
+		//mes "成功与否 都会扣除 服饰 附魔石";
+		mes "^FF0000附魔失败时 选择的 附魔石 将会消失^000000";
+		mes "^0000FF使用防爆 可防止 选择的 附魔石消失^000000";	
+		next;
+		set .@open,select("我要附魔","重置附魔","能力说明");
+		switch(.@open){
+	case 1:
+		callsub start_magic;
+		break;
+	case 2:
+		callsub OnReMagic,0,.@reitem,.@reipcs,.@rerate,.@bitem,.@bipcs;
+		break;
+	case 3:
+		callsub on_view;
+		break;
+		}//switch .@open
+		end;
+		
+on_view:
+		setarray .@a1$[1],"服装头上","服装头中","服装头下","服装披肩";
+		mes "请选择要 观看的位置";
+		for(.@i=1; .@i<getarraysize(.@a1$[1]); .@i++) set .@menu$,.@menu$+.@a1$[.@i]+":";
+		set .@select2,select(.@menu$);
+		switch(.@select2){
+			case 1:
+					//头上             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II	     恢复,      攻击:魔攻,            六大属性,             大中小型,     HP:SP 吸收, ASPD石,  改良, 闪耀效果,  变咏, 经验,  致命,   武宗,  神射,  智者,叛乱
+					setarray .@list[1],1000008,1000012,1000016,1000214,1000218,1000222,1000297,1000305,1000301,     6740,6741,   6943,6944, 6636,6637,6638,6639,6640,6641, 6790,6791,6792, 6999,25000 , 25068, 25069,  25058,   25172, 25171, 25304, 25409, 25413, 25417,25445,25450,25453,25490,25494,25498,25706,25710,25714,25800,25804,25808,25843,25846,25850,25855,25859,3112,3116,3120,1001047;
+					setarray .@exto[1],310000, 310004, 310008, 310181, 310187, 310191, 310258, 310266,  310262,     4930,4805, 29028,29030, 4700,4710,4730,4720,4740,4750, 4936,4937,4938, 29013,29032,  4807, 29053,  29041,   29156, 29159, 29359, 29423, 29428, 29432,29460,29464,29468,29477,29481,29485,29513,29517,29521,29613,29617,29621,29651,29655,29659,29664,29668,3100,3104,3108,311463;
+					break;			
+			case 2:
+					//头中             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II    攻击:魔法, 恢复,   HP:SP,                六大转换,                六大素质 力:智:敏:灵:体:运,   防御,  改良,  致命(头中),  广域,   幽灵,  收缩, 电气,  经验,  影子,  天怒,  粉色,  蓝色,   变咏, 白化,  绯红,  武宗,  神射,  智者
+					setarray .@list[1],1000009,1000013,1000017,1000215,1000219,1000223,1000298,1000306,1000302,  6642,6643, 6742, 6743,6744, 25003,25005,25007,25006,25004,25002, 6945,6946,6947,6948,6949,6950, 25001, 25070, 25060, 25061, 25059, 25138, 25136, 25141, 25177, 25175, 25178, 25176, 25173, 25224, 25225, 25410, 25414, 25418,25446,25451,25454,25491,25495,25499,25711,25715,25799,25803,25807,25844,25847,25851,25856,25860,3113,3117,3121,25707;
+					setarray .@exto[1],310001, 310005, 310009, 310182,  310186, 310190,310259, 310267,  310263,  4882,4883, 4931, 4861,4929, 29014,29016,29018,29020,29022,29024, 4700,4710,4730,4720,4740,4750, 29026, 29054, 29047, 29048, 29040, 29144, 29142, 29145, 29162, 29155, 29161, 29160, 29157, 29224, 29226, 29424, 29429, 29433,29461,29465,29469,29478,29482,29486,29518,29522,29612,29616,29620,29652,29656,29660,29665,29669,3101,3105,3109,29514;
+					break;			
+			case 3:
+					//头下             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II     命中, 回避, 恢复,  HP,  攻击,  魔攻,  魔防,  经验,  霸邪,  ASPD,  贪婪,  改良,                 六大转换,             体力,   魔力, 解毒,  复元,  绿光,  鉴定,  变咏,  水域,  治愈,  瞬移,  偷窃,  收缩,  致命,  武宗,  神射,  智者
+					setarray .@list[1],1000010,1000014,1000018,1000216,1000220,1000224,1000299,1000307,1000303,    6644, 6645, 6745, 6951, 25016, 25017, 25014, 25015, 25072, 25068, 25062, 25071, 25012,25013,25010,25008,25009,25011, 25063, 25064, 25065, 25066, 25137, 25139, 25174, 25226, 25227, 25228, 25229, 25205, 25305, 25411, 25415, 25419,25455,25447,25452,25492,25496,25500,25708,25712,25716,25798,25802,25806,25845,25848,25852,25857,25861,3114,3118,3122; 
+					setarray .@exto[1],310002, 310006, 310010, 310183, 310185,  310189, 310260,310268,  310264,    4884, 4859, 4932, 4861, 29029, 29031, 29033, 29027, 29057,  4807, 29046, 29055, 29015,29017,29019,29021,29023,29025, 29049, 29050, 29051, 29052, 29143, 29146, 29158, 29225, 29227, 29229, 29228, 29144, 29360, 29425, 29430, 29434,29470,29462,29466,29479,29483,29487,29515,29519,29523,29611,29615,29619,29653,29657,29661,29666,29670,3102,3106,3110;
+					break;				
+			case 4:
+					//披肩             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II                                                                                                                 ASPD, HP吸收, SP吸收, 咏唱,  次咏,  二刀,  致命,  变咏,  修罗,  游侠,  妖术
+					setarray .@list[1],1000011,1000015,1000019,1000213,1000217,1000221,1000296,1000304,1000300,    6908,  6963,   6964,  25067, 25170, 25302, 25303, 25306, 25412, 25416, 25420,25448,25449,25456,25493,25497,25501,25709,25713,25717,25797,25801,25805,25842,25849,25853,25854,25858,25862,3115,3119,3123;
+					setarray .@exto[1],310003, 310007, 310011, 310180, 310184,  310188, 310257, 310265, 310261,    4807,  4992,   4993,  29056, 29154, 29362, 29361, 29358, 29426, 29431, 29435,29463,29467,29471,29480,29484,29488,29516,29520,29524,29427,29614,29618,29654,29658,29662,29663,29667,29671,3103,3107,3111;
+					break;				
+			default:
+					mes "位置没有 对应到";
+					end;
+			
+		}//switch .@select2
+		for(.@i=1; .@i<getarraysize(.@list); .@i++) mes "^0000FF<ITEM>"+getitemname(.@list[.@i])+"<INFO>"+.@exto[.@i]+"</INFO></ITEM>^000000";
+		close;
+
+OnFullLevel:
+		mes "装备: ^FF0000+"+getarg(0)+"^000000 ^0000FF"+getitemname(getarg(1))+"^000000"; 		
+		end;
+		
+		
+OnReMagic://重置附魔 位置自选
+		setarray .@eid[1],EQI_COSTUME_HEAD_TOP,EQI_COSTUME_HEAD_MID,EQI_COSTUME_HEAD_LOW,EQI_COSTUME_GARMENT;
+		setarray .@a2$[1], "服装头上","服装头中","服装头下","服装披肩";
+		mes "请选择 要重置的装备";
+		for(.@i=1; .@i<getarraysize(.@eid); .@i++) set .@menu$,.@menu$+(getequipisequiped(.@eid[.@i])?.@a2$[.@i]+" - ^FF0000"+"+"+getequiprefinerycnt(.@eid[.@i])+"^000000^0066CC "+getequipname(.@eid[.@i]):""+.@a2$[.@i]+" - ^666666尚未装备^000000")+"^000000:";
+		set .@select,select(.@menu$);
+		set .@id,getequipid(.@eid[.@select]);
+		if(.@id<=0){ mes "选择的位置 没有装备"; close; }
+		set .@r,getequiprefinerycnt(.@eid[.@select]);
+		if(getarg(1)>0) if(countitem(getarg(1))<getarg(2)){ clear; mes "^FF0000材料不足^000000"; mes "需求物品: ^0000FF"+getitemname(getarg(1))+" x "+getarg(2)+"^000000"; close; }
+		set .@c1,getequipcardid(.@eid[.@select],0);
+		set .@c2,getequipcardid(.@eid[.@select],1);
+		set .@c3,getequipcardid(.@eid[.@select],2);
+		set .@c4,getequipcardid(.@eid[.@select],3);
+		set .@eqyy,.@eid[.@select];
+		set .@opt1,getequiprandomoption(.@eqyy,0,ROA_ID );
+		set .@val1,getequiprandomoption(.@eqyy,0,ROA_VALUE );
+		set .@par1,getequiprandomoption(.@eqyy,0,ROA_PARAM );
+		set .@opt2,getequiprandomoption(.@eqyy,1,ROA_ID );
+		set .@val2,getequiprandomoption(.@eqyy,1,ROA_VALUE );
+		set .@par2,getequiprandomoption(.@eqyy,1,ROA_PARAM );
+		set .@opt3,getequiprandomoption(.@eqyy,2,ROA_ID );
+		set .@val3,getequiprandomoption(.@eqyy,2,ROA_VALUE );
+		set .@par3,getequiprandomoption(.@eqyy,2,ROA_PARAM );
+		set .@opt4,getequiprandomoption(.@eqyy,3,ROA_ID );
+		set .@val4,getequiprandomoption(.@eqyy,3,ROA_VALUE );
+		set .@par4,getequiprandomoption(.@eqyy,3,ROA_PARAM );
+		set .@opt5,getequiprandomoption(.@eqyy,4,ROA_ID );
+		set .@val5,getequiprandomoption(.@eqyy,4,ROA_VALUE );
+		set .@par5,getequiprandomoption(.@eqyy,4,ROA_PARAM );		
+		set .@view1,getarg(3);
+		set .@view2,100-.@view1;
+		//mes "重置机率: ^0000FF"+getarg(3)+"%^000000";
+		mes "目前装备: ^FF0000+"+.@r+"^000000 ^0000FF"+getitemname(.@id)+"^000000";
+		//mes "重置材料: ^0000FF"+getitemname(getarg(1))+" x "+getarg(2)+"^000000";
+		
+		if(getarg(3)<100){
+
+			//set .@open,select("^0066CC要使用 "+getitemname(getarg(4))+" x "+getarg(5)+"^000000","^666666不使用 "+getitemname(getarg(4))+" x "+getarg(5)+"^000000");
+			set .@open,select("^0066CC要使用 "+getitemname(getarg(4))+" x "+getarg(5)+"^000000");
+			set .@bady,.@open;	// 1 = 使用  其余为 不使用
+			if(.@bady==1) if(countitem(getarg(4))<getarg(5)){ clear; mes "^FF0000材料不足^000000"; mes "需求物品: ^0000FF"+getitemname(getarg(4))+" x "+getarg(5)+"^000000"; close; }
+			mes "失败结果: "+(.@bady==1?"^0000FF启用保护^000000":"^FF0000装备消失 失败机率: "+.@view2+"%^000000");
+		
+		}
+		mes .@c2>0?"原本 第二洞 能力: ^0000FF"+getitemname(.@c2)+"^000000":"";
+		mes .@c3>0?"原本 第三洞 能力: ^0000FF"+getitemname(.@c3)+"^000000":"";
+		mes .@c4>0?"原本 第四洞 能力: ^0000FF"+getitemname(.@c4)+"^000000":"";
+		next;
+		if(.@opt1>0) set .@add,.@add+1;
+		if(.@opt2>0) set .@add,.@add+1;
+		if(.@opt3>0) set .@add,.@add+1;
+		if(.@opt4>0) set .@add,.@add+1;
+		if(.@opt5>0) set .@add,.@add+1;
+		switch(.@add){
+			case 1:
+					setarray .@magic[0],.@opt1;
+					setarray .@okval[0],.@val1;
+					setarray .@sys[0],.@par1;
+					break;
+			case 2:
+					setarray .@magic[0],.@opt1,.@opt2;
+					setarray .@okval[0],.@val1,.@val2;
+					setarray .@sys[0],.@par1,.@par2;
+					break;
+			case 3:
+					setarray .@magic[0],.@opt1,.@opt2,.@opt3;
+					setarray .@okval[0],.@val1,.@val2,.@val3;
+					setarray .@sys[0],.@par1,.@par2,.@par3;
+					break;
+			case 4:
+					setarray .@magic[0],.@opt1,.@opt2,.@opt3,.@opt4;
+					setarray .@okval[0],.@val1,.@val2,.@val3,.@val4;
+					setarray .@sys[0],.@par1,.@par2,.@par3,.@par4;
+					break;
+			case 5:
+					setarray .@magic[0],.@opt1,.@opt2,.@opt3,.@opt4,.@opt5;
+					setarray .@okval[0],.@val1,.@val2,.@val3,.@val4,.@val5;
+					setarray .@sys[0],.@par1,.@par2,.@par3,.@par4,.@par5;
+					break;					
+		}//switch .@add	
+		mes "重置机率: ^0000FF"+getarg(3)+"%^000000";
+		mes "目前装备: ^FF0000+"+.@r+"^000000 ^0000FF"+getitemname(.@id)+"^000000";
+		mes "失败结果: "+(.@bady==1?"^0000FF启用保护^000000":"^FF0000装备消失 失败机率: "+.@view2+"%^000000");
+		mes " ";
+		mes "请选择要 重置的洞数";
+		set .@res1,select("第 1 洞","","","第 4 洞");
+		//set .@res1,select("","","","","第234洞 全部重置");
+		if(.@res1 != 5) mes "选择洞数: 第 ^FF0000"+.@res1+"^000000 洞";
+		else mes "选择洞数: 第1234洞 全部重置";
+		if(select("确定重置","让我考虑一下")==2) close;
+		switch(.@res1){
+			case 1:
+				if(.@c1<1){
+					mes "没有附魔 无法重置";
+					end;
+				} else mes "第1洞: ^0000FF"+getitemname(.@c1)+"^000000";
+				break;
+			case 4:
+				if(.@c1<4){
+					mes "没有附魔 无法重置";
+					end;
+				} else mes "第4洞: ^0000FF"+getitemname(.@c4)+"^000000";			
+				break;
+		}//switch .@res1		
+		clear;
+		if(.@bady==1) if(countitem(getarg(4))<getarg(5)){ clear; mes "^FF0000材料不足^000000"; mes "需求物品: ^0000FF"+getitemname(getarg(4))+" x "+getarg(5)+"^000000"; close; }
+		if(getarg(1)>0) if(countitem(getarg(1))<getarg(2)){ clear; mes "^FF0000材料不足^000000"; mes "需求物品: ^0000FF"+getitemname(getarg(1))+" x "+getarg(2)+"^000000"; close; }
+		if(countitem(getequipid(.@eid[.@select]))>1){ mes "^974909请确认 身上只有一件^000000 ^0000FF"+getitemname(getequipid(.@eid[.@select]))+"^000000"; close; }
+		if(getequipid(.@eid[.@select]) != .@id){ mes "^FF0000操作过程中 不可切换装备^000000"; close; }
+		if(.@bady==1) delitem getarg(4),getarg(5);
+		delitem getarg(1),getarg(2);	//删除重置材料
+		if(rand(100)>getarg(3)) callsub OnReMagicFail,.@bady,.@id,.@r,.@c1,.@c2,.@c3,.@c4;
+		
+		delitem .@id,1;					//删除原本装备
+		mes "装备: ^FF0000+"+.@r+"^000000 ^0000FF"+getitemname(.@id)+"^000000";
+		mes "重置附魔 成功";
+		
+		if(.@add>0){
+			switch(.@res1){
+				case 1:
+					getitem3 .@id, 1, 1, .@r, 0, 0 , .@c2, .@c3 , .@c4, .@magic[0], .@okval[0], .@sys[0];
+					break;					
+				case 2:
+					getitem3 .@id, 1, 1, .@r, 0, .@c1 , 0, .@c3 , .@c4, .@magic[0], .@okval[0], .@sys[0];
+					break;				
+				case 3:
+					getitem3 .@id, 1, 1, .@r, 0, .@c1 , .@c2, 0 , .@c4, .@magic[0], .@okval[0], .@sys[0];
+					break;				
+				case 4:
+					getitem3 .@id, 1, 1, .@r, 0, .@c1 , .@c2, .@c3 , 0, .@magic[0], .@okval[0], .@sys[0];
+					break;
+				case 5:
+					getitem3 .@id, 1, 1, .@r, 0, 0 , 0, 0 , 0, .@magic[0], .@okval[0], .@sys[0];
+					break;
+			}//switch .@res1
+			
+		} else {
+			switch(.@res1){
+				case 1:
+					getitem2 .@id, 1, 1, .@r, 0, 0 , .@c2, .@c3 , .@c4;
+					break;		
+				case 2:
+					getitem2 .@id, 1, 1, .@r, 0, .@c1 , 0, .@c3 , .@c4;
+					break;
+				case 3:
+					getitem2 .@id, 1, 1, .@r, 0, .@c1 , .@c2, 0 , .@c4;
+					break;
+				case 4:
+					getitem2 .@id, 1, 1, .@r, 0, .@c1 , .@c2, .@c3 , 0;
+					break;					
+				case 5:
+					getitem2 .@id, 1, 1, .@r, 0, 0 , 0, 0 , 0;
+					break;
+			}//switch .@res1
+		}
+		
+		equip .@id;
+		specialeffect2 99;
+		dispbottom "[重置附魔 成功]: +"+.@r+" "+getitemname(.@id)+"";			
+		close;	
+		
+OnReMagicFail:
+		mes "^974909重置失败 ....^000000";
+		if(getarg(0)==1){ specialeffect2 636; specialeffect2 101; mes "不过好险 有使用保护"; mes "^0000FF装备无受到 任何的影响^000000"; close; }
+		specialeffect2 155;
+		delitem getarg(1),1;
+		mes "抱歉 装备已经消失了 ....";
+		mes "装备损毁: ^FF0000+"+getarg(2)+"^000000 ^FF0000"+getitemname(getarg(1))+"^000000";
+		dispbottom "[重置失败]: 装备: +"+getarg(2)+" "+getitemname(getarg(1))+"      已经消失了";
+		close;				
+		
+start_magic:
+		mes "请选择要 附魔的装备";
+		set .@bitem,39033;
+		set .@bipcs,1;
+		//set .@rate,50;
+		setarray .@id[1],EQI_COSTUME_HEAD_TOP,EQI_COSTUME_HEAD_MID,EQI_COSTUME_HEAD_LOW,EQI_COSTUME_GARMENT;
+		setarray .@name$[1],"服装头上","服装头中","服装头下","服装披肩";
+		for(.@i=1; .@i<getarraysize(.@id); .@i++) set .@test$,.@test$+(getequipisequiped(.@id[.@i])?.@name$[.@i]+" - ^0066CC"+"+"+getequiprefinerycnt(.@id[.@i])+"^000000^0066CC "+getequipname(.@id[.@i]):""+.@name$[.@i]+" - ^888888没有装备^000000")+"^000000:";
+		set .@select,select(.@test$);
+		set .@sok,.@id[.@select];
+		set .@eqid,getequipid(.@sok);			//装备的ID
+		if(.@eqid <=0){ mes "^FF0000选择的位置 无装备^000000"; close; }
+		set .@r,getequiprefinerycnt(.@sok);	//纪录 选择的装备 当前精炼值
+		set .@c1,getequipcardid(.@sok,0);
+		set .@c2,getequipcardid(.@sok,1);
+		set .@c3,getequipcardid(.@sok,2);
+		set .@c4,getequipcardid(.@sok,3);
+		set .@eqyy,.@id[.@select];
+		set .@opt1,getequiprandomoption(.@eqyy,0,ROA_ID );
+		set .@val1,getequiprandomoption(.@eqyy,0,ROA_VALUE );
+		set .@par1,getequiprandomoption(.@eqyy,0,ROA_PARAM );
+		set .@opt2,getequiprandomoption(.@eqyy,1,ROA_ID );
+		set .@val2,getequiprandomoption(.@eqyy,1,ROA_VALUE );
+		set .@par2,getequiprandomoption(.@eqyy,1,ROA_PARAM );
+		set .@opt3,getequiprandomoption(.@eqyy,2,ROA_ID );
+		set .@val3,getequiprandomoption(.@eqyy,2,ROA_VALUE );
+		set .@par3,getequiprandomoption(.@eqyy,2,ROA_PARAM );		
+		set .@opt4,getequiprandomoption(.@eqyy,3,ROA_ID );
+		set .@val4,getequiprandomoption(.@eqyy,3,ROA_VALUE );
+		set .@par4,getequiprandomoption(.@eqyy,3,ROA_PARAM );
+		set .@opt5,getequiprandomoption(.@eqyy,4,ROA_ID );
+		set .@val5,getequiprandomoption(.@eqyy,4,ROA_VALUE );
+		set .@par5,getequiprandomoption(.@eqyy,4,ROA_PARAM );		
+
+		mes "选择装备: ^0000FF+"+.@r+" "+getitemname(.@eqid)+"^000000";
+		if( getequipid(.@sok) == getequipid(9) ){ mes "限定只能 服饰附魔[1]"; close; }
+		
+		set .@type,getiteminfo(.@eqid,2);	//RA 武器 5 or 防具 4
+		if(.@eqid==getequipid(EQI_HAND_L)) if(.@type==5){ mes "装备: +^0000FF"+.@r+"^000000 ^0000FF"+getitemname(.@eqid)+"^000000"; mes "限定只能 服饰附魔[2]"; close; }		
+		
+		setarray .@magic[0],.@opt1,.@opt2,.@opt3,.@opt4,.@opt5;
+		setarray .@okval[0],.@val1,.@val2,.@val3,.@val4,.@val5;
+		setarray .@sys[0],.@par1,.@par2,.@par3,.@par4,.@par5;
+		
+		
+		//                    闪耀,   幽灵,   收缩,  电气,  绿光,  影子, 粉色光辉, 蓝色光环,  白化,  绯红, 	水域, 收缩(头下)
+		setarray .@effect[1],25058,   25059, 25138, 25136, 25137, 25177,    25178,    25176, 25224, 25225, 25226, 25205;
+
+			
+		switch(.@select){
+			case 1:
+					//头上             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II	     恢复,      攻击:魔攻,            六大属性,             大中小型,     HP:SP 吸收, ASPD石,  改良, 闪耀效果,  变咏, 经验,  致命,   武宗,  神射,  智者
+					setarray .@list[1],1000008,1000012,1000016,1000214,1000218,1000222,1000297,1000305,1000301,     6740,6741,   6943,6944, 6636,6637,6638,6639,6640,6641, 6790,6791,6792, 6999,25000 , 25068, 25069,  25058,   25172, 25171, 25304, 25409, 25413, 25417,25445,25450,25453,25490,25494,25498,25706,25710,25714,25800,25804,25808,25843,25846,25850,25855,25859,3112,3116,3120,1001047;
+					setarray .@exto[1],310000, 310004, 310008, 310181, 310187, 310191, 310258, 310266,  310262,     4930,4805, 29028,29030, 4700,4710,4730,4720,4740,4750, 4936,4937,4938, 29013,29032,  4807, 29053,  29041,   29156, 29159, 29359, 29423, 29428, 29432,29460,29464,29468,29477,29481,29485,29513,29517,29521,29613,29617,29621,29651,29655,29659,29664,29668,3100,3104,3108,311463;
+					break;			
+			case 2:
+					//头中             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II    攻击:魔法, 恢复,   HP:SP,                六大转换,                六大素质 力:智:敏:灵:体:运,   防御,  改良,  致命(头中),  广域,   幽灵,  收缩, 电气,  经验,  影子,  天怒,  粉色,  蓝色,   变咏, 白化,  绯红,  武宗,  神射,  智者
+					setarray .@list[1],1000009,1000013,1000017,1000215,1000219,1000223,1000298,1000306,1000302,  6642,6643, 6742, 6743,6744, 25003,25005,25007,25006,25004,25002, 6945,6946,6947,6948,6949,6950, 25001, 25070, 25060, 25061, 25059, 25138, 25136, 25141, 25177, 25175, 25178, 25176, 25173, 25224, 25225, 25410, 25414, 25418,25446,25451,25454,25491,25495,25499,25711,25715,25799,25803,25807,25844,25847,25851,25856,25860,3113,3117,3121,25707,1001048;
+					setarray .@exto[1],310001, 310005, 310009, 310182,  310186, 310190,310259, 310267,  310263,  4882,4883, 4931, 4861,4929, 29014,29016,29018,29020,29022,29024, 4700,4710,4730,4720,4740,4750, 29026, 29054, 29047, 29048, 29040, 29144, 29142, 29145, 29162, 29155, 29161, 29160, 29157, 29224, 29226, 29424, 29429, 29433,29461,29465,29469,29478,29482,29486,29518,29522,29612,29616,29620,29652,29656,29660,29665,29669,3101,3105,3109,29514,311464;
+					break;			
+			case 3:
+					//头下             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II     命中, 回避, 恢复,  HP,  攻击,  魔攻,  魔防,  经验,  霸邪,  ASPD,  贪婪,  改良,                 六大转换,             体力,   魔力, 解毒,  复元,  绿光,  鉴定,  变咏,  水域,  治愈,  瞬移,  偷窃,  收缩,  致命,  武宗,  神射,  智者
+					setarray .@list[1],1000010,1000014,1000018,1000216,1000220,1000224,1000299,1000307,1000303,    6644, 6645, 6745, 6951, 25016, 25017, 25014, 25015, 25072, 25068, 25062, 25071, 25012,25013,25010,25008,25009,25011, 25063, 25064, 25065, 25066, 25137, 25139, 25174, 25226, 25227, 25228, 25229, 25205, 25305, 25411, 25415, 25419,25455,25447,25452,25492,25496,25500,25708,25712,25716,25798,25802,25806,25845,25848,25852,25857,25861,3114,3118,3122,1001049; 
+					setarray .@exto[1],310002, 310006, 310010, 310183, 310185,  310189, 310260,310268,  310264,    4884, 4859, 4932, 4861, 29029, 29031, 29033, 29027, 29057,  4807, 29046, 29055, 29015,29017,29019,29021,29023,29025, 29049, 29050, 29051, 29052, 29143, 29146, 29158, 29225, 29227, 29229, 29228, 29144, 29360, 29425, 29430, 29434,29470,29462,29466,29479,29483,29487,29515,29519,29523,29611,29615,29619,29653,29657,29661,29666,29670,3102,3106,3110,311465;
+					break;				
+			case 4:
+					//披肩             神射II  工匠II  神官II  超魔II  圣殿II  十字II  骑士II  艺人II  基因II                                                                                                                 ASPD, HP吸收, SP吸收, 咏唱,  次咏,  二刀,  致命,  变咏,  修罗,  游侠,  妖术
+					setarray .@list[1],1000011,1000015,1000019,1000213,1000217,1000221,1000296,1000304,1000300,    6908,  6963,   6964,  25067, 25170, 25302, 25303, 25306, 25412, 25416, 25420,25448,25449,25456,25493,25497,25501,25709,25713,25717,25797,25801,25805,25842,25849,25853,25854,25858,25862,3115,3119,3123;
+					setarray .@exto[1],310003, 310007, 310011, 310180, 310184,  310188, 310257, 310265, 310261,    4807,  4992,   4993,  29056, 29154, 29362, 29361, 29358, 29426, 29431, 29435,29463,29467,29471,29480,29484,29488,29516,29520,29524,29427,29614,29618,29654,29658,29662,29663,29667,29671,3103,3107,3111;
+					break;		
+			default:
+					mes "位置没有 对应到";
+					end;
+			
+		}//switch .@select
+		//=======================================================================
+		getinventorylist;
+		mes "请选择要 使用的附魔石";
+		freeloop 1;
+	for(.@i=0; .@i<@inventorylist_count; .@i++){
+		for(.@b=0; .@b<getarraysize(.@list); .@b++){
+		
+			set .@idx,@inventorylist_idx[.@i];
+			//if( .@idx == 0 && .@b < 4 ) continue;
+			
+			set .@item,@inventorylist_id[.@i];
+			set .@ipcs,@inventorylist_amount[.@i];			
+			if(.@item == .@list[.@b]){
+				set .@count,.@count+1;
+				set .@item[.@count],.@item;
+				set .@attach[.@count],.@exto[.@b];
+				set .@menu$,.@menu$+getitemname(.@item)+":";
+			}// = 附魔物品
+
+		}//for .@b
+	}//for .@i
+	
+		freeloop 0;
+		
+		if(.@count<=0){ 
+			mes "选择位置: ^0000FF"+.@name$[.@select]+"^000000"; 
+			mes "选择装备: ^0000FF+"+.@r+" "+getitemname(.@eqid)+"^000000"; 
+			mes "没有相关附魔石 收集后再来^000000";
+			mes " ";
+			close;
+		}
+		set .@s1,select(.@menu$);
+		set .@okid,.@item[.@s1];
+		
+		//dispbottom "attach: "+.@attach[.@s1]+" "+getitemname(.@attach[.@s1])+"";
+		
+		for(.@i=1; .@i<getarraysize(.@effect); .@i++) if( .@okid == .@effect[.@i] ){ set .@rate,100; set .@s2,4; set .@okyy,1; break; }
+		if(.@rate<=0) set .@rate,50;
+		mes "准备附魔: ^0000FF"+getitemname(.@okid)+"^000000";
+		mes "请选择要 附魔的洞数";
+		
+		if(.@okyy == 1) setarray .@a3$[1],"","","","第四洞";
+		else setarray .@a3$[1],"第一洞","","","";
+
+		for(.@i=1; .@i<getarraysize(.@a3$); .@i++) set .@menu2$,.@menu2$+(.@a3$[.@i])+":";
+		if(.@s2<=0) set .@s2,select(.@menu2$);
+		mes "附魔位置: ^0000FF"+.@a3$[.@s2]+"^000000";
+		if(.@rate < 100) set .@open,select("^0066CC要使用 "+getitemname(.@bitem)+" x "+.@bipcs+"^000000","^666666不使用 "+getitemname(.@bitem)+" x "+.@bipcs+"^000000");
+		set .@bady,.@open;	// 1 = 使用  其余为 不使用
+		if(.@bady==1) {
+			if(countitem(.@bitem)<.@bipcs){ 
+				next;
+				mes "^FF0000材料不足^000000"; 
+				mes "需求物品: ^0000FF"+getitemname(.@bitem)+" x "+.@bipcs+"^000000";
+				end;
+			}
+		}
+		if(.@rate < 100) mes "失败结果: "+(.@bady==1?"^0000FF启用保护^000000":"^FF0000附魔石消失 , 原附魔消失^000000");
+		next;
+		mes "附魔机率: ^0000FF"+.@rate+"%^000000";
+		mes "附魔位置: ^0000FF"+.@a3$[.@s2]+"^000000";
+		mes "准备附上: ^0000FF"+getitemname(.@okid)+"^000000";
+		mes "准备附魔: ^0000FF+"+.@r+" "+getitemname(.@eqid)+"^000000"; 
+		if(.@rate < 100) mes "失败结果: "+(.@bady==1?"^0000FF启用保护^000000":"^FF0000附魔石消失 , 原附魔消失^000000");
+		if(select("开始附魔","结束服务")==2) end;
+		if(.@bady==1) {
+			if(countitem(.@bitem)<.@bipcs){ 
+				mes "^FF0000材料不足^000000"; 
+				mes "需求物品: ^0000FF"+getitemname(.@bitem)+" x "+.@bipcs+"^000000";
+				end;
+			}
+		}
+		if(countitem(.@okid)<.@bipcs){ 
+			mes "^FF0000材料不足^000000"; 
+			mes "需求物品: ^0000FF"+getitemname(.@okid)+" x "+.@bipcs+"^000000";
+			end;
+		}		
+		if(getequipid(.@id[.@select]) != .@eqid){ mes "^FF0000操作过程中 不可切换装备^000000"; close; }
+		if( countitem( getequipid(.@id[.@select]) ) > 1 ){ mes "^974909请确认 身上只有一件^000000 ^0000FF"+getitemname(getequipid(.@id[.@select]))+"^000000"; close; }
+				
+		if(.@bady==1) delitem .@bitem,.@bipcs;	
+		if(rand(100)>.@rate){ if( .@bady != 1 ) delitem .@okid,.@bipcs; callsub OnMagicFail,.@bady,.@eqid,.@r,.@c1,.@c2,.@c3,.@c4,.@s2, .@eqyy; }
+		delitem .@eqid,1;
+		delitem .@okid,1;
+		
+		switch(.@s2){
+			case 1:
+				if(.@opt1>0 && .@opt2>0) getitem3 .@eqid, 1, 1, .@r, 0, .@attach[.@s1] , .@c2, .@c3 , .@c4, .@magic[0], .@okval[0], .@sys[0];
+				else getitem2 .@eqid, 1, 1, .@r, 0, .@attach[.@s1] , .@c2, .@c3 , .@c4; 			
+				break;
+			case 4:
+				if(.@opt1>0 && .@opt2>0) getitem3 .@eqid, 1, 1, .@r, 0, .@c1 , .@c2, .@c3 , .@attach[.@s1], .@magic[0], .@okval[0], .@sys[0];
+				else getitem2 .@eqid, 1, 1, .@r, 0, .@c1 , .@c2, .@c3 , .@attach[.@s1]; 				
+				break;
+		}//switch .@s2
+
+		mes "附魔成功";
+		mes "附加物品: ^0000FF"+getitemname(.@attach[.@s1])+"^000000";
+		equip .@eqid;
+		specialeffect2 725;
+		specialeffect2 721;
+		specialeffect2 726;
+		specialeffect2 154;
+		dispbottom "[服饰附魔成功]: +"+.@r+" "+getitemname(.@eqid)+"  "+.@a3$[.@s2]+"  附加: "+getitemname(.@attach[.@s1])+"";		
+		end;
+		
+OnMagicFail://^974909
+		set .@g7,getarg(7);
+		set .@eqyy,getarg(8);
+		set .@opt1,getequiprandomoption(.@eqyy,0,ROA_ID );
+		set .@val1,getequiprandomoption(.@eqyy,0,ROA_VALUE );
+		set .@par1,getequiprandomoption(.@eqyy,0,ROA_PARAM );
+		set .@opt2,getequiprandomoption(.@eqyy,1,ROA_ID );
+		set .@val2,getequiprandomoption(.@eqyy,1,ROA_VALUE );
+		set .@par2,getequiprandomoption(.@eqyy,1,ROA_PARAM );
+		set .@opt3,getequiprandomoption(.@eqyy,2,ROA_ID );
+		set .@val3,getequiprandomoption(.@eqyy,2,ROA_VALUE );
+		set .@par3,getequiprandomoption(.@eqyy,2,ROA_PARAM );		
+		set .@opt4,getequiprandomoption(.@eqyy,3,ROA_ID );
+		set .@val4,getequiprandomoption(.@eqyy,3,ROA_VALUE );
+		set .@par4,getequiprandomoption(.@eqyy,3,ROA_PARAM );
+		set .@opt5,getequiprandomoption(.@eqyy,4,ROA_ID );
+		set .@val5,getequiprandomoption(.@eqyy,4,ROA_VALUE );
+		set .@par5,getequiprandomoption(.@eqyy,4,ROA_PARAM );
+		setarray .@magic[0],.@opt1,.@opt2,.@opt3,.@opt4,.@opt5;
+		setarray .@okval[0],.@val1,.@val2,.@val3,.@val4,.@val5;
+		setarray .@sys[0],.@par1,.@par2,.@par3,.@par4,.@par5;
+		
+		mes "^974909附魔失败 ....^000000";
+		if(getarg(0)==1){ specialeffect2 636; specialeffect2 101; mes "不过好险 有使用保护"; mes "^0000FF装备无受到 任何的影响^000000"; mes "^0000FF材料无受到 任何的影响^000000"; close; }
+		specialeffect2 155;
+		delitem getarg(1),1;
+		switch(.@g7){
+			case 1:
+				if(.@opt1>0 && .@opt2>0) getitem3 getarg(1), 1, 1, getarg(2), 0, 0, getarg(4), getarg(5), getarg(6), .@magic[0], .@okval[0], .@sys[0];
+				else getitem2 getarg(1), 1, 1, getarg(2), 0, 0, getarg(4), getarg(5), getarg(6);	
+				break;
+			case 4:
+				if(.@opt1>0 && .@opt2>0) getitem3 getarg(1), 1, 1, getarg(2), 0, getarg(3), getarg(4), getarg(5), 0, .@magic[0], .@okval[0], .@sys[0];
+				else getitem2 getarg(1), 1, 1, getarg(2), 0, getarg(3), getarg(4), getarg(5), 0;
+				break;				
+		}//switch .@g7
+		mes "第一洞 附魔 已消失";
+		dispbottom "[服饰附魔失败]: 第一洞附魔 已消失 +"+getarg(2)+" "+getitemname(getarg(1))+" ";
+		equip getarg(1);
+		close;		
+
+Oninit:
+		waitingroom strnpcinfo(0),0;
+		end;
+}

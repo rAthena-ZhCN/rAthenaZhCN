@@ -1,0 +1,549 @@
+//===== 99MaxEathena / rAthena 自定义脚本 ========================
+//= 全职业技能学习大师 (无视职业限制)
+//= 作者：xpa
+//= 日期：2026/3/11
+//= 更新2026/3/12：增加技能守护脚本防丢失，去除了大多数被动技能
+//= 更新2026/3/15：增加下线关闭
+//= 注意bug：学习【被动技能】会导致所有【不合法】技能被清空，暂时无法解决
+//================================================================
+
+prontera,164,102,4	script	全职业技能大师	510,{
+	mes "[全职业技能大师]";
+	mes "你好！我是全职业技能大师。";
+	mes "只要有 ^0000FF技能点^000000，任何主动技能我都能教你！";
+	next;
+	mes "[全职业技能大师]";
+	mes "请选择你需要的服务：";
+	.@main_act = select("学习跨职业技能:遗忘已学技能:购买技能点:离开");
+	if (.@main_act == 4) close;
+
+	// --- 遗忘技能逻辑 ---
+	if (.@main_act == 2) {
+		.@menu$ = "";
+		.@count = 0;
+		for(.@i=1; .@i<=50; .@i++) {
+			.@sk = getd("NPC_ExtSk_" + .@i);
+			if (.@sk > 0) {
+				.@saved_lv = getd("NPC_ExtSk_Lv_" + .@i);
+				.@n$ = "技能ID:" + .@sk;
+				if (.@n$ == "" || .@n$ == "null") .@n$ = "技能ID:" + .@sk;
+				.@menu$ = .@menu$ + .@n$ + " (Lv." + .@saved_lv + "):";
+				.@trk_id[.@count] = .@sk;
+				.@trk_idx[.@count] = .@i;
+				.@trk_lv[.@count] = .@saved_lv;
+				.@count++;
+			}
+		}
+		if (.@count == 0) {
+			mes "[全职业技能大师]";
+			mes "账本显示，你还没有向我学习过跨职业技能哦。";
+			close;
+		}
+		.@menu$ = .@menu$ + "算了";
+		.@sel = select(.@menu$) - 1;
+		if (.@sel == .@count) close;
+
+		.@del_id = .@trk_id[.@sel];
+		.@del_idx = .@trk_idx[.@sel];
+		.@del_lv = .@trk_lv[.@sel];
+		.@n$ = "技能ID:" + .@del_id;
+		if (.@n$ == "" || .@n$ == "null") .@n$ = "技能ID:" + .@del_id;
+
+		mes "[全职业技能大师]";
+		mes "确定要遗忘 ^0000FF" + .@n$ + "^000000 吗？";
+		mes "遗忘后将全额退还你 ^00AA00" + .@del_lv + "^000000 点技能点。";
+		next;
+		if (select("是的，我要遗忘:不，点错了") == 2) close;
+
+		skill .@del_id, 0, 0;
+		SkillPoint = SkillPoint + .@del_lv;
+		setd "NPC_ExtSk_" + .@del_idx, 0;
+		setd "NPC_ExtSk_Lv_" + .@del_idx, 0;
+		specialeffect2 EF_HIT1;
+		mes "[全职业技能大师]";
+		mes "已经为您遗忘了该技能，并且返还了技能点！";
+		close;
+	}
+
+	// --- 购买技能点逻辑 ---
+	if (.@main_act == 3) {
+		mes "[全职业技能大师]";
+		mes "如果你因为某些意外遗失了技能点，可以向我购买。";
+		mes "价格是 ^FF000010,000 Zeny^000000 / 点。";
+		mes "你现在拥有 ^00AA00" + Zeny + "^000000 Zeny。";
+		mes "请输入你想购买的技能点数量：";
+		next;
+		input .@buy_amount;
+
+		if (.@buy_amount <= 0) {
+			mes "[全职业技能大师]";
+			mes "数量无效，请不要拿我寻开心。";
+			close;
+		}
+
+		.@cost_zeny = .@buy_amount * 10000;
+		
+		if (Zeny < .@cost_zeny) {
+			mes "[全职业技能大师]";
+			mes "你的 Zeny 不足！";
+			mes "购买 ^00AA00" + .@buy_amount + "^000000 点需要消耗 ^FF0000" + .@cost_zeny + "^000000 Zeny。";
+			close;
+		}
+
+		Zeny = Zeny - .@cost_zeny;
+		SkillPoint = SkillPoint + .@buy_amount;
+		specialeffect2 EF_COIN;
+		
+		mes "[全职业技能大师]";
+		mes "购买成功！";
+		mes "已为你增加了 ^00AA00" + .@buy_amount + "^000000 点技能点，尽情去学习吧！";
+		close;
+	}
+
+	mes "[全职业技能大师]";
+	mes "请选择你想学习的职业阶段：";
+	.@tier = select("一转职业:二转职业:三转职业:四转职业:扩展职业:离开");
+	if (.@tier == 6) close;
+
+	if (.@tier == 1) {
+		setarray .@m_id[0], 2,3,4,5,6,7;
+		.@sel = select("剑士:魔法师:弓箭手:服事:商人:盗贼") - 1;
+		.@job = .@m_id[.@sel];
+	}
+	else if (.@tier == 2) {
+		setarray .@m_id[0], 8,9,10,11,12,13,14,15,16,17,18,19,20;
+		.@sel = select("骑士:牧师:巫师:铁匠:猎人:刺客:十字军:武僧:贤者:流氓:炼金术师:诗人:舞娘") - 1;
+		.@job = .@m_id[.@sel];
+	}
+	else if (.@tier == 3) {
+		setarray .@m_id[0], 26,27,28,29,30,31,32,33,34,35,36,37,38;
+		.@sel = select("基因学者:符文骑士:大法师:游侠:大主教:机匠:十字切割者:皇家卫士:元素使:宫廷乐师:漫游舞者:修罗:逐影") - 1;
+		.@job = .@m_id[.@sel];
+	}
+	else if (.@tier == 4) {
+		setarray .@m_id[0], 44,45,46,47,48,49,50,51,52,53,54,55,56;
+		.@sel = select("龙骑士:机械大师:十字影刃:梦幻法师:枢机主教:风鹰:帝国卫士:生物学家:深渊行者:元素领主:圣裁者:传奇颂者:神话歌姬") - 1;
+		.@job = .@m_id[.@sel];
+	}
+	else if (.@tier == 5) {
+		setarray .@m_id[0], 1,21,22,23,24,25,39,40,41,42,43,57,58,59,60,61,62;
+		.@sel = select("初心者:神枪手:忍者:跆拳:拳圣:悟灵士:影狼:胧:反叛者:星帝:猎灵士:契灵士:夜巡者:终极初心者:天帝:神鬼狼:不知火") - 1;
+		.@job = .@m_id[.@sel];
+	}
+
+	cleararray .@ids[0], 0, 128;
+	cleararray .@lvs[0], 0, 128;
+	switch(.@job) {
+		case 2: // 剑士 (Swordman)
+			setarray .@ids[0], 5,6,7,8,146;
+			setarray .@lvs[0], 10,10,10,10,1;
+			break;
+		case 3: // 魔法师 (Mage)
+			setarray .@ids[0], 10,11,12,13,14,15,16,17,19,18,20,21,157;
+			setarray .@lvs[0], 1,10,10,10,10,10,10,10,10,10,10,10,1;
+			break;
+		case 4: // 弓箭手 (Archer)
+			setarray .@ids[0], 45,46,47,147,148;
+			setarray .@lvs[0], 10,10,10,1,1;
+			break;
+		case 5: // 服事 (Acolyte)
+			setarray .@ids[0], 24,25,27,26,28,29,30,31,32,33,34,35,156;
+			setarray .@lvs[0], 1,1,4,2,10,10,10,1,10,10,10,1,1;
+			break;
+		case 6: // 商人 (Merchant)
+			setarray .@ids[0], 40,41,42,153,154,155,2535,2544;
+			setarray .@lvs[0], 1,10,10,1,1,1,1,1;
+			break;
+		case 7: // 盗贼 (Thief)
+			setarray .@ids[0], 50,51,52,53,149,150,151,152;
+			setarray .@lvs[0], 10,10,10,1,1,1,1,1;
+			break;
+		case 8: // 骑士 (Knight)
+			setarray .@ids[0], 56,57,58,59,60,61,62,5,7,8,1001,495;
+			setarray .@lvs[0], 10,10,10,5,10,5,10,10,10,10,1,1;
+			break;
+		case 9: // 牧师 (Priest)
+			setarray .@ids[0], 12,68,70,54,72,66,67,31,69,75,28,71,73,33,74;
+			setarray .@lvs[0], 10,5,10,4,1,5,3,1,5,5,10,4,10,10,5;
+			setarray .@ids[getarraysize(.@ids)], 76,24,77,78,79,1014;
+			setarray .@lvs[getarraysize(.@lvs)], 10,1,10,1,10,1;
+			break;
+		case 10: // 巫师 (Wizard)
+			setarray .@ids[0], 80,18,81,20,10,83,21,84,11,85,86,14,87,16,15;
+			setarray .@lvs[0], 10,10,10,10,1,10,10,10,10,10,5,10,10,10,10;
+			setarray .@ids[getarraysize(.@ids)], 88,89,90,91,92,93,1006;
+			setarray .@lvs[getarraysize(.@lvs)], 10,10,5,5,5,1,1;
+			break;
+		case 11: // 铁匠 (Blacksmith)
+			setarray .@ids[0], 108,110,111,112,113,114,1013,459;
+			setarray .@lvs[0], 1,5,5,5,5,5,1,1;
+			break;
+		case 12: // 猎人 (Hunter)
+			setarray .@ids[0], 115,116,117,118,119,120,121,122,123,124,125,129,130,45,131;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,5,1,1,5,4,10,5;
+			setarray .@ids[getarraysize(.@ids)], 1009,499,46;
+			setarray .@lvs[getarraysize(.@lvs)], 1,1,10;
+			break;
+		case 13: // 刺客 (Assassin)
+			setarray .@ids[0], 135,51,136,137,138,52,139,140,141,1004;
+			setarray .@lvs[0], 10,10,10,5,10,10,10,10,10,1;
+			break;
+		case 14: // 十字军 (Crusader)
+			setarray .@ids[0], 8,35,28,249,250,251,252,253,254,255,256,257,258,1002;
+			setarray .@lvs[0], 10,1,10,10,5,5,10,10,10,5,5,5,10,1;
+			break;
+		case 15: // 武僧 (Monk)
+			setarray .@ids[0], 269,261,262,264,271,268,266,267,273,270,272,1015,1016;
+			setarray .@lvs[0], 5,5,1,1,5,5,5,5,5,5,5,1,1;
+			break;
+		case 16: // 贤者 (Sage)
+			setarray .@ids[0], 93,90,283,91,275,276,277,279,280,19,281,14,282,20,16;
+			setarray .@lvs[0], 1,5,5,5,5,5,5,10,5,10,5,10,5,10,10;
+			setarray .@ids[getarraysize(.@ids)], 285,286,287,288,289,290,1007,1008,1017,1018,1019;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5,5,10,1,1,1,1,1;
+			break;
+		case 17: // 流氓 (Rogue)
+			setarray .@ids[0], 46,124,50,211,212,51,214,215,217,216,218,219,220,221,222;
+			setarray .@lvs[0], 10,1,10,10,10,10,5,5,5,5,5,5,1,5,1;
+			setarray .@ids[getarraysize(.@ids)], 1005;
+			setarray .@lvs[getarraysize(.@lvs)], 1;
+			break;
+		case 18: // 炼金术师 (Alchemist)
+			setarray .@ids[0], 228,229,230,231,232,233,234,236,235,237,243,244,247,446,496;
+			setarray .@lvs[0], 10,5,5,5,5,5,5,5,5,5,1,1,5,1,1;
+			setarray .@ids[getarraysize(.@ids)], 497,498;
+			setarray .@lvs[getarraysize(.@lvs)], 1,1;
+			break;
+		case 19: // 诗人 (Bard)
+			setarray .@ids[0], 316,317,304,318,305,319,320,321,322,306,307,313,308,311,309;
+			setarray .@lvs[0], 5,5,1,5,1,10,10,10,10,1,5,5,1,1,5;
+			setarray .@ids[getarraysize(.@ids)], 310,312,1010;
+			setarray .@lvs[getarraysize(.@lvs)], 5,1,1;
+			break;
+		case 20: // 舞娘 (Dancer)
+			setarray .@ids[0], 324,325,304,326,305,327,328,329,330,306,307,313,308,311,309;
+			setarray .@lvs[0], 5,5,1,5,1,10,10,10,10,1,5,5,1,1,5;
+			setarray .@ids[getarraysize(.@ids)], 310,312,1011;
+			setarray .@lvs[getarraysize(.@lvs)], 5,1,1;
+			break;
+		case 26: // 基因学者 (Genetic)
+			setarray .@ids[0], 2476,2477,2478,2479,2497,2480,2481,2482,2483,2485,2486,2490,2492,2494,2495;
+			setarray .@lvs[0], 10,5,5,5,10,5,10,5,10,5,5,5,5,1,2;
+			setarray .@ids[getarraysize(.@ids)], 5003,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5;
+			break;
+		case 27: // 符文骑士 (Rune_Knight)
+			setarray .@ids[0], 2001,2002,2003,61,2004,2020,2005,2006,2008,2009,57,5004,5014;
+			setarray .@lvs[0], 10,10,10,5,10,5,5,5,10,5,10,10,5;
+			break;
+		case 28: // 大法师 (Warlock)
+			setarray .@ids[0], 2201,2202,2210,2203,2224,2204,2205,92,2206,2209,2230,2207,2229,2211,2222;
+			setarray .@lvs[0], 5,5,5,5,2,5,5,5,5,5,2,5,2,5,2;
+			setarray .@ids[getarraysize(.@ids)], 2212,2213,2214,2223,2216,2217,83,85,89,91,5012,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,2,5,10,10,10,10,5,5,5;
+			break;
+		case 29: // 游侠 (Ranger)
+			setarray .@ids[0], 2233,2236,2234,2247,117,2237,2239,2238,118,2240,2241,2242,2243,2244,2246;
+			setarray .@lvs[0], 10,10,5,5,5,1,5,5,5,1,3,1,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 123,124,2249,2250,2251,2252,2253,2254,5002,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,1,1,1,1,1,5,5,5,5;
+			break;
+		case 30: // 大主教 (Arch_Bishop)
+			setarray .@ids[0], 2038,77,2039,2041,2040,79,34,2042,29,2043,28,2044,2051,2045,73;
+			setarray .@lvs[0], 10,10,1,3,10,10,10,3,10,3,10,5,5,10,10;
+			setarray .@ids[getarraysize(.@ids)], 2046,2047,72,2048,2050,2052,2053,2054,68,2057,2515,5011,5014,5072,5073;
+			setarray .@lvs[getarraysize(.@lvs)], 10,4,1,4,4,5,5,10,5,5,5,5,5,5,1;
+			break;
+		case 31: // 机匠 (Mechanic)
+			setarray .@ids[0], 2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2267,2268,2269,2270,2271;
+			setarray .@lvs[0], 5,3,3,3,3,5,3,1,1,1,3,4,1,1,3;
+			setarray .@ids[getarraysize(.@ids)], 2272,2273,2274,2275,2278,2279,2280,2281,2282,2283,5006,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 3,3,3,5,5,10,5,5,5,1,5,5;
+			break;
+		case 32: // 十字切割者 (Guillotine_Cross)
+			setarray .@ids[0], 2021,2022,136,2023,2025,2026,2027,2028,2029,2030,2031,2032,2033,135,2034;
+			setarray .@lvs[0], 5,5,10,5,1,1,5,5,10,5,5,5,5,10,1;
+			setarray .@ids[getarraysize(.@ids)], 2035,2036,2037,5001,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5,5;
+			break;
+		case 33: // 皇家卫士 (Royal_Guard)
+			setarray .@ids[0], 2307,2312,2308,2309,2310,250,2311,252,2313,2314,2315,2323,2316,2317,2320;
+			setarray .@lvs[0], 5,5,10,3,10,5,5,10,5,1,3,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2318,2319,2321,254,2322,2324,2325,5013,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,10,10,5,5,5,5,5;
+			break;
+		case 34: // 元素使 (Sorcerer)
+			setarray .@ids[0], 2443,285,2444,287,2445,279,2446,90,2447,286,2448,2450,2449,289,91;
+			setarray .@lvs[0], 5,5,5,5,10,10,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2451,280,281,282,283,2452,2453,288,2454,2455,2456,2462,2457,2458,2459;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5,5,5,5,5,10,5,4,2,3,3,3;
+			setarray .@ids[getarraysize(.@ids)], 2460,2461,2464,2465,2466,2467,2468,5008,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 3,1,1,3,3,3,3,5,5;
+			break;
+		case 35: // 宫廷乐师 (Minstrel)
+			setarray .@ids[0], 2381,2422,2382,2383,2413,2414,317,2418,316,2419,2420,2421,2423,2424,2425;
+			setarray .@lvs[0], 5,5,5,5,10,5,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2426,2427,2428,2429,2430,2432,2431,2433,2434,5007,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5,5,5,5,5,5,5,5;
+			break;
+		case 36: // 漫游舞者 (Wanderer)
+			setarray .@ids[0], 2350,2422,2351,2352,2413,2414,325,2418,324,2419,2420,2421,2423,2424,2425;
+			setarray .@lvs[0], 5,5,5,5,10,5,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2426,2427,2428,2429,2430,2432,2431,2433,2434,5007,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5,5,5,5,5,5,5,5;
+			break;
+		case 37: // 修罗 (Sura)
+			setarray .@ids[0], 2326,2327,2328,2329,2330,2332,2333,2337,2334,269,2335,2336,2338,261,2341;
+			setarray .@lvs[0], 10,5,5,10,10,5,5,1,5,5,5,10,10,5,1;
+			setarray .@ids[getarraysize(.@ids)], 2340,262,2343,2344,2345,2346,2347,2348,2517,2518,267,5009,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 1,1,10,5,5,5,5,5,5,5,5,5,5;
+			break;
+		case 38: // 逐影 (Shadow_Chaser)
+			setarray .@ids[0], 2284,219,2285,2286,2287,2288,46,2289,2290,2291,2296,2292,2293,2294,2295;
+			setarray .@lvs[0], 10,5,10,10,5,10,10,5,5,5,3,3,3,3,3;
+			setarray .@ids[getarraysize(.@ids)], 2297,2298,215,2299,221,2300,2301,2302,2303,2304,5010,5014;
+			setarray .@lvs[getarraysize(.@lvs)], 3,5,5,3,5,3,3,3,3,10,5,5;
+			break;
+		case 44: // 龙骑士 (Dragon_Knight)
+			setarray .@ids[0], 5201,5203,5204,5205,5206,2004,5208,6001,2008,5004,5210,5211,5212,5213,6502;
+			setarray .@lvs[0], 5,5,5,5,10,10,10,10,10,10,10,5,10,5,5;
+			break;
+		case 45: // 机械大师 (Meister)
+			setarray .@ids[0], 5295,5296,5297,5298,5299,5302,5303,6002,6003,6004,5304,5305,6506,6507,6508;
+			setarray .@lvs[0], 5,10,5,5,5,4,4,10,5,10,4,4,5,5,5;
+			break;
+		case 46: // 十字影刃 (Shadow_Cross)
+			setarray .@ids[0], 5285,5293,5290,5286,5287,2022,5289,2028,5291,2033,5292,2036,2027,5294,6511;
+			setarray .@lvs[0], 10,5,10,5,10,5,5,5,5,5,5,5,5,10,5;
+			break;
+		case 47: // 梦幻法师 (Arch_Mage)
+			setarray .@ids[0], 5214,5217,5215,5227,5216,2203,5220,2212,5218,5221,2202,2207,5222,5229,5225;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2214,2211,5230,2213,5232,2217,5233,5234,5235,5237,6516,2206;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,10,5,5,10,5,5,5,5,5,5;
+			break;
+		case 48: // 枢机主教 (Cardinal)
+			setarray .@ids[0], 5268,5269,5280,5271,5272,5273,2040,5284,5275,5277,2046,5283,5278,5279,2043;
+			setarray .@lvs[0], 5,5,5,5,5,10,10,5,5,10,10,10,5,10,3;
+			setarray .@ids[getarraysize(.@ids)], 2051,5281,2041,5282,2042,2054,2038,6518;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,3,5,3,10,10,5;
+			break;
+		case 49: // 风鹰 (Windhawk)
+			setarray .@ids[0], 5324,5326,5327,5328,5330,5329,5334,5331,5332,5333,2236,5335,6520;
+			setarray .@lvs[0], 5,5,1,1,10,5,10,5,5,5,10,5,5;
+			break;
+		case 50: // 帝国卫士 (Imperial_Guard)
+			setarray .@ids[0], 5255,5256,5257,5260,5261,5262,5267,5263,5266,5264,5265,6504,6503,6505;
+			setarray .@lvs[0], 5,5,5,5,5,5,10,10,10,10,5,5,10,5;
+			break;
+		case 51: // 生物学家 (Biolo)
+			setarray .@ids[0], 5336,2497,5338,5339,5340,5342,5341,5343,5344,5346,5345,5347,5348,6005,6006;
+			setarray .@lvs[0], 5,10,5,4,5,5,5,5,5,5,5,1,5,5,10;
+			setarray .@ids[getarraysize(.@ids)], 6509,6510;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5;
+			break;
+		case 52: // 深渊行者 (Abyss_Chaser)
+			setarray .@ids[0], 2286,2285,5313,2298,5314,2284,5315,5316,2288,5317,5318,5320,5319,5321,5322;
+			setarray .@lvs[0], 10,10,5,5,5,10,5,5,10,5,10,10,10,5,10;
+			setarray .@ids[getarraysize(.@ids)], 6512,6513,6514,6515;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,5;
+			break;
+		case 53: // 元素领主 (Elemental_Master)
+			setarray .@ids[0], 5366,5367,5368,5369,5370,5371,5372,5373,5375,2457,5376,2458,5377,2459,5378;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,1,3,1,3,1,3,1;
+			setarray .@ids[getarraysize(.@ids)], 2460,5379,5380,5381,6517;
+			setarray .@lvs[getarraysize(.@lvs)], 3,1,10,5,5;
+			break;
+		case 54: // 圣裁者 (Inquisitor)
+			setarray .@ids[0], 5238,5239,5241,31,5242,5243,5244,5245,5246,5247,5248,5254,5249,5250,5251;
+			setarray .@lvs[0], 5,5,5,1,5,10,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 5252,5253,6519;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5;
+			break;
+		case 55: // 传奇颂者 (Troubadour)
+			setarray .@ids[0], 5350,5351,5356,5353,5352,5363,5359,5355,5357,2413,5358,5362,5360,5361,5364;
+			setarray .@lvs[0], 1,1,5,5,1,5,5,5,5,10,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 6521;
+			setarray .@lvs[getarraysize(.@lvs)], 5;
+			break;
+		case 56: // 神话歌姬 (Trouvere)
+			setarray .@ids[0], 5350,5351,5356,5353,5352,5363,5359,5355,5357,2413,5358,5362,5360,5361,5364;
+			setarray .@lvs[0], 1,1,5,5,1,5,5,5,5,10,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 6521;
+			setarray .@lvs[getarraysize(.@lvs)], 5;
+			break;
+		case 1: // 初心者 (Novice)
+			setarray .@ids[0], 142,143,410;
+			setarray .@lvs[0], 1,1,1;
+			break;
+		case 21: // 神枪手 (Gunslinger)
+			setarray .@ids[0], 500,501,502,503,504,505,506,507,508,512,513,514,515,516,517;
+			setarray .@lvs[0], 5,1,1,1,1,1,1,1,1,10,5,5,10,10,10;
+			setarray .@ids[getarraysize(.@ids)], 518,519,520,521;
+			setarray .@lvs[getarraysize(.@lvs)], 10,10,10,10;
+			break;
+		case 22: // 忍者 (Ninja)
+			setarray .@ids[0], 523,524,525,526,527,528,529,530,531,532,543,534,535,536,537;
+			setarray .@lvs[0], 10,5,5,10,5,10,5,5,5,10,5,10,10,5,10;
+			setarray .@ids[getarraysize(.@ids)], 538,539,540,541,542,544;
+			setarray .@lvs[getarraysize(.@lvs)], 10,5,10,5,5,10;
+			break;
+		case 23: // 跆拳 (Taekwon)
+			setarray .@ids[0], 411,412,413,414,415,416,417,418,419,420,421,425,426,493;
+			setarray .@lvs[0], 10,1,7,1,7,1,7,1,7,1,7,7,5,1;
+			break;
+		case 24: // 拳圣 (Star_Gladiator)
+			setarray .@ids[0], 427,428,429,430,431,432,433,434,444;
+			setarray .@lvs[0], 3,3,3,3,4,4,4,3,1;
+			break;
+		case 25: // 悟灵士 (Soul_Linker)
+			setarray .@ids[0], 445,447,448,449,450,451,452,453,454,455,456,457,458,460,461;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 462,463,464,465,467,468,469,470,471,472,494;
+			setarray .@lvs[getarraysize(.@lvs)], 7,7,3,7,7,7,10,7,3,3,5;
+			break;
+		case 39: // 影狼 (Kagerou)
+			setarray .@ids[0], 3001,530,3004,3005,3006,524,3007,3008,3010,3009,525,526,3011,3012,531;
+			setarray .@lvs[0], 1,5,10,5,5,5,5,10,5,10,5,10,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 3013,3021,3014,3015,3016,3017,3018,3019,3020,3022,3023,3024,3025;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,1,1,1,1,1,1,5,5,5,5;
+			break;
+		case 40: // 胧 (Oboro)
+			setarray .@ids[0], 3001,530,3004,3005,3006,524,3007,3008,3010,3009,525,526,3011,3012,531;
+			setarray .@lvs[0], 1,5,10,5,5,5,5,10,5,10,5,10,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 3013,3021,3014,3015,3016,3017,3018,3019,3020,3022,3026,3027,3029;
+			setarray .@lvs[getarraysize(.@lvs)], 5,5,5,1,1,1,1,1,1,5,5,5,5;
+			break;
+		case 41: // 反叛者 (Rebellion)
+			setarray .@ids[0], 2552,500,2553,514,2554,2557,2555,2556,513,518,2558,2559,2560,2561,516;
+			setarray .@lvs[0], 1,5,5,5,10,5,5,1,5,10,10,1,1,10,10;
+			setarray .@ids[getarraysize(.@ids)], 2562,521,2563,2564,2565,2567,2566,517,2568,2569,2570,2571;
+			setarray .@lvs[getarraysize(.@lvs)], 5,10,5,5,10,5,10,10,5,5,5,10;
+			break;
+		case 42: // 星帝 (Star_Emperor)
+			setarray .@ids[0], 2574,2576,2575,2588,2579,2577,2584,2578,2580,2581,2582,2583,2591,2585,2586;
+			setarray .@lvs[0], 5,10,3,3,7,5,10,3,7,5,5,3,3,1,5;
+			setarray .@ids[getarraysize(.@ids)], 2587,427,434,2590,2592,2593;
+			setarray .@lvs[getarraysize(.@lvs)], 5,3,3,5,10,7;
+			break;
+		case 43: // 猎灵士 (Soul_Reaper)
+			setarray .@ids[0], 2596,2608,2597,2605,2598,2599,2600,2601,2607,2602,2603,2604,2606,2609,2612;
+			setarray .@lvs[0], 5,3,5,7,5,5,10,5,5,10,5,10,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 2610;
+			setarray .@lvs[getarraysize(.@lvs)], 5;
+			break;
+		case 57: // 契灵士 (Soul_Ascetic)
+			setarray .@ids[0], 5421,5418,5419,5420,5425,2601,5424,5422,5423,5426,5427,5428,5429,5430,5431;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5;
+			setarray .@ids[getarraysize(.@ids)], 5432;
+			setarray .@lvs[getarraysize(.@lvs)], 10;
+			break;
+		case 58: // 夜巡者 (Night_Watch)
+			setarray .@ids[0], 5403,5414,5410,5404,5405,5406,5407,5408,5409,5411,5412,5413,5415,5500,5501;
+			setarray .@lvs[0], 1,10,5,7,5,5,5,5,5,5,5,5,10,5,5;
+			break;
+		case 59: // 终极初心者 (Hyper_Novice)
+			setarray .@ids[0], 5451,5453,5455,5456,5457,5458,5452,5454,5459,5460,5461,5462,5505;
+			setarray .@lvs[0], 10,10,10,10,10,10,10,10,10,10,1,1,5;
+			break;
+		case 60: // 天帝 (Sky_Emperor)
+			setarray .@ids[0], 5465,5468,5471,5466,5469,5472,5467,5470,5473,5474,5475,5502,5503,5504;
+			setarray .@lvs[0], 5,5,5,5,5,5,5,5,5,10,10,5,5,5;
+			break;
+		case 61: // 神鬼狼 (Shinkiro)
+			setarray .@ids[0], 5479,5488,5477,5485,5480,5489,5476,5486,5483,5481,5490,5478,5487,5484,5482;
+			setarray .@lvs[0], 1,10,5,10,10,10,5,5,10,10,10,1,10,10,10;
+			setarray .@ids[getarraysize(.@ids)], 5491,5494,5493,5492,5495,5499,3019;
+			setarray .@lvs[getarraysize(.@lvs)], 10,1,1,10,1,1,1;
+			break;
+		case 62: // 不知火 (Shiranui)
+			setarray .@ids[0], 5479,5488,5477,5485,5480,5489,5476,5486,5483,5481,5490,5478,5487,5484,5482;
+			setarray .@lvs[0], 1,10,5,10,10,10,5,5,10,10,10,1,10,10,10;
+			setarray .@ids[getarraysize(.@ids)], 5491,5494,5493,5492,5495,5499,3019;
+			setarray .@lvs[getarraysize(.@lvs)], 10,1,1,10,1,1,1;
+			break;
+	}
+
+    .@count = getarraysize(.@ids);
+    if (.@count == 0) { mes "该职业技能未配置。"; close; }
+
+    .@menu$ = "";
+    for(.@i = 0; .@i < .@count; .@i++) {
+        .@cur = getskilllv(.@ids[.@i]);
+        .@n$ = "技能ID:" + .@ids[.@i];
+        if (.@n$ == "" || .@n$ == "null") .@n$ = "技能ID:" + .@ids[.@i];
+        if (.@cur >= .@lvs[.@i]) .@menu$ = .@menu$ + "^777777" + .@n$ + " (已满级)^000000:";
+        else .@menu$ = .@menu$ + .@n$ + " (Lv."+ .@cur + " / 最高Lv." + .@lvs[.@i] + "):";
+    }
+    .@menu$ = .@menu$ + "算了";
+    .@select_idx = select(.@menu$) - 1;
+    if (.@select_idx == .@count) close;
+
+    .@t_id = .@ids[.@select_idx];
+    .@t_max = .@lvs[.@select_idx];
+    .@p_cur = getskilllv(.@t_id);
+    .@t_n$ = "技能ID:" + .@t_id;
+    if (.@t_n$ == "" || .@t_n$ == "null") .@t_n$ = "技能ID:" + .@t_id;
+
+    if (.@p_cur >= .@t_max) { mes "已精通。"; close; }
+
+    mes "[全职业技能大师]";
+    mes "想学 ^0000FF" + .@t_n$ + "^000000 吗？";
+    mes "输入想达到的目标等级 (当前:"+ .@p_cur +" / 最高:"+ .@t_max +")：";
+    next; input .@in;
+
+    if (.@in <= .@p_cur || .@in > .@t_max) { mes "输入无效。"; close; }
+    .@cost = .@in - .@p_cur;
+    if (SkillPoint < .@cost) { mes "技能点不足！需要 " + .@cost + " 点。"; close; }
+
+    SkillPoint = SkillPoint - .@cost;
+    
+    // 回归本源：使用 Flag 0 完美存入数据库，配合全主动技能环境！
+    skill .@t_id, .@in, 0;
+    
+    .@is_recorded = 0;
+    for(.@k=1; .@k<=50; .@k++) {
+        if (getd("NPC_ExtSk_" + .@k) == .@t_id) { 
+            setd "NPC_ExtSk_Lv_" + .@k, .@in;
+            .@is_recorded = 1; break; 
+        }
+    }
+    if (!.@is_recorded) {
+        for(.@k=1; .@k<=50; .@k++) {
+            if (getd("NPC_ExtSk_" + .@k) == 0) {
+                setd "NPC_ExtSk_" + .@k, .@t_id;
+                setd "NPC_ExtSk_Lv_" + .@k, .@in;
+                break;
+            }
+        }
+    }
+
+    specialeffect2 EF_LEVELUP;
+    mes "学习成功！快打开技能面板看看吧。"; close;
+}
+
+// ===================================================
+// 后台静默守护进程 (addtimer版)
+// ===================================================
+-	script	跨职业技能守护者	-1,{
+
+OnPCLoginEvent:
+	// 玩家上线时，给玩家挂上一个2秒后触发的个人计时器
+	addtimer 2000, "跨职业技能守护者::OnCheckSkill";
+	end;
+
+OnCheckSkill:
+	// 执行技能检查和守护逻辑
+	for(.@i=1; .@i<=50; .@i++) {
+		.@sk_id = getd("NPC_ExtSk_" + .@i);
+		if (.@sk_id > 0) {
+			.@sk_lv = getd("NPC_ExtSk_Lv_" + .@i);
+			if (getskilllv(.@sk_id) < .@sk_lv) {
+				skill .@sk_id, .@sk_lv, 0;
+			}
+		}
+	}
+	// 玩家下线，计时器会被引擎自动销毁，不会再触发
+	addtimer 2000, "跨职业技能守护者::OnCheckSkill";
+	end;
+}
