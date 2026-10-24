@@ -13,69 +13,69 @@
 //= 1.0 First version, edited. [Euphy]
 //============================================================
 
-prontera,156,185,5	script	Devil Square Guardian#1	406,{
+prontera,156,185,5	script	恶魔广场守护者#1	406,{
 	set .@gm_level, 99; // GM level required to start/stop the event
 
-	mes "[Devil Square Guardian]";
-	mes "This is the entrance to ^FF0000Devil Square^000000.";
-	mes "If you fail or die, the door will close and you must wait until the event starts again to re-enter.";
+	mes "[恶魔广场守护者]";
+	mes "这里是^FF0000恶魔广场^000000的入口。";
+	mes "如果失败或死亡，大门将会关闭，你必须等到活动再次开始才能重新进入。";
 	next;
-	switch(select("Enter.:Information.:" + ((getgmlevel() >= .@gm_level) ? "GM Menu." : "") + ":Cancel.")) {
+	switch(select("进入。:情报。:" + ((getgmlevel() >= .@gm_level) ? "GM 菜单。" : "") + ":取消。")) {
 	case 1:
 		if (.start != 1) { // registration period
-			mes "[Devil Square Guardian]";
-			mes "Devil Square is now closed.";
-			mes "It will open at these times:";
+			mes "[恶魔广场守护者]";
+			mes "恶魔广场现已关闭。";
+			mes "开放时间如下：";
 			mes "00:00 , 02:00 , 04:00 , 06:00"; // display your times here
 			mes "08:00 , 10:00 , 12:00 , 14:00";
 			mes "16:00 , 18:00 , 20:00 , 22:00";
 			close;
 		}
 		if (BaseLevel < 70 || Zeny < 20000) { // requirements
-			mes "[Devil Square Guardian]";
-			mes "You do not meet the requirements to enter Devil Square.";
+			mes "[恶魔广场守护者]";
+			mes "你没有达到进入恶魔广场的条件。";
 			mes " ";
-			mes "Requirements:";
-			mes " - Base Level 70";
-			mes " - Registration fee 20,000z";
+			mes "条件：";
+			mes "- 基础等级 70";
+			mes "- 报名费 20,000z";
 			close;
 		}
 		Zeny -= 20000;
-		announce strcharinfo(0)+" has entered Devil Square.", bc_npc;
+		announce strcharinfo(0)+"进入了恶魔广场。", bc_npc;
 		percentheal 100,100;
 		warp "ordeal_1-1",183,182;
 		close;
 	case 2:
-		mes "[Devil Square Guardian]";
-		mes "Inside, you will encounter 3 waves of monsters. The monsters will grow stronger with each wave.";
+		mes "[恶魔广场守护者]";
+		mes "在里面，你会遇到 3 波怪物。每一波怪物都会比上一波更强。";
 		next;
-		mes "[Devil Square Guardian]";
-		mes "If you defeat all the enemies, you will be given the opportunity to open 10 Treasure Chests with items, equipment, and rare cards inside!";
+		mes "[恶魔广场守护者]";
+		mes "如果你击败所有敌人，你将有机会打开 10 个宝箱，里面装有道具、装备和稀有卡片！";
 		close;
 	case 3:
-		mes "[Devil Square Guardian]";
+		mes "[恶魔广场守护者]";
 		switch (.start) { // event states
-			case 0: mes "Devil Square has not yet started."; break;
-			case 1: mes "Devil Square is currently accepting participants."; break;
-			case 2: mes "Devil Square Event is currently running on Round "+ .round +" with "+ .mob +" monsters remaining."; break;
+			case 0: mes "恶魔广场尚未开始。"; break;
+			case 1: mes "恶魔广场正在接受报名。"; break;
+			case 2: mes "恶魔广场活动正在进行，当前第"+ .round +"波，剩余"+ .mob +"只怪物。"; break;
 		}
 		next;
-		switch(select("Start event.:Stop event.:Cancel.")) {
+		switch(select("开始活动。:停止活动。:取消。")) {
 		case 1:
-			mes "[Devil Square Guardian]";
+			mes "[恶魔广场守护者]";
 			if (.start)
-				mes "Devil Square has already started.";
+				mes "恶魔广场已经开始。";
 			else {
-				mes "Starting Devil Square...";
+				mes "正在启动恶魔广场……";
 				donpcevent strnpcinfo(0)+"::OnStartEvent";
 			}
 			close;
 		case 2:
-			mes "[Devil Square Guardian]";
+			mes "[恶魔广场守护者]";
 			if (!.start)
-				mes "Devil Square has not yet started.";
+				mes "恶魔广场尚未开始。";
 			else {
-				mes "Stopping Devil Square...";
+				mes "正在停止恶魔广场……";
 				donpcevent strnpcinfo(0)+"::OnStopEvent";
 			}
 			close;
@@ -86,7 +86,7 @@ prontera,156,185,5	script	Devil Square Guardian#1	406,{
 	case 4:
 		break;
 	}
-	mes "[Devil Square Guardian]";
+	mes "[恶魔广场守护者]";
 	mes "Farewell.";
 	close;
 
@@ -106,21 +106,21 @@ OnClock2200:
 	.start = 1;
 	disablenpc "ord11-12"; //from npc/warps/pvp.txt
 	disablenpc "Devil Square Guardian#2";
-	mapannounce "ordeal_1-1","Devil Square is now closed.", bc_map;
+	mapannounce "ordeal_1-1","恶魔广场现已关闭。", bc_map;
 	getmapxy .@map$, .@x, .@y, BL_NPC;
 	mapwarp "ordeal_1-1", .@map$, .@x, .@y;
 	killmonsterall "ordeal_1-1";
-	announce "Devil Square is OPEN. The event will begin in 5 minutes.", bc_all;
+	announce "恶魔广场已开放。活动将在 5 分钟后开始。", bc_all;
 	sleep 60000;
-	announce "Devil Square will begin in 4 minutes.", bc_all;
+	announce "恶魔广场将在 4 分钟后开始。", bc_all;
 	sleep 60000;
-	announce "Devil Square will begin in 3 minutes.", bc_all;
+	announce "恶魔广场将在 3 分钟后开始。", bc_all;
 	sleep 60000;
-	announce "Devil Square will begin in 2 minutes.", bc_all;
+	announce "恶魔广场将在 2 分钟后开始。", bc_all;
 	sleep 60000;
-	announce "Devil Square will begin in 1 minute.", bc_all;
+	announce "恶魔广场将在 1 分钟后开始。", bc_all;
 	sleep 60000;
-	announce "Devil Square has STARTED!", bc_all;
+	announce "恶魔广场已开始！", bc_all;
 	if ( !getmapusers("ordeal_1-1") )
 		goto OnStopEvent;
 	.start = 2;
@@ -137,9 +137,9 @@ OnClock2200:
 OnDevilDead:
 	.mob--;
 	if ( .mob == 25 || .mob == 5 )
-		announce "Devil Square : "+ .mob +" monsters remaining in round 1.", bc_map;
+		announce "恶魔广场："+ .mob +"只怪物剩余（第 1 波）。", bc_map;
 	else if ( .mob <= 0 ) {
-		announce "Devil Square is entering round 2...", bc_map;
+		announce "恶魔广场即将进入第 2 波……", bc_map;
 		goto OnDevil2;
 	}
 	end;
@@ -158,9 +158,9 @@ OnDevil2:
 OnDevilDead2:
 	.mob--;
 	if ( .mob == 25 || .mob == 5 )
-		announce "Devil Square : "+ .mob +" monsters remaining in round 2.", bc_map;
+		announce "恶魔广场："+ .mob +"只怪物剩余（第 2 波）。", bc_map;
 	else if ( .mob <= 0 ) {
-		announce "Devil Square is entering round 3...", bc_map;
+		announce "恶魔广场即将进入第 3 波……", bc_map;
 		goto OnDevil3;
 	}
 	end;
@@ -179,9 +179,9 @@ OnDevil3:
 OnDevilDead3:
 	.mob--;
 	if ( .mob == 25 || .mob == 5 )
-		announce "Devil Square : "+ .mob +" monsters remaining in the final round.", bc_map;
+		announce "恶魔广场："+ .mob +"只怪物剩余（最终波）。", bc_map;
 	else if ( .mob <= 0 ) {
-		announce "Devil Square : CONGRATULATIONS. These 10 Treasure Chests are yours.", bc_map;
+		announce "恶魔广场：恭喜！这 10 个宝箱属于你。", bc_map;
 		goto OnDevil4;
 	}
 	end;
@@ -203,7 +203,7 @@ OnDevil4:
 
 OnTreasureDead:
 	.mob--;
-	announce "Devil Square : "+ strcharinfo(0) +" has opened the Treasure Chest at Devil Square.", bc_all;
+	announce "恶魔广场："+ strcharinfo(0) +"打开了恶魔广场的宝箱。", bc_all;
 	if ( .mob <= 0 )
 		goto OnStopEvent;
 	end;
@@ -217,7 +217,7 @@ OnStopEvent:
 }
 
 ordeal_1-1,246,245,7	script	Devil Square Guardian#2	406,{
-	mes "[Exit]";
+	mes "[出口]";
 	mes "Farewell.";
 	close2;
 	warp "SavePoint",0,0;

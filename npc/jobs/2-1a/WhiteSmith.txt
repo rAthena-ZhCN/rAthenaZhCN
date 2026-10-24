@@ -15,74 +15,74 @@
 //= 1.3 Now saves/restores all the quest skills [Lupus]
 //============================================================ 
 
-valkyrie,44,50,5	script	MasterSmith#Valkyrie	731,{
+valkyrie,44,50,5	script	神工匠#Valkyrie	731,{
 	if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[议员]";
-			mes "恭喜。";
-			mes "向勇士致敬！";
+			mes "[神工匠]";
+			mes "Congratulations.";
+			mes "荣耀归于战士们！";
 			close;
 		}
-		mes "[议员]";
-		mes "啊……";
-		mes "工艺的巅峰，";
-		mes "这就是议员的作品。";
-		mes "这是";
-		mes "议员的工作。";
+		mes "[神工匠]";
+		mes "Ah...";
+		mes "这便是";
+		mes "工匠技艺的巅峰。";
+		mes "这是神工匠";
+		mes "的作品。";
 		next;
-		mes "[议员]";
-		mes "一旦你成为";
-		mes "最顶尖的人，";
-		mes "你就会开始以";
-		mes "发现新的更好的";
-		mes "制作方法为目标……";
-		mes "进行锻造……";
+		mes "[神工匠]";
+		mes "当你成为";
+		mes "顶尖中的顶尖，";
+		mes "你便开始锻造，";
+		mes "以探索";
+		mes "更新、更好的";
+		mes "crafting...";
 		close;
 	}
 	else if (ADVJOB == Job_WhiteSmith && Class == Job_Merchant_High && JobLevel > 39) {
-		mes "[议员]";
-		mes "时机已到！";
-		mes "我们的世界需要勇敢、";
-		mes "勤劳的冒险者";
-		mes "像你这样的人……";
+		mes "[神工匠]";
+		mes "时候到了！";
+		mes "我们的世界需要";
+		mes "又勤奋的冒险者……";
+		mes "像你这样……";
 		next;
-		mes "[议员]";
-		mes "你想成为";
-		mes "议员吗？";
+		mes "[神工匠]";
+		mes "您想搭乘";
+		mes "成为神工匠吗？";
 		next;
-		if (select("不:是。") == 1) {
-			mes "[议员]";
-			mes "当你准备好了，";
-			mes "随时可以回来。";
-			mes "向勇士致敬！";
+		if (select("否:是") == 1) {
+			mes "[神工匠]";
+			mes "等你准备好，";
+			mes "随时回来。";
+			mes "荣耀归于战士们！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[议员]";
-			mes "你仍然有可能学习更多的技能。请在回到我这里之前使用";
-			mes "所有剩余的技能点。";
+			mes "[神工匠]";
+			mes "你仍可以学习更多技能。请用完";
+			mes "所有剩余的技能点，再来找我。";
 			close;
 		}
 		jobchange Job_Whitesmith;
 		set ADVJOB,0;
-		mes "[议员]";
+		mes "[神工匠]";
 		mes "恭喜！";
-		mes "作为议员，";
-		mes "我希望你能为米德加尔特";
-		mes "开辟一条通向更光明未来的道路。";
-		mes "未来。";
+		mes "作为神工匠，";
+		mes "我希望你能锻造出";
+		mes "一条通往更光明的";
+		mes "米德加尔特未来的道路。";
 		close;
 	}
-	mes "[议员]";
+	mes "[神工匠]";
 	mes "欢迎";
-	mes "来到巴哈拉宫，";
-	mes "荣誉之厅。";
+	mes "前往巴哈拉宫，";
+	mes "荣誉殿堂。";
 	next;
-	mes "[议员]";
+	mes "[神工匠]";
 	mes "请在这里";
-	mes "感到舒适，";
-	mes "在你停留期间。";
-	mes "向勇士致敬！";
+	mes "放松一下";
+	mes "不必拘束。";
+	mes "荣耀归于战士们！";
 	close;
 }

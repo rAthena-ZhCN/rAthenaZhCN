@@ -16,78 +16,78 @@
 // 1.2 Stricted the conditions a bit
 //============================================================
 
-sec_pri,36,58,1	script	Chief Warder	105,{ 
-	mes "[Saddeus]";
+sec_pri,36,58,1	script	典狱长	105,{ 
+	mes "[萨迪乌斯]";
 	emotion ET_QUESTION;
-	mes (Sex==SEX_MALE?"Mr.":"Ms.")+" Prisoner #"+BaseLevel+JobLevel+",";
-	mes "what's the noise over there?";
+	mes (Sex==SEX_MALE?"Mr.":"Ms.")+"囚犯 #"+BaseLevel+JobLevel+"，";
+	mes "那边是什么声音？";
 	next;
-	menu "Let me free, I'll pay!",-, "Let me to work off my freedom!",M_Q1, "Nothing",M_NO_THANKS;
+	menu "放我出去，我付钱！",-, "让我服劳役抵罪！",M_Q1, "没什么",M_NO_THANKS;
 
 M_PAY:
-	mes "[Saddeus]";
+	mes "[萨迪乌斯]";
 	set .@MUSTPAY,(PRISON+1)*1000000;
 	if (.@MUSTPAY<1000000) set .@MUSTPAY,1000000;
 	if (.@MUSTPAY>100000000) set .@MUSTPAY,100000000;
-	if (PRISON==0) mes "I can't remember you. Is it your 1st time?";
-	if (PRISON>0) mes "You again? Somebody hasn't grown wiser from the very first visit...";
-	mes "OK, we could release you for ^FF0000"+.@MUSTPAY+"z^000000.";
+	if (PRISON==0) mes "我对你没印象。第一次来吗？";
+	if (PRISON>0) mes "又是你？有人第一次来之后还是没学乖……";
+	mes "好吧，我们可以放你走，代价是 ^FF0000"+.@MUSTPAY+"z^000000.";
 	next;
-	menu "I pay cash!",M_PAYCASH,"Do you accept cheques?",M_PAYBANK,"I've changed my mind.",-;
+	menu "我付现金！",M_PAYCASH,"你们收支票吗？",M_PAYBANK,"我改主意了。",-;
 
-	mes "[Saddeus]";
-	mes "You've got some time to think about...";
+	mes "[萨迪乌斯]";
+	mes "你还有时间考虑……";
 	close;
 
 M_PAYCASH:
 	if (.@MUSTPAY>Zeny) goto L_NOCASH;
 	set Zeny,Zeny-.@MUSTPAY;
-	mes "[Saddeus]";
-	mes "OK, sing here and there.";
+	mes "[萨迪乌斯]";
+	mes "好吧，到各处去唱吧。";
 	goto L_RELEASE;
 
 L_NOCASH:
-	mes "[Saddeus]";
-	mes "What's this? It's not enough!";
+	mes "[萨迪乌斯]";
+	mes "这是什么？根本不够！";
 	close;
 
 M_PAYBANK:
 	if (.@MUSTPAY>#kafrabank) goto L_NOBANK;
 	set #kafrabank,#kafrabank-.@MUSTPAY;
-	mes "[Saddeus]";
-	mes "OK, sign your cheque. And put down your name in my book.";
+	mes "[萨迪乌斯]";
+	mes "好，在支票上签字吧。再把你的名字写在我的本子上。";
 	goto L_RELEASE;
 
 L_NOBANK:
-	mes "[Saddeus]";
-	if (#kafrabank==0) mes "Your case says nothing about your bank accounts.";
-	if (#kafrabank!=0) mes "Alas, there's your bank account info... ^FF0000"+#kafrabank+"z^000000... in the case. It's not enough.";
-	mes "Stop your silly games now!";
+	mes "[萨迪乌斯]";
+	if (#kafrabank==0) mes "你的案卷里没提到你的银行账户。";
+	if (#kafrabank!=0) mes "唉，你的银行账户信息在这里…… ^FF0000"+#kafrabank+"z^000000……案卷里就这么多，不够。";
+	mes "别再耍这种无聊的把戏了！";
 	close;
 
 L_RELEASE:
 	set PRISON,PRISON+1;
 	next;
-	mes "[Saddeus]";
-	mes "You are free now!";
+	mes "[萨迪乌斯]";
+	mes "你现在自由了！";
 	next;
 	savepoint "izlude",105,112;
 	warp "izlude",105,112;
 	close;
 
 M_Q1:
-	mes "[Saddeus]";
-	mes "Our stocks are short of toadstools.  Remember your morning's skilly?  What about some work at our sponsored mushroom farm?";
+	mes "[萨迪乌斯]";
+	mes "我们的毒菇库存不够了。还记得你早上那碗稀粥吗？要不要到我们资助的蘑菇农场干点活？";
 	next;
-	menu "OK, I'll work off!",-, "I love this prison!",M_NO_THANKS;
+	menu "好，我干活抵债！",-, "我爱这座监狱！",M_NO_THANKS;
 
-	mes "[Saddeus]";
+	mes "[萨迪乌斯]";
 	if(checkcart() || checkfalcon() || checkriding()){
 		emotion ET_SCRATCH;
-		mes "I'm sorry, you should release your Cart, PecoPeco or Falcon!";
+		mes "抱歉，你得先解除手推车、啄木鸟或猎鹰！";
 		close;
 	}
-	mes "Talk to our overseer, Oliver.";
+	mes "去找我们的监工奥利弗谈谈。";
 	next;
 
 	nude;
@@ -118,15 +118,15 @@ L_W4:
 	close;
 
 M_NO_THANKS:
-	mes "[Saddeus]";  
-	if (rand(2)) mes "Is today X-Mas time, huh?";
-	mes "Now shut up and back off!";
+	mes "[萨迪乌斯]";  
+	if (rand(2)) mes "今天难道是圣诞节吗？";
+	mes "现在给我闭嘴，退到一边去！";
 	if (rand(2)) emotion ET_HUK;
 	close;  
 }
 
-sec_in02,137,57,1	script	Overseer	708,{ 
-	mes "[Oliver]";
+sec_in02,137,57,1	script	监工	708,{ 
+	mes "[奥利弗]";
 
 	delitem 4002,countitem(4002);//Items: Fabre_Card,
 	delitem 4009,countitem(4009);//Items: Chonchon_Card,
@@ -135,14 +135,14 @@ sec_in02,137,57,1	script	Overseer	708,{
 	
 	if (PRISON_Q <= 0 ) goto L_GET_Q;
 
-	mes "I want you to gather ^FF0000"+PRISON_Q+" Orange Net Mushroom^000000.";
+	mes "我要你去采集 ^FF0000"+PRISON_Q+"橘色网菇^000000。";
 	if ( countitem(1069)<PRISON_Q ) close;//Items: Orange_Net_Mushroom,
-	mes "OK... hand me all the shrooms...";
-	mes "Let me see... "+countitem(1069)+" of almost edible ones...";//Items: Orange_Net_Mushroom,
-	mes "And "+countitem(1070)+" useless deadly ones.";//Items: Orange_Gooey_Mushroom_,
+	mes "好……把所有的蘑菇都交给我……";
+	mes "让我看看……"+countitem(1069)+"个勉强能吃的……";//Items: Orange_Net_Mushroom,
+	mes "还有"+countitem(1070)+"个没用的毒菇。";//Items: Orange_Gooey_Mushroom_,
 	next;
-	mes "[Oliver]";
-	mes "Thank you. You are free!";
+	mes "[奥利弗]";
+	mes "谢谢。你自由了！";
 	set PRISON_Q,0;
 	delitem 1069,countitem(1069);//Items: Orange_Net_Mushroom,
 	delitem 1070,countitem(1070);//Items: Orange_Gooey_Mushroom_,
@@ -153,18 +153,18 @@ sec_in02,137,57,1	script	Overseer	708,{
 
 L_GET_Q:
 	set PRISON,PRISON+1;
-	if (PRISON > 1) mes "Hmm... You've been here already... Well-well...";
+	if (PRISON > 1) mes "嗯……你已经来过了……真是的……";
 
-	if ( countitem(1069) || countitem(1070) ) mes "Drop these mushrooms!! They are poisonous!";//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
+	if ( countitem(1069) || countitem(1070) ) mes "把这些蘑菇丢掉！！它们有毒！";//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
 	delitem 1069,countitem(1069);//Items: Orange_Net_Mushroom,
 	delitem 1070,countitem(1070);//Items: Orange_Gooey_Mushroom_,
 
 	set PRISON_Q, PRISON*3 + BaseLevel/3;
 	set PRISON_Q, PRISON_Q * (readparam(bAspd)/55 + 1);
 	set PRISON_Q, PRISON_Q+rand(50,60);
-	mes "OK, you must bring me ^FF0000"+PRISON_Q+"^000000 edible ^FF0000Orange Net Mushroom^000000 toadstoo.. shrooms.";
-	if(readparam(bAspd)>=100) mes "You're a fast fella! You'll have to get more shrooms, then.";
-	if (rand(10)<4) mes "And you may eat the deadly ones for breakfast.";
+	mes "好，你必须给我带来 ^FF0000"+PRISON_Q+"^000000 可食用的 ^FF0000橘色网菇^000000，毒菇……不，蘑菇。";
+	if(readparam(bAspd)>=100) mes "你小子手脚挺快！那你得多采些蘑菇。";
+	if (rand(10)<4) mes "那些毒菇嘛，你就留着当早饭吃吧。";
 	close;
 }
 

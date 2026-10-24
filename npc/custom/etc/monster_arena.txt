@@ -24,14 +24,14 @@
 //============================================================
 
 // Entrance //
-prontera,158,193,6	script	Monster Arena	702,{
-	mes "[Monster Arena]";
-	mes "Would you like to enter the Monster Arena?";
-	mes "Currently ^FF0000" + getmapusers("gon_test") + "^000000 players";
-	mes "^FF0000Note:^000000 Pecos, Falcons and Carts will be lost on entry.";
+prontera,158,193,6	script	怪物竞技场	702,{
+	mes "[怪物竞技场]";
+	mes "你想进入怪物竞技场吗？";
+	mes "目前 ^FF0000" + getmapusers("gon_test") + "^000000 名玩家";
+	mes "^FF0000注意：^000000 进入后，大嘴鸟、猎鹰与手推车将会消失。";
 L_Menu:
 	next;
-	menu "Enter",-,"Information",L_Info,"Cancel",L_Exit;
+	menu "进入",-,"说明",L_Info,"取消",L_Exit;
 
 	set @marena,1;
 	savepoint "gon_test",56,99;
@@ -40,32 +40,32 @@ L_Menu:
 	close;
 
 L_Exit:
-	mes "[Monster Arena]";
-	mes "Come back any time.";
+	mes "[怪物竞技场]";
+	mes "随时欢迎再来。";
 	close;
 
 L_Info:
-	mes "[Monster Arena]";
-	mes "You must purchase a pet from the Monster Tamer to start fighting.";
+	mes "[怪物竞技场]";
+	mes "你必须先从怪物训练师那里购买宠物，才能开始战斗。";
 	next;
-	mes "[Monster Arena]";
-	mes "Then talk to the Usher and tell him you would like to compete.";
+	mes "[怪物竞技场]";
+	mes "然后去找引座员，告诉他你想参加比赛。";
 	next;
-	mes "[Monster Arena]";
-	mes "Talk to the referee to summon your monster.";
-	mes "Once your monster has fought, you must talk to the Usher again and choose to spectate.";
+	mes "[怪物竞技场]";
+	mes "与裁判交谈以召唤你的怪物。";
+	mes "你的怪物战斗结束后，你必须再次与引座员交谈并选择观战。";
 	next;
-	mes "[Monster Arena]";
-	mes "Talk to the Monster Trainer, he will ask you to heal your pet.";
+	mes "[怪物竞技场]";
+	mes "与怪物训练师交谈，他会要求你治疗你的宠物。";
 	next;
-	mes "[Monster Arena]";
-	mes "To do this, click the Nurse repeatedly until it says your pet is healed.";
+	mes "[怪物竞技场]";
+	mes "为此，请反复点击护理师，直到提示你的宠物已治疗完毕。";
 	next;
-	mes "[Monster Arena]";
-	mes "The more monsters you kill, the more exp you get and the quicker you can upgrade.";
+	mes "[怪物竞技场]";
+	mes "你杀死的怪物越多，获得的经验就越多，升级也就越快。";
 	next;
-	mes "[Monster Arena]";
-	mes "The stronger your monster is, the longer it will take to summon again.";
+	mes "[怪物竞技场]";
+	mes "你的怪物越强，再次召唤所需的等待时间就越长。";
 
 	goto L_Menu;
 }
@@ -104,35 +104,35 @@ function	script	monstersummon	{
 	end;
 
 L_Start:
-	mes "[Referee]";
-	mes "Your monster is:";
+	mes "[裁判]";
+	mes "你的怪物是：";
 
 	// 2. ---Change to Add Monsters--- //
-	if (#monster == 10) mes "Poring";
-	if (#monster == 20) mes "Faber";
-	if (#monster == 30) mes "Lunatic";
-	if (#monster == 31) mes "Drops";
-	if (#monster == 32) mes "Picky";
-	if (#monster == 40) mes "ChonChon";
-	if (#monster == 41) mes "Super Picky";
-	if (#monster == 42) mes "Willow";
-	if (#monster == 50) mes "Roda Frog";
-	if (#monster == 51) mes "Condor";
-	if (#monster == 60) mes "Thief Bug Larva";
-	if (#monster == 70) mes "Savage Babe";
-	if (#monster == 80) mes "Familiar";
-	if (#monster == 81) mes "Hornet";
-	if (#monster == 90) mes "Desert Wolf Puppy";
-	if (#monster == 91) mes "Spore";
-	if (#monster == 92) mes "Rocker";
-	if (#monster == 100) mes "Skeleton";
-	if (#monster == 101) mes "Plankton";
-	if (#monster == 102) mes "Antonio";
-	if (#monster == 103) mes "Thief Bug Female";
+	if (#monster == 10) mes "波利";
+	if (#monster == 20) mes "绿棉虫";
+	if (#monster == 30) mes "疯兔";
+	if (#monster == 31) mes "土波利";
+	if (#monster == 32) mes "小鸡";
+	if (#monster == 40) mes "苍蝇";
+	if (#monster == 41) mes "超级小鸡";
+	if (#monster == 42) mes "树精";
+	if (#monster == 50) mes "罗达蛙";
+	if (#monster == 51) mes "秃鹰";
+	if (#monster == 60) mes "盗虫幼虫";
+	if (#monster == 70) mes "小野猪";
+	if (#monster == 80) mes "吸血蝙蝠";
+	if (#monster == 81) mes "蜂兵";
+	if (#monster == 90) mes "沙漠幼狼";
+	if (#monster == 91) mes "蘑菇";
+	if (#monster == 92) mes "摇滚蝗虫";
+	if (#monster == 100) mes "邪骸战士";
+	if (#monster == 101) mes "漂浮虫";
+	if (#monster == 102) mes "邪恶老公公";
+	if (#monster == 103) mes "浮勒盗虫";
 
-	mes "Would you like to fight?";
+	mes "你想战斗吗？";
 	next;
-	menu "Fight",-,"Cancel",L_Exit;
+	menu "战斗",-,"取消",L_Exit;
 
 	set @fighting,1;
 	set #heal,1;
@@ -191,20 +191,20 @@ Special5:
 	close;
 
 L_Exit:
-	mes "[Referee]";
-	mes "Alright";
+	mes "[裁判]";
+	mes "好的";
 	close;
 }
 gon_test,56,91,6	duplicate(monsterreferee)	Referee#01	61
 
 
 // Usher //
-gon_test,58,94,6	script	Usher	86,{
+gon_test,58,94,6	script	引座员	86,{
 	set @marena,1;
-	mes "[Usher]";
-	mes "What would you like to do?";
+	mes "[引座员]";
+	mes "你想做什么？";
 	next;
-	menu "^0000FFSpectate",L_Spec,"^FF0000Compete^000000",-,"Return to Town",L_Exit,"Cancel",L_Cancel;
+	menu "^0000FF观战",L_Spec,"^FF0000参赛^000000",-,"返回城镇",L_Exit,"取消",L_Cancel;
 
 	if (#monster == 0) goto L_NoMon;
 	if (#heal == 1) goto L_Heal;
@@ -214,11 +214,11 @@ gon_test,58,94,6	script	Usher	86,{
 	if (#monster > 70) goto L_High;
 
 L_Low:
-	menu "Level 1-3",L_1to3,"^FF0000All Levels",L_High;
+	menu "等级 1-3",L_1to3,"^FF0000所有等级",L_High;
 	close;
 
 L_Med:
-	menu "Level 4-7",L_4to6,"^FF0000All Levels",L_High;
+	menu "等级 4-7",L_4to6,"^FF0000所有等级",L_High;
 	close;
 
 L_High:
@@ -262,13 +262,13 @@ L_Spec:
 	end;
 
 L_NoMon:
-	mes "[Usher]";
-	mes "You haven't got a monster, you can only spectate.";
+	mes "[引座员]";
+	mes "你还没有怪物，只能观战。";
 	close;
 
 L_Heal:
-	mes "[Usher]";
-	mes "You have to heal your monster before you can fight again.";
+	mes "[引座员]";
+	mes "你必须先治疗你的怪物，才能再次战斗。";
 	close;
 
 L_Cancel:
@@ -276,87 +276,87 @@ L_Cancel:
 }
 
 // Monster Trainer //
-gon_test,52,103,6	script	Monster Trainer	87,{
-	mes "[Monster Trainer]";
+gon_test,52,103,6	script	怪物训练师	87,{
+	mes "[怪物训练师]";
 	if (#monster != 0) goto L_Mon;
 
-	mes "Welcome to the monster arena, would you like to start training?";
+	mes "欢迎来到怪物竞技场，你想开始训练吗？";
 	next;
-	menu "Yes",-,"No",L_Exit;
+	menu "是",-,"否",L_Exit;
 
-	mes "[Monster Trainer]";
-	mes "New trainers may only start with Porings.";
-	mes "They cost 1000z, Would you like to buy one?";
+	mes "[怪物训练师]";
+	mes "新训练师只能从波利开始。";
+	mes "价格为 1000z，你要买一只吗？";
 	next;
-	menu "Yes",-,"No",L_Exit;
+	menu "是",-,"否",L_Exit;
 
 	if (Zeny < 1000) goto L_NoZeny;
 	set Zeny, Zeny-1000;
 	set #monster,10;
-	mes "[Monster Trainer]";
-	mes "Congratulations!";
-	mes "When your Poring earns enough experience, talk to me to upgrade.";
+	mes "[怪物训练师]";
+	mes "恭喜！";
+	mes "当你的波利获得足够经验后，来找我升级。";
 	close;
 
 L_Mon:
-	mes "Welcome back, " + strcharinfo(0) + ".";
-	mes "Your monster has " + #monpoints + " exp points.";
+	mes "欢迎回来，" + strcharinfo(0) + ".";
+	mes "你的怪物拥有" + #monpoints + "点经验值。";
 	next;
 	if (@fighting == 1) goto L_Heal;
-	menu "Upgrade Monster",L_Upgrade,"Sell Experience",L_Sell,"^FF0000Abandon Monster^000000",L_Abandon,"Cancel",L_Exit;
+	menu "升级怪物",L_Upgrade,"出售经验",L_Sell,"^FF0000放弃怪物^000000",L_Abandon,"取消",L_Exit;
 
 L_Abandon:
-	mes "[Monster Trainer]";
-	mes "Are you sure you want to abandon your monster?";
+	mes "[怪物训练师]";
+	mes "你确定要放弃你的怪物吗？";
 	next;
-	menu "Yes",-,"No",L_Exit;
+	menu "是",-,"否",L_Exit;
 	set #monster,0;
 	set #monpoints,0;
-	mes "[Monster Trainer]";
-	mes "Monster released into the wild.";
+	mes "[怪物训练师]";
+	mes "怪物已放归野外。";
 	close;
 
 L_Sell:
-	mes "[Monster Trainer]";
-	mes "You can sell your monster's experience for 100z each.";
+	mes "[怪物训练师]";
+	mes "你可以出售怪物的经验，每点 100z。";
 	next;
-	menu "Sell",-,"Cancel",L_Exit;
-	mes "[Monster Trainer]";
-	mes "You have: ^FF0000" + #monpoints + "^000000 experience points";
-	mes "How many would you like to sell?";
+	menu "出售",-,"取消",L_Exit;
+	mes "[怪物训练师]";
+	mes "你有：^FF0000" + #monpoints + "^000000 点经验值";
+	mes "你想出售多少？";
 	next;
 	input .@sellexp;
 	if (.@sellexp > #monpoints) goto L_NoExp;
 	set #monpoints,#monpoints-.@sellexp;
 	set .@sellearn,100*.@sellexp; // Price of exp
 	set Zeny, Zeny+.@sellearn;
-	mes "[Monster Trainer]";
-	mes "You earned ^0000FF" + .@sellearn + "^000000z.";
+	mes "[怪物训练师]";
+	mes "你获得了 ^0000FF" + .@sellearn + "^000000z。";
 	close;
 
 
 L_NoExp:
-	mes "[Monster Trainer]";
-	mes "You do not have enough experience.";
+	mes "[怪物训练师]";
+	mes "你的经验不足。";
 	next;
 	goto L_Exit;
 
 	// Monster Upgrades //
 L_Upgrade:
-	mes "[Monster Trainer]";
+	mes "[怪物训练师]";
 	// 3. ---Change to Add Monsters - May not be required--- //
-	if (#monster > 1 && #monster < 20) mes "You need 10 exp points to upgrade your monster.";
-	if (#monster > 19 && #monster < 30) mes "You need 20 exp points to upgrade your monster.";
-	if (#monster > 29 && #monster < 40) mes "You need 40 exp points to upgrade your monster.";
-	if (#monster > 39 && #monster < 50) mes "You need 80 exp points to upgrade your monster.";
-	if (#monster > 49 && #monster < 60) mes "You need 160 exp points to upgrade your monster.";
-	if (#monster > 59 && #monster < 70) mes "You need 320 exp points to upgrade your monster.";
-	if (#monster > 69 && #monster < 80) mes "You need 640 exp points to upgrade your monster.";
-	if (#monster > 79 && #monster < 90) mes "You need 1280 exp points to upgrade your monster.";
-	if (#monster > 89 && #monster < 100) mes "You need 2560 exp points to upgrade your monster.";
+	if (#monster > 1 && #monster < 20) mes "升级你的怪物需要 10 点经验。";
+	if (#monster > 19 && #monster < 30) mes "升级你的怪物需要 20 点经验。";
+	if (#monster > 29 && #monster < 40) mes "升级你的怪物需要 40 点经验。";
+	if (#monster > 39 && #monster < 50) mes "升级你的怪物需要 80 点经验。";
+	if (#monster > 49 && #monster < 60) mes "升级你的怪物需要 160 点经验。";
+	if (#monster > 59 && #monster < 70) mes "升级你的怪物需要 320 点经验。";
+	if (#monster > 69 && #monster < 80) mes "升级你的怪物需要 640 点经验。";
+	if (#monster > 79 && #monster < 90) mes "升级你的怪物需要 1280 点经验。";
+	if (#monster > 89 && #monster < 100) mes "升级你的怪物需要 2560 点经验。";
 	next;
-	menu "Continue",-,"Cancel",L_Exit;
-	mes "[Monster Trainer]";
+	menu "继续",-,"取消",L_Exit;
+	mes "[怪物训练师]";
 
 	// 4. ---Change to Add Monsters - May not be required--- //
 	if (#monster > 1 && #monster < 20 && #monpoints > 9) goto L_Up1;
@@ -369,192 +369,192 @@ L_Upgrade:
 	if (#monster > 79 && #monster < 90 && #monpoints > 1279) goto L_Up8;
 	if (#monster > 89 && #monster < 100 && #monpoints > 2559) goto L_Up9;
 
-	mes "Unable to upgrade.";
+	mes "无法升级。";
 	close;
 
 	// 5. ---Change to Add Monsters--- //
 L_Up1:
 	set #monster,20;
 	set #monpoints,#monpoints-10;
-	mes "Upgraded to Fabre!";
+	mes "已升级为绿棉虫！";
 	close;
 
 L_Up2:
-	mes "Which monster would you like to upgrade to?";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "Lunatic",U_Lunatic,"Drops",U_Drops,"Picky",U_Picky;
+	menu "疯兔",U_Lunatic,"土波利",U_Drops,"小鸡",U_Picky;
 
 U_Drops:
 	set #monster,31;
 	set #monpoints,#monpoints-20;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Drops!";
+	mes "[怪物训练师]";
+	mes "已升级为土波利！";
 	close;
 
 U_Picky:
 	set #monster,32;
 	set #monpoints,#monpoints-20;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Picky!";
+	mes "[怪物训练师]";
+	mes "已升级为小鸡！";
 	close;
 
 U_Lunatic:
 	set #monster,30;
 	set #monpoints,#monpoints-20;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Lunatic!";
+	mes "[怪物训练师]";
+	mes "已升级为疯兔！";
 	close;
 
 L_Up3:
-	mes "Which monster would you like to upgrade to?";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "ChonChon",U_ChonChon,"Super Picky",U_SPicky,"Willow",U_Willow;
+	menu "苍蝇",U_ChonChon,"超级小鸡",U_SPicky,"树精",U_Willow;
 
 U_ChonChon:
 	set #monster,40;
 	set #monpoints,#monpoints-40;
-	mes "[Monster Trainer]";
-	mes "Upgraded to ChonChon!";
+	mes "[怪物训练师]";
+	mes "已升级为苍蝇！";
 	close;
 
 U_SPicky:
 	set #monster,41;
 	set #monpoints,#monpoints-40;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Super Picky!";
+	mes "[怪物训练师]";
+	mes "已升级为超级小鸡！";
 	close;
 
 U_Willow:
 	set #monster,42;
 	set #monpoints,#monpoints-40;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Willow!";
+	mes "[怪物训练师]";
+	mes "已升级为树精！";
 	close;
 
 L_Up4:
-	mes "Which monster would you like to upgrade to?";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "Condor",U_Condor,"Roda Frog",U_Roda;
+	menu "秃鹰",U_Condor,"罗达蛙",U_Roda;
 
 U_Condor:
 	set #monster,51;
 	set #monpoints,#monpoints-80;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Condor!";
+	mes "[怪物训练师]";
+	mes "已升级为秃鹰！";
 	close;
 
 U_Roda:
 	set #monster,50;
 	set #monpoints,#monpoints-80;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Roda Frog!";
+	mes "[怪物训练师]";
+	mes "已升级为罗达蛙！";
 	close;
 
 L_Up5:
 	set #monster,60;
 	set #monpoints,#monpoints-160;
-	mes "Upgraded to Thief Bug Larva!";
+	mes "已升级为盗虫幼虫！";
 	close;
 
 L_Up6:
 	set #monster,70;
 	set #monpoints,#monpoints-320;
-	mes "Upgraded to Savage Babe!";
+	mes "已升级为小野猪！";
 	close;
 
 L_Up7:
-	mes "Which monster would you like to upgrade to?";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "Familiar",U_Familiar,"Hornet",U_Hornet;
+	menu "吸血蝙蝠",U_Familiar,"蜂兵",U_Hornet;
 
 U_Hornet:
 	set #monster,81;
 	set #monpoints,#monpoints-640;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Hornet!";
+	mes "[怪物训练师]";
+	mes "已升级为蜂兵！";
 	close;
 
 U_Familiar:
 	set #monster,80;
 	set #monpoints,#monpoints-640;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Familiar!";
+	mes "[怪物训练师]";
+	mes "已升级为吸血蝙蝠！";
 	close;
 
 L_Up8:
-	mes "[Monster Trainer]";
-	mes "Which monster would you like to upgrade to?";
+	mes "[怪物训练师]";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "Desert Wolf Puppy",U_Puppy,"Spore",U_Spore,"Rocker",U_Rocker;
+	menu "沙漠幼狼",U_Puppy,"蘑菇",U_Spore,"摇滚蝗虫",U_Rocker;
 
 U_Spore:
 	set #monster,91;
 	set #monpoints,#monpoints-1280;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Spore!";
+	mes "[怪物训练师]";
+	mes "已升级为蘑菇！";
 	close;
 
 U_Rocker:
 	set #monster,92;
 	set #monpoints,#monpoints-1280;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Rocker!";
+	mes "[怪物训练师]";
+	mes "已升级为摇滚蝗虫！";
 	close;
 
 U_Puppy:
 	set #monster,90;
 	set #monpoints,#monpoints-1280;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Desert Wolf Puppy!";
+	mes "[怪物训练师]";
+	mes "已升级为沙漠幼狼！";
 	close;
 
 L_Up9:
-	mes "Which monster would you like to upgrade to?";
+	mes "你想升级为哪种怪物？";
 	next;
-	menu "Skeleton",U_Skeleton,"Antonio",U_Antonio,"Plankton",U_Plankton,"Thief Bug Female",U_ThiefFemale;
+	menu "邪骸战士",U_Skeleton,"邪恶老公公",U_Antonio,"漂浮虫",U_Plankton,"浮勒盗虫",U_ThiefFemale;
 
 U_Plankton:
 	set #monster,101;
 	set #monpoints,#monpoints-2560;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Plankton!";
+	mes "[怪物训练师]";
+	mes "已升级为漂浮虫！";
 	close;
 
 U_Antonio:
 	set #monster,102;
 	set #monpoints,#monpoints-2560;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Antonio!";
+	mes "[怪物训练师]";
+	mes "已升级为邪恶老公公！";
 	close;
 
 U_ThiefFemale:
 	set #monster,103;
 	set #monpoints,#monpoints-2560;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Thief Bug Female!";
+	mes "[怪物训练师]";
+	mes "已升级为浮勒盗虫！";
 	close;
 
 U_Skeleton:
 	set #monster,100;
 	set #monpoints,#monpoints-2560;
-	mes "[Monster Trainer]";
-	mes "Upgraded to Skeleton!";
+	mes "[怪物训练师]";
+	mes "已升级为邪骸战士！";
 	close;
 
 L_NoZeny:
-	mes "[Monster Trainer]";
-	mes "You don't have enough zeny!";
+	mes "[怪物训练师]";
+	mes "你的 Zeny 不足！";
 	close;
 
 L_Exit:
-	mes "[Monster Trainer]";
+	mes "[怪物训练师]";
 	mes "Goodbye.";
 	close;
 
 L_Heal:
-	mes "[Monster Trainer]";
-	mes "Your monster needs to heal.";
-	mes "It will heal faster if you click the nurse faster.";
+	mes "[怪物训练师]";
+	mes "你的怪物需要治疗。";
+	mes "你点击护理师越快，它恢复得就越快。";
 	set #heal,1;
 	close;
 }
@@ -564,160 +564,160 @@ L_Heal:
 gon_test,56,91,6	script	OnPoringKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+1;
-	announce "You killed a Poring - Gained 1 exp",19;
+	announce "你击杀了波利——获得 1 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnFaberKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+2;
-	announce "You killed a Faber - Gained 2 exp",19;
+	announce "你击杀了绿棉虫——获得 2 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnLunaticKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+4;
-	announce "You killed a Lunatic - Gained 4 exp",19;
+	announce "你击杀了疯兔——获得 4 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnDropsKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+4;
-	announce "You killed a Drops - Gained 4 exp",19;
+	announce "你击杀了土波利——获得 4 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnPickyKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+4;
-	announce "You killed a Picky - Gained 4 exp",19;
+	announce "你击杀了小鸡——获得 4 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnChonChonKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+8;
-	announce "You killed a ChonChon - Gained 8 exp",19;
+	announce "你击杀了苍蝇——获得 8 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnSPickyKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+8;
-	announce "You killed a Super Picky - Gained 8 exp",19;
+	announce "你击杀了超级小鸡——获得 8 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnWillowKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+8;
-	announce "You killed a Willow - Gained 8 exp",19;
+	announce "你击杀了树精——获得 8 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnRodaKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+16;
-	announce "You killed a Roda Frog - Gained 16 exp",19;
+	announce "你击杀了罗达蛙——获得 16 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnCondorKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+16;
-	announce "You killed a Condor - Gained 16 exp",19;
+	announce "你击杀了秃鹰——获得 16 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnThiefKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+32;
-	announce "You killed a Theif Bug Larva - Gained 32 exp",19;
+	announce "你击杀了盗虫幼虫——获得 32 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnSavageKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+64;
-	announce "You killed a Savage Babe - Gained 64 exp",19;
+	announce "你击杀了小野猪——获得 64 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnFamiliarKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+128;
-	announce "You killed a Familiar - Gained 128 exp",19;
+	announce "你击杀了吸血蝙蝠——获得 128 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnHornetKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+128;
-	announce "You killed a Hornet - Gained 128 exp",19;
+	announce "你击杀了蜂兵——获得 128 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnPuppyKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+256;
-	announce "You killed a Desert Wolf Puppy - Gained 256 exp",19;
+	announce "你击杀了沙漠幼狼——获得 256 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnRockerKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+256;
-	announce "You killed a Rocker - Gained 256 exp",19;
+	announce "你击杀了摇滚蝗虫——获得 256 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnSporeKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+256;
-	announce "You killed a Spore - Gained 256 exp",19;
+	announce "你击杀了蘑菇——获得 256 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnSkeletonKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+512;
-	announce "You killed a Skeleton - Gained 512 exp",19;
+	announce "你击杀了邪骸战士——获得 512 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnPlanktonKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+512;
-	announce "You killed a Plankton - Gained 512 exp",19;
+	announce "你击杀了漂浮虫——获得 512 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnAntonioKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+512;
-	announce "You killed an Antonio - Gained 512 exp",19;
+	announce "你击杀了邪恶老公公——获得 512 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnThiefFemaleKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+512;
-	announce "You killed a Thief Bug Female - Gained 512 exp",19;
+	announce "你击杀了浮勒盗虫——获得 512 点经验",19;
 	callfunc "duelkill";
 }
 
 gon_test,56,91,6	script	OnSpecialKilled	-1,{
 	if (@marena == 0) callfunc "illegalkill";
 	set #monpoints,#monpoints+512;
-	announce "You killed a Special Monster - Gained 1024 exp",19;
+	announce "你击杀了特殊怪物——获得 1024 点经验",19;
 	callfunc "duelkill";
 }
 
 function	script	duelkill	{
 	if (strcharinfo(0) != $@duelist1$ && strcharinfo(0) != $@duelist2$) end;
-	announce strcharinfo(0) + " won the Duel",1;
+	announce strcharinfo(0) + "赢得了决斗",1;
 	set @fighting,0;
 	set #heal,0;
 	set @healing,0;
@@ -725,20 +725,20 @@ function	script	duelkill	{
 }
 
 function	script	illegalkill	{
-	announce "Illegal Kill by " + strcharinfo(0) + " Detected",1;
+	announce "非法击杀：" + strcharinfo(0) + "已被检测到",1;
 	percentheal -100,-100;
 	end;
 }
 
 // Healer //
-gon_test,55,103,6	script	Nurse	90,{
+gon_test,55,103,6	script	护士	90,{
 	if (@battle == 1 || #heal == 0) goto L_NoHeal;
 	if (#heal == 1 && @healing < 100) goto L_Heal; //Total healing required
 	set @fighting,0;
 	set #heal,0;
 	set @healing,0;
 	specialeffect2 EF_VALLENTINE2;
-	announce "Your monster has healed.",19;
+	announce "你的怪物已恢复。",19;
 	end;
 
 L_Heal:
@@ -747,12 +747,12 @@ L_Heal:
 	end;
 
 L_NoHeal:
-	announce "Your monster does not need healing yet.",19;
+	announce "你的怪物还不需要治疗。",19;
 	end;
 }
 
 // Warps players //
-gon_test,57,86,5	script	Summon Pad 1::SummonPad	111,2,2,{
+gon_test,57,86,5	script	召唤台1::SummonPad	111,2,2,{
 	end;
 OnTouch:
 	set @marena,1;
@@ -767,17 +767,17 @@ gon_test,72,87,5	duplicate(SummonPad)	Summon Pad 3	111,2,2
 gon_test	mapflag	noskill
 
 // Duel Arena //
-gon_test,58,103,5	script	Duel Master#01	92,{
+gon_test,58,103,5	script	决斗大师#01	92,{
 	if ($@duelist1$ == "" || $@monster1 == 0) set $@duel,0;
 	set @marena,1;
 	if (#monster == 0) goto L_NoMon;
-	mes "[Duel Master]";
+	mes "[决斗大师]";
 	if ($@duel == 1) goto L_Waiting;
 	if ($@duel == 2) goto L_Dueling;
 
-	mes "There are currently no players dueling.";
+	mes "目前没有玩家在决斗。";
 	next;
-	menu "Join",-,"Spectate",L_Spec,"Cancel",L_Exit;
+	menu "参加",-,"观战",L_Spec,"取消",L_Exit;
 
 	// Player 1 Enters Duel Area //
 	if (#heal == 1) goto L_NeedHeal;
@@ -795,16 +795,16 @@ gon_test,58,103,5	script	Duel Master#01	92,{
 	if (#monster > 99 && #monster < 110) set $@monster1,10;
 	set $@duelist1$,strcharinfo(0);
 	set @battle,1;
-	announce strcharinfo(0) + " [Monster Level: " + $@monster1 + "] is waiting for a duel",1;
+	announce strcharinfo(0) + "[怪物等级：" + $@monster1 + "] 正在等待决斗",1;
 	atcommand "@option 64 0 64";
 	warp "gon_test",49,5;
 	close;
 
 L_Waiting:
-	mes "^0000FF " + $@duelist1$ + "^000000 [Monster Level: ^FF0000" + $@monster1 + "^000000]";
-	mes "Is waiting for an opponent";
+	mes "^0000FF" + $@duelist1$ + "^000000 [怪物等级：^FF0000" + $@monster1 + "^000000]";
+	mes "正在等待对手";
 	next;
-	menu "Join",-,"Spectate",L_Spec,"Cancel",L_Exit;
+	menu "参加",-,"观战",L_Spec,"取消",L_Exit;
 
 	// Player 2 Enters Duel Area //
 	if (#heal == 1) goto L_NeedHeal;
@@ -823,17 +823,17 @@ L_Duel2:
 	if (#monster > 99 && #monster < 110) set $@monster2,10;
 	set $@duelist2$,strcharinfo(0);
 	set @battle,1;
-	announce strcharinfo(0) + " [Monster Level: " + $@monster2 + "] has joined the duel",1;
+	announce strcharinfo(0) + "[怪物等级：" + $@monster2 + "] 已加入决斗",1;
 	atcommand "@option 64 0 64";
 	warp "gon_test",49,5;
 	close;
 
 L_Dueling:
-	mes "^0000FF" + $@duelist1$ + "^000000 [Monster Level: ^0000FF" + $@monster1 + "^000000]";
-	mes "           VS.";
-	mes "^FF0000" + $@duelist2$ + "^000000 [Monster Level: ^FF0000" + $@monster2 + "^000000]";
+	mes "^0000ff" + $@duelist1$ + "^000000 [怪物等级：^0000FF" + $@monster1 + "^000000]";
+	mes "VS.";
+	mes "^FF0000" + $@duelist2$ + "^000000 [怪物等级：^FF0000" + $@monster2 + "^000000]";
 	next;
-	menu "Spectate",L_Spec,"Cancel",L_Exit;
+	menu "观战",L_Spec,"取消",L_Exit;
 
 L_Spec:
 	set @battle,0;
@@ -842,27 +842,27 @@ L_Spec:
 	close;
 
 L_Exit:
-	mes "[Duel Master]";
+	mes "[决斗大师]";
 	mes "Goodbye.";
 	close;
 
 L_NoMon:
-	mes "[Duel Master]";
-	mes "You haven't got a monster, you can't participate.";
+	mes "[决斗大师]";
+	mes "你还没有怪物，无法参加。";
 	close;
 
 L_NeedHeal:
-	mes "[Duel Master]";
-	mes "You need to heal before you can join.";
+	mes "[决斗大师]";
+	mes "你需要先治疗才能参加。";
 	close;
 }
 
 // Duel Exit //
-gon_test,42,8,5	script	Duel Master#02	92,{
-	mes "[Duel Master]";
-	mes "Would you like to return?";
-	menu "Yes",L_Leave,"No",-;
-	mes "Alright";
+gon_test,42,8,5	script	决斗大师#02	92,{
+	mes "[决斗大师]";
+	mes "你想返回吗？";
+	menu "是",L_Leave,"否",-;
+	mes "好的";
 	close;
 
 L_Leave:
@@ -879,14 +879,14 @@ L_Leave1:
 	set $@duelist1$,"";
 	set $@monster1,0;
 	set $@duel,$@duel-1;
-	announce strcharinfo(0) + " stopped dueling",1;
+	announce strcharinfo(0) + "停止了决斗",1;
 	goto L_Leave3;
 
 L_Leave2:
 	set $@duelist2$,"";
 	set $@monster2,0;
 	set $@duel,$@duel-1;
-	announce strcharinfo(0) + " stopped dueling",1;
+	announce strcharinfo(0) + "停止了决斗",1;
 	goto L_Leave3;
 }
 

@@ -8,12 +8,12 @@
 
 -	script	ZondaTeleportationServices	HIDDEN_NPC,{
 	cutin "zonda_do01", 2;
-	mes "[Zonda Employee]";
+	mes "[Zonda职员]";
 	mes "Welcome.";
-	mes "Our team is always working to exceed your expectations regarding quality of service.";
-	mes "Please choose your destination.";
+	mes "我们的团队始终致力于超越您对服务品质的期待。";
+	mes "请选择目的地。";
 	next;
-	switch( select( "North Bifrost", "Eclage", "Splendide", "Midgard Expedition Camp", "Manuk", "Outskirts of Kamidal Mountain", "Cancel.") ) {
+	switch( select( "彩虹桥北部", "埃克拉珠", "辉煌领域", "米德加尔特联合驻地", "马努克", "卡米达山麓", "Cancel.") ) {
 	case 1:
 		callsub( S_Zone, "North Bifrost", 17000,850, 7213 ); // Teleport value not confirmed
 		warp "bif_fild02",160,230; // Unverified Coordinates
@@ -39,9 +39,9 @@
 		warp "dic_fild01",188,187;
 		end;
 	case 7:
-		mes "[Zonda Employee]";
-		mes "We are always striving to ensure the best services for our customers.";
-		mes "Thank you for using our services.";
+		mes "[Zonda职员]";
+		mes "我们始终努力为客户提供最好的服务。";
+		mes "感谢您使用我们的服务。";
 		close3;
 	}
 
@@ -51,15 +51,15 @@ S_Zone:
 	.@quest_req = getarg(3);
 	
 	if (isbegin_quest(.@quest_req) == 0) {
-		mes "[Zonda Employee]";
+		mes "[Zonda职员]";
 		//mes getarg(0);
-		mes "You must complete the access mission to teleport to " + getarg(0) + " before using our Teleportation services.";
+		mes "在使用我们的传送服务之前，您必须先完成前往" + getarg(0) + "的通行任务。";
 		close3;
 	}
-	mes "[Zonda Employee]";
-	mes getarg(0) + " is available for ^ff0000" + .@zeny_req + " Zenys^000000 or ^ff0000" + .@item_req + " Malang Sp Can^000000.";
+	mes "[Zonda职员]";
+	mes getarg(0) + "的费用为^ff0000" + .@zeny_req + " Zenys^000000 or ^ff0000" + .@item_req + " Malang Sp Can^000000.";
 	next;
-	switch( select( .@zeny_req + " Zeny", .@item_req + " Malang Sp Can", "Cancel" ) ) {
+	switch( select( .@zeny_req + "Zeny", .@item_req + "绵绵岛特制罐头", "取消" ) ) {
 	case 1:
 		if (Zeny < .@zeny_req)
 			break;
@@ -71,13 +71,13 @@ S_Zone:
 		delitem 12636,.@item_req; // Malang_Sp_Can
 		return;
 	case 3:
-		mes "[Zonda Employee]";
-		mes "Can you tell me about other areas of service?";
+		mes "[Zonda职员]";
+		mes "能告诉我其他服务区域吗？";
 		close3;
 	}
-	mes "[Zonda Employee]";
-	mes "Sir! You do not have enough value that we are asking for.";
-	mes "Please check back again.";
+	mes "[Zonda职员]";
+	mes "先生！您拥有的价值不足以支付我们的要求。";
+	mes "请稍后再来确认。";
 	close3;
 }
 

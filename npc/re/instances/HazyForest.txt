@@ -17,153 +17,153 @@
 
 // Instance Creation :: md_mistwoods_enter
 //============================================================
-bif_fild01,158,340,5	script	Laphine Soldier#mist	447,{
+bif_fild01,158,340,5	script	拉皮内士兵#mist	447,{
 
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Mistwood Maze";
 
-	mes "[Laphine Soldier]";
-	mes "Are you going into the forest?";
+	mes "[拉皮内士兵]";
+	mes "你要进入森林吗？";
 	next;
 	if (!.@party_id) {
-		mes "[Laphine Soldier]";
-		mes "Well, well, well, aren't you being too rash?";
-		mes "Why don't you at least organize a party?";
+		mes "[拉皮内士兵]";
+		mes "哎呀呀，你是不是太鲁莽了？";
+		mes "你至少该先组个队伍吧？";
 		close;
 	}
 	set .@playtime, checkquest(7211,PLAYTIME);
 	if (is_party_leader() == true) {
 		if (.@playtime == 0 || .@playtime == 1) {
-			mes "[Laphine Soldier]";
+			mes "[拉皮内士兵]";
 			mes "...Are you sure you're not doing too much?";
-			mes "I think you'd better get some rest.";
-			mes "You'll only wear yourself out by trying to do too much";
+			mes "我看你最好先休息一下。";
+			mes "勉强做太多只会把自己累垮。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "I don't think the authority will give you permission, either.";
+			mes "[拉皮内士兵]";
+			mes "我想管理当局也不会批准你。";
 			mes "...Even a Sapha would be stopped from entering the forest.";
 			next;
-			select("You speak our language quite well, don't you?");
-			mes "[Laphine Soldier]";
+			select("你挺会讲我们的话，不是吗？");
+			mes "[拉皮内士兵]";
 			mes "...Do I?";
-			mes "Actually I'm not speaking your language.";
-			mes "I'm speaking Laphine language.";
+			mes "其实我并不是在说你们的语言。";
+			mes "我说的是拉皮内语。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "But it's one of the mysteries of Bifrost.";
-			mes "That we can understand each other even if we speak different languages.";
+			mes "[拉皮内士兵]";
+			mes "但这是彩虹桥的谜团之一。";
+			mes "即使语言不同，我们也能彼此理解。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "To be able to talk with everybody...";
-			mes "Perhaps that's the power of Bifrost.";
+			mes "[拉皮内士兵]";
+			mes "能够和所有人交谈……";
+			mes "也许那就是彩虹桥的力量。";
 			close;
 		} else if (.@playtime == 2) {
-			mes "[Laphine Soldier]";
-			mes "Great, great.";
-			mes "Now the forest won't reject you.";
-			mes "What are you going to do now?";
+			mes "[拉皮内士兵]";
+			mes "很好，很好。";
+			mes "现在森林不会排斥你了。";
+			mes "你接下来打算怎么做？";
 			erasequest 7211;
 		} else {
-			mes "[Laphine Soldier]";
-			mes "You human adventurers are incredible.";
-			mes "You're always going into the forest, where no one else dares to go.";
+			mes "[拉皮内士兵]";
+			mes "你们人类冒险者真是了不起。";
+			mes "你们总是进入那片无人敢去的森林。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "Phew. But I have to report to the authority";
-			mes "everyone who goes into the forest, just in case.";
+			mes "[拉皮内士兵]";
+			mes "呼。不过我得向管理当局报告";
+			mes "每个进入森林的人，以防万一。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "You'll get permission";
-			mes "after you register.";
-			mes "Are you going to venture into the Hazy Forest?";
+			mes "[拉皮内士兵]";
+			mes "你会得到许可的";
+			mes "登记之后。";
+			mes "你要进入迷雾森林探险吗？";
 		}
 		next;
-		switch(select("Venture into the Hazy Forest.:Give up.")) {
+		switch(select("进入迷雾森林探险。:放弃。")) {
 		case 1:
-			mes "[Laphine Soldier]";
-			mes "Party Name "+getpartyname(.@party_id)+"...";
-			mes "Party Leader "+strcharinfo(0)+"...";
+			mes "[拉皮内士兵]";
+			mes "队伍名称"+getpartyname(.@party_id)+"...";
+			mes "队长"+strcharinfo(0)+"...";
 			if (instance_create(.@md_name$) < 0) {
 				mes "Hmm...";
 				next;
-				mes "[Laphine Soldier]";
+				mes "[拉皮内士兵]";
 				if (.@playtime == -1)
-					mes "It's dangerous in the forest.";
+					mes "森林里很危险。";
 				else
-					mes "The atmosphere is somewhat tense in the forest.";
+					mes "森林里的气氛有些紧张。";
 				mes "...Why don't you just go back today?";
 				close;
 			}
-			mes "I've got it. I've written them down on the report here.";
+			mes "我知道了。我已经把它们写在这份报告里了。";
 			next;
-			mes "[Laphine Soldier]";
-			mes "You'll get permission soon.";
-			mes "Now go to the log tunnel, the only way to get into the Hazy Forest.";
-			mes "You understand?";
+			mes "[拉皮内士兵]";
+			mes "你很快就会得到许可。";
+			mes "现在去原木隧道吧，那是进入迷雾森林的唯一通道。";
+			mes "明白了吗？";
 			next;
-			mes "[Laphine Soldier]";
-			mes "We can't go against the forest,";
-			mes "but maybe you humans can.";
-			mes "Good luck!";
+			mes "[拉皮内士兵]";
+			mes "我们无法违抗森林，";
+			mes "但也许你们人类可以。";
+			mes "祝你好运！";
 			close;
 		case 2:
-			mes "[Laphine Soldier]";
-			mes "Well, you've made the right decision.";
+			mes "[拉皮内士兵]";
+			mes "嗯，你做了正确的决定。";
 			if (.@playtime == -1)
-				mes "That's what's good for you.";
+				mes "那对你有好处。";
 			close;
 		}
 	} else {
-		mes "[Laphine Soldier]";
-		mes "Where's your party leader?";
-		mes "It's dangerous in there.";
+		mes "[拉皮内士兵]";
+		mes "你们的队长在哪里？";
+		mes "里面很危险。";
 		next;
 		if (.@playtime == 2) {
-			mes "[Laphine Soldier]";
-			mes "I see you've been into the forest before.";
-			mes "Okay, at least the forest won't reject you.";
+			mes "[拉皮内士兵]";
+			mes "看来你以前进过森林。";
+			mes "好吧，至少森林不会排斥你。";
 			mes "However...";
 			erasequest 7211;
 			next;
 		}
-		mes "[Laphine Soldier]";
-		mes "Put yourself in my shoes, the entrance guard, and let me meet the representative of your party.";
-		mes "I have to discuss some things with him/her.";
+		mes "[拉皮内士兵]";
+		mes "请你体谅一下我这个入口守卫，让我见见你们队伍的代表。";
+		mes "我有些事必须和他/她商量。";
 		close;
 	}
 }
 
-bif_fild01,161,355,0	script	Log Tunnel	844,{
-	mes "I see the forest through the log tunnel.";
-	mes "It looks like I can enter the forest through the log tunnel.";
+bif_fild01,161,355,0	script	原木隧道	844,{
+	mes "透过原木隧道，我看到了森林。";
+	mes "看来我可以穿过原木隧道进入森林。";
 	next;
-	if(select("Enter the tunnel.:Give up.") == 2)
+	if(select("进入隧道。:放弃。") == 2)
 		close;
 	switch(instance_enter("Mistwood Maze")) {
 	case IE_OTHER:
-		mes "[Laphine Soldier]";
-		mes "Something doesn't feel right. Looks like something dangerous is going on, so you'd better turn back today.";
+		mes "[拉皮内士兵]";
+		mes "感觉有些不对劲。似乎正在发生危险的事，你今天还是回头吧。";
 		close;
 	case IE_NOINSTANCE:
-		mes "You try to crawl into the log, but some mysterious power pushes you back with a gush of wind.";
-		mes "It seems like you can't force your way into the forest.";
+		mes "你试图爬进原木里，但一股神秘的力量伴随着一阵风把你推了回来。";
+		mes "看来你无法强行进入森林。";
 		close;
 	case IE_NOMEMBER:
-		mes "[Laphine Soldier]";
-		mes "Hey, look!";
-		mes "Are you going alone?";
-		mes "That's impossible. Too rash.";
-		mes "Team up with some friends and go together!";
+		mes "[拉皮内士兵]";
+		mes "喂，看！";
+		mes "你要一个人去吗？";
+		mes "不行。太鲁莽了。";
+		mes "找些朋友组队一起去吧！";
 		close;
 	case IE_OK:
 		if (checkquest(7211,PLAYTIME) == 2) erasequest 7211;
 		if (checkquest(7211,PLAYTIME) == -1) setquest 7211;
-		mapannounce "bif_fild01",getpartyname(getcharid(1))+" party's "+strcharinfo(0)+" member is entering the Mistwood Maze.",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+		mapannounce "bif_fild01",getpartyname(getcharid(1))+"队伍的"+strcharinfo(0)+"成员正在进入迷雾迷宫。",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 		//warp "1@mist",89,29;
 		close;
 	default:
-		mes "The world beyond the log tunnel looks dark and suffocating.";
-		mes "Your instinct is screaming that this forest is dangerous.";
+		mes "原木隧道另一边的世界显得黑暗而令人窒息。";
+		mes "你的本能正在尖叫，警告你这片森林很危险。";
 		close;
 	}
 }
@@ -181,16 +181,16 @@ OnTouch_:
 	end;
 OnTimer10000:
 OnTimer20000:
-	mapannounce instance_mapname("1@mist"),"Whisper: Who's this? Who's this!? The forest is open! Tom, Tomba, Tired Rem, Remi! Wake up!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"低语：这是谁？这是谁！？森林打开了！汤姆、汤巴、疲惫的雷姆、雷米！快醒醒！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer60000:
-	mapannounce instance_mapname("1@mist"),"Loud Whisper: What are the forest keepers doing? What are the gardeners doing??",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"大声的低语：森林守护者在做什么？园丁们在做什么？？",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer120000:
-	mapannounce instance_mapname("1@mist"),"Loud Whisper: Don't go out, wander around forever, and play with us!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"大声的低语：别出去，永远在这里徘徊，和我们一起玩吧！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer180000:
-	mapannounce instance_mapname("1@mist"),"Loud Whisper: Useless, useless. Wandering around and around, you'll meet your end!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"大声的低语：没用的，没用的。一圈又一圈地徘徊，你会迎来末路！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	stopnpctimer;
 	end;
 }
@@ -199,12 +199,12 @@ OnTimer180000:
 function	script	F_Mora_Mist	{
 	set .@map$, instance_mapname("1@mist");
 	if (mobcount(.@map$,instance_npcname(strnpcinfo(0))+"::OnMyMobDead") == 0) {
-		mes "Obviously no one is taking care of it.";
-		mes "It seems like you can chop down the garden tree.";
+		mes "显然没有人照料它。";
+		mes "看来你可以砍倒花园之树。";
 		next;
-		if(select("Chop down the garden tree.:Give up.") == 2)
+		if(select("砍倒花园之树。:放弃。") == 2)
 			close;
-		mes "You chop down the tree, which was blocking the path of the maze, "+((getarg(3,0))?"clearing the way out of the forest.":"so now you can continue.");
+		mes "你砍倒了那棵挡住迷宫道路的树，"+((getarg(3,0))?"打通了离开森林的路。":"所以现在你可以继续前进了。");
 		mapannounce .@map$,getarg(1),bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 		enablenpc instance_npcname(getarg(0));
 		disablenpc();
@@ -216,8 +216,8 @@ function	script	F_Mora_Mist	{
 	end;
 }
 
-1@mist,251,121,3	script	Tom's Garden	858,{ end; }
-1@mist,247,123,0	script	Tom's Garden Tree	527,{
+1@mist,251,121,3	script	汤姆的花园	858,{ end; }
+1@mist,247,123,0	script	汤姆的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a25_a18-1",
 		"Roaring Cry: Tom's bolt is broken! Watch out, Tomba! Watch out, Tomba!",
@@ -230,8 +230,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,226,95,3	script	Tomba's Garden	858,{ end; }
-1@mist,225,98,0	script	Tomba's Garden Tree	527,{
+1@mist,226,95,3	script	汤巴的花园	858,{ end; }
+1@mist,225,98,0	script	汤巴的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a27-2_af1-2",
 		"Roaring Cry: Tomba's Garden Tree is gone with Tomba. Remi, what are you going to do now?",
@@ -244,8 +244,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,157,183,3	script	Remi's Garden	858,{ end; }
-1@mist,159,184,0	script	Remi's Garden Tree	527,{
+1@mist,157,183,3	script	雷米的花园	858,{ end; }
+1@mist,159,184,0	script	雷米的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a15-2_a4-1",
 		"Roaring Cry: Remi, Remi's Garden Tree was chopped down- Rem, it's your turn next. Poor Rem!",
@@ -258,8 +258,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,58,39,3	script	Tired Rem's Garden	858,{ end; }
-1@mist,61,39,0	script	Tired Rem's Garden Tree	527,{
+1@mist,58,39,3	script	疲惫的雷姆的花园	858,{ end; }
+1@mist,61,39,0	script	疲惫的雷姆的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a4-2_a11",
 		"Rem's Desperate Cry: Argh... Rem will sleep. Rem will sleep now, and won't wake up forever!",
@@ -270,21 +270,21 @@ OnInstanceInit:
 	monster instance_mapname("1@mist"),101,107,"Rem the Gardener",2136,1,instance_npcname("Tired Rem's Garden Tree")+"::OnMyMobDead";
 	end;
 OnTimer10000:
-	mapannounce instance_mapname("1@mist"),"Whisper of the Forest: So Tom's, Tomba's, Remi's, and Rem's garden trees were all chopped down?",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"森林的低语：这么说，汤姆、汤巴、雷米和雷姆的花园之树都被砍倒了？",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer15000:
-	mapannounce instance_mapname("1@mist"),"Whisper of the Forest: Trouble, trouble, we're in big trouble.",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"森林的低语：糟糕，糟糕，我们有大麻烦了。",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer20000:
-	mapannounce instance_mapname("1@mist"),"Loud Whisper: They've come to the second deepest forest. Gardeners of the deep forest, watch out!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"大声的低语：他们来到了第二深的森林。深林的园丁们，小心！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	stopnpctimer;
 	end;
 OnMyMobDead:
 	end;
 }
 
-1@mist,227,179,3	script	Ron's Garden	858,{ end; }
-1@mist,230,179,0	script	Ron's Garden Tree	527,{
+1@mist,227,179,3	script	罗恩的花园	858,{ end; }
+1@mist,230,179,0	script	罗恩的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b4-2_b2",
 		"Ron the Gardener's Cry: I'm getting off work! Don't look for Ron, the second gardener, any more!!",
@@ -297,8 +297,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,288,226,3	script	Rover's Garden	858,{ end; }
-1@mist,285,225,0	script	Rover's Garden Tree	527,{
+1@mist,288,226,3	script	罗伯的花园	858,{ end; }
+1@mist,285,225,0	script	罗伯的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b7_bf1-2",
 		"Roaring Whisper: Ron's, and Rover's trees were chopped down as well. Who is forcing his way into the forest? Who is it?",
@@ -311,8 +311,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,159,318,3	script	Mona's Garden	858,{ end; }
-1@mist,161,316,0	script	Mona's Garden Tree	527,{
+1@mist,159,318,3	script	莫娜的花园	858,{ end; }
+1@mist,161,316,0	script	莫娜的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b31_b16",
 		"Clamoring Whisper: Mona the Seedseeker's garden tree is gone! Mona is gone too! Namon will be okay, because he is brave, right? Namon, are you okay?",
@@ -325,8 +325,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,205,300,3	script	Namon's Garden	858,{ end; }
-1@mist,204,299,0	script	Namon's Garden Tree	527,{
+1@mist,205,300,3	script	纳蒙的花园	858,{ end; }
+1@mist,204,299,0	script	纳蒙的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b27-3_bN-1",
 		"Clamoring Whisper: Brave Namon met his fate not so bravely... *giggle*",
@@ -339,8 +339,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,219,232,3	script	Sad Neoron's Garden	858,{ end; }
-1@mist,221,236,0	script	Sad Neoron's Garden Tree	527,{
+1@mist,219,232,3	script	悲伤的尼奥龙的花园	858,{ end; }
+1@mist,221,236,0	script	悲伤的尼奥龙的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b6-1_b33",
 		"Lamenting Whisper: Sad Neoron has become cheerful! Spyder the Superior Spider, what are you going to do? What are you going to do now?",
@@ -353,8 +353,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,206,202,3	script	Spyder's Garden	858,{ end; }
-1@mist,206,200,0	script	Spyder's Garden Tree	527,{
+1@mist,206,202,3	script	斯派德的花园	858,{ end; }
+1@mist,206,200,0	script	斯派德的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b5_b14",
 		"Depressed Whisper: Now it's all over with the second deepest forest. Gardeners are dying out-",
@@ -365,24 +365,24 @@ OnInstanceInit:
 	monster instance_mapname("1@mist"),209,200,"Spyder the Eight-Legged",2132,1,instance_npcname("Spyder's Garden Tree")+"::OnMyMobDead";
 	end;
 OnTimer5000:
-	mapannounce instance_mapname("1@mist"),"Roaring Whisper: The path is about to open. The tight bolts have been removed!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"咆哮的低语：道路即将开启。紧锁的门闩已经被卸下了！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer9000:
-	mapannounce instance_mapname("1@mist"),"Roaring Whisper: A forest opened, another opened, and the other is going to open as well. Tito and Pumba, they are heading your way!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"咆哮的低语：一片森林开了，又一片开了，另一片也即将开启。蒂托和蓬巴，他们正朝你们那边去！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer13000:
-	mapannounce instance_mapname("1@mist"),"Roaring Whisper: Where you get after wandering around, around and around, everybody you've met while wandering around, around and around,",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"咆哮的低语：在你一圈又一圈徘徊之后到达的地方，你在徘徊途中遇见的每一个人，",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 OnTimer17000:
-	mapannounce instance_mapname("1@mist"),"Roaring Whisper: all the gardeners will be waiting for you, with their clippers in their hands-!",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"咆哮的低语：所有园丁都会手持剪刀等着你——！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	stopnpctimer;
 	end;
 OnMyMobDead:
 	end;
 }
 
-1@mist,96,288,3	script	Tito's Garden	858,{ end; }
-1@mist,95,287,0	script	Tito's Garden Tree	527,{
+1@mist,96,288,3	script	蒂托的花园	858,{ end; }
+1@mist,95,287,0	script	蒂托的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c1_c13-1",
 		"Tito's Cry: *sob* *sob* Tito's gone now! Tito's done for! Boo hoo!!",
@@ -395,8 +395,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,326,325,3	script	Pumba's Garden	858,{ end; }
-1@mist,324,325,0	script	Pumba's Garden Tree	527,{
+1@mist,326,325,3	script	蓬巴的花园	858,{ end; }
+1@mist,324,325,0	script	蓬巴的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c13-3_c4",
 		"Roaring Whisper: Tito the Hard Worker was defeated! Stop playing and go to work, Tete! Start working!",
@@ -409,8 +409,8 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,278,345,3	script	Tete's Garden	858,{ end; }
-1@mist,280,344,0	script	Tete's Garden Tree	527,{
+1@mist,278,345,3	script	泰特的花园	858,{ end; }
+1@mist,280,344,0	script	泰特的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c19_c4",
 		"Whisper: They are strong, strong indeed. What are we going to do now? Are there any gardeners left? Are there any?",
@@ -423,7 +423,7 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,345,186,0	script	The Gardeners' Tree	527,{
+1@mist,345,186,0	script	园丁之树	527,{
 	callfunc "F_Mora_Mist",
 		"#to_bif02",
 		"Roaring Whisper: The forest will remember you! It will remember you, the one who broke the clippers of all the gardeners!",
@@ -449,60 +449,60 @@ OnMyMobDead:
 	end;
 }
 
-1@mist,73,290,0	script	Mysterious Flower#1	844,{
+1@mist,73,290,0	script	神秘之花#1	844,{
 	specialeffect EF_LEVEL99_4;
 	disablenpc();
 	getitem 12561,1; //Mysterious_Seed
 	end;
 }
-1@mist,69,295,0	duplicate(Mysterious Flower#1)	Mysterious Flower#2	844
-1@mist,62,291,0	duplicate(Mysterious Flower#1)	Mysterious Flower#3	844
-1@mist,54,293,0	duplicate(Mysterious Flower#1)	Mysterious Flower#4	844
-1@mist,48,286,0	duplicate(Mysterious Flower#1)	Mysterious Flower#5	844
-1@mist,54,277,0	duplicate(Mysterious Flower#1)	Mysterious Flower#6	844
-1@mist,52,270,0	duplicate(Mysterious Flower#1)	Mysterious Flower#7	844
-1@mist,62,268,0	duplicate(Mysterious Flower#1)	Mysterious Flower#8	844
-1@mist,72,271,0	duplicate(Mysterious Flower#1)	Mysterious Flower#9	844
-1@mist,72,276,0	duplicate(Mysterious Flower#1)	Mysterious Flower#10	844
-1@mist,118,194,0	duplicate(Mysterious Flower#1)	Mysterious Flower#11	844
-1@mist,122,204,0	duplicate(Mysterious Flower#1)	Mysterious Flower#12	844
-1@mist,137,209,0	duplicate(Mysterious Flower#1)	Mysterious Flower#13	844
-1@mist,144,203,0	duplicate(Mysterious Flower#1)	Mysterious Flower#14	844
-1@mist,146,186,0	duplicate(Mysterious Flower#1)	Mysterious Flower#15	844
-1@mist,142,182,0	duplicate(Mysterious Flower#1)	Mysterious Flower#16	844
-1@mist,132,179,0	duplicate(Mysterious Flower#1)	Mysterious Flower#17	844
-1@mist,123,184,0	duplicate(Mysterious Flower#1)	Mysterious Flower#18	844
-1@mist,194,118,0	duplicate(Mysterious Flower#1)	Mysterious Flower#19	844
-1@mist,188,109,0	duplicate(Mysterious Flower#1)	Mysterious Flower#20	844
-1@mist,193,94,0	duplicate(Mysterious Flower#1)	Mysterious Flower#21	844
-1@mist,205,92,0	duplicate(Mysterious Flower#1)	Mysterious Flower#22	844
-1@mist,213,96,0	duplicate(Mysterious Flower#1)	Mysterious Flower#23	844
-1@mist,216,103,0	duplicate(Mysterious Flower#1)	Mysterious Flower#24	844
-1@mist,212,116,0	duplicate(Mysterious Flower#1)	Mysterious Flower#25	844
-1@mist,207,120,0	duplicate(Mysterious Flower#1)	Mysterious Flower#26	844
-1@mist,169,310,0	duplicate(Mysterious Flower#1)	Mysterious Flower#27	844
-1@mist,172,296,0	duplicate(Mysterious Flower#1)	Mysterious Flower#28	844
-1@mist,191,301,0	duplicate(Mysterious Flower#1)	Mysterious Flower#30	844
-1@mist,195,301,0	duplicate(Mysterious Flower#1)	Mysterious Flower#31	844
-1@mist,192,316,0	duplicate(Mysterious Flower#1)	Mysterious Flower#32	844
-1@mist,187,320,0	duplicate(Mysterious Flower#1)	Mysterious Flower#33	844
-1@mist,174,318,0	duplicate(Mysterious Flower#1)	Mysterious Flower#34	844
-1@mist,308,136,0	duplicate(Mysterious Flower#1)	Mysterious Flower#35	844
-1@mist,314,122,0	duplicate(Mysterious Flower#1)	Mysterious Flower#36	844
-1@mist,321,118,0	duplicate(Mysterious Flower#1)	Mysterious Flower#37	844
-1@mist,331,123,0	duplicate(Mysterious Flower#1)	Mysterious Flower#38	844
-1@mist,335,126,0	duplicate(Mysterious Flower#1)	Mysterious Flower#39	844
-1@mist,332,141,0	duplicate(Mysterious Flower#1)	Mysterious Flower#40	844
-1@mist,328,144,0	duplicate(Mysterious Flower#1)	Mysterious Flower#41	844
-1@mist,314,144,0	duplicate(Mysterious Flower#1)	Mysterious Flower#42	844
-1@mist,238,224,0	duplicate(Mysterious Flower#1)	Mysterious Flower#43	844
-1@mist,244,231,0	duplicate(Mysterious Flower#1)	Mysterious Flower#44	844
-1@mist,257,232,0	duplicate(Mysterious Flower#1)	Mysterious Flower#45	844
-1@mist,262,229,0	duplicate(Mysterious Flower#1)	Mysterious Flower#46	844
-1@mist,265,216,0	duplicate(Mysterious Flower#1)	Mysterious Flower#47	844
-1@mist,260,214,0	duplicate(Mysterious Flower#1)	Mysterious Flower#48	844
-1@mist,252,206,0	duplicate(Mysterious Flower#1)	Mysterious Flower#49	844
-1@mist,244,211,0	duplicate(Mysterious Flower#1)	Mysterious Flower#50	844
+1@mist,69,295,0	duplicate(神秘之花#1)	Mysterious Flower#2	844
+1@mist,62,291,0	duplicate(神秘之花#1)	Mysterious Flower#3	844
+1@mist,54,293,0	duplicate(神秘之花#1)	Mysterious Flower#4	844
+1@mist,48,286,0	duplicate(神秘之花#1)	Mysterious Flower#5	844
+1@mist,54,277,0	duplicate(神秘之花#1)	Mysterious Flower#6	844
+1@mist,52,270,0	duplicate(神秘之花#1)	Mysterious Flower#7	844
+1@mist,62,268,0	duplicate(神秘之花#1)	Mysterious Flower#8	844
+1@mist,72,271,0	duplicate(神秘之花#1)	Mysterious Flower#9	844
+1@mist,72,276,0	duplicate(神秘之花#1)	Mysterious Flower#10	844
+1@mist,118,194,0	duplicate(神秘之花#1)	Mysterious Flower#11	844
+1@mist,122,204,0	duplicate(神秘之花#1)	Mysterious Flower#12	844
+1@mist,137,209,0	duplicate(神秘之花#1)	Mysterious Flower#13	844
+1@mist,144,203,0	duplicate(神秘之花#1)	Mysterious Flower#14	844
+1@mist,146,186,0	duplicate(神秘之花#1)	Mysterious Flower#15	844
+1@mist,142,182,0	duplicate(神秘之花#1)	Mysterious Flower#16	844
+1@mist,132,179,0	duplicate(神秘之花#1)	Mysterious Flower#17	844
+1@mist,123,184,0	duplicate(神秘之花#1)	Mysterious Flower#18	844
+1@mist,194,118,0	duplicate(神秘之花#1)	Mysterious Flower#19	844
+1@mist,188,109,0	duplicate(神秘之花#1)	Mysterious Flower#20	844
+1@mist,193,94,0	duplicate(神秘之花#1)	Mysterious Flower#21	844
+1@mist,205,92,0	duplicate(神秘之花#1)	Mysterious Flower#22	844
+1@mist,213,96,0	duplicate(神秘之花#1)	Mysterious Flower#23	844
+1@mist,216,103,0	duplicate(神秘之花#1)	Mysterious Flower#24	844
+1@mist,212,116,0	duplicate(神秘之花#1)	Mysterious Flower#25	844
+1@mist,207,120,0	duplicate(神秘之花#1)	Mysterious Flower#26	844
+1@mist,169,310,0	duplicate(神秘之花#1)	Mysterious Flower#27	844
+1@mist,172,296,0	duplicate(神秘之花#1)	Mysterious Flower#28	844
+1@mist,191,301,0	duplicate(神秘之花#1)	Mysterious Flower#30	844
+1@mist,195,301,0	duplicate(神秘之花#1)	Mysterious Flower#31	844
+1@mist,192,316,0	duplicate(神秘之花#1)	Mysterious Flower#32	844
+1@mist,187,320,0	duplicate(神秘之花#1)	Mysterious Flower#33	844
+1@mist,174,318,0	duplicate(神秘之花#1)	Mysterious Flower#34	844
+1@mist,308,136,0	duplicate(神秘之花#1)	Mysterious Flower#35	844
+1@mist,314,122,0	duplicate(神秘之花#1)	Mysterious Flower#36	844
+1@mist,321,118,0	duplicate(神秘之花#1)	Mysterious Flower#37	844
+1@mist,331,123,0	duplicate(神秘之花#1)	Mysterious Flower#38	844
+1@mist,335,126,0	duplicate(神秘之花#1)	Mysterious Flower#39	844
+1@mist,332,141,0	duplicate(神秘之花#1)	Mysterious Flower#40	844
+1@mist,328,144,0	duplicate(神秘之花#1)	Mysterious Flower#41	844
+1@mist,314,144,0	duplicate(神秘之花#1)	Mysterious Flower#42	844
+1@mist,238,224,0	duplicate(神秘之花#1)	Mysterious Flower#43	844
+1@mist,244,231,0	duplicate(神秘之花#1)	Mysterious Flower#44	844
+1@mist,257,232,0	duplicate(神秘之花#1)	Mysterious Flower#45	844
+1@mist,262,229,0	duplicate(神秘之花#1)	Mysterious Flower#46	844
+1@mist,265,216,0	duplicate(神秘之花#1)	Mysterious Flower#47	844
+1@mist,260,214,0	duplicate(神秘之花#1)	Mysterious Flower#48	844
+1@mist,252,206,0	duplicate(神秘之花#1)	Mysterious Flower#49	844
+1@mist,244,211,0	duplicate(神秘之花#1)	Mysterious Flower#50	844
 
 // Wandering Guardian Quest
 //============================================================
@@ -527,154 +527,154 @@ OnMyMobDead:
 		donpcevent instance_npcname("Collapsed Girl#mist")+"::OnEnable";
 		donpcevent instance_npcname("Mysterious Young Man#mis")+"::OnDisable";
 		donpcevent instance_npcname("Loki#mist")+"::OnEnable";
-		mapannounce .@map$,"The Dragon's Cry: Am I being punished... for abandoning the way... of the guardian...?",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+		mapannounce .@map$,"龙的哭喊：我是在受罚吗……因为我背弃了……守护者的道路……？",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 		disablenpc instance_npcname("#Dragon Herder");
 		initnpctimer;
 	}
 	end;
 OnTimer3000:
 	stopnpctimer;
-	mapannounce instance_mapname("1@mist"),"Voice in your head: ...Will you... save... me... please......?",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@mist"),"脑海中的声音：……你……能救救……我……吗……？",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 	end;
 }
 
-1@mist,97,30,3	script	Mysterious Young Man#mis	512,{
+1@mist,97,30,3	script	神秘青年#mis	512,{
 	if (BaseLevel < 98) {
-		mes "[Mysterious Young Man]";
-		mes "Huh? Do you plan to pass through here?";
+		mes "[神秘青年]";
+		mes "嗯？你打算从这里过去？";
 		mes ".....I'm afraid it's beyond your ability, but I won't meddle in your affairs.";
-		mes "We'll meet again, if you survive.";
+		mes "如果你能活下来，我们还会再见。";
 		close;
 	}
 	if (ep14_1_mistwoods == 0) {
 		if (ep13_3_secret > 23) {
-			mes "[Mysterious Young Man]";
-			mes "You... I remember seeing you at the camp.";
-			mes "The information you gave on Ahat was useful.";
-			mes "Thanks!";
+			mes "[神秘青年]";
+			mes "你……我记得在营地里见过你。";
+			mes "你提供的关于阿哈特的情报很有用。";
+			mes "谢谢！";
 			next;
-			mes "[Mysterious Young Man]";
-			mes "But do you plan to pass through here?";
-			mes "What good is it to go across Bifrost?";
+			mes "[神秘青年]";
+			mes "不过，你打算从这里过去吗？";
+			mes "越过彩虹桥有什么好处？";
 			next;
 		} else {
-			mes "[Mysterious Young Man]";
-			mes "Do you plan to pass through here?";
-			mes "I will advise against it if you're just curious.";
-			mes "It will only bring about your untimely death...";
+			mes "[神秘青年]";
+			mes "你打算从这里过去吗？";
+			mes "如果你只是好奇，我劝你还是别去。";
+			mes "那只会让你英年早逝……";
 			next;
 		}
-		mes "[Mysterious Young Man]";
-		mes "If you are determined to pass through here,";
-		mes "I will ask for your help with something.";
+		mes "[神秘青年]";
+		mes "如果你执意要从这里过去，";
+		mes "我有件事想请你帮忙。";
 		next;
-		select("Who are you?");
-		mes "[Loki]";
-		mes "Loki... from the Assassin's Guild.";
-		mes "That's my name.";
-		mes "And yours?";
+		select("你是谁？");
+		mes "[洛奇]";
+		mes "洛奇……来自刺客公会。";
+		mes "这就是我的名字。";
+		mes "那你呢？";
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "....";
-		mes "...."+strcharinfo(0)+" sir.";
+		mes "...."+strcharinfo(0)+"先生。";
 		next;
-		mes "[Loki]";
-		mes "I see. "+strcharinfo(0)+".";
-		mes "I'm asking you again.";
-		mes "Do you plan to pass through this forest?";
+		mes "[洛奇]";
+		mes "原来如此，"+strcharinfo(0)+".";
+		mes "我再问你一次。";
+		mes "你打算穿过这片森林吗？";
 		next;
-		switch(select("Yes, I do.:No, I don't.")) {
+		switch(select("是的，我要去。:不，我不去。")) {
 		case 1:
-			mes "[Loki]";
-			mes "Then I'll ask you a question.";
-			mes "Have you ever seen a guard... a girl with purple hair?";
+			mes "[洛奇]";
+			mes "那我来问你一个问题。";
+			mes "你有没有见过一个守卫……一个紫发女孩？";
 			next;
-			switch(select("No, I haven't.:Yes, I might have...")) {
+			switch(select("不，我没见过。:是的，我可能见过……")) {
 			case 1:
-				mes "[Loki]";
-				mes "So you haven't.";
-				mes "You're telling the truth.";
+				mes "[洛奇]";
+				mes "这样啊，你没见过。";
+				mes "你说的是实话。";
 				next;
 				break;
 			case 2:
-				mes "[Loki]";
+				mes "[洛奇]";
 				mes "Wait.";
-				mes "(Loki comes closer.)";
+				mes "（洛奇走近了。）";
 				mes "... No.";
-				mes "You're telling the truth.";
+				mes "你说的是实话。";
 				next;
 				break;
 			}
-			mes "[Loki]";
-			mes "Now we have to say goodbye here.";
-			mes "If you survive this forest, of course.";
+			mes "[洛奇]";
+			mes "现在我们得在这里道别了。";
+			mes "当然，前提是你能活着走出这片森林。";
 			set ep14_1_mistwoods,2;
 			setquest 7212;
 			close;
 		case 2:
-			mes "[Loki]";
-			mes "I understand.";
-			mes "Step back if you aren't ready.";
-			mes "This forest doesn't like strangers.";
+			mes "[洛奇]";
+			mes "我明白了。";
+			mes "如果还没准备好，就退后吧。";
+			mes "这片森林不喜欢陌生人。";
 			set ep14_1_mistwoods,1;
 			close;
 		}
 	} else if (ep14_1_mistwoods == 1) {
-		mes "[Loki]";
-		mes "I told you - step back if you don't want to die.";
-		mes "It's not easy going through the forest.";
-		mes "It may cost you your life.";
+		mes "[洛奇]";
+		mes "我告诉过你——不想死就退后。";
+		mes "穿过这片森林并不容易。";
+		mes "可能会要了你的命。";
 		next;
-		switch(select("Okay.:What do you want?")) {
+		switch(select("好吧。:你想要什么？")) {
 		case 1:
-			mes "- When you step back,";
-			mes "Loki nods slightly and then looks away. -";
+			mes "- 当你后退时，";
+			mes "洛奇微微点头，然后移开了视线。 -";
 			close;
 		case 2:
-			mes "[Loki]";
-			mes "I'm looking for somebody.";
-			mes "Have you ever seen a guard... a girl with purple hair?";
+			mes "[洛奇]";
+			mes "我在找一个人。";
+			mes "你有没有见过一个守卫……一个紫发女孩？";
 			next;
-			switch(select("No, I haven't.:Yes, I might have...")) {
+			switch(select("不，我没见过。:是的，我可能见过……")) {
 			case 1:
-				mes "[Loki]";
-				mes "So you haven't.";
-				mes "You're telling the truth.";
+				mes "[洛奇]";
+				mes "这样啊，你没见过。";
+				mes "你说的是实话。";
 				next;
 				break;
 			case 2:
-				mes "[Loki]";
+				mes "[洛奇]";
 				mes "Wait.";
-				mes "(Loki comes closer.)";
+				mes "（洛奇走近了。）";
 				mes "... No.";
-				mes "You're telling the truth.";
+				mes "你说的是实话。";
 				next;
 				break;
 			}
-			mes "[Loki]";
-			mes "Now we have to say goodbye here.";
-			mes "Hopefully, we will see each other again in Mora.";
+			mes "[洛奇]";
+			mes "现在我们得在这里道别了。";
+			mes "希望我们能在穆拉再见。";
 			set ep14_1_mistwoods,2;
 			setquest 7212;
 			close;
 		}
 	} else if (ep14_1_mistwoods == 2) {
-		mes "[Loki]";
-		mes "I don't want to go with you.";
-		mes "Hopefully, we will see each other again in Mora.";
+		mes "[洛奇]";
+		mes "我不想和你一起走。";
+		mes "希望我们能在穆拉再见。";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[Loki]";
-		mes "So we meet again.";
-		mes "Are you used to this place?";
-		mes "Come to the inn in Mora.";
-		mes "I have something to give to you.";
+		mes "[洛奇]";
+		mes "我们又见面了。";
+		mes "你习惯这里了吗？";
+		mes "来穆拉的旅馆吧。";
+		mes "我有东西要给你。";
 		close;
 	} else {
-		mes "[Loki]";
-		mes "We're seeing a lot of each other these days.";
-		mes "It seems you are completely comfortable with the place.";
-		mes "You'd better not be too proud of yourself.";
+		mes "[洛奇]";
+		mes "最近我们经常见面呢。";
+		mes "看来你已经完全习惯这里了。";
+		mes "你最好别太得意。";
 		close;
 	}
 	end;
@@ -686,48 +686,48 @@ OnDisable:
 	end;
 }
 
-1@mist,183,304,3	script	Loki#mist	512,{
+1@mist,183,304,3	script	洛奇#mist	512,{
 	if (ep14_1_mistwoods < 2) {
-		mes "[Loki]";
-		mes "An adventurer in the forest.";
+		mes "[洛奇]";
+		mes "森林里的冒险者。";
 		mes ".....";
-		mes "You can go to Mora through this forest.";
+		mes "你可以穿过这片森林前往穆拉。";
 		close;
 	} else if (ep14_1_mistwoods == 2) {
-		mes "[Loki]";
-		mes "Is it you that took care of this unruly girl?";
-		mes "I guess I have to thank you.";
-		mes "You've calmed her down.";
+		mes "[洛奇]";
+		mes "是你照顾了这个任性的女孩吗？";
+		mes "看来我得谢谢你。";
+		mes "你让她平静下来了。";
 		next;
-		select("What's happening?:This girl...?");
-		mes "[Loki]";
-		mes "You might be able to change your appearance, but you cannot change your unique, innate light.";
-		mes "A scent strong enough to burn your nose.";
+		select("发生什么事了？:这个女孩……？");
+		mes "[洛奇]";
+		mes "你也许能改变外表，却无法改变你与生俱来的独特光芒。";
+		mes "一股浓烈得灼鼻的气味。";
 		next;
-		mes "[Loki]";
-		mes "This is Nydhogg, the Guardian of Yggdrasil,";
-		mes "whom I was looking for.";
-		mes "Now she won't wander around crazy any more.";
+		mes "[洛奇]";
+		mes "这位就是尼德霍格，世界树的守护者，";
+		mes "我一直在寻找的那位。";
+		mes "现在她不会再发疯似地四处游荡了。";
 		next;
-		select("What are you going to do now?");
-		mes "[Loki]";
-		mes "I'll wait for her to wake up and get out of this forest.";
-		mes "I can manage it on my own.";
-		mes "I'll see you in Mora.";
+		select("你接下来打算怎么做？");
+		mes "[洛奇]";
+		mes "我会等她醒来，然后离开这片森林。";
+		mes "我自己能应付。";
+		mes "穆拉见。";
 		set ep14_1_mistwoods,3;
 		erasequest 7212;
 		setquest 7213;
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[Loki]";
-		mes "I don't want to go with you.";
-		mes "I can manage her on my own.";
-		mes "If you have something to say, say it after we get out of the forest.";
+		mes "[洛奇]";
+		mes "我不想和你一起走。";
+		mes "我一个人也能照顾她。";
+		mes "如果你有话要说，等我们走出森林再说。";
 		close;
 	} else {
-		mes "[Loki]";
-		mes "I don't want to go with you.";
-		mes "If you have something to say, say it after we get out of the forest.";
+		mes "[洛奇]";
+		mes "我不想和你一起走。";
+		mes "如果你有话要说，等我们走出森林再说。";
 		close;
 	}
 	end;
@@ -740,9 +740,9 @@ OnEnable:
 	end;
 }
 
-1@mist,181,303,3	script	Collapsed Girl#mist	511,{
-	mes "You see a girl with mysterious hair collapsed on the ground.";
-	mes "As you approach her, you smell the scent of flowers so strong that it makes you dizzy.";
+1@mist,181,303,3	script	倒地的少女#mist	511,{
+	mes "你看到一名长着神秘发色的少女昏倒在地。";
+	mes "当你靠近她时，你闻到一股浓烈的花香，浓得让人头晕目眩。";
 	close;
 OnInstanceInit:
 OnDisable:
@@ -754,163 +754,163 @@ OnEnable:
 }
 
 // --------------- Part of md_mistwoods_enter ----------------
-mora,46,152,5	script	Flower Smelling Lady	510,{
+mora,46,152,5	script	花香女子	510,{
 	if (ep14_1_mistwoods < 3) {
-		mes "[Flower Smell Lady]";
-		mes "I need rest.";
-		mes "I'm too tired to talk to you.";
-		mes "I'm sorry.";
+		mes "[花香女子]";
+		mes "我需要休息。";
+		mes "我太累了，没法和你说话。";
+		mes "对不起。";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[Nydhogg the Guardian]";
-		mes "I've been waiting for you.";
-		mes "I'm still confused, but I know what I did wrong.";
+		mes "[守护者尼德霍格]";
+		mes "我一直在等你。";
+		mes "我仍然很困惑，但我知道自己做错了什么。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "If it weren't for you, I would still be wandering in the abyssal darkness.";
-		mes "I thank you, from the bottom of my heart.";
+		mes "[守护者尼德霍格]";
+		mes "如果不是你，我还会在深渊般的黑暗中徘徊。";
+		mes "我由衷地感谢你。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "I'm ashamed of myself, falling for the sweet but empty words that came to me in my loneliness.";
+		mes "[守护者尼德霍格]";
+		mes "我为自己感到羞愧，竟在孤独中听信了那些甜美却空洞的话语。";
 		mes "....";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "I don't deserve to be a guardian any more.";
-		mes "A dragon gone crazy is not a guardian any more.";
+		mes "[守护者尼德霍格]";
+		mes "我已经不配再做守护者了。";
+		mes "发疯的龙不再是守护者。";
 		next;
-		mes "[Loki]";
-		mes "Yggdrasil doesn't think so.";
-		mes "Nidi, don't forget your duties.";
+		mes "[洛奇]";
+		mes "世界树可不这么认为。";
+		mes "尼迪，别忘了你的职责。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "Are you...?";
-		mes "I see...";
-		mes "I thought I was forsaken...";
+		mes "[守护者尼德霍格]";
+		mes "你是……？";
+		mes "原来如此……";
+		mes "我以为自己被抛弃了……";
 		next;
-		mes "The Guardian slowly looked away as if deep in thought.";
+		mes "守护者仿佛陷入沉思，缓缓移开了视线。";
 		set ep14_1_mistwoods,4;
 		close2;
 	} else if (ep14_1_mistwoods == 4) {
-		mes "- He seems to be deep in thought. -";
+		mes "- 他似乎陷入了沉思。 -";
 		close;
 	} else {
-		mes "[Nydhogg the Guardian]";
-		mes "I haven't gotten all of my powers back.";
-		mes "I'm sorry I can't protect you.";
+		mes "[守护者尼德霍格]";
+		mes "我还没有完全恢复力量。";
+		mes "很抱歉，我无法保护你。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "Loki said...";
-		mes "that I won't cry from loneliness again,";
-		mes "that I will always have new friends like you...";
+		mes "[守护者尼德霍格]";
+		mes "洛奇说过……";
+		mes "我不会再因为孤独而哭泣，";
+		mes "我会一直有你这样的新朋友……";
 		next;
-		mes "[Nydhogg the Guardian]";
+		mes "[守护者尼德霍格]";
 		mes "...I've lost everything, but I'm happy now.";
 		close;
 	}
 }
 
-mora,48,152,3	script	Sharp Eyed Man	512,{
+mora,48,152,3	script	目光锐利的男子	512,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-		mes "- You have too many items to do this quest. -";
+		mes "- 你的道具太多，无法进行此任务。 -";
 		close;
 	}
 	if (ep14_1_mistwoods < 3) {
-		mes "He won't look at you. It's like he's not interested at all.";
+		mes "他不肯看你，似乎完全不感兴趣。";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[Loki]";
-		mes "So you've passed through the forest.";
-		mes "It seems Niddy has something to say to you.";
+		mes "[洛奇]";
+		mes "这么说，你已经穿过森林了。";
+		mes "看来尼迪有话要对你说。";
 		close;
 	} else if (ep14_1_mistwoods == 4) {
-		mes "[Loki]";
-		mes "Nydhogg was one of the guardians of the World Tree.";
-		mes "But he abandoned his duties as a guardian when he gave in to Morocc's temptation.";
+		mes "[洛奇]";
+		mes "尼德霍格曾是世界树的守护者之一。";
+		mes "但他屈服于梦洛克的诱惑，背弃了守护者的职责。";
 		next;
-		mes "[Loki]";
-		mes "Some fools performed a ritual to break the seal that held Morocc.";
-		mes "But the ritual didn't work right. The servant of Morocc failed to break the seal.";
+		mes "[洛奇]";
+		mes "一些蠢货举行了仪式，企图打破困住梦洛克的封印。";
+		mes "但仪式出了差错。梦洛克的仆从没能打破封印。";
 		next;
-		mes "[Loki]";
-		mes "But the seal is so weak that it can break open any time.";
-		mes "It's Yggdrasil the World Tree's will that has kept the seal from breaking.";
+		mes "[洛奇]";
+		mes "但封印已经非常脆弱，随时都可能破裂。";
+		mes "是世界树的意志阻止了封印破裂。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "That's right. The power of the World Tree is linked to the whole world.";
-		mes "When the bond between the guardians and Yggdrasil broke, Yggdrasil became unstable.";
+		mes "[守护者尼德霍格]";
+		mes "没错。世界树的力量与整个世界相连。";
+		mes "当守护者与世界树之间的羁绊断裂时，世界树变得不稳定了。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "That's why all those disasters happened to Yggdrasil.";
-		mes "As the World Tree became unstable, the influence it had on the seal grew weak.";
+		mes "[守护者尼德霍格]";
+		mes "所以世界树才会遭遇那些灾难。";
+		mes "随着世界树变得不稳定，它对封印的影响力也减弱了。";
 		next;
-		mes "[Loki]";
-		mes "And Morocc broke himself free from the seal.";
-		mes "Although it seems like he used most of his powers just to break the seal...";
+		mes "[洛奇]";
+		mes "而梦洛克也挣脱了封印。";
+		mes "不过，他似乎为了打破封印耗尽了大部分力量……";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "It's all my fault.";
-		mes "I couldn't break free from Morocc's temptation.";
-		mes "For too... too long...";
+		mes "[守护者尼德霍格]";
+		mes "这都是我的错。";
+		mes "我无法摆脱梦洛克的诱惑。";
+		mes "太久……太久了……";
 		next;
-		mes "[Nydhogg the Guardian]";
+		mes "[守护者尼德霍格]";
 		mes "...I wanted to be relieved of my thousands of years of loneliness.";
-		mes "I wasn't in my right mind then.";
-		mes "It was none other than I that broke my bond with Yggdrasil.";
+		mes "那时我已失去了理智。";
+		mes "斩断我与世界树羁绊的，正是我自己。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "I lost control of myself, and did what I shouldn't have done.";
-		mes "The other side of me became a shadow and a reckless tyrant.";
+		mes "[守护者尼德霍格]";
+		mes "我失去了控制，做了不该做的事。";
+		mes "我的另一面化作了阴影，成了肆无忌惮的暴君。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "Facing the world, I realized...";
-		mes "I felt too great a sense of loss... it was much more painful than the loneliness I had endured for thousands of years.";
+		mes "[守护者尼德霍格]";
+		mes "面对这个世界，我明白了……";
+		mes "我感受到了巨大的失落……那比数千年来忍受的孤独还要痛苦得多。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "That's how I was left alone.";
-		mes "I felt too great a sense of loss... it was much more painful than the loneliness I had endured for thousands of years.";
+		mes "[守护者尼德霍格]";
+		mes "我就是这样被独自留下的。";
+		mes "我感受到了巨大的失落……那比数千年来忍受的孤独还要痛苦得多。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "So I became a sinner, forgotten to the world.";
+		mes "[守护者尼德霍格]";
+		mes "于是我成了罪人，被世界遗忘。";
 		next;
-		mes "[Loki]";
-		mes "It's not too late.";
-		mes "You're still a guardian.";
-		mes "You still have things to do.";
+		mes "[洛奇]";
+		mes "还不算太晚。";
+		mes "你仍然是守护者。";
+		mes "你还有该做的事。";
 		next;
-		mes "[Nydhogg the Guardian]";
+		mes "[守护者尼德霍格]";
 		mes "...Oh, yes. It's late, but I have to fulfill my duties as a guardian.";
-		mes "Now I know. I'll destroy Morocc with my own hands.";
-		mes "I will fulfill my duties as a guardian.";
+		mes "现在我明白了。我会亲手消灭梦洛克。";
+		mes "我会履行守护者的职责。";
 		next;
-		switch(select("You're not alone.:Those are very important duties.")) {
+		switch(select("你并不孤单。:那是非常重要的职责。")) {
 		case 1:
-			mes "[Nydhogg the Guardian]";
-			mes "You're right.";
-			mes "It may be why I haven't been forsaken - to realize that I'm not alone.";
-			mes "You are a kind soul.";
+			mes "[守护者尼德霍格]";
+			mes "你说得对。";
+			mes "也许这就是我没有被抛弃的原因——让我明白自己并不孤单。";
+			mes "你是个善良的人。";
 			next;
 			break;
 		case 2:
-			mes "[Nydhogg the Guardian]";
-			mes "But this is my atonement.";
-			mes "I'm happy, though.";
-			mes "I don't have to fight the loneliness any more.";
+			mes "[守护者尼德霍格]";
+			mes "但这是我的赎罪。";
+			mes "不过，我很开心。";
+			mes "我再也不用与孤独抗争了。";
 			next;
 			break;
 		}
-		mes "[Nydhogg the Guardian]";
+		mes "[守护者尼德霍格]";
 		mes strcharinfo(0)+"...";
-		mes "Thanks for listening to my long story.";
+		mes "谢谢你听我讲这么长的故事。";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "It's what I always have with me.";
-		mes "I'm sure it will protect you someday.";
+		mes "[守护者尼德霍格]";
+		mes "这是我一直带在身边的东西。";
+		mes "我相信它总有一天会保护你。";
 		next;
-		mes "[Loki]";
-		mes "(Removes his scarf from around his neck and hands it to you.)";
+		mes "[洛奇]";
+		mes "（他从脖子上取下围巾，递给你。）";
 		next;
-		mes "[Nydhogg the Guardian]";
-		mes "May the blessing of Mother Yggdrasil be with you...";
+		mes "[守护者尼德霍格]";
+		mes "愿世界树母亲的祝福与你同在……";
 		set ep14_1_mistwoods,10;
 		completequest 7213;
 		getitem 2568,1; //Muffler_Of_Roki
@@ -918,13 +918,13 @@ mora,48,152,3	script	Sharp Eyed Man	512,{
 		getexp 400000,400000;
 		close;
 	} else {
-		mes "[Loki]";
-		mes "I'll be staying here for a while.";
-		mes "We may meet again.";
+		mes "[洛奇]";
+		mes "我会在这里待一阵子。";
+		mes "我们也许还会再见。";
 		next;
-		mes "[Loki]";
-		mes "The day when Morocc reveals his despicable nature...";
-		mes "I will be waiting for him.";
+		mes "[洛奇]";
+		mes "当梦洛克露出卑劣本性的那一天……";
+		mes "我会等着他。";
 		close;
 	}
 }
@@ -1006,26 +1006,26 @@ OnInstanceInit:
 
 // Warp Portals :: md_mist_in_link
 //============================================================
-bif_fild01,38,374,0	script	Mysterious Flower#ep14_1	844,{
-	mes "It's a giant flower with mysterious energy.";
+bif_fild01,38,374,0	script	神秘之花#ep14_1	844,{
+	mes "那是一朵散发着神秘能量的巨大花朵。";
 	if (countitem(12561)) {
-		mes "It's reacting to the Mysterious Flower Seeds you have with you.";
+		mes "它正对你身上的神秘花种产生反应。";
 		next;
-		switch(select("Observe the reaction.:Stop the reaction.")) {
+		switch(select("观察反应。:停止反应。")) {
 		case 1:
-			mes "The flower started to shake violently";
-			mes "and swing forward as if trying to send the seeds as far away as possible!!!";
+			mes "花朵开始剧烈摇晃";
+			mes "并向前猛烈摆动，仿佛想把种子送到尽可能远的地方！！！";
 			close2;
 			delitem 12561,1; //Mysterious_Seed
 			warp "bif_fild02",160,230;
 			end;
 		case 2:
-			mes "As you hold onto the Mysterious Flower Seeds tightly,";
-			mes "the flower shook violently and then became calm again.";
+			mes "当你紧紧握住神秘花种时，";
+			mes "花朵剧烈摇晃，然后又恢复了平静。";
 			close;
 		}
 	}
-	mes "It looks like it has some special use, but you're not sure what.";
+	mes "它似乎有某种特殊用途，但你不确定是什么。";
 	close;
 }
 

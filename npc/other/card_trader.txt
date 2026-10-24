@@ -17,7 +17,7 @@
 //= 1.4a Misc. [Capuche]
 //============================================================ 
 
-prontera,115,90,0	script	Putty	4_F_01,{
+prontera,115,90,0	script	普提	4_F_01,{
 	disable_items;
 	setarray .@card1[0], 4001,4006,4009,4019,4075,4033,4012,4016,4026,4022,
 				4027,4028,4038,4025,4021,4050,4079,4081,4090,4094,
@@ -61,47 +61,47 @@ prontera,115,90,0	script	Putty	4_F_01,{
 	setarray .@size_card[1],  getarraysize(.@card1), getarraysize(.@card2), getarraysize(.@card3);
 	.@points = oversea_event9;
 	if (!.@points) {
-		mes "[Putty]";
-		mes "Hi there.";
-		mes "I don't know if I can be";
-		mes "of any assistance, but I";
-		mes "am trying to help older veterans";
-		mes "by exchaning the cards that";
-		mes "they are no longer using.";
+		mes "[普提]";
+		mes "你好。";
+		mes "我不知道自己是否";
+		mes "能帮上什么忙，但我";
+		mes "正试着帮助资深的老手";
+		mes "把他们不再使用的";
+		mes "卡片交换掉。";
 		next;
-		switch(select("Ask for more information!","I don't have any cards right now.")) {
+		switch(select("询问更多信息！","I don't have any cards right now.")) {
 		case 1:
-			mes "[Putty]";
-			mes "I am giving 1 point for each card that you bring me.";
-			mes "The points can be used to exchange for items that I have.";
+			mes "[普提]";
+			mes "你每带给我一张卡片，我就给你1点。";
+			mes "这些点数可以用来兑换我持有的物品。";
 			next;
-			mes "[Putty]";
-			mes "For ^CC0000100 points^000000: ^0000CC1 Old Card Album^000000.";
-			mes "For ^CC000050 points^000000: ^0000CC20 Yggdrasil Berry^000000.";
-			mes "For ^CC000020 points^000000: ^0000CC10 Blue Potion^000000.";
-			mes "For ^CC00001 point^000000: ^0000CC4 Honey^000000.";
+			mes "[普提]";
+			mes "用^CC0000100点数^000000可兑换：^0000CC1个老旧卡片册^000000。";
+			mes "用^CC000050点数^000000可兑换：^0000CC20个世界树果实^000000。";
+			mes "用^CC000020点数^000000可兑换：^0000CC10瓶蓝色药水^000000。";
+			mes "用^CC00001点数^000000可兑换：^0000CC4个蜂蜜^000000。";
 			next;
 			break;
 		case 2:
-			mes "[Putty]";
-			mes "Well, remember this offer!";
+			mes "[普提]";
+			mes "那么，请记住这个交易！";
 			close;
 		}
 	} else {
-		mes "[Putty]";
-		mes "Welcome back!";
-		mes "I see you already have some";
-		mes "trading points. Actually, you currently have ^00cc00" + .@points + "^000000.";
+		mes "[普提]";
+		mes "欢迎回来！";
+		mes "我看你已经有了一些";
+		mes "交易点数。实际上，你现在拥有^00cc00" + .@points + "^000000。";
 		next;
-		mes "[Putty]";
-		mes "Would you like to exchange these";
-		mes "points now, or you would like to exchange more cards?";
+		mes "[普提]";
+		mes "你想现在兑换这些";
+		mes "点数，还是想再交换一些卡片？";
 		next;
 	}
-	switch(select("I would like to exchange cards.","Can I exchange the points?")) {
+	switch(select("我想交换卡片。","我可以兑换点数吗？")) {
 	case 1:
-		mes "[Putty]";
-		mes "Please tell me what card you want to exchange.";
+		mes "[普提]";
+		mes "请告诉我你想交换哪张卡片。";
 		next;
 		input .@i$;
 		.@input$ = "_"+.@i$;
@@ -116,83 +116,83 @@ prontera,115,90,0	script	Putty	4_F_01,{
 			if (.@card) break;
 		}
 		freeloop(0);
-		mes "[Putty]";
-		if (!.@card) mes "Please, come back here if you want to exchange a monster card.";
+		mes "[普提]";
+		if (!.@card) mes "如果你想交换怪物卡片，请再回到这里找我。";
 		else {
 			.@count = countitem(.@card);
 			if (!.@count) {
-				mes "You don't have any ^0055FF"+callfunc("F_GetPlural",getitemname(.@card))+"^000000 with you!";
+				mes "你身上没有^0055FF"+callfunc("F_GetPlural",getitemname(.@card))+"^000000 with you!";
 				close;
 			}
-			mes "You've got ^0055FF"+callfunc("F_InsertPlural",.@count,getitemname(.@card))+"^000000.";
+			mes "你获得了^0055FF"+callfunc("F_InsertPlural",.@count,getitemname(.@card))+"^000000.";
 			mes " ";
-			mes "Would you like to exchange 1 point for each of them?";
+			mes "你想把它们的每一张都换成1点吗？";
 			next;
-			switch(select("Yes, please!","No, thank you.")) {
+			switch(select("好的，麻烦了！","不用了，谢谢。")) {
 				case 1:
 					delitem .@card,.@count;
 					oversea_event9 = (.@points+.@count);
-					mes "[Putty]";
-					mes "Alright, you have received ^CC0000"+.@count+"^000000 points.";
+					mes "[普提]";
+					mes "好的，你获得了^CC0000"+.@count+"^000000点数。";
 					break;
 				case 2:
-					mes "[Putty]";
-					mes "Okay, let me know if I can help you with something else.";
+					mes "[普提]";
+					mes "好，如果还需要别的帮助，请告诉我。";
 					break;
 			}
 		}
 		close;
 	case 2:
 		if (.@points) {
-			mes "[Putty]";
-			mes "These are the items that I have.";
+			mes "[普提]";
+			mes "这些是我持有的物品。";
 			next;
-			switch(select("1 Old Card Album - 50 Points","20 Yggdrasil Berry - 50 Points","10 Blue Potion - 20 Points","4 Honey - 1 Point","^777777Nerver mind.^000000")) {
+			switch(select("1个老旧卡片册 - 50点","20个世界树果实 - 50点","10瓶蓝色药水 - 20点","4个蜂蜜 - 1点","^777777算了。^000000")) {
 				case 1:
 					if (.@points < 100) break;
-					mes "[Putty]";
-					mes "Great, I wish you the best";
-					mes "of luck with this album. I have a";
-					mes "very good feeling about this one!";
+					mes "[普提]";
+					mes "很好，祝你这本";
+					mes "卡片册开得好运。我有";
+					mes "很好的预感！";
 					oversea_event9 = .@points - 100;
 					getitem 616,1;
 					close;
 				case 2:
 					if (.@points < 50) break;
-					mes "[Putty]";
-					mes "Oh, you must like adventures.";
-					mes "Here you go, just what you need!";
+					mes "[普提]";
+					mes "哦，你一定喜欢冒险。";
+					mes "给你，正是你需要的东西！";
 					oversea_event9 = .@points - 50;
 					getitem 607,20;
 					close;
 				case 3:
 					if (.@points < 20) break;
-					mes "[Putty]";
-					mes "Blue Potions? Are you sure?";
-					mes "If that's what you want, here they are!";
+					mes "[普提]";
+					mes "蓝色药水？你确定吗？";
+					mes "既然你想要，那就拿去吧！";
 					oversea_event9 = .@points - 20;
 					getitem 505,10;
 					close;
 				case 4:
 					if (.@points < 1) break;
-					mes "[Putty]";
-					mes "It took many bees";
-					mes "to make all of this.";
-					mes "Make good use of it.";
+					mes "[普提]";
+					mes "用了很多蜜蜂";
+					mes "才做出这些。";
+					mes "好好利用吧。";
 					oversea_event9 = .@points - 1;
 					getitem 518,4;
 					close;
 				case 5:
-					mes "[Putty]";
-					mes "Alright, come back when you have more points.";
+					mes "[普提]";
+					mes "好的，等你有更多点数再来吧。";
 					close;
 				}
-			mes "[Putty]";
-			mes "Sorry, but you don't have enough points.";
+			mes "[普提]";
+			mes "抱歉，你的点数不够。";
 			close;
 		} else {
-			mes "[Putty]";
-			mes "You have 0 points. You need at least 1 point to exchange.";
+			mes "[普提]";
+			mes "你有0点数。至少需要1点才能兑换。";
 			close;
 		}
 	}

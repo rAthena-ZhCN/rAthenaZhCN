@@ -15,23 +15,23 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
-	mes "[Amachang]";
-	mes "Welcome to ^8B4513Amatsu^000000,";
-	mes "the town of kind towners";
-	mes "and beautiful cherry blossoms.";
+amatsu,202,91,3	script	天津向导#amatsu	758,{
+	mes "[阿玛昌]";
+	mes "欢迎来到^8B4513天津^000000，";
+	mes "这座居民友善的小镇";
+	mes "还有美丽的樱花。";
 	next;
-	mes "[Amachang]";
-	mes "I'm Amachang,";
-	mes "the 13th Miss Amatsu.";
-	mes "I will guide you about town";
-	mes "as Miss Amatsu.";
-	mes "Please tell me";
-	mes "if you want to know something.";
+	mes "[阿玛昌]";
+	mes "我是阿玛昌，";
+	mes "第十三任天津小姐。";
+	mes "我会带你游览小镇";
+	mes "以天津小姐的身份。";
+	mes "请告诉我";
+	mes "你想了解什么。";
 	F_Navi("[Amachang]");
 	while (1) {
 		next;
-		switch(select("[ Kafra Employee ]:[ Bar ]:[ Weapon Dealer ]:[ Tool Dealer ]:[ Amatsu Palace ]:[ Chef Assistant ]:[ Ninja Guild Building ]:[ Sea Captain ]:Remove Marks from Mini-Map:Cancel")) {
+		switch(select("[ 卡普拉职员 ]:[ 酒吧 ]:[ 武器商人 ]:[ 道具商人 ]:[ 天津宫殿 ]:[ 厨师助手 ]:[ 忍者公会建筑 ]:[ 船长 ]:清除小地图标记:取消")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,102,149,0,0x0A82FF;
@@ -65,9 +65,9 @@ amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
 			viewpoint 1,195,79,7,0x00BFFF;
 			break;
 		case 9:
-			mes "[Amachang]";
-			mes "I'll remove all marks from your mini-map.";
-			mes "Is there anything else I can do for you?";
+			mes "[阿玛昌]";
+			mes "我会清除你小地图上的所有标记。";
+			mes "还有什么需要我帮忙的吗？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -78,16 +78,16 @@ amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 10:
-			mes "[Amachang]";
-			mes "Enjoy your trip~!!";
+			mes "[阿玛昌]";
+			mes "祝你旅途愉快～！！";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Amachang]";
-	mes "The "+getarg(0)+" is";
-	mes "marked on your mini-map.";
-	mes "Is there anything else I can do for you?";
+	mes "[阿玛昌]";
+	mes "该"+getarg(0)+"已";
+	mes "标记在你的小地图上。";
+	mes "还有什么需要我帮忙的吗？";
 	return;
 }

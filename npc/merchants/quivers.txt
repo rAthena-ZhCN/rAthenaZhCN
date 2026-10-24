@@ -24,33 +24,33 @@
 //=     Removed "Holy Arrows" from the list.
 //============================================================
 
-payon_in01,5,134,5	script	Inventor Jaax	89,{
+payon_in01,5,134,5	script	发明家贾克斯	89,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "[Inventor Jaax]";
-		mes "Hey, you're carrying";
-		mes "way too much stuff. Why don't you stash it away in Kafra Storage? We can talk after you do that, right?";
+		mes "[发明家贾克斯]";
+		mes "喂，你带的东西";
+		mes "也太多了吧。怎么不先存进卡普拉仓库？存好之后我们再谈，好吗？";
 		close;
 	}
-	mes "[Inventor Jaax]";
-	mes "My name is Jaax.";
-	mes "Without ego, I can";
-	mes "say that I am perhaps the";
-	mes "^663300greatest inventor of our time^000000.";
+	mes "[发明家贾克斯]";
+	mes "我叫贾克斯。";
+	mes "可以毫不自夸地说，";
+	mes "我或许是这个时代";
+	mes "^663300最伟大的发明家^000000。";
 	next;
-	mes "[Inventor Jaax]";
-	mes "This time, I've";
-	mes "created something";
-	mes "truly extraordinary. I call them... ^663300Magic Quivers^000000 !! This will be remembered in history as an";
-	mes "arrow revolution!";
+	mes "[发明家贾克斯]";
+	mes "这一次，我";
+	mes "创造出了";
+	mes "真正非凡的东西。我称之为……^663300魔法箭矢筒^000000！！这将被载入史册，成为一场";
+	mes "箭矢革命！";
 	emotion ET_BEST;
 	next;
-	mes "[Inventor Jaax]";
-	mes "I've studied magic and quivers for years, working night and day until I finally figured how to condense arrows with magic! With magic quivers, you'll be carrying more arrows, but with less weight!";
+	mes "[发明家贾克斯]";
+	mes "多年来我一直在研究魔法与箭矢筒，日夜不停，直到终于弄明白如何用魔法压缩箭矢！有了魔法箭矢筒，你就能携带更多箭矢，而重量更轻！";
 	next;
-	mes "[Inventor Jaax]";
-	mes "Would you like to try using one of my arrow quivers? I have no doubt that someone like you can appreciate my genius!";
+	mes "[发明家贾克斯]";
+	mes "要不要试用一下我的箭矢筒？我相信像你这样的人，一定能欣赏我的天才之处！";
 	next;
-	switch(select("Quiver:Iron Arrow Quiver:Steel Arrow Quiver:Oridecon Arrow Quiver:Fire Arrow Quiver:Silver Arrow Quiver:Wind Arrow Quiver:Stone Arrow Quiver:Crystal Arrow Quiver:Shadow Arrow Quiver:Immaterial Arrow Quiver:Rusty Arrow Quiver")) {
+	switch(select("箭矢筒:铁箭矢筒:钢铁箭矢筒:神之金属箭矢筒:火箭矢筒:银箭矢筒:风灵箭矢筒:地灵箭矢筒:水灵箭矢筒:影子箭矢筒:无形箭矢筒:铁锈箭矢筒")) {
 	case 1: callsub S_BuyQuiver,1750,500,500,12004;
 	case 2: callsub S_BuyQuiver,1770,500,500,12005;
 	case 3: callsub S_BuyQuiver,1753,500,500,12006;
@@ -76,100 +76,100 @@ S_BuyQuiver:
 	.@zeny_req = getarg(2);
 
 	if (countitem(.@item_id) >= .@amount) {
-		mes "[Inventor Jaax]";
-		mes "Excellent!";
-		mes "Are you carrying any Arrows with you? I'll provide you with a quiver that can carry "+ .@amount +" of your "+ getitemname(.@item_id) +"s for only ^FF3131"+ .@zeny_req +" Zeny^000000.";
+		mes "[发明家贾克斯]";
+		mes "太好了！";
+		mes "你身上带着箭矢吗？我可以给你一个能装下"+ .@amount +"支"+ getitemname(.@item_id) +"，只需 ^FF3131"+ .@zeny_req +" Zeny^000000.";
 		next;
-		switch(select("Store as many Arrows in quivers as possible:Purchase 1 quiver:Cancel")) {
+		switch(select("尽可能多装箭矢:购买1个箭矢筒:取消")) {
 		case 1:
 			.@arrows = countitem(.@item_id);
 			set .@quiver,.@arrows / .@amount;
 			set .@arrows_used,.@quiver * .@amount;
 			.@arrow_zeny01 = .@quiver * .@zeny_req;
-			mes "Number of";
-			mes "Arrows: ^3131FF"+.@arrows+" ^000000";
-			mes "Maximum Number";
-			mes "of Purchasable";
-			mes "Quivers: ^3131FF"+.@quiver+" ^000000";
-			mes "Zeny required: ^3131FF"+.@arrow_zeny01+" Zeny^000000";
+			mes "持有的";
+			mes "箭矢：^3131FF"+.@arrows+"^000000";
+			mes "最多可购买";
+			mes "的箭矢筒";
+			mes "数量：^3131FF"+.@quiver+"^000000";
+			mes "所需 Zeny：^3131FF"+.@arrow_zeny01+"Zeny^000000";
 			next;
-			mes "[Inventor Jaax]";
-			mes "Would you like to";
-			mes "buy as many Quivers";
-			mes "as you can for the Arrows";
-			mes "you are currently carrying?";
+			mes "[发明家贾克斯]";
+			mes "您想搭乘";
+			mes "你想";
+			mes "用你身上现有的箭矢";
+			mes "尽可能多地购买箭矢筒吗？";
 			next;
-			if (select("Yes:Cancel") == 1) {
+			if (select("是:取消") == 1) {
 				if (.@arrow_zeny01 < Zeny) {
-					mes "[Inventor Jaax]";
-					mes "There you go!";
-					mes "Just remember, ^FF0000you won't be able to use the Quiver when your carried weight is 90% of your maximum weight limit^000000.";
+					mes "[发明家贾克斯]";
+					mes "给你！";
+					mes "记住，^FF0000当你的负重达到最大负重的90%时，将无法使用箭矢筒^000000。";
 					set Zeny, Zeny-.@arrow_zeny01;
 					delitem .@item_id,.@arrows_used;// Arrow
 					getitem getarg(3),.@quiver; //Quiver
 					next;
-					mes "[Inventor Jaax]";
+					mes "[发明家贾克斯]";
 					mes "So...";
-					mes "Just keep track";
-					mes "of how much you're";
-					mes "carrying from time";
-					mes "to time and you should";
-					mes "be alright.";
+					mes "只要随时";
+					mes "留意自己";
+					mes "身上携带的重量，";
+					mes "应该就";
+					mes "不会有事了。";
 					close;
 				}
 				else {
-					mes "[Inventor Jaax]";
-					mes "I'm sorry, but you don't have enough Zeny. I can't just give these away after working years";
-					mes "to develop this revolutionary technology!";
+					mes "[发明家贾克斯]";
+					mes "抱歉，你的 Zeny 不足。我花了多年心血";
+					mes "才开发出这项革命性技术，总不能白送给你！";
 					close;
 				}
 			}
-			mes "[Inventor Jaax]";
-			mes "You changed your mind?";
-			mes "When the glory of owning";
-			mes "a quiver is so close?";
+			mes "[发明家贾克斯]";
+			mes "你改变主意了？";
+			mes "拥有箭矢筒的荣耀";
+			mes "就近在眼前？";
 			close;
 		case 2:
 			if (Zeny > .@zeny_req) {
-				mes "[Inventor Jaax]";
-				mes "There you go!";
-				mes "Just remember, ^FF0000you won't be able to use the Quiver when your carried weight is 90% of your maximum weight limit^000000.";
+				mes "[发明家贾克斯]";
+				mes "给你！";
+				mes "记住，^FF0000当你的负重达到最大负重的90%时，将无法使用箭矢筒^000000。";
 				Zeny = Zeny -.@zeny_req;
 				delitem .@item_id,.@amount;// Arrow
 				getitem getarg(3),1; //Quiver
 				next;
-				mes "[Inventor Jaax]";
+				mes "[发明家贾克斯]";
 				mes "So...";
-				mes "Just keep track";
-				mes "of how much you're";
-				mes "carrying from time";
-				mes "to time and you should";
-				mes "be alright.";
+				mes "只要随时";
+				mes "留意自己";
+				mes "身上携带的重量，";
+				mes "应该就";
+				mes "不会有事了。";
 				close;
 			}
 			else {
-				mes "[Inventor Jaax]";
-				mes "You don't even";
-				mes "have "+ .@zeny_req +" Zeny?";
-				mes "I'm so sorry. I had no";
-				mes "idea that you were so...";
-				mes "^333333Destitute^000000.";
+				mes "[发明家贾克斯]";
+				mes "你竟然";
+				mes "连"+ .@zeny_req +"Zeny 都没有吗？";
+				mes "真是太抱歉了。我完全没";
+				mes "想到你竟然这么……";
+				mes "^333333穷困潦倒^000000。";
 				close;
 			}
 		case 3:
-			mes "[Inventor Jaax]";
-			mes "What...?";
-			mes "Do you not see that this invention can forever change the way Arrows are carried?! The future is now!";
+			mes "[发明家贾克斯]";
+			mes "什么……？";
+			mes "你难道看不出这项发明能永远改变箭矢的携带方式吗？！未来已至！";
 			close;
 		}
 	}
 	else {
-		mes "[Inventor Jaax]";
-		mes "You can carry a maximum of "+ .@amount +" Arrows within this quiver. It was made using my secret method,";
-		mes "so the total weight of the Arrows and Quiver is less than carrying the Arrows alone.";
+		mes "[发明家贾克斯]";
+		mes "这个箭矢筒最多能装下"+ .@amount +"支箭矢。它用我的秘密方法制成，";
+		mes "所以箭矢和箭矢筒的总重量比单独携带箭矢更轻。";
 		next;
-		mes "[Inventor Jaax]";
-		mes "It's a miracle of science! One that you can experience for yourself if you bring me at least "+ .@amount +" Arrows and "+ .@zeny_req +" Zeny for each Quiver.";
+		mes "[发明家贾克斯]";
+		mes "这是科学的奇迹！只要你带至少"+ .@amount +" Arrows and "+ .@zeny_req +" Zeny for each Quiver.";
 		close;
 	}
 }

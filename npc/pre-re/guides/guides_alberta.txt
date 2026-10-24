@@ -21,91 +21,91 @@
 //	-Thanks to $ephiroth.
 //============================================================
 
-alberta,23,238,4	script	Guide#alb::AlbGuide	105,{
+alberta,23,238,4	script	向导#alb::AlbGuide	105,{
 	cutin "prt_soldier",2;
-	mes "[Alberta Guide]";
-	mes "Welcome to Alberta,";
-	mes "the Port City. Feel free";
-	mes "to ask me if you're having";
-	mes "trouble finding anything in";
-	mes "town, or if you just need";
-	mes "guidance around the city.";
+	mes "[阿尔贝塔向导]";
+	mes "欢迎来到阿尔贝塔，";
+	mes "这座港口城市。如果你";
+	mes "在城里找东西遇到困难，";
+	mes "或者只是需要有人";
+	mes "为你指路，都尽管";
+	mes "来问我。";
 	set .@loop1,1;
 	while (.@loop1) {
 		next;
-		switch(select("City Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		switch(select("城市向导:清除小地图标记:公告:取消")) {
 		case 1:
-			mes "[Alberta Guide]";
-			mes "Please select";
-			mes "a location from";
-			mes "the following menu.";
+			mes "[阿尔贝塔向导]";
+			mes "请从下列";
+			mes "菜单中选择";
+			mes "一个地点。";
 			if (.@compass_check == 0) {
-				mes "Would you like me";
-				mes "to mark locations";
-				mes "on your Mini-Map?";
+				mes "要我把地点";
+				mes "在小地图上";
+				mes "标记出来吗？";
 				next;
-				if (select("Yes:No") == 1) set .@compass_check,1;
+				if (select("是:否") == 1) set .@compass_check,1;
 			}
 			set .@loop2,1;
 			while (.@loop2) {
 				if (.@wait_button_chk == 0) set .@wait_button_chk,1;
 				else next;
 				
-				switch(select("^FF0000Merchant Guild^000000:Weapon Shop:Tool Shop:Inn:Forge:Cancel")) {
+				switch(select("^FF0000商人公会^000000:武器店:道具店:旅馆:铁匠铺:取消")) {
 				case 1:
-					mes "[Alberta Guide]";
-					mes "The Merchant Guild";
-					mes "handles Job Changes";
-					mes "to the Merchant Class,";
-					mes "and is located in the";
-					mes "southwest corner";
-					mes "of Alberta.";
+					mes "[阿尔贝塔向导]";
+					mes "商人公会";
+					mes "负责转职为";
+					mes "商人，";
+					mes "它坐落在";
+					mes "阿尔贝塔的";
+					mes "西南角。";
 					if (.@compass_check)
 						viewpoint 1,33,41,2,0xFF0000;
 					break;
 				case 2:
-					mes "[Alberta Guide]";
-					mes "The Weapon Shop";
-					mes "can be found in the";
-					mes "southern end of Alberta.";
+					mes "[阿尔贝塔向导]";
+					mes "武器店";
+					mes "位于阿尔贝塔";
+					mes "南端。";
 					if (.@compass_check)
 						viewpoint 1,117,37,3,0xFF00FF;
 					break;
 				case 3:
-					mes "[Alberta Guide]";
-					mes "The Tool Shop";
-					mes "is kind of close";
-					mes "to the center of";
-					mes "Alberta. It shouldn't";
-					mes "be too hard to find.";
+					mes "[阿尔贝塔向导]";
+					mes "道具店";
+					mes "离城中心";
+					mes "比较近，";
+					mes "应该不难";
+					mes "找到。";
 					if (.@compass_check)
 						viewpoint 1,98,154,4,0xFF00FF;
 					break;
 				case 4:
-					mes "[Alberta Guide]";
-					mes "There's an Inn";
-					mes "at the northern";
-					mes "end of Alberta";
-					mes "where you can rest.";
+					mes "[阿尔贝塔向导]";
+					mes "城北有一家";
+					mes "旅馆，就在阿尔贝塔";
+					mes "的最北端，";
+					mes "可以好好休息。";
 					if (.@compass_check)
 						viewpoint 1,65,233,5,0xFF00FF;
 					break;
 				case 5:
-					mes "[Alberta Guide]";
-					mes "The Forge in Alberta";
-					mes "is in the same building";
-					mes "as the Merchant Guild.";
-					mes "It's to the southwest.";
+					mes "[阿尔贝塔向导]";
+					mes "阿尔贝塔的铁匠铺";
+					mes "和商人公会";
+					mes "在同一栋建筑里。";
+					mes "就在西南方向。";
 					if (.@compass_check)
 						viewpoint 1,35,41,6,0xFF00FF;
 					break;
 				case 6:
-					mes "[Alberta Guide]";
-					mes "Please ask me to ''Remove";
-					mes "Marks from Mini-Map'' if you";
-					mes "no longer wish to have the";
-					mes "location marks displayed";
-					mes "on your Mini-Map.";
+					mes "[阿尔贝塔向导]";
+					mes "请对我说''清除";
+					mes "小地图标记''，如果你";
+					mes "不再希望";
+					mes "小地图上显示";
+					mes "地点标记。";
 					set .@loop2,0;
 				}
 			}
@@ -119,35 +119,35 @@ alberta,23,238,4	script	Guide#alb::AlbGuide	105,{
 			set .@compass_check,0;
 			break;
 		case 3:
-			mes "[Alberta Guide]";
-			mes "Advances in sorcery and";
-			mes "technology have allowed";
-			mes "us to update our information";
-			mes "system, enabling up to mark";
-			mes "locations on your Mini-Map";
-			mes "for easier navigation.";
+			mes "[阿尔贝塔向导]";
+			mes "魔法与科技的";
+			mes "进步，让我们";
+			mes "得以更新信息系统，";
+			mes "最多可在小地图上";
+			mes "标记地点，";
+			mes "方便导航。";
 			next;
-			mes "[Alberta Guide]";
-			mes "Your Mini-Map is located";
-			mes "in the upper right corner";
-			mes "of the screen. If you can't";
-			mes "see it, press the Ctrl + Tab";
-			mes "keys or click the ''Map'' button in your Basic Info Window.";
+			mes "[阿尔贝塔向导]";
+			mes "你的小地图位于";
+			mes "屏幕的右上角。";
+			mes "如果看不到它，";
+			mes "请按 Ctrl + Tab";
+			mes "键，或点击基本状态窗口中的''地图''按钮。";
 			next;
-			mes "[Alberta Guide]";
-			mes "On your Mini-Map,";
-			mes "click on the ''+'' and ''-''";
-			mes "symbols to zoom in and";
-			mes "our of your Mini-Map. We";
-			mes "hope you enjoy your travels";
-			mes "here in the city of Alberta.";
+			mes "[阿尔贝塔向导]";
+			mes "在小地图上，";
+			mes "点击''+''和''-''";
+			mes "符号即可放大和";
+			mes "缩小地图。我们";
+			mes "祝愿你旅途愉快，";
+			mes "在阿尔贝塔城。";
 			break;
 		case 4:
-			mes "[Alberta Guide]";
-			mes "Be safe when you";
-			mes "travel and don't hesitate";
-			mes "to ask me if you have any";
-			mes "questions about Alberta.";
+			mes "[阿尔贝塔向导]";
+			mes "旅途请";
+			mes "注意安全，如有";
+			mes "关于阿尔贝塔的";
+			mes "问题，尽管问我。";
 			close2;
 			set .@loop1,0;
 		}

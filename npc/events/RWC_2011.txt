@@ -14,155 +14,155 @@
 //= 1.0 First Version. [Euphy]
 //============================================================ 
 
-prontera,114,81,5	script	RWC2011 Agent#2	407,{
+prontera,114,81,5	script	RWC2011专员#2	407,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 500) {
-		mes "[New Agent]";
-		mes "You have too many items. Please make room in your inventory and come back.";
+		mes "[新人专员]";
+		mes "你身上的物品太多了。请整理好背包后再来。";
 		close;
 	}
 	if (oversea_event == 0) {
-		mes "[New Agent]";
-		mes "Wow~ Finally!! It's the season we've all been waiting for!";
+		mes "[新人专员]";
+		mes "哇~ 终于！！这是我们期盼已久的季节！";
 		emotion ET_BIGTHROB;
 		next;
-		mes "[New Agent]";
-		mes "It's RWC time!";
+		mes "[新人专员]";
+		mes "RWC 的时刻到了！";
 		next;
 		set .@loop,1;
 		while(.@loop) {
-			switch(select("What is RWC?:Are you a New Agent?:I don't care.")) {
+			switch(select("什么是 RWC？:你是新人专员吗？:我不在乎。")) {
 			case 1:
-				mes "[New Agent]";
+				mes "[新人专员]";
 				if (BaseLevel < 70)
-					mes "You must be a new adventurer. I will kindly explain it to you.";
+					mes "你一定是位新冒险者吧。我就好心地为你说明一下。";
 				else
-					mes "It seems you've traveled quite enough but you're not good with hearing the news around the world.";
+					mes "看来你走过了不少地方，却不太擅长打听各地的消息呢。";
 				next;
-				mes "[New Agent]";
-				mes "There are few adventurers in Midgard whose lives are dedicated to battle, who never skip their training, live in seclusion, and are experts in their art.";
+				mes "[新人专员]";
+				mes "在米德加尔特，很少有冒险者把一生献给战斗，从不懈怠修行、隐居苦练，并成为技艺的专家。";
 				next;
-				mes "[New Agent]";
-				mes "The RWC is the festival where those adventurers can compete with each other and find out who is the best!";
+				mes "[新人专员]";
+				mes "RWC 就是让这些冒险者彼此较量、决出谁最强的庆典！";
 				next;
-				mes "[New Agent]";
-				mes "But this cannot be achieved all alone. Your friends will have a huge role in the competition.";
+				mes "[新人专员]";
+				mes "但这不是单凭一人就能做到的。在比赛中，你的朋友将起到极大的作用。";
 				next;
-				mes "[New Agent]";
-				mes "If you're interested in this festival, start looking for friends you can trust!";
+				mes "[新人专员]";
+				mes "如果你对这个庆典感兴趣，就去找值得信赖的朋友吧！";
 				next;
 				break;
 			case 2:
-				mes "[New Agent]";
-				mes "Many events are organized for RWC promotion every year.";
+				mes "[新人专员]";
+				mes "每年都会举办许多活动来宣传 RWC。";
 				next;
-				mes "[New Agent]";
-				mes "And this year, a special mission has been entrusted to a new agent... myself!";
+				mes "[新人专员]";
+				mes "而今年，有一项特别任务交给了一位新人专员……那就是我！";
 				next;
-				mes "[New Agent]";
-				mes "I am supposed to attach blue cards with the letters RWC2011 all over the world to promote the event. But... but...";
+				mes "[新人专员]";
+				mes "我本该在世界各地贴上写着 RWC2011 的蓝色卡片来宣传活动。可是……可是……";
 				next;
-				mes "- He thought of something and then looked at your eyes. -";
+				mes "- 他像是想到了什么，然后望向了你的眼睛。-";
 				next;
-				mes "[New Agent]";
-				mes "Would you like to listen to my story?";
+				mes "[新人专员]";
+				mes "你愿意听听我的故事吗？";
 				next;
-				if(select("Sure, let me hear it.:No, thank you.") == 2) {
-					mes "[New Agent]";
-					mes "Arrgg!! Are you ignoring me because I'm new? Usually people listen...";
+				if(select("好，说来听听。:不必了，谢谢。") == 2) {
+					mes "[新人专员]";
+					mes "呃啊！！你是因为我是新人就无视我吗？平常大家都会听的……";
 					next;
-					mes "- New Agent is looking at you with pitiable eyes. -";
+					mes "- 新人专员用可怜巴巴的眼神看着你。-";
 					next;
-					mes "- His brimming small eyes seem to tell you something. ^FF0000Please talk to me again...^000000 -";
+					mes "- 他泛起泪光的小眼睛似乎在诉说什么。^FF0000请再和我说话吧……^000000 -";
 					close;
 				}
 				set .@loop,0;
 				break;
 			case 3:
-				mes "[New Agent]";
-				mes "This is my first mission but people's reaction is not good.";
+				mes "[新人专员]";
+				mes "这是我的第一个任务，可大家的反应却不太好。";
 				next;
-				mes "- New Agent is looking at you with pitiable eyes. -";
+				mes "- 新人专员用可怜巴巴的眼神看着你。-";
 				next;
-				mes "- His twinkling small eyes seem to tell you something. ^FF0000Please talk to me again...^000000 -";
+				mes "- 他闪着光的小眼睛似乎在诉说什么。^FF0000请再和我说话吧……^000000 -";
 				close;
 			}
 		}
-		mes "[New Agent]";
-		mes "I used to be a very normal boy in Morocc.";
-		mes "I am not an adventurer and I don't even know how to buy/sell things. Sometimes I'm just very happy to see adventurers. You know... I am just an ordinary boy.";
+		mes "[新人专员]";
+		mes "我以前是梦罗克一个很普通的男孩。";
+		mes "我不是冒险者，连买卖东西都不太会。有时光是看到冒险者就会很开心。你知道的……我只是个平凡的男孩。";
 		next;
-		mes "[New Agent]";
-		mes "People used to tell me that since I was very shy.";
-		mes "I would spend my life in a suburb.";
+		mes "[新人专员]";
+		mes "人们以前常对我说，因为我太害羞了，";
+		mes "我大概会在郊外度过一生。";
 		next;
-		mes "[New Agent]";
-		mes "But eventually, my patience and restrained personality motivated me to become an agent for RWC2011!";
-		mes "I was so happy that I couldn't sleep! I would finally have a chance to meet lots of adventurers and get to know them.";
+		mes "[新人专员]";
+		mes "但到最后，我的耐心和克制的性格促使我成为了 RWC2011 的专员！";
+		mes "我高兴得睡不着觉！我终于有机会见到许多冒险者，并与他们相识了。";
 		next;
-		mes "[New Agent]";
-		mes "This mission was so important to me,";
-		mes "I was afraid of being attacked by monsters when attaching the blue cards for RWC2011 in the streets.";
+		mes "[新人专员]";
+		mes "这个任务对我如此重要，";
+		mes "我很怕在街头张贴 RWC2011 蓝色卡片时被怪物袭击。";
 		next;
-		mes "[New Agent]";
+		mes "[新人专员]";
 		mes "......";
 		next;
-		mes "[New Agent]";
-		mes "And you know what?";
-		mes "^FF0000It really happened!^000000";
+		mes "[新人专员]";
+		mes "然后你猜怎么样？";
+		mes "^FF0000它真的发生了！^000000";
 		next;
-		select("Are you serious!?");
-		mes "[New Agent]";
-		mes "I had turned off the light and was trying to get some sleep, then I saw this bright light through the window.";
-		mes "Suddenly, the window was broken and it appeared!";
+		select("你说真的！？");
+		mes "[新人专员]";
+		mes "我关了灯正想睡一会儿，然后透过窗户看到了那道亮光。";
+		mes "突然，窗户被打破，它出现了！";
 		next;
-		select("It?");
-		mes "[New Agent]";
-		mes "It was a shining poring! And it ate all blue cards I had prepared in less than a second!";
+		select("它？");
+		mes "[新人专员]";
+		mes "是一只发光的波利！它不到一秒就吃光了我准备好的所有蓝色卡片！";
 		next;
-		mes "[New Agent]";
-		mes "I was so shocked, I tried to calm down and think... I had neither heard about nor seen any shining poring!";
+		mes "[新人专员]";
+		mes "我吓坏了，努力冷静下来思考……我从没听说过，也没见过什么发光的波利！";
 		next;
-		mes "[New Agent]";
-		mes "^FF0000Yes! It must be a dream!^000000 That's the conclusion I came up with and went back to sleep.";
+		mes "[新人专员]";
+		mes "^FF0000对了！那一定是个梦！^000000 我得出这个结论，就又回去睡了。";
 		next;
-		mes "[New Agent]";
-		mes "But it wasn't a dream. When I woke up, I realized all the blue cards were gone...";
+		mes "[新人专员]";
+		mes "但那不是梦。我醒来后才发现，所有蓝色卡片都不见了……";
 		next;
-		mes "[New Agent]";
-		mes "If I ruin this promotion, I might lose the job and have to go back to where I used to live alone...";
+		mes "[新人专员]";
+		mes "如果我把这次宣传搞砸了，可能会丢掉工作，还得回到从前独自生活的地方……";
 		next;
-		mes "[New Agent]";
-		mes "If you see the Golden Poring, could you please find the precious blue cards for me?";
+		mes "[新人专员]";
+		mes "如果你见到黄金波利，能不能帮我找回那些珍贵的蓝色卡片？";
 		next;
 		emotion ET_CRY;
-		mes "- He looks at you with imploring eyes. -";
+		mes "- 他用恳求的眼神看着你。-";
 		next;
-		if(select("Ok, I will help you!:How much money can you offer me?") == 2) {
-			mes "[New Agent]";
-			mes "Have you decided to help me? Well, I will prepare some gifts. I'm sure you'll like them.";
+		if(select("好，我帮你！:你能给我多少钱？") == 2) {
+			mes "[新人专员]";
+			mes "你决定帮我了吗？那么，我会准备一些礼物。我保证你会喜欢的。";
 			next;
 		}
-		mes "[New Agent]";
-		mes "What you are looking for are large cards with the letters ^FF0000RWC2011^000000. Some of them might already be digested though.";
+		mes "[新人专员]";
+		mes "你要找的是写着 ^FF0000RWC2011^000000 的大卡片。不过有些可能已经被消化掉了。";
 		next;
-		mes "[New Agent]";
-		mes "Try to gather remaining cards until you make the word, 'RWC2011'.";
+		mes "[新人专员]";
+		mes "请尽量收集剩余的卡片，凑出“RWC2011”这个词。";
 		next;
-		mes "[New Agent]";
-		mes "Please help me out!! My life is in your hands!";
+		mes "[新人专员]";
+		mes "请帮帮我！！我的命运就握在你手里了！";
 		set oversea_event,1;
 		setquest 13000;
 		close;
 	} else if (oversea_event == 1) {
 		if (countitem(6485) && countitem(6486) && countitem(6487) > 1 && countitem(7602) && countitem(7470) && countitem(6012)) {
-			mes "[RWC2011 Agent]";
-			mes "Have you gathered all the cards?";
+			mes "[RWC2011专员]";
+			mes "卡片都收集齐了吗？";
 			next;
-			mes "[RWC2011 Agent]";
-			mes "Wow~ You bring light in my life again!";
+			mes "[RWC2011专员]";
+			mes "哇~ 你又为我的人生带来了光明！";
 			next;
-			mes "[RWC2011 Agent]";
-			mes "Here are the gifts I promised... Let's see...";
+			mes "[RWC2011专员]";
+			mes "这是我答应过的礼物……我看看……";
 			next;
 			delitem 6485,1; //BlueCard_2
 			delitem 6486,1; //BlueCard_0
@@ -189,63 +189,63 @@ prontera,114,81,5	script	RWC2011 Agent#2	407,{
 				getitem 12696,5; //RWC_Cele_Fire
 				getitem 12697,5; //RWC_Cele_Fire2
 	 		}
-	 		mes "[RWC2011 Agent]";
-	 		mes "It's not much but please keep it! Haha, we still have lots of cards to be found. I hope you can help me tomorrow as well.";
+	 		mes "[RWC2011专员]";
+	 		mes "东西不多，请收下吧！哈哈，我们还有很多卡片要找。希望你明天也能来帮我。";
 	 		next;
-	 		mes "[RWC2011 Agent]";
-	 		mes "Thank you!! I can continue working now. Nothing is impossible when we have great adventurers like you in this world!";
+	 		mes "[RWC2011专员]";
+	 		mes "谢谢你！！我现在可以继续工作了。这世上有你这样出色的冒险者，就没有办不到的事！";
 	 		next;
-	 		mes "[RWC2011 Agent]";
-	 		mes "ADIOS!";
+	 		mes "[RWC2011专员]";
+	 		mes "再见！";
 	 		next;
-	 		mes "- Agent muttered something to himself. -";
+	 		mes "- 专员自言自语地嘟囔着什么。-";
 	 		close;
 		} else {
-			mes "[RWC2011 Agent]";
-			mes "Mmmm~ not yet? We're short-handed... Please help me.";
+			mes "[RWC2011专员]";
+			mes "嗯~ 还不够吗？我们人手不足……请帮帮我。";
 			next;
-			mes "[RWC2011 Agent]";
-			mes "I'm just saying that out of concern for you. You need TWO ^FF0000Blue 1 Card^000000. It's \"2011\"... Got it?";
+			mes "[RWC2011专员]";
+			mes "我是出于关心才这么说的。你需要两张 ^FF0000蓝色1卡^000000。就是“2011”……明白了吗？";
 			close;
 		}
 	} else if (oversea_event == 2) {
 		set .@playtime, checkquest(13001,PLAYTIME);
 		if (.@playtime == 0 || .@playtime == 1) {
-			mes "[RWC2011 Agent]";
-			mes "First, I will start attaching cards you found... I'll take the rest of cards tomorrow.";
-			mes "Please come back tomorrow.";
+			mes "[RWC2011专员]";
+			mes "首先，我会开始张贴你找到的卡片……剩下的卡片我明天再收。";
+			mes "请明天再来。";
 			close;
 		} else if (.@playtime == 2)
 			erasequest 13001;
-		mes "[RWC2011 Agent]";
-		mes "Thanks for the last time.";
-		mes "I must keep on promoting the event so I want to ask you again~!";
+		mes "[RWC2011专员]";
+		mes "上次多谢你了。";
+		mes "我必须继续宣传这个活动，所以还想再拜托你~！";
 		set oversea_event,3;
 		close;
 	} else if (oversea_event == 3) {
-		mes "[RWC2011 Agent]";
-		mes "You've come again~";
-		mes "Thanks for the last time! We still have lots of cards to find. Could you help me out?";
+		mes "[RWC2011专员]";
+		mes "你又来了~";
+		mes "上次多谢你了！我们还有很多卡片要找。你能帮帮我吗？";
 		next;
-		switch(select("Ok!:I'm busy now.")) {
+		switch(select("好！:我现在很忙。")) {
 		case 1:
-			mes "[RWC2011 Agent]";
-			mes "It's the same mission as before.";
-			mes "Try to gather blue cards and make the word, ^FF0000R W C 2 0 1 1 ^000000.";
-			mes "Good Luck!";
+			mes "[RWC2011专员]";
+			mes "任务和之前一样。";
+			mes "请收集蓝色卡片，凑出 ^FF0000R W C 2 0 1 1 ^000000 这个词。";
+			mes "祝你好运！";
 			set oversea_event,1;
 			setquest 13000;
 			close;
 		case 2:
-			mes "[RWC2011 Agent]";
+			mes "[RWC2011专员]";
 			mes "...I see...";
-			mes "I still have lots of cards to find so if you have time, please come back and help again.";
+			mes "我还有很多卡片要找，如果你有时间，请再来帮忙。";
 			close;
 		}
 	} else {
-		mes "[RWC2011 Agent]";
+		mes "[RWC2011专员]";
 		mes "... huh...?";
-		mes "I am... a new agent.";
+		mes "我是……一位新人专员。";
 		close;
 	}
 }

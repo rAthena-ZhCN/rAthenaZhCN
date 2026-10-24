@@ -17,11 +17,11 @@
 //= 1.5 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,36,38,3	script	Mission [11 - 25]#Tuto	4_BOARD3,{
+moc_para01,36,38,3	script	任务 [11 - 25]#Tuto	4_BOARD3,{
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "- You need to have an -";
-		mes "- ^4d4dff'Eden Group Mark'^000000 -";
-		mes "- to receive these missions. -";
+		mes "- 你需要持有 -";
+		mes "- ^4d4dff'乐园团徽章'^000000 -";
+		mes "- 才能接取这些任务。 -";
 		close;
 	}
 	for ( .@i = 11124; .@i < 11134; .@i++ )
@@ -29,39 +29,39 @@ moc_para01,36,38,3	script	Mission [11 - 25]#Tuto	4_BOARD3,{
 	for( .@i = 11114; .@i < 11124; .@i++ ) {
 		.@j = checkquest(.@i,HUNTING);
 		if (.@j == 2) {
-			mes " - You must collect your - ";
-			mes " - reward before starting - ";
-			mes " - a new mission. - ";
+			mes "- 你必须先领取你的 -";
+			mes "- 报酬才能开始 -";
+			mes "- 新的任务。 -";
 			mes " ";
-			mes " - Manager : Spike - ";
+			mes "- 经理：斯派克 -";
 			close;
 		}
 		else if (.@j >= 0) {
-			mes " - You can only request - ";
-			mes " - one mission at a time. - ";
+			mes "- 你一次只能申请 -";
+			mes "- 一项任务。 -";
 			mes " ";
-			mes " - Manager : Spike - ";
+			mes "- 经理：斯派克 -";
 			close;
 		}
 	}
 	if (BaseLevel < 11) {
-		mes " - There are no tasks - ";
-		mes " - open for you right now. - ";
+		mes "- 目前没有 -";
+		mes "- 可接取的任务。 -";
 		close;
 	}
 	if (BaseLevel > 25) {
-		mes " - These missions are too - ";
-		mes " - easy for your caliber - ";
-		mes " - search for a more level - ";
-		mes " - appropriate mission. - ";
+		mes "- 这些任务对你来说 -";
+		mes "- 太简单了 -";
+		mes "- 去找更符合 -";
+		mes "- 等级的任务吧。 -";
 		close;
 	}
-	mes " - Mission bulletin board -";
-	mes " - for beginners. -";
+	mes "- 任务公告板 -";
+	mes "- 新手专用。 -";
 	mes " ";
-	mes " - Manager : Spike -";
+	mes "- 经理：斯派克 -";
 	next;
-	switch(select("Hornet Hunting:Condor Hunting:Grasshopper's Leg:Worm Tail Hunting:Spore Hunting:Pest Control:Muka Hunting:Familiar Hunting:Collect Feathers:Collect Poison Spores:Cancel")) {
+	switch(select("蜂兵狩猎:秃鹰狩猎:蝗虫后腿:蚯蚓尾巴狩猎:蘑菇狩猎:害虫驱除:摩卡狩猎:吸血蝙蝠狩猎:收集柔毛:收集毒魔菇孢子:取消")) {
 		case 1: callsub L_Quest,11114,"Hornet Hunting"," - Hunt 10 ^4d4dff'Hornets'^000000 - "," - northwest of Prontera. - ";
 		case 2: callsub L_Quest,11115,"Condor Hunting"," - Hunt 20 ^4d4dff'Condors'^000000 - "," - south of Morocc. - ";
 		case 3: callsub L_Quest,11116,"Grasshopper's Leg"," - Hunt 10 ^4d4dff'Rockers'^000000 - "," - southwest of Prontera and - "," - bring 10 ^4d4dffGrasshopper's Legs^000000. - ";
@@ -73,28 +73,28 @@ moc_para01,36,38,3	script	Mission [11 - 25]#Tuto	4_BOARD3,{
 		case 9: callsub L_Quest,11122,"Collect Feathers"," - Hunt 30 ^4d4dff'Peco Pecos'^000000 - "," - south of Prontera. - ";
 		case 10: callsub L_Quest,11123,"Collect Poison Spores"," - Hunt 30 ^4d4dffPoison Spores^000000 - "," - inside the Geffen Tower and - "," - bring 5 ^4d4dffPoison Spores^000000. - ";
 		case 11:
-			mes " - Stop reading the bulletin board. - ";
+			mes "- 停止阅读公告板。 -";
 			close;
 	}
 
 L_Quest:
 	.@quest_status = checkquest(getarg(0)+10,PLAYTIME);
 	if (.@quest_status == 0 || .@quest_status == 1) {
-		mes " - Mission ^4d4dff"+ getarg(1) +"^000000 - ";
-		mes " - is already finished for today. - ";
+		mes "- 任务 ^4d4dff"+ getarg(1) +"^000000 -";
+		mes "- 今天已经完成了。 -";
 		mes " ";
-		mes " - Manager : Spike - ";
+		mes "- 经理：斯派克 -";
 		close;
 	}
-	mes " - Mission '"+ getarg(1) +"' - ";
+	mes "- 任务 '"+ getarg(1) +"' -";
 	for ( .@i = 2; .@i < getargcount(); .@i++ )
 		mes getarg(.@i);
 	mes " ";
-	mes " - Manager : Spike - ";
+	mes "- 经理：斯派克 -";
 	next;
-	if (select("I will do this mission.:Look for other missions.") == 2) {
-		mes " - Let's search for -";
-		mes " - other missions. - ";
+	if (select("我要接这个任务。:寻找其他任务。") == 2) {
+		mes "- 我们去找找 -";
+		mes "- 其他任务吧。 -";
 		close;
 	}
 	for ( .@i = 2; .@i < getargcount(); .@i++ )
@@ -103,7 +103,7 @@ L_Quest:
 	close;
 }
 
-moc_para01,32,30,6	script	Spike	4_F_CHILD,{
+moc_para01,32,30,6	script	斯派克	4_F_CHILD,{
 	for( .@i = 11114; .@i < 11124; .@i++ ) {
 		.@j = checkquest(.@i,HUNTING);
 		if (.@j == 2) {
@@ -121,18 +121,18 @@ moc_para01,32,30,6	script	Spike	4_F_CHILD,{
 			}
 		}
 		else if (.@j >= 0) {
-			mes "[Spike]";
-			mes "You haven't finished your mission yet.";
-			mes "Keep up the good work. You are almost done.";
+			mes "[斯派克]";
+			mes "你还没有完成你的任务。";
+			mes "继续加油，你马上就完成了。";
 			close;
 		}
 	}
-	mes "[Spike]";
-	mes "Are you looking for a job?";
-	mes "We always have lots of work to do.";
+	mes "[斯派克]";
+	mes "你在找工作吗？";
+	mes "我们总是有很多工作要做。";
 	next;
-	mes "[Spike]";
-	mes "Why don't you look around and find some interesting tasks?";
+	mes "[斯派克]";
+	mes "不如四处看看，找些有趣的任务吧？";
 	close;
 
 L_Quest:
@@ -142,20 +142,20 @@ L_Quest:
 		.@req_amount = getarg(4,0);
 		if (.@item_req) {
 			if (countitem(.@item_req) < .@req_amount) {
-				mes "[Spike]";
-				mes "You don't have enough "+ getitemname(.@item_req) +".";
-				mes "You need to bring "+ .@req_amount +" "+ getitemname(.@item_req) +".";
+				mes "[斯派克]";
+				mes "你没有足够的"+ getitemname(.@item_req) +".";
+				mes "你需要带来"+ .@req_amount +" "+ getitemname(.@item_req) +".";
 				close;
 			}
 		}
-		mes "[Spike]";
-		mes "Hmm... let me see~";
-		mes "You have completed the '"+ getarg(1) +"' mission.";
+		mes "[斯派克]";
+		mes "嗯……让我看看~";
+		mes "你完成了 '"+ getarg(1) +"' 任务。";
 		next;
-		mes "[Spike]";
-		mes "Good work~!!";
-		mes "Our client is so happy with your work. He will appreciate what you have done.";
-		mes "Please help us again. Thanks!";
+		mes "[斯派克]";
+		mes "干得好~！！";
+		mes "我们的委托人对你的工作非常满意。他会感谢你所做的一切。";
+		mes "请再帮帮我们。谢谢！";
 		if (.@item_req)
 			delitem .@item_req,.@req_amount;
 		erasequest .@quest_id;

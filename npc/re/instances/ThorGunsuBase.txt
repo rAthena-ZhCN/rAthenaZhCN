@@ -8,24 +8,24 @@
 //============================================================
 
 // Main Quest: Step 47.
-que_thr,133,53,5	script	Maram#Armybase1	4_EP18_MARAM,{
+que_thr,133,53,5	script	玛拉姆#Armybase1	4_EP18_MARAM,{
 	if (ep18_main < 45 || ep18_main > 46)
 		end;
 	if (ep18_main == 45) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "You've arrived, adventurer!";
-		mes "Thank you for coming all the way here.";
+		mes "[玛拉姆]";
+		mes "你来了，冒险者！";
+		mes "谢谢你远道而来。";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
-		mes "It seems like this is the real deal after all. The security here is different from what it has been so far....";
-		mes "Let's be careful not to be caught by the guards and explore the inside.";
+		mes "[玛拉姆]";
+		mes "看来这里果然是货真价实的。这里的警备和之前完全不同……";
+		mes "小心别被守卫发现，进去探查吧。";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "Try to move away from the security guard's line of sight as much as possible.";
-		mes "If you get caught, you might be attacked, so if you can't break through, we'll meet again here.";
+		mes "[玛拉姆]";
+		mes "尽量避开警卫的视线。";
+		mes "被发现的话可能会遭到攻击，如果冲不过去，我们就在这里会合。";
 		erasequest 16577;
 		setquest 16578;
 		ep18_main = 46;
@@ -33,29 +33,29 @@ que_thr,133,53,5	script	Maram#Armybase1	4_EP18_MARAM,{
 	}
 	else if (ep18_main == 46) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "Let's try to go in while avoiding the guard tower as much as possible.";
+		mes "[玛拉姆]";
+		mes "尽量避开瞭望塔进去吧。";
 		next;
 	}
 
 	.@md_name$ = "Thor Military Base";
 	cutin "",255;
-	mes "^FF0000Caution : If you perform arbitrary processing within the dungeon, such as monster taming, it will not be considered normal progress.^000000";
+	mes "^FF0000注意：如果在副本内进行驯服怪物等任意操作，将不会被视为正常通关。^000000";
 	next;
 	// player has party
 	if (is_party_leader())
 		// player is leader of the party
 		.@create$ = "Apply for entry to " + .@md_name$ + "";
 
-	switch( select( .@create$, "Enter " + .@md_name$ + "" ) ) {
+	switch( select( .@create$, "进入" + .@md_name$ + "" ) ) {
 	case 1:
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "When the application is complete, talk to me again and select ^0000CD" + .@md_name$ + " entry^000000";
+		mes "[玛拉姆]";
+		mes "申请完成后，再来找我，选择 ^0000CD" + .@md_name$ + "进入^000000";
 		if (instance_create(.@md_name$) < 0) {
-			mes "Party: " + getpartyname(getcharid(1)) + "";
-			mes "Leader: " + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name$ + " ^000000- Unknown error";
+			mes "队伍：" + getpartyname(getcharid(1)) + "";
+			mes "队长：" + strcharinfo(0) + "";
+			mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
 			close3;
 		}
 		close3;
@@ -63,20 +63,20 @@ que_thr,133,53,5	script	Maram#Armybase1	4_EP18_MARAM,{
 		// Note: instance not forced solo
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "[Maram]";
-			mes "^ff0000An unknown error occurred.^000000";
+			mes "[玛拉姆]";
+			mes "^ff0000发生了未知错误。^000000";
 			close;
 		case IE_NOINSTANCE:
 			cutin "ep18_maram_01.png",2;
-			mes "[Maram]";
-			mes "It seems like you haven't created the dungeon yet. Please check again in a moment.";
+			mes "[玛拉姆]";
+			mes "看来你还没有创建副本。请稍后再确认一次。";
 			close3;
 		case IE_NOMEMBER:
-			mes "[Maram]";
-			mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+			mes "[玛拉姆]";
+			mes "^ff0000只有队伍成员才能进入记忆副本。^000000";
 			close;
 		case IE_OK:
-			mapannounce "que_thr", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".", bc_map, 0xFF99;
+			mapannounce "que_thr", "" + strcharinfo(0) + "，所属队伍：" + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".", bc_map, 0xFF99;
 			// warp 1@tcamp,103,237;
 			end;
 		}
@@ -88,14 +88,14 @@ OnInit:
 	end;
 }
 
-1@tcamp,106,237,3	script	Maram#Base1	4_EP18_MARAM,{
-	mes "[Maram]";
-	mes "Be careful and explore inside.";
-	mes "From what I heard from Dandelion earlier, there aren't many people, but there are watchtowers here and there that monitor a fairly wide area.";
+1@tcamp,106,237,3	script	玛拉姆#Base1	4_EP18_MARAM,{
+	mes "[玛拉姆]";
+	mes "小心进去探查吧。";
+	mes "之前听蒲公英说，这里人不多，但到处都有能监视相当大范围的瞭望塔。";
 	next;
-	mes "[Maram]";
-	mes "If you get caught by the watchtower, soldiers will appear, so be careful not to get caught.";
-	mes "Well, if you find anything, please contact me!";
+	mes "[玛拉姆]";
+	mes "如果被瞭望塔发现，士兵就会出现，所以千万小心别被发现。";
+	mes "那么，如果发现什么，请联络我！";
 	close;
 
 OnInstanceInit:
@@ -120,11 +120,11 @@ OnInstanceInit:
 //-------------------------------------------------------------------
 // Traps
 //-------------------------------------------------------------------
-1@tcamp,120,228,3	script	Watchtower#Watch1	4_SYSTEM_BOX,7,7,{
+1@tcamp,120,228,3	script	瞭望塔#Watch1	4_SYSTEM_BOX,7,7,{
 	end;
 OnTouch:	// note: hidden player trigger the event
-	npctalk "Intruder detected !!";
-	mapannounce 'map_tcamp$, "Intruder found, intruder found. Ruled out immediately.", bc_map, 0xFF0000;
+	npctalk "发现入侵者！！";
+	mapannounce 'map_tcamp$, "发现入侵者，发现入侵者。立即排除。", bc_map, 0xFF0000;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
 
 	areamonster 'map_tcamp$,.@x-2,.@y-2,.@x+2,.@y+2,"Base Soldier",21309,3;	// EP18_MD_THOR_GUARD
@@ -139,47 +139,47 @@ OnInstanceInit:
 	end;
 }
 
-1@tcamp,135,228,3	duplicate(Watchtower#Watch1)	Watchtower#Watch2	4_SYSTEM_BOX,7,7
-1@tcamp,152,133,3	duplicate(Watchtower#Watch1)	Watchtower#Watch3	4_SYSTEM_BOX,7,7
-1@tcamp,167,133,3	duplicate(Watchtower#Watch1)	Watchtower#Watch4	4_SYSTEM_BOX,7,7
-1@tcamp,182,133,3	duplicate(Watchtower#Watch1)	Watchtower#Watch5	4_SYSTEM_BOX,7,7
-1@tcamp,161,96,3	duplicate(Watchtower#Watch1)	Watchtower#Watch6	4_SYSTEM_BOX,7,7
-1@tcamp,146,96,3	duplicate(Watchtower#Watch1)	Watchtower#Watch7	4_SYSTEM_BOX,7,7
-1@tcamp,116,102,3	duplicate(Watchtower#Watch1)	Watchtower#Watch8	4_SYSTEM_BOX,7,7
-1@tcamp,88,92,3	duplicate(Watchtower#Watch1)	Watchtower#Watch9	4_SYSTEM_BOX,7,7
-1@tcamp,240,148,3	duplicate(Watchtower#Watch1)	Watchtower#Watch10	4_SYSTEM_BOX,7,7
-1@tcamp,156,71,3	duplicate(Watchtower#Watch1)	Watchtower#Watch11	4_SYSTEM_BOX,7,7
-1@tcamp,176,194,3	duplicate(Watchtower#Watch1)	Watchtower#Watch12	4_SYSTEM_BOX,7,7
-1@tcamp,192,194,3	duplicate(Watchtower#Watch1)	Watchtower#Watch13	4_SYSTEM_BOX,7,7
-1@tcamp,142,153,3	duplicate(Watchtower#Watch1)	Watchtower#Watch14	4_SYSTEM_BOX,7,7
-1@tcamp,142,168,3	duplicate(Watchtower#Watch1)	Watchtower#Watch15	4_SYSTEM_BOX,7,7
-1@tcamp,192,179,3	duplicate(Watchtower#Watch1)	Watchtower#Watch16	4_SYSTEM_BOX,7,7
-1@tcamp,237,90,3	duplicate(Watchtower#Watch1)	Watchtower#Watch17	4_SYSTEM_BOX,7,7
+1@tcamp,135,228,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch2	4_SYSTEM_BOX,7,7
+1@tcamp,152,133,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch3	4_SYSTEM_BOX,7,7
+1@tcamp,167,133,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch4	4_SYSTEM_BOX,7,7
+1@tcamp,182,133,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch5	4_SYSTEM_BOX,7,7
+1@tcamp,161,96,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch6	4_SYSTEM_BOX,7,7
+1@tcamp,146,96,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch7	4_SYSTEM_BOX,7,7
+1@tcamp,116,102,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch8	4_SYSTEM_BOX,7,7
+1@tcamp,88,92,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch9	4_SYSTEM_BOX,7,7
+1@tcamp,240,148,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch10	4_SYSTEM_BOX,7,7
+1@tcamp,156,71,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch11	4_SYSTEM_BOX,7,7
+1@tcamp,176,194,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch12	4_SYSTEM_BOX,7,7
+1@tcamp,192,194,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch13	4_SYSTEM_BOX,7,7
+1@tcamp,142,153,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch14	4_SYSTEM_BOX,7,7
+1@tcamp,142,168,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch15	4_SYSTEM_BOX,7,7
+1@tcamp,192,179,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch16	4_SYSTEM_BOX,7,7
+1@tcamp,237,90,3	duplicate(瞭望塔#Watch1)	Watchtower#Watch17	4_SYSTEM_BOX,7,7
 
 
 //-------------------------------------------------------------------
 // Walls
 //-------------------------------------------------------------------
-1@tcamp,138,216,3	script	Lock Device#1-1	4_ROPEPILE,{
+1@tcamp,138,216,3	script	锁定装置#1-1	4_ROPEPILE,{
 	.@maram$ = instance_npcname("Maram#Lock Device1");
 	enablenpc .@maram$;
-	npctalk "Maram: Please wait a moment. I know how to open it.", .@maram$;
+	npctalk "玛拉姆：请稍等。我知道怎么打开。", .@maram$;
 	progressbar_npc "3131FF",10;
-	npctalk "Maram: Well, we can pass now!", .@maram$;
+	npctalk "玛拉姆：好，现在可以过去了！", .@maram$;
 	disablenpc instance_npcname("Lock Device#1-1");
 	disablenpc instance_npcname("Lock Device#1-2");
 	disablenpc .@maram$;
 	setcell 'map_tcamp$,137,216,142,216,cell_walkable,1;
 	end;
 }
-1@tcamp,141,216,3	duplicate(Lock Device#1-1)	Lock Device#1-2	4_ROPEPILE
+1@tcamp,141,216,3	duplicate(锁定装置#1-1)	Lock Device#1-2	4_ROPEPILE
 1@tcamp,140,218,3	duplicate(dummy_disabled_npc)	Maram#Lock Device1	4_EP18_MARAM
 
-1@tcamp,136,145,3	script	Lock Device#2-1	4_ROPEPILE,{
+1@tcamp,136,145,3	script	锁定装置#2-1	4_ROPEPILE,{
 	.@maram$ = instance_npcname("Maram#Lock Device2");
 	enablenpc .@maram$;
 	progressbar_npc "3131FF",10;
-	npctalk "It would be better to proceed with caution.", .@maram$;
+	npctalk "还是谨慎前进比较好。", .@maram$;
 	disablenpc instance_npcname("Lock Device#2-1");
 	disablenpc instance_npcname("Lock Device#2-2");
 	disablenpc instance_npcname("Lock Device#2-3");
@@ -188,32 +188,32 @@ OnInstanceInit:
 	setcell 'map_tcamp$,135,145,144,145,cell_walkable,1;
 	end;
 }
-1@tcamp,138,145,3	duplicate(Lock Device#2-1)	Lock Device#2-2	4_ROPEPILE
-1@tcamp,141,145,3	duplicate(Lock Device#2-1)	Lock Device#2-3	4_ROPEPILE
-1@tcamp,143,145,3	duplicate(Lock Device#2-1)	Lock Device#2-4	4_ROPEPILE
+1@tcamp,138,145,3	duplicate(锁定装置#2-1)	Lock Device#2-2	4_ROPEPILE
+1@tcamp,141,145,3	duplicate(锁定装置#2-1)	Lock Device#2-3	4_ROPEPILE
+1@tcamp,143,145,3	duplicate(锁定装置#2-1)	Lock Device#2-4	4_ROPEPILE
 1@tcamp,142,147,3	duplicate(dummy_disabled_npc)	Maram#Lock Device2	4_EP18_MARAM
 
-1@tcamp,223,109,3	script	Lock Device#3-1	4_ROPEPILE,{
+1@tcamp,223,109,3	script	锁定装置#3-1	4_ROPEPILE,{
 	.@maram$ = instance_npcname("Maram#Lock Device3");
 	enablenpc .@maram$;
-	npctalk "Maram: This building looks quite suspicious, right? There must be a surveillance system in here too.", .@maram$;
+	npctalk "玛拉姆：这栋建筑看起来很可疑吧？这里面一定也有监视系统。", .@maram$;
 	progressbar_npc "3131FF",10;
-	npctalk "Maram: Let's explore carefully this time, being careful not to get caught.", .@maram$;
+	npctalk "玛拉姆：这次小心别被发现，仔细探查吧。", .@maram$;
 	disablenpc instance_npcname("Lock Device#3-1");
 	disablenpc instance_npcname("Lock Device#3-2");
 	disablenpc .@maram$;
 	setcell 'map_tcamp$,223,105,223,110,cell_walkable,1;
 	end;
 }
-1@tcamp,223,106,3	duplicate(Lock Device#3-1)	Lock Device#3-2	4_ROPEPILE
+1@tcamp,223,106,3	duplicate(锁定装置#3-1)	Lock Device#3-2	4_ROPEPILE
 1@tcamp,226,114,3	duplicate(dummy_disabled_npc)	Maram#Lock Device3	4_EP18_MARAM
 
-1@tcamp,80,99,3	script	Lock Device#4-1	4_ROPEPILE,{
+1@tcamp,80,99,3	script	锁定装置#4-1	4_ROPEPILE,{
 	.@maram$ = instance_npcname("Maram#Lock Device4");
 	enablenpc .@maram$;
-	npctalk "Maram: Looks like we're in pretty deep. We should be able to safely find what we need.", .@maram$;
+	npctalk "玛拉姆：看来我们深入了不少。应该能安全找到需要的东西。", .@maram$;
 	progressbar_npc "3131FF",10;
-	npctalk "Maram: Shall we wish you good luck?", .@maram$;
+	npctalk "玛拉姆：就祝你们好运吧？", .@maram$;
 	disablenpc instance_npcname("Lock Device#4-1");
 	disablenpc instance_npcname("Lock Device#4-2");
 	disablenpc instance_npcname("Lock Device#4-3");
@@ -231,8 +231,8 @@ OnInstanceInit:
 		'step = 1;
 	end;
 }
-1@tcamp,80,97,3	duplicate(Lock Device#4-1)	Lock Device#4-2	4_ROPEPILE
-1@tcamp,80,95,3	duplicate(Lock Device#4-1)	Lock Device#4-3	4_ROPEPILE
+1@tcamp,80,97,3	duplicate(锁定装置#4-1)	Lock Device#4-2	4_ROPEPILE
+1@tcamp,80,95,3	duplicate(锁定装置#4-1)	Lock Device#4-3	4_ROPEPILE
 1@tcamp,82,100,3	duplicate(dummy_disabled_npc)	Maram#Lock Device4	4_EP18_MARAM
 
 
@@ -242,13 +242,13 @@ OnInstanceInit:
 1@tcamp,32,100,3	script(DISABLED)	Pile of documents#Base1	4_EP18_PAPERS,{
 	if ('step != 1)
 		end;
-	mes "[Pile of documents]";
-	mes "All kinds of documents are all mixed up.";
-	mes "I took out a few pages from the middle and found that they were weapons expiration dates and sales records.";
+	mes "[文件堆]";
+	mes "各种文件杂乱地混在一起。";
+	mes "我从中间抽出几页，发现是武器的有效期和销售记录。";
 	next;
-	mes "[Pile of documents]";
-	mes "Even the date is very recent. There is also a record of handing over a large amount of weapons to Mr. Dandelion.";
-	mes "It looks like I found what I was looking for. I put the documents in my arms.";
+	mes "[文件堆]";
+	mes "连日期都很近。还有一份向蒲公英先生移交大量武器的记录。";
+	mes "看来我找到了想要的东西。我把文件收进怀里。";
 	close2;
 	getitem 1000409,1;	// Ep18_Docu_File
 	cloakonnpcself();
@@ -258,13 +258,13 @@ OnInstanceInit:
 1@tcamp,49,123,3	script(DISABLED)	Pile of documents#Base2	4_EP18_PAPERS,{
 	if ('step != 1)
 		end;
-	mes "[Pile of documents]";
-	mes "All kinds of documents are all mixed up.";
-	mes "On the top page... is it a battle to decide the menu for lunch?";
+	mes "[文件堆]";
+	mes "各种文件杂乱地混在一起。";
+	mes "最上面那一页……是在争论午饭吃什么吗？";
 	next;
-	mes "[Pile of documents]";
-	mes "It looks like the menu has been set on fried fish covered in sauce....";
-	mes "It looks like he left behind only unimportant documents. Let's take care of them for now.";
+	mes "[文件堆]";
+	mes "看来菜单定成了浇酱汁的炸鱼……";
+	mes "看来他只留下了不重要的文件。先处理掉吧。";
 	close2;
 	getitem 1000409,1;	// Ep18_Docu_File
 	cloakonnpcself();
@@ -274,13 +274,13 @@ OnInstanceInit:
 1@tcamp,29,86,3	script(DISABLED)	Pile of documents#Base3	4_EP18_PAPERS,{
 	if ('step != 1)
 		end;
-	mes "[Pile of documents]";
-	mes "All kinds of documents are all mixed up.";
-	mes "I took one out from the middle and saw... a map of the security guards at the military base?";
+	mes "[文件堆]";
+	mes "各种文件杂乱地混在一起。";
+	mes "我从中间抽出一张，看到……是军事基地警卫的布防图？";
 	next;
-	mes "[Pile of documents]";
-	mes "Looking at the date, it's a long time ago document.";
-	mes "It looks like he left behind only unimportant documents. Let's take care of them for now.";
+	mes "[文件堆]";
+	mes "看日期，是很久以前的文件。";
+	mes "看来他只留下了不重要的文件。先处理掉吧。";
 	close2;
 	getitem 1000409,1;	// Ep18_Docu_File
 	cloakonnpcself();
@@ -290,13 +290,13 @@ OnInstanceInit:
 1@tcamp,60,122,3	script(DISABLED)	Pile of documents#Base4	4_EP18_PAPERS,{
 	if ('step != 1)
 		end;
-	mes "[Pile of documents]";
-	mes "All kinds of documents are all mixed up.";
-	mes "The top chapter is... ‘If you feed a magmaring a potato and then hunt it after a while, should it drop a baked potato?'";
+	mes "[文件堆]";
+	mes "各种文件杂乱地混在一起。";
+	mes "最上面一章是……‘如果给熔岩怪喂土豆，过一阵再去打它，会不会掉烤土豆？’";
 	next;
-	mes "[Pile of documents]";
+	mes "[文件堆]";
 	mes "...Why is this here? But I'm curious about the results!";
-	mes "It looks like he left behind only unimportant documents. Let's take care of them for now.";
+	mes "看来他只留下了不重要的文件。先处理掉吧。";
 	close2;
 	getitem 1000409,1;	// Ep18_Docu_File
 	cloakonnpcself();
@@ -306,13 +306,13 @@ OnInstanceInit:
 1@tcamp,31,84,3	script(DISABLED)	Pile of documents#Base5	4_EP18_PAPERS,{
 	if ('step != 1)
 		end;
-	mes "[Pile of documents]";
-	mes "All kinds of documents are all mixed up.";
-	mes "When I pulled one out from the middle... I found an illustration of the Pope drawn with Pope cookie icing using a pen.";
+	mes "[文件堆]";
+	mes "各种文件杂乱地混在一起。";
+	mes "我从中间抽出一张……是用笔画的教宗插图，画得像教宗饼干上的糖霜。";
 	next;
-	mes "[Pile of documents]";
-	mes "What kind of picture is this? And it's really well drawn....";
-	mes "It looks like he left behind only unimportant documents. Let's take care of them for now.";
+	mes "[文件堆]";
+	mes "这是什么画？而且画得还真好……";
+	mes "看来他只留下了不重要的文件。先处理掉吧。";
 	close2;
 	getitem 1000409,1;	// Ep18_Docu_File
 	cloakonnpcself();
@@ -324,79 +324,79 @@ OnInstanceInit:
 	if ('step == 1) {
 		if (countitem(1000409) < 5) {	// Ep18_Docu_File
 			cutin "ep18_miriam_02.png",2;
-			mes "[Miriam]";
-			mes "As expected, you are talented, adventurer. I used all my connections to find out the location.";
-			mes "It looks like you found the adventurer and Maram right away.";
+			mes "[米里亚姆]";
+			mes "果然有本事，冒险者。我动用所有人脉才查到地点。";
+			mes "看来你很快就找到了冒险者和玛拉姆。";
 			next;
-			mes "[Miriam]";
-			mes "Please read these documents. They contain what we are looking for.";
-			mes "Rather than having me explain everything to you, I think it would be better for you to see it for yourself.";
+			mes "[米里亚姆]";
+			mes "请看这些文件。里面就有我们要找的东西。";
+			mes "与其让我一一说明，不如你自己看更好。";
 			close3;
 		}
 		if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
-			mes "[Mini Elly]";
-			mes "Get it out of the bag. Put it on your head.";
+			mes "[迷你艾莉]";
+			mes "从包里拿出来。戴在头上。";
 			close;
 		}
-		mes "[Miriam]";
+		mes "[米里亚姆]";
 		mes ".......";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "No, Miriam! How are you here?";
-		mes "They said they would conduct a separate investigation!";
+		mes "[玛拉姆]";
+		mes "不，米里亚姆！你怎么会在这里？";
+		mes "他们说要单独进行调查的！";
 		next;
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
-		mes "How did you and the adventurer dig this far?";
-		mes "As expected, your skills are good. I used all my connections to find out the location, but you found it right away.";
+		mes "[米里亚姆]";
+		mes "你和冒险者是怎么查到这么深的？";
+		mes "果然身手不凡。我动用所有人脉才查到地点，你们却一下子就找到了。";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
-		mes "Let's do something about it, right, adventurer?";
-		mes "Anyway, what information did you get?";
+		mes "[玛拉姆]";
+		mes "我们得想想办法，对吧，冒险者？";
+		mes "总之，你查到了什么情报？";
 		next;
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
-		mes "Look at this document here.";
+		mes "[米里亚姆]";
+		mes "看看这里的这份文件。";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
-		mes "This document is a weapon sales record. Please show it to me.";
-		mes "All of the weapons and firearms that these people disposed of have less than a year left before their expiration date.";
+		mes "[迷你艾莉]";
+		mes "这份文件是武器销售记录。请给我看看。";
+		mes "这些人处理掉的所有武器和火器，距离有效期都不足一年了。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "You sell weapons like this so recklessly.";
-		mes "If a weapon is not properly maintained, it may not function properly.";
+		mes "[米里亚姆]";
+		mes "你们竟然这样随意出售武器。";
+		mes "武器如果保养不当，可能就无法正常使用。";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
-		mes "The quality of all weapons coming out of the back hole is the same.";
+		mes "[玛拉姆]";
+		mes "从后门流出的武器，品质都一样。";
 		mes "...But I guess it's at this point in time.";
 		next;
-		mes "[Maram]";
-		mes "One year is not a long expiration date, but it is not too tight.";
-		mes "Why did it pour out at this moment when we were preparing for the protest?";
+		mes "[玛拉姆]";
+		mes "一年的有效期不算长，但也不算太紧。";
+		mes "为什么偏偏在我们准备抗议的时候流出来？";
 		next;
-		mes "[Maram]";
-		mes "There wouldn't have been a need to dispose of it right away.";
+		mes "[玛拉姆]";
+		mes "本来没必要这么急着处理掉。";
 		next;
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
-		mes "This is one of the military bases managed by my adoptive father.";
-		mes "I was wondering if it would really pop out at a time like this.";
+		mes "[米里亚姆]";
+		mes "这是我养父管理的军事基地之一。";
+		mes "我还在想，它会不会偏偏在这种时候爆出来。";
 		next;
 		cutin "",255;
-		select( "If it's your adoptive father, is it Priest Amal?", "That adoptive father who is a hardliner and pro-war?" );
+		select( "你的养父，是阿马尔神官吗？", "就是那位强硬派、主战的养父？" );
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
-		mes "That's right, adventurer. When I looked at the ledger, it doesn't seem like my adoptive father was involved.";
-		mes "I think it's an isolated corruption at the lowest level, the weapons leak incident.";
+		mes "[米里亚姆]";
+		mes "没错，冒险者。我看了账本，我的养父似乎没有参与。";
+		mes "我认为这是底层个别的腐败，也就是武器泄露事件。";
 		next;
-		mes "[Miriam]";
-		mes "I'll have to dig a little deeper, but that's my guess for now.";
-		mes "Oh, please give me the documents. I'll take them as evidence.";
+		mes "[米里亚姆]";
+		mes "还得再深入调查一下，不过目前我的推测就是这样。";
+		mes "哦，请把文件给我。我会把它们作为证据。";
 		delitem 1000409,5;	// Ep18_Docu_File
 		if ('step == 1)
 			'step = 2;
@@ -406,12 +406,12 @@ OnInstanceInit:
 		}
 		close2;
 		cutin "",255;
-		npctalk "Maram: Ha, this is really fun.", instance_npcname("Maram#Base5");
+		npctalk "玛拉姆：哈，真有意思。", instance_npcname("Maram#Base5");
 		end;
 	}
 	if ('step == 2) {
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
+		mes "[米里亚姆]";
 		mes "...Just a moment, I'm reading the document.";
 		close;
 	}
@@ -419,7 +419,7 @@ OnInstanceInit:
 
 OnTouch:
 	if (countitem(1000409) < 5)
-		npctalk "Miriam: Oh, adventurer? Maram, you too!?";
+		npctalk "米里亚姆：哦，冒险者？玛拉姆，你也在！？";
 	end;
 
 OnInstanceInit:
@@ -430,32 +430,32 @@ OnInstanceInit:
 1@tcamp,32,102,3	script(DISABLED)	Maram#Base5	4_EP18_MARAM,{
 	if ('step == 1) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "I didn't know Miriam would be here. Right, adventurer?";
+		mes "[玛拉姆]";
+		mes "没想到米里亚姆会在这里。对吧，冒险者？";
 		close3;
 	}
 	if ('step == 2) {
-		mes "[Maram]";
-		mes "They moved separately, but ended up in the same place.";
-		mes "Still, what I gained from the process was different, so I guess it has some meaning.";
+		mes "[玛拉姆]";
+		mes "我们分头行动，最后却到了同一个地方。";
+		mes "不过，过程中得到的东西不同，所以也算有点意义吧。";
 		next;
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
-		mes "Then I guess I'll have to leave for a while.";
-		mes "I'll have to relay what I found out to my adoptive father.";
+		mes "[米里亚姆]";
+		mes "那我得离开一阵子了。";
+		mes "我得把查到的事告诉养父。";
 		next;
-		mes "[Miriam]";
-		mes "If it's an isolated corruption, there's a chance that even my adoptive father doesn't know about it yet.";
+		mes "[米里亚姆]";
+		mes "如果只是个别腐败，也许连我养父都还不知道。";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
-		mes "Is this really an isolated case of corruption? That is something that bothers me.";
-		mes "I also have something to deliver to Rachel, so Miriam, let's go together.";
+		mes "[玛拉姆]";
+		mes "这真的是个别腐败吗？这一点让我很在意。";
+		mes "我也有东西要送去拉赫，米里亚姆，我们一起走吧。";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
-		mes "I will tell you a shortcut to get out, so would you, adventurer, tell Suad what you found out here?";
-		mes "We will follow shortly, so please go and tell us first.";
+		mes "[玛拉姆]";
+		mes "我告诉你们出去的捷径，冒险者，你能把在这里查到的事告诉苏阿德吗？";
+		mes "我们随后就到，你先去告诉他们吧。";
 		if (ep18_main == 46) {
 			ep18_main = 47;
 			erasequest 16579;

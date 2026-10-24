@@ -669,8 +669,8 @@ prt_cas_q,26,30,3	script	Chamberlain Bell#ep16_main	4_M_RUSMAN1,{
 				setpcblock PCBLOCK_NPC, true;
 				sleep2 500;
 				setpcblock PCBLOCK_NPC, false;
-				cloakoffnpcself( "Kafra Employee#ep16_s01" );
-				npctalk "Kafra Service.", "Kafra Employee#ep16_s01", bc_self;
+				cloakoffnpcself( "卡普拉职员#ep16_s01" );
+				npctalk "Kafra Service.", "卡普拉职员#ep16_s01", bc_self;
 				end;
 			case 2:
 				mes "[Belle]";
@@ -687,7 +687,7 @@ prt_cas_q,26,30,3	script	Chamberlain Bell#ep16_main	4_M_RUSMAN1,{
 				mes "[Belle]";
 				mes "I see.";
 				close2;
-				cloakonnpcself( "Kafra Employee#ep16_s01" );
+				cloakonnpcself( "卡普拉职员#ep16_s01" );
 				cloakonnpcself( "Giant Beast Manager#ep16_s02" );
 				end;
 			}
@@ -738,22 +738,22 @@ prt_cas_q,29,30,3	script	Giant Beast Manager#ep16_s02	8W_SOLDIER,{
 	close;
 }
 
-prt_cas_q,28,30,3	script	Kafra Employee#ep16_s01	4_F_KAFRA2,{
+prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 	cutin "kafra_02.bmp",2;
-	mes "[Kafra Employee]";
+	mes "[卡普拉职员]";
 	mes "Hello. This is Kafra Service.";
 	mes "What can I do for you?";
 	next;
 	switch( select( "Use Cargo Service", "Use Cart Service", "Quit" ) ) {
 	case 1:
 		if (!callfunc("F_CanOpenStorage")) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "I am sorry, dear customer.";
 			mes "You need to raise the novice skill level to 6 or higher to use the cargo service.";
 			close3;
 		}
 		if (countitem(7059) == 0 && Zeny < 50) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "You don't have enough money.";
 			mes "The Cargo Service costs 50 Zeny.";
 			close3;
@@ -762,7 +762,7 @@ prt_cas_q,28,30,3	script	Kafra Employee#ep16_s01	4_F_KAFRA2,{
 			delitem 7059,1;	// Cargo_Free_Ticket
 		else
 			Zeny -= 50;
-		mes "[Kafra Employee]";
+		mes "[卡普拉职员]";
 		mes "Let me open the warehouse for you.";
 		mes "Thank you for using Kafra Service.";
 		close2;
@@ -771,18 +771,18 @@ prt_cas_q,28,30,3	script	Kafra Employee#ep16_s01	4_F_KAFRA2,{
 		end;
 	case 2:
 		if (BaseClass != Job_Merchant) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "I am sorry,";
 			mes "The Cart Service is available for Merchant classes only.";
 			close3;
 		}
 		if (checkcart() == true) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "You are already equipped with a cart.";
 			close3;
 		}
 		if (getskilllv("MC_PUSHCART") == 0) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "You can use the cart after learning the 'Push Cart' skill.";
 			close3;
 		}
@@ -791,14 +791,14 @@ prt_cas_q,28,30,3	script	Kafra Employee#ep16_s01	4_F_KAFRA2,{
 			setcart();
 			close3;
 		}
-		mes "[Kafra Employee]";
+		mes "[卡普拉职员]";
 		mes "The Cart Service costs 800 Zeny.";
 		mes "Would you use it?";
 		next;
 		if (select( "Use", "Cancel" ) == 2)
 			close3;
 		if (Zeny < 800) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉职员]";
 			mes "You don't have enough money, dear customer.";
 			mes "The Cart Service costs 800 Zeny.";
 			close3;
@@ -808,11 +808,11 @@ prt_cas_q,28,30,3	script	Kafra Employee#ep16_s01	4_F_KAFRA2,{
 		setcart();
 		close3;
 	case 3:
-		mes "[Kafra Employee]";
+		mes "[卡普拉职员]";
 		mes "Thank you for using Kafra Service as always.";
 		close2;
 		cutin "",255;
-		cloakonnpcself( "Kafra Employee#ep16_s01" );
+		cloakonnpcself( "卡普拉职员#ep16_s01" );
 		end;
 	}
 	end;
@@ -909,7 +909,7 @@ prt_cas_q,28,28,3	script	Court Mage Nillem#ep16_wiz01	4_M_JOB_WIZARD,{
 	end;
 OnInit:
 	cloakonnpc "Court Mage Nillem#ep16_wiz01";
-	cloakonnpc "Kafra Employee#ep16_s01";
+	cloakonnpc "卡普拉职员#ep16_s01";
 	cloakonnpc "Giant Beast Manager#ep16_s02";
 	end;
 }

@@ -8,26 +8,26 @@
 //= 1.1 Clean-up [Capuche]
 //============================================================
 
-gef_tower,57,170,3	script	Marry Jay	4_F_JOB_BLACKSMITH,{
+gef_tower,57,170,3	script	玛丽·杰伊	4_F_JOB_BLACKSMITH,{
 	if (BaseLevel < 130) {
-		mes "[Marry Jay]";
-		mes "Your base level is too low, come back when you hit level 130.";
+		mes "[玛丽·杰伊]";
+		mes "您的Base等级太低，达到130级后再来吧。";
 		close;
 	}
-	mes "^ff0000If you do any monster processing, such as monster taming within the dungeon, it won't count towards your progress. Please take note.^000000";
+	mes "^ff0000如果在副本内进行任何魔物处理，例如驯服魔物，将不会计入您的进度。请注意。^000000";
 	next;
 	.@day = gettime(DT_DAYOFWEEK);
 	if (.@day != FRIDAY) {
-		mes "[Marry Jay]";
-		mes "Oh, a curious onlooker? I'm Marry Jay, the person in charge of Fridays among the days of the week.";
+		mes "[玛丽·杰伊]";
+		mes "哦，好奇的旁观者？我是玛丽·杰伊，负责一周之中的周五。";
 		next;
-		select( "When is the opening time?" );
-		mes "[Marry Jay]";
-		mes "The dungeon will be open during:";
-		mes "^0000FFFriday 00:00 ~ Friday 23:59^000000";
+		select( "开放时间是什么时候？" );
+		mes "[玛丽·杰伊]";
+		mes "副本开放时间为：";
+		mes "^0000FF周五 00:00 ~ 周五 23:59^000000";
 		next;
-		mes "[Marry Jay]";
-		mes "I hope to see you when Friday arrives~";
+		mes "[玛丽·杰伊]";
+		mes "希望周五到来时能见到您~";
 		close;
 	}
 	.@md_name$ = "Friday Dungeon";
@@ -37,64 +37,64 @@ gef_tower,57,170,3	script	Marry Jay	4_F_JOB_BLACKSMITH,{
 		break;
 	case 0:
 	case 1:
-		mes "[Marry Jay]";
-		mes "Sorry, but the entry period to the " + .@md_name$ + " has expired.";
-		mes "Take a rest while waiting for the dungeon to be available again.";
+		mes "[玛丽·杰伊]";
+		mes "很抱歉，前往" + .@md_name$ + "的入场时间已经结束。";
+		mes "在等待副本再次开放期间，请好好休息。";
 		close;
 	case 2:
 		erasequest 12379;
-		mes "[Marry Jay]";
-		mes "The cooldown has expired.";
-		mes "You may re-enter the Memorial Dungeon.";
+		mes "[玛丽·杰伊]";
+		mes "冷却时间已结束。";
+		mes "您可以再次进入纪念副本。";
 		close;
 	}
-	mes "[Marry Jay]";
-	mes "You came just in time.";
-	mes "The memorial dungeon is just ready to be opened.";
-	mes "Would you like to enter now?";
+	mes "[玛丽·杰伊]";
+	mes "您来得正是时候。";
+	mes "纪念副本正好准备开放。";
+	mes "您要现在进入吗？";
 	next;
 
 	if (is_party_leader() == true)
-		.@menu$ = "Prepare Friday Memorial";
+		.@menu$ = "准备周五纪念副本";
 
-	switch( select( .@menu$, "Enter Friday Memorial", "Cancel" ) ) {
+	switch( select( .@menu$, "进入周五纪念副本", "取消" ) ) {
 	case 1:
 		instance_create(.@md_name$);
-		mes "[Marry Jay]";
-		mes "The Memorial Dungeon has been created.";
-		mes "You may now enter.";
+		mes "[玛丽·杰伊]";
+		mes "纪念副本已生成。";
+		mes "现在可以进入了。";
 		close;
 	case 2:
 		switch( instance_enter(.@md_name$) ) {
 		case IE_NOMEMBER:
 			if (is_party_leader() == true)
 				end;
-			mes "Only party members can enter this Memorial dungeon.";
+			mes "只有队伍成员才能进入这个纪念副本。";
 			close;
 		case IE_NOINSTANCE:
 			if (is_party_leader() == true) {
-				mes "There is no Memorial Dungeon registered.";
+				mes "没有已登记的纪念副本。";
 				close;
 			}
-			mes "The Friday Memorial Dungeon does not exist.";
-			mes "Your party leader has not yet created the Memorial dungeon.";
+			mes "周五纪念副本不存在。";
+			mes "您的队长尚未创建纪念副本。";
 			close;
 		case IE_OTHER:
-			mes "An unknown error occurred.";
+			mes "发生了未知错误。";
 			close;
 		case IE_OK:
-			mes "[Marry Jay]";
-			mes "Off you go!";
-			mapannounce "gef_tower", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+			mes "[玛丽·杰伊]";
+			mes "出发吧！";
+			mapannounce "gef_tower", "" + strcharinfo(0) + "，所属队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
 			if (isbegin_quest(12379) < 1)
 				setquest 12379;
 			end;
 		}
 		end;
 	case 3:
-		mes "[Marry Jay]";
-		mes "You have not prepared?";
-		mes "Can't really help it I guess";
+		mes "[玛丽·杰伊]";
+		mes "您还没有准备好吗？";
+		mes "那也没办法吧";
 		close;
 	}
 	end;
@@ -103,14 +103,14 @@ gef_tower,57,170,3	script	Marry Jay	4_F_JOB_BLACKSMITH,{
 //Instance
 1@md_gef,185,81	monster	Shining Plant	1083,1,1800000,900000
 
-1@md_gef,110,129,6	script	Marry Jay#0_1	4_F_JOB_BLACKSMITH,{
+1@md_gef,110,129,6	script	玛丽·杰伊#0_1	4_F_JOB_BLACKSMITH,{
 	if (is_party_leader() == false)
 		end;
-	mes "[Marry Jay]";
-	mes "Before we start setting up the environment here, we'll give you the chance to choose an appropriate difficulty level.";
-	mes "I could make my own choice, but each person handles it differently based on their abilities.";
+	mes "[玛丽·杰伊]";
+	mes "在开始布置这里的环境之前，我们会给您选择合适难度的机会。";
+	mes "我也可以自己决定，但每个人的能力不同，处理方式也不一样。";
 	next;
-	switch( select( "Cancel", "LV130 ~ 199", "LV200 + " ) ) {
+	switch( select( "取消", "LV130 ~ 199", "LV200 +" ) ) {
 	case 1:
 		close;
 	case 2:
@@ -120,8 +120,8 @@ gef_tower,57,170,3	script	Marry Jay	4_F_JOB_BLACKSMITH,{
 		break;
 	case 3:
 		if (BaseLevel < 200) {
-			mes "[Marry Jay]";
-			mes "You can't choose this difficulty, because your base level is below 200.";
+			mes "[玛丽·杰伊]";
+			mes "您无法选择这个难度，因为您的Base等级低于200。";
 			close;
 		}
 		'hard = 1;
@@ -129,14 +129,14 @@ gef_tower,57,170,3	script	Marry Jay	4_F_JOB_BLACKSMITH,{
 		break;
 	}
 	if (BaseLevel < 'mob[0]) {
-		mes "[Marry Jay]";
-		mes "Your base level is too low to select this, you need to be level " + 'mob[0] + " or above.";
+		mes "[玛丽·杰伊]";
+		mes "您的Base等级太低，无法选择，需要达到" + 'mob[0] + "以上。";
 		close;
 	}
 	close2;
-	npctalk "Now, this place is about to become a hunting ground. I'll get out and close the front door.";
+	npctalk "现在，这里即将成为狩猎场。我会出去并关上大门。";
 	sleep 4000;
-	npctalk "Good Luck~";
+	npctalk "祝您好运~";
 	sleep 3000;
 	if ('step == 0) {
 		'step = 1;
@@ -193,42 +193,42 @@ OnInstanceInit:
 
 
 1@md_gef,110,129,6	script(DISABLED)	Mary Juj#0_2	4_F_JOB_BLACKSMITH,{
-	npctalk "Hello";
+	npctalk "你好";
 	end;
 }
 
 1@md_gef,183,222,5	script(DISABLED)	The Stranger#cadaver	4_TOWER_11,{
-	mes "It is a stranger's corpse.";
-	mes "Perhaps he died while wandering in this place on the search for treasure.";
+	mes "这是一具陌生人的尸体。";
+	mes "他也许是在这里寻找宝物时徘徊至此而死的。";
 	next;
-	if (select( "Calm down", "Investigate the body" ) == 1) {
-		mes "You respect the dead and decided to leave the body alone.";
+	if (select( "冷静下来", "调查尸体" ) == 1) {
+		mes "您尊重死者，决定不去动这具尸体。";
 		close;
 	}
-	mes "Looking at a hastily scribbled note in his pocket, perhaps the adventurer's name was Walter.";
+	mes "看着他口袋里一张潦草写就的纸条，这位冒险者的名字似乎是沃尔特。";
 	next;
-	mes "[Adventurer's Log]";
-	mes "My name is Walter. For the adventurers who will visit this place in the future, I'm leaving this so that you don't make the same mistake again.";
+	mes "[冒险家日志]";
+	mes "我叫沃尔特。为了将来会来到这里的冒险者，我留下这些，希望你们不要再犯同样的错误。";
 	next;
-	mes "[Adventurer's Log]";
-	mes "On the first day, I curiously put my hand on the slab of a strange Sculpture nearby.";
+	mes "[冒险家日志]";
+	mes "第一天，我好奇地把手放在了附近一座奇怪雕像的石板上。";
 	mes "...and I awokened something that I should not have.";
 	next;
-	mes "[Adventurer's Log]";
-	mes "Right now the revived ancient king is wandering in front of me.";
-	mes "Perhaps he has no memories of his previous life.";
-	mes "One thing is certain, he will kill me.";
+	mes "[冒险家日志]";
+	mes "此刻，复活的古代国王正在我面前徘徊。";
+	mes "也许他已经没有前世的记忆了。";
+	mes "有一点可以肯定，他会杀了我。";
 	next;
-	mes "[Adventurer's Log]";
-	mes "To the adventurers who will visit this place in the future, I hope you do not make the same mistake as me.";
-	mes "If you do see a suspicious slab, do not show any interest and pass by it.";
+	mes "[冒险家日志]";
+	mes "致将来会来到这里的冒险者，希望你们不要重蹈我的覆辙。";
+	mes "如果看到可疑的石板，不要表现出任何兴趣，直接走过去。";
 	next;
-	mes "[Adventurer's Log]";
-	mes "Again, never touch the slab. Whatever temptation you may have.";
+	mes "[冒险家日志]";
+	mes "再说一次，绝对不要碰那块石板。无论有多大的诱惑。";
 	if ('freestones != 0)
 		close;
 	next;
-	mes "Several craft stones fall from his body. They were probably collected while exploring this place.";
+	mes "几颗工艺石从他的身上掉落。大概是探索这里时收集的。";
 	close2;
 	if ('freestones == 0) {
 		'freestones = 1;
@@ -244,32 +244,32 @@ OnInstanceInit:
 
 1@md_gef,199,73,0	script(DISABLED)	Bizzare Sculpture#boss	CLEAR_NPC,{
 	if ('count < 100) {
-		mes "It is a strange sculpture with a lot of dust piled up. I don't see anything suspicious.";
+		mes "这是一座积满灰尘的奇怪雕像。看不出有什么可疑之处。";
 		close;
 	}
 	if ('boss_actv >= 1) {
-		mes "Craft Stones have been melted by a powerful force into the sockets.";
-		mes "Seems like the sockets can't be used for a while.";
+		mes "工艺石被强大的力量熔入了插槽之中。";
+		mes "看来这些插槽暂时无法使用了。";
 		close;
 	}
-	mes "At some point, the accumulated dust scatters, and 10 hollow holes are visible on the slab under the sculpture.";
+	mes "不知何时，堆积的灰尘散开，雕像下的石板上露出了10个空洞。";
 	next;
-	mes "Each of the 10 hollow sockets seem to perfectly fit a craft stone.";
+	mes "这10个空洞似乎每一个都恰好能放入一颗工艺石。";
 	next;
-	if (select( "Ignore", "Try inserting craft stones" ) == 1)
+	if (select( "无视", "尝试放入工艺石" ) == 1)
 		end;
 	if (countitem(25235) < 10) {
-		mes "Craft Stones have been melted by a powerful force into the sockets.";
-		mes "Seems like the sockets can't be used for a while.";
+		mes "工艺石被强大的力量熔入了插槽之中。";
+		mes "看来这些插槽暂时无法使用了。";
 		close;
 	}
-	mes "When you insert a craft stone into a hole, it emits a bright light and melts.";
+	mes "将工艺石放入洞中时，它发出耀眼的光芒并熔化了。";
 	next;
 	delitem 25235,10;
 	specialeffect EF_ANGELUS;
 
 	if (rand(1,10) == 10) {
-		mes "Something seems to have changed in the air around me.";
+		mes "我周围的空气似乎发生了某种变化。";
 		instance_announce 0, "Lord of the Dead: Who Awakened Me? I will meet you in person and ask you why.", bc_map, "0xFFFF00";
 		if ('boss_actv == 0) {
 			'boss_actv = 1;
@@ -277,7 +277,7 @@ OnInstanceInit:
 		}
 	}
 	else {
-		mes "But nothing else happened.";
+		mes "但除此之外什么也没有发生。";
 		close2;
 		if ('boss_actv == 0) {
 			disablenpc();	// Disable NPC for 5 minutes when MVP didn't spawn.
@@ -342,55 +342,55 @@ OnTimer180000:	//3min before chest disappears
 
 
 //Merchant
-gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
+gef_tower,57,167,3	script	业余收藏家#pa0829	1_F_01,{
 	disable_items;
 	function F_equip_menu;
 	function F_enchant;
 
 	if (checkweight(1201,1) == 0) {
-		mes "You have too many kinds of objects. Clear your inventory.";
+		mes "您携带的物品种类过多。请整理您的背包。";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "Can't continue because you have too many heavy objects. Reduce your total weight by clearing your inventory.";
+		mes "由于携带的重物过多，无法继续。请整理背包以降低总重量。";
 		close;
 	}
-	mes "[Amateur Collector]";
-	mes "If you bring me a " + mesitemlink(25235, false) + ", I can enchant a wonderful effect on your accessory!";
+	mes "[业余收藏家]";
+	mes "如果您带给我" + mesitemlink(25235, false) + "，我就能为您的饰品附上极佳的效果！";
 	next;
-	switch( select( "What can you do with the Crafting Stone?", "Accessory Enchantment", "Reset Enchant" ) ) {
+	switch( select( "工艺石能做什么？", "饰品附魔", "重置附魔" ) ) {
 	case 1:
-		mes "[Amateur Collector]";
-		mes "I trade expensive stones from the dungeon in exchange for my craftsmanship. I'm still a beginner, but my skills are passable.";
-		mes "Please take care of me.";
+		mes "[业余收藏家]";
+		mes "我用我的手艺换取副本中昂贵的石头。我还是个新手，但手艺还过得去。";
+		mes "请多关照。";
 		next;
-		if (select( "I've heard this before.", "I'm listening." ) == 1) {
-			mes "[Amateur Collector]";
-			mes "Is that so?";
+		if (select( "这个我已经听过了。", "我在听。" ) == 1) {
+			mes "[业余收藏家]";
+			mes "是这样吗？";
 			close;
 		}
-		mes "[Amateur Collector]";
-		mes "By using the Craft Stone, I can enchant one of your accessories with abilities.";
+		mes "[业余收藏家]";
+		mes "使用工艺石，我可以为您的某件饰品附上能力。";
 		next;
-		mes "[Amateur Collector]";
-		mes "I need 10 x " + mesitemlink(25235, false) + " and 100,000 Zeny.";
-		mes "There is no failure in the enchantment process.";
+		mes "[业余收藏家]";
+		mes "我需要10个" + mesitemlink(25235, false) + "和100,000 Zeny。";
+		mes "附魔过程不会失败。";
 		next;
-		mes "[Amateur Collector]";
-		mes "However ^0000FFif the accessory has a random option, the random option will be removed after enchantment.^000000";
+		mes "[业余收藏家]";
+		mes "不过，^0000FF如果饰品带有随机选项，附魔后随机选项将被移除。^000000";
 		next;
-		select( "Anything else?" );
-		mes "[Amateur Collector]";
-		mes "Cards slotted to the accessory will remain after the enchantement.";
+		select( "还有别的吗？" );
+		mes "[业余收藏家]";
+		mes "附魔后，镶嵌在饰品上的卡片会保留。";
 		next;
-		mes "[Amateur Collector]";
-		mes "A reset is possible, but I can't say that I'm experienced.";
-		mes "My success rate is:";
-		mes "Royal Ring: 80%";
-		mes "Other Accessory: 20%";
+		mes "[业余收藏家]";
+		mes "可以重置，但我可不敢说自己经验丰富。";
+		mes "我的成功率是：";
+		mes "皇家戒指：80%";
+		mes "其他饰品：20%";
 		next;
-		mes "[Amateur Collector]";
-		mes "^0000FFIf the accessory has a random option, the random option will be removed after initialization.^000000";
+		mes "[业余收藏家]";
+		mes "^0000FF如果饰品带有随机选项，初始化后随机选项将被移除。^000000";
 		close;
 	case 2:
 		.@type = 1;
@@ -409,8 +409,8 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 	
 	switch( .@equip_id ) {
 	case 0:
-		mes "[Amateur Collector]";
-		mes "Please equip your accessory.";
+		mes "[业余收藏家]";
+		mes "请装备您的饰品。";
 		close;
 	case 28483:
 	case 2601:
@@ -536,8 +536,8 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 	case 2956:
 		break;
 	default:
-		mes "[Amateur Collector]";
-		mes "I cannot " + .@type_name$ + " this " + mesitemlink(.@equip_id, false) + " accessory.";
+		mes "[业余收藏家]";
+		mes "我无法" + .@type_name$ + "这个" + mesitemlink(.@equip_id, false) + "饰品。";
 		close;
 	}
 
@@ -545,16 +545,16 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 		switch( .@equip_id ) {
 		case 28483:	//Royal Ring Enchantment
 			if (.@equip_card[2] != 0) {
-				mes "[Amateur Collector]";
-				mes "The " + mesitemlink(.@equip_id, false) + " already has maximum enchantment.";
-				mes "I cannot work on this any further.";
+				mes "[业余收藏家]";
+				mes "该" + mesitemlink(.@equip_id, false) + "已经达到最大附魔。";
+				mes "我无法再对它进行加工了。";
 				close;
 			}
 			.@pos = .@equip_card[3] != 0 ? 2 : 3;
-			mes "[Amateur Collector]";
-			mes "Please select an enchantment type~";
+			mes "[业余收藏家]";
+			mes "请选择附魔类型~";
 			next;
-			switch( select( "Physical", "Magical", "Ranged" ) ) {
+			switch( select( "物理", "魔法", "远程" ) ) {
 			case 1:
 				if (.@pos == 2)
 					.@equip_card[2] = F_enchant(2);
@@ -575,21 +575,21 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 				break;
 			}
 			if (.@pos == 2) {
-				mes "[Amateur Collector]";
-				mes "Are you sure to enhance the " + mesitemlink(.@equip_id, false) + "?";
-				mes "^0000FFThere is a no chance of failure^000000.";
+				mes "[业余收藏家]";
+				mes "确定要对" + mesitemlink(.@equip_id, false) + "进行强化吗？";
+				mes "^0000FF绝无失败的可能^000000。";
 				next;
-				if (select( "Yes, please proceed", "Cancel" ) == 2)
+				if (select( "好的，请继续", "取消" ) == 2)
 					end;
 			}
 			if (countitem(25235) < 10) {
-				mes "[Amateur Collector]";
-				mes "Please bring me 10 x " + mesitemlink(25235, false) + ".";
+				mes "[业余收藏家]";
+				mes "请带给我10个" + mesitemlink(25235, false) + ".";
 				close;
 			}
 			if (Zeny < 100000) {
-				mes "[Amateur Collector]";
-				mes "I need 100,000 zeny!";
+				mes "[业余收藏家]";
+				mes "我需要100,000 Zeny！";
 				close;
 			}
 			delitem 25235,10; //Catalyst
@@ -601,32 +601,32 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 
 			delequip .@slot;
 			specialeffect2 EF_REPAIRWEAPON;
-			mes "[Amateur Collector]";
-			mes "The " + mesitemlink(.@equip_id, false) + " has been enchanted!!";
+			mes "[业余收藏家]";
+			mes "该" + mesitemlink(.@equip_id, false) + "已完成附魔！！";
 			getitem2 .@equip_id,1,1,0,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
 			close;
 
 		default:	// Normal Accessory Enchantment
 			if (.@equip_card[3] != 0) {
-				mes "[Amateur Collector]";
-				mes "The " + mesitemlink(.@equip_id, false) + " already has an enchant.";
-				mes "I cannot work on this any further.";
+				mes "[业余收藏家]";
+				mes "该" + mesitemlink(.@equip_id, false) + "已经有附魔了。";
+				mes "我无法再对它进行加工了。";
 				close;
 			}
-			mes "[Amateur Collector]";
-			mes "Are you sure you want to enhance the " + mesitemlink(.@equip_id, false) + "?";
-			mes "^0000FFThere is a no chance of failure^000000.";
+			mes "[业余收藏家]";
+			mes "您确定要强化" + mesitemlink(.@equip_id, false) + "吗？";
+			mes "^0000FF绝无失败的可能^000000。";
 			next;
-			if (select( "Yes, please proceed", "Cancel") == 2)
+			if (select( "好的，请继续", "取消") == 2)
 				end;
 			if (countitem(25235) < 10) {
-				mes "[Amateur Collector]";
-				mes "Please bring me 10 x " + mesitemlink(25235, false) + ".";
+				mes "[业余收藏家]";
+				mes "请带给我10个" + mesitemlink(25235, false) + ".";
 				close;
 			}
 			if (Zeny < 100000) {
-				mes "[Amateur Collector]";
-				mes "I need 100,000 zeny!";
+				mes "[业余收藏家]";
+				mes "我需要100,000 Zeny！";
 				close;
 			}
 			delitem 25235,10; //Catalyst
@@ -639,8 +639,8 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 			delequip .@slot;
 			.@enchant = F_enchant(1);
 			specialeffect2 EF_REPAIRWEAPON;
-			mes "[Amateur Collector]";
-			mes "The " + mesitemlink(.@equip_id, false) + " has been enchanted with " + mesitemlink(.@enchant, false) + ".";
+			mes "[业余收藏家]";
+			mes "该" + mesitemlink(.@equip_id, false) + "已附上" + mesitemlink(.@enchant, false) + ".";
 			getitem2 .@equip_id,1,1,0,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@enchant;
 			close;
 		}
@@ -655,25 +655,25 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 			.@success = 20;	// success normal
 		}
 		if (.@equip_card[.@pos] == 0) {
-			mes "[Amateur Collector]";
-			mes "The " + mesitemlink(.@equip_id, false) + " is not at its maximum enchantment.";
-			mes "I cannot reset this accessory.";
+			mes "[业余收藏家]";
+			mes "该" + mesitemlink(.@equip_id, false) + "尚未达到最大附魔。";
+			mes "我无法重置这件饰品。";
 			close;
 		}
-		mes "[Amateur Collector]";
-		mes "All enchanted effects will be removed from the " + mesitemlink(.@equip_id, false) + "?";
-		mes "^FF0000There is a " + .@success + "% chance of success. The accessory will be destroyed if the reset fails!^000000";
+		mes "[业余收藏家]";
+		mes "将移除" + mesitemlink(.@equip_id, false) + "上的所有附魔效果吗？";
+		mes "^FF0000有" + .@success + "%的成功率。如果重置失败，饰品将被破坏！^000000";
 		next;
-		if (select( "I'll be back later", "Please proceed") == 1)
+		if (select( "我稍后再来", "请继续") == 1)
 			end;
 		if (countitem(25235) < 10) {
-			mes "[Amateur Collector]";
-			mes "Please bring me 10 x " + mesitemlink(25235, false) + "";
+			mes "[业余收藏家]";
+			mes "请带给我10个" + mesitemlink(25235, false) + "";
 			close;
 		}
 		if (Zeny < 100000) {
-			mes "[Amateur Collector]";
-			mes "I need 100,000 zeny!";
+			mes "[业余收藏家]";
+			mes "我需要100,000 Zeny！";
 			close;
 		}
 		delitem 25235,10; //Catalyst
@@ -686,15 +686,15 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 		delequip .@slot;
 		if (rand(100) > .@success) {
 			specialeffect2 EF_SUI_EXPLOSION;
-			mes "[Amateur Collector]";
-			mes "Darn it...";
-			mes "I have failed and the accessory has been destroyed. I'm so sorry.";
+			mes "[业余收藏家]";
+			mes "可恶……";
+			mes "我失败了，饰品已经被破坏。非常抱歉。";
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Amateur Collector]";
-		mes "I have succeeded.";
-		mes "The " + mesitemlink(.@equip_id, false) + " has been initialized.";
+		mes "[业余收藏家]";
+		mes "我成功了。";
+		mes "该" + mesitemlink(.@equip_id, false) + "已初始化。";
 		getitem2 .@equip_id,1,1,0,0,.@equip_card[0],.@equip_card[1],0,0;
 		close;
 	}

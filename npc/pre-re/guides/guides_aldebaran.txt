@@ -21,86 +21,86 @@
 //= 1.7 Fixed viewpoint coordinates [Playtester]
 //============================================================
 
-aldebaran,139,63,4	script	Soldier#alde	105,{
+aldebaran,139,63,4	script	士兵#alde	105,{
 	cutin "prt_soldier",2;
-	mes "[Al De Baran Guard]";
-	mes "I'm just an ordinary guard";
-	mes "that you could find in any other city. I don't think I even have a name...";
+	mes "[艾尔帕兰守卫]";
+	mes "我只是个普通的守卫，";
+	mes "在任何城市都能见到。我甚至觉得自己连名字都没有……";
 	next;
-	mes "[Al De Baran Guard]";
-	mes "I am in charge of the Service Guides from the Al De Baran Garrison. Let me guide you";
-	mes "through our town!";
+	mes "[艾尔帕兰守卫]";
+	mes "我负责艾尔帕兰驻军的服务向导。让我带你";
+	mes "参观我们的城镇吧！";
 	next;
-	if (select("Get Location Guide.:End conversation.") == 1) {
+	if (select("获取地点向导。:结束对话。") == 1) {
 		viewpoint 1,61,229,0,0xFF6633;
 		viewpoint 1,72,197,1,0x0000FF;
 		viewpoint 1,223,222,2,0x00FFFF;
 		viewpoint 1,233,105,3,0x515151;
 		viewpoint 1,197,70,4,0x3355FF;
 		viewpoint 1,60,60,5,0xFF5555;
-		mes "^FF6633+^000000 -> Kafra Main Office ";
-		mes "^0000FF+^000000 -> Weapon Shop ";
-		mes "^00FFFF+^000000 -> Sorcerer Guild (Closed)";
-		mes "^515151+^000000 -> Pub";
-		mes "^3355FF+^000000 -> Item Shop";
-		mes "^FF5555+^000000 -> Alchemist Guild";
+		mes "^FF6633+^000000 -> 卡普拉总部";
+		mes "^0000FF+^000000 -> 武器店";
+		mes "^00FFFF+^000000 -> 元素使公会（已关闭）";
+		mes "^515151+^000000 -> 酒吧";
+		mes "^3355FF+^000000 -> 道具店";
+		mes "^FF5555+^000000 -> 炼金术师公会";
 		close2;
 		cutin "prt_soldier",255;
 		end;
 	}
-	mes "[Al De Baran Guard]";
-	mes "We are sworn to protect Al De Baran! May the forces of evil always be crushed by the";
-	mes "righteous fist of good!";
+	mes "[艾尔帕兰守卫]";
+	mes "我们誓言守护艾尔帕兰！愿邪恶势力永远被";
+	mes "正义的铁拳粉碎！";
 	close2;
 	cutin "prt_soldier",255;
 	end;
 }
 
-aldebaran,133,108,4	script	Soldier#2alde	105,{
+aldebaran,133,108,4	script	士兵#2alde	105,{
 	cutin "prt_soldier",2;
-	mes "[Al De Baran Guard]";
-	mes "I'm just an";
-	mes "ordinary guard,";
-	mes "the kind you can";
-	mes "find in any other city.";
+	mes "[艾尔帕兰守卫]";
+	mes "我只是个";
+	mes "普通的守卫，";
+	mes "在任何城市";
+	mes "都能见到。";
 	next;
-	mes "[Al De Baran Guard]";
-	mes "When I'm not too busy";
-	mes "protecting the Al De Baran";
-	mes "populace, I'm here giving directions to adventurers";
-	mes "like yourself.";
+	mes "[艾尔帕兰守卫]";
+	mes "不忙着保护";
+	mes "艾尔帕兰市民的时候，";
+	mes "我就在这里为像你这样的";
+	mes "冒险者指路。";
 	next;
-	switch(select("Kafra Main Office :Weapon Shop :Sorcerer Guild :Pub :Item Shop :Alchemist Guild :End Conversation ")) {
+	switch(select("卡普拉总部 :武器店 :元素使公会 :酒吧 :道具店 :炼金术师公会 :结束对话")) {
 	case 1:
 		viewpoint 1,61,229,0,0xFF6633;
-		mes "^FF6633+^000000 -> Kafra Main Office ";
+		mes "^FF6633+^000000 -> 卡普拉总部";
 		break;
 	case 2:
 		viewpoint 1,72,197,1,0x0000FF;
-		mes "^0000FF+^000000 -> Weapon Shop ";
+		mes "^0000FF+^000000 -> 武器店";
 		break;
 	case 3:
 		viewpoint 1,223,222,2,0x00FFFF;
-		mes "^00FFFF+^000000 -> Sorcerer Guild (Closed)";
+		mes "^00FFFF+^000000 -> 元素使公会（已关闭）";
 		break;
 	case 4:
 		viewpoint 1,233,105,3,0x515151;
-		mes "^515151+^000000 -> Pub ";
+		mes "^515151+^000000 -> 酒吧";
 		break;
 	case 5:
 		viewpoint 1,197,70,4,0x3355FF;
-		mes "^3355FF+^000000 -> Item Shop ";
+		mes "^3355FF+^000000 -> 道具店";
 		break;
 	case 6:
 		viewpoint 1,60,60,5,0xFF5555;
-		mes "^FF5555+^000000 -> Alchemist Guild";
+		mes "^FF5555+^000000 -> 炼金术师公会";
 		break;
 	case 7:
-		mes "[Al De Baran Guard]";
-		mes "We are sworn to";
-		mes "protect Al De Baran!";
-		mes "May the forces of good";
-		mes "always prevail over evil~";
+		mes "[艾尔帕兰守卫]";
+		mes "我们誓要";
+		mes "守护艾尔帕兰！";
+		mes "愿正义之力";
+		mes "永远战胜邪恶～";
 		break;
 	}
 	close2;

@@ -20,63 +20,63 @@
 //= 1.6 Added VIP features. [Euphy]
 //============================================================
 
-prt_in,162,24,3	script	Splendid-Looking Knight	470,2,2,{
-	mes "[Rune Knight Manuel]";
+prt_in,162,24,3	script	气度不凡的骑士	470,2,2,{
+	mes "[符文骑士曼努埃尔]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "You are now a member of our select brethren. I can still remember when I first met you.";
+		mes "你现在已是我们精选兄弟中的一员。我仍记得初次见到你的时候。";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "Strive to live the way of the sword with honor...";
+		mes "[符文骑士曼努埃尔]";
+		mes "以荣耀之心，努力践行剑之道吧……";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "Cheers to our new future...";
+		mes "[符文骑士曼努埃尔]";
+		mes "为我们的新未来干杯……";
 		close;
 	}
 	if (job_rune_edq == 0) {
-		mes "There are many paths one can take in the world. Most people can see their path but don't really follow it...";
+		mes "世间可走的路有很多。大多数人能看到自己的路，却并未真正走下去……";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "Anyway the drinks here are really good. Would you like to have one?";
+		mes "[符文骑士曼努埃尔]";
+		mes "总之这里的酒真的很不错。要来一杯吗？";
 		next;
-		if(select("Sure, let's have a drink.:I refuse.") == 2) {
-			mes "[Rune Knight Manuel]";
-			mes "Are you sure? You don't know the true elegance of these drinks...";
+		if(select("好，喝一杯吧。:我拒绝。") == 2) {
+			mes "[符文骑士曼努埃尔]";
+			mes "你确定？你还不懂这些酒真正的雅致……";
 			close;
 		}
-		mes "[Rune Knight Manuel]";
+		mes "[符文骑士曼努埃尔]";
 		if (BaseJob == Job_Knight) {
-			mes "You walk the way of sword too don't you? Then we can understand each other. Drinks taste better when it's with a fellow Swordman.";
+			mes "你也走在剑之道上，不是吗？那我们就能彼此理解。与同为剑士的人共饮，酒会更好喝。";
 			next;
-			mes "[Rune Knight Manuel]";
-			mes "I'll buy this round.";
-			mes "A toast to friendship~";
+			mes "[符文骑士曼努埃尔]";
+			mes "这一轮我请。";
+			mes "为友谊干杯~";
 			next;
-			mes "[Rune Knight Manuel]";
+			mes "[符文骑士曼努埃尔]";
 			if (BaseLevel > 98 && JobLevel > 49) {
-				mes "In my opinion you seem to be ready to start a new way...";
+				mes "在我看来，你似乎已准备好踏上新的道路……";
 				next;
-				mes "[Rune Knight Manuel]";
-				mes "Walking the way of the sword is a perpetual battle. From now on you may have a rough journey ahead of you...";
+				mes "[符文骑士曼努埃尔]";
+				mes "行走剑之道是一场永无止境的战斗。从今往后，你前面的旅程或许会很艰辛……";
 				next;
-				mes "[Rune Knight Manuel]";
-				mes "If you want to walk on your new way and surpass your current limits, I'm willing to help you.";
+				mes "[符文骑士曼努埃尔]";
+				mes "若你想走上新的道路、超越如今的极限，我愿意助你一臂之力。";
 				next;
-				mes "[Rune Knight Manuel]";
-				mes "The true way of a Swordman who learned harmony to break the limit of a sword is a Rune Knight.";
+				mes "[符文骑士曼努埃尔]";
+				mes "剑士领悟和谐、突破剑之极限的真正道路，便是符文骑士。";
 				next;
-				mes "[Rune Knight Manuel]";
-				mes "Won't you join our brethren? You look like you're fully qualified to become one of us.";
+				mes "[符文骑士曼努埃尔]";
+				mes "要不要加入我们的兄弟会？你看起来完全有资格成为我们的一员。";
 				next;
-				mes "[Rune Knight Manuel]";
-				mes "If you are interested, I'll introduce you to the masters who will guide you to the way of the Rune Knight with my recommendation.";
+				mes "[符文骑士曼努埃尔]";
+				mes "如果你有兴趣，我会以我的推荐，把你引荐给引领你走上符文骑士之路的导师们。";
 				next;
-				switch(select("I am not ready yet.:I'm ready to be a Rune Knight.")) {
+				switch(select("我还没准备好。:我已准备好成为符文骑士。")) {
 				case 1:
-					mes "[Rune Knight Manuel]";
-					mes "Right. Every challenge always needs preparation. Okay, I'll wait for you.";
+					mes "[符文骑士曼努埃尔]";
+					mes "没错。任何挑战都需要准备。好，我会等你。";
 					next;
-					mes "[Rune Knight Manuel]";
-					mes "Of course, I would only accept you if you are one hundred percent sure of your conviction to become a Rune Knight.";
+					mes "[符文骑士曼努埃尔]";
+					mes "当然，只有你百分之百确信自己要成为符文骑士，我才会接受你。";
 					close;
 				case 2:
 					if (VIP_SCRIPT) {
@@ -85,71 +85,71 @@ prt_in,162,24,3	script	Splendid-Looking Knight	470,2,2,{
 						setquest 3200;
 						next;
 					}
-					mes "[Rune Knight Manuel]";
-					mes "You're sure now?";
-					mes "Let me send a dispatch to my comrades that you are willing to join our ranks.";
+					mes "[符文骑士曼努埃尔]";
+					mes "你现在确定了吗？";
+					mes "让我传讯给同伴们，说你有意加入我们的行列。";
 					next;
 					set job_rune_edq,1;
 					setquest 3200;
-					mes "[Rune Knight Manuel]";
-					mes "You know the place called Glast Heim? There's a Rune Knight waiting for you there, he will guide you to the entrance of Glast Heim Tower.";
+					mes "[符文骑士曼努埃尔]";
+					mes "你知道一个叫葛拉斯特海姆的地方吗？那里有一位符文骑士在等你，他会带你前往葛拉斯特海姆塔的入口。";
 					next;
-					mes "[Rune Knight Manuel]";
-					mes "My name is Manuel. I am called the Rune Knight of Brilliance. When you tell him that you are a Rune Knight candidate with my recommendation, he will handle the rest.";
+					mes "[符文骑士曼努埃尔]";
+					mes "我叫曼努埃尔，人称光辉符文骑士。你告诉他你是由我推荐的符文骑士候补，剩下的他会处理。";
 					next;
-					mes "[Rune Knight Manuel]";
-					mes "I will wait for the day that you become our comrade as a true Rune Knight.";
+					mes "[符文骑士曼努埃尔]";
+					mes "我会等待你成为真正的符文骑士、成为我们同伴的那一天。";
 					close;
 				}
 			}
-			mes "If you continually walk the way of the sword, you will eventually feel the limits of your powers. Like myself before...";
+			mes "若你持续行走剑之道，终会感到自身力量的极限。就像过去的我一样……";
 			next;
-			mes "[Rune Knight Manuel]";
-			mes "When the time comes there will be a way to help you surpass that limit. Until the day that your strength has grown comes, we can at least still have a drink together.";
+			mes "[符文骑士曼努埃尔]";
+			mes "时候到了，自然会有助你超越那道极限的方法。在你的力量成长的那一天到来之前，我们至少还能一起喝一杯。";
 			next;
-			mes "[Rune Knight Manuel]";
-			mes "A toast to the day that your strength can withstand the powers of a Rune Knight!";
+			mes "[符文骑士曼努埃尔]";
+			mes "为你的力量足以承载符文骑士之力那一天，干杯！";
 			close;
 		}
-		mes "I believe that the wind of change is not always a good one.";
+		mes "我相信，变化之风并不总是好事。";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "Just like the taste of this drink. I wish the taste of this drink is kept here forever.";
+		mes "[符文骑士曼努埃尔]";
+		mes "就像这杯酒的味道。我希望这酒的味道能永远留在这里。";
 		close;
 	} else if (job_rune_edq == 1) {
-		mes "The Rune Knight is waiting for you at Glast Heim. He will guide you to the entrance of Glast Heim Tower.";
+		mes "符文骑士正在葛拉斯特海姆等你。他会带你前往葛拉斯特海姆塔的入口。";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "Tell him that you are a candidate to be a Rune Knight and he will handle the rest.";
+		mes "[符文骑士曼努埃尔]";
+		mes "告诉他你是符文骑士候补，剩下的他会处理。";
 		next;
-		mes "[Rune Knight Manuel]";
-		mes "I will wait for the day you become our comrade as a true Rune Knight.";
+		mes "[符文骑士曼努埃尔]";
+		mes "我会等待你成为真正的符文骑士、成为我们同伴的那一天。";
 		close;
 	}
-	mes "Don't you have things to do right now?";
+	mes "你现在没有别的事要做吗？";
 	next;
-	mes "[Rune Knight Manuel]";
-	mes "No? Well then never mind.";
-	mes "Don't you love the smell of alcohol?";
+	mes "[符文骑士曼努埃尔]";
+	mes "没有？那就算了。";
+	mes "你不喜欢酒香吗？";
 	close;
 }
 
-glast_01,44,363,3	script	Rune Leader Jungberg	468,2,2,{
-	mes "[Rune Leader Jungberg]";
+glast_01,44,363,3	script	符文队长荣格伯格	468,2,2,{
+	mes "[符文骑士长荣伯格]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "Oh, you must be "+strcharinfo(0)+".";
+		mes "哦，你一定是"+strcharinfo(0)+".";
 		mes "Welcome.";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "We are looking forward to you helping the Rune Knights spread honor throughout the world.";
+		mes "[符文骑士长荣伯格]";
+		mes "我们期待你协助符文骑士将荣耀传遍世界。";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "So, What can I help you with?";
+		mes "[符文骑士长荣伯格]";
+		mes "那么，有什么我能帮你的？";
 		next;
-		switch(select("I want to go to the gathering place.:Nothing.")) {
+		switch(select("我想去集会地点。:没什么。")) {
 		case 1:
-			mes "[Rune Leader Jungberg]";
-			mes "Right. I'll send you right now. I'll see you soon.";
+			mes "[符文骑士长荣伯格]";
+			mes "好。我现在就送你过去。我们很快再见。";
 			close2;
 			warp "job3_rune01",80,65;
 			end;
@@ -158,72 +158,72 @@ glast_01,44,363,3	script	Rune Leader Jungberg	468,2,2,{
 		}
 	}
 	if (BaseJob != Job_Knight) {
-		mes "I am the only knight who's keeping the way of the Swordsman in this cursed place Glast Heim.";
+		mes "在这被诅咒的葛拉斯特海姆，我是唯一仍坚守剑士之道的骑士。";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "Since you don't walk the way of the Sword, you wouldn't understand our spirit. I can manage by myself. Follow your own path.";
+		mes "[符文骑士长荣伯格]";
+		mes "既然你不走剑之道，就不会理解我们的精神。我自己能应付。走你自己的路吧。";
 		close;
 	}
 	if (job_rune_edq < 2) {
-		mes "Are you a cursed ghost of this place? Or are you an ignorant adventurer?";
+		mes "你是此地被诅咒的亡灵吗？还是无知的冒险者？";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "If you are a breathing human, then listen to me carefully. I wouldn't risk my life here by hesitating to talk to just anyone.";
+		mes "[符文骑士长荣伯格]";
+		mes "如果你是活生生的人，就仔细听我说。我不会在这里冒着性命危险，随便跟人搭话。";
 		next;
 		if (job_rune_edq == 0) {
-			switch(select("Who are you?:What are you doing here?:Cancel.")) {
+			switch(select("你是谁？:你在这里做什么？:取消。")) {
 			case 1:
-				mes "[Rune Leader Jungberg]";
-				mes "I am the only knight who's keeping the way of the Swordsman in this cursed place Glast Heim.";
+				mes "[符文骑士长荣伯格]";
+				mes "在这被诅咒的葛拉斯特海姆，我是唯一仍坚守剑士之道的骑士。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "If you also follow the way of the Swordsman our paths will most certainly cross again when you have reached your full potential.";
+				mes "[符文骑士长荣伯格]";
+				mes "若你也遵循剑士之道，当你达到全部潜能时，我们的路必定会再次交汇。";
 				close;
 			case 2:
-				mes "[Rune Leader Jungberg]";
-				mes "I am a man walking the way of the Sword. But I'm not exactly the same as the likes of you, Rune-Midgarts knight.";
+				mes "[符文骑士长荣伯格]";
+				mes "我是行走剑之道的人。但我与你这类人并不完全相同，卢恩-米德加尔特骑士。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "We are not like the other Knights who are absorbed with pomp and circumstance so you may not know of us yet.";
+				mes "[符文骑士长荣伯格]";
+				mes "我们不像其他沉溺于排场与虚饰的骑士，所以你或许还没听说过我们。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "We are the Rune Knights. A group that leads the true power as well as the physical strength to the righteous way of the Sword.";
+				mes "[符文骑士长荣伯格]";
+				mes "我们是符文骑士。是将真正的力量与肉体之力一同引向正义剑之道的团体。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "We have been living in secret here in the deep of Glast Heim for a half century but it's time to let the world know our purpose.";
+				mes "[符文骑士长荣伯格]";
+				mes "半个世纪以来，我们一直隐居在葛拉斯特海姆深处，但现在是让世界知晓我们目的的时候了。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "Now there are many instructors who are looking for talented Sword wielders in various places of Rune-Midgarts. They are looking for a people who will join the true way of the Sword.";
+				mes "[符文骑士长荣伯格]";
+				mes "如今在卢恩-米德加尔特各地，有许多导师正在寻找有才能的用剑者。他们在寻找愿意加入真正剑之道的人。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "If you wish to join the Rune Knights. Please get a recommendation from one of the guides and come to me again.";
+				mes "[符文骑士长荣伯格]";
+				mes "若你想加入符文骑士，请先从其中一位引路人那里取得推荐，再来找我。";
 				close;
 			case 3:
 				close;
 			}
 		} else if (job_rune_edq == 1) {
-			switch(select("I came to be a Rune Knight.:Cancel.")) {
+			switch(select("我是来成为符文骑士的。:取消。")) {
 			case 1:
-				mes "[Rune Leader Jungberg]";
-				mes "Um... Are you the Rune Knight candidate that Manuel talked about?";
+				mes "[符文骑士长荣伯格]";
+				mes "嗯……你就是曼努埃尔提到的符文骑士候补吗？";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "Your name is "+strcharinfo(0)+", right? I can see clearly that you are qualified to become our comrade.";
+				mes "[符文骑士长荣伯格]";
+				mes "你的名字是"+strcharinfo(0)+"，对吧？我能清楚看出你有资格成为我们的同伴。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "Good. I don't have to ask any more about your qualification to join our brethren....1.S... Now I'll give you your first assignment.";
+				mes "[符文骑士长荣伯格]";
+				mes "很好。关于你加入我们兄弟会的资格，我不必再多问了……1.S……现在我给你第一个任务。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "Find our Rune Knight gathering place hidden inside of Glast Heim.";
+				mes "[符文骑士长荣伯格]";
+				mes "找到我们隐藏在葛拉斯特海姆内部的符文骑士集会地点。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "There's a place that leads to the Rune Knight's secret gathering room inside the Glast Heim Chivalry. Find that place by yourself.";
+				mes "[符文骑士长荣伯格]";
+				mes "葛拉斯特海姆骑士团内部有一处通往符文骑士秘密集会室的地方。你自己去找出那个地方。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "If you can find it, there'll be a person waiting to greet you, so let's start.";
+				mes "[符文骑士长荣伯格]";
+				mes "如果你能找到，那里会有人等着迎接你，那就开始吧。";
 				next;
-				mes "[Rune Leader Jungberg]";
-				mes "Of course your life might be at risk by the ghosts of Glast Heim... but overcoming the risk shouldn't be hard for a Rune Knight candidate.";
+				mes "[符文骑士长荣伯格]";
+				mes "当然，葛拉斯特海姆的亡灵可能会危及你的性命……但对符文骑士候补来说，克服这点危险应该不难。";
 				set job_rune_edq,2;
 				changequest 3200,3201;
 				close;
@@ -232,24 +232,24 @@ glast_01,44,363,3	script	Rune Leader Jungberg	468,2,2,{
 			}
 		}
 	} else if (job_rune_edq == 2) {
-		mes "The 1st assignment is to find out our Rune Knight gathering place hidden inside of Glast Heim.";
+		mes "第一个任务是找出我们隐藏在葛拉斯特海姆内部的符文骑士集会地点。";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "There's a place that leads to the Rune Knights' secret gathering place inside Glast Heim Chivalry. Find that place by yourself.";
+		mes "[符文骑士长荣伯格]";
+		mes "葛拉斯特海姆骑士团内部有一处通往符文骑士秘密集会地点的地方。你自己去找出那个地方。";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "If you can find it, there'll be a person waiting to greet you, so let's start.";
+		mes "[符文骑士长荣伯格]";
+		mes "如果你能找到，那里会有人等着迎接你，那就开始吧。";
 		next;
-		mes "[Rune Leader Jungberg]";
-		mes "Of course your life might be at risk by the ghosts of Glast Heim... but overcoming the risk shouldn't be hard for a Rune Knight candidate.";
+		mes "[符文骑士长荣伯格]";
+		mes "当然，葛拉斯特海姆的亡灵可能会危及你的性命……但对符文骑士候补来说，克服这点危险应该不难。";
 		close;
 	}
-	mes "It seems that you are still taking the test. Do your best and pass all the tests.";
+	mes "看来你还在接受测试。全力以赴，通过所有测试吧。";
 	next;
-	switch(select("I want to go to the gathering place.:Quit the conversation.")) {
+	switch(select("我想去集会地点。:结束对话。")) {
 	case 1:
-		mes "[Rune Leader Jungberg]";
-		mes "All right. I'll send you right away. I'll check you later.";
+		mes "[符文骑士长荣伯格]";
+		mes "好吧。我马上送你过去。回头见。";
 		close2;
 		warp "job3_rune01",80,65;
 		end;
@@ -258,21 +258,21 @@ glast_01,44,363,3	script	Rune Leader Jungberg	468,2,2,{
 	}
 }
 
-gl_knt02,150,55,3	script	Rune Knight Staff	83,2,2,{
-	mes "[Rune Knight Staff]";
+gl_knt02,150,55,3	script	符文骑士职员	83,2,2,{
+	mes "[符文骑士职员]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "Welcome, "+strcharinfo(0)+". Are you going to the gathering place?";
+		mes "欢迎，"+strcharinfo(0)+". Are you going to the gathering place?";
 		next;
-		switch(select("Yes, take me there.:I'm on other business.:Cancel.")) {
+		switch(select("好，带我去吧。:我还有别的事。:取消。")) {
 		case 1:
-			mes "[Rune Knight Staff]";
-			mes "Okay, come in. I'll guide you.";
+			mes "[符文骑士职员]";
+			mes "好，进来吧。我来带你。";
 			close2;
 			warp "job3_rune01",80,65;
 			end;
 		case 2:
-			mes "[Rune Knight Staff]";
-			mes "Oh, really? Then, keep on your work. I'll continue with my mission.";
+			mes "[符文骑士职员]";
+			mes "哦，是吗？那你继续工作吧。我继续执行我的任务。";
 			close;
 		case 3:
 			close;
@@ -280,336 +280,336 @@ gl_knt02,150,55,3	script	Rune Knight Staff	83,2,2,{
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq == 1) {
-			mes "Ah... this area is off limits, you are prohibited to be here. Please do not do anything to hinder our efforts.";
+			mes "啊……这里是禁区，禁止进入。请不要做出妨碍我们行动的事。";
 			next;
-			mes "[Rune Knight Staff]";
-			mes "Although... you seem to have the potential to become a companion to those who follow the path of the sword.";
+			mes "[符文骑士职员]";
+			mes "不过……你似乎有潜力成为那些行走剑之道者的同伴。";
 			next;
-			mes "[Rune Knight Staff]";
-			mes "I'm sure we'll be crossing paths before long. I believe we will meet again.";
+			mes "[符文骑士职员]";
+			mes "我相信不久我们就会再次相遇。我相信我们还会再见。";
 			close;
 		} else if (job_rune_edq > 1) {
-			mes "You found this place correctly. Jungberg sent me to send you to the gathering place.";
+			mes "你正确地找到了这个地方。荣伯格派我送你去集会地点。";
 			next;
-			mes "[Rune Knight Staff]";
-			mes "When you get into the gathering place, talk to Captain Tigris. He's always waiting for new members to show up.";
+			mes "[符文骑士职员]";
+			mes "进入集会地点后，去找提格里斯队长谈谈。他总是在等待新成员出现。";
 			next;
-			mes "[Rune Knight Staff]";
-			mes "Well, please follow me.";
+			mes "[符文骑士职员]";
+			mes "那么，请跟我来。";
 			close2;
 			warp "job3_rune01",80,65;
 			end;
 		}
 	}
-	mes "Wait! This place is prohibited. I don't mind you wandering about but, don't ever disturb me again.";
+	mes "等等！这里是禁区。你四处闲逛我不管，但别再打扰我了。";
 	close;
 }
 
-job3_rune01,80,60,3	script	Rune Knight Captain	470,2,2,{
+job3_rune01,80,60,3	script	符文骑士队长	470,2,2,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-		mes "You've got too many things. You cannot proceed anymore. Please try again after losing some weight.";
+		mes "你带的东西太多了，无法继续前进。请减轻负重后再来。";
 		close;
 	}
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "[Captain Tigris]";
+		mes "[提格里斯队长]";
 		if (job_rune_edq == 23) {
-			mes "Oh, I see... Please wait a moment.";
+			mes "哦，我明白了……请稍等。";
 			next;
-			mes "[Captain Tigris]";
-			mes "I forgot to check if you are qualified to get the celebration gift for changing your job...";
+			mes "[提格里斯队长]";
+			mes "我忘了确认你是否有资格领取转职庆祝礼物……";
 			next;
-			mes "[Captain Tigris]";
-			mes "Let me check the report from the instructors who took care of your tests.";
+			mes "[提格里斯队长]";
+			mes "让我看看负责你测试的导师们的报告。";
 			next;
-			mes "[Captain Tigris]";
+			mes "[提格里斯队长]";
 			if (job_rune_edq3 == 0) {
-				mes "Hm... This is perfect. You've come here with very rare good records.";
+				mes "嗯……这太完美了。你带着极为罕见的优秀成绩来到这里。";
 				set .@item,2140; //Energy_Rune_Guard
 			} else if (job_rune_edq3 > 2 && job_rune_edq3 < 6) {
-				mes "Hmm... This is great. You've come here with decent records.";
+				mes "嗯……这很不错。你带着相当不错的成绩来到这里。";
 				set .@item,2794; //Magic_Stone_Ring
 			} else {
-				mes "Hmm, not bad. It's not a great record but you tried your best.";
+				mes "嗯，还不错。成绩算不上出色，但你已经尽力了。";
 				set .@item,15002; //Rune_Plate
 			}
 			next;
-			mes "[Captain Tigris]";
-			mes "Here, take this. It's a gift that I like to give to the younger generation like yourself.";
+			mes "[提格里斯队长]";
+			mes "来，拿着这个。这是我喜欢送给像你这样的年轻人的礼物。";
 			getitem .@item,1; //Energy_Rune_Guard
 			set job_rune_edq,24;
 			close;
 		}
-		mes "Hey, long time no see, "+strcharinfo(0)+". I don't think you've got any important matters to discuss but make yourself comfortable.";
+		mes "嘿，好久不见，"+strcharinfo(0)+". I don't think you've got any important matters to discuss but make yourself comfortable.";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq == 2) {
-			mes "A man wearing glorious armor and passion in his eyes is standing in front of me.";
+			mes "一个身穿辉煌铠甲、眼中燃着热情的男人站在我面前。";
 			next;
-			mes "He stares at me with an absent look and after a while he begins to talk.";
+			mes "他神情恍惚地注视着我，过了一会儿才开口说话。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Hey, are you the Rune Knight candidate that Manuel recommended? I am Captain Tigris from the Rune Knights, and your name is?";
+			mes "[提格里斯队长]";
+			mes "嘿，你就是曼努埃尔推荐的符文骑士候补吗？我是符文骑士的提格里斯队长，你的名字是？";
 			next;
-			mes "[Captain Tigris]";
-			mes "Oh, I've heard it before but I've forgotten it. Right, were you "+strcharinfo(0)+"? I truly welcome you from the heart for coming here.";
+			mes "[提格里斯队长]";
+			mes "哦，我之前听过，但已经忘了。对了，你是"+strcharinfo(0)+"？我真心欢迎你的到来。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Let's see. How many candidates have come to this room? Hey, Lunarea, which candidate is this one here?";
+			mes "[提格里斯队长]";
+			mes "让我看看。有多少候补来过这个房间？嘿，露娜莉亚，这位是哪个候补？";
 			next;
-			mes "[Rune Knight, Lunarea]";
+			mes "[符文骑士露娜莉亚]";
 			mes "... 172nd.";
 			next;
-			mes "[Captain Tigris]";
-			mes "She says so my friend. Actually I don't want to see the next one. So please do well.";
+			mes "[提格里斯队长]";
+			mes "她这么说的，朋友。其实我不想再见到下一位了。所以请好好表现。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Let me see... Manual and Jungberg must have finished the basic verification, then let's start the test right away.";
+			mes "[提格里斯队长]";
+			mes "让我看看……曼努埃尔和荣伯格应该已经完成基本审核了，那就立刻开始测试吧。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Lunarea, proceed with the first test.";
+			mes "[提格里斯队长]";
+			mes "露娜莉亚，开始第一项测试。";
 			next;
-			mes "[Rune Knight, Lunarea]";
+			mes "[符文骑士露娜莉亚]";
 			mes "...";
 			next;
-			mes "This pale-skinned female Rune Knight called Lunarea is nodding her head quietly and watching me.";
+			mes "这位名叫露娜莉亚、肤色苍白的女符文骑士正静静点头，注视着我。";
 			next;
-			mes "[Captain Tigris]";
-			mes "The test begins now. First, you'll get the 1st test from that beautiful icy lady, so please try your best.";
+			mes "[提格里斯队长]";
+			mes "测试现在开始。首先，你要从那位美丽的冰冷女士那里接受第一项测试，请全力以赴。";
 			next;
-			mes "[Captain Tigris]";
-			mes "When the test is done, talk to me. Anyway you'll need to care about the tests progressing with other people.";
+			mes "[提格里斯队长]";
+			mes "测试结束后，来找我谈。总之，你也得留意与其他人的测试进度。";
 			next;
 			set job_rune_edq,3;
 			changequest 3201,3202;
-			mes "[Captain Tigris]";
-			mes "Well then, I'll be waiting here so take the test.";
+			mes "[提格里斯队长]";
+			mes "那么，我会在这里等，你去接受测试吧。";
 			close;
 		} else if (job_rune_edq == 3) {
-			mes "[Captain Tigris]";
-			mes "Now the test begins. First, you'll get the 1st test from that beautiful icy lady, so please try your best.";
+			mes "[提格里斯队长]";
+			mes "现在测试开始。首先，你要从那位美丽的冰冷女士那里接受第一项测试，请全力以赴。";
 			next;
-			mes "[Captain Tigris]";
-			mes "When the test is done, talk to me... anyway you'll need to care about the tests progressing with other people.";
+			mes "[提格里斯队长]";
+			mes "测试结束后，来找我谈……总之，你也得留意与其他人的测试进度。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Well then, I'll be waiting here so take the test.";
+			mes "[提格里斯队长]";
+			mes "那么，我会在这里等，你去接受测试吧。";
 			close;
 		} else if (job_rune_edq > 3 && job_rune_edq < 6) {
-			mes "[Captain Tigris]";
-			mes "Hey you, weren't you testing? Lunarea, what happened? Is the test all done?";
+			mes "[提格里斯队长]";
+			mes "嘿，你不是在测试吗？露娜莉亚，发生什么了？测试都结束了吗？";
 			next;
-			mes "[Rune Knight, Lunarea]";
+			mes "[符文骑士露娜莉亚]";
 			mes "......";
 			next;
-			mes "She just shakes her head without saying any word, and stares at me. She has piercing eyes.";
+			mes "她一言不发地摇摇头，盯着我。她的目光锐利刺人。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Okay Lunarea. Hey, listen to me carefully. Lunarea is a poor talker and quiet but you shouldn't ignore her.";
+			mes "[提格里斯队长]";
+			mes "好，露娜莉亚。嘿，仔细听我说。露娜莉亚不善言辞又沉默，但你不该忽视她。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Even for me... no, any one of us who upsets her wouldn't be able to deal with that.";
+			mes "[提格里斯队长]";
+			mes "就算是我……不，我们任何人惹她不快，都承受不起。";
 			next;
-			mes "[Rune Knight, Lunarea]";
+			mes "[符文骑士露娜莉亚]";
 			mes "......";
 			next;
-			mes "[Captain Tigris]";
-			mes "Whoa don't look at me like that. Okay, you see that? Aspiring Rune Knight. Go back to Lunarea and take the test as she says. That'll be good for you.";
+			mes "[提格里斯队长]";
+			mes "哇，别那样看我。好，你看到了吧？立志成为符文骑士的人。回去找露娜莉亚，按她说的接受测试。那对你比较好。";
 			close;
 		} else if (job_rune_edq == 6) {
-			mes "[Captain Tigris]";
-			mes "Umm, it seems that you've passed Lunarea's test? I guess I won't have to test more for the basics.";
+			mes "[提格里斯队长]";
+			mes "嗯，看来你通过了露娜莉亚的测试？那基础方面我应该不用再考了。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Undeniably our Rune Knights have some differences but we should not forget our Swordsman roots.";
+			mes "[提格里斯队长]";
+			mes "不可否认，我们符文骑士之间有些差异，但我们不该忘记自己剑士的根源。";
 			next;
-			mes "[Captain Tigris]";
-			mes "From now on, this will be the real test as a Rune Knight that you want to be. You'll need to prepare to take next test.";
+			mes "[提格里斯队长]";
+			mes "从现在起，这才是成为你所期望的符文骑士的真正测试。你需要准备接受下一项测试。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Renoa, I know that you've been waiting for a long time but it's your turn.";
+			mes "[提格里斯队长]";
+			mes "蕾诺亚，我知道你等了很久，但轮到你了。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "It really has been such a long time but Lunarea's test and mine differ like the sky to the earth. I hope you won't be just a muscle-headed fool.";
+			mes "[符文骑士蕾诺亚]";
+			mes "确实过了好久，不过露娜莉亚的测试和我的可是天差地别。希望你别只是个有肌肉没脑子的蠢货。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Hahaha. you heard that? It won't be easy this time. I hope you get through it my friend.";
+			mes "[提格里斯队长]";
+			mes "哈哈哈，你听到了吧？这次可不容易。希望你能撑过去，朋友。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Go to that fiery lady in the library room to get the next test done and come back.";
+			mes "[提格里斯队长]";
+			mes "去图书室找那位火辣的女士完成下一项测试，然后再回来。";
 			set job_rune_edq,7;
 			changequest 3204,3205;
 			close;
 		} else if (job_rune_edq > 6 && job_rune_edq < 16) {
-			mes "[Captain Tigris]";
-			mes "Now, this will be the real test as a Rune Knight. You've got to prepare to take the next test.";
+			mes "[提格里斯队长]";
+			mes "现在，这才是符文骑士的真正测试。你得准备接受下一项测试。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Renoa, I know that you've been waiting for a long time but it's your turn.";
+			mes "[提格里斯队长]";
+			mes "蕾诺亚，我知道你等了很久，但轮到你了。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "It really has been such a long time but Lunarea's test and mine differ like the sky to the earth. I hope you won't be just a muscle-headed fool.";
+			mes "[符文骑士蕾诺亚]";
+			mes "确实过了好久，不过露娜莉亚的测试和我的可是天差地别。希望你别只是个有肌肉没脑子的蠢货。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Hahaha. you heard that? It won't be easy this time. I hope you get through it my friend.";
+			mes "[提格里斯队长]";
+			mes "哈哈哈，你听到了吧？这次可不容易。希望你能撑过去，朋友。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Go to that fiery lady in the library room to get the next test done and come back.";
+			mes "[提格里斯队长]";
+			mes "去图书室找那位火辣的女士完成下一项测试，然后再回来。";
 			close;
 		} else if (job_rune_edq == 16) {
-			mes "[Captain Tigris]";
-			mes "Oh, I heard that you've passed Renoa's test which only few people could pass.";
+			mes "[提格里斯队长]";
+			mes "哦，我听说你通过了蕾诺亚的测试，那可是很少有人能通过的。";
 			next;
-			mes "[Captain Tigris]";
-			mes "I heard that the number of candidates who've given up while taking Renoa's test has been high.";
+			mes "[提格里斯队长]";
+			mes "我听说在蕾诺亚的测试中途放弃的候补相当多。";
 			next;
-			mes "[Captain Tigris]";
-			mes "You have to understand. I think it was the test that shows exactly the test instructor's personality. Hmm...";
+			mes "[提格里斯队长]";
+			mes "你得理解。我觉得那测试恰好展现了测试导师的个性。嗯……";
 			next;
-			mes "[Captain Tigris]";
-			mes "Now, there's only the last test left. When you pass this, you will be on your way to officially becoming a Rune Knight.";
+			mes "[提格里斯队长]";
+			mes "现在只剩最后一项测试了。通过之后，你就能正式踏上成为符文骑士之路。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Take the final test from the Rune Knight Velpino who is at the arsenal's right side.";
+			mes "[提格里斯队长]";
+			mes "去接受位于武器库右侧的符文骑士维尔皮诺的最终测试。";
 			next;
-			mes "[Captain Tigris]";
-			mes "I'm not kidding, I am really looking forward to your new start as a Rune Knight.";
-			mes "So please do your best.";
+			mes "[提格里斯队长]";
+			mes "我不是开玩笑，我真的很期待你作为符文骑士的新起点。";
+			mes "所以请全力以赴。";
 			set job_rune_edq,17;
 			changequest 3215,3216;
 			close;
 		} else if (job_rune_edq > 16 && job_rune_edq < 22) {
-			mes "[Captain Tigris]";
-			mes "Take the final test from the Rune Knight Velpino who is at the arsenal's right side.";
+			mes "[提格里斯队长]";
+			mes "去接受位于武器库右侧的符文骑士维尔皮诺的最终测试。";
 			next;
-			mes "[Captain Tigris]";
-			mes "I'm not kidding, I am really looking forward to your new start as a Rune Knight. So please do your best.";
+			mes "[提格里斯队长]";
+			mes "我不是开玩笑，我真的很期待你作为符文骑士的新起点。所以请全力以赴。";
 			close;
 		} else if (job_rune_edq == 22) {
-			mes "[Captain Tigris]";
-			mes "Congratulations. Now you've passed all the tests and can walk the way of a Rune Knight.";
+			mes "[提格里斯队长]";
+			mes "恭喜。你已通过所有测试，可以走上符文骑士之路了。";
 			next;
-			mes "[Captain Tigris]";
-			mes "I'm happy from the bottom of my heart. I'm very proud of you.";
+			mes "[提格里斯队长]";
+			mes "我打从心底感到高兴。我为你感到非常骄傲。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Now you can be yourself around us and stand proud as one of us.";
+			mes "[提格里斯队长]";
+			mes "现在你可以自在地与我们相处，并以我们一员的身分自豪地站立。";
 			next;
-			mes "[Captain Tigris]";
-			mes "There's the evaluations from Lunarea, Renoa and Velpino who took care of your tests.";
+			mes "[提格里斯队长]";
+			mes "这是负责你测试的露娜莉亚、蕾诺亚和维尔皮诺的评语。";
 			next;
-			mes "[Captain Tigris]";
-			mes "It's not much but there are some gifts for new Rune Knights who got good scores on the tests.";
+			mes "[提格里斯队长]";
+			mes "不算什么，但有些礼物要送给在测试中取得好成绩的新符文骑士。";
 			next;
-			mes "[Captain Tigris]";
-			mes "There will be a difference depending on the scores, but they are all helpful for anyone who is a Rune Knight.";
+			mes "[提格里斯队长]";
+			mes "礼物会因成绩而有所不同，但它们对任何符文骑士都有帮助。";
 			next;
-			mes "[Captain Tigris]";
-			mes "Lastly, there are several things to be aware of as a Knight who's experienced a job change to a Lord Knight in Valhalla.";
+			mes "[提格里斯队长]";
+			mes "最后，作为曾在瓦尔哈拉转职为领主骑士的骑士，有几点需要注意。";
 			next;
 			callsub L_Warning;
-			mes "[Captain Tigris]";
-			mes "Well, my job is done now. Would you like to start your new life as a Rune Knight?";
+			mes "[提格里斯队长]";
+			mes "好了，我的工作完成了。你想开始作为符文骑士的新生活吗？";
 			next;
-			switch(select("Every preparation is done.:I need more time to think.")) {
+			switch(select("所有准备都已完成。:我还需要时间考虑。")) {
 			case 1:
 				if (SkillPoint != 0 || checkriding()) {
-					mes "[Captain Tigris]";
-					mes "Weren't you listening?";
+					mes "[提格里斯队长]";
+					mes "你刚才没在听吗？";
 					next;
 					callsub L_Warning;
-					mes "[Captain Tigris]";
-					mes "If you understood, then make your preparations and come back.";
+					mes "[提格里斯队长]";
+					mes "如果明白了，就做好准备再回来。";
 					close;
 				}
 				if (BaseLevel < 99 || JobLevel < 50) {
-					mes "[Captain Tigris]";
-					mes "It seems not enough?";
+					mes "[提格里斯队长]";
+					mes "看来还不够？";
 					close;
 				}
 				if (ismounting()) {
-					mes "[Captain Tigris]";
-					mes "Please unequip your mount and come back again.";
+					mes "[提格里斯队长]";
+					mes "请卸下骑乘状态后再来。";
 					close;
 				}
-				mes "[Captain Tigris]";
-				mes "Our Master, Beljeve... and the Great Sage, Serpeone...";
+				mes "[提格里斯队长]";
+				mes "我们的师父贝尔杰夫……以及大贤者塞菲奥内……";
 				next;
-				mes "[Captain Tigris]";
-				mes "This Knight is going to walk the way of the Rune Knights with us, so please give your blessing.";
+				mes "[提格里斯队长]";
+				mes "这位骑士将与我们一起走上符文骑士之路，请赐予祝福。";
 				next;
 				getitem 5746,1; //Rune_Circlet
 				getitem 2795,1; //Green_Apple_Ring
 				set job_rune_edq,23;
 				completequest 3219;
 				jobchange roclass(eaclass()|EAJL_THIRD);
-				mes "[Captain Tigris]";
+				mes "[提格里斯队长]";
 				mes "Congratulations.";
-				mes "You are now an honorable Rune Knight.";
-				mes "Remember this day from this day forth!";
+				mes "你现在已是光荣的符文骑士。";
+				mes "从今往后，请铭记这一天！";
 				next;
-				mes "[Captain Tigris]";
-				mes "There's a royal gift from the Rune-Midgarts Kingdom for all new Rune Knights.";
+				mes "[提格里斯队长]";
+				mes "卢恩-米德加尔特王国为所有新符文骑士准备了王室赠礼。";
 				next;
-				mes "[Captain Tigris]";
-				mes "Give me a second to get the royal gift and talk to me again.";
+				mes "[提格里斯队长]";
+				mes "给我一点时间去取王室赠礼，然后再来找我谈。";
 				close;
 			case 2:
 				close;
 			}
 		}
 	}
-	mes "[Captain Tigris]";
-	mes "I don't know how you were able to get here. But it looks like you've come to a place where you shouldn't be.";
+	mes "[提格里斯队长]";
+	mes "我不知道你是怎么来到这里的。但看来你来到了不该来的地方。";
 	next;
-	mes "[Captain Tigris]";
-	mes "Go back to where you belong.";
+	mes "[提格里斯队长]";
+	mes "回到你该去的地方吧。";
 	close2;
 	warp "gl_knt02",150,55;
 	end;
 L_Warning:
-	mes "[Captain Tigris]";
-	mes "If there's any equipment that you are wearing now, or anything you're holding. Please empty it for your job change moment.";
+	mes "[提格里斯队长]";
+	mes "若你身上穿着任何装备，或手里拿着任何东西，请为了转职而将它们全部卸下。";
 	next;
-	mes "[Captain Tigris]";
-	mes "Talk to the Kafra Employee to use the storage.";
+	mes "[提格里斯队长]";
+	mes "与卡普拉职员交谈以使用仓库。";
 	next;
-	mes "[Captain Tigris]";
-	mes "You might know already, if you are riding a Peco Peco, you should have left it behind. If you brought it, leave it and come again.";
+	mes "[提格里斯队长]";
+	mes "你或许已经知道，若你骑着波可波可，应该把它留在外面。若你带来了，就把它留下再来。";
 	next;
-	mes "[Captain Tigris]";
-	mes "One more thing. If you have any remaining skill-points, use it all and learn the skills. You won't be able to change jobs if you have any more skill points.";
+	mes "[提格里斯队长]";
+	mes "还有一件事。若你还有剩余技能点，请全部用掉并学习技能。只要还有剩余技能点，就无法转职。";
 	next;
 	return;
 }
 
-job3_rune01,90,50,3	script	Rune Knight Lunarea	469,2,2,{
+job3_rune01,90,50,3	script	符文骑士露娜莉亚	469,2,2,{
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "She holds up her chin quietly, nods lightly and notices me.";
+		mes "她静静抬起下巴，轻轻点头，注意到了我。";
 		next;
-		mes "Then after a moment she puts her face down and seems absorbed with other thoughts.";
+		mes "片刻之后，她低下头，似乎陷入了别的思绪。";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq == 3) {
-			mes "She finally opens her mouth and begins to talk.";
+			mes "她终于开口说话。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "5 minutes... When you endure and get rid of all, you succeed.";
+			mes "[符文骑士露娜莉亚]";
+			mes "5分钟……坚持住并清除所有敌人，你就成功了。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "In this test, Captain Tigris, Renoa, Velpino and I will visit together.";
+			mes "[符文骑士露娜莉亚]";
+			mes "在这次测试中，提格里斯队长、蕾诺亚、维尔皮诺和我将一同前来。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "If you want to, you can ask help from one of us. But don't think that we will always help.";
+			mes "[符文骑士露娜莉亚]";
+			mes "如果你愿意，可以向我们其中一人求助。但别以为我们总是会帮忙。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "Since it's a test, getting help from us is completely your choice. It doesn't matter if you take the test with our help or all by yourself.";
+			mes "[符文骑士露娜莉亚]";
+			mes "既然是测试，是否接受我们的帮助完全由你决定。有我们帮忙或全靠自己，都没有关系。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "When you are ready to go to the test field talk to me.";
+			mes "[符文骑士露娜莉亚]";
+			mes "准备好前往测试场时，来找我谈。";
 			next;
-			switch(select("Move to the test field now.:Give me time to get ready.")) {
+			switch(select("现在前往测试场。:给我时间准备。")) {
 			case 1:
 				callsub L_Test,0;
 				close;
@@ -617,26 +617,26 @@ job3_rune01,90,50,3	script	Rune Knight Lunarea	469,2,2,{
 				close;
 			}
 		} else if (job_rune_edq == 4) {
-			mes "[Rune Knight, Lunarea]";
-			mes "Did you fail? But, there's no limitation to the number of times you can try.";
+			mes "[符文骑士露娜莉亚]";
+			mes "你失败了吗？不过，尝试次数并没有限制。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "If you want to take the test again. I can send you to the test field.";
+			mes "[符文骑士露娜莉亚]";
+			mes "如果你想再接受测试，我可以送你去测试场。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "5 minutes... When you endure and get rid of all, you succeed.";
+			mes "[符文骑士露娜莉亚]";
+			mes "5分钟……坚持住并清除所有敌人，你就成功了。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "If you are ready to move to the test field talk to me.";
+			mes "[符文骑士露娜莉亚]";
+			mes "如果准备好前往测试场，就来找我谈。";
 			next;
-			switch(select("Move to the test field now.:Please give me time to prepare.")) {
+			switch(select("现在前往测试场。:请给我时间准备。")) {
 			case 1:
 				if (checkquest(3220,PLAYTIME) == 1) {
-					mes "[Rune Knight, Lunarea]";
-					mes "Once someone enters into the test field you cannot enter directly. The test is taken one by one.";
+					mes "[符文骑士露娜莉亚]";
+					mes "一旦有人进入测试场，你就无法直接进入。测试须逐人进行。";
 					next;
-					mes "[Rune Knight, Lunarea]";
-					mes "When it's your turn to enter you will be sent there directly.";
+					mes "[符文骑士露娜莉亚]";
+					mes "轮到你进入时，会直接把你送过去。";
 					close;
 				}
 				callsub L_Test,1;
@@ -645,29 +645,29 @@ job3_rune01,90,50,3	script	Rune Knight Lunarea	469,2,2,{
 				close;
 			}
 		} else if (job_rune_edq == 5) {
-			mes "[Rune Knight, Lunarea]";
-			mes "Was your test successful?";
+			mes "[符文骑士露娜莉亚]";
+			mes "你的测试成功了吗？";
 			next;
-			mes "She shows a small smile which is barely visible and looks at me.";
+			mes "她露出几乎看不出的浅浅微笑，看着我。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "This portion of the test is over. Go talk to Captain Tigris.";
+			mes "[符文骑士露娜莉亚]";
+			mes "这部分测试结束了。去找提格里斯队长谈谈。";
 			set job_rune_edq,6;
 			changequest 3203,3204;
 			close;
 		} else if (job_rune_edq > 5) {
-			mes "[Rune Knight, Lunarea]";
-			mes "This portion of the test is over. Go talk to Captain Tigris.";
+			mes "[符文骑士露娜莉亚]";
+			mes "这部分测试结束了。去找提格里斯队长谈谈。";
 			next;
-			mes "[Rune Knight, Lunarea]";
-			mes "There are other tests you need to complete. I hope you do a good job.";
+			mes "[符文骑士露娜莉亚]";
+			mes "还有其他测试需要你完成。希望你好好表现。";
 			close;
 		}
 	}
-	mes "This pale-skinned absent-looking female Rune Knight doesn't seem to care. Of course she doesn't seem interested with my existence";
+	mes "这位肤色苍白、神情恍惚的女符文骑士似乎毫不在意。当然，她对我的存在似乎也不感兴趣。";
 	close;
 L_Test:
-	mes "She nods her head and reaches out her hand lightly. Then she draws her sword and makes a signal.";
+	mes "她点点头，轻轻伸出手，然后拔出剑，做了个信号。";
 	if ($@job_rune_test1 == 0) {
 		if (getarg(0) == 0) {
 			set job_rune_edq,4;
@@ -684,244 +684,244 @@ L_Test:
 	}
 	// Custom translation
 	next;
-	mes "But her expression suddenly changed a bit as she looked at to speak.";
+	mes "但她正想开口时，表情忽然微微变了。";
 	next;
-	mes "[Rune Knight, Lunarea]";
-	mes "Now... the testing room is currently occupied...";
+	mes "[符文骑士露娜莉亚]";
+	mes "现在……测试房间目前有人使用……";
 	next;
-	mes "[Rune Knight, Lunarea]";
-	mes "You'll have to wait... it is regulation that the test must take place one by one.";
+	mes "[符文骑士露娜莉亚]";
+	mes "你得等一下……按规定测试必须逐人进行。";
 	next;
-	mes "[Rune Knight, Lunarea]";
-	mes "Just wait 5 minutes and it should be your turn.";
+	mes "[符文骑士露娜莉亚]";
+	mes "只要等5分钟，就该轮到你了。";
 	close;
 }
 
-job3_rune01,55,50,3	script	Rune Knight, Renoa	469,2,2,{
-	mes "[Rune Knight, Renoa]";
+job3_rune01,55,50,3	script	符文骑士雷诺亚	469,2,2,{
+	mes "[符文骑士蕾诺亚]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "Congratulations for becoming one of us. Junior Rune Knight, "+strcharinfo(0)+".";
+		mes "恭喜你成为我们的一员。初级符文骑士，"+strcharinfo(0)+".";
 		next;
-		mes "[Rune Knight, Renoa]";
-		mes "Soon you'll see the way we need to go clearly.";
+		mes "[符文骑士蕾诺亚]";
+		mes "很快你就会清楚地看到我们必须走的道路。";
 		next;
-		mes "[Rune Knight, Renoa]";
-		mes "Until then, I'll be here to discover more candidates just like you.";
+		mes "[符文骑士蕾诺亚]";
+		mes "在那之前，我会留在这里，发掘更多像你一样的候补。";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq < 7) {
-			mes "Are you the one who wants to be a Rune Knight? There have been so many today.";
+			mes "你就是想成为符文骑士的人吗？今天已经来了好多。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "It's too bad that there haven't been many candidates that have made it to my part of the test yet so I'm just taking a bit of a rest.";
+			mes "[符文骑士蕾诺亚]";
+			mes "可惜能走到我这一关的候补还不多，所以我只是在稍作休息。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you are taking the Rune Knight test I hope that you try your best. This won't be as easy to pass as Lunarea's test ok?";
+			mes "[符文骑士蕾诺亚]";
+			mes "如果你要接受符文骑士测试，希望你能全力以赴。这可不像露娜莉亚的测试那么容易通过，知道吗？";
 			close;
 		} else if (job_rune_edq == 7) {
-			mes "Finally! Is it my turn? I'm so happy.";
+			mes "终于！轮到我了吗？我好高兴。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "There have been so many candidates failing Lunarea's test that I've given up counting.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "没能通过露娜莉亚试炼的候选者实在太多了，我都已经数不过来了。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "I am Renoa. I am in charge of the teaching and testing of runes and magic for Rune Knight candidates.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "我是蕾诺雅，负责符文骑士候选者的符文与魔法教学和测试。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Thank you for all of your trouble taking the test so far. Okay, anyway.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "感谢你一路坚持到现在的测试。好了，言归正传。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Well first, I'll give you an assignment. Let's start by studying. Go to the library and study these books.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "那么首先，我会给你一个课题。先从学习开始吧。去图书馆学习这些书籍。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Umm, ^0000FFRunes and Rune Knights^000000, ^0000FFThe Principles of Runes^000000, ^0000FFThe Making and use of Runes^000000. Start with these 3...";
+			mes "[符文骑士，蕾诺雅]";
+			mes "嗯，^0000FF《符文与符文骑士》^000000、^0000FF《符文的原理》^000000、^0000FF《符文的制作与使用》^000000。先学这三本……";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Read the book thoroughly and come back. If you are the type of person who doesn't like reading and studying then it won't be easy for you to live as a Rune Knight.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "把书好好读完再回来。如果你是不喜欢读书学习的人，那要成为符文骑士可不容易。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Don't worry, you won't be required to have the same knowledge as the magicians of Geffen or Juno. But you can't be an idiot either.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "别担心，你不需要拥有和吉芬、朱诺的魔法师一样的知识。但也别当个傻瓜。";
 			set job_rune_edq,8;
 			changequest 3205,3206;
 			close;
 		} else if (job_rune_edq > 7 && job_rune_edq < 11) {
-			mes "Well first, I'll give you an assignment. Let's start by studying. Go to the library and study these books.";
+			mes "那么首先，我会给你一个课题。先从学习开始吧。去图书馆学习这些书籍。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Umm, ^0000FFRunes and Rune Knights^000000, ^0000FFThe Principles of Runes^000000, ^0000FFThe Making and use of Runes^000000. Start with these 3...";
+			mes "[符文骑士，蕾诺雅]";
+			mes "嗯，^0000FF《符文与符文骑士》^000000、^0000FF《符文的原理》^000000、^0000FF《符文的制作与使用》^000000。先学这三本……";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Read the book thoroughly and come back. If you are the type of person who doesn't like reading and studying then it won't be easy for you to live as a Rune Knight.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "把书好好读完再回来。如果你是不喜欢读书学习的人，那要成为符文骑士可不容易。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Don't worry, you won't be required to have the same knowledge as the magicians of Geffen or Juno. But you can't be an idiot either.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "别担心，你不需要拥有和吉芬、朱诺的魔法师一样的知识。但也别当个傻瓜。";
 			close;
 		} else if (job_rune_edq == 11) {
-			mes "Have you read all the books from the library? It won't be easy to read but if you are determined to be a Rune Knight, you have to have this kind of basic knowledge.";
+			mes "图书馆里的书你都读完了吗？虽然不容易读，但如果你想成为符文骑士，就必须拥有这样的基础知识。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Basically, the power of magic cannot be used without training to draw out the power of nature and the elements.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "基本上，若不经过训练去引出自然与元素的力量，魔力是无法使用的。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Therefore, jobs such as Wizard and Sage have come out and the magic became their own sacred field.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "因此诞生了巫师和贤者这样的职业，魔法成了他们专属的神圣领域。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "The leader of the Rune Knights, Beljeve, is known to have been in touch with the fairies even before the dimensional door of the Ash-Vacuum was made when Satan Morocc resurrected.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "据说符文骑士的首领贝尔杰夫，早在撒旦摩罗复活、通往灰烬真空的次元之门打开之前，就已经与妖精们有往来了。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "I heard a story from the magical scholars about the technology that can substantialize the essence of magic. I began a study to substantialize it to a rune by getting their help.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "我从魔法学者那里听说了能将魔法的本质实体化的技术。在他们的帮助下，我开始研究如何将其实体化为符文。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Our Rune Knight's were born from the result of that study, which enables practicing both the power of the sword and magic by using runes.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "我们的符文骑士就诞生于这项研究的成果，能够利用符文同时运用剑的力量与魔法。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "You look like you don't understand why I'm repeating the teaching of the story already written in the book.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "你看起来不明白，为什么我要重复书本上已经写过的故事。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "So for the second test, you need to visit the Laphine magical scholars who had given the direct help to the birth of Rune Knights at Ash-Vacuum.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "所以第二次测试，你需要去拜访曾在灰烬真空直接协助符文骑士诞生的拉菲尼魔法学者们。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Find the sage, Serpeone who's been studying and helping the Rune Knights who are out in the Midgard's camp at Ash-Vacuum.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "去找贤者塞尔皮奥妮吧，她一直在灰烬真空的米德加尔特营地研究并帮助符文骑士。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "The sage has already been in touch with us for a long time so you don't need to worry about understanding Serpeone's language.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "那位贤者已经和我们保持联系很久了，所以你不用担心听不懂塞尔皮奥妮的语言。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you are ready I'll guide you to the warp that moves you directly to Serpeone. Meet her and get instructions from her.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "如果你准备好了，我会引导你前往能直接传送到塞尔皮奥妮身边的传送点。去见她，听从她的指示吧。";
 			set job_rune_edq_book,0;
 			set job_rune_edq,12;
 			changequest 3206,3207;
 			close;
 		} else if (job_rune_edq > 11 && job_rune_edq < 14) {
-			mes "If you are ready I'll open the way to the sage, Serpeone who's in the Midgard post at Ash-Vacuum. Are you prepared?";
+			mes "如果你准备好了，我会打开通往灰烬真空米德加尔特驻地贤者塞尔皮奥妮的道路。你准备好了吗？";
 			next;
-			switch(select("Yes, I am prepared.:Not yet.")) {
+			switch(select("是的，我准备好了。:还没有。")) {
 			case 1:
-				mes "[Rune Knight, Renoa]";
-				mes "Good. Then I'll send you there now. But, there's one thing I need to tell you.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "很好。那么我现在就把你送过去。但是，有件事我得先告诉你。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "You will be sent to the Ash-Vacuum. The people dispatched to the Midgard post are certified adventurers and officials.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "你会被送到灰烬真空。被派往米德加尔特驻地的人，都是经过认证的冒险者和官员。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "Beljeve has an agreement with the other alliance countries that the free behavior of our Rune Knights is guaranteed but...";
+				mes "[符文骑士，蕾诺雅]";
+				mes "贝尔杰夫与联盟各国达成协议，保证我们符文骑士的自由行动，但是……";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "If you want to move freely through all of Ash-Vacuum, you'll have to go through the normal route which is acquiring qualification with the Midgard alliance. It has nothing to do with us.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "如果你想在灰烬真空全域自由行动，就得走正规路线，即取得米德加尔特联盟的资格。这和我们无关。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "The agreement only allows us to send candidates to the Midgard camp and nowhere else.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "协议只允许我们把候选者送到米德加尔特营地，仅此而已。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "Good luck.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "祝你好运。";
 				close2;
 				warp "mid_camp",235,250;
 				end;
 			case 2:
-				mes "[Rune Knight, Renoa]";
-				mes "If you are ready talk to me again. I'm free anytime.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "如果你准备好了，再来找我说话吧。我随时都有空。";
 				close;
 			}
 		} else if (job_rune_edq == 14) {
-			mes "Umm, you're back? How's it like in the Ash-Vacuum?";
+			mes "嗯，你回来了？灰烬真空那边怎么样？";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Well, a person of your strength must have been there already no?";
+			mes "[符文骑士，蕾诺雅]";
+			mes "以你的实力，应该早就去过那里了吧？";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "Now it's time to take the test concerning runes. I know that you have been through quite a complicated process.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "现在是关于符文的测试时间了。我知道你经历了一段相当复杂的过程。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "I am going to give you a test that allows you to deal with runes directly.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "接下来我要给你一个能直接接触符文的测试。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "In this test you will be making a rune stone yourself which will also be used for your last test.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "这个测试中你要亲手制作一颗符文石，它也会用于你的最后测试。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you remember what you read in the library just before, you'll be able to produce a rune stone here without my explanation.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "如果你还记得刚才在图书馆读到的内容，应该不用我解释也能在这里制作出符文石。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you succeed in making the rune stone it will automatically become the rune stone you'll use for yourself when you become a Rune Knight, so try your best.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "如果你成功制作出符文石，当你成为符文骑士时，它会自动变成你为自己准备的符文石，所以请加油。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "The total number of rune stones you need to make is 20.";
-			mes "Remember that well.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "你需要制作的符文石总数是 20 颗。";
+			mes "好好记住这一点。";
 			set job_rune_edq,15;
 			changequest 3213,3214;
 			close;
 		} else if (job_rune_edq == 15) {
-			mes "In this test you will be making a rune stone yourself which is going to be used for your last test.";
+			mes "在这个测试中你要亲手制作一颗符文石，它将会用于你的最后测试。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you remember the books you've read in the library just before, you'll be able to produce a rune stone here without my explanation.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "如果你还记得刚才在图书馆读过的书，应该不用我解释也能在这里制作出符文石。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "If you succeed in making the rune stone automatically it becomes the rune stone you'll use for yourself when you succeed, and it's delivered to Captain Tigris...so try hard.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "如果你成功制作出符文石，它会自动成为你成功时自己使用的符文石，并交给蒂格里斯队长……所以好好努力吧。";
 			next;
-			mes "[Rune Knight, Renoa]";
-			mes "The number of total rune stones you need to make is exactly 20. Remember that well.";
+			mes "[符文骑士，蕾诺雅]";
+			mes "你需要制作的符文石总数正好是 20 颗。好好记住这一点。";
 			next;
-			switch(select("Check number of made runes?:I've made all the 20 rune stones.")) {
+			switch(select("查看已制作的符文石数量？:我已经做好了全部 20 颗符文石。")) {
 			case 1:
-				mes "[Rune Knight, Renoa]";
-				mes "The number of rune stones made 'til now is " + job_rune_edq2 + ".";
+				mes "[符文骑士，蕾诺雅]";
+				mes "到目前为止制作的符文石数量是 |" + job_rune_edq2 + ".";
 				close;
 			case 2:
 				if (job_rune_edq2 < 20) {
-					mes "[Rune Knight, Renoa]";
-					mes "Hey! I think I told you to make at least 20.";
+					mes "[符文骑士，蕾诺雅]";
+					mes "喂！我记得告诉过你要做至少 20 颗吧。";
 					close;
 				}
 				if (job_rune_edq2 == 20) {
-					mes "[Rune Knight, Renoa]";
-					mes "You've brought just the right amount. I'll hand over all the finished rune stones to Captain Tigris.";
+					mes "[符文骑士，蕾诺雅]";
+					mes "你带来的数量正好。我会把所有完成的符文石交给蒂格里斯队长。";
 					next;
 				} else {
-					mes "[Rune Knight, Renoa]";
-					mes "Wow! What's this? You've made over 20. It's ok for now but remember to follow directions next time.";
-					mes "I'll hand over all the made rune stones to Captain Tigris.";
+					mes "[符文骑士，蕾诺雅]";
+					mes "哇！这是什么？你做了超过 20 颗。这次就算了，但下次要记得听从指示。";
+					mes "我会把制作好的所有符文石交给蒂格里斯队长。";
 					next;
 				}
-				mes "[Rune Knight, Renoa]";
-				mes "Because there is a test waiting for you that uses these rune stones.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "因为还有一场使用这些符文石的测试在等着你。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "Here, you've passed. Go back to Captain Tigris and complete the next test.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "来，你合格了。回去找蒂格里斯队长完成下一个测试吧。";
 				next;
-				mes "[Rune Knight, Renoa]";
-				mes "Ha! You did a good job considering how difficult my test is. If you were nervous, you can relax now.";
+				mes "[符文骑士，蕾诺雅]";
+				mes "哈！考虑到我的测试有多难，你做得很好。如果你一直很紧张，现在可以放松了。";
 				set job_rune_edq,16;
 				if (job_rune_edq2 == 20)
 					changequest 3214,3215;
 				close;
 			}
 		}
-		mes "Become a proud Rune Knight.";
+		mes "成为一位光荣的符文骑士吧。";
 		close;
 	}
-	mes "How... how did you get in here?! Captain, we have a spy!";
+	mes "你……你是怎么进到这里来的？！队长，这里有间谍！";
 	next;
-	mes "[Captain Tigris]";
-	mes "Ah? What are you talking about, Renoa? Don't talk in such a manner! You make us sound like criminals.";
+	mes "[蒂格里斯队长]";
+	mes "啊？蕾诺雅，你在说什么呢？别用这种口气说话！听起来我们像罪犯一样。";
 	next;
-	mes "[Rune Knight, Renoa]";
-	mes "Well, there is an unidentified person here.";
+	mes "[符文骑士，蕾诺雅]";
+	mes "唔，这里有个身份不明的人。";
 	next;
-	mes "[Captain Tigris]";
-	mes "Ah... hey, friend, come over here and let us talk for a minute...";
+	mes "[蒂格里斯队长]";
+	mes "啊……嘿，朋友，过来这边，我们聊几句……";
 	close;
 }
 
-job3_rune01,58,51,1	script	Rune Furnace	844,{
+job3_rune01,58,51,1	script	符文熔炉	844,{
 	if (job_rune_edq < 15) {
-		mes "[Rune Knight Renoa]";
-		mes "You don't want to touch that thing. Believe me, I'm not kidding.";
+		mes "[符文骑士蕾诺雅]";
+		mes "你最好别碰那东西。相信我，我不是在开玩笑。";
 		close;
 	} else if (job_rune_edq == 15) {
-		mes "I can see a hole under the huge Rune Stone Statue behind Renoa. Clearly this is a mass-produced rune heating furnace that I read in the book.";
+		mes "我能看到蕾诺雅身后巨大的符文石雕像下面有个洞口。很明显，这就是我读过的书中提到的量产型卢恩加热熔炉。";
 		next;
-		if(select("Use the Rune Heating Furnace:Stop.") == 2) close;
+		if(select("使用卢恩加热熔炉:停止。") == 2) close;
 		switch(rand(24)) {
 			case 0: setarray .@str$[0],"Ehwaz","This red hot spiral is..."; break;
 			case 1: setarray .@str$[0],"Osilia","The rune flashing with this violet oblique line shape is..."; break;
@@ -949,89 +949,89 @@ job3_rune01,58,51,1	script	Rune Furnace	844,{
 			case 23: setarray .@str$[0],"Urj","The rune flashing with this violet spiral is..."; break;
 		}
 		progressbar "ffff00",5;
-		mes "The magical power of the rune pitches and tosses while it is getting shaped.";
+		mes "符文的魔力在成形过程中剧烈翻腾。";
 		next;
 		mes .@str$[1];
 		next;
 		input .@inputstr$;
 		if (.@inputstr$ == .@str$[0]) {
-			mes "[Rune Knight Renoa]";
-			mes "Wow! This is great. The image of the rune stone in my head and the modeled rune stone match perfectly. It's well made.";
+			mes "[符文骑士蕾诺雅]";
+			mes "哇！太棒了。我脑海中的符文石形象与成型的符文石完美吻合。做得真好。";
 			next;
-			mes "[Rune Knight Renoa]";
-			mes "1 "+.@str$[0]+" rune was created normally.";
+			mes "[符文骑士蕾诺雅]";
+			mes "1 "+.@str$[0]+"符文正常地制作完成了。";
 			set job_rune_edq2, job_rune_edq2+1;
 			close;
 		}
 		if (rand(1,(6 + job_rune_edq3)) == 3) {
-			mes "[Rune Knight Renoa]";
-			mes "I was lucky. The image of the rune stone in my head and the modelled rune stone didn't match but it's made normally. This case is rare.";
+			mes "[符文骑士蕾诺雅]";
+			mes "我运气不错。我脑海中的符文石形象与成型的符文石不太一致，但制作正常。这种情况很少见。";
 			next;
-			mes "[Rune Knight Renoa]";
-			mes "1 "+.@str$[0]+" rune was created normally.";
+			mes "[符文骑士蕾诺雅]";
+			mes "1 "+.@str$[0]+"符文正常地制作完成了。";
 			set job_rune_edq2, job_rune_edq2+1;
 			close;
 		}
-		mes "[Rune Knight Renoa]";
-		mes "It's a natural result. The image of the rune stone in my head and the modeled rune stone didn't match so the success rate just got lower.";
+		mes "[符文骑士蕾诺雅]";
+		mes "这是理所当然的结果。我脑海中的符文石形象与成型的符文石不一致，所以成功率变低了。";
 		next;
-		mes "[Rune Knight Renoa]";
-		mes "Refining the rune stone has failed... Please try again.";
+		mes "[符文骑士蕾诺雅]";
+		mes "符文石的精炼失败了……请再试一次。";
 		set job_rune_edq3, job_rune_edq3+1;
 		close;
 	}
-	mes "[Rune Knight Renoa]";
-	mes "You don't want to touch that thing. Believe me, I'm not kidding.";
+	mes "[符文骑士蕾诺雅]";
+	mes "你最好别碰那东西。相信我，我不是在开玩笑。";
 	close;
 }
 
-job3_rune01,40,54,1	script	Runes and Rune Knights	844,{
+job3_rune01,40,54,1	script	符文与符文骑士	844,{
 	if (job_rune_edq < 8) {
-		mes "[Rune Knight Renoa]";
-		mes "Besides touching stuff in this place without permission. Would you be able to understand the contents of the book?";
+		mes "[符文骑士蕾诺雅]";
+		mes "况且，未经允许就乱碰这个地方的东西，你能看懂书里的内容吗？";
 		next;
-		mes "[Captain Tigris]";
-		mes "Hey Renoa, go easy on that Knight. You there too, you'd better stop touching stuff here without permission.";
+		mes "[蒂格里斯队长]";
+		mes "喂，蕾诺雅，对那位骑士客气点。你也是，最好别未经允许就乱碰这里的东西。";
 		close;
 	}
 	while(1) {
-		switch(select("The birth of Rune Knights:Runes and Magic Energy:Stop Reading")) {
+		switch(select("符文骑士的诞生:卢恩与魔力:停止阅读")) {
 		case 1:
 			set .@book1,1;
-			mes "Rune Knights are the gathering of evolved swordmen who have achieved the harmony of sword and magic.";
+			mes "符文骑士是实现了剑与魔法和谐的进化剑士的集合。";
 			next;
-			mes "It had been achieved by the legendary swordsman Beljeve who's been known as a Sword Master and a founder of dispensable expenditure.";
+			mes "这由传说中的剑士贝尔杰夫实现，他被称为剑圣，也是挥霍无度开支的创始人。";
 			next;
-			mes "Rune Knights use rune stones as a medium for magic power rather than using the magical energy made directly within the body.";
+			mes "符文骑士使用符文石作为魔力的媒介，而不是直接使用体内产生的魔法能量。";
 			next;
-			mes "Magic power could only previously be used by those who can harness magic power within their bodies through a long time of research";
+			mes "以前，只有那些经过长期研究、能在体内驾驭魔力的人才能使用魔法。";
 			next;
-			mes "However, for the direct research on the rune magical power which had broken the human's normal concept is now ongoing.";
+			mes "然而，关于打破人类常规概念的符文魔法的直接研究正在进行中。";
 			next;
-			mes "It's known that the Sword Master Beljeve felt the limit of his power, so he studied the way to overcome the physical limitation of mortals.";
+			mes "据说剑圣贝尔杰夫感受到了自己力量的极限，于是研究如何克服凡人身体的限制。";
 			next;
-			mes "We guess he had been already in touch with the Laphine tribe long before the dimensional rift was discovered to get to the Ash-Vacuum.";
+			mes "我们猜测，早在发现通往灰烬真空的次元裂缝之前，他就已经与拉菲尼族有往来了。";
 			next;
-			mes "The Laphine tribe are the fairies from the Ash-Vacuum and are known to have a close relationship to the birth of the Rune Knights.";
+			mes "拉菲尼族是来自灰烬真空的妖精，据说与符文骑士的诞生密切相关。";
 			next;
-			mes "Now it's possible for those who are normally unsuited to using magic power to carry a medium that can carry magic that normal mortals could not wield before.";
+			mes "现在，那些通常不适合使用魔力的人，也能携带以前凡人无法驾驭的魔力媒介了。";
 			next;
-			mes "The result of studying these techniques are the rune stones tuned in harmony with the physical power of swords.";
+			mes "这些技术研究的结果，就是与剑的物理力量和谐调谐的符文石。";
 			next;
-			mes "Beljeve's disciples who started to learn the way to imbue their swords with rune stones became known as Rune Knights.";
+			mes "贝尔杰夫的弟子们学会了如何用符文石为剑附魔，他们被称为符文骑士。";
 			next;
 			break;
 		case 2:
 			set .@book2,1;
-			mes "A jewel called as a Rune is a medium that contains the formless existence, the magical power and the essence of it can be used directly.";
+			mes "被称为符文的宝石，是容纳无形存在——魔力——的媒介，其本质可以直接使用。";
 			next;
-			mes "The Laphine Sage, Serpeone and the founder of Rune Knights Beljeve co-researched runes and the result of their research has only recently become to be known to the world.";
+			mes "拉菲尼贤者塞尔皮奥妮与符文骑士创始人贝尔杰夫共同研究了符文，他们的研究成果最近才为世人所知。";
 			next;
-			mes "It's a limitless alternative energy source and research on them is still ongoing. ";
+			mes "这是一种无限的替代能源，对其的研究仍在继续。";
 			next;
-			mes "Unlike humans, the living things in the Ash-Vacuum preserve magical energy by holding it in their bodies.";
+			mes "与人类不同，灰烬真空的生物将魔法能量保存在自身体内。";
 			next;
-			mes "The discovery of transferring this magical power into runes was refined by Beljeve and Serpeone and shared with the Rune Knights.";
+			mes "将这种魔法能量转移到符文中的发现，由贝尔杰夫和塞尔皮奥妮完善，并与符文骑士们分享。";
 			next;
 			break;
 		case 3:
@@ -1044,41 +1044,41 @@ job3_rune01,40,54,1	script	Runes and Rune Knights	844,{
 	}
 }
 
-job3_rune01,43,44,1	script	The Principles of Runes	844,{
+job3_rune01,43,44,1	script	符文的原理	844,{
 	if (job_rune_edq < 8) {
-		mes "[Rune Knight Renoa]";
-		mes "Besides touching stuff in this place without permission. Would you be able to understand the contents of the book?";
+		mes "[符文骑士蕾诺雅]";
+		mes "况且，未经允许就乱碰这个地方的东西，你能看懂书里的内容吗？";
 		next;
-		mes "[Captain Tigris]";
-		mes "Hey Renoa, go easy on that Knight. You there too, you'd better stop touching stuff here without permission.";
+		mes "[蒂格里斯队长]";
+		mes "喂，蕾诺雅，对那位骑士客气点。你也是，最好别未经允许就乱碰这里的东西。";
 		close;
 	}
 	while(1) {
-		switch(select("The principle use of Runes:The types of Runes:Stop Reading")) {
+		switch(select("符文的基本用途:符文的种类:停止阅读")) {
 		case 1:
 			set .@book1,1;
-			mes "A rune is a kind of symbol that's been used on the Midgard continent since ancient times. Up until now it has only been used by occult circles.";
+			mes "符文是自古以来就在米德加尔特大陆使用的一种符号，迄今为止只被神秘结社使用。";
 			next;
-			mes "Runes are used as a symbol system, however, by the story handed down orally, it's known to be used for fortune-telling or used to draw out the human sub consciousness.";
+			mes "然而，根据口耳相传的故事，符文被用作符号系统，用于占卜或引出人类的潜意识。";
 			next;
-			mes "Runes have their own system and types and can draw out various powers according to how they are arranged. But their power level can't currently be measured by known means.";
+			mes "符文有其自身的系统和类型，根据排列方式可以引出各种力量。但目前无法用已知手段测量它们的威力等级。";
 			next;
-			mes "It is fortunate that the Rune Knights discovered their use for positive means. Runes have not been used for dark magic but it is certainly possible for their power to be misused if in the wrong hands.";
+			mes "幸运的是，符文骑士发现了它们用于正面用途的方法。符文没有被用于黑暗魔法，但如果落入错误之手，它们的力量确实有可能被滥用。";
 			next;
 			break;
 		case 2:
 			set .@book2,1;
-			mes "The runes are created from a a total of 25 small stones and they are very fragile to physical shock. So they require special care when being handled.";
+			mes "符文由总共 25 颗小石头组成，对物理冲击非常脆弱。因此处理时需要特别小心。";
 			next;
-			mes "The 25 stones have different meanings and among these, 14 when counter-positioned can have entirely different power and meaning from the original so it's essential to study the exceptional aspects.";
+			mes "这 25 颗石头各有不同的含义，其中 14 颗在反向排列时会产生与原本完全不同的力量和含义，因此研究这些特殊情况至关重要。";
 			next;
-			mes "The other 11 runes have consistent power, not influenced by any position so if you don't master all 11 ordinary runes and the 14 inverse runes, you cannot draw out all the complete power.";
+			mes "另外 11 颗符文的力量恒定，不受位置影响，所以如果你不掌握全部 11 颗普通符文和 14 颗反转符文，就无法引出全部完整的力量。";
 			next;
-			mes "Among the 11 ordinary runes, the blank rune is an exception.";
+			mes "在 11 颗普通符文中，空白符文是个例外。";
 			next;
-			mes "The names of the 25 rune stones are the following:";
+			mes "25 颗符文石的名字如下：";
 			next;
-			mes "Ehwaz, Osilia, Mannaz, Ansuz, Hagalas, Kano, Rhydo, Turisus, Dagaz, Sowilo, Laguz, Isia, Pertz, Verkana, Gebo, Algiz, Arwez, Teiwaz, Wunjo, Jera, Nosiege, Ingz, Fehu, Urj.";
+			mes "Ehwaz、Osilia、Mannaz、Ansuz、Hagalas、Kano、Rhydo、Turisus、Dagaz、Sowilo、Laguz、Isia、Pertz、Verkana、Gebo、Algiz、Arwez、Teiwaz、Wunjo、Jera、Nosiege、Ingz、Fehu、Urj。";
 			next;
 			break;
 		case 3:
@@ -1091,89 +1091,89 @@ job3_rune01,43,44,1	script	The Principles of Runes	844,{
 	}
 }
 
-job3_rune01,50,36,1	script	Runes, Make & Use	844,{
+job3_rune01,50,36,1	script	符文的制作与使用	844,{
 	if (job_rune_edq < 8) {
-		mes "[Rune Knight Renoa]";
-		mes "Besides touching stuff in this place without permission. Would you be able to understand the contents of the book?";
+		mes "[符文骑士蕾诺雅]";
+		mes "况且，未经允许就乱碰这个地方的东西，你能看懂书里的内容吗？";
 		next;
-		mes "[Captain Tigris]";
-		mes "Hey Renoa, go easy on that Knight. You there too, you'd better stop touching stuff here without permission.";
+		mes "[蒂格里斯队长]";
+		mes "喂，蕾诺雅，对那位骑士客气点。你也是，最好别未经允许就乱碰这里的东西。";
 		close;
 	}
 	while(1) {
-		switch(select("The Making of Rune Stones:Rune Stone Ability Details:Stop Reading")) {
+		switch(select("符文石的制作:符文石能力详解:停止阅读")) {
 		case 1:
 			set .@book1,1;
-			mes "The making of Rune stones is achieved through a skill called rune mastery which is learned when one becomes a Rune Knight.";
+			mes "符文石的制作通过一种名为符文精通的技能实现，这是成为符文骑士时习得的。";
 			next;
-			mes "Rune Mastery is like a code that's been put into the body as a mark of a Rune Knight.";
+			mes "符文精通就像刻入体内的代码，是符文骑士的标志。";
 			next;
-			mes "Ordinary people can also learn this skill and it needs its own machine called a Rune Furnace.";
+			mes "普通人也能学习这个技能，但它需要一种名为符文熔炉的专用机器。";
 			next;
-			mes "When you making a Rune stone with a Rune Furnace, the type of rune is determined by the magical energy put into it, and it cannot be changed.";
+			mes "使用符文熔炉制作符文石时，符文的类型由注入的魔法能量决定，并且无法改变。";
 			next;
-			mes "When making a rune stone by using Rune Mastery, it can be made into the rune property that you want but it's classified as a Rune Knights' own ability.";
+			mes "使用符文精通制作符文石时，可以制成你想要的符文属性，但会被归类为符文骑士自身的专属能力。";
 			next;
-			mes "When you operate the Rune Furnace, the magical energy of the body gets concentrated through it and it enables the change into a Rune Stone.";
+			mes "操作符文熔炉时，身体的魔法能量会通过它集中，从而实现向符文石的转化。";
 			next;
 			break;
 		case 2:
 			set .@book2,1;
-			switch(select("Chapter One:Chapter Two:Chapter Three:Chapter Four:Stop Reading")) {
+			switch(select("第一章:第二章:第三章:第四章:停止阅读")) {
 			case 1:
-				mes "Ehwaz - This rune means the enhancement of luck and positive power. It shapes the source in the form of a red spiral in a Rune Furnace.";
+				mes "Ehwaz——这颗符文意味着幸运与正面力量的增强。它在符文熔炉中成形为红色的螺旋形状。";
 				next;
-				mes "Osilia - This rune is an equivalent exchange which means that you lose one and you gain one, and it also means the power that needs a cost. This is shaped into the form of a violet oblique line in a Rune Furnace.";
+				mes "Osilia——这颗符文是等价交换，意味着失去一个就获得一个，也意味着需要代价的力量。它在符文熔炉中成形为紫色的斜线形状。";
 				next;
-				mes "Mannaz - This rune means hope and a new start and also the positive power that can reverse a desperate situation. This is shaped into the form of an emerald diamond in a Rune Furnace.";
+				mes "Mannaz——这颗符文意味着希望与新的开始，以及能够扭转绝境的正向力量。它在符文熔炉中成形为翠绿色的菱形。";
 				next;
-				mes "Ansuz - This rune means preparation or arrangement and the power that can overcome the uneasiness of the coming future. This is shaped into the form of an emerald round in a Rune Furnace. ";
+				mes "Ansuz——这颗符文意味着准备或安排，以及能够克服未来不安的力量。它在符文熔炉中成形为翠绿色的圆形。";
 				next;
-				mes "Hagalas - This rune means the freedom and the power that resists restraint. This is shaped into the form of a sky-blue colored star-shape in a Rune Furnace.";
+				mes "Hagalas——这颗符文意味着自由与抵抗束缚的力量。它在符文熔炉中成形为天蓝色的星形。";
 				next;
-				mes "Kano - This rune means flame and passion, and the power that ends everything. The source of it is shaped into the form of a red diamond in a Rune Furnace.";
+				mes "Kano——这颗符文意味着火焰与激情，以及终结一切的力量。它的源在符文熔炉中成形为红色的菱形。";
 				next;
 				break;
 			case 2:
-				mes "Rhydo - This rune means the combination and recombination and the power of completion. This is shaped into the sky-blue oblique line in a Rune Furnace.";
+				mes "Rhydo——这颗符文意味着结合与再结合，以及完成的力量。它在符文熔炉中成形为天蓝色的斜线。";
 				next;
-				mes "Turisus - This rune means the border and the power of limitation. This is shaped into a yellow round in a Rune Furnace.";
+				mes "Turisus——这颗符文意味着边界与限制的力量。它在符文熔炉中成形为黄色的圆形。";
 				next;
-				mes "Dagaz - This rune means the talent and the power of enduring adversity. This is shaped into an emerald spiral in a Rune Furnace.";
+				mes "Dagaz——这颗符文意味着才能与忍受逆境的力量。它在符文熔炉中成形为翠绿色的螺旋。";
 				next;
-				mes "Sowilo - This rune means victory and success and the power of arrangement and cessation. This is shaped into the form of a sky-blue fan-shape in a Rune Furnace.";
+				mes "Sowilo——这颗符文意味着胜利与成功，以及安排与终止的力量。它在符文熔炉中成形为天蓝色的扇形。";
 				next;
-				mes "Laguz -This rune means uncertainty and the power that protects the inside. This is shaped into a form of a yellow diamond in a Rune Furnace.";
+				mes "Laguz——这颗符文意味着不确定性，以及保护内在的力量。它在符文熔炉中成形为黄色的菱形。";
 				next;
-				mes "Isia - This rune means the power that stops everything. This is shaped into a violet spiral in a Rune Furnace.";
+				mes "Isia——这颗符文意味着停止一切的力量。它在符文熔炉中成形为紫色的螺旋。";
 				next;
 				break;
 			case 3:
-				mes "Pertz - This rune means revelation and the power of chance. This is shaped into the form of silver spiral in a Rune Furnace.";
+				mes "Pertz——这颗符文意味着启示与机遇的力量。它在符文熔炉中成形为银色的螺旋。";
 				next;
-				mes "Verkana - This rune means richness, birth and the power of defense and protection. This is shaped into the form of a gold-color star in a Rune Furnace.";
+				mes "Verkana——这颗符文意味着丰饶、诞生，以及防御与保护的力量。它在符文熔炉中成形为金色的星形。";
 				next;
-				mes "Gebo - This rune means cooperation and the power of harmony. This is shaped into the form of a yellow cone in a Rune Furnace.";
+				mes "Gebo——这颗符文意味着合作与和谐的力量。它在符文熔炉中成形为黄色的圆锥。";
 				next;
-				mes "Algiz - This rune means chance and the power of challenge. This is shaped into the form of an emerald oblique line in a Rune Furnace.";
+				mes "Algiz——这颗符文意味着机遇与挑战的力量。它在符文熔炉中成形为翠绿色的斜线。";
 				next;
-				mes "Arwez - This rune means change, convulsion and the power of movement. This is shaped into the form of a gray diamond in a Rune Furnace.";
+				mes "Arwez——这颗符文意味着变化、动荡与运动的力量。它在符文熔炉中成形为灰色的菱形。";
 				next;
-				mes "Teiwaz - This rune means perfect victory and the power of absolute solution. This is shaped into the form of a gold round in a Rune Furnace.";
+				mes "Teiwaz——这颗符文意味着完全的胜利与绝对解决的力量。它在符文熔炉中成形为金色的圆形。";
 				next;
 				break;
 			case 4:
-				mes "Wunjo - This rune means intelligence and the power of wisdom. This is shaped into the form of an emerald star in a Rune Furnace.";
+				mes "Wunjo——这颗符文意味着智慧与睿智的力量。它在符文熔炉中成形为翠绿色的星形。";
 				next;
-				mes "Jera - This rune means comfort and the power of rest. This is shaped into the form of a yellow round in a Rune Furnace.";
+				mes "Jera——这颗符文意味着安适与休息的力量。它在符文熔炉中成形为黄色的圆形。";
 				next;
-				mes "Nosiege - This rune means weakness and the power of attenuating. This is shaped into the form of a yellow fan-shape in a Rune Furnace.";
+				mes "Nosiege——这颗符文意味着弱点与衰减的力量。它在符文熔炉中成形为黄色的扇形。";
 				next;
-				mes "Ingz - This rune means disruption and the power of separation. This is shaped into the form of a violet diamond in a Rune Furnace.";
+				mes "Ingz——这颗符文意味着分裂与分离的力量。它在符文熔炉中成形为紫色的菱形。";
 				next;
-				mes "Fehu - This rune means attainment and the power of materialization. This is shaped into the form of a silver round in a Rune Furnace.";
+				mes "Fehu——这颗符文意味着获得与实体化的力量。它在符文熔炉中成形为银色的圆形。";
 				next;
-				mes "Urj - This rune means destiny and the power of restriction. This is shaped into the form of a violet spiral line in a Rune Furnace.";
+				mes "Urj——这颗符文意味着命运与束缚的力量。它在符文熔炉中成形为紫色的螺旋线。";
 				next;
 				break;
 			case 5:
@@ -1190,74 +1190,74 @@ job3_rune01,50,36,1	script	Runes, Make & Use	844,{
 	}
 }
 
-mid_camp,238,250,3	script	Rune Knight Sage Guard	468,2,2,{
-	mes "[Rune Knight Sage Guard]";
+mid_camp,238,250,3	script	符文骑士贤者守卫	468,2,2,{
+	mes "[符文骑士贤者守卫]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "The sage Serpeone is the one who has been with us since the beginning of the Rune Knights.";
+		mes "贤者塞尔皮奥妮是从符文骑士建立之初就一直与我们同在的人。";
 		next;
-		mes "[Rune Knight Sage Guard]";
-		mes "I am very proud as a Rune Knight to serve beside her.";
+		mes "[符文骑士贤者守卫]";
+		mes "作为符文骑士，能侍奉在她身边，我感到非常自豪。";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq < 11) {
-			mes "You might be walking the way of the sword but you are not a Rune Knight yet. Don't wander around here too much if you know what I mean.";
+			mes "你可能走在剑之道上，但你还不是符文骑士。如果你明白我的意思，就别在这里乱逛。";
 			close;
 		}
-		mes "Splendide is the land of the Laphine. We are offering a convenience by an agreement between the Rune Knights and the expeditionary team.";
+		mes "斯普兰迪德是拉菲尼族的土地。根据符文骑士与远征队的协议，我们提供便利。";
 		next;
-		mes "[Rune Knight Sage Guard]";
-		mes "Our agents are opening the way to Splendide only for the trainees who are taking the Rune Knight job change test.";
+		mes "[符文骑士贤者守卫]";
+		mes "我们的人员只为正在接受符文骑士转职测试的受训者开放通往斯普兰迪德的道路。";
 		next;
-		mes "[Rune Knight Sage Guard]";
-		mes "But when you become a Rune Knight, you'll need to make sure that you join the expeditionary team in order to fully explore the Ash-Vacuum.";
+		mes "[符文骑士贤者守卫]";
+		mes "但当你成为符文骑士后，为了充分探索灰烬真空，你需要确保加入远征队。";
 		close;
 	}
-	mes "Hanging around this man won't be good for you. Keep going the way you were heading.";
+	mes "缠着这个人对你没好处。继续走你原本的路吧。";
 	close;
 }
 
-mid_camp,13,138,3	script	Dispatched Rune Knight#1	83,2,2,{
-	mes "[Dispatched Rune Knight]";
+mid_camp,13,138,3	script	派遣的符文骑士#1	83,2,2,{
+	mes "[派遣符文骑士]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "Thanks for your work. We will continue our mission for the Rune Knight testers.";
+		mes "辛苦你了。我们会继续为符文骑士测试者执行任务。";
 		close;
 	}
 	if (BaseJob == Job_Knight && job_rune_edq > 10) {
-		mes "I've been waiting for you Rune Knight candidate. I'm helping the candidates as a favor to Ms. Serpeone.";
+		mes "我一直在等你，符文骑士候选者。我作为塞尔皮奥妮小姐的委托，来帮助候选者。";
 		next;
-		mes "[Dispatched Rune Knight]";
+		mes "[派遣符文骑士]";
 		if (strnpcinfo(0) == "Dispatched Rune Knight#1") {
-			mes "Do you want to go out to the Splendide field?";
+			mes "你想前往斯普兰迪德野外吗？";
 			next;
-			if(select("Move to Splendide field:Cancel.") == 1)
+			if(select("移动到斯普兰迪德野外:取消。") == 1)
 				warp "spl_fild01",355,325;
 			close;
 		} else if (strnpcinfo(0) == "Dispatched Rune Knight#2") {
-			mes "Do you want to go back to the expeditionary team's post?";
+			mes "你想回到远征队的驻地吗？";
 			next;
-			if(select("Yes please.:Not yet.") == 1)
+			if(select("好的，拜托了。:还没有。") == 1)
 				warp "mid_camp",50,153;
 			close;
 		}
 		close;
 	}
-	mes "Shh... Our mission is not something to be revealed to the public. Please just move along.";
+	mes "嘘……我们的任务是不能公开的。请继续前进吧。";
 	close;
 }
-spl_fild01,361,327,3	duplicate(Dispatched Rune Knight#1)	Dispatched Rune Knight#2	83,2,2
+spl_fild01,361,327,3	duplicate(派遣的符文骑士#1)	Dispatched Rune Knight#2	83,2,2
 
 spl_fild02,13,241,0	script	#Barricade1	139,10,10,{
 	end;
 OnTouch:
 	if (job_rune_edq > 0 && job_rune_edq < 23) {
-		mes "- Whispers of the sage Serpeone are delivered to my mind. -";
+		mes "- 贤者塞尔皮奥妮的低语传入我的脑海。 -";
 		next;
-		mes "[Sage Serpeone]";
-		mes "Until you become an honorable Rune Knight I cannot help you control your powers in Midgard.";
+		mes "[贤者塞尔皮奥妮]";
+		mes "在你成为光荣的符文骑士之前，我无法帮你在米德加尔特掌控自己的力量。";
 		next;
-		mes "[Sage Serpeone]";
-		mes "Please understand this and be devoted to this test.";
+		mes "[贤者塞尔皮奥妮]";
+		mes "请理解这一点，并全身心投入这项测试。";
 		close2;
 		warp "spl_fild02",25,245;
 		end;
@@ -1265,81 +1265,81 @@ OnTouch:
 	end;
 }
 
-mid_camp,235,250,3	script	Sage Serpeone	435,2,2,{
-	mes "[Sage Serpeone]";
+mid_camp,235,250,3	script	贤者塞尔培奥尼	435,2,2,{
+	mes "[贤者塞尔皮奥妮]";
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "Finally you are an honorable Rune Knight. I'm happy to help you.";
+		mes "你终于成为光荣的符文骑士了。我很乐意帮助你。";
 		next;
-		mes "[Sage Serpeone]";
-		mes "The power of Runes are not perfect and more research still needs to be done to make it perfectly safe. It is up to me and other Rune Knights like you to make sure to continue that research.";
+		mes "[贤者塞尔皮奥妮]";
+		mes "符文的力量并不完美，要让它完全安全，还需要更多的研究。确保继续这项研究，是我和你这样的其他符文骑士的责任。";
 		next;
-		mes "[Sage Serpeone]";
-		mes "Please be devoted to the Runes and hopefully your life will be illuminated by it.";
+		mes "[贤者塞尔皮奥妮]";
+		mes "请专心于符文，希望你的生活能被它照亮。";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq < 12) {
-			mes "It must be surprising that I, a Laphine, am here in your people's base.";
+			mes "我这个拉菲尼族人出现在你们人类的大本营，一定让你很惊讶吧。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Some of us have been in contact with humans in special situations since even before the dimensional rift opened up.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "我们中的一些人，早在次元裂缝打开之前，就已经在特殊情况下与人类接触了。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "I have been having correspondences with humans for a number of years now. It was for mutual interests. Anyway, that's how I learned your language.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "多年来我一直与人类通信。那是为了共同的利益。总之，我就是这样学会了你们的语言。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Maybe there needs to be a machine that can translate the Laphine language to make it easier for humans to understand us.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "也许需要一种能翻译拉菲尼语言的机器，让人类更容易理解我们。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "More than that... I cannot tell you more. I cannot speak carelessly since I'm speaking for my people here and I am on a special pass to be allowed in your camp.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "除此之外……我不能告诉你更多了。我代表我的人民在这里说话，而且我是获得特别许可才能进入你们营地的，所以不能轻率发言。";
 			close;
 		} else if (job_rune_edq == 12) {
-			mes "Welcome, you are the one taking the job training test of the Rune Knights. I am Serpeone.";
+			mes "欢迎，你就是接受符文骑士转职训练测试的人吧。我是塞尔皮奥妮。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "All Rune Knights that you've met so far are the disciples who were taught by me and Beljeve. Now you are on your way to joining them.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "你到目前为止遇到的符文骑士，都是我和贝尔杰夫教导的弟子。现在你正走在加入他们的路上。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "I think you've already heard a basic explanation and instructions from Renoa. Now it seems that it's my turn to help you out.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "我想你已经从蕾诺雅那里听过基本的说明和指示了。现在似乎轮到我来帮助你了。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "The magical power that the Rune Knights use are not technically the same as the magical power made in the human world.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "符文骑士使用的魔力，在技术上与人类世界产生的魔力并不相同。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Right this place... our sphere where you call as Ash-Vacuum...it's the magical power made with";
+			mes "[贤者塞尔皮奥妮]";
+			mes "就在这个地方……你们称为灰烬真空的我们的领域……这里的魔力是由";
 			next;
-			mes "[Sage Serpeone]";
-			mes "The living things in this place have been preserving the magical energy in our bodies unlike the living things in the human world.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "这里的生物与人类世界的生物不同，一直把魔法能量保存在自身体内。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "The power of the rune stones is the way of shaping the magical power in our bodies into runes which take place of our bodies as a medium.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "符文石的力量，就是将我们体内的魔法能量塑造成符文的方式，符文取代我们的身体成为媒介。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "So to use the rune stone you need a direct understanding of the other sphere's living things.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "所以要使用符文石，你需要直接了解另一个领域的生物。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "But, it must be too much for you to extract the magical energy from the living things in this land yet.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "但是，要你从这片土地上的生物身上提取魔法能量，现在还太难了。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Now I'll cast a magic spell on your body so you can gather magic energy from other living things.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "现在我会在你的身体上施展魔法，让你能够从其他生物身上收集魔法能量。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Temporarily you'll able to extract magic energy from evil creatures in the human world. Of course you won't be able to use the energy directly...";
+			mes "[贤者塞尔皮奥妮]";
+			mes "暂时你就能从人类世界的邪恶生物身上提取魔法能量了。当然，你不能直接使用这些能量……";
 			next;
-			mes "[Sage Serpeone]";
-			mes "If you store up the energy by getting rid of evil creatures in the human world, I'll convert it to the energy that you can use.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "如果你在人类世界消灭邪恶生物来储存能量，我会把它转换成你能使用的能量。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "The vicious souls that they keep even after being dead is the great source of magical powers.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "它们死后仍保留的邪恶灵魂，是魔力的巨大来源。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "Please get rid of ^0000FF10 Dullahan^000000, ^0000FF10 Disguise^000000, ^0000FF10 Quve^000000, ^0000FF10 Heirozoist^000000 and gather their energy.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "请消灭^0000FF10 只杜拉汉^000000、^0000FF10 只迪斯盖斯^000000、^0000FF10 只库维^000000、^0000FF10 只海罗佐伊斯特^000000，并收集它们的能量。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "I am telling you beforehand but I don't test or judge your qualification. A Rune Knight will be the judge of that.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "我先提前告诉你，我不测试也不评判你的资格。那将由符文骑士来裁决。";
 			next;
-			mes "[Sage Serpeone]";
-			mes "If you have any problems or any questions, please talk to me.";
+			mes "[贤者塞尔皮奥妮]";
+			mes "如果你有任何问题或疑问，请和我谈谈。";
 			set job_rune_edq,13;
 			changequest 3207,3208;
 			setquest 3209;
@@ -1348,25 +1348,25 @@ mid_camp,235,250,3	script	Sage Serpeone	435,2,2,{
 			setquest 3212;
 			close;
 		} else if (job_rune_edq == 13) {
-			mes "Are you gathering enough magical energy? Or do you have any questions?";
+			mes "你收集到足够的魔法能量了吗？还是有什么问题？";
 			next;
-			switch(select("I've gathered enough energy.:To the gathering place.:Stop the conversation.")) {
+			switch(select("我已经收集了足够的能量。:前往聚集地。:结束对话。")) {
 			case 1:
-				mes "[Sage Serpeone]";
-				mes "Is it so? Then let's check this out.";
+				mes "[贤者塞尔皮奥妮]";
+				mes "是吗？那就让我们来确认一下吧。";
 				next;
 				if (checkquest(3209,HUNTING) == 2 && checkquest(3210,HUNTING) == 2 && checkquest(3211,HUNTING) == 2 && checkquest(3212,HUNTING) == 2) {
-					mes "[Sage Serpeone]";
-					mes "Umm, this is great. Enough amount of living body magical energy has accumulated in your body.";
+					mes "[贤者塞尔皮奥妮]";
+					mes "嗯，太好了。你的体内已经积累了足够数量的生命魔法能量。";
 					next;
-					mes "[Sage Serpeone]";
-					mes "Rune Knight Renoa will tell you the way of using rune stones.";
+					mes "[贤者塞尔皮奥妮]";
+					mes "符文骑士蕾诺雅会告诉你使用符文石的方法。";
 					next;
-					mes "[Sage Serpeone]";
-					mes "Now I think my part is all over. I hope you will become an honorable Rune Knight.";
+					mes "[贤者塞尔皮奥妮]";
+					mes "我想我的职责到此结束了。希望你能成为一位光荣的符文骑士。";
 					next;
-					mes "[Sage Serpeone]";
-					mes "If you have any business here, I'll send you to the Rune Knight gathering place. If you are ready, please tell me.";
+					mes "[贤者塞尔皮奥妮]";
+					mes "如果你在这里有事要办，我会把你送到符文骑士聚集地。如果你准备好了，请告诉我。";
 					set job_rune_edq,14;
 					changequest 3208,3213;
 					completequest 3209;
@@ -1375,127 +1375,127 @@ mid_camp,235,250,3	script	Sage Serpeone	435,2,2,{
 					completequest 3212;
 					close;
 				}
-				mes "[Sage Serpeone]";
-				mes "You haven't collected enough magical energy yet.";
+				mes "[贤者塞尔皮奥妮]";
+				mes "你还没有收集到足够的魔法能量。";
 				next;
-				mes "[Sage Serpeone]";
-				mes "Please brace yourself and gather enough energy by dispatching those monsters.";
+				mes "[贤者塞尔皮奥妮]";
+				mes "请振作起来，消灭那些怪物来收集足够的能量吧。";
 				close;
 			case 2:
-				mes "[Sage Serpeone]";
-				mes "You want to go back to the gathering place? If you want I'll send you back there immediately. But to continue the test you'll need to come and see me again.";
+				mes "[贤者塞尔皮奥妮]";
+				mes "你想回到聚集地吗？如果你想，我可以立刻把你送回去。但要继续测试，你需要再来见我。";
 				next;
-				mes "[Sage Serpeone]";
-				mes "Do you want to go back the Rune Knight gathering place?";
+				mes "[贤者塞尔皮奥妮]";
+				mes "要回到符文骑士聚集地吗？";
 				next;
-				if(select("I want to go back.:I want to cancel.") == 1)
+				if(select("我想回去。:我想取消。") == 1)
 					warp "job3_rune01",80,65;
 				close;
 			case 3:
 				close;
 			}
 		} else if (job_rune_edq == 14) {
-			mes "Are you ready to go back to the Rune Knight gathering place?";
+			mes "准备好回到符文骑士聚集地了吗？";
 			next;
-			if(select("I want to go back now.:I am not ready yet.") == 1)
+			if(select("我现在就回去。:我还没准备好。") == 1)
 				warp "job3_rune01",80,65;
 			close;
 		}
-		mes "Are the preparations going well?";
+		mes "准备得顺利吗？";
 		next;
-		mes "[Sage Serpeone]";
-		mes "Aren't you in the wrong state right now?";
+		mes "[贤者塞尔培奥尼]";
+		mes "你现在是不是有些不对劲？";
 		next;
-		mes "[Sage Serpeone]";
-		mes "Then I'll send you to the Rune Knight gathering place where you should be.";
+		mes "[贤者塞尔培奥尼]";
+		mes "那我送你去你该待的符文骑士聚集地。";
 		next;
-		if(select("I'll go back now.:I'll stay.") == 1)
+		if(select("我现在就回去。:我留下。") == 1)
 			warp "job3_rune01",80,65;
 		close;
 	}
-	mes "It must be surprising that I, a Laphine, am here in your people's base.";
+	mes "我这个拉皮内会出现在你们人类的基地里，一定很让人惊讶吧。";
 	next;
-	mes "[Sage Serpeone]";
-	mes "Some of us have been in contact with humans in special situations since even before the dimensional rift opened up.";
+	mes "[贤者塞尔培奥尼]";
+	mes "我们之中有些人，早在次元裂缝开启之前，就在特殊情况下与人类有过接触。";
 	next;
-	mes "[Sage Serpeone]";
-	mes "I have been having correspondences with humans for a number of years now. It was for mutual interests. Anyway, that's how I learned your language.";
+	mes "[贤者塞尔培奥尼]";
+	mes "我与人类通信已有数年。那是为了双方的利益。总之，我就是这样学会你们的语言的。";
 	next;
-	mes "[Sage Serpeone]";
-	mes "Maybe there needs to be a machine that can translate the Laphine language to make it easier for humans to understand us.";
+	mes "[贤者塞尔培奥尼]";
+	mes "或许需要一台能翻译拉皮内语的机器，让人类更容易理解我们。";
 	next;
-	mes "[Sage Serpeone]";
-	mes "More than that... I cannot tell you more. I cannot speak carelessly since I'm speaking for my people here and I am on a special pass to be allowed in your camp.";
+	mes "[贤者塞尔培奥尼]";
+	mes "除此之外……我不能再多说了。我不能随便开口，因为我在此代表我的族人，而且是持特别通行证才获准进入你们营地的。";
 	close;
 }
 
-job3_rune01,114,50,3	script	Rune Knight Velpino	468,{
+job3_rune01,114,50,3	script	符文骑士贝皮诺	468,{
 	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune_Knight) {
-		mes "[Rune Knight Velpino]";
-		mes "You still smell like a fledging. Bring honor to the Rune Knights and raise your power...";
+		mes "[符文骑士贝皮诺]";
+		mes "你身上还带着雏鸟般的气息。为符文骑士团带来荣耀，提升自己的力量吧……";
 		close;
 	}
 	if (BaseJob == Job_Knight) {
 		if (job_rune_edq < 17) {
-			mes "A very cold feeling Rune Knight dressed in black from head to toe is scowling at me.";
+			mes "一名浑身黑衣、气息冰冷的符文骑士正皱着眉瞪着我。";
 			next;
-			mes "Why are all of the Rune Knights blabberers or uncommunicative and combative...?";
+			mes "为什么符文骑士不是多嘴饶舌，就是沉默寡言又爱斗狠……？";
 			next;
-			mes "[Captain Tigris]";
-			mes "Hey... What about me? I'm not like that!";
+			mes "[底格里斯队长]";
+			mes "喂……那我呢？我可不像那样！";
 			close;
 		} else if (job_rune_edq == 17) {
-			mes "[Rune Knight Velpino]";
-			mes "I didn't think that a candidate would make it to me today...";
+			mes "[符文骑士贝皮诺]";
+			mes "我没想到今天会有候选人走到我这里来……";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "Congratulations! You are at the long-waited final test... I think you've mastered the basics now.";
+			mes "[符文骑士贝皮诺]";
+			mes "恭喜！你来到了期盼已久的最终测试……我想你已经掌握了基础。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "The final test is relatively simple. Everything ends when you get rid of all the magical monsters in this Glast Heim...";
+			mes "[符文骑士贝皮诺]";
+			mes "最终测试相对简单。只要清除这座克雷斯特汉姆古城里的所有魔力怪物，一切就结束了……";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "The only condition is that you have to get rid of these monsters by using the rune stones you made at the former test.";
+			mes "[符文骑士贝皮诺]";
+			mes "唯一的条件是你必须使用在前一次测试中制作的符文石来清除这些怪物。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "For this test, only a one-hand weapon, a shield or a two-handed weapon can be equipped.";
+			mes "[符文骑士贝皮诺]";
+			mes "本次测试只能装备单手武器、盾牌或双手武器。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "The only set of weapons you can use should be within the weight limit of 400. Rune stones to be provided are 30 attack-only rune stones and 30 defense-only rune stones.";
+			mes "[符文骑士贝皮诺]";
+			mes "可使用的武器组合须在重量上限400以内。将提供攻击专用符文石30个与防御专用符文石30个。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "To use these runes, I will cast a special buff spell over you.";
+			mes "[符文骑士贝皮诺]";
+			mes "为了使用这些符文，我会为你施加特殊的增益法术。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "The magical monsters are the 3 kinds of magic monsters from Glast Heim that you might already know... It won't be an easy fight but if you just undergo this final suffering, you'll walk the path of a Rune Knight.";
+			mes "[符文骑士贝皮诺]";
+			mes "那些魔力怪物是你或许已经知道的克雷斯特汉姆古城的3种魔力怪物……这场战斗不会轻松，但只要熬过这最后的磨难，你就能踏上符文骑士之路。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "To help the preparation we've made a contract with the Kafra headquarters in Al De Baran by employing a Kafra Employee especially for this gathering place. So it would be good to visit her.";
+			mes "[符文骑士贝皮诺]";
+			mes "为了便于准备，我们与艾尔帕兰的卡普拉总部签约，专门为这个聚集地雇用了一名卡普拉职员。所以最好去拜访她。";
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "If you are ready just talk to me again.";
+			mes "[符文骑士贝皮诺]";
+			mes "如果准备好了，再来找我说话。";
 			set job_rune_edq,18;
 			changequest 3216,3217;
 			close;
 		} else if (job_rune_edq > 17 && job_rune_edq < 21) {
 			if (countitem(12388)+countitem(12389)+countitem(12390) == 0) {
-				mes "[Rune Knight Velpino]";
-				mes "If all of your preparations are done, I'll send you to the final test field.";
+				mes "[符文骑士贝皮诺]";
+				mes "如果你的准备都完成了，我就送你去最终测试场。";
 				set job_rune_edq,18;
 				next;
-				if(select("Enter the final test field.:I'm not ready yet.") == 2) close;
+				if(select("进入最终测试场。:我还没准备好。") == 2) close;
 				if (getequipisequiped(EQI_HEAD_TOP) || getequipisequiped(EQI_ARMOR) || getequipisequiped(EQI_GARMENT) || getequipisequiped(EQI_SHOES) ||
 				    getequipisequiped(EQI_ACC_L) || getequipisequiped(EQI_ACC_R) || getequipisequiped(EQI_HEAD_MID) || getequipisequiped(EQI_HEAD_LOW)) {
-					mes "[Rune Knight Velpino]";
-					mes "For this test, only a one-hand weapon, a shield or a two-handed weapon can be equipped. Keep your other equipments with the Kafra Employee in the center.";
+					mes "[符文骑士贝皮诺]";
+					mes "本次测试只能装备单手武器、盾牌或双手武器。其他装备请寄放在中央的卡普拉职员那里。";
 					close;
 				}
 				if (checkquest(3220,PLAYTIME) == 1) {
-					mes "[Rune Knight Velpino]";
-					mes "Haven't you failed at the test... If you fail once, you cannot enter again for 10 minutes.";
+					mes "[符文骑士贝皮诺]";
+					mes "你不是在测试中失败了吗……一旦失败，10分钟内不能再次进入。";
 					next;
-					mes "[Rune Knight Velpino]";
-					mes "It's a consideration for the other testers who are waiting for the test, just like you, so come back after the designated time.";
+					mes "[符文骑士贝皮诺]";
+					mes "这是为了照顾和你一样等待测试的其他应试者，所以在指定时间之后再来吧。";
 					close;
 				}
 				if ($@job_rune_test1 == 0) {
@@ -1509,57 +1509,57 @@ job3_rune01,114,50,3	script	Rune Knight Velpino	468,{
 						warp "job3_rune02",38,40;
 						end;
 					}
-					mes "[Rune Knight Velpino]";
-					mes "The only set of weapons you can use should be within the weight limit of 400. Rune stones to be provided are 30 attack-only rune stones and 30 defense-only rune stones.";
+					mes "[符文骑士贝皮诺]";
+					mes "可使用的武器组合须在重量上限400以内。将提供攻击专用符文石30个与防御专用符文石30个。";
 					next;
-					mes "[Rune Knight Velpino]";
-					mes "The remaining stuff you are holding should be kept by the Kafra employee in the middle.";
+					mes "[符文骑士贝皮诺]";
+					mes "你身上剩下的东西请交给中间的卡普拉职员保管。";
 					close;
 				}
 				// Custom translation
-				mes "[Rune Knight Velpino]";
-				mes "Looks like there is already an applicant in the test room.";
+				mes "[符文骑士贝皮诺]";
+				mes "看来测试场里已经有应试者了。";
 				next;
-				mes "[Rune Knight Velpino]";
-				mes "Be patient and wait your turn.";
+				mes "[符文骑士贝皮诺]";
+				mes "耐心等待轮到你吧。";
 				close;
 			}
-			mes "[Rune Knight Velpino]";
-			mes "Wait, I'll collect all the rune stones provided before. There's a certain limit on using the rune stones that's made for the test.";
+			mes "[符文骑士贝皮诺]";
+			mes "等等，我会收回之前提供的所有符文石。测试用符文石的使用有规定的限额。";
 			if (countitem(12388)) delitem 12388,countitem(12388); //Runstone_Crush
 			if (countitem(12389)) delitem 12389,countitem(12389); //Runstone_Storm
 			if (countitem(12390)) delitem 12390,countitem(12390); //Runstone_Millennium
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "I'll get new rune stones so if your preparation is all done, please talk to me again.";
+			mes "[符文骑士贝皮诺]";
+			mes "我会去领取新的符文石，所以如果你的准备都完成了，请再来找我。";
 			close;
 		} else if (job_rune_edq == 21) {
-			mes "[Rune Knight Velpino]";
-			mes "You've been very successful up to the last test.";
+			mes "[符文骑士贝皮诺]";
+			mes "你直到上一次测试都表现得非常成功。";
 			next;
 			if (countitem(12388)+countitem(12389)+countitem(12390) == 0) {
-				mes "[Rune Knight Velpino]";
-				mes "Now all the tests you need to take are over. Go back to Captain Tigris and inform him of this test result, and then feel the deep emotion of being born again as a Rune Knight.";
+				mes "[符文骑士贝皮诺]";
+				mes "现在你需要参加的所有测试都结束了。回去向底格里斯队长报告这次测试的结果，然后去体会作为符文骑士重生的深深感动吧。";
 				next;
-				mes "[Rune Knight Velpino]";
-				mes "Congratulations!";
-				mes "Well I'd better go now for the remaining candidates.";
+				mes "[符文骑士贝皮诺]";
+				mes "恭喜！";
+				mes "好了，为了剩下的候选人，我该走了。";
 				set job_rune_edq,22;
 				changequest 3218,3219;
 				close;
 			}
-			mes "[Rune Knight Velpino]";
-			mes "Wait, I'll collect all the rune stones provided before. There's a certain limit on using the rune stones that's made for the test.";
+			mes "[符文骑士贝皮诺]";
+			mes "等等，我会收回之前提供的所有符文石。测试用符文石的使用有规定的限额。";
 			if (countitem(12388)) delitem 12388,countitem(12388); //Runstone_Crush
 			if (countitem(12389)) delitem 12389,countitem(12389); //Runstone_Storm
 			if (countitem(12390)) delitem 12390,countitem(12390); //Runstone_Millennium
 			next;
-			mes "[Rune Knight Velpino]";
-			mes "I'll need to re-use these unused rune stones. Talk to me again once I have taken all the test rune stones.";
+			mes "[符文骑士贝皮诺]";
+			mes "我需要重新使用这些未使用的符文石。等我收回所有测试用符文石后，再来找我。";
 			close;
 		}
 	}
-	mes "A very cold feeling Rune Knight dressed in black from head to toe is scowling at me.";
+	mes "一名浑身黑衣、气息冰冷的符文骑士正皱着眉瞪着我。";
 	close;
 }
 
@@ -1611,16 +1611,16 @@ OnDisable:
 	disablenpc "job_rune_edq#1st_tb";
 	end;
 OnTimer5000:
-	mapannounce "job3_rune02","I'll start the first test of the Rune Knight Job Change.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","现在开始符文骑士转职的第一次测试。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer8000:
-	mapannounce "job3_rune02","The content of the test is to get rid of all the monsters for 5 minutes and survive.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","测试内容是在5分钟内清除所有怪物并存活下来。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer11000:
-	mapannounce "job3_rune02","If you fail to survive or cannot get rid of all the monsters within the time limit, I'll consider it a failure.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","如果未能存活，或无法在时限内清除所有怪物，我将判定为失败。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer14000:
-	mapannounce "job3_rune02","Now let's start the test.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","现在开始测试吧。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	donpcevent "job_rune_edq#1st_tc::OnEnable";
 	donpcevent "job_rune_edq#1st_tb::OnDisable";
 	end;
@@ -1643,7 +1643,7 @@ OnDisable:
 	end;
 OnTimer300000:
 	killmonster "job3_rune02","job_rune_edq#1st_tc::OnMyMobDead";
-	mapannounce "job3_rune02","You reached the limit time so I'll consider the test as a failure.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","已到达时限，因此我将判定测试失败。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer305000:
 	donpcevent "#RK Test Hidden Portal 1::OnDisable";
@@ -1750,7 +1750,7 @@ OnMyMobDead:
 		set job_rune_edq,5;
 		erasequest 3220;
 		killmonster "job3_rune02","job_rune_edq#1st_tcmc2::OnMyMobDead";
-		mapannounce "job3_rune02","Congratulations. You've passed the first test.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","恭喜。你通过了第一次测试。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		mapwarp "job3_rune02","job3_rune01",80,65;
 		donpcevent "job_rune_edq#1st_tb::OnDisable";
 		donpcevent "job_rune_edq#1st_tc::OnDisable";
@@ -1777,66 +1777,66 @@ OnEnable:
 OnDisable:
 	stopnpctimer;
 	set $@job_rune_test2,0;
-	donpcevent "Captain Tigris#jrt1::OnDisable";
-	donpcevent "Rune Knight Lunarea#jrt1::OnDisable";
-	donpcevent "Rune Knight Renoa#jrt1::OnDisable";
-	donpcevent "Rune Knight Velpino#jrt1::OnDisable";
+	donpcevent "底格里斯队长#jrt1::OnDisable";
+	donpcevent "符文骑士露娜莉亚#jrt1::OnDisable";
+	donpcevent "符文骑士雷诺亚#jrt1::OnDisable";
+	donpcevent "符文骑士贝皮诺#jrt1::OnDisable";
 	disablenpc "job_rune_edq#1st_tcnc";
 	end;
 OnUse:
-	mapannounce "job3_rune02","Captain Tigris : Gentlemen, let's watch the test for a while.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","底格里斯队长：各位，我们暂时观看测试吧。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	stopnpctimer;
 	set $@job_rune_test2,0;
-	donpcevent "Captain Tigris#jrt1::OnDisable";
-	donpcevent "Rune Knight Lunarea#jrt1::OnDisable";
-	donpcevent "Rune Knight Renoa#jrt1::OnDisable";
-	donpcevent "Rune Knight Velpino#jrt1::OnDisable";
+	donpcevent "底格里斯队长#jrt1::OnDisable";
+	donpcevent "符文骑士露娜莉亚#jrt1::OnDisable";
+	donpcevent "符文骑士雷诺亚#jrt1::OnDisable";
+	donpcevent "符文骑士贝皮诺#jrt1::OnDisable";
 	donpcevent "job_rune_edq#1st_tcnc::OnEnable";
 	end;
 OnTimer30000:
-	mapannounce "job3_rune02","Captain Tigris : Rune Knight Candidates... If you want to borrow our power talk to one of us.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
-	donpcevent "Captain Tigris#jrt1::OnEnable";
-	donpcevent "Rune Knight Lunarea#jrt1::OnEnable";
-	donpcevent "Rune Knight Renoa#jrt1::OnEnable";
-	donpcevent "Rune Knight Velpino#jrt1::OnEnable";
+	mapannounce "job3_rune02","底格里斯队长：符文骑士候选人们……如果想借用我们的力量，就来找我们中的一人谈谈。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	donpcevent "底格里斯队长#jrt1::OnEnable";
+	donpcevent "符文骑士露娜莉亚#jrt1::OnEnable";
+	donpcevent "符文骑士雷诺亚#jrt1::OnEnable";
+	donpcevent "符文骑士贝皮诺#jrt1::OnEnable";
 	end;
 OnTimer60000:
-	mapannounce "job3_rune02","Captain Tigris : It seems you don't need our help... Let's watch the test for a while.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","底格里斯队长：看来你不需要我们的帮助……我们暂时观看测试吧。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	stopnpctimer;
-	donpcevent "Captain Tigris#jrt1::OnDisable";
-	donpcevent "Rune Knight Lunarea#jrt1::OnDisable";
-	donpcevent "Rune Knight Renoa#jrt1::OnDisable";
-	donpcevent "Rune Knight Velpino#jrt1::OnDisable";
+	donpcevent "底格里斯队长#jrt1::OnDisable";
+	donpcevent "符文骑士露娜莉亚#jrt1::OnDisable";
+	donpcevent "符文骑士雷诺亚#jrt1::OnDisable";
+	donpcevent "符文骑士贝皮诺#jrt1::OnDisable";
 	donpcevent "job_rune_edq#1st_tcnc::OnEnable";
 	end;
 }
 
-job3_rune02,34,46,5	script	Captain Tigris#jrt1	470,2,2,{
+job3_rune02,34,46,5	script	底格里斯队长#jrt1	470,2,2,{
 	if (job_rune_edq != 4 || $@job_rune_test2 != 0) {
 		donpcevent "job_rune_edq#1st_tcnc::OnUse";
 		end;
 	}
 	switch(rand(6)) {
 	case 0:
-		mapannounce "job3_rune02","Captain Tigris : May Beljeve bless you!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","底格里斯队长：愿贝尔杰布保佑你！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_BLESSING",1,0,0;
 		break;
 	case 1:
 	case 2:
-		mapannounce "job3_rune02","Captain Tigris : The Spark of life... may flame again.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","底格里斯队长：生命之火……愿再度燃起。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_HEAL",8,70,99;
 		break;
 	case 3:
-		mapannounce "job3_rune02","Captain Tigris : Evil demons! I will send you back to your graves!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","底格里斯队长：邪恶的恶魔们！我要把你们送回坟墓！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		specialeffect2 EF_METEORSTORM;
 		donpcevent "job_rune_edq#1st_tcmc::OnReset";
 		break;
 	case 4:
-		mapannounce "job3_rune02","Captain Tigris : For a Rune Knight, this kind of ordeal is nothing!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","底格里斯队长：对符文骑士而言，这种磨难算不了什么！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_STUN,10000,0;
 		break;
 	case 5:
-		mapannounce "job3_rune02","Captain Tigris : For a Rune Knight, this kind of ordeal is nothing!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","底格里斯队长：对符文骑士而言，这种磨难算不了什么！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_BLEEDING,10000,0;
 		break;
 	}
@@ -1845,10 +1845,10 @@ job3_rune02,34,46,5	script	Captain Tigris#jrt1	470,2,2,{
 	end;
 OnInit:
 OnDisable:
-	disablenpc "Captain Tigris#jrt1";
+	disablenpc "底格里斯队长#jrt1";
 	end;
 OnEnable:
-	enablenpc "Captain Tigris#jrt1";
+	enablenpc "底格里斯队长#jrt1";
 	end;
 OnTimer5000:
 	donpcevent "job_rune_edq#1st_tcnc::OnUse";
@@ -1857,31 +1857,31 @@ OnTimer5000:
 	end;
 }
 
-job3_rune02,43,46,3	script	Rune Knight Lunarea#jrt1	469,2,2,{
+job3_rune02,43,46,3	script	符文骑士露娜莉亚#jrt1	469,2,2,{
 	if (job_rune_edq != 4 || $@job_rune_test2 != 0) {
 		donpcevent "job_rune_edq#1st_tcnc::OnUse";
 		end;
 	}
 	switch(rand(6)) {
 	case 0:
-		mapannounce "job3_rune02","Rune Knight Lunarea : Quickly... find and strike at the enemy's weakness!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士露娜莉亚：快……找出敌人的弱点并攻击！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_INCAGI",1,0,0;
 		break;
 	case 1:
 	case 2:
-		mapannounce "job3_rune02","Rune Knight Lunarea : It's not over... you need more power...",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士露娜莉亚：还没结束……你需要更强的力量……",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_HEAL",8,60,90;
 		break;
 	case 3:
-		mapannounce "job3_rune02","Rune Knight Lunarea : Everything starts from the beginning!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士露娜莉亚：一切从头开始！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_CURE",1,0,0;
 		break;
 	case 4:
-		mapannounce "job3_rune02","Rune Knight Lunarea : There can't be growth without a trial.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士露娜莉亚：没有试炼就没有成长。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_POISON,30000,0;
 		break;
 	case 5:
-		mapannounce "job3_rune02","Rune Knight Lunarea : There can't be growth without a trial.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士露娜莉亚：没有试炼就没有成长。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_CURSE,30000,0;
 		break;
 	}
@@ -1890,10 +1890,10 @@ job3_rune02,43,46,3	script	Rune Knight Lunarea#jrt1	469,2,2,{
 	end;
 OnInit:
 OnDisable:
-	disablenpc "Rune Knight Lunarea#jrt1";
+	disablenpc "符文骑士露娜莉亚#jrt1";
 	end;
 OnEnable:
-	enablenpc "Rune Knight Lunarea#jrt1";
+	enablenpc "符文骑士露娜莉亚#jrt1";
 	end;
 OnTimer5000:
 	donpcevent "job_rune_edq#1st_tcnc::OnUse";
@@ -1902,32 +1902,32 @@ OnTimer5000:
 	end;
 }
 
-job3_rune02,43,34,1	script	Rune Knight Renoa#jrt1	469,2,2,{
+job3_rune02,43,34,1	script	符文骑士雷诺亚#jrt1	469,2,2,{
 	if (job_rune_edq != 4 || $@job_rune_test2 != 0) {
 		donpcevent "job_rune_edq#1st_tcnc::OnUse";
 		end;
 	}
 	switch(rand(6)) {
 	case 0:
-		mapannounce "job3_rune02","Rune Knight Renoa : The rune of Wind! May it give you strength!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士雷诺亚：风之符文！愿它赐予你力量！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_INCAGI",1,0,0;
 		break;
 	case 1:
 	case 2:
-		mapannounce "job3_rune02","Rune Knight Renoa : The rune of Birth! May give you the power of life!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士雷诺亚：诞生之符文！愿它赐予你生命之力！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_HEAL",8,60,90;
 		break;
 	case 3:
-		mapannounce "job3_rune02","Rune Knight Renoa : I am faster than all of them! Different then the others!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士雷诺亚：我比他们所有人都快！和其他人不同！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		specialeffect2 EF_PIERCESELF;
 		donpcevent "job_rune_edq#1st_tcmc::OnReset";
 		break;
 	case 4:
-		mapannounce "job3_rune02","Rune Knight Renoa : For a Rune Knight, this kind of ordeal is nothing!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士雷诺亚：对符文骑士而言，这种磨难算不了什么！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_POISON,30000,0;
 		break;
 	case 5:
-		mapannounce "job3_rune02","Rune Knight Renoa : For a Rune Knight, this kind of ordeal is nothing!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士雷诺亚：对符文骑士而言，这种磨难算不了什么！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_CURSE,30000,0;
 		break;
 	}
@@ -1936,10 +1936,10 @@ job3_rune02,43,34,1	script	Rune Knight Renoa#jrt1	469,2,2,{
 	end;
 OnInit:
 OnDisable:
-	disablenpc "Rune Knight Renoa#jrt1";
+	disablenpc "符文骑士雷诺亚#jrt1";
 	end;
 OnEnable:
-	enablenpc "Rune Knight Renoa#jrt1";
+	enablenpc "符文骑士雷诺亚#jrt1";
 	end;
 OnTimer5000:
 	set $@job_rune_test2,0;
@@ -1948,31 +1948,31 @@ OnTimer5000:
 	end;
 }
 
-job3_rune02,34,34,7	script	Rune Knight Velpino#jrt1	468,2,2,{
+job3_rune02,34,34,7	script	符文骑士贝皮诺#jrt1	468,2,2,{
 	if (job_rune_edq != 4 || $@job_rune_test2 != 0) {
 		donpcevent "job_rune_edq#1st_tcnc::OnUse";
 		end;
 	}
 	switch(rand(6)) {
 	case 0:
-		mapannounce "job3_rune02","Rune Knight Velpino : You are not one who gets to fall down in this kind of place.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士贝皮诺：你不是会在这种地方倒下的人。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_HEAL",8,60,90;
 		break;
 	case 1:
 	case 2:
-		mapannounce "job3_rune02","Rune Knight Velpino : Move on! There are obstacles to overcome.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士贝皮诺：前进！还有障碍需要跨越。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_INCAGI",1,0,0;
 		break;
 	case 3:
-		mapannounce "job3_rune02","Rune Knight Velpino : You are not alone. We are by your side.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士贝皮诺：你不是一个人。我们就在你身边。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		npcskill "AL_BLESSING",1,0,0;
 		break;
 	case 4:
-		mapannounce "job3_rune02","Rune Knight Velpino : Fight and win! Don't give in to the pain!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士贝皮诺：战斗并获胜！不要向痛苦屈服！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_FREEZE,10000,0;
 		break;
 	case 5:
-		mapannounce "job3_rune02","Rune Knight Velpino : It's not a big trial for a true Rune Knight!",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","符文骑士贝皮诺：对真正的符文骑士来说，这算不了什么试炼！",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		sc_start SC_SLEEP,10000,0;
 		break;
 	}
@@ -1981,10 +1981,10 @@ job3_rune02,34,34,7	script	Rune Knight Velpino#jrt1	468,2,2,{
 	end;
 OnInit:
 OnDisable:
-	disablenpc "Rune Knight Velpino#jrt1";
+	disablenpc "符文骑士贝皮诺#jrt1";
 	end;
 OnEnable:
-	enablenpc "Rune Knight Velpino#jrt1";
+	enablenpc "符文骑士贝皮诺#jrt1";
 	end;
 OnTimer5000:
 	set $@job_rune_test2,0;
@@ -2007,16 +2007,16 @@ OnDisable:
 	disablenpc "job_rune_edq#3rd_tb";
 	end;
 OnTimer5000:
-	mapannounce "job3_rune02","I'll start the last test of the Rune Knight Job change.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","现在开始符文骑士转职的最后一次测试。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer8000:
-	mapannounce "job3_rune02","Get rid of monsters appearing here within 8 minutes by using the provided rune stones.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","请在8分钟内使用提供的符文石清除此地出现的怪物。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer11000:
-	mapannounce "job3_rune02","If you die or can't get rid of all the monsters within the time limit, I'll consider the try as a failure.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","如果死亡，或无法在时限内清除所有怪物，我将判定此次挑战失败。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer14000:
-	mapannounce "job3_rune02","Now I'll start the test.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","现在开始测试。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	donpcevent "job_rune_edq#3rd_tc::OnEnable";
 	donpcevent "job_rune_edq#3rd_tb::OnDisable";
 	end;
@@ -2041,7 +2041,7 @@ OnDisable:
 	end;
 OnTimer480000:
 	killmonster "job3_rune02","job_rune_edq#3rd_tc::OnMyMobDead";
-	mapannounce "job3_rune02","You reached the limit time so I'll consider the test as a failure.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rune02","已到达时限，因此我将判定测试失败。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 	end;
 OnTimer482000:
 	mapwarp "job3_rune02","job3_rune01",80,65;
@@ -2126,7 +2126,7 @@ OnMyMobDead:
 		changequest 3217,3218;
 		erasequest 3220;
 		killmonster "job3_rune02","job_rune_edq#3rd_tc3::OnMyMobDead";
-		mapannounce "job3_rune02","Congratulations. You've passed the test.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rune02","恭喜。你通过了测试。",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
 		mapwarp "job3_rune02","job3_rune01",80,65;
 		donpcevent "job_rune_edq#1st_tb::OnDisable";
 		donpcevent "job_rune_edq#1st_tc::OnDisable";
@@ -2143,24 +2143,24 @@ OnMyMobDead:
 	end;
 }
 
-sec_in02,34,167,3	script	R.Knight Job Manager	470,1,1,{
+sec_in02,34,167,3	script	符文骑士转职管理员	470,1,1,{
 	callfunc "F_GM_NPC";
-	mes "Enter the Password.";
+	mes "请输入密码。";
 	next;
 	if (callfunc("F_GM_NPC","1854",1) == 1) {
-		mes "Rune Knight Job Change Managing Module Start";
+		mes "符文骑士转职管理模块启动";
 		next;
-		switch(select("GlobalVar check:GlobalVar Oneshot Modification")) {
+		switch(select("查看转职测试状态:重置转职测试状态")) {
 		case 1:
-			mes "Rune Knight Job Change GlobalVar right now is " + $@job_rune_test1 + ".";
-			mes "The number of Rune Knight Test field right now is... " + getmapusers("job3_rune02") + ".";
+			mes "符文骑士转职测试状态当前为" + $@job_rune_test1 + ".";
+			mes "符文骑士测试场当前人数为……" + getmapusers("job3_rune02") + ".";
 			close;
 		case 2:
 			set $@job_rune_test1,0;
-			mes "Rune Knight Job Change GlobalVar is modified to 0. The use of the test field is now available.";
+			mes "符文骑士转职测试状态已重置为0。现在可以使用测试场了。";
 			close;
 		}
 	}
 	close;
 }
-job3_rune01,1,1,3	duplicate(R.Knight Job Manager)	#renshucheck	844
+job3_rune01,1,1,3	duplicate(符文骑士转职管理员)	#renshucheck	844

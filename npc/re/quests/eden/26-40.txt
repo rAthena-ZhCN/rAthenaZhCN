@@ -16,26 +16,26 @@
 //= 1.4 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,38,38,3	script	Mission [26 - 40]	857,{
+moc_para01,38,38,3	script	任务 [26 - 40]	857,{
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "You are not a qualified member. You can not use the bulletin board.";
+		mes "你还不是合格成员，无法使用公告板。";
 		close;
 	}
-	mes "[26 ~ 40 Lv. Mission Board]";
-	mes "- Many missions are -";
-	mes "- on the bulletin board. -";
+	mes "[26 ~ 40 级任务公告板]";
+	mes "- 许多任务 -";
+	mes "- 都贴在公告板上。 -";
 	next;
 	if ((BaseLevel < 26) || (BaseLevel > 40)) {
-		mes "Your level is not qualified. You can not use the bulletin board.";
+		mes "你的等级不符合要求，无法使用公告板。";
 		close;
 	}
-	switch(select("Hunting Mission:Delivery Mission:Gathering Mission:Escort Mission")) {
+	switch(select("狩猎任务:配送任务:采集任务:护送任务")) {
 	case 1:
-		mes "[Hunting Mission Board]";
-		mes "- Hunting Mission details -";
-		mes "- are on the board. -";
+		mes "[狩猎任务公告板]";
+		mes "- 狩猎任务详情 -";
+		mes "- 都贴在公告板上。 -";
 		next;
-		switch(select("Hunting Poison Spore:Hunting Smokie:Hunting Elder Willow(Above Lv.30):Hunting Coco(Above Lv.35):Hunting Thara Frog(Above Lv.38)")) {
+		switch(select("狩猎毒魔菇:狩猎狸猫:狩猎长老树精(30级以上):狩猎松鼠(35级以上):狩猎达拉蛙(38级以上)")) {
 			case 1: callsub L_Quest,8266,0,"Hunting Poison Spore","Sponiac","Geffen","Hunt 10 Poison Spores";
 			case 2: callsub L_Quest,8267,0,"Hunting Smokie","Sponiac","Geffen","Hunt 10 Smokies";
 			case 3: callsub L_Quest,8268,30,"Hunting Elder Willow","Sponiac","Geffen","Hunt 10 Elder Willows";
@@ -43,21 +43,21 @@ moc_para01,38,38,3	script	Mission [26 - 40]	857,{
 			case 5: callsub L_Quest,8270,38,"Hunting Thara Frog","Sponiac","Geffen","Hunt 10 Thara Frogs";
 		}
 	case 2:
-		mes "[Delivery Mission Board]";
-		mes "- Delivery Mission details -";
-		mes "- are on the board. -";
+		mes "[配送任务公告板]";
+		mes "- 配送任务详情 -";
+		mes "- 都贴在公告板上。 -";
 		next;
-		switch(select("Deliver an Insecticide:Deliver Honey:Deliver Blanket(Above Lv.35)")) {
+		switch(select("配送杀虫剂:配送蜂蜜:配送毛毯(35级以上)")) {
 			case 1: callsub L_Quest,8271,0,"Deliver an Insecticide","Dieshin Man","Morocc Ruins","Get an 'Insecticide' from Dieshin Man and deliver it south east of Payon";
 			case 2: callsub L_Quest,8272,0,"Deliver Honey","Dieshin Man","Morocc Ruins","Get 'Honey' from Dieshin Man and deliver it west of St. Capitolina Abbey";
 			case 3: callsub L_Quest,8273,35,"Deliver Blanket","Dieshin Man","Morocc Ruins","Get Blankets from Dieshin Man and deliver to the field south of Lutie";
 		}
 	case 3:
-		mes "[Gathering Mission Board]";
-		mes "- Gathering Mission details -";
-		mes "- are on the board. -";
+		mes "[采集任务公告板]";
+		mes "- 采集任务详情 -";
+		mes "- 都贴在公告板上。 -";
 		next;
-		switch(select("Gather Bones:Gather Animal Skins:Gather Peelings(Above Lv.30):Gather Tails(Above Lv.32):Gather Cookies(Above Lv.35):Gather Mustaches(Above Lv.35)")) {
+		switch(select("采集骨头:采集动物外皮:采集昆虫外壳(30级以上):采集尾巴(32级以上):采集姜饼(35级以上):采集胡须(35级以上)")) {
 			case 1: callsub L_Quest,8274,0,"Gather Bones","Dashia","Payon","Gather '10 Skel-Bones' and give them to Dashia";
 			case 2: callsub L_Quest,8275,0,"Gather Animal Skins","Dashia","Payon","Gather '10 Bear's Footskins' and '5 Animal Skins' and give them to Dashia";
 			case 3: callsub L_Quest,8276,30,"Gather Peelings","Dashia","Payon","Gather '20 Worm Peelings' and '20 Garlets' and give them to Dashia";
@@ -66,8 +66,8 @@ moc_para01,38,38,3	script	Mission [26 - 40]	857,{
 			case 6: callsub L_Quest,8279,35,"Gather Mustaches","Dashia","Payon","Gather '5 Mole Whiskers' and '3 Mole Claws' and give them to Dashia";
 		}
 	case 4:
-		mes "[Escort Mission Board]";
-		mes "There are currently no Escort Missions registered on the board.";
+		mes "[护送任务公告板]";
+		mes "目前公告板上没有登记任何护送任务。";
 		close;
 	}
 	end;
@@ -75,61 +75,61 @@ L_Quest:
 	//QuestID,ReqLvl,Quest,Client,Loc,Desc
 	.@string$ = getarg(2);
 	if (BaseLevel < getarg(1,26)) {
-		mes "Your level doesn't meet the requirements. You can't take the '"+ .@string$ +"' mission.";
+		mes "你的等级不符合要求，无法接取 '"+ .@string$ +"' 任务。";
 		close;
 	}
-	mes "["+ .@string$ +" !!]";
-	mes "Client : "+getarg(3);
-	mes "Client Location : "+getarg(4);
-	mes "Requested Mission : "+getarg(5);
+	mes "["+ .@string$ +"！！]";
+	mes "委托人："+getarg(3);
+	mes "委托人位置："+getarg(4);
+	mes "委托任务："+getarg(5);
 	mes " ";
-	mes "Will you accept this mission?";
+	mes "你要接受这个任务吗？";
 	next;
-	if(select("No, I won't accept it.:Yes, I will accept it.") == 1) {
-		mes "You have declined the "+ .@string$ +" mission.";
+	if(select("不，我不接受。:是，我接受。") == 1) {
+		mes "你拒绝了"+ .@string$ +"任务。";
 		close;
 	}
-	if (checkquest(getarg(0)) > -1) mes "You are already doing this mission.";
+	if (checkquest(getarg(0)) > -1) mes "你已经在执行这个任务了。";
 	else {
 		setquest getarg(0);
-		mes "You have accepted the "+ .@string$ +" mission.";
+		mes "你接受了"+ .@string$ +"任务。";
 	}
-	mes "You can get a reward from the client after you finish the mission.";
+	mes "完成任务后，你可以向委托人领取报酬。";
 	next;
-	mes "For more details, please press 'Alt + U', to get more information from the Quest Window.";
+	mes "更多详情请按 'Alt + U'，从任务窗口获取更多信息。";
 	close;
 }
 
-geffen,103,42,5	script	Sponiac	99,{
+geffen,103,42,5	script	史波尼亚	99,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Sponiac]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[史波尼亚]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Sponiac]";
-	mes "Lu~lu~lu~lu~";
-	mes "Lu~ Huh?";
+	mes "[史波尼亚]";
+	mes "噜~噜~噜~噜~";
+	mes "噜~ 嗯？";
 	next;
-	mes "[Sponiac]";
-	mes "Wow, you must be a beginner, right?";
-	mes "What an innocent face! Ha~ hahaha.";
+	mes "[史波尼亚]";
+	mes "哇，你一定是个新手吧？";
+	mes "多天真的一张脸啊！哈~ 哈哈哈。";
 	emotion ET_KIK;
 	next;
-	mes "[Sponiac]";
-	mes "Why don't you do some hunting outside instead of walking around and wasting your time?";
+	mes "[史波尼亚]";
+	mes "与其在这里闲逛浪费时间，不如去外面打打猎？";
 	next;
-	if(select("I am about to leave now.:I've got a Hunting Mission.") == 1) {
-		mes "[Sponiac]";
-		mes "Oh, well. Then, go figure.";
-		mes "Bye~ bye.";
+	if(select("我正要离开。:我接到了狩猎任务。") == 1) {
+		mes "[史波尼亚]";
+		mes "哦，好吧。那你自己看着办吧。";
+		mes "再见~ 再见。";
 		close;
 	}
-	mes "[Sponiac]";
-	mes "Oh, you are from the Eden Group?";
-	mes "What mission do you have?";
+	mes "[史波尼亚]";
+	mes "哦，你是乐园团的人？";
+	mes "你接到了什么任务？";
 	next;
-	switch(select("Hunting Poison Spore:Hunting Smokie:Hunting Elder Willow:Hunting Coco:Hunting Thara Frog")) {
+	switch(select("狩猎毒魔菇:狩猎狸猫:狩猎长老树精:狩猎松鼠:狩猎达拉蛙")) {
 		case 1: callsub L_Quest,8266,"Hunting Poison Spore",1000,0,100,"You can find Poison Spores on the Geffen Dungeon 1F or northeast of Prontera. There are other spots but I'll leave it up to you to find out.";
 		case 2: callsub L_Quest,8267,"Hunting Smokie",1000,0,100,"You can find Smokies northeast and northwest of Geffen. Oh, also the field east of Ayothaya is good spot to find them.";
 		case 3: callsub L_Quest,8268,"Hunting Elder Willow",1000,100,110,"You can find Elder Willows northeast of Geffen, east of payon and southwest of Prontera.";
@@ -142,73 +142,73 @@ L_Quest:
 	.@quest_id = getarg(0);
 	if (checkquest(.@quest_id) == 1) {
 		if (checkquest(.@quest_id,HUNTING) == 2) {
-			mes "[Sponiac]";
-			mes getarg(1)+"!";
-			mes "Wow, I didn't expect you would do that mission. I was just about to give up. But you did good job. I appreciate it!";
+			mes "[史波尼亚]";
+			mes getarg(1)+"！";
+			mes "哇，没想到你真的去做了那个任务。我本来都打算放弃了。不过你干得不错，我很感激！";
 			next;
-			mes "[Sponiac]";
-			mes "Well, I requested the mission and you did an excellent job.";
-			mes "I will give you a reward as I promised.";
+			mes "[史波尼亚]";
+			mes "嗯，是我委托的任务，而你做得非常出色。";
+			mes "我会按约定给你报酬。";
 			next;
-			mes "[Sponiac]";
-			mes "Here it is. Thank you very much. God bless you!";
+			mes "[史波尼亚]";
+			mes "给你。非常感谢你。愿神保佑你！";
 			getitem 569,getarg(4); //Novice_Potion
 			getexp getarg(2),getarg(3);
 			erasequest .@quest_id;
 			close;
 		}
-		mes "[Sponiac]";
-		mes "Oh, you are right.";
+		mes "[史波尼亚]";
+		mes "哦，你说得对。";
 		next;
-		mes "[Sponiac]";
-		mes "But, you haven't done the mission yet. Why did you come to me now? You haven't completed the mission!";
-		mes "I will give you a reward if you complete the mission. Ok? Are we good?";
+		mes "[史波尼亚]";
+		mes "可是，你还没完成任务。现在来找我做什么？你还没有完成任务！";
+		mes "你完成任务后我就会给你报酬。可以吗？我们说好了？";
 		next;
-		mes "[Sponiac]";
+		mes "[史波尼亚]";
 		mes getarg(5);
-		mes "You can check the world map by pressing 'ctrl + ~' key.";
+		mes "你可以按 'ctrl + ~' 键查看世界地图。";
 		next;
-		mes "[Sponiac]";
-		mes "Anyway, I will be here waiting for you. Please come back when you finish the mission!";
+		mes "[史波尼亚]";
+		mes "总之，我会在这里等你。完成任务后请回来！";
 		close;
 	}
-	mes "[Sponiac]";
-	mes "Huh? Are you sure? Something is wrong...";
+	mes "[史波尼亚]";
+	mes "嗯？你确定吗？好像有点不对劲……";
 	next;
-	mes "[Sponiac]";
-	mes "It is weird.";
-	mes "Please check your Quest Window by pressing 'alt + u'.";
+	mes "[史波尼亚]";
+	mes "真奇怪。";
+	mes "请按 'alt + u' 查看任务窗口。";
 	close;
 }
 
-moc_ruins,173,55,3	script	Dieshin Man	89,{
+moc_ruins,173,55,3	script	大信万	89,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Dieshin Man]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[大信万]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Dieshin Man]";
-	mes "Hu hu~~ we are delivery men~";
-	mes "We are faster than any flight~!";
+	mes "[大信万]";
+	mes "呼呼~~ 我们是送货员~";
+	mes "我们比任何飞行都快~！";
 	next;
-	mes "[Dieshin Man]";
-	mes "Welcome~ welcome!";
-	mes "We are the fastest delivery company, Dieshin Corperation.";
+	mes "[大信万]";
+	mes "欢迎~ 欢迎！";
+	mes "我们是最快的配送公司——大信公司。";
 	next;
-	mes "[Dieshin Man]";
-	mes "How can I help you?";
+	mes "[大信万]";
+	mes "有什么可以帮你的吗？";
 	next;
-	if(select("I don't need help.:I've got a Delivery Mission.") == 1) {
-		mes "[Dieshin Man]";
-		mes "Oh, well. Then, go figure. Bye~!";
+	if(select("我不需要帮助。:我接到了配送任务。") == 1) {
+		mes "[大信万]";
+		mes "哦，好吧。那你自己看着办吧。再见~！";
 		close;
 	}
-	mes "[Dieshin Man]";
-	mes "Oh, you are from the Eden Group?";
-	mes "What mission do you have?";
+	mes "[大信万]";
+	mes "哦，你是乐园团的人？";
+	mes "你接到了什么任务？";
 	next;
-	switch(select("Deliver an Insecticide.:Deliver Honey.:Deliver Blankets.")) {
+	switch(select("配送杀虫剂。:配送蜂蜜。:配送毛毯。")) {
 		case 1: callsub L_Quest,8271;
 		case 2: callsub L_Quest,8272;
 		case 3: callsub L_Quest,8273;
@@ -216,279 +216,279 @@ moc_ruins,173,55,3	script	Dieshin Man	89,{
 	end;
 L_Quest:
 	if (checkquest(getarg(0)) != 1) {
-		mes "[Dieshin Man]";
-		mes "Huh? Are you sure? Something is wrong...";
+		mes "[大信万]";
+		mes "嗯？你确定吗？好像有点不对劲……";
 		next;
-		mes "[Dieshin Man]";
-		mes "It is weird.";
-		mes "Please check your Quest Window by pressing 'alt + u'.";
+		mes "[大信万]";
+		mes "真奇怪。";
+		mes "请按 'alt + u' 查看任务窗口。";
 		close;
 	}
 	if (countitem(6218) > 0) {
-		mes "[Dieshin Man]";
-		mes "Wait, but you already have a delivery box.";
+		mes "[大信万]";
+		mes "等等，但你已经有一个配送箱了。";
 		next;
-		mes "[Dieshin Man]";
-		mes "We can't allow you to deliver two boxes at once. So, please finish your delivery first.";
+		mes "[大信万]";
+		mes "我们不能让你同时送两个箱子。所以请先完成当前的配送。";
 		next;
-		mes "[Dieshin Man]";
-		mes "If you forgot where to deliver, then please check Quest Window by pressing 'alt + u'.";
+		mes "[大信万]";
+		mes "如果你忘了要送到哪里，请按 'alt + u' 查看任务窗口。";
 		close;
 	}
 	switch(getarg(0)) {
 	case 8271:
-		mes "[Dieshin Man]";
-		mes "Ah ha! I got it!";
-		mes "The insecticide? It must be the Zoologist on the southeast of Payon who ordered the Insecticide.";
+		mes "[大信万]";
+		mes "啊哈！我知道了！";
+		mes "杀虫剂？一定是裴扬东南边的动物学家订的。";
 		break;
 	case 8272:
-		mes "[Dieshin Man]";
-		mes "Ah ha! I got it!";
-		mes "Honey? It must be the Entomologist at the west of St. Capitolina Abbey, wich is northeast of Prontera who ordered the Honey.";
+		mes "[大信万]";
+		mes "啊哈！我知道了！";
+		mes "蜂蜜？一定是普隆德拉东北边、圣卡毕利那修道院西边的昆虫学家订的。";
 		break;
 	case 8273:
-		mes "[Dieshin Man]";
-		mes "Oh, Right!";
-		mes "The blankets! It must be the biologist in the south of Lutie field who ordered the blankets.";
+		mes "[大信万]";
+		mes "哦，对了！";
+		mes "毛毯！一定是姜饼城野外南边的生物学家订的。";
 		next;
-		mes "[Dieshin Man]";
-		mes "You can can go to Lutie by asking Mr. Claus in the northeastern part of Al De Baran.";
+		mes "[大信万]";
+		mes "你可以去艾尔帕兰东北边找克劳斯先生，让他送你去姜饼城。";
 		break;
 	}
 	next;
-	mes "[Dieshin Man]";
-	mes "Dieshin's cooperation motive is to give the fastest and credited delivery. So please deliver it now without any delay.";
+	mes "[大信万]";
+	mes "大信的经营宗旨是提供最快、最可靠的配送。所以请立刻送去，不要耽搁。";
 	next;
-	mes "[Dieshin Man]";
-	mes "If you forgot where to make the delivery, then please check the Quest Window by pressing 'alt + u'.";
+	mes "[大信万]";
+	mes "如果你忘了送货地点，请按 'alt + u' 查看任务窗口。";
 	getitem 6218,1; //Disin_Delivery_Box
 	close;
 }
 
-pay_fild07,83,89,7	script	Zoologist	89,{
+pay_fild07,83,89,7	script	动物学家	89,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Zoologist]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[动物学家]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Zoologist]";
-	mes "Have you heard of a monster named Bigfoot?";
-	mes "It looks like a bear with red fur and has a 'X' shape scar on his shoulder.";
+	mes "[动物学家]";
+	mes "你听说过一种叫大脚熊的怪物吗？";
+	mes "它看起来像一只红毛的熊，肩上有一道 'X' 形的伤疤。";
 	next;
-	mes "[Zoologist]";
-	mes "According to the recent research, flies and Bigfoot monsters have a symbiotic relationship.";
+	mes "[动物学家]";
+	mes "根据最近的研究，苍蝇和大脚熊之间存在共生关系。";
 	next;
-	mes "[Zoologist]";
-	mes "I am currently studying about it and try to prove the theory. So I plan to kill the flies around Bigfoot and observe his reaction.";
+	mes "[动物学家]";
+	mes "我目前正在研究这个问题，想证明这个理论。所以我打算消灭大脚熊周围的苍蝇，观察它的反应。";
 	next;
 	if(select("...I am not interested.:Here is the Insecticide.") == 1) {
-		mes "[Zoologist]";
-		mes "Oh, I need an Insecticide to continue the study.";
+		mes "[动物学家]";
+		mes "哦，我需要杀虫剂来继续研究。";
 		close;
 	}
 	if (checkquest(8271) != 1) {
-		mes "[Zoologist]";
-		mes "Huh?";
-		mes "You are not Dieshin's delivery man?";
+		mes "[动物学家]";
+		mes "嗯？";
+		mes "你不是大信的送货员？";
 		next;
-		mes "[Zoologist]";
-		mes "I am waiting for a special delivery.";
+		mes "[动物学家]";
+		mes "我在等一份特别配送。";
 		close;
 	}
 	if (countitem(6218) > 0) {
-		mes "[Zoologist]";
-		mes "Oh ho! Yes! That one!";
+		mes "[动物学家]";
+		mes "哦呵！对！就是这个！";
 		next;
-		mes "[Zoologist]";
-		mes "That is the Insecticide that I ordered! You were sent by Dieshin right?";
+		mes "[动物学家]";
+		mes "那就是我订的杀虫剂！你是大信派来的吧？";
 		next;
-		mes "[Zoologist]";
-		mes "I have been waiting for this!";
-		mes "Give it to me!";
+		mes "[动物学家]";
+		mes "我等这个很久了！";
+		mes "把它给我！";
 		next;
-		mes "[Zoologist]";
-		mes "It arrived much faster than I thought. I want to test it right away!";
+		mes "[动物学家]";
+		mes "它比我预想的快多了。我想马上试试！";
 		next;
-		mes "[Zoologist]";
-		mes "Well done. Good Job! Thank you so much! Here is a little gift for you.";
+		mes "[动物学家]";
+		mes "干得好。做得不错！非常感谢！这是给你的小礼物。";
 		delitem 6218,1; //Disin_Delivery_Box
 		erasequest 8271;
 		getitem 569,100; //Novice_Potion
 		getexp 1000,0;
 		close;
 	}
-	mes "[Zoologist]";
-	mes "I appreciate your kindness.";
-	mes "But, what did you bring?";
+	mes "[动物学家]";
+	mes "感谢你的好意。";
+	mes "不过，你带了什么来？";
 	next;
-	mes "[Zoologist]";
-	mes "Hmm, I thought that Dieshin was fast and accurate, but you brought me an empty box. How disappointing.";
+	mes "[动物学家]";
+	mes "嗯，我以为大信又快又准，结果你给我带来了一个空箱子。真令人失望。";
 	next;
-	mes "[Zoologist]";
-	mes "Please bring my order. Dieshin will give you my product.";
+	mes "[动物学家]";
+	mes "请把我的订货带来。大信会把我的东西交给你。";
 	close;
 }
 
-prt_fild03,30,254,3	script	Entomologist	83,{
+prt_fild03,30,254,3	script	昆虫学家	83,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Entomologist]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[昆虫学家]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Entomologist]";
-	mes "Have you heard about the Horn monster?";
-	mes "It's shaped like an insect with black sleek skin and it has a giant horn it's head.";
+	mes "[昆虫学家]";
+	mes "你听说过一种叫硬角的怪物吗？";
+	mes "它外形像昆虫，皮肤乌黑光滑，头上长着一只巨大的角。";
 	next;
-	mes "[Entomologist]";
-	mes "Recent research came out and showed that this monster can be tamed and trained by Honey.";
+	mes "[昆虫学家]";
+	mes "最近的研究表明，这种怪物可以被蜂蜜驯服和训练。";
 	next;
-	mes "[Entomologist]";
-	mes "I am currently studying about it and trying to prove the theory. So I plan to set a Honey trap on the places he usually passes and observe his reaction.";
+	mes "[昆虫学家]";
+	mes "我目前正在研究，想证明这个理论。所以我打算在它常经过的地方设置蜂蜜陷阱，观察它的反应。";
 	next;
 	if(select("...I am not interested.:Here is the Honey.") == 1) {
-		mes "[Entomologist]";
-		mes "Oh, I need Honey to continue the study.";
+		mes "[昆虫学家]";
+		mes "哦，我需要蜂蜜来继续研究。";
 		close;
 	}
 	if (checkquest(8272) != 1) {
-		mes "[Entomologist]";
-		mes "Huh?";
-		mes "You are not Dieshin's delivery man?";
+		mes "[昆虫学家]";
+		mes "嗯？";
+		mes "你不是大信的送货员？";
 		next;
-		mes "[Entomologist]";
-		mes "I am waiting for a special delivery.";
+		mes "[昆虫学家]";
+		mes "我在等一份特别配送。";
 		close;
 	}
 	if (countitem(6218) > 0) {
-		mes "[Entomologist]";
-		mes "Oh ho! Yes! That one!";
+		mes "[昆虫学家]";
+		mes "哦呵！对！就是这个！";
 		next;
-		mes "[Entomologist]";
-		mes "That is the Honey that I ordered! You were sent by Dieshin right?";
+		mes "[昆虫学家]";
+		mes "那就是我订的蜂蜜！你是大信派来的吧？";
 		next;
-		mes "[Entomologist]";
-		mes "I have been waiting for this!";
-		mes "Give it to me!";
+		mes "[昆虫学家]";
+		mes "我等这个很久了！";
+		mes "把它给我！";
 		next;
-		mes "[Entomologist]";
-		mes "It arrived much faster than I thought. I want to test it right away!";
+		mes "[昆虫学家]";
+		mes "它比我预想的快多了。我想马上试试！";
 		next;
-		mes "[Entomologist]";
-		mes "Well done. Good Job! Thank you so much! Here is a little gift for you.";
+		mes "[昆虫学家]";
+		mes "干得好。做得不错！非常感谢！这是给你的小礼物。";
 		delitem 6218,1; //Disin_Delivery_Box
 		erasequest 8272;
 		getitem 569,100; //Novice_Potion
 		getexp 1000,0;
 		close;
 	}
-	mes "[Entomologist]";
-	mes "I appreciate your kindness.";
-	mes "But, what did you bring?";
+	mes "[昆虫学家]";
+	mes "感谢你的好意。";
+	mes "不过，你带了什么来？";
 	next;
-	mes "[Entomologist]";
-	mes "Hmm, I thought that Dieshin was fast and accurate, but you brought me an empty box. How disappointing.";
+	mes "[昆虫学家]";
+	mes "嗯，我以为大信又快又准，结果你给我带来了一个空箱子。真令人失望。";
 	next;
-	mes "[Entomologist]";
-	mes "Please bring my order. Dieshin will give you my product.";
+	mes "[昆虫学家]";
+	mes "请把我的订货带来。大信会把我的东西交给你。";
 	close;
 }
 
-xmas_fild01,92,57,3	script	Biologist	97,{
+xmas_fild01,92,57,3	script	生物学家	97,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Biologist]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[生物学家]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Biologist]";
-	mes "Have you heard about the Marin monster?";
-	mes "It does look like the usual poring, but it has unique characteristic.";
+	mes "[生物学家]";
+	mes "你听说过冰波利这种怪物吗？";
+	mes "它看起来和普通波利很像，但有独特的特征。";
 	next;
-	mes "[Biologist]";
-	mes "Porings steal items if they see them on the ground. However, Marin has no interest in dropped items. So I was wondering, how come Marin doesn't pay attention to gathering items even though they are the same kind of monster as Porings.";
+	mes "[生物学家]";
+	mes "波利看到地上的物品就会去偷。可是冰波利对掉落的物品毫无兴趣。所以我很想知道，冰波利明明和波利是同一种怪物，为什么却不在意收集物品呢。";
 	next;
-	mes "[Biologist]";
-	mes "But, this place is freaking cold.";
+	mes "[生物学家]";
+	mes "不过，这地方冷得要命。";
 	next;
 	if(select("...I am not interested.:Here are the blankets.") == 1) {
-		mes "[Biologist]";
-		mes "Huh, whatever. But be careful! It's very slippery here.";
+		mes "[生物学家]";
+		mes "哼，随便吧。不过要小心！这里很滑。";
 		close;
 	}
 	if (checkquest(8273) != 1) {
-		mes "[Biologist]";
-		mes "Huh?";
-		mes "You are not Dieshin's delivery man?";
+		mes "[生物学家]";
+		mes "嗯？";
+		mes "你不是大信的送货员？";
 		next;
-		mes "[Biologist]";
-		mes "I am waiting for a special delivery.";
+		mes "[生物学家]";
+		mes "我在等一份特别配送。";
 		close;
 	}
 	if (countitem(6218) > 0) {
-		mes "[Biologist]";
-		mes "Oh ho! Yes! That one!";
+		mes "[生物学家]";
+		mes "哦呵！对！就是这个！";
 		next;
-		mes "[Biologist]";
-		mes "Those are the Blankets that I ordered! You were sent by Dieshin right?";
+		mes "[生物学家]";
+		mes "那些就是我订的毛毯！你是大信派来的吧？";
 		next;
-		mes "[Biologist]";
-		mes "I have been waiting for this!";
-		mes "Give it to me!";
+		mes "[生物学家]";
+		mes "我等这个很久了！";
+		mes "把它给我！";
 		next;
-		mes "[Biologist]";
-		mes "It arrived much faster than I thought. I want to test them right away!";
+		mes "[生物学家]";
+		mes "送来得比我预想的快多了。我想马上试试！";
 		next;
-		mes "[Biologist]";
-		mes "Well done. Good Job! Thank you so much! Here is a little gift for you.";
+		mes "[生物学家]";
+		mes "干得好。做得不错！非常感谢！这是给你的小礼物。";
 		delitem 6218,1; //Disin_Delivery_Box
 		erasequest 8273;
 		getitem 569,100; //Novice_Potion
 		getexp 1000,0;
 		close;
 	}
-	mes "[Biologist]";
-	mes "I appreciate your kindness.";
-	mes "But, what did you bring?";
+	mes "[生物学家]";
+	mes "感谢你的好意。";
+	mes "不过，你带了什么来？";
 	next;
-	mes "[Biologist]";
-	mes "Hmm, I thought that Dieshin was fast and accurate, but you brought me an empty box. How disappointing.";
+	mes "[生物学家]";
+	mes "嗯，我以为大信又快又准，结果你给我带来了一个空箱子。真令人失望。";
 	next;
-	mes "[Biologist]";
-	mes "Please bring my order. Dieshin will give you my product.";
+	mes "[生物学家]";
+	mes "请把我的订货带来。大信会把我的东西交给你。";
 	close;
 }
 
-payon,179,66,3	script	Dashia	931,{
+payon,179,66,3	script	达希亚	931,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 3500) {
-		mes "[Dashia]";
-		mes "Why are you carrying so many items?";
-		mes "Are you in a training course or something?";
+		mes "[达希亚]";
+		mes "你为什么带着这么多东西？";
+		mes "你是在参加什么训练课程吗？";
 		close;
 	}
-	mes "[Dashia]";
-	mes "Here is some hair~ a broken clock~!";
+	mes "[达希亚]";
+	mes "这里有头发~ 一个坏掉的钟~！";
 	next;
-	mes "[Dashia]";
-	mes "Broken clock..? Hu hu..";
+	mes "[达希亚]";
+	mes "坏掉的钟……？呼呼……";
 	next;
-	mes "[Dashia]";
-	mes "Hey~! Dude! You look like a very rich adventurer.";
+	mes "[达希亚]";
+	mes "嘿~！老兄！你看起来像个很有钱的冒险者。";
 	next;
-	if(select("I am a poor adventurer.:I have a gathering mission.") == 1) {
-		mes "[Dashia]";
-		mes "Really? Hmm, oh right. You don't look sophisticated.";
+	if(select("我是个穷冒险者。:我接到了采集任务。") == 1) {
+		mes "[达希亚]";
+		mes "真的？嗯，哦对。你看起来确实不怎么讲究。";
 		next;
-		mes "[Dashia]";
-		mes "You are a poor adventurer~! Good luck!";
+		mes "[达希亚]";
+		mes "你是个穷冒险者~！祝你好运！";
 		close;
 	}
-	mes "[Dashia]";
-	mes "Oh, you are from the Eden Group?";
-	mes "What mission do you have?";
+	mes "[达希亚]";
+	mes "哦，你是乐园团的人？";
+	mes "你接到了什么任务？";
 	next;
-	switch(select("Gather Bones:Gather Animal Skin:Gather Peelings:Gather Tails:Gather Cookies:Gather Mustaches")) {
+	switch(select("采集骨头:采集动物外皮:采集昆虫外壳:采集尾巴:采集姜饼:采集胡须")) {
 	case 1:
 		callsub L_Quest,8274;
 		if (countitem(932) > 9) {
@@ -499,18 +499,18 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8274;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where are the Skel-Bones?";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，死人遗骨在哪里？";
 		next;
-		mes "[Dashia]";
-		mes "You haven't done the mission yet. Why did you come back here?";
+		mes "[达希亚]";
+		mes "你还没完成任务。为什么又回来了？";
 		next;
-		mes "[Dashia]";
-		mes "You don't have enough 'Skel-Bones'... You can find it when you hunt Skeletons.";
+		mes "[达希亚]";
+		mes "你的 '死人遗骨' 不够……猎杀邪骸战士就能找到。";
 		next;
-		mes "[Dashia]";
-		mes "To find Skeletons, you better check Payon Dungeon 1F, which is located in Archer Village, north of Payon.";
+		mes "[达希亚]";
+		mes "要找邪骸战士，最好去裴扬北边弓箭手村的裴扬地下城1楼看看。";
 		break;
 	case 2:
 		callsub L_Quest,8275;
@@ -523,19 +523,19 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8275;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where is the Bear's Footskins and Animal Skins?";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，熊掌和动物外皮在哪里？";
 		next;
-		mes "[Dashia]";
-		mes "You haven't done the mission yet. Why did you come back here?";
+		mes "[达希亚]";
+		mes "你还没完成任务。为什么又回来了？";
 		next;
-		mes "[Dashia]";
-		mes "You have to bring 10 Bear's Footskins' and '5 Animal Skins!";
-		mes "You can find Bear's Footskin from Bigfoot and Animal Skin from Animals.";
+		mes "[达希亚]";
+		mes "你得带来 10 个 '熊掌' 和 '5 个动物外皮'！";
+		mes "熊掌可以从大脚熊身上获得，动物外皮可以从动物身上获得。";
 		next;
-		mes "[Dashia]";
-		mes "Bigfoot is around the north of Geffen field or the southeast of Payon field.";
+		mes "[达希亚]";
+		mes "大脚熊出没在吉芬野外北部或裴扬野外东南部一带。";
 		break;
 	case 3:
 		callsub L_Quest,8276;
@@ -548,21 +548,21 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8276;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where are the Worm Peelings and Garlets?";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，昆虫外壳和加勒结晶在哪里？";
 		next;
-		mes "[Dashia]";
-		mes "You have to bring '20 Worm Peelings' and '20 Garlets' to complete the mission.";
+		mes "[达希亚]";
+		mes "你得带来 '20 个昆虫外壳' 和 '20 个加勒结晶' 才能完成任务。";
 		next;
-		mes "[Dashia]";
-		mes "You can get those items from 'Piere', 'Andre', 'Deniro', 'Vitata', 'Thief Bug', 'Female Thief Bug' and 'Male Thief Bug'.";
+		mes "[达希亚]";
+		mes "你可以从 '工蚁'、'白蚁'、'兵蚁'、'黑蚁'、'盗虫'、'雌盗虫' 和 '雄盗虫' 身上获得这些物品。";
 		next;
-		mes "[Dashia]";
-		mes "'Piere', 'Andre', 'Deniro' and 'Vitata' are in Ant Hell which is located near the Saint Darmain Fortress soutwest of Morocc.";
+		mes "[达希亚]";
+		mes "'工蚁'、'白蚁'、'兵蚁' 和 '黑蚁' 位于梦罗克西南边山特乐曼要塞附近的蚂蚁地狱密穴。";
 		next;
-		mes "[Dashia]";
-		mes "'Thief Bug', 'Female Thief Bug' and 'Male Thief Bug' are int he Prontere Culvert. To get there, you need to be a volunteer of the Prontera Culvert's punitive force.";
+		mes "[达希亚]";
+		mes "'盗虫'、'雌盗虫' 和 '雄盗虫' 在普隆德拉排水沟里。要进去，你必须成为普隆德拉排水沟讨伐队的志愿者。";
 		break;
 	case 4:
 		callsub L_Quest,8277;
@@ -576,22 +576,22 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8277;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where are the Yoyo Tails, Acorns and Raccoon Leafs?";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，溜溜猴尾巴、橡实和变身叶子在哪里？";
 		next;
-		mes "[Dashia]";
-		mes "You haven't done the mission yet. Why did you come back here?";
-		mes "You have to bring '10 Yoyo Tails,' '10 Acorns' and '10 Raccoon Leafs' to complete the mission.";
+		mes "[达希亚]";
+		mes "你还没完成任务。为什么又回来了？";
+		mes "你得带来 '10 个溜溜猴尾巴'、'10 个橡实' 和 '10 个变身叶子' 才能完成任务。";
 		next;
-		mes "[Dashia]";
-		mes "You can get Yoyo Tails from 'Yoyo's', Acorn from 'Coco's' and Raccoon Leaf from 'Smokies'.";
+		mes "[达希亚]";
+		mes "溜溜猴尾巴可以从 '溜溜猴' 身上获得，橡实来自 '松鼠'，变身叶子来自 '狸猫'。";
 		next;
-		mes "[Dashia]";
-		mes "You can find them easily around fields, but the field east of Ayothaya is the best spot for hunting all 3 monsters.";
+		mes "[达希亚]";
+		mes "在野外到处都能轻松找到它们，但哎哟泰雅东边的野外是猎杀这三种怪物的最佳地点。";
 		next;
-		mes "[Dashia]";
-		mes "To get to Ayothaya, you better go to 'Aibakthing' in Alberta and pay his fare.";
+		mes "[达希亚]";
+		mes "要去哎哟泰雅，最好去阿尔贝塔找 '艾巴克辛' 并支付船费。";
 		break;
 	case 5:
 		callsub L_Quest,8278;
@@ -604,20 +604,20 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8278;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where are the Well-baked Cookies and the Piece of Cake?";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，姜饼和切片蛋糕在哪里？";
 		next;
-		mes "[Dashia]";
-		mes "You haven't done the mission yet. Why did you come back here?";
-		mes "You have to bring '5 Well-baked Cookies' and '1 Piece of Cake' to complete the mission.";
+		mes "[达希亚]";
+		mes "你还没完成任务。为什么又回来了？";
+		mes "你得带来 '5 个姜饼' 和 '1 个切片蛋糕' 才能完成任务。";
 		next;
-		mes "[Dashia]";
-		mes "You can get Well-baked Cookie from 'Cookies' who wears red or green shirts.";
-		mes "For getting Piece of Cake, you should look for 'Mystcases'.";
+		mes "[达希亚]";
+		mes "你可以从穿红色或绿色衣服的 '姜饼人' 身上获得姜饼。";
+		mes "要获得切片蛋糕，你应该去找 '邪恶礼盒'。";
 		next;
-		mes "[Dashia]";
-		mes "Both monsters canbe found in the Toy Factory Warehouse or Toy Monitoring Room. To get there, ask Mr. Claus in the northeastern part of Al De Baran.";
+		mes "[达希亚]";
+		mes "这两种怪物都能在玩具工厂仓库或玩具分类场找到。要去那里，可以问艾尔帕兰东北边的克劳斯先生。";
 		break;
 	case 6:
 		callsub L_Quest,8279;
@@ -630,47 +630,47 @@ payon,179,66,3	script	Dashia	931,{
 			erasequest 8279;
 			close;
 		}
-		mes "[Dashia]";
-		mes "I can see that you have a gathering mission.";
-		mes "But, where are the Mole Whiskerss and Mole Claws??";
+		mes "[达希亚]";
+		mes "我看得出你接了采集任务。";
+		mes "可是，鼠须和鼠爪在哪里？？";
 		next;
-		mes "[Dashia]";
-		mes "You haven't done the mission yet. Why did you come back here?";
-		mes "You have to bring '5 Mole Whiskers' and '3 Mole Claws' to complete the mission.";
+		mes "[达希亚]";
+		mes "你还没完成任务。为什么又回来了？";
+		mes "你得带来 '5 个鼠须' 和 '3 个鼠爪' 才能完成任务。";
 		next;
-		mes "[Dashia]";
-		mes "You can get those items from 'Martins'.";
-		mes "Martins can be found in the Mjolnir Dead Pit, but the second floor is dangerous, so be careful!";
+		mes "[达希亚]";
+		mes "你可以从 '土拨鼠' 身上获得这些物品。";
+		mes "土拨鼠可以在妙勒尼废弃矿场找到，但二楼很危险，要小心！";
 		next;
-		mes "[Dashia]";
-		mes "To get there, ask a Kafra Employee in Geffen, they can warp you there.";
+		mes "[达希亚]";
+		mes "要去那里，可以问吉芬的卡普拉职员，她们能把你传送过去。";
 		break;
 	}
 	next;
-	mes "[Dashia]";
-	mes "Anyway, I will be here waiting for you. Please come back when you finish the mission!";
+	mes "[达希亚]";
+	mes "总之，我会在这里等你。完成任务后请回来！";
 	close;
 L_Quest:
 	if (checkquest(getarg(0)) != 1) {
-		mes "[Dashia]";
-		mes "Huh? Are you sure? Something is wrong...";
+		mes "[达希亚]";
+		mes "嗯？你确定吗？好像有点不对劲……";
 		next;
-		mes "[Dashia]";
-		mes "It is weird.";
-		mes "Please check your Quest Window by pressing 'alt + u'.";
+		mes "[达希亚]";
+		mes "真奇怪。";
+		mes "请按 'alt + u' 查看任务窗口。";
 		close;
 	}
 	return;
 L_Reward:
-	mes "[Dashia]";
-	mes "Wow~ you did an excellent job!";
+	mes "[达希亚]";
+	mes "哇~ 你做得非常出色！";
 	next;
-	mes "[Dashia]";
-	mes "Thank you very much. God bless you!";
+	mes "[达希亚]";
+	mes "非常感谢你。愿神保佑你！";
 	emotion ET_SMILE;
 	next;
-	mes "[Dashia]";
-	mes "Ha~! Ha~!";
-	mes "I will give you a reward as promised.";
+	mes "[达希亚]";
+	mes "哈~！哈~！";
+	mes "我会按约定给你报酬。";
 	return;
 }

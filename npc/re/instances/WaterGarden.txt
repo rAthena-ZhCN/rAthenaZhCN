@@ -10,15 +10,15 @@
 //= 1.2 Cleanup [Capuche]
 //============================================================
 
-ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
+ba_maison,238,44,5	script	哈拉德#jh_ba1	4_EP17_BASIC_B,{
 	if (ep172_watergarden < 3) {
 		cutin "ep172_beta",2;
-		mes "[Harad]";
-		mes "Hello, guest.";
-		mes "This place is the docks.";
+		mes "[哈拉德]";
+		mes "你好，客人。";
+		mes "这里是码头。";
 		next;
-		mes "[Harad]";
-		mes "We don't have any ships operating right now. But the scenery is nice, feel free to take a look around for a while!";
+		mes "[哈拉德]";
+		mes "现在没有船在运营。不过风景不错，您可随意四处看看！";
 		close3;
 	}
 	switch( checkquest(16439,PLAYTIME) ) {
@@ -27,31 +27,31 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	case 0:
 	case 1:
 		cutin "ep172_beta",2;
-		mes "[Harad]";
-		mes "In accordance with the Gardeners' plant cultivation and herbicide plans. Admission to the water garden is limited once per day for both the normal and hard water garden.";
+		mes "[哈拉德]";
+		mes "依据园丁们的植物培育与除草计划，水之花园每日仅限入场一次，普通与困难难度皆是如此。";
 		next;
-		mes "[Harad]";
-		mes "Thank you for your understanding.";
-		mes "Please take enough rest and come back again after dawn!";
+		mes "[哈拉德]";
+		mes "感谢您的理解。";
+		mes "请好好休息，天亮后再来吧！";
 		close3;
 	case 2:
 		erasequest 16439;
 		break;
 	}
 	cutin "ep172_beta",2;
-	mes "[Harad]";
-	mes "Would you like to take a ride to the water garden?";
-	mes "The ship only run once a day!";
+	mes "[哈拉德]";
+	mes "您要乘船前往水之花园吗？";
+	mes "船一天只航行一次！";
 	next;
-	mes "^FF0000Please note that, any abnormal monster handling inside the instance such as taming, is not considered normal.^000000";
+	mes "^FF0000请注意，在副本内对怪物进行驯服等异常处理，均不视为正常行为。^000000";
 	mes "";
-	mes "^FF0000The party leader who received the quest for the 'Water Garden' or 'Water Garden Hard' must enter the instance to proceed. In the case of party leader changes, the instance will be cancelled and you may not proceed.^000000";
+	mes "^FF0000接取“水之花园”或“水之花园（困难）”任务的队长必须进入副本才能继续。若队长发生变更，副本将被取消，且无法继续。^000000";
 	next;
 	cutin "",255;
 	.@normal = is_party_leader();
 	.@hard = (.@normal && isbegin_quest(16430) == 2);
 	.@md_name$ = "Water Garden";	// default
-	switch( select( (.@normal ? "Create Water Garden" : ""), (.@hard ? "Create Water Garden Hard" : ""), "^0000CDGarden Entrance^000000" ) ) {
+	switch( select( (.@normal ? "创建水之花园" : ""), (.@hard ? "创建水之花园（困难）" : ""), "^0000CD花园入口^000000" ) ) {
 	case 1:
 		.@quest_given = 16437;
 		.@other_quest = 16438;
@@ -59,11 +59,11 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	case 2:
 		if (BaseLevel < 180) {
 			cutin "ep172_beta",2;
-			mes "[Harad]";
-			mes "You can tell me if you want to enter the water garden.";
-			mes "But it's dangerous inside. You can't enter right now.";
+			mes "[哈拉德]";
+			mes "若您想进入水之花园，可以告诉我。";
+			mes "但里面很危险，您现在不能进入。";
 			next;
-			mes "- This MD is for level 180 or above. -";
+			mes "- 此 MD 为 180 级以上专用。 -";
 			close3;
 		}
 		.@md_name$ = "Water Garden Hard";
@@ -75,32 +75,32 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 			.@instance_name$ = instance_live_info(ILI_NAME, instance_id(IM_PARTY));
 			if (.@instance_name$ != "Water Garden" && .@instance_name$ != "Water Garden Hard") {
 				cutin "ep172_beta",2;
-				mes "[Harad]";
-				mes "The instance has not been created yet.";
-				mes "Please check it.";
+				mes "[哈拉德]";
+				mes "副本尚未创建。";
+				mes "请确认。";
 				close3;
 			}
 			cutin "ep172_beta",2;
-			mes "[Harad]";
-			mes "Enter the ^CC0000" + .@instance_name$ + "^000000.";
+			mes "[哈拉德]";
+			mes "进入 ^CC0000" + .@instance_name$ + "^000000。";
 			next;
 			cutin "",255;
-			if (select( "^0000CDEnter Water Garden", "Enter Water Garden Hard^000000" ) == 1)
-				.@md_name$ = "Water Garden";
+			if (select( "^0000CD进入水之花园", "进入水之花园（困难）^000000" ) == 1)
+				.@md_name$ = "水之花园";
 			else
 				.@md_name$ = "Water Garden Hard";
 		}
 		if (instance_enter(.@md_name$) != IE_OK) {
 			cutin "ep172_beta",2;
-			mes "[Harad]";
-			mes "The instance has not been created yet.";
-			mes "Please check it.";
+			mes "[哈拉德]";
+			mes "副本尚未创建。";
+			mes "请确认。";
 			close2;
 			cutin "",255;
 			end;
 		}
 		setquest 16439;
-		mapannounce "ba_maison", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
+		mapannounce "ba_maison", "" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
 		end;
 	}
 	if (instance_create(.@md_name$) == -3)
@@ -110,8 +110,8 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	if (isbegin_quest(.@other_quest) > 0)
 		erasequest .@other_quest;
 	setquest .@quest_given;
-	mes "[Harad]";
-	mes "When the " + .@md_name$ + " MD has opened, please speak to me again and select ^0000CDEnter " + .@md_name$ + "^000000.";
+	mes "[哈拉德]";
+	mes "当" + .@md_name$ + "MD 开放后，请再次与我对话，并选择 ^0000CD进入" + .@md_name$ + "^000000。";
 	close;
 }
 
@@ -154,7 +154,7 @@ OnTouch:
 	end;
 OnTouch:
 	if ('water_garden == 0) {
-		mes "- You can enter the water garden after the party leader has entered the MD. -";
+		mes "- 队长进入 MD 后，您即可进入水之花园。 -";
 		close;
 	}
 	warp 'map_ghg$,208,57;
@@ -187,24 +187,24 @@ OnTouch:
 
 
 // Area 1
-1@ghg,216,58,3	script	Gardener#ghg_g1	4_EP17_SCISSORE,{
+1@ghg,216,58,3	script	园丁#ghg_g1	4_EP17_SCISSORE,{
 	if ('water_garden == 0)
 		end;
 	if ('water_garden == 1) {
-		mes "[Hetilla]";
-		mes " Guests, welcome to the water garden,";
-		mes "Are you going to see Papilla? Papilla's been very sensitive about the intruders lately...";
-		npctalk "Guests, welcome to the water garden. Are you going to see Papilla? Papilla's been very sensitive about the intruders lately...";
+		mes "[赫蒂拉]";
+		mes "各位客人，欢迎来到水之花园，";
+		mes "您要去见帕皮拉吗？最近帕皮拉对入侵者非常敏感……";
+		npctalk "各位客人，欢迎来到水之花园。您要去见帕皮拉吗？最近帕皮拉对入侵者非常敏感……";
 		next;
-		mes "[Hetilla]";
-		mes "Papillas are playing around here and there.";
-		mes "They use psychedelic materials from their wings to make short distance movements or use a dangerous magic over them.";
-		npctalk "Papillas are playing around here and there. They use psychedelic materials from their wings to make short distance movements or use a dangerous magic over them.";
+		mes "[赫蒂拉]";
+		mes "帕皮拉们正到处嬉戏。";
+		mes "它们会用翅膀上的致幻物质进行短距离移动，或借此施展危险的魔法。";
+		npctalk "帕皮拉们正到处嬉戏。它们会用翅膀上的致幻物质进行短距离移动，或借此施展危险的魔法。";
 		next;
-		mes "[Hetilla]";
-		mes "I warned you on advanced, but be careful.";
-		mes "Pruning all overgrown plants and animals opens the door to the next area at 3 o'clock.";
-		npctalk "I warned you on advanced, but be careful. Pruning all overgrown plants and animals opens the door to the next area at 3 o'clock.";
+		mes "[赫蒂拉]";
+		mes "我已提前警告过您了，请务必小心。";
+		mes "修剪掉所有过度生长的植物与动物，即可开启 3 点钟方向通往下一区域的门。";
+		npctalk "我已提前警告过您了，请务必小心。修剪掉所有过度生长的植物与动物，即可开启 3 点钟方向通往下一区域的门。";
 		close2;
 		if ('water_garden == 1) {
 			'water_garden = 2;
@@ -214,9 +214,9 @@ OnTouch:
 		end;
 	}
 	if ('water_garden == 2)
-		npctalk "Be careful of the papila's hallucinogens.";
+		npctalk "小心帕皮拉的致幻物质。";
 	else
-		npctalk "Guest, you can already move to the next area.";
+		npctalk "客人，您现在可以前往下一区域了。";
 	end;
 }
 
@@ -281,7 +281,7 @@ OnMobDead:
 		specialeffect EF_READYPORTAL, AREA, instance_npcname("#ghg_w2");
 		donpcevent instance_npcname("#172_wg_area_1") + "::OnStop";
 		enablenpc instance_npcname("Gardener#ghg_g2");
-		mapannounce 'map_ghg$, "Cleanup is complete. Please proceed to the next area.", bc_map, 0xFFFF99;
+		mapannounce 'map_ghg$, "清理完毕。请前往下一区域。", bc_map, 0xFFFF99;
 		end;
 	}
 	end;
@@ -319,7 +319,7 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	mapannounce 'map_ghg$, "The magic of the Papilla's has activated. Be careful!", bc_map, 0xFFFF99;
+	mapannounce 'map_ghg$, "帕皮拉的魔法发动了。请小心！", bc_map, 0xFFFF99;
 	end;
 OnTimer4000:
 	callsub( S_Spawn, 240,73,20676,9 );
@@ -359,21 +359,21 @@ OnMobDead:
 // Area 2
 1@ghg,316,69,3	script(DISABLED)	Gardener#ghg_g2	4_EP17_SCISSORE,{
 	if ('water_garden == 3) {
-		mes "[Juventus]";
-		mes "Be careful, Papillas' and other type of Papillas seems to be wandering around.";
-		npctalk "Be careful, Papillas' and other type of Papillas seems to be wandering around.";
+		mes "[尤文图斯]";
+		mes "小心，帕皮拉以及其他种类的帕皮拉似乎在四处游荡。";
+		npctalk "小心，帕皮拉以及其他种类的帕皮拉似乎在四处游荡。";
 		next;
-		mes "[Juventus]";
-		mes "The attack range varies depending on the color of the Papilla.";
-		npctalk "The attack range varies depending on the color of the Papilla.";
+		mes "[尤文图斯]";
+		mes "攻击范围会因帕皮拉的颜色而异。";
+		npctalk "攻击范围会因帕皮拉的颜色而异。";
 		next;
-		mes "[Juventus]";
-		mes "Also some of the gardeners were destroyed by the intruders.";
-		npctalk "Also some of the gardeners were destroyed by the intruders.";
+		mes "[尤文图斯]";
+		mes "此外，部分园丁已被入侵者破坏。";
+		npctalk "此外，部分园丁已被入侵者破坏。";
 		next;
-		mes "[Juventus]";
-		mes "If they ever attack the guest, they're all broken gardeners, so don't hesitate to take it down.";
-		npctalk "If they ever attack the guest, they're all broken gardeners, so don't hesitate to take it down.";
+		mes "[尤文图斯]";
+		mes "若它们袭击客人，那都是故障的园丁，请不必犹豫，将其击毁。";
+		npctalk "若它们袭击客人，那都是故障的园丁，请不必犹豫，将其击毁。";
 		close2;
 		if ('water_garden == 3) {
 			'water_garden = 4;
@@ -383,11 +383,11 @@ OnMobDead:
 		end;
 	}
 	if ('water_garden == 4) {
-		mes "[Juventus]";
-		mes "If the gardeners ever attack the guest, they're all broken gardeners, so don't hesitate to take it down.";
+		mes "[尤文图斯]";
+		mes "若园丁袭击客人，那都是故障的园丁，请不必犹豫，将其击毁。";
 		close;
 	}
-	npctalk "The obstructions is now gone, you can not move to the next area.";
+	npctalk "障碍物已清除，您现在可以前往下一区域了。";
 	end;
 }
 
@@ -450,7 +450,7 @@ OnMobDead:
 		donpcevent instance_npcname("#172_wg_area_2") + "::OnStop";
 		enablenpc instance_npcname("Gardener#ghg_g3");
 		enablenpc instance_npcname("Gardener#gmck3");
-		mapannounce 'map_ghg$, "You have eliminated all the obstructions. Please proceed to the next area.", bc_map, 0xFFFF99;
+		mapannounce 'map_ghg$, "您已清除所有障碍物。请前往下一区域。", bc_map, 0xFFFF99;
 		end;
 	}
 	end;
@@ -462,7 +462,7 @@ OnStart:
 	deletearray 'gid_area_2;
 	deletearray 'type_area_2;
 
-	mapannounce 'map_ghg$, "The Papilla's has returned!", bc_map, 0xFFFF99;
+	mapannounce 'map_ghg$, "帕皮拉回来了！", bc_map, 0xFFFF99;
 
 	setarray .@xy[0],
 		320,91,325,91,330,91,335,91,340,91,345,91,
@@ -556,21 +556,21 @@ S_Skill:
 
 // Area 3
 1@ghg,341,143,3	script(DISABLED)	Gardener#ghg_g3	4_EP17_SCISSORE,5,1,{
-	mes "[Aditura]";
-	mes "The rose garden is a very beautiful place, but recently, we are having trouble maintaining it because of the swarms of animals and plants that appeared in groups.";
-	npctalk "The rose garden is a very beautiful place, but recently, we are having trouble maintaining it because of the swarms of animals and plants that appeared in groups.";
+	mes "[阿迪图拉]";
+	mes "玫瑰花园是个非常美丽的地方，但最近由于成群出现的动植物，我们难以维护它。";
+	npctalk "玫瑰花园是个非常美丽的地方，但最近由于成群出现的动植物，我们难以维护它。";
 	next;
-	mes "[Aditura]";
-	mes "Guest, I'd like you to please prune the plants and animals.";
-	npctalk "Guest, I'd like you to please prune the plants and animals.";
+	mes "[阿迪图拉]";
+	mes "客人，请您修剪这些植物与动物。";
+	npctalk "客人，请您修剪这些植物与动物。";
 	next;
-	mes "[Aditura]";
-	mes "At the end of the garden, there is a manager waiting to open the next area, so please speak to her when you reach there.";
-	npctalk "At the end of the garden, there is a manager waiting to open the next area, so please speak to her when you reach there.";
+	mes "[阿迪图拉]";
+	mes "在花园尽头，有位管理者正等着开启下一区域，抵达后请与她对话。";
+	npctalk "在花园尽头，有位管理者正等着开启下一区域，抵达后请与她对话。";
 	next;
-	mes "[Aditura]";
-	mes "It's a little slow, so you might have to wait, but... the next area will definitely open.";
-	npctalk "It's a little slow, so you might have to wait, but... the next area will definitely open.";
+	mes "[阿迪图拉]";
+	mes "速度有些慢，您可能需要等待，但……下一区域一定会开启。";
+	npctalk "速度有些慢，您可能需要等待，但……下一区域一定会开启。";
 	close;
 
 OnTouch_:	// note: hidden player doesn't trigger it!
@@ -760,16 +760,16 @@ OnTouch_:
 
 1@ghg,344,173,3	script(DISABLED)	Gardener#gmck3	4_EP17_SCISSORE,2,2,{
 	if ('water_garden < 6) {
-		npctalk "An error... has occurred.";
+		npctalk "发生了……错误。";
 		end;
 	}
 	progressbar_npc "00FF00",5;
-	mes "[Higel]";
-	mes "Next garden... portal creation complete... Move into the 12 o'clock direction... to use... Thank you...";
-	npctalk "Next garden... portal creation complete... Move into the 12 o'clock direction... to use... Thank you...";
+	mes "[希格尔]";
+	mes "下一座花园……传送门创建完成……请往 12 点钟方向……移动……即可使用……谢谢……";
+	npctalk "下一座花园……传送门创建完成……请往 12 点钟方向……移动……即可使用……谢谢……";
 	next;
-	mes "[Higel]";
-	mes "After the move... Papilla in the maze... Please prune all of them.";
+	mes "[希格尔]";
+	mes "移动之后……迷宫中的帕皮拉……请将它们全部修剪。";
 	close2;
 	if ('water_garden == 6) {
 		// note: mobs from traps are not killed
@@ -837,7 +837,7 @@ OnMobDead:
 		'water_garden = 8;
 		enablenpc instance_npcname("#ghg_wb");
 		specialeffect EF_READYPORTAL, AREA, instance_npcname("#ghg_wb");
-		mapannounce 'map_ghg$, "The final garden has opened. Please proceed to the next area.", bc_map, 0xFFFF99;
+		mapannounce 'map_ghg$, "最终花园已开启。请前往下一区域。", bc_map, 0xFFFF99;
 		enablenpc instance_npcname("Gardener#ghg_gb");
 		end;
 	}
@@ -848,23 +848,23 @@ OnMobDead:
 1@ghg,346,248,3	script(DISABLED)	Gardener#keeper1	4_EP17_SCISSORE,{
 	if (isbegin_quest(16435) == 1) {
 		if (checkweight(1000099,1) == 0) {	// (custom)
-			mes "^008800Wait a sec!!";
-			mes "You cannot receive any more items because you're carrying too many items. Please try again after you lighten up.^000000";
+			mes "^008800请等一下！！";
+			mes "您携带的物品过多，无法再获得物品。请减轻负重后再试。^000000";
 			close;
 		}
 		if (countitem(1000099) == 0) {
-			npctalk "Oh, I forgot to make regular contact! I'll get in touch. Would you like a cookie while you're here?", "", bc_self;
+			npctalk "啊，我忘了定期联络！我这就去联系。您要不要在这里来块饼干？", "", bc_self;
 			getitem 1000099,1;
 			end;
 		}
-		npctalk "Do not worry, I already contacted Alpha. Hehe.", "", bc_self;
+		npctalk "别担心，我已经联系过阿尔法了。嘿嘿。", "", bc_self;
 		end;
 	}
 	if ('water_garden == 7) {
-		npctalk "That's strange, I forgot it yesterday, but I forgot it today as well.";
+		npctalk "真奇怪，我昨天忘了，今天也忘了。";
 		end;
 	}
-	npctalk "The final garden opened. But... I forgot what should I do...";
+	npctalk "最终花园开启了。可是……我忘了该做什么……";
 	end;
 }
 1@ghg,334,272,3	duplicate(Gardener#keeper1)	Gardener#keeper2	4_EP17_SCISSORE
@@ -875,17 +875,17 @@ OnMobDead:
 // Area 5 (boss)
 1@ghg,186,287,3	script(DISABLED)	Gardener#ghg_gb	4_EP17_SCISSORE,{
 	if ('water_garden == 8) {
-		mes "[Velkina]";
-		mes "If a Papilla shows up during the battle, make it follow you to the pillar of the same color.";
+		mes "[维尔基娜]";
+		mes "若战斗中帕皮拉出现，请将它引到同色的柱子旁。";
 		next;
-		mes "[Velkina]";
-		mes "If the Papilla touches the light, it will take damage and die.";
+		mes "[维尔基娜]";
+		mes "帕皮拉一旦触碰到光，就会受到伤害并死亡。";
 		next;
-		mes "[Velkina]";
-		mes "If you can safely stop Silva Papilla, we will handle the rest!";
+		mes "[维尔基娜]";
+		mes "只要您能安全地制止希尔瓦帕皮拉，剩下的就交给我们！";
 		next;
-		mes "[Velkina]";
-		mes "Then, I'll burn the incense that calls out Silva Papilla...";
+		mes "[维尔基娜]";
+		mes "那么，我就点燃呼唤希尔瓦帕皮拉的香……";
 		close2;
 		if ('water_garden == 8) {
 			'water_garden = 9;
@@ -1011,14 +1011,14 @@ OnTouchNPC:
 
 1@ghg,187,287,3	script(DISABLED)	Gardener#ghg_gb1	4_EP17_SCISSORE,2,2,{
 	if ('water_garden == 10) {
-		mes "[Velkina]";
-		mes "You didn't forget your request from Seiyu, and came in here, right?";
+		mes "[维尔基娜]";
+		mes "您没有忘记赛尤的委托，才来到这里的吧？";
 		next;
-		mes "[Velkina]";
-		mes "Don't forget to go out and talk to Seiyu to ^0000CDReceive your rewards^000000 from todays work.";
+		mes "[维尔基娜]";
+		mes "别忘了出去找赛尤对话，^0000CD领取今日工作的报酬^000000。";
 		next;
-		mes "[Velkina]";
-		mes "Then, I'll show you the way outside again!";
+		mes "[维尔基娜]";
+		mes "那么，我再为您指路出去吧！";
 		close2;
 		warp "ba_maison",233,46;
 		end;

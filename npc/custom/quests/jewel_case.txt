@@ -13,16 +13,16 @@
 //= 1.0 First Version.
 //============================================================
 
-lighthalzen,108,229,2	script	La Fenn	766,{
-	mes "[La Fenn]";
+lighthalzen,108,229,2	script	拉芬	766,{
+	mes "[拉芬]";
 	if(BaseLevel<99) {
 		if(Q_99LVL) {
-			mes "You... You got younger!!! But you are definitely YOU!";
-			mes "I couldn't think you were able to meet my condition...";
+			mes "你……你变年轻了！！！但你还是那个你！";
+			mes "我没想到你竟能满足我的条件……";
 			emotion ET_SCRATCH;
 			next;
-			mes "[La Fenn]";
-			mes "Here is your prize. It's yours for good.";
+			mes "[拉芬]";
+			mes "这是你的奖品。它就永远归你了。";
 			set Q_99LVL,0;
 			getitem 12106,1; //Jewel Case
 			emotion ET_CONGRATULATION;
@@ -31,29 +31,29 @@ lighthalzen,108,229,2	script	La Fenn	766,{
 			mes "...";
 			emotion ET_SLEEPY;
 			next;
-			mes "[La Fenn]";
-			mes "I've got a riddle for a strong man of 2nd Class and 99 Base Level.";
-			mes "*Yawn* If you meet some, please tell them about my riddle.";
+			mes "[拉芬]";
+			mes "我有个谜题，要出给二转职业、基础等级 99 的强者。";
+			mes "*哈欠* 如果你遇到这样的人，请把我的谜题告诉他们。";
 		}
 		close;
 	}
 	if(BaseLevel==99 && Upper==0) {
 		if(Q_99LVL) {
-			mes "Now go forth and get younger!";
-			mes "If you solve my riddle, then I'll give you a magical Jewel Case with a rare accessory.";
+			mes "现在去吧，让自己变年轻吧！";
+			mes "如果你解开我的谜题，我就送你一个装有稀有饰品的魔法珠宝箱。";
 		} else {
 			mes callfunc("F_Hi")+" The Hero!";
 			if(BaseExp<1000000) {
-				mes "Now you're strong.";
-				mes "But... not quite strong for my riddle.";
+				mes "你现在很强了。";
+				mes "但……还没强到能解我的谜题。";
 				if(rand(2)) {
-					mes "Kill "+((1000000-BaseExp)/3765+1)+" more Seals and return.";
+					mes "杀死"+((1000000-BaseExp)/3765+1)+"只海豹再回来。";
 				} else {
-					mes "Kill "+((1000000-BaseExp)/81+1)+" more Poporings and come back.";
+					mes "杀死"+((1000000-BaseExp)/81+1)+"只波波利再回来。";
 				}
 			} else {
-				mes "Now you're REALLY strong.";
-				mes "And if you get younger than now I'll give you my treasure.";
+				mes "你现在真的非常强了。";
+				mes "如果你变得比现在更年轻，我就把我的宝物给你。";
 				set Q_99LVL,1;
 				emotion ET_BEST;
 			}

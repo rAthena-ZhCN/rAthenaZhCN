@@ -11,137 +11,137 @@
 
 // Dragon Breeder :: dragon
 //============================================================
-job3_rune01,88,62,5	script	Dragon Breeder	105,{
-	mes "[Dragon Breeder]";
+job3_rune01,88,62,5	script	龙驯养师	105,{
+	mes "[龙驯养师]";
 	if ((eaclass()&EAJ_THIRDMASK)==EAJ_RUNE_KNIGHT) {
-		mes "Welcome. Would you like to rent a Dragon?";
+		mes "欢迎。您要租借龙吗？";
 		next;
-		switch(select("Yes:No")) {
+		switch(select("是:否")) {
 		case 1:
 			//if (!getskilllv("RK_DRAGONTRAINING")) {
 			if (!getskilllv("KN_RIDING")) {
-				mes "[Dragon Breeder]";
-				mes "Please learn how to ride a Dragon first.";
+				mes "[龙驯养师]";
+				mes "请先学会骑乘龙。";
 				close;
 			}
 			else if (checkdragon()) {
-				mes "[Dragon Breeder]";
-				mes "You already have a Dragon.";
+				mes "[龙驯养师]";
+				mes "您已经拥有一头龙了。";
 				close;
 			}
 			else if (ismounting()) {
-				mes "[Dragon Breeder]";
-				mes "Please remove your cash mount.";
+				mes "[龙驯养师]";
+				mes "请先卸下您的商城坐骑。";
 				close;
 			}
 			setdragon;
 			close;
 		case 2:
-			mes "[Dragon Breeder]";
-			mes "I see. Then have a great day.";
+			mes "[龙驯养师]";
+			mes "我明白了。祝您愉快。";
 			close;
 		}
 	}
-	mes "What are you doing here?";
-	mes "Only Rune Knights can rent a Dragon.";
+	mes "你在这里做什么？";
+	mes "只有符文骑士才能租借龙。";
 	close;
 }
 
 // Dragon/Gryphon Master :: dragon
 //============================================================
-prontera,130,213,5	script	Riding Creature Master	105,{
-	mes "[Riding Creature Master]";
+prontera,130,213,5	script	骑乘生物管理员	105,{
+	mes "[骑乘生物管理员]";
 	if ((eaclass()&EAJ_THIRDMASK)==EAJ_RUNE_KNIGHT) {
-		mes "Welcome. Would you like to rent a Dragon?";
+		mes "欢迎。您要租借龙吗？";
 		next;
-		switch(select("Yes:No")) {
+		switch(select("是:否")) {
 		case 1:
 			//if (!getskilllv("RK_DRAGONTRAINING")) {
 			if (!getskilllv("KN_RIDING")) {
-				mes "[Riding Creature Master]";
-				mes "Please learn how to ride a Dragon first.";
+				mes "[骑乘生物管理员]";
+				mes "请先学会骑乘龙。";
 				close;
 			}
 			else if (checkdragon()) {
-				mes "[Riding Creature Master]";
-				mes "You already have a Dragon.";
+				mes "[骑乘生物管理员]";
+				mes "您已经拥有一头龙了。";
 				close;
 			}
 			else if (ismounting()) {
-				mes "[Riding Creature Master]";
-				mes "Please remove your cash mount.";
+				mes "[骑乘生物管理员]";
+				mes "请先卸下您的商城坐骑。";
 				close;
 			}
 			setdragon;
 			close;
 		case 2:
-			mes "[Riding Creature Master]";
-			mes "I see. Then have a great day.";
+			mes "[骑乘生物管理员]";
+			mes "我明白了。祝您愉快。";
 			close;
 		}
 	}
 	if ((eaclass()&EAJ_THIRDMASK)==EAJ_ROYAL_GUARD) {
-		mes "Welcome. Would you like to rent a Gryphon?";
+		mes "欢迎。您要租借狮鹫吗？";
 		next;
-		switch(select("Yes:No")) {
+		switch(select("是:否")) {
 		case 1:
 			if (!getskilllv("KN_RIDING")) {
-				mes "[Riding Creature Master]";
-				mes "Please learn how to ride a Gryphon first.";
+				mes "[骑乘生物管理员]";
+				mes "请先学会骑乘狮鹫。";
 				close;
 			}
 			else if (checkriding()) {
-				mes "[Riding Creature Master]";
-				mes "You already have a Gryphon.";
+				mes "[骑乘生物管理员]";
+				mes "您已经拥有一只狮鹫了。";
 				close;
 			}
 			else if (ismounting()) {
-				mes "[Riding Creature Master]";
-				mes "Please remove your cash mount.";
+				mes "[骑乘生物管理员]";
+				mes "请先卸下您的商城坐骑。";
 				close;
 			}
 			setriding;
 			close;
 		case 2:
-			mes "[Riding Creature Master]";
-			mes "I see. Then have a great day.";
+			mes "[骑乘生物管理员]";
+			mes "我明白了。祝您愉快。";
 			close;
 		}
 	}
-	mes "I'm here to provide Rune Knights and Royal Guards with riding creatures.";
+	mes "我负责为符文骑士和皇家卫士提供骑乘生物。";
 	close;
 }
-geffen,100,55,3	duplicate(Riding Creature Master)	Riding Creature Master#2	105
-payon,166,102,5	duplicate(Riding Creature Master)	Riding Creature Master#3	105
-aldebaran,133,109,5	duplicate(Riding Creature Master)	Riding Creature Master#4	105
-yuno,171,187,3	duplicate(Riding Creature Master)	Riding Creature Master#5	105
-rachel,106,130,5	duplicate(Riding Creature Master)	Riding Creature Master#6	105
+geffen,100,55,3	duplicate(骑乘生物管理员)	Riding Creature Master#2	105
+payon,166,102,5	duplicate(骑乘生物管理员)	Riding Creature Master#3	105
+aldebaran,133,109,5	duplicate(骑乘生物管理员)	Riding Creature Master#4	105
+yuno,171,187,3	duplicate(骑乘生物管理员)	Riding Creature Master#5	105
+rachel,106,130,5	duplicate(骑乘生物管理员)	Riding Creature Master#6	105
 
 // Peco removing NPC :: dragon
 //============================================================
-prontera,125,208,5	script	Peco Peco Remover	105,{
-	mes "[Soldier]";
-	mes "If you're unable to dismount from a Peco Peco";
-	mes "for some unknown reason,";
-	mes "please feel free to use my services.";
+prontera,125,208,5	script	大嘴鸟卸除员	105,{
+	mes "[士兵]";
+	mes "如果您无法从大嘴鸟上下来";
+	mes "因为某些不明原因，";
+	mes "请随时使用我的服务。";
 	if (checkriding()) {
 		next;
-		mes "[Soldier]";
-		mes "You're riding a Peco Peco.";
-		mes "Would you like to dismount?";
+		mes "[士兵]";
+		mes "您正骑乘着大嘴鸟。";
+		mes "您要下来吗？";
 		next;
-		switch(select("Yes:No")) {
+		switch(select("是:否")) {
 		case 1:
 			setriding 0;
-			mes "[Soldier]";
-			mes "Say, how does it feel to";
-			mes "step on the ground on your own";
-			mes "feet again?";
+			mes "[士兵]";
+			mes "话说，重新用自己的双脚";
+			mes "踩在地面上，";
+			mes "感觉如何？";
 			close;
 		case 2:
-			mes "[Soldier]";
-			mes "I see. Please feel free to ask me";
-			mes "if you change your mind.";
+			mes "[士兵]";
+			mes "我明白了。如果您改变了主意，";
+			mes "请随时来找我。";
 			close;
 		}
 	}
@@ -151,115 +151,115 @@ prontera,125,208,5	script	Peco Peco Remover	105,{
 // Mado Gear Renter :: madogear
 //============================================================
 -	script	::mgm	-1,{
-	mes "[Mado Gear Armorer]";
+	mes "[魔导机甲整备师]";
 	if ((eaclass()&EAJ_THIRDMASK)==EAJ_MECHANIC) {
-		mes "Welcome, Mechanic.";
-		mes "Would you like to rent a Pushcart or";
-		mes "ride a Mado Gear?";
+		mes "欢迎，机匠。";
+		mes "您要租用手推车，";
+		mes "还是驾驶魔导机甲？";
 		next;
-		switch(select("Rent a Pushcart:Ride a Mado Gear:Buy Emergency Mado Gear:Upgrade Cooling Device:Cancel")) {
+		switch(select("租用手推车:驾驶魔导机甲:购买应急魔导机甲:升级冷却装置:取消")) {
 		case 1:
 			if (checkcart()) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you already";
-				mes "have a Pushcart.";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您已经";
+				mes "拥有手推车了。";
 				close;
 			}
 			setcart;
-			mes "[Mado Gear Armorer]";
-			mes "There you go!";
+			mes "[魔导机甲整备师]";
+			mes "给您！";
 			close;
 		case 2:
 			if (checkmadogear()) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you're already";
-				mes "riding a Mado Gear.";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您已经";
+				mes "在驾驶魔导机甲了。";
 				close;
 			}
 			else if (!getskilllv("NC_MADOLICENCE")) {
-				mes "[Mado Gear Armorer]";
-				mes "Please learn the skill to get the Mado Gear License first.";
+				mes "[魔导机甲整备师]";
+				mes "请先学会技能取得魔导机甲执照。";
 				close;
 			}
 			else if(ismounting()) {
-				mes "[Mado Gear Armorer]";
-				mes "Please remove your cash mount.";
+				mes "[魔导机甲整备师]";
+				mes "请先卸下您的商城坐骑。";
 				close;
 			}
 			setmadogear;
-			mes "[Mado Gear Armorer]";
-			mes "Have fun, and please come again!";
+			mes "[魔导机甲整备师]";
+			mes "祝您玩得开心，欢迎再来！";
 			close;
 		case 3:
-			mes "[Mado Gear Armorer]";
-			mes "Emergency Mado Gear is really useful for emergency situations and it is sold at 1,000,000 Zeny.";
+			mes "[魔导机甲整备师]";
+			mes "应急魔导机甲在紧急情况下非常有用，售价为1,000,000 Zeny。";
 			next;
-			if (select("Purchase:Cancel") == 2) {
-				mes "[Mado Gear Armorer]";
-				mes "I see. Please feel free to ask me";
-				mes "if you change your mind.";
+			if (select("购买:取消") == 2) {
+				mes "[魔导机甲整备师]";
+				mes "我明白了。如果您改变了主意，";
+				mes "请随时来找我。";
 				close;
 			}
 			if (countitem(23277) > 0) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you already have an Emergency Mado Gear.";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您已经拥有一台应急魔导机甲了。";
 				close;
 			}
 			if (Zeny < 1000000) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you don't have enough Zeny to purchase the Emergency Mado Gear.";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您的Zeny不足以购买应急魔导机甲。";
 				close;
 			}
 			Zeny -= 1000000;
 			getitem 23277,1; //Mado_Box
-			mes "[Mado Gear Armorer]";
-			mes "There you go!";
+			mes "[魔导机甲整备师]";
+			mes "给您！";
 			close;
 		case 4:
-			mes "[Mado Gear Armorer]";
-			mes "Which device do you want to upgrade?";
+			mes "[魔导机甲整备师]";
+			mes "您想升级哪个装置？";
 			next;
-			if (select("Cooling Device:High Quality Cooler") == 1) {
-				mes "[Mado Gear Armorer]";
-				mes "Upgrading Cooling Device to High Quality Cooler needs 1 Cooling Device and 2,000,000 Zeny.";
+			if (select("冷却装置:高品质冷却器") == 1) {
+				mes "[魔导机甲整备师]";
+				mes "将冷却装置升级为高品质冷却器需要1个冷却装置和2,000,000 Zeny。";
 				next;
 				.@itemid = 2804;
 				.@cost = 2000000;
 			} else {
-				mes "[Mado Gear Armorer]";
-				mes "Upgrading High Quality Cooler to Special Cooler needs 1 High Quality Cooler and 4,000,000 Zeny.";
+				mes "[魔导机甲整备师]";
+				mes "将高品质冷却器升级为特殊冷却器需要1个高品质冷却器和4,000,000 Zeny。";
 				next;
 				.@itemid = 2809;
 				.@cost = 4000000;
 			}
-			if (select("Upgrade:Cancel") == 2) {
-				mes "[Mado Gear Armorer]";
-				mes "I see. Please feel free to ask me";
-				mes "if you change your mind.";
+			if (select("升级:取消") == 2) {
+				mes "[魔导机甲整备师]";
+				mes "我明白了。如果您改变了主意，";
+				mes "请随时来找我。";
 				close;
 			}
 			if (!countitem(.@itemid)) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you don't have the " + getitemname(.@itemid) + ".";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您没有" + getitemname(.@itemid) + ".";
 				close;
 			}
 			if (Zeny < .@cost) {
-				mes "[Mado Gear Armorer]";
-				mes "I'm sorry, but you don't have enough Zeny to upgrade the device.";
+				mes "[魔导机甲整备师]";
+				mes "抱歉，您的Zeny不足以升级该装置。";
 				close;
 			}
 			Zeny -= .@cost;
 			delitem .@itemid,1;
 			getitem (.@itemid == 2804 ? 2809 : 2810),1; //High_Quality_Cooler,Special_Cooler
-			mes "[Mado Gear Armorer]";
-			mes "Here you are! Your very own " + getitemname(.@itemid) + ".";
+			mes "[魔导机甲整备师]";
+			mes "给您！这是属于您的" + getitemname(.@itemid) + ".";
 			close;
 		case 5:
 			close;
 		}
 	}
-	mes "How may I help you?";
-	mes "Mado Gears are only available for Mechanics.";
+	mes "有什么可以为您效劳的？";
+	mes "魔导机甲仅供机匠使用。";
 	close;
 }
 prontera,163,178,3	duplicate(mgm)	Mado Gear Armorer#prt	105

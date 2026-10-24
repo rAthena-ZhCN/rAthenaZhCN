@@ -37,351 +37,351 @@
 
 // Doll Quest
 //============================================================
-alberta,117,135,0	script	Elin	96,{
+alberta,117,135,0	script	艾琳	96,{
 	if (checkweight(1201,1) == 0) {
-		mes "[Elin]";
-		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
+		mes "[艾琳]";
+		mes "^3355FF等等！你现在携带的物品太多了。请先把一些东西放进卡普拉仓库，然后再回来。^000000";
 		close;
 	}
-	mes "[Elin]";
+	mes "[艾琳]";
 	if (Sex == SEX_MALE) {
-		mes "Hello~!";
-		mes "Heh heh, you're a boy, so you probably don't like dolls, right? Well, I like dolls very very much!";
+		mes "你好~！";
+		mes "嘿嘿，你是男孩子，所以大概不喜欢娃娃吧？可是，我非常非常喜欢娃娃！";
 	} else {
-		mes "Hi hi~! Oh, oh, do you like dolls? I really really like dolls... Hee Hee~!";
+		mes "你好呀~！哦，哦，你喜欢娃娃吗？我真的真的很喜欢娃娃……嘻嘻~！";
 	}
 	next;
-	mes "[Elin]";
-	mes "You know, I really really want a new doll! I hope my daddy will give me one on my birthday...!";
+	mes "[艾琳]";
+	mes "你知道吗，我真的真的很想要一个新娃娃！希望爸爸在我生日时送我一个……！";
 	next;
-	switch(select("Um, I hope your daddy gives you one too.:How about I give you one now?")) {
+	switch(select("嗯，我也希望爸爸送你一个。:不如我现在送你一个？")) {
 	case 1:
-		mes "[Elin]";
-		mes "Yeah, I'm hoping";
-		mes "he gives me a Yoyo";
-		mes "doll. They're so cute!";
+		mes "[艾琳]";
+		mes "是啊，我希望";
+		mes "他送我一个溜溜猴";
+		mes "娃娃。它们好可爱！";
 		close;
 	case 2:
 		if (MaxWeight - Weight < 1000) {
-			mes "[Elin]";
+			mes "[艾琳]";
 			if (Sex == SEX_MALE) {
-				mes "Maybe you should put some of your stuff away first, you look like you're carrying too much, hee hee~";
+				mes "你也许该先把一些东西收起来，你看起来带得太多了，嘻嘻~";
 			} else {
-				mes "Do you always carry so much with you? Put some of your things away first, okay?";
+				mes "你总是随身带这么多东西吗？先把一些东西收起来，好吗？";
 			}
 			close;
 		}
-		mes "[Elin]";
+		mes "[艾琳]";
 		if (Sex == SEX_MALE) {
-			mes "Oh my goodness!";
-			mes "Really? You're";
-			mes "such a sweetie~!";
+			mes "天哪！";
+			mes "真的吗？你";
+			mes "真是个好孩子~！";
 		} else {
-			mes "Will you really?";
-			mes "You're gonna give";
-			mes "me a doll? Yaaaay~";
+			mes "你真的愿意吗？";
+			mes "你要送";
+			mes "我一个娃娃？太好啦~";
 		}
 		next;
-		mes "[Elin]";
-		mes "What kind of doll are you going to give me? Are you really gonna give me one?";
+		mes "[艾琳]";
+		mes "你要送给我什么样的娃娃？你真的要送我一个吗？";
 		next;
-		switch(select("Poring Doll:Chonchon Doll:Puppet:Rocker Doll:Spore Doll:Osiris Doll:Baphomet Doll:Raccoon Doll:Yoyo Doll:I'm as adorable as a doll.")) {
+		switch(select("波利娃娃:苍蝇娃娃:疯兔娃娃:摇滚蝗虫娃娃:蘑菇娃娃:俄塞里斯娃娃:巴风特娃娃:浣熊娃娃:溜溜猴娃娃:我就像娃娃一样可爱。")) {
 		case 1:
 			if (countitem(741) >= 1) {
 				delitem 741,1; //Poring_Doll
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "Aww...";
-				mes "I have a lot";
-				mes "of Poring dolls...";
+				mes "我有很多";
+				mes "波利娃娃……";
 				next;
-				mes "[Elin]";
+				mes "[艾琳]";
 				if (Sex == SEX_MALE) {
-					mes "But since a cute boy is giving it to me, I'll happily take it! Hee hee, soft and fluffy Poring doll~";
+					mes "不过既然是个可爱的男孩子送给我，我就开心地收下吧！嘻嘻，软绵绵的波利娃娃~";
 				} else {
-					mes "But since a nice girl is giving it to me, I'll take it! Hee he, soft and fluffy Poring doll~";
+					mes "不过既然是个善良的女孩子送给我，我就收下吧！嘻嘻，软绵绵的波利娃娃~";
 				}
 				next;
-				mes "[Elin]";
-				mes "Ooh, let me give you something as a little thank you. You see, I hid some candy so I can eat it without telling mommy.";
+				mes "[艾琳]";
+				mes "哦，让我送你点东西表示感谢吧。其实，我偷偷藏了一些糖果，这样就能瞒着妈妈吃了。";
 				next;
 				getitem 529,1; //Candy
-				mes "[Elin]";
+				mes "[艾琳]";
 				if (Sex == SEX_MALE) {
-					mes "I don't know if you're too old to like candy, but I guess it's okay.";
+					mes "我不知道你是不是已经过了喜欢糖果的年纪，不过应该没关系吧。";
 				} else {
-					mes "So, try not to eat too much, okay? Otherwise, you might get in trouble!";
+					mes "所以，别吃太多，好吗？不然可能会惹上麻烦哦！";
 				}
 				next;
-				mes "[Elin]";
-				mes "Thank you";
-				mes "so much for";
-				mes "the Poring doll!";
+				mes "[艾琳]";
+				mes "非常";
+				mes "真是白费了";
+				mes "波利娃娃！";
 				close;
 			} else {
-				mes "[Elin]";
+				mes "[艾琳]";
 				if (Sex == SEX_MALE) {
-					mes "Aww...?";
-					mes "Were you only teasing me?";
+					mes "呜……？";
+					mes "你只是在逗我玩吗？";
 				} else {
 					mes "Aww...";
-					mes "You're not making fun of me are you?";
+					mes "你不是在取笑我吧？";
 				}
 				next;
-				mes "[Elin]";
-				mes "I guess you forgot it somewhere...";
+				mes "[艾琳]";
+				mes "我猜你是把它忘在什么地方了……";
 				close;
 			}
 		case 2:
 			if (countitem(742) >= 1) {
 				delitem 742,1; //Chonchon_Doll
-				mes "[Elin]";
-				mes "Agh--!";
-				mes "A Ch-Ch, Chonchon doll?!";
+				mes "[艾琳]";
+				mes "啊——！";
+				mes "苍、苍、苍蝇娃娃？！";
 				next;
-				mes "[Elin]";
+				mes "[艾琳]";
 				if (Sex == SEX_MALE) {
-					mes "But since... You're... Such a nice guy... I better take it...!";
+					mes "不过既然……你……是个好人……我还是收下吧……！";
 				} else {
-					mes "But since... Since it's a gift... I guess I'll take it...";
+					mes "不过既然……既然是礼物……那我就收下吧……";
 				}
 				next;
-				mes "[Elin]";
-				mes "Mmm~";
-				mes "Let me give you";
-				mes "something in return...";
+				mes "[艾琳]";
+				mes "嗯~";
+				mes "让我送给你";
+				mes "一点回礼……";
 				next;
 				getitem 530,1; //Candy_Striper
-				mes "[Elin]";
-				mes "If you eat too much, your teeth will start to rot... at least, that's what Mommy says.";
+				mes "[艾琳]";
+				mes "吃太多的话，牙齿会蛀掉的……至少妈妈是这么说的。";
 				next;
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "And..";
 				mes "Uh...";
-				mes "Thank you";
-				mes "for the doll?";
+				mes "非常";
+				mes "是为了娃娃吗？";
 				close;
 			} else {
-				mes "[Elin]";
-				mes "Chonchon dolls are ugly anyways, but you still lied to me! How can you be so mean?!";
+				mes "[艾琳]";
+				mes "苍蝇娃娃本来就很丑，可你还是骗了我！你怎么能这么坏？！";
 				next;
-				mes "[Elin]";
-				mes "Waaaaaaaaah~~";
+				mes "[艾琳]";
+				mes "哇啊啊啊啊~~";
 				close;
 			}
 		case 3:
 			if (countitem(740) >= 1) {
 				delitem 740,1; //Stuffed_Doll
-				mes "[Elin]";
-				mes "Wow...!";
-				mes "It looks like a bunny!";
+				mes "[艾琳]";
+				mes "哇……！";
+				mes "它看起来像只小兔子！";
 				next;
-				mes "[Elin]";
-				mes "I really like this Puppet~ Heh hehe! Thank you so much~";
+				mes "[艾琳]";
+				mes "我真的很喜欢这个疯兔娃娃~ 嘿嘿嘿！太谢谢你了~";
 				next;
-				mes "[Elin]";
-				mes "Ooh ooh!";
-				mes "I have something";
-				mes "for you too!";
-				mes "Um, where";
-				mes "did it... Ah!";
+				mes "[艾琳]";
+				mes "哦哦！";
+				mes "我也有东西";
+				mes "要送给你！";
+				mes "嗯，放在";
+				mes "哪里了……啊！";
 				next;
 				getitem 530,1; //Candy_Striper
-				mes "[Elin]";
-				mes "Here it is! It's some of the candy Santa gave me. Go ahead and try some! Oh, and thank you so much for the doll!";
+				mes "[艾琳]";
+				mes "找到了！这是圣诞老人给我的糖果。你尝尝看吧！哦，还有，谢谢你送我的娃娃！";
 				close;
 			} else {
-				mes "[Elin]";
-				mes "Awww, you were only kidding? W-W-Why are you teasing me like that?";
+				mes "[艾琳]";
+				mes "呜，你只是在开玩笑？你、你、你为什么要这样逗我？";
 				next;
-				mes "[Elin]";
-				mes "^666666*Sniff...*^000000";
+				mes "[艾琳]";
+				mes "^666666*抽鼻子……*^000000";
 				next;
-				mes "[Elin]";
-				mes "Waaaaaaaaah~~";
+				mes "[艾琳]";
+				mes "哇啊啊啊啊~~";
 				close;
 			}
 		case 4:
 			if (countitem(752) >= 1) {
 				delitem 752,1; //Grasshopper_Doll
-				mes "[Elin]";
-				mes "Ooh! Rocker Doll!";
-				mes "It's the Rocker that likes singing and dancing! I don't like grasshoppers, but I like this because it's cute~";
+				mes "[艾琳]";
+				mes "哦！摇滚蝗虫娃娃！";
+				mes "这是喜欢唱歌跳舞的摇滚蝗虫！我不喜欢蚱蜢，但这个很可爱，所以我喜欢~";
 				next;
-				mes "[Elin]";
-				mes "Hmmm, I should give you something too, huh? Let's see, I have what my grandpa gave me...";
+				mes "[艾琳]";
+				mes "嗯，我也该送你点什么，对吧？让我想想，我有爷爷给我的东西……";
 				next;
 				getitem 532,7; //Banana_Juice
-				mes "[Elin]";
-				mes "Here you go! We have a lot of this at home, so I'll give it to you, okay? Oh, and thank you so much for the doll~ I love cute dolls!";
+				mes "[艾琳]";
+				mes "给你！这种东西我家有很多，所以送给你，好吗？哦，还有，太谢谢你送我的娃娃了~ 我最喜欢可爱的娃娃！";
 				close;
 			} else {
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "Awww...";
 				next;
-				mes "[Elin]";
-				mes "You don't";
-				mes "really have a doll...?";
-				mes "I was so excited about it, too...";
+				mes "[艾琳]";
+				mes "你并";
+				mes "没有娃娃……？";
+				mes "我还那么期待呢……";
 				close;
 			}
 		case 5:
 			if (countitem(743) >= 1) {
 				delitem 743,1; //Spore_Doll
-				mes "[Elin]";
-				mes "It's a mushroom?";
-				mes "Ewwwwwwwww, yucky!";
-				mes "Mommy made me eat";
-				mes "mushrooms today, too...";
+				mes "[艾琳]";
+				mes "是蘑菇？";
+				mes "恶……好恶心！";
+				mes "妈妈今天又逼我吃";
+				mes "蘑菇了……";
 				next;
-				mes "[Elin]";
-				mes "But this doll is cute, so I'll take it. But I'm still not gonna eat mushrooms! Heh heh~";
+				mes "[艾琳]";
+				mes "不过这个娃娃很可爱，我就收下吧。但我还是不吃蘑菇！嘿嘿~";
 				next;
 				getitem 538,5; //Well_Baked_Cookie
-				mes "[Elin]";
-				mes "Hehe~ My mommy made this! It's really yummy. I love cookies, too. So try it, you'll like it! Hee hee!";
+				mes "[艾琳]";
+				mes "呵呵~ 这是我妈妈做的！真的很好吃。我也很喜欢饼干。你尝尝吧，你会喜欢的！嘻嘻！";
 				next;
-				mes "[Elin]";
-				mes "Thanks for";
-				mes "the doll! I'll";
-				mes "take good care of it!";
+				mes "[艾琳]";
+				mes "谢谢你送";
+				mes "的娃娃！我会";
+				mes "好好珍惜它的！";
 				close;
 			} else {
-				mes "[Elin]";
-				mes "Eh...?";
-				mes "You don't";
-				mes "have a doll?";
+				mes "[艾琳]";
+				mes "咦……？";
+				mes "你并";
+				mes "没有娃娃？";
 				next;
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "Awww...";
-				mes "It's not nice";
-				mes "to tease people";
-				mes "like that. ^666666*Sniff, sniff*^000000";
+				mes "这样不好";
+				mes "这样捉弄别人";
+				mes "是不好的。^666666*抽鼻子，抽鼻子*^000000";
 				close;
 			}
 		case 6:
 			if (countitem(751) >= 1) {
 				delitem 751,1; //Osiris_Doll
-				mes "[Elin]";
-				mes "Ahhhhh!";
-				mes "What is this";
-				mes "thing?! It's so scary!";
+				mes "[艾琳]";
+				mes "啊啊啊！";
+				mes "这是";
+				mes "什么？！好可怕！";
 				next;
-				mes "[Elin]";
-				mes "I've never seen a doll like this before. Where it's from? Hmm? Since I've never seen this kind of doll before, I'm gonna show it to my daddy, too. Hehe~! He'll be surprised!";
+				mes "[艾琳]";
+				mes "我从没见过这样的娃娃。它是从哪里来的？嗯？既然我从没见过这种娃娃，我也要拿给爸爸看看。呵呵~！他一定会大吃一惊！";
 				next;
-				mes "[Elin]";
-				mes "Here, since you gave me such a nicely made doll, I better give you something good too.";
+				mes "[艾琳]";
+				mes "来，既然你送了我做得这么好的娃娃，我也该送你点好东西。";
 				next;
 				getitem 522,2; //Fruit_Of_Mastela
-				mes "[Elin]";
-				mes "I found it when I secretly went to the forest. I took it because it has pretty colors!";
+				mes "[艾琳]";
+				mes "我偷偷去森林时捡到的。因为它颜色很漂亮，我就带回来了！";
 				if (Sex == SEX_MALE) {
-					mes "Since there's two, you can share it with your girlfriend. Hee hee~!";
+					mes "因为有两个，你可以和女朋友一起分享。嘻嘻~！";
 				} else {
-					mes "Since there's two, you can share it with your boyfriend. Hee hee~!";
+					mes "因为有两个，你可以和男朋友一起分享。嘻嘻~！";
 				}
 				close;
 			} else {
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "Awww...";
-				mes "Why do you have";
-				mes "to make fun of me?";
+				mes "你为什么";
+				mes "要取笑我？";
 				close;
 			}
 		case 7:
 			if (countitem(750) >= 1) {
 				delitem 750,1; //Baphomet_Doll
-				mes "[Elin]";
-				mes "Huh?";
-				mes "It's a little goat...";
+				mes "[艾琳]";
+				mes "咦？";
+				mes "是一只小山羊……";
 				next;
-				mes "[Elin]";
-				mes "It's so weird. It's cute but it's also scary at the same time. Well, since you gave me a pretty doll, I wanna give you something, too.";
+				mes "[艾琳]";
+				mes "好奇怪哦。它很可爱，但同时又很可怕。嗯，既然你送了我一个漂亮的娃娃，我也想送你点东西。";
 				next;
 				getitem 525,5; //Panacea
-				mes "[Elin]";
-				mes "My daddy gave me this when I was really sick. I'm not sick anymore so you can use it when you need to. Hehehe~";
+				mes "[艾琳]";
+				mes "这是我生重病时爸爸给我的。我现在已经好了，所以你需要在的时候可以用。呵呵呵~";
 				next;
-				mes "[Elin]";
-				mes "Hee hee~";
-				mes "Thank you for";
-				mes "the doll. I won't lose it!";
+				mes "[艾琳]";
+				mes "嘻嘻~";
+				mes "感谢您";
+				mes "娃娃。我不会弄丢的！";
 				close;
 			} else {
-				mes "[Elin]";
-				mes "You big liar! Why are you pretending to be nice?!";
+				mes "[艾琳]";
+				mes "你这个大骗子！为什么要假装对我好？！";
 				close;
 			}
 		case 8:
 			if (countitem(754) >= 1) {
 				delitem 754,1; //Raccoondog_Doll
-				mes "[Elin]";
-				mes "Hehe, it's a";
-				mes "raccoon doll.";
-				mes "It's very very cute~";
+				mes "[艾琳]";
+				mes "呵呵，这是";
+				mes "浣熊娃娃。";
+				mes "非常非常可爱~";
 				next;
-				mes "[Elin]";
-				mes "I don't like";
-				mes "Smokies in real life,";
-				mes "but this doll is nice!";
+				mes "[艾琳]";
+				mes "我不喜欢";
+				mes "现实里的斯莫基，";
+				mes "但这个娃娃很不错！";
 				next;
 				getitem 539,3; //Piece_Of_Cake
-				mes "[Elin]";
-				mes "Here, let me give you some cake my grandma made. It's really yummy. I don't know if you like sweets or not, but it's really good! Please try some!";
+				mes "[艾琳]";
+				mes "来，让我送你一些奶奶做的蛋糕。真的很好吃。我不知道你喜不喜欢甜食，但它真的很好吃！请尝尝吧！";
 				next;
-				mes "[Elin]";
-				mes "Hee hee~";
-				mes "Thanks for the doll.";
-				mes "I'm gonna keep it";
-				mes "in my room!";
+				mes "[艾琳]";
+				mes "嘻嘻~";
+				mes "谢谢你送我娃娃。";
+				mes "我会把它放在";
+				mes "我的房间里！";
 				close;
 			} else {
-				mes "[Elin]";
-				mes "Hey! How come you have to say things like that? Are you making fun of me?!";
+				mes "[艾琳]";
+				mes "喂！你为什么非要说那种话？你是在取笑我吗？！";
 				close;
 			}
 		case 9:
 			if (countitem(753) >= 1) {
 				delitem 753,1; //Monkey_Doll
-				mes "[Elin]";
-				mes "Woooooooow~!";
+				mes "[艾琳]";
+				mes "哇哦哦哦~！";
 				next;
-				mes "[Elin]";
-				mes "A Yoyo doll! It's so pretty! You're really gonna give it to me?! Yay! Thank you so much! I really like it! Hee hee!";
+				mes "[艾琳]";
+				mes "溜溜猴娃娃！好漂亮！你真的要送给我吗？！太好了！太谢谢你了！我真的很喜欢！嘻嘻！";
 				next;
-				mes "[Elin]";
-				mes "Since you gave";
-				mes "me such a pretty doll,";
-				mes "I wanna give you";
-				mes "something, too!";
+				mes "[艾琳]";
+				mes "既然你送了";
+				mes "我这么漂亮的娃娃，";
+				mes "我也想送你";
+				mes "一点东西！";
 				next;
 				getitem 608,1; //Seed_Of_Yggdrasil
-				mes "[Elin]";
-				mes "My daddy picked it up on his way to another town. It looks like some kind of seed. I tried planting it in front of our house but it won't grow. Do you want to try?";
+				mes "[艾琳]";
+				mes "这是爸爸去别的城镇时捡到的。看起来像是某种种子。我试着把它种在家门口，可是它长不出来。你想试试吗？";
 				next;
-				mes "[Elin]";
-				mes "Hehe~";
-				mes "Thanks for";
-				mes "the doll. I'll hug";
-				mes "it before I go";
-				mes "to sleep!";
+				mes "[艾琳]";
+				mes "呵呵~";
+				mes "谢谢你送";
+				mes "的娃娃。我会抱着";
+				mes "它";
+				mes "睡觉的！";
 				close;
 			} else {
-				mes "[Elin]";
+				mes "[艾琳]";
 				mes "Hey...";
-				mes "How come you're making fun of me?!";
+				mes "你为什么要取笑我？！";
 				close;
 			}
 		case 10:
 			mes "["+strcharinfo(0)+"]";
-			mes "I'm as adorable as a doll...";
+			mes "我就像娃娃一样可爱……";
 			next;
-			mes "[Elin]";
-			mes "Whaaaaaaaaaaat...?";
+			mes "[艾琳]";
+			mes "什么么么么……？";
 			next;
-			mes "[Elin]";
-			mes "^3355FFWhat did^000000";
-			mes "^3355FFyou just say?!^000000";
+			mes "[艾琳]";
+			mes "^3355FF你说^000000";
+			mes "^3355FF什么？！^000000";
 			close;
 		}
 	}
@@ -389,77 +389,77 @@ alberta,117,135,0	script	Elin	96,{
 
 // 'Boy's Cap' Quest
 //============================================================
-alberta_in,28,145,4	script	Grampa	120,{
-	mes "[Grampa]";
-	mes "*Gasp*...";
+alberta_in,28,145,4	script	爷爷	120,{
+	mes "[爷爷]";
+	mes "*倒吸一口气*……";
 	mes "....*Gasp!*";
 	mes "Oh...";
-	mes "Some may say I've lived a full life on wine, women and song...";
+	mes "有人可能会说，我这一生沉溺于美酒、女人和歌声，过得十分充实……";
 	next;
-	mes "[Grampa]";
-	mes "But my soul still burns with youthful vigor! It's just... This old body can't keep up anymore... *Hack! Wheeeeze~*";
+	mes "[爷爷]";
+	mes "可我的灵魂依然燃烧着青春的活力！只是……这具老骨头已经跟不上了……*咳！喘……*";
 	next;
 	if (countitem(1030) > 9) {
-		switch(select("Show him Tiger's Footskin.:Exchange it with Boys Cap.:Cancel")) {
+		switch(select("给他看虎掌。:用它换男孩帽。:取消")) {
 		case 1:
-			mes "[Grampa]";
-			mes "Ohhh~ !!";
-			mes "Is that...?";
-			mes "It is! ";
-			mes "That's Tiger's Footskin!! Even from here I can feel its powers!";
+			mes "[爷爷]";
+			mes "哦哦~！！";
+			mes "那是……？";
+			mes "就是它！";
+			mes "那是虎掌！！就算在这里，我也能感受到它的力量！";
 			next;
-			mes "[Grampa]";
-			mes "One glance at it can restore your strength, one sniff and your blood boils with vigorous pleasure...";
+			mes "[爷爷]";
+			mes "看一眼就能恢复力气，闻一下就能让血液沸腾，涌起蓬勃的愉悦……";
 			next;
-			mes "[Grampa]";
-			mes "Just one bite...";
-			mes "Will revive my virility!!!! The Tiger's Footskin~!! Ohhhh! Ohh My God !! Please!!! Please give me that... Please...";
+			mes "[爷爷]";
+			mes "只咬一口……";
+			mes "就能让我重振雄风！！！！虎掌~！！哦哦哦！我的天！！求你了！！！请把它给我……求你了……";
 			close;
 		case 2:
 			delitem 1030,10;  //Tiger_Footskin
 			getitem 5016,1; //Boy's_Cap
-			mes "[Grampa]";
-			mes "T... Thank you !!";
-			mes "With this I can revive my youthful splendor!! I must eat this thing right away !";
+			mes "[爷爷]";
+			mes "谢……谢谢你！！";
+			mes "有了这个，我就能重拾青春的辉煌！！我必须马上把这东西吃下去！";
 			next;
-			mes "[Grampa]";
+			mes "[爷爷]";
 			mes "...";
-			mes "Nope. Still feel OLD.";
-			mes "If anything, I feel even worse. Th-there's this buzzing in my head...";
+			mes "没用。还是觉得自己老了。";
+			mes "要说的话，反而更难受了。我、我脑袋里一直嗡嗡响……";
 			close;
 		case 3:
-			mes "[Grampa]";
-			mes "He...Hey, kid !! W-Wait !";
+			mes "[爷爷]";
+			mes "喂……喂，小子！！等、等等！";
 			close;
 		}
 	} 
 	else {
-		switch(select("Talk:Cancel")) {
+		switch(select("交谈:取消")) {
 		case 1:
-			mes "[Grampa]";
-			mes "Listen well...";
-			mes "You've got to take care of yourself as well as your can. Without your health, one cannot enjoy the pleasures of this mortal realm.";
+			mes "[爷爷]";
+			mes "听好了……";
+			mes "你得尽可能照顾好自己。没有健康，就无法享受这个凡人世界的种种乐趣。";
 			next;
-			mes "[Grampa]";
-			mes "In order to restore my youth, I tried all sorts of things, mostly by hearsay, but nothing worked. In the end, I spent so much zeny on miracle cures, I ended up broke.";
+			mes "[爷爷]";
+			mes "为了恢复青春，我试过各种各样的东西，大多是道听途说来的，但都没有用。最后，我在灵丹妙药上花了太多Zeny，落得身无分文。";
 			next;
-			mes "[Grampa]";
-			mes "I've mostly given up on restoring my youth. But there is one hope left... Eating ^3355FFTiger's Footskin^000000, The King of Invigorators!!";
+			mes "[爷爷]";
+			mes "我基本上已经放弃恢复青春了。但还有一个希望……吃下^3355FF虎掌^000000，强壮剂之王！！";
 			next;
-			mes "[Grampa]";
-			mes "Haven't you heard?! One glance would restore the color in my white hair, one sniff, even just one touch, and an 80 year-old would have another chance at youth... It's The King of Invigorators !";
+			mes "[爷爷]";
+			mes "你没听说过吗？！看一眼就能让我白发恢复色泽，闻一下，甚至只是碰一下，就能让八十岁的人重获青春……它就是强壮剂之王！";
 			next;
-			mes "[Grampa]";
-			mes "Before I die...";
-			mes "I wish I could eat 10 Tiger's Footskin. Then, I wouldn't have to die!";
+			mes "[爷爷]";
+			mes "在我死之前……";
+			mes "我希望能吃下10个虎掌。那样，我就不用死了！";
 			next;
-			mes "[Grampa]";
-			mes "If someone helped me get them, I would give that person my precious item, ^3355FFBoys Cap^000000 without regret...";
+			mes "[爷爷]";
+			mes "如果有人帮我弄到它们，我会毫不犹豫地把我的宝贝，^3355FF男孩帽^000000，送给那个人……";
 			close;
 		case 2:
-			mes "[Grampa]";
-			mes "Cough Cough !!";
-			mes "Tiger ....Tiger's ..... Foot ..... skin .....Cough Cough !!";
+			mes "[爷爷]";
+			mes "咳咳！！";
+			mes "虎……虎……掌……咳，咳咳！！";
 			close;
 		}
 	}
@@ -467,177 +467,177 @@ alberta_in,28,145,4	script	Grampa	120,{
 
 // 'Antlers' Quest
 //============================================================
-alberta_in,122,53,4	script	Cherokee	47,{
-	mes "[Cherokee]";
-	mes "Hey there~!";
+alberta_in,122,53,4	script	切罗基	47,{
+	mes "[切罗基]";
+	mes "你好呀~！";
 	next;
-	mes "[Cherokee]";
-	mes "What do you think about animal horns? Oh man, I think they're great! Don't you? I love animal horns so much I became a ^3355FFHorn Collector^000000.";
+	mes "[切罗基]";
+	mes "你觉得动物的角怎么样？哦，我觉得它们太棒了！你不觉得吗？我太喜欢动物角了，所以成了^3355FF角收藏家^000000。";
 	next;
-	mes "[Cherokee]";
-	mes "I mean, there's so many things you can do with horns. You can wear them on your head, you can wear them on, um... your house? All sorts of things!";
+	mes "[切罗基]";
+	mes "我是说，角能做的事可多了。你可以把它们戴在头上，也可以戴在，嗯……你家上？各种用途都有！";
 	next;
-	mes "[Cherokee]";
-	mes "I've collected almost every sort of horn except for one kind, and that's ^FF3355Evil Horn^000000. Some people say Evil Horn doesn't even come from an animal, but from a demon. But even so, I still want it.";
+	mes "[切罗基]";
+	mes "几乎所有种类的角我都收集齐了，只差一种，那就是^FF3355恶魔角^000000。有人说恶魔角根本不是来自动物，而是来自恶魔。但即便如此，我还是想要。";
 	next;
-	mes "[Cherokee]";
-	mes "Do you...";
-	mes "Do you have ^FF3355Evil Horn^000000?";
-	mes "If you offer me 20 Evil Horns, I will give you an ^3355FFAntler^000000 from my precious collection. So, deal?";
+	mes "[切罗基]";
+	mes "你……";
+	mes "你有^FF3355恶魔角^000000吗？";
+	mes "如果你给我20个恶魔角，我就从珍藏里送你一个^3355FF鹿角^000000。怎么样，成交吗？";
 	next;
-	switch(select("Okay, let's deal.:Shut up, Dumbo.")) {
+	switch(select("好，成交。:闭嘴，笨蛋。")) {
 	case 1:
 		if (countitem(923) > 19) {
 			delitem 923,20;  //Evil_Horn
-			mes "[Cherokee]";
-			mes "Whoah~! This is the first time I've ever seen a real ^FF3355Evil Horn^000000!!";
-			mes "Thank you! Here, this is my Antler for you!";
+			mes "[切罗基]";
+			mes "哇~！这是我第一次见到真正的^FF3355恶魔角^000000！！";
+			mes "谢谢你！来，这是我的鹿角，给你！";
 			getitem 2284,1; // Antler
 			next;
-			mes "[Cherokee]";
-			mes "With your great help, I can make my wish come true this time. Finally, I'll be recognized as a serious horn collector. I appreciate this~!";
+			mes "[切罗基]";
+			mes "有了你的大力帮助，这次我的愿望终于能实现了。我终于会被认可为一名真正的角收藏家。真是太感谢了~！";
 			close;
 		}
 		else {
-			mes "[Cherokee]";
+			mes "[切罗基]";
 			mes "Hmm...";
-			mes "You don't seem to have enough. I need ^FF335520 Evil Horns^000000 for my collection.";
+			mes "你似乎不够。我的收藏需要^FF335520个恶魔角^000000。";
 			close;
 		}
 	case 2:
-		mes "[Cherokee]";
-		mes "Well that's fine. Although you're a rude prick, I will forgive you. We'll probably speak again...";
+		mes "[切罗基]";
+		mes "好吧。虽然你是个无礼的家伙，但我原谅你。我们大概还会再见的……";
 		close;
 	}
 }
 
 // 'Bao Bao', 'Crescent Hairpin', 'Fashionable Glasses', 'Heart Hairpin' Quest
 //============================================================
-alberta,120,53,1	script	Stylish Merchant#new30	51,{
+alberta,120,53,1	script	时髦商人#new30	51,{
 	if ((countitem(10007) > 0) && (countitem(968) > 49)) {
-		mes "[Zic]";
-		mes "I know I know, you just want to get a Bao Bao of your own. But I can't concentrate on my work if you keep rushing me like this.";
+		mes "[吉克]";
+		mes "我知道我知道，你只是想要一个属于自己的包包。但你要是这样一直催我，我就没法专心工作了。";
 		next;
-		mes "^3355FF*Thud! Thud!*";
-		mes "*Ah! Kek! Smash!*";
-		mes "*Boom Boom!*^000000";
+		mes "^3355FF*咚！咚！*";
+		mes "*啊！嘿！砰！*";
+		mes "*砰！砰！*^000000";
 		next;
 		delitem 10007,1;  //Silk_Ribbon
 		delitem 968,50;  //Voucher_Of_Orcish_Hero
-		mes "[Zic]";
-		mes "Phew!";
-		mes "There you go~!";
-		mes "Now make good use of it!!";
+		mes "[吉克]";
+		mes "呼！";
+		mes "给你~！";
+		mes "好好使用它吧！！";
 		getitem 5042,1; // Hair_Protector
 		close;
 	}
 	else if((countitem(5041) > 0) && (countitem(999) > 9)) {
-		mes "[Zic]";
-		mes "Alright alright! Gosh, your Crescent Hairpin will be ready in a bit, but I can't concentrate my work if you keep rushing me like this!";
+		mes "[吉克]";
+		mes "好啦好啦！天哪，你的月牙发夹马上就好，但你要是这样一直催我，我就没法专心工作了！";
 		next;
-		mes "^3355FF*Thud! Thud!*";
-		mes "*Ah! Kek! Smash!*";
-		mes "*Boom Boom!*^000000";
+		mes "^3355FF*咚！咚！*";
+		mes "*啊！嘿！砰！*";
+		mes "*砰！砰！*^000000";
 		next;
 		delitem 5041,1;  //Heart_Hair_Pin
 		delitem 999,10;  //Steel
-		mes "[Zic]";
-		mes "Phew!";
-		mes "It's done~!";
-		mes "Now wear it and";
-		mes "look pretty or";
-		mes "something, yeah?";
+		mes "[吉克]";
+		mes "呼！";
+		mes "做好了~！";
+		mes "现在戴上它，";
+		mes "打扮得漂亮点，";
+		mes "之类的，行吧？";
 		getitem 5048,1; // First_Moon_Hair_Pin
 		close;
 	}
 	else if((countitem(2271) > 0) && (countitem(975) > 0)) {
-		mes "[Zic]";
-		mes "Yeah yeah, you came for your Fashionable Glasses. Just don't rush me, or I won't be able to concentrate on my work, alright?";
+		mes "[吉克]";
+		mes "是是是，你是来拿你的时尚眼镜的。别催我，不然我就没法专心工作了，好吗？";
 		next;
-		mes "^3355FF*Thud! Thud!*";
-		mes "*Ah! Kek! Smash!*";
-		mes "*Boom Boom!*^000000";
+		mes "^3355FF*咚！咚！*";
+		mes "*啊！嘿！砰！*";
+		mes "*砰！砰！*^000000";
 		next;
 		delitem 2271,1;  //Jack_A_Dandy
 		delitem 975,1;  //Scarlet_Dyestuffs
-		mes "[Zic]";
-		mes "Phew, it's done!";
-		mes "Now go wear these and look, well, as fashionable as these glasses, I guess.";
+		mes "[吉克]";
+		mes "呼，做好了！";
+		mes "现在去戴上它们，然后，嗯，尽量像这副眼镜一样时尚吧。";
 		getitem 5047,1; // Fashion_Sunglass
 		close;
 	}
 	else if(countitem(7013) > 1199){
-		mes "[Zic]";
-		mes "Okay okay, you want your Heart hairpin, I'm working on it. Yeesh, I can't concentrate at all if you try to rush me, you know?";
+		mes "[吉克]";
+		mes "好啦好啦，你想要你的心形发夹，我正在做。唉，你要是催我，我根本没法集中精神，知道吗？";
 		next;
-		mes "^3355FF*Thud! Thud!*";
-		mes "*Ah! Kek! Smash!*";
-		mes "*Boom Boom!*^000000";
+		mes "^3355FF*咚！咚！*";
+		mes "*啊！嘿！砰！*";
+		mes "*砰！砰！*^000000";
 		next;
 		delitem 7013,1200;  //Coral_Reef
-		mes "[Zic]";
-		mes "Phew~!";
-		mes "Finally, it's done!";
-		mes "Make me happy and";
-		mes "wear it with pride~";
+		mes "[吉克]";
+		mes "呼~！";
+		mes "终于做好了！";
+		mes "让我开心一下，";
+		mes "骄傲地戴上它吧~";
 		getitem 5041,1; // Heart_Hair_Pin
 		close;
 	}
 	else {
-		mes "[Zic]";
-		mes "Yay, this cool";
-		mes "breeze is great!";
-		mes "I love the sea!";
+		mes "[吉克]";
+		mes "耶，这凉爽的";
+		mes "微风真棒！";
+		mes "我爱大海！";
 		next;
-		mes "[Zic]";
+		mes "[吉克]";
 		mes "...Hm?";
-		mes "Awww man. Can't you tell I'm on vacation? All I wanted was some peaceful rest.";
+		mes "哦，天哪。你看不出来我在度假吗？我只想安安静静地休息一下。";
 		next;
-		mes "[Zic]";
-		mes "Okay okay, you win. Once again, my reputation as a master craftsman precedes me.";
+		mes "[吉克]";
+		mes "好啦好啦，你赢了。又一次，我这位大师工匠的名声果然名不虚传。";
 		next;
-		mes "[Zic]";
-		mes "Let me know what item you're interested in, and maybe I'll make it for you...";
+		mes "[吉克]";
+		mes "告诉我你对什么物品感兴趣，也许我可以帮你做……";
 		next;
-		switch(select("Bao Bao:Cresent Hairpin:Fashionable Glasses:Heart Hairpin")) {
+		switch(select("包包:月牙发夹:时尚眼镜:心形发夹")) {
 		case 1:
-			mes "[Zic]";
+			mes "[吉克]";
 			mes "Sooo...";
-			mes "You want me to make you a Bao Bao, huh? Alright, alright...";
+			mes "你想让我给你做个包包，是吧？好吧，好吧……";
 			next;
-			mes "[Zic]";
-			mes "Let's see, I'll need...";
-			mes "1 ^0000FFSilk Ribbon^000000";
-			mes "50 ^0000FFHeroic Emblem^000000";
+			mes "[吉克]";
+			mes "让我看看，我需要……";
+			mes "1个 ^0000FF丝带^000000";
+			mes "50个 ^0000FF英雄徽章^000000";
 			mes "...Did you know this already?";
 			close;
 		case 2:
-			mes "[Zic]";
-			mes "So you want a Crescent Hairpin, huh? Man, I guess these things are pretty high in demand.";
+			mes "[吉克]";
+			mes "所以你想要一个月牙发夹，是吧？唉，看来这东西还挺抢手的。";
 			next;
-			mes "[Zic]";
-			mes "Okay, I'll need...";
-			mes "1 ^0000FFHeart Hairpin^000000";
-			mes "10 ^0000FFSteel^000000";
+			mes "[吉克]";
+			mes "好，我需要……";
+			mes "1个 ^0000FF心形发夹^000000";
+			mes "10个 ^0000FF钢铁^000000";
 			mes "...Did you know this already?";
 			close;
 		case 3:
-			mes "[Zic]";
-			mes "Weird. How'd you know I make Fashionable Glasses? I guess I must be more famous that I thought.";
+			mes "[吉克]";
+			mes "奇怪。你怎么知道我会做时尚眼镜？看来我比我想象的还有名。";
 			next;
-			mes "[Zic]";
-			mes "I need to have...";
-			mes "1 ^0000FFJack be Dandy^000000";
-			mes "1 ^0000FFScarlet Dyestuffs^000000";
+			mes "[吉克]";
+			mes "我需要有……";
+			mes "1个 ^0000FF杰克比丹迪^000000";
+			mes "1个 ^0000FF红色染料^000000";
 			mes "...Did you know this already?";
 			close;
 		case 4:
-			mes "[Zic]";
-			mes "You want a heart hairpin, eh? Okay, I think I can work something out for you...";
+			mes "[吉克]";
+			mes "你想要心形发夹，是吧？好，我想我可以帮你想想办法……";
 			next;
-			mes "[Zic]";
-			mes "Just gimmie...";
-			mes "1200 ^0000FFCoral Reef^000000.";
+			mes "[吉克]";
+			mes "给我……";
+			mes "1200个 ^0000FF珊瑚^000000。";
 			mes "...Did you know this already?";
 			close;
 		}
@@ -646,300 +646,300 @@ alberta,120,53,1	script	Stylish Merchant#new30	51,{
 
 // 'Hat of the Sun God', 'Sunday Hat', 'Mage Hat', 'Magician Hat' Quest
 //============================================================
-alberta,136,79,1	script	Hat store girl#new30	71,{
-	mes "[Tempestra]";
-	mes "Ah, such a cool breeze. It's good to visit the seashore. I think it was the right choice to come here to take a break from my business.";
+alberta,136,79,1	script	帽子店女孩#new30	71,{
+	mes "[坦佩丝塔]";
+	mes "啊，好凉爽的风。来海边真好。我觉得暂时放下生意来这里休息是正确的选择。";
 	next;
-	mes "[Tempestra]";
-	mes "Ooh, the sun is too strong today. I'm glad that I brought my hat. I'm going to get a sunburn if my skin is exposed to the sun like this everyday.";
+	mes "[坦佩丝塔]";
+	mes "哦，今天太阳太毒了。幸好我带了帽子。要是每天都这样把皮肤暴露在阳光下，我会晒伤的。";
 	next;
-	mes "[Tempestra]";
-	mes "Oh, I'm sooo thirsty! A nice, chilled Yellow Potion would be perfect right about now~";
+	mes "[坦佩丝塔]";
+	mes "哦，我好渴啊！现在要是能来一瓶冰镇的黄色药水就太完美了~";
 	next;
-	switch(select("Let me treat you to a Yellow Potion.:What, you expect me to give you one?!")) {
+	switch(select("我请你喝一瓶黄色药水。:什么，你指望我给你一瓶？！")) {
 	case 1:
 		if (countitem(503) > 0){
-			mes "[Tempestra]";
-			mes "Ah, thank you so much. I'm so glad to have met a friendly person like yourself.";
+			mes "[坦佩丝塔]";
+			mes "啊，太谢谢你了。能遇到像你这样友善的人，我真高兴。";
 			next;
-			mes "^3355FF*Gulp, gulp*^000000";
+			mes "^3355FF*咕咚，咕咚*^000000";
 			delitem 503,1;  //Yellow_Potion
 			next;
-			mes "[Tempestra]";
-			mes "Hyaaaaaa~~!!!";
-			mes "It's so cold!! Thank you~~~";
+			mes "[坦佩丝塔]";
+			mes "呀啊啊啊~~！！！";
+			mes "好冰啊！！谢谢你~~~";
 			next;
-			switch(select("It's really hot, isn't it~?:You should wear your hat...")) {
+			switch(select("真的很热，对吧~？:你应该戴上帽子……")) {
 			case 1:
-				mes "[Tempestra]";
-				mes "Yeah~ it's really hot....";
+				mes "[坦佩丝塔]";
+				mes "是啊~ 真的很热……";
 				next;
-				mes "[Tempestra]";
-				mes "I have";
-				mes "^0000FFSunday Hat^000000,";
-				mes "^0000FFMage Hat^000000 and...";
-				mes "^0000FFMagician Hat^000000 and more in my room.";
+				mes "[坦佩丝塔]";
+				mes "我房间里有";
+				mes "^0000FF星期日帽子^000000、";
+				mes "^0000FF法师帽^000000，还有……";
+				mes "^0000FF魔术师帽^000000等等。";
 				next;
-				mes "[Tempestra]";
-				mes "I brought these hats so I can sell them and use the money for my vacation here, but now it looks like I have to wear one~";
+				mes "[坦佩丝塔]";
+				mes "我带这些帽子来，本来是想卖掉换钱在这里度假，但现在看来我得戴上一顶了~";
 				next;
-				switch(select("Sunday Hat!!?:Mage Hat?!?:Magician Hat??!??")) {
+				switch(select("星期日帽子！！？:法师帽？！？:魔术师帽？？！？？")) {
 				case 1:
-					mes "[Tempestra]";
-					mes "Oh? Didn't you know? I'm a hat merchant. Didn't I tell you that before?";
+					mes "[坦佩丝塔]";
+					mes "哦？你不知道吗？我是帽子商人啊。我之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
-					mes "Hmm, I guess I didn't. I apologize. Ooh! You know what, I could make you a Sunday Hat~!";
+					mes "[坦佩丝塔]";
+					mes "嗯，看来是没有。我道歉。哦！你知道吗，我可以给你做一顶星期日帽子~！";
 					next;
-					mes "[Tempestra]";
-					mes "I'd need...";
-					mes "^0000FF250 Fabric^000000";
-					mes "^0000FF1 Slotted Hat^000000";
-					mes "^0000FF1 Slotted Cap^000000";
-					mes "^0000FF600 Soft feather^000000";
+					mes "[坦佩丝塔]";
+					mes "我需要……";
+					mes "^0000FF250个透明之布^000000";
+					mes "^0000FF1顶带洞帽子^000000";
+					mes "^0000FF1顶带洞鸭舌帽^000000";
+					mes "^0000FF600根柔软羽毛^000000";
 					next;
 					if ((countitem(1059) > 249) && (countitem(2221) > 0) && (countitem(2227) > 0) && (countitem(7063) > 599)) {
-						mes "[Tempestra]";
-						mes "What?!? ";
-						mes "You have all the items already? If there are forged items or slotted items with monster cards, then put them into your storage.";
+						mes "[坦佩丝塔]";
+						mes "什么？！？";
+						mes "你已经集齐所有物品了？如果有锻造物品或插有怪物卡片的带洞物品，请把它们放进仓库。";
 						next;
-						mes "[Tempestra]";
-						mes "I just want to make something for the Yellow Potion, so I won't charge you any zeny for my hat making service.";
-						switch(select("Oh, please do.:No thanks.")) {
+						mes "[坦佩丝塔]";
+						mes "我只是想为黄色药水做点回报，所以做帽子的服务不收取任何Zeny。";
+						switch(select("哦，麻烦你了。:不用了，谢谢。")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
-							mes "Alrighty. Just give me a moment...";
+							mes "[坦佩丝塔]";
+							mes "好嘞。请稍等片刻……";
 							next;
-							mes "^3355FF*Thud! Boot!*";
-							mes "*Thic-Tac!*^000000";
+							mes "^3355FF*咚！咚！*";
+							mes "*咔嗒咔嗒！*^000000";
 							next;
-							mes "^3355FF*Beeeeeeeh~~~*^000000";
+							mes "^3355FF*嗡~~~~*^000000";
 							next;
 							delitem 1059,250; //Transparent_Cloth
 							delitem 2221,1; //Hat_
 							delitem 2227,1; //Cap_
 							delitem 7063,600; //Soft_Feather
-							mes "[Tempestra]";
-							mes "Here it is, tee hee~";
-							mes "How about that? Do you like it?";
+							mes "[坦佩丝塔]";
+							mes "给你，嘻嘻~";
+							mes "怎么样？你喜欢吗？";
 							getitem 5032,1; //Picnic_Hat
 							next;
-							mes "[Tempestra]";
-							mes "Once again, thank you for your favour. I'll see you later~";
+							mes "[坦佩丝塔]";
+							mes "再次感谢你的帮助。回头见~";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
-							mes "Oh alright~";
+							mes "[坦佩丝塔]";
+							mes "哦，好吧~";
 							next;
-							mes "[Tempestra]";
-							mes "If by any chance you visit me later, I'd be more than happy to make a hat for you~";
+							mes "[坦佩丝塔]";
+							mes "如果你以后再来找我，我会很乐意为你做一顶帽子~";
 							next;
-							mes "[Tempestra]";
-							mes "Well then, see you later~";
+							mes "[坦佩丝塔]";
+							mes "那么，回头见~";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
-						mes "I will tell you a secret, because you gave me the Yellow Potion~";
+						mes "[坦佩丝塔]";
+						mes "因为你给了我黄色药水，我告诉你一个秘密~";
 						next;
-						mes "[Tempestra]";
-						mes "I'm looking forward seeing you again~~";
+						mes "[坦佩丝塔]";
+						mes "期待再次见到你~~";
 						close;
 					}
 				case 2:
-					mes "[Tempestra]";
-					mes "Oh? Didn't you know? I'm a hat merchant. Didn't I tell you that before?";
+					mes "[坦佩丝塔]";
+					mes "哦？你不知道吗？我是帽子商人啊。我之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
-					mes "Hmm, I guess I didn't. I apologize. Ooh! You know what, I could make you a Mage Hat!";
+					mes "[坦佩丝塔]";
+					mes "嗯，看来是没有。我道歉。哦！你知道吗，我可以给你做一顶法师帽！";
 					next;
-					mes "[Tempestra]";
-					mes "^0000FF1 Wizard Hat^000000";
-					mes "^0000FF400 Dragon Scale^000000";
-					mes "^0000FF50 Mould Powder^000000";
-					mes "^0000FF1 Elder Willow Card^000000";
+					mes "[坦佩丝塔]";
+					mes "^0000FF1顶巫师帽^000000";
+					mes "^0000FF400个龙鳞^000000";
+					mes "^0000FF50个霉菌粉末^000000";
+					mes "^0000FF1张长老树精卡片^000000";
 					next;
 					if ((countitem(2252) > 0) && (countitem(1036) > 399) && (countitem(4052) > 0) && (countitem(7001) > 49)) {
-						mes "[Tempestra]";
-						mes "What?!? ";
-						mes "You have all the items already? If there are forged items or slotted items with monster cards, then put them into your storage.";
+						mes "[坦佩丝塔]";
+						mes "什么？！？";
+						mes "你已经集齐所有物品了？如果有锻造物品或插有怪物卡片的带洞物品，请把它们放进仓库。";
 						next;
-						mes "[Tempestra]";
-						mes "I just want to make something nice for you, so I won't charge you any zeny for my hat making service.";
-						switch(select("Oh, please do.:No thanks.")) {
+						mes "[坦佩丝塔]";
+						mes "我只是想为你做点好东西，所以做帽子的服务不收取任何Zeny。";
+						switch(select("哦，麻烦你了。:不用了，谢谢。")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
-							mes "Alrighty. Just give me a moment...";
+							mes "[坦佩丝塔]";
+							mes "好的。请稍等一下……";
 							next;
-							mes "^3355FF*Thud! Boot!*";
-							mes "*Thic-Tac!*^000000";
+							mes "^3355FF*咚！咚！*";
+							mes "*嘀嗒！*^000000";
 							next;
-							mes "^3355FF*Beeeeeeeh~~~*^000000";
+							mes "^3355FF*咩~~~~*^000000";
 							next;
 							delitem 2252,1; //Star_Sparkling
 							delitem 1036,400; //Dragon_Scale
 							delitem 4052,1; //Elder_Wilow_Card
 							delitem 7001,50; //Mould_Powder
-							mes "[Tempestra]";
-							mes "Here it is, tee hee~";
-							mes "How about that?";
-							mes "Do you like it?";
+							mes "[坦佩丝特拉]";
+							mes "来啦，嘻嘻～";
+							mes "怎么样？";
+							mes "你喜欢吗？";
 							getitem 5027,1; //Wizardry_Hat
 							next;
-							mes "[Tempestra]";
-							mes "Once again, thank you for your favour. I'll see you later~";
+							mes "[坦佩丝特拉]";
+							mes "再次感谢你的关照。回头见～";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
-							mes "Oh alright~";
+							mes "[坦佩丝特拉]";
+							mes "哦，好吧～";
 							next;
-							mes "[Tempestra]";
-							mes "If by any chance you visit me later, I'd be more than happy to make a hat for you~";
+							mes "[坦佩丝特拉]";
+							mes "如果以后再来看我，我会很乐意为你做一顶帽子～";
 							next;
-							mes "[Tempestra]";
-							mes "Well then, see you later~";
+							mes "[坦佩丝特拉]";
+							mes "那么，回头见～";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
-						mes "I will tell you a secret, because you gave me the Yellow Potion~";
+						mes "[坦佩丝特拉]";
+						mes "因为你给了我黄色药水，我就告诉你一个秘密～";
 						next;
-						mes "[Tempestra]";
-						mes "I'm looking forward seeing you again~~";
+						mes "[坦佩丝特拉]";
+						mes "期待再次见到你～～";
 						close;
 					}
 				case 3:
-					mes "[Tempestra]";
-					mes "Oh? Didn't you know? I'm a hat merchant. Didn't I tell you that before?";
+					mes "[坦佩丝特拉]";
+					mes "哦？你不知道吗？我是卖帽子的商人。我之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
-					mes "Hmm, I guess I didn't. I apologize. Ooh! You know what, I could make you a Magician Hat!";
+					mes "[坦佩丝特拉]";
+					mes "嗯，好像确实没说过。抱歉。哦！对了，我可以给你做一顶巫师帽！";
 					next;
-					mes "[Tempestra]";
-					mes "^0000FF1 Wizard Hat^000000";
-					mes "^0000FF450 Ancient Lips^000000";
-					mes "^0000FF1200 Solid Shell^000000";
+					mes "[坦佩丝特拉]";
+					mes "^0000FF1 巫师帽^000000";
+					mes "^0000FF450 人鱼嘴巴^000000";
+					mes "^0000FF1200 坚硬外皮^000000";
 					next;
 					if ((countitem(2252) > 0) && (countitem(1054) > 449) && (countitem(943) > 1199)) {
-						mes "[Tempestra]";
-						mes "What?!? ";
-						mes "You have all the items already?";
-						mes "If there are forged items or slotted items with monster cards, then put them into your storage.";
+						mes "[坦佩丝特拉]";
+						mes "什么？！？";
+						mes "你已经集齐所有材料了？";
+						mes "如果有锻造物品或插了怪物卡片的洞装，请先把它们放进仓库。";
 						next;
-						mes "[Tempestra]";
-						mes "I just want to make something nice for you, so I won't charge you any zeny for my hat making service.";
-						switch(select("Please do:No thanks")) {
+						mes "[坦佩丝特拉]";
+						mes "我只是想为你做点好东西，所以做帽子的服务费我一分Zeny都不收。";
+						switch(select("请做吧:不用了")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
-							mes "Alrighty. Just give me a moment...";
+							mes "[坦佩丝特拉]";
+							mes "好的。请稍等一下……";
 							next;
-							mes "^3355FF*Thud! Boot!*";
-							mes "*Thic-Tac!*^000000";
+							mes "^3355FF*咚！咚！*";
+							mes "*嘀嗒！*^000000";
 							next;
-							mes "^3355FF*Beeeeeeeh~~~*^000000";
+							mes "^3355FF*咩~~~~*^000000";
 							next;
 							delitem 2252,1; //Star_Sparkling
 							delitem 1054,450; //Lip_Of_Ancient_Fish
 							delitem 943,1200; //Solid_Shell
-							mes "[Tempestra]";
-							mes "Here it is, tee hee~";
-							mes "How about that?";
-							mes "Do you like it?";
+							mes "[坦佩丝特拉]";
+							mes "来啦，嘻嘻～";
+							mes "怎么样？";
+							mes "你喜欢吗？";
 							getitem 5045,1; //Magician_Hat
 							next;
-							mes "[Tempestra]";
-							mes "Once again, thank you for your favour. I'll see you later~";
+							mes "[坦佩丝特拉]";
+							mes "再次感谢你的关照。回头见～";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
-							mes "Oh alright~";
+							mes "[坦佩丝特拉]";
+							mes "哦，好吧～";
 							next;
-							mes "[Tempestra]";
-							mes "If by any chance you visit me later, I'd be more than happy to make a hat for you~";
+							mes "[坦佩丝特拉]";
+							mes "如果以后再来看我，我会很乐意为你做一顶帽子～";
 							next;
-							mes "[Tempestra]";
-							mes "Well then, see you later~";
+							mes "[坦佩丝特拉]";
+							mes "那么，回头见～";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
-						mes "I will tell you a secret, because you gave me the Yellow Potion~";
+						mes "[坦佩丝特拉]";
+						mes "因为你给了我黄色药水，我就告诉你一个秘密～";
 						next;
-						mes "[Tempestra]";
-						mes "I'm looking forward seeing you again~~";
+						mes "[坦佩丝特拉]";
+						mes "期待再次见到你～～";
 						close;
 					}
 				}
 			case 2:
-				mes "[Tempestra]";
-				mes "Well, the hats I have with me are for my customers. If I use them for myself, I'll have nothing to sell...";
+				mes "[坦佩丝特拉]";
+				mes "唉，我手上的帽子都是给客人准备的。要是自己用了，就没东西可卖了……";
 				next;
-				mes "[Tempestra]";
-				mes "I want to make something special for you because you showed me such kindness, but I don't have anything like that right now.";
+				mes "[坦佩丝特拉]";
+				mes "你对我这么好，我也想为你做件特别的东西，可是我现在手头没有那样的材料。";
 				next;
 				if ((countitem(7086) > 0) && (countitem(969) > 9) && (countitem(999) > 39) && (countitem(1003) > 49) && (countitem(984) > 1)) {
-					mes "[Tempestra]";
+					mes "[坦佩丝特拉]";
 					mes "Hmm...";
-					mes "I think I can make a special item from the items you already have.";
+					mes "我想我可以用你现有的材料做一件特别的东西。";
 					next;
-					mes "[Tempestra]";
-					mes "If there are any forged items or slotted items with monster cards, then put them into your Kafra storage.";
+					mes "[坦佩丝特拉]";
+					mes "如果有锻造物品或插了怪物卡片的洞装，请先把它们放进卡普拉仓库。";
 					next;
-					mes "[Tempestra]";
-					mes "Heh heh...";
-					mes "I think I'll make you a Hat of the Sun God~";
+					mes "[坦佩丝特拉]";
+					mes "嘿嘿……";
+					mes "我想我可以为你做一顶太阳神之帽～";
 					next;
 					delitem 7086,1; //Symbol_Of_Sun
 					delitem 969,10; //Gold
 					delitem 999,40; //Steel
 					delitem 1003,50; //Coal
 					delitem 984,2; //Oridecon
-					mes "[Tempestra]";
-					mes "See! Here it is!!";
-					mes "Haha, I made this quicker than the speed of light!";
+					mes "[坦佩丝特拉]";
+					mes "看！就是它！！";
+					mes "哈哈，我做这个比光速还快！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩丝特拉]";
 					mes "...Or maybe I just gave you the one I already had, and took your items. Hee hee!";
 					getitem 5022,1; // Helm_Of_Sun
 					next;
-					mes "[Tempestra]";
-					mes "Anyway, I justed want to give something really nice to you...";
+					mes "[坦佩丝特拉]";
+					mes "总之，我只是想送你一件真正的好东西……";
 					close;
 				}
 				else {
-					mes "[Tempestra]";
+					mes "[坦佩丝特拉]";
 					mes "Hmm...";
-					mes "^0000FF1 Emblem of the Sun God^000000";
-					mes "^0000FF10 Gold^000000";
-					mes "^0000FF40 Steel^000000";
-					mes "^0000FF50 Coal^000000";
-					mes "^0000FF2 Oridecon^000000";
+					mes "^0000FF1 太阳神的象征^000000";
+					mes "^0000FF10 黄金^000000";
+					mes "^0000FF40 钢铁^000000";
+					mes "^0000FF50 煤矿^000000";
+					mes "^0000FF2 神之金属^000000";
 					next;
-					mes "[Tempestra]";
-					mes "If you have these, I can make you my fantastic 'Hat of the Sun God!'";
+					mes "[坦佩丝特拉]";
+					mes "如果你有这些，我就能为你做出我那顶绝妙的‘太阳神之帽’！";
 					next;
-					mes "[Tempestra]";
-					mes "I just want to make something really special for you, so I won't charge you any zeny to make this hat.";
+					mes "[坦佩丝特拉]";
+					mes "我只是想为你做一件真正特别的东西，所以做这顶帽子不收你任何Zeny。";
 					close;
 				}
 			}
 		}
 		else {
-			mes "[Tempestra]";
-			mes "Umm, I appreciate it but, I guess you just ran out of Yellow Potions?";
+			mes "[坦佩丝特拉]";
+			mes "嗯，我很感激，不过……你是不是刚好用完黄色药水了？";
 			close;
 		}
 	case 2:
-		mes "[Tempestra]";
+		mes "[坦佩丝特拉]";
 		mes "....How rude!";
 		close;
 	}
@@ -947,302 +947,302 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 
 // Turtle Quest
 //============================================================
-alberta,91,70,4	script	Kinsey#tur	89,{
-	mes "[Kinsey]";
-	mes "What does a man have to do to get a stiff drink around here? I mean, there are absolutely no good bars in Alberta!";
+alberta,91,70,4	script	金赛#tur	89,{
+	mes "[金赛]";
+	mes "在这儿要喝上一杯烈酒，得费多大劲啊？我是说，阿尔贝塔根本就没有像样的酒吧！";
 	next;
-	mes "[Kinsey]";
-	mes "Well, the alcohol in the pub here is second rate, but I gotta admit, it's got a great atmosphere.";
+	mes "[金赛]";
+	mes "唉，这里酒馆的酒只能算二流，不过我承认，气氛倒是不错。";
 	next;
-	mes "[Kinsey]";
-	mes "In fact, this old man is always there, telling stories about Turtle Island! But we're not sure if he's been there, or if he's just that drunk.";
+	mes "[金赛]";
+	mes "其实那位老先生总在那儿讲乌龟岛的故事！不过我们也不确定他是真去过，还是只是喝得太醉了。";
 	next;
-	if (select("^3333FF*ting!*^000000:Sounds fun~") == 1) {
-		mes "[Kinsey]";
+	if (select("^3333FF*叮！*^000000:好像挺有意思～") == 1) {
+		mes "[金赛]";
 		mes "Whoa...";
-		mes "Hey, your eyes just lit up right when I said 'Turtle Island!' Hmm, let me try that again.";
+		mes "嘿，我一说‘乌龟岛’，你眼睛就亮了！嗯，让我再试一次。";
 		next;
-		mes "[Kinsey]";
-		mes "*Ahem*";
-		mes "'Tur-tle";
-		mes "Is-land.'";
+		mes "[金赛]";
+		mes "*咳*";
+		mes "‘乌——龟";
+		mes "岛。’";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "^3333FF*ting!*^000000";
+		mes "^3333FF*叮！*^000000";
 		next;
-		mes "[Kinsey]";
+		mes "[金赛]";
 		mes "Ah...";
-		mes "You must be an adventurer. It seems like you really wanna learn more about that place, huh?";
+		mes "你一定是冒险者吧。看来你真的很想多了解那个地方，对吧？";
 		next;
-		mes "[Kinsey]";
-		mes "Why don't you look around near the pub, and look for that old man? He's usually pretty drunk, and speaks nonsense, but he might have something to say to you.";
+		mes "[金赛]";
+		mes "不如你去酒馆附近转转，找找那位老先生？他通常醉得厉害、满口胡话，不过说不定有话想对你说。";
 		next;
-		mes "[Kinsey]";
-		mes "Oh, and um, I've been in his room before. He leaves some sort of letter lying around the table that has something to do with his Turtle Island stories.";
+		mes "[金赛]";
+		mes "哦，还有，嗯，我以前进过他的房间。他桌上总摊着一封信，好像跟他的乌龟岛故事有关。";
 		next;
-		mes "[Kinsey]";
-		mes "But if he asks for you to buy him a drink, I wouldn't do it. He's got like, three extra livers or something, so he'll drink you to bankruptcy.";
+		mes "[金赛]";
+		mes "不过要是他让你请他喝酒，可别答应。他好像多长了三个肝似的，能把你喝到破产。";
 		close;
 	}
-	mes "[Kinsey]";
-	mes "Yeah, I guess it's pretty cool listening to his stories. But it would be even cooler if I could hear them in a better drinking establishment.";
+	mes "[金赛]";
+	mes "是啊，听他的故事是挺有意思的。不过要是在更好的酒馆里听，那就更好了。";
 	next;
-	mes "[Kinsey]";
-	mes "I mean, they don't even serve a 'Boogieman,' much less a 'Cobo.' It's getting harder and harder to find those fine, fine specialty drinks.";
+	mes "[金赛]";
+	mes "我是说，他们连‘Boogieman’都没有，更别说‘Cobo’了。想找那些上好的特调酒，真是越来越难了。";
 	close;
 }
 
-alberta_in,23,104,4	script	Grandpa Turtle#tur	120,{
-	mes "[Grandpa Turtle]";
+alberta_in,23,104,4	script	龟爷爷#tur	120,{
+	mes "[乌龟爷爷]";
 	mes "Ooog...";
-	mes "So dizzy...";
+	mes "好晕……";
 	next;
-	mes "[Grandpa Turtle]";
-	mes "There isn't one decent drinking establishment in all of Alberta! But then again, why did I drink so much? Hmm...";
+	mes "[乌龟爷爷]";
+	mes "整个阿尔贝塔就没有一家像样的酒馆！话说回来，我怎么喝了这么多？嗯……";
 	next;
-	switch(select("Tell me about Turtle Island:How can I get there?:Stop talking")) {
+	switch(select("跟我说说乌龟岛:我要怎么去那里？:别说了")) {
 	case 1:
-		mes "[Grandpa Turtle]";
-		mes "Eh...?";
-		mes "Turtle Island?";
+		mes "[乌龟爷爷]";
+		mes "诶……？";
+		mes "乌龟岛？";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "Well, there's a lot of folklore about that place. Some folk say that there's a mountain of treasure there.";
+		mes "[乌龟爷爷]";
+		mes "唉，关于那个地方有很多传说。有人说那里有堆积如山的财宝。";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "Others folk say a potion that can prolong your lifespan can be found somewhere in Turtle Island. But nobody really knows for sure.";
+		mes "[乌龟爷爷]";
+		mes "也有人说，乌龟岛某处藏着能延年益寿的药水。但谁也说不准。";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "But I'm sure that Turtle Island does exist, and that something wonderful can be found there.";
+		mes "[乌龟爷爷]";
+		mes "但我确信乌龟岛确实存在，那里一定藏着了不起的东西。";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "But only someone with a good heart that's eager for adventure should be able to go to that kind of place.";
+		mes "[乌龟爷爷]";
+		mes "不过，只有心地善良、渴望冒险的人，才配去那种地方。";
 		next;
-		switch(select("^3333FF*ting!*^000000:Tell me more, old man!")) {
+		switch(select("^3333FF*叮！*^000000:老先生，再多说点！")) {
 		case 1:
-			mes "[Grandpa Turtle]";
-			mes "Ha ha ha~!";
+			mes "[乌龟爷爷]";
+			mes "哈哈哈～！";
 			if (Sex == SEX_MALE)
-				mes "I like the shine in your eye, my boy! I can see a little bit of myself in those eyes. Yes...";
+				mes "我喜欢你眼里的光，小伙子！从那双眼睛里，我能看到一点自己的影子。是啊……";
 			else
-				mes "No use hiding the glint in your eyes, my dear! It's adventure you wish for, that much I can tell...";
+				mes "亲爱的，你眼里的光芒可藏不住！我看得出来，你渴望的是冒险……";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "Tell me...";
-			mes "Have you heard of a man named ^3355FFJornadan Niliria^000000? He, and a group of ten other men actually found Turtle Island!";
+			mes "[乌龟爷爷]";
+			mes "告诉我……";
+			mes "你听说过一个叫^3355FF乔纳丹·尼利里亚^000000的人吗？他和另外十个人真的找到了乌龟岛！";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "^3355FFJornadan Niliria^000000 was a man of strength and conviction. He and his crew gathered every clue they could about Turtle Island.";
+			mes "[乌龟爷爷]";
+			mes "^3355FF乔纳丹·尼利里亚^000000是个充满力量与信念的人。他和船员们搜集了关于乌龟岛的一切线索。";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "Even after learning all that they could, much of their voyage relied on their hope and faith that the Turtle Island legend was true...";
+			mes "[乌龟爷爷]";
+			mes "即便已经掌握了所有能掌握的信息，他们的航行在很大程度上仍要依靠希望，以及相信乌龟岛传说为真的信念……";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "After a long, arduous journey, their efforts were rewarded, and they landed on Turtle Island!";
+			mes "[乌龟爷爷]";
+			mes "历经漫长而艰辛的航行，他们的努力终于得到回报，登上了乌龟岛！";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "However, it gets more complicated after that. I hear Niliria's crew had great difficulty getting back home for some reason.";
+			mes "[乌龟爷爷]";
+			mes "然而，之后事情就变得复杂了。我听说尼利里亚的船员不知为何，费了很大劲才回到家乡。";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "Heh heh...";
-			mes "If you want to learn more, why don't you go to the eastern end of the Alberta port? There's a scholar there that knows more of this story.";
+			mes "[乌龟爷爷]";
+			mes "嘿嘿……";
+			mes "如果你想了解更多，不如去阿尔贝塔港的东边看看？那里有位学者对这个故事知道得更多。";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "He could probably shed more light on the subject of Turtle Island's legend.";
+			mes "[乌龟爷爷]";
+			mes "他大概能让你更了解乌龟岛的传说。";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "Ah, one more thing! Look around that scholar and you should find his ^3355FFJournal^000000. I promise that it will be an interesting read.";
+			mes "[乌龟爷爷]";
+			mes "啊，还有一件事！在那位学者周围找找，应该能找到他的^3355FF日记^000000。我保证读起来很有意思。";
 			next;
-			mes "[Grandpa Turtle]";
+			mes "[乌龟爷爷]";
 			mes "Ah...";
-			mes "The fire of youth!";
-			mes "When the winds die, may your dreams fill your sails~ Good luck to you!";
+			mes "青春之火啊！";
+			mes "当风停息之时，愿你的梦想鼓满风帆～祝你好运！";
 			close;
 		}
-		mes "[Grandpa Turtle]";
-		mes "Grrrr...!";
+		mes "[乌龟爷爷]";
+		mes "咕噜噜……！";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "I may not know much, but I won't talk to anyone motivated solely by greed. Go home!";
+		mes "[乌龟爷爷]";
+		mes "我或许所知不多，但绝不会跟只被贪欲驱使的人多谈。回去吧！";
 		close;
 	case 2:
 		if ((MISC_QUEST & 65536) || TURTLE) {
 			if(MISC_QUEST & 65536) set TURTLE,0; //now clear the var
-			mes "[Grandpa Turtle]";
+			mes "[乌龟爷爷]";
 			mes "Well...";
-			mes "If you go to eastern side of the Alberta port, you should find an old ferryboatman.";
+			mes "如果你去阿尔贝塔港的东侧，应该能找到一位老渡船夫。";
 			next;
-			mes "[Grandpa Turtle]";
-			mes "His name is ^3355FFGotanblue^000000. I believe he may know a way to Turtle Island. Heh heh, good luck~";
+			mes "[乌龟爷爷]";
+			mes "他叫^3355FF戈坦布鲁^000000。我相信他也许知道去乌龟岛的路。嘿嘿，祝你好运～";
 			close;
 		}
-		mes "[Grandpa Turtle]";
-		mes "Turtle Island...?";
+		mes "[乌龟爷爷]";
+		mes "乌龟岛……？";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "My, that place is difficult to find and even more difficult to travel to. You're sure you want to go? I would love to give you some advice, but I feel so dizzy after drinking so much...";
+		mes "[乌龟爷爷]";
+		mes "哎呀，那地方很难找到，更难抵达。你确定要去吗？我倒是很想给你些建议，可喝了这么多，头实在晕得厉害……";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "Ho ho ho...";
-		mes "Why don't you talk to a chubby little sailor I know named ^3355FFGotanblue^000000. You can find him loitering on one of the Alberta ports.";
+		mes "[乌龟爷爷]";
+		mes "呵呵呵……";
+		mes "不如去找我认识的一个胖水手，他叫^3355FF戈坦布鲁^000000。你可以在阿尔贝塔的某个港口找到他，他总在那儿闲晃。";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "Tell him that I sent you, and he may tell you more about Turtle Island. He may even know how to get there~";
+		mes "[乌龟爷爷]";
+		mes "告诉他是我让你去的，他也许会多跟你讲讲乌龟岛。他说不定还知道怎么去那儿～";
 		next;
-		mes "[Grandpa Turtle]";
-		mes "Well, then...";
-		mes "Good luck~";
+		mes "[乌龟爷爷]";
+		mes "那么……";
+		mes "祝你好运～";
 		set TURTLE,1;
 		setquest 11029;
 		close;
 	case 3:
-		mes "[Grandpa Turtle]";
+		mes "[乌龟爷爷]";
 		mes "Oooh...";
-		mes "Even at this age...";
-		mes "I don't understand";
-		mes "how I can drink so much...";
+		mes "都这把年纪了……";
+		mes "我还是不明白";
+		mes "我怎么这么能喝……";
 		close;
 	}
 }
 
 -	script	::Sailor_alberta	-1,{
 	if (TURTLE || (MISC_QUEST & 65536)) {
-		mes "[Gotanblue]";
+		mes "[戈坦布鲁]";
 		mes "Heh...";
-		mes "Your eyes...";
-		mes "I can tell you're curious about Turtle Island. I guess you must have been talking to that drunken old man!";
+		mes "你的眼神……";
+		mes "看得出你对乌龟岛很好奇。我猜你一定是跟那个醉老头聊过了！";
 		next;
-		switch(select("Do you know about Turtle Island?:How can I get there?:Stop talking.")) {
+		switch(select("你知道乌龟岛吗？:我要怎么去那里？:别说了。")) {
 		case 1:
-			mes "[Gotanblue]";
-			mes "Turtle Island...?";
-			mes "Well, first I think it's fair to warn you that Turtle Island took the lives of my buddies. That's right, I was part of ^3355FFJornadan Niliria^000000's crew.";
+			mes "[戈坦布鲁]";
+			mes "乌龟岛……？";
+			mes "嗯，首先我得提醒你，我的伙伴们有不少把命丢在了乌龟岛。没错，我曾是^3355FF乔纳丹·尼利里亚^000000的船员。";
 			next;
-			mes "[Gotanblue]";
-			mes "We wanted to find out if the legends about that island were true, so we left everything behind to learn the truth.";
+			mes "[戈坦布鲁]";
+			mes "我们想知道那座岛的传说是真是假，于是抛下一切，只为查明真相。";
 			next;
-			mes "[Gotanblue]";
-			mes "Jornadan Niliria was one of the greatest treasure hunters ever, and he gathered men for his crew from around the globe. I'm proud to say that each member of our crew was the best in his field.";
+			mes "[戈坦布鲁]";
+			mes "乔纳丹·尼利里亚是有史以来最伟大的寻宝者之一，他从世界各地招募船员。我可以自豪地说，我们每个船员都是各自领域最顶尖的。";
 			next;
-			mes "[Gotanblue]";
-			mes "I happened to be the best at navigating. I was only twenty, but I was still invited to his team. It was such an honor to be accepted as an equal amongst these great men.";
+			mes "[戈坦布鲁]";
+			mes "我恰好擅长航海。那时我只有二十岁，却仍受邀加入他的队伍。能被这些了不起的人当作同伴接纳，真是莫大的荣幸。";
 			next;
-			mes "[Gotanblue]";
-			mes "Anyway, our biggest clue about Turtle Island's location hinted that it was near Alberta, so our voyage began from here.";
+			mes "[戈坦布鲁]";
+			mes "总之，关于乌龟岛位置最有力的线索指向它就在阿尔贝塔附近，所以我们从这里启航。";
 			next;
-			mes "[Gotanblue]";
-			mes "We sailed day and night, drifting for weeks, until one day, we were surrounded by an incredibly thick fog. We had no idea of which direction we were going and the mist wouldn't clear.";
+			mes "[戈坦布鲁]";
+			mes "我们日夜航行，漂流了数周。直到有一天，我们被浓得惊人的大雾包围。我们完全辨不清方向，雾气也始终不散。";
 			next;
-			mes "[Gotanblue]";
-			mes "But none of us had any regrets and we just kept moving onward. There would be no turning back!";
+			mes "[戈坦布鲁]";
+			mes "但我们没有一个人后悔，只是继续向前。绝不回头！";
 			next;
-			mes "[Gotanblue]";
-			mes "Finally, a coral reef sudden appeared and we couldn't steer away from it. Our ship was critically damaged. But when the fog cleared, we saw that we had finally arrived at Turtle Island! It was real!";
+			mes "[戈坦布鲁]";
+			mes "终于，一片珊瑚礁突然出现，我们来不及转舵避开。船受损严重。可当雾气散去，我们看到自己终于抵达了乌龟岛！它是真的！";
 			next;
-			mes "[Gotanblue]";
-			mes "After we made camp on shore and explored the island, we learned something quite remarkable.";
+			mes "[戈坦布鲁]";
+			mes "我们在岸上扎营、探索岛屿之后，发现了一件相当了不起的事。";
 			next;
-			mes "[Gotanblue]";
-			mes "There was a man who had actually made it to Turtle Island before us. His records, however, never reached Rune-Midgarts. He was a great swordmaster known simply as ^3355FFOne^000000.";
+			mes "[戈坦布鲁]";
+			mes "有一个人比我们更早抵达了乌龟岛。不过，他的记录从未传到卢恩-米德加尔特。他是一位伟大的剑术大师，人称^3355FFOne^000000。";
 			next;
-			mes "[Gotanblue]";
-			mes "According to his records, he had traveled alone to find Turtle Island and made it by himself. But we couldn't find any sign of him anywhere...";
+			mes "[戈坦布鲁]";
+			mes "根据他的记录，他独自一人寻找乌龟岛，并成功抵达。可我们在岛上到处都找不到他的踪迹……";
 			next;
-			mes "[Gotanblue]";
-			mes "As we explored Turtle Island further, we learned that not only was it abundant with treasure, but that it also held an item of great interest.";
+			mes "[戈坦布鲁]";
+			mes "随着对乌龟岛的深入探索，我们发现那里不仅宝藏丰富，还藏着一件极有意思的东西。";
 			next;
-			mes "[Gotanblue]";
-			mes "From the first explorer's record, some kind of amazing ^3355FFjewel fragment^000000 was mentioned.";
+			mes "[戈坦布鲁]";
+			mes "在第一位探险者的记录里，提到了一种神奇的^3355FF宝石碎片^000000。";
 			next;
-			mes "[Gotanblue]";
-			mes "He had traveled to Turtle Island with the purpose of discovering secrets to the sword arts, and stumbled upon a jewel he claimed was the most beautiful in the world.";
+			mes "[戈坦布鲁]";
+			mes "他前往乌龟岛，本是为了探寻剑术的奥秘，却偶然发现了一颗宝石。他声称那是世上最美的宝石。";
 			next;
-			mes "[Gotanblue]";
-			mes "By the ^3355FFOne^000000's records, we were able to thoroughly explore all to be seen on Turtle Island. However...";
+			mes "[戈坦布鲁]";
+			mes "借助^3355FFOne^000000的记录，我们得以把乌龟岛上可看之处都彻底探索了一遍。然而……";
 			next;
-			mes "[Gotanblue]";
-			mes "Even after months of searching, we could never find a trace of the jewel fragment. Eventually, we had to give up on our search.";
+			mes "[戈坦布鲁]";
+			mes "即便搜寻了数月，我们始终找不到那颗宝石碎片的踪迹。最终，我们只能放弃寻找。";
 			next;
-			mes "[Gotanblue]";
-			mes "Finally, we packed our things to leave the island. But then, as we were traveling at sea, we encountered a thick, blinding fog once again.";
+			mes "[戈坦布鲁]";
+			mes "最后，我们收拾行装准备离开这座岛。可就在海上航行时，我们又一次遇上了浓得让人睁不开眼的雾。";
 			next;
-			mes "[Gotanblue]";
-			mes "We spent a month trying to steer through that mist. When we finally sailed out of that mist, we saw that we had arrived at the other side of Turtle Island!";
+			mes "[戈坦布鲁]";
+			mes "我们花了一个月试图在雾中前行。等终于驶出那片雾时，却发现自己到了乌龟岛的另一侧！";
 			next;
-			mes "[Gotanblue]";
-			mes "Our spirits were crushed!! We tried again and again to leave that place, and spent nearly a year trying to leave but we kept winding up at Turtle Island's shores.";
+			mes "[戈坦布鲁]";
+			mes "我们的士气被彻底击垮了！！我们一次又一次想离开那里，花了将近一年，却总是回到乌龟岛岸边。";
 			next;
-			mes "[Gotanblue]";
-			mes "As we struggled with the fog, we lost our comrades one by one. In the end, Jornadan, the drunken old man you met, and myself were the only ones who were able to return home to Alberta.";
+			mes "[戈坦布鲁]";
+			mes "在与浓雾的搏斗中，我们的同伴一个接一个地逝去。最终，只有乔纳丹——也就是你见到的那个醉老头——和我回到了阿尔贝塔。";
 			next;
-			mes "[Gotanblue]";
-			mes "We were the only ones who did not give in to despair, and doggedly held onto our hopes. Still, it was by pure luck that we found a way back to Rune-Midgarts.";
+			mes "[戈坦布鲁]";
+			mes "只有我们几个没有向绝望低头，顽强地守着希望。即便如此，我们找到回卢恩-米德加尔特的路，也纯属运气。";
 			next;
-			mes "[Gotanblue]";
-			mes "Well, that's my story. You know, if you want to learn more about Turtle Island, why don't you speak to the scholar on the eastern port of Alberta?";
+			mes "[戈坦布鲁]";
+			mes "这就是我的故事。对了，如果你想多了解乌龟岛，不如去跟阿尔贝塔东边港口的学者谈谈？";
 			next;
-			mes "[Gotanblue]";
-			mes "Heh heh...";
-			mes "I'm sure he can tell give you details that even I wouldn't be able to provide...";
+			mes "[戈坦布鲁]";
+			mes "嘿嘿……";
+			mes "我相信他能告诉你一些连我也说不出的细节……";
 			close2;
 			// erasequest 11029;
 			end;
 		case 2:
-			mes "[Gotanblue]";
-			mes "After my story of Turtle Island, you're still not afraid of going? I'm impressed! Alright then...";
+			mes "[戈坦布鲁]";
+			mes "听完我讲的乌龟岛，你还敢去？真让我佩服！那好吧……";
 			next;
-			mes "[Gotanblue]";
-			mes "If you wish for me to guide you there, I will charge you 10,000 zeny. I'm the only navigator that can guide you there and back safely.";
+			mes "[戈坦布鲁]";
+			mes "如果你想让我带路，我要收10,000 Zeny。我是唯一能带你安全往返的领航员。";
 			next;
-			if (select("Turtle island -> 10000 zeny:Cancel") == 1) {
+			if (select("乌龟岛 -> 10000 Zeny:取消") == 1) {
 				if (Zeny > 9999) {
-					mes "[Gotanblue]";
-					mes "Alright!!";
-					mes "You've made your choice! With my experience, we will arrive without fail! I appreciate your spirit!";
+					mes "[戈坦布鲁]";
+					mes "好！！";
+					mes "你已做出选择！凭我的经验，我们一定能抵达！我很欣赏你的胆识！";
 					next;
-					mes "^3355FF*Choo Choo*^000000";
+					mes "^3355FF*呜——呜——*^000000";
 					set Zeny, Zeny-10000;
 					warp "tur_dun01",157,39;
 					close2;
 					// erasequest 11029;
 					end;
 				}
-				mes "[Gotanblue]";
+				mes "[戈坦布鲁]";
 				mes "Hmmm...";
-				mes "Sorry, but you don't have enough zeny. I hope you understand that I can let my expertise and experience be undervalued...";
+				mes "抱歉，你的Zeny不够。希望你能理解，我不能让自己的专业和经验被贱卖……";
 				close;
 			}
-			mes "[Gotanblue]";
-			mes "Alright then...";
-			mes "Well, if the spirit of adventure should happen to grab you, I will be here waiting.";
+			mes "[戈坦布鲁]";
+			mes "那好吧……";
+			mes "如果冒险的念头哪天抓住了你，我会在这儿等着。";
 			close;
 		case 3:
-			mes "[Gotanblue]";
+			mes "[戈坦布鲁]";
 			mes "Heh...";
 			next;
-			mes "[Gotanblue]";
-			mes "Come back whenever you feel you're ready to hear my story, will you?";
+			mes "[戈坦布鲁]";
+			mes "等你想听我的故事时，随时回来找我，好吗？";
 			close;
 		}
 	}
-	mes "[Gotanblue]";
-	mes "Ahhhh...!";
-	mes "Just look at that ocean! It covers the earth as far as the eye can see. Tell me that's not one of the most beautiful things you've ever seen...";
+	mes "[戈坦布鲁]";
+	mes "啊啊啊……！";
+	mes "看看那片大海！它一直延伸到目光所及的尽头。你说，这难道不是你见过最美的东西之一吗……";
 	close;
 }
 
-tur_dun01,165,29,4	script	Sailor#tur2	709,{
-	mes "[Gotanblue]";
-	mes "Do you want";
-	mes "to return";
-	mes "to Alberta?";
+tur_dun01,165,29,4	script	水手#tur2	709,{
+	mes "[戈坦布鲁]";
+	mes "你想";
+	mes "回到";
+	mes "阿尔贝塔吗？";
 	next;
-	if (select("Go to Alberta:Stop talking") == 1) {
-		mes "[Gotanblue]";
-		mes "Heh heh...";
-		mes "I certainly hope you've found what you were looking for. Alright, I guess there's always a time for an adventurer to return home...";
+	if (select("前往阿尔贝塔:别说了") == 1) {
+		mes "[戈坦布鲁]";
+		mes "嘿嘿……";
+		mes "我真心希望你已经找到了想要的东西。好吧，冒险者总有该回家的时候……";
 		next;
-		mes "^3355FF* Choo Choo *^000000";
+		mes "^3355FF* 呜——呜—— *^000000";
 		if (checkre(0))
 			warp "alberta",238,112;
 		else
@@ -1252,300 +1252,300 @@ tur_dun01,165,29,4	script	Sailor#tur2	709,{
 }
 
 -	script	::Turtle_Scholar_alberta	-1,{
-	mes "[Jornadan Niliria]";
-	mes "Every single place";
-	mes "has its own unique";
-	mes "smells, sights and sounds.";
+	mes "[乔纳丹·尼利里亚]";
+	mes "每一个地方";
+	mes "都有它独特的";
+	mes "气味、景色与声音。";
 	next;
-	mes "[Jornadan Niliria]";
-	mes "Even the great, ever expanding sky that's shared by all the peoples of the earth looks strange when you're in a new and foreign land.";
+	mes "[乔纳丹·尼利里亚]";
+	mes "即便是全地之人共享的、辽阔无垠的天空，当你身处陌生异乡时，看起来也会变得陌生。";
 	next;
-	mes "[Jornandan Niliria]";
-	mes "Heh heh...";
-	mes "Just like my";
-	mes "time on Turtle Island.";
-	mes "Hah Hah Hah~";
+	mes "[乔纳丹·尼利里亚]";
+	mes "嘿嘿……";
+	mes "就像我";
+	mes "在乌龟岛的时光。";
+	mes "哈哈哈～";
 	next;
-	switch(select("About Turtle island:You're Jornadan Niliria?!:Stop talking")) {
+	switch(select("关于乌龟岛:你是乔纳丹·尼利里亚？！:别说了")) {
 	case 1:
-		mes "[Jornadan Niliria]";
+		mes "[乔纳丹·尼利里亚]";
 		mes "Turtle...";
 		mes "Island...";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "It's almost silly, but Turtle Island was named simply because it's shaped just like a turtle.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "说来有点可笑，乌龟岛之所以得名，只是因为它的形状像一只乌龟。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "Now, Turtle Island is surrounded by a dense fog. When we were first stuck in it, a lot of us believed it was the result of a curse, or some kind of magic.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "乌龟岛四周笼罩着浓雾。我们最初被困在雾中时，很多人相信那是诅咒或某种魔法的结果。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "But in actuality, the fog is the result of a natural phenomenon. It's created by a waterfall inside a cave located on Turtle Island's coast.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "但实际上，那雾是自然现象造成的。它源自乌龟岛海岸一处洞穴内的瀑布。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "Heh heh...";
-		mes "Once you attain understanding, the truth becomes so simple. I guess confusion and fear is the fog that clouds your judgment, your path on life.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "嘿嘿……";
+		mes "一旦你真正理解，真相就变得极其简单。我想，困惑与恐惧正是遮蔽你判断、遮蔽你人生道路的浓雾吧。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "Believe it or not, I too used to fear the dangers of Turtle Island. But now that I understand most of its secrets, I look at my experiences at Turtle Island with fondness.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "信不信由你，我也曾害怕乌龟岛的危险。但如今我明白了它大部分的奥秘，再回想在乌龟岛的经历，只觉得怀念。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "Still, there is one thing I haven't yet uncovered. The ^3355FFunknown jewel fragment^000000.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "不过，还有一样东西我尚未查明。那就是^3355FF未知的宝石碎片^000000。";
 		next;
-		mes "[Jornandan Niliria]";
-		mes "So, until I find it, I'll keep researching and learn as much as I can until I do. Ha ha ha ha~!";
+		mes "[乔纳丹·尼利里亚]";
+		mes "所以，在找到它之前，我会一直研究，尽可能多学一些，直到找到为止。哈哈哈哈～！";
 		close;
 	case 2:
-		mes "[Jornadan Niliria]";
-		mes "Hmm...?";
-		mes "You've heard of me?";
+		mes "[乔纳丹·尼利里亚]";
+		mes "嗯……？";
+		mes "你听说过我？";
 		next;
-		mes "[Jornadan Niliria]";
+		mes "[乔纳丹·尼利里亚]";
 		mes "Ah...";
-		mes "I suppose that you know about my treasure hunting days, and probably about Turtle Island.";
+		mes "我猜你知道我寻宝的那些日子，大概也知道乌龟岛的事。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "Well, as you can see, I'm a little older now. These old bones aren't what they used to be.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "唉，如你所见，我现在老了些。这把老骨头可不比当年了。";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "But perhaps, someday, if my research bears fruit, I'll venture out once more and seek the one treasure I've never found...";
+		mes "[乔纳丹·尼利里亚]";
+		mes "不过，也许有一天，如果我的研究有了成果，我会再次出发，去寻找那件我从未找到的宝物……";
 		close;
 	case 3:
-		mes "[Jornadan Niliria]";
-		mes "When you want to discover the truth, never give in to despair. If you never give up your search, the answer will come to you.";
+		mes "[乔纳丹·尼利里亚]";
+		mes "若想探明真相，就绝不要向绝望屈服。只要不放弃追寻，答案终会来到你面前。";
 		next;
-		mes "[Jornadan Niliria]";
+		mes "[乔纳丹·尼利里亚]";
 		mes "...";
 		next;
-		mes "[Jornadan Niliria]";
+		mes "[乔纳丹·尼利里亚]";
 		mes "...";
 		mes "......";
 		next;
-		mes "[Jornadan Niliria]";
-		mes "By the way, I'm pretty hungry. Why doesn't Alberta have any good restaurants?! I hear they have good dimsum in Kunlun...";
+		mes "[乔纳丹·尼利里亚]";
+		mes "对了，我肚子挺饿了。阿尔贝塔怎么就没什么好餐馆呢？！听说昆仑的点心很不错……";
 		close;
 	}
 }
 
-alberta_in,18,102,4	script	Letter#tur	111,{
-	mes "[Explorer's Letter]";
+alberta_in,18,102,4	script	信件#tur	111,{
+	mes "[探险者的信]";
 	mes "- O / X / XOVX -";
-	mes "If you find this letter, please don't disregard what you have read.";
+	mes "若你发现这封信，请不要无视你所读到的一切。";
 	next;
-	mes "[Explorer's Letter]";
-	mes "Although we have found Turtle Island, it seems our expedition will fail.";
+	mes "[探险者的信]";
+	mes "虽然我们找到了乌龟岛，但看来我们的探险终将失败。";
 	next;
-	mes "[Explorer's Letter]";
-	mes "Only half of our crew is left, and we only have enough food for ten more days. Our condition is truly grave.";
+	mes "[探险者的信]";
+	mes "船员只剩下一半，食物也只够再撑十天。我们的处境实在危急。";
 	next;
-	mes "[Explorer's Letter]";
-	mes "This damn island must be cursed. There's nothing to eat and we're so close to starving!";
+	mes "[探险者的信]";
+	mes "这该死的岛一定是被诅咒了。什么吃的都没有，我们眼看就要饿死了！";
 	next;
-	mes "[Explorer's Letter]";
-	mes "If we don't get help or find Alberta soon...";
-	mes "We'll...";
+	mes "[探险者的信]";
+	mes "如果我们再不获救，或者找不到阿尔贝塔……";
+	mes "我们就……";
 	close;
 }
 
-alberta,246,117,4	script	Voyage log#tur	111,{
+alberta,246,117,4	script	航海日志#tur	111,{
 	if (rand(2)) {
-		mes "[Voyage log]";
+		mes "[航海日志]";
 		mes "03:20 am";
-		mes "There's no light from the stars tonight, and we can't even see a hundred meters ahead of us. The men seem to feel something bad in the air.";
+		mes "今晚没有星光，我们连前方一百米都看不清。船员们似乎都感觉气氛不太对。";
 		next;
-		mes "[Voyage Log]";
-		mes "The faces of my comrades betrayed their fears. They couldn't manage to sleep last night. I hope we will see sunrise soon...";
+		mes "[航海日志]";
+		mes "同伴们的表情流露着恐惧。昨晚他们都没能睡着。希望我们能很快看到日出……";
 		next;
-		mes "[Voyage Log]";
-		mes "04:10 ";
-		mes "5 minutes ago, our comrade, Cooker, was killed when the mast suddenly cracked and fell on his head.";
+		mes "[航海日志]";
+		mes "04:10";
+		mes "5分钟前，我们的同伴库克被突然断裂的桅杆砸中头部，不幸身亡。";
 		next;
-		mes "[Voyage Log]";
-		mes "The estimated time of death is 04:07. The mast broke due to the shock of the ship hitting a reef. The left side of the deck also suffered from serious damage.";
+		mes "[航海日志]";
+		mes "推定死亡时间为04:07。桅杆因船撞上暗礁的冲击而断裂。甲板左侧也严重受损。";
 		next;
-		mes "[Voyage Log]";
+		mes "[航海日志]";
 		mes "04:45";
-		mes "While two of our workers were fixing the bottom of the deck, they were attacked by monsters that had snuck through cracks in the deck.";
+		mes "两名工人在修理甲板底部时，遭到从甲板裂缝潜入的怪物袭击。";
 		next;
-		mes "[Voyage Log]";
-		mes "These two were lost in the attack. The estimated time of death was 04:32. Fortunately, we are able to stay afloat, but we must hurry and find land.";
+		mes "[航海日志]";
+		mes "这两人在袭击中丧生。推定死亡时间为04:32。所幸船还能浮着，但我们必须赶快找到陆地。";
 		next;
-		mes "[Voyage Log]";
-		mes "From the damage to the deck, we've lost 30% of our supplies. At this rate, we'll run out of food soon.";
+		mes "[航海日志]";
+		mes "由于甲板受损，我们损失了30%的物资。照这样下去，食物很快就会耗尽。";
 		next;
-		mes "[Voyage Log]";
+		mes "[航海日志]";
 		mes "05:23";
-		mes "There seem to be more and more reefs to steer around, and they are growing larger as we travel. I wonder if we'll find land soon...";
+		mes "需要绕开的暗礁似乎越来越多，而且随着航行不断变大。不知道我们能不能尽快找到陆地……";
 		next;
-		mes "[Voyage Log]";
-		mes "Written by";
-		mes "Captain Jornadan Niliria";
+		mes "[航海日志]";
+		mes "记录人";
+		mes "船长 乔纳丹·尼利里亚";
 		close;
 	}
 	else {
 		if (TURTLE == 1) {
-			mes "^3355FFThe paper is torn and seaweed and mold are stuck to the paper. It seems this log is in very poor condition...^000000";
+			mes "^3355FF纸张破损，上面粘着海藻和霉斑。这本日志的状况似乎非常糟糕……^000000";
 			next;
 			switch(rand(1,3)) {
 			case 1:
-				mes "^3355FFThere is a banana leaf between some of the pages. Here is what is written.^000000";
+				mes "^3355FF其中几页之间夹着一片香蕉叶。上面写着这些内容。^000000";
 				next;
-				mes "[Voyage Log]";
-				mes "O / X date";
-				mes "Just after we arrived on Turtle Island, we frantically searched all over for food.";
+				mes "[航海日志]";
+				mes "O / X 日期";
+				mes "我们刚抵达乌龟岛，就发疯似地四处寻找食物。";
 				next;
-				mes "[Voyage Log]";
-				mes "It was so bad, that you could see the bones through our skin.";
+				mes "[航海日志]";
+				mes "情况糟到隔着皮肤都能看见骨头。";
 				next;
-				mes "[Voyage Log]";
-				mes "X / X date";
-				mes "We found some kind of fruit to eat! It's covered in some sort of yellow skin and looks like a banana!";
+				mes "[航海日志]";
+				mes "X / X 日期";
+				mes "我们找到了一种能吃的水果！它外面包着一层黄色的皮，看起来像香蕉！";
 				next;
-				mes "[Voyage Log]";
-				mes "XO / X date";
-				mes "Well, it wasn't exactly like the bananas we have in Rune-Midgarts, but it was very similar.";
+				mes "[航海日志]";
+				mes "XO / X 日期";
+				mes "嗯，它和我们卢恩-米德加尔特的香蕉并不完全一样，但非常相似。";
 				next;
-				mes "[Voyage Log]";
-				mes "O / O date";
-				mes "In the middle of the night, one of the men reported that he felt sick after eating the food.";
+				mes "[航海日志]";
+				mes "O / O 日期";
+				mes "半夜里，其中一人说他吃了那食物后感到不适。";
 				next;
-				mes "[Voyage Log]";
-				mes "OO / O date";
-				mes "Another crew member, Berot Berot, was also found to have severe indigestion.";
+				mes "[航海日志]";
+				mes "OO / O 日期";
+				mes "另一名船员贝罗特·贝罗特也被发现患有严重的消化不良。";
 				next;
-				mes "[Voyage Log]";
-				mes "It's now becoming very clear that the food we have been eating contains some kind of poison.";
+				mes "[航海日志]";
+				mes "现在已经非常清楚，我们一直吃的食物中含有某种毒药。";
 				next;
-				mes "[Voyage Log]";
-				mes "XO / O date";
-				mes "The third person to experience indigestion passed away today. We are all very worried.";
+				mes "[航海日志]";
+				mes "XO / O 日期";
+				mes "今天，第三位出现消化不良的人去世了。我们都很担心。";
 				next;
-				mes "[Voyage Log]";
-				mes "Our suspicions were confirmed when we found that the animals on Turtle Island wouldn't eat the bananas we found.";
+				mes "[航海日志]";
+				mes "当我们发现乌龟岛上的动物不肯吃我们找到的香蕉时，我们的怀疑得到了证实。";
 				next;
-				mes "[Voyage Log]";
-				mes "OX / O date";
-				mes "We decided to seal away this poisonous fruit, but learned that it didn't rot, not even after we removed the skin.";
+				mes "[航海日志]";
+				mes "OX / O 日期";
+				mes "我们决定把这有毒的果实封存起来，却发现它不会腐烂，即使剥去外皮也一样。";
 				next;
-				mes "[Voyage Log]";
-				mes "We have no idea why it's harmful to eat, or why it never perishes, but it be of some medical or scientific interest.";
+				mes "[航海日志]";
+				mes "我们不知道它为何食用有害，也不知它为何永不腐坏，但它或许具有医学或科学上的价值。";
 				next;
-				mes "[Voyage Log]";
-				mes "In the meantime, we've decided to bury this fruit until we can get back to Alberta.";
+				mes "[航海日志]";
+				mes "与此同时，我们决定把这果实埋起来，等我们回到阿尔贝塔再说。";
 				next;
-				mes "[Voyage Log]";
+				mes "[航海日志]";
 				mes "^FF3355tur_dun01^000000";
 				mes "^FF3355X : 160 , Y : 81^000000";
 				next;
-				mes "^3355FFIn the Voyage log is a thin key marked with a skull. You've taken this Skull key, as it may be of some use later.^000000";
+				mes "^3355FF航海日志里有一把细长的钥匙，上面刻着骷髅标记。你收下了这把骷髅钥匙，之后或许会派上用场。^000000";
 				set TURTLE,2;
 				changequest 11029,11030;
 				close;
 			case 2:
-				mes "^3355FFYou notice a page with a stamp shaped like a bird's foot. The black ink smells sort of like fruit.^000000";
+				mes "^3355FF你注意到一页纸上盖着鸟足形状的印章。黑色墨水闻起来有点像水果。^000000";
 				next;
-				mes "[Voyage Log]";
-				mes "X / OO date";
-				mes "We've found evidence that other people were here, and that we are not the first to find Turtle Island.";
+				mes "[航海日志]";
+				mes "X / OO 日期";
+				mes "我们找到了证据，证明曾有其他人来过这里，我们并不是最先发现乌龟岛的人。";
 				next;
-				mes "[Voyage Log]";
-				mes "There was at least one person who made it here before us. Hopefully, his records are on the island somewhere.";
+				mes "[航海日志]";
+				mes "至少有一个人比我们先到达了这里。希望他的记录就在岛上某处。";
 				next;
-				mes "[Voyage Log]";
-				mes "Starting tomorrow, we will begin searching for these hidden records.";
+				mes "[航海日志]";
+				mes "从明天起，我们将开始寻找这些隐藏的记录。";
 				next;
-				mes "[Voyage Log]";
-				mes "O / OO date";
-				mes "We are having difficulty trying to find any records. Is it possible that the first people here wrote nothing of their journey?";
+				mes "[航海日志]";
+				mes "O / OO 日期";
+				mes "我们很难找到任何记录。难道最先来到这里的人没有留下任何关于旅程的记载吗？";
 				next;
-				mes "[Voyage Log]";
-				mes "XO / OO date";
-				mes "We finally found the records we have been searching for.";
+				mes "[航海日志]";
+				mes "XO / OO 日期";
+				mes "我们终于找到了苦苦寻找的记录。";
 				next;
-				mes "[Voyage Log]";
-				mes "His notes were so hard to find because only one man, rather than a whole team, came to Turtle Island before us!";
+				mes "[航海日志]";
+				mes "他的笔记之所以如此难找，是因为在我们之前来到乌龟岛的只有一个人，而不是一整支队伍！";
 				next;
-				mes "[Voyage Log]";
-				mes "This man was a swordsman simply known as 'One.' His records tell much about what can be found on Turtle Island.";
+				mes "[航海日志]";
+				mes "这名男子是一位只被称为“一”的剑士。他的记录详细记载了乌龟岛上可以发现的东西。";
 				next;
-				mes "[Voyage Log]";
-				mes "His records were written on animals skin, but they were durable and still easy to read after all this time.";
+				mes "[航海日志]";
+				mes "他的记录写在家畜皮上，但十分耐久，历经这么久依然容易辨认。";
 				next;
-				mes "[Voyage Log]";
-				mes "According to his notes, Turtle Island consists of 4 levels. Although there are no people here, but there are many traps and devices which operate through a mysterious force.";
+				mes "[航海日志]";
+				mes "根据他的笔记，乌龟岛共有四层。虽然这里没有人，但有许多靠神秘力量运作的陷阱与装置。";
 				next;
-				mes "[Voyage Log]";
-				mes "Still, it is certain that something has some control over Turtle Island.";
+				mes "[航海日志]";
+				mes "不过，可以确定的是，有某种东西在控制着乌龟岛。";
 				next;
-				mes "[Voyage Log]";
-				mes "To keep this record safe, our crew has decided to hide this valuable record on the second level of Turtle Island.";
+				mes "[航海日志]";
+				mes "为了妥善保管这份记录，我们船员决定把这份珍贵的记录藏在乌龟岛的第二层。";
 				next;
-				mes "[Voyage Log]";
-				mes "Search here...";
+				mes "[航海日志]";
+				mes "在此处搜寻……";
 				mes "^FF3355tur_dun02^000000";
 				mes "^FF3355X : 132 , Y : 251^000000";
 				next;
-				mes "^3355FFThere is a picture of a tree in which there is a small keyhole clearly shown under the roots.^000000";
+				mes "^3355FF画中有一棵树，树根下方清楚地画着一个小钥匙孔。^000000";
 				next;
-				mes "^3355FFYou've gained^000000";
-				mes "^3355FFthe Roots key.^000000";
+				mes "^3355FF你获得了^000000";
+				mes "^3355FF树根钥匙。^000000";
 				set TURTLE,3;
 				changequest 11029,11031;
 				close;
 			case 3:
-				mes "^3355FFThese pages of this log are soiled with mud, and some of them are missing.^000000";
+				mes "^3355FF这本日志的这几页沾满了泥污，还有一些已经缺失。^000000";
 				next;
-				mes "[Voyage Log]";
-				mes "O / XX date";
-				mes "The greatest treasure of Turtle Island, the likes of which have never been seen, is hidden, sealed in some secret place...";
+				mes "[航海日志]";
+				mes "O / XX 日期";
+				mes "乌龟岛最伟大的宝藏，前所未见之物，被封印在某个隐秘之处……";
 				next;
-				mes "[Voyage Log]";
-				mes "We have spent many days searching for it, but found not one trace.";
+				mes "[航海日志]";
+				mes "我们花了许多天寻找它，却连一丝痕迹也没找到。";
 				next;
-				mes "[Voyage Log]";
-				mes "In the meantime, we've collected many precious treasures. We've decided to take only some of it back home, and to leave the rest here.";
+				mes "[航海日志]";
+				mes "与此同时，我们收集了许多珍贵的宝物。我们决定只带一部分回家，其余的就留在这里。";
 				next;
-				mes "[Voyage Log]";
-				mes "XO / XX date";
-				mes "We have hidden the treasure we have left behind to keep it from getting stolen.";
+				mes "[航海日志]";
+				mes "XO / XX 日期";
+				mes "我们把留下的宝物藏了起来，以免被人盗走。";
 				next;
-				mes "[Voyage Log]";
-				mes "It is somewhere on the fourth level, the bottom of the island. The treasure is sealed in a box that is a relic from an ancient culture.";
+				mes "[航海日志]";
+				mes "它就在第四层，也就是岛屿最底部的某处。宝物被封在一个箱子里，那是古代文明的遗物。";
 				next;
-				mes "[Voyage Log]";
-				mes "However, the technology of this treasure box is very sophisticated, and it won't be easy to open by force.";
+				mes "[航海日志]";
+				mes "然而，这个宝箱的技术十分精密，想要强行打开并不容易。";
 				next;
-				mes "[Voyage Log]";
+				mes "[航海日志]";
 				mes "Here...";
 				mes "^FF3355tur_dun01^000000";
 				mes "^FF3355X : 203 , Y : 155^000000";
 				next;
-				mes "^3355FFYou find three small holes under the turtle stone. Within one of these holes is a thin key.^000000";
+				mes "^3355FF你在龟石下发现了三个小孔。其中一个孔里有一把细长的钥匙。^000000";
 				next;
-				mes "^3355FFYou've gained ^000000";
-				mes "^3355FFthe Security key^000000";
+				mes "^3355FF你获得了 ^000000";
+				mes "^3355FF保安钥匙^000000";
 				set TURTLE,4;
 				changequest 11029,11032;
 				close;
 			}
 		}
-		mes "^3355FFYou've closed the voyage log.^000000";
+		mes "^3355FF你合上了航海日志。^000000";
 		close;
 	}
 }
 
-tur_dun01,160,81,4	script	Skull Stone#tur	111,{
+tur_dun01,160,81,4	script	骷髅石#tur	111,{
 	if (TURTLE == 2) {
-		mes "^3355FFUnder the stone^000000";
-		mes "^3355FFis a tiny key hole^000000";
-		mes "^3355FFwith a skull mark.^000000";
-		mes "^3355FFYou used the Skull key^000000";
-		mes "^3355FFin that key hole.^000000";
+		mes "^3355FF石头下方^000000";
+		mes "^3355FF有一个小小的钥匙孔^000000";
+		mes "^3355FF上面刻着骷髅标记。^000000";
+		mes "^3355FF你使用了骷髅钥匙^000000";
+		mes "^3355FF插入那个钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Click!*^000000";
+		mes "^3355FF*咔嗒！咔嗒！*^000000";
 		next;
-		mes "^3355FFSuddenly, the top of^000000";
-		mes "^3355FFthe stone opened and^000000";
-		mes "^3355FFsome items popped out!!^000000";
+		mes "^3355FF突然，石头的顶部^000000";
+		mes "^3355FF打开了，^000000";
+		mes "^3355FF一些物品弹了出来！！^000000";
 		next;
 		set MISC_QUEST,MISC_QUEST | 65536;
 		set TURTLE,0;
@@ -1553,408 +1553,408 @@ tur_dun01,160,81,4	script	Skull Stone#tur	111,{
 		switch(rand(1,3)) {
 		case 1:
 			getitem 532,5; //Banana_Juice
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FF5 Banana Juice^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF5 瓶香蕉汁^000000";
 			close;
 		case 2:
 			getitem 513,5; //Banana
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FF5 Banana^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF5 根香蕉^000000";
 			close;
 		case 3:
 			getitem 513,5; //Banana
 			getitem 532,5; //Banana_Juice
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FF5 Banana and^000000";
-			mes "^3355FF5 Banana Juice^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF5 根香蕉和^000000";
+			mes "^3355FF5 瓶香蕉汁^000000";
 			close;
 		}
 	}
-	mes "^3355FFIt is a frightening^000000";
-	mes "^3355FFstone tomb with a^000000";
-	mes "^3355FFhorrible skull on it.^000000";
+	mes "^3355FF这是一座可怕的^000000";
+	mes "^3355FF石墓，上面刻着^000000";
+	mes "^3355FF一个骇人的骷髅。^000000";
 	close;
 }
 
-tur_dun02,132,251,4	script	Turtle Tree Roots#tur	111,{
+tur_dun02,132,251,4	script	龟树根#tur	111,{
 	if (TURTLE == 3) {
-		mes "^3355FFUnder the tree roots^000000";
-		mes "^3355FFis a tiny key hole^000000";
-		mes "^3355FFmarked with a root insignia.^000000";
-		mes "^3355FFYou used the Roots key^000000";
-		mes "^3355FFin that key hole.^000000";
+		mes "^3355FF树根下方^000000";
+		mes "^3355FF有一个小小的钥匙孔^000000";
+		mes "^3355FF上面刻着树根纹章。^000000";
+		mes "^3355FF你使用了树根钥匙^000000";
+		mes "^3355FF插入那个钥匙孔。^000000";
 		next;
-		mes "^3355FF*Swishy swashy!*^000000";
+		mes "^3355FF*沙沙沙！*^000000";
 		next;
-		mes "^3355FFBetween the roots^000000";
-		mes "^3355FFa little door opens,^000000";
-		mes "^3355FFrevealing an^000000";
-		mes "^3355FFold scroll.^000000";
+		mes "^3355FF树根之间^000000";
+		mes "^3355FF一扇小门打开了，^000000";
+		mes "^3355FF露出了^000000";
+		mes "^3355FF古老的卷轴。^000000";
 		next;
-		mes "[Old scroll]";
-		mes "^FF3355Following the^000000";
-		mes "^FF3355legend from^000000";
-		mes "^FF3355my village,^000000";
-		mes "^FF3355I've come^000000";
-		mes "^FF3355to improve my^000000";
-		mes "^FF3355swordmanship...^000000";
+		mes "[古老的卷轴]";
+		mes "^FF3355遵循^000000";
+		mes "^FF3355我村庄的^000000";
+		mes "^FF3355传说，^000000";
+		mes "^FF3355我来到^000000";
+		mes "^FF3355此磨练我的^000000";
+		mes "^FF3355剑术……^000000";
 		next;
-		mes "[Old scroll]";
-		mes "^FF3355Only one who^000000";
-		mes "^FF3355cuts the shell^000000";
-		mes "^FF3355of a turtle^000000";
-		mes "^FF3355can become a^000000";
-		mes "^FF3355grand master^000000";
-		mes "^FF3355of the sword...^000000";
+		mes "[古老的卷轴]";
+		mes "^FF3355唯有能够^000000";
+		mes "^FF3355斩开龟壳^000000";
+		mes "^FF3355的人^000000";
+		mes "^FF3355才能成为^000000";
+		mes "^FF3355剑之^000000";
+		mes "^FF3355宗师……^000000";
 		next;
-		mes "[Old scroll]";
-		mes "^FF3355To fufill this^000000";
-		mes "^FF3355legend, I have^000000";
-		mes "^FF3355come. I, 'One,'^000000";
-		mes "^FF3355will cut the^000000";
-		mes "^FF3355turtle's shell!!^000000";
+		mes "[古老的卷轴]";
+		mes "^FF3355为了实现^000000";
+		mes "^FF3355这个传说，我^000000";
+		mes "^FF3355来了。我，“一”，^000000";
+		mes "^FF3355将斩开^000000";
+		mes "^FF3355龟壳！！^000000";
 		next;
-		mes "[Old scroll]";
-		mes "^FF3355Go...^000000";
+		mes "[古老的卷轴]";
+		mes "^FF3355去吧……^000000";
 		mes "^FF3355tur_dun02^000000";
 		mes "^FF3355X : 46 , Y : 125^000000";
 		next;
-		mes "^3355FFInside the pile of turtle^000000";
-		mes "^3355FFcrystals, a scroll is hidden.^000000";
+		mes "^3355FF在成堆的^000000";
+		mes "^3355FF龟晶之中，藏着一卷卷轴。^000000";
 		set TURTLE,7;
 		changequest 11031,11033;
-		mes "^3355FFYou've gained a^000000";
-		mes "^3355FFTurtle Crystal key.^000000";
+		mes "^3355FF你获得了^000000";
+		mes "^3355FF龟晶钥匙。^000000";
 		close;
 	}
-	mes "^3355FFThere are old,^000000";
-	mes "^3355FFthick tree roots^000000";
-	mes "^3355FFanchored into^000000";
-	mes "^3355FFthe ground here.^000000";
+	mes "^3355FF这里有古老而^000000";
+	mes "^3355FF粗壮的树根^000000";
+	mes "^3355FF深深扎入^000000";
+	mes "^3355FF此地的泥土中。^000000";
 	close;
 }
 
-tur_dun02,46,125,4	script	A pile of turtle crystal	111,{
+tur_dun02,46,125,4	script	一堆龟水晶	111,{
 	if (TURTLE == 7) {
-		mes "^3355FFAmong the Turtle Crystals,^000000";
-		mes "^3355FFyou find a strange key hole.^000000";
+		mes "^3355FF在龟晶之间，^000000";
+		mes "^3355FF你发现了一个奇怪的钥匙孔。^000000";
 		next;
-		mes "^3355FFYou use the";
-		mes "Turtle crystal key";
-		mes "in the key hole.^000000";
+		mes "^3355FF你使用了";
+		mes "龟晶钥匙";
+		mes "插入钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Click!*^000000";
+		mes "^3355FF*咔嗒！咔嗒！*^000000";
 		next;
-		mes "^3355FFBetween the crystals,000000";
-		mes "^3355FFa small crystal plate^000000";
-		mes "^3355FFin which a message^000000";
-		mes "^3355FFin engraved.^000000";
+		mes "^3355FF在水晶之间，000000";
+		mes "^3355FF一块小水晶板^000000";
+		mes "^3355FF上面刻着^000000";
+		mes "^3355FF一段铭文。^000000";
 		next;
-		mes "[Crystal Plate]";
-		mes "^3355AAI, the swordsman,^000000";
-		mes "^3355AA'One,' has succeeded.^000000";
-		mes "^3355AAI've cut the turtle's shell.^000000";
-		mes "^3355AANow I shall try to^000000";
-		mes "^3355AAcut turtle crystal.^000000";
+		mes "[水晶板]";
+		mes "^3355AA我，剑士，^000000";
+		mes "^3355AA“一”成功了。^000000";
+		mes "^3355AA我已斩开龟壳。^000000";
+		mes "^3355AA现在我要试着^000000";
+		mes "^3355AA斩开龟晶。^000000";
 		next;
-		mes "[Crystal Plate]";
-		mes "^3355AAThe surface of turtle^000000";
-		mes "^3355AAcrystal is so rough and^000000";
-		mes "^3355AAirregular. I'll need^000000";
-		mes "^3355AAto sharpen my skills.^000000";
+		mes "[水晶板]";
+		mes "^3355AA龟晶的表面^000000";
+		mes "^3355AA如此粗糙且^000000";
+		mes "^3355AA不规则。我需要^000000";
+		mes "^3355AA磨练我的技艺。^000000";
 		next;
-		mes "[Crystal Plate]";
-		mes "^3355AAIt's going to be tough,^000000";
-		mes "^3355AAbut I will succeed...^000000";
+		mes "[水晶板]";
+		mes "^3355AA这将会很艰难，^000000";
+		mes "^3355AA但我会成功的……^000000";
 		next;
-		mes "[Crystal plate]";
-		mes "^3355AAGo 5 steps east,^000000";
-		mes "^3355AA30 steps south^000000";
-		mes "^3355AAand 5 steps around^000000";
-		mes "^3355AAthe turtle pillar.^000000";
-		mes "^3355AAThere you will find^000000";
-		mes "^3355AAthe end of sword art.^000000";
+		mes "[水晶板]";
+		mes "^3355AA向东走 5 步，^000000";
+		mes "^3355AA向南走 30 步，^000000";
+		mes "^3355AA再绕龟柱^000000";
+		mes "^3355AA走 5 步。^000000";
+		mes "^3355AA在那里你将找到^000000";
+		mes "^3355AA剑术的终点。^000000";
 		next;
-		mes "^3355FFAt the edge of the crystal^000000";
-		mes "^3355FFplate, is a long key.^000000";
+		mes "^3355FF在水晶板的边缘，^000000";
+		mes "^3355FF有一把长钥匙。^000000";
 		set TURTLE,8;
 		changequest 11033,11034;
-		mes "^3355FFYou've gained the^000000";
-		mes "^3355FFTurtle Pillar key.^000000";
+		mes "^3355FF你获得了^000000";
+		mes "^3355FF龟柱钥匙。^000000";
 		close;
 	}
-	mes "^3355FFThere are so many Turtle^000000";
-	mes "^3355FFCrystals that can only be^000000";
-	mes "^3355FFfound on Turtle island.^000000";
+	mes "^3355FF这里有许多只^000000";
+	mes "^3355FF能在乌龟岛^000000";
+	mes "^3355FF找到的龟晶。^000000";
 	close;
 }
 
-tur_dun02,49,158,4	script	Turtle Pillar#tur	111,{
+tur_dun02,49,158,4	script	龟石柱#tur	111,{
 	if (TURTLE == 8) {
-		mes "^3355FFAt the base of the pillar^000000";
-		mes "^3355FFis a tiny key hole with^000000";
-		mes "^3355FFa turtle shaped mark.^000000";
-		mes "^3355FFYou used the";
-		mes "Turtle Pillar key";
-		mes "in that key hole.^000000";
+		mes "^3355FF在柱子的底部^000000";
+		mes "^3355FF有一个小小的钥匙孔，^000000";
+		mes "^3355FF上面刻着龟形标记。^000000";
+		mes "^3355FF你使用了";
+		mes "龟柱钥匙";
+		mes "插入那个钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Crack!*^000000";
+		mes "^3355FF*咔嗒！咔嚓！*^000000";
 		next;
-		mes "^3355FFAt the base of the pillar,^000000";
-		mes "^3355FFa little door appears, and^000000";
-		mes "^3355FFfrom that door an engraved^000000";
-		mes "^3355FFstone bead rolls out.^000000";
+		mes "^3355FF在柱子的底部，^000000";
+		mes "^3355FF出现了一扇小门，^000000";
+		mes "^3355FF从门里滚出一颗^000000";
+		mes "^3355FF刻着纹路的石珠。^000000";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "This turtle pillar is made of the strongest material on this island.";
+		mes "[龟石珠]";
+		mes "这根龟柱由这座岛上最坚固的材料制成。";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "Cutting it is impossible for even someone with legendary skills. Even if I managed to cut it, all of Turtle Island would collapse upon me.";
+		mes "[龟石珠]";
+		mes "即使是拥有传说技艺的人也不可能斩断它。就算我勉强斩开，整座乌龟岛也会崩塌压在我身上。";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "I've developed my mental skills, and trained using materials on this island. Sharpening my mind, I now know that I can cut this pillar in two.";
+		mes "[龟石珠]";
+		mes "我锻炼了心志，并用这座岛上的材料进行修行。如今我的心已磨砺透彻，我知道我能将这根柱子一分为二。";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "Can this be the pinnacle of swordsmanship? Of the sword arts?";
+		mes "[龟石珠]";
+		mes "这难道就是剑术的巅峰？剑道的极致？";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "For this final accomplishment, I leave behind an offering.";
+		mes "[龟石珠]";
+		mes "为了这最后的成就，我留下了一份供品。";
 		next;
-		mes "[Turtle Stone Bead]";
-		mes "I intend to offer my gratitude to the blood of the monsters I have killed, and the materials I have used in my training.";
+		mes "[龟石珠]";
+		mes "我要以我斩杀之魔物的血，以及修行时所用的材料，献上我的感谢。";
 		next;
-		mes "^3355FFThere are many items^000000";
-		mes "^3355FFunder the pillar...^000000";
+		mes "^3355FF这里有许多物品^000000";
+		mes "^3355FF就在柱子下面……^000000";
 		set MISC_QUEST,MISC_QUEST | 65536;
 		set TURTLE,0;
 		completequest 11034;
 		switch(rand(1,10)) {
 		case 1:
 			getitem 702,1; //Animal_Blood
-			mes "^3355FFYou've gained ^000000";
-			mes "^3355FFAnimal Gore.^000000";
+			mes "^3355FF你获得了 ^000000";
+			mes "^3355FF家畜血。^000000";
 			close;
 		case 2:
 			getitem 716,1; //Red_Gemstone
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Gemstone.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗红宝石。^000000";
 			close;
 		case 3:
 			getitem 734,1; //Red_Frame
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Frame^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一个红色相框^000000";
 			close;
 		case 4:
 			getitem 10019,1; //Red_Muffler
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFRed Scarf.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF红围巾。^000000";
 			close;
 		case 5:
 			getitem 725,1; //Red_Jewel
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Sardonyx.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗大红宝石。^000000";
 			close;
 		case 6:
 			getitem 716,1; //Red_Gemstone
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Gemstone.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗红宝石。^000000";
 			close;
 		case 7:
 			getitem 716,1; //Red_Gemstone
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Gemstone.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗红宝石。^000000";
 			close;
 		case 8:
 			getitem 716,1; //Red_Gemstone
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Gemstone.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗红宝石。^000000";
 			close;
 		case 9:
 			getitem 716,1; //Red_Gemstone
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Red Gemstone.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗红宝石。^000000";
 			close;
 		case 10:
 			getitem 725,1; //Red_Jewel
-			mes "^3355FFYou've gained^000000";
-			mes "^3355FFa Sardonyx.^000000";
+			mes "^3355FF你获得了^000000";
+			mes "^3355FF一颗大红宝石。^000000";
 			close;
 		}
 	}
-	mes "^3355FFThis Turtle Pillar^000000";
-	mes "^3355FFis just one of^000000";
-	mes "^3355FFmany pillars.^000000";
+	mes "^3355FF这根龟柱^000000";
+	mes "^3355FF只是众多^000000";
+	mes "^3355FF柱子中的一根。^000000";
 	next;
-	mes "^3355FFOr is it...?^000000";
+	mes "^3355FF又或者……？^000000";
 	close;
 }
 
-tur_dun01,203,155,4	script	Turtle stone#tur	111,{
+tur_dun01,203,155,4	script	龟石#tur	111,{
 	if (TURTLE == 4) {
-		mes "^3355FFOn top of the stone";
-		mes "is a small key hole";
-		mes "with the turtle mark.^000000";
+		mes "^3355FF在石头的顶部";
+		mes "有一个小小的钥匙孔";
+		mes "刻着龟形标记。^000000";
 		next;
-		mes "^3355FFYou used the";
-		mes "Security Key";
-		mes "in that hole.^000000";
+		mes "^3355FF你使用了";
+		mes "保安钥匙";
+		mes "插入那个孔中。^000000";
 		next;
-		mes "^3355FF*Tat tat tat tat*^000000";
+		mes "^3355FF*咚咚咚咚*^000000";
 		next;
-		mes "^3355FFThe back of the stone";
-		mes "split into two parts";
-		mes "revealing some hidden";
-		mes "words engraved inside.^000000";
+		mes "^3355FF石头的背面";
+		mes "裂成了两半";
+		mes "露出了里面";
+		mes "刻着的文字。^000000";
 		next;
-		mes "[Turtle Stone]";
-		mes "The one who dreams to be a star of serenity must first hold the comet and three rays of light as one.";
+		mes "[龟石]";
+		mes "梦想成为宁静之星的人，必须先将彗星与三道光芒合而为一。";
 		next;
-		mes "[Turtle Stone]";
-		mes "You already possess the comet, so I grant you the first light...";
+		mes "[龟石]";
+		mes "你已拥有彗星，因此我赐予你第一道光芒……";
 		next;
-		mes "[Turtle Stone]";
-		mes "- Light of the second stage -";
+		mes "[龟石]";
+		mes "——第二阶段之光——";
 		mes "^FF3355B2 , X : 75 , Y : 249^000000";
 		next;
-		mes "^3355FFAt the bottom of the stone";
-		mes "beneath the line of words,";
-		mes "rests a brilliant red bead.^000000";
+		mes "^3355FF在石头的底部";
+		mes "文字的下方，";
+		mes "安放着一颗璀璨的红珠。^000000";
 		next;
 		set TURTLE,10;
 		changequest 11032,11035;
-		mes "^3355FFYou set the red bead to the";
-		mes "Security key, fitting it";
-		mes "within one of three tiny holes.^000000";
+		mes "^3355FF你将红珠嵌入";
+		mes "保安钥匙，把它";
+		mes "装进三个小孔之一。^000000";
 		close;
 	}
-	mes "^3355FFIt is just a";
-	mes "normal turtle";
-	mes "stone. But";
-	mes "on the top";
-	mes "is written";
-	mes "the words,";
-	mes "'1st stage.'^000000";
+	mes "^3355FF它只是一块";
+	mes "普通的龟";
+	mes "石。但";
+	mes "在顶部";
+	mes "写着";
+	mes "这样几个字，";
+	mes "“第一阶段。”^000000";
 	close;
 }
 
-tur_dun02,75,249,4	script	Turtle stone#tur2	111,{
+tur_dun02,75,249,4	script	龟石#tur2	111,{
 	if (TURTLE == 10) {
-		mes "^3355FFOn top of the stone";
-		mes "is a small keyhole";
-		mes "with the turtle mark.^000000";
+		mes "^3355FF在石头的顶部";
+		mes "有一个小小的钥匙孔";
+		mes "刻着龟形标记。^000000";
 		next;
-		mes "^3355FFYou used the";
-		mes "Security Key";
-		mes "in the keyhole.^000000";
+		mes "^3355FF你使用了";
+		mes "保安钥匙";
+		mes "插入钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Click!*^000000";
+		mes "^3355FF*咔嗒！咔嗒！*^000000";
 		next;
-		mes "^3355FFThe back of the stone";
-		mes "split into two parts";
-		mes "revealing some hidden";
-		mes "words along the inside.^000000";
+		mes "^3355FF石头的背面";
+		mes "裂成了两半";
+		mes "露出了里面";
+		mes "刻着的文字。^000000";
 		next;
-		mes "[Turtle Stone]";
-		mes "The one who dreams to be a star of serenity must first hold the comet and three rays of light as one.";
+		mes "[龟石]";
+		mes "梦想成为宁静之星的人，必须先将彗星与三道光芒合而为一。";
 		next;
-		mes "[Turtle Stone]";
-		mes "You already possess the comet and the first light, so I now grant you the second light.";
+		mes "[龟石]";
+		mes "你已拥有彗星与第一道光芒，因此我现在赐予你第二道光芒。";
 		next;
-		mes "[Turtle stone]";
-		mes "- Light of the third stage -";
+		mes "[龟石]";
+		mes "——第三阶段之光——";
 		mes "^FF3355B3 . X : 118 . Y : 233^000000";
 		next;
-		mes "At the bottom of the stone";
-		mes "beneath the line of words,";
-		mes "rests a brilliant yellow bead.";
+		mes "在石头的底部";
+		mes "文字的下方，";
+		mes "安放着一颗璀璨的黄珠。";
 		next;
 		set TURTLE,11;
 		changequest 11035,11036;
-		mes "^3355FFYou set the yellow bead";
-		mes "into the Security key, fitting it";
-		mes "within one of three tiny holes.^000000";
+		mes "^3355FF你将黄珠嵌入";
+		mes "保安钥匙，把它";
+		mes "装进三个小孔之一。^000000";
 		close;
 	}
-	mes "^3355FFIt is just a";
-	mes "normal turtle";
-	mes "stone. But";
-	mes "on the top,";
-	mes "the words";
-	mes "'2nd stage'";
-	mes "are written.^000000";
+	mes "^3355FF它只是一块";
+	mes "普通的龟";
+	mes "石。但";
+	mes "在顶部，";
+	mes "写着";
+	mes "“第二阶段”";
+	mes "这几个字。^000000";
 	close;
 }
 
-tur_dun03,118,233,4	script	Turtle Stone#tur3	111,{
+tur_dun03,118,233,4	script	龟石#tur3	111,{
 	if (TURTLE == 11) {
-		mes "^3355FFOn top of the stone";
-		mes "is a small key hole";
-		mes "with the turtle mark.^000000";
+		mes "^3355FF在石头的顶部";
+		mes "有一个小小的钥匙孔";
+		mes "刻着龟形标记。^000000";
 		next;
-		mes "^3355FFYou used the";
-		mes "Security Key";
-		mes "in the keyhole.^000000";
+		mes "^3355FF你使用了";
+		mes "保安钥匙";
+		mes "插入钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Click!*^000000";
+		mes "^3355FF*咔嗒！咔嗒！*^000000";
 		next;
-		mes "^3355FFThe back of the stone";
-		mes "split into two parts";
-		mes "revealing some hidden";
-		mes "words along the inside.^000000";
+		mes "^3355FF石头的背面";
+		mes "裂成了两半";
+		mes "露出了里面";
+		mes "刻着的文字。^000000";
 		next;
-		mes "[Turtle Stone]";
-		mes "The one who dreams to be a star of serenity must first hold the comet and three rays of light as one.";
+		mes "[龟石]";
+		mes "梦想成为宁静之星的人，必须先将彗星与三道光芒合而为一。";
 		next;
-		mes "[Turtle Stone]";
-		mes "You already possess the comet, and the first two lights. The final light is now yours.";
+		mes "[龟石]";
+		mes "你已拥有彗星与前两道光芒。最后一道光芒现在也属于你了。";
 		next;
-		mes "[Turtle Stone]";
-		mes "- Star of Serenity -";
+		mes "[龟石]";
+		mes "——宁静之星——";
 		mes "^FF3355B4 . X : 113 . Y : 178^000000";
 		next;
-		mes "^3355FFAt the bottom of the stone";
-		mes "beneath the line of words,";
-		mes "rests a brilliant blue bead.^000000";
+		mes "^3355FF在石头的底部";
+		mes "文字的下方，";
+		mes "安放着一颗璀璨的蓝珠。^000000";
 		next;
 		set TURTLE,12;
 		changequest 11036,11037;
-		mes "^3355FFYou set the blue bead to the";
-		mes "into the Security Key, fitting it";
-		mes "within one of three tiny holes.^000000";
+		mes "^3355FF你将蓝珠嵌入";
+		mes "保安钥匙，把它";
+		mes "装进三个小孔之一。^000000";
 		close;
 	}
-	mes "^3355FFIt is just a";
-	mes "normal turtle";
-	mes "stone. But";
-	mes "on the top,";
-	mes "the words,";
-	mes "'3rd stage,'";
-	mes "are written.^000000";
+	mes "^3355FF它只是一块";
+	mes "普通的龟";
+	mes "石。但";
+	mes "在顶部，";
+	mes "写着";
+	mes "“第三阶段”";
+	mes "这几个字。^000000";
 	close;
 }
 
-tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
+tur_dun04,113,178,4	script	龟石像#tur	111,{
 	if (TURTLE == 12) {
-		mes "^3355FFOn top of the statue";
-		mes "is a small key hole";
-		mes "with the turtle mark.^000000";
-		mes "^3355FFYou used the";
-		mes "Security Key";
-		mes "in the keyhole.^000000";
+		mes "^3355FF在雕像的顶部";
+		mes "有一个小小的钥匙孔";
+		mes "刻着龟形标记。^000000";
+		mes "^3355FF你使用了";
+		mes "保安钥匙";
+		mes "插入钥匙孔。^000000";
 		next;
-		mes "^3355FF*Click! Click!*^000000";
+		mes "^3355FF*咔嗒！咔嗒！*^000000";
 		next;
-		mes "^3355FFThe statue split into";
-		mes "two parts revealing a";
-		mes "metal plate underneath.^000000";
+		mes "^3355FF雕像裂成";
+		mes "两半，露出了";
+		mes "下面的金属板。^000000";
 		next;
-		mes "[Metal Plate]";
-		mes "To the one who dreams to be a star of serenity among the people: You know hold the comet and three rays of light as one.";
+		mes "[金属板]";
+		mes "致心怀成为众人之中宁静之星之梦的人：你已拥有彗星，并将三道光芒合而为一。";
 		next;
-		mes "^3355FFYou find a small lever";
-		mes "at the bottom of the";
-		mes "metal plate. You pull";
-		mes "it open like a drawer.^000000";
+		mes "^3355FF你发现了一个小拉杆";
+		mes "在金属板的";
+		mes "底部。你把它";
+		mes "像抽屉一样拉开。^000000";
 		next;
 		set MISC_QUEST,MISC_QUEST | 65536;
 		set TURTLE,0;
@@ -1963,1035 +1963,1035 @@ tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
 			switch(rand(1,4)) {
 			case 1:
 				getitem 644,1; //Gift_Box
-				mes "^3355FFInside the drawer,";
-				mes "is a Gift Box. This";
-				mes "Gift Box is now yours.^000000";
+				mes "^3355FF抽屉里，";
+				mes "有一个礼盒。这个";
+				mes "礼盒现在属于你了。^000000";
 				close;
 			case 2:
 				getitem 616,1; //Old_Card_Album
-				mes "^3355FFInside the drawer,";
-				mes "is an Old Card Album.";
-				mes "It is now yours to keep.^000000";
+				mes "^3355FF抽屉里，";
+				mes "有一本旧卡片册。";
+				mes "现在归你所有了。^000000";
 				close;
 			case 3:
 				getitem 617,1; //Old_Violet_Box
-				mes "^3355FFInside the drawer,";
-				mes "is an Old Purple Box.";
-				mes "It is now yours to keep.^000000";
+				mes "^3355FF抽屉里，";
+				mes "有一个神秘紫箱。";
+				mes "现在归你所有了。^000000";
 				close;
 			case 4:
 				getitem 617,1; //Old_Violet_Box
-				mes "^3355FFInside the drawer,";
-				mes "is an Old Purple Box.";
-				mes "It is now yours to keep.^000000";
+				mes "^3355FF抽屉里，";
+				mes "有一个神秘紫箱。";
+				mes "现在归你所有了。^000000";
 				close;
 			}
 		}
 		getitem 604,1; //Branch_Of_Dead_Tree
-		mes "^3355FFInside the drawer,";
-		mes "is a Dead Branch.";
-		mes "It is now yours to keep.^000000";
+		mes "^3355FF抽屉里，";
+		mes "有一根枯枝。";
+		mes "现在归你所有了。^000000";
 		close;
 	}
-	mes "^3355FFIt is a turtle statue";
-	mes "made of ordinary turtle";
-	mes "stone. On top of it is";
-	mes "the word 'Security.'^000000";
+	mes "^3355FF这是一座龟雕像";
+	mes "由普通的龟";
+	mes "石制成。它的顶部";
+	mes "刻着“保安”二字。^000000";
 	close;
 }
 
-tur_dun03,105,76,4	script	Knight Leader#tur	110,5,5,{
-	mes "[Takuyaka]";
-	mes "Where did all my men go?!";
-	mes "This is horrible~!";
+tur_dun03,105,76,4	script	骑士队长#tur	110,5,5,{
+	mes "[塔库亚卡]";
+	mes "我的人手都跑哪去了？！";
+	mes "太糟糕了~！";
 	next;
-	mes "[Takuyaka]";
+	mes "[塔库亚卡]";
 	mes "Oh...";
-	mes "*Whew!*";
-	mes "Finally, another person.";
-	mes "Tell me who you are!";
+	mes "*呼！*";
+	mes "终于，又来了一个人。";
+	mes "快说，你是什么人！";
 	next;
-	switch(select("Who are you to ask?:"+ strcharinfo(0) +"!:What are you doing here?:First, tell me who you are.")) {
+	switch(select("你算什么人，敢来问我:"+ strcharinfo(0) +"！:你在这里做什么？:先告诉我你是什么人。")) {
 	case 1:
-		mes "[Takuyaka]";
-		mes "How dare you speak to me in that tone! Don't you know who I am?! I'm Takuyaka, leader of the Security Knights of Alberta! Kobolds and Porings quiver in fear when they hear my name...";
+		mes "[塔库亚卡]";
+		mes "你竟敢用这种语气跟我说话！你不知道我是谁吗？！我就是塔库亚卡，阿尔贝塔保安骑士团的团长！犬妖和波利听到我的名字都会吓得发抖……";
 		next;
-		mes "[Takuyaka]";
-		mes "So tell me the truth! You came here for treasure, didn't you?! You want it all for yourself! You bastard! Now get off this island! Go, shoo!";
+		mes "[塔库亚卡]";
+		mes "快说实话！你是为了宝藏才来的吧？！你想独吞全部！你这混蛋！马上离开这座岛！走开，滚！";
 		close;
 	case 2:
-		mes "[Takuyaka]";
-		mes "" + strcharinfo(0) + "?";
-		mes "Well, your name sounds better than mine. And you have more hair on your head as well. Hmmm...";
+		mes "[塔库亚卡]";
+		mes "" + strcharinfo(0) + "？";
+		mes "嗯，你的名字比我的好听。而且你头上的头发也比我多。嗯……";
 		next;
-		mes "[Takuyaka]";
-		mes "Do you have anything to give me? You know, some food or zeny? It's not like I really need it, it's just... Oh bother. Never mind. Perhaps we'll meet later.";
+		mes "[塔库亚卡]";
+		mes "你有什么东西要给我吗？比如一些食物或者 Zeny？倒也不是我真的需要，只是……唉，算了。也许我们以后还会再见。";
 		close;
 	case 3:
-		mes "[Takuyaka]";
-		mes "I've heard that many treasures can be found on Turtle Island. If I can take enough home, I'll be rich! Well, we're supposed to rescue lost adventurers too, but whatever. As leader, I can do whatever I want!";
+		mes "[塔库亚卡]";
+		mes "我听说乌龟岛上能找到许多宝藏。只要带够回去，我就发财了！虽说我们也该救救那些迷路的冒险者，不过随便啦。身为团长，我想怎样就怎样！";
 		next;
-		mes "[Takuyaka]";
-		mes "However, we're totally lost. Meaning we can't find any treasure or even rescue any people. Grrr...! Where are my useless soldiers! I've probably spoiled them with too much food!";
+		mes "[塔库亚卡]";
+		mes "可是我们完全迷路了。也就是说，既找不到宝藏，也救不了人。呃啊……！我那些没用的士兵都哪去了！大概是我用太多食物把他们惯坏了！";
 		next;
-		mes "[Takuyaka]";
-		mes "If you see any of them, tell them they must assemble here! Alright?!";
+		mes "[塔库亚卡]";
+		mes "你要是见到他们，就告诉他们必须到这里集合！听到了吗？！";
 		close;
 	case 4:
-		mes "[Takuyaka]";
-		mes "Me? I'm Takuyaka. A tall, dark, handsome, and dashing leader, as well as a fearsome knight! I have come to save the foolish people of Alberta that have come seeking treasure on Turtle Island.";
+		mes "[塔库亚卡]";
+		mes "我？我是塔库亚卡。高大、黝黑、英俊又潇洒的团长，同时也是令人畏惧的骑士！我是来拯救那些跑到乌龟岛寻宝的阿尔贝塔愚民的。";
 		next;
-		mes "[Mudasamu]";
-		mes "Really, now?";
+		mes "[穆达萨姆]";
+		mes "哦？真的吗？";
 		next;
-		mes "[Takuyaka]";
-		mes "Quiet!";
+		mes "[塔库亚卡]";
+		mes "闭嘴！";
 		next;
-		mes "[Takuyaka]";
-		mes "Anyway, we came here with the purest of intents. But right when we arrived, we were attacked by monsters! Because of the confusion from all the fighting, my soldiers were scattered.";
+		mes "[塔库亚卡]";
+		mes "总之，我们是怀着最纯粹的意图来的。可我们刚一抵达就遭到了魔物袭击！战斗一片混乱，我的士兵们因此走散了。";
 		next;
-		mes "[Takuyaka]";
-		mes "Mudasamu!";
-		mes "Why is this";
-		mes "happening to me!!!!";
+		mes "[塔库亚卡]";
+		mes "穆达萨姆！";
+		mes "为什么这种";
+		mes "事会发生在我身上！！！！";
 		next;
-		mes "[Mudasamu]";
-		mes "Huh...!";
-		mes "Why should you";
-		mes "be surprised,";
-		mes "you chubby dwarf?";
+		mes "[穆达萨姆]";
+		mes "欸……！";
+		mes "凭什么你";
+		mes "大吃一惊，";
+		mes "你这矮胖家伙？";
 		close;
 	}
 
 OnTouch_:
-	mes "[Scared Voice]";
-	mes "Wh-wh-whaat?!";
+	mes "[惊恐的声音]";
+	mes "什、什、什么？！";
 	next;
-	mes "[Terrified Voice]";
-	mes "What's that noise?!";
-	mes "M-M-Mudasamu!";
-	mes "Protect me!";
+	mes "[恐惧的声音]";
+	mes "那是什么声音？！";
+	mes "穆、穆、穆达萨穆！";
+	mes "保护我！";
 	next;
-	mes "[Mudasamu]";
+	mes "[穆达萨穆]";
 	mes "No.";
-	mes "And shut up.";
+	mes "还有，闭嘴。";
 	close;
 }
 
-tur_dun03,105,74,4	script	Mudasamu#tur	119,{
-	mes "[Mudasamu]";
-	mes "My name is Mudasamu...";
-	mes "Second in command of the";
-	mes "Alberta Security Knights.";
+tur_dun03,105,74,4	script	穆达萨穆#tur	119,{
+	mes "[穆达萨穆]";
+	mes "我叫穆达萨穆……";
+	mes "阿尔贝塔警备骑士团的";
+	mes "副队长。";
 	next;
-	mes "[Mudasamu]";
-	mes "We've come here to rescue treasure hunters that might be in trouble. However, our leader is this porky specimen right next to me. So I guess I foresaw that this mission would fail.";
+	mes "[穆达萨穆]";
+	mes "我们是来救那些可能遇到麻烦的寻宝者的。可是，我们的队长就是我身边这个胖家伙。所以我想，我早就预见到这次任务会失败了。";
 	next;
-	mes "[Mudasamu]";
-	mes "Basically, our leader was so distracted by the idea of finding treasure himself that we've lost our men. It's bad enough that he's a fat slob, but he's a greedy slob too!";
+	mes "[穆达萨穆]";
+	mes "说到底，我们的队长光想着自己去找宝藏，害我们损失了人手。他是个胖懒汉已经够糟了，偏偏还是个贪心的胖懒汉！";
 	next;
 	emotion ET_ANGER;
-	mes "[Takuyaka]";
-	mes "Hey, Mudasamu!";
-	mes "Are you talking";
-	mes "about me?!";
+	mes "[塔库亚卡]";
+	mes "喂，穆达萨穆！";
+	mes "你是不是在";
+	mes "说我？！";
 	next;
-	mes "[Mudasamu]";
-	mes "No, fat one,";
-	mes "we're not";
-	mes "talking about you.";
+	mes "[穆达萨穆]";
+	mes "没有，胖子，";
+	mes "我们不是";
+	mes "在说你。";
 	next;
-	mes "[Mudasamu]";
-	mes "*Sigh...*";
-	mes "I better be paid";
-	mes "overtime for";
-	mes "putting up with this.";
+	mes "[穆达萨穆]";
+	mes "*唉……*";
+	mes "忍受这些，";
+	mes "最好给我";
+	mes "算加班费。";
 	close;
 }
 
-tur_dun01,190,115,4	script	Knight#tur	105,{
-	mes "[?]";
-	mes "Where are they?";
-	mes "Oh hey! You're an adventurer, aren't you? Do you know where my comrades are?";
+tur_dun01,190,115,4	script	骑士#tur	105,{
+	mes "[？]";
+	mes "他们在哪儿？";
+	mes "哦，你好！你是冒险者吧？你知道我的同伴在哪儿吗？";
 	next;
-	switch(select("Who are you?:Sorry, I don't.:Why did you come here?:How did you get here?")) {
+	switch(select("你是谁？:抱歉，我不知道。:你为什么来这里？:你是怎么来的？")) {
 	case 1:
-		mes "[Passats]";
-		mes "My name is Passats, a proud Security Knight of Alberta. We've obtained some information that some people came here to seek treasure.";
+		mes "[帕萨茨]";
+		mes "我叫帕萨茨，是阿尔贝塔引以为傲的警备骑士。我们得到消息，有些人来这里寻宝。";
 		next;
-		mes "[Passats]";
-		mes "Our task here is to save people, but when we arrived on Turtle Island, we were attacked by a mob of monsters! So we all got scattered.";
+		mes "[帕萨茨]";
+		mes "我们在这里的任务是救人，可我们一到乌龟岛，就遭到一大群怪物袭击！于是我们都被冲散了。";
 		next;
-		mes "[Passats]";
-		mes "Now I'm all alone. If you find anyone else in my unit, would you let them know?";
+		mes "[帕萨茨]";
+		mes "现在只剩我一个人了。如果你找到我队里的其他人，能告诉他们一声吗？";
 		close;
 	case 2:
-		mes "[Passats]";
-		mes "Ah well...";
-		mes "Well, if you happen to find anyone else in my unit, would you let them know where I am?";
+		mes "[帕萨茨]";
+		mes "唉，好吧……";
+		mes "那么，如果你碰巧找到我队里的其他人，能告诉他们我在哪儿吗？";
 		next;
-		mes "[Passat]";
-		mes "Oh, and if you find our leader, kick his butt, will you? It's so fat, there's no way you can miss.";
+		mes "[帕萨茨]";
+		mes "对了，如果你找到我们的队长，替我踹他一脚，行吗？他那屁股那么肥，你绝不会踢偏。";
 		next;
 		if (BaseLevel <= 10)
 			percentheal 40,0;
-		mes "[Passats]";
+		mes "[帕萨茨]";
 		mes "Oh...";
-		mes "And, um...";
-		mes "Cheer up!";
+		mes "还有，那个……";
+		mes "振作起来！";
 		close;
 	case 3:
-		mes "[Passats]";
-		mes "There are a lot of stories about the amazing wealth that can be found on this island. However, everyone assumed that it was impossible to find Turtle Island.";
+		mes "[帕萨茨]";
+		mes "关于这座岛上能发现惊人财富的传说有很多。不过，大家都认为根本不可能找到乌龟岛。";
 		next;
-		mes "[Passats]";
-		mes "But then, the problem began when some navigator actually knew the way to Turtle Island. I think he'll take just about anybody for 10,000 zeny!";
+		mes "[帕萨茨]";
+		mes "但后来，有个航海家竟然真的知道去乌龟岛的路，问题就开始了。我想，只要给他10000 Zeny，他谁都愿意载！";
 		next;
-		mes "[Passats]";
-		mes "So anyway, some of the people of Alberta have been foolishly coming here, hoping to find treasure. But of course, they can't fight monsters.";
+		mes "[帕萨茨]";
+		mes "总之，阿尔贝塔的一些人傻乎乎地跑到这里，盼着能找到宝藏。可他们当然打不过怪物。";
 		next;
-		mes "[Passats]";
-		mes "So now we're here in order to seek out towners in trouble, and send them safely back home. Of course, now it seems that we also need rescuing...";
+		mes "[帕萨茨]";
+		mes "所以我们现在来这里，是为了找出遇到麻烦的镇上居民，把他们平安送回家。当然，现在看来我们自己也等着被救……";
 		close;
 	case 4:
-		mes "[Passats]";
+		mes "[帕萨茨]";
 		mes "Hmmm...";
 		next;
-		mes "[Passats]";
-		mes "No clue.";
+		mes "[帕萨茨]";
+		mes "完全不知道。";
 		next;
-		select("How can that be?!");
-		mes "[Passats]";
-		mes "Oh, don't be angry. I just drank too much vodka! Before we arrived I was still unconscious and when I finally sobered up, I was here. I'm so embarrassed~";
+		select("怎么会这样？！");
+		mes "[帕萨茨]";
+		mes "哦，别生气。我只是伏特加喝多了！到这儿之前我一直昏睡着，等终于清醒过来，人已经在这里了。真是太丢脸了~";
 		next;
-		mes "[Passats]";
+		mes "[帕萨茨]";
 		mes "I...";
-		mes "I'm a victim too~";
+		mes "我也是受害者啊~";
 		close;
 	}
 }
 
-tur_dun03,189,126,4	script	Knight#tur2	105,{
-	mes "[Jayprocat]";
-	mes "Oh? Are you a civilian? Nice to meet you. I'm a mighty Security Knight of Alberta, Jayprocat.";
+tur_dun03,189,126,4	script	骑士#tur2	105,{
+	mes "[杰普洛卡特]";
+	mes "哦？你是平民吗？很高兴见到你。我是阿尔贝塔强大的警备骑士，杰普洛卡特。";
 	next;
-	if (select("What is that, exactly?:I'm not impressed.") == 1) {
-		mes "[Jayprocat]";
+	if (select("那到底是什么？:我可不觉得厉害。") == 1) {
+		mes "[杰普洛卡特]";
 		mes "Well...";
-		mes "We're supposed to protect the people of Alberta. That's our job as proud Security Knights.";
+		mes "我们的职责是保护阿尔贝塔的人民。这就是我们身为骄傲的警备骑士的工作。";
 		next;
-		mes "[Jayprocat]";
-		mes "So when a bunch of them caught treasure fever and started coming here, we came to rescue them. Anyway, that was the plan.";
+		mes "[杰普洛卡特]";
+		mes "所以当他们一群人染上寻宝热、开始往这里跑时，我们就来救他们了。总之，计划是这样的。";
 		next;
-		mes "[Jayprocat]";
-		mes "It turns out that by some joke by fate, our leader is this pudgy guy who attracted a mob on monsters to us by noisily digging up treasure, instead of doing what we were supposed to do.";
+		mes "[杰普洛卡特]";
+		mes "结果命运开了个玩笑，我们的队长就是这个胖家伙，他不干该干的事，反而大张旗鼓地挖宝，把一大群怪物引到了我们身上。";
 		next;
-		mes "[Jayprocat]";
-		mes "*Sigh...*";
-		mes "Why wasn't Mudasamu in charge? With him as leader, I would've been home for dinner...";
+		mes "[杰普洛卡特]";
+		mes "*唉……*";
+		mes "为什么不是穆达萨穆负责？要是他当队长，我早就回家吃晚饭了……";
 		close;
 	}
-	mes "[Jayprocat]";
+	mes "[杰普洛卡特]";
 	mes "Well...";
-	mes "It's true that we pretty much messed up our current mission to save anyone here seeking for treasure, since we need rescuing now as well.";
+	mes "确实，我们这次营救寻宝者的任务基本搞砸了，因为现在连我们自己都需要人来救。";
 	next;
-	mes "[Jayprocat]";
-	mes "*Sniff*";
-	mes "Why did we have to be attacked by so many monsters on my first mission? I'm... I'm just a new recruit...";
+	mes "[杰普洛卡特]";
+	mes "*抽泣*";
+	mes "为什么我第一次出任务就要被这么多怪物袭击？我……我还只是个新兵……";
 	next;
-	if (select("Why did you run away?:I don't care.") == 1) {
-		mes "[Jayprocat]";
-		mes "No, I didn't just run away! The monsters were too stong and there were so many of them! Plus, it's our damn leader's fault.";
+	if (select("你为什么逃跑？:我不关心。") == 1) {
+		mes "[杰普洛卡特]";
+		mes "不，我不是单纯逃跑！怪物太强了，而且数量那么多！再说，都怪我们那个该死的队长。";
 		next;
-		mes "[Jayprocat]";
-		mes "The monsters are all highly evolved turtles. And this island even looks like a turtle! But I guess you knew that already.";
+		mes "[杰普洛卡特]";
+		mes "那些怪物都是高度进化的乌龟。而且这座岛本身就像只乌龟！不过我想你早就知道了。";
 		next;
-		mes "[Jayprocat]";
-		mes "I had no idea that this island's monsters were so much stronger than the ones that live near Alberta.";
+		mes "[杰普洛卡特]";
+		mes "我完全没想到这座岛的怪物比阿尔贝塔附近的强这么多。";
 		next;
-		mes "[Jayprocat]";
-		mes "Their shells are so tough, and we can't seem to find any sort of weak point! I have no idea how to fight these turtles!";
+		mes "[杰普洛卡特]";
+		mes "它们的壳太硬了，我们好像根本找不到弱点！我完全不知道该怎么对付这些乌龟！";
 		close;
 	}
-	mes "[Jayprocat]";
-	mes "You're so mean...";
-	mes "I mean, I'm really new at this!";
+	mes "[杰普洛卡特]";
+	mes "你太过分了……";
+	mes "我是说，我真的很新手啊！";
 	close;
 }
 
-tur_dun03,104,171,4	script	Knight#tur3	105,{
-	mes "[Squall]";
-	mes "Am I the only one left? Where are all my comrades?! I... I'm about to go crazy!";
+tur_dun03,104,171,4	script	骑士#tur3	105,{
+	mes "[斯考尔]";
+	mes "只剩我一个人了吗？我的同伴都到哪儿去了？！我……我快疯了！";
 	next;
-	if(select("Maybe they ran away?:What happened?") == 1) {
-		mes "[Squall]";
-		mes "No, we would never run away from the face of danger.";
+	if(select("也许他们逃走了？:发生了什么？") == 1) {
+		mes "[斯考尔]";
+		mes "不，我们绝不会在危险面前逃走。";
 		next;
-		mes "[Squall]";
-		mes "Well, we sort of did, but that was because it was a direct order from our leader! If a knight is loyal and proud, he will accept his leader's orders without question!";
+		mes "[斯考尔]";
+		mes "呃，我们算是逃了，但那是队长直接下的命令！一个忠诚又骄傲的骑士，会毫不犹豫地服从队长的命令！";
 		next;
-		mes "[Squall]";
-		mes "Even if that leader is a little greedy, with hair that might be thinning...";
+		mes "[斯考尔]";
+		mes "就算那位队长有点贪心，头发可能也稀疏了些……";
 		next;
-		mes "[Squall]";
-		mes "^FF0000And has the body";
-		mes "of a pregnant whale^000000.";
+		mes "[斯考尔]";
+		mes "^FF0000而且有着";
+		mes "怀孕鲸鱼般的身躯^000000。";
 		next;
-		mes "[Squall]";
-		mes "Oh wait!";
-		mes "I shouldn't";
-		mes "have said that!";
-		mes "What I meant";
-		mes "to say was...";
+		mes "[斯考尔]";
+		mes "哦，等等！";
+		mes "我不该";
+		mes "说这些的！";
+		mes "我想说的";
+		mes "其实是……";
 		next;
-		mes "[Squall]";
-		mes "^CC0000And has the";
-		mes "body of a whale";
-		mes "pregnant with twins^000000.";
+		mes "[斯考尔]";
+		mes "^CC0000而且有着";
+		mes "鲸鱼般的身躯";
+		mes "还怀着双胞胎^000000。";
 		next;
-		mes "[Squall]";
-		mes "Grrrr...!";
-		mes "I'm so angry!";
-		mes "Why can't Mudasamu";
-		mes "be our leader?!";
+		mes "[斯考尔]";
+		mes "呜噜噜……！";
+		mes "气死我了！";
+		mes "为什么不能让穆达萨穆";
+		mes "当我们的队长？！";
 		close;
 	}
-	mes "[Squall]";
-	mes "We had good plans for this mission, made by our second in command, Mudasamu. However, they were executely poorly by the first in command.";
+	mes "[斯考尔]";
+	mes "这次任务我们本来有很好的计划，是副队长穆达萨穆制订的。可队长的执行太差了。";
 	next;
-	mes "[Squall]";
-	mes "Whenever Takuyaka leads a mission, he always manages to mess it up! Why do the leaders in Alberta like him anyway?!";
+	mes "[斯考尔]";
+	mes "每次塔库亚卡带队，总能搞砸！阿尔贝塔的那些上司到底为什么喜欢他？！";
 	next;
-	mes "[Squall]";
-	mes "*Sniff*";
-	mes "I sweat and I bleed for the Alberta Security Knights, and still I'm tortured by the fact that Sir Porky commands us. I hate it!";
+	mes "[斯考尔]";
+	mes "*抽泣*";
+	mes "我为阿尔贝塔警备骑士团流汗流血，却还要因为那个胖大人指挥我们而饱受折磨。我恨透了！";
 	next;
-	mes "[Squall]";
-	mes "Our weapon and armor budget is always gone after Takuyaka visits a buffet... Why do we have to be so miserable?!";
+	mes "[斯考尔]";
+	mes "每次塔库亚卡去一趟自助餐，我们的武器和防具预算就没了……我们为什么要这么惨？！";
 	close;
 }
 
-tur_dun03,67,130,4	script	Knight#tur4	105,{
-	mes "[Nysurea]";
-	mes "Hm? I'm surprised that someone around here is still alive.";
+tur_dun03,67,130,4	script	骑士#tur4	105,{
+	mes "[妮苏蕾亚]";
+	mes "嗯？这附近居然还有活人，真让我意外。";
 	next;
-	mes "[Nysurea]";
-	mes "I'm beginning to think all my comrades have been killed by the monsters here...";
+	mes "[妮苏蕾亚]";
+	mes "我开始觉得，我的同伴都已经被这里的怪物杀光了……";
 	next;
 	if (BaseLevel <= 40) {
-		mes "[Nysurea]";
-		mes "Having a";
-		mes "tough time?";
+		mes "[妮苏蕾亚]";
+		mes "你遇到";
+		mes "麻烦了？";
 		next;
 		if (Zeny <= 3000) {
-			mes "[Nysurea]";
-			mes "Even though you're pretty strong, sooner or later you might need a reprieve. I can send you back to Alberta right now if you want.";
+			mes "[妮苏蕾亚]";
+			mes "就算你相当强，迟早也会需要喘口气。如果你愿意，我现在就能把你送回阿尔贝塔。";
 			next;
-			if (select("Yes, Help me.:No, thanks.") == 1) {
-				mes "[Nysurea]";
-				mes "Okay then, let me activate this teleport thingee donated to us by Kafra Corporation...";
+			if (select("好，帮帮我。:不了，谢谢。") == 1) {
+				mes "[妮苏蕾亚]";
+				mes "好吧，那就让我启动这个卡普拉公司捐赠给我们的传送装置……";
 				close2;
 				warp "alberta",241,115;
 				end;
 			}
-			mes "[Nysurea]";
-			mes "Ah, that's the spirit! You should be careful though. And if you see any other of my comrades, let them know I'm here, would you?";
+			mes "[妮苏蕾亚]";
+			mes "啊，这才像话！不过你要小心。如果你见到我的其他同伴，告诉他们我在这里，好吗？";
 			next;
-			mes "[Nysurea]";
-			mes "Well, good luck!";
+			mes "[妮苏蕾亚]";
+			mes "那么，祝你好运！";
 			close;
 		}
-		mes "[Nysurea]";
-		mes "You look lost! If you stick around here, well, the monsters will probably get the best of you sooner or later.";
+		mes "[妮苏蕾亚]";
+		mes "你看起来迷路了！如果你一直待在这里，呃，怪物迟早会把你解决掉。";
 		next;
-		mes "[Nyusurea]";
+		mes "[纽苏蕾亚]";
 		mes "Anyway...";
-		mes "Good luck!";
-		mes "You'll need it!";
+		mes "祝你好运！";
+		mes "你会用得着的！";
 		close;
 	}
-	mes "[Nysurea]";
+	mes "[妮苏蕾亚]";
 	mes "Huh...";
-	mes "You look calm and collected. If all our soldiers were as strong as you, we probably would not have been scattered.";
+	mes "你看起来冷静又沉着。要是我们的士兵都像你一样强，大概就不会被冲散了。";
 	next;
-	mes "[Nysurea]";
-	mes "I have dreams of becoming a great knight, but since our 'leader' is all plump and no brains, we're stuck in this predicament.";
+	mes "[妮苏蕾亚]";
+	mes "我梦想成为伟大的骑士，可我们的“队长”只长肉不长脑子，我们才会落到这步田地。";
 	next;
-	mes "[Nysurea]";
-	mes "Anyway, be careful in this third level of Turtle Island. A lot of our men were annihilated when they went to explore the East and North sides, so be careful!";
+	mes "[妮苏蕾亚]";
+	mes "总之，在乌龟岛这第三层要小心。我们很多人去探索东边和北边时全军覆没了，一定要小心！";
 	close;
 }
 
 // Alberta Boy
 //============================================================ 
-alberta_in,131,95,5	script	Iromo#ep3_2	706,{
+alberta_in,131,95,5	script	伊罗莫#ep3_2	706,{
 	if (ep13_2_hiki == 13) {
-		mes "[Iromo]";
-		mes "But... this world is...";
-		mes "What a big world... Not just humans...";
-		mes "Other lifeforms just like us...";
-		mes "Where could they be?...";
+		mes "[伊鲁莫]";
+		mes "可是……这个世界是……";
+		mes "多么辽阔的世界……不只是人类……";
+		mes "还有像我们一样的其他生命……";
+		mes "他们会在哪里呢？……";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...Their lives.. and...";
-		mes "Their kingdom... and land...";
-		mes "Where could they be...";
+		mes "他们的王国……还有土地……";
+		mes "他们会在哪里呢……";
 		next;
-		mes "[Iromo]";
-		mes "If they exist, that'd be great...";
-		mes "No... they must exist...";
-		mes "I wish one day... one day I can go there...";
+		mes "[伊鲁莫]";
+		mes "如果他们真的存在，那就太好了……";
+		mes "不……他们一定存在……";
+		mes "我希望有一天……有一天我能去那里……";
 		close;
 	}
 	if (ep13_2_hiki == 12) {
-		mes "[Iromo]";
-		mes "If it's too painful...";
-		mes "It's better if I don't...";
+		mes "[伊鲁莫]";
+		mes "如果太痛苦的话……";
+		mes "我还是不要去比较好……";
 		next;
-		mes "-Silent pause-";
+		mes "——沉默——";
 		next;
-		mes "-"+strcharinfo(0)+" starts to speak-";
-		mes "-And tells him of the journeys-";
-		mes "-Adventures, joy, sorrow, and loss-";
-		mes "-One by one to the boy-";
+		mes "-"+strcharinfo(0)+"开始说话——";
+		mes "——并向他讲述旅途中的经历——";
+		mes "——冒险、喜悦、悲伤与失去——";
+		mes "——一件一件讲给少年听——";
 		next;
-		mes "-Fighting monsters, and winning-";
-		mes "-Coming across many people, and-";
-		mes "-leaving them, and tells of many other things-";
-		mes "-As much as possible, to the boy.-";
+		mes "——与怪物战斗，并取得胜利——";
+		mes "——遇见许多人，然后——";
+		mes "——又与她们告别，还讲了许多别的事——";
+		mes "——尽可能多地讲给少年听。——";
 		next;
-		mes "-Much has happened, and-";
-		mes "-There were many dangers, but in the end-";
-		mes "-Happy things outweighs the bad,-";
-		mes "-What I have received is more than what I have lost.-";
-		mes "-I try hard to convey this message to Iromo.-";
+		mes "——发生了许多事，而且——";
+		mes "——经历了许多危险，但最后——";
+		mes "——快乐的事多过糟糕的事，——";
+		mes "——我所得到的，比我失去的更多。——";
+		mes "——我努力把这个想法传达给伊鲁莫。——";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...So in the end...";
-		mes "You just want me... to go outside...";
-		mes "Am I right...";
+		mes "你只是想让我……到外面去……";
+		mes "我说得对吗……";
 		next;
-		select("It's true, you'll get more than you pay.");
-		mes "[Iromo]";
+		select("没错，你得到的会比你付出的多。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...But now... I am not going outside.";
-		mes "I am still afraid...";
+		mes "我还是很害怕……";
 		next;
-		mes "[Iromo]";
-		mes "Even if I don't go out right now,";
-		mes "I will still... make an effort to do so.";
-		mes "One day, I will surely become...";
+		mes "[伊鲁莫]";
+		mes "即使我现在不出去，";
+		mes "我也还是会……努力去做的。";
+		mes "总有一天，我一定会成为……";
 		mes "..An adventurer... and do many, many things.";
 		next;
 		set ep13_2_hiki,13;
 		completequest 10089;
 		getexp (checkre(3))?8000:80000,0;
-		mes "[Iromo]";
-		mes "The world is big, there are many things...";
-		mes "I have not seen yet. Yes... I want to...";
+		mes "[伊鲁莫]";
+		mes "世界很大，有很多东西……";
+		mes "我还没见过。嗯……我想……";
 		mes "...see them all.";
 		close;
 	}
 	if ((ep13_2_hiki == 11) && (friendship > 14)) {
-		mes "[Iromo]";
-		mes "To go on an adventure with my friends,";
-		mes "I would still rather stay here.";
-		mes "I would still rather stay here quietly and safely.";
+		mes "[伊鲁莫]";
+		mes "和朋友一起去冒险，";
+		mes "我还是宁愿待在这里。";
+		mes "我还是宁愿安安静静、平平安安地待在这里。";
 		next;
-		mes "[Iromo]";
-		mes "Alright...go away. I know...";
-		mes "I know what you want to say...what an annoyance...";
+		mes "[伊鲁莫]";
+		mes "好吧……走开。我知道……";
+		mes "我知道你想说什么……真烦人……";
 		next;
-		mes "-You don't give up, and continue to-";
-		mes "-tell of the stories-";
-		mes "-shared with friends.-";
-		mes "-You tell of the truth.-";
+		mes "——你没有放弃，继续——";
+		mes "——讲述那些故事——";
+		mes "——与朋友分享的故事。——";
+		mes "——你讲述真相。——";
 		next;
-		mes "-Someone met long ago,-";
-		mes "-Suddenly leaves,-";
-		mes "-and finally reunited, but-";
-		mes "-because of the cruel fate-";
-		mes "-he dies in this tragedy.-";
-		mes "-In the end, it's all a tragedy...-";
+		mes "——很久以前遇见的一个人，——";
+		mes "——突然离开，——";
+		mes "——最终重逢，可是——";
+		mes "——因为残酷的命运——";
+		mes "——他在这场悲剧中死去。——";
+		mes "——到最后，全都是一场悲剧……——";
 		next;
-		mes "-But you emphasize -";
-		mes "-Even though the ending is tragic,-";
-		mes "-A beautiful friendship-";
-		mes "-Will not disappear because of that.-";
+		mes "——但你强调——";
+		mes "——即使结局是悲惨的，——";
+		mes "——美好的友情——";
+		mes "——不会因此消失。——";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...Thank you for telling me...";
-		mes "They are great friends...";
+		mes "他们是很好的朋友……";
 		next;
 		if (Sex == SEX_FEMALE) {
-			mes "[Iromo]";
+			mes "[伊鲁莫]";
 			mes "...And? ...What do you...";
-			mes "Want to say to me this time...";
-			mes "You've told me many stories...";
+			mes "这次想对我说……";
+			mes "你已经给我讲了很多故事……";
 			mes "...How about one of your own?";
 			next;
 		}
 		else {
-			mes "[Iromo]";
+			mes "[伊鲁莫]";
 			mes "...And? ...What do you...";
-			mes "Want to say to me this time...";
-			mes "You've told me many stories...";
+			mes "这次想对我说……";
+			mes "你已经给我讲了很多故事……";
 			mes "...How about one of your own?";
 			next;
 		}
-		select("Friendship cannot be forgotten.");
-		mes "[Iromo]";
+		select("友情是无法忘记的。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		select("To have that kind of friends and that kind of friendship...");
-		select("You need to get out of your house and see the world.");
-		mes "[Iromo]";
-		mes "Though you changed a story... but...";
-		mes "You're still talking about this...";
+		select("能拥有那样的朋友、那样的友情……");
+		select("你需要走出家门，去看看这个世界。");
+		mes "[伊鲁莫]";
+		mes "虽然你改了一个故事……可是……";
+		mes "你还在说这个……";
 		next;
-		select("To be honest, the other kids miss you.");
-		mes "[Iromo]";
+		select("说实话，其他孩子都很想你。");
+		mes "[伊鲁莫]";
 		mes "...Him? ...Miss me? That's...";
-		mes "Something from a long time ago...";
+		mes "很久以前的事……";
 		next;
-		select("There are many things you don't know yet.");
-		mes "[Iromo]";
+		select("还有很多你不知道的事。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		select("Don't you think it's a waste to stay home?");
-		mes "[Iromo]";
+		select("你不觉得一直待在家里很浪费吗？");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		select("In order to find safety, you would give up fun adventures?");
-		select("That's too bad. Change is a very fun thing.");
-		mes "[Iromo]";
+		select("为了寻求安稳，你就要放弃有趣的冒险吗？");
+		select("那太可惜了。改变是件很有趣的事。");
+		mes "[伊鲁莫]";
 		mes "...Change...";
-		mes "Is fun...?";
+		mes "有趣……？";
 		next;
-		select("Outside this city and this kingdom, there is a bigger world.");
-		mes "[Iromo]";
+		select("在这座城市和这个王国之外，还有更广阔的世界。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		select("Since it's so big, there are many fun things.");
-		mes "[Iromo]";
-		mes "Really...? Other than Alberta, and Rune-Midgarts...?";
-		mes "There are other places...?";
+		select("既然世界这么大，那一定有很多有趣的事。");
+		mes "[伊鲁莫]";
+		mes "真的吗……？除了阿尔贝塔和卢恩-米德加尔特……？";
+		mes "还有别的地方……？";
 		next;
 		set ep13_2_hiki,12;
 		changequest 10088,10089;
-		mes "[Iromo]";
-		mes "But... there will also be many troubles...";
-		mes "Isn't that true... I can't relax...";
-		mes "I... don't like those...";
+		mes "[伊鲁莫]";
+		mes "可是……也会有很多麻烦……";
+		mes "不是吗……我没办法放松……";
+		mes "我……不喜欢那些……";
 		close;
 	}
 	if (ep13_2_hiki == 11) {
-		mes "[Iromo]";
-		mes "To go on an adventure with my friends,";
-		mes "I would still rather stay here.";
-		mes "I would still rather stay here quietly and safely.";
+		mes "[伊鲁莫]";
+		mes "和朋友一起去冒险，";
+		mes "我还是宁愿待在这里。";
+		mes "我还是宁愿安安静静、平平安安地待在这里。";
 		next;
-		mes "[Iromo]";
-		mes "Alright... go away. I know...";
-		mes "I know what you want to say... what an annoyance...";
+		mes "[伊鲁莫]";
+		mes "好吧……走开。我知道……";
+		mes "我知道你想说什么……真烦人……";
 		close;
 	}
 	if (ep13_2_hiki == 10) {
 		set .@cooltime,checkquest(10087,PLAYTIME);
 		if (.@cooltime == 2) {
-			mes "[Iromo]";
+			mes "[伊鲁莫]";
 			mes "...You really are annoying...";
-			mes "What exactly do you want from me...?";
+			mes "你到底想从我这里得到什么……？";
 			next;
-			mes "[Iromo]";
-			mes "A long time ago... I had a friend just like you.";
-			mes "I met him when I went out to play...";
+			mes "[伊鲁莫]";
+			mes "很久以前……我有个和你一样的朋友。";
+			mes "是我出去玩的时候遇见他的……";
 			mes "But...";
-			mes "He must've forgotten all about me...";
+			mes "他一定早就把我忘光了……";
 			next;
 			set ep13_2_hiki,11;
 			changequest 10087,10088;
 			getexp (checkre(3))?6700:67000,0;
-			mes "[Iromo]";
-			mes "Nevermind... it's not unexpected...";
-			mes "To go on an adventure with my friends,";
-			mes "I would still rather stay here.";
-			mes "I would still rather stay here quietly and safely.";
+			mes "[伊鲁莫]";
+			mes "算了……也不意外……";
+			mes "和朋友一起去冒险，";
+			mes "我还是宁愿待在这里。";
+			mes "我还是宁愿安安静静、平平安安地待在这里。";
 			close;
 		}
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...What... Right now, I...";
-		mes "I don't want to... hear anything...";
-		mes "Go away...";
+		mes "我什么……都不想听……";
+		mes "走开……";
 		close;
 	}
 	if ((ep13_2_hiki == 9) && (lhz_rekenber > 21)) {
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...What is it... this time...?";
 		next;
-		select("A story about a pair of siblings.");
-		mes "-Tell him about Kazien and Lyozien.-";
-		mes "-Because of ill fate,-";
-		mes "-They were born to do illegal tasks-";
-		mes "-But the innocent Lyozien-";
-		mes "-Trusted his brother...-";
+		select("讲一个关于一对兄妹的故事。");
+		mes "——给他讲卡吉恩和利奥吉恩的事。——";
+		mes "——因为不幸的命运，——";
+		mes "——他们生来就要做违法的勾当——";
+		mes "——但天真的利奥吉恩——";
+		mes "——信任着他的哥哥……——";
 		next;
-		mes "-And even though Kazien has become-";
-		mes "-a criminal, but as an older brother-";
-		mes "-He hopes to take good care of his younger brother.-";
+		mes "——即使卡吉恩已经成了——";
+		mes "——罪犯，但作为哥哥——";
+		mes "——他仍希望能好好照顾弟弟。——";
 		next;
-		mes "-This is a story from far away,-";
-		mes "-But because you have seen it with your own eyes,-";
-		mes "-You can clearly express-";
-		mes "-Your feelings.-";
+		mes "——这是一个来自远方的故事，——";
+		mes "——但因为你是亲眼所见，——";
+		mes "——你能清楚地表达——";
+		mes "——你的感受。——";
 		next;
-		mes "-This story must be able to-";
-		mes "-Stir up the interest of-";
-		mes "-Iromo, who has always wanted a brother.-";
+		mes "——这个故事一定能——";
+		mes "——激起——";
+		mes "——一直想要个哥哥的伊鲁莫的兴趣。——";
 		next;
-		mes "[Iromo]";
-		mes "I see...They were great siblings...";
-		mes "Tragic...but also beautiful.";
-		mes "If only...I can be the protagonist...";
+		mes "[伊鲁莫]";
+		mes "原来如此……他们是很好的兄妹……";
+		mes "悲惨……却又美丽。";
+		mes "要是……我能成为主角就好了……";
 		mes "..in such a story...";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...But...I'm an only child...";
 		mes "...So there's nothing I can do...";
 		next;
-		select("You don't need to be related by blood to be brothers.");
-		mes "[Iromo]";
+		select("要成为兄弟，不一定非要有血缘关系。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		select("You can find make of these brothers outside.");
-		mes "[Iromo]";
+		select("你在外面也能找到很多这样的兄弟。");
+		mes "[伊鲁莫]";
 		mes "...Outside?...";
 		next;
-		select("But if you stay at home, nothing will change.");
-		mes "[Iromo]";
+		select("但如果你一直待在家里，什么都不会改变。");
+		mes "[伊鲁莫]";
 		mes "...";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...What... So it's all my fault...";
-		mes "What you want to say...";
+		mes "你想说的话……";
 		mes "...is always the same...";
-		mes "Get out... I'm not in the mood...";
+		mes "出去……我没心情……";
 		next;
 		set ep13_2_hiki,10;
 		changequest 10086,10087;
 		getexp (checkre(3))?5700:57000,0;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...I'm not in a good mood, get out...";
 		close;
 	}
 	if ((ep13_2_hiki == 8) || (ep13_2_hiki == 9)) {
 		set .@cooltime,checkquest(10085,PLAYTIME);
 		if (.@cooltime == 2) {
-			mes "[Iromo]";
-			mes "You never give up, don't you?";
-			mes "What are you trying to say?";
+			mes "[伊鲁莫]";
+			mes "你还真是不肯放弃啊？";
+			mes "你到底想说什么？";
 			next;
-			mes "[Iromo]";
-			mes "It is frustrating. But...";
-			mes "Why do you care about me so much?";
+			mes "[伊鲁莫]";
+			mes "真让人烦躁。不过……";
+			mes "你为什么这么关心我？";
 			next;
 			if (Sex == SEX_FEMALE) {
-				mes "[Iromo]";
-				mes "Really, its not that bad...";
-				mes "I wish I could have a sister like you.";
+				mes "[伊鲁莫]";
+				mes "其实，也没那么糟……";
+				mes "我希望能有个像你这样的姐姐。";
 				next;
 			}
 			else {
-				mes "[Iromo]";
-				mes "Really, its not that bad...";
-				mes "I wish I could have a brother like you.";
+				mes "[伊鲁莫]";
+				mes "其实，也没那么糟……";
+				mes "我希望能有个像你这样的哥哥。";
 				next;
 			}
-			mes "[Iromo]";
-			mes "Do you have any stories about siblings?";
+			mes "[伊鲁莫]";
+			mes "你有什么关于兄妹的故事吗？";
 			next;
 			set ep13_2_hiki,9;
 			changequest 10085,10086;
-			mes "[Iromo]";
-			mes "What? Anything to say?";
-			mes "Seriously!";
-			mes "Just leave me alone.";
+			mes "[伊鲁莫]";
+			mes "什么？有什么想说的吗？";
+			mes "真是的！";
+			mes "让我一个人待着吧。";
 			close;
 		}
-		mes "[Iromo]";
-		mes "Thank you for caring...";
-		mes "But that is ok...No thanks...";
+		mes "[伊鲁莫]";
+		mes "谢谢你的关心……";
+		mes "但不用了……谢谢……";
 		close;
 	}
 	if (ep13_2_hiki == 7) {
 		set .@goyang,checkquest(10084,HUNTING);
 		if (.@goyang == 2) {
-			mes "[Iromo]";
-			mes "Oh, you made the furious cat";
-			mes "go away from the village?";
+			mes "[伊鲁莫]";
+			mes "哦，是你把那只暴怒的猫";
+			mes "赶出村子的吗？";
 			mes "...Oh, you did..Thanks!";
 			next;
-			mes "[Iromo]";
-			mes "But, I am still scared of";
-			mes "being outside.";
-			mes "I would rather stay at home.";
+			mes "[伊鲁莫]";
+			mes "可是，我还是害怕";
+			mes "到外面去。";
+			mes "我宁愿待在家里。";
 			next;
 			set ep13_2_hiki,8;
 			changequest 10084,10085;
 			getexp (checkre(3))?4700:47000,0;
-			mes "[Iromo]";
-			mes "Thank you for being helpful.";
-			mes "But, no thanks.";
+			mes "[伊鲁莫]";
+			mes "谢谢你的热心。";
+			mes "不过，还是不用了。";
 			close;
 		}
-		mes "[Iromo]";
-		mes "If I go out, I will see the scary cat.";
+		mes "[伊鲁莫]";
+		mes "如果我出去，就会见到那只可怕的猫。";
 		next;
-		mes "[Iromo]";
-		mes "He will bite me..and";
-		mes "scratch me again.";
-		mes "I should stay at home.";
+		mes "[伊鲁莫]";
+		mes "它会咬我……还会";
+		mes "再抓我一次。";
+		mes "我还是待在家里好。";
 		close;
 	}
 	if ((ep13_2_hiki == 6) && (countitem(528) > 0) && (countitem(501) > 0)) {
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...Huh? This smell...";
-		mes "This is the one I like the most.";
-		mes "Ha Ha!";
+		mes "这是我最喜欢的一个。";
+		mes "哈哈！";
 		next;
-		mes "[Iromo]";
-		mes "But..my mom is beside me.";
-		mes "(Wink, Wink)";
+		mes "[伊鲁莫]";
+		mes "可是……我妈妈就在我旁边。";
+		mes "（眨眼，眨眼）";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "...Thanks! I need to hide this.";
-		mes "Anyway, thank you!";
+		mes "总之，谢谢你！";
 		next;
-		mes "[Iromo]";
-		mes "It smells so good.";
+		mes "[伊鲁莫]";
+		mes "闻起来真香。";
 		next;
-		mes "[Iromo]";
-		mes "Huh?? If I go out,";
-		mes "then can I get these things?";
+		mes "[伊鲁莫]";
+		mes "咦？？如果我出去，";
+		mes "就能得到这些东西吗？";
 		next;
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "......";
 		next;
-		mes "[Iromo]";
-		mes "But... I'm scared...";
+		mes "[伊鲁莫]";
+		mes "可是……我害怕……";
 		next;
-		mes "[Iromo]";
-		mes "I am scared. If I go out...";
-		mes "No, I don't want to get hurt again.";
+		mes "[伊鲁莫]";
+		mes "我害怕。如果我出去……";
+		mes "不，我不想再受伤了。";
 		next;
-		select("Again?");
-		mes "[Iromo]";
+		select("又受伤？");
+		mes "[伊鲁莫]";
 		mes "...there is a weird cat that can walk on two feet.";
-		mes "I like cats so I approached him.";
-		mes "Then suddenly he scratched and bit me.";
+		mes "我喜欢猫，所以就走近了它。";
+		mes "然后它突然又抓又咬我。";
 		next;
 		delitem 528,1; //Monster's_Feed
 		delitem 501,1; //Red_Potion
 		set ep13_2_hiki,7;
 		changequest 10083,10084;
 		getexp (checkre(3))?3750:37500,0;
-		mes "[Iromo]";
-		mes "I don't want to see the cat again.";
-		mes "If I go out, I will see him. It is scary.";
+		mes "[伊鲁莫]";
+		mes "我不想再见到那只猫了。";
+		mes "如果我出去，就会见到它。太可怕了。";
 		close;
 	}
 	if ((ep13_2_hiki == 3) || (ep13_2_hiki == 4) || (ep13_2_hiki == 5) || (ep13_2_hiki == 5)) {
-		mes "[Iromo]";
+		mes "[伊鲁莫]";
 		mes "... I don't like being outside of the village.";
-		mes "Being inside of the house is the best.";
+		mes "待在屋子里最好了。";
 		close;
 	}
 	if ((ep13_2_hiki == 1) || (ep13_2_hiki == 2)) {
-		mes "[Iromo]";
-		mes "Mother told me that";
-		mes "I should go out and play";
-		mes "with friends. But I don't";
-		mes "want to go out with them.";
+		mes "[伊鲁莫]";
+		mes "妈妈告诉我";
+		mes "应该出去和朋友们";
+		mes "一起玩。可是我不";
+		mes "想和他们出去。";
 		next;
-		mes "[Iromo]";
-		mes "It is little bit inconvenient that";
-		mes "I can't get delicious food";
-		mes "that grows outside of the village.";
-		mes "I can stand it.";
+		mes "[伊鲁莫]";
+		mes "有点不方便的是";
+		mes "我吃不到";
+		mes "长在村子外面的美味食物。";
+		mes "我能忍。";
 		next;
 		if (ep13_2_hiki == 1) {
 			set ep13_2_hiki,2;
 			changequest 10079,10080;
 		}
-		mes "[Iromo]";
-		mes "But, I can have other food";
-		mes "instead of the outside food.";
-		mes "That way I don't have to go out.";
+		mes "[伊鲁莫]";
+		mes "不过，我可以吃别的食物";
+		mes "来代替外面的食物。";
+		mes "这样我就不用出去了。";
 		close;
 	}
-	mes "[Iromo]";
+	mes "[伊鲁莫]";
 	mes "......";
 	next;
-	mes "[Iromo]";
-	mes "I like my house and my room.";
-	mes "I don't want to go out.";
+	mes "[伊鲁莫]";
+	mes "我喜欢我的家和我的房间。";
+	mes "我不想出去。";
 	close;
 }
 
-alberta_in,120,93,3	script	Iromo's Mother#ep3_2	53,{
+alberta_in,120,93,3	script	伊罗莫的母亲#ep3_2	53,{
 	if (ep13_2_hiki >= 8) {
-		mes "[Mother]";
-		mes "Thank you for helping my son.";
-		mes "But I think we can't do anything";
-		mes "about him anymore.";
+		mes "[母亲]";
+		mes "谢谢你帮助我的儿子。";
+		mes "但我想，我们已经";
+		mes "对他无能为力了。";
 		next;
-		mes "[Mother]";
-		mes "Iromo was really active and";
-		mes "curious about the world.";
-		mes "He wanted to see all the";
-		mes "sights of the world.";
+		mes "[母亲]";
+		mes "伊鲁莫以前真的很活泼，";
+		mes "对世界充满好奇。";
+		mes "他想看遍这世上的";
+		mes "所有景色。";
 		next;
-		mes "[Mother]";
-		mes "But look at him now.";
-		mes "He doesn't go out anymore.";
-		mes "He is just stuck inside of his room.";
+		mes "[母亲]";
+		mes "可你看看他现在的样子。";
+		mes "他再也不出门了。";
+		mes "他只是把自己关在房间里。";
 		next;
-		mes "[Mother]";
-		mes "He became a timid person.";
-		mes "If he has an argument with me,";
-		mes "he doesn't talk to me for a week.";
+		mes "[母亲]";
+		mes "他变得胆小了。";
+		mes "要是他跟我吵了嘴，";
+		mes "他一个星期都不跟我说话。";
 		next;
-		mes "[Mother]";
-		mes "You might have";
-		mes "a hard time getting";
-		mes "Iromo to talk to you.";
+		mes "[母亲]";
+		mes "你也许很难";
+		mes "让伊罗莫";
+		mes "开口跟你说话。";
 		close;
 	}
 	if (ep13_2_hiki == 7) {
-		mes "[Mother]";
-		mes "Oh, I remember";
-		mes "what happened last time...";
-		mes "One day, Iromo came home";
-		mes "with tears in his eyes";
-		mes "And he seemed hurt.";
+		mes "[母亲]";
+		mes "哦，我想起来了，";
+		mes "上次发生的事……";
+		mes "有一天，伊罗莫回到家，";
+		mes "眼里含着泪水，";
+		mes "而且好像受了伤。";
 		next;
-		mes "[Mother]";
-		mes "It was not a big injury.";
-		mes "I was worried about him so much.";
-		mes "But, he never tells me what happened that day.";
+		mes "[母亲]";
+		mes "伤得并不重。";
+		mes "可我还是非常担心他。";
+		mes "可他从没告诉我那天发生了什么。";
 		next;
-		mes "[Mother]";
-		mes "After that day, he hasn't talked to people much and doesn't go out at all.";
+		mes "[母亲]";
+		mes "那天之后，他就很少跟人说话，也完全不出门了。";
 		next;
-		mes "[Mother]";
-		mes "I hope he tells me what happened that day.";
-		mes "Iromo was such a good boy...";
+		mes "[母亲]";
+		mes "我希望他能告诉我那天发生了什么。";
+		mes "伊罗莫本来是个那么好的孩子……";
 		close;
 	}
 	if ((ep13_2_hiki == 4) || (ep13_2_hiki == 5) || (ep13_2_hiki == 6)) {
-		mes "[Mother]";
-		mes "Hum.. Iromo's favorite?";
-		mes "Let me think...";
-		mes "Actually he likes all kinds of food.";
-		mes "He is not picky about food.";
+		mes "[母亲]";
+		mes "嗯……伊罗莫喜欢吃的？";
+		mes "让我想想……";
+		mes "其实他什么食物都喜欢。";
+		mes "他一点也不挑食。";
 		next;
-		mes "[Mother]";
-		mes "When he went out with friends,";
-		mes "he spent all his pocket money,";
-		mes "but I don't know what he has been eating.";
+		mes "[母亲]";
+		mes "他跟朋友出去玩的时候，";
+		mes "把零花钱都花光了，";
+		mes "可我不知道他都吃了些什么。";
 		next;
-		mes "[Mother]";
-		mes "Oh, why don't you ask Iromo's friend?";
-		mes "I think he would know about his favorite food.";
+		mes "[母亲]";
+		mes "哦，你去问问伊罗莫的朋友怎么样？";
+		mes "我想他应该知道他喜欢吃什么。";
 		close;
 	}
 	if ((ep13_2_hiki == 2) || (ep13_2_hiki == 3)) {
-		mes "[Mother]";
-		mes "Hum.. Iromo's favorite?";
-		mes "Let me think...";
-		mes "Actually he likes all kinds of food.";
-		mes "He is not picky about food.";
+		mes "[母亲]";
+		mes "嗯……伊罗莫喜欢吃的？";
+		mes "让我想想……";
+		mes "其实他什么食物都喜欢。";
+		mes "他一点也不挑食。";
 		next;
-		mes "[Mother]";
-		mes "When he went out with friends,";
-		mes "he spent all his pocket money,";
-		mes "but I don't know what he has been eating.";
+		mes "[母亲]";
+		mes "他跟朋友出去玩的时候，";
+		mes "把零花钱都花光了，";
+		mes "可我不知道他都吃了些什么。";
 		next;
 		set ep13_2_hiki,3;
-		mes "[Mother]";
-		mes "Oh, why don't you ask Iromo's friend?";
-		mes "I think he would know about his favorite food.";
+		mes "[母亲]";
+		mes "哦，你去问问伊罗莫的朋友怎么样？";
+		mes "我想他应该知道他喜欢吃什么。";
 		close;
 	}
-	mes "[Mother]";
-	mes "This little boy is my son, Iromo.";
+	mes "[母亲]";
+	mes "这个小男孩是我的儿子，伊罗莫。";
 	next;
-	mes "[Mother]";
-	mes "He used to go out all the time.";
-	mes "He loved playing outside with friends.";
+	mes "[母亲]";
+	mes "他以前总是往外跑。";
+	mes "他很喜欢跟朋友在外面玩。";
 	next;
-	mes "[Mother]";
-	mes "But, somehow...";
-	mes "he doesn't go out anymore.";
+	mes "[母亲]";
+	mes "可是，不知怎么的……";
+	mes "他再也不出门了。";
 	next;
 	if (BaseLevel > 40 && checkquest(10079) == -1) {
 		set ep13_2_hiki,1;
 		setquest 10079;
 	}
-	mes "[Mother]";
-	mes "I am so worried about him...";
-	mes "What happened to him..?";
+	mes "[母亲]";
+	mes "我好担心他……";
+	mes "他到底怎么了……？";
 	close;
 }
 
-alberta,45,106,5	script	Little Boy#ep3_2	706,{
+alberta,45,106,5	script	小男孩#ep3_2	706,{
 	if (ep13_2_hiki == 6) {
-		mes "[Little Boy]";
-		mes "Iromo? He used to like ^FF0000Monster's Feed^000000 and ^FF0000Red Potion^000000.";
+		mes "[小男孩]";
+		mes "伊罗莫？他以前喜欢^FF0000魔物饲料^000000和^FF0000红色药水^000000。";
 		next;
-		mes "[Little Boy]";
-		mes "Oh ya and one more thing~!";
-		mes "I like Bananas. Haha.";
+		mes "[小男孩]";
+		mes "对了，还有一件事～！";
+		mes "我喜欢香蕉。哈哈。";
 		close;
 	}
 	if (ep13_2_hiki == 5) {
-		mes "[Little Boy]";
+		mes "[小男孩]";
 		mes "......";
 		next;
-		mes "[Little Boy]";
-		mes "Yummy! Banana is always delicious!";
-		mes "Bananas are the best fruits ever!";
+		mes "[小男孩]";
+		mes "好吃！香蕉总是这么美味！";
+		mes "香蕉是最好的水果！";
 		next;
-		mes "[Little Boy]";
-		mes "Thanks for the Banana...";
-		mes "Now I can think about";
-		mes "what Iromo likes to eat.";
+		mes "[小男孩]";
+		mes "谢谢你的香蕉……";
+		mes "现在我可以想想";
+		mes "伊罗莫喜欢吃什么了。";
 		next;
-		mes "[Little Boy]";
-		mes "He used to like junk food.";
-		mes "You know, cheap and weird tasting snacks...";
-		mes "So he had to hide when he had them.";
+		mes "[小男孩]";
+		mes "他以前喜欢垃圾食品。";
+		mes "就是那种便宜、味道奇怪的零食……";
+		mes "所以他吃的时候都得躲起来。";
 		next;
-		mes "[Little Boy]";
-		mes "His mother wouldn't let him";
-		mes "have those kind of snacks...";
-		mes "So he hid them from her.";
-		mes "I don't know why he liked";
-		mes "those junk foods anyways.";
+		mes "[小男孩]";
+		mes "他妈妈不让他";
+		mes "吃那种零食……";
+		mes "所以他就瞒着她藏起来。";
+		mes "我不知道他为什么喜欢";
+		mes "那种垃圾食品。";
 		next;
-		mes "[Little Boy]";
-		mes "He usually enjoyed having";
-		mes "Monster's Feed.";
-		mes "He said it is good";
-		mes "with Red Potion soup.";
-		mes "He always had a Red Potion and Monster's Feed for his lunch.";
+		mes "[小男孩]";
+		mes "他平时喜欢吃";
+		mes "魔物饲料。";
+		mes "他说配上";
+		mes "红色药水汤很好吃。";
+		mes "他午饭总是吃红色药水和魔物饲料。";
 		next;
-		mes "[Little Boy]";
-		mes "He's got a weird appetite.";
-		mes "I can't understand why he liked";
-		mes "those foods. He was odd...";
+		mes "[小男孩]";
+		mes "他的口味真奇怪。";
+		mes "我真不明白他为什么喜欢";
+		mes "那些食物。他真怪……";
 		next;
 		set ep13_2_hiki,6;
 		changequest 10082,10083;
-		mes "[Little Boy]";
-		mes "Anyway, I already told you";
-		mes "what I know about him.";
-		mes "So, I am done now.";
-		mes "Let me know if you have more Bananas. Haha.";
-		mes "I love Bananas~~!";
+		mes "[小男孩]";
+		mes "总之，我已经把";
+		mes "我知道的都告诉你了。";
+		mes "所以，我说完了。";
+		mes "你还有香蕉的话就告诉我。哈哈。";
+		mes "我最爱香蕉了～～！";
 		close;
 	}
 	if ((ep13_2_hiki == 4) && (countitem(513) > 0)) {
-		mes "[Little Boy]";
-		mes "Huh? What a delicious smell!";
-		mes "You brought me Bananas!";
-		mes "Oh, thanks so much!";
+		mes "[小男孩]";
+		mes "咦？好香的味道！";
+		mes "你给我带香蕉来了！";
+		mes "哦，太谢谢你了！";
 		next;
-		mes "[Little Boy]";
-		mes "Let me have them first.";
+		mes "[小男孩]";
+		mes "先让我吃吧。";
 		next;
-		mes "[Little Boy]";
-		mes "Chew, chew...";
+		mes "[小男孩]";
+		mes "嚼嚼……";
 		next;
-		mes "[Little Boy]";
-		mes "Yum Yum...";
+		mes "[小男孩]";
+		mes "真好吃……";
 		next;
 		delitem 513,1; //Banana
 		set ep13_2_hiki,5;
 		changequest 10081,10082;
-		mes "[Little Boy]";
-		mes "Wait. Wait...";
-		mes "***Gulp***";
-		mes "just a second...";
+		mes "[小男孩]";
+		mes "等等。等等……";
+		mes "***咕咚***";
+		mes "再等一下……";
 		mes "Wait.";
 		close;
 	}
 	if (ep13_2_hiki == 4) {
-		mes "[Little Boy]";
-		mes "Banana~banana~";
-		mes "I love bananas~";
+		mes "[小男孩]";
+		mes "香蕉～香蕉～";
+		mes "我最爱香蕉了～";
 		next;
-		mes "[Little Boy]";
-		mes "They don't sell bananas in this village...";
-		mes "I am eager to have bananas.";
+		mes "[小男孩]";
+		mes "这个村子里没有卖香蕉的……";
+		mes "我好想吃香蕉。";
 		next;
-		mes "[Little Boy]";
-		mes "Oh~ you promised!";
-		mes "Bring bananas for me~!! I will wait for you!";
+		mes "[小男孩]";
+		mes "哦～你答应了！";
+		mes "给我带香蕉来～！！我等你！";
 		close;
 	}
 	if (ep13_2_hiki == 3) {
-		mes "[Little Boy]";
-		mes "I am hungry. We don't have";
-		mes "much snack bar in this village.";
+		mes "[小男孩]";
+		mes "我饿了。这个村子里";
+		mes "没多少零食店。";
 		next;
-		mes "[Little Boy]";
-		mes "Huh? Iromo?";
-		mes "Oh, I haven't seen him for a long time...";
-		mes "Hum.. Where is he?";
-		mes "Did he move out?";
+		mes "[小男孩]";
+		mes "咦？伊罗莫？";
+		mes "哦，我好久没见过他了……";
+		mes "嗯……他在哪儿？";
+		mes "他搬走了吗？";
 		next;
-		mes "[Little Boy]";
-		mes "Huh? His favorite food?.";
-		mes "Hum.. What was it..?";
+		mes "[小男孩]";
+		mes "咦？他喜欢吃的？";
+		mes "嗯……是什么呢……？";
 		next;
-		mes "[Little Boy]";
-		mes "If I can remember it can you buy me a banana?";
+		mes "[小男孩]";
+		mes "如果我想起来，你能给我买一根香蕉吗？";
 		next;
-		mes "[Little Boy]";
-		mes "Banana~banana~";
-		mes "I love bananas~";
+		mes "[小男孩]";
+		mes "香蕉～香蕉～";
+		mes "我最爱香蕉了～";
 		next;
-		mes "[Little Boy]";
-		mes "They don't sell bananas in this village...";
-		mes "I am eager to have bananas.";
+		mes "[小男孩]";
+		mes "这个村子里没有卖香蕉的……";
+		mes "我好想吃香蕉。";
 		next;
 		set ep13_2_hiki,4;
 		changequest 10080,10081;
-		mes "[Little Boy]";
-		mes "Oh, you will buy me a banana?";
-		mes "I'll try to remember what Iromo's favorite food is for sure if you bring it to me.";
+		mes "[小男孩]";
+		mes "哦，你要给我买香蕉吗？";
+		mes "你带来给我的话，我一定会努力想起伊罗莫喜欢吃什么。";
 		close;
 	}
-	mes "[Little Boy]";
-	mes "I am hungry. We don't have";
-	mes "much snack bar in this village.";
+	mes "[小男孩]";
+	mes "我饿了。这个村子里";
+	mes "没多少零食店。";
 	next;
-	mes "[Little Boy]";
-	mes "I hope they sell bananas";
-	mes "in this village.";
-	mes "Like other nice villages.";
+	mes "[小男孩]";
+	mes "希望他们卖香蕉";
+	mes "在这个村子里。";
+	mes "像别的村子那样。";
 	next;
-	mes "[Little Boy]";
-	mes "This village is so boring...";
-	mes "What a small village.";
+	mes "[小男孩]";
+	mes "这个村子真无聊……";
+	mes "真是个小小的村子。";
 	close;
 }

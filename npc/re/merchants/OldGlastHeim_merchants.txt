@@ -9,30 +9,30 @@
 
 // Merchant
 //============================================================
-glast_01,210,273,5	script	Hugin's Butler#pa0829	1_F_04,{
+glast_01,210,273,5	script	福金的管家#pa0829	1_F_04,{
 	disable_items;
 	if (MaxWeight - Weight < 1000) {
-		mes "Your bag is too heavy. Reduce some weight and come back.";
+		mes "背包太重了。请减轻一些负重再回来。";
 		close;
 	}
-	mes "[Hugin's Butler]";
-	mes "Bring Temporal Crystal items for various Temporal boots items. Pick something you want.";
+	mes "[福金的管家]";
+	mes "带上时间结晶，可兑换各种时光靴。请挑选您想要的。";
 	next;
-	switch( select( "Cancel", "Buy Temporal Boots (Need 1 Temporal Crystal)", "Upgrade Temporal Boots (Need 5 Temporal Crystals)", "Upgrade Modified Boots (Need 5 Temporal Crystals)" ) ) {
+	switch( select( "取消", "购买时光靴（需要1个时间结晶）", "升级时光靴（需要5个时间结晶）", "升级改造靴（需要5个时间结晶）" ) ) {
 	case 1:
-		mes "[Hugin's Butler]";
-		mes "Come back whenever you want.";
+		mes "[福金的管家]";
+		mes "随时欢迎您再来。";
 		close;
 	case 2:
 		if (countitem(6607) > 0) {
-			mes "[Hugin's Butler]";
-			mes "Take these Temporal Boots. We can upgrade your Temporal Boots with 5 Temporal Crystals.";
+			mes "[福金的管家]";
+			mes "请收下这双时光靴。用5个时间结晶就能升级您的时光靴。";
 			delitem 6607,1;// Temporal_Crystal
 			getitem 2499,1;// Temporal_Boots
 			close;
 		}
-		mes "[Hugin's Butler]";
-		mes "You need more Temporal Crystals. Come back when you get some more Temporal Crystals during your travel through Old Glast Heim.";
+		mes "[福金的管家]";
+		mes "时间结晶不够。等您在旧克雷斯特汉姆古城的旅途中收集到更多时间结晶后再来吧。";
 		close;
 	case 3:
 		setarray .@equip_type[0],
@@ -54,41 +54,41 @@ glast_01,210,273,5	script	Hugin's Butler#pa0829	1_F_04,{
 		break;
 	}
 	if (!getequipisequiped(EQI_SHOES)) {
-		mes "[Hugin's Butler]";
-		mes "Only the item you are wearing can be upgraded.";
-		mes "Wear the ^0000FFTemporal Boots^000000 you want to upgrade, and then talk to me once again.";
+		mes "[福金的管家]";
+		mes "只有您正在穿戴的物品才能升级。";
+		mes "请穿上您想升级的^0000FF时光靴^000000，然后再来找我。";
 		close;
 	}
 	if (getequipid(EQI_SHOES) != 2499) {
-		mes "[Hugin's Butler]";
-		mes "You are not wearing the Temporal Boots. Talk to me once you're wearing them.";
+		mes "[福金的管家]";
+		mes "您没有穿着时光靴。穿上之后再来找我吧。";
 		close;
 	}
 	if (countitem(6607) < 5) {
-		mes "[Hugin's Butler]";
-		mes "Not enough Temporal Crystals. You need 5 Temporal Crystals to upgrade your item.";
+		mes "[福金的管家]";
+		mes "时间结晶不足。升级您的物品需要5个时间结晶。";
 		close;
 	}
-	mes "[Hugin's Butler]";
-	mes "You can trade ^0000FF1 Temporal Boots and 5 Temporal Crystals^000000 for 1 of the following items. ^FF0000Previous refine rate will not be retained with these new ones^000000.";
+	mes "[福金的管家]";
+	mes "您可以用^0000FF1双时光靴和5个时间结晶^000000兑换下列物品之一。^FF0000新物品不会保留原有的精炼度^000000。";
 	next;
-	.@s = select( "Cancel", "Str Boots", "Int Boots", "Agi Boots", "Vit Boots", "Dex Boots", "Luk Boots" ) - 2;
+	.@s = select( "取消", "力量靴", "智力靴", "敏捷靴", "体力靴", "灵巧靴", "幸运靴" ) - 2;
 	if (.@s == -1) {
-		mes "[Hugin's Butler]";
-		mes "Come back anytime you want.";
+		mes "[福金的管家]";
+		mes "随时都可以再来。";
 		close;
 	}
 	setarray .@type$[0], "Strength", "Intelligence", "Agility", "Vitality", "Dexterity", "Lucky";
-	mes "[Hugin's Butler]";
-	mes "Are you sure about buying Temporal ^FF0000" + .@type$[.@s] + "^000000 Boots? There's no refunds.";
+	mes "[福金的管家]";
+	mes "确定要购买^FF0000" + .@type$[.@s] + "^000000时光靴吗？售出后概不退换。";
 	next;
-	if (select( "Think again", "Yes, I am sure." ) == 1) {
-		mes "[Hugin's Butler]";
-		mes "Ok, come back again when you are sure.";
+	if (select( "再考虑一下", "是的，我确定。" ) == 1) {
+		mes "[福金的管家]";
+		mes "好的，等您确定后再来吧。";
 		close;
 	}
-	mes "[Hugin's Butler]";
-	mes "The boots have been upgraded as you want.";
+	mes "[福金的管家]";
+	mes "靴子已按您的要求完成升级。";
 	if (getequipid(EQI_SHOES) == 2499) {
 		delequip EQI_SHOES;
 		delitem 6607,5;// Temporal_Crystal
@@ -99,48 +99,48 @@ glast_01,210,273,5	script	Hugin's Butler#pa0829	1_F_04,{
 
 // Enchant and Socket NPC
 //============================================================
-glast_01,212,273,4	script	Hugin's Magician#pa0829	1_F_01,{
+glast_01,212,273,4	script	福金的魔法师#pa0829	1_F_01,{
 	disable_items;
 	if (MaxWeight - Weight < 1000) {
-		mes "Your bag is too heavy. Reduce some weight and come back.";
+		mes "背包太重了。请减轻一些负重再回来。";
 		close;
 	}
-	mes "[Hugin's Magician]";
-	mes "So you came to enchant the Temporal Boots. Be aware that Boots with sockets cannot be enchanted, and this upgrade is only possible for the boots you are wearing.";
+	mes "[福金的魔法师]";
+	mes "看来您是来为时光靴附魔的。请注意，带有插槽的靴子无法附魔，而且这项强化只能对您正在穿戴的靴子进行。";
 	next;
-	if (select( "How does the enchanting work?", "Give effect to my Temporal Boots" ) == 1) {
-		mes "[Hugin's Magician]";
-		mes "You can keep obtain ^0000FFCoagulated Spell^000000 through your travel times.";
+	if (select( "附魔是怎样进行的？", "为我的时光靴赋予效果" ) == 1) {
+		mes "[福金的魔法师]";
+		mes "在旅途中您可以不断获得^0000FF凝固的魔力^000000。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "I can enchant your Temporal Boots items depands on the amount of that item. ^0000FFNot normal type boots^000000. Only possible for those 6 expanded version boots.";
+		mes "[福金的魔法师]";
+		mes "我可以根据该物品的数量为您的时光靴附魔。^0000FF不是普通类型的靴子^000000，只限于那6种扩展版靴子。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "But, once you put a socket into the item, you cannot enchant it. Make sure to remember that.";
+		mes "[福金的魔法师]";
+		mes "不过，一旦在物品上开了插槽，就无法再附魔。请务必记住这一点。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "I don't give out effect randomly. You can pick which effect you want for the item.";
+		mes "[福金的魔法师]";
+		mes "我不会随机赋予效果。您可以为物品挑选想要的效果。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "Of course it is for 4th slot only. You can have small effect at the start, and then the effect gets stronger.";
+		mes "[福金的魔法师]";
+		mes "当然，这只针对第4个插槽。一开始效果较小，之后效果会逐渐增强。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "To get to the final option upgrade, it will require way more Coagulated Spell items. Don't forget that.";
+		mes "[福金的魔法师]";
+		mes "要升级到最终选项，需要多得多的凝固的魔力。别忘了这一点。";
 		next;
-		mes "[Hugin's Magician]";
-		mes "Once the 4th slot completes the best option, you get to have a random bonus effect to the 3rd slot. With.. certain payment~";
+		mes "[福金的魔法师]";
+		mes "当第4个插槽达到最佳选项后，第3个插槽就能获得随机附加效果。当然……需要付出一定的代价~";
 		next;
-		mes "[Hugin's Magician]";
-		mes "Also, you don't lose the item even if the enchant fails, we also guarantee keeping card and refine rate. But we can't initialize enchanting.";
+		mes "[福金的魔法师]";
+		mes "另外，即使附魔失败也不会失去物品，卡片和精炼度也会保留。但我们无法初始化附魔。";
 		next;
-		mes "[Hugin's Magician]";
+		mes "[福金的魔法师]";
 		mes "Phew...";
-		mes "Anyways, that's all for basic enchant information. Now you should see for yourself.";
+		mes "总之，附魔的基本情况就是这些。接下来就请您亲自体验吧。";
 		close;
 	}
 	if (!getequipisequiped(EQI_SHOES)) {
-		mes "[Hugin's Magician]";
-		mes "Are you wearing the item?";
+		mes "[福金的魔法师]";
+		mes "您正穿着那件物品吗？";
 		close;
 	}
 	.@equip_id = getequipid(EQI_SHOES);
@@ -175,20 +175,20 @@ glast_01,212,273,4	script	Hugin's Magician#pa0829	1_F_01,{
 		.@equip_refine = getequiprefinerycnt(EQI_SHOES);
 
 		if (.@card[2] > 0) {
-			mes "[Hugin's Magician]";
-			mes "These boots have already passed the enchanting limit. We can't enchant them any more.";
+			mes "[福金的魔法师]";
+			mes "这双靴子已经达到附魔上限，无法再附魔了。";
 			close;
 		}
 		if (.@card[3] == 0) {// 4th slot 1st try enchanting
 			.@cost = .@enchant_cost[0];
-			mes "[Hugin's Magician]";
-			mes "Want to enchant ^0000FF" + .@equip_name$ + "^000000?";
-			mes "For the 1st enchanting, you need ^0000FF" + .@cost + "^000000 Coagulated Spell items.";
+			mes "[福金的魔法师]";
+			mes "要附魔^0000FF" + .@equip_name$ + "^000000吗？";
+			mes "首次附魔需要^0000FF" + .@cost + "^000000 个凝固的魔力。";
 			next;
-			.@s = select( "Quit", "Fighting Spirit", "Archery", "Spell", "Vitality", "Attack Speed", "Lucky" ) - 2;
+			.@s = select( "退出", "斗志", "弓术", "魔法", "体力", "攻击速度", "幸运" ) - 2;
 			if (.@s == -1) {
-				mes "[Hugin's Magician]";
-				mes "Ok, come back when you are ready.";
+				mes "[福金的魔法师]";
+				mes "好的，准备好再来吧。";
 				close;
 			}
 			.@card[3] = .@enchant_1[.@s];
@@ -202,34 +202,34 @@ glast_01,212,273,4	script	Hugin's Magician#pa0829	1_F_01,{
 					break;
 			}
 			if (.@enchant_num == 5) {
-				mes "[Hugin's Magician]";
-				mes "Something wrong happened.";
+				mes "[福金的魔法师]";
+				mes "发生了错误。";
 				close;
 			}
 			.@cost = .@enchant_cost[.@enchant_num];
 
-			mes "[Hugin's Magician]";
+			mes "[福金的魔法师]";
 			if (.@enchant_num == 4) {
 				.@card[2] = callfunc("F_Rand",4875,4876,4877,4878,4879,4880);// Bear's_Power, Runaway_Magic, Speed_Of_Light, Muscle_Fool, Hawkeye, Lucky_Day
 				.@string$ = "^990000Bonus effect ^000000 upgrade.";
-				mes "4th slot is already upgraded to the final option. Would you like a random bonus effect for the 3rd slot? You need ^0000ff" + .@cost + "^000000 Coagulated Spell items.";
+				mes "第4个插槽已升级至最终选项。要为第3个插槽赋予随机附加效果吗？需要^0000ff" + .@cost + "^000000 Coagulated Spell items.";
 			}
 			else {
 				.@number = .@enchant_num + 1;
 				.@card[3] = getd( ".@enchant_" + (.@enchant_num+1) + "[" + .@enchant_type + "]" );
 				.@string$ = "enchant number ^630000" + .@number + "^000000.";
-				mes "Enchanting ^0000FF" + .@equip_name$ + "^000000's 4th slot as ^0000FF" + .@number + "^000000 level effect. Requires ^0000FF" + .@cost + "^000000 Coagulated Spell items.";
+				mes "附魔^0000FF" + .@equip_name$ + "^000000 的第4个插槽，赋予^0000FF" + .@number + "^000000 等级效果。需要^0000FF" + .@cost + "^000000 个凝固的魔力。";
 			}
 			next;
-			if (select("Quit","Effect Upgrade!") == 1) {
-				mes "[Hugin's Magician]";
-				mes "Ok, come back when you are ready.";
+			if (select("退出","效果升级！") == 1) {
+				mes "[福金的魔法师]";
+				mes "好的，准备好再来吧。";
 				close;
 			}
 		}
 		if (countitem(6608) < .@cost) {
-			mes "[Hugin's Magician]";
-			mes "Hmm, you are missing " + (.@cost - countitem(6608)) + " Coagulated Spell items. Go get more, and then we can talk about more enchants.";
+			mes "[福金的魔法师]";
+			mes "嗯，您还差" + (.@cost - countitem(6608)) + "个凝固的魔力。再去收集一些，然后我们再谈后续附魔。";
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
@@ -240,41 +240,41 @@ glast_01,212,273,4	script	Hugin's Magician#pa0829	1_F_01,{
 			close;
 
 		delequip EQI_SHOES;
-		mes "[Hugin's Magician]";
-		mes "Trying for " + .@string$;
+		mes "[福金的魔法师]";
+		mes "正在尝试" + .@string$;
 		getitem2 .@equip_id,1,1,.@equip_refine,0,0,0,.@card[2],.@card[3];
 		close;
 	default:
-		mes "[Hugin's Magician]";
-		mes "This is not the right item for this enchant.";
-		mes "Remember, only those 6 types of Temporal Boots are available for enchanting.";
+		mes "[福金的魔法师]";
+		mes "这不是适合此次附魔的物品。";
+		mes "请记住，只有那6种时光靴可以附魔。";
 		close;
 	}
 }
 
-glast_01,210,270,0	script	Hugin's Craftsman#pa0829	4_F_JOB_BLACKSMITH,{
+glast_01,210,270,0	script	福金的工匠#pa0829	4_F_JOB_BLACKSMITH,{
 	disable_items;
 	if (MaxWeight - Weight < 1000) {
-		mes "Your bag is too heavy. Reduce some weight and come back.";
+		mes "背包太重了。请减轻一些负重再回来。";
 		close;
 	}
-	mes "[Hugin's Craftsman]";
-	mes "That Magician always says that enchanting Temporal Boots is the best. But, I think quite different.";
+	mes "[福金的工匠]";
+	mes "那位魔法师总说给时光靴附魔最好。不过，我的看法大不相同。";
 	next;
-	mes "[Hugin's Craftsman]";
-	mes "I think putting a slot into the item would be the best. Even with some risk of failing.";
+	mes "[福金的工匠]";
+	mes "我觉得给物品开个插槽才是最好的，哪怕有一定失败风险。";
 	next;
-	mes "[Hugin's Craftsman]";
-	mes "Bring me ^0000FF5 Temporal Crystals^000000, and I will try to put a slot into your advanced Temporal Boots. But, it's possible to ^FF0000fail and break the item^000000. Is that ok?";
+	mes "[福金的工匠]";
+	mes "带^0000FF5个时间结晶^000000来，我就试着为您的高级时光靴开一个插槽。但也有可能^FF0000失败并损坏物品^000000。可以吗？";
 	next;
-	if (select( "Cancel", "Take the risk and try to add a slot" ) == 1) {
-		mes "[Hugin's Craftsman]";
-		mes "Ok, come back anytime you want.";
+	if (select( "取消", "冒险尝试开插槽" ) == 1) {
+		mes "[福金的工匠]";
+		mes "好的，随时都可以再来。";
 		close;
 	}
 	if (!getequipisequiped(EQI_SHOES)) {
-		mes "[Hugin's Craftsman]";
-		mes "Are you sure you are wearing the item?";
+		mes "[福金的工匠]";
+		mes "您确定正穿着那件物品吗？";
 		close;
 	}
 	.@equip_id = getequipid(EQI_SHOES);
@@ -293,47 +293,47 @@ glast_01,210,270,0	script	Hugin's Craftsman#pa0829	4_F_JOB_BLACKSMITH,{
 	case 22111:	callsub( S_Slot,22117 );	// Modified_DEX_Boots
 	case 22112:	callsub( S_Slot,22118 );	// Modified_LUK_Boots
 	default:
-		mes "[Hugin's Craftsman]";
-		mes "This is not it! We need ^0000FFAdvanced Temporal Boots^000000 items! The item ^0000FFwith a stat effect and without a slot^000000!";
+		mes "[福金的工匠]";
+		mes "不对！我们需要^0000FF高级时光靴^000000！就是^0000FF带有属性效果且没有插槽^000000的那种物品！";
 		close;
 	}
 
 S_Slot:
 	.@equip_id = getequipid(EQI_SHOES);
-	mes "[Hugin's Craftsman]";
-	mes "And ^FF0000all enchant or refine rates will be lost if you fail this.^000000";
-	mes "Still want to risk it?";
+	mes "[福金的工匠]";
+	mes "而且一旦失败，^FF0000所有附魔与精炼度都会丢失。^000000";
+	mes "还是要冒这个险吗？";
 	next;
-	if (select( "Cancel", "I am ok with it!" ) == 1) {
-		mes "[Hugin's Craftsman]";
-		mes "Ok, come back anytime you want.";
+	if (select( "取消", "我可以接受！" ) == 1) {
+		mes "[福金的工匠]";
+		mes "好的，随时都可以再来。";
 		close;
 	}
-	mes "[Hugin's Craftsman]";
-	mes "Once again, ^FF0000That Magician won't enchant any item with a slot.^000000";
-	mes "Still want to proceed?";
+	mes "[福金的工匠]";
+	mes "再说一次，^FF0000那位魔法师不会为任何带插槽的物品附魔。^000000";
+	mes "还要继续吗？";
 	next;
-	if (select( "Cancel", "I understand. Try to slot it." ) == 1) {
-		mes "[Hugin's Craftsman]";
-		mes "Ok, come back anytime you want.";
+	if (select( "取消", "我明白。试着开插槽吧。" ) == 1) {
+		mes "[福金的工匠]";
+		mes "好的，随时都可以再来。";
 		close;
 	}
 	if (countitem(6607) < 5) {
-		mes "[Hugin's Craftsman]";
-		mes "You must bring ^0000FF5 Temporal Crystal items^000000. Nothing is free you know...";
+		mes "[福金的工匠]";
+		mes "您必须带^0000FF5个时间结晶^000000来。天下可没有免费的午餐……";
 		close;
 	}
 	delitem 6607,5;// Temporal_Crystal
 	if (getequipid(EQI_SHOES) == .@equip_id) {
 		delequip EQI_SHOES;
 		if (rand(1,100) < 50) {
-			mes "[Hugin's Craftsman]";
-			mes "Arrggg, we failed. Better luck next time.";
+			mes "[福金的工匠]";
+			mes "呃啊啊，失败了。下次祝您好运。";
 			specialeffect2 EF_PHARMACY_FAIL;
 			close;
 		}
-		mes "[Hugin's Craftsman]";
-		mes "Successful! Here you go.";
+		mes "[福金的工匠]";
+		mes "成功了！拿去吧。";
 		specialeffect2 EF_MAXPOWER;
 		getitem getarg(0),1;
 	}
@@ -341,14 +341,14 @@ S_Slot:
 }
 
 // Temporal shoes slotted - npc enchant
-glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
+glast_01,184,283,4	script	暗黑魔法大师#pa082	1_F_01,{
 	disable_items;
 	if ((MaxWeight - Weight) < 1000) {
-		mes "Your bag is too heavy. Reduce some weight and come back.";
+		mes "背包太重了。请减轻一些负重再回来。";
 		close;
 	}
 	if (checkweight(1201,1) == 0) {
-		mes "You seem to be carrying too many items. Put some items in storage and come back again.";
+		mes "您带的东西似乎太多了。请把一些物品放进仓库后再来。";
 		close;
 	}
 	// requirements
@@ -356,24 +356,24 @@ glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
 	.@polluted_id = 6755;// Polluted_Spell
 	.@cost_zeny = 100000;
 
-	mes "[Dark magic master]";
-	mes "I deal with the Temporal Boots with socket only.";
+	mes "[暗黑魔法大师]";
+	mes "我只处理带有插槽的时光靴。";
 	next;
-	if (select( "How does the enchanting work?", "Give effect to my Temporal Boots" ) == 1) {
-		mes "[Dark magic master]";
-		mes "You should ask Hugin's magic master all the basic things. I want deeper conversation about enchating work.";
+	if (select( "附魔是怎样进行的？", "为我的时光靴赋予效果" ) == 1) {
+		mes "[暗黑魔法大师]";
+		mes "基础的东西您该去问福金的魔法大师。我想谈的是更深层的附魔技艺。";
 		next;
-		mes "[Dark magic master]";
-		mes "I need 4 items. ^0000ff" + callfunc("F_InsertComma",.@cost_zeny) + ", " + getitemname(.@polluted_id) + ", " + getitemname(.@coagulated_id) + ", Temporal Boots(Socket) Series^000000. If you don't have any of these, I cannot help you.";
+		mes "[暗黑魔法大师]";
+		mes "我需要4样东西。^0000ff" + callfunc("F_InsertComma",.@cost_zeny) + ", " + getitemname(.@polluted_id) + ", " + getitemname(.@coagulated_id) + ", Temporal Boots(Socket) Series^000000. If you don't have any of these, I cannot help you.";
 		next;
-		mes "[Dark magic master]";
-		mes "It's my small hobby.. To enchant Socketed Temporal Boots using polluted and coagulated spell.";
+		mes "[暗黑魔法大师]";
+		mes "这是我的小爱好……用污浊与凝固的魔力为带插槽的时光靴附魔。";
 		next;
-		mes "[Dark magic master]";
-		mes "Of course, you must cope with bigger risk of destruction whenever you'd like to enchant again and again.";
+		mes "[暗黑魔法大师]";
+		mes "当然，每当您想反复附魔，就得承担更大的损坏风险。";
 		next;
-		mes "[Dark magic master]";
-		mes "The enchant order is same as Hugin's magic master's enchantment. Please refer to his explanation.";
+		mes "[暗黑魔法大师]";
+		mes "附魔流程与福金的魔法大师相同。请参照他的说明。";
 		close;
 	}
 	.@equip_id = getequipid(EQI_SHOES);
@@ -393,12 +393,12 @@ glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
 	case 22118:	// Modified_Luk_Boots_
 		break;
 	case -1:
-		mes "[Dark magic master]";
-		mes "Are you wearing the item?";
+		mes "[暗黑魔法大师]";
+		mes "您正穿着那件物品吗？";
 		close;
 	default:
-		mes "[Dark magic master]";
-		mes "This is not the right item for this enchant. Remember, only those 6 types of Temporal Boots with socket are available for hidden enchanting..";
+		mes "[暗黑魔法大师]";
+		mes "这不是适合此次附魔的物品。请记住，只有那6种带有插槽的时光靴可以进行隐藏附魔……";
 		close;
 	}
 	// enchants ID
@@ -425,22 +425,22 @@ glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
 	.@equip_refine = getequiprefinerycnt(EQI_SHOES);
 
 	if (.@card[2] > 0) {
-		mes "[Dark magic master]";
-		mes "These boots have already passed the enchanting limit. We can't enchant them any more.";
+		mes "[暗黑魔法大师]";
+		mes "这双靴子已经达到附魔上限，无法再附魔了。";
 		close;
 	}
 	if (.@card[3] == 0) {// 4th slot 1st try enchanting
 		.@amount_coag = .@en_amount_coag[0];
 		.@amount_poll = .@en_amount_polluted[0];
 
-		mes "[Dark magic master]";
-		mes "Want to enchant ^0000ff" + .@equip_name$ + " (Socket)^000000? For the 1st enchanting, you need ^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + ", " + .@amount_coag + " " + getitemname(.@coagulated_id) + ", and " + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000.";
-		mes "It has some risk of failing..";
+		mes "[暗黑魔法大师]";
+		mes "要附魔^0000ff" + .@equip_name$ + "（插槽）^000000吗？首次附魔需要^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + "，" + .@amount_coag + " " + getitemname(.@coagulated_id) + "，以及" + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000.";
+		mes "这有一定的失败风险……";
 		next;
-		.@s = select( "Quit", "Fighting Spirit", "Archery", "Spell", "Vitality", "Attack Speed", "Lucky" ) - 2;
+		.@s = select( "退出", "斗志", "弓术", "魔法", "体力", "攻击速度", "幸运" ) - 2;
 		if (.@s == -1) {
-			mes "[Dark magic master]";
-			mes "Ok, come back when you are ready.";
+			mes "[暗黑魔法大师]";
+			mes "好的，准备好再来吧。";
 			close;
 		}
 		.@card[3] = .@enchant_1[.@s];
@@ -455,45 +455,45 @@ glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
 				break;
 		}
 		if (.@num == 5) {
-			mes "[Dark magic master]";
-			mes "Something wrong happened.";
+			mes "[暗黑魔法大师]";
+			mes "发生了错误。";
 			close;
 		}
 		.@amount_coag = .@en_amount_coag[.@num];
 		.@amount_poll = .@en_amount_polluted[.@num];
 
-		mes "[Dark magic master]";
+		mes "[暗黑魔法大师]";
 		if (.@num == 4) {
 			.@card[2] = callfunc("F_Rand",4875,4876,4877,4878,4879,4880);// Bear's_Power, Runaway_Magic, Speed_Of_Light, Muscle_Fool, Hawkeye, Lucky_Day
 			.@string$ = "^990000 Bonus effect ^000000 upgrade.";
-			mes "Would you like a random bonus effect for the 3rd slot? You need ^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + ", " + .@amount_coag + " " + getitemname(.@coagulated_id) + ", and " + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000. But it has high risk of failing..";
+			mes "要为第3个插槽赋予随机附加效果吗？需要^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + ", " + .@amount_coag + " " + getitemname(.@coagulated_id) + ", and " + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000. But it has high risk of failing..";
 		}
 		else {
 			.@level = .@num + 1;
 			.@card[3] = getd( ".@enchant_" + (.@num+1) + "[" + .@type + "]" );
 			.@string$ = "enchant number ^990000" + .@level + "^000000.";
-			mes "Enchanting ^0000ff" + .@equip_name$ + " (Socket)^000000's 4th slot as ^0000ff" + .@level + "^000000 level effect. Requires ^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + ", " + .@amount_coag + " " + getitemname(.@coagulated_id) + ", and " + callfunc("F_InsertComma",.@cost_zeny) + " z^000000. It has some risk of failing..";
+			mes "附魔^0000ff" + .@equip_name$ + "（插槽）^000000 的第4个插槽，赋予^0000ff" + .@level + "^000000 等级效果。需要^0000ff" + .@amount_poll + " " + getitemname(.@polluted_id) + "，" + .@amount_coag + " " + getitemname(.@coagulated_id) + "，以及" + callfunc("F_InsertComma",.@cost_zeny) + " z^000000. It has some risk of failing..";
 		}
 		next;
-		if (select( "Quit", "Effect Upgrade!" ) == 1) {
-			mes "[Dark magic master]";
-			mes "Ok, come back when you are ready.";
+		if (select( "退出", "效果升级！" ) == 1) {
+			mes "[暗黑魔法大师]";
+			mes "好的，准备好再来吧。";
 			close;
 		}
 	}
 	if (countitem(.@coagulated_id) < .@amount_coag) {
-		mes "[Dark magic master]";
-		mes "Hmm, you are missing " + (.@amount_coag - countitem(.@coagulated_id)) + " " + getitemname(.@coagulated_id) + " items. Go get more, and then we can talk about more enchants.";
+		mes "[暗黑魔法大师]";
+		mes "嗯，您还差" + (.@amount_coag - countitem(.@coagulated_id)) + " " + getitemname(.@coagulated_id) + "个物品。再去收集一些，然后我们再谈后续附魔。";
 		close;
 	}
 	if (countitem(.@polluted_id) < .@amount_poll) {
-		mes "[Dark magic master]";
-		mes "Hmm, you are missing " + (.@amount_poll - countitem(.@polluted_id)) + " " + getitemname(.@polluted_id) + " items. Go get more, and then we can talk about more enchants.";
+		mes "[暗黑魔法大师]";
+		mes "嗯，您还差" + (.@amount_poll - countitem(.@polluted_id)) + " " + getitemname(.@polluted_id) + "个物品。再去收集一些，然后我们再谈后续附魔。";
 		close;
 	}
 	if (Zeny < .@cost_zeny) {
-		mes "[Dark magic master]";
-		mes "You must bring ^0000ff" + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000. Nothing is free you know...";
+		mes "[暗黑魔法大师]";
+		mes "您必须带来^0000ff" + callfunc("F_InsertComma",.@cost_zeny) + " zeny^000000. Nothing is free you know...";
 		close;
 	}
 	delitem .@coagulated_id, .@amount_coag;
@@ -507,26 +507,26 @@ glast_01,184,283,4	script	Dark magic master#pa082	1_F_01,{
 	delequip EQI_SHOES;
 	if (.@chances[.@num] < rand(1,100)) {
 		specialeffect2 EF_LORD;
-		mes "[Dark magic master]";
-		mes "Arrggg, we failed. Better luck next time.";
+		mes "[暗黑魔法大师]";
+		mes "呃啊啊，失败了。下次祝您好运。";
 		close;
 	}
 	specialeffect2 EF_REPAIRWEAPON;
-	mes "[Hugin's Magician]";
-	mes "Trying for " + .@string$;
+	mes "[福金的魔法师]";
+	mes "正在尝试" + .@string$;
 	getitem2 .@equip_id,1,1,.@equip_refine,0,0,0,.@card[2],.@card[3];
 	close;
 }
 
 // Items exchange for card
-glast_01,216,292,5	script	Portrait collector#0002	4_M_OILMAN,{
+glast_01,216,292,5	script	肖像收藏家#0002	4_M_OILMAN,{
 	disable_items;
 	if ((MaxWeight - Weight) < 1000) {
-		mes "Your bag is too heavy. Reduce some weight and come back.";
+		mes "背包太重了。请减轻一些负重再回来。";
 		close;
 	}
 	if (checkweight(1201,1) == 0) {
-		mes "You seem to be carrying too many items. Put some items in storage and come back again.";
+		mes "您带的东西似乎太多了。请把一些物品放进仓库后再来。";
 		close;
 	}
 	.@coagulated_id = 6608;		// Coagulated_Spell
@@ -534,16 +534,16 @@ glast_01,216,292,5	script	Portrait collector#0002	4_M_OILMAN,{
 	.@white_card = 4608;		// White_Knightage_Card
 	.@khalitzburg_card = 4609;	// Khaliz_Knightage_Card
 
-	mes "[Portrait collector]";
-	mes "I have been collecting portraits for an year already. Now it's time to show people my collection.";
+	mes "[肖像收藏家]";
+	mes "我收集肖像画已经一年了。现在该向大家展示我的收藏了。";
 	next;
-	mes "[Portrait collector]";
-	mes "Hey, do you have a lot of " + getitemname(.@polluted_id) + " or " + getitemname(.@coagulated_id) + "? If so, why don't you trade a nice portrait that I have?";
+	mes "[肖像收藏家]";
+	mes "嘿，您有很多" + getitemname(.@polluted_id) + "或" + getitemname(.@coagulated_id) + "吗？如果有的话，何不用它们换一幅我收藏的好画呢？";
 	next;
-	switch( select( "Cancel", "Exchange for " + getitemname(.@white_card), "Exchange for " + getitemname(.@khalitzburg_card) ) ) {
+	switch( select( "取消", "兑换" + getitemname(.@white_card), "Exchange for " + getitemname(.@khalitzburg_card) ) ) {
 	case 1:
-		mes "[Portrait collector]";
-		mes "Well, OK. Come back when you are ready.";
+		mes "[肖像收藏家]";
+		mes "好吧。准备好了再来。";
 		close;
 	case 2:
 		.@reward_id = .@white_card;
@@ -556,17 +556,17 @@ glast_01,216,292,5	script	Portrait collector#0002	4_M_OILMAN,{
 		.@amount_polluted = 100;
 		break;
 	}
-	mes "[Portrait collector]";
-	mes "What would you like in exchange for the " + getitemname(.@reward_id) + "?";
+	mes "[肖像收藏家]";
+	mes "您想用什么来交换" + getitemname(.@reward_id) + "?";
 	next;
 	if (countitem(.@coagulated_id) < .@amount_coag)
 		.@color$[0] = "^666666";
 	if (countitem(.@polluted_id) < .@amount_polluted)
 		.@color$[1] = "^666666";
-	switch( select( "Cancel", sprintf("%s%s %s^000000", .@color$[0], callfunc("F_InsertComma",.@amount_coag), getitemname(.@coagulated_id)), sprintf("%s%s %s^000000", .@color$[1], callfunc("F_InsertComma",.@amount_polluted), getitemname(.@polluted_id)) ) ) {
+	switch( select( "取消", sprintf("%s%s %s^000000", .@color$[0], callfunc("F_InsertComma",.@amount_coag), getitemname(.@coagulated_id)), sprintf("%s%s %s^000000", .@color$[1], callfunc("F_InsertComma",.@amount_polluted), getitemname(.@polluted_id)) ) ) {
 	case 1:
-		mes "[Portrait collector]";
-		mes "Well, OK. Come back when you are ready.";
+		mes "[肖像收藏家]";
+		mes "好吧。准备好了再来。";
 		close;
 	case 2:
 		.@id = .@coagulated_id;
@@ -578,20 +578,20 @@ glast_01,216,292,5	script	Portrait collector#0002	4_M_OILMAN,{
 		break;
 	}
 	if (countitem(.@id) < .@amount) {
-		mes "[Portrait collector]";
-		mes "Hmm, you don't have enough Spell now. Go get more.";
+		mes "[肖像收藏家]";
+		mes "嗯，您现在的魔力不够。再去收集一些吧。";
 		close;
 	}
-	mes "[Portrait collector]";
-	mes "Are you sure that you won't regret it?";
+	mes "[肖像收藏家]";
+	mes "您确定不会后悔吗？";
 	next;
-	if (select( "Cancel", "Sure" ) == 1) {
-		mes "[Portrait collector]";
-		mes "Well, OK. Come back when you are ready.";
+	if (select( "取消", "确定" ) == 1) {
+		mes "[肖像收藏家]";
+		mes "好吧。准备好了再来。";
 		close;
 	}
-	mes "[Portrait collector]";
-	mes "Cool, let's make a deal.";
+	mes "[肖像收藏家]";
+	mes "好，我们成交吧。";
 	delitem .@id, .@amount;
 	getitem .@reward_id,1;
 	close;

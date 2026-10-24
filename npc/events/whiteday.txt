@@ -13,59 +13,59 @@
 //= Converted to rAthena format by Dr.Evil
 //============================================================
 
-alberta,188,64,4	script	Sugar	91,{
+alberta,188,64,4	script	舒格	91,{
 	set @maplenum,0;
 	set @mapleItemID,0;
 	set @maplePrice,0;
 	set @maplePriceT,0;
-	mes "[Sugar]";
-	mes "Welcome!";
-	mes "How delicious are sweets?";
-	mes "My teacher.........";
-	mes "The sweets craftsman of ARUBERUTA";
-	mes "There are sweets that is built hard.";
+	mes "[舒格]";
+	mes "欢迎！";
+	mes "甜点有多美味呢？";
+	mes "我的师父……";
+	mes "阿尔贝塔的甜点师傅";
+	mes "有些甜点做得特别硬。";
 	next;
-	mes "[Sugar]";
-	mes "It was given by the darling person.";
-	mes "In return of the present ....";
-	mes "heartfelt like";
-	mes "the sweetness of the present some how.";
+	mes "[舒格]";
+	mes "是心爱的人送的。";
+	mes "作为礼物的回礼……";
+	mes "就像真心一样";
+	mes "礼物的甜味不知为何。";
 	next;
-	menu "Please give me!",-,"I don't need it.",M_END,"The teacher.",M_L1;
+	menu "请给我！",-,"我不需要。",M_END,"师父。",M_L1;
 
-	mes "[Sugar]";
-	mes "Yes!";
-	mes "Select from menu here.";
-	mes "Since there is a limitation in numbers";
-	mes "Not more than ^ff0000 5 pieces^000000.";
-	mes "are allowed to carry out?";
+	mes "[舒格]";
+	mes "是的！";
+	mes "请在此从菜单中选择。";
+	mes "由于数量有限制";
+	mes "最多只能购买 ^ff0000 5 个^000000。";
+	mes "才可以带走？";
 	next;
-	menu "Candy",-,"Candy Cane",L0_2,"Well baked cookie",L0_3;
+	menu "糖果",-,"拐杖糖",L0_2,"姜饼",L0_3;
 
 	set @maplePrice,3000;
 	set @mapleItemID,529;
-	mes "[Sugar]";
-	mes "It is a candy, and the price is";
-	mes "3000 Zeny each.";
-	mes "How many do you like to purchase?";
+	mes "[舒格]";
+	mes "这是糖果，每个的价格是";
+	mes "3000 Zeny。";
+	mes "您想购买几个？";
 	next;
 	goto L_INPUT;
 L0_2:
 	set @maplePrice,4000;
 	set @mapleItemID,530;
-	mes "[Sugar]";
-	mes "It is a candy cane, and the price is";
-	mes "4000 Zeny each.";
-	mes "How many do you like to purchase?";
+	mes "[舒格]";
+	mes "这是拐杖糖，每个的价格是";
+	mes "4000 Zeny。";
+	mes "您想购买几个？";
 	next;
 	goto L_INPUT;
 L0_3:
 	set @maplePrice,2000;
 	set @mapleItemID,538; 
-	mes "[Sugar]";
-	mes "It is a well baked cookie, and the price is";
-	mes "2000 Zeny each.";
-	mes "How many do you like to purchase?";
+	mes "[舒格]";
+	mes "这是姜饼，每个的价格是";
+	mes "2000 Zeny。";
+	mes "您想购买几个？";
 	next;
 
 L_INPUT:
@@ -76,52 +76,52 @@ L_INPUT:
 	if (Zeny < @maplePriceT) goto L_ERROR2;
 	set Zeny,Zeny- @maplePriceT;
 	getitem @mapleItemID,@maplenum;
-	mes "[Sugar]";
-	mes "Thank you!!!";
-	mes "These sweets are really delicious.";
-	mes "Since my teacher of sweet is the No.1 teacher's in world!";
-	mes "Although you may eat by yourself";
-	mes "don't eat so much or you'll grow fat.";
-	mes "Please take care!!!";
+	mes "[舒格]";
+	mes "谢谢！！！";
+	mes "这些甜点真的很好吃。";
+	mes "因为我的甜点师父是世界第一的师父！";
+	mes "虽然您可以自己吃";
+	mes "但别吃太多，不然会发胖的。";
+	mes "请保重！！！";
 	close;
 
 M_L1:
-	mes "[Sugar]";
-	mes "Yes";
-	mes "The teacher of mine";
-	mes "is Mr. Kuberu, a sweets craftsman.";
-	mes "Making sweets under two persons.";
-	mes "which is allowed to self-train.";
+	mes "[舒格]";
+	mes "是的";
+	mes "我的师父";
+	mes "是甜点师傅库贝鲁先生。";
+	mes "两个人一起做甜点。";
+	mes "还可以自行修行。";
 	next;
-	mes "[Sugar]";
-	mes "Although selling is seemingly to carried out ....";
-	mes "Where he is now?";
-	mes "Which I don't know.";
+	mes "[舒格]";
+	mes "虽然看起来还在营业……";
+	mes "他现在在哪里？";
+	mes "这我也不知道。";
 	close;
 
 L_ERROR:
-	mes "[Sugar]";
-	mes "???";
-	mes "You seem to have a failure on hearing.";
-	mes "I will tell you once again?";
-	mes "You can only purchase";
-	mes "^ff0000 5 pieces^000000 at once.";
+	mes "[舒格]";
+	mes "？？？";
+	mes "您好像有点听不清楚。";
+	mes "我再跟您说一次？";
+	mes "您一次只能购买";
+	mes "^ff0000 5 个^000000。";
 	next;
 	goto L_INPUT;
 
 L_ERROR2:
-	mes "[Sugar]";
-	mes "???";
-	mes "Hmmm it seems you don't have enough money";
-	mes "to make that purchase.";
-	mes "I will ask you to check your money first.";
+	mes "[舒格]";
+	mes "？？？";
+	mes "嗯……看来您的钱不够";
+	mes "无法购买这些。";
+	mes "请您先确认一下自己的钱。";
 	close;
 
 M_END:
-	mes "[Sugar]";
-	mes "Really .... You might regret it..";
-	mes "If you change your mind.";
-	mes "I am just here ok.";
-	mes "Have a nice day!";
+	mes "[舒格]";
+	mes "真的吗……您可能会后悔的。";
+	mes "如果您改变主意了。";
+	mes "我一直都在这里。";
+	mes "祝您愉快！";
 	close;
 }

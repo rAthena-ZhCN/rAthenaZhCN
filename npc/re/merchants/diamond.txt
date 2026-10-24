@@ -25,113 +25,113 @@
 	set .@npc$, "[Rare Diamond Merchant]";
 
 	mes .@npc$;
-	mes "Ladies and Gentlemen! ! !";
-	mes "You've heard rumors but you've never once seen with your own eyes";
-	mes "the world's rarest diamond!";
-	mes "The ^FF82FF'17 Carat Diamond'^000000 is currently on sale for a cheap price!!";
-	mes "If valuable diamonds interest you then listen up!";
+	mes "女士们、先生们！！！";
+	mes "你们听过传闻，却从未亲眼见过";
+	mes "世界上最稀有的钻石！";
+	mes "现在，^FF82FF'世界之星钻石'^000000正以低价出售！！";
+	mes "如果您对珍贵的钻石感兴趣，那就听好了！";
 	next;
 	
 	mes .@npc$;
-	mes "You can give the diamond as a gift to your lover.";
-	mes "The receiver of the ^FF82FF'17 Carat Diamond'^000000 will cherish it";
-	mes "and treasure you in their heart.";
+	mes "您可以把这颗钻石作为礼物送给恋人。";
+	mes "^FF82FF'世界之星钻石'^000000的收礼者会珍惜它";
+	mes "并将您珍藏在心中。";
 	emotion ET_BLABLA;
 	next;
 	
 	mes .@npc$;
-	mes "What? You don't have a lover?";
-	mes "You can still just hang on to it for yourself.";
-	mes "The enchanting aura of the ^FF82FF'17 Carat Diamond'^000000 is likely";
-	mes "to bring love into your life.";
+	mes "什么？您没有恋人？";
+	mes "那也可以自己留着。";
+	mes "^FF82FF'世界之星钻石'^000000的迷人光彩很可能";
+	mes "会为您的人生带来爱情。";
 	next;
 	
 	mes .@npc$;
-	mes "Known as the captivating diamond of diamonds...";
-	mes "It is the ^FF82FF'17 Carat Diamond'^000000!";
+	mes "它被称为钻石中的钻石……";
+	mes "它就是^FF82FF'世界之星钻石'^000000！";
 	next;
 
-	set .@menu$, "^FF82FF'17 Carat Diamond'^000000?";
+	set .@menu$, "^FF82FF'世界之星钻石'^000000？";
 	if (countitem(6024))
 		set .@menu$, .@menu$ + ":Exchange my 17 Carat Diamond for zeny...";
 
 	switch(select(.@menu$)) {
 	case 1:
 		mes .@npc$;
-		mes "Yes!";
-		mes "Hehe, the ^FF82FF'17 Carat Diamond'^000000 you see right now";
-		mes "is one of the highest quality 17 carat diamonds.";
-		mes "Comparing it to any pea-sized, colorless rock you may have";
-		mes "dug up from Morocc is unspeakable!";
+		mes "是的！";
+		mes "呵呵，您现在看到的^FF82FF'世界之星钻石'^000000";
+		mes "是最高品质的17克拉钻石之一。";
+		mes "若与您从梦洛克挖出的那些";
+		mes "豌豆大小、毫无色泽的石头相比，简直不值一提！";
 		emotion ET_HUK;
 		next;
 		
 		mes .@npc$;
-		mes "Some claim that this is the very same diamond";
-		mes "that was seen by Kachua in Comodo!";
+		mes "有人声称，这正是";
+		mes "卡丘亚在克魔岛见过的那颗钻石！";
 		next;
 		
-		if (select("End Conversation:How much is it?") == 1) {
+		if (select("结束对话:多少钱？") == 1) {
 			mes .@npc$;
-			mes "It's rather inexpensive!";
-			mes "If you're interested, talk to me any time!";
+			mes "相当便宜！";
+			mes "如果您感兴趣，随时来找我！";
 			close;
 		}
 		
 		mes .@npc$;
-		mes "Of course! The most important thing is price!";
-		mes "As I've said earlier, the ^FF82FF'17 Carat Diamond'^000000 has been";
-		mes "appraised as a 17 carat diamond.";
-		mes "There aren't many like it in the world.";
+		mes "当然！最重要的是价格！";
+		mes "正如我之前所说，^FF82FF'世界之星钻石'^000000已被";
+		mes "鉴定为17克拉钻石。";
+		mes "世上少有与之媲美者。";
 		next;
 		
 		mes .@npc$;
-		mes "The price is a mere 500 million zeny!";
-		mes "There is also a 1,000,000z service fee.";
-		mes "Compared to the quality of the diamond";
-		mes "this is a small price to pay.";
+		mes "价格仅为5亿Zeny！";
+		mes "另需1,000,000z服务费。";
+		mes "与这颗钻石的品质相比";
+		mes "这不过是区区小数。";
 		next;
 		
-		if (select("^828282It's too expensive.^000000:I'll buy it.") == 1) {
+		if (select("^828282太贵了。^000000:我要买下它。") == 1) {
 			mes .@npc$;
-			mes "To say that a diamond such as the";
-			mes "^FF82FF'17 Carat Diamond'^000000 is too expensive, ";
-			mes "you leave me speechless.";
+			mes "竟然说像";
+			mes "^FF82FF'世界之星钻石'^000000这样的钻石太贵，";
+			mes "您真让我无话可说。";
 			close;
 		}
 		
 		mes .@npc$;
-		mes "OOOH! I knew from the moment I saw you that you were the rightful";
-		mes "owner of this wonderful diamond.";
-		mes "I'm glad I wasn't wrong!";
-		mes "I believe this diamond will suit you quite well.";
-		mes "All I need from you is to complete this contract.";
+		mes "哦哦！我第一眼看到您就知道，您才是";
+		mes "这颗绝妙钻石的真正主人。";
+		mes "很高兴我没有看错！";
+		mes "我相信这颗钻石会很适合您。";
+		mes "我只需要您签完这份契约。";
 		next;
 		
 		while(1) {
-			if (select("^B9062FI will sign the contract.^000000:^828282Nevermind, I changed my mind.^000000") == 2) {
+			if (select("^B9062F我来签契约。^000000:^828282算了，我改主意了。^000000") == 2) {
 				mes .@npc$;
-				mes "I see, that's too bad..";
+				mes "我明白了，那真是太遗憾了……";
 				close;
 			}
 			
 			mes .@npc$;
-			mes "What is your name?";
+			mes "您叫什么名字？";
 			next;
 			
 			mes "[" + strcharinfo(0) + "]";
-			mes "My name is " + strcharinfo(0) + ".";
+			mes "我叫" + strcharinfo(0) + ".";
 			next;
 
 			mes .@npc$;
-			mes "Alright then, please sign here.";
+			mes "那么，请在这里签名。";
 			next;
 			
 			input .@charname$;
 			if (.@charname$ == strcharinfo(0)) {
 				mes .@npc$;
-				mes "Okay, good.";
-				mes "All that is left now is payment.";
+				mes "好，很好。";
+				mes "现在只剩下付款了。";
 				next;
 				
 				if (Zeny >= 501000000) {
@@ -140,88 +140,88 @@
 					next;
 					
 					mes .@npc$;
-					mes "Calculating the price and service fee..";
-					mes "501,000,000 zeny.";
-					mes "Amount has been confirmed.";
+					mes "正在计算价格和服务费……";
+					mes "501,000,000 Zeny。";
+					mes "金额已确认。";
 					emotion ET_BLABLA;
 					set Zeny, Zeny - 501000000;
 					getitem 6024, 1;
 					next;
 
 					mes .@npc$;
-					mes "You may exchange the diamond back for zeny at any time.";
-					mes "However, there will be a 1,000,000z service fee.";
-					mes "Thank you for your business.";
+					mes "您可以随时将钻石换回Zeny。";
+					mes "不过，需要支付1,000,000z服务费。";
+					mes "感谢您的惠顾。";
 					emotion ET_THANKS;
 					close;
 				}
 				else {
 					mes .@npc$;
-					mes "Hm?";
-					mes "I'm sorry, but you don't have sufficient funds.";
-					mes "Including the service fee, a total of 501,000,000z is required.";
-					mes "Please check your zeny balance and try again.";
+					mes "嗯？";
+					mes "抱歉，您的资金不足。";
+					mes "包括服务费在内，共需要501,000,000z。";
+					mes "请确认您的Zeny余额后再试。";
 					emotion ET_SCRATCH;
 					close;
 				}
 			}
 			else {
 				mes .@npc$;
-				mes "Is this really your signature?";
-				mes "Will sign again to confirm?";
+				mes "这真的是您的签名吗？";
+				mes "要再签一次以确认吗？";
 				next;
 			}
 		}
 	case 2:
 		mes .@npc$;
-		mes "AAH. You would like to exchange your ^FF82FF'17 Carat Diamond'^000000 for zeny?";
+		mes "啊。您想用^FF82FF'世界之星钻石'^000000换Zeny吗？";
 		emotion ET_SURPRISE;
 		next;
-		if (select("Yes:No") == 2) {
+		if (select("是:否") == 2) {
 			mes .@npc$;
-			mes "Then, what is it you desire?..";
+			mes "那么，您想要什么……";
 			mes ". . . . . ....";
 			emotion ET_THINK;
 			close;
 		}
 
 		mes .@npc$;
-		mes "I see. After I receive your signature, ";
-		mes "You must offer your ^FF82FF'17 Carat Diamond'^000000.";
-		mes "Also don't forget there is a 1,000,000z service fee!";
+		mes "我明白了。收到您的签名后，";
+		mes "您必须交出您的^FF82FF'世界之星钻石'^000000。";
+		mes "另外别忘了还有1,000,000z服务费！";
 		next;
 		
 		mes .@npc$;
-		mes "What is your name?";
+		mes "您叫什么名字？";
 		next;
 		
 		mes "[" + strcharinfo(0) + "]";
-		mes "My name is " + strcharinfo(0) + ".";
+		mes "我叫" + strcharinfo(0) + ".";
 		next;
 		
 		mes .@npc$;
-		mes "Alright then, please sign here.";
+		mes "那么，请在这里签名。";
 		next;
 		
 		while (1) {
-			if (select("Sign:Don't Sign") == 2) {
+			if (select("签名:不签名") == 2) {
 				mes .@npc$;
-				mes "The trade cannot be completed without your signature.";
+				mes "没有您的签名，交易无法完成。";
 				close;
 			}
 			
 			input .@charname$;
 			if (.@charname$ == strcharinfo(0)) {
 				mes .@npc$;
-				mes "Your signature has been received.";
-				mes "I will now take your ^FF82FF'17 Carat Diamond'^000000..";
-				mes "You will receive ^0000FF499,000,000z^000000 afterwards.";
+				mes "您的签名已收到。";
+				mes "我现在要收走您的^FF82FF'世界之星钻石'^000000……";
+				mes "之后您将收到^0000FF499,000,000z^000000。";
 				next;
 				
 				mes .@npc$;
-				mes "Thank you for your business.";
-				mes "Whenever you need a ^FF82FF'17 Carat Diamond'^000000,";
-				mes "come back anytime with 500 million zeny.";
+				mes "感谢您的惠顾。";
+				mes "每当您需要^FF82FF'世界之星钻石'^000000时，";
+				mes "带着5亿Zeny随时回来。";
 				emotion ET_THANKS;
 				delitem 6024, 1;
 				set Zeny, Zeny + 499000000;
@@ -229,8 +229,8 @@
 			}
 			else {
 				mes .@npc$;
-				mes "Is this really your signature?";
-				mes "Will sign again to confirm?";
+				mes "这真的是您的签名吗？";
+				mes "要再签一次以确认吗？";
 				next;
 			}
 		}

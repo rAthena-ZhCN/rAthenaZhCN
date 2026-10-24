@@ -13,138 +13,138 @@
 //= 1.0 First version.
 //============================================================
 
-nif_fild01,332,327,4	script	Deadman	795,{
+nif_fild01,332,327,4	script	亡者	795,{
 
 	if (checkquest(60173) != -1) {
 		if (checkquest(60173,HUNTING) != 2 ) {
-			mes "[Deadman]";
-			mes "Have you finished hunting the 50 Disguise?";
+			mes "[亡者]";
+			mes "你猎杀完50只假面鬼了吗？";
 			next;
-			switch(select("Yes:No:I want to quit")) {
+			switch(select("是:否:我想放弃")) {
 			case 1:
-				mes "[Deadman]";
-				mes "Hmm, I don't think you've hunted 50 yet.";
+				mes "[亡者]";
+				mes "唔，我觉得你还没猎杀到50只。";
 				close;
 			case 2:
-				mes "[Deadman]";
-				mes "Remember, I need help hunting Disguise so go and hunt 50 of them.";
+				mes "[亡者]";
+				mes "记住，我需要人帮忙猎杀假面鬼，去猎杀50只吧。";
 				close;
 			case 3:
-				mes "[Deadman]";
-				mes "Are you sure that you want to stop hunting?";
-				mes "Any progress that you've made will be erased";
+				mes "[亡者]";
+				mes "你确定要停止猎杀吗？";
+				mes "你目前的进度将会被清除";
 				next;
-				switch(select("Yes:No")) {
+				switch(select("是:否")) {
 				case 1:
-					mes "[Deadman]";
-					mes "Ok then, well come back here if you change your mind.";
+					mes "[亡者]";
+					mes "那好吧，如果你改变主意，就回到这里来。";
 					erasequest 60173;
 					close;
 				case 2:
-					mes "[Deadman]";
-					mes "Please kill 50 Disguise in order to make this a Place were people can go to and gather Experience.";
+					mes "[亡者]";
+					mes "请猎杀50只假面鬼，让这里成为大家可以来获取经验的地方。";
 					close;
 				}
 			}
 		}
-		mes "[Deadman]";
-		mes "Amazing, you did that with speed.";
+		mes "[亡者]";
+		mes "了不起，你做得真快。";
 		getexp 140600,95800;
 		erasequest 60173;
 		close;
 	}
 	if (checkquest(60176) != -1) {
 		if (checkquest(60176,HUNTING) != 2 ) {
-			mes "[Deadman]";
-			mes "Have you finished hunting the 50 Loli Ruri?";
+			mes "[亡者]";
+			mes "你猎杀完50只银月魔女了吗？";
 			next;
-			switch(select("Yes:No:I want to quit")) {
+			switch(select("是:否:我想放弃")) {
 			case 1:
-				mes "[Deadman]";
-				mes "Hmm, I don't think you've hunted 50 yet.";
+				mes "[亡者]";
+				mes "唔，我觉得你还没猎杀到50只。";
 				close;
 			case 2:
-				mes "[Deadman]";
-				mes "Remember, I need help hunting Loli Ruri so go and hunt 50 of them.";
+				mes "[亡者]";
+				mes "记住，我需要人帮忙猎杀银月魔女，去猎杀50只吧。";
 				close;
 			case 3:
-				mes "[Deadman]";
-				mes "Are you sure that you want to stop hunting?";
-				mes "Any progress that you've made will be erased";
+				mes "[亡者]";
+				mes "你确定要停止猎杀吗？";
+				mes "你目前的进度将会被清除";
 				next;
-				switch(select("Yes:No")) {
+				switch(select("是:否")) {
 				case 1:
-					mes "[Deadman]";
-					mes "Ok then, well come back here if you change your mind.";
+					mes "[亡者]";
+					mes "那好吧，如果你改变主意，就回到这里来。";
 					erasequest 60176;
 					close;
 				case 2:
-					mes "[Deadman]";
-					mes "Please kill 50 Loli Ruri in order to make this a Place were people can go to and gather Experience.";
+					mes "[亡者]";
+					mes "请猎杀50只银月魔女，让这里成为大家可以来获取经验的地方。";
 					close;
 				}
 			}
 		}
-		mes "[Deadman]";
-		mes "Amazing, you did that with speed.";
+		mes "[亡者]";
+		mes "了不起，你做得真快。";
 		getexp 332000,239500;
 		erasequest 60176;
 		close;
 	}
 	if ((BaseLevel > 59) && (BaseLevel < 99)) {
-		mes "[Deadman]";
-		mes "Oh great!";
-		mes "You are here to help me right?";
-		mes "If not, i don't know what to do with the Monsters in this Place!";
+		mes "[亡者]";
+		mes "哦，太好了！";
+		mes "你是来帮我的，对吧？";
+		mes "如果不是，我真不知道该怎么对付这里的怪物！";
 		next;
-		switch(select("Sure:No")) {
+		switch(select("当然:不")) {
 		case 1:
-			mes "[Deadman]";
-			mes "Great! I knew the moment i saw you that i can count on you!";
-			mes "I need you to reduce the Amount of Monsters which are currently rampaging on this Map!";
-			mes "There are to many Disguise and Loli Ruri around, which makes it impossible for the lower level players to gain good experience here.";
+			mes "[亡者]";
+			mes "太好了！我一看到你就知道可以依靠你！";
+			mes "我需要你减少这张地图上正在肆虐的怪物数量！";
+			mes "这附近有太多假面鬼和银月魔女，低等级的玩家根本无法在这里获得好的经验。";
 			next;
-			mes "[Deadman]";
-			mes "So, which of those Monsters would you like to hunt for me?";
+			mes "[亡者]";
+			mes "那么，你想替我猎杀哪种怪物？";
 			next;
-			switch(select("Disguise:Loli Ruri:Cancel")) {
+			switch(select("假面鬼:银月魔女:取消")) {
 			case 1:
 				if (BaseLevel > 90) {
-					mes "[Deadman]";
-					mes "Thank you for your great help with the Disguise!";
-					mes "Currently the Situation is stable and i'm not in need of your help anymore to kill them.";
+					mes "[亡者]";
+					mes "非常感谢你帮忙对付假面鬼！";
+					mes "目前情况已经稳定，我不再需要你帮忙猎杀它们了。";
 					close;
 				}
-				mes "[Deadman]";
-				mes "Kill 50 of those Disguise and let me know when you're done. I will reward you for your efforts.";
+				mes "[亡者]";
+				mes "猎杀50只假面鬼，完成后告诉我。我会为你的努力给予报酬。";
 				setquest 60173;
 				close;
 			case 2:
 				if (BaseLevel > 98) {
-					mes "[Deadman]";
-					mes "Thank you for your great help with the Loli Ruri!";
-					mes "Currently the Situation is stable and i'm not in need of your help anymore to kill them.";
+					mes "[亡者]";
+					mes "非常感谢你帮忙对付银月魔女！";
+					mes "目前情况已经稳定，我不再需要你帮忙猎杀它们了。";
 					close;
 				}
-				mes "[Deadman]";
-				mes "Kill 50 of those Loli Ruri and let me know when you're done. I will reward you for your efforts.";
+				mes "[亡者]";
+				mes "猎杀50只银月魔女，完成后告诉我。我会为你的努力给予报酬。";
 				setquest 60176;
 				close;
 			case 3:
-				mes "[Deadman]";
-				mes "If you change your mind, please come back.";
+				mes "[亡者]";
+				mes "如果你改变主意，请回来。";
 				close;
 			}
 		case 2:
-			mes "[Deadman]";
-			mes "If you change your mind, please come back.";
+			mes "[亡者]";
+			mes "如果你改变主意，请回来。";
 			close;
 		}
 	}
-	mes "[Deadman]";
-	mes "Oh boy, Oh boy!";
+	mes "[亡者]";
+	mes "哎呀，哎呀！";
 	next;
-	mes "[Deadman]";
-	mes "Sorry I can't talk right now I am in a world of pain here, these darn Disguise and Loli Ruri are going to kill me.";
+	mes "[亡者]";
+	mes "抱歉，我现在没法说话，我正痛苦不堪，这些该死的假面鬼和银月魔女要杀了我。";
 	close;
 }

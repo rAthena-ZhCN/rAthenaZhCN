@@ -32,47 +32,47 @@
 //= 1.8 Fixed Occurances of PcName. [L0ne_W0lf]
 //============================================================
 
-einbroch,218,198,5	script	Mark#ein	855,{
+einbroch,218,198,5	script	马克#ein	855,{
 	.@npc_name$ = strnpcinfo(1);
 	mes "["+ .@npc_name$ +"]";
-	mes "Good day~";
-	mes "I'm "+ .@npc_name$ +", your";
-	mes "guide to exploring";
-	mes "the Einbroch Tower.";
+	mes "你好~";
+	mes "我是"+ .@npc_name$ +"，也是您探索";
+	mes "艾音布罗克塔的";
+	mes "向导。";
 	next;
 	mes "["+ .@npc_name$ +"]";
-	mes "Einbroch Tower offers";
-	mes "the best view of our city";
-	mes "and it's a great place to";
-	mes "meet with friends or take";
-	mes "a date. The Einbroch Tower";
-	mes "admission fee is 10 zeny.";
+	mes "艾音布罗克塔拥有";
+	mes "本城最美的景色，";
+	mes "也是与朋友相聚";
+	mes "或约会的好去处。";
+	mes "艾音布罗克塔的";
+	mes "入场费是 10 Zeny。";
 	next;
 	mes "["+ .@npc_name$ +"]";
-	mes "Right now, we're offering";
-	mes "a special promotion called";
-	mes "the Apple Combo Set for only";
-	mes "20 zeny. This set includes";
-	mes "Einbroch Tower admission";
-	mes "and an Apple to snack on.";
+	mes "现在我们正在推出";
+	mes "一项特别优惠，名为";
+	mes "苹果套餐，只需";
+	mes "20 Zeny。套餐包含";
+	mes "艾音布罗克塔入场券";
+	mes "和一颗当零食的苹果。";
 	next;
-	switch(select("Tower Admission Only:Apple Combo Set:Cancel")) {
+	switch(select("仅塔入场:苹果套餐:取消")) {
 	case 1:
 		if (Zeny < 10) {
 			mes "["+ .@npc_name$ +"]";
-			mes "I'm sorry, but you";
-			mes "don't have enough";
-			mes "zeny. The Einbroch";
-			mes "Tower Admission";
-			mes "fee is 10 zeny.";
+			mes "很抱歉，你";
+			mes "没有足够的";
+			mes "Zeny。艾音布罗克";
+			mes "塔的入场费";
+			mes "是 10 Zeny。";
 			close;
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
-			mes "Thank you for";
-			mes "using our services.";
-			mes "Let me guide you to";
-			mes "the tower right away.";
+			mes "感谢您";
+			mes "使用我们的服务。";
+			mes "让我立刻带您";
+			mes "前往塔楼吧。";
 			set Zeny, Zeny-10;
 			close2;
 			warp "einbroch",181,196;
@@ -81,25 +81,25 @@ einbroch,218,198,5	script	Mark#ein	855,{
 	case 2:
 		if (Zeny < 20) {
 			mes "["+ .@npc_name$ +"]";
-			mes "I'm sorry, but you don't";
-			mes "have enough zeny. The";
-			mes "Apple Combo Set is 20 zeny.";
+			mes "抱歉，您的钱";
+			mes "有足够的 Zeny。";
+			mes "苹果套餐是 20 Zeny。";
 			close;
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
-			mes "Before I guide you to";
-			mes "the tower, let me check";
-			mes "your status to insure";
-			mes "your safety before I give";
-			mes "you the Apple Combo Set.";
+			mes "在带您前往";
+			mes "塔楼之前，让我确认";
+			mes "您的状态，以确保";
+			mes "您的安全，然后再把";
+			mes "苹果套餐交给您。";
 			next;
 			if (checkweight(512,1)) {
 				mes "["+ .@npc_name$ +"]";
-				mes "Thank you for";
-				mes "using our services.";
-				mes "Let me guide you to";
-				mes "the tower right away.";
+				mes "感谢您";
+				mes "使用我们的服务。";
+				mes "让我立刻带您";
+				mes "前往塔楼吧。";
 				set Zeny, Zeny-20;
 				getitem 512,1; //Apple
 				close2;
@@ -108,44 +108,44 @@ einbroch,218,198,5	script	Mark#ein	855,{
 			}
 			else {
 				mes "["+ .@npc_name$ +"]";
-				mes "I'm sorry, but you're carrying";
-				mes "too many items with you. Please store some of your things in your Kafra Storage before purchasing";
-				mes "the Apple Combo Set.";
+				mes "抱歉，您携带的";
+				mes "物品太多了。购买前请先将部分物品存入卡普拉仓库";
+				mes "再购买苹果套餐。";
 				close;
 			}
 		}
 	case 3:
 		mes "["+ .@npc_name$ +"]";
-		mes "I see.";
-		mes "Feel free to";
-		mes "come back any";
-		mes "time. Thank you.";
+		mes "我明白了。";
+		mes "欢迎您";
+		mes "随时再";
+		mes "来。谢谢您。";
 		close;
 	}
 }
 
-einbroch,175,196,5	script	Morei#ein	854,{
-	mes "[Morei]";
-	mes "Greetings,";
-	mes "I am Morei,";
-	mes "Assistant Guide";
-	mes "of Einbroch Tower.";
+einbroch,175,196,5	script	莫雷#ein	854,{
+	mes "[莫雷]";
+	mes "您好，";
+	mes "我是莫雷，";
+	mes "助理向导，";
+	mes "隶属于艾音布罗克塔。";
 	next;
-	mes "[Morei]";
-	mes "If you wish to return";
-	mes "to the ground floor,";
-	mes "please let me know.";
-	mes "Would you like to go";
-	mes "back to ground level?";
+	mes "[莫雷]";
+	mes "如果您想返回";
+	mes "一楼，";
+	mes "请告诉我。";
+	mes "您想回到";
+	mes "地面层吗？";
 	next;
-	switch(select("Yes.:No.")) {
+	switch(select("是。:否。")) {
 	case 1:
-		mes "[Morei]";
-		mes "I see.";
-		mes "Let me lead you";
-		mes "to the ground floor.";
-		mes "Thank you for using";
-		mes "our services.";
+		mes "[莫雷]";
+		mes "我明白了。";
+		mes "让我带您";
+		mes "前往一楼。";
+		mes "感谢您使用";
+		mes "我们的服务。";
 		close2;
 		switch(rand(1,3)) {
 		case 1:
@@ -159,745 +159,745 @@ einbroch,175,196,5	script	Morei#ein	854,{
 			end;
 		}
 	case 2:
-		mes "[Morei]";
-		mes "I see.";
-		mes "I hope you";
-		mes "enjoy your time";
-		mes "in Einbroch Tower.";
+		mes "[莫雷]";
+		mes "我明白了。";
+		mes "祝您";
+		mes "在艾音布罗克塔";
+		mes "玩得开心。";
 		close;
 	}
 }
 
-einbroch,173,229,5	duplicate(Mark#ein)	Oberu#ein	855
-einbroch,176,172,5	duplicate(Mark#ein)	Khemko#ein	855
+einbroch,173,229,5	duplicate(马克#ein)	Oberu#ein	855
+einbroch,176,172,5	duplicate(马克#ein)	Khemko#ein	855
 
-einbroch,232,272,3	script	Train Station Staff#ein1::EinbrochTrain	852,{
-	mes "[Staff]";
-	mes "Welcome to";
-	mes "the Train Station.";
-	mes "Trains to Einbech";
-	mes "are always running";
-	mes "so if you miss one,";
-	mes "it's no problem.";
+einbroch,232,272,3	script	车站职员#ein1::EinbrochTrain	852,{
+	mes "[职员]";
+	mes "欢迎来到";
+	mes "火车站。";
+	mes "开往艾音贝赫的列车";
+	mes "班次不断，";
+	mes "所以就算错过一班，";
+	mes "也没关系。";
 	next;
-	mes "[Staff]";
-	mes "The fare to board the";
-	mes "train that runs the Einbroch";
-	mes "to Einbech line is 200 zeny.";
-	mes "Would you like to buy a ticket?";
+	mes "[职员]";
+	mes "乘坐";
+	mes "艾音布罗克至艾音贝赫";
+	mes "线路列车的票价是 200 Zeny。";
+	mes "您要买一张车票吗？";
 	next;
-	switch(select("Yes.:No.:About the Environment...")) {
+	switch(select("是。:否。:关于环境……")) {
 	case 1:
 		if (Zeny > 199) {
-			mes "[Staff]";
-			mes "Thank you";
-			mes "very much.";
-			mes "Have a safe trip.";
-			mes "^333333*Ahem*^000000 All aboard!";
+			mes "[职员]";
+			mes "非常";
+			mes "感谢您。";
+			mes "祝您旅途平安。";
+			mes "^333333*咳咳*^000000 全体上车！";
 			close2;
 			set Zeny, Zeny-200;
 			warp "einbech",43,215;
 			end;
 		}
 		else {
-			mes "[Staff]";
-			mes "I'm sorry, but this";
-			mes "isn't enough zeny";
-			mes "to pay the train fare.";
+			mes "[职员]";
+			mes "抱歉，这";
+			mes "点 Zeny 不够";
+			mes "支付车费。";
 			close;
 		}
 	case 2:
-		mes "[Staff]";
-		mes "Very well, then.";
-		mes "Please enjoy your";
-		mes "stay in Einbroch.";
+		mes "[职员]";
+		mes "那么，好的。";
+		mes "祝您在艾音布罗克";
+		mes "逗留愉快。";
 		close;
 	case 3:
-		mes "[Staff]";
-		mes "Einbroch is infamous for";
-		mes "its air pollution, no doubt";
-		mes "caused by the industrial";
-		mes "facilities located here.";
-		mes "It's really horrible...";
+		mes "[职员]";
+		mes "艾音布罗克因";
+		mes "空气污染而声名狼藉，";
+		mes "这无疑是当地工业";
+		mes "设施造成的。";
+		mes "真是太糟糕了……";
 		next;
-		mes "[Staff]";
-		mes "Sometimes the air pollution";
-		mes "gets so bad that it becomes";
-		mes "hard to breathe. If you hear";
-		mes "the Einbroch Smog Alert, you";
-		mes "should find shelter immediately!";
+		mes "[职员]";
+		mes "有时空气污染";
+		mes "会严重到让人";
+		mes "难以呼吸。如果听到";
+		mes "艾音布罗克烟雾警报，";
+		mes "请立刻寻找避难处！";
 		close;
 	}
 }
 
 einbroch,252,301,3	duplicate(EinbrochTrain)	Train Station Staff#ein2	852
 
-einbroch,259,326,3	script	Leslie#ein_1	846,{
-	mes "[Leslie]";
-	mes "^666666*Cough cough!*^000000";
-	mes "Laaaand sakes!";
+einbroch,259,326,3	script	莱斯莉#ein_1	846,{
+	mes "[莱斯莉]";
+	mes "^666666*咳咳！*^000000";
+	mes "我的老天爷！";
 	next;
-	mes "[Leslie]";
-	mes "An old woman like me";
-	mes "can't breathe this air! How";
-	mes "do people even live in all this";
-	mes "smog? Sure, the air in Einbech";
-	mes "isn't pristine, but the air here in Einbroch is much worse! ^333333*Cough~!*^000000";
+	mes "[莱斯莉]";
+	mes "像我这样的老太婆";
+	mes "可受不了这种空气！";
+	mes "人们到底怎么在这么浓的";
+	mes "烟雾里生活？艾音贝赫的空气";
+	mes "虽说不上清新，但艾音布罗克这边要糟得多！^333333*咳~！*^000000";
 	next;
-	mes "[Leslie]";
-	mes "I hate coming here";
-	mes "sometimes! The air is";
-	mes "totally polluted and this";
-	mes "city is full of stuck up";
-	mes "pricks! But they sell stuff";
-	mes "here I can't buy back home...";
+	mes "[莱斯莉]";
+	mes "我有时真讨厌";
+	mes "来这里！空气";
+	mes "全被污染了，这座";
+	mes "城里全是些";
+	mes "自命不凡的混蛋！可这儿卖的东西";
+	mes "我老家根本买不到……";
 	close;
 }
 
-einbroch,236,191,3	script	Tan#ein	855,{
-	mes "[Tan]";
-	mes "All the factories";
-	mes "here in Einbroch are";
-	mes "causing a serious air";
-	mes "pollution problem.";
+einbroch,236,191,3	script	谭#ein	855,{
+	mes "[谭]";
+	mes "艾音布罗克这里";
+	mes "所有的工厂";
+	mes "都造成了严重的";
+	mes "空气污染问题。";
 	next;
-	mes "[Tan]";
-	mes "I'm an Airship engineer and";
-	mes "everyday, all day long, I deal";
-	mes "with oil stains and all sorts";
-	mes "of pollutants. I'm surprised";
-	mes "I haven't gotten sick yet...";
+	mes "[谭]";
+	mes "我是飞空艇工程师，";
+	mes "每天从早到晚都在处理";
+	mes "油污和各种各样的";
+	mes "污染物。真奇怪，";
+	mes "我居然还没生病……";
 	next;
-	mes "[Tan]";
-	mes "Still, I try to be careful";
-	mes "when I can. Whenever I go";
-	mes "out into the city's red fog,";
-	mes "I always wear my Flu Mask.";
-	mes "If you'll be here for a while,";
-	mes "you should carry one with you.";
+	mes "[谭]";
+	mes "不过，能注意的时候";
+	mes "我还是会小心。每次";
+	mes "走进城里那片红雾，";
+	mes "我都会戴上口罩。";
+	mes "如果您要在这里待一阵子，";
+	mes "最好也随身带一个。";
 	close;
 }
 
-einbroch,228,121,5	script	Little Toby#ein-1	855,{
-	mes "[Little Toby]";
-	mes "Excuse me...";
-	mes "But I'm lost!";
-	mes "I can't find my";
-	mes "mom or dad!";
+einbroch,228,121,5	script	小托比#ein-1	855,{
+	mes "[小托比]";
+	mes "打扰一下……";
+	mes "我迷路了！";
+	mes "我找不到";
+	mes "爸爸和妈妈了！";
 	next;
-	mes "[Little Toby]";
-	mes "A-am I at the Airport?!";
-	mes "My parents are supposed";
-	mes "to come get me, but I still";
-	mes "haven't found them! We just";
-	mes "moved here, so I don't know";
-	mes "where anything is!";
+	mes "[小托比]";
+	mes "这、这里是机场吗？！";
+	mes "爸妈说好会";
+	mes "来接我，可我还是";
+	mes "没找到他们！我们";
+	mes "才刚搬来，所以我";
+	mes "什么都找不到！";
 	next;
-	mes "[Little Toby]";
-	mes "W-wait!";
-	mes "Where are you";
-	mes "going?! Don't leave";
-	mes "me, I'm all alone...!";
+	mes "[小托比]";
+	mes "等、等等！";
+	mes "您要去";
+	mes "哪里？！别丢下";
+	mes "我，我一个人……！";
 	close;
 }
 
-einbroch,40,116,1	script	Airship Engineer#ein-1	855,{
-	mes "[Airship Engineer]";
-	mes "H-hey! Don't";
-	mes "touch my precious";
-	mes "Burielle! I just finished";
-	mes "her tune-up and now she's";
-	mes "sleeping! J-just step away!";
+einbroch,40,116,1	script	飞空艇工程师#ein-1	855,{
+	mes "[飞空艇工程师]";
+	mes "喂、喂！别";
+	mes "碰我宝贝的";
+	mes "布丽艾尔！我才刚";
+	mes "给她做完调试，现在她";
+	mes "在睡觉！快、快走开！";
 	next;
-	switch(select("Who's Burielle?:Sorry about That.")) {
+	switch(select("布丽艾尔是谁？:抱歉。")) {
 	case 1:
-		mes "[Airship Engineer]";
-		mes "Burielle is the prettiest";
-		mes "model among all the Airships";
-		mes "made within the last ten years!";
-		mes "She might be grounded now, but";
-		mes "with my healing hands, she'll";
-		mes "conquer the skies again!";
+		mes "[飞空艇工程师]";
+		mes "布丽艾尔是近十年";
+		mes "所有飞空艇中";
+		mes "最漂亮的型号！";
+		mes "她现在虽然停飞了，";
+		mes "但凭我这双巧手，她";
+		mes "一定能再次征服天空！";
 		next;
-		switch(select("Ah~:Uh huh...")) {
+		switch(select("啊~:嗯嗯……")) {
 		case 1:
 			mes "["+strcharinfo(0)+"]";
-			mes "Ah~";
-			mes "I see, so you're";
-			mes "working on restoring";
-			mes "this magnificent specimen";
-			mes "of an Airship. Best of luck~";
+			mes "啊~";
+			mes "原来如此，您正在";
+			mes "修复这艘";
+			mes "宏伟的";
+			mes "飞空艇精品。祝您好运~";
 			next;
-			mes "[Airship Engineer]";
-			mes "Yeah. I'd appreciate";
-			mes "it if you'd just be careful.";
-			mes "I've put a lot of love into";
-			mes "fixing up Burielle...";
+			mes "[飞空艇工程师]";
+			mes "嗯。如果您能";
+			mes "小心一点，我会很感激。";
+			mes "我可是倾注了很多心血";
+			mes "来修好布丽艾尔……";
 			close;
 		case 2:
 			mes "["+strcharinfo(0)+"]";
-			mes "Uh huh...";
-			mes "Right. For a second";
-			mes "there, I thought you were";
-			mes "talking about a person, but";
-			mes "then I also assumed that you";
-			mes "weren't, you know, a nutcase.";
+			mes "嗯嗯……";
+			mes "对了。刚才有一瞬间，";
+			mes "我还以为您在";
+			mes "说的是个人，";
+			mes "后来我又觉得您";
+			mes "应该不是个疯子。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Oh, did you say,";
-			mes "''prettiest model?''";
-			mes "All Airships look the";
-			mes "same to me, this one";
-			mes "ain't special at all. You've";
-			mes "gone loony tunes, paley boy.";
+			mes "哦，你是说";
+			mes "“最漂亮的型号”？";
+			mes "所有飞空艇在我";
+			mes "看来都一样，这艘";
+			mes "根本没特别之处。你";
+			mes "是疯了，小白脸。";
 			next;
 			emotion ET_FRET;
-			mes "[Airship Engineer]";
-			mes "Wh-what...?!";
+			mes "[飞空艇工程师]";
+			mes "什、什么……？！";
 			close;
 		}
 	case 2:
-		mes "[Airship Engineer]";
-		mes "Well, at least you know";
-		mes "what you did wrong. Now";
-		mes "quit disturbing her and git!";
+		mes "[飞空艇工程师]";
+		mes "算了，至少你";
+		mes "知道自己错在哪。现在";
+		mes "别再打扰她，滚吧！";
 		close;
 	}
 }
 
-einbroch,294,312,3	script	Centzu#ein	854,{
-	mes "[Centzu]";
-	mes "I've lived here for";
-	mes "a long time and I see";
-	mes "that this huge city is still";
-	mes "growing bigger everyday.";
+einbroch,294,312,3	script	森兹#ein	854,{
+	mes "[森兹]";
+	mes "我在这里住了";
+	mes "很久，看着";
+	mes "这座巨大的城市";
+	mes "每天都变得更大。";
 	next;
-	mes "[Centzu]";
-	mes "How did Einbroch get so";
-	mes "huge so quickly? I still can't";
-	mes "believe there's been this much";
-	mes "development. Well, I suppose";
-	mes "it's not my concern. Nothing";
-	mes "I do will make a difference... ";
+	mes "[森兹]";
+	mes "艾音布罗克怎么";
+	mes "会这么快变得这么大？我还是";
+	mes "不敢相信竟有";
+	mes "这么大的发展。不过我想";
+	mes "这与我无关。我";
+	mes "做什么都改变不了……";
 	next;
-	mes "[Centzu]";
-	mes "Even though such";
-	mes "rapid industrialization";
-	mes "can't be good for the";
-	mes "environment or the people,";
-	mes "I'll just sit back, watch what";
-	mes "happens and just enjoy life...";
+	mes "[森兹]";
+	mes "虽然如此";
+	mes "快速的工业化";
+	mes "对环境或";
+	mes "民众都不可能有益，";
+	mes "我还是坐下来，看看";
+	mes "会发生什么，好好享受生活……";
 	close;
 }
 
-einbroch,232,255,5	script	Khowropher#ein	847,{
-	mes "[Khowropher]";
-	mes "^666666*Cough cough*^000000";
-	mes "Jiminy! The air here";
-	mes "is so thick and grimy!";
-	mes "And it's worse for us old";
-	mes "people with breathing";
-	mes "problems! ^333333*Haaack!*^000000";
+einbroch,232,255,5	script	科沃弗#ein	847,{
+	mes "[科沃弗]";
+	mes "^666666*咳咳*^000000";
+	mes "天哪！这里的空气";
+	mes "又浓又脏！";
+	mes "对我们这些有呼吸";
+	mes "疾病的老人";
+	mes "来说更糟！^333333*咳啊！*^000000";
 	next;
-	mes "[Khowropher]";
-	mes "I don't care if they keep";
-	mes "building more and more";
-	mes "factories and homes in this";
-	mes "town. Still, I'd like to spend";
-	mes "the rest of my life somewhere";
-	mes "quiet and with clean air...";
+	mes "[科沃弗]";
+	mes "我不在乎他们";
+	mes "不断建起";
+	mes "更多的工厂和住宅，";
+	mes "在这个镇上。不过，我还是想";
+	mes "在某个安静、";
+	mes "空气清新的地方度过余生……";
 	next;
-	mes "[Khowropher]";
-	mes "Then again, Einbroch is my";
-	mes "hometown and I can't just up";
-	mes "and leave. I suppose it's my";
-	mes "fate to suffer from this foul air until the day I die. ^666666*Sigh...*^000000";
+	mes "[科沃弗]";
+	mes "话说回来，艾音布罗克";
+	mes "是我的故乡，我不能";
+	mes "说走就走。我想这";
+	mes "就是我的命，要在这污浊的空气里受苦直到死去。^666666*唉……*^000000";
 	close;
 }
 
-einbroch,143,109,5	script	Khetine#ein	855,{
-	mes "[Khetine]";
-	mes "Lately, there's been";
-	mes "talk about this empty";
-	mes "building downtown that's";
-	mes "been converted into some";
-	mes "sort of mysterious facility.";
+einbroch,143,109,5	script	凯汀#ein	855,{
+	mes "[凯汀]";
+	mes "最近大家都在";
+	mes "议论市中心那栋";
+	mes "空置的大楼，";
+	mes "它被改造成了";
+	mes "某种神秘设施。";
 	next;
-	mes "[Khetine]";
-	mes "It all seems pretty";
-	mes "shady, but I guess it's";
-	mes "not really my job to know";
-	mes "about that. I mean, if it";
-	mes "doesn't affect me, why";
-	mes "should I be concerned?";
+	mes "[凯汀]";
+	mes "整件事看起来很";
+	mes "可疑，不过我想";
+	mes "知道这些";
+	mes "并不是我的职责。我是说，";
+	mes "既然不影响我，";
+	mes "我何必操心呢？";
 	close;
 }
 
-einbroch,229,149,3	script	Sleik#ein	854,{
-	mes "[Sleik]";
-	mes "Surprisingly, we have";
-	mes "a Train Station that everyone";
-	mes "has been calling a victory for";
-	mes "science. I mean, shouldn't we";
-	mes "be more amazed by the Airship?";
+einbroch,229,149,3	script	斯莱克#ein	854,{
+	mes "[斯莱克]";
+	mes "没想到我们竟然";
+	mes "有一座人人";
+	mes "称之为科学胜利的";
+	mes "火车站。我是说，我们不是";
+	mes "更该为飞空艇惊叹吗？";
 	next;
-	mes "[Sleik]";
-	mes "Now, if you want to know";
-	mes "where the train actually goes,";
-	mes "I wouldn't be able to tell you.";
-	mes "After all, I never rode it. But";
-	mes "still, I guess having our own";
-	mes "Train Station is a good thing.";
+	mes "[斯莱克]";
+	mes "至于说";
+	mes "这列车究竟开往哪里，";
+	mes "我可答不上来。";
+	mes "毕竟我从没坐过。不过";
+	mes "我还是觉得，拥有";
+	mes "自己的火车站是件好事。";
 	close;
 }
 
-airport,174,41,6	script	Young Man#air	99,{
-	mes "[Runnan]";
+airport,174,41,6	script	年轻男子#air	99,{
+	mes "[伦南]";
 	mes "...And that's why";
-	mes "I travel around the";
-	mes "globe. My bosses have";
-	mes "a keen eye for the most";
-	mes "exotic goods, so I acquire";
-	mes "them and make deliveries.";
+	mes "我走遍";
+	mes "世界各地。我的老板们";
+	mes "眼光独到，专挑";
+	mes "最稀奇的货物，我负责";
+	mes "采购并送货。";
 	next;
-	mes "[Runnan]";
-	mes "There even was a time";
-	mes "when they had me collect";
-	mes "Jellopy, though that stuff is";
-	mes "pretty common nowadays.";
-	mes "Now that I think about it, why";
-	mes "did they need so much stuff?";
+	mes "[伦南]";
+	mes "甚至有一段时间，";
+	mes "他们让我收集";
+	mes "杰勒比结晶，不过那玩意";
+	mes "现在很常见了。";
+	mes "说起来，他们当初";
+	mes "为什么需要那么多？";
 	close;
 }
 
-airport,176,41,4	script	Old Man#air	88,{
-	mes "[Zhen Lan]";
-	mes "Now, I hear that the";
-	mes "monsters around here";
-	mes "carry around some ore";
-	mes "that dazzles with a sublimely";
-	mes "beautiful light. Neat, huh?";
+airport,176,41,4	script	老人#air	88,{
+	mes "[甄岚]";
+	mes "听说这附近的";
+	mes "怪物身上";
+	mes "带着某种矿石，";
+	mes "会散发出";
+	mes "极其美丽的耀眼光芒。很酷吧？";
 	next;
-	mes "[Zhen Lan]";
-	mes "These ores are a great";
-	mes "material to use in making";
-	mes "flower vases. My friend, who";
-	mes "happens to be a doll maker,";
-	mes "told me that. He makes these dolls using all sorts of materials.";
+	mes "[甄岚]";
+	mes "这些矿石是";
+	mes "制作花瓶的";
+	mes "绝佳材料。我有个朋友，";
+	mes "正好是做人偶的，";
+	mes "是他告诉我的。他用各种各样的材料做人偶。";
 	next;
-	mes "[Zhen Lan]";
-	mes "He fashions them out of";
-	mes "Well-Tanned Leather, stuffs";
-	mes "them with Bird Feathers, and";
-	mes "uses Cyfar or Zargon to make";
-	mes "the eyes. He even uses a Jellopy at the bottom to balance the doll.";
+	mes "[甄岚]";
+	mes "他用鞣制皮革";
+	mes "给它们做外形，塞入";
+	mes "鸟羽填充，再用";
+	mes "Cyfar 或 Zargon 做成";
+	mes "眼睛。他甚至会在底部放一颗杰勒比结晶来平衡人偶。";
 	next;
-	mes "[Zhen Lan]";
-	mes "I guess that goes to show";
-	mes "that things that seem useless";
-	mes "might actually be handy in some";
-	mes "way. So don't worry about having too much stuff. Sooner or later, it might be useful to someone.";
+	mes "[甄岚]";
+	mes "我想这说明";
+	mes "看似没用的东西";
+	mes "说不定在某些方面";
+	mes "其实很有用。所以别担心东西太多，迟早会对某人有用的。";
 	close;
 }
 
-ein_in01,113,211,3	script	Teinz#ein	851,{
-	mes "[Teinz]";
-	mes "If you just pay me money,";
-	mes "I'll be your slave! There's";
-	mes "nothing I won't do! Anything";
-	mes "is fair game. Hell, I'll get buck naked if you pay me enough.";
+ein_in01,113,211,3	script	泰恩兹#ein	851,{
+	mes "[泰恩兹]";
+	mes "只要你付钱，";
+	mes "我就做你的奴隶！";
+	mes "什么我都肯干！";
+	mes "什么都好说。嘿，钱给够我脱光都行。";
 	next;
-	mes "[Teinz]";
-	mes "If you pay me what I'm";
-	mes "worth, I'll work hard at";
-	mes "any task you set me to.";
-	mes "Sure, mining's rough, but";
-	mes "as long as the zeny's coming";
-	mes "in, I'm happy. Heh heh heh~";
+	mes "[泰恩兹]";
+	mes "只要你付得起";
+	mes "我应得的价钱，我就";
+	mes "拼命干你交代的活。";
+	mes "当然，挖矿是辛苦，但";
+	mes "只要 Zeny 源源不断";
+	mes "地来，我就开心。嘿嘿嘿~";
 	close;
 }
 
-ein_in01,48,220,5	script	Lowe#ein	851,{
-	mes "[Lowe]";
+ein_in01,48,220,5	script	洛威#ein	851,{
+	mes "[洛威]";
 	mes "...";
 	mes "......";
 	next;
-	mes "[Lowe]";
+	mes "[洛威]";
 	mes "...";
 	mes "......";
 	mes ".........";
 	next;
-	mes "[Lowe]";
-	mes "Hey. Why are you";
-	mes "looking at me like";
-	mes "that? There's no idle";
-	mes "chatting allowed at work.";
-	mes "If Canphotii catches";
-	mes "you, you'll be punished...";
+	mes "[洛威]";
+	mes "喂。你为什么";
+	mes "这样看着我？";
+	mes "工作时可是不准";
+	mes "闲聊的。";
+	mes "要是被坎福提";
+	mes "抓到，你可要受罚的……";
 	next;
-	mes "[Lowe]";
-	mes "Oh wait...";
-	mes "You don't work here.";
-	mes "I apologize, that kind";
-	mes "of reaction's an old";
-	mes "habit for me, adventurer.";
+	mes "[洛威]";
+	mes "哦，等等……";
+	mes "你不是在这里工作的。";
+	mes "抱歉，那种";
+	mes "反应是我的";
+	mes "老毛病了，冒险者。";
 	close;
 }
 
-ein_in01,87,237,5	script	Dinje#ein	850,{
-	mes "[Dinje]";
-	mes "Do you know why a woman";
-	mes "like me has to work in this";
-	mes "factory? I'll tell you why... ";
+ein_in01,87,237,5	script	丁洁#ein	850,{
+	mes "[丁洁]";
+	mes "你知道像我这样的";
+	mes "女人为什么非得在";
+	mes "这种工厂干活吗？我告诉你为什么……";
 	next;
-	mes "[Dinje]";
-	mes "My lazy husband, Gesin,";
-	mes "is just lying there on the";
-	mes "ground! So I have to work";
-	mes "in order to support us!";
+	mes "[丁洁]";
+	mes "我那懒鬼丈夫格辛，";
+	mes "就那样躺在地上！";
+	mes "所以我不得不干活";
+	mes "来养活我们俩！";
 	next;
-	mes "[Dinje]";
-	mes "We can't rest for even";
-	mes "a second if we want to save";
-	mes "enough money to become";
-	mes "wealthy and powerful some";
-	mes "day. Don't you understand?";
+	mes "[丁洁]";
+	mes "如果想攒够钱，";
+	mes "有朝一日变得";
+	mes "有钱有势，";
+	mes "我们连一秒";
+	mes "都不能休息。你不明白吗？";
 	next;
-	mes "[Dinje]";
-	mes "Well, my husband obviously";
-	mes "doesn't! How can he not know";
-	mes "how the real world works?!";
-	mes "Hey, kick his ass for me if";
-	mes "he doesn't wake up soon!";
+	mes "[丁洁]";
+	mes "可我丈夫显然";
+	mes "不明白！他怎么能不懂";
+	mes "现实世界是怎么运转的？！";
+	mes "喂，要是他还不快点";
+	mes "醒过来，替我揍他一顿！";
 	close;
 }
 
-ein_in01,84,218,3	script	Tsuen#ein	851,{
-	mes "[Tsuen]";
-	mes "There was a time";
-	mes "when I dreamed of";
-	mes "being an adventurer,";
-	mes "just like you. But that";
-	mes "was a long time ago...";
+ein_in01,84,218,3	script	茨恩#ein	851,{
+	mes "[茨恩]";
+	mes "曾经有一段时间，";
+	mes "我梦想着";
+	mes "成为一名冒险者，";
+	mes "就像你一样。可那";
+	mes "已经是很久以前的事了……";
 	next;
-	mes "[Tsuen]";
-	mes "Now, I'm nothing but";
-	mes "a factory manager. Still,";
-	mes "even if my job's not that";
-	mes "great, I'm pretty satisfied.";
-	mes "I'm sure people enjoy the";
-	mes "products I oversee and all...";
+	mes "[茨恩]";
+	mes "现在，我不过是";
+	mes "一个工厂经理。不过，";
+	mes "就算我的工作";
+	mes "不太起眼，我也挺满足的。";
+	mes "我相信大家会喜欢";
+	mes "我监制的产品……";
 	next;
-	mes "[Tsuen]";
-	mes "Maybe my life was meant";
-	mes "to be this way, even if it's";
-	mes "not how I planned it. But the";
-	mes "time will come when I up and";
-	mes "leave and travel the world";
-	mes "once I get my chance!";
+	mes "[茨恩]";
+	mes "也许我的人生";
+	mes "注定如此，";
+	mes "尽管这并非我规划的样子。但";
+	mes "总有一天，我会";
+	mes "动身离开，周游世界";
+	mes "只要机会来临！";
 	next;
-	mes "[Tsuen]";
-	mes "I hope the day will";
-	mes "come when I can meet";
-	mes "you out in that big wide";
-	mes "world and greet you as";
-	mes "a fellow adventurer.";
+	mes "[茨恩]";
+	mes "我希望那一天";
+	mes "早日到来，让我能在";
+	mes "那广阔的大千世界里";
+	mes "与你相遇，并以";
+	mes "同行冒险者的身份向你问好。";
 	close;
 }
 
-ein_in01,103,239,1	script	Gesin#ein	849,{
-	mes "[Gesin]";
-	mes "Arrrgh!";
-	mes "This is killing me!";
-	mes "Why should I be rich?";
-	mes "What's wrong with living";
-	mes "within our means?";
+ein_in01,103,239,1	script	格辛#ein	849,{
+	mes "[格辛]";
+	mes "啊啊啊！";
+	mes "这真要了我的命！";
+	mes "我为什么要变有钱？";
+	mes "量入为出地";
+	mes "生活有什么错？";
 	next;
-	mes "[Gesin]";
-	mes "I've got no problem";
-	mes "with my current way";
-	mes "of life, but the old ball";
-	mes "and chain disagrees.";
-	mes "Why is she so obsessed";
-	mes "with riches and power?";
+	mes "[格辛]";
+	mes "我对现在这种";
+	mes "生活方式";
+	mes "没什么意见，可我的";
+	mes "老婆不同意。";
+	mes "她为什么这么执着于";
+	mes "财富和权势？";
 	next;
-	mes "[Gesin]";
-	mes "Well, in any case, I'd";
-	mes "like to help her, but I can't";
-	mes "get up! I'm exhausted and";
-	mes "my body is just overtaxed.";
-	mes "I have no strength at all.";
+	mes "[格辛]";
+	mes "唉，不管怎样，我";
+	mes "是想帮她，可我";
+	mes "起不来！我累坏了，";
+	mes "身体透支得厉害。";
+	mes "一点力气都没有。";
 	next;
-	mes "[Gesin]";
-	mes "This is horrible~";
-	mes "I should be resting";
-	mes "instead of worrying";
-	mes "about making money...";
+	mes "[格辛]";
+	mes "太惨了~";
+	mes "我该好好休息，";
+	mes "而不是操心";
+	mes "赚钱的事……";
 	close;
 }
 
-ein_in01,33,275,1	script	Pevtatin#ein	848,{
-	mes "[Pevtatin]";
-	mes "Good god!";
-	mes "I'm so stressed!";
-	mes "It's been nonstop";
-	mes "since I moved here!";
+ein_in01,33,275,1	script	佩夫塔汀#ein	848,{
+	mes "[佩夫塔汀]";
+	mes "天哪！";
+	mes "我压力太大了！";
+	mes "自从搬到这里，";
+	mes "就一直没停过！";
 	next;
-	mes "[Pevtatin]";
-	mes "The work is tough and";
-	mes "already the boss hates";
-	mes "me! I didn't move here";
-	mes "for this! Still, the pay is";
-	mes "decent so I guess I should";
-	mes "endure just a little longer.";
+	mes "[佩夫塔汀]";
+	mes "工作又苦又累，";
+	mes "而且老板已经";
+	mes "讨厌我了！我搬来";
+	mes "可不是为了这个！不过薪水";
+	mes "还算不错，所以我想";
+	mes "还是再忍一忍吧。";
 	next;
-	mes "[Pevtatin]";
-	mes "Here goes...!";
-	mes "Yo-heave-ho!";
-	mes "Yo-heave-ho~!";
+	mes "[佩夫塔汀]";
+	mes "来吧……！";
+	mes "嗨哟！";
+	mes "嗨哟~！";
 	close;
 }
 
-ein_in01,36,204,3	script	Rombell#ein	851,{
-	mes "[Rombell]";
-	mes "It's great that the";
-	mes "factory is making good";
-	mes "business and drawing";
-	mes "in a lot of profit, but I still";
-	mes "have one major concern.";
+ein_in01,36,204,3	script	隆贝尔#ein	851,{
+	mes "[隆贝尔]";
+	mes "工厂生意";
+	mes "兴隆、";
+	mes "赚进大把利润，";
+	mes "这当然很好，但我";
+	mes "仍有一个很大的忧虑。";
 	next;
-	mes "[Rombell]";
-	mes "The amount of pollution";
-	mes "that this place is causing";
-	mes "is horrific! We've got these";
-	mes "machines blowing out toxic";
-	mes "gas all day long! The air";
-	mes "can't be safe for very long...";
+	mes "[隆贝尔]";
+	mes "这个地方造成的";
+	mes "污染量太可怕了！";
+	mes "我们那些机器";
+	mes "整天喷出有毒";
+	mes "气体！这空气";
+	mes "长久下去肯定不安全……";
 	next;
-	mes "[Rombell]";
-	mes "I mean, the air we're";
-	mes "breathing right now is";
-	mes "pretty foul and things";
-	mes "are only going to get";
-	mes "worse. How can we";
-	mes "solve this problem?";
+	mes "[隆贝尔]";
+	mes "我是说，我们";
+	mes "现在呼吸的空气";
+	mes "已经相当污浊，";
+	mes "情况只会";
+	mes "越来越糟。我们";
+	mes "要怎么解决这个问题？";
 	close;
 }
 
-ein_in01,64,271,3	script	Vonstein#ein	855,{
-	mes "[Vonstein]";
-	mes "Staring at this";
-	mes "bubbling hot liquid";
-	mes "metal gives me a good";
-	mes "feeling inside. It's like";
-	mes "that stuff can melt anything!";
+ein_in01,64,271,3	script	冯斯坦#ein	855,{
+	mes "[冯斯坦]";
+	mes "看着这";
+	mes "翻滚沸腾的液态";
+	mes "金属，让我心里";
+	mes "感觉很痛快。那东西";
+	mes "简直能熔化一切！";
 	next;
-	mes "[Vonstein]";
-	mes "Imagine covering an";
-	mes "entire street of people";
-	mes "with that stuff! Bwahah--";
-	mes "Oh, I'm sorry if I'm talking";
-	mes "crazy talk! I'm just kidding~";
+	mes "[冯斯坦]";
+	mes "想象一下，用那玩意";
+	mes "把一整条街的人";
+	mes "都盖住！哇哈哈——";
+	mes "哦，抱歉，我是不是";
+	mes "说了疯话！我开玩笑的~";
 	close;
 }
 
-ein_in01,49,202,3	script	Dorf#ein	851,{
-	mes "[Dorf]";
-	mes "Machines are sooo";
-	mes "convenient. Just look";
-	mes "at this contraption easily";
-	mes "do tasks that'd be tough";
-	mes "for me to finish alone.";
+ein_in01,49,202,3	script	多夫#ein	851,{
+	mes "[多夫]";
+	mes "机器真是";
+	mes "太方便了。看看";
+	mes "这个小装置，轻轻松松就能";
+	mes "完成我一个人很难";
+	mes "做完的活。";
 	next;
-	mes "[Dorf]";
-	mes "Now this is what";
-	mes "I call technology!";
-	mes "Sure, it takes effort and";
-	mes "money to make one of";
-	mes "these, but what do I care?";
+	mes "[多夫]";
+	mes "这才叫";
+	mes "真正的技术！";
+	mes "当然，做一台要花";
+	mes "不少功夫和钱，";
+	mes "但那又怎样？";
 	next;
-	mes "[Dorf]";
-	mes "I've got no problems,";
-	mes "so long as this freaking";
-	mes "thing keeps working the";
-	mes "way I want it to!";
+	mes "[多夫]";
+	mes "我没意见，";
+	mes "只要这该死的";
+	mes "玩意一直按我";
+	mes "想要的方式运转！";
 	close;
 }
 
-ein_in01,68,209,5	script	Khashurantze#ein	852,{
-	mes "[Khashurantze]";
-	mes "I'm sorry, but you need";
-	mes "special authority in order";
-	mes "to enter this place. I'll have";
-	mes "to ask you to leave right now.";
+ein_in01,68,209,5	script	卡舒兰兹#ein	852,{
+	mes "[卡舒兰兹]";
+	mes "抱歉，您需要";
+	mes "特殊权限才能";
+	mes "进入这里。我只好";
+	mes "请您立刻离开。";
 	close2;
 	warp "einbroch",179,63;
 	end;
 }
 
-ein_in01,85,261,3	script	Zherin#ein	851,{
-	mes "[Zherin]";
-	mes "I'm in charge of this";
-	mes "blast furnace which";
-	mes "contains all of this";
-	mes "boiling magma.";
+ein_in01,85,261,3	script	泽林#ein	851,{
+	mes "[泽林]";
+	mes "我负责管理这座";
+	mes "高炉，里面";
+	mes "装满了";
+	mes "沸腾的熔岩。";
 	next;
-	mes "[Zherin]";
-	mes "Even though it doesn't";
-	mes "require actual labor, this";
-	mes "job is pretty tiring. I've got";
-	mes "to pay careful attention all";
-	mes "the time. It's pretty stressful.";
+	mes "[泽林]";
+	mes "虽然这份工作";
+	mes "不需要实际体力劳动，";
+	mes "却相当累人。我必须";
+	mes "时刻保持";
+	mes "高度警惕。压力很大。";
 	next;
-	mes "[Zherin]";
-	mes "Still, I'm proud of my job";
-	mes "since I have the responsibility";
-	mes "of ensuring employee safety.";
-	mes "Anyway, don't get too close";
-	mes "to the furnace. It won't do if";
-	mes "you get burned on accident!";
+	mes "[泽林]";
+	mes "不过，我为这份工作自豪，";
+	mes "因为我肩负着";
+	mes "保障员工安全的职责。";
+	mes "总之，别靠";
+	mes "高炉太近。要是不小心";
+	mes "烫伤了可不行！";
 	close;
 }
 
-ein_in01,43,252,3	script	Canphotii#ein	852,{
-	mes "[Canphotii]";
-	mes "Hustle, hustle!";
-	mes "Pick up the pace!";
-	mes "Anyone working too";
-	mes "slowly will be punished!";
+ein_in01,43,252,3	script	坎福提#ein	852,{
+	mes "[坎福提]";
+	mes "快，快！";
+	mes "加快速度！";
+	mes "谁干活太慢";
+	mes "就要受罚！";
 	next;
-	mes "[Canphotii]";
-	mes "Can't you understand";
-	mes "that?! Now go to your";
-	mes "station and get back to";
-	mes "work! Wait, are you even";
-	mes "an employee? If not, then";
-	mes "stop wandering around!";
+	mes "[坎福提]";
+	mes "你听不懂";
+	mes "吗？！快回你的";
+	mes "岗位，继续";
+	mes "干活！等等，你到底是";
+	mes "不是员工？如果不是，";
+	mes "就别在这儿乱晃！";
 	next;
-	mes "[Canphotii]";
-	mes "You're not supposed";
-	mes "to be able to get in here!";
-	mes "I can't believe they let you";
-	mes "in! This requires extreme";
-	mes "disciplinary action!";
+	mes "[坎福提]";
+	mes "你本不该";
+	mes "进得来这里的！";
+	mes "真不敢相信他们";
+	mes "放你进来了！这需要";
+	mes "严肃的纪律处分！";
 	close;
 }
 
-einbroch,244,255,5	script	Bulletin Board#ein1	858,{
+einbroch,244,255,5	script	公告板#ein1	858,{
 	mes " ";
-	mes " Train Station ";
-	mes " ";
-	close;
-}
-
-einbroch,253,203,5	script	Bulletin Board#ein2	858,{
-	mes " ";
-	mes " Hotel ";
+	mes "火车站";
 	mes " ";
 	close;
 }
 
-einbroch,68,206,5	script	Bulletin Board#ein3	858,{
+einbroch,253,203,5	script	公告板#ein2	858,{
 	mes " ";
-	mes " Airship Airport ";
-	mes " ";
-	close;
-}
-
-einbroch,90,84,5	script	Bulletin Board#ein4	858,{
-	mes " ";
-	mes " Laboratory ";
+	mes "旅馆";
 	mes " ";
 	close;
 }
 
-einbroch,101,106,5	script	Bulletin Board#ein5	858,{
+einbroch,68,206,5	script	公告板#ein3	858,{
 	mes " ";
-	mes " Airship Repair Shop ";
-	mes " ";
-	close;
-}
-
-einbroch,220,208,5	script	Bulletin Board#ein6	858,{
-	mes " ";
-	mes " Weapon Shop ";
+	mes "飞空艇机场";
 	mes " ";
 	close;
 }
 
-einbroch,132,76,5	script	Bulletin Board#ein7	858,{
+einbroch,90,84,5	script	公告板#ein4	858,{
 	mes " ";
-	mes " Factory ";
+	mes "研究所";
 	mes " ";
 	close;
 }
 
-einbroch,152,46,5	script	Bulletin Board#ein11	858,{
-	mes "West - Laboratory, Airship Repair Shop";
-	mes "South - Einbroch Front Gate";
-	mes "North - Airport";
-	mes "Northeast - Train Station, Hotel, Weapon Shop";
+einbroch,101,106,5	script	公告板#ein5	858,{
+	mes " ";
+	mes "飞空艇修理厂";
+	mes " ";
 	close;
 }
 
-einbroch,235,141,5	script	Bulletin Board#ein22	858,{
-	mes "Southwest - Airship Repair Shop, Laboratory";
-	mes "Northwest - Airport";
-	mes "North - Weapon Shop, Hotel, Train Station";
+einbroch,220,208,5	script	公告板#ein6	858,{
+	mes " ";
+	mes "武器店";
+	mes " ";
 	close;
 }
 
-einbroch,162,256,5	script	Bulletin Board#ein33	858,{
-	mes "East - Train Station";
-	mes "Southeast - Hotel";
-	mes "South - Weapon Shop, Factory";
-	mes "Southwest - Airport, Airship Repair Shop, Laboratory";
+einbroch,132,76,5	script	公告板#ein7	858,{
+	mes " ";
+	mes "工厂";
+	mes " ";
 	close;
 }
 
-einbroch,183,174,5	script	Bulletin Board#ein44	858,{
-	mes "East - Weapon Shop, Hotel";
-	mes "South - Factory";
-	mes "Southwest - Airship Repair Shop, Laboratory";
-	mes "Northwest - Airport";
+einbroch,152,46,5	script	公告板#ein11	858,{
+	mes "西 - 研究所、飞空艇修理厂";
+	mes "南 - 艾音布罗克正门";
+	mes "北 - 机场";
+	mes "东北 - 火车站、旅馆、武器店";
 	close;
 }
 
-einbroch,104,202,5	script	Bulletin Board#ein55	858,{
-	mes "Northeast - Train Station";
-	mes "East - Weapon Shop,Hotel";
-	mes "South - Airship Repair Shop, Laboratory";
+einbroch,235,141,5	script	公告板#ein22	858,{
+	mes "西南 - 飞空艇修理厂、研究所";
+	mes "西北 - 机场";
+	mes "北 - 武器店、旅馆、火车站";
 	close;
 }
 
-ein_in01,31,217,3	script	Cendadt#ein	851,{
-	mes "[Cendadt]";
-	mes "This factory has a lot";
-	mes "of things that need fixing,";
-	mes "pronto! I'm amazed that";
-	mes "the place is still operating!";
+einbroch,162,256,5	script	公告板#ein33	858,{
+	mes "东 - 火车站";
+	mes "东南 - 旅馆";
+	mes "南 - 武器店、工厂";
+	mes "西南 - 机场、飞空艇修理厂、研究所";
+	close;
+}
+
+einbroch,183,174,5	script	公告板#ein44	858,{
+	mes "东 - 武器店、旅馆";
+	mes "南 - 工厂";
+	mes "西南 - 飞空艇修理厂、研究所";
+	mes "西北 - 机场";
+	close;
+}
+
+einbroch,104,202,5	script	公告板#ein55	858,{
+	mes "东北 - 火车站";
+	mes "东 - 武器店、旅馆";
+	mes "南 - 飞空艇修理厂、研究所";
+	close;
+}
+
+ein_in01,31,217,3	script	森达特#ein	851,{
+	mes "[森达特]";
+	mes "这家工厂有";
+	mes "很多东西要修，";
+	mes "得赶紧！真惊讶";
+	mes "这地方还能运转！";
 	next;
-	mes "[Cendadt]";
-	mes "Lucky for us, I hear that";
-	mes "some altruistic adventurers";
-	mes "have been donating materials";
-	mes "to help keep this factory from";
-	mes "falling apart... Or worse.";
-	mes "But that's just a rumor.";
+	mes "[森达特]";
+	mes "算我们走运，听说";
+	mes "有些好心的冒险者";
+	mes "一直在捐献材料，";
+	mes "帮忙让这家工厂";
+	mes "不至于垮掉……或者更糟。";
+	mes "不过那只是传闻。";
 	next;
-	mes "[Cendadt]";
-	mes "^666666*Sigh*^000000";
-	mes "Even if it is true,";
-	mes "there's nothing no one";
-	mes "here can do. Nobody has";
-	mes "the courage to challenge";
-	mes "the system, you know?";
+	mes "[森达特]";
+	mes "^666666*唉*^000000";
+	mes "就算那是真的，";
+	mes "这里也没人";
+	mes "能做什么。没人有";
+	mes "勇气去挑战";
+	mes "这个体制，你懂吗？";
 	next;
-	mes "[Cendadt]";
+	mes "[森达特]";
 	mes "I...";
-	mes "I better get";
-	mes "back to work";
-	mes "before I get";
-	mes "in trouble...";
+	mes "我还是";
+	mes "回去干活吧，";
+	mes "免得";
+	mes "惹上麻烦……";
 	close;
 }

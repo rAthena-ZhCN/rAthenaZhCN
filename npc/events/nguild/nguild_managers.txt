@@ -29,149 +29,149 @@ function	script	F_GldManager	{
 	.@gid = getcastledata(.@map_name$,1);
 	.@gm_name$ = getguildmaster(.@gid);
 
-	mes "[ "+ .@npc_name$ +" ]";
+	mes "["+ .@npc_name$ +"]";
 	if (.@gid == 0){
-		mes "I am waiting for my master.  Brave adventurer, follow your destiny!";
+		mes "我在等待我的主人。  勇敢的冒险者，追随你的命运吧！";
 		return;
 	}
 	if (getcharid(2) != .@gid){
-		mes "I am here to follow ^5533FF" + getguildmaster(.@gid) + "^000000's command! Hey! Your not even a part of the guild!!";
-		mes "Where are the guardians? Destroy these intruders!";
+		mes "我在此追随 ^5533FF" + getguildmaster(.@gid) + "^000000 的命令！喂！你根本就不是公会的一员！！";
+		mes "守卫都到哪里去了？消灭这些入侵者！";
 		return;
 	}
 	if (is_guild_leader() == false){
-		mes "You're not ^5533FF" + getguildmaster(.@gid) + "^000000! I am here to follow ^5533FF" + getguildmaster(.@gid) + "^000000's command only";
+		mes "你不是 ^5533FF" + getguildmaster(.@gid) + "^000000！我只追随 ^5533FF" + getguildmaster(.@gid) + "^000000 的命令";
 		return 0;
 	}
 
-	mes "Welcome Master ^5533FF" + getguildmaster(.@gid) + "^000000 ! I will assist you in any way I can!";
+	mes "欢迎您，主人 ^5533FF" + getguildmaster(.@gid) + "^000000！我会尽我所能协助您！";
 	next;
 
-	menu "Kafra Staff Employment / Dismissal",M_Kaf, "Enter Treasure Room",M_Treas, "Cancel",M_End;
+	menu "卡普拉职员雇用/解雇",M_Kaf, "进入宝物库",M_Treas, "取消",M_End;
 
 	//===========================
 	M_Kaf:
 	//======
-		mes "[ "+ .@npc_name$ +" ]";
+		mes "["+ .@npc_name$ +"]";
 		if (GetCastleData(.@map_name$,9) == 1) goto L_Dismiss;
 		if (getgdskilllv(.@gid,10001) == 0){
-			mes "Master, you don't have a contract with the Kafra Staff Company.";
-			mes "In order to hire a Kafra, you must first learn the Guild skill ^5533FFContract With Kafra^000000.";
+			mes "主人，您与卡普拉职员公司没有契约。";
+			mes "要雇用卡普拉，必须先学会公会技能 ^5533FF与卡普拉订契约^000000。";
 			return;
 		}
 
 		L_Hire:
-			mes "Would you like to employ the services of a Kafra? You will need ^5533FF10,000 Zeny^000000 to do so... ";
+			mes "要雇用卡普拉为您服务吗？需要 ^5533FF10,000 Zeny^000000……";
 			next;
-			menu "Employ Kafra.",-,"Cancel",sM_KafEnd;
+			menu "雇用卡普拉。",-,"取消",sM_KafEnd;
 
-				mes "[ "+ .@npc_name$ +" ]";
+				mes "["+ .@npc_name$ +"]";
 				if (Zeny < 10000){
-					mes "Master, you do not have enough money to employ a Kafra. Employment has been cancelled.";
+					mes "主人，您的钱不足以雇用卡普拉。雇用已取消。";
 					return;
 				}
 				set Zeny,Zeny-10000;
 				enablenpc "Kafra Staff#"+getarg(4);
 				SetCastleData .@map_name$,9,1;
-				mes "You have created a contract with the Kafra Staff Company.";
+				mes "您已与卡普拉职员公司缔结契约。";
 				next;
 				cutin "kafra_01",2;
-				mes "[ Kafra Staff ]";
-				mes "How do you do? I'm here to provide you with helpful service! I'll do the best I can to serve you.";
+				mes "[ 卡普拉职员 ]";
+				mes "您好。我来为您提供有用的服务！我会尽力为您效劳。";
 				next;
 				cutin "kafra_01",255;
-				mes "[ "+ .@npc_name$ +" ]";
+				mes "["+ .@npc_name$ +"]";
 				//mes "Your employment contract lasts ^5533FF1 month^000000.  After this term is over you will have to create a new contract.";
-				mes "I think the Kafra Staff will benefit our guild members.";
+				mes "我认为卡普拉职员对我们公会成员会有帮助。";
 				return;
 
 			sM_KafEnd:
-				mes "[ "+ .@npc_name$ +" ]";
-				mes "As you wish Master.  But I suggest we get a Kafra as soon as possible!";
+				mes "["+ .@npc_name$ +"]";
+				mes "遵命，主人。  但我建议我们尽快雇一位卡普拉！";
 				return;
 
 		L_Dismiss:
-			mes "Would you like to dismiss the current Kafra?";
+			mes "要解雇现在的卡普拉吗？";
 			next;
-			menu "Dismissal",-,"Cancel",sM_KafEnd2;
+			menu "解雇",-,"取消",sM_KafEnd2;
 
 				cutin "kafra_01",2;
-				mes "[ Kafra Staff ]";
-				mes "Have I done anything wrong? If I did, will you please forgive me?";
+				mes "[ 卡普拉职员 ]";
+				mes "我做错什么了吗？如果做错了，请您原谅我。";
 				next;
-				menu "Dismiss",-,"Cancel",ssM_KafEnd2;
+				menu "解雇",-,"取消",ssM_KafEnd2;
 
-					mes "[ Kafra Staff ]";
-					mes "It's unfortunate that I won't be able to serve your guild anymore....";
+					mes "[ 卡普拉职员 ]";
+					mes "很遗憾我不能再为您的公会服务了……";
 					next;
 					disablenpc "Kafra Staff#"+getarg(4);
 					SetCastleData .@map_name$,9,0;
 					cutin "kafra_01",255;
-					mes "[ "+ .@npc_name$ +" ]";
-					mes "The Kafra has been dismissed.  But... we should really get a Kafra as soon as possible!";
+					mes "["+ .@npc_name$ +"]";
+					mes "卡普拉已被解雇。  但是……我们真的应该尽快雇一位卡普拉！";
 					return;
 				ssM_KafEnd2:
-					mes "[ Kafra Staff ]";
-					mes "Thank you master, I'll do my best! ^^.";
+					mes "[ 卡普拉职员 ]";
+					mes "谢谢您，主人，我会全力以赴！ ^^。";
 					cutin "kafra_01",255;
 					return;
 			sM_KafEnd2:
-				mes "[ "+ .@npc_name$ +" ]";
-				mes "Master, I think you should keep the current Kafra Staff because she is already trying her best to serve us";
+				mes "["+ .@npc_name$ +"]";
+				mes "主人，我认为您应该留用现在的卡普拉职员，因为她已经在尽力为我们服务了";
 				return;
 
 	//=========================
 	M_Treas:
 	//========
-		mes "[ "+ .@npc_name$ +" ]";
-		mes "Would you to go to our Treasure Room? Only you, the Guild Master, are allowed to enter this room.";
+		mes "["+ .@npc_name$ +"]";
+		mes "您要去我们的宝物库吗？只有您，公会会长，才能进入这个房间。";
 		next;
-		menu "Enter Treasure room.",-,"Cancel",sM_TresEnd;
+		menu "进入宝物库。",-,"取消",sM_TresEnd;
 
-			mes "[ "+ .@npc_name$ +" ]";
-			mes "Please follow me through the secret passage way.";
-			mes "You must pull down on the secret switch in order to get out.";
+			mes "["+ .@npc_name$ +"]";
+			mes "请跟我从秘密通道走。";
+			mes "要出去，必须拉下秘密开关。";
 			next;
 			warp .@map_name$,getarg(2),getarg(3);
 			return;
 		sM_TresEnd:
-			mes "[ "+ .@npc_name$ +" ]";
-			mes "The goods are produced everyday.";
-			mes "You should get them whenever you can because they might dissapear if you take them at the wrong time.";
+			mes "["+ .@npc_name$ +"]";
+			mes "货物每天都会产出。";
+			mes "您应该尽快拿走它们，因为如果在错误的时间取走，它们可能会消失。";
 			return;
 
 
 	//==========================
 	M_End:
 	//=======
-		mes "[ "+ .@npc_name$ +" ]";
-		mes "As you wish, master.";
+		mes "["+ .@npc_name$ +"]";
+		mes "遵命，主人。";
 		return;
 }
 
 // Castle 1 ==================================================================================
-nguild_alde,218,175,0	script	Frolo	55,{
+nguild_alde,218,175,0	script	弗罗洛	55,{
 	callfunc "F_GldManager","Frolo","nguild_alde",119,223,"N01";
 	close;
 }
 
 
 // Castle 2 ==================================================================================
-nguild_gef,40,48,5	script	Leiber	55,{
+nguild_gef,40,48,5	script	莱伯	55,{
 	callfunc "F_GldManager","Leiber","nguild_gef",155,112,"N02";
 	close;
 }
 
 
 // Castle 3 ==================================================================================
-nguild_pay,120,58,4	script	Dundar	55,{
+nguild_pay,120,58,4	script	邓达尔	55,{
 	callfunc "F_GldManager","Dundar","nguild_pay",290,7,"N03";
 	close;
 }
 
 
 // Castle 4 ==================================================================================
-nguild_prt,112,181,0	script	Thefton	55,{
+nguild_prt,112,181,0	script	塞夫顿	55,{
 	callfunc "F_GldManager","Thefton","nguild_prt",15,209,"N04";
 	close;
 }

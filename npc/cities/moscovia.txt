@@ -17,97 +17,97 @@
 // Moscovia Transportation :: mosk_trans
 //============================================================
 -	script	::PR_Officer_moscovia	-1,{
-	mes "[Moscovia P.R. Officer]";
-	mes "Moscovia! Do you know Moscovia?";
-	mes "the paradise spreading on the endless seas...";
-	mes "Welcome to Moscovia";
-	mes "It's adventurous and mystic.";
+	mes "[莫斯科比亚宣传官]";
+	mes "莫斯科比亚！你知道莫斯科比亚吗？";
+	mes "那片铺展在无边海面上的乐园……";
+	mes "欢迎来到莫斯科比亚";
+	mes "那里充满冒险与神秘。";
 	next;
-	switch(select("About Moscovia...:Go to Moscovia.:Cancel")) {
+	switch(select("关于莫斯科比亚……:前往莫斯科比亚:取消")) {
 		case 1:
-			mes "[Moscovia P.R. Officer]";
-			mes "Moscovia is a beautiful kingdom";
-			mes "on an island located north of Rune-";
+			mes "[莫斯科比亚宣传官]";
+			mes "莫斯科比亚是个美丽的王国";
+			mes "位于卢恩-米德加尔特北方的岛上";
 			mes "Midgarts.";
 			next;
-			mes "[Moscovia P.R. Officer]";
-			mes "I'm sure that you will be";
-			mes "absolutely fascinated";
-			mes "by Moscovia's beautiful scenery";
-			mes "and gorgeous palace.";
+			mes "[莫斯科比亚宣传官]";
+			mes "我相信你一定会";
+			mes "彻底沉醉于";
+			mes "莫斯科比亚美丽的风景";
+			mes "以及壮丽的宫殿。";
 			next;
-			mes "[Moscovia P.R. Officer]";
-			mes "Now that our long winter has";
-			mes "passed,";
-			mes "I'm happy that I can now show you";
-			mes "our gorgeous hometown.";
+			mes "[莫斯科比亚宣传官]";
+			mes "漫长的冬天已经";
+			mes "过去，";
+			mes "我很高兴现在能带你看看";
+			mes "我们壮丽的故乡。";
 			next;
-			mes "[Moscovia P.R. Officer]";
-			mes "If you feel like visiting Moscovia";
-			mes "take the chance now!";
-			mes "I'll help you to have a nice trip";
-			mes "to Moscovia!";
+			mes "[莫斯科比亚宣传官]";
+			mes "如果你想参观莫斯科比亚";
+			mes "现在就抓住机会吧！";
+			mes "我会帮你享受一段愉快的旅程";
+			mes "前往莫斯科比亚！";
 			close;
 
 		case 2:
-			mes "[Moscovia P.R. Officer]";
-			mes "Ok then, let us start now.";
-			mes "You should pay me 10,000 zeny";
-			mes "to go to Moscovia.";
-			mes "But when you come back,";
-			mes "you don't have to pay.";
+			mes "[莫斯科比亚宣传官]";
+			mes "那么，我们现在就开始吧。";
+			mes "你需要付我 10,000 zeny";
+			mes "才能前往莫斯科比亚。";
+			mes "但回来的时候，";
+			mes "你就不必付了。";
 			next;
-			mes "[Moscovia P.R. Officer]";
-			mes "Can we leave now?";
+			mes "[莫斯科比亚宣传官]";
+			mes "现在可以出发了吗？";
 			next;
-			if (select("Let's go!:Cancel") == 2) {
-				mes "[Moscovia P.R. Officer]";
-				mes "If you're too busy now,";
-				mes "please tell me again whenever you want.";
-				mes "I'm always ready to guide anyone to Moscovia.";
+			if (select("出发吧！:取消") == 2) {
+				mes "[莫斯科比亚宣传官]";
+				mes "如果你现在太忙，";
+				mes "随时再来告诉我。";
+				mes "我随时都愿意带任何人去莫斯科比亚。";
 				close;
 			}
 			if (Zeny < 10000) {
-				mes "[Moscovia P.R. Officer]";
-				mes "I'm sorry but you don't have";
-				mes "enough zeny now";
-				mes "You need 10,000 zeny";
-				mes "to go to Moscovia";
-				mes "Thank you.";
+				mes "[莫斯科比亚宣传官]";
+				mes "很抱歉，你现在没有";
+				mes "足够的 zeny";
+				mes "你需要 10,000 zeny";
+				mes "才能前往莫斯科比亚";
+				mes "谢谢。";
 				close;
 			} else {
-				mes "[Moscovia P.R. Officer]";
-				mes "Ok then, we're leaving now.";
+				mes "[莫斯科比亚宣传官]";
+				mes "那么，我们这就出发了。";
 				close2;
 				set Zeny,Zeny - 10000;
 				warp "moscovia",163,55;
 				end;
 			}
 		case 3:
-			mes "[Moscovia P.R. Officer]";
-			mes "If you're too busy now,";
-			mes "please tell me again whenever you want.";
-			mes "I'm always ready to guide anyone to Moscovia.";
+			mes "[莫斯科比亚宣传官]";
+			mes "如果你现在太忙，";
+			mes "随时再来告诉我。";
+			mes "我随时都愿意带任何人去莫斯科比亚。";
 			close;
 	}
 }
 
-moscovia,166,53,4	script	Moscovia P.R. Officer#2	960,{
-	mes "[Moscovia P.R. Officer]";
-	mes "How was your trip?";
-	mes "Do you have good memories from Moscovia?";
-	mes "A ship is now leaving";
-	mes "for Rune-Midgarts.";
+moscovia,166,53,4	script	莫斯科比亚公关官#2	960,{
+	mes "[莫斯科比亚宣传官]";
+	mes "旅途还愉快吗？";
+	mes "莫斯科比亚给你留下美好的回忆了吗？";
+	mes "有一艘船即将启航";
+	mes "前往卢恩-米德加尔特。";
 	next;
-	if (select("Return to Alberta:Cancel") == 2) {
-		mes "[Moscovia P.R. Officer]";
-		mes "If you want to see more";
-		mes "please take your time.";
+	if (select("返回阿尔贝塔:取消") == 2) {
+		mes "[莫斯科比亚宣传官]";
+		mes "如果你想多看一会儿";
+		mes "请慢慢欣赏。";
 		close;
 	}
-	mes "[Moscovia P.R. Officer]";
-	mes "Please come and visit soon.";
-	mes "Ok then, Let's get going.";
+	mes "[莫斯科比亚宣传官]";
+	mes "请早日再来。";
+	mes "那么，我们出发吧。";
 	close2;
 	if (checkre(0))
 		warp "alberta",244,86;
@@ -119,17 +119,17 @@ moscovia,166,53,4	script	Moscovia P.R. Officer#2	960,{
 
 // Moscovia Palace :: mos_swan
 //============================================================
-moscovia,253,166,4	script	Soldier#mosk1	966,{
-	mes "[Soldier]";
-	mes "Our dear Csar Alexsay III is in the palace.";
-	mes "He rules over Moscovia.";
-	mes "Please be careful not to cause him any trouble.";
+moscovia,253,166,4	script	士兵#mosk1	966,{
+	mes "[士兵]";
+	mes "我们敬爱的沙皇阿列克谢三世就在宫殿里。";
+	mes "他统治着莫斯科比亚。";
+	mes "请小心，不要给他添任何麻烦。";
 	close;
 }
 
 -	script	Soldier#mosk::MoscSoldier	966,{
-	mes "[Soldier]";
-	mes "Please be silent or the Csar will be angry.";
+	mes "[士兵]";
+	mes "请保持安静，否则沙皇会生气的。";
 	close;
 }
 mosk_in,118,66,5	duplicate(MoscSoldier)	Soldier#mosk02	966

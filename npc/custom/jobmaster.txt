@@ -16,7 +16,7 @@
 //= 2.0 Added 4th class [Lemongrass]
 //============================================================
 
-prontera,153,193,6	script	Job Master	123,{
+prontera,153,193,6	script	职业大师	123,{
 function Get_Job_Equip;
 // Checks if the Player has the required level.
 // closes if not, returns if yes
@@ -24,15 +24,15 @@ function	Require_Level	{
 	if (BaseLevel < getarg(0) || JobLevel < getarg(1)) {
 		.@blvl = getarg(0) - BaseLevel;
 		.@jlvl = getarg(1) - JobLevel;
-		mes "Level requirement:";
+		mes "等级需求：";
 		mes ((getarg(0)>1)? 
-			"^bb0000"+getarg(0)+"^000000 (^bb0000Base^000000) / ":"")+"^00bb00"+
-			getarg(1)+"^000000 (^00bb00Job^000000)";
-		mes "You need " +
-			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000 more base levels " + 
-				((.@jlvl > 0) ? "and " : "") : "") +
-			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000 more job levels " : "") +
-			"to continue.";
+			"^bb0000"+getarg(0)+"^000000（^bb0000基础等级^000000） /":"")+"^00bb00"+
+			getarg(1)+"^000000（^00bb00职业等级^000000）";
+		mes "还需要" +
+			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000点基础等级" + 
+				((.@jlvl > 0) ? "和" : "") : "") +
+			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000点职业等级" : "") +
+			"才能继续。";
 		close;
 	}
 	return;
@@ -108,19 +108,19 @@ function	Check_Riding	{
 	// would make this NPC bigger just to handle with
 	// those special cases.
 	if (checkfalcon() || checkcart() || checkriding() || ismounting()) {
-		mes "Please remove your " +
-			((checkfalcon()) ? "falcon" : "") +
-			((checkcart()) ? "cart" : "") +
-			((checkriding()) ? "Peco" : "") +
-			((ismounting()) ? "mount" : "") +
-			" before proceeding.";
+		mes "请先解除你的" +
+			((checkfalcon()) ? "猎鹰" : "") +
+			((checkcart()) ? "手推车" : "") +
+			((checkriding()) ? "大嘴鸟" : "") +
+			((ismounting()) ? "坐骑" : "") +
+			"后再继续。";
 		close;
 	}
 	return;
 }
 function	Check_SkillPoints	{
 	if (.SkillPointCheck && SkillPoint) {
-		mes "Please use all your skill points before proceeding.";
+		mes "请先将技能点全部用完后再继续。";
 		close;
 	}
 	return;
@@ -256,7 +256,7 @@ function	Job_Options	{
 					Job_Options(.@job_opt, Job_Baby_Summoner);
 				break;
 			default:
-				mes "An error has occurred.";
+				mes "发生了错误。";
 				close;
 		}
 	} else if( Is_First_Cls(.@eac) || 				// First Class
@@ -297,7 +297,7 @@ function	Job_Menu	{
 	while(true) {
 		.@opt_cnt =  getarraysize(getarg(0));
 		if( .@opt_cnt <= 0 ) {
-			mes "No more jobs are available.";
+			mes "没有更多可转职的职业了。";
 			close;
 		}
 
@@ -305,16 +305,16 @@ function	Job_Menu	{
 		if (.@opt_cnt > 1) {
 			// Multiple job classes given. Select one and save it to .@class
 			// After that confirm .@class
-			mes "Select a job.";
+			mes "请选择职业。";
 			.@menu$ = "";
 			for (.@i = 0; .@i < .@opt_cnt; .@i++) {
 				if( getelementofarray(getarg(0), .@i) == Job_Novice_High)
 					.@jobname$ = "^0055FFRebirth^000000";
 				else
 					.@jobname$ = jobname(getelementofarray(getarg(0), .@i));
-				.@menu$ = .@menu$ + " ~ " + .@jobname$ + ":";
+				.@menu$ = .@menu$ + "~" + .@jobname$ + ":";
 			}
-			.@menu$ = .@menu$+" ~ ^777777Cancel^000000";
+			.@menu$ = .@menu$+"~ ^777777取消^000000";
 			.@selected = select(.@menu$) - 1;
 			if( .@selected < 0 || .@selected >= .@opt_cnt )
 				close;
@@ -328,8 +328,8 @@ function	Job_Menu	{
 			// Super Baby can both be selected in one of the first class
 			// changes. That's why the Level Requirement is after and not before
 			// the selection.
-			mes "A base level of " + .SNovice +
-				" is required to turn into a " + jobname(.@class) + ".";
+			mes "基础等级达到" + .SNovice +
+				"才能转职为" + jobname(.@class) + ".";
 			return;
 		}
 		// Confirm the Class
@@ -347,7 +347,7 @@ function	Job_Change	{
 	.@to_cls = getarg(0);
 	next;
 	mes .NPCName$;
-	mes "You are now " + callfunc("F_InsertArticle", jobname(.@to_cls)) + "!";
+	mes "你现在是" + callfunc("F_InsertArticle", jobname(.@to_cls)) + "!";
 	if (.@to_cls == Job_Novice_High && .LastJob)
 		lastJob = Class; // Saves the lastJob for rebirth
 	jobchange .@to_cls;
@@ -374,16 +374,16 @@ function	Confirm_Change	{
 	.@class = getarg(0, -1);
 	.@back = getarg(1, false);
 	if( .@class < 0 || eaclass(.@class) == -1 ) {
-		mes "Unknown Class Error.";
+		mes "未知职业错误。";
 		close;
 	}
-	mes "Do you want to change into ^0055FF"+jobname(.@class)+"^000000 class?";
+	mes "要转职为 ^0055FF"+jobname(.@class)+"^000000吗？";
 	.@job_option$ = " ~ Change into ^0055FF"+jobname(.@class)+"^000000 class";
 	if( .@class == Job_Novice_High)
 		.@job_option$ = " ~ ^0055FFRebirth^000000";
 	
 	if (select(.@job_option$+": ~ ^777777" + 
-			((.@back) ?"Go back" : "Cancel") + "^000000") == 1) {
+			((.@back) ?"返回" : "取消") + "^000000") == 1) {
 		Job_Change(.@class);
 	}
 	if (!.@back)

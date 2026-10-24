@@ -63,57 +63,57 @@ Expanded Super Novice: EXSUPNOV_Q -> job_super2
 
 // Main NPCs :: job_repair
 //============================================================
-prt_in,38,104,4	script	Valerie	811,{
+prt_in,38,104,4	script	瓦莱丽	811,{
 	if (checkweight(1201,1) == 0) {
-		mes "I think you have too many items. Let's try it again after you take some out.";
+		mes "我想你的物品太多了。请拿掉一些后再试一次。";
 		close;
 	}
 	if (MaxWeight - Weight < 1000) {
-		mes "You're overweight with items so I don't think we can proceed any further. Challenge me after you've taken some items off.";
+		mes "你的物品负重过高，我们无法继续。请卸下一些物品后再来挑战我。";
 		close;
 	}
-	mes "[Valerie]";
-	mes "I am Valerie; I help those with abnormalities. I am friends with Valkyrie.";
+	mes "[瓦莱丽]";
+	mes "我是瓦莱丽，帮助那些身有异常的人。我和瓦尔基里是朋友。";
 	next;
-	mes "[Valerie]";
-	mes "If both abnormalities disappear then we must start the test over from scratch. What would you like to do?";
+	mes "[瓦莱丽]";
+	mes "如果两种异常都消失了，我们就必须从头重新开始测试。你想怎么做？";
 	next;
-	switch(select("I don't have any abnormalities:I think my body has some abnormalities")) {
+	switch(select("我没有异常:我觉得我的身体有些异常")) {
 	case 1:
-		mes "[Valerie]";
-		mes "That's a relief. Then please take care.";
+		mes "[瓦莱丽]";
+		mes "那就好。请多保重。";
 		close;
 	case 2:
-		mes "[Valerie]";
-		mes "Are you sure you want to intialize it and start over?";
+		mes "[瓦莱丽]";
+		mes "你确定要初始化并重新开始吗？";
 		next;
-		if(select("Nope:Yes, I want to start completely over") == 1) {
-			mes "[Valerie]";
-			mes "I understand. I'll see you next time";
+		if(select("不用了:是的，我想完全重新开始") == 1) {
+			mes "[瓦莱丽]";
+			mes "我明白了。下次见。";
 			close;
 		}
-		mes "[Valerie]";
-		mes "All items related to the existing conditions will disappear. Are you okay with this?";
+		mes "[瓦莱丽]";
+		mes "所有与现有状态相关的物品都会消失。这样可以吗？";
 		next;
-		if(select("Nope:Yes, I want to start completely over.") == 1) {
-			mes "[Valerie]";
-			mes "I understand. I'll see you next time.";
+		if(select("不用了:是的，我想完全重新开始。") == 1) {
+			mes "[瓦莱丽]";
+			mes "我明白了。下次见。";
 			close;
 		}
-		mes "[Valerie]";
-		mes "It seems that there are a sea of people who seemed to be cursed of not being able to get a significant other after going through with this. Are you still okay with this? ";
+		mes "[瓦莱丽]";
+		mes "看来有很多人做过之后，就像被诅咒一样再也找不到伴侣。你仍然确定要这么做吗？";
 		next;
-		if(select("Nope:I still want to intialize.") == 1) {
-			mes "[Valerie]";
-			mes "I understand. I will see you next time.";
+		if(select("不用了:我还是想初始化。") == 1) {
+			mes "[瓦莱丽]";
+			mes "我明白了。下次见。";
 			close;
 		}
-		mes "[Valerie]";
-		mes "In extreme cases, some become crippled and can get ulcers. Do you still want to intilize former processes?";
+		mes "[瓦莱丽]";
+		mes "在极端情况下，有些人会变成残废，还会生疮。你仍然要初始化之前的流程吗？";
 		next;
-		if(select("Nope:Please intilize the former processes") == 1) {
-			mes "[Valerie]";
-			mes "I understand. I will see you next time";
+		if(select("不用了:请初始化之前的流程") == 1) {
+			mes "[瓦莱丽]";
+			mes "我明白了。下次见。";
 			close;
 		}
 		specialeffect2 EF_INVENOM;
@@ -121,14 +121,14 @@ prt_in,38,104,4	script	Valerie	811,{
 
 		// Warlock - quest items
 		if (isequipped(2796) || isequipped(2797)) {
-			mes "[Valerie]";
-			mes "Please unequip the Magical Stone or Magical Stone Ring and try again.";
+			mes "[瓦莱丽]";
+			mes "请卸下魔法石或魔法石戒指后再试一次。";
 			close;
 		}
 		if (countitem(2796) || countitem(2797)) {
 			if (isequipped(2796) || isequipped(2797)) {
-				mes "[Valerie]";
-				mes "Please talk to me after your replace all Magical Stones.";
+				mes "[瓦莱丽]";
+				mes "请替换所有魔法石后再来找我。";
 				close;
 			}
 			setarray .@items[0], 2796, 2797, 6152, 6151; //Magical_Stone,Magical_Stone_,Glittering_Crystal,Peice_Of_Great_Bradium
@@ -136,26 +136,26 @@ prt_in,38,104,4	script	Valerie	811,{
 				if (countitem(.@items[.@i]))
 					delitem .@items[.@i], countitem(.@items[.@i]);
 			}
-			mes "[Valerie]";
-			mes "You're carrying something that is unnecessary. I will sort it out for you.";
+			mes "[瓦莱丽]";
+			mes "你带着一些不需要的东西。我来帮你处理掉。";
 			close;
 		}
 
 		// Baby and third job characters meet no further conditions.
 		if (eaclass()&(EAJL_BABY|EAJL_THIRD)) {
-			mes "[Valerie]";
-			mes "I don't think you should have any further business with me.";
+			mes "[瓦莱丽]";
+			mes "我想你和我不该再有什么瓜葛了。";
 			close;
 		}
 
 		// Rebirth - variable
 		if ((Class >= Job_Swordman && Class <= Job_Crusader2) && ADVJOB != 0) {
 			set ADVJOB,0;
-			mes "[Valerie]";
-			mes "You're carrying big karma- You should erase it.";
+			mes "[瓦莱丽]";
+			mes "你背负着沉重的因果——你应该把它消除。";
 			next;
-			mes "[Valerie]";
-			mes "Please talk to me again as there could be additional problems.";
+			mes "[瓦莱丽]";
+			mes "请再来找我，可能还有其他问题。";
 			close;
 		}
 
@@ -211,8 +211,8 @@ prt_in,38,104,4	script	Valerie	811,{
 		else if (BaseJob == Job_Sage)
 			callsub L_Third, "job_soc", 12098, 12096, 12098;
 
-		mes "[Valerie]";
-		mes "I don't think you should have any further business with me.";
+		mes "[瓦莱丽]";
+		mes "我想你和我不该再有什么瓜葛了。";
 		close;
 	}
 
@@ -221,11 +221,11 @@ L_Second:
 		setd getarg(0),0;
 		if (checkquest(getarg(1)) == 2)
 			erasequest getarg(1);
-		mes "[Valerie]";
-		mes "I will help clear your problems for you that came from your former attempts.";
+		mes "[瓦莱丽]";
+		mes "我会帮你清除过去尝试所留下的问题。";
 		next;
-		mes "[Valerie]";
-		mes "Please talk to me again as there could be additional problems.";
+		mes "[瓦莱丽]";
+		mes "请再来找我，可能还有其他问题。";
 		close;
 	} else
 		return;
@@ -245,20 +245,20 @@ L_Third:
 			if (checkquest(getarg(4)) > -1)
 				erasequest getarg(4);
 		}
-		mes "[Valerie]";
-		mes "I will help clear your problems for you that came from your former attempts.";
+		mes "[瓦莱丽]";
+		mes "我会帮你清除过去尝试所留下的问题。";
 		next;
-		mes "[Valerie]";
-		mes "Please talk to me again as there could be additional problems.";
+		mes "[瓦莱丽]";
+		mes "请再来找我，可能还有其他问题。";
 		close;
 	} else
 		return;
 }
 
 -	script	Valerie#sign	-1,{
-	mes "^ff00ffI couldn't pay the office rent so I am temporarily relocating to the building across from the Prontera Refinery.^000000";
+	mes "^ff00ff我付不起办公室的租金，所以暂时搬到普隆德拉精炼厂对面的建筑里。^000000";
 	mes " ";
-	mes "^ff00ffValerie^000000";
+	mes "^ff00ff瓦莱丽^000000";
 	close;
 }
 in_moc_16,17,33,4	duplicate(Valerie#sign)	Valerie#asn	837
@@ -284,9 +284,9 @@ in_rogue,376,104,4	duplicate(Valerie#sign)	Valerie#sc	837
 ve_in,244,122,4	duplicate(Valerie#sign)	Valerie#shu	837
 xmas,166,209,4	duplicate(Valerie#sign)	Valerie#wan	837
 
-sec_in02,12,40,5	script	Job Repair	57,1,1,{
+sec_in02,12,40,5	script	职业修复	57,1,1,{
 	callfunc "F_GM_NPC";
-	mes "Please input your password.";
+	mes "请输入你的密码。";
 	next;
 	if (callfunc("F_GM_NPC","1854",1) == 1) {
 		set job_arch,100;

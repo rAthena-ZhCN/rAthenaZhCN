@@ -6,50 +6,50 @@
 //= 1.0 First Version. [Capuche]
 //============================================================
 
-harboro1,356,211,5	script	Guide#rockridge01	4_F_ANYA,{
-	mes "[Sheriff Assistant]";
-	mes "Welcome to Rock Ridge, the hot, dry desert in the West where adventure is waiting!";
-	mes "I'm the sheriff's assistant, and I'm here to guide visitors. Is there a place you want to go?";
+harboro1,356,211,5	script	向导#rockridge01	4_F_ANYA,{
+	mes "[警长助手]";
+	mes "欢迎来到岩脊，西部炎热干燥、冒险正在等待您的沙漠！";
+	mes "我是警长助手，在这里为访客指路。您有想去的地方吗？";
 	next;
-	mes "[Sheriff Assistant]";
-	mes "Tell me where you want to go, and I'll show you where it is.";
-	mes "Also, you can use ^B9062FNavigation^000000 mode by ^B9062Fclicking the name of the place^000000 I showed to you.";
+	mes "[警长助手]";
+	mes "告诉我您想去哪里，我会为您指出位置。";
+	mes "另外，^B9062F点击我显示的地点名称^000000，即可使用^B9062F导航^000000模式。";
 	while(true) {
 		next;
-		.@s = select( "[Kafra Employee]", "[Inn]", "[Weapon/Armor Shop]", "[Tool Shop]", "[Sheriff's Office]", "Clear mini-map.", "Cancel." );
+		.@s = select( "[卡普拉职员]", "[旅馆]", "[武器/防具店]", "[道具店]", "[警长办公室]", "清除小地图。", "Cancel." );
 		switch(.@s) {
 		case 1:
-			mes "[Sheriff Assistant]";
-			mes "The ^006400Kafra Employee^000000, got it. Please click the ^0000FFBox icon^000000 on your mini-map.";
+			mes "[警长助手]";
+			mes "^006400卡普拉员工^000000，好的。请点击小地图上的^0000FF方形图标^000000。";
 			viewpoint 1,291,207,1,0xFFFF33;
 			break;
 		case 2:
-			mes "[Sheriff Assistant]";
-			mes "I've marked the location of the <NAVI>Inn<INFO>harboro1,156,215,0,000,0</INFO></NAVI> on your mini-map.";
-			mes "Click the name to activate Navigation mode.";
+			mes "[警长助手]";
+			mes "我已在您的小地图上标出<NAVI>旅馆<INFO>harboro1,156,215,0,000,0</INFO></NAVI>的位置。";
+			mes "点击名称即可开启导航模式。";
 			viewpoint 1,156,215,2,0xAAFF00;
 			break;
 		case 3:
-			mes "[Sheriff Assistant]";
-			mes "I've marked the location of the <NAVI>Weapon/Armor Shop<INFO>harboro1,312,193,0,000,0</INFO></NAVI> on your mini-map.";
-			mes "Click the name to activate Navigation mode.";
+			mes "[警长助手]";
+			mes "我已在您的小地图上标出<NAVI>武器/防具店<INFO>harboro1,312,193,0,000,0</INFO></NAVI>的位置。";
+			mes "点击名称即可开启导航模式。";
 			viewpoint 1,312,193,3,0x008080;
 			break;
 		case 4:
-			mes "[Sheriff Assistant]";
-			mes "I've marked the location of the <NAVI>Tool Shop<INFO>harboro1,312,193,0,000,0</INFO></NAVI> on your mini-map.";
-			mes "Click the name to activate Navigation mode.";
+			mes "[警长助手]";
+			mes "我已在您的小地图上标出<NAVI>道具店<INFO>harboro1,312,193,0,000,0</INFO></NAVI>的位置。";
+			mes "点击名称即可开启导航模式。";
 			viewpoint 1,312,193,4,0xFF1493;
 			break;
 		case 5:
-			mes "[Sheriff Assistant]";
-			mes "I've marked the location of the <NAVI>Sheriff's Office<INFO>harboro1,241,218,0,000,0</INFO></NAVI> on your mini-map.";
-			mes "Click the name to activate Navigation mode.";
+			mes "[警长助手]";
+			mes "我已在您的小地图上标出<NAVI>警长办公室<INFO>harboro1,241,218,0,000,0</INFO></NAVI>的位置。";
+			mes "点击名称即可开启导航模式。";
 			viewpoint 1,241,218,5,0xFFCCFF;
 			break;
 		case 6:
-			mes "[Sheriff Assistant]";
-			mes "Let me remove all the marks on your mini-map.";
+			mes "[警长助手]";
+			mes "我来清除您小地图上的所有标记。";
 			viewpoint 2,291,207,1,0xFFFF33;
 			viewpoint 2,156,215,2,0xAAFF00;
 			viewpoint 2,312,193,3,0x008080;
@@ -57,15 +57,15 @@ harboro1,356,211,5	script	Guide#rockridge01	4_F_ANYA,{
 			viewpoint 2,241,218,5,0xFFCCFF;
 			break;
 		case 7:
-			mes "[Sheriff Assistant]";
-			mes "Enjoy your stay in Rock Ridge!";
+			mes "[警长助手]";
+			mes "祝您在岩脊过得愉快！";
 			close;
 		}
 		if (.@s == 7)
-			mes "Did you need anything else?";
+			mes "您还需要别的吗？";
 		else
-			mes "Is there anywhere else you want to check?";
+			mes "您还想查看其他地方吗？";
 	}
 }
 
-harboro1,80,211,3	duplicate(Guide#rockridge01)	Guide#rockridge02	4_F_ANYA
+harboro1,80,211,3	duplicate(向导#rockridge01)	Guide#rockridge02	4_F_ANYA

@@ -15,182 +15,182 @@
 //= 1.2 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
-	mes "[Melody-Jack]";
+moc_para01,44,81,3	script	梅洛迪-杰克#1	4_M_MELODY,8,8,{
+	mes "[梅洛迪-杰克]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "Who the hell are you? Get out of here!";
-		mes "I'm only talking to base level ^FF0000121-130^000000 adventurers.";
+		mes "你到底是什么人？滚出去！";
+		mes "我只和基础等级^FF0000121-130^000000的冒险者交谈。";
 	}
 	else if (para_120lv01 == 0)
-		mes "What? do not bother me. I am busy now.";
+		mes "什么？别烦我，我现在很忙。";
 	else if (para_120lv01 == 1) {
-		mes "You got a request from that little girl? The small, talktive and half-naked one over there?";
+		mes "你接了那个小女孩的委托？就是那边那个又小、话又多、半裸的小家伙？";
 		next;
-		select("Say yes.", "Avoid answering.");
-		mes "[Melody-Jack]";
-		mes "No. I do not care It will be fine if you stepped into this room not because you are lost. I need anyone except that kind of fool.";
+		select("说是。", "回避回答。");
+		mes "[梅洛迪-杰克]";
+		mes "不。我不在乎。只要你走进这个房间不是因为迷路，那就没问题。我需要任何人，就是不要那种傻瓜。";
 		next;
-		mes "[Melody-Jack]";
-		mes "Please listen to me, I will offer you an attractive suggestion.";
+		mes "[梅洛迪-杰克]";
+		mes "请听我说，我会给你一个很有吸引力的提议。";
 		next;
-		mes "[Melody-Jack]";
-		mes "I am ^ff0000Melody - Jack!^000000 The best man with best dagger skills.";
+		mes "[梅洛迪-杰克]";
+		mes "我是^ff0000梅洛迪-杰克！^000000拥有最精湛短剑技艺的男人。";
 		next;
-		mes "Melody-Jack swipes a dagger in your direction.";
+		mes "梅洛迪-杰克朝你的方向挥了一下短剑。";
 		next;
-		mes "[Melody-Jack]";
-		mes "I am qualified to take secret missions. And right now you're in luck.";
+		mes "[梅洛迪-杰克]";
+		mes "我有资格接秘密任务。而你现在运气不错。";
 		next;
-		mes "[Melody-Jack]";
-		mes "It seems that I have to lose one mission, deal and promise, I can not take it right now.";
+		mes "[梅洛迪-杰克]";
+		mes "看来我不得不放弃一项任务、一笔交易和一个承诺，我现在接不了。";
 		next;
-		mes "[Melody-Jack]";
-		mes "Take my mission and solve the request of Aigu. I will compensate you.";
+		mes "[梅洛迪-杰克]";
+		mes "接下我的任务，解决艾古的委托。我会给你报酬。";
 		next;
-		mes "[Melody-Jack]";
-		mes "Our deal will be kept as a secret to Aigu. If you do not have 9 lives. Lets start.";
+		mes "[梅洛迪-杰克]";
+		mes "我们之间的交易会对艾古保密。如果你没有九条命的话……那就开始吧。";
 		para_120lv01 = 2;
 	}
 	else if (para_120lv01 > 1) {
 		mes "......";
 		next;
-		if (select( "Show me the requests!", "Make small-talk." ) == 2) {
-			mes "[Melody-Jack]";
-			mes "What? Are you interested in me?";
+		if (select( "让我看看委托！", "闲聊几句。" ) == 2) {
+			mes "[梅洛迪-杰克]";
+			mes "什么？你对我有兴趣？";
 			next;
-			switch( select( "I am interested.", "About requests", "About a deal", "What is a promise?" ) ) {
-				mes "[Melody-Jack]";
+			switch( select( "我有兴趣。", "关于委托", "关于交易", "什么是承诺？" ) ) {
+				mes "[梅洛迪-杰克]";
 			case 1:
-				mes "Well go away. I have no interest in you.";
+				mes "那就走开吧。我对你没兴趣。";
 				close;
 			case 2:
-				mes "I cannot stop it because of my bad credit. It drives me crazy.";
+				mes "因为我的信用太差，我停不下来。这快把我逼疯了。";
 				next;
-				mes "[Melody-Jack]";
-				mes "I am lucky to make a double contract with an adventurer like you. They are not included in our contract.";
+				mes "[梅洛迪-杰克]";
+				mes "能和像你这样的冒险者签双重契约，是我的运气。他们不包括在我们的契约里。";
 				close;
 			case 3:
-				mes "To be honest I don't think there is anyone worthy of trust. Trust or promises are both silly.";
+				mes "说实话，我认为没有人值得信任。信任和承诺都很愚蠢。";
 				next;
-				mes "[Melody-Jack]";
-				mes "I trust only me and my deal. Trust or promises are empty if they ar broken but if a deal is broken there is compensation or revenge.";
+				mes "[梅洛迪-杰克]";
+				mes "我只信任我自己和我的交易。信任和承诺一旦被打破就什么都不剩，但交易被打破，还有赔偿或复仇。";
 				close;
 			case 4:
-				mes "Who're all of these kids?";
+				mes "这些孩子都是谁？";
 				next;
-				mes "[Melody-Jack]";
-				mes "I came out for nothing but I am supposed to fulfill my duty. I don't owe anyone a thing.";
+				mes "[梅洛迪-杰克]";
+				mes "我白跑一趟，但我还是得履行我的职责。我不欠任何人任何东西。";
 				close;
 			}
 		}
-		mes "[Melody-Jack]";
+		mes "[梅洛迪-杰克]";
 		if (BaseLevel < 121)
-			mes "Oh, I made a mistake. You are not the level of adventurer I am looking for. I'm looking for base level 121 to 130 adventurers.";
+			mes "哦，我弄错了。你不是我要找的等级的冒险者。我在找基础等级121到130的冒险者。";
 		else if (BaseLevel < 131) {
-			mes "I do not like it but a deal is a deal. Please come back after clearing monsters in the places where Aigu asked to search.";
+			mes "我不喜欢这样，但交易就是交易。请在艾古要求搜索的地方清完怪物后再回来。";
 			next;
-			switch( select( "Thanatos Tower related ", "Rachel Shrine related ", "Nameless Island related ", "Abyss Lake related " ) ) {
-				mes "[Melody-Jack]";
+			switch( select( "达纳托斯塔相关", "拉赫神殿相关", "无名岛相关", "深渊湖相关" ) ) {
+				mes "[梅洛迪-杰克]";
 			case 1:
-				mes "Thanatos tower is the most annoying place. Do not worry about your compensation. I keep my word.";
+				mes "达纳托斯塔是最麻烦的地方。不用担心你的报酬，我说话算话。";
 				next;
-				switch( select( "Baroness of Retribution", "Lady Solace", "Mistress of Shelter", "Dame of Sentinel" ) ) {
-					mes "[Melody-Jack]";
+				switch( select( "代行刑者", "慰劳者", "安息者", "监视者" ) ) {
+					mes "[梅洛迪-杰克]";
 				case 1:
 					if (checkquest(13120,PLAYTIME) == 0)
-						mes "I think I finished today's performance. I cannot relax what if monsters show up suddenly.";
+						mes "我想今天的演出结束了。可我放松不下来，万一怪物突然出现呢。";
 					else if (checkquest(13119,HUNTING) == 1) {
 						cutin "脚国狼措青磊墨靛",3;  //retribution_card
-						mes "I do not like that creature not because Aigu doesn't like them... How dare you? Who is punishing whom?";
+						mes "我不喜欢那种生物，不是因为艾古讨厌它们……你竟敢？到底是谁在惩罚谁？";
 						next;
-						mes "[Melody-Jack]";
-						mes "These are some of the most dangerous creatures in the world. These creatures deserve no justice.";
+						mes "[梅洛迪-杰克]";
+						mes "这些是世上最危险的生物之一。这些生物不配得到公正。";
 						next;
 						cutin "",255;
-						mes "[Melody-Jack]";
-						mes "Of course you can trust me. Because I believe in real deals. Lets sweep the creatures away.";
+						mes "[梅洛迪-杰克]";
+						mes "你当然可以信任我。因为我信奉真正的交易。把那些生物清扫掉吧。";
 					}
 					else if (checkquest(13119,HUNTING) == 2) {
-						mes "Did you clear them? So that does not bother that little boy for a day. Good job.";
+						mes "你清完了吗？这样那个小男孩就能安生一天了。干得好。";
 						callsub S_Quest,13119,13120,1;
 					}
 					else {
 						cutin "脚国狼措青磊墨靛",3;  //retribution_card
-						mes "As you know, Thanatos Tower is where Aigu cares the most. It is the most dangerous place in some ways.";
+						mes "如你所知，达纳托斯塔是艾古最在意的地方。从某些方面来说，那是最危险的地方。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Please clear monsters to help Aigu. Amateurs will make things messy.";
+						mes "[梅洛迪-杰克]";
+						mes "请清除怪物，帮帮艾古。外行只会把事情搞砸。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "There must be a lot of them. Do not forget to keep this a secret. ";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "数量一定很多。别忘了保守秘密。";
 							callsub S_Quest,13120,13119;
 						}
 					}
 					close;
 				case 2:
 					if (checkquest(13122,PLAYTIME) == 0)
-						mes "I think I finished today's performance. I can not relax... What if monsters show up suddenly?";
+						mes "我想今天的演出结束了。可我放松不下来……万一怪物突然出现呢？";
 					else if (checkquest(13121,HUNTING) == 1) {
 						cutin "困肺窍绰磊",3;  //solace_card
-						mes "The building does not seem to be designed by human beings and a strange melody is always playing there.";
+						mes "那座建筑不像是人类设计的，而且那里总是响着奇怪的旋律。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Do not fall into the mood of the melody because that can be your last song you hear.";
+						mes "[梅洛迪-杰克]";
+						mes "不要沉溺于那旋律的氛围，因为那可能是你听到的最后一首歌。";
 						next;
 						cutin "",255;
-						mes "[Melody-Jack]";
-						mes "Remember, there is strange music as sharp as knife to kill people in the world.";
+						mes "[梅洛迪-杰克]";
+						mes "记住，世上有如刀刃般锋利、能杀人的怪异音乐。";
 					}
 					else if (checkquest(13121,HUNTING) == 2) {
-						mes "Have you ever heard the melody they are playing? You will have a chance if that little boy begins to play the performance again.";
+						mes "你听过它们演奏的旋律吗？如果那个小男孩再次开始演出，你就有机会了。";
 						callsub S_Quest,13121,13122,1;
 					}
 					else {
 						cutin "困肺窍绰磊",3;  //solace_card
-						mes "Beautiful melody. Maybe it sounds beautiful because creatures are playing.";
+						mes "美妙的旋律。也许因为它是由那些生物演奏的，才显得美妙。";
 						next;
-						mes "[Melody-Jack]";
-						mes "However that is another obstacle. A deal is prior to personal interest anytime. So clear Lady Solace.";
+						mes "[梅洛迪-杰克]";
+						mes "不过那是另一个障碍。交易任何时候都优先于个人兴趣。所以去清掉慰劳者吧。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "We are just keeping our end of the deal. Clear those creatures now.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "我们只是在履行交易中自己的那部分。现在去清掉那些生物。";
 							callsub S_Quest,13122,13121;
 						}
 					}
 					close;
 				case 3:
 					if (checkquest(13124,PLAYTIME) == 0)
-						mes "I think I finished today's performance. I can not relax... What if monsters show up suddenly?";
+						mes "我想今天的演出结束了。可我放松不下来……万一怪物突然出现呢？";
 					else if (checkquest(13123,HUNTING) == 1) {
 						cutin "救侥阑林绰磊墨靛",3;  //shelter_card
-						mes "Do you know an angel that turned into a monster? I do not know if it was an angel or not. But its appearance was an angel.";
+						mes "你知道有天使变成了怪物吗？我不知道它到底是不是天使。但它的外表是天使。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Do not panic due to beautiful appearances regardless if it is an angel or a creature. You should do your job.";
+						mes "[梅洛迪-杰克]";
+						mes "不要因为外表美丽就惊慌，不管它是天使还是生物。你该做好你的工作。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Everything has its time. Maybe you requested this because that time has come.";
+						mes "[梅洛迪-杰克]";
+						mes "万物皆有其时。也许你来委托，是因为那个时候到了。";
 						cutin "",255;
 					}
 					else if (checkquest(13123,HUNTING) == 2) {
-						mes "Good. Let me know if someone is looking for me. If so, I might need to change the details of the deal.";
+						mes "很好。如果有人找我，就告诉我。那样的话，我可能需要更改交易的细节。";
 						callsub S_Quest,13123,13124,1;
 					}
 					else {
 						cutin "救侥阑林绰磊墨靛",3;  //shelter_card
-						mes "Do you know an angel that turned into a monster? I do not know if it was an angel or not. But its appearance was an angel.";
+						mes "你知道有天使变成了怪物吗？我不知道它到底是不是天使。但它的外表是天使。";
 						next;
-						mes "[Melody-Jack]";
-						mes "I don't care if it is a real angel or just a creature. Clear Mistress of Shelter.";
+						mes "[梅洛迪-杰克]";
+						mes "我不在乎它是真天使还是只是生物。清掉安息者。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "Dying flowers fall down by rain and wind. That is what you have to do.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "将谢的花被风雨打落。那就是你该做的事。";
 							emotion ET_BEST;
 							callsub S_Quest,13124,13123;
 						}
@@ -198,72 +198,72 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 					close;
 				case 4:
 					if (checkquest(13126,PLAYTIME) == 0)
-						mes "I finished my performance for today. I can not relax what if monsters show up suddenly.";
+						mes "我今天的演出结束了。可我放松不下来，万一怪物突然出现呢。";
 					else if (checkquest(13125,HUNTING) == 1) {
 						cutin "皑矫窍绰磊墨靛",3;  //observation_card
-						mes "You may have felt they are watching once you stepped into the upper area of Thanatos Tower.";
+						mes "一旦你踏入达纳托斯塔的上层区域，也许就会感觉到它们在注视你。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Dame of Sentinel is not easy to handle so be sure to be ready to fight.";
+						mes "[梅洛迪-杰克]";
+						mes "监视者不好对付，务必做好战斗准备。";
 						next;
-						mes "[Melody-Jack]";
-						mes "It is a fine day to die. It will be you or them so do your best.";
+						mes "[梅洛迪-杰克]";
+						mes "今天是个赴死的好日子。不是你就是它们，尽力而为吧。";
 						cutin "",255;
 					}
 					else if (checkquest(13125,HUNTING) == 2) {
-						mes "You look fine. Maybe you are better than I thought? I did not check with my eyes though.";
+						mes "你看起来没事。也许你比我以为的更强？不过我并没有亲眼确认。";
 						callsub S_Quest,13125,13126,1;
 					}
 					else {
 						cutin "皑矫窍绰磊墨靛",3;  //observation_card
-						mes "You will meet them if Aigu requests. The Dame of Sentinels.";
+						mes "如果艾古提出请求，你就会遇见它们。监视者。";
 						next;
-						mes "[Melody-Jack]";
-						mes "I wish they are cleared as well for her to request this adventure easily.";
+						mes "[梅洛迪-杰克]";
+						mes "我希望它们也被清掉，这样她就能轻松地委托这次冒险了。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "A request for a request... Whatever.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "为了委托而委托……随便吧。";
 							callsub S_Quest,13126,13125;
 						}
 					}
 					close;
 				}
 			case 2:
-				mes "Aigu's adventure leads to Rachel Shrine. Okay... It is not strange if ^FF0000that human^000000 Aigu looking for is found anywhere.";
+				mes "艾古的冒险指向拉赫神殿。好吧……就算在哪儿找到艾古寻找的^FF0000那个人^000000，也不奇怪。";
 				next;
-				switch( select( "Vanberk and Isilla", "Hodremlin", "Agav and Echio" ) ) {
-					mes "[Melody-Jack]";
+				switch( select( "范贝克和伊西拉", "霍德雷姆林", "阿加夫和埃奇欧" ) ) {
+					mes "[梅洛迪-杰克]";
 				case 1:
 					if (checkquest(13128,PLAYTIME) == 0)
-						mes "You may take a rest for a day. You cleared enough but fanatic is increased.";
+						mes "你可以休息一天。你清得够多了，但狂信徒增多了。";
 					else if (checkquest(13127,HUNTING) == 1) {
 						cutin "捞角扼墨靛",3;  //isilla_card
-						mes "Someone who believes they are right are the most dangerous. This world is full of fools.";
+						mes "坚信自己正确的人最危险。这个世界满是愚者。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Finally force others to believe what they believe. Lets clear Vanberk and Isilla.";
+						mes "[梅洛迪-杰克]";
+						mes "最后还要强迫别人相信他们所信的。去清掉范贝克和伊西拉吧。";
 						next;
-						mes "[Melody-Jack]";
-						mes "It is not my business. But this time is different. A little boy might be in a danger so lets hurry to clear these monsters.";
+						mes "[梅洛迪-杰克]";
+						mes "这不关我的事。但这次不同。那个小男孩可能有危险，我们赶快清掉这些怪物吧。";
 						cutin "",255;
 					}
 					else if (checkquest(13127,HUNTING) == 2) {
-						mes "Just a day. Will be fine.";
+						mes "就一天。不会有事。";
 						callsub S_Quest,13127,13128,1;
 					}
 					else {
 						cutin "魄海福农墨靛",3;  //vanberk_card
-						mes "Sanctuary in Rachel is prohibited to normal people from entering. You gotta know that.";
+						mes "拉赫的圣域禁止普通人进入。这点你得知道。";
 						next;
-						mes "[Melody-Jack]";
-						mes "They think they can find a clue there but it is not a safe place. You should clear Vanberk and Isilla in advance.";
+						mes "[梅洛迪-杰克]";
+						mes "他们以为能在那里找到线索，但那不是安全的地方。你该先去清掉范贝克和伊西拉。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "Clear all as quickly as you can.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "尽快全部清掉。";
 							emotion ET_SPARK;
 							callsub S_Quest,13128,13127;
 						}
@@ -271,228 +271,228 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 					close;
 				case 2:
 					if (checkquest(13130,PLAYTIME) == 0)
-						mes "Unknown mosters are dangerous so clear them first. I will inform you if something happens.";
+						mes "未知的怪物很危险，先清掉它们。有什么情况我会通知你。";
 					else if (checkquest(13129,HUNTING) == 1) {
 						cutin "龋靛方赴墨靛",3;  //hodremlin_card
-						mes "Cold teeth might be approaching. Its teeth are faster than your hands.";
+						mes "冰冷的牙齿可能正在逼近。它的牙齿比你的手快。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Rachel sanctuary will be approaching from everywhere. You should be careful of this one.";
+						mes "[梅洛迪-杰克]";
+						mes "拉赫圣域的东西会从四面八方逼近。你要小心这一个。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Just think of the job at hand. That will be enough.";
+						mes "[梅洛迪-杰克]";
+						mes "只想着眼前的工作就够了。";
 						cutin "",255;
 					}
 					else if (checkquest(13129,HUNTING) == 2) {
-						mes "I am not that worried but are you safe? Not bitten?";
+						mes "我倒不太担心，可你没事吧？没被咬到？";
 						callsub S_Quest,13129,13130,1;
 					}
 					else {
 						cutin "龋靛方赴墨靛",3;  //hodremlin_card
-						mes "Fanatics are a problem. A more serious problem is that they show up suddenly.";
+						mes "狂信徒是个问题。更严重的问题是他们会突然出现。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Get rid of ^FF0000Hodremlin^000000 without any hesitation. Because they are very dangerous.";
+						mes "[梅洛迪-杰克]";
+						mes "毫不犹豫地除掉^FF0000霍德雷姆林^000000。因为它们非常危险。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "They need faster hands than a head. I do not worry but you should be careful.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "对付它们手比脑子快才行。我不担心，但你要小心。";
 							callsub S_Quest,13130,13129;
 						}
 					}
 					close;
 				case 3:
 					if (checkquest(13132,PLAYTIME) == 0)
-						mes "If you can talk. There are no requests right now. Take a rest for the day.";
+						mes "如果你还能说话。现在没有委托。休息一天吧。";
 					else if (checkquest(13131,HUNTING) == 1) {
 						cutin "俊虐坷墨靛",3;  //echio_card
-						mes "Full of madness here. I just feel disgusting.";
+						mes "这里满是疯狂。我只觉得恶心。";
 						next;
-						mes "[Melody-Jack]";
-						mes "It is my feeling but you might like it. I am sure ^FF0000Agav^000000 and ^FF0000Echio^000000 will not like you.";
+						mes "[梅洛迪-杰克]";
+						mes "这是我的感觉，不过你也许会喜欢。我确定^FF0000阿加夫^000000和^FF0000埃奇欧^000000不会喜欢你。";
 						next;
-						mes "[Melody-Jack]";
-						mes "They will run into you. Do not hesitate and keep focused on the job.";
+						mes "[梅洛迪-杰克]";
+						mes "它们会朝你冲来。不要犹豫，专注于工作。";
 						cutin "",255;
 					}
 					else if (checkquest(13131,HUNTING) == 2) {
-						mes "Found anyone? I wouldn't worry. A promise ia a promise and a deal is a deal.";
+						mes "找到人了吗？我不会担心。承诺就是承诺，交易就是交易。";
 						callsub S_Quest,13131,13132,1;
 					}
 					else {
 						cutin "酒啊宏墨靛",3;  //agav_card
-						mes "It is true that it is getting more dangerous inside of Rachel sanctuary, but Aigu will not care for things we are not sure.";
+						mes "拉赫圣域内确实越来越危险，但艾古不会在意我们无法确定的事。";
 						next;
-						mes "[Melody-Jack]";
-						mes "That was not that bad. But someone needs to help? Lets clear ^FF0000Agav^000000 and ^FF0000Echio^000000 inside of Rachel Shrine.";
+						mes "[梅洛迪-杰克]";
+						mes "那还不算太糟。但总得有人帮忙吧？去清掉拉赫神殿里的^FF0000阿加夫^000000和^FF0000埃奇欧^000000。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "I cannot leave so farewell.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "我走不开，再会。";
 							callsub S_Quest,13132,13131;
 						}
 					}
 					close;
 				}
 			case 3:
-				mes "Nameless Island is not known to usual adventurers. Aigu is also interested in there.";
+				mes "无名岛不是普通冒险者所知的地方。艾古也对那里感兴趣。";
 				next;
-				switch( select( "Ragged Zombie Hunting", "Zombie Slaughter Hunting", "Banshee Hunting" ) ) {
-					mes "[Melody-Jack]";
+				switch( select( "狩猎褴褛腐尸", "狩猎屠杀腐尸", "狩猎恶耗女妖" ) ) {
+					mes "[梅洛迪-杰克]";
 				case 1:
 					if (checkquest(13134,PLAYTIME) == 0)
-						mes "Ragged Zombie is reduced. It is a good time to proceed Aigu's request for a minute.";
+						mes "褴褛腐尸减少了。正好趁这会儿推进艾古的委托。";
 					else if (checkquest(13133,HUNTING) == 1) {
 						cutin "穿歹扁粱厚墨靛",3;  //ragged_zombie_card
-						mes "It is easy to meet everything on Nameless Island. So boring.";
+						mes "在无名岛什么都能轻易遇到。真无聊。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Get rid of it and help Aigu and the other adventurers.";
+						mes "[梅洛迪-杰克]";
+						mes "除掉它，帮帮艾古和其他冒险者。";
 						cutin "",255;
 					}
 					else if (checkquest(13133,HUNTING) == 2) {
-						mes "Did you take a bath? It smells in here. But I am sure that you had a hard time with the smell.";
+						mes "你洗澡了吗？这里味道真重。不过我确定你在那股气味里吃了不少苦。";
 						callsub S_Quest,13133,13134,1;
 					}
 					else {
 						cutin "穿歹扁粱厚墨靛",3;  //ragged_zombie_card
-						mes "The dead come back at night. Comes back sounds strange. Lets cut the crap.";
+						mes "死者会在夜里回来。“回来”这词听着怪。别说废话了。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Wish to clear ^FF0000Ragged Zombie^000000. It is easy because they show up everywhere.";
+						mes "[梅洛迪-杰克]";
+						mes "去清掉^FF0000褴褛腐尸^000000吧。它们到处都出现，很容易。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "Take a ^FF0000bath^000000 and you won't smell anymore.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "去洗个^FF0000澡^000000，就不会再有味道了。";
 							callsub S_Quest,13134,13133;
 						}
 					}
 					close;
 				case 2:
 					if (checkquest(13136,PLAYTIME) == 0)
-						mes "I know the request to Nameless Island is not easy but I will be happy if you join again.";
+						mes "我知道无名岛的委托不容易，但如果你能再参加，我会很高兴。";
 					else if (checkquest(13135,HUNTING) == 1) {
 						cutin "粱厚浇矾磐墨靛",3;  //zombie_slaughter_card
-						mes "It was not easy for me either to step into Nameless Island. I am not that patient.";
+						mes "对我来说，踏进无名岛也不容易。我没那么有耐心。";
 						next;
-						mes "[Melody-Jack]";
-						mes "But adventurers should challenge once. ^FF0000Zombie Slaughter^000000 is worth clearing.";
+						mes "[梅洛迪-杰克]";
+						mes "但冒险者总该挑战一次。^FF0000屠杀腐尸^000000值得一清。";
 						cutin "",255;
 					}
 					else if (checkquest(13135,HUNTING) == 2) {
-						mes "You are quite good! You cleared them. It will take time to return.";
+						mes "你相当不错！你清掉它们了。回去要花点时间。";
 						callsub S_Quest,13135,13136,1;
 					}
 					else {
 						cutin "粱厚浇矾磐墨靛",3;  //zombie_slaughter_card
-						mes "They are dangerous unlike Ragged Zombie because they swing something sharp.";
+						mes "它们和褴褛腐尸不同，很危险，因为它们会挥舞锋利的东西。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Please clear ^FF0000Zombie Slaughter^000000. Be careful to avoid their blades.";
+						mes "[梅洛迪-杰克]";
+						mes "请清掉^FF0000屠杀腐尸^000000。小心避开它们的刀刃。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "You've got many things to take care of so I will hold my words. Clear them.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "你还有很多事要处理，我就不多说了。清掉它们。";
 							callsub S_Quest,13136,13135;
 						}
 					}
 					close;
 				case 3:
 					if (checkquest(13138,PLAYTIME) == 0)
-						mes "Banshee is cleared. Request is solved anyway but it is not the end. It will be required again sooner or later.";
+						mes "恶耗女妖清完了。委托总算解决了，但这还没结束。迟早还会再需要。";
 					else if (checkquest(13137,HUNTING) == 1) {
 						cutin "龟矫墨靛",3;  //banshee_card
-						mes "You will see there are unwelcoming things while adventuring sometimes regardless of monsters and companions.";
+						mes "冒险途中，有时会出现不受欢迎的事，与怪物和同伴都无关。";
 						next;
-						mes "[Melody-Jack]";
-						mes "This request is like that for me. I just do not like creatures or the reason of giving this request.";
+						mes "[梅洛迪-杰克]";
+						mes "这项委托对我来说也是如此。我只是不喜欢那些生物，也不喜欢提出这项委托的理由。";
 						cutin "",255;
 					}
 					else if (checkquest(13137,HUNTING) == 2) {
-						mes "You must be tired. You went to that tough place beyond your capability. Do not be angry. I will reward you for that.";
+						mes "你一定累了。你去了超出自己能力所及的艰苦之地。别生气，我会为此给你报酬。";
 						callsub S_Quest,13137,13138,1;
 					}
 					else {
 						cutin "龟矫墨靛",3;  //banshee_card
-						mes "Please clear ^FF0000Banshee^000000 inside of Nameless Island. Do not say no. You know it is for Aigu as well.";
+						mes "请清掉无名岛里的^FF0000恶耗女妖^000000。别拒绝。你知道这也是为了艾古。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Both Banshee and Aigu are annoying. I would not do this request but you will be different. Right?";
+						mes "[梅洛迪-杰克]";
+						mes "恶耗女妖和艾古都很烦人。我是不会接这项委托的，但你不一样，对吧？";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "See? Someone needs this request. Clear ^FF0000Banshees^000000 at Nameless Island.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "看吧？有人需要这项委托。去无名岛清掉^FF0000恶耗女妖^000000。";
 							callsub S_Quest,13138,13137;
 						}
 					}
 					close;
 				}
 			case 4:
-				mes "Abyss Lake has requests from a little girl. Very dilligent.";
+				mes "深渊湖有小女孩的委托。真勤快。";
 				next;
-				if (select( "Ferus and Bewler are cleared.", "Gold and Blue Acidus are cleared." ) == 1) {
-					mes "[Melody-Jack]";
+				if (select( "贝勒斯和贝鲁鲁清完了。", "金、蓝俄希托斯清完了。" ) == 1) {
+					mes "[梅洛迪-杰克]";
 					if (checkquest(13140,PLAYTIME) == 0)
-						mes "Green dragons and Red dragons remind me of watermelons.";
+						mes "绿龙和红龙让我想起西瓜。";
 					else if (checkquest(13139,HUNTING) == 1) {
 						cutin "饭靛其矾胶墨靛",3;  //ferus_card
-						mes "Abyss Lake... Do you possibly know how to get in there? You are not an adventurer with that information?";
+						mes "深渊湖……你知道怎么进去吗？你这冒险者不会连这个都不知道吧？";
 						next;
-						mes "[Melody-Jack]";
-						mes "Just in case I will give you a clue that a key and an entrance are going to be found around there.";
+						mes "[梅洛迪-杰克]";
+						mes "以防万一，我给你个提示：钥匙和入口就在那附近。";
 						cutin "",255;
 					}
 					else if (checkquest(13139,HUNTING) == 2) {
-						mes "Did you clear all of the dragons? Take a rest for a day.";
+						mes "你把龙都清完了吗？休息一天吧。";
 						callsub S_Quest,13139,13140,1;
 					}
 					else {
 						cutin "弊赴其矾胶墨靛",3;  //ferus__card
-						mes "Abyss Lake is full of dragons in and out. Dragons are not that special but there are so many.";
+						mes "深渊湖里里外外全是龙。龙倒没什么特别，只是数量太多了。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Which one is more dangerous between Ferus and Bewler? I do not know. Clear both of them.";
+						mes "[梅洛迪-杰克]";
+						mes "贝勒斯和贝鲁鲁哪个更危险？我不知道。两个都清掉。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "Neither green nor red are disturbing. But regardless, come back after clearing all.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "绿的红的都不碍事。但不管怎样，全部清完再回来。";
 							callsub S_Quest,13140,13139;
 						}
 					}
 				}
 				else {
-					mes "[Melody-Jack]";
+					mes "[梅洛迪-杰克]";
 					if (checkquest(13142,PLAYTIME) == 0)
-						mes "Take a rest. We should go and subdue Acidus dragons again.";
+						mes "休息吧。我们还得再去制服俄希托斯龙。";
 					else if (checkquest(13141,HUNTING) == 1) {
 						cutin "喉风绢矫歹胶墨靛",3;  //acidus__card
-						mes "Abyss Lake is not close. But it is worth visiting.";
+						mes "深渊湖不近。但值得一去。";
 						next;
-						mes "[Melody-Jack]";
-						mes "This is technically a training exercise but just pretend you are helping someone. There will be a reward.";
+						mes "[梅洛迪-杰克]";
+						mes "严格来说这是训练，不过你就当是在帮某个人吧。会有报酬的。";
 						cutin "",255;
 					}
 					else if (checkquest(13141,HUNTING) == 2) {
-						mes "You are more of a talented adventurer than I thought. If you found a tactic, take care of it next time. This study is up to you.";
+						mes "你比我想的更有冒险者的才能。如果你找到了战术，下次就好好运用。这次研究就看你的了。";
 						callsub S_Quest,13141,13142,1;
 					}
 					else {
 						cutin "榜靛绢矫歹胶",3;  //acidus_card
-						mes "There is a cave where dragons are living inside of Abyss Lake. There are so many but flying things are annoying.";
+						mes "深渊湖里有个龙居住的洞窟。数量很多，但会飞的东西很烦人。";
 						next;
-						mes "[Melody-Jack]";
-						mes "Subdue them as best as you can. Do not mind their colors because they are all to be cleared.";
+						mes "[梅洛迪-杰克]";
+						mes "尽力制服它们。别在意颜色，因为它们全都要清掉。";
 						next;
 						cutin "",255;
-						if (select( "Take the request.", "Stop." ) == 1) {
-							mes "[Melody-Jack]";
-							mes "Subdue the Gold and Blue Acidus monsters at the last level of Abyss Lake.";
+						if (select( "接受委托。", "Stop." ) == 1) {
+							mes "[梅洛迪-杰克]";
+							mes "制服深渊湖最深层的金、蓝俄希托斯。";
 							callsub S_Quest,13142,13141;
 						}
 					}
@@ -501,7 +501,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 			}
 		}
 		else {
-			mes "You finished helping Aigu or did you quit? Anyways I have no more business for you. ";
+			mes "你是帮完了艾古，还是放弃了？总之我没有更多事找你了。";
 			next;
 			callsub S_Erasequest,
 				13119,"Baroness of Retribution",
@@ -516,8 +516,8 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 				13137,"Banshee",
 				13139,"Ferus ",
 				13141,"Acidus";
-			mes "[Melody-Jack]";
-			mes "I am not sure if you found what you are looking for... I cannot be involved anymore. Thanks.";
+			mes "[梅洛迪-杰克]";
+			mes "我不确定你是否找到了想找的东西……我不能再掺和了。谢谢。";
 		}
 	}
 	close;
@@ -539,12 +539,12 @@ S_Erasequest:
 			continue;
 		case 0:
 		case 1:
-			mes "[Melody-Jack]";
-			mes getarg(.@i+1) +" is cleared. No need to have more requests.";
+			mes "[梅洛迪-杰克]";
+			mes getarg(.@i+1) +"已被清除。不需要更多委托了。";
 			break;
 		case 2:
-			mes "[Melody-Jack]";
-			mes getarg(.@i+1) +" is cleared. A deal is a deal. I need to get paid.";
+			mes "[梅洛迪-杰克]";
+			mes getarg(.@i+1) +"已被清除。交易就是交易。我得拿到报酬。";
 			getexp 900000,200000;
 			break;
 		}
@@ -555,153 +555,153 @@ S_Erasequest:
 OnTouch_:
 	if (para_120lv01 == 1) {
 		emotion ET_SURPRISE;
-		mes "[Melody-Jack]";
-		mes "Hey there! ... Wait.?";
+		mes "[梅洛迪-杰克]";
+		mes "喂！……等等？";
 		close;
 	}
 	end;
 }
 
-moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
-	mes "[Aigu]";
+moc_para01,17,77,5	script	艾古#1	4_F_IU,{
+	mes "[艾古]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "Oh, why aren't you a part of Eden Group?";
-		mes "I'm only talking to base level ^FF0000121-130^000000 adventurers.";
+		mes "哦，你为什么不是乐园团的一员？";
+		mes "我只和基础等级^FF0000121-130^000000的冒险者交谈。";
 	}
 	else if (para_120lv01 == 0) {
 		cutin "igu01",2;
-		mes "Hi? A fine day like today. Can I ask for a favor? I heard that adventurers in Eden Group are nice.";
+		mes "你好？像今天这样的好天气。能请你帮个忙吗？我听说乐园团的冒险者都很善良。";
 		next;
-		if (select( "I'm not the nice kind.", "Sure, I'll help." ) == 1) {
+		if (select( "我可不是善良的那一类。", "好，我帮你。" ) == 1) {
 			cutin "igu05",2;
-			mes "[Aigu]";
-			mes "yek.. I hate.";
+			mes "[艾古]";
+			mes "呃……真讨厌。";
 		}
 		else {
 			cutin "igu03",2;
-			mes "[Aigu]";
-			mes "Really? I will introduce myself! I am the head of the ^ff0000Dandelion band Aigu.^000000";
+			mes "[艾古]";
+			mes "真的？我来自我介绍！我是^ff0000蒲公英团团长艾古。^000000";
 			next;
-			mes "[Aigu]";
-			mes "I just came back from a local performance. There is someone I wanted to meet but is missing now so I came to Eden Group for a request.";
+			mes "[艾古]";
+			mes "我刚从地方演出回来。有个人我想见，却失踪了，所以我来乐园团提出委托。";
 			next;
-			mes "[Aigu]";
-			mes "I just decided to make a request by myself because no one is in charge and everyone is busy. Thanks for the help.";
+			mes "[艾古]";
+			mes "因为没人负责、大家又都很忙，我就自己决定来提委托。谢谢你的帮助。";
 			para_120lv01 = 1;
 		}
 	}
 	else if (para_120lv01 > 0) {
 		cutin "igu01",2;
-		mes "It is nice to come back to Midgard! Very exciting as the first day.";
+		mes "回到米德加尔特真好！就像第一天那样令人兴奋。";
 		next;
-		if (select( "What is your request?", "Talk about something else." ) == 2) {
+		if (select( "你的委托是什么？", "聊点别的。" ) == 2) {
 			cutin "igu01",2;
-			mes "[Aigu]";
-			mes "Dandelion band travels all around the world and conveys healing music to people";
+			mes "[艾古]";
+			mes "蒲公英团走遍世界，把治愈的音乐传递给人们";
 			next;
 			cutin "igu02",2;
-			mes "[Aigu]";
-			mes "Actually our songs have no magic but I am sure it helps people because I am singing.";
+			mes "[艾古]";
+			mes "其实我们的歌没有魔力，但我相信它能帮到人，因为唱歌的是我。";
 		}
 		else if (BaseLevel < 121) {
 			cutin "igu04",2;
-			mes "[Aigu]";
-			mes "I think it is difficult for you to get my request? For now, I think it will make more people lost. How about widening your sight by travelling?";
+			mes "[艾古]";
+			mes "我觉得你很难理解我的委托吧？眼下，我认为它只会让更多人迷失。不如去旅行，开阔一下眼界？";
 		}
 		else if (BaseLevel < 131) {
-			mes "[Aigu]";
-			mes "I made a shelter for someone I am looking for and lost adventurers. I want to know which adventurer has been there.";
+			mes "[艾古]";
+			mes "我为我寻找的人和迷路的冒险者建了一个避难所。我想知道有哪些冒险者去过那里。";
 			next;
-			switch( select( "Thanatos Tower search", "Rachel Sanctuary search", "Nameless Island search", "Abyss Lake search" ) ) {
-				mes "[Aigu]";
+			switch( select( "搜索达纳托斯塔", "搜索拉赫圣域", "搜索无名岛", "搜索深渊湖" ) ) {
+				mes "[艾古]";
 			case 1:
 				if (checkquest(13115,PLAYTIME) == 0)
-					mes "I will ask to search again after for a while because there is hope since a trace of someone was found.";
+					mes "过一阵子我会再请你去搜索，因为发现了某人的踪迹，还有希望。";
 				else if (isbegin_quest(13111) == 1) {
 					cutin "igu04",2;
-					mes "You know someone went there but you do not know who that is? Thank you. But let me ask you to search again tomorrow since we do not know who it is.";
+					mes "你知道有人去过那里，却不知道那是谁？谢谢你。但既然不知道是谁，明天请再帮我搜索一次。";
 					callsub S_Quest,13111,13115,1250000,300000;
 				}
 				else if (isbegin_quest(13107) == 1)
-					mes "You may find shelter on top of the tower. Even that shelter only has water and a bonfire.";
+					mes "你可能会在塔顶找到避难所。只是那避难所里也只有水和篝火。";
 				else {
-					mes "Adventurers are easily lost because of dangerous monsters and the height of thanatos tower. But it isn't impossible for some adventurers so please check for me.";
+					mes "由于危险的怪物和达纳托斯塔的高度，冒险者很容易迷失。但对某些冒险者来说并非不可能，请帮我确认一下。";
 					next;
-					if (select( "Begin to search.", "Cancel." ) == 1) {
-						mes "[Aigu]";
-						mes "Thanatos tower is north of the Schwarzwald Republic! It is not far from Juno or Hugel.";
+					if (select( "开始搜索。", "Cancel." ) == 1) {
+						mes "[艾古]";
+						mes "达纳托斯塔在黑森林共和国以北！离朱诺和休格尔都不远。";
 						callsub S_Quest,13115,13107;// Thanatos Tower Search
 					}
 				}
 				break;
 			case 2:
 				if (checkquest(13116,PLAYTIME) == 0)
-					mes "Searching Rachel was enough. I will ask you again after a while.";
+					mes "搜索拉赫已经够了。过一阵子我再请你帮忙。";
 				else if (isbegin_quest(13112) == 1) {
-					mes "How was your trip? No special news. But it is not done yet so I will ask you to search again.";
+					mes "旅途如何？没什么特别的消息。但事情还没结束，所以我要再请你去搜索。";
 					callsub S_Quest,13112,13116,1000000,300000;
 				}
 				else if (isbegin_quest(13108) == 1)
-					mes "Not able to enter the sanctuary in a usual way. It is not easy but we can find a clue at Rachel.";
+					mes "无法用寻常方式进入圣域。这不容易，但我们能在拉赫找到线索。";
 				else {
 					cutin "igu03",2;
-					mes "There is a sanctuary inside of Rachel Shrine. It is possible to get stuck there once you're inside.";
+					mes "拉赫神殿里有一座圣域。一旦进去，可能会被困在里面。";
 					next;
-					mes "[Aigu]";
-					mes "Please take a look if there are any traces of lost adventurers at the southeast part of the 2nd floor in the middle zone.";
+					mes "[艾古]";
+					mes "请去中间区域二层的东南部看看，是否有迷路冒险者的踪迹。";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
+					if (select( "开始搜索。", "Stop." ) == 1) {
 						cutin "igu05",2;
-						mes "[Aigu]";
-						mes "I wish you safety in your search.";
+						mes "[艾古]";
+						mes "愿你搜索平安。";
 						callsub S_Quest,13116,13108;// Rachel holy ground Search
 					}
 				}
 				break;
 			case 3:
 				if (checkquest(13117,PLAYTIME) == 0)
-					mes "Searching Nameless Island will continue at another time. How about taking a rest for a while?";
+					mes "无名岛的搜索改日再继续。先休息一会儿如何？";
 				else if (isbegin_quest(13113) == 1) {
-					mes "Thank you! There are wandering adventurers also helping! We should continue to search anyway. Please help me next time again.";
+					mes "谢谢你！也有流浪的冒险者在帮忙！总之我们该继续搜索。下次也请再帮帮我。";
 					callsub S_Quest,13113,13117,900000,300000;
 				}
 				else if (isbegin_quest(13109) == 1) {
 					cutin "igu04",2;
-					mes "Maybe... hanging out and drinking with the dead. But please talk with me.";
+					mes "也许……在跟死者一起喝酒闲逛。但还是请和我说话。";
 				}
 				else {
 					cutin "igu03",2;
-					mes "Yes, Maybe they're not able to come because they've been captured by the dead! Nameless Island will be fine! Please search Nameless Island.";
+					mes "对，也许他们来不了，是因为被死者抓走了！无名岛会没事的！请去搜索无名岛。";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
+					if (select( "开始搜索。", "Stop." ) == 1) {
 						cutin "igu01",2;
-						mes "[Aigu]";
-						mes "I wil ask you to search the 1st underground of the monastery on Nameless Island. I cannot make you take that risk unless you volunteer.";
+						mes "[艾古]";
+						mes "我要请你去搜索无名岛修道院的地下1层。除非你自愿，否则我不能让你冒这个险。";
 						callsub S_Quest,13117,13109;// Unknown island Search
 					}
 				}
 				break;
 			case 4:
 				if (checkquest(13118,PLAYTIME) == 0)
-					mes "I will try to search Abyss Lake again after a while.";
+					mes "过一阵子我会再试着搜索深渊湖。";
 				else if (isbegin_quest(13114) == 1) {
 					cutin "igu05",2;
-					mes "You came back safely but I guess there was no good result for your face. I will search more so do not disappoint! Thank you.";
+					mes "你平安回来了，但看你的表情，似乎没什么好结果。我会再多查查，别让我失望！谢谢。";
 					callsub S_Quest,13114,13118,900000,200000;
 				}
 				else if (isbegin_quest(13110) == 1) {
 					cutin "igu05",2;
-					mes "Maybe, disappointed and fallen down because a monster was not found on the ground of the lake.";
+					mes "也许是因为在湖底没找到怪物，失望之下失足跌落了吧。";
 				}
 				else {
-					mes "I suggest to search Abyss Lake precisely the cave at the middle of the lake.";
+					mes "我建议仔细搜索深渊湖，就是湖中央的那个洞窟。";
 					next;
-					mes "[Aigu]";
-					mes "Yes! The end of a good adventure needs a dragon! I've heard there is a monster on the ground of a lake.";
+					mes "[艾古]";
+					mes "对！精彩的冒险结尾需要一条龙！我听说湖底有怪物。";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
-						mes "[Aigu]";
-						mes "Abyss Lake is the fastest way to get to Hugel. Please visit 3rd floor of underground cave.!";
+					if (select( "开始搜索。", "Stop." ) == 1) {
+						mes "[艾古]";
+						mes "深渊湖是去休格尔最快的路。请去地下洞窟3层！";
 						callsub S_Quest,13118,13110;// Abyss Lake Search
 					}
 				}
@@ -709,8 +709,8 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 		}
 		else {
 			cutin "igu04",2;
-			mes "[Aigu]";
-			mes "I can't give you any more search tasks right now! You need harder challenges suitable for your level.";
+			mes "[艾古]";
+			mes "我现在不能再给你搜索任务了！你需要与等级相符的更难挑战。";
 			callsub S_Erasequest,
 				13107,"Thanatos Tower",
 				13108,"Rachel Shrine",
@@ -740,8 +740,8 @@ S_Erasequest:
 	for ( .@i = 0; .@i < .@total; .@i += 2 ) {
 		if (isbegin_quest(getarg(.@i))) {
 			next;
-			mes "[Aigu]";
-			mes "Oh, you've been working on "+ getarg(.@i+1) +" Adventure task. Let me clear your record, so you can work on better tasks.";
+			mes "[艾古]";
+			mes "哦，你一直在进行"+ getarg(.@i+1) +"冒险任务。让我清除你的记录，这样你就能进行更好的任务了。";
 			erasequest getarg(.@i);
 		}
 	}
@@ -751,8 +751,8 @@ S_Erasequest2:
 	for ( .@i = 0; .@i < .@total; .@i += 4 ) {
 		if (isbegin_quest(getarg(.@i))) {
 			next;
-			mes "[Aigu]";
-			mes "Oh, you've already finished "+ getarg(.@i+1) +" Adventure. Thank you for helping me out with this task!.";
+			mes "[艾古]";
+			mes "哦，你已经完成了"+ getarg(.@i+1) +"冒险。谢谢你帮我完成这个任务！";
 			erasequest getarg(.@i);
 			getexp getarg(.@i+2),getarg(.@i+3);
 		}
@@ -764,12 +764,12 @@ S_Erasequest2:
 	.@quest = 13106 + atoi(strnpcinfo(2));
 	.@delay = 13110 + atoi(strnpcinfo(2));
 	if (isbegin_quest(.@quest) == 1) {
-		mes "I found traces of someone who was here but I cannot find a clue. Lets go back and report to Aigu.";
+		mes "我找到了有人来过的痕迹，但找不到线索。我们回去向艾古报告吧。";
 		erasequest .@quest;
 		setquest .@delay;
 	}
 	else
-		mes "There are traces of someone being here.";
+		mes "这里有某人来过的痕迹。";
 	close;
 }
 thana_step,167,292,5	duplicate(Trace of an adventurer)	Trace of an adventurer#1	4_TRACE
@@ -777,25 +777,25 @@ ra_san05,265,69,5	duplicate(Trace of an adventurer)	Trace of an adventurer#2	4_T
 abbey02,155,290,5	duplicate(Trace of an adventurer)	Trace of an adventurer#3	4_TRACE
 abyss_03,102,140,5	duplicate(Trace of an adventurer)	Trace of an adventurer#4	4_TRACE
 
-tha_t06,126,128,3	script	Suspicious Monster#1	4_DEVIRUCHI,{
-	mes "[Disguised Adventurer]";
-	mes "I am just working at this dangerous place for 5000 zeny... Are you the adventurer who got a request from Eden Group?";
+tha_t06,126,128,3	script	可疑的怪物#1	4_DEVIRUCHI,{
+	mes "[伪装的冒险者]";
+	mes "我只是为了5000 Zeny在这个危险的地方干活……你就是接了乐园团委托的冒险者吗？";
 	next;
-	switch( select( "Yes","No" ) ) {
-		mes "[Disguised Adventurer]";
+	switch( select( "是","否" ) ) {
+		mes "[伪装的冒险者]";
 	case 1:
 		if (BaseLevel < 121 || BaseLevel > 130) {
-			mes "I could see that is not you at first glance!";
+			mes "我一眼就看出不是你！";
 			close;
 		}
-		mes "The adventurers proceeding the request for Aigu are warped to the upper level on behalf of Aigu.";
+		mes "进行艾古委托的冒险者，会代替艾古被传送到上层。";
 		next;
-		if (select( "Go up.", "Do not go up." ) == 1) {
-			mes "[Disguised Adventurer]";
+		if (select( "上去。", "不上去。" ) == 1) {
+			mes "[伪装的冒险者]";
 			if (isbegin_quest(13107) != 1)
-				mes "It seems that you're currently not doing the Thanatos Tower adventure request. I'm sorry but I'm doing this for Aigu and not you.";
+				mes "看来你目前没有在进行达纳托斯塔的冒险委托。抱歉，我这是为艾古做事，不是为你。";
 			else {
-				mes "Be careful! You can not come down once you go up. For Aigu!";
+				mes "小心！一旦上去就下不来了。为了艾古！";
 				close2;
 				warp "thana_step",69,369;
 				end;
@@ -803,7 +803,7 @@ tha_t06,126,128,3	script	Suspicious Monster#1	4_DEVIRUCHI,{
 		}
 		close;
 	case 2:
-		mes "Or please pretend not to know me! I will be in a danger if you blow my cover!";
+		mes "或者请装作不认识我！你揭穿我的身份，我就危险了！";
 		close;
 	}
 }

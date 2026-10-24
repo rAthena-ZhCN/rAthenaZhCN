@@ -14,102 +14,102 @@
 //= 1.1 Converted from Hercules script to rAthena script & Small bug fix. [Skorm]
 //============================================================ 
 
-ecl_hub01,132,12,3	script	Chief of Staff#tl02	435,{
+ecl_hub01,132,12,3	script	首席参谋#tl02	435,{
 	.@party_id = getcharid(1);
 	.@md_name$ = "Eclage Interior";
 
 	if (.@party_id == 0 || is_party_leader() == false){
-		mes "-! Warning !-";
-		mes "This current quest will be held at Memorial dungeon.";
-		mes "Only the party leader will enter. Please create your party.";
+		mes "-! 警告 !-";
+		mes "本次任务将在回忆副本中进行。";
+		mes "仅队长可以进入。请先创建队伍。";
 		close;
 	}
 	if (ep14_2_mylord == 29) {
-		mes "[Shenime]";
-		mes "This place is set up with lighting for Orb.";
-		mes "If you favor Mayor, you should be cautious here.";
+		mes "[赛尼梅]";
+		mes "这里是为宝珠设置照明的地方。";
+		mes "如果你偏向市长那边，在这里最好小心一点。";
 		next;
-		switch (select("Enter it.:Forget it.")) {
+		switch (select("进入。:算了。")) {
 		case 1:
 			if (instance_create(.@md_name$) < 0) {
-				mes "[Shenime]";
-				mes "There are some soldiers dispatched by Mayor not too long ago.";
-				mes "I should sure hope that you aren't the disturbance they're looking for, right?";
+				mes "[赛尼梅]";
+				mes "不久前市长派来了一些士兵。";
+				mes "但愿你不是他们正在找的闹事者，对吧？";
 				close;
 			}
 			ecl_interior_time = gettimetick(2) + 20 * 60;
-			mes "[Shenime]";
-			mes "Given the tight internal security, you should prepare yourself.";
-			mes "Wait here for a minute.";
+			mes "[赛尼梅]";
+			mes "内部戒备森严，你最好有所准备。";
+			mes "在这里稍等片刻。";
 			close;
 		case 2:
-			mes "[Shenime]";
-			mes "It's not an easy task.";
+			mes "[赛尼梅]";
+			mes "这可不是件容易的事。";
 			close;
 		}
 	}
-	mes "[High-level Laphine's]";
-	mes "Hmm? This room?";
-	mes "Never mind. Don't worry about it.";
+	mes "[高级守护精灵]";
+	mes "嗯？这个房间？";
+	mes "没什么。别放在心上。";
 	close;
 }
 
-ecl_hub01,130,15,0	script	It is closed shut.	844,{
+ecl_hub01,130,15,0	script	紧闭的门	844,{
 	if (ep14_2_mylord == 29) {
-		mes "This door connects to the plaza's ceiling.";
-		mes "It's also a place where the lighting is set up to make Orb seem more beautiful.";
+		mes "这扇门通向广场的天花板。";
+		mes "这里也是设置灯光、让宝珠显得更加美丽的地方。";
 		next;
-		if (select("Enter it.:Forget it.") == 1) {
+		if (select("进入。:算了。") == 1) {
 			.@party_id = getcharid(1);
 			.@md_name$ = "Eclage Interior";
 			if (.@party_id == 0 || is_party_leader() == false) {
-				mes "-! Warning !-";
-				mes "This current quest will be held at Memorial dungeon.";
-				mes "Only the party leader will enter. Please create your party.";
+				mes "-! 警告 !-";
+				mes "本次任务将在回忆副本中进行。";
+				mes "仅队长可以进入。请先创建队伍。";
 				close;
 			}
 			if (gettimetick(2) >= ecl_interior_time){
-				mes "[Shenime]";
-				mes "Looks like the soldiers inside are really tense.";
-				mes "It is pretty difficult to guide an outsider like you.";
+				mes "[赛尼梅]";
+				mes "里面的士兵似乎非常紧张。";
+				mes "要带你这样的外人进去，可相当困难。";
 				close;
 			}
 			switch (instance_enter(.@md_name$)) {
 			case IE_OTHER:
-				mes "An unknown error has occurred.";
+				mes "发生了未知错误。";
 				close;
 			case IE_NOINSTANCE:
-				mes "It is closed shut.";
+				mes "门紧紧关着。";
 				close;
 			case IE_OK:
-				mapannounce "ecl_hub01",getpartyname(.@party_id) + " Party leader " + strcharinfo(0) + " is entering " + .@md_name$,bc_map,"0x00ff99";
+				mapannounce "ecl_hub01",getpartyname(.@party_id) + "队长" + strcharinfo(0) + "正在进入" + .@md_name$,bc_map,"0x00ff99";
 				end;
 			default:
 			}
 		} else
 			close;
 	}
-	mes "This door connects to the plaza's ceiling.";
-	mes "It's also a place where the lighting is set up to make Orb seem more beautiful.";
-	mes "It is closed shut.";
+	mes "这扇门通向广场的天花板。";
+	mes "这里也是设置灯光、让宝珠显得更加美丽的地方。";
+	mes "门紧紧关着。";
 	close;
 }
 
-1@ecl,58,69,3	script	Shenime#ecl01	435,{
-	mes "[Shenime]";
-	mes "Oh, what's going on here?";
-	mes "They destroyed additional troops that Mayor sent?";
+1@ecl,58,69,3	script	赛尼梅#ecl01	435,{
+	mes "[赛尼梅]";
+	mes "哦？这里发生了什么事？";
+	mes "他们连市长追加派来的部队也消灭了？";
 	next;
-	select("What...?:I fought monsters off!");
-	mes "[Shenime]";
-	mes "It doesn't matter.";
-	mes "Your job ends here.";
-	mes "Now you became a betrayer.";
-	mes "Farewell, then!";
+	select("什么……？:我把怪物打退了！");
+	mes "[赛尼梅]";
+	mes "无所谓。";
+	mes "你的任务到此为止了。";
+	mes "现在你成了背叛者。";
+	mes "那么，永别了！";
 	specialeffect EF_BEGINSPELL3;
 	next;
 	mes "[" + strcharinfo(0) + "]";
-	mes "No...way!!!";
+	mes "不……不可能！！！";
 	specialeffect2 EF_LORD;
 	percentheal -99,0;
 	soundeffect "wander_man_move.wav",1;
@@ -127,22 +127,22 @@ OnEnable:
 	end;
 }
 
-1@ecl,51,64,1	script	Suspicious Creature#1	2375,{
+1@ecl,51,64,1	script	可疑生物#1	2375,{
 	end;
 }
-1@ecl,43,67,3	duplicate(Suspicious Creature#1)	Suspicious Creature#2	2375,0,0
-1@ecl,55,80,3	duplicate(Suspicious Creature#1)	Suspicious Creature#3	2375,0,0
-1@ecl,60,75,3	duplicate(Suspicious Creature#1)	Suspicious Creature#4	2375,0,0
+1@ecl,43,67,3	duplicate(可疑生物#1)	Suspicious Creature#2	2375,0,0
+1@ecl,55,80,3	duplicate(可疑生物#1)	Suspicious Creature#3	2375,0,0
+1@ecl,60,75,3	duplicate(可疑生物#1)	Suspicious Creature#4	2375,0,0
 
-1@ecl,42,80,5	script	Suspicious Creature#5	2376,{
+1@ecl,42,80,5	script	可疑生物#5	2376,{
 	end;
 OnInstanceInit:
 	hideonnpc instance_npcname(strnpcinfo(0));
 	end;
 }
-1@ecl,48,86,3	duplicate(Suspicious Creature#5)	Suspicious Creature#6	2376,0,0
-1@ecl,58,82,3	duplicate(Suspicious Creature#5)	Suspicious Creature#7	2376,0,0
-1@ecl,56,88,3	duplicate(Suspicious Creature#5)	Suspicious Creature#8	2376,0,0
+1@ecl,48,86,3	duplicate(可疑生物#5)	Suspicious Creature#6	2376,0,0
+1@ecl,58,82,3	duplicate(可疑生物#5)	Suspicious Creature#7	2376,0,0
+1@ecl,56,88,3	duplicate(可疑生物#5)	Suspicious Creature#8	2376,0,0
 
 1@ecl,53,83,0	script	#sndmaster	HIDDEN_WARP_NPC,10,10,{
 	end;
@@ -154,9 +154,9 @@ OnInstanceInit:
 
 OnEnable:
 	sleep 1000;
-    mapannounce instance_mapname("1@ecl"),"Warning: Abnormal occurrence in the lighting room. Abnormal occurrence in the lighting room.",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+    mapannounce instance_mapname("1@ecl"),"警告：照明室发生异常。照明室发生异常。",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 	sleep 2000;
-    mapannounce instance_mapname("1@ecl"),"Suspicious Creature: Kerrrrr....krwahhhh!!",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+    mapannounce instance_mapname("1@ecl"),"可疑生物：喀啊啊啊……咕哇啊啊！！",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 	hideoffnpc instance_npcname("Suspicious Creature#5");
 	hideoffnpc instance_npcname("Suspicious Creature#6");
 	hideoffnpc instance_npcname("Suspicious Creature#7");
@@ -168,27 +168,27 @@ OnEnable:
 OnMyMobDead:
 	if (mobcount(instance_mapname("1@ecl"),instance_npcname("#sndmaster")+"::OnMyMobDead") == 0) {
 		donpcevent instance_npcname("Shenime#ecl01")+"::OnEnable";
-		mapannounce instance_mapname("1@ecl"),"Shenime: Good, I got here just in time.",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+		mapannounce instance_mapname("1@ecl"),"赛尼梅：很好，我刚好赶上了。",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 	}
 	end;
 
 OnTouch:
 	if ('mob_summoned > 1) end;
-    mes "Upon eliminating the intruders near the Orb, another strange-looking creatures appeared.";
+    mes "在消灭宝珠附近的入侵者后，又出现了另一群模样怪异的生物。";
     next;
-    mes "We couldn't communicate with them either, and one of them seemed furious after looking around and finding out that its fellows are defeated.";
+    mes "我们也无法与它们沟通，其中一只环顾四周、发现同伴已被打倒后，显得十分愤怒。";
     next;
     mes "[" + strcharinfo(0) + "]";
-    mes "They look as if they are incarnation of Morocc.";
-    mes "Is the King of Domons after the Orb?";
-    mes "Or is it just a coincidence?";
+    mes "它们看起来就像是梦罗克的化身。";
+    mes "是魔王盯上了宝珠吗？";
+    mes "还是说这只是巧合？";
     next;
-    mes "[Subordinate of the King of Demons]";
-    mes "Kyaarr...Keraahhh!!!";
-    mes "Kkwaaa!";
+    mes "[魔王的手下]";
+    mes "喀呀啊啊……喀啦啊啊啊！！！";
+    mes "咕哇啊啊！";
     next;
-    mes "A battle cannot be avoided!";
-    mes "They will kill me!";
+    mes "这一战无法避免！";
+    mes "它们会杀了我的！";
 	close2;
 	hideonnpc instance_npcname("Suspicious Creature#5");
 	hideonnpc instance_npcname("Suspicious Creature#6");
@@ -218,20 +218,20 @@ OnTouch:
 	if ('mob_summoned > 0) end;
 	.@eclmap$ = instance_mapname("1@ecl");
 	.@eventname$ = instance_npcname("#event");
-	mes "An empty room with nothing inside.";
-	mes "a light is coming out of a circular equipment in the middle of the room.";
+	mes "空无一物的房间。";
+	mes "房间中央的圆形装置正散发出光芒。";
 	next;
-	mes "[Suspicious Creature]";
+	mes "[可疑生物]";
 	mes "Keheehehehe......";
 	next;
-	mes "A group of unidentifiable creatures is approaching threateningly.";
-	mes "They seemed surprised, and although Bifrost's will still holds, it's hard to communicate.";
+	mes "一群来历不明的生物正气势汹汹地逼近。";
+	mes "它们似乎很惊讶；虽然彩虹桥的意志仍然存在，却难以沟通。";
 	next;
-	mes "[Suspicious Creature]";
-	mes "Kyaarr...Ke...Keryarya!!";
+	mes "[可疑生物]";
+	mes "喀呀啊啊……喀……喀呀呀呀！！";
 	next;
-	mes "It seems like they are going to start attacking any minute.";
-	mes "We cannot help fighting them!";
+	mes "它们似乎随时都会发起攻击。";
+	mes "我们只能与它们一战了！";
 	close2;
 	hideonnpc instance_npcname("Suspicious Creature#1");
 	hideonnpc instance_npcname("Suspicious Creature#2");
@@ -256,213 +256,213 @@ OnMyMobDead:
 	end;
 }
 
-1@ecl,148,97,3	script	Avant#	618,{
-	mes "[Avant]";
-	mes "Hey, look who's here!";
-	mes "You're a friend of my son, right?";
-	mes "What a strange chance it is that has brought us together here!";
+1@ecl,148,97,3	script	阿凡特#	618,{
+	mes "[阿凡特]";
+	mes "嘿，看看是谁来了！";
+	mes "你是我儿子的朋友，对吧？";
+	mes "真是奇妙的缘分，竟让我们在这里相遇！";
 	cutin "avant01",1;
 	next;
-	mes "[Avant]";
-	mes "Did something happen to you?";
-	mes "There was a subtle and magical echo to it.";
-	mes "Immediately after that, you were thrown here.";
+	mes "[阿凡特]";
+	mes "你遇到什么事了吗？";
+	mes "那声音中带着一丝微妙的魔力回响。";
+	mes "紧接着，你就被抛到了这里。";
 	next;
-	if (select("It's all because of you!:Shenime said...") == 1) {
-		mes "[Avant]";
-		mes "I don't understand a word you're saying.";
-		mes "Can't you organize your story? Don't you know 'five W's and one H' rule?";
+	if (select("都是因为你！:赛尼梅说过……") == 1) {
+		mes "[阿凡特]";
+		mes "你说的我一个字都听不懂。";
+		mes "你不能把事情说清楚吗？不知道“五个W和一个H”的原则吗？";
 		next;
 	}
-	mes "[Avant]";
-	mes "Ooh...so that's what happened.";
-	mes "So you're saying that Shenime was after the Orb?";
+	mes "[阿凡特]";
+	mes "哦……原来是这样。";
+	mes "你是说赛尼梅的目标是宝珠？";
 	next;
-	mes "[Avant]";
-	mes "hehehe...hahahhaha ahahahahha";
-	mes "Well, well...did he get me, too?";
-	mes "Me, Avant, of all the people?! Hahahaha!";
+	mes "[阿凡特]";
+	mes "呵呵呵……哈哈哈哈哈 啊哈哈哈哈";
+	mes "哎呀呀……连我也中招了吗？";
+	mes "偏偏是我阿凡特？！哈哈哈哈哈！";
 	cutin "avant02",1;
 	next;
-	select("What do you mean?");
-	mes "[Avant]";
-	mes "I was doing a research on the power of the Orb on my own.";
-	mes "But Shenime just urged me persistently.";
+	select("你是什么意思？");
+	mes "[阿凡特]";
+	mes "我一直在独自研究宝珠的力量。";
+	mes "但赛尼梅却一再地怂恿我。";
 	cutin "avant01",1;
 	next;
-	mes "[Avant]";
-	mes "I started from thinking about the beauty of the Orb and went on to wondering what kind of power is accumulated inside the Orb...";
-	mes "and I started questioning the principle of the Orb's power since we all benefit from it.";
+	mes "[阿凡特]";
+	mes "我从思索宝珠的美丽开始，接着好奇宝珠之中究竟积蓄着怎样的力量……";
+	mes "既然我们都受益于宝珠的力量，我便开始质疑其力量的原理。";
 	next;
-	mes "[Avant]";
-	mes "All Laphines think of the Orb as something natural as air and water, but he was the first one to make me perceive it differently and investigate its origin.";
-	mes "Right...Shenime. He excited my curiosity on purpose.";
+	mes "[阿凡特]";
+	mes "所有守护精灵都将宝珠视为空气与水一般理所当然的存在，而他却是第一个让我换一种眼光看待它、并去探究其起源的人。";
+	mes "对……赛尼梅。他是故意挑起我的好奇心的。";
 	next;
-	mes "[Avant]";
-	mes "Stimulate a person who wasn't aware of air and water, and make him recognize and carry on investigating!";
-	mes "Well, well...isn't that interesting!";
+	mes "[阿凡特]";
+	mes "去刺激一个未曾意识到空气与水的人，让他察觉，并继续探究下去！";
+	mes "哎呀呀……这不是很有意思吗！";
 	cutin "avant02",1;
 	next;
-	mes "[Avant]";
+	mes "[阿凡特]";
 	mes "Ha...hahaha...";
 	mes "...I'm so angry about the fact that I just realized how he used me, but what's even worse is that I've done something horrible to our people.";
-	mes "I think I'm pretty irritated now.";
+	mes "我想我现在相当恼火。";
 	next;
-	select("You had a conscience?");
-	mes "[Avant]";
-	mes "What kind of a person do you think I am, seriously!";
-	mes "Is it because of my sons?";
-	mes "Well, then, I can't blame you too much.";
+	select("你还有良心？");
+	mes "[阿凡特]";
+	mes "你到底把我当成什么人了！";
+	mes "是因为我儿子们吗？";
+	mes "既然如此，我也不能太责怪你。";
 	cutin "avant01",1;
 	next;
-	mes "[Avant]";
+	mes "[阿凡特]";
 	mes "...Bah.";
-	mes "It's no fun.";
-	mes "It's not fun anymore. I'm no longer interested in you.";
+	mes "真没意思。";
+	mes "已经不好玩了。我对你已经没有兴趣了。";
 	next;
-	mes "[Avant]";
+	mes "[阿凡特]";
 	mes "......";
-	mes "Seems like there's a visitor.";
+	mes "好像有客人来了。";
 	next;
 	cutin "minuel01",4;
-	mes "[Minuel]";
-	mes "" + strcharinfo(0) + "Sir,";
-	mes "Although you're detained on suspicion of being responsible for the recent incident in the lighting room,";
-	mes "there are some witnesses to prove your innocence.";
+	mes "[米努埃尔]";
+	mes "" + strcharinfo(0) + "先生，";
+	mes "虽然您因涉嫌对照明室近日发生的事件负责而被拘留，";
+	mes "但已有证人可以证明您的清白。";
 	next;
-	mes "[Minuel]";
-	mes "I don't know the details,";
-	mes "but I also believe you're not guilty.";
-	mes "I'll move you to the treatment room since this seems like a severe wound.";
+	mes "[米努埃尔]";
+	mes "我不清楚详情，";
+	mes "但我也相信您是无辜的。";
+	mes "看这伤势似乎很严重，我送您去治疗室吧。";
 	next;
-	mes "[Minuel]";
-	mes "I don't think it's a big deal.";
+	mes "[米努埃尔]";
+	mes "我想这不算什么大事。";
 	mes "...hopefully.";
-	mes "Let's go. I'll guide you.";
+	mes "走吧，我来带路。";
 	close2;
 	cutin "",255;
 	warp "1@ecl",146,29;
 	end;
 }
 	
-1@ecl,148,29,3	script	Loki#ecl01	512,{
-	mes "[Loki]";
-	mes "It seems like this guy next to me has a lot more to say than I do.";
-	mes "Why don't you explain to him first?";
+1@ecl,148,29,3	script	洛奇#ecl01	512,{
+	mes "[洛奇]";
+	mes "我旁边这位好像比我有更多话要说。";
+	mes "不如你先向他解释吧？";
 	close;
 }	
 	
-1@ecl,147,30,3	script	Nydhog#ecl01	510,{
-	mes "[Guardian Nydhog]";
-	mes "I think you should talk to Hisie first.";
+1@ecl,147,30,3	script	尼德霍格#ecl01	510,{
+	mes "[守护者尼德霍格]";
+	mes "我想你应该先和希西艾谈谈。";
 	close;
 }
 	
-1@ecl,144,27,5	script	Hisie#ecl01	623,{
+1@ecl,144,27,5	script	希西艾#ecl01	623,{
 	cutin "hisie01",0;
-	mes "[Hisie]";
-	mes "Can you tell me exactly what happened?";
+	mes "[希西艾]";
+	mes "能告诉我究竟发生了什么吗？";
 	next;
-	select("I fought with monsters.");
+	select("我和怪物战斗过。");
 	cutin "hisie03",0;
-	mes "[Hisie]";
-	mes "Monsters? Subordinates of Morocc?";
-	mes "What you were trying to kill were our soldiers, the Laphines!!";
-	mes "What on earth happened there?";
+	mes "[希西艾]";
+	mes "怪物？梦罗克的手下？";
+	mes "你原本要杀的，是我们的士兵，守护精灵！！";
+	mes "那里究竟发生了什么？";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[Loki]";
-	mes "It's because of this.";
-	mes "" + strcharinfo(0) + "It was inside the body of -";
-	mes "This is how powerful Shenime is.";
+	mes "[洛奇]";
+	mes "是因为这个。";
+	mes "" + strcharinfo(0) + "它就在……的体内——";
+	mes "赛尼梅的力量就是如此强大。";
 	next;
-	mes "On Loki's palm, there rested a small, thin, and dried piece of thorn.";
+	mes "洛奇的掌心里，静静躺着一小截又细又干的尖刺。";
 	next;
 	cutin "hisie03",0;
-	mes "[Hisie]";
-	mes "Shenime, the Chief of Staff?";
-	mes "Why is he related to this?";
+	mes "[希西艾]";
+	mes "首席参谋赛尼梅？";
+	mes "他怎么会和这件事扯上关系？";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[Loki]";
-	mes "Shenime is one of the subordinates of Morocc.";
-	mes "His power enbales him to control another person directly or mentally influence that person indirectly through a part of his body.";
+	mes "[洛奇]";
+	mes "赛尼梅是梦罗克的手下之一。";
+	mes "他的力量使他能够直接操控他人，或通过自己身体的一部分间接影响对方的心智。";
 	next;
-	select("Now that I think about it...");
+	select("这么说来……");
 	mes "[" + strcharinfo(0) + "]";
-	mes "Right before coming here, Shenime reached his hand out to me and I felt a spark when I held his hand.";
-	mes "I thought it was just my imagination and ignored it...maybe that's when he...";
+	mes "就在来这里之前，赛尼梅向我伸出手，我握住他的手时感到一阵刺痛。";
+	mes "我以为只是错觉，便没有理会……也许就是那时他……";
 	next;
-	mes "[Nydhog]";
-	mes "You're probably right.";
-	mes "They use wicked tricks.";
-	mes "This thorn here probably has clouded your judgement.";
+	mes "[尼德霍格]";
+	mes "你大概说得对。";
+	mes "他们会使些邪恶的伎俩。";
+	mes "这里的这根尖刺，大概蒙蔽了你的判断。";
 	next;
 	cutin "hisie03",0;
-	mes "[Hisie]";
-	mes "So you're saying that he deceived us all?";
-	mes "The Chief of Staff is a Laphine who stayed with us for a long time! He can't be...";
+	mes "[希西艾]";
+	mes "你是说，他欺骗了我们所有人？";
+	mes "首席参谋是和我们共处了很长时间的守护精灵！他不可能……";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[Loki]";
-	mes "He might have been under the influence for a good while.";
-	mes "Anyway, this guy is not guilty.";
-	mes "I can prove it.";
+	mes "[洛奇]";
+	mes "他可能已经被操控很长一段时间了。";
+	mes "总之，这家伙是无辜的。";
+	mes "我可以证明。";
 	next;
-	mes "[Nydhog]";
-	mes "I swear by the name of the guardian of Yggdrasil, too.";
-	mes "" + strcharinfo(0) + "- will by no means do such a thing.";
+	mes "[尼德霍格]";
+	mes "我也以世界树守护者之名起誓。";
+	mes "" + strcharinfo(0) + "——绝不会做出这种事。";
 	next;
 	cutin "hisie02",0;
-	mes "[Hisie]";
+	mes "[希西艾]";
 	mes "Hah...";
-	mes "But things got out of control.";
-	mes "I didn't expect this.";
+	mes "但事情失控了。";
+	mes "我没料到会这样。";
 	next;
-	select("What happened to the Orb?");
-	mes "[Hisie]";
-	mes "The inner core is stolen.";
-	mes "Nobody knows that the Orb's inner core is gone,";
-	mes "and that's why Karr didn't make it here.";
+	select("宝珠怎么了？");
+	mes "[希西艾]";
+	mes "核心被偷走了。";
+	mes "没有人知道宝珠的核心已经不见，";
+	mes "所以卡尔才没能赶到这里。";
 	npcskill "AL_HEAL",9,99,80;
 	next;
-	mes "[Hisie]";
-	mes "And what's more, several soldiers are injured because of you.";
-	mes "None of them died fortunately, but most of them are wounded severely.";
-	mes "The situation is not very good right now.";
+	mes "[希西艾]";
+	mes "而且，还有几名士兵因你而受伤。";
+	mes "幸好无人死亡，但大多数人伤势严重。";
+	mes "现在的情况不太好。";
 	next;
 	cutin "",255;
-	mes "[Loki]";
-	mes "Someone has to take the responsibility here then.";
-	mes "In all probablility," + strcharinfo(0) + "it will be you.";
+	mes "[洛奇]";
+	mes "那么，总得有人为此承担责任。";
+	mes "十有八九，" + strcharinfo(0) + "那个人就是你。";
 	next;
 	cutin "hisie02",0;
-	mes "[Hisie]";
+	mes "[希西艾]";
 	mes "......these two gentlemen here cleared up all charges related to the Orb,";
-	mes "but both you and Karr won't be able to avoid your responsibility.";
-	mes "you'll have to catch Shenime.";
+	mes "但你和卡尔都无法逃避责任。";
+	mes "你们必须抓住赛尼梅。";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "hisie01",0;
-	mes "[Hisie]";
-	mes "It seems like you've rested enough. Let's get going.";
-	mes "Karr is waiting for you.";
-	mes "What will you two do?";
+	mes "[希西艾]";
+	mes "看来你已经休息够了。我们出发吧。";
+	mes "卡尔在等你。";
+	mes "你们两个打算怎么办？";
 	next;
 	cutin "",255;
-	mes "[Loki]";
-	mes "Don't worry about us.";
-	mes "Our target is Morocc, the King of Demons.";
-	mes "It's good enough that we found an evidence here.";
+	mes "[洛奇]";
+	mes "不用担心我们。";
+	mes "我们的目标是魔王梦罗克。";
+	mes "能在这里找到证据，已经足够了。";
 	next;
 	cutin "hisie01",0;
-	mes "[Hisie]";
-	mes "Thank you for your help.";
-	mes "We will take off now.";
-	mes "Let's go." + strcharinfo(0) + ".";
+	mes "[希西艾]";
+	mes "感谢你的帮助。";
+	mes "我们这就出发了。";
+	mes "走吧，" + strcharinfo(0) + ".";
 	ep14_2_mylord = 30;
 	changequest 7450,7451;
 	close2;

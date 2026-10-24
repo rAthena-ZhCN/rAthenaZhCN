@@ -16,40 +16,40 @@
 //=       removed Executioner&Mysteltain swords [Lupus]
 //============================================================
 
-prt_in,159,172,0	warp	thqwrp	3,3,yuno_in01,123,155
+prt_in,159,172,0	warp	宝物猎人商店传送点	3,3,yuno_in01,123,155
 
-prt_in,164,174,1	script	Treasure Hunter's Shop	65,{
-	mes "[Ash]";
-	mes "Ahh, "+strcharinfo(0)+"! Welcome to the Official Treasure Hunter's Guild Shop.";
-	mes "You currently have ^FF0000"+#Treasure_Token+"^000000 treasure tokens!!!";
+prt_in,164,174,1	script	宝物猎人商店	65,{
+	mes "[艾什]";
+	mes "啊，"+strcharinfo(0)+"！欢迎光临官方宝物猎人工会商店。";
+	mes "你目前拥有 ^FF0000"+#Treasure_Token+"^000000 个宝物代币！！！";
 	next;
-	menu "How does this place work?",-,"What do you have in stock?",N_Shop,"Never mind",N_NVM;
-	mes "[Ash]";
-	mes "Well you see here you can exchange your treasure hunter tokens for zeny or rare weapons forged by our blacksmiths.";
+	menu "这里是怎么运作的？",-,"你们有什么商品？",N_Shop,"算了",N_NVM;
+	mes "[艾什]";
+	mes "这个嘛，你可以在这里用宝物猎人的代币兑换 Zeny，或者兑换我们铁匠锻造的稀有武器。";
 	mes " ";
-	mes "Everything has its own price value and the only way you can get the tokens is by completing quests assigned to you,the system normally works like this.";
+	mes "每样东西都有自己的价格，而获得代币的唯一途径就是完成指派给你的任务，系统一般是这么运作的。";
 	mes " ";
-	mes "The harder the mission the more Tokens you will earn. All red quests are worth 4-8 Tokens, and the rest are worth 1-5.";
+	mes "任务越难，你能赚到的代币越多。所有红色任务价值 4-8 个代币，其余任务价值 1-5 个。";
 	mes " ";
-	mes "Hope that solves your problem and questions.";
+	mes "希望这能解答你的疑问。";
 	close;
 N_NVM:
 	close;
 	end;
 N_Shop:
 //This is when it gets hard :)
-	mes "[Ash]";
-	mes "Ok here is our Big list of goods.";
+	mes "[艾什]";
+	mes "好，这就是我们的商品大清单。";
 	mes " ";
-	mes "(Note T stands for a Treasure Token.)";
+	mes "（注：T 代表宝物代币。）";
 	next;
-	menu "Trade for Zeny",-,"Trade for Weapons",N_BuyWeps,"Trade for Cards",N_BuyCards,"Never mind",N_NVM;
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	menu "兑换 Zeny",-,"Trade for Weapons",N_BuyWeps,"Trade for Cards",N_BuyCards,"Never mind",N_NVM;
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "1000z - 1T",-,"10000z - 10T",N_10T,"100000z - 100T",N_100T,"Never mind",N_NVM;
+	menu "1000z - 1T",-,"10000z - 10T",N_10T,"100000z - 100T",N_100T,"算了",N_NVM;
 	if (#Treasure_Token > 0) goto N_GetZeny1k;
-	mes "You don't have enough tokens!";
+	mes "你的代币不够！";
 	close;
 N_GetZeny1k:
 	set #Treasure_Token,#Treasure_Token-1;
@@ -57,7 +57,7 @@ N_GetZeny1k:
 	close;
 N_10T:
 	if (#Treasure_Token > 9) goto N_GetZeny10k;
-	mes "You don't have enough tokens!";
+	mes "你的代币不够！";
 	close;
 N_GetZeny10k:
 	set #Treasure_Token,#Treasure_Token-10;
@@ -65,7 +65,7 @@ N_GetZeny10k:
 	close;
 N_100T:
 	if (#Treasure_Token > 99) goto N_GetZeny100k;
-	mes "You don't have enough tokens!";
+	mes "你的代币不够！";
 	close;
 N_GetZeny100k:
 	set #Treasure_Token,#Treasure_Token-100;
@@ -73,15 +73,15 @@ N_GetZeny100k:
 	close;
 
 N_BuyWeps:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Axe's",-,"1 Handed Swords",N_1HandSword,"2 Handed Swords",N_2HandSword,"Book's",N_Book,"Bow's",N_Bow,"Katar's",N_Katar,"Knuckle's",N_Knuckle,"Mace's",N_Mace,"Whips",N_Whip,"Wands",N_Wand,"Never mind",N_NVM;
+	menu "斧类",-,"单手剑",N_1HandSword,"双手剑",N_2HandSword,"书籍",N_Book,"弓类",N_Bow,"拳刃",N_Katar,"拳套",N_Knuckle,"钝器",N_Mace,"鞭类",N_Whip,"法杖",N_Wand,"算了",N_NVM;
 
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Sabbath - 160T",-,"Slaughter - 160T",N_Slau,"Tomahawk - 180T",N_Toma,"Great Axe - 200T",N_GreatA,"Guillotine - 200T",N_Guill,"Never mind",N_NVM;
+	menu "安息 - 160T",-,"杀戮 - 160T",N_Slau,"战斧 - 180T",N_Toma,"巨斧 - 200T",N_GreatA,"断头斧 - 200T",N_Guill,"算了",N_NVM;
 
 	if (#Treasure_Token < 160) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-160;
@@ -113,16 +113,16 @@ N_Guill:
 	logmes "Treasure Token: Bought a Guillotine";
 	close;
 N_NeedToken:
-	mes "[Ash]";
-	mes "You don't have enough tokens!";
+	mes "[艾什]";
+	mes "你的代币不够！";
 	close;
 
 
 N_1HandSword:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Edge - 130T",-,"Solar Sword - 150T",N_SolarS,"Caesar's Sword - 170T",N_CaesarS,"Nagan - 180T",N_Nagan,"Immaterial Sword - 200T",N_ImmatS,"Excalibur - 200T",N_Excal,"Byeollungum - 240T",N_Byeoll,"Talefing - 320T",N_Talef,"Never mind",N_NVM;
+	menu "边缘 - 130T",-,"太阳剑 - 150T",N_SolarS,"凯撒之剑 - 170T",N_CaesarS,"纳干 - 180T",N_Nagan,"无形剑 - 200T",N_ImmatS,"王者之剑 - 200T",N_Excal,"星云剑 - 240T",N_Byeoll,"塔雷芬 - 320T",N_Talef,"算了",N_NVM;
 
 	if (#Treasure_Token < 130) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-130;
@@ -174,10 +174,10 @@ N_Talef:
 
 
 N_2HandSword:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Dragon Slayer - 140T",-,"Schweizersabel - 200T",N_Schwe,"Katzbalger - 300T",N_Katzb,"Muramasa - 300T",N_Murama,"Masamune - 400T",N_Masamu,"Balmung - 2000T",N_Balmu,"Never mind",N_NVM;
+	menu "屠龙剑 - 140T",-,"瑞士大刀 - 200T",N_Schwe,"卡茨巴尔格 - 300T",N_Katzb,"村正 - 300T",N_Murama,"正宗 - 400T",N_Masamu,"巴鲁姆克 - 2000T",N_Balmu,"算了",N_NVM;
 
 	if (#Treasure_Token < 140) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-140;
@@ -217,10 +217,10 @@ N_Balmu:
 
 
 N_Book:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Book of the Burning Sun - 80T",-,"Book of the Rough Seas - 80T",N_RoughSea,"Book of the Dry Winds - 80T",N_DryWinds,"Book of the Ripe Earth - 80T",N_RipeEarth,"Book of the Revelations - 80T",N_Revela,"Bible - 90T",N_Bible,"Tablet - 120T",N_Tablet,"Never mind",N_NVM;
+	menu "炽阳之书 - 80T",-,"怒海之书 - 80T",N_RoughSea,"干风之书 - 80T",N_DryWinds,"沃土之书 - 80T",N_RipeEarth,"启示之书 - 80T",N_Revela,"圣经 - 90T",N_Bible,"石板 - 120T",N_Tablet,"算了",N_NVM;
 
 	if (#Treasure_Token < 80) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-80;
@@ -265,10 +265,10 @@ N_Tablet:
 	close;
 
 N_Bow:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Rudra's Bow - 150T",-,"Roguemaster's Bow - 150T",N_Rogue,"Never mind",N_NVM;
+	menu "楼陀罗之弓 - 150T",-,"盗贼大师之弓 - 150T",N_Rogue,"算了",N_NVM;
 
 	if (#Treasure_Token < 150) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-150;
@@ -283,10 +283,10 @@ N_Rogue:
 	close;
 
 N_Katar:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Katar of the Blazing Rage - 70T",-,"Katar of the Cold Icicle - 70T",N_ColdIce,"Katar of the Piercing Wind - 70T",N_PiercWind,"Katar of the Dusty Thornbush - 70T",N_DustyT,"Sharpened Legbone of Ghoul - 125T",N_Legbone,"Infiltrator - 150T",N_Infiltra,"Never mind",N_NVM;
+	menu "烈焰之怒拳刃 - 70T",-,"寒冰之刺拳刃 - 70T",N_ColdIce,"穿风拳刃 - 70T",N_PiercWind,"尘刺灌木拳刃 - 70T",N_DustyT,"锋利的食尸鬼腿骨 - 125T",N_Legbone,"渗透者 - 150T",N_Infiltra,"算了",N_NVM;
 
 	if (#Treasure_Token < 70) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-70;
@@ -325,10 +325,10 @@ N_Infiltra:
 	close;
 
 N_Knuckle:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Kaiser Knuckle - 75T",-,"Berserk - 75T",N_Berserk,"Never mind",N_NVM;
+	menu "凯撒指虎 - 75T",-,"狂怒之枪 - 75T",N_Berserk,"算了",N_NVM;
 
 	if (#Treasure_Token < 75) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-75;
@@ -343,10 +343,10 @@ N_Berserk:
 	close;
 
 N_Mace:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Spike - 65T",-,"Slash - 90T",N_Slash,"Grand Cross - 100T",N_GrandC,"Quadrille - 110T",N_Quadr,"Mjolnir - 1000T",N_MJ,"Never mind",N_NVM;
+	menu "尖刺 - 65T",-,"斩击 - 90T",N_Slash,"圣十字审判 - 100T",N_GrandC,"四对舞 - 110T",N_Quadr,"雷神之锤 - 1000T",N_MJ,"算了",N_NVM;
 
 	if (#Treasure_Token < 65) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-65;
@@ -379,10 +379,10 @@ N_MJ:
 	close;
 
 N_Whip:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Rapture Rose - 50T",-,"Chemeti - 65T",N_Chemeti,"Never mind",N_NVM;
+	menu "迷魂玫瑰 - 50T",-,"切梅蒂 - 65T",N_Chemeti,"算了",N_NVM;
 
 	if (#Treasure_Token < 50) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-50;
@@ -397,10 +397,10 @@ N_Chemeti:
 	close;
 
 N_Wand:
-	mes "[Ash]";
-	mes "This is what we have to offer.";
+	mes "[艾什]";
+	mes "这些就是我们的商品。";
 	next;
-	menu "Mighty Staff - 90T",-,"Wizardry Staff - 150T",N_Wizardry,"Bone Wand - 110T",N_BoneW,"Staff of Soul - 120T",N_SOSoul,"Never mind",N_NVM;
+	menu "强力手杖 - 90T",-,"巫师法杖 - 150T",N_Wizardry,"骨杖 - 110T",N_BoneW,"灵魂之杖 - 120T",N_SOSoul,"算了",N_NVM;
 
 	if (#Treasure_Token < 90) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-90;
@@ -427,13 +427,13 @@ N_SOSoul:
 	close;
 
 N_BuyCards:
-	mes "[Ash]";
-	mes "This is what we have to offer. All Cards are 300T";
+	mes "[艾什]";
+	mes "这些就是我们的商品。所有卡片均为 300T";
 	next;
-	menu "Poring Card - 2T",-,"Pasana Card - 420T",N_CPasana,"Dokebi Card - 420T",N_CDok,"Swordfish Card - 420T",N_CSFish,
-		"Sandman Card - 420T",N_CSMan,"Drainliar Card - 360T",N_CDrain,"Kaho Card - 360T",N_CKaho,"Mandragora Card - 360T",N_CMand,
-		"Vadon Card - 360T",N_CVadon,"Mummy Card - 540T",N_CMummy,"Zenorc Card - 240T",N_CZeno,"Condor Card - 240T",N_CCond,
-		"Zombie Card - 210T",N_CZomb,"Never mind",N_NVM;
+	menu "波利卡片 - 2T",-,"帕莎纳卡片 - 420T",N_CPasana,"土人卡片 - 420T",N_CDok,"异变鱼卡片 - 420T",N_CSFish,
+		"沙人卡片 - 420T",N_CSMan,"红蝙蝠卡片 - 360T",N_CDrain,"卡浩卡片 - 360T",N_CKaho,"曼陀罗魔花卡片 - 360T",N_CMand,
+		"螃蟹卡片 - 360T",N_CVadon,"木乃伊卡片 - 540T",N_CMummy,"兹诺克卡片 - 240T",N_CZeno,"秃鹰卡片 - 240T",N_CCond,
+		"腐尸卡片 - 210T",N_CZomb,"算了",N_NVM;
 
 	if (#Treasure_Token < 2) goto N_NeedToken;
 	set #Treasure_Token,#Treasure_Token-2;

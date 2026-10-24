@@ -15,129 +15,129 @@
 //= 1.0 First version. [L0ne_W0lf]
 //============================================================
 
-prontera,146,232,4	script	Hypnotist#2	124,{
-	mes "[Hypnotist]";
-	mes "Greetings, adventurer.";
-	mes "I'm a member of the Hypnotist";
-	mes "Academy sent here to Prontera";
-	mes "to provide Skill Reset services";
-	mes "to certain First Class characters for a really good price: free!";
+prontera,146,232,4	script	催眠师#2	124,{
+	mes "[催眠师]";
+	mes "你好，冒险者。";
+	mes "我是催眠师协会的成员，";
+	mes "被派到普隆德拉，";
+	mes "为特定的初级职业";
+	mes "提供技能重置服务，价格非常优惠：免费！";
 	next;
-	mes "[Hypnotist]";
-	mes "Although I offer unlimited";
-	mes "skill resets for now, I have";
-	mes "two conditions that must be";
-	mes "fulfilled. First, you must be";
-	mes "lower than ^FF0000Base Level 40^000000.";
+	mes "[催眠师]";
+	mes "虽然目前我提供";
+	mes "不限次数的技能重置，";
+	mes "但必须满足";
+	mes "两个条件。首先，你的";
+	mes "等级必须低于^FF0000基础等级40^000000。";
 	next;
-	mes "[Hypnotist]";
-	mes "Second, you must be a";
-	mes "^FF0000Swordman, Acolyte, Mage,";
-	mes "Thief, Archer, Merchant,";
-	mes "Taekwon Boy, Taekwon Girl, Gunslinger and Ninja^000000";
-	mes "Job character to qualify.";
-	mes "Now, do you have any questions?";
+	mes "[催眠师]";
+	mes "其次，你的职业必须是";
+	mes "^FF0000剑士、服事、法师、";
+	mes "盗贼、弓箭手、商人、";
+	mes "跆拳少年、跆拳少女、神枪手和忍者^000000";
+	mes "之一，才符合条件。";
+	mes "那么，你还有什么问题吗？";
 	next;
-	switch(select("Skill Reset?:I want a Skill Reset:Nothing")) {
+	switch(select("技能重置？:我想进行技能重置:没什么")) {
 
 	case 1:
-		mes "[Hypnotist]";
-		mes "Skill Resets allow adventuers";
-		mes "to redistribute their Skill";
-		mes "Points if they are unhappy";
-		mes "with their current skills.";
+		mes "[催眠师]";
+		mes "技能重置可以让冒险者";
+		mes "重新分配技能点，";
+		mes "以便在他们对现有技能";
+		mes "不满意时进行调整。";
 		next;
-		mes "[Hypnotist]";
-		mes "Before proceeding with";
-		mes "a Skill Reset, you must";
-		mes "reduce all of the weight";
-		mes "of all carried items on your";
-		mes "character to 0. You can put";
-		mes "extra items in Kafra Storage.";
+		mes "[催眠师]";
+		mes "在进行技能重置之前，";
+		mes "你必须把角色的";
+		mes "所有携带物品的";
+		mes "重量全部降为";
+		mes "0。你可以把";
+		mes "多余的物品放入卡普拉仓库。";
 		next;
-		mes "[Hypnotist]";
-		mes "Ah, it's also important";
-		mes "to remove your ^FF0000Pushcart^000000";
-		mes "if you have one equipped.";
-		mes "Otherwise, hypnosis won't";
-		mes "work, or will backfire...";
+		mes "[催眠师]";
+		mes "啊，还有一点也很重要，";
+		mes "如果你装备了^FF0000手推车^000000，";
+		mes "请把它卸下。";
+		mes "否则催眠将";
+		mes "无法生效，甚至可能反噬……";
 		close;
 
 	case 2:
-		mes "[Hypnotist]";
-		mes "Are you sure that you";
-		mes "want to proceed with";
-		mes "my ^FF0000Skill Reset^000000 service?";
+		mes "[催眠师]";
+		mes "你确定要";
+		mes "接受我的";
+		mes "^FF0000技能重置^000000服务吗？";
 		next;
-		if (select("Yes:Cancel") == 1) {
+		if (select("是:取消") == 1) {
 			if (BaseLevel > 40) {
-				mes "[Hypnotist]";
-				mes "I'm sorry, but characters";
-				mes "with Base Levels higher";
-				mes "than 40 are ineligible for the";
-				mes "Skill Reset service I provide.";
+				mes "[催眠师]";
+				mes "很抱歉，基础等级";
+				mes "高于40的";
+				mes "角色无法使用";
+				mes "我提供的技能重置服务。";
 				close;
 			}
 			if ((Class > 0 && Class < 7 && Upper == 0) || (Class == Job_Gunslinger) || (Class == Job_Ninja) || (Class == Job_Taekwon)) {
 				if (checkcart()) {
-					mes "[Hypnotist]";
-					mes "Oh! Please remove your";
-					mes "Pushcart before proceeding";
-					mes "with the Skill Reset service.";
-					mes "Thanks for cooperating~";
+					mes "[催眠师]";
+					mes "哦！请在进行";
+					mes "技能重置之前";
+					mes "先卸下手推车。";
+					mes "感谢你的配合~";
 					close;
 				}
 				if (Weight) {
-					mes "[Hypnotist]";
-					mes "If you're here for my Skill";
-					mes "Reset service, please";
-					mes "remember that you can't";
-					mes "reset your skills until the";
-					mes "^FF0000weight of your carried items in";
-					mes "your Inventory is reduced to 0^000000.";
+					mes "[催眠师]";
+					mes "如果你是来使用我的";
+					mes "技能重置服务的，请";
+					mes "记住，你的";
+					mes "背包中携带物品的";
+					mes "^FF0000重量降为0之前，";
+					mes "都无法重置技能^000000。";
 					next;
-					mes "[Hypnotist]";
-					mes "Why don't you place your";
-					mes "things into the Kafra Storage";
-					mes "for now? That way, you can";
-					mes "safely keep all of your goods.";
+					mes "[催眠师]";
+					mes "你何不先把";
+					mes "东西放进卡普拉仓库";
+					mes "呢？这样你就能";
+					mes "安全地保管所有物品。";
 					close;
 				}
-				mes "[Hypnotist]";
-				mes "Thank you for using";
-				mes "my Skill Redistribution";
-				mes "services. Oh, and best";
-				mes "of luck to you on your";
-				mes "travels, adventurer.";
+				mes "[催眠师]";
+				mes "感谢您使用";
+				mes "我的技能重新分配";
+				mes "服务。哦，祝你在";
+				mes "旅途中";
+				mes "一切顺利，冒险者。";
 				ResetSkill;
 				close;
 			}
-			mes "[Hypnotist]";
-			mes "I'm sorry, but your";
-			mes "Job Class doesn't qualify";
-			mes "for the Skill Reset service";
-			mes "that I provide. I can only";
-			mes "offer Skill Resets to the";
-			mes "following Jobs...";
+			mes "[催眠师]";
+			mes "很抱歉，你的";
+			mes "职业不符合";
+			mes "我提供的";
+			mes "技能重置服务。我只能";
+			mes "为以下职业";
+			mes "提供技能重置……";
 			next;
-			mes "[Hypnotist]";
-			mes "^FF0000Swordman, Acolyte,";
-			mes "Mage, Thief, Archer,";
-			mes "Merchant, Taekwon";
-			mes "Boy, Taekwon Girl, Gunslinger and Ninja^000000.";
+			mes "[催眠师]";
+			mes "^FF0000剑士、服事、";
+			mes "法师、盗贼、弓箭手、";
+			mes "商人、跆拳";
+			mes "少年、跆拳少女、神枪手和忍者^000000。";
 			close;
 		}
-		mes "[Hypnotist]";
-		mes "Thank you, and good";
-		mes "luck on your adventures.";
-		mes "Please travel in safety~";
+		mes "[催眠师]";
+		mes "谢谢你，祝你";
+		mes "冒险顺利。";
+		mes "请一路平安~";
 		close;
 
 	case 3:
-		mes "[Hypnotist]";
-		mes "Thank you, and good";
-		mes "luck on your adventures.";
-		mes "Please travel in safety~";
+		mes "[催眠师]";
+		mes "谢谢你，祝你";
+		mes "冒险顺利。";
+		mes "请一路平安~";
 		close;
 	}
 

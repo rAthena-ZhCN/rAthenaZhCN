@@ -13,82 +13,82 @@
 // Templates
 -	script	#GldDungeonReward	-1,{
 	if (checkweight(1304,3) == 0) {
-		mes "You have too many items to proceed with the quest.";
-		mes "Please lighten your load and try again.";
+		mes "携带的道具过多，无法进行任务。";
+		mes "请减轻负重后再试。";
 		close;
 	}
 
-	mes "It's a machine that exchanges Commemorative Siege Guild Coins for special items.";
-	mes "Select the desired item and insert as many coins as necessary.";
+	mes "这是用攻城纪念公会硬币兑换特殊道具的机器。";
+	mes "选择想要的道具，投入所需数量的硬币。";
 	next;
 	while(1) {
-		switch(select("View exchangeable items","Trade for Investment Certificates","Trade for Good Medicines","Trade for Gifts","Kvasir's Ring","Leave")) {
+		switch(select("查看可兑换道具","兑换投资证书","Trade for Good Medicines","Trade for Gifts","Kvasir's Ring","Leave")) {
 			case 1:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "Thank you for choosing ClickClick MeowMeow!";
-				mes "Here is a list of items you can purchase with Commemorative Siege Guild Coins.";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "感谢您选择咔哒咔哒喵喵！";
+				mes "以下是可用攻城纪念公会硬币购买的道具列表。";
 				next;
-				mes "= Blood of Frost Giant =";
-				mes "New medicine developed by the joint effort of Alchemy Union of 3 countries. Gives the user supernatural powers for a short period of time.";
-				mes "^4d4dffDrains 3000 HP, but increases physical and magical damage to the user's counterpart players by 100% for 10 seconds.";
-				mes "Required Level: 80 or higher^000000";
+				mes "= 霜巨人之血 =";
+				mes "由三国炼金术师公会共同开发的新药。能在短时间内赋予使用者超常的力量。";
+				mes "^4d4dff消耗3000 HP，但在10秒内对敌对玩家造成的物理、魔法伤害提高100%。";
+				mes "所需等级：80以上^000000";
 				next;
-				mes "= Core of Golem =";
-				mes "New medicine developed by the joint effort of Alchemy Union of 3 countries. Gives the user supernatural powers for a short period of time.";
-				mes "^4d4dffDrains 300 SP, but decreases the damage taken from the user's counterpart players by 50% for 10 seconds.";
-				mes "Required Level: 80 or higher^000000";
+				mes "= 魔像核心 =";
+				mes "由三国炼金术师公会共同开发的新药。能在短时间内赋予使用者超常的力量。";
+				mes "^4d4dff消耗300 SP，但在10秒内受到敌对玩家的伤害减少50%。";
+				mes "所需等级：80以上^000000";
 				next;
 				setarray .@status$, "Stun", "Petrify", "Frozen", "Sleep", "Curse", "Silence", "Blind";
 				.@size = getarraysize(.@status$);
 				for(.@i = 0; .@i < .@size; ++.@i) {
-					mes "= Fairy's Tear (" + .@status$[.@i] + ") =";
-					mes "A potion developed by Vicent, a pharmaceutical genius. Gives the user supernatural powers for a short period of time.";
-					mes "^4d4dffDrains 3000 HP, but allows the user to become immune to " + (.@i == 1 ? "Petrification" : .@status$[.@i]) + " status for 10 seconds.^000000";
+					mes "= 妖精之泪（" + .@status$[.@i] + "）=";
+					mes "由制药天才维森特开发的药水。能在短时间内赋予使用者超常的力量。";
+					mes "^4d4dff消耗3000 HP，但在10秒内可使使用者免疫" + (.@i == 1 ? "石化" : .@status$[.@i]) + "状态10秒。^000000";
 					next;
 				}
-				mes "= Feather Beret[1] =";
-				mes "A comfortable, sky blue-colored hat decorated with feathers.";
-				mes "^4d4dffMDEF + 1, Decreases the damage taken from the user's counterpart players by 10%.";
-				mes "Card Slot [1], available to all job classes except for Novices.";
+				mes "= 羽毛贝雷帽[1] =";
+				mes "一顶装饰着羽毛、舒适的天蓝色帽子。";
+				mes "^4d4dffMDEF + 1，受到敌对玩家的伤害减少10%。";
+				mes "卡片插槽[1]，除新手外所有职业均可使用。";
 				next;
-				mes "= Feather Beret Costume =";
-				mes "A comfortable, sky blue-colored hat decorated with feathers.";
-				mes "^4d4dffCostume Equipment, available to all job classes.^000000";
+				mes "= 羽毛贝雷帽服装 =";
+				mes "一顶装饰着羽毛、舒适的天蓝色帽子。";
+				mes "^4d4dff时装装备，所有职业均可使用。^000000";
 				next;
-				mes "This is the end of the list.";
+				mes "列表到此结束。";
 				break;
 
 			case 2:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "We exchange the ^4d4dff1Investment Certificate^000000 of Cat's Paw Merchant Group for ^4d4dff10Commemorative Coins!^000000";
-				mes "Do you want to exchange?";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "我们用猫爪商会的^4d4dff1张投资证书^000000兑换^4d4dff10枚纪念硬币！^000000";
+				mes "您要兑换吗？";
 				next;
-				switch(select("Yes.","View other items.")) {
+				switch(select("Yes.","查看其他道具。")) {
 					case 1:
-						mes "[ClickClick MeowMeow-GX]";
+						mes "[咔哒咔哒喵喵-GX]";
 						if (countitem(6615) > 9) {
-							mes "Thank you for using our service, meow!";
+							mes "感谢您使用本服务，喵！";
 							delitem 6615,10; // Siege_Guild_Coin
 							getitem 6489,1; // Cats_Invest_Certif
 						} else {
-							mes "You don't have enough coins for Investment Certificates.";
-							mes "1 Investment Certificate is worth 10 coins.";
+							mes "您的硬币不足以兑换投资证书。";
+							mes "1张投资证书价值10枚硬币。";
 						}
 						break;
 
 					case 2:
-						mes "[ClickClick MeowMeow-GX]";
-						mes "You've decided to view other items.";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "您决定查看其他道具。";
 						break;
 				}
 				break;
 
 			case 3:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "You have selected a list of good medicines!";
-				mes "All items listed below are worth ^4d4dff300 coins each^000000, meow!";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "您选择了良药列表！";
+				mes "下列道具每件价值^4d4dff300枚硬币^000000，喵！";
 				next;
-				switch(select("Blood of Frost Giants", "Core of Golem", "Fairy's Tear (Stun)", "Fairy's Tear (Frozen)", "Fairy's Tear (Sleep)", "Fairy's Tear (Curse)", "Fairy's Tear (Petrify)", "Fairy's Tear (Silence)", "Fairy's Tear (Blind)", "View other items.")) {
+				switch(select("霜巨人之血", "魔像核心", "妖精之泪（眩晕）", "妖精之泪（冰冻）", "妖精之泪（睡眠）", "妖精之泪（诅咒）", "妖精之泪（石化）", "妖精之泪（沉默）", "妖精之泪（黑暗）", "查看其他道具。")) {
 					case 1:
 						callsub S_PurchaseMedicine, "Blood of Frost Giant", 12874;
 						break;
@@ -117,17 +117,17 @@
 						callsub S_PurchaseMedicine, "Fairy's Tear(Blind)", 12882;
 						break;
 					case 10:
-						mes "You've decided to view other items.";
+						mes "您决定查看其他道具。";
 						break;
 				}
 				break;
 
 			case 4:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "You have selected a list of good gifts!";
-				mes "The price for each item is listed separately, meow!";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "您选择了好礼列表！";
+				mes "每件道具的价格分别标注，喵！";
 				next;
-				switch(select("Old Card Album -500 Coins", "Old Purple Box -300 Coins", "Old Blue Box -100 Coins", "Jewelry Box -500 Coins", "Wrapped Mask -500 Coins", "Feather Beret","Leave")) {
+				switch(select("旧卡册 -500枚硬币", "旧紫箱 -300枚硬币", "旧蓝箱 -100枚硬币", "珠宝箱 -500枚硬币", "包装面具 -500枚硬币", "羽毛贝雷帽","离开")) {
 					case 1:
 						callsub S_PurchaseGift, "Old Card Album", 616, 500;
 						break;
@@ -144,110 +144,110 @@
 						callsub S_PurchaseGift, "Wrapped Mask", 12107, 500;
 						break;
 					case 6:
-						mes "[ClickClick MeowMeow-GX]";
-						mes "You have selected a nice beret decorated with feathers!";
-						mes "We have Feather Berets and Feather Beret Costumes to which you can install cards, meow!";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "您选择了装饰羽毛的精美贝雷帽！";
+						mes "我们有可插卡的羽毛贝雷帽和羽毛贝雷帽服装，喵！";
 						next;
-						switch(select("Feather Beret[1] -1500 Coins","Feather Beret Costume -800 Coins","Purchase a Beret","View other items.")) {
+						switch(select("羽毛贝雷帽[1] -1500枚硬币","羽毛贝雷帽服装 -800枚硬币","购买贝雷帽","查看其他道具。")) {
 							case 1:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "It's a feather beret to which you can install cards!";
-								mes "It is worth 1500 Commemorative Coins. Do you want to purchase it?";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "这是可以插卡的羽毛贝雷帽！";
+								mes "价值1500枚纪念硬币。您要购买吗？";
 								next;
-								switch(select("Yes!","No!")) {
+								switch(select("是！","否！")) {
 									case 1:
-										mes "[ClickClick MeowMeow-GX]";
+										mes "[咔哒咔哒喵喵-GX]";
 										if (countitem(6615) > 1499) {
-											mes "Thank you for using our service, meow!";
+											mes "感谢您使用本服务，喵！";
 											delitem 6615,1500; // Siege_Guild_Coin
 											getitem 18755,1; // Feather_Beret_
 										} else {
-											mes "You need 1500 Commemorative Coins in order to purchase the selected item.";
-											mes "You've decided to view other items.";
+											mes "购买所选道具需要1500枚纪念硬币。";
+											mes "您决定查看其他道具。";
 										}
 										break;
 
 									case 2:
-										mes "[ClickClick MeowMeow-GX]";
-										mes "You've decided to view other items.";
+										mes "[咔哒咔哒喵喵-GX]";
+										mes "您决定查看其他道具。";
 										break;
 								}
 								break;
 
 							case 2:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "It's a feather beret costume!";
-								mes "It is worth 800 Commemorative Coins. Do you want to purchase it?";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "这是羽毛贝雷帽服装！";
+								mes "价值800枚纪念硬币。您要购买吗？";
 								next;
-								switch(select("Yes!","No!")) {
+								switch(select("是！","否！")) {
 									case 1:
-										mes "[ClickClick MeowMeow-GX]";
+										mes "[咔哒咔哒喵喵-GX]";
 										if (countitem(6615) > 799) {
-											mes "Thank you for using our service, meow!";
+											mes "感谢您使用本服务，喵！";
 											delitem 6615,800; // Siege_Guild_Coin
 											getitem 19585,1; // C_Feather_Beret
 										} else {
-											mes "You need 800 Commemorative Coins in order to purchase the selected item.";
-											mes "You've decided to view other items.";
+											mes "购买所选道具需要800枚纪念硬币。";
+											mes "您决定查看其他道具。";
 										}
 										break;
 
 									case 2:
-										mes "[ClickClick MeowMeow-GX]";
-										mes "You've decided to view other items.";
+										mes "[咔哒咔哒喵喵-GX]";
+										mes "您决定查看其他道具。";
 										break;
 								}
 								break;
 
 							case 3:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "The preparations for changing the color of feather beret costumes are under way.";
-								mes "Please come back later!";
-								mes "Let me show you other items!";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "羽毛贝雷帽服装的染色准备正在进行中。";
+								mes "请稍后再来！";
+								mes "让我为您展示其他道具！";
 								break;
 
 							case 4:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "You've decided to view other items.";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "您决定查看其他道具。";
 								break;
 						}
 						break;
 
 					case 7:
-						mes "[ClickClick MeowMeow-GX]";
-						mes "Do not use the exchange machine.";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "请不要使用兑换机。";
 						break;
 				}
 				break;
 
 			case 5:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "This is the category of Kvasir's Rings.";
-				mes "You can view the description for each ring and purchase one here.";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "这是克瓦希尔戒指的分类。";
+				mes "您可以查看每枚戒指的说明并在此购买。";
 				next;
-				switch(select("Trade for Kvasir's Ring (Blue)", "Trade for Kvasir's Ring (Red)", "Trade for Kvasir's Ring (Green)", "Trade for Kvasir's Ring (Brown)", "Leave")) {
+				switch(select("兑换克瓦希尔戒指（蓝）", "Trade for Kvasir's Ring (Red)", "Trade for Kvasir's Ring (Green)", "Trade for Kvasir's Ring (Brown)", "Leave")) {
 					case 1:
-						mes "= Kvasir's Ring (Blue) =";
-						mes "A ring that is rumored to be filled with the power of Kvasir, a sage god. ";
-						mes "^4d4dffMSP + 30. 'Snow Flip' 1Lv available^000000";
-						mes "Accessory. Available to all job classes. Required Level: 1";
+						mes "= 克瓦希尔戒指（蓝） =";
+						mes "传说中蕴含着贤神克瓦希尔之力的戒指。";
+						mes "^4d4dffMSP + 30。可使用1级“雪花翻飞”^000000";
+						mes "饰品。所有职业均可使用。所需等级：1";
 						next;
-						mes "[ClickClick MeowMeow-GX]";
-						mes "Kvasir's Ring (Blue) can be purchased with ^4d4dff20Blood of Frost Giant and 20 Core of Golem^000000";
-						mes "or ^4d4dff1Kvasir's Ring in different color and 10 Commemorative Coins!^000000";
-						mes "Do you want to purchase it?";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "克瓦希尔戒指（蓝）可用^4d4dff20个霜巨人之血和20个魔像核心^000000购买";
+						mes "或用^4d4dff1枚其他颜色的克瓦希尔戒指和10枚纪念硬币！^000000";
+						mes "您要购买吗？";
 						next;
-						switch(select("Pay with Blood and Core","Pay with Kvasir's Ring (Red)","Pay with Kvasir's Ring (Green)","Pay with Kvasir's Ring (Brown)","Leave")) {
+						switch(select("用鲜血与核心支付","用克瓦希尔戒指（红）支付","用克瓦希尔戒指（绿）支付","用克瓦希尔戒指（棕）支付","离开")) {
 							case 1:
-								mes "[ClickClick MeowMeow-GX]";
+								mes "[咔哒咔哒喵喵-GX]";
 								if ((countitem(12874) > 19) & (countitem(12875) > 19)) {
-									mes "Kvasir's Ring (Blue) has been purchased.";
+									mes "已购买克瓦希尔戒指（蓝）。";
 									delitem 12874,20; // Frost_Giant_Blood
 									delitem 12875,20; // Golem_Stone
 									getitem 2951,1; // Kvasir_Ring_Blue
 								} else {
-									mes "Looks like Kvasir's Ring (Blue) can be purchased with ^4d4dff20Blood of Frost Giant and 20 Core of Golem.^000000";
-									mes "You don't have enough items to complete the purchase. View other items.";
+									mes "看来克瓦希尔戒指（蓝）可用^4d4dff20个霜巨人之血和20个魔像核心购买。^000000";
+									mes "您的道具不足，无法完成购买。请查看其他道具。";
 								}
 								break;
 
@@ -264,23 +264,23 @@
 								break;
 
 							case 5:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "You've decided to view other items.";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "您决定查看其他道具。";
 								break;
 						}
 					break;
 
 					case 2:
-						mes "= Kvasir's Ring (Red) =";
-						mes "A ring that is rumored to be filled with the power of Kvasir, a sage god. ";
-						mes "^4d4dffMSP + 30. 'Peony Mamy' 1Lv available^000000";
-						mes "Accessory. Available to all job classes. Required Level: 1";
+						mes "= 克瓦希尔戒指（红） =";
+						mes "传说中蕴含着贤神克瓦希尔之力的戒指。";
+						mes "^4d4dffMSP + 30。可使用1级“牡丹妈咪”^000000";
+						mes "饰品。所有职业均可使用。所需等级：1";
 						next;
-						mes "[ClickClick MeowMeow-GX]";
-						mes "Kvasir's Ring (Red) can be purchased with ^4d4dff1Kvasir's Ring and 10 Commemorative Coins.^000000";
-						mes "Which of the followings do you want to trade for Kvasir's Ring (Red)?";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "克瓦希尔戒指（红）可用^4d4dff1枚克瓦希尔戒指和10枚纪念硬币购买。^000000";
+						mes "您想用下列哪一项换取克瓦希尔戒指（红）？";
 						next;
-						switch(select("Kvasir's Ring (Blue)","Kvasir's Ring (Green)","Kvasir's Ring (Brown)","Leave")) {
+						switch(select("克瓦希尔戒指（蓝）","克瓦希尔戒指（绿）","克瓦希尔戒指（棕）","离开")) {
 							case 1:
 								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Red)", 2952;
 								break;
@@ -294,23 +294,23 @@
 								break;
 
 							case 4:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "You've decided to view other items.";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "您决定查看其他道具。";
 								break;
 						}
 						break;
 
 					case 3:
-						mes "= Kvasir's Ring (Green) =";
-						mes "A ring that is rumored to be filled with the power of Kvasir, a sage god. ";
-						mes "^4d4dffMSP + 100. 'Sada Ear' 1Lv available^000000";
-						mes "Accessory. Available to all job classes. Required Level: 1";
+						mes "= 克瓦希尔戒指（绿） =";
+						mes "传说中蕴含着贤神克瓦希尔之力的戒指。";
+						mes "^4d4dffMSP + 100。可使用1级“萨达之耳”^000000";
+						mes "饰品。所有职业均可使用。所需等级：1";
 						next;
-						mes "[ClickClick MeowMeow-GX]";
-						mes "Kvasir's Ring (Green) can be purchased with ^4d4dff1Kvasir's Ring and 10 Commemorative Coins.^000000";
-						mes "Which of the followings do you want to trade for Kvasir's Ring (Red)?";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "克瓦希尔戒指（绿）可用^4d4dff1枚克瓦希尔戒指和10枚纪念硬币购买。^000000";
+						mes "您想用下列哪一项换取克瓦希尔戒指（红）？";
 						next;
-						switch(select("Kvasir's Ring (Blue)","Kvasir's Ring (Red)","Kvasir's Ring (Brown)","Leave")) {
+						switch(select("克瓦希尔戒指（蓝）","克瓦希尔戒指（红）","克瓦希尔戒指（棕）","离开")) {
 							case 1:
 								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Green)", 2953;
 								break;
@@ -324,23 +324,23 @@
 								break;
 
 							case 4:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "You've decided to view other items.";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "您决定查看其他道具。";
 								break;
 						}
 						break;
 
 					case 4:
-						mes "= Kvasir Ring Brown =";
-						mes "A ring that is rumored to be filled with the power of Kvasir, a sage god. ";
-						mes "^4d4dffMSP + 100. 'Dust of Galaxy' 1Lv available^000000";
-						mes "Accessory. Available to all job classes. Required Level: 1";
+						mes "= 克瓦希尔戒指（棕） =";
+						mes "传说中蕴含着贤神克瓦希尔之力的戒指。";
+						mes "^4d4dffMSP + 100。可使用1级“银河之尘”^000000";
+						mes "饰品。所有职业均可使用。所需等级：1";
 						next;
-						mes "[ClickClick MeowMeow-GX]";
-						mes "Kvasir's Ring (Brown) can be purchased with ^4d4dff1Kvasir's Ring and 10 Commemorative Coins.^000000";
-						mes "Which of the followings do you want to trade for Kvasir's Ring (Red)?";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "克瓦希尔戒指（棕）可用^4d4dff1枚克瓦希尔戒指和10枚纪念硬币购买。^000000";
+						mes "您想用下列哪一项换取克瓦希尔戒指（红）？";
 						next;
-						switch(select("Kvasir's Ring (Blue)","Kvasir's Ring (Red)","Kvasir's Ring (Green)","Leave")) {
+						switch(select("克瓦希尔戒指（蓝）","克瓦希尔戒指（红）","克瓦希尔戒指（绿）","离开")) {
 							case 1:
 								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Brown)", 2954;
 								break;
@@ -354,46 +354,46 @@
 								break;
 
 							case 4:
-								mes "[ClickClick MeowMeow-GX]";
-								mes "You've decided to view other items.";
+								mes "[咔哒咔哒喵喵-GX]";
+								mes "您决定查看其他道具。";
 								break;
 						}
 						break;
 
 					case 5:
-						mes "[ClickClick MeowMeow-GX]";
-						mes "You've decided to view other items.";
+						mes "[咔哒咔哒喵喵-GX]";
+						mes "您决定查看其他道具。";
 						break;
 				}
 				break;
 
 			case 6:
-				mes "[ClickClick MeowMeow-GX]";
-				mes "Do not use the exchange machine.";
+				mes "[咔哒咔哒喵喵-GX]";
+				mes "请不要使用兑换机。";
 				break;
 		}
 	}
 	close;
 
 S_PurchaseMedicine:
-	mes "[ClickClick MeowMeow-GX]";
-	mes "You're purchasing 1 " + getarg(0) + ", meow!";
-	mes "Are you sure?";
+	mes "[咔哒咔哒喵喵-GX]";
+	mes "您正在购买1个" + getarg(0) + "，喵！";
+	mes "确定吗？";
 	next;
-	switch(select("Yes!","No!")) {
+	switch(select("是！","否！")) {
 		case 1:
-			mes "[ClickClick MeowMeow-GX]";
+			mes "[咔哒咔哒喵喵-GX]";
 			if (countitem(6615) > 299) {
-				mes "Thank you for using our service, meow!";
+				mes "感谢您使用本服务，喵！";
 				delitem 6615,300; // Siege_Guild_Coin
 				getitem getarg(1),1;
 			} else
-				mes "One good medicine is worth 300 commemorative coins that you've raked and scraped...";
+				mes "一瓶良药价值300枚您辛苦积攒的纪念硬币……";
 			break;
 
 		case 2:
-			mes "[ClickClick MeowMeow-GX]";
-			mes "You've decided to view other items.";
+			mes "[咔哒咔哒喵喵-GX]";
+			mes "您决定查看其他道具。";
 			break;
 	}
 	return;
@@ -401,26 +401,26 @@ S_PurchaseMedicine:
 S_PurchaseGift:
 	.@itemid = getarg(1);
 	.@price = getarg(2);
-	mes "[ClickClick MeowMeow-GX]";
-	mes "You're purchasing 1 " + getarg(0) + ", meow!";
-	mes "Are you sure?";
+	mes "[咔哒咔哒喵喵-GX]";
+	mes "您正在购买1个" + getarg(0) + "，喵！";
+	mes "确定吗？";
 	next;
-	switch(select("Yes!","No!")) {
+	switch(select("是！","否！")) {
 		case 1:
-			mes "[ClickClick MeowMeow-GX]";
+			mes "[咔哒咔哒喵喵-GX]";
 			if (countitem(6615) >= .@price) {
-				mes "Thank you for using our service, meow!";
+				mes "感谢您使用本服务，喵！";
 				delitem 6615,.@price; // Siege_Guild_Coin
 				getitem .@itemid,1;
 			} else {
-				mes "You need " + .@price + " Commemorative Coins in order to purchase the selected item.";
-				mes "You've decided to view other items.";
+				mes "购买所选道具需要" + .@price + "枚纪念硬币。";
+				mes "您决定查看其他道具。";
 			}
 			break;
 
 		case 2:
-			mes "[ClickClick MeowMeow-GX]";
-			mes "You've decided to view other items.";
+			mes "[咔哒咔哒喵喵-GX]";
+			mes "您决定查看其他道具。";
 			break;
 	}
 	return;
@@ -431,18 +431,18 @@ S_Kvasir:
 	.@toid = getarg(3);
 	.@toname$ = getarg(4);
 	
-	mes "[ClickClick MeowMeow-GX]";
+	mes "[咔哒咔哒喵喵-GX]";
 	// One of Kvasir's Rings and 10 Siege_Guild_Coin
 	if( countitem( .@fromid ) > 0 && countitem( 6615 ) > 9 ){
-		mes "You have " + .@fromname$ + ".";
-		mes "Do you want to trade this in for " + .@toname$ + "?";
+		mes "你有" + .@fromname$ + ".";
+		mes "您想把它换成" + .@toname$ + "?";
 		next;
-		mes "[ClickClick MeowMeow-GX]";
-		switch( select( "Yes!:Leave" ) ){
+		mes "[咔哒咔哒喵喵-GX]";
+		switch( select( "是！:离开" ) ){
 			case 1:
 				// Recheck the items once more
 				if( countitem( .@fromid ) > 0 && countitem( 6615 ) > 9 ){
-					mes "You have traded " + .@fromname$ + " for " + .@toname$ + ".";
+					mes "您已将" + .@fromname$ + "换成了" + .@toname$ + ".";
 					delitem .@fromid, 1;
 					delitem 6615, 10; // Siege_Guild_Coin
 					getitem .@toid, 1;
@@ -450,11 +450,11 @@ S_Kvasir:
 				}
 				break;
 			case 2:
-				mes "You've decided to view other items.";
+				mes "您决定查看其他道具。";
 				return;
 		}
 	}
-	mes "You need 1 " + .@fromname$ + " and 10 Commemorative Coins in order to complete the purchase.";
+	mes "您需要1个" + .@fromname$ + "和10枚纪念硬币才能完成购买。";
 	return;
 }
 

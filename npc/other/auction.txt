@@ -18,38 +18,38 @@
 
 // Auction House warpers
 //============================================================
-moc_ruins,78,173,6	script	Auction Hall Guide#moc	98,{
+moc_ruins,78,173,6	script	拍卖场向导#moc	98,{
 	callfunc "F_AuctionWarper",1;
 }
 
-prontera,218,120,4	script	Auction Hall Guide#prt	117,{
+prontera,218,120,4	script	拍卖场向导#prt	117,{
 	callfunc "F_AuctionWarper",2;
 }
 
-yuno,129,116,0	script	Auction Hall Guide#yuno	90,{
+yuno,129,116,0	script	拍卖场向导#yuno	90,{
 	callfunc "F_AuctionWarper",3;
 }
 
-lighthalzen,205,169,6	script	Auction Hall Guide#lhz	833,{
+lighthalzen,205,169,6	script	拍卖场向导#lhz	833,{
 	callfunc "F_AuctionWarper",4;
 }
 
 function	script	F_AuctionWarper	{
-	mes "[Auction Hall Guide]";
-	mes "Hello, would you";
-	mes "like to enter the";
-	mes "Auction Hall?";
+	mes "[拍卖场向导]";
+	mes "你好，你愿意";
+	mes "进入";
+	mes "拍卖场吗？";
 	next;
-	if (select("Yes:No") == 1) {
+	if (select("是:否") == 1) {
 		.@num = getarg(0);
 		if (.@num == 1 || .@num == 4) {
-			mes "[Auction Hall Guide]";
-			mes "Great! Well then,";
-			mes "I hope you have fun";
-			mes "and enjoy the auction~";
+			mes "[拍卖场向导]";
+			mes "太好了！那么，";
+			mes "希望你玩得开心";
+			mes "享受这场拍卖~";
 		} else {
-			mes "[Auction Hall Guide]";
-			mes "Enjoy your auction.";
+			mes "[拍卖场向导]";
+			mes "祝你拍卖愉快。";
 		}
 		close2;
 		switch(.@num) {
@@ -63,20 +63,20 @@ function	script	F_AuctionWarper	{
 			warp "auction_02",43,24; end;
 		}
 	}
-	mes "[Auction Hall Guide]";
-	mes "Alright then,";
-	mes "see you later.";
-	mes "If you change your";
-	mes "mind, please come";
-	mes "and enjoy the auctions~";
+	mes "[拍卖场向导]";
+	mes "那么，";
+	mes "回头见。";
+	mes "如果你改变";
+	mes "主意，请来";
+	mes "享受拍卖~";
 	close;
 }
 
 // Sign posts
 //============================================================
 -	script	Information Post#dum::AuctionSign	-1,{
-	mes "[Information]";
-	mes "Auction Warp Guide";
+	mes "[信息]";
+	mes "拍卖场传送向导";
 	close;
 }
 
@@ -95,25 +95,25 @@ auction_02,43,17,0	warp	auction_enterance_lhz	1,1,lighthalzen,209,169
 // Auction House NPCs
 //============================================================
 -	script	Auction Broker#dum::AuctionBroker	-1,{
-	mes "[Auction Broker]";
-	mes "Welcome to the Auction Hall.";
-	mes "Would you like to view the goods?";
+	mes "[拍卖中介人]";
+	mes "欢迎来到拍卖场。";
+	mes "你想查看商品吗？";
 	next;
-	if (select("Yes:No") == 1) {
-		mes "[Auction Broker]";
-		mes "Very well.";
-		mes "Please take";
-		mes "a look, and see";
-		mes "What's being offered~";
+	if (select("是:否") == 1) {
+		mes "[拍卖中介人]";
+		mes "很好。";
+		mes "请慢慢";
+		mes "看看，瞧瞧";
+		mes "有哪些商品在拍卖~";
 		OpenAuction;
 		close;
 	}
-	mes "[Auction Broker]";
-	mes "Very well, then.";
-	mes "If you change your";
-	mes "mind, then please";
-	mes "come and check";
-	mes "out the auctions~";
+	mes "[拍卖中介人]";
+	mes "那么，好的。";
+	mes "如果你改变";
+	mes "主意，请";
+	mes "来看看";
+	mes "这里的拍卖~";
 	close;
 }
 

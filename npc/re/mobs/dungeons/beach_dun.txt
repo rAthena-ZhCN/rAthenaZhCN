@@ -17,28 +17,28 @@
 //==================================================
 // beach_dun - Karu, the West cave 
 //==================================================
-beach_dun,0,0	monster	--ja--	1148,60,5000
-beach_dun,0,0	monster	--ja--	1255,20,5000
-beach_dun,0,0	monster	--ja--	1256,20,5000
-beach_dun,0,0	monster	--ja--	1264,3,5000
+beach_dun,0,0	monster	Medusa	1148,60,5000
+beach_dun,0,0	monster	Nereid	1255,20,5000
+beach_dun,0,0	monster	Pest	1256,20,5000
+beach_dun,0,0	monster	Merman	1264,3,5000
 beach_dun,0,0,0,0	boss_monster	Tao Gunka	1583,1,18000000,600000,0
 
 //==================================================
 // beach_dun2 - Ruande the northern cave 
 //==================================================
-beach_dun2,0,0	monster	--ja--	1278,65,5000
-beach_dun2,0,0	monster	--ja--	1279,20,5000
-beach_dun2,0,0	monster	--ja--	1274,15,5000
-beach_dun2,0,0	monster	--ja--	1068,10,5000
-beach_dun2,0,0	monster	--ja--	1255,3,5000
+beach_dun2,0,0	monster	Stalactic Golem	1278,65,5000
+beach_dun2,0,0	monster	Tri Joint	1279,20,5000
+beach_dun2,0,0	monster	Megalith	1274,15,5000
+beach_dun2,0,0	monster	Hydra	1068,10,5000
+beach_dun2,0,0	monster	Nereid	1255,3,5000
 
 //==================================================
 // beach_dun3 - Mao, the East Cave 
 //==================================================
-beach_dun3,0,0	monster	--ja--	1034,50,5000
-beach_dun3,0,0	monster	--ja--	1064,30,5000
-beach_dun3,0,0	monster	--ja--	1068,30,5000
-beach_dun3,0,0	monster	--ja--	1255,1,5000
+beach_dun3,0,0	monster	Thara Frog	1034,50,5000
+beach_dun3,0,0	monster	Megalodon	1064,30,5000
+beach_dun3,0,0	monster	Hydra	1068,30,5000
+beach_dun3,0,0	monster	Nereid	1255,1,5000
 
 //==================================================
 // Illusion of Luanda
@@ -75,9 +75,9 @@ S_Boss:
 	.boss_spawn = true;
 	monster "com_d02_i",getarg(1),getarg(2),"--ja--",getarg(0),1,"illusion_luanda::OnBossDeath";
 	if (.swap == 0)	// ILL_TAO_GUNKA
-		mapannounce "com_d02_i", "Ancient Tao Gunka: Is it time to show off your megalithic power?", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古塔奥群卡：是时候展示你们的巨石之力了吗？", bc_map, 0x70DBDB;
 	else	// ILL_WOOTAN_DEFENDER
-		mapannounce "com_d02_i", "Ancient Wootan Defender: I guess I'll have to step in after all these useless guys.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古伍坦战士：看来在这些没用的家伙之后，只好由我出马了。", bc_map, 0x70DBDB;
 	end;
 
 OnBossDeath:
@@ -86,18 +86,18 @@ OnBossDeath:
 	.cooldown = true;
 
 	if (.swap == 0) {	// ILL_TAO_GUNKA
-		mapannounce "com_d02_i", "Ancient Tao Gunka: Megaliths, it's time to crouch and hold your breath.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古塔奥群卡：巨石们，是时候蹲下屏住呼吸了。", bc_map, 0x70DBDB;
 		sleep 2000;
-		mapannounce "com_d02_i", "Ancient Tao Gunka: We'll grow stronger as we unhook and step out into the world.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古塔奥群卡：当我们挣脱束缚、走向世界，就会变得更强。", bc_map, 0x70DBDB;
 		sleep 2000;
-		mapannounce "com_d02_i", "Ancient Tao Gunka: Crouch. When you crouch, you megalith.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古塔奥群卡：蹲下。蹲下时，你就是巨石。", bc_map, 0x70DBDB;
 	}
 	else {	// ILL_WOOTAN_DEFENDER
-		mapannounce "com_d02_i", "Ancient Wootan Defender: Ugh.. Quite a dangerous wound..", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古伍坦战士：呃……真是危险的伤口……", bc_map, 0x70DBDB;
 		sleep 2000;
-		mapannounce "com_d02_i", "Ancient Wootan Defender: You pushed me, a warrior of the Wootan tribe, this far. It's pretty good. It's a pity, but I'm going to step down now.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古伍坦战士：你们竟能把身为伍坦族战士的我逼到这个地步。干得不错。很遗憾，我现在要退下了。", bc_map, 0x70DBDB;
 		sleep 2000;
-		mapannounce "com_d02_i", "Ancient Wootan Defender: Listen to all Wootans! Leave now and commit to the next one.", bc_map, 0x70DBDB;
+		mapannounce "com_d02_i", "远古伍坦战士：所有伍坦人听令！现在撤离，为下一次做好准备。", bc_map, 0x70DBDB;
 	}
 	sleep 1000;
 	.group = (.group == 4 ? 5 : 4);

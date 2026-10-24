@@ -35,22 +35,22 @@ OnDisable:
 	end;
 
 OnTimer1000:
-	enablenpc "Killer#Rogueguild";
+	enablenpc "杀手#Rogueguild";
 	end;
 
 OnTimer120000:
-	disablenpc "Killer#Rogueguild";
+	disablenpc "杀手#Rogueguild";
 	end;
 
 OnTimer150000:
-	disablenpc "Killer#Rogueguild";
+	disablenpc "杀手#Rogueguild";
 	disablenpc "#killershow01";
 	end;
 }
 
-in_rogue,357,174,2	script	Killer#Rogueguild	705,1,1,{
+in_rogue,357,174,2	script	杀手#Rogueguild	705,1,1,{
 OnInit:
-	disablenpc "Killer#Rogueguild";
+	disablenpc "杀手#Rogueguild";
 	end;
 
 OnTouch_:
@@ -59,740 +59,740 @@ OnTouch_:
 		specialeffect EF_CHANGEWIND;
 		specialeffect2 EF_LIGHTSPHERE;
 		set ROG_SK,11;
-		mes "[Killer]";
-		mes "Wh-what have";
-		mes "you done to me?!";
-		mes "C-can't... move!";
+		mes "[杀手]";
+		mes "你、你对我";
+		mes "做了什么？！";
+		mes "动、动不了……！";
 		next;
-		mes "[Haijara Greg]";
-		mes "Oh? I didn't expect";
-		mes "you to be able to cast";
-		mes "Close Confine so soon!";
-		mes "Amazing, just amazing!";
-		mes "Now, this is a good chance";
-		mes "for you to master the skill...";
+		mes "[哈扎拉格莱]";
+		mes "哦？没想到";
+		mes "你这么快就能施展";
+		mes "紧密的约束！";
+		mes "厉害，真是厉害！";
+		mes "现在，这是个好机会";
+		mes "让你掌握这个技能……";
 		next;
-		mes "[Haijara Greg]";
-		mes "Now pay attention.";
-		mes "I want you to practice";
-		mes "predicting your opponent's";
-		mes "movement intent on this killer.";
-		mes "You should be able to see which way he plans to move by his aura.";
+		mes "[哈扎拉格莱]";
+		mes "现在注意看。";
+		mes "我要你练习";
+		mes "预判对手的";
+		mes "移动意图，就拿这个杀手练。";
+		mes "你应该能通过他的气场看出他打算往哪边移动。";
 		next;
-		mes "[Haijara Greg]";
-		mes "If he plans to move to left,";
-		mes "his aura will be white. If he";
-		mes "moves to the right, it will be";
-		mes "yellow. If he intends to go";
-		mes "backward, it will be pale red.";
+		mes "[哈扎拉格莱]";
+		mes "如果他打算向左移动，";
+		mes "他的气场会变白。如果他";
+		mes "向右移动，气场就会";
+		mes "变黄。如果他想";
+		mes "后退，就会变成淡红色。";
 		next;
 		setarray .@Effects[1],EF_CHANGECOLD,EF_CHANGEWIND,EF_CHANGEEARTH;
 		for(set .@lim_1,0; .@lim_1<10; set .@lim_1,.@lim_1+1) {
 			set .@move_1,rand(1,3);
 			specialeffect .@Effects[.@move_1];
-			if (select("Block him to the Left:Block him to the Right:Block his Retreat") == .@move_1) {
-				mes "^3355FFThe killer remains";
-				mes "unable to move and looks";
-				mes "incredibly confused! Right";
-				mes "now, you're using the Close";
-				mes "Confine skill perfectly!^000000";
+			if (select("封住他的左侧:封住他的右侧:封住他的退路") == .@move_1) {
+				mes "^3355FF杀手依然";
+				mes "动弹不得，看起来";
+				mes "非常困惑！而";
+				mes "此刻，你施展的紧密的";
+				mes "约束技能完美无缺！^000000";
 				specialeffect EF_POTION1;
 				specialeffect2 EF_POTION7;
 			}
 			else {
-				mes "^3355FFWait--!";
-				mes "For some reason,";
-				mes "you sense that's not";
-				mes "the direction the killer";
-				mes "is moving at this moment.";
-				mes "You naturally correct yourself.^000000";
+				mes "^3355FF等等——！";
+				mes "不知为何，";
+				mes "你感觉那不是";
+				mes "杀手此刻";
+				mes "移动的方向。";
+				mes "你自然而然地修正了判断。^000000";
 			}
 			next;
 		}
-		mes "^3355FFYou successfully";
-		mes "retrieved the priceless";
-		mes "skill book written by the";
-		mes "legendary Chae Takbae.^000000";
+		mes "^3355FF你成功";
+		mes "取回了那本无价的";
+		mes "技能书，它出自";
+		mes "传奇人物蔡卓培之手。^000000";
 		close2;
-		disablenpc "Killer#Rogueguild";
+		disablenpc "杀手#Rogueguild";
 		donpcevent "#killershow01::OnDisable";
 		end;
 	}
 	else if (ROG_SK == 11) {
-		mes "[Killer]";
+		mes "[杀手]";
 		mes "Grrrrr...";
-		mes "S-still...";
-		mes "C-can't... Move!";
+		mes "还、还是……";
+		mes "动、动不了……！";
 		close2;
-		disablenpc "Killer#Rogueguild";
+		disablenpc "杀手#Rogueguild";
 		donpcevent "#killershow01::OnDisable";
 		end;
 	}
 	end;
 }
 
-in_rogue,355,179,0	script	Haijara Greg#rogueguild	46,{
+in_rogue,355,179,0	script	哈扎拉格莱#rogueguild	46,{
 	if (BaseJob == Job_Rogue) {
 		if (ROG_SK == 12 && Upper == 1) {
-			mes "[Haijara Greg]";
-			mes "Hm? Ah, amnesia as";
-			mes "resulting from transcending,";
-			mes "eh? Then I will teach you the";
-			mes "Close Confine skill once again.";
+			mes "[哈扎拉格莱]";
+			mes "嗯？啊，是超越转生后";
+			mes "留下的失忆啊，";
+			mes "是吗？那我就再教你一次";
+			mes "紧密的约束技能。";
 			specialeffect2 EF_LIGHTSPHERE;
 			skill "RG_CLOSECONFINE",1,SKILL_PERM;
 			set ROG_SK,13;
 			close;
 		}
 		else if (ROG_SK == 13 && Upper == 1) {
-			mes "[Haijara Greg]";
-			mes "A Stalker, eh?";
-			mes "Make sure that you";
-			mes "use your abilities to";
-			mes "malign foes that deserve";
-			mes "to be stalked. Best of";
-			mes "luck to you, adventurer.";
+			mes "[哈扎拉格莱]";
+			mes "神行太保，是吗？";
+			mes "一定要用你的能力";
+			mes "去对付那些";
+			mes "活该被跟踪的";
+			mes "恶徒。祝你好运，";
+			mes "冒险者。";
 			close;
 		}
 		else {
 			if (ROG_SK < 1) {
-				mes "[Haijara Greg]";
-				mes "H-how did you find this";
-				mes "place? I thought this panic";
-				mes "room was supposed to be";
-				mes "impenetrable, even by Rogues!";
+				mes "[哈扎拉格莱]";
+				mes "你、你怎么找到这个";
+				mes "地方的？我以为这间避难室";
+				mes "应该是";
+				mes "连流氓都无法闯入的！";
 				next;
-				mes "[Haijara Greg]";
-				mes "This can't be good!";
-				mes "It will only be a matter of";
-				mes "time before they find me...";
+				mes "[哈扎拉格莱]";
+				mes "这下可不妙！";
+				mes "他们找到我";
+				mes "只是时间问题……";
 				close;
 			}
 			else if (ROG_SK == 1) {
-				mes "[Haijara Greg]";
-				mes "Wh-who are you,";
-				mes "and how did you get";
-				mes "in here? Identify yourself!";
+				mes "[哈扎拉格莱]";
+				mes "你、你是谁，";
+				mes "又是怎么进";
+				mes "到这里的？报上名来！";
 				next;
-				if (select("I don't mean you any harm!:Give us what we want!") == 1) {
-					mes "[Haijara Greg]";
-					mes "No...?";
-					mes "Then... Then";
-					mes "why have you come?";
-					mes "It is no accident that";
-					mes "you have found me.";
+				if (select("我没有恶意！:把我们要的东西交出来！") == 1) {
+					mes "[哈扎拉格莱]";
+					mes "不是……？";
+					mes "那……那么";
+					mes "你为什么来这里？";
+					mes "你找到我";
+					mes "绝非偶然。";
 					next;
-					if (select("I came to help you.:Oh, actually, I wasn't looking for you.") == 1) {
-						mes "[Haijara Greg]";
-						mes "Hmm... Well, I suppose";
+					if (select("我是来帮你的。:哦，其实我不是在找你。") == 1) {
+						mes "[哈扎拉格莱]";
+						mes "嗯……好吧，我想";
 						if (Upper == 1)
-							mes "I can trust a fellow Stalker";
+							mes "我可以相信同为神行太保的";
 						else
-							mes "I can trust a fellow Rogue";
-						mes "with my predictament. Honor";
-						mes "among thieves and all that.";
-						mes "Alright. Have you ever heard";
-						mes "the legend of Chae Takbae?";
+							mes "我可以相信同为流氓的";
+						mes "你，向你诉说我的困境。盗贼";
+						mes "之间的道义什么的。";
+						mes "好吧。你听说过";
+						mes "蔡卓培的传说吗？";
 						next;
-						if (select("No:Yes") == 1) {
-							mes "[Haijara Greg]";
-							mes "100 years ago, Chae Takbae";
-							mes "was the very first person to";
-							mes "transcend his limits. He was";
-							mes "also the very person to choose";
-							mes "a different path, rather than the job order he previously had.";
+						if (select("没有:听过") == 1) {
+							mes "[哈扎拉格莱]";
+							mes "一百年前，蔡卓培";
+							mes "是第一个";
+							mes "超越自身极限的人。他也";
+							mes "正是那个选择";
+							mes "走上不同道路，而非遵循原有职业体系的人。";
 							next;
-							mes "[Haijara Greg]";
-							mes "He was originally a Monk,";
-							mes "but after transcending, he";
-							mes "somehow became a Stalker.";
-							mes "Retaining his knowledge of";
-							mes "the Monk's Root skill, he adapted it for the purposes of the Rogues.";
+							mes "[哈扎拉格莱]";
+							mes "他原本是武僧，";
+							mes "但超越之后，他";
+							mes "不知怎么成了神行太保。";
+							mes "他保留了";
+							mes "武僧树根技能的知识，并将其改编为流氓所用。";
 							next;
-							mes "[Haijara Greg]";
-							mes "Chae Takbae recorded the";
-							mes "fundamentals for this new";
-							mes "Rogue skill in a book that";
-							mes "I was fortunate enough to";
-							mes "obtain. But as soon as I got";
-							mes "it, the blackmailing begain...";
+							mes "[哈扎拉格莱]";
+							mes "蔡卓培将这门新";
+							mes "流氓技能的基础";
+							mes "记录在了一本书里，";
+							mes "我有幸";
+							mes "得到了它。可我刚拿到，";
+							mes "勒索就开始了……";
 							next;
-							mes "[Haijara Greg]";
-							mes "There are unscrupulous";
-							mes "parties that will use any";
-							mes "means to take the book away";
-							mes "from me. I can understand, as";
-							mes "my sons and I have learned new";
-							mes "skills from Takbae's writings.";
+							mes "[哈扎拉格莱]";
+							mes "有些无耻之徒";
+							mes "会不择手段地";
+							mes "把书从我这里";
+							mes "夺走。我能理解，因为";
+							mes "我和儿子们从卓培的著作中";
+							mes "学到了新技能。";
 							next;
-							mes "[Haijara Greg]";
-							mes "However, I am running";
-							mes "out of time and those men";
-							mes "will inevitably find me.";
-							mes "Will you help me save";
-							mes "myself and my sons?";
+							mes "[哈扎拉格莱]";
+							mes "可是，我时间";
+							mes "不多了，那些人";
+							mes "迟早会找到我。";
+							mes "你愿意帮我救";
+							mes "我和我的儿子们吗？";
 							next;
-							if (select("Sure!:Sorry, but I'm busy.") == 1) {
-								mes "[Haijara Greg]";
-								mes "Oh, thank you so much!";
-								mes "Listen, I can't risk being";
-								mes "found, so would you take";
-								mes "this letter to my youngest";
-								mes "son, ^FF0000Louis Greg^000000? Hurry,";
-								mes "there's not much time left!";
+							if (select("当然！:抱歉，我很忙。") == 1) {
+								mes "[哈扎拉格莱]";
+								mes "哦，太感谢你了！";
+								mes "听我说，我不能冒险";
+								mes "被发现，你能把这封信";
+								mes "送给我最小的";
+								mes "儿子^FF0000鲁格莱^000000吗？快，";
+								mes "时间不多了！";
 								set ROG_SK,2;
 								close;
 							}
-							mes "[Haijara Greg]";
-							mes "I... I see.";
-							mes "But please realize";
-							mes "that, if not you, who";
-							mes "can I trust to help me?";
+							mes "[哈扎拉格莱]";
+							mes "我……我明白了。";
+							mes "但请你明白，";
+							mes "如果不是你，我还能";
+							mes "相信谁来帮我？";
 							close;
 						}
-						mes "[Haijara Greg]";
-						mes "Then you would know the";
-						mes "value of the skill book he has";
-						mes "written that I now possess.";
-						mes "However, I'm hounded by men";
-						mes "who will do anything to get it.";
-						mes "Would you please help me?";
+						mes "[哈扎拉格莱]";
+						mes "那你应该知道";
+						mes "他所写的那本技能书";
+						mes "有多珍贵，它现在就在我手里。";
+						mes "可是，有一群人追着我不放，";
+						mes "他们为了得到它什么都做得出来。";
+						mes "你愿意帮帮我吗？";
 						next;
-						if (select("Sure!:Sorry, but I'm busy.") == 1) {
-							mes "[Haijara Greg]";
-							mes "Oh, thank you so much!";
-							mes "Listen, I can't risk being";
-							mes "found, so would you take";
-							mes "this letter to my youngest";
-							mes "son, ^FF0000Louis Greg^000000? Hurry,";
-							mes "there's not much time left!";
+						if (select("当然！:抱歉，我很忙。") == 1) {
+							mes "[哈扎拉格莱]";
+							mes "哦，太感谢你了！";
+							mes "听我说，我不能冒险";
+							mes "被发现，你能把这封信";
+							mes "送给我最小的";
+							mes "儿子^FF0000鲁格莱^000000吗？快，";
+							mes "时间不多了！";
 							set ROG_SK,2;
 							close;
 						}
-						mes "[Haijara Greg]";
-						mes "I... I see.";
-						mes "But please realize";
-						mes "that, if not you, who";
-						mes "can I trust to help me?";
+						mes "[哈扎拉格莱]";
+						mes "我……我明白了。";
+						mes "但请你明白，";
+						mes "如果不是你，我还能";
+						mes "相信谁来帮我？";
 						close;
 					}
-					mes "[Haijara Greg]";
-					mes "Hm...?";
-					mes "That seems unlikely, but";
-					mes "I suppose I better give you";
-					mes "the benefit of the doubt.";
-					mes "Well then, I hope that you";
-					mes "can find your way out of here.";
+					mes "[哈扎拉格莱]";
+					mes "嗯……？";
+					mes "听起来不太可能，不过";
+					mes "我想我还是该给你";
+					mes "一次机会，暂且信你。";
+					mes "那么，希望你能";
+					mes "自己找到出去的路。";
 					close;
 				}
-				mes "[Haijara Greg]";
-				mes "I see. So be it.";
-				mes "I'll show you the skill";
-				mes "that you covet so much...";
-				mes "^FF0000Close Confine^000000!";
+				mes "[哈扎拉格莱]";
+				mes "我明白了。那就这样吧。";
+				mes "我就让你看看你";
+				mes "如此觊觎的技能……";
+				mes "^FF0000紧密的约束^000000！";
 				specialeffect EF_CHANGECOLD;
 				specialeffect2 EF_CHANGEWIND;
 				next;
-				mes "[Haijara Greg]";
-				mes "Hmpf. Now you are";
-				mes "helpless, allowing";
-				mes "me to do this: ^FF0000Back Stab^000000!";
+				mes "[哈扎拉格莱]";
+				mes "哼。现在你";
+				mes "毫无还手之力，正好让";
+				mes "我施展这招：^FF0000背刺^000000！";
 				specialeffect2 EF_COMBOATTACK5;
 				percentheal -95,0;
 				next;
-				mes "[Haijara Greg]";
-				mes "Now get out of here.";
-				mes "Never show your greedy";
-				mes "face in front of me again.";
-				mes "And just be happy that";
-				mes "I haven't killed you!";
+				mes "[哈扎拉格莱]";
+				mes "现在滚出去。";
+				mes "别再让我看到";
+				mes "你那贪婪的嘴脸。";
+				mes "你该庆幸";
+				mes "我还没杀你！";
 				set ROG_SK,1;
 				close;
 			}
 			else if (ROG_SK == 2) {
-				mes "[Haijara Greg]";
-				mes "We're running out of";
-				mes "time... Please bring this";
-				mes "letter to my youngest son,";
-				mes "^FF0000Louis^000000, as soon as you can!";
-				mes "You can find him in the Rogue";
-				mes "Guild near ^FF0000Hollgrehenn Junior^000000.";
+				mes "[哈扎拉格莱]";
+				mes "我们时间";
+				mes "不多了……请把这封";
+				mes "信送给我最小的儿子，";
+				mes "^FF0000鲁格莱^000000，越快越好！";
+				mes "你可以在流氓";
+				mes "公会里^FF0000忽克连Jr^000000附近找到他。";
 				close;
 			}
 			else if (ROG_SK == 3) {
-				mes "[Haijara Greg]";
-				mes "Louis sent you to find";
-				mes "^FF0000Thor^000000? He's in the Rogue";
-				mes "Guild near ^FF0000Hermanthorn Jr.^000000,";
-				mes "isn't he? I'm sorry that you";
-				mes "have to visit my sons one by";
-				mes "one... I know it's impractical.";
+				mes "[哈扎拉格莱]";
+				mes "鲁格莱让你来找";
+				mes "^FF0000托尔^000000？他在流氓";
+				mes "公会里^FF0000海勒曼梭Jr^000000附近，";
+				mes "对吧？抱歉，让你";
+				mes "不得不一个一个地";
+				mes "去找我的儿子……我知道这很麻烦。";
 				close;
 			}
 			else if (ROG_SK == 4) {
-				mes "[Haijara Greg]";
-				mes "Ah, looking for ^FF0000Jay^000000, eh?";
-				mes "He's near ^FF0000Antonio Jr.^000000 here";
-				mes "in the Rogue Guild. Or at";
-				mes "least, he's usually there.";
+				mes "[哈扎拉格莱]";
+				mes "啊，你在找^FF0000杰^000000吧？";
+				mes "他就在^FF0000安东尼奥Jr.^000000附近";
+				mes "的流氓公会里。至少";
+				mes "他通常都在那儿。";
 				close;
 			}
 			else if (ROG_SK == 5) {
-				mes "[Haijara Greg]";
-				mes "Oh, you're back!";
-				mes "And you've brought";
-				mes "a letter from Jay.";
-				mes "Good, good, let me";
-				mes "read what he has to say...";
+				mes "[哈扎拉格莱]";
+				mes "哦，你回来了！";
+				mes "还带来了";
+				mes "杰的信。";
+				mes "好，好，让我";
+				mes "看看他写了什么……";
 				set ROG_SK,6;
 				next;
-				mes "[Haijara Greg]";
-				mes "Ah, great news! He's";
-				mes "contacted the Rogue Guild";
-				mes "to request extra protection";
-				mes "and to alert their guard. I can";
-				mes "finally relax just a little now. No one messes with Rogues.";
+				mes "[哈扎拉格莱]";
+				mes "啊，好消息！他";
+				mes "联系了流氓公会，";
+				mes "请求额外保护，";
+				mes "并通知了他们的守卫。我终于";
+				mes "可以稍微松口气了。没人敢惹流氓。";
 				next;
-				mes "[Haijara Greg]";
-				mes "Thank you very much for";
-				mes "your help. I would be in";
-				mes "hiding forever if it weren't";
-				mes "for you. In return, let me";
-				mes "offer you the chance to learn";
-				mes "Chae Takbae's secret skill.";
+				mes "[哈扎拉格莱]";
+				mes "非常感谢";
+				mes "你的帮助。要不是你，";
+				mes "我恐怕要";
+				mes "永远躲下去。作为回报，让我";
+				mes "给你一个学习";
+				mes "蔡卓培秘技的机会。";
 				next;
-				mes "[Haijara Greg]";
-				mes "Please speak to ^FF0000Thor^000000";
-				mes "and tell him that I've";
-				mes "permitted you to learn";
-				mes "the skill I have taught";
-				mes "all of my sons. He'll";
-				mes "comply, I'm sure of it.";
+				mes "[哈扎拉格莱]";
+				mes "请去找^FF0000托尔^000000";
+				mes "告诉他，我已经";
+				mes "允许你学习";
+				mes "我教给";
+				mes "所有儿子的技能。他";
+				mes "一定会照办的，我确信。";
 				close;
 			}
 			else if (ROG_SK == 6) {
-				mes "[Haijara Greg]";
-				mes "Please ask Thor to teach";
-				mes "you Chae Takbae's secret";
-				mes "Rogue skill. Understand that";
-				mes "I can't teach you this skill";
-				mes "with the equipment here in";
-				mes "this sloven panic room.";
+				mes "[哈扎拉格莱]";
+				mes "请让托尔教你";
+				mes "蔡卓培的秘传";
+				mes "流氓技能。你要明白，";
+				mes "我无法用这间";
+				mes "简陋避难室里的";
+				mes "设备教你这种技能。";
 				close;
 			}
 			else if (ROG_SK == 7) {
-				mes "[Haijara Greg]";
-				mes "Hm...? Aren't you";
-				mes "supposed to be in the";
-				mes "middle of training to learn";
-				mes "that skill? Please speak to";
-				mes "Thor and complete your training.";
+				mes "[哈扎拉格莱]";
+				mes "嗯……？你不是";
+				mes "应该正在";
+				mes "接受训练，学习";
+				mes "那个技能吗？请去找";
+				mes "托尔完成训练。";
 				close;
 			}
 			else if (ROG_SK == 8) {
-				mes "[Haijara Greg]";
-				mes "You've completed the";
-				mes "training? Ah, that's quite";
-				mes "exceptional. However, you";
-				mes "should speak to Thor first...";
+				mes "[哈扎拉格莱]";
+				mes "你完成了";
+				mes "训练？啊，那真是";
+				mes "出色。不过，你";
+				mes "应该先去找托尔……";
 				close;
 			}
 			else if (ROG_SK == 9) {
-				mes "[Haijara Greg]";
-				mes "Oh, you've come back!";
-				mes "I hear that you've completed";
-				mes "the training and are ready";
-				mes "to hear about the applications";
-				mes "for the Close Confine skill.";
+				mes "[哈扎拉格莱]";
+				mes "哦，你回来了！";
+				mes "我听说你完成了";
+				mes "训练，已经准备好";
+				mes "听我讲解紧密的约束";
+				mes "技能的运用方法了。";
 				next;
-				mes "[Haijara Greg]";
-				mes "Wah! What th--?!";
-				mes "Stop! P-please, stop";
-				mes "that man! We can't let";
-				mes "him steal that book!";
+				mes "[哈扎拉格莱]";
+				mes "哇！什么——？！";
+				mes "住手！求、求你了，住手";
+				mes "那个人！不能让他";
+				mes "偷走那本书！";
 				specialeffect EF_COMBOATTACK5;
-				donpcevent "Killer#Rogueguild::OnEnable";
+				donpcevent "杀手#Rogueguild::OnEnable";
 				set ROG_SK,10;
 				close;
 			}
 			else if (ROG_SK == 10) {
-				mes "[Haijara Greg]";
-				mes "That man just stole the";
-				mes "Close Confine skill book!";
-				mes "Please! Don't let him get";
-				mes "away! That book is priceless!";
+				mes "[哈扎拉格莱]";
+				mes "那个人刚偷走了";
+				mes "紧密的约束技能书！";
+				mes "求你了！别让他";
+				mes "跑了！那本书是无价之宝！";
 				donpcevent "#killershow01::OnEnable";
 				close;
 			}
 			else if (ROG_SK == 11) {
-				donpcevent "Killer#Rogueguild::OnDisable";
+				donpcevent "杀手#Rogueguild::OnDisable";
 				donpcevent "#killershow01::OnDisable";
-				mes "^3355FFYou returned the";
-				mes "skill book written by";
-				mes "Chae Takbae to Haijara.^000000";
+				mes "^3355FF你把蔡卓培所写的";
+				mes "技能书归还给了";
+				mes "哈扎拉。^000000";
 				next;
-				mes "[Haijara Greg]";
-				mes "Thanks so much for your";
-				mes "assistance. Now, if you'd";
-				mes "like to know some detailed";
-				mes "information about Close";
-				mes "Confine, I can tell you more";
-				mes "about the skill if you like.";
+				mes "[哈扎拉格莱]";
+				mes "非常感谢你的";
+				mes "帮助。那么，如果你";
+				mes "想了解一些关于紧密的";
+				mes "约束的详细";
+				mes "信息，我可以再给你";
+				mes "多讲讲这个技能。";
 				next;
-				if (select("Yes, please.:No, thanks.") == 1) {
-					mes "[Haijara Greg]";
-					mes "As you must know,";
-					mes "Close Confine immobilizes";
-					mes "an enemy that is very close";
-					mes "to you. However, there are";
-					mes "a few nuances regarding its";
-					mes "use on players or monsters.";
+				if (select("好的，请讲。:不用了，谢谢。") == 1) {
+					mes "[哈扎拉格莱]";
+					mes "你应该知道，";
+					mes "紧密的约束能让";
+					mes "离你很近的敌人";
+					mes "无法行动。不过，它在";
+					mes "对玩家或魔物使用时";
+					mes "有一些细微差别。";
 					next;
-					mes "[Haijara Greg]";
-					mes "Now, Close Confine is";
-					mes "similar to the Monk's skill,";
-					mes "Root, but it only inhibits the";
-					mes "enemy's movement, not";
-					mes "its attack capabilities.";
+					mes "[哈扎拉格莱]";
+					mes "紧密的约束";
+					mes "类似武僧的";
+					mes "树根，但它只限制";
+					mes "敌人的移动，";
+					mes "不影响其攻击能力。";
 					next;
-					mes "[Haijara Greg]";
-					mes "With the exception of";
-					mes "Back Stab, which we can";
-					mes "only use once during Close";
-					mes "Confine's duration, we can";
-					mes "use any skill during the";
-					mes "Close Confine status.";
+					mes "[哈扎拉格莱]";
+					mes "除";
+					mes "背刺在紧密的约束";
+					mes "持续期间只能使用";
+					mes "一次之外，我们在";
+					mes "紧密的约束状态下";
+					mes "可以使用任何技能。";
 					next;
-					mes "[Haijara Greg]";
-					mes "Enemies affected by";
-					mes "Close Confine can escape";
-					mes "by using Fly Wing, Butterfly";
-					mes "Wings, or the Teleport or";
-					mes "Hiding skills. However, only";
-					mes "Hiding is active during WoE.";
+					mes "[哈扎拉格莱]";
+					mes "受紧密的约束";
+					mes "影响的敌人可以";
+					mes "使用苍蝇翅膀、蝴蝶";
+					mes "翅膀，或瞬间移动、";
+					mes "隐匿技能逃脱。不过，在";
+					mes "攻城战中只有隐匿有效。";
 					next;
-					mes "[Haijara Greg]";
-					mes "Therefore, Close Confine";
-					mes "can be a very useful skill";
-					mes "during Guild War sieges, given";
-					mes "that the target doesn't use the";
-					mes "the Hiding skill to get away.";
+					mes "[哈扎拉格莱]";
+					mes "因此，紧密的约束";
+					mes "在公会战攻城时";
+					mes "可能非常有用，前提是";
+					mes "目标没有使用";
+					mes "隐匿技能逃走。";
 					next;
-					mes "[Haijara Greg]";
-					mes "With the exception of Boss";
-					mes "monsters, Close Confine";
-					mes "will immobilize monsters for";
-					mes "10 seconds, giving Rogues";
-					mes "new possibilities when";
-					mes "hunting in a party.";
+					mes "[哈扎拉格莱]";
+					mes "除了BOSS";
+					mes "怪物外，紧密的约束";
+					mes "能让魔物无法行动";
+					mes "10秒，这为流氓";
+					mes "在组队";
+					mes "狩猎时带来了新的可能。";
 					next;
-					mes "[Haijara Greg]";
-					mes "Well, that's all I can tell";
-					mes "you about Close Confine.";
-					mes "I hope that you can learn";
-					mes "more about this skill through";
-					mes "practice, and that you become as great a legend as Chae Takbae.";
+					mes "[哈扎拉格莱]";
+					mes "好了，关于紧密的约束，";
+					mes "我能说的就这些。";
+					mes "希望你能通过";
+					mes "实践更多地了解";
+					mes "这个技能，并成为像蔡卓培那样伟大的传奇。";
 					set ROG_SK,12;
 					skill "RG_CLOSECONFINE",1,SKILL_PERM;
 					specialeffect2 EF_LIGHTSPHERE;
 					close;
 				}
-				mes "[Haijara Greg]";
-				mes "All right then...";
-				mes "I hope that you can";
-				mes "learn more about Close";
-				mes "Confine through diligent";
-				mes "practice. Good luck, and";
-				mes "thanks again for your help.";
+				mes "[哈扎拉格莱]";
+				mes "那么好吧……";
+				mes "希望你能";
+				mes "通过勤奋练习";
+				mes "更多地了解紧密的";
+				mes "约束。祝你好运，";
+				mes "再次感谢你的帮助。";
 				set ROG_SK,12;
 				skill "RG_CLOSECONFINE",1,SKILL_PERM;
 				specialeffect2 EF_LIGHTSPHERE;
 				close;
 			}
-			mes "[Haijara Greg]";
-			mes "Thank you for helping";
-			mes "me protect this priceless";
-			mes "skill book. I hope that the";
-			mes "next time we meet, we'll be";
-			mes "comrades on the battlefield...";
+			mes "[哈扎拉格莱]";
+			mes "谢谢你帮我";
+			mes "保护这本无价的";
+			mes "技能书。希望下次";
+			mes "再见时，我们已是";
+			mes "战场上的战友……";
 			close;
 		}
 	}
 	else {
-		mes "[Haijara Greg]";
-		mes "H-how did you find this";
-		mes "place? I thought this panic";
-		mes "room was supposed to be";
-		mes "impenetrable, even by Rogues!";
+		mes "[哈扎拉格莱]";
+		mes "你、你怎么找到这个";
+		mes "地方的？我以为这间避难室";
+		mes "应该是";
+		mes "连流氓都无法闯入的！";
 		next;
-		mes "[Haijara Greg]";
-		mes "This can't be good!";
-		mes "It will only be a matter of";
-		mes "time before they find me...";
+		mes "[哈扎拉格莱]";
+		mes "这下可不妙！";
+		mes "他们找到我";
+		mes "只是时间问题……";
 		next;
-		mes "[Haijara Greg]";
+		mes "[哈扎拉格莱]";
 		mes "Please...";
-		mes "Find me a Stalker";
-		mes "or a Rogue that I can";
-		mes "trust and send him to";
-		mes "help me! I don't have ";
-		mes "much time left...";
+		mes "帮我找一个我能信任的";
+		mes "神行太保或流氓，";
+		mes "派他来";
+		mes "帮我！我已经没有";
+		mes "多少时间了……";
 		close;
 	}
 }
 
-in_rogue,152,29,0	script	Louis Greg#rogueguild	84,{
+in_rogue,152,29,0	script	鲁格莱#rogueguild	84,{
 	if (BaseJob == Job_Rogue || Class == Job_Thief_High) {
 		if (ROG_SK < 1) {
-			mes "[Louis Greg]";
-			mes "My father just...";
-			mes "He just vanished!";
-			mes "He was teaching me and";
-			mes "my brothers a new skill,";
-			mes "but lately he began acting";
-			mes "paranoid for some reason...";
+			mes "[鲁格莱]";
+			mes "我父亲刚刚……";
+			mes "他就那么消失了！";
+			mes "他正在教我和";
+			mes "兄弟们一种新技能，";
+			mes "但最近他开始变得";
+			mes "莫名地疑神疑鬼……";
 			next;
-			mes "[Louis Greg]";
-			mes "Maybe he went into hiding?";
-			mes "I know there's a hidden panic";
-			mes "room in the Rogue Guild, but";
-			mes "even I don't know where to find";
-			mes "it. I hope everything's okay...";
+			mes "[鲁格莱]";
+			mes "也许他躲起来了？";
+			mes "我知道流氓公会里有一间";
+			mes "隐藏的避难室，但";
+			mes "连我也不知道";
+			mes "它在哪。希望他没事……";
 			set ROG_SK,1;
 			close;
 		}
 		else if (ROG_SK == 1) {
-			mes "[Louis Greg]";
-			mes "Father did warn that";
-			mes "people might come after us";
-			mes "if they're learned about the";
-			mes "new skill we were learning.";
-			mes "Maybe he went into hiding in";
-			mes "the Rogue Guild's panic room...";
+			mes "[鲁格莱]";
+			mes "父亲确实警告过，";
+			mes "如果别人得知我们";
+			mes "正在学习的新技能，";
+			mes "可能会来找我们麻烦。";
+			mes "也许他躲进了流氓公会的";
+			mes "避难室里……";
 			close;
 		}
 		else if (ROG_SK == 2) {
-			mes "[Louis Greg]";
-			mes "What's this...?";
-			mes "A letter from my";
-			mes "father? Oh, he must";
-			mes "be alright! Quick, let";
-			mes "me read it right away!";
+			mes "[鲁格莱]";
+			mes "这是什么……？";
+			mes "我父亲写来的";
+			mes "信？哦，他一定";
+			mes "没事！快，让";
+			mes "我马上读一读！";
 			set ROG_SK,3;
 			next;
-			mes "[Louis Greg]";
-			mes "Oh no, he may be safe for";
-			mes "now, but father is being hunted";
-			mes "by some dangerous people? My";
-			mes "brother Thor will want to know";
-			mes "about this. Let me write him";
-			mes "a letter really quickly...";
+			mes "[鲁格莱]";
+			mes "糟了，他或许暂时安全，";
+			mes "但父亲正被一些";
+			mes "危险人物追捕？我";
+			mes "哥哥托尔一定想知道";
+			mes "这件事。我这就给他";
+			mes "写封信，很快……";
 			next;
-			mes "[Louis Greg]";
-			mes "I know that I'm in no";
-			mes "position to ask any favors,";
-			mes "but I guess my father must";
-			mes "trust you. Please, would you";
-			mes "take my letter and deliver it";
-			mes "to my older brother, Thor?";
+			mes "[鲁格莱]";
+			mes "我知道自己没资格";
+			mes "开口求人，";
+			mes "但我想父亲一定";
+			mes "很信任你。求你，能把这封";
+			mes "信送去给";
+			mes "我哥哥托尔吗？";
 			next;
-			mes "[Louis Greg]";
-			mes "You can find Thor";
-			mes "next to Hermanthorn Jr.";
-			mes "inside the Rogue Guild.";
-			mes "I'd really appreciate it if";
-			mes "you could help my family.";
+			mes "[鲁格莱]";
+			mes "你可以在";
+			mes "海勒曼梭Jr旁边的";
+			mes "流氓公会里找到托尔。";
+			mes "如果你能帮帮我的家人，";
+			mes "我会非常感激。";
 			close;
 		}
 		else if (ROG_SK == 3) {
-			mes "[Louis Greg]";
-			mes "My elder brother, ^FF0000Thor^000000,";
-			mes "must know about this right";
-			mes "away! Please bring him this";
-			mes "letter for me. He should be";
-			mes "near ^FF0000Hermanthorn Jr.^000000 here";
-			mes "inside the Rogue Guild.";
+			mes "[鲁格莱]";
+			mes "我哥哥^FF0000托尔^000000";
+			mes "必须马上知道";
+			mes "这件事！请把这封";
+			mes "信带给他。他应该";
+			mes "就在^FF0000海勒曼梭Jr^000000";
+			mes "附近的流氓公会里。";
 			close;
 		}
 		else if (ROG_SK == 4) {
-			mes "[Louis Greg]";
-			mes "You're looking for my";
-			mes "brother, Jay? He's usually";
-			mes "hanging out here in the";
-			mes "Rogue Guild with Antonio Jr.";
+			mes "[鲁格莱]";
+			mes "你在找我的";
+			mes "弟弟杰？他通常";
+			mes "都待在流氓公会";
+			mes "这边，和安东尼奥Jr.在一起。";
 			close;
 		}
 		else if (ROG_SK == 5) {
-			mes "[Louis Greg]";
-			mes "If you need to speak";
-			mes "to my father, he's still";
-			mes "probably in the hidden panic";
-			mes "room inside the Rogue Guild.";
-			mes "I still don't know where that";
-			mes "place could possibly be...";
+			mes "[鲁格莱]";
+			mes "如果你要找我";
+			mes "父亲，他可能还在";
+			mes "流氓公会里的";
+			mes "隐藏避难室里。";
+			mes "可我到现在都不知道";
+			mes "那个地方究竟在哪……";
 			close;
 		}
 		else if (ROG_SK == 6) {
-			mes "[Louis Greg]";
-			mes "You want to learn the";
-			mes "secret Rogue skill? Oh,";
-			mes "you should probably talk";
-			mes "to ^FF0000Thor^000000 about that. I...";
-			mes "I'm really bad at explaining";
-			mes "things to people. Really bad.";
+			mes "[鲁格莱]";
+			mes "你想学那门";
+			mes "流氓秘技？哦，";
+			mes "那你最好去";
+			mes "找^FF0000托尔^000000谈。我……";
+			mes "我真的很不擅长";
+			mes "向别人解释事情。真的很不擅长。";
 			close;
 		}
 		else if (ROG_SK == 7) {
-			mes "[Louis Greg]";
-			mes "Hm? You're in the middle";
-			mes "of learning the secret Rogue";
-			mes "skill, aren't you? Ooh, then";
-			mes "you're not supposed to be here";
-			mes "just yet. Please go back and";
-			mes "talk to ^FF0000Thor^000000 again, okay?";
+			mes "[鲁格莱]";
+			mes "嗯？你不是正在";
+			mes "学习流氓";
+			mes "秘技吗？哦，那你";
+			mes "现在还不该";
+			mes "来这里。请回去";
+			mes "再找^FF0000托尔^000000谈谈，好吗？";
 			close;
 		}
 		else if (ROG_SK == 8) {
-			mes "[Louis Greg]";
-			mes "Oh, oh!";
-			mes "You're done with";
-			mes "the training? Ah,";
-			mes "then you need to";
-			mes "talk to Thor again!";
+			mes "[鲁格莱]";
+			mes "哦，哦！";
+			mes "你完成";
+			mes "训练了？啊，";
+			mes "那你得再";
+			mes "去找托尔谈谈！";
 			close;
 		}
 		else if (ROG_SK == 9) {
-			mes "[Louis Greg]";
-			mes "You wanted to learn";
-			mes "more about Close Confine?";
-			mes "Ugh, then you better speak";
-			mes "to my father. I just learned";
-			mes "that skill myself, you know.";
+			mes "[鲁格莱]";
+			mes "你想多了解";
+			mes "紧密的约束？";
+			mes "呃，那你最好去";
+			mes "找我父亲。我也刚学会";
+			mes "那个技能，你知道的。";
 			close;
 		}
 		else if (ROG_SK == 11) {
-			mes "[Louis Greg]";
-			mes "I just heard from my";
-			mes "brothers that Chae Takbae";
-			mes "developed Close Confine";
-			mes "as a way to brutally beat his";
-			mes "enemies, keeping them from";
-			mes "running away. Is that true?";
+			mes "[鲁格莱]";
+			mes "我刚听我";
+			mes "兄弟们说，蔡卓培";
+			mes "开发紧密的约束，";
+			mes "是为了残忍地击溃";
+			mes "敌人，让他们无法";
+			mes "逃跑。是真的吗？";
 			close;
 		}
-		mes "[Louis Greg]";
-		mes "Wow, you're really";
-		mes "great! I wish I were";
-		mes "as powerful as you.";
-		mes "I hate being a kid!";
+		mes "[鲁格莱]";
+		mes "哇，你真的";
+		mes "好厉害！真希望我也能";
+		mes "像你一样强。";
+		mes "我讨厌当小孩！";
 		close;
 	}
-	mes "[Louis Greg]";
-	mes "Why'd I become a Rogue?";
-	mes "I guess I just like being";
-	mes "sneaky. That, and being";
-	mes "moral and law abiding is";
-	mes "just too tough, you know?";
+	mes "[鲁格莱]";
+	mes "我为什么要当流氓？";
+	mes "大概我只是喜欢";
+	mes "偷偷摸摸。还有，做个";
+	mes "守道德、守法律的人";
+	mes "实在太难了，你懂吗？";
 	close;
 }
 
-in_rogue,268,125,2	script	Thor Greg#rogueguild	86,{
+in_rogue,268,125,2	script	托尔格莱#rogueguild	86,{
 	if (BaseJob == Job_Rogue || Class == Job_Thief_High) {
 		if (ROG_SK < 1) {
-			mes "[Thor Greg]";
-			mes "Where did father go?";
-			mes "I hope those weird men";
-			mes "didn't get to him. With";
-			mes "any luck, he's hidden in";
-			mes "the panic room, but still...";
+			mes "[托尔格莱]";
+			mes "父亲去哪儿了？";
+			mes "希望那些怪人";
+			mes "没有找到他。运气好的话，";
+			mes "他正躲在";
+			mes "紧急避难室里，可是……";
 			set ROG_SK,1;
 			close;
 		}
 		else if (ROG_SK == 1) {
-			mes "[Thor Greg]";
-			mes "Hm... My father might";
-			mes "be hiding in the panic";
-			mes "room. I've never been able";
-			mes "to find it, but Markie says";
-			mes "that the entrance is cleverly";
-			mes "hidden to her left. Hmmm...";
+			mes "[托尔格莱]";
+			mes "嗯……父亲可能";
+			mes "躲在紧急";
+			mes "避难室里。我一直";
+			mes "找不到它，不过玛琪说";
+			mes "入口就巧妙地";
+			mes "藏在她左边。嗯……";
 			close;
 		}
 		else if (ROG_SK == 2) {
-			mes "[Thor Greg]";
-			mes "Are you looking for";
-			mes "my little brother, ^FF0000Louis^000000?";
-			mes "Oh, he's always hanging";
-			mes "around that ^FF0000Hollgrehenn Jr.^000000";
-			mes "here in the Rogue Guild.";
-			mes "What did you need him for?";
+			mes "[托尔格莱]";
+			mes "你是在找";
+			mes "我弟弟^FF0000鲁^000000吗？";
+			mes "哦，他总是";
+			mes "跟那个^FF0000忽克连Jr.^000000";
+			mes "待在流氓公会这里。";
+			mes "你找他有什么事？";
 			close;
 		}
 		else if (ROG_SK == 3) {
-			mes "[Thor Greg]";
-			mes "What's this you're";
-			mes "giving me? A letter";
-			mes "from Louis? Let's see...";
+			mes "[托尔格莱]";
+			mes "你这是";
+			mes "要给我什么？一封";
+			mes "鲁写的信？我看看……";
 			set ROG_SK,4;
 			next;
-			mes "[Thor Greg]";
-			mes "Oh God, father's in";
-			mes "serious trouble! I better";
-			mes "tell my older brother, Jay,";
-			mes "right away! Quick, find ^FF0000Jay^000000";
-			mes "next to ^FF0000Antonio Jr.^000000 here in";
-			mes "the guild! P-please hurry!";
+			mes "[托尔格莱]";
+			mes "天啊，父亲有";
+			mes "大麻烦了！我得";
+			mes "马上告诉我哥哥杰，";
+			mes "快去找^FF0000杰^000000，";
+			mes "他就在公会里的^FF0000安东尼奥Jr.^000000";
+			mes "旁边！拜、拜托快点！";
 			close;
 		}
 		else if (ROG_SK == 4) {
-			mes "[Thor Greg]";
-			mes "You can find Jay hanging";
-			mes "out with Antonio Jr. here";
-			mes "inside the Rogue Guild. ";
-			mes "Please bring him the letter";
-			mes "I've written as soon as possible!";
+			mes "[托尔格莱]";
+			mes "你能找到杰，他正";
+			mes "和安东尼奥Jr.一起待在这里，";
+			mes "就在流氓公会里面。";
+			mes "请把我写的信";
+			mes "尽快交给他！";
 			close;
 		}
 		else if (ROG_SK == 5) {
-			mes "[Thor Greg]";
-			mes "Hopefully, father hasn't";
-			mes "gone outside of the Rogue";
-			mes "Guild's panic room. That";
-			mes "may be the only place";
-			mes "where he's safe...";
+			mes "[托尔格莱]";
+			mes "但愿父亲没有";
+			mes "离开流氓";
+			mes "公会的紧急避难室。那";
+			mes "可能是唯一";
+			mes "能让他安全的地方……";
 			close;
 		}
 		else if (ROG_SK == 6) {
-			mes "[Thor Greg]";
-			mes "What's that? Father";
-			mes "wanted me to teach you";
-			mes "the secret Rogue skill?";
-			mes "Alright, I'll train you in the";
-			mes "same way father did. Would";
-			mes "you like an explanation first?";
+			mes "[托尔格莱]";
+			mes "什么？父亲";
+			mes "要我教你";
+			mes "流氓的秘传技能？";
+			mes "好吧，我会像父亲那样";
+			mes "训练你。你想先";
+			mes "听我讲解吗？";
 			next;
-			mes "[Thor Greg]";
-			mes "If you don't want an";
-			mes "explanation, I'll just";
-			mes "send you to the training";
-			mes "ground right away so that";
-			mes "you can learn ^FF0000Close Confine^000000.";
+			mes "[托尔格莱]";
+			mes "如果你不想听";
+			mes "讲解，我就直接";
+			mes "把你送到训练场，";
+			mes "这样你就能";
+			mes "学会^FF0000紧密的约束^000000。";
 			next;
-			if (select("Listen to Explanation:Go to Training Ground") == 1) {
-				mes "[Thor Greg]";
-				mes "Alright, the very first step";
-				mes "to learning ^FF0000Close Confine^000000";
-				mes "is to master blocking your";
-				mes "enemy's movement. I'll send";
-				mes "you to a special training";
-				mes "ground so you can practice.";
+			if (select("听讲解:前往训练场") == 1) {
+				mes "[托尔格莱]";
+				mes "好，学习";
+				mes "^FF0000紧密的约束^000000的第一步";
+				mes "就是掌握如何封住";
+				mes "敌人的行动。我会送";
+				mes "你去一个特别的训练场";
+				mes "让你练习。";
 				next;
-				mes "[Thor Greg]";
-				mes "There, you'll encounter our";
-				mes "training partner. Approach her";
-				mes "closely and make sure that you";
-				mes "predict and block her movements";
-				mes "to the left, right or backward. Get ready, I'm sending you now...";
+				mes "[托尔格莱]";
+				mes "在那里，你会遇到我们的";
+				mes "训练搭档。靠近她，";
+				mes "确保你能";
+				mes "预判并封住她";
+				mes "向左、向右或向后的移动。准备好，我这就送你过去……";
 				close2;
 				warp "in_rogue",89,114;
 				end;
@@ -801,237 +801,237 @@ in_rogue,268,125,2	script	Thor Greg#rogueguild	86,{
 			end;
 		}
 		else if (ROG_SK == 7) {
-			mes "[Thor Greg]";
-			mes "Alright, I'm going to break";
-			mes "the fourth wall here and assume";
-			mes "you were disconnected from the";
-			mes "game. Would you like to return";
-			mes "to the training ground in order";
-			mes "to learn ^FF0000Close Confine^000000?";
+			mes "[托尔格莱]";
+			mes "好吧，我要打破";
+			mes "第四面墙，假设";
+			mes "你刚才与游戏";
+			mes "断开了连接。你想回到";
+			mes "训练场，继续";
+			mes "学习^FF0000紧密的约束^000000吗？";
 			next;
-			if (select("Yes, please.:No, thanks.") == 1) {
-				mes "[Thor Greg]";
-				mes "Alright, the very first step";
-				mes "to learning ^FF0000Close Confine^000000";
-				mes "is to master blocking your";
-				mes "enemy's movement. I'll send";
-				mes "you to a special training";
-				mes "ground so you can practice.";
+			if (select("好的，拜托了。:不用了，谢谢。") == 1) {
+				mes "[托尔格莱]";
+				mes "好，学习";
+				mes "^FF0000紧密的约束^000000的第一步";
+				mes "就是掌握如何封住";
+				mes "敌人的行动。我会送";
+				mes "你去一个特别的训练场";
+				mes "让你练习。";
 				next;
-				mes "[Thor Greg]";
-				mes "There, you'll encounter our";
-				mes "training partner. Approach her";
-				mes "closely and make sure that you";
-				mes "predict and block her movements";
-				mes "to the left, right or backward. Get ready, I'm sending you now...";
+				mes "[托尔格莱]";
+				mes "在那里，你会遇到我们的";
+				mes "训练搭档。靠近她，";
+				mes "确保你能";
+				mes "预判并封住她";
+				mes "向左、向右或向后的移动。准备好，我这就送你过去……";
 				set ROG_SK,6;
 				close2;
 				warp "in_rogue",89,114;
 				end;
 			}
-			mes "[Thor Greg]";
-			mes "Alright, alright.";
-			mes "When you feel ready";
-			mes "to resume training,";
-			mes "just let me know.";
+			mes "[托尔格莱]";
+			mes "好吧，好吧。";
+			mes "等你觉得准备好";
+			mes "继续训练时，";
+			mes "告诉我就行。";
 			close;
 
 		}
 		else if (ROG_SK == 8) {
-			mes "[Thor Greg]";
-			mes "Ah, I hear from Kienna";
-			mes "that you've completed your";
-			mes "training. Congratulations!";
-			mes "Now, please speak to my";
-			mes "father so that he can explain the Close Confine skill in detail.";
+			mes "[托尔格莱]";
+			mes "啊，我听琪安娜说";
+			mes "你已经完成了";
+			mes "训练。恭喜！";
+			mes "现在，请去跟我";
+			mes "父亲谈谈，让他详细讲解紧密的约束技能。";
 			set ROG_SK,9;
 			close;
 		}
 		else if (ROG_SK == 9) {
-			mes "[Thor Greg]";
-			mes "Please talk to my father";
-			mes "so that he can explain the";
-			mes "nuances of the Close Confine";
-			mes "skill to you. He should still be in the Rogue Guild's panic room.";
+			mes "[托尔格莱]";
+			mes "请去跟我父亲谈谈";
+			mes "让他为你讲解";
+			mes "紧密的约束技能";
+			mes "的细微之处。他应该还在流氓公会的紧急避难室里。";
 			close;
 		}
 		else if (ROG_SK == 11) {
-			mes "[Thor Greg]";
-			mes "You know, Chae Takbae";
-			mes "would say, ''I'm Chae";
-			mes "Takbae. And you are...?''";
-			mes "to opponents, and right";
-			mes "before they could answer,";
-			mes "he'd beat them to a pulp.";
+			mes "[托尔格莱]";
+			mes "你知道吗，蔡卓培";
+			mes "会对对手说：''我是蔡";
+			mes "卓培。你是……？''";
+			mes "然后不等";
+			mes "对方回答，";
+			mes "就把他们打得落花流水。";
 			next;
-			mes "[Thor Greg]";
-			mes "He really is";
-			mes "a legendary hero";
-			mes "amongst Rogues...!";
+			mes "[托尔格莱]";
+			mes "他真的是";
+			mes "流氓中的";
+			mes "传奇英雄……！";
 			close;
 		}
-		mes "[Thor Greg]";
-		mes "Hm...?";
-		mes "It seems that";
-		mes "you're much stronger";
-		mes "than even me. There's";
-		mes "probably not too many";
-		mes "people who'd mess with you...";
+		mes "[托尔格莱]";
+		mes "嗯……？";
+		mes "看来";
+		mes "你比我还";
+		mes "强得多。大概";
+		mes "没多少人";
+		mes "敢惹你……";
 		close;
 	}
-	mes "[Thor Greg]";
-	mes "Hmm, gank this, gank";
-	mes "that. *Sigh* It's my most";
-	mes "shameful fault: I spend zeny";
-	mes "almost as quickly as I can";
-	mes "steal it. It's irresponsible...";
+	mes "[托尔格莱]";
+	mes "唔，抢这个，抢";
+	mes "那个。*叹气* 这是我最";
+	mes "丢脸的毛病：我花Zeny";
+	mes "几乎和偷它一样快。";
+	mes "真是不负责任……";
 	close;
 }
 
-in_rogue,181,114,3	script	Jay Greg#rogueguild	85,{
+in_rogue,181,114,3	script	杰格莱#rogueguild	85,{
 	if (BaseJob == Job_Rogue || Class == Job_Thief_High) {
 		if (ROG_SK < 1) {
-			mes "[Jay Greg]";
-			mes "My father must be hidden";
-			mes "in the Rogue Guild's panic";
-			mes "room. Strangely, my brothers";
-			mes "and I can never find it and";
-			mes "figure out whether he's safe...";
+			mes "[杰格莱]";
+			mes "我父亲一定藏在";
+			mes "流氓公会的紧急";
+			mes "避难室里。奇怪的是，我和兄弟们";
+			mes "一直找不到它，也";
+			mes "无法确定他是否安全……";
 			set ROG_SK,1;
 			next;
-			mes "[Jay Greg]";
-			mes "Recently, he's been pursued";
-			mes "by these strange men who've";
-			mes "been threatening our family.";
-			mes "Well, he did just teach us";
-			mes "a new skill, so he can use";
-			mes "that to protect himself...";
+			mes "[杰格莱]";
+			mes "最近，他一直被";
+			mes "那些奇怪的人追赶，";
+			mes "他们一直在威胁我们一家。";
+			mes "不过，他刚教了我们";
+			mes "一个新技能，所以他能用";
+			mes "那个保护自己……";
 			close;
 		}
 		else if (ROG_SK == 1) {
-			mes "[Jay Greg]";
-			mes "I'm guessing my father";
-			mes "hid himself in the Rogue";
-			mes "Guild's panic room. We can";
-			mes "never find it, but supposedly";
-			mes "the entrance is hidden close";
-			mes "to Markie somewhere.";
+			mes "[杰格莱]";
+			mes "我猜父亲";
+			mes "躲进了流氓";
+			mes "公会的紧急避难室。我们";
+			mes "一直找不到，但据说";
+			mes "入口就藏在";
+			mes "玛琪附近的某个地方。";
 			close;
 		}
 		else if (ROG_SK == 2) {
-			mes "[Jay Greg]";
-			mes "You're looking for";
-			mes "Louis, my little brother?";
-			mes "He's here in the Rouge Guild,";
-			mes "so it shouldn't be too hard to";
-			mes "find him. He's probably just";
-			mes "standing near Hollgrehen Jr.";
+			mes "[杰格莱]";
+			mes "你在找";
+			mes "我弟弟鲁吗？";
+			mes "他就在流氓公会里，";
+			mes "所以应该不难";
+			mes "找到他。他大概";
+			mes "就站在忽克连Jr.附近。";
 			close;
 		}
 		else if (ROG_SK == 3) {
-			mes "[Jay Greg]";
-			mes "Thor? He should be";
-			mes "around the Rogue Guild";
-			mes "somewhere. Have you tried";
-			mes "looking around Hermathorn Jr.?";
+			mes "[杰格莱]";
+			mes "托尔？他应该";
+			mes "在流氓公会的";
+			mes "某个地方。你试过";
+			mes "在赫马斯Jr.附近找找吗？";
 			close;
 		}
 		else if (ROG_SK == 4) {
-			mes "[Jay Greg]";
-			mes "A letter for me...?";
-			mes "Ah, it's from Thor, so";
-			mes "I guess I better read";
-			mes "it right away. Hmmm...";
+			mes "[杰格莱]";
+			mes "给我的信……？";
+			mes "啊，是托尔写的，那";
+			mes "我想最好";
+			mes "马上读一下。嗯……";
 			set ROG_SK,5;
 			next;
-			mes "[Jay Greg]";
-			mes "I see... I must report";
-			mes "this to the Rogue Guild";
-			mes "right away, and send a reply";
-			mes "to my father. Hmm. Let me";
-			mes "write him a letter right now.";
-			mes "Please give me a moment...";
+			mes "[杰格莱]";
+			mes "我知道了……我必须";
+			mes "立刻向流氓公会";
+			mes "报告，并给我父亲";
+			mes "回一封信。嗯，让我";
+			mes "现在就给他写。";
+			mes "请稍等……";
 			next;
-			mes "[Jay Greg]";
-			mes "There, it's done. Please";
-			mes "give this to my father with";
-			mes "all the haste you can muster.";
-			mes "I know it's much to ask, but";
-			mes "I cannot find the way to the";
-			mes "hidden panic room myself...";
+			mes "[杰格莱]";
+			mes "好了，写完了。请";
+			mes "把这封信交给我父亲，";
+			mes "越快越好。";
+			mes "我知道这很麻烦，但";
+			mes "我自己找不到";
+			mes "隐藏的紧急避难室……";
 			close;
 		}
 		else if (ROG_SK == 5) {
-			mes "[Jay Greg]";
-			mes "Please give my reply";
-			mes "to my father as soon as";
-			mes "you can. He's still hidden";
-			mes "in the Rogue Guild's panic";
-			mes "room. That is, if our enemies";
-			mes "still haven't found him yet.";
+			mes "[杰格莱]";
+			mes "请把我的回信";
+			mes "尽快交给我父亲。";
+			mes "他还藏在";
+			mes "流氓公会的紧急";
+			mes "避难室里。前提是";
+			mes "敌人还没找到他。";
 			close;
 		}
 		else if (ROG_SK == 6) {
-			mes "[Jay Greg]";
-			mes "You need to train for";
-			mes "the Close Confine skill?";
-			mes "I think Thor is the only";
-			mes "one with access to the";
-			mes "training ground, so";
-			mes "talk to him first.";
+			mes "[杰格莱]";
+			mes "你要训练";
+			mes "紧密的约束技能？";
+			mes "我想只有托尔";
+			mes "能进入";
+			mes "训练场，所以";
+			mes "先去找他谈谈。";
 			close;
 		}
 		else if (ROG_SK == 7) {
-			mes "[Jay Greg]";
-			mes "You need to train for";
-			mes "the Close Confine skill?";
-			mes "I think Thor is the only";
-			mes "one with access to the";
-			mes "training ground, so";
-			mes "talk to him first.";
+			mes "[杰格莱]";
+			mes "你要训练";
+			mes "紧密的约束技能？";
+			mes "我想只有托尔";
+			mes "能进入";
+			mes "训练场，所以";
+			mes "先去找他谈谈。";
 			close;
 		}
 		else if (ROG_SK == 8) {
-			mes "[Jay Greg]";
-			mes "Ah, you finished the";
-			mes "training for Close Confine,";
-			mes "did you? Great, now go and";
-			mes "tell my brother, Thor.";
+			mes "[杰格莱]";
+			mes "啊，你完成了";
+			mes "紧密的约束训练，";
+			mes "是吗？太好了，现在去";
+			mes "告诉我弟弟托尔吧。";
 			close;
 		}
 		else if (ROG_SK == 9) {
-			mes "[Jay Greg]";
-			mes "Hm. You should probably";
-			mes "talk to my father to learn";
-			mes "more of the nuances about";
-			mes "the Close Confine skill.";
-			mes "Have you seen him in the";
-			mes "Rogue Guild's panic room?";
+			mes "[杰格莱]";
+			mes "嗯。你也许应该";
+			mes "去跟我父亲谈谈，学习";
+			mes "更多关于";
+			mes "紧密的约束技能的细节。";
+			mes "你在流氓公会的";
+			mes "紧急避难室里见过他吗？";
 			close;
 		}
 		else if (ROG_SK == 12) {
-			mes "[Jay Greg]";
-			mes "Chae Takbae sure";
-			mes "seemed like a stubborn,";
-			mes "thuggish guy. But he must";
-			mes "have been pretty smart to";
-			mes "invent some of his own skills.";
+			mes "[杰格莱]";
+			mes "蔡卓培看起来";
+			mes "确实像个固执的、";
+			mes "粗鲁的家伙。但他一定";
+			mes "相当聪明，才能";
+			mes "发明出自己的一些技能。";
 			close;
 		}
-		mes "[Jay Greg]";
-		mes "I get the feeling";
-		mes "that you're going to";
-		mes "be one of the best Rogues";
-		mes "around, if you already aren't.";
+		mes "[杰格莱]";
+		mes "我感觉";
+		mes "你将会";
+		mes "成为最优秀的流氓";
+		mes "之一，如果你现在还不是的话。";
 		close;
 	}
-	mes "[Jay Greg]";
-	mes "Ever since I learned";
-	mes "Intimdate, I've gotten";
-	mes "real punchy, maybe even";
-	mes "masochistic. I mean, if they";
-	mes "hit you with a skill, you can";
-	mes "hit them back with it!";
+	mes "[杰格莱]";
+	mes "自从我学会";
+	mes "胁持，我就变得";
+	mes "很爱打架，甚至有点";
+	mes "受虐倾向。我是说，如果";
+	mes "他们用技能打你，你就能";
+	mes "用同样的技能打回去！";
 	close;
 }
 
@@ -1059,20 +1059,20 @@ OnDisable:
 	end;
 
 OnTimer1000:
-	mapannounce "prt_are01","Welcome to the Close Confine Training Ground. You will be automatically teleported outside in 5 minutes.",bc_map,"0x00ff00";
+	mapannounce "prt_are01","欢迎来到紧密的约束训练场。你将在5分钟后自动被传送到外面。",bc_map,"0x00ff00";
 	end;
 
 OnTimer290000:
-	mapannounce "prt_are01","You will be teleported outside in 20 seconds.",bc_map,"0x00ff00";
+	mapannounce "prt_are01","你将在20秒后被传送到外面。",bc_map,"0x00ff00";
 	end;
 
 OnTimer310000:
-	mapannounce "prt_are01","You will be teleported outside in 5 seconds.",bc_map,"0x00ff00";
+	mapannounce "prt_are01","你将在5秒后被传送到外面。",bc_map,"0x00ff00";
 	end;
 
 OnTimer315000:
-	mapannounce "prt_are01","You are now being teleported outside.",bc_map,"0x00ff00";
-	disablenpc "Kienna#1st";
+	mapannounce "prt_are01","现在正在将你传送到外面。",bc_map,"0x00ff00";
+	disablenpc "琪安娜#1st";
 	disablenpc "Kienna#2nd";
 	disablenpc "Kienna#3rd";
 	disablenpc "Kienna#4th";
@@ -1082,7 +1082,7 @@ OnTimer315000:
 	disablenpc "Kienna#8th";
 	donpcevent "#1stmove::OnDisable";
 	enablenpc "#1strecog";
-	donpcevent "Waiting Room#rogue10::OnEnable";
+	donpcevent "等待室#rogue10::OnEnable";
 	stopnpctimer;
 	mapwarp "prt_are01","in_rogue",264,124;
 	end;
@@ -1099,13 +1099,13 @@ OnEnable:
 	end;
 
 OnTimer3000:
-	mapannounce "prt_are01","Kienna will appear in 1 second. Please approach her as closely as possible.",bc_map,"0x00ff00";
+	mapannounce "prt_are01","琪安娜将在1秒后出现。请尽可能靠近她。",bc_map,"0x00ff00";
 	end;
 
 OnTimer5000:
 	switch(rand(1,8)) {
 	case 1:
-		enablenpc "Kienna#1st";
+		enablenpc "琪安娜#1st";
 		break;
 	case  2:
 		enablenpc "Kienna#2nd";
@@ -1131,7 +1131,7 @@ OnTimer5000:
 	end;
 
 OnTimer8000:
-	disablenpc "Kienna#1st";
+	disablenpc "琪安娜#1st";
 	disablenpc "Kienna#2nd";
 	disablenpc "Kienna#3rd";
 	disablenpc "Kienna#4th";
@@ -1153,125 +1153,125 @@ OnDisable:
 	end;
 }
 
-prt_are01,149,162,0	script	Kienna#1st	700,1,1,{
+prt_are01,149,162,0	script	琪安娜#1st	700,1,1,{
 	end;
 OnTouch_:
 	callfunc "F_Kienna",strnpcinfo(2);
 	end;
 }
-prt_are01,136,150,0	duplicate(Kienna#1st)	Kienna#2nd	700,1,1
-prt_are01,150,138,0	duplicate(Kienna#1st)	Kienna#3rd	700,1,1
-prt_are01,163,147,0	duplicate(Kienna#1st)	Kienna#4th	700,1,1
-prt_are01,134,140,0	duplicate(Kienna#1st)	Kienna#5th	700,1,1
-prt_are01,161,140,0	duplicate(Kienna#1st)	Kienna#6th	700,1,1
-prt_are01,161,160,0	duplicate(Kienna#1st)	Kienna#7th	700,1,1
-prt_are01,138,159,0	duplicate(Kienna#1st)	Kienna#8th	700,1,1
+prt_are01,136,150,0	duplicate(琪安娜#1st)	Kienna#2nd	700,1,1
+prt_are01,150,138,0	duplicate(琪安娜#1st)	Kienna#3rd	700,1,1
+prt_are01,163,147,0	duplicate(琪安娜#1st)	Kienna#4th	700,1,1
+prt_are01,134,140,0	duplicate(琪安娜#1st)	Kienna#5th	700,1,1
+prt_are01,161,140,0	duplicate(琪安娜#1st)	Kienna#6th	700,1,1
+prt_are01,161,160,0	duplicate(琪安娜#1st)	Kienna#7th	700,1,1
+prt_are01,138,159,0	duplicate(琪安娜#1st)	Kienna#8th	700,1,1
 
 function	script	F_Kienna	{
 	if (ROG_SK == 6) {
 		donpcevent "#1stmove::OnDisable";
-		mes "[Kienna]";
-		mes "Alright, in this";
-		mes "exercise, you'll need";
-		mes "to predict which way I'm";
-		mes "going to move and block";
-		mes "me from moving, essentially";
-		mes "immobilizing me. Get ready~";
+		mes "[琪安娜]";
+		mes "好，在这次";
+		mes "练习中，你需要";
+		mes "预判我要";
+		mes "往哪个方向移动，并封住";
+		mes "我的行动，基本上";
+		mes "就是让我无法动弹。准备~";
 		set ROG_SK,7;
 		next;
 		for(set .@lim_1,0; .@lim_1<10; set .@lim_1,.@lim_1+1) {
 			set .@move_1,rand(1,3);
-			if (select("Block her to the Left:Block her to the Right:Block her retreat") == .@move_1) {
-				mes "[Kienna]";
-				mes "Huh...?";
-				mes "You blocked me!";
-				mes "Very nice work~";
+			if (select("封住她向左:封住她向右:封住她的退路") == .@move_1) {
+				mes "[琪安娜]";
+				mes "咦……？";
+				mes "你封住我了！";
+				mes "做得非常好~";
 				specialeffect EF_POTION1;
 				specialeffect2 EF_POTION7;
 				set .@suc_1,.@suc_1 + 1;
 			}
 			else {
-				mes "[Kienna]";
-				mes "Sorry, but I wasn't";
-				mes "moving in that direction.";
-				mes "Your block attempt failed...";
+				mes "[琪安娜]";
+				mes "抱歉，但我没有";
+				mes "往那个方向移动。";
+				mes "你的封阻失败了……";
 			}
 			next;
 		}
-		mes "[Kienna]";
-		mes "Alright, we're done";
-		mes "here. You earned a";
+		mes "[琪安娜]";
+		mes "好，我们";
+		mes "结束了。你获得了";
 		switch(.@suc_1) { 
 		case 10:
-			mes "training grade of ''^0000FFS^000000.''";
-			mes "That's a perfect score!";
+			mes "训练成绩''^0000FFS^000000''。";
+			mes "满分！";
 			break;
 		case 9:
-			mes "training grade of ''^0000FFA^000000.''";
-			mes "You're really good at this!";
+			mes "训练成绩''^0000FFA^000000''。";
+			mes "你真的很擅长这个！";
 			break;
 		case 8:
-			mes "training grade of ''^0000FFB +^000000.''";
-			mes "That's very commendable!";
+			mes "训练成绩''^0000FFB +^000000''。";
+			mes "非常值得称赞！";
 			break;
 		case 7:
-			mes "training grade of ''^0000FFB^000000.''";
-			mes "That's very nice work~";
+			mes "训练成绩''^0000FFB^000000''。";
+			mes "做得非常好~";
 			break;
 		case 6:
-			mes "training grade of ''^0000FFC +^000000.''";
-			mes "Not too bad, but you";
-			mes "just barely passed!";
+			mes "训练成绩''^0000FFC +^000000''。";
+			mes "还不错，但你";
+			mes "只是勉强及格！";
 			break;
 		case 5:
-			mes "training grade of ''^FF0000C^000000.''";
+			mes "训练成绩''^FF0000C^000000''。";
 			break;
 		case 4:
-			mes "training grade of ''^FF0000D+^000000.''";
+			mes "训练成绩''^FF0000D+^000000''。";
 			break;
 		case 3:
-			mes "training grade of ''^FF0000D^000000.''";
+			mes "训练成绩''^FF0000D^000000''。";
 			break;
 		case 2:
-			mes "training grade of ''^FF0000F^000000.''";
+			mes "训练成绩''^FF0000F^000000''。";
 			break;
 		case 1:
-			mes "training grade of ''^FF0000F -^000000.''";
+			mes "训练成绩''^FF0000F -^000000''。";
 			break;
 		case 0:
-			mes "training grade of...";
-			mes "Actually, I'm not able";
-			mes "to calculate it. What";
-			mes "could have happened?!";
+			mes "训练成绩是……";
+			mes "其实，我算";
+			mes "不出来。到底";
+			mes "发生了什么？！";
 		}
 		next;
 		if (.@suc_1 > 5) {
-			mes "[Kienna]";
-			mes "I'm happy to say that";
-			mes "you've completed your";
-			mes "training! Let me send";
-			mes "you back to Thor Greg";
-			mes "now so that you can finish";
-			mes "learning ^FF0000Close Confine^000000.";
+			mes "[琪安娜]";
+			mes "很高兴告诉你，";
+			mes "你已经完成了";
+			mes "训练！让我把";
+			mes "你送回托尔格莱";
+			mes "那里，这样你就能学完";
+			mes "^FF0000紧密的约束^000000。";
 			set ROG_SK,8;
 			disablenpc "Kienna#"+getarg(0);
 			donpcevent "#1st5min::OnDisable";
 			enablenpc "#1strecog";
 			close2;
-			donpcevent "Waiting Room#rogue10::OnEnable";
+			donpcevent "等待室#rogue10::OnEnable";
 			warp "in_rogue",264,124;
 			end;
 		}
 		else {
-			mes "[Kienna]";
-			mes "Hm. With this grade,";
-			mes "I don't think you're";
-			mes "quite ready to finish";
-			mes "learning Close Confine.";
-			mes "Would you like to try the";
-			mes "training exercise again?";
+			mes "[琪安娜]";
+			mes "嗯。以这个成绩，";
+			mes "我觉得你还";
+			mes "没准备好学完";
+			mes "紧密的约束。";
+			mes "你想再试一次";
+			mes "训练练习吗？";
 			next;
-			if (select("Yes!:No, thanks.") == 1) {
+			if (select("好的！:不用了，谢谢。") == 1) {
 				disablenpc "Kienna#"+getarg(0);
 				donpcevent "#1stmove::OnEnable";
 				set ROG_SK,6;
@@ -1282,19 +1282,19 @@ function	script	F_Kienna	{
 			donpcevent "#1st5min::OnDisable";
 			enablenpc "#1strecog";
 			set ROG_SK,6;
-			donpcevent "Waiting Room#rogue10::OnEnable";
+			donpcevent "等待室#rogue10::OnEnable";
 			warp "in_rogue",264,124;
 			end;
 		}
 	}
 	else if (ROG_SK == 7) {
-		mes "[Kienna]";
-		mes "You must have canceled";
-		mes "your training in the middle";
-		mes "of the exercise. I'm sorry,";
-		mes "but you'll have to start";
-		mes "from the very beginning";
-		mes "of this training.";
+		mes "[琪安娜]";
+		mes "你一定是在";
+		mes "练习中途";
+		mes "取消了训练。抱歉，";
+		mes "但你得从";
+		mes "最开始";
+		mes "重新开始这项训练。";
 		set ROG_SK,6;
 		close2;
 		disablenpc "Kienna#"+getarg(0);
@@ -1303,31 +1303,31 @@ function	script	F_Kienna	{
 		end;
 	}
 	else if (ROG_SK == 8) {
-		mes "[Kienna]";
-		mes "You've already completed";
-		mes "the training exercise for";
-		mes "the Close Confine skill.";
-		mes "You no longer have need";
-		mes "for my assistance.";
+		mes "[琪安娜]";
+		mes "你已经完成了";
+		mes "紧密的约束技能";
+		mes "的训练练习。";
+		mes "你不再需要";
+		mes "我的帮助了。";
 		close2;
-		donpcevent "Waiting Room#rogue10::OnEnable";
+		donpcevent "等待室#rogue10::OnEnable";
 		warp "in_rogue",264,124;
 		end;
 	}
 	else {
-		mes "[Kienna]";
-		mes "I'm sorry, but I don't";
-		mes "think you belong here.";
-		mes "Let me send you to the";
-		mes "Rogue Guild if you're lost...";
+		mes "[琪安娜]";
+		mes "抱歉，但我认为";
+		mes "你不属于这里。";
+		mes "如果你迷路了，让我";
+		mes "送你回流氓公会……";
 		close2;
-		donpcevent "Waiting Room#rogue10::OnEnable";
+		donpcevent "等待室#rogue10::OnEnable";
 		warp "in_rogue",264,124;
 		end;
 	}
 
 OnInit:
-	disablenpc "Kienna#1st";
+	disablenpc "琪安娜#1st";
 	disablenpc "Kienna#2nd";
 	disablenpc "Kienna#3rd";
 	disablenpc "Kienna#4th";
@@ -1338,9 +1338,9 @@ OnInit:
 	end;
 }
 
-in_rogue,88,119,3	script	Waiting Room#rogue10	828,{
+in_rogue,88,119,3	script	等待室#rogue10	828,{
 OnEnable:
-	enablenpc "Waiting Room#rogue10";
+	enablenpc "等待室#rogue10";
 	enablewaitingroomevent "Waiting Room#rogue10";
 	end;
 

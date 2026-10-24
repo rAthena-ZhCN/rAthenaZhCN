@@ -9,11 +9,11 @@
 //= Arrow Merchant Shop
 //============================================================
 -	script	#over_arrow	HIDDEN_NPC,{
-	mes "[Arrow Merchant]";
-	mes "Hi!";
-	mes "Do you want to buy arrows or exchange the quiver?";
+	mes "[箭矢商人]";
+	mes "你好！";
+	mes "你想购买箭矢，还是兑换箭矢筒？";
 	next;
-	switch ( select( "Buy Arrows", "Quiver Exchange", "Sell Items", "Cancel" )) {
+	switch ( select( "购买箭矢", "箭矢筒兑换", "出售物品", "取消" )) {
 	case 1:
 		close2;	// !Fix me: official server uses "callshop" then "close"
 		callshop "Arrow_Archer", 1;
@@ -27,8 +27,8 @@
 		callshop "Selling_Items", 2;
 		break;
 	case 4:
-		mes "[Arrow Merchant]";
-		mes "You can take a look at other things more calmly.";
+		mes "[箭矢商人]";
+		mes "您可以慢慢看看其他东西。";
 		close;
 	}
 	end;
@@ -41,38 +41,38 @@ OnInit:
 //= Ammunition Trader Shop
 //============================================================
 -	script	#over_bullet	HIDDEN_NPC,{
-	mes "[Ammunition Merchant]";
-	mes "Hi!";
-	mes "What did you come to see?";
+	mes "[弹药商人]";
+	mes "你好！";
+	mes "您来想看些什么？";
 	next;
-	switch ( select( "Buy Weapons", "Buy Ammunition", "Cartridge Exchange", "Sell Items", "Cancel" )) {
+	switch ( select( "购买武器", "购买弹药", "弹药筒兑换", "出售物品", "取消" )) {
 	case 1:
-		mes "[Ammunition Merchant]";
-		mes "I will prepare the weapon.";
+		mes "[弹药商人]";
+		mes "我这就为您准备武器。";
 		close2;
 		callshop "Weapons_Gunslinger", 1;
 		break;
 	case 2:
-		mes "[Ammunition Merchant]";
-		mes "I will start preparing the ammunition.";
+		mes "[弹药商人]";
+		mes "我这就开始准备弹药。";
 		close2;
 		callshop "Ammunition_Gunslinger", 1;
 		break;
 	case 3:
-		mes "[Ammunition Merchant]";
-		mes "I will start preparing ammunition cartridges!";
+		mes "[弹药商人]";
+		mes "我这就开始准备弹药筒！";
 		close2;
 		callshop "Box_Exchange_Gunslinger", 1;
 		break;
 	case 4:
-		mes "[Ammunition Merchant]";
-		mes "What would you like to sell?";
+		mes "[弹药商人]";
+		mes "您想出售什么？";
 		close2;
 		callshop "Selling_Items", 2;
 		break;
 	case 5:
-		mes "[Ammunition Merchant]";
-		mes "You can take a look at other things more calmly.";
+		mes "[弹药商人]";
+		mes "您可以慢慢看看其他东西。";
 		close;
 	}
 	end;
@@ -85,10 +85,10 @@ OnInit:
 //= Ninja Tool Merchant
 //============================================================
 -	script	#over_kunai	HIDDEN_NPC,{
-	mes "[Ninja Tool Merchant]";
-	mes "Hi, what can I do to help you?";
+	mes "[忍者工具商人]";
+	mes "你好，有什么需要我帮忙的吗？";
 	next;
-	switch ( select( "Buy Ninjutsu Tool", "Parchment Exchange", "Sell Items", "Cancel" )) {
+	switch ( select( "购买忍术工具", "卷轴兑换", "出售物品", "取消" )) {
 	case 1:
 		close2;	// !Fix me: official server uses "callshop" then "close"
 		callshop "Weapons_Ninja", 1;
@@ -114,39 +114,39 @@ OnInit:
 //= Mado Gear Merchant
 //============================================================
 -	script	#over_madogear	HIDDEN_NPC,{
-	mes "[Mado Gear Merchant]";
-	mes "Hi!";
-	mes "Here you will find equipment for Madogear, except those that cannot be sold!";
-	mes "How can I help you?";
+	mes "[魔导战甲商人]";
+	mes "你好！";
+	mes "这里备有魔导战甲的装备，不过有些是非卖品！";
+	mes "有什么可以帮您的？";
 	next;
-	switch ( select( "Buy Component", "Consumables and Cooling Device", "Box Exchange", "Sell Items", "Cancel" )) {
+	switch ( select( "购买零件", "消耗品与冷却装置", "箱子兑换", "出售物品", "取消" )) {
 	case 1:
-		mes "[Mado Gear Merchant]";
-		mes "I will start preparing the Madogear pieces.";
+		mes "[魔导战甲商人]";
+		mes "我这就开始准备魔导战甲的零件。";
 		close2;
 		callshop "Weapons_Mechanic", 1;
 		break;
 	case 2:
-		mes "[Mado Gear Merchant]";
-		mes "I will start preparing the consumables used by Madogear.";
+		mes "[魔导战甲商人]";
+		mes "我这就开始准备魔导战甲所需的消耗品。";
 		close2;
 		callshop "Ammunition_Mechanic", 1;
 		break;
 	case 3:
-		mes "[Mado Gear Merchant]";
-		mes "I will arrange for the consumable packs used by MadoGear to be boxed!";
+		mes "[魔导战甲商人]";
+		mes "我这就把魔导战甲用的消耗品打包成箱！";
 		close2;
 		callshop "Box_Exchange_Mechanic", 1;
 		break;
 	case 4:
-		mes "[Mado Gear Merchant]";
-		mes "Do you have something to sell?";
+		mes "[魔导战甲商人]";
+		mes "您有东西要出售吗？";
 		close2;
 		callshop "Selling_Items", 2;
 		break;
 	case 5:
-		mes "[Mado Gear Merchant]";
-		mes "You can take a look at other things more calmly.";
+		mes "[魔导战甲商人]";
+		mes "您可以慢慢看看其他东西。";
 		close;
 	}
 	end;
@@ -159,25 +159,25 @@ OnInit:
 //= Talisman Merchant
 //============================================================
 -	script	#over_talisman	HIDDEN_NPC,{
-	mes "[Talisman Merchant]";
-	mes "Hello. Did you come to see the spirits?";
+	mes "[符咒商人]";
+	mes "您好。您是想来看看符灵吗？";
 	next;
-	switch ( select( "Buy Talisman", "Talisman Bundle Exchange", "Cancel" )) {
+	switch ( select( "购买符咒", "符咒束兑换", "取消" )) {
 	case 1:
-		mes "[Talisman Merchant]";
-		mes "You'll like it.";
+		mes "[符咒商人]";
+		mes "您会喜欢的。";
 		close2;
 		callshop "Talisman_Merchant", 1;
 		break;
 	case 2:
-		mes "[Talisman Merchant]";
-		mes "We also exchange for bundles.";
+		mes "[符咒商人]";
+		mes "我们也提供成束兑换。";
 		close2;
 		callshop "Talisman_Bundle", 1;
 		break;
 	case 3:
-		mes "[Talisman Merchant]";
-		mes "Thank you. Come again.";
+		mes "[符咒商人]";
+		mes "谢谢，欢迎再来。";
 		close;
 	}
 	end;

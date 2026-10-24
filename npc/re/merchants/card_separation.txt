@@ -17,11 +17,11 @@
 -	script	::CardSeparation_mal	-1,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "You have too many kinds of objects. Let's try to continue after reducing those objects.";
+		mes "你的物品种类太多了。请减少一些种类后再来继续。";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "Can't continue because you have too many heavy objects. Let's try to continue after reducing the weight.";
+		mes "你的负重物品太多，无法继续。请减轻负重后再来继续。";
 		close;
 	}
 	if (strnpcinfo(1) == "Jeremy") {
@@ -31,8 +31,8 @@
 		setarray .@equip_slot[0], EQI_ARMOR,EQI_SHOES,EQI_GARMENT,EQI_HEAD_TOP;
 
 		mes .@n$;
-		mes "Long time no see~";
-		mes "I have learned a new skill that separates cards from Armor, Shoes, Garment and Headgear. Do you want to try it?";
+		mes "好久不见~";
+		mes "我学会了一项新技能，可以从铠甲、鞋子、披风和头具上分离卡片。要试试看吗？";
 	} else {
 		set .@Jeremy,0;
 		set .@n$, "[Richard]";
@@ -40,66 +40,66 @@
 		setarray .@equip_slot[0],   EQI_HAND_L,   EQI_HAND_R;
 
 		mes .@n$;
-		mes "Silly Jeremy does not want to touch weapons and shields because of picking several cards that might be damaged. That is why I prepared a card separaion skill for weapons and shields...";
+		mes "傻杰里米因为怕摘卡时弄坏卡片，不愿意碰武器和盾牌。所以我准备了针对武器和盾牌的卡片分离技能……";
 	}
 	next;
 	mes .@n$;
-	mes "Generally the fee is 1,000,000 Zeny. During the card separation, you can use ^990000special items that reduce the rate of destroying equipment or cards^000000. We don't charge additional zeny for this.";
+	mes "费用一般为 1,000,000 Zeny。分离卡片时，可以使用^990000降低装备或卡片损坏率的特殊道具^000000。这项服务不额外收取 Zeny。";
 	next;
 	mes .@n$;
-	mes "There is a possibility of destroying them even using a special item. Also, ^ff0000the refine level might be lost^000000. Do you have any equipment to separate?";
+	mes "即使使用特殊道具，也有可能损坏。此外，^ff0000精炼等级可能会消失^000000。你有要分离卡片的装备吗？";
 	next;
 
 	for(set .@i,0; .@i<getarraysize(.@equip_slot); set .@i,.@i+1) {
 		if (getequipisequiped(.@equip_slot[.@i]))
 			set .@menu$, .@menu$+getequipname(.@equip_slot[.@i])+":";
 		else
-			set .@menu$, .@menu$+"^999999"+.@equip_name$[.@i]+" (empty)^000000:";
+			set .@menu$, .@menu$+"^999999"+.@equip_name$[.@i]+"(空)^000000:";
 	}
 
-	set .@i, select("Stop the work:"+((.@Jeremy)?"How is it possible?":"")+":"+.@menu$);
+	set .@i, select("停止工作:"+((.@Jeremy)?"怎么可能？":"")+":"+.@menu$);
 	switch(.@i) {
 	case 1:
 		mes .@n$;
-		mes "Whenever you need the work, visit me here.";
+		mes "需要服务时，随时来找我。";
 		close;
 	case 2:
 		mes .@n$;
-		mes "You wonder what is so special. Well, I hate to give only a guide, so let me tell you the story...";
+		mes "你想知道有什么特别之处。我讨厌只做说明，还是给你讲讲这个故事吧……";
 		next;
-		mes "^000099Jeremy is stretching his shoulders and hands. He might be waiting for someone to talk with him.^000000";
-		next;
-		mes .@n$;
-		mes "Do you know that Malangdo's specialty is canned food?";
-		next;
-		select("I knew that well. Is it that limited?");
-		mes .@n$;
-		mes "Hehe... Everyone loves it. But there were some problems before.";
-		next;
-		select("Problems? Is there any faulty fish?");
-		mes .@n$;
-		mes "No, the fish does not have any problem. The problem is lots of fish oil produced after processing. That is such an industrial waste.";
+		mes "^000099杰里米正在舒展肩膀和双手。他也许正等着有人来和他说话。^000000";
 		next;
 		mes .@n$;
-		mes "However, after a revitalizing refining process, this fish oil became valuable to use for old equipment care and industrial lubricant.";
+		mes "你知道绵绵岛的特色是罐头食品吗？";
+		next;
+		select("这我早就知道。就那么有限吗？");
+		mes .@n$;
+		mes "呵呵……大家都很喜欢。不过以前也出过一些问题。";
+		next;
+		select("问题？是有什么坏掉的鱼吗？");
+		mes .@n$;
+		mes "不，鱼本身没有任何问题。问题在于加工后会产生大量鱼油。那简直是工业废料。";
 		next;
 		mes .@n$;
-		mes "In addition, this oil is so useful to separate relics from equipped weapons that we can't buy Premium Lubricant and Ordinary Lubricant with Zeny.";
+		mes "不过，经过一番活化精炼后，这种鱼油变得很有价值，可用于保养旧装备和作为工业润滑油。";
 		next;
 		mes .@n$;
-		mes "Well, don't worry about money. Surely the Premium Lubricant is expensive. If you pay some zeny, I can give you cheaper lubricant.";
+		mes "此外，这种油在从装备中的武器上分离遗物时非常有用，以至于高级润滑油和普通润滑油都无法用 Zeny 买到。";
 		next;
 		mes .@n$;
-		mes "I'm not sure about the quality of success. Anyway, this is so cheap, right?";
+		mes "好了，别担心钱。高级润滑油确实很贵。只要你付一些 Zeny，我可以给你更便宜的润滑油。";
+		next;
+		mes .@n$;
+		mes "成功质量我可不敢保证。总之，这个很便宜，对吧？";
 		close;
 	default:
 		set .@equip_num, .@equip_slot[.@i-3];
 		if (!getequipisequiped(.@equip_num)) {
 			mes .@n$;
 			if (.@Jeremy)
-				mes "In this part, there is nothing?";
+				mes "这个部位什么都没有？";
 			else
-				mes "There is nothing on that part?";
+				mes "那个部位什么都没有？";
 			close;
 		}
 		break;
@@ -125,7 +125,7 @@
 		}
 		if (!getarraysize(.@equip_card)) {
 			mes .@n$;
-			mes "The card is not equipped. Do you want to check again?";
+			mes "该卡片并未装备。要再检查一次吗？";
 			close;
 		}
 		if ((.@equip_card[0] && compare(.@mvp_list$,"|"+.@equip_card[0]+"|")) ||
@@ -141,28 +141,28 @@
 		//	close;
 		//}
 
-		mes "[Richard]";
-		mes "Which number socket do you want to separate the card? From the left socket, they are sorted 1,2,3,4.";
+		mes "[理查德]";
+		mes "你想分离第几个插槽的卡片？从左边的插槽开始，依次编号为 1、2、3、4。";
 		next;
 		set .@menu$,"";
 		for ( .@i = 0; .@i < MAX_SLOTS; .@i++ ) {
 			if (.@equip_card[.@i] && getiteminfo(.@equip_card[.@i], ITEMINFO_SUBTYPE) == CARD_NORMAL) // Armor Enchant System
-				.@menu$ = .@menu$ + "Socket " + (.@i+1) + " - " + getitemname(.@equip_card[.@i])+":";
+				.@menu$ = .@menu$ + "插槽" + (.@i+1) + " - " + getitemname(.@equip_card[.@i])+":";
 			else {
-				.@menu$ = .@menu$ + "^777777Socket " + (.@i+1) + " - No card^000000:";
+				.@menu$ = .@menu$ + "^777777插槽" + (.@i+1) + "- 无卡片^000000:";
 			}
 		}
-		set .@i, select("Stop the work:"+.@menu$);
+		set .@i, select("停止工作:"+.@menu$);
 		switch(.@i) {
 		case 1:
 			mes .@n$;
-			mes "Whenever you need to work, please come to me.";
+			mes "需要服务时，请来找我。";
 			close;
 		default:
 			set .@slot, .@i-2;
 			if (.@equip_card[.@slot] == 0 || getiteminfo(.@equip_card[.@slot], ITEMINFO_SUBTYPE) == CARD_ENCHANT) {
 				mes .@n$;
-				mes "This socket is not equipped with any card. Why don't you check again?";
+				mes "这个插槽没有装备任何卡片。要不要再检查一次？";
 				close;
 			}
 			break;
@@ -173,32 +173,32 @@
 	if (.@boss_chk == 0) {
 		mes .@n$;
 		if (.@Jeremy)
-			mes "Except cards, ^ff0000all enchanted effects will disappear.^000000 If you agree to this, please choose the work type:";
+			mes "除卡片外，^ff0000所有附魔效果都会消失。^000000 若你同意，请选择服务类型：";
 		else
-			mes "Please choose the working fee.";
+			mes "请选择服务费用。";
 		next;
 		set .@menu$,
-			"Next time...:"+
-			((Zeny >= 1000000)?"Use 1,000,000z (Do not use special item):":"^999999Use 1,000,000z (Insufficient)^000000:")+
-			((countitem(6441))?"Use Premium Lubricant:":"^999999Premium Lubricant (Insufficient)^000000:")+
-			((countitem(6440))?"Use Ordinary Lubricant":"^999999Ordinary Lubricant (Insufficient)^000000");
+			"下次吧……:"+
+			((Zeny >= 1000000)?"使用 1,000,000z（不使用特殊道具）:":"^999999使用 1,000,000z（不足）^000000:")+
+			((countitem(6441))?"使用高级润滑油:":"^999999高级润滑油（不足）^000000:")+
+			((countitem(6440))?"使用普通润滑油":"^999999普通润滑油（不足）^000000");
 		switch(select(.@menu$)) {
 		case 1:
 			mes .@n$;
-			mes "Whenever you need the work, visit me here.";
+			mes "需要服务时，随时来找我。";
 			close;
 		case 2:
 			if (Zeny < 1000000) {
 				mes .@n$;
-				mes "You don't have enough zeny. Please come back with enough fees.";
+				mes "你的 Zeny 不足。请带够费用再来。";
 				close;
 			}
 			mes .@n$;
-			mes "This is pretty old equipment. There is a high rate of destroying the cards or equipment during the work. Are you sure you want to continue?";
+			mes "这是相当旧的装备。作业过程中卡片或装备损坏的几率很高。你确定要继续吗？";
 			next;
-			if(select("Next time...:Continue") == 1) {
+			if(select("下次吧……:继续") == 1) {
 				mes .@n$;
-				mes "Whenever you need the work, visit me here.";
+				mes "需要服务时，随时来找我。";
 				close;
 			}
 			set .@sf_c_num,150;
@@ -209,15 +209,15 @@
 		case 3:
 			if (countitem(6441) == 0) {
 				mes .@n$;
-				mes "You don't have Premium Lubricant.";
+				mes "你没有高级润滑油。";
 				close;
 			}
 			mes .@n$;
-			mes "If you use the Premium Lubricant, the rate of destruction will be decreased highly, but I can't give you a 100% guarantee. Are you sure you want to continue?";
+			mes "使用高级润滑油可以大幅降低损坏率，但我无法给你 100% 的保证。你确定要继续吗？";
 			next;
-			if(select("Next time...:Continue") == 1) {
+			if(select("下次吧……:继续") == 1) {
 				mes .@n$;
-				mes "Whenever you need the work, visit me here.";
+				mes "需要服务时，随时来找我。";
 				close;
 			}
 			set .@sf_c_num,75;
@@ -228,15 +228,15 @@
 		case 4:
 			if (countitem(6440) == 0) {
 				mes .@n$;
-				mes "You don't have Ordinary Lubricant.";
+				mes "你没有普通润滑油。";
 				close;
 			}
 			mes .@n$;
-			mes "If you use the Ordinary Lubricant, the rate of destruction will be decreased highly, but I can't give you a 100% guarantee. Are you sure you want to continue?";
+			mes "使用普通润滑油可以大幅降低损坏率，但我无法给你 100% 的保证。你确定要继续吗？";
 			next;
-			if(select("Next time...:Continue") == 1) {
+			if(select("下次吧……:继续") == 1) {
 				mes .@n$;
-				mes "Whenever you need the work, visit me here.";
+				mes "需要服务时，随时来找我。";
 				close;
 			}
 			set .@sf_c_num,75;
@@ -247,34 +247,34 @@
 		}
 	} else if (.@boss_chk == 1) {
 		mes .@n$;
-		mes "This equipment contains a precious MVP card. This card can't be separated with lubricant. If you bring the super surfactant ^0000ffSillit Pong^000000, I will be able to work.";
+		mes "这件装备上镶有珍贵的 MVP 卡片。这张卡片无法用润滑油分离。如果你带来超级表面活性剂^0000ffSillit Pong^000000，我就能动手了。";
 		next;
-		switch(select("Next time...:I have a Sillit Pong.")) {
+		switch(select("下次吧……:我有 Sillit Pong。")) {
 		case 1:
 			mes .@n$;
-			mes "Whenever you need the work, visit me here.";
+			mes "需要服务时，随时来找我。";
 			close;
 		case 2:
 			if (countitem(6443) == 0) {
 				mes .@n$;
-				mes "You don't have Sillit Pong.";
+				mes "你没有 Sillit Pong。";
 				close;
 			}
 			break;
 		}
 		mes .@n$;
 		if (.@Jeremy) {
-			mes "Except cards, ^ff0000all enchanted effects will disappear.^000000 If you agree to this, please choose the work type:";
-			set .@menu$,"Alright, let's do it!";
+			mes "除卡片外，^ff0000所有附魔效果都会消失。^000000 若你同意，请选择服务类型：";
+			set .@menu$,"好，那就动手吧！";
 		} else {
-			mes "May I continue?";
-			set .@menu$,"I got it. Just do it quickly!";
+			mes "可以继续吗？";
+			set .@menu$,"知道了，快点动手吧！";
 		}
 		next;
-		switch(select("Next time...:"+.@menu$)) {
+		switch(select("下次吧……:"+.@menu$)) {
 		case 1:
 			mes .@n$;
-			mes "Whenever you need the work, visit me here.";
+			mes "需要服务时，随时来找我。";
 			close;
 		case 2:
 			set .@sf_c_num,60;
@@ -342,25 +342,25 @@
 		specialeffect2 EF_MAXPOWER;
 
 	// Output results.
-	mes "-- Result of Card Separation --";
+	mes "—— 卡片分离结果 ——";
 	if (.@equip_safe) {
-		mes "Crack has not occurred during the card separation process.";
-		mes "^0000FFEquipment separation is normal.^000000";
+		mes "卡片分离过程中没有出现裂痕。";
+		mes "^0000FF装备分离正常。^000000";
 	} else {
-		mes "Crack has occurred during the card separation process.";
-		mes "Equipment has been damaged. ^ff0000Unrecoverable.^000000";
+		mes "卡片分离过程中出现了裂痕。";
+		mes "装备已损坏。^ff0000无法恢复。^000000";
 	}
 	mes "-------------------";
 	if (!.@card_break) {
-		mes "Erosion of surface has not occurred during the card separation process.";
-		mes "^0000ffCard separation has succeeded.^000000";
+		mes "卡片分离过程中表面没有出现腐蚀。";
+		mes "^0000ff卡片分离成功。^000000";
 	} else {
-		mes "Erosion of surface has occurred during the card separation process.";
-		mes "Card has been damaged. ^ff0000Unrecoverable.^000000";
+		mes "卡片分离过程中表面出现了腐蚀。";
+		mes "卡片已损坏。^ff0000无法恢复。^000000";
 	}
 	next;
 	mes .@n$;
-	mes "That is all for the results of the card separation. Please come again.";
+	mes "卡片分离结果就是这些。欢迎再来。";
 	close;
 }
 malangdo,215,166,4	duplicate(CardSeparation_mal)	Jeremy#pa0829	553	// Armors :: mal_yong

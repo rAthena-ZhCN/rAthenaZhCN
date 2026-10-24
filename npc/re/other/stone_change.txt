@@ -16,31 +16,31 @@
 
 // Main NPC :: stonechange
 //============================================================
-geffen_in,99,174,5	script	Ore Tester#sorty	8_F_GIRL,{
-	mes "[Ore Tester Sorty]";
-	mes "Do you have ^3131FFany same type of ores in your inventories^000000 which take many spaces?";
-	mes "I can distinguish your ores and organize them right away~!";
+geffen_in,99,174,5	script	矿石鉴定师#sorty	8_F_GIRL,{
+	mes "[矿石鉴定师索蒂]";
+	mes "你的背包里有没有^3131FF许多同种类的矿石^000000占用了大量空间？";
+	mes "我可以帮你分辨矿石并立刻整理好～！";
 	next;
-	switch(select("Refine my Ore.:Cancel.")) {
+	switch(select("整理我的矿石。:取消。")) {
 	case 1:
-		mes "[Ore Tester Sorty]";
-		mes "At the moment I can only distinguish ^FF0000Steel^000000, ^FF0000Iron^000000, ^FF0000Iron Ore^000000, and ^FF0000Rough Oridecon^000000 and organize them.";
-		mes "Please note that ^3131FFother items are unable^000000!";
+		mes "[矿石鉴定师索蒂]";
+		mes "目前我只能分辨并整理^FF0000钢铁^000000、^FF0000铁^000000、^FF0000铁矿石^000000和^FF0000神之金属原石^000000。";
+		mes "请注意，^3131FF其他物品无法处理^000000！";
 		next;
-		mes "[Ore Tester Sorty]";
-		mes "So, would you like me to organize your ores?";
+		mes "[矿石鉴定师索蒂]";
+		mes "那么，要我帮你整理矿石吗？";
 		next;
-		.@i = select("Steel, please.:Iron, please.:Iron Ore, please.:Rough Oridecon, please.:No, thanks.");
+		.@i = select("请整理钢铁。:请整理铁。:请整理铁矿石。:请整理神之金属原石。:不用了，谢谢。");
 		if (.@i == 5) {
-			mes "[Ore Tester Sorty]";
-			mes "Huh, I really hate messy people!";
+			mes "[矿石鉴定师索蒂]";
+			mes "哼，我最讨厌邋遢的人了！";
 			close;
 		}
 		setarray .@ores[0],999,998,1002,756;
 		.@item = .@ores[.@i-1];
 		if (countitem(.@item) == 0) {
-			mes "[Ore Tester Sorty]";
-			mes "You don't have any "+getitemname(.@item)+"...";
+			mes "[矿石鉴定师索蒂]";
+			mes "你没有"+getitemname(.@item)+"...";
 			close;
 		}
 		// while(1) {
@@ -56,12 +56,12 @@ geffen_in,99,174,5	script	Ore Tester#sorty	8_F_GIRL,{
 		.@count = countitem(.@item);
 		delitem .@item, .@count;
 		getitem .@item, .@count;
-		mes "[Ore Tester Sorty]";
-		mes "It's done. Looks great! Don't you think so?";
+		mes "[矿石鉴定师索蒂]";
+		mes "整理好了。看起来很棒！你不觉得吗？";
 		close;
 	case 2:
-		mes "[Ore Tester Sorty]";
-		mes "It seems that your bag is clean? Huhu! You might be the master of cleaning!";
+		mes "[矿石鉴定师索蒂]";
+		mes "看来你的背包很干净？呵呵！你也许是整理大师！";
 		close;
 	}
 }

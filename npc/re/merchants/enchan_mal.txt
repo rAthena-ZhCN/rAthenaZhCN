@@ -19,40 +19,40 @@
 
 // Enchanter NPC :: mal_yong
 //============================================================
-malangdo,213,167,4	script	Mayomayo#mal	555,{
+malangdo,213,167,4	script	玛约玛约#mal	555,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "You have too many kinds of objects. Let's try to continue after reducing those objects.";
+		mes "您的物品种类过多。请减少物品种类后再继续。";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "Can't continue because you have too many heavy objects. Let's try to continue after reducing the weight.";
+		mes "您的负重过高，无法继续。请减轻重量后再继续。";
 		close;
 	}
-	mes "[Mayomayo]";
-	mes "Wow welcome. It is new Mayomayo refinement store~ I enchant some luxury weapons including level 4 weapons.";
+	mes "[玛约玛约]";
+	mes "哇，欢迎光临。这里是全新的玛约玛约精炼商店~ 我能为包括4级武器在内的部分高级武器附魔。";
 	next;
-	switch( select( "Any store policy changes?", "Enchant High Ranked Weapon", "Initialize Enchant (Need Silvervine Fruit)" ) ) {
+	switch( select( "商店规则有变更吗？", "为高级武器附魔", "初始化附魔（需要银藤果）" ) ) {
 	case 1:
-		mes "[Mayomayo]";
-		mes "When I enchant weapons, the slotted cards or refined level are dissipated sometimes. I hated it. However, one day I found how to do it without any extinction.";
+		mes "[玛约玛约]";
+		mes "我为武器附魔时，插槽中的卡片或精炼等级有时会消失。我很讨厌这点。不过有一天，我找到了不会造成任何消失的方法。";
 		next;
-		mes "[Mayomayo]";
-		mes "Have you ever seen a building of person of reinforcement capacity association?";
+		mes "[玛约玛约]";
+		mes "您见过强化能力协会的那栋建筑吗？";
 		next;
-		if (select( "I've seen it before.", "I haven't seen it before." ) == 2) {
-			mes "[Mayomayo]";
-			mes "That builiding is located to the southeast of where I am. Why don't you go on a field trip there?";
+		if (select( "我见过。", "我没见过。" ) == 2) {
+			mes "[玛约玛约]";
+			mes "那栋建筑就在我所在位置的东南方。您何不去那里参观一下？";
 			close;
 		}
-		mes "[Mayomayo]";
-		mes "If you go to the place, there is someone who enchants the Archangel Wing. At that time that was amazing, because that was impossible ability by my own skill.";
+		mes "[玛约玛约]";
+		mes "如果您去那里，会见到一位为炽天使之翼附魔的人。当时那真是了不起，因为以我自己的技术根本无法做到。";
 		next;
-		mes "[Mayomayo]";
-		mes "Every night I became his butler and did odd jobs. That is how I learned to enchant.";
+		mes "[玛约玛约]";
+		mes "每晚我都去当他的管家，做些杂活。我就是这样学会附魔的。";
 		next;
-		mes "[Mayomayo]";
-		mes "Several rules are changed. Well, you better have experience.";
+		mes "[玛约玛约]";
+		mes "有几条规则变更了。嗯，您最好亲自体验一下。";
 		close;
 	case 2:
 		@mal_enchant_select = 1;
@@ -63,8 +63,8 @@ malangdo,213,167,4	script	Mayomayo#mal	555,{
 	}
 
 	if (!getequipisequiped(EQI_HAND_R)) {
-		mes "[Mayomayo]";
-		mes "Did you take off your equipment?";
+		mes "[玛约玛约]";
+		mes "您脱下装备了吗？";
 		@mal_enchant_select = 0;
 		close;
 	}
@@ -333,11 +333,11 @@ malangdo,213,167,4	script	Mayomayo#mal	555,{
 		// }
 		break;
 	}
-	mes "[Mayomayo]";
+	mes "[玛约玛约]";
 	if (@mal_enchant_select == 1)
-		mes "This is not a suitable equipment for the enchant. Don't forget we only take care of high class weapons, including level 4 weapons~";
+		mes "这件装备不适合附魔。别忘了我们只处理包括4级武器在内的高级武器~";
 	else
-		mes "This equipment can not be initialized. Don't forget we only handle some luxury weapons, including level 4 weapons~";
+		mes "这件装备无法初始化。别忘了我们只处理包括4级武器在内的部分高级武器~";
 	@mal_equip_id = 0;
 	@mal_enchant_select = 0;
 	close;
@@ -352,8 +352,8 @@ L_Socket:
 	@mal_enchant_select = 0;
 
 	if (.@select == 1) {
-		mes "[Mayomayo]";
-		mes "^0000ff" + .@equip_name$ + "^000000! Do you want to enchant this equipment? How will you pay for this?";
+		mes "[玛约玛约]";
+		mes "^0000ff" + .@equip_name$ + "^000000！要为这件装备附魔吗？您要如何支付？";
 		next;
 
 		.@enccost = getarg(0);
@@ -361,24 +361,24 @@ L_Socket:
 		setarray .@coin[0],6422,6421,6420,6419,6418,6423;	//  Payment ID
 		setarray .@cost[0],  15,  10,   6,   3,   2,   1;	//  Payment multiplier
 
-		.@menu$ = "Stop:";
+		.@menu$ = "停止:";
 		.@size_coin = getarraysize(.@coin);
 		for ( .@i = 0; .@i < .@size_coin; ++.@i) {
 			.@count[.@i] = countitem(.@coin[.@i]);
 			.@total[.@i] = .@enccost * .@cost[.@i];
 			if (.@count[.@i] < .@total[.@i])
-				.@menu$ += "^999999" + getitemname(.@coin[.@i]) + " (missing " + (.@total[.@i]-.@count[.@i]) + ")^000000:";
+				.@menu$ += "^999999" + getitemname(.@coin[.@i]) + "（缺" + (.@total[.@i]-.@count[.@i]) + "）^000000:";
 			else
-				.@menu$ += getitemname(.@coin[.@i]) + " (have " + .@count[.@i] + ", need " + .@total[.@i] + "):";
+				.@menu$ += getitemname(.@coin[.@i]) + "（拥有" + .@count[.@i] + "，需要" + .@total[.@i] + "）:";
 		}
 		.@coin_select = select(.@menu$) - 2;
 		if (.@coin_select == -1) {
-			mes "[Mayomayo]";
-			mes "Come back again if you change your mind.";
+			mes "[玛约玛约]";
+			mes "如果您改变主意，请再来。";
 			close;
 		} else if (.@count[.@coin_select] < .@total[.@coin_select]) {
-			mes "[Mayomayo]";
-			mes "You don't have enough coins. Do you want to check again?";
+			mes "[玛约玛约]";
+			mes "您的硬币不够。要再确认一次吗？";
 			close;
 		}
 		switch(.@coin_select) {
@@ -396,13 +396,13 @@ L_Socket:
 			break;
 		case 4:	// Agrade_Coin
 		case 5:	// Anger_Seagod
-			mes "[Mayomayo]";
-			mes "When you use the " + getitemname(.@coin[.@coin_select]) + ", you can choose the enchant type.";
+			mes "[玛约玛约]";
+			mes "使用" + getitemname(.@coin[.@coin_select]) + "时，可以选择附魔类型。";
 			next;
-			switch( select( "Stop", "Short Range Type", "Long Range Type", "Caster Type") ) {
+			switch( select( "停止", "近距离型", "远距离型", "施法型") ) {
 			case 1:
-				mes "[Mayomayo]";
-				mes "Ok. If you change your mind, let me know.";
+				mes "[玛约玛约]";
+				mes "好。如果您改变主意，请告诉我。";
 				close;
 			case 2:
 				.@enchant_type = ((.@coin_select == 4) ? 4 : 1);
@@ -423,16 +423,16 @@ L_Socket:
 			.@socket = 3;
 			.@str$ = "2nd";
 		} else {
-			mes "[Mayomayo]";
-			mes "This equipment is at the end of enchant. Please initialize the enchant and you will be able to enchant it again, or bring another weapon.";
+			mes "[玛约玛约]";
+			mes "这件装备的附魔已达上限。请初始化附魔，就能再次附魔，或者换一件武器来。";
 			close;
 		}
-		mes "[Mayomayo]";
-		mes "I'm trying for the " + .@str$ + " enchant. ^ff0000It will not touch previous refinement and cards. Also, the equipment will not be destroyed.^000000 Can I continue?";
+		mes "[玛约玛约]";
+		mes "我将进行" + .@str$ + " enchant. ^ff0000It will not touch previous refinement and cards. Also, the equipment will not be destroyed.^000000 Can I continue?";
 		next;
-		if (select( "I'll come back later.", "Please, continue." ) == 1) {
-			mes "[Mayomayo]";
-			mes "Ok. If you change your mind, come back again.";
+		if (select( "我稍后再来。", "请继续。" ) == 1) {
+			mes "[玛约玛约]";
+			mes "好。如果您改变主意，请再来。";
 			close;
 		}
 		switch(.@enchant_type) {
@@ -597,8 +597,8 @@ L_Socket:
 			else .@enchant = 9;
 			break;
 		default:
-			mes "[Mayomayo]";
-			mes "There is something wrong. Please try again.";
+			mes "[玛约玛约]";
+			mes "出了问题。请再试一次。";
 			close;
 		}
 
@@ -612,25 +612,25 @@ L_Socket:
 		else if (.@equip_card[1] == 0 && .@enclimit < 2) .@equip_card[1] = .@enchant;
 		else if (.@equip_card[0] == 0 && .@enclimit < 1) .@equip_card[0] = .@enchant;
 		else {
-			mes "[Mayomayo]";
-			mes "This equipment is at the end of enchant. I provide enchant for two times maximum.";
+			mes "[玛约玛约]";
+			mes "这件装备的附魔已达上限。我最多只能附魔两次。";
 			next;
-			mes "[Mayomayo]";
-			mes "Surely I don't enchant at card socket, therefore weapons that have 3 slots can be enchanted only 1 time. Don't forget this~";
+			mes "[玛约玛约]";
+			mes "我确实不会在卡片插槽上附魔，因此3个插槽的武器只能附魔1次。别忘了这点~";
 			close;
 		}
 		if (.@enchant == 9) {	//  Should never happen.
 			specialeffect2 EF_SUI_EXPLOSION;
-			mes "[Mayomayo]";
-			mes "Oh my god!";
-			mes "This equipment is destroyed because it could not endure powerful ability. I'm so sorry.";
+			mes "[玛约玛约]";
+			mes "我的天哪！";
+			mes "这件装备无法承受强大的能力，已经损坏了。非常抱歉。";
 			delitem .@coin[.@coin_select],.@total[.@coin_select];
 			delequip EQI_HAND_R;
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Mayomayo]";
-		mes "I have enchanted ^990000slot " + .@socket + "^000000 of this equipment.";
+		mes "[玛约玛约]";
+		mes "我为这件装备的^990000第" + .@socket + "号插槽^000000完成了附魔。";
 		delitem .@coin[.@coin_select], .@total[.@coin_select];
 		delequip EQI_HAND_R;
 
@@ -639,32 +639,32 @@ L_Socket:
 
 		close;
 	} else if (.@select == 2) {
-		mes "[Mayomayo]";
-		mes "I will only initialize the enchant effect without touching previous refined level and cards.";
+		mes "[玛约玛约]";
+		mes "我只初始化附魔效果，不会影响之前的精炼等级和卡片。";
 		next;
-		if (select( "Stop", "Continue" ) == 1) {
-			mes "[Mayomayo]";
-			mes "If you change your mind, come back anytime.";
+		if (select( "停止", "继续" ) == 1) {
+			mes "[玛约玛约]";
+			mes "如果您改变主意，随时再来。";
 			close;
 		}
 		if (countitem(6417) == 0) {
-			mes "[Mayomayo]";
-			mes "I'm sorry. You don't have Silvervine Fruit. Please check your inventory again?";
+			mes "[玛约玛约]";
+			mes "抱歉，您没有银藤果。请再检查一下背包？";
 			close;
 		}
 		if (!getequipisequiped(EQI_HAND_R)) {
-			mes "[Mayomayo]";
-			mes "Did you take off the equipment?";
+			mes "[玛约玛约]";
+			mes "您脱下装备了吗？";
 			close;
 		}
 		if (.@equip_card[3] == 0) {
-			mes "[Mayomayo]";
-			mes "This equipment has nothing to initialize. Please check again.";
+			mes "[玛约玛约]";
+			mes "这件装备没有可初始化的内容。请再确认一下。";
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Mayomayo]";
-		mes "Initialize the enchant effect from the equipment.";
+		mes "[玛约玛约]";
+		mes "从装备上初始化附魔效果。";
 		delitem 6417,1;	// Silvervine
 
 		// anti-hack

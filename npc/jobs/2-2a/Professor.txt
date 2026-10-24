@@ -15,79 +15,79 @@
 //= 1.3 Now saves/restores all the quest skills [Lupus]
 //============================================================ 
 
-valkyrie,53,47,3	script	学者#Valkyrie	743,{
+valkyrie,53,47,3	script	智者#Valkyrie	743,{
 	if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[学者]";
-			mes "恭喜你。";
-			mes "向勇士们致敬！";
+			mes "[智者]";
+			mes "Congratulations.";
+			mes "荣耀归于战士们！";
 			close;
 		}
-		mes "[学者]";
-		mes "这需要一生的时间……";
-		mes "字面意义上的一生";
-		mes "去积累成为";
-		mes "一名学者所必需的";
+		mes "[智者]";
+		mes "需要一生……";
+		mes "的确是一生";
+		mes "才能积累起";
+		mes "成为智者所必需的";
 		mes "知识……";
 		next;
-		mes "[学者]";
-		mes "这令人望而生畏。";
-		mes "你学得越多，";
-		mes "就越发现还有多少";
-		mes "是你尚未知晓的。";
-		mes "学习的过程永无止境……";
+		mes "[智者]";
+		mes "令人不知所措。";
+		mes "学得越多，";
+		mes "就越会发现";
+		mes "自己还有多少不懂。";
+		mes "学习的历程";
 		mes "永无止境……";
 		close;
 	}
 	else if (ADVJOB == Job_Professor && Class == Job_Mage_High && JobLevel > 39) {
-		mes "[学者]";
-		mes "米德加尔特没有";
-		mes "足够的学者来";
-		mes "引领一个新时代的";
-		mes "繁荣。这个世界";
-		mes "需要你……";
+		mes "[智者]";
+		mes "米德加尔特";
+		mes "没有足够的智者";
+		mes "来引领一个";
+		mes "繁荣的新时代。这个";
+		mes "世界需要你……";
 		next;
-		mes "[学者]";
-		mes "你愿意承担这份";
-		mes "伟大的责任吗？";
-		mes "你愿意以学者的身份";
+		mes "[智者]";
+		mes "你愿意承担";
+		mes "这份重大的责任吗？";
+		mes "你愿意以智者的身份";
 		mes "为米德加尔特效力吗？";
 		next;
-		if (select("否:是。") == 1) {
-			mes "[学者]";
-			mes "当你准备好了，";
-			mes "随时欢迎回来。";
-			mes "向勇士们致敬！";
+		if (select("否:是") == 1) {
+			mes "[智者]";
+			mes "等你准备好，";
+			mes "随时回来。";
+			mes "荣耀归于战士们！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[学者]";
-			mes "你仍可学习更多技能。请在回到我这里之前，";
-			mes "用完所有剩余的技能点数。";
+			mes "[智者]";
+			mes "你仍可以学习更多技能。请用完";
+			mes "所有剩余的技能点，再来找我。";
 			close;
 		}
 		jobchange Job_Professor;
 		set ADVJOB,0;
-		mes "[学者]";
+		mes "[智者]";
 		mes "恭喜！";
 		mes "作为智者，我希望";
-		mes "你能积极投身于";
-		mes "将知识之光带往";
-		mes "黑暗之处的事业中。";
-		mes "驱散无知的阴霾。";
+		mes "你能积极";
+		mes "参与，将知识";
+		mes "之光带到";
+		mes "黑暗之处。";
 		close;
 	}
-	mes "[学者]";
-	mes "欢迎来到";
-	mes "巴哈拉宫，";
-	mes "荣耀之殿。";
+	mes "[智者]";
+	mes "欢迎";
+	mes "前往巴哈拉宫，";
+	mes "荣誉殿堂。";
 	next;
-	mes "[学者]";
-	mes "请在此处";
-	mes "安心休憩，";
+	mes "[智者]";
+	mes "请在这里";
+	mes "放松一下";
 	mes "不必拘束。";
-	mes "向勇士们致敬！";
+	mes "荣耀归于战士们！";
 	close;
 }
 

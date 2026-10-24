@@ -18,26 +18,26 @@
 // 1.6.5 Bug fixes for party support
 // 1.6.6 Bug fixes for delay time does not appear [mazvi]
 //============================================================
-prontera,129,215,5	script	Questboard	4_BOARD3,{
+prontera,129,215,5	script	任务告示板	4_BOARD3,{
 
 	if(c_run==true){
-		mes "[^FF7700Questboard^000000]";
-		mes "^0000FF"+getd("." + currentquest$ + "_collectionname$")+"^000000";
+		mes "[^FF7700任务板^000000]";
+		mes "^0000ff"+getd("." + currentquest$ + "_collectionname$")+"^000000";
 		mes "--------------------------------";
 		set .@size, getarraysize(getd("."+ currentquest$ + "_collectionitem"));
 		for( set .@j, 0; .@j < .@size; set .@j,.@j+2){
-			mes "^FF0000"+getitemname(getd("."+currentquest$+"_collectionitem["+.@j+"]"))+" - "+countitem(getd("."+currentquest$+"_collectionitem["+.@j+"]"))+"/"+getd("."+currentquest$+"_collectionitem["+(.@j+1)+"]")+" ea.^000000";
+			mes "^FF0000"+getitemname(getd("."+currentquest$+"_collectionitem["+.@j+"]"))+" - "+countitem(getd("."+currentquest$+"_collectionitem["+.@j+"]"))+"/"+getd("."+currentquest$+"_collectionitem["+(.@j+1)+"]")+"个^000000";
 		}
 		mes "--------------------------------";
-		mes "[Reward]";
-		mes "Item: ^0000FF"+((getd("." +currentquest$+"_collectionprize"))?getitemname(getd("." +currentquest$+"_collectionprize"))+" - "+getd("." +currentquest$+"_collectionamount")+" ea.^000000":"Nothing^000000");
-		mes "Zeny: ^0000FF"+getd("." +currentquest$+"_collectionzeny")+"^000000";
-		mes "Base EXP: ^0000FF"+getd("." +currentquest$+"_collectionexp["+0+"]")+"^000000";
-		mes "Job EXP: ^0000FF"+getd("." +currentquest$+"_collectionexp["+1+"]")+"^000000";
+		mes "[奖励]";
+		mes "物品：^0000FF"+((getd("." +currentquest$+"_collectionprize"))?getitemname(getd("." +currentquest$+"_collectionprize"))+" - "+getd("." +currentquest$+"_collectionamount")+"个^000000":"无^000000");
+		mes "Zeny：^0000FF"+getd("." +currentquest$+"_collectionzeny")+"^000000";
+		mes "基础经验：^0000FF"+getd("." +currentquest$+"_collectionexp["+0+"]")+"^000000";
+		mes "职业经验：^0000FF"+getd("." +currentquest$+"_collectionexp["+1+"]")+"^000000";
 		next;
-		if(select("Finish:Abort") == 2){
-			mes "[^FF7700Questboard^000000]";
-			mes "Quest aborted.";
+		if(select("完成:放弃") == 2){
+			mes "[^FF7700任务板^000000]";
+			mes "任务已放弃。";
 			set currentquest$, "";
 			set c_run, false;
 			close;
@@ -46,24 +46,24 @@ prontera,129,215,5	script	Questboard	4_BOARD3,{
 	}
 
 	if(h_run==true){
-		mes "[^FF7700Questboard^000000]";
-		mes "^0000FF"+getd("." + currentquest$ + "_huntingname$")+"^000000";
+		mes "[^FF7700任务板^000000]";
+		mes "^0000ff"+getd("." + currentquest$ + "_huntingname$")+"^000000";
 		mes "--------------------------------";
 		set .@size, getarraysize(getd("."+ currentquest$ + "_huntingmob"));
 		for( set .@j, 0; .@j < .@size; set .@j,.@j+2){
 			set .@currentmob, getd("."+currentquest$+"_huntingmob["+(.@j)+"]");
-			mes "^FF0000"+getmonsterinfo(getd("."+currentquest$+"_huntingmob["+.@j+"]"), MOB_NAME)+" - "+getd(currentquest$+"_"+.@currentmob+"_"+(.@j+1)+"_killcount")+"/"+getd("."+currentquest$+"_huntingmob["+(.@j+1)+"]")+" ea.^000000";
+			mes "^FF0000"+getmonsterinfo(getd("."+currentquest$+"_huntingmob["+.@j+"]"), MOB_NAME)+" - "+getd(currentquest$+"_"+.@currentmob+"_"+(.@j+1)+"_killcount")+"/"+getd("."+currentquest$+"_huntingmob["+(.@j+1)+"]")+"个^000000";
 		}
 		mes "--------------------------------";
-		mes "[Reward]";
-		mes "Item: ^0000FF"+((getd("." +currentquest$+"_huntingprize"))?getitemname(getd("." +currentquest$+"_huntingprize"))+" - "+getd("." +currentquest$+"_huntingamount")+" ea.^000000":"Nothing^000000");
-		mes "Zeny: ^0000FF"+getd("." +currentquest$+"_huntingzeny")+"^000000";
-		mes "Base EXP: ^0000FF"+getd("." +currentquest$+"_huntingexp["+0+"]")+"^000000";
-		mes "Job EXP: ^0000FF"+getd("." +currentquest$+"_huntingexp["+1+"]")+"^000000";
+		mes "[奖励]";
+		mes "物品：^0000FF"+((getd("." +currentquest$+"_huntingprize"))?getitemname(getd("." +currentquest$+"_huntingprize"))+" - "+getd("." +currentquest$+"_huntingamount")+"个^000000":"无^000000");
+		mes "Zeny：^0000FF"+getd("." +currentquest$+"_huntingzeny")+"^000000";
+		mes "基础经验：^0000FF"+getd("." +currentquest$+"_huntingexp["+0+"]")+"^000000";
+		mes "职业经验：^0000FF"+getd("." +currentquest$+"_huntingexp["+1+"]")+"^000000";
 		next;
-		if(select("Finish:Abort") == 2){
-			mes "[^FF7700Questboard^000000]";
-			mes "Quest aborted.";
+		if(select("完成:放弃") == 2){
+			mes "[^FF7700任务板^000000]";
+			mes "任务已放弃。";
 			for(set .@x, 1; .@x < .@size; set .@x,.@x+2){
 				set .@currentmob, getd("."+currentquest$+"_huntingmob["+(.@x-1)+"]");
 				setd(currentquest$+"_"+.@currentmob+"_"+.@x+"_killcount", 0);
@@ -75,13 +75,13 @@ prontera,129,215,5	script	Questboard	4_BOARD3,{
 		goto L_checkmobs;
 	}
 
-	mes "[^FF7700Questboard^000000]";
-	mes "Select category:";
+	mes "[^FF7700任务板^000000]";
+	mes "选择类别：";
 	next;
 
-	switch(select((.collection)?"Collection Quests":"",
-				  (.hunting)?"Hunting Quests":"",
-				  "Exit")) {
+	switch(select((.collection)?"收集任务":"",
+				  (.hunting)?"狩猎任务":"",
+				  "退出")) {
 
 	case 1:
 		set .@collectmenu$, "";
@@ -92,47 +92,47 @@ prontera,129,215,5	script	Questboard	4_BOARD3,{
 		set .@selection,select(.@collectmenu$);
 		if(.quest_repeat == true){
 			if(gettimetick(2) < getd(.@selection + "_collection_delay")){
-				mes "[^FF7700Questboard^000000]";
-				mes "You have to wait ^0000FF"+Time2Str(getd(.@selection + "_collection_delay"))+"^000000 to do this quest again.";
+				mes "[^FF7700任务板^000000]";
+				mes "你必须等待 ^0000FF"+Time2Str(getd(.@selection + "_collection_delay"))+"^000000 后才能再次执行此任务。";
 				close;
 			}
 		}
 		else{
 			if(getd(.@selection + "_collection_repeat") == true){
-				mes "[^FF7700Questboard^000000]";
-				mes "You already did this quest.";
-				mes "Please choose another one.";
+				mes "[^FF7700任务板^000000]";
+				mes "你已经完成过这个任务了。";
+				mes "请选择另一个。";
 				close;
 			}
 		}
-		mes "[^FF7700Questboard^000000]";
-		mes "^0000FF"+getd("." + .@selection + "_collectionname$")+"^000000";
+		mes "[^FF7700任务板^000000]";
+		mes "^0000ff"+getd("." + .@selection + "_collectionname$")+"^000000";
 		mes "--------------------------------";
 		set .@size, getarraysize(getd("."+ .@selection + "_collectionitem"));
 		for( set .@j, 0; .@j < .@size; set .@j,.@j+2){
-			mes "^FF0000"+getitemname(getd("."+.@selection+"_collectionitem["+.@j+"]"))+" - "+getd("."+.@selection+"_collectionitem["+(.@j+1)+"]")+" ea.^000000";
+			mes "^FF0000"+getitemname(getd("."+.@selection+"_collectionitem["+.@j+"]"))+" - "+getd("."+.@selection+"_collectionitem["+(.@j+1)+"]")+"个^000000";
 		}
 		mes "--------------------------------";
-		mes "[Reward]";
-		mes "Item: ^0000FF"+((getd("." +.@selection+"_collectionprize"))?getitemname(getd("." +.@selection+"_collectionprize"))+" - "+getd("." +.@selection+"_collectionamount")+" ea.^000000":"Nothing^000000");
-		mes "Zeny: ^0000FF"+getd("." +.@selection+"_collectionzeny")+"^000000";
-		mes "Base EXP: ^0000FF"+getd("." +.@selection+"_collectionexp["+0+"]")+"^000000";
-		mes "Job EXP: ^0000FF"+getd("." +.@selection+"_collectionexp["+1+"]")+"^000000";
+		mes "[奖励]";
+		mes "物品：^0000FF"+((getd("." +.@selection+"_collectionprize"))?getitemname(getd("." +.@selection+"_collectionprize"))+" - "+getd("." +.@selection+"_collectionamount")+"个^000000":"无^000000");
+		mes "Zeny：^0000FF"+getd("." +.@selection+"_collectionzeny")+"^000000";
+		mes "基础经验：^0000FF"+getd("." +.@selection+"_collectionexp["+0+"]")+"^000000";
+		mes "职业经验：^0000FF"+getd("." +.@selection+"_collectionexp["+1+"]")+"^000000";
 		next;
-		if(select("Accept:Decline") == 2){
+		if(select("接受:拒绝") == 2){
 			close;
 		}
 		if(BaseLevel >= getd("." +.@selection+"_collectionmin") && BaseLevel <= getd("." +.@selection+"_collectionmax")){
-			mes "[^FF7700Questboard^000000]";
-			mes "Quest accepted.";
+			mes "[^FF7700任务板^000000]";
+			mes "已接受任务。";
 			set c_run, true;
 			set currentquest$, .@selection;
 			close;
 		}
 		else{
-			mes "[^FF7700Questboard^000000]";
-			mes "You don't have the required";
-			mes "level to do this quest.";
+			mes "[^FF7700任务板^000000]";
+			mes "你的等级不足以";
+			mes "执行此任务。";
 			close;
 		}
 
@@ -145,47 +145,47 @@ prontera,129,215,5	script	Questboard	4_BOARD3,{
 		set .@selection,select(.@huntmenu$);
 		if(.quest_repeat == true){
 			if(gettimetick(2) < getd(.@selection + "_hunting_delay")){
-				mes "[^FF7700Questboard^000000]";
-				mes "You have to wait ^0000FF"+Time2Str(getd(.@selection + "_hunting_delay"))+"^000000 to do this quest again.";
+				mes "[^FF7700任务板^000000]";
+				mes "你必须等待 ^0000FF"+Time2Str(getd(.@selection + "_hunting_delay"))+"^000000 后才能再次执行此任务。";
 				close;
 			}
 		}
 		else{
 			if(getd(.@selection + "_hunting_repeat") == true){
-				mes "[^FF7700Questboard^000000]";
-				mes "You already did this quest.";
-				mes "Please choose another one.";
+				mes "[^FF7700任务板^000000]";
+				mes "你已经完成过这个任务了。";
+				mes "请选择另一个。";
 				close;
 			}
 		}
-		mes "[^FF7700Questboard^000000]";
-		mes "^0000FF"+getd("." + .@selection + "_huntingname$")+"^000000";
+		mes "[^FF7700任务板^000000]";
+		mes "^0000ff"+getd("." + .@selection + "_huntingname$")+"^000000";
 		mes "--------------------------------";
 		set .@size, getarraysize(getd("."+ .@selection + "_huntingmob"));
 		for( set .@j, 0; .@j < .@size; set .@j,.@j+2){
-			mes "^FF0000"+getmonsterinfo(getd("."+.@selection+"_huntingmob["+.@j+"]"), MOB_NAME)+" - "+getd("."+.@selection+"_huntingmob["+(.@j+1)+"]")+" ea.^000000";
+			mes "^FF0000"+getmonsterinfo(getd("."+.@selection+"_huntingmob["+.@j+"]"), MOB_NAME)+" - "+getd("."+.@selection+"_huntingmob["+(.@j+1)+"]")+"个^000000";
 		}
 		mes "--------------------------------";
-		mes "[Reward]";
-		mes "Item: ^0000FF"+((getd("." +.@selection+"_huntingprize"))?getitemname(getd("." +.@selection+"_huntingprize"))+" - "+getd("." +.@selection+"_huntingamount")+" ea.^000000":"Nothing^000000");
-		mes "Zeny: ^0000FF"+getd("." +.@selection+"_huntingzeny")+"^000000";
-		mes "Base EXP: ^0000FF"+getd("." +.@selection+"_huntingexp["+0+"]")+"^000000";
-		mes "Job EXP: ^0000FF"+getd("." +.@selection+"_huntingexp["+1+"]")+"^000000";
+		mes "[奖励]";
+		mes "物品：^0000FF"+((getd("." +.@selection+"_huntingprize"))?getitemname(getd("." +.@selection+"_huntingprize"))+" - "+getd("." +.@selection+"_huntingamount")+"个^000000":"无^000000");
+		mes "Zeny：^0000FF"+getd("." +.@selection+"_huntingzeny")+"^000000";
+		mes "基础经验：^0000FF"+getd("." +.@selection+"_huntingexp["+0+"]")+"^000000";
+		mes "职业经验：^0000FF"+getd("." +.@selection+"_huntingexp["+1+"]")+"^000000";
 		next;
-		if(select("Accept:Decline") == 2){
+		if(select("接受:拒绝") == 2){
 			close;
 		}
 		if(BaseLevel >= getd("." +.@selection+"_huntingmin") && BaseLevel <= getd("." +.@selection+"_huntingmax")){
-			mes "[^FF7700Questboard^000000]";
-			mes "Quest accepted.";
+			mes "[^FF7700任务板^000000]";
+			mes "已接受任务。";
 			set h_run, true;
 			set currentquest$, .@selection;
 			close;
 		}
 		else{
-			mes "[^FF7700Questboard^000000]";
-			mes "You don't have the required";
-			mes "level to do this quest.";
+			mes "[^FF7700任务板^000000]";
+			mes "你的等级不足以";
+			mes "执行此任务。";
 			close;
 		}
 
@@ -201,15 +201,15 @@ L_checkitems:
 		}
 	}
 	if(.@checkitem<.@size){
-		mes "[^FF7700Questboard^000000]";
-		mes "You don't have everything.";
+		mes "[^FF7700任务板^000000]";
+		mes "你还没有凑齐所有东西。";
 		close;
 	}
 	for( set .@delcount,0; .@delcount < .@size; set .@delcount,.@delcount+2){
 		delitem getd("."+currentquest$+"_collectionitem["+.@delcount+"]"),getd("."+currentquest$+"_collectionitem["+(.@delcount+1)+"]");
 	}
-	mes "[^FF7700Questboard^000000]";
-	mes "Congratulation! Here is your Reward.";
+	mes "[^FF7700任务板^000000]";
+	mes "恭喜！这是你的奖励。";
 	if(getd("." +currentquest$+"_collectionprize")!=0) getitem(getd("." +currentquest$+"_collectionprize"),getd("." +currentquest$+"_collectionamount"));
 	set Zeny,Zeny+getd("." +currentquest$+"_collectionzeny");
 	getexp getd("." +currentquest$+"_collectionexp["+0+"]"),getd("." +currentquest$+"_collectionexp["+1+"]");
@@ -236,12 +236,12 @@ L_checkmobs:
 
 L_checkmobs2:
 	if(.@checkmonster<.@goal){
-		mes "[^FF7700Questboard^000000]";
-		mes "You didn't kill everything.";
+		mes "[^FF7700任务板^000000]";
+		mes "你还没有杀光所有目标。";
 		close;
 	}
-	mes "[^FF7700Questboard^000000]";
-	mes "Congratulation! Here is your Reward.";
+	mes "[^FF7700任务板^000000]";
+	mes "恭喜！这是你的奖励。";
 	set .@size, getarraysize(getd("."+currentquest$+"_huntingmob"));
 	for(set .@x, 1; .@x < .@size; set .@x,.@x+2){
 		set .@currentmob, getd("."+currentquest$+"_huntingmob["+(.@x-1)+"]");

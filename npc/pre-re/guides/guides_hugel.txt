@@ -15,111 +15,111 @@
 //= 1.2 Rescripted to official 10.3 standards. [L0ne_W0lf]
 //============================================================
 
-hugel,98,56,3	script	Hugel Guide Granny#huge	863,0,0,{
-	mes "[Hugel Guide Granny]";
-	mes "Oh, hello~ you are one energetic adventurer.";
-	mes "Welcome to Hugel. I was honored to guide you to this beautiful village.";
-	mes "If this is the first time for you to use the guide services, why don't you check the ''Notice'' menu first?";
+hugel,98,56,3	script	休格尔向导婆婆#huge	863,0,0,{
+	mes "[休格尔向导婆婆]";
+	mes "哦，你好～真是个活力十足的冒险者。";
+	mes "欢迎来到休格尔。很荣幸能带您来到这座美丽的村庄。";
+	mes "如果您是第一次使用向导服务，不如先看看“注意事项”菜单？";
 	while(1) {
 		next;
-		switch(select("Village Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		switch(select("村庄向导:移除小地图标记:注意事项:取消")) {
 		case 1:
-			mes "[Hugel Guide Granny]";
-			mes "I can tell you any building location as long as it is in Hugel.";
-			mes "So where do you want to go?";
+			mes "[休格尔向导婆婆]";
+			mes "只要是休格尔境内的建筑，我都能告诉您位置。";
+			mes "那么您想去哪里呢？";
 			if (.@compass_check == 0) {
-				mes "Would you like me";
-				mes "to mark locations";
-				mes "on your Mini-Map?";
+				mes "要我为您";
+				mes "在小地图上";
+				mes "标出地点吗？";
 				next;
-				if (select("Yes.:No.") == 1) set .@compass_check,1;
+				if (select("是。:否。") == 1) set .@compass_check,1;
 			}
 			set .@loop,1;
 			while(.@loop) {
 				if (.@wait_button_chk == 0) set .@wait_button_chk,1;
 				else next;
-				switch(select("Church:Inn:Pub:Airport:Weapon Shop:Tool Shop:Party Supplies Shop:^3131FFHunter Job Change Place^000000:^3131FFShrine Expedition's Place^000000:Monster Race Arena:Bingo Game Room:Cancel")) {
+				switch(select("教堂:旅馆:酒馆:机场:武器店:工具店:派对用品店:^3131FF猎人转职所^000000:^3131FF神殿远征队驻地^000000:怪物赛跑场:宾果游戏室:取消")) {
 				case 1:
-					mes "[Hugel Guide Granny]";
-					mes "Well, to me, this Church is rather like a place for old folks like me, you know...";
+					mes "[休格尔向导婆婆]";
+					mes "嗯，对我来说，这座教堂更像是像我这样的老人家待的地方，你懂吧……";
 					if (.@compass_check)
 						viewpoint 1,156,116,2,0xFF0000;
 					break;
 				case 2:
-					mes "[Hugel Guide Granny]";
-					mes "Pudding rather than praise.";
-					mes "You'd better unpack your stuffs first before you start looking around this village.";
-					mes "It is the building right next to me.";
+					mes "[休格尔向导婆婆]";
+					mes "空谈不如实惠。";
+					mes "您最好先把行李放好，再开始逛这座村庄。";
+					mes "就是我旁边的这栋建筑。";
 					if (.@compass_check)
 						viewpoint 1,104,79,3,0xFF00FF;
 					break;
 				case 3:
-					mes "[Hugel Guide Granny]";
-					mes "Yes, when you travel, you want to drop by a pub and make new friends.";
-					mes "Go east from here, then you will arrive at the pub.";
+					mes "[休格尔向导婆婆]";
+					mes "是啊，旅行的时候总会想找个酒馆坐坐，交些新朋友。";
+					mes "从这里往东走，就能到酒馆了。";
 					if (.@compass_check)
 						viewpoint 1,129,66,4,0x99FFFF;
 					break;
 				case 4:
-					mes "[Hugel Guide Granny]";
-					mes "A while ago, strangers came to village and built that strange airport kind of thing...";
-					mes "What do they call it? Airship?";
+					mes "[休格尔向导婆婆]";
+					mes "不久前，一些外地人来到村里，建了那个奇怪的机场之类的东西……";
+					mes "他们管它叫什么？飞空艇？";
 					if (.@compass_check)
 						viewpoint 1,178,146,5,0x0000FF;
 					break;
 				case 5:
-					mes "[Hugel Guide Granny]";
-					mes "Well, we have a weapon shop in the center of village.";
-					mes "But I don't know if there is any weapon that you find useful.";
+					mes "[休格尔向导婆婆]";
+					mes "嗯，村子中心有家武器店。";
+					mes "不过我不知道那里有没有您用得上的武器。";
 					if (.@compass_check)
 						viewpoint 1,70,158,6,0x00FF00;
 					break;
 				case 6:
-					mes "[Hugel Guide Granny]";
-					mes "Yes, I love Hugel brand Red Potions. I haven't tasted Red Potions from any other brands yet...hohoho. ";
-					mes "The tool shop is located in the center of village.";
+					mes "[休格尔向导婆婆]";
+					mes "是啊，我最喜欢休格尔牌的红色药水。别的牌子的红色药水我还没尝过呢……呵呵呵。";
+					mes "工具店位于村子中心。";
 					if (.@compass_check)
 						viewpoint 1,93,167,7,0x00FF00;
 					break;
 				case 7:
-					mes "[Hugel Guide Granny]";
-					mes "The party supplies shop is around the center of village.";
-					mes "Make sure that you will not use any firecracker stuffs near other people, because it is dangerous, you know?";
+					mes "[休格尔向导婆婆]";
+					mes "派对用品店在村子中心一带。";
+					mes "千万别在别人附近使用鞭炮之类的东西，那很危险，知道吗？";
 					if (.@compass_check)
 						viewpoint 1,91,105,8,0xFF99FF;
 					break;
 				case 8:
-					mes "[Hugel Guide Granny]";
-					mes "Oh, are you an aspiring Hunter?";
-					mes "Then head northeast following the beach, then you will find the Hunter job change place.";
+					mes "[休格尔向导婆婆]";
+					mes "哦，您想成为猎人吗？";
+					mes "那就沿着海滩往东北走，就能找到猎人转职所。";
 					if (.@compass_check)
 						viewpoint 1,206,228,9,0xFF9900;
 					break;
 				case 9:
-					mes "[Hugel Guide Granny]";
-					mes "I heard that the shrine expedition is staying in a house at the west.";
-					mes "They have put some kind of sign in the middle of village, so I guess that they are hiring people for something...";
-					mes "I wonder what they are doing in here...hmmm.";
+					mes "[休格尔向导婆婆]";
+					mes "听说神殿远征队住在西边的一栋屋子里。";
+					mes "他们在村子中间立了块牌子，我猜是在招人做什么事……";
+					mes "不知道他们在这里做什么……嗯……";
 					if (.@compass_check)
 						viewpoint 1,52,91,10,0xFFFFFF;
 					break;
 				case 10:
-					mes "[Hugel Guide Granny]";
-					mes "I also like playing Monster Race games. It is pretty fun, you know?";
-					mes "Oh, you haven't tried it yet? No~ you'd better try. Trust me, you will like it.";
+					mes "[休格尔向导婆婆]";
+					mes "我也喜欢玩怪物赛跑。挺有意思的，你知道吗？";
+					mes "哦，您还没试过？不行～一定要试试。相信我，您会喜欢的。";
 					if (.@compass_check)
 						viewpoint 1,58,72,11,0xFF9900;
 					break;
 				case 11:
-					mes "[Hugel Guide Granny]";
-					mes "Do you like bingo games? If you do, go visit Euklan's Bingo Game Room.";
+					mes "[休格尔向导婆婆]";
+					mes "您喜欢宾果游戏吗？喜欢的话，就去尤克兰的宾果游戏室吧。";
 					if (.@compass_check)
 						viewpoint 1,55,209,12,0x66FFFF;
 					break;
 				case 12:
-					mes "[Hugel Guide Granny]";
-					mes "If you like to get rid of all the location marks on your Mini-Map,";
-					mes "just ask me again, and choose ''Remove Marks from Mini-Map'' menu.";
+					mes "[休格尔向导婆婆]";
+					mes "如果您想清除小地图上的所有地点标记，";
+					mes "再来找我就行，选择“移除小地图标记”菜单。";
 					set .@loop,0;
 				}
 			}
@@ -137,19 +137,19 @@ hugel,98,56,3	script	Hugel Guide Granny#huge	863,0,0,{
 			viewpoint 2,58,72,11,0xFF9900;
 			viewpoint 2,55,209,12,0x66FFFF;
 			set .@compass_check,0;
-			mes "[Hugel Guide Granny]";
-			mes "Okay, they are gone now. If you have more locations to ask, just let me know.";
+			mes "[休格尔向导婆婆]";
+			mes "好了，标记都清除了。如果还想问其他地点，随时告诉我。";
 			break;
 		case 3:
-			mes "[Hugel Guide Granny]";
-			mes "When you are using the ''Village Guide'' menu, ";
-			mes "make sure that building locations will be marked on your mini-map at the upper right side of your screen.";
-			mes "If you cannot see your mini-map, use the short cut key ''ctrl+tab'' or press the ''Map'' button on your basic information windows, okay?";
-			mes "And you can also zoom out your mini-map by using the ''-'' button in case you cannot view the entire map of the village.";
+			mes "[休格尔向导婆婆]";
+			mes "使用“村庄向导”菜单时，";
+			mes "建筑位置会标记在屏幕右上角的小地图上，请留意。";
+			mes "如果看不到小地图，请使用快捷键“ctrl+tab”，或点击基本状态窗上的“Map”按钮，好吗？";
+			mes "如果看不到整个村庄的地图，也可以用“-”按钮缩小地图。";
 			break;
 		case 4:
-			mes "[Hugel Guide Granny]";
-			mes "This guide job is pretty exciting. Hohoho~";
+			mes "[休格尔向导婆婆]";
+			mes "这份向导工作真有意思。呵呵呵～";
 			close;
 		}
 	}

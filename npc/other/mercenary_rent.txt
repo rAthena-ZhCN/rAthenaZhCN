@@ -29,18 +29,18 @@
 	for (.@size = getarraysize(.@name$); .@type < .@size; .@type++)
 		if( compare( .@npc$,.@name$[.@type] ) ) break;
 	.@faith_merc = mercenary_get_faith(getd(.@faith$[.@type]));
-	mes "[Mercenary Manager]";
-	mes "Welcome to the";
-	mes .@name$[.@type] + " Mercenary Guild.";
-	mes "What can I do for you?";
+	mes "[佣兵管理员]";
+	mes "欢迎来到";
+	mes .@name$[.@type] + "佣兵公会。";
+	mes "有什么能为你效劳的吗？";
 	next;
-	switch(select("Hire Mercenary:Mercenary Info:Nothing:10th Grade Mercenaries")) {
+	switch(select("雇用佣兵:佣兵信息:算了:10级佣兵")) {
 		case 1:
-			mes "[Mercenary Manager]";
-			mes "You want to hire a";
-			mes .@name$[.@type] + " Mercenary?";
-			mes "Which Grade were you";
-			mes "interested in hiring?";
+			mes "[佣兵管理员]";
+			mes "你想雇用";
+			mes .@name$[.@type] + "佣兵吗？";
+			mes "你希望雇用";
+			mes "哪个等级的佣兵？";
 			next;
 			for (.@i = 1; .@i <= 9; .@i++)
 				.@menu$ = .@menu$ + callfunc("F_GetNumSuffix",.@i) + " Grade " + .@name$[.@type] + " Mercenary:";
@@ -50,160 +50,160 @@
 			.@ZenyCost = 7 * .@Grade;
 			setarray .@FaithCost[7], 50,100,300;
 			.@FaithCost = .@FaithCost[.@Grade];
-			mes "[Mercenary Manager]";
-			mes "So you want to hire a " + callfunc("F_GetNumSuffix",.@Grade);
-			mes "Grade " + .@name$[.@type] + " Mercenary?";
-			mes "You need to have attained";
-			mes "Base Level " + .@BaseLevel + " or higher, and";
-			mes "must pay the " + .@ZenyCost + ",000 zeny fee.";
+			mes "[佣兵管理员]";
+			mes "那么你想雇用" + callfunc("F_GetNumSuffix",.@Grade);
+			mes "级" + .@name$[.@type] + "佣兵吗？";
+			mes "你必须先达到";
+			mes "Base等级" + .@BaseLevel + "以上，并且";
+			mes "还需支付" + .@ZenyCost + ",000 Zeny 的费用。";
 			next;
-			if(select("Yes:No") == 2) {
-				mes "[Mercenary Manager]";
-				mes "Oh, really? Well, now";
-				mes "might not be a good time";
-				mes "for you to consider hiring";
-				mes "a Mercenary, but please feel";
-				mes "free to come back if your";
-				mes "needs change. Thank you~";
+			if(select("是:否") == 2) {
+				mes "[佣兵管理员]";
+				mes "哦，是吗？不过现在";
+				mes "或许不是你想考虑雇用";
+				mes "佣兵的好时机，不过";
+				mes "请随时再来，如果";
+				mes "你的需求有所";
+				mes "改变。谢谢～";
 			}
 			else if(.@FaithCost && .@faith_merc < .@FaithCost) {
-				mes "[Mercenary Manager]";
-				mes "Oh... Your Loyalty rating";
-				mes "with the " + .@name$[.@type] + " Mercenary";
-				mes "Guild isn't high enough to";
-				mes "hire this Mercenary. Please";
-				mes "come back after you earn";
-				mes "" + .@FaithCost + " or more Loyalty with us.";
+				mes "[佣兵管理员]";
+				mes "哦……你的忠诚度";
+				mes "在" + .@name$[.@type] + "佣兵";
+				mes "公会中还不够高，";
+				mes "无法雇用这名佣兵。请";
+				mes "先与我们累积";
+				mes "" + .@FaithCost + "点以上忠诚度再来。";
 			}
 			else if (BaseLevel < .@BaseLevel) {
-				mes "[Mercenary Manager]";
-				mes "I'm sorry, but your Base";
-				mes "Level isn't high enough";
-				mes "to hire this Mercenary.";
-				mes "Please come back to me";
-				mes "once you reach Base Level " + .@BaseLevel + ".";
+				mes "[佣兵管理员]";
+				mes "很抱歉，你的Base";
+				mes "等级还不够高，";
+				mes "无法雇用这名佣兵。";
+				mes "请再回来找我吧，等你";
+				mes "达到Base等级" + .@BaseLevel + ".";
 			}
 			else if (Zeny < .@ZenyCost * 1000) {
-				mes "[Mercenary Manager]";
-				mes "I'm sorry, but you";
-				mes "don't have enough zeny";
-				mes "to hire this Mercenary.";
-				mes "The hiring fee is " + .@ZenyCost + ",000 zeny.";
+				mes "[佣兵管理员]";
+				mes "很抱歉，你";
+				mes "身上的Zeny不足，";
+				mes "无法雇用这名佣兵。";
+				mes "雇用费用为" + .@ZenyCost + ",000 Zeny。";
 			}
 			else {
-				mes "[Mercenary Manager]";
-				mes "Great! Our Mercenaries";
-				mes "are sincere and devoted";
-				mes "to protecting their clients.";
-				mes "Summoned Mercenaries will";
-				mes "offer their support to you for";
-				mes "30 minutes. Take care now.";
+				mes "[佣兵管理员]";
+				mes "太好了！我们的佣兵";
+				mes "诚挚而尽责，";
+				mes "会全力保护雇主。";
+				mes "召唤出的佣兵";
+				mes "会在接下来的";
+				mes "30分钟内为你提供支援。请保重。";
 				Zeny = Zeny - (.@ZenyCost * 1000);
 				getitem .@item[.@type] - 10 + .@Grade, 1;
 			}
 			close;
 		case 2:
-			mes "[Mercenary Manager]";
-			mes "Mercenaries are soldiers";
-			mes "that will fight at your side";
-			mes "on the battlefield, but there";
-			mes "are a few terms and conditions";
-			mes "you must fulfill to hire them.";
+			mes "[佣兵管理员]";
+			mes "佣兵是战士，";
+			mes "会与你并肩";
+			mes "在战场上作战，但";
+			mes "雇用他们还需要满足";
+			mes "一些条件与规定。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "You must fulfill a level";
-			mes "requirement and pay a zeny";
-			mes "fee to hire a Mercenary.";
-			mes "Higher grade Mercenaries";
-			mes "will also require that you";
-			mes "build a Loyalty rating with us.";
+			mes "[佣兵管理员]";
+			mes "雇用佣兵必须满足";
+			mes "等级要求，并支付";
+			mes "雇用所需的 Zeny 费用。";
+			mes "更高等级的佣兵";
+			mes "还会要求你";
+			mes "与我们建立忠诚度。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "Mercenary contracts can't be";
-			mes "transferred to other people,";
-			mes "and we only allow a 5 Base Level difference between the Mercenary";
-			mes "and client so you can't hire one much stronger than you.";
+			mes "[佣兵管理员]";
+			mes "佣兵契约不能";
+			mes "转让给他人，";
+			mes "而且佣兵与雇主之间只允许相差5个Base等级，";
+			mes "因此你无法雇用比你强太多的佣兵。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "Well, you can figure out the";
-			mes "details when you actually form";
-			mes "a contract with one of our";
-			mes "Mercenaries, and receive";
-			mes "the Summon Scroll that will";
-			mes "call a Mercenary to your side.";
+			mes "[佣兵管理员]";
+			mes "具体细节";
+			mes "等你真正与我们的佣兵";
+			mes "签订契约时";
+			mes "就会明白，届时还会收到";
+			mes "召唤卷轴，用它";
+			mes "就能把佣兵召唤到身边。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "You can't give this scroll";
-			mes "to anyone else, and the";
-			mes "Mercenary will only remain";
-			mes "with you for 30 minutes after";
-			mes "you summon him. Don't forget";
-			mes "about the time limit, okay?";
+			mes "[佣兵管理员]";
+			mes "这个卷轴不能";
+			mes "交给他人，而且佣兵";
+			mes "在你召唤他之后";
+			mes "只会陪伴你30分钟，";
+			mes "请不要忘记";
+			mes "有时间限制，好吗？";
 			close;
 		case 3:
-			mes "[Mercenary Manager]";
-			mes "No? You didn't need any";
-			mes "help? Well, feel free to";
-			mes "ask me if you have any";
-			mes "questions about Mercenaries.";
+			mes "[佣兵管理员]";
+			mes "不要吗？你不需要";
+			mes "帮助吗？那么如有任何";
+			mes "关于佣兵的问题";
+			mes "随时来问我。";
 			close;
 		case 4:
-			mes "[Mercenary Manager]";
-			mes "10th Grade Mercenaries are";
-			mes "the best we have to offer,";
-			mes "and we use different criteria";
-			mes "for our clients to hire them.";
-			mes "There's no zeny fee, but you";
-			mes "must have 500 Loyalty.";
+			mes "[佣兵管理员]";
+			mes "10级佣兵是";
+			mes "我们能提供的最优秀佣兵，";
+			mes "而且我们也会用";
+			mes "不同的标准让雇主雇用他们。";
+			mes "雇用他们不需要Zeny，";
+			mes "但必须拥有500点忠诚度。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "Once you make a contract";
-			mes "with a 10th Grade Mercenary,";
-			mes "your Loyalty rating will be";
-			mes "decreased by 400. In other";
-			mes "words, you pay 400 Loyalty";
-			mes "to hire a 10th Grade Mercenary.";
+			mes "[佣兵管理员]";
+			mes "当你与";
+			mes "10级佣兵签订契约后，";
+			mes "你的忠诚度将会";
+			mes "减少400点。换句";
+			mes "话说，你需要支付400点忠诚度";
+			mes "才能雇用10级佣兵。";
 			next;
-			mes "[Mercenary Manager]";
-			mes "You must also be at";
-			mes "Base Level 90 or higher to";
-			mes "hire a 10th Grade Mercenary.";
-			mes "Are you still interested in";
-			mes "forming this contract?";
+			mes "[佣兵管理员]";
+			mes "此外，你还必须达到";
+			mes "Base等级90以上，";
+			mes "才能雇用10级佣兵。";
+			mes "你是否仍有意";
+			mes "签订这份契约？";
 			next;
-			if (select("Yes:No") == 2) {
-				mes "[Mercenary Manager]";
-				mes "I understand... It takes";
-				mes "hard work and sacrifice to";
-				mes "even reach the point where";
-				mes "you can hire a 10th Grade";
-				mes "Mercenary. Have you considered";
-				mes "hiring a lower grade Mercenary?";
+			if (select("是:否") == 2) {
+				mes "[佣兵管理员]";
+				mes "我明白……需要付出";
+				mes "许多努力与牺牲，";
+				mes "才能达到能够雇用";
+				mes "10级佣兵的";
+				mes "程度。你是否考虑过";
+				mes "雇用等级较低的佣兵？";
 			}
 			else if (.@faith_merc < 500) {
-				mes "[Mercenary Manager]";
-				mes "I'm sorry, but your";
-				mes "Loyalty rating is too";
-				mes "low to hire a 10th Grade";
-				mes "Mercenary. You must have";
-				mes "500 or more Loyalty to";
-				mes "form a contract with one.";
+				mes "[佣兵管理员]";
+				mes "很抱歉，你的";
+				mes "忠诚度太";
+				mes "低，无法雇用10级";
+				mes "佣兵。你必须拥有";
+				mes "500点以上忠诚度，";
+				mes "才能与他们签订契约。";
 			}
 			else if (BaseLevel < 90) {
-				mes "[Mercenary Manager]";
-				mes "I'm sorry, but you must";
-				mes "be at Base Level 90 or";
-				mes "higher to form a contract";
-				mes "with a 10th Grade Mercenary.";
+				mes "[佣兵管理员]";
+				mes "很抱歉，你必须达到";
+				mes "Base等级90";
+				mes "以上，才能与";
+				mes "10级佣兵签订契约。";
 			}
 			else {
-				mes "[Mercenary Manager]";
-				mes "Congratulations! It looks";
-				mes "like you're planning in taking";
-				mes "on some very dangerous work";
-				mes "since you're hiring a 10th";
-				mes "Grade Mercenary. I wish you";
-				mes "the best of luck with him.";
+				mes "[佣兵管理员]";
+				mes "恭喜！看来";
+				mes "你打算接下";
+				mes "非常危险的工作，";
+				mes "因为你要雇用的是10级";
+				mes "佣兵。祝你";
+				mes "与他合作顺利。";
 				mercenary_set_faith getd(.@faith$[.@type]),-400;
 				getitem .@item[.@type],1;
 			}
@@ -216,12 +216,12 @@ pay_arche,99,167,4	duplicate(Mercenary Manager#main)	Mercenary Manager#Bow	4_M_J
 // Mercenary Merchant NPCs
 //============================================================
 -	script	Mercenary Merchant#dummy::MercMerchant	-1,{
-	mes "[Mercenary Goods Merchant]";
-	mes "Hello, I sell goods";
-	mes "that Mercenaries can";
-	mes "use. Is there anything";
-	mes "in particular that";
-	mes "you're looking for?";
+	mes "[佣兵用品商人]";
+	mes "你好，我卖的是";
+	mes "佣兵们可以";
+	mes "使用的用品。请问你";
+	mes "有没有特别";
+	mes "想要的东西？";
 	next;
 	setarray .@item, 12184,	12185,	12241,	12242,	12243;
 	setarray .@cost, 2500,	5000,	800,	1500,	3000;
@@ -231,59 +231,59 @@ pay_arche,99,167,4	duplicate(Mercenary Manager#main)	Mercenary Manager#Bow	4_M_J
 	.@str$ = .@cost[.@m] + "";
 	.@len = getstrlen(.@str$);
 	.@str_cost$ = (.@len <= 3)? .@str$ : insertchar(.@str$,",",.@len-3);
-	mes "[Mercenary Goods Merchant]";
+	mes "[佣兵用品商人]";
 	mes getitemname(.@item[.@m]);
-	mes "each cost " + .@str_cost$ + " zeny.";
-	mes "How many would you like?";
+	mes "每个售价" + .@str_cost$ + "Zeny。";
+	mes "你要买多少个？";
 	next;
 	input .@input;
 	if (!.@input) {
-		mes "[Mercenary Goods Merchant]";
-		mes "You changed your mind?";
-		mes "Alright, feel free to come";
-		mes "back to me whenever you want";
-		mes "to buy any Mercenary Potions.";
+		mes "[佣兵用品商人]";
+		mes "你改变主意了？";
+		mes "好吧，随时欢迎";
+		mes "你回来";
+		mes "购买佣兵专用药水。";
 		close;
 	}
 	else if (.@input < 0 || .@input > 10000) {
-		mes "[Mercenary Goods Merchant]";
-		mes "I'm sorry, but you";
-		mes "can only buy up to";
-		mes "10,000 of these potions";
-		mes "at a time. Please enter";
-		mes "a number from 1 to 10,000.";
+		mes "[佣兵用品商人]";
+		mes "很抱歉，你";
+		mes "每次最多";
+		mes "只能购买10,000个";
+		mes "这种药水。请输入";
+		mes "1到10,000之间的数字。";
 		close;
 	}
 	else if (set(.@total_po, .@input * .@cost[.@m]) > Zeny) {
-		mes "[Mercenary Goods Merchant]";
-		mes "I'm sorry, but you don't";
-		mes "have enough zeny for this";
-		mes "many potions. Well, I'll be";
-		mes "be here when you're ready";
-		mes "to purchase something";
-		mes "for your Mercenaries.";
+		mes "[佣兵用品商人]";
+		mes "抱歉，您的钱";
+		mes "没有足够的Zeny买下";
+		mes "这么多药水。不过，我会";
+		mes "在你准备好";
+		mes "购买佣兵用品时";
+		mes "一直在这里等你。";
 		close;
 	}
 	else if (!checkweight(.@item[.@m], .@input)) {
-		mes "[Mercenary Goods Merchant]";
-		mes "If I gave you that many";
-		mes "potions, you wouldn't be";
-		mes "able to carry them with you.";
-		mes "Please come back after";
-		mes "you free up some space";
-		mes "in your Inventory.";
+		mes "[佣兵用品商人]";
+		mes "如果我给你那么多";
+		mes "药水，你也";
+		mes "无法把它们全部带走。";
+		mes "请在清出";
+		mes "一些物品栏空间后";
+		mes "再来找我。";
 		close;
 	}
-	mes "[Mercenary Goods Merchant]";
+	mes "[佣兵用品商人]";
 	if (.@input == 1) 
-		mes "Here's your " + getitemname(.@item[.@m]) + ".";
+		mes "这是你的" + getitemname(.@item[.@m]) + ".";
 	else {
-		mes "Here you are, this is exactly";
+		mes "给，这里正好是";
 		mes callfunc("F_InsertPlural",.@input,getitemname(.@item[.@m])) + ".";
 	}
-	mes "Thank you, and please come";
-	mes "again when you need more";
-	mes "potions for your Mercenaries.";
+	mes "谢谢，欢迎你";
+	mes "在需要更多";
+	mes "佣兵药水时再来。";
 	Zeny = Zeny - .@total_po;
 	getitem .@item[.@m], .@input;
 	close;
@@ -300,26 +300,26 @@ pay_arche,102,167,5	duplicate(MercMerchant)	Mercenary Merchant#Bow	4_F_CAPEGIRL
 	for (.@size = getarraysize(.@name$); .@type < .@size; .@type++)
 		if (.@npc$ == .@name$[.@type]) break;
 
-	mes "[Checker]";
-	mes "Please input a password.";
+	mes "[检查员]";
+	mes "请输入密码。";
 	next;
 	.@i = callfunc("F_GM_NPC",1854,0,0,10000);
-	mes "[Checker]";
+	mes "[检查员]";
 	if (.@i == -2)
 		mes "Error.";
 	else if (.@i == 0)
-		mes "Wrong number";
+		mes "号码错误";
 	else if (.@i == 1) {
-		mes "Please select.";
+		mes "请选择。";
 		next;
-		switch( select( "Turn off Mercenary NPC","Turn on Mercenary NPC" ) ) {
+		switch( select( "关闭佣兵NPC","开启佣兵NPC" ) ) {
 		case 1:
-			mes "NPCs are turned off.";
+			mes "NPC已关闭。";
 			disablenpc "Mercenary Manager#" + .@name$[.@type];
 			disablenpc "Mercenary Merchant#" + .@name$[.@type];
 			break;
 		case 2:
-			mes "NPCs are turned on.";
+			mes "NPC已开启。";
 			enablenpc "Mercenary Manager#" + .@name$[.@type];
 			enablenpc "Mercenary Merchant#" + .@name$[.@type];
 			break;

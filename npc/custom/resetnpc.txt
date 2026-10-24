@@ -11,31 +11,31 @@
 //=	Changed set -> setarray, Improved text with F_InsertPlural
 //= 1.5 Added sc_end_class to reset related status changes [sader1992]
 //============================================================
-prontera,150,193,4	script	Reset Girl	124,{
+prontera,150,193,4	script	重置少女	124,{
 	//	 		Skills,	Stats,	Both,	Limit
 	setarray .@Reset,	5000,	5000,	9000,	0;
-	mes "[Reset Girl]";
+	mes "[重置少女]";
 	if(.@Reset[3] && reset_limit > .@Reset[3]) {
-		mes "Sorry you can only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life.";
+		mes "抱歉，你一生只能重置"+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life.";
 		close;
 	}
-	mes "I am the Reset Girl.";
-	mes "Reset Stats: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
-	mes "Reset Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
-	mes "Reset Both: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
-	if(.@Reset[3]) mes "You may only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+", so use "+((.@Reset[3]>1)?"them":"it")+" wisely.";
-	mes "Please select the service you want:";
+	mes "我是重置少女。";
+	mes "重置属性："+ callfunc("F_InsertComma",.@Reset[1]) +"z";
+	mes "重置技能："+ callfunc("F_InsertComma",.@Reset[0]) +"z";
+	mes "全部重置："+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	if(.@Reset[3]) mes "你只能重置"+callfunc("F_InsertPlural",.@Reset[3],"time")+", so use "+((.@Reset[3]>1)?"them":"it")+" wisely.";
+	mes "请选择你需要的服务：";
 	next;
-	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:Cancel"));
+	set .@i,(select("^FF3355重置技能:重置属性:全部重置^000000:取消"));
 	if(.@i > 3) close;
-	mes "[Reset Girl]";
+	mes "[重置少女]";
 	if (Zeny < .@Reset[.@i-1]) {
-		mes "Sorry, you don't have enough Zeny.";
+		mes "抱歉，你的 Zeny 不足。";
 		close;
 	}
 	if(.@Reset[3]){
-		mes "You can only reset "+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life, are you sure?";
-		if(select("Let me think:That's fine") == 1) close;
+		mes "你一生只能重置"+callfunc("F_InsertPlural",.@Reset[3],"time")+" in your life, are you sure?";
+		if(select("让我想想:没问题") == 1) close;
 	}
 	set Zeny, Zeny-.@Reset[.@i-1];
 	if(.@i&1){
@@ -43,7 +43,7 @@ prontera,150,193,4	script	Reset Girl	124,{
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
-	mes "There you go!";
+	mes "好了！";
 	if(.@Reset[3]) set reset_limit,reset_limit + 1;
 	close;
 }

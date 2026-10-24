@@ -14,18 +14,18 @@
 //= 1.0 Split from Pre-Renewal Mage job quest. [Zopokx]
 //============================================================ 
 
-pay_arche,122,100,0	script	Dollshoi	88,{
-	mes "[Mage Guildsman]";
-	mes "You want a Solution? Hmm, give me 50 Zeny and at least 1 Empty Test Tube.";
+pay_arche,122,100,0	script	多尔修伊	88,{
+	mes "[魔法师公会成员]";
+	mes "你想要溶液？嗯，给我 50 Zeny 和至少 1 个空试管。";
 	next;
-	if (select("Alright, Deal.:Nah, forget it.") == 1) {
-		mes "[Mage Guildsman]";
+	if (select("好的，成交。:算了，不用了。") == 1) {
+		mes "[魔法师公会成员]";
 		if (Zeny < 50) {
-			mes "Hey! You don't have enough money to cover my 50 Zeny charge.";
+			mes "喂！你的钱不够付我这 50 Zeny 的费用。";
 			close;
 		}
 		if (countitem(1092) == 0) {
-			mes "You can't carry solutions without a bottle! Bring me an Empty Test Tube.";
+			mes "没有瓶子就装不了溶液！给我拿一个空试管来。";
 			close;
 		}
 		delitem 1092,1; //Empty_Cylinder
@@ -35,18 +35,18 @@ pay_arche,122,100,0	script	Dollshoi	88,{
 	close;
 }
 
-moc_ruins,91,150,0	script	Ponka-Hontas	93,{
-	mes "[Mage Guildsman]";
-	mes "Would you like a Solution? Then please give me 50 Zeny and at least 1 Empty Test Tube.";
+moc_ruins,91,150,0	script	邦卡-洪塔斯	93,{
+	mes "[魔法师公会成员]";
+	mes "你想要溶液吗？那就请给我 50 Zeny 和至少 1 个空试管。";
 	next;
-	if (select("Alright, Deal.:Nah, forget it.") == 1) {
-		mes "[Mage Guildsman]";
+	if (select("好的，成交。:算了，不用了。") == 1) {
+		mes "[魔法师公会成员]";
 		if (Zeny < 50) {
-			mes "I'm sorry, but you don't have enough money to cover the 50 Zeny fee.";
+			mes "抱歉，你的钱不够支付 50 Zeny 的费用。";
 			close;
 		}
 		if (countitem(1092) == 0) {
-			mes "You can't carry liquids without using a bottle. Bring an Empty Test Tube the next time you see me.";
+			mes "不用瓶子就装不了液体。下次见到我时，带一个空试管来。";
 			close;
 		}
 		delitem 1092,1; //Empty_Cylinder

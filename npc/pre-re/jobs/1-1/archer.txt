@@ -24,115 +24,115 @@
 //= 1.9 Added Quest Log commands. [L0ne_W0lf]
 //============================================================ 
 
-payon_in02,64,71,4	script	Archer Guildsman#archer	85,{
+payon_in02,64,71,4	script	弓箭手公会会员#archer	85,{
 	if (Upper == 1) {
 		if (Class == Job_Novice_High && (ADVJOB == Job_Sniper || ADVJOB == Job_Clown || ADVJOB == Job_Gypsy)) {
-			mes "[Archer Guildsman]";
-			mes "Hey, I know you.";
-			mes "You took this test";
-			mes "before, didn't you?";
+			mes "[弓箭手公会会员]";
+			mes "嘿，我认识你。";
+			mes "你以前参加过";
+			mes "这个考试，对吧？";
 			next;
-			mes "[Archer Guildsman]";
-			mes "Ah, you must have been";
-			mes "to Valhalla and been reborn.";
-			mes "Wow, that's so impressive!";
+			mes "[弓箭手公会会员]";
+			mes "啊，你一定是";
+			mes "去过巴哈拉宫并重生了。";
+			mes "哇，真了不起！";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[Archer Guildsman]";
+				mes "[弓箭手公会会员]";
 				mes "Err...";
-				mes "You'd better learn all the Basic Skills first before you can become an Archer.";
+				mes "在成为弓箭手之前，你最好先学会所有基本技能。";
 				next;
-				mes "[Archer Guildsman]";
-				mes "Alright, see you later.";
+				mes "[弓箭手公会会员]";
+				mes "好，回头见。";
 				close;
 			}
-			mes "[Archer Guildsman]";
-			mes "Well then. I don't";
-			mes "need to say anything else.";
-			mes "I know you'll make a great Archer...";
+			mes "[弓箭手公会会员]";
+			mes "那么，我也";
+			mes "不必再多说什么了。";
+			mes "我知道你会成为出色的弓箭手……";
 			next;
 			skill "NV_TRICKDEAD",0,SKILL_PERM;
 			jobchange Job_Archer_high;
 			skill "AC_MAKINGARROW",1,SKILL_PERM;
 			skill "AC_CHARGEARROW",1,SKILL_PERM;
-			mes "[Archer Guildsman]";
-			mes "Although there's no special";
-			mes "reward for you this time, I hope you understand. Take care of yourself.";
+			mes "[弓箭手公会会员]";
+			mes "虽然这次没有";
+			mes "特别的奖励给你，希望你能理解。保重。";
 			close;
 		}
 		else {
-			mes "[Archer Guildsman]";
-			mes "Oh...?";
-			mes "Hey, what are";
-			mes "you doing here...?";
+			mes "[弓箭手公会会员]";
+			mes "哦……？";
+			mes "嘿，你在这里";
+			mes "做什么……？";
 			next;
-			mes "[Archer Guildsman]";
-			mes "I can tell that you're not cut out to be an Archer. It sort of feels like you're meant to do";
-			mes "something else...";
+			mes "[弓箭手公会会员]";
+			mes "我看得出你并不适合当弓箭手。感觉你更适合去做";
+			mes "别的事情……";
 			close;
 		}
 	}
-	mes "[Archer Guildsman]";
-	mes "Good day. How may I help you?";
+	mes "[弓箭手公会会员]";
+	mes "你好。有什么需要我帮忙的吗？";
 	next;
-	switch(select("I want to be an Archer.:I need the requirements, please.:Nothing, thanks.")) {
+	switch(select("我想成为弓箭手。:请告诉我需要什么条件。:没什么，谢谢。")) {
 	case 1:
 		if (BaseJob == Job_Archer) {
-			mes "[Archer Guildsman]";
-			mes "You've already become an Archer...";
+			mes "[弓箭手公会会员]";
+			mes "你已经是弓箭手了……";
 			close;
 		}
 		else if (BaseJob != Job_Archer && BaseJob != Job_Novice) {
-			mes "[Archer Guildsman]";
+			mes "[弓箭手公会会员]";
 			mes "Hmm...";
-			mes "You don't look much like a Novice at all...";
+			mes "你看起来一点也不像初心者……";
 			next;
-			mes "[Archer Guildsman]";
-			mes "Anyway, whatever you are, you can't choose a job as an Archer because you have a job already.";
+			mes "[弓箭手公会会员]";
+			mes "总之，不管你是谁，你都已经有职业了，不能选择成为弓箭手。";
 			close;
 		}
 		if (job_archer_q == 0) {
-			mes "[Archer Guildsman]";
-			mes "Do you want to be an Archer?";
-			mes "If so, you need to fill out this application form.";
+			mes "[弓箭手公会会员]";
+			mes "你想成为弓箭手吗？";
+			mes "如果是的话，你需要填写这份申请书。";
 			next;
-			if (select("Apply.:Cancel") == 1) {
+			if (select("申请。:取消。") == 1) {
 				set job_archer_q,1;
 				setquest 1004;
-				mes "[Archer Guildsman]";
-				mes "Okay, sign here. Alright, um, I'll promote you once you meet the requirements.";
+				mes "[弓箭手公会会员]";
+				mes "好，在这里签名。嗯，只要你满足条件，我就为你转职。";
 				next;
-				mes "[Archer Guildsman]";
-				mes "If you think you've met them already, we can check that now.";
-				mes "Are you ready?";
+				mes "[弓箭手公会会员]";
+				mes "如果你认为自己已经满足条件了，我们现在就可以确认。";
+				mes "准备好了吗？";
 				next;
-				if (select("Yes, I am.:No, not yet.") == 1) {
-					mes "[Archer Guildsman]";
-					mes "Alright, let me check.";
+				if (select("是的，我准备好了。:不，还没好。") == 1) {
+					mes "[弓箭手公会会员]";
+					mes "好，让我确认一下。";
 					next;
 				}
 				else {
-					mes "[Archer Guildsman]";
-					mes "I understand. Be my guest if you want to look at the requirements.";
+					mes "[弓箭手公会会员]";
+					mes "我明白了。想看条件的话请自便。";
 					close;
 				}
 			}
 			else {
-				mes "[Archer Guildsman]";
-				mes "Well, alright.";
-				mes "See you next time.";
+				mes "[弓箭手公会会员]";
+				mes "那好吧。";
+				mes "下次见。";
 				close;
 			}
 		}
-		mes "[Archer Guildsman]";
-		mes "Are you..." + strcharinfo(0) + "?";
+		mes "[弓箭手公会会员]";
+		mes "你是……" + strcharinfo(0) + "？";
 		next;
 		if (!callfunc("F_CanChangeJob")) {
-			mes "[Archer Guildsman]";
-			mes "Well, you're not at the right job level. Please check the requirements again.";
+			mes "[弓箭手公会会员]";
+			mes "你的Job等级还不够。请再确认一次条件。";
 			next;
-			mes "[Archer Guildsman]";
-			mes "Your job level must be at least 10, and don't forget you should learn all of the Basic Skills. Once you've done that, come back.";
+			mes "[弓箭手公会会员]";
+			mes "Job等级必须达到10以上，另外别忘了学会所有基本技能。都完成后再回来吧。";
 			close;
 		}
 		if (job_archer_q == 1) {
@@ -142,51 +142,51 @@ payon_in02,64,71,4	script	Archer Guildsman#archer	85,{
 			set .@archer_item4,countitem(1019);
 			set .@total_archer,.@archer_item1 + .@archer_item2 + .@archer_item3 + .@archer_item4;
 			set .@total_archer2,(((.@archer_item2 + .@archer_item3) * 2) + .@archer_item4);
-			mes "[Archer Guildsman]";
-			mes "Excellent!";
-			mes "Now then,";
-			mes "let's see...";
+			mes "[弓箭手公会会员]";
+			mes "太好了！";
+			mes "那么，";
+			mes "我看看……";
 			next;
-			mes "[Archer Guildsman]";
-			mes "I will appraise the value of the various types of Trunks, needed to produce a Bow, that you've brought.";
+			mes "[弓箭手公会会员]";
+			mes "我来评估你带来的这些制作弓所需的各类树干的价值。";
 			next;
 			if (countitem(1066) == 0 && countitem(1067) == 0 && countitem(1068) == 0 && countitem(1019) == 0) {
-				mes "[Archer Guildsman]";
+				mes "[弓箭手公会会员]";
 				mes "Um...";
-				mes "Unfortunately you didn't bring any of the required items. There's nothing for me to appraise.";
+				mes "很遗憾，你没有带来任何需要的物品，我没什么可评估的。";
 				close;
 			}
-			mes "[Archer Guildsman]";
-			if (countitem(1066) != 0) mes " Grade S : " + countitem(1066) + " ea, Grade: " + .@archer_item1 + " . ";
-			if (countitem(1067) != 0) mes " Grade A : " + countitem(1067) + " ea, Grade : " + .@archer_item2 + " . ";
-			if (countitem(1068) != 0) mes " Grade B : " + countitem(1068) + " ea, Grade : " + .@archer_item3 + " . ";
-			if (countitem(1019) != 0) mes " Grade C : " + countitem(1019) + " ea, Grade : " + .@archer_item4 + " . ";
+			mes "[弓箭手公会会员]";
+			if (countitem(1066) != 0) mes "S级：" + countitem(1066) + "个，评级：" + .@archer_item1 + " . ";
+			if (countitem(1067) != 0) mes "A级：" + countitem(1067) + "个，评级：" + .@archer_item2 + " . ";
+			if (countitem(1068) != 0) mes "B级：" + countitem(1068) + "个，评级：" + .@archer_item3 + " . ";
+			if (countitem(1019) != 0) mes "C级：" + countitem(1019) + "个，评级：" + .@archer_item4 + " . ";
 			if (.@total_archer < 25) {
-				mes "Total Grades: ^FF0000" + .@total_archer + "^000000 / 40";
+				mes "总评级：^FF0000" + .@total_archer + "^000000 / 40";
 				next;
-				mes "[Archer Guildsman]";
-				mes "Less than 25!? You have to get a grade of at least 25! Come on, try harder!";
+				mes "[弓箭手公会会员]";
+				mes "不到25！？至少要拿到25分才行！再加把劲！";
 				close;
 			}
 			else {
-				mes "Total Grades: ^0000FF" + .@total_archer + "^000000 / 40";
+				mes "总评级：^0000FF" + .@total_archer + "^000000 / 40";
 				next;
-				mes "[Archer Guildsman]";
+				mes "[弓箭手公会会员]";
 				if (.@total_archer > 40) {
-					mes "Wow! More than 40!";
-					mes "Excellent! Congratulations!";
+					mes "哇！超过40了！";
+					mes "太棒了！恭喜你！";
 				}
 				else if (.@total_archer > 30) {
-					mes "More than 30! Nice job!";
-					mes "Congratulations!";
+					mes "超过30了！干得不错！";
+					mes "恭喜！";
 				}
 				else {
-					mes "*Sigh* Well, you just barely passed... Anyway, well done.";
+					mes "*叹气*唉，你勉强及格了……总之，干得好。";
 				}
 			}
 			next;
-			mes "[Archer Guildsman]";
-			mes "I'll transfer these Trunks to our Bow Production Department. Now that you've met the requirements, let me promote you right away!";
+			mes "[弓箭手公会会员]";
+			mes "我会把这些树干转交给制弓部。既然你已经满足条件，我这就为你转职！";
 			if (countitem(1066) != 0) delitem 1066,countitem(1066); //Tree_Of_Archer_1
 			if (countitem(1067) != 0) delitem 1067,countitem(1067); //Tree_Of_Archer_2
 			if (countitem(1068) != 0) delitem 1068,countitem(1068); //Tree_Of_Archer_3
@@ -196,50 +196,50 @@ payon_in02,64,71,4	script	Archer Guildsman#archer	85,{
 		callfunc "Job_Change",Job_Archer;
 		callfunc "F_ClearJobVar";
 		completequest 1004;
-		mes "[Archer Guildsman]";
-		mes "Congratulations!";
-		mes "You are now an Archer!";
+		mes "[弓箭手公会会员]";
+		mes "恭喜！";
+		mes "你现在是弓箭手了！";
 		next;
-		mes "[Archer Guildsman]";
-		mes "Of course, we expect that you will help contribute towards the future of the Archer Guild with your efforts.";
+		mes "[弓箭手公会会员]";
+		mes "当然，我们也希望你能为弓箭手公会的未来贡献一份力量。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "Ah, your bow has arrived from the Bow Production Department. Here, take it! It's yours~";
+		mes "[弓箭手公会会员]";
+		mes "啊，你的弓已经从制弓部送来了。来，拿去吧！这是你的~";
 		getitem 1702,1; //Bow_
 		getitem 1750,.@total_archer2; //Arrow
 		next;
-		mes "[Archer Guildsman]";
-		mes "Now, off you go. Hunt with pride, knowing you were trained by one of the best!";
+		mes "[弓箭手公会会员]";
+		mes "好了，去吧。要知道你可是由最优秀的弓箭手之一训练出来的，带着这份骄傲去狩猎吧！";
 		close;
 	case 2:
-		mes "[Archer Guildsman]";
-		mes "I will explain the requirements for being an Archer.";
+		mes "[弓箭手公会会员]";
+		mes "我来说明成为弓箭手的条件。";
 		if (BaseJob != Job_Novice) {
 			if (BaseJob == Job_Archer) {
 				next;
-				mes "[Archer Guildsman]";
+				mes "[弓箭手公会会员]";
 				mes "But...";
-				mes "You're already an Archer. You should know these already...";
+				mes "你已经是弓箭手了，这些你应该早就知道了……";
 			}
 			else {
 				next;
-				mes "[Archer Guildsman]";
-				mes "Wait a second. You've chosen a different job already. You don't need to know this~";
+				mes "[弓箭手公会会员]";
+				mes "等一下。你已经选了别的职业，不需要知道这些~";
 			}
-			mes "So...Yeah...no real reason to tell you the requirements...";
+			mes "所以……嗯……实在没什么理由告诉你条件……";
 		}
 		next;
-		mes "[Archer Guildsman]";
-		mes "First of all, you have to the Job Level 9 as a Novice, and know all of the Basic Skills.";
+		mes "[弓箭手公会会员]";
+		mes "首先，你得以初心者的身份达到Job等级9，并掌握所有基本技能。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "An Archer needs extremely high concentration and reflexes, so we do not accept those who have little patience.";
+		mes "[弓箭手公会会员]";
+		mes "弓箭手需要极高的集中力和反应力，所以没有耐心的人我们是不收的。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "You also have to gather ^FF0000Trunks^000000. There are 4 different types of Trunks, each of differing quality. You'll be given different grades for your Trunks, depending on their quality.";
+		mes "[弓箭手公会会员]";
+		mes "你还得收集^FF0000树干^000000。树干共有4种，品质各不相同。根据品质不同，你得到的评级也会不一样。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "In order to become an Archer, you must receive a grade of at least ^0000FF25^000000 points out of 40. You can get Trunks from 'Willow,' the tree. Be careful, though. They can be tough monsters.";
+		mes "[弓箭手公会会员]";
+		mes "要成为弓箭手，你必须在40分中拿到至少^0000FF25^000000分。树干可以从名为“树精”的树身上获得。不过要小心，它们可是相当棘手的怪物。";
 		close;
 	case 3:
 		close;

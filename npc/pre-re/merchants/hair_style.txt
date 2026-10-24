@@ -18,415 +18,415 @@
 
 // Hair Dresser Veronica
 // ============================================================
-alberta_in,55,142,7	script	Hair Dresser	91,{
-	mes "[Veronica]";
-	mes "Welcome to Veronica's hair salon.";
-	mes "How can I help you?";
+alberta_in,55,142,7	script	理发师	91,{
+	mes "[维罗妮卡]";
+	mes "欢迎光临维罗妮卡的发型屋。";
+	mes "有什么可以为您效劳的？";
 	next;
-	switch(select("See available hair styles.:Change hair style.:End conversation.")) {
+	switch(select("查看可用发型。:更换发型。:结束对话。")) {
 	case 1:
-		mes "[Veronica]";
-		mes "We have a total of 19 styles, available from no.1 to no.19.";
-		mes "Which one do you want to see?";
-		mes "If you wish to cancel,";
-		mes "please enter 0.";
+		mes "[维罗妮卡]";
+		mes "本店共有19种发型，编号从1号到19号。";
+		mes "您想看哪一种呢？";
+		mes "若要取消，";
+		mes "请输入0。";
 		next;
 		input .@style;
 		if(.@style > 19) {
-			mes "[Veronica]";
-			mes "Oops, I'm sorry, but that";
-			mes "style is not available.";
-			mes "Remember to enter a number";
-			mes "from 1 to 19.";
+			mes "[维罗妮卡]";
+			mes "哎呀，抱歉，那种";
+			mes "发型并不提供。";
+			mes "请记得输入数字";
+			mes "范围是1至19。";
 			next;
 		} else if(.@style == 0) {
-			mes "[Veronica]";
-			mes "So, how do you like the style?";
-			mes "Feel free to ask me about any";
-			mes "available hairstyle. It will";
-			mes "be my pleasure to style your";
+			mes "[维罗妮卡]";
+			mes "那么，您觉得这个发型如何？";
+			mes "关于任何";
+			mes "可用的发型，尽管问我。为";
+			mes "您打理头发，是我的荣幸。";
 			mes "hair.";
 			close;
 		}
 		else {
 			callsub L_cutin,.@style;
-			mes "[Veronica]";
+			mes "[维罗妮卡]";
 			switch(.@style) {
 			case 1:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Play Dead' style!";
-					mes "It's a nice, basic haircut.";
-					mes "I notice that usually the";
-					mes "cute, conversative types seem";
-					mes "to prefer this style.";
+					mes "哦，那是『装死』发型！";
+					mes "这是一款漂亮的基本发型。";
+					mes "我发现，通常那些";
+					mes "可爱又保守的人，似乎";
+					mes "比较偏爱这种发型。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'First Aid' style!";
-					mes "The shoulder length tresses";
-					mes "are straightened for those";
-					mes "no nonsense adventurers. It";
-					mes "seems to be the style of";
-					mes "choice for Novices.";
+					mes "哦，那是『紧急治疗』发型！";
+					mes "及肩的长发";
+					mes "被拉得笔直，适合那些";
+					mes "干脆利落的冒险者。这";
+					mes "似乎正是";
+					mes "初心者的首选发型。";
 					close2; cutin "",255; end;
 			case 2:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's the 'Two Handed Sword";
-					mes "Mastery' style! It's perfect for";
-					mes "for Swordmen who might muss their";
-					mes "hair while swinging their swords";
-					mes "all day long.";
+					mes "哦，那是『双手剑使用熟练度』";
+					mes "发型！它非常适合";
+					mes "那些挥剑时会弄乱头发、";
+					mes "整天挥着长剑的";
+					mes "剑士。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Bash' style!";
-					mes "For the powerful woman that's";
-					mes "not afraid to get a little";
-					mes "blood on her hands, but knows";
-					mes "how great her hair will look";
-					mes "while wildly flailing a sword.";
+					mes "哦，那是『狂击』发型！";
+					mes "适合那种强大的女性，她";
+					mes "不怕手上沾些";
+					mes "血，但也懂得";
+					mes "自己狂舞长剑时";
+					mes "头发会有多好看。";
 					close2; cutin "",255; end;
 			case 3:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Napalm Beat' style!";
-					mes "It's a unique look with a hint";
-					mes "of eccentricity that's offset";
-					mes "with a helping of elegance.";
+					mes "哦，那是『心灵爆破』发型！";
+					mes "独特的造型，带有一丝";
+					mes "古怪，却又被一份";
+					mes "优雅所调和。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Frost Diver' style!";
-					mes "The pigtails lend an innocent,";
-					mes "demure look for those Mages";
-					mes "and Wizards that usually scare";
-					mes "off the boys with their spells.";
+					mes "哦，那是『冰冻术』发型！";
+					mes "双马尾带来一种天真";
+					mes "而端庄的气质，适合那些";
+					mes "总用自己的法术吓跑";
+					mes "男孩子的魔法师和巫师。";
 					close2; cutin "",255; end;
 			case 4:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's the 'Double Strafe'";
-					mes "style! The arrangement of the";
-					mes "hair conducts ambient static";
-					mes "electricity, naturally clearing";
-					mes "the mind. At least, that's what";
-					mes "I was taught in fashion school.";
+					mes "哦，那是『二连矢』";
+					mes "发型！发丝的";
+					mes "排列能引导周围的静电，";
+					mes "自然而然地让头脑";
+					mes "清醒。至少，";
+					mes "这是我在时尚学校学到的。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Arrow Shower' style!";
-					mes "For the Bowswoman who doesn't";
-					mes "want fashion to interfere with";
-					mes "her depth perception. Much more";
-					mes "attractive than those horrid";
-					mes "granny-style hairbuns.";
+					mes "哦，那是『箭雨』发型！";
+					mes "适合那些不希望";
+					mes "发型妨碍自己";
+					mes "判断距离的女弓箭手。比那些";
+					mes "难看的";
+					mes "奶奶式发髻好看多了。";
 					close2; cutin "",255; end;
 			case 5:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Angelus' style!";
-					mes "It's for calm and devout people,";
-					mes "as well as those bashful,";
-					mes "mild-mannered types.";
+					mes "哦，那是『天使之障壁』发型！";
+					mes "适合沉静而虔诚的人，";
+					mes "也适合那些害羞、";
+					mes "性情温和的人。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Heal' style!";
-					mes "This is in trend among";
-					mes "Priests and Acolytes since";
-					mes "this style is appropriate";
-					mes "for formal situations, but";
-					mes "is also practical in battle.";
+					mes "哦，那是『治愈术』发型！";
+					mes "这款发型近来在";
+					mes "牧师和服事之间很流行，因为";
+					mes "这种发型既适合";
+					mes "正式场合，";
+					mes "在战斗中也实用。";
 					close2; cutin "",255; end;
 			case 6:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Push Cart' style!";
-					mes "It was based on the design of a";
-					mes "cart...at least, that's what";
-					mes "I learned in beautician school.";
+					mes "哦，那是『手推车』发型！";
+					mes "它是仿照";
+					mes "手推车设计的……至少，";
+					mes "这是我在美容学校学到的。";
 					close2; cutin "",255; end;
 				}
-					mes "Ooh, that's 'Vending' style!";
-					mes "It's the hairdo of money";
-					mes "makers...and if I may say so,";
-					mes "it's also economical.";
+					mes "哦，那是『露天商店』发型！";
+					mes "这是赚大钱者的";
+					mes "发型……容我说一句，";
+					mes "它也很经济实惠。";
 					close2; cutin "",255; end;
 			case 7:
 				if(Sex == SEX_MALE) {
-					mes "Ooh, that's 'Envenom' style!";
-					mes "It looks great on Thieves and";
-					mes "and Assassins when they're";
-					mes "out poisoning people and animals.";
-					mes "It's fashion for the aggressive";
-					mes "and eclectic~!";
+					mes "哦，那是『施毒』发型！";
+					mes "盗贼和";
+					mes "刺客外出毒害人畜时，";
+					mes "这发型非常好看。";
+					mes "这是为激进";
+					mes "又独特的人打造的时尚～！";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Double Attack' style!";
-					mes "The adorable pigtail, paired with";
-					mes "those provacative bangs are sure";
-					mes "to help you steal the heart of";
-					mes "some cute guy.";
+					mes "哦，那是『二刀连击』发型！";
+					mes "可爱的马尾，搭配";
+					mes "那撩人的刘海，一定";
+					mes "能帮你偷走";
+					mes "某个可爱男孩的心。";
 					close2; cutin "",255; end;
 			case 8:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Bowling Bash' style!";
-					mes "A popular style for Knights, its";
-					mes "manly, rugged look tends to";
-					mes "attract all of the ladies,";
-					mes "and looks great on men with";
-					mes "strong chins.";
+					mes "哦，那是『怪物互击』发型！";
+					mes "骑士间很流行的发型，它";
+					mes "阳刚粗犷的外形，往往";
+					mes "能吸引所有女士，";
+					mes "而且在下巴";
+					mes "坚毅的男人身上很好看。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Gloria' style!";
-					mes "It's very elegant and looks";
-					mes "great on holy Priests. This";
-					mes "style is most attractive to";
-					mes "ladies who aren't that used";
-					mes "to fighting with their hands.";
+					mes "哦，那是『幸运之颂歌』发型！";
+					mes "它非常优雅，看起来";
+					mes "在神圣的牧师身上很好看。这款";
+					mes "发型最吸引那些";
+					mes "不习惯";
+					mes "亲手战斗的女士。";
 					close2; cutin "",255; end;
 			case 9:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Venom Dust' style!";
-					mes "Definitely a look for rebels,";
-					mes "the sweeping, yet decidedly";
-					mes "luxorious locks seems to enchant";
-					mes "girls with a fatal attraction.";
+					mes "哦，那是『病毒散拨』发型！";
+					mes "绝对是叛逆者的造型，";
+					mes "那飘逸却十";
+					mes "分华丽的卷发，似乎能迷住";
+					mes "怀有致命吸引力的女孩。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'SP Recovery' style!";
-					mes "To add more body to the special";
-					mes "style of these bangs, I use a";
-					mes "special conditioner that makes";
-					mes "you feel like you're regaining SP";
+					mes "哦，那是『SP恢复』发型！";
+					mes "为了给这特别的";
+					mes "刘海造型增加更多蓬松感，我会用";
+					mes "一种特殊护发素，让人";
+					mes "感觉像是在恢复SP";
 					mes "...Although, it acutally doesn't.";
 					close2; cutin "",255; end;
 			case 10:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Turn Undead' style!";
-					mes "This is popular among Priests";
-					mes "that want a serious, yet a bit";
-					mes "of a wild, agressive look.";
-					mes "Definitely more attractive";
-					mes "than the 'Holy Light' mullet.";
+					mes "哦，那是『转生术』发型！";
+					mes "这款在那些想要";
+					mes "严肃、却又略带";
+					mes "狂野气息造型的牧师中很受欢迎。";
+					mes "绝对比那";
+					mes "『神圣之光』鲻鱼头好看得多。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Prepare Potion' style!";
-					mes "The flared out tresses are chosen";
-					mes "by beginning Alchemists, since";
-					mes "early, explosive experiments would";
-					mes "make their hair to stick out anyway.";
+					mes "哦，那是『准备药水』发型！";
+					mes "那些外翘的长发，是";
+					mes "新手炼金术师的首选，因为";
+					mes "早期那些爆炸性的实验，";
+					mes "反正也会把他们的头发炸得竖起来。";
 					close2; cutin "",255; end;
 			case 11:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Dragonology' style!";
-					mes "It's neat and clean cut, perfect";
-					mes "for studious people and looks";
-					mes "great with eyeglasses. This";
-					mes "is a fashion well suited to";
-					mes "intellectual types.";
+					mes "哦，那是『龙知识』发型！";
+					mes "它整齐利落，完美";
+					mes "适合好学的人，看起来";
+					mes "配上眼镜很好看。这";
+					mes "是一种很适合";
+					mes "知识分子的时尚。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Grand Cross' style!";
-					mes "It's in style among those pious";
-					mes "Crusaders that need hair that";
-					mes "won't muss during fighting, yet";
-					mes "is respectable enough to attend";
-					mes "religious services.";
+					mes "哦，那是『圣十字审判』发型！";
+					mes "它在那些虔诚的";
+					mes "十字军之间很流行，他们需要";
+					mes "在战斗中不会乱的头发，";
+					mes "又要足够体面，能";
+					mes "出席宗教仪式。";
 					close2; cutin "",255; end;
 			case 12:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Mace Mastery' style!";
-					mes "A lot of care goes into making";
-					mes "that tussled hair say, 'I don't";
-					mes "care how I look at all.'";
+					mes "哦，那是『钝器使用熟练度』发型！";
+					mes "为了让那蓬乱的头发说出";
+					mes "『我一点也不在乎";
+					mes "自己的外表』，可是很费心思的。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Intimidate' style!";
-					mes "The Rogue women seem to like";
-					mes "this style...although I imagine";
-					mes "that more of them would prefer";
-					mes "something wilder to match those";
+					mes "哦，那是『胁持』发型！";
+					mes "流氓女性似乎很喜欢";
+					mes "这种发型……不过我想，";
+					mes "她们中更多人会偏爱";
+					mes "更狂野一些、与那气质相配的";
 					mes "stockings...";
 					close2; cutin "",255; end;
 			case 13:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Thunder Storm' style!";
-					mes "This hot, flamboyant hairstyle";
-					mes "flares out wildly like thunder.";
+					mes "哦，那是『雷暴术』发型！";
+					mes "这款热情华丽的发型，";
+					mes "像雷电一样狂放地向外张开。";
 					mes "...And you will too with this new look.";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Spiritual Sphere";
-					mes "Absorption' style! There's a";
-					mes "charismatic quality to this";
-					mes "fashion: it's tough, slightly";
-					mes "tomboyish, but not so much";
-					mes "that it can't be cute.";
+					mes "哦，那是『气弹";
+					mes "吸收』发型！这";
+					mes "款时尚有着";
+					mes "迷人的魅力：它坚强，略带";
+					mes "男孩子气，但也不至于";
+					mes "无法可爱。";
 					close2; cutin "",255; end;
 			case 14:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Encore' style!";
-					mes "The elegant, flowing locks";
-					mes "fit well with Bards, or men who";
-					mes "appreciate the value of male";
+					mes "哦，那是『安可』发型！";
+					mes "优雅飘逸的长发，";
+					mes "很适合诗人，或懂得";
+					mes "欣赏男性之美的男人。";
 					mes "beauty.";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Gypsy's Kiss' style!";
-					mes "Dancers seem to like this style,";
-					mes "although personally, I think";
-					mes "this fashion fits very well";
-					mes "with glasses.";
+					mes "哦，那是『冷艳舞姬之吻』发型！";
+					mes "舞娘似乎很喜欢这种发型，";
+					mes "不过我个人认为，";
+					mes "这种时尚非常";
+					mes "适合搭配眼镜。";
 					close2; cutin "",255; end;
 			case 15:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Grimtooth' style!";
-					mes "Spiky and unkempt, this style";
-					mes "is a popular counterculture";
-					mes "street fashion. You might";
-					mes "not want to wear your hair";
-					mes "this way at a wedding, though.";
+					mes "哦，那是『无影之牙』发型！";
+					mes "尖刺般又凌乱的这种发型";
+					mes "是很受欢迎的";
+					mes "反主流街头时尚。你也许";
+					mes "不会想在婚礼上";
+					mes "把头发弄成这样。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Counter Attack' style!";
-					mes "This is an intimidating look for";
-					mes "girls that want to say 'You hit";
-					mes "me, I'll hit you back!' It really";
-					mes "emphasizes strong looking";
-					mes "foreheads and cheekbones.";
+					mes "哦，那是『反击』发型！";
+					mes "这是一种充满气势的造型，适合";
+					mes "那些想说『你打我，";
+					mes "我就打回去！』的女孩。它真的";
+					mes "很能突出";
+					mes "强势的额头和颧骨。";
 					close2; cutin "",255; end;
 			case 16:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Blitz Beat' style!";
-					mes "A funky and lively fashion,";
-					mes "this style was developed for a";
-					mes "Hunter who liked really long";
-					mes "bangs and wanted to see";
-					mes "through them at the same time.";
+					mes "哦，那是『闪电冲击』发型！";
+					mes "这是一种活泼有个性的时尚，";
+					mes "这款发型是为一位";
+					mes "喜欢超长刘海、";
+					mes "又想同时";
+					mes "透过刘海看东西的猎人设计的。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Anke Snare' style!";
-					mes "The style style is specially";
-					mes "made for Hunters that don't like";
-					mes "to get their hair tangled...";
-					mes "After all, what kind of Hunter";
-					mes "lets their hair get trapped?";
+					mes "哦，那是『束缚术』发型！";
+					mes "这种发型是特别";
+					mes "为不喜欢";
+					mes "头发打结的猎人制作的……";
+					mes "毕竟，哪有猎人";
+					mes "会让自己的头发被缠住呢？";
 					close2; cutin "",255; end;
 			case 17:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Find Ore' style!";
-					mes "It's a practical, economical look";
-					mes "that is popular among Blacksmiths.";
-					mes "Some swear that this fashion helps";
-					mes "them in finding ores, but where's";
-					mes "the science in that??";
+					mes "哦，那是『寻找矿石』发型！";
+					mes "这是一种实用又经济的造型，";
+					mes "在铁匠之间很受欢迎。";
+					mes "有人坚称这种时尚能帮";
+					mes "他们找到矿石，可这";
+					mes "有什么科学依据呢？？";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Hammer Fall' style!";
-					mes "For the woman that doesn't want";
-					mes "her hair to get in the way when";
-					mes "she's savagely swinging heavy";
-					mes "objects. Of course, this is a";
-					mes "Blacksmith favorite.";
+					mes "哦，那是『锤击』发型！";
+					mes "适合那些不希望";
+					mes "头发妨碍自己";
+					mes "狠狠挥动沉重";
+					mes "物体的女性。当然，这是";
+					mes "铁匠的最爱。";
 					close2; cutin "",255; end;
 			case 18:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Fire Pillar' style!";
-					mes "It's a trendy look, in which";
-					mes "you cover one eye for that";
-					mes "intrigue effect. The element";
-					mes "of mystery is always in";
-					mes "fashion, don't you think?";
+					mes "哦，那是『火柱攻击』发型！";
+					mes "这是一种时髦的造型，";
+					mes "遮住一只眼睛，营造出";
+					mes "神秘感。这种";
+					mes "神秘的元素，在时尚中";
+					mes "永远不过时，你不觉得吗？";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Jupitel Thunder'";
-					mes "style! A look that strikes";
-					mes "like lightening, without";
-					mes "any of that annoying static";
-					mes "cling or muss. This fashion";
-					mes "looks great with Mage Hats.";
+					mes "哦，那是『雷鸣术』";
+					mes "发型！这种造型像";
+					mes "闪电般夺目，没有";
+					mes "那种恼人的静电";
+					mes "吸附或凌乱。这种时尚";
+					mes "搭配魔法师帽子非常好看。";
 					close2; cutin "",255; end;
 			case 19:
 				if(Sex == SEX_MALE) {
-					mes "Oh, that's 'Guillotine Fist'";
-					mes "style! The smooth, slicked back";
-					mes "pompadour shows that you're";
-					mes "serious about your passion";
-					mes "for brawling... or just your passion.";
+					mes "哦，那是『猛龙拳』";
+					mes "发型！光滑向后梳的";
+					mes "飞机头，显出你";
+					mes "对格斗的热情十分";
+					mes "认真……或者只是你的热情。";
 					close2; cutin "",255; end;
 				}
-					mes "Oh, that's 'Whirlwind' style!";
-					mes "A favorite among the studious";
-					mes "Sages, the hair is tied back";
-					mes "in a stylish braid so that";
-					mes "it doesn't fly around after";
-					mes "casting those windy spells.";
+					mes "哦，那是『旋风腿』发型！";
+					mes "这是好学的";
+					mes "贤者们的最爱，头发被";
+					mes "编成时髦的辫子，这样";
+					mes "在施放那些";
+					mes "风系法术后就不会乱飞。";
 					close2; cutin "",255; end;
 			}
 		}
 	case 2:
 		if(BaseLevel < 60) {
-			mes "[Veronica]";
-			mes "Oh, dear, you're looking fabulous with";
-			mes "your current hairstyle. Why don't you";
-			mes "try a new hair accessory rather than changing your look?";
+			mes "[维罗妮卡]";
+			mes "哎呀，亲爱的，您现在的发型";
+			mes "真是漂亮极了。不如";
+			mes "试试新的发饰，而不是改变造型呢？";
 			close;
 		} else if((countitem(973) < 3) || (countitem(974) < 3) || (countitem(901) <100) || (countitem(1094) <100) || (countitem(1020) <100) || (countitem(1060) <100) || (countitem(7152) <100) || (Zeny < 99800)) {
-			mes "[Veronica]";
-			mes "If you wish to change your";
-			mes "hairstyle, you should meet some";
-			mes "requirements. I suggest that you";
-			mes "write down all the items that";
-			mes "you will need.";
+			mes "[维罗妮卡]";
+			mes "如果您想更换";
+			mes "发型，就需要满足一些";
+			mes "条件。我建议您把";
+			mes "需要的物品";
+			mes "都写下来。";
 			next;
-			mes "[Veronica]";
-			mes "3 Counteragent,";
-			mes "3 Mixture,";
-			mes "100 Danggie,";
-			mes "100 Short Danggie,";
-			mes "100 Black Hair,";
-			mes "100 Golden Hair,";
-			mes "100 Glossy Hair, and lastly...";
+			mes "[维罗妮卡]";
+			mes "3个解毒剂，";
+			mes "3个混合剂，";
+			mes "100个Danggie，";
+			mes "100个短Danggie，";
+			mes "100个黑色头发，";
+			mes "100个金色头发，";
+			mes "100个亮泽头发，最后……";
 			next;
-			mes "[Veronica]";
-			mes "You will need 99,800 zeny.";
-			mes "Please come back when you're";
-			mes "ready. I will make you look";
-			mes "fabulous. Hohohohoho~";
+			mes "[维罗妮卡]";
+			mes "您需要99,800 Zeny。";
+			mes "等您准备";
+			mes "好了再来。我会让您";
+			mes "光彩照人。呵呵呵呵呵～";
 			close;
 		}
-		mes "[Veronica]";
-		mes "Okay now, please choose the style";
-		mes "you desire from styles no.1 to";
-		mes "no.19.  I will do my best to";
-		mes "make you look your very best.";
+		mes "[维罗妮卡]";
+		mes "那么现在，请选择";
+		mes "1号到19号中您";
+		mes "喜欢的款式。我会尽全力";
+		mes "让您展现出最好的样子。";
 		next;
 		input .@style;
 		if(.@style > 19) {
-			mes "[Veronica]";
-			mes "I am sorry, you chose an unavailable style.";
-			mes "Make sure you enter the correct number.";
+			mes "[维罗妮卡]";
+			mes "对不起，您选择了一款无法提供的发型。";
+			mes "请确认输入正确的编号。";
 			close;
 		} else if(.@style == 0) {
-			mes "[Veronica]";
-			mes "You have canceled your request.";
+			mes "[维罗妮卡]";
+			mes "您已取消请求。";
 			close;
 		} else if(getlook(1) == .@style) {
-			mes "[Veronica]";
-			mes "I am sorry, but you are already";
-			mes "wearing the style you have";
-			mes "requested. Would you please";
-			mes "choose a different style?";
+			mes "[维罗妮卡]";
+			mes "抱歉，您已经";
+			mes "留着您所要求的";
+			mes "发型了。能否请您";
+			mes "选择其他发型呢？";
 			close;
 		}
 			callsub L_cutin,.@style;
-			mes "[Veronica]";
-			mes "You have chosen style no. (" + .@style + ").";
-			mes "I shall proceed with your request.";
-			mes "Would you mind?";
+			mes "[维罗妮卡]";
+			mes "您选择了第（" + .@style + "）号发型。";
+			mes "我将按您的要求开始。";
+			mes "您介意吗？";
 			next;
-			if(select("No, I don't mind.:Yes, let me choose another one.") == 1) {
+			if(select("不，我不介意。:是，让我另选一个。") == 1) {
 				if(getlook(6) == 0) {
-					mes "[Veronica]";
-					mes "Oh, my, you haven't dyed your hair";
-					mes "at all. You would look even more";
-					mes "fabulous if you dyed your hair...";
-					mes "Oh well, I will do it for free.";
-					mes "So what kind of color would you like?";
+					mes "[维罗妮卡]";
+					mes "哎呀，您一点也没给头发";
+					mes "染色呢。如果您染了发，";
+					mes "会显得更加迷人……";
+					mes "算了，我就免费帮您染吧。";
+					mes "那么您想要什么颜色呢？";
 					next;
-					switch(select("Red.:Yellow.:Purple.:Orange.:Green.:Blue.:White.:Dark Brown.:Cancel.")) {
+					switch(select("红色。:黄色。:紫色。:橙色。:绿色。:蓝色。:白色。:深棕色。:取消。")) {
 					case 1:
 						set .@pallete,8;
 						break;
@@ -452,26 +452,26 @@ alberta_in,55,142,7	script	Hair Dresser	91,{
 						set .@pallete,7;
 						break;
 					case 9:
-						mes "[Veronica]";
-						mes "Oh, I was gonna do it for free.";
-						mes "Well, if you change your mind, please come again.";
-						mes "The color of your hair enhances your look.";
+						mes "[维罗妮卡]";
+						mes "哎呀，我本来打算免费帮您做的。";
+						mes "好吧，如果您改变主意，请再来。";
+						mes "头发的颜色能让您的造型更出色。";
 						close;
 					}
 				}
 				nude;
-				mes "[Veronica]";
-				mes "Now, let's get started. Try to";
-				mes "stay still, dear. If you move,";
-				mes "it might ruin the perfect look";
-				mes "I intend to give you. Trust me,";
-				mes "I will make you look fabulous~";
+				mes "[维罗妮卡]";
+				mes "那么，开始吧。请尽量";
+				mes "别动，亲爱的。您一动，";
+				mes "就可能毁掉我打算";
+				mes "给您的完美造型。相信我，";
+				mes "我会让您变得光彩照人～";
 				next;
-				mes "[Veronica]";
-				mes "- *snip snip snip snip* -";
-				mes "- *bzzzzzzz bzzzzzzz bzzzzzzz bzzzzzzz* -";
-				mes "- *snip snip snip snip* -";
-				mes "- *bzzzzzzz bzzzzzzz bzzzzzzz bzzzzzzz* -";
+				mes "[维罗妮卡]";
+				mes "- *咔嚓 咔嚓 咔嚓 咔嚓* -";
+				mes "- *嗡嗡嗡 嗡嗡嗡 嗡嗡嗡 嗡嗡嗡* -";
+				mes "- *咔嚓 咔嚓 咔嚓 咔嚓* -";
+				mes "- *嗡嗡嗡 嗡嗡嗡 嗡嗡嗡 嗡嗡嗡* -";
 				next;
 				set Zeny, Zeny-99800;
 				delitem 973,3;	// Counteragent
@@ -484,27 +484,27 @@ alberta_in,55,142,7	script	Hair Dresser	91,{
 				setlook 1,.@style;
 				setlook 6,.@pallete;
 				cutin "",255;
-				mes "[Veronica]";
-				mes "Alright, it's done~";
-				mes "I hope you like";
-				mes "this style no.(" + .@style + ").";
-				mes "Feel free to come back anytime";
-				mes "when you want a new hairstyle. Hohohohohoho~";
+				mes "[维罗妮卡]";
+				mes "好了，完成了～";
+				mes "希望您喜欢";
+				mes "这款第（" + .@style + "）号发型。";
+				mes "随时欢迎您再来";
+				mes "换新发型。呵呵呵呵呵呵～";
 				setlook 1,.@style;
 				setlook 6,.@pallete;
 				close;
 			}
-			mes "[Veronica]";
-			mes "Okay then, please choose one";
-			mes "a hairstyle again. I believe";
-			mes "you will find the look that's best for you.";
+			mes "[维罗妮卡]";
+			mes "那么，请再选择";
+			mes "一次发型吧。我相信";
+			mes "您会找到最适合自己的造型。";
 			close;
 	case 3:
-		mes "[Veronica]";
-		mes "Everybody deserves the right to";
-		mes "pursue beauty. I hope that you";
-		mes "will find the right hairstyle";
-		mes "one of these days.";
+		mes "[维罗妮卡]";
+		mes "每个人都有权";
+		mes "追求美。希望您";
+		mes "能早日找到";
+		mes "合适的发型。";
 		close;
 	}
 
@@ -526,125 +526,125 @@ L_cutin:
 
 
 // Lighthalzen
-lhz_in02,100,143,3	script	Hair Dresser#li	122,{
-	mes "[Prince Shammi]";
-	mes "Welcome to Prince Shammi's";
-	mes "Beauty Shop, the place to go";
-	mes "for faaabulous hair. Don't be";
-	mes "shy, tell me exactly how you";
-	mes "want me to make you glamorous~";
+lhz_in02,100,143,3	script	理发师#li	122,{
+	mes "[夏米王子]";
+	mes "欢迎光临夏米王子的";
+	mes "美容屋，这里是您";
+	mes "打造绝美发型的好去处。别";
+	mes "害羞，尽管告诉我您";
+	mes "想让我怎样把您变得光彩照人～";
 	next;
-	switch(select("Check all hairstyles:Change hairstyle:Cancel")) {
+	switch(select("查看全部发型:更换发型:取消")) {
 	case 1:
-		mes "[Prince Shammi]";
-		mes "Oh, would you like to";
-		mes "see all of the trendy new";
-		mes "hairstyles I offer?";
+		mes "[夏米王子]";
+		mes "哦，您想";
+		mes "看看我提供的所有";
+		mes "时髦新发型吗？";
 		next;
-		mes "[Prince Shammi]";
-		mes "Please, oh please, choose from the following styles and I will show you a preview.";
+		mes "[夏米王子]";
+		mes "拜托，求您了，从下面这些发型中选一个，我会给您预览。";
 		next;
-		switch(select("Old Hairstyles:New Hairstyles")) {
+		switch(select("旧发型:新发型")) {
 		case 1:
 			if (Sex == SEX_MALE) {
-				switch(select("Petite Style:Executioner Style:Prince Style:Deviace Style:Cancel")) {
+				switch(select("毕帝特风格:行刑者风格:王子风格:狄奥斯风格:取消")) {
 				case 1:
 					cutin "hair_m_20",4;
-					mes "[Prince Shammi]";
-					mes "This is the ^3131FFPetite Style^000000,";
-					mes "which softens the gentleman's";
-					mes "appearance with long braids";
-					mes "for a fluffier appearance.";
+					mes "[夏米王子]";
+					mes "这是^3131FF毕帝特风格^000000，";
+					mes "它能以长发辫柔化男士的";
+					mes "外表，营造出";
+					mes "更蓬松的观感。";
 					break;
 				case 2:
 					cutin "hair_m_21",4;
-					mes "[Prince Shammi]";
-					mes "Oh, the ^3131FFExecutioner Style^000000!";
-					mes "It's a rugged, shaggy style";
-					mes "for that tough guy look that's";
-					mes "becoming popular these days.";
-					mes "And every girl loves a tough";
-					mes "guy, right? ^333333*Tee hee~*^000000";
+					mes "[夏米王子]";
+					mes "哦，^3131FF行刑者风格^000000！";
+					mes "这是粗犷而蓬乱的发型，";
+					mes "营造硬汉形象，";
+					mes "近来正流行起来。";
+					mes "而且每个女孩都爱硬汉，";
+					mes "对吧？^333333*嘻嘻～*^000000";
 					break;
 				case 3:
 					cutin "hair_m_22",4;
-					mes "[Prince Shammi]";
-					mes "You certainly have an";
-					mes "eye for fashion! Yes, this";
-					mes "is the ^3131FFPrince Style^000000, the";
-					mes "pinnacle of sexiness and";
-					mes "sophistication. Magnifique, no?";
-					mes "Yes, choose this one, this one!";
+					mes "[夏米王子]";
+					mes "您确实很有";
+					mes "时尚眼光！没错，这";
+					mes "就是^3131FF王子风格^000000，";
+					mes "性感与";
+					mes "高雅的极致。太棒了，不是吗？";
+					mes "对，就选这个，这个！";
 					break;
 				case 4:
 					cutin "hair_m_23",4;
-					mes "[Prince Shammi]";
-					mes "A-ha~! The ^3131FFDeviace Style^000000!";
-					mes "This is much like the Prince";
-					mes "Style, but with shorter hair";
-					mes "in the back. Yes, this look";
-					mes "is very neat and dandy.";
+					mes "[夏米王子]";
+					mes "啊哈～！^3131FF狄奥斯风格^000000！";
+					mes "这与王子";
+					mes "风格很像，但后面的";
+					mes "头发更短。没错，这造型";
+					mes "非常整洁又利落。";
 					break;
 				case 5:
 					cutin "hair_f_01",255;
-					mes "[Prince Shammi]";
-					mes "No? You didn't want";
-					mes "to take a look? Please,";
-					mes "you're an adventurer, I know";
-					mes "you can be more daring than";
-					mes "that! Be fashionably adventurous, you fashionable adventurer~";
+					mes "[夏米王子]";
+					mes "不要？您不想";
+					mes "看一看吗？拜托，";
+					mes "您是冒险者，我知道";
+					mes "您可以比那更大胆！";
+					mes "时尚地冒险吧，时髦的冒险者～";
 					emotion ET_THROB;
 					close3;
 				}
 			}
 			else {
-				switch(select("Spring Rabbit Style:Harpy Style:Medusa Style:Isis Style:Cancel")) {
+				switch(select("弹簧兔风格:哈比风格:米杜沙风格:蛇女伊丝风格:取消")) {
 				case 1:
 					cutin "hair_f_20",4;
-					mes "[Prince Shammi]";
-					mes "Oh yes, this is the ";
-					mes "^3131FFSpring Rabbit Style^000000.";
-					mes "The bobbing forelock";
-					mes "adds an aura of chic,";
-					mes "cutsiness and playfulness.";
-					mes "Yes? No? Yes? No? Oh yes!";
+					mes "[夏米王子]";
+					mes "哦，是的，这就是";
+					mes "^3131FF弹簧兔风格^000000。";
+					mes "跳动的额发";
+					mes "增添了一份时髦、";
+					mes "可爱与俏皮的气息。";
+					mes "要吗？不要？要吗？不要？哦，当然要！";
 					break;
 				case 2:
 					cutin "hair_f_21",4;
-					mes "[Prince Shammi]";
-					mes "Ooh, are you interested";
-					mes "in the ^3131FFHarpy Style^000000? The";
-					mes "natural curl coupled with";
-					mes "the pony tail results in";
-					mes "a sophisticated, yet very";
-					mes "natural and relaxed look~";
+					mes "[夏米王子]";
+					mes "哦，您对";
+					mes "^3131FF哈比风格^000000感兴趣吗？";
+					mes "自然的卷曲配上";
+					mes "马尾，营造出";
+					mes "精致却又非常";
+					mes "自然放松的感觉～";
 					break;
 				case 3:
 					cutin "hair_f_22",4;
-					mes "[Prince Shammi]";
-					mes "Ahh, the ^3131FFMedusa Style^000000~";
-					mes "These boldy flowing locks";
-					mes "scream power and dominance";
-					mes "and is ideal for the big career";
-					mes "woman who wishes to be...";
-					mes "irresistable to men~";
+					mes "[夏米王子]";
+					mes "啊，^3131FF米杜沙风格^000000～";
+					mes "这奔放飘逸的卷发，";
+					mes "彰显着力量与支配感，";
+					mes "非常适合事业有成的";
+					mes "女性，她想变得……";
+					mes "让男人无法抗拒～";
 					break;
 				case 4:
 					cutin "hair_f_23",4;
-					mes "[Prince Shammi]";
-					mes "Ooh, the ^3131FFIsis Style^000000~";
-					mes "Yes, you'll look very cute";
-					mes "with your hair in buns on";
-					mes "on both sides of your head.";
-					mes "It'll be very darling on you!";
+					mes "[夏米王子]";
+					mes "哦，^3131FF蛇女伊丝风格^000000～";
+					mes "是的，您会显得非常可爱，";
+					mes "把头发挽成发髻，";
+					mes "分在脑袋两侧。";
+					mes "这会非常适合您！";
 					break;
 				case 5:
-					mes "[Prince Shammi]";
-					mes "No? You didn't want";
-					mes "to take a look? Please,";
-					mes "you're an adventurer, I know";
-					mes "you can be more daring than";
-					mes "that! Be fashionably adventurous, you fashionable adventurer~";
+					mes "[夏米王子]";
+					mes "不要？您不想";
+					mes "看一看吗？拜托，";
+					mes "您是冒险者，我知道";
+					mes "您可以比那更大胆！";
+					mes "时尚地冒险吧，时髦的冒险者～";
 					emotion ET_THROB;
 					close;
 				}
@@ -652,80 +652,80 @@ lhz_in02,100,143,3	script	Hair Dresser#li	122,{
 			break;
 		case 2:
 			if (Sex == SEX_MALE) {
-				switch(select("Emergency Heal Perm:Aura Blade Cut:Power Swing:Renovatio Cut:Cancel")) {
+				switch(select("紧急治疗烫:灵气剑剪:挥斧重击剪:净化剪:取消")) {
 				case 1:
 					cutin "hair_m_24",4;
-					mes "[Prince Shammi]";
-					mes "This is the ^3131FFEmergency Heal Perm^000000";
-					mes "It is quite popular among the healing class.";
+					mes "[夏米王子]";
+					mes "这就是^3131FF紧急治疗烫^000000";
+					mes "它在治疗职业中相当受欢迎。";
 					break;
 				case 2:
 					cutin "hair_m_25",4;
-					mes "[Prince Shammi]";
-					mes "You must be after a lady yes?";
-					mes "The ^3131FFAura Blade Cut^000000";
-					mes "is known to make the ladies swoon, you tiger you!";
+					mes "[夏米王子]";
+					mes "您一定是在追求哪位女士吧？";
+					mes "^3131FF灵气剑剪^000000";
+					mes "可是出了名地能让女士们倾倒，你这只小老虎！";
 					break;
 				case 3:
 					cutin "hair_m_26",4;
-					mes "[Prince Shammi]";
-					mes "Oh you brute!";
-					mes "^3131FFPower Swing Cut^000000";
-					mes "Flex your style muscles with this hairstyle. This is definitely your look.";
+					mes "[夏米王子]";
+					mes "哦，你这个粗人！";
+					mes "^3131FF强力挥击剪^000000";
+					mes "用这款发型展现你的时尚实力。这绝对是你的风格。";
 					break;
 				case 4:
 					cutin "hair_m_27",4;
-					mes "[Prince Shammi]";
-					mes "Ah! I see you're only interested in the latest trends.";
-					mes "Straight from the runway is the ^3131FFRenovatio Cut^000000.";
+					mes "[夏米王子]";
+					mes "啊！我看您只对最新的潮流感兴趣。";
+					mes "刚从秀场走出来的，就是^3131FF净化剪^000000。";
 					break;
 				case 5:
-					mes "[Prince Shammi]";
-					mes "No? You didn't want";
-					mes "to take a look? Please,";
-					mes "you're an adventurer, I know";
-					mes "you can be more daring than";
-					mes "that! Be fashionably adventurous, you fashionable adventurer~";
+					mes "[夏米王子]";
+					mes "不要？您不想";
+					mes "看一看吗？拜托，";
+					mes "您是冒险者，我知道";
+					mes "您可以比那更大胆！";
+					mes "时尚地冒险吧，时髦的冒险者～";
 					emotion ET_THROB;
 					close;
 				}
 			}
 			else {
-				switch(select("Assumptio Perm:Soul Changer Cut:X Tornado Cut:Oratio Cut:Cancel")) {
+				switch(select("圣母之颂歌烫:灵魂转换剪:X旋风剪:祈祷文剪:取消")) {
 				case 1:
 					cutin "hair_f_24",4;
-					mes "[Prince Shammi]";
-					mes "This is the ^3131FFAssumptio Perm^000000";
-					mes "It's a shorter style perm that allows for maximum spellcasting.";
+					mes "[夏米王子]";
+					mes "这就是^3131FF圣母之颂歌烫^000000";
+					mes "这是一款较短的烫发造型，能让施法更加顺畅。";
 					break;
 				case 2:
 					cutin "hair_f_25",4;
-					mes "[Prince Shammi]";
-					mes "You must be a man killer no?";
-					mes "The ^3131FFSoul Changer Cut^000000";
-					mes "will make any man open his wall... er heart to you!";
+					mes "[夏米王子]";
+					mes "您一定是个迷倒男人的高手吧？";
+					mes "^3131FF灵魂转换剪^000000";
+					mes "能让任何男人向您敞开他的心墙……呃，心扉！";
 					break;
 				case 3:
 					cutin "hair_f_26",4;
-					mes "[Prince Shammi]";
-					mes "This is a bit of a trendy style";
-					mes "^3131FFX Tornado Cut^000000";
-					mes "It's for adventurous people who like change.";
+					mes "[夏米王子]";
+					mes "这是一款颇为时髦的发型";
+					mes "^3131FFX 龙卷剪^000000";
+					mes "适合喜欢改变、勇于冒险的人。";
 					break;
 				case 4:
 					cutin "hair_f_27",4;
-					mes "[Prince Shammi]";
-					mes "Ah! I see you're only interested in the latest trends.";
-					mes "Straight from the runway is the ^3131FFOratio Cut^000000.";
-					mes "You'll be the envy of all of your friends with this hairstyle.";
+					mes "[沙米王子]";
+					mes "啊！我看你只对最新潮流感兴趣呢。";
+					mes "刚从伸展台走下来的，就是^3131FF奥拉蒂奥剪^000000。";
+					mes "留这个发型，你会让所有朋友都羡慕不已。";
 					break;
 				case 5:
-					mes "[Prince Shammi]";
-					mes "No? You didn't want";
-					mes "to take a look? Please,";
-					mes "you're an adventurer, I know";
-					mes "you can be more daring than";
-					mes "that! Be fashionably adventurous, you fashionable adventurer~";
+					mes "[沙米王子]";
+					mes "不？你不想";
+					mes "看一看吗？拜托，";
+					mes "你可是冒险者，我知道";
+					mes "你可以比那更大胆";
+					mes "一点！做个时尚的冒险者吧，时尚的冒险者～";
 					emotion ET_THROB;
 					close;
 				}
@@ -736,94 +736,94 @@ lhz_in02,100,143,3	script	Hair Dresser#li	122,{
 		end;
 	case 2:
 		if (BaseLevel < 60) {
-			mes "[Prince Shammi]";
-			mes "Oh, I'm so sorry, but";
-			mes "I can only perform my";
-			mes "services for clients that have";
-			mes "matured enough to find their";
-			mes "true inner beauty. But please";
-			mes "come back once you do, okay?";
+			mes "[沙米王子]";
+			mes "哎呀，真抱歉，不过";
+			mes "我只为那些";
+			mes "已经成熟到能发现";
+			mes "自己真正内在美";
+			mes "的客人服务。不过，请";
+			mes "等你成熟了再来，好吗？";
 			close;
 		}
 		else if ((countitem(973) < 3) || (countitem(974) < 3) || (countitem(901) < 100) || (countitem(1094) < 100) || (countitem(1020) < 100) || (countitem(1060) < 100) || (countitem(7152) < 100) || (Zeny < 99800)) {
-			mes "[Prince Shammi]";
-			mes "If you've already decided";
-			mes "what hairstyle you'd like,";
-			mes "please have my service charge";
-			mes "ready, as well as the materials";
-			mes "I will need in performing this";
-			mes "service, okay? Please bring...";
+			mes "[沙米王子]";
+			mes "如果你已经决定";
+			mes "想要哪种发型，";
+			mes "请先把我的服务费";
+			mes "准备好，还有我";
+			mes "为你做这个造型";
+			mes "需要的材料，好吗？请带来……";
 			next;
-			mes "[Prince Shammi]";
-			mes "^3355FF3 Counteragent^000000,";
-			mes "^3355FF3 Mixture^000000,";
-			mes "^3355FF100 Daenggie^000000,";
-			mes "^3355FF100 Short Daenggie^000000...";
+			mes "[沙米王子]";
+			mes "^3355FF3 个中和剂^000000，";
+			mes "^3355FF3 个混合剂^000000，";
+			mes "^3355FF100 条发带^000000，";
+			mes "^3355FF100 条短发带^000000……";
 			next;
-			mes "[Prince Shammi]";
-			mes "^3355FF100 Black Hair^000000,";
-			mes "^3355FF100 Golden Hair^000000,";
-			mes "^3355FF100 Glossy Hair^000000";
-			mes "and ^3355FF99,800 zeny^000000.";
-			mes "Once you do that, I'll make";
-			mes "a miracle out of your hair!";
+			mes "[沙米王子]";
+			mes "^3355FF100 份黑色染发剂^000000，";
+			mes "^3355FF100 份金色染发剂^000000，";
+			mes "^3355FF100 份光泽染发剂^000000";
+			mes "以及 ^3355FF99,800 zeny^000000。";
+			mes "准备好之后，我就";
+			mes "让你的头发绽放奇迹！";
 			close;
 		}
-		mes "[Prince Shammi]";
-		mes "Alright, please choose";
-		mes "which hairstyle you wish";
-		mes "to have from numbers 20 to 25.";
-		mes "Here's a list of the style names just in case you need them~";
+		mes "[沙米王子]";
+		mes "好的，请选择";
+		mes "你想要的发型，";
+		mes "编号从 20 到 25。";
+		mes "这是发型名称列表，以备你参考～";
 		next;
-		mes "[Prince Shammi]";
+		mes "[沙米王子]";
 		if (Sex == SEX_MALE) {
-			mes "No. 20: Petite Style";
-			mes "No. 21: Executioner Style";
-			mes "No. 22: Prince Style";
-			mes "No. 23: Deviace Style";
-			mes "No. 24: Emergency Heal Perm";
-			mes "No. 25: Aura Blade Cut";
-			mes "No. 26: Power Swing and";
-			mes "No. 27: Renovatio Cut.";
+			mes "20 号：娇小造型";
+			mes "21 号：处刑者造型";
+			mes "22 号：王子造型";
+			mes "23 号：德维亚斯造型";
+			mes "24 号：紧急治疗烫";
+			mes "25 号：灵气剑剪";
+			mes "26 号：强力挥击与";
+			mes "27 号：新生剪。";
 		}
 		else {
-			mes "No. 20: Spring Rabbit Style";
-			mes "No. 21: Harpy Style";
-			mes "No. 22: Medusa Style";
-			mes "No. 23: Isis Style";
-			mes "No. 24: Assumptio Perm";
-			mes "No. 25: Soul Changer Cut";
-			mes "No. 26: X Tornado Cut and";
-			mes "No. 27: Oratio Cut.";
+			mes "20 号：春兔造型";
+			mes "21 号：哈比造型";
+			mes "22 号：美杜莎造型";
+			mes "23 号：伊西斯造型";
+			mes "24 号：圣母之颂歌烫";
+			mes "25 号：灵魂转换剪";
+			mes "26 号：X 龙卷剪与";
+			mes "27 号：奥拉蒂奥剪。";
 		}
 		next;
 		input .@input;
 		if (.@input == 0) {
-			mes "[Prince Shammi]";
-			mes "Oh...?";
-			mes "You decided to cancel?";
-			mes "Well, you know what's";
-			mes "best for you, I suppose.";
-			mes "Still, I'm so disappointed~";
+			mes "[沙米王子]";
+			mes "哦……？";
+			mes "你决定取消了吗？";
+			mes "好吧，我想你";
+			mes "知道什么最适合自己。";
+			mes "不过，我还是好失望～";
 			close;
 		}
 		else if ((.@input < 20) || (.@input > 27)) {
-			mes "[Prince Shammi]";
-			mes "Dearie, please enter";
-			mes "a number from ''20'' to";
-			mes "''25,'' alright? Then I can";
-			mes "get right to work at making";
-			mes "you soooooooo beautiful!";
+			mes "[沙米王子]";
+			mes "亲爱的，请输入";
+			mes "''20'' 到";
+			mes "''25'' 之间的数字，好吗？然后我就";
+			mes "马上动手，把你";
+			mes "变得美得不得了！";
 			close;
 		}
 		else if (getlook(VAR_HEAD) == .@input) {
-			mes "[Prince Shammi]";
-			mes "Oh dear me, you're not";
-			mes "going to waste money for";
-			mes "the same hairstyle that you";
-			mes "have now, are you? You can";
-			mes "have someone else change";
-			mes "your hair color, you know.";
+			mes "[沙米王子]";
+			mes "哎呀，你不会是";
+			mes "想浪费钱，做";
+			mes "和你现在";
+			mes "一样的发型吧？你可以";
+			mes "让别人帮你";
+			mes "换换发色，知道吗。";
 			close;
 		}
 		else {
@@ -831,23 +831,23 @@ lhz_in02,100,143,3	script	Hair Dresser#li	122,{
 				cutin "hair_m_"+.@input+".BMP",4;
 			else
 				cutin "hair_f_"+.@input+".BMP",4;
-			mes "[Prince Shammi]";
-			mes "Oooh! Now, is this the";
-			mes "hairstyle that you wanted?";
-			mes "This is No. "+.@input+", by the way.";
+			mes "[沙米王子]";
+			mes "哦哦！那么，这是你";
+			mes "想要的发型吗？";
+			mes "这是第"+.@input+", by the way.";
 			next;
-			switch(select("Yes.:No.")) {
+			switch(select("是。:否。")) {
 			case 1:
 				if (getlook(VAR_HEADPALETTE) == 0) {
-					mes "[Prince Shammi]";
-					mes "Oh, Sweet Christmas,";
-					mes "I almost forgot! Would";
-					mes "you like me to dye your";
-					mes "hair, free of charge? It's";
-					mes "a part of my service, so";
-					mes "please choose a color~";
+					mes "[沙米王子]";
+					mes "哦，我的天哪，";
+					mes "我差点忘了！你";
+					mes "愿意让我免费";
+					mes "帮你染发吗？这";
+					mes "也是服务的一部分，";
+					mes "请选个颜色～";
 					next;
-					switch(select("Red:Yellow:Purple:Orange:Green:Blue:White:Dark Brown")) {
+					switch(select("红色:黄色:紫色:橙色:绿色:蓝色:白色:深棕色")) {
 					case 1:
 						set .@headpalette,8;
 						break;
@@ -874,16 +874,16 @@ lhz_in02,100,143,3	script	Hair Dresser#li	122,{
 						break;
 					}
 				}
-				mes "[Prince Shammi]";
-				mes "Okay, let's get";
-				mes "started, shall we?";
-				mes "Keep your head still,";
-				mes "now. Yes, that's good...";
+				mes "[沙米王子]";
+				mes "好，我们";
+				mes "开始吧，好吗？";
+				mes "头别动，";
+				mes "对，就这样……";
 				next;
-				mes "^3355FF*Snip snip*";
-				mes "*Rustle rustle*";
-				mes "*Clip clip clip clip*";
-				mes "*Bzzzzzzzzzzzzzzzzzzzz*^000000";
+				mes "^3355FF*咔嚓咔嚓*";
+				mes "*沙沙沙沙*";
+				mes "*咔嚓咔嚓咔嚓咔嚓*";
+				mes "*嗡嗡嗡嗡嗡嗡嗡嗡嗡嗡嗡*^000000";
 				next;
 				set Zeny, Zeny-99800;
 				delitem 973,3; //Counteragent
@@ -895,46 +895,46 @@ lhz_in02,100,143,3	script	Hair Dresser#li	122,{
 				delitem 7152,100; //Glossy_Hair
 				setlook VAR_HEAD,.@input;
 				setlook VAR_HEADPALETTE,.@headpalette;
-				mes "[Prince Shammi]";
-				mes "Well, we're all finished!";
-				mes "And my, oh my, you look even";
-				mes "more fabulous that I thought";
-				mes "you would! Oh, I can't believe";
+				mes "[沙米王子]";
+				mes "好了，全都完成了！";
+				mes "哎呀呀，你比我想象的";
+				mes "还要惊艳得多！";
+				mes "哦，我简直不敢相信";
 				if (Sex == SEX_MALE) {
-					mes "how tough and elegant you are~";
-					mes "So ruggedly manly and handsome!";
+					mes "你有多么硬朗又优雅～";
+					mes "多么粗犷、有男子气概又英俊！";
 				}
 				else {
-					mes "how graceful and elegant you";
-					mes "look! Absolutely gorgeous!";
+					mes "你看起来多么";
+					mes "优雅又高贵！美极了！";
 				}
 				emotion ET_CHUP;
 				next;
-				mes "[Prince Shammi]";
-				mes "You love your new";
-				mes "hair, don't you? Feel";
-				mes "free to come back anytime.";
-				mes "I'll make you the best looking";
-				mes "person in the entire world!";
+				mes "[沙米王子]";
+				mes "你喜欢自己的";
+				mes "新发型吧？随时";
+				mes "欢迎再来。";
+				mes "我会让你成为";
+				mes "全世界最好看的人！";
 				emotion ET_BEST;
 				close3;
 			case 2:
-				mes "[Prince Shammi]";
-				mes "Oh, did you forget which";
-				mes "hairstyle goes with which";
-				mes "number? By all means, please";
-				mes "check again! Find the one that";
-				mes "is perfect just for you, okay?";
+				mes "[沙米王子]";
+				mes "哦，你忘了哪个";
+				mes "发型对应哪个";
+				mes "编号吗？那就请";
+				mes "再看一遍！找出";
+				mes "最适合你的那款，好吗？";
 				close3;
 			}
 		}
 		break;
 	case 3:
-		mes "[Prince Shammi]";
-		mes "Humm ? ";
-		mes "Maybe you don't understand";
-		mes "my futuristic styles.";
-		mes "Goodbye! ";
+		mes "[沙米王子]";
+		mes "嗯……？";
+		mes "也许你无法理解";
+		mes "我这些未来感十足的发型。";
+		mes "再见！";
 		close;
 	}
 }

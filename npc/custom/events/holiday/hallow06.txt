@@ -13,84 +13,84 @@
 //= 1.2 fixed bugs, optimized. Now uses 1 var instead of 3 [Lupus]
 //============================================================
 
-prontera,151,190,5	script	Hallows' Eve Event	807,{
-	mes "[Hallows' Eve Event]";
+prontera,151,190,5	script	万圣节前夜活动	807,{
+	mes "[万圣节前夜活动]";
 	if(Class == Job_Novice){
-		mes "I am sorry but you have to got a job to complete the event.";
+		mes "很抱歉，你必须先拥有职业才能完成这个活动。";
 		emotion ET_SWEAT, playerattached();
 		close;
 	}
 	if((EVENT_HALWN06&1) && (EVENT_HALWN06&2)){
-		mes "I am sorry but you have already completed the event.";
+		mes "很抱歉，你已经完成过这个活动了。";
 		emotion ET_SORRY;
 		close;
 	}
-	mes "Greetings fellow lively human.";
+	mes "你好啊，充满活力的人类。";
 	next;
-	mes "[Hallows' Eve Event]";
-	mes "Halloween is upon us and it is almost time to adventure out into places few dare go.";
+	mes "[万圣节前夜活动]";
+	mes "万圣节就要到了，又该前往那些少有人敢涉足的地方冒险了。";
 	next;
-	mes "[Hallows' Eve Event]";
-	mes "Trick or treat, which do you prefer?";
+	mes "[万圣节前夜活动]";
+	mes "不给糖就捣蛋，你更喜欢哪一个？";
 	next;
-	menu "Trick",-, "Treat",L_Treat;
+	menu "捣蛋",-, "糖果",L_Treat;
 
-	mes "[Hallows' Eve Event]";
+	mes "[万圣节前夜活动]";
 	if(EVENT_HALWN06&2){
-		mes "I'm sorry but you have already had a trick. Why don't you go pick a treat now.";
+		mes "很抱歉，你已经选过捣蛋了。不如现在去选一份糖果吧。";
 		emotion ET_SORRY;
 		close;
 	}
-	mes "Give me a min...";
+	mes "请稍等……";
 	next;
 	set BaseExp,BaseExp+BaseLevel*1000;
 	set EVENT_HALWN06,EVENT_HALWN06|2;
 
-	mes "[Hallows' Eve Event]";
-	mes "Here is your treat. Your Base EXP has been slightly increased.";
+	mes "[万圣节前夜活动]";
+	mes "这是你的糖果。你的 Base EXP 略有提升。";
 	next;
-	mes "[Hallows' Eve Event]";
-	mes "I hope you enjoy your trick and Happy Halloween!";
+	mes "[万圣节前夜活动]";
+	mes "希望你喜欢这份捣蛋，万圣节快乐！";
 	close;
 
 L_Treat:
-	mes "[Hallows' Eve Event]";
+	mes "[万圣节前夜活动]";
 	if(EVENT_HALWN06&1){
-		mes "I'm sorry but you have already had a treat. Why don't you go pick a trick now.";
+		mes "很抱歉，你已经选过糖果了。不如现在去选一份捣蛋吧。";
 		emotion ET_SORRY;
 		close;
 	}
 	if(!(EVENT_HALWN06&4)){
-		mes "Great! This shall be so much fun.";
+		mes "太好了！这一定会很有趣。";
 		next;
-		mes "[Hallows' Eve Event]";
-		mes "I will be sending you on a scavenger hunt for items.";
+		mes "[万圣节前夜活动]";
+		mes "我会派你去搜集一些物品。";
 		next;
-		mes "[Hallows' Eve Event]";
-		mes "Bring back all the necessary items, and I will create you a treat.";
+		mes "[万圣节前夜活动]";
+		mes "把需要的物品都带回来，我就为你做一份糖果。";
 		next;
-		mes "[Hallows' Eve Event]";
-		mes "Not just any normal treat either that you can eat, but it is something you can wear on your head.";
+		mes "[万圣节前夜活动]";
+		mes "这可不是普通能吃下肚的糖果，而是能戴在头上的东西。";
 		next;
-		mes "[Hallows' Eve Event]";
-		mes "But with all things made, some items are required first.";
-		mes "The list:";
-		mes "1 Hat,";
-		mes "30 Pumpkin, and";
-		mes "20 Black Piece of Cloth";
+		mes "[万圣节前夜活动]";
+		mes "不过要制作任何东西，都得先备齐材料。";
+		mes "清单如下：";
+		mes "1 顶帽子，";
+		mes "30 个南瓜，以及";
+		mes "20 块黑色布料";
 		next;
-		mes "[Hallows' Eve Event]";
-		mes "Hurry along now.";
+		mes "[万圣节前夜活动]";
+		mes "快去吧。";
 		set EVENT_HALWN06,EVENT_HALWN06|4;
 		close;
 	}
-	mes "Did you get the items I requested or do you need to see the list again?";
+	mes "我要的物品都拿到了吗？还是需要再看一遍清单？";
 	next;
-	menu "Got'em",-, "Don't Have",L_Dont_Have, "See List",L_List;
+	menu "拿到了",-, "还没拿到",L_Dont_Have, "查看清单",L_List;
 
-	mes "[Hallows' Eve Event]";
+	mes "[万圣节前夜活动]";
 	if((countitem(2220) < 1) || (countitem(535) < 30) || (countitem(7205) < 20)){
-		mes "You don't have enough items. Come back when you do.";
+		mes "你的物品不够。凑齐后再来吧。";
 		emotion ET_SORRY;
 		close;
 	}
@@ -99,26 +99,26 @@ L_Treat:
 	delitem 7205,20;
 	getitem 5134,1;
 	set EVENT_HALWN06,EVENT_HALWN06|1;
-	mes "Good job! I hope you are happy with your item.";
+	mes "干得好！希望你喜欢这件物品。";
 	emotion ET_CONGRATULATION;
 	next;
-	mes "[Hallows' Eve Event]";
-	mes "Enjoy the rest of your Halloween.";
+	mes "[万圣节前夜活动]";
+	mes "祝你剩下的万圣节时光过得愉快。";
 	emotion ET_SCISSOR, playerattached();
 	close;
 
 L_Dont_Have:
-	mes "[Hallows' Eve Event]";
-	mes "Go back out and search for them. Would you like to view the list?";
+	mes "[万圣节前夜活动]";
+	mes "再出去找找吧。要看看清单吗？";
 	next;
-	menu "No",-, "Yes",L_List;
+	menu "不用",-, "好的",L_List;
 	close;
 
 L_List:
-	mes "[Hallows' Eve Event]";
-	mes "I require the following items:";
-	mes "1 Hat,";
-	mes "30 Pumpkin, and";
-	mes "20 Black Piece of Cloth.";
+	mes "[万圣节前夜活动]";
+	mes "我需要以下物品：";
+	mes "1 顶帽子，";
+	mes "30 个南瓜，以及";
+	mes "20 块黑色布料。";
 	close;
 }

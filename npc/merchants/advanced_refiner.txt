@@ -18,13 +18,13 @@
 //= 1.7 Removed re-roll behavior. [Secret]
 //============================================================
 
-payon,157,146,6	script	Suhnbi#cash	85,{
+payon,157,146,6	script	苏恩比#cash	85,{
 	disable_items;
-	mes "[Suhnbi]";
-	mes "I am the Armsmith";
-	mes "I can refine all kinds of weapons,";
-	mes "armor and equipment, so let me";
-	mes "know what you want to refine.";
+	mes "[苏恩比]";
+	mes "我是武器工匠";
+	mes "我能精炼各种武器、";
+	mes "防具与装备，因此请告诉我";
+	mes "你想精炼什么。";
 	next;
 
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -36,8 +36,8 @@ payon,157,146,6	script	Suhnbi#cash	85,{
 		set .@menu$, .@menu$ + ":";
 	}
 	if (.@equipped == 0) {
-		mes "[Suhnbi]";
-		mes "I don't think I can refine any items you have...";
+		mes "[苏恩比]";
+		mes "我看你身上没有可以精炼的物品……";
 		close;
 	}
 	set .@part, .@indices[ select(.@menu$) ];
@@ -45,13 +45,13 @@ payon,157,146,6	script	Suhnbi#cash	85,{
 	if (!getequipisequiped(.@part)) //custom check
 		close;
 	if (!getequipisenableref(.@part)) {
-		mes "[Suhnbi]";
-		mes "Go find another Blacksmith. You can't refine this thing.";
+		mes "[苏恩比]";
+		mes "去别的铁匠那儿吧。这东西没法精炼。";
 		close;
 	}
 	if (getequiprefinerycnt(.@part) >= 10) {
-		mes "[Suhnbi]";
-		mes "Hmm... someone perfected this already. I don't think I can work on it further.";
+		mes "[苏恩比]";
+		mes "嗯……已经有人把它精炼到极致了。我可没法再加工。";
 		close;
 	}
 
@@ -65,24 +65,24 @@ payon,157,146,6	script	Suhnbi#cash	85,{
 	// Determines chance of failure and verifies that you want to continue.
 	callsub S_RefineValidate,.@itemtype,.@material,.@price,.@part,.@refineitemid,.@refinerycnt;
 
-	mes "[Suhnbi]";
-	mes "Clang! Clang! Clang!";
+	mes "[苏恩比]";
+	mes "铛！铛！铛！";
 	if (getequippercentrefinery(.@part, true) > rand(100)) {
 		successrefitem .@part;
 		next;
 		emotion ET_BEST;
-		mes "[Suhnbi]";
-		mes "There you go! It's done.";
-		mes "It's been a while since I've made such a fine "+((.@itemtype == IT_WEAPON)?"weapon":"armor")+". You must be happy because it has become stronger!";
+		mes "[苏恩比]";
+		mes "好了！完成了。";
+		mes "好久没做出这么精良的"+((.@itemtype == IT_WEAPON)?"weapon":"armor")+". You must be happy because it has become stronger!";
 		close;
 	}
 	failedrefitem .@part;
 	next;
 	emotion (!rand(5))?ET_MONEY:ET_HUK;
-	mes "[Suhnbi]";
-	mes "Uuuuuuuuuummmmmph!!!";
+	mes "[苏恩比]";
+	mes "唔噢噢噢噢噢噢！！！";
 	next;
-	mes "[Suhnbi]";
+	mes "[苏恩比]";
 	mes "...";
 	mes ".....";
 	mes ".......Huhuhuhuhu~";
@@ -138,49 +138,49 @@ S_RefineValidate:
 		close;
 	}
 
-	mes "[Suhnbi]";
+	mes "[苏恩比]";
 	if (.@itemtype == IT_WEAPON)
-		mes "You want to refine a level "+ .@equip_lv +" weapon?";
-	mes "To refine that, you'll need to have one ^ff9999"+ getitemname(.@item_req) +"^000000 and "+ .@price +" zeny.";
-	mes "Would you like to continue?";
+		mes "你想精炼等级"+ .@equip_lv +"的武器？";
+	mes "要精炼它，你需要准备一个^ff9999"+ getitemname(.@item_req) +"^000000 以及"+ .@price +"zeny。";
+	mes "您要继续吗？";
 	next;
-	if(select("Yes:No") == 1) {
+	if(select("是:否") == 1) {
 		if (getequippercentrefinery(.@part) < 100) {
 			if (.@itemtype == IT_WEAPON) {
-				mes "[Suhnbi]";
-				mes "Wow!!";
-				mes "This weapon probably";
-				mes "looks like it's been refined...";
-				mes "many times...";
-				mes "It may break if";
-				mes "you refine it again.";
+				mes "[苏恩比]";
+				mes "哇！！";
+				mes "这件武器大概";
+				mes "已经被精炼过……";
+				mes "很多次了……";
+				mes "如果再精炼";
+				mes "可能会损坏。";
 				next;
-				mes "And if it breaks,";
-				mes "you can't use it anymore!";
-				mes "All the cards in it and the properties ^ff0000will be lost^000000!";
-				mes "^ff0000Besides, the equipment will break!^000000";
-				mes "Are you sure you still want to continue?";
+				mes "而一旦损坏，";
+				mes "就再也无法使用了！";
+				mes "上面的卡片与属性^ff0000都会消失^000000！";
+				mes "^ff0000而且，装备会损坏！^000000";
+				mes "你确定还要继续吗？";
 				next;
-				if(select("Yes:No") == 2) {
-					mes "[Suhnbi]";
+				if(select("是:否") == 2) {
+					mes "[苏恩比]";
 					mes "Good.";
-					mes "Because if the weapon breaks from unreasonable refining, then I get a bad mood, too.";
+					mes "因为要是武器因为乱精炼而损坏，我的心情也会变差。";
 					close;
 				}
 			} else {
-				mes "[Suhnbi]";
-				mes "Giggle. Giggle. Oh, you have guts, daring to refine this.";
-				mes "You know it's pretty risky, don't you?";
+				mes "[苏恩比]";
+				mes "嘻嘻。嘻嘻。哦，竟敢精炼这个，胆子不小。";
+				mes "你知道这很冒险吧？";
 				next;
-				mes "If your defensive equipment is broken, you'll never be able to use it again.";
-				mes "Even your cards and your modifications will ^ff0000completely disappear^000000.";
+				mes "防御装备一旦损坏，就再也无法使用了。";
+				mes "连卡片与改造效果都会^ff0000彻底消失^000000。";
 				//mes "Everything will disappear. As in... GONE!";
-				mes "Do you really wish to continue?";
+				mes "你真的还要继续吗？";
 				next;
-				if(select("Yes:No") == 2) {
-					mes "[Suhnbi]";
-					mes "What nonsense. You waste my precious time.";
-					mes "Get lost, punk.";
+				if(select("是:否") == 2) {
+					mes "[苏恩比]";
+					mes "胡说八道。浪费我宝贵的时间。";
+					mes "滚开，小鬼。";
 					close;
 				}
 			}
@@ -192,22 +192,22 @@ S_RefineValidate:
 			// anti-hack
 			if (callfunc("F_IsEquipIDHack", .@part, getarg(4)) ||
 				callfunc("F_IsEquipRefineHack", .@part, getarg(5)) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3])) {
-				mes "[Suhnbi]";
+				mes "[苏恩比]";
 				emotion ET_FRET;
-				mes "Wait a second...";
-				mes "Do you think I'm stupid?!";
-				mes "You switched the item while I wasn't looking! Get out of here!";
+				mes "等一下……";
+				mes "你以为我傻吗？！";
+				mes "你趁我不注意把东西换掉了！给我滚出去！";
 				close;
 			}
 
 			return;
 		}
-		mes "[Suhnbi]";
-		mes "Are these all you have?";
-		mes "I'm very sorry, but I can't do anything without all the materials. Besides, I deserve some payments for my work, don't I?";
+		mes "[苏恩比]";
+		mes "你就只有这些吗？";
+		mes "很抱歉，材料不齐我可做不了。再说，我的手艺也该有点报酬吧？";
 		close;
 	}
-	mes "[Suhnbi]";
-	mes "I can't help it even if you're not happy about it...";
+	mes "[苏恩比]";
+	mes "就算你不高兴我也没办法……";
 	close;
 }

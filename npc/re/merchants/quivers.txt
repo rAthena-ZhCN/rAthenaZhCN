@@ -22,64 +22,64 @@
 
 // Mora :: ep14_1_tre
 //============================================================
-mora,106,117,3	script	Quiver Maker#mora	4_M_RAFLE_GR,{
+mora,106,117,3	script	箭筒工匠#mora	4_M_RAFLE_GR,{
 	if (checkweight(1201,1) == 0) {
-		mes "[Quiver Maker]";
-		mes "You have too many things with you.";
-		mes "Make some space in your inventory and come back. I'll tell you something interesting.";
+		mes "[箭筒工匠]";
+		mes "你携带的东西太多了。";
+		mes "在背包里腾出空间后再来。我会告诉你一件有趣的事。";
 		close;
 	}
 	if (MaxWeight - Weight < 2000) {
-		mes "[Quiver Maker]";
-		mes "You seem worn out with all that stuff.";
-		mes "Make some space in your inventory and come back. I'll tell you something interesting.";
+		mes "[箭筒工匠]";
+		mes "带着那么多东西，你看起来很疲惫。";
+		mes "在背包里腾出空间后再来。我会告诉你一件有趣的事。";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Mora villagers ask what good quivers are. They just don't know how the world works.";
-	mes "No wonder they don't know a thing about quivers - spreading jam over leaves all day long.";
+	mes "[箭筒工匠]";
+	mes "莫拉的村民居然问箭筒有什么好。他们根本不懂世道。";
+	mes "难怪他们对箭筒一无所知——整天只知道往叶子上抹果酱。";
 	next;
 	if (getbattleflag("feature.barter")) {
-		.@menu$ = "I want arrows";
+		.@menu$ = "我想要箭矢";
 	}
-	switch( select("Please make me a quiver.", .@menu$, "What's a quiver?") ) {
+	switch( select("请给我做一个箭筒。", .@menu$, "箭筒是什么？") ) {
 	case 1:
 		if (getbattleflag("feature.barter")) {
-			mes "[Quiver Maker]";
-			mes "Finally, someone has appeared who knows the true value of a quiver. I will do it for those who know its worth.";
+			mes "[箭筒工匠]";
+			mes "终于出现了懂得箭筒真正价值的人。我只为识货的人制作。";
 			close2;
 			callshop "Quiver_Archer", 1;
 			end;
 		}
-		mes "[Quiver Maker]";
-		mes "At last someone appreciates a quiver!";
-		mes "I can make Elven Quivers and Hunting Quivers.";
-		mes "Which do you need?";
+		mes "[箭筒工匠]";
+		mes "终于有人懂得箭筒的好了！";
+		mes "我可以制作精灵箭筒和狩猎箭筒。";
+		mes "你需要哪种？";
 		next;
-		switch(select("An Elven Quiver:A Hunting Quiver:I don't need a quiver.")) {
+		switch(select("精灵箭筒:狩猎箭筒:我不需要箭筒。")) {
 		case 1: callsub S_BuyQuiver,1773,500,500,12575; //Arrow_Of_Elf_Cntr
 		case 2: callsub S_BuyQuiver,1774,500,500,12576; //Hunting_Arrow_Cntr
 		case 3:
-			mes "[Quiver Maker]";
-			mes "You can buy arrows off the tool merchant next to me.";
+			mes "[箭筒工匠]";
+			mes "你可以向旁边的工具商人购买箭矢。";
 			close;
 		}
 		end;
 	case 2:
 		if (getbattleflag("feature.barter")) {
-			mes "[Quiver Maker]";
-			mes "I don't sell ordinary arrows. These are artisan arrows that can only be purchased here. Would you really recognize its worth, right?";
+			mes "[箭筒工匠]";
+			mes "我不卖普通箭矢。这些是只有这里才买得到的工匠箭矢。你应该识货吧？";
 			close2;
 			callshop "Catch_Arrows", 1;
 		}
 		end;
 	case 3:
-		mes "[Quiver Maker]";
-		mes "An arrow may be thin and light, but carrying hundreds and thousands of arrows is like carrying a whole log.";
+		mes "[箭筒工匠]";
+		mes "箭矢虽细轻，但带上成百上千支，就像扛着一整根圆木。";
 		next;
-		mes "[Quiver Maker]";
-		mes "But when you have quivers, you can put arrows in them and save weight and space.";
-		mes "If you're interested in one, I'll stitch one up for you.";
+		mes "[箭筒工匠]";
+		mes "但只要有了箭筒，就能把箭矢装进去，省下重量和空间。";
+		mes "如果有兴趣，我可以为你缝制一个。";
 		close;
 	}
 	end;
@@ -88,30 +88,30 @@ S_BuyQuiver:
 	.@item_req = getarg(0);
 	.@req_amount = getarg(1);
 	if (countitem(getarg(0)) < .@req_amount) {
-		mes "[Quiver Maker]";
-		mes "Bring more than "+ .@req_amount +" "+ getitemname(.@item_req) +" and I'll make you a quiver.";
+		mes "[箭筒工匠]";
+		mes "带来超过"+ .@req_amount +" "+ getitemname(.@item_req) +"，我就为你做一个箭筒。";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Oh, I see you have "+ getitemname(.@item_req) +" in your hand!";
-	mes "Are you interested in using a quiver? It's really convenient!";
-	mes "If you're interested, I can trade "+ .@req_amount +" of those arrows for one of these quivers for ^FF3131"+getarg(2)+" zeny^000000.";
+	mes "[箭筒工匠]";
+	mes "哦，我看到你手上有"+ getitemname(.@item_req) +"！";
+	mes "有兴趣使用箭筒吗？真的很方便！";
+	mes "如果有兴趣，我可以用"+ .@req_amount +"支箭矢，换一个这种箭筒，只需 ^FF3131"+getarg(2)+" zeny^000000.";
 	next;
-	switch(select("Trade all the arrows you have:Get only one quiver:Don't trade")) {
+	switch(select("兑换你所有的箭矢:只换一个箭筒:不兑换")) {
 	case 1:
 		set .@arrows, countitem(.@item_req);
 		set .@quiver, .@arrows / .@req_amount;
 		set .@arrows_used, .@quiver * .@req_amount;
 		set .@arrow_zeny01, .@quiver * getarg(2);
-		mes "The number of arrows you have : ^3131FF"+.@arrows+"^000000";
-		mes "The number of quivers available : ^3131FF"+.@quiver+"^000000";
-		mes "Zeny needed for trade : ^3131FF"+.@arrow_zeny01+" zeny^000000";
+		mes "你拥有的箭矢数量：^3131FF"+.@arrows+"^000000";
+		mes "可兑换的箭筒数量：^3131FF"+.@quiver+"^000000";
+		mes "兑换所需 Zeny：^3131FF"+.@arrow_zeny01+" zeny^000000";
 		next;
-		mes "Trade?";
+		mes "要兑换吗？";
 		next;
-		if(select("Trade:Don't trade") == 2) {
-			mes "[Quiver Maker]";
-			mes "Hey, you don't doubt my skills, do you?";
+		if(select("兑换:不兑换") == 2) {
+			mes "[箭筒工匠]";
+			mes "喂，你该不会怀疑我的手艺吧？";
 			close;
 		}
 		break;
@@ -122,23 +122,23 @@ S_BuyQuiver:
 		set .@zeny_mes,1;
 		break;
 	case 3:
-		mes "[Quiver Maker]";
-		mes "Hey, you don't doubt my skills, do you?";
+		mes "[箭筒工匠]";
+		mes "喂，你该不会怀疑我的手艺吧？";
 		close;
 	}
 	if (Zeny < .@arrow_zeny01) {
-		mes "[Quiver Maker]";
+		mes "[箭筒工匠]";
 		if (.@zeny_mes == 1)
-			mes "I said I'd accept human coins just for you, and you still don't want to spend the money?";
+			mes "我都特意为你收人类金币了，你还不肯花钱？";
 		else
-			mes "You really don't expect to get your hands on a masterpiece for nothing, do you?";
+			mes "你不会真以为不用花钱就能得到杰作吧？";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Hey, here you are.";
-	mes "There is ^3131FFsomething you need to know^000000 - try to remember it.";
-	mes "^FF0000You can't use quivers when your encumbrance is over 70%.^000000";
-	mes "You'd better keep that in mind, or you might be in trouble later.";
+	mes "[箭筒工匠]";
+	mes "喂，给你。";
+	mes "有件 ^3131FF你必须知道的事^000000——记好了。";
+	mes "^FF0000负重超过 70% 时无法使用箭筒。^000000";
+	mes "最好记住这点，否则以后可能会吃苦头。";
 	set Zeny, Zeny-.@arrow_zeny01;
 	delitem .@item_req,.@arrows_used;
 	getitem getarg(3),.@quiver;

@@ -24,25 +24,25 @@
 	set .@GID, GetCastleData("payg_cas04",1);
 
 	if (.@GID == 0) {
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 神圣卢恩-米德加尔特王国敕令 ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. 谨遵神圣卢恩-米德加尔特王国的敕令，";
+		mes "本王国宣告";
+		mes "此城并无正式城主。";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. 凡能";
+		mes "历经一切试炼";
+		mes "并摧毁华丽金属者，";
+		mes "国王将赐予其";
+		mes "此城的所有权。";
 		close;
 	}
 	if (getcharid(2) == .@GID) {
-		mes "[ Echoing Voice ]";
-		mes "Brave ones...";
-		mes "Do you wish to return to your honorable place?";
+		mes "[ 回响之声 ]";
+		mes "勇敢的人们……";
+		mes "你愿意回到属于你的荣耀之地吗？";
 		next;
-		if(select("Return to the guild castle.:Quit.") == 1) {
+		if(select("返回公会城堡:退出") == 1) {
 			close2;
 			if (getcharid(2) == GetCastleData("payg_cas04",1)) {
 					warp "payg_cas04",40,235;
@@ -52,16 +52,16 @@
 		}
 		close;
 	}
-	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes "[ 神圣卢恩-米德加尔特王国敕令 ]";
 	mes " ";
-	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-	mes "we approve that this place is in";
-	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes "1. 谨遵神圣卢恩-米德加尔特王国的敕令，";
+	mes "本王国认可此地属于";
+	mes "^ff0000"+GetGuildName(.@GID)+"^000000公会的私有领地。";
 	mes " ";
-	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
-	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
-	mes "If there is anyone who objects to this,";
-	mes "prove your strength and honor with a steel blade in your hand.";
+	mes "2. ^ff0000"+GetGuildName(.@GID)+"^000000公会的会长是";
+	mes "^FF0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "若有任何人对此持有异议，";
+	mes "便请手持钢刃，证明你的力量与荣誉。";
 	close;
 
 OnRecvCastlePy04:
@@ -108,9 +108,9 @@ payg_cas04,38,284,3	duplicate(cm)	DJ#payg_cas04	55
 //============================================================
 payg_cas04,151,47,0	script	#lever_PA04	111,{
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "这里有一个小拉杆。要拉动它吗？";
 	next;
-	if(select("Pull.:Do not.") == 1) {
+	if(select("拉动:不拉动") == 1) {
 		close2;
 		warp "payg_cas04",38,285;
 		end;

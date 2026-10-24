@@ -57,20 +57,20 @@
 
 // Notices in the old Hunter Guild.
 //============================================================
-in_hunter,99,99,4	script	Hunter Info#hnt::HntNotice	727,{
-	mes "============ 通知 ============";
-	mes "我们在此通知您，猎人转职地点";
-	mes "已迁移至^ff0000毁葛^000000（秀发兹发德共和国）。";
+in_hunter,99,99,4	script	猎人情报#hnt::HntNotice	727,{
+	mes "============ 公告 ============";
+	mes "特此通知，猎人转职地点";
+	mes "已迁至黑森林共和国的^ff0000休格尔^000000。";
 	next;
-	mes "现在您可以使用毁葛航线，请搭乘飞空艇前往毁葛。";
+	mes "现在可以使用休格尔航线了，请搭乘飞空艇前往休格尔。";
 	next;
-	mes "新的转职地点位于^ff0000 Hugel 208 222 ^000000。";
+	mes "你会在^ff0000 休格尔 208 222 ^000000找到新的转职地点。";
 	next;
-	mes "^804000（您在通知末尾发现了一行小字。）^000000";
+	mes "^804000（你在公告末尾发现了一行小字。）^000000";
 	mes " ";
 	mes " ";
 	mes " ";
-	mes "我，这位猎鹰培育者，也已经搬过去了。";
+	mes "我这个养猎鹰的人也一起搬走了。";
 	close;
 }
 
@@ -78,115 +78,115 @@ pay_fild10,148,252,3	duplicate(HntNotice)	Job Change Location#hu	857
 
 // Actual Job quest start
 //============================================================
-hu_in01,386,373,4	script	Hunter Guildsman#hnt	727,{
+hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 	if (Upper == 1) {
-		mes "[猎人 勋]";
-		mes "哦，你最近怎么样？好久不见了，对吧？";
+		mes "[猎人雪琳]";
+		mes "哦，你最近过得怎么样？好久不见了吧？";
 		next;
-		mes "[猎人 勋]";
-		mes "...等等。";
-		mes "哎呀！抱歉，我发誓我们以前见过。嗯？真奇怪。";
+		mes "[猎人雪琳]";
+		mes "...Wait.";
+		mes "哎呀！抱歉，我发誓我们以前见过面。咦，真奇怪。";
 		close;
 	}
 	if (BaseJob == Job_Archer && JobLevel < 40) {
 		mes "[猎人公会成员]";
-		mes "呃？你作为弓箭手的训练还不够。要成为猎人，必须先积累一定等级的弓箭手经验。";
+		mes "咦？你作为弓箭手的修行还不够。要成为猎人，必须先积累一定的弓箭手经验。";
 		next;
 		mes "[猎人公会成员]";
-		mes "出去再多训练一下吧。至少要达到Job等级40才能准备好成为猎人。当然，如果你想的话，也可以练得更高。";
+		mes "再去多修炼一阵吧。至少要达到Job等级40，才具备成为猎人的条件。当然，想练得更高也可以。";
 		next;
 		mes "[猎人公会成员]";
-		mes "下次再见啦~";
+		mes "下次见~";
 		close;
 	}
 	if (SkillPoint) {
-		mes "[猎人 勋]";
-		mes "不把所有技能点用完是无法转职的。请在申请转职前将所有技能点分配完毕~";
+		mes "[猎人雪琳]";
+		mes "技能点没用完是无法转职的。请在申请转职前用完所有技能点~";
 		close;
 	}
 	if (BaseClass == Job_Novice) {
 		mes "[猎人公会成员]";
 		mes "你一定是……";
-		mes "初心者？哇，你还有很长的路要走呢。我觉得你现在在这里做不了什么。";
+		mes "初心者？哇，你的路还长着呢。我看你在这里也做不了什么。";
 		close;
 	}
 	else if (BaseClass == Job_Swordman) {
 		mes "[猎人公会成员]";
-		mes "你选择了剑的道路。我敬佩你手中利刃的力量。不过，从远处作战时，总不能真的把剑扔向敌人吧？";
+		mes "你选择了剑之路。我敬重你剑刃的力量。当然，在远处你总不能把剑扔向敌人吧？";
 		close;
 	}
 	else if (BaseClass == Job_Mage) {
 		mes "[猎人公会成员]";
-		mes "你擅长魔法？能驾驭神秘力量的感觉一定很棒吧。";
+		mes "你是用魔法的？能施展神秘力量的感觉一定很棒。";
 		close;
 	}
 	else if (BaseClass == Job_Acolyte) {
 		mes "[猎人公会成员]";
-		mes "哦，一位侍奉神明的人！很高兴认识你。像你这样的人可不常来这儿~呵呵。";
+		mes "哦，侍奉神明的人！很高兴见到你。像你这样的人很少会来这里~ 嘿嘿。";
 		close;
 	}
 	else if (BaseClass == Job_Merchant) {
 		mes "[猎人公会成员]";
-		mes "哦……";
-		mes "你的生意进展如何？";
+		mes "Oh...";
+		mes "你的生意做得怎么样了？";
 		close;
 	}
 	else if (BaseClass == Job_Thief) {
 		mes "[猎人公会成员]";
-		mes "啊？！";
-		mes "这里没什么值得偷的东西，也没有值得杀的人！！";
+		mes "呃？！";
+		mes "这地方既没有值得偷的东西，也没有值得杀的人！！";
 		close;
 	}
 	else if (BaseJob == Job_Dancer || BaseJob == Job_Bard) {
-		mes "[Hunter Guildsman]";
-		mes "呼……有时候当个猎人真的挺难的，你知道吧……";
-		mes "那你喜欢这种波西米亚式的生活吗？说真的，我挺羡慕你能这么自由自在……";
+		mes "[猎人公会成员]";
+		mes "呼……有时候当猎人真的很辛苦啊……";
+		mes "那么你喜欢这种自由不羁的生活吗？是啊，我真羡慕你有那么多自由……";
 		close;
 	}
 	else if (BaseJob == Job_Hunter) {
-		mes "[猎人 谢琳]";
-		mes "哦～" + strcharinfo(0) + "!!";
-		mes "好久不见啦～什么风把你吹来了？该不会是你的猎鹰跑丢了吧？";
+		mes "[猎人雪琳]";
+		mes "哦~" + strcharinfo(0) + "！！";
+		mes "好久不见~ 什么风把你吹来了？是你的猎鹰跑掉了吗？";
 		next;
-		mes "[猎人 谢琳]";
-		mes "目前公会那边没什么正式通知，希望你不是专程为此跑一趟……";
+		mes "[猎人雪琳]";
+		mes "目前公会没有什么正式的公告，希望你不是专程为这个而来的……";
 		close;
 	}
 	else if (BaseJob == Job_Archer) {
 		if (HNTR_Q == 17 && countitem(1007) == 0) {
-			mes "[猎人 谢琳]";
-			mes "嗯……我听说你通过了测试。但你手上没有证明你成就所必需的‘慧眼（穿透）’。";
+			mes "[猎人雪琳]";
+			mes "嗯……我听说你通过了考试。但你没有能证明这一成就的必需物品“慧眼（穿透）”。";
 			next;
-			mes "[猎人 谢琳]";
-			mes "我可以帮你转职，但无论如何，你必须把‘慧眼（穿透）’带回来。";
+			mes "[猎人雪琳]";
+			mes "我可以让你转职，但无论如何你都必须带回“慧眼（穿透）”。";
 			close;
 		}
 		else if (HNTR_Q == 17 && countitem(1007) > 0) {
-			mes "[猎人 谢琳]";
+			mes "[猎人雪琳]";
 			mes "哦……？";
 			mes "你通过了";
-			mes "转职测试？！";
-			mes "恭喜你～！！";
+			mes "转职考试？！";
+			mes "恭喜你~！！";
 			next;
-			mes "[猎人 谢琳]";
+			mes "[猎人雪琳]";
 			mes "那么，";
-			mes "我现在就将你的职业";
-			mes "转为猎人～";
+			mes "我现在就把你";
+			mes "转职为猎人~";
 			next;
 			delitem 1007,1; // Penetration
-			mes "[猎人 谢琳]";
-			mes "当当～恭喜你！";
-			mes "你当猎人真是帅呆了！！";
+			mes "[猎人雪琳]";
+			mes "锵~ 恭喜你！";
+			mes "你成为猎人的样子真棒！！";
 			.@joblvl = JobLevel;
 			completequest 4013;
 			callfunc "Job_Change",Job_Hunter;
 			callfunc "F_ClearJobVar";		// clears all job variables for the current player
 			next;
-			mes "[猎人 谢琳]";
-			mes "做个高尚的人，成为我们猎人公会当之无愧的代表吧。以猎人的身份展现你对自然的热爱～";
+			mes "[猎人雪琳]";
+			mes "成为高尚的人，成为我们猎人公会引以为傲的代表吧。以猎人的身份展现你对自然的热爱~";
 			next;
-			mes "[猎人 谢琳]";
-			mes "另外，这是对你付出努力的一点小奖励。当然是我私人送的～";
+			mes "[猎人雪琳]";
+			mes "另外，这是给你辛勤付出的一点小奖励。当然，是我私人送的~";
 			if (.@joblvl > 49)
 				getitem 1718,1; //Hunter_Bow
 			else
@@ -196,285 +196,285 @@ hu_in01,386,373,4	script	Hunter Guildsman#hnt	727,{
 		else if (HNTR_Q == 0 || HNTR_Q == 1) {
 			if (HNTR_Q == 0) {
 				mes "[猎人公会成员]";
-				mes "哦，你是弓箭手啊！看来你作为弓箭手已经训练得差不多了……是来转职成猎人的吧？";
+				mes "哦，你是弓箭手！看来你已经受过足够的弓箭手修行……你是来成为猎人的吧？";
 				next;
-				switch( select( "是的，我就是为此而来。", "转职有什么要求？", "……我还不想转职。" ) ) {
+				switch( select( "是的，我就是为此而来。", "What are the requirements to change jobs?", "....I don't want to change yet." ) ) {
 				case 1:
 					mes "[猎人公会成员]";
-					mes "嘿嘿～";
-					mes "我就知道！让我把你登记到候选人名单上。让我看看～*";
+					mes "嘿嘿~";
+					mes "果然没错！我把你登记到候选人名单里。让我看看~*";
 					next;
 					mes "[猎人公会成员]";
-					mes "嗯……先从面试开始吧。稍等片刻，放松一下。别担心，我会准备好一切～";
+					mes "嗯……先从面试开始吧。请稍等片刻，放松一下。不用担心，我会把一切准备好的~";
 					next;
 					mes "^3355FF*整理并翻阅文件*^000000";
 					next;
-					mes "^3355FF*窸窸窣窣翻找*^000000";
+					mes "^3355FF*翻找翻找*^000000";
 					next;
 					mes "[猎人公会成员]";
 					mes "啊！";
-					mes "问题来啦～首先，我叫‘谢琳’，很高兴认识你！";
+					mes "找到了，面试题目~ 首先，我叫“雪琳”。很高兴见到你！";
 					next;
-					mes "[猎人 谢琳]";
+					mes "[猎人雪琳]";
 					mes "那么，";
 					mes "我们开始吧？";
 					next;
-					if (select( "好呀～现在就开始吧。", "不了，我稍后再来。") == 2) {
-						mes "[猎人 谢琳]";
-						mes "好吧……";
-						mes "等你准备好了";
-						mes "再回来吧～";
+					if (select( "好~ 现在开始吧。", "不，我晚点再来。") == 2) {
+						mes "[猎人雪琳]";
+						mes "Okay...";
+						mes "等你准备好";
+						mes "再来吧~";
 						close;
 					}
 					if (isbegin_quest(4000) == 0)
 						setquest 4000;
-					mes "[猎人 谢琳]";
-					mes "仔细听我描述的情境。当我提问时，你选择一个答案。很简单吧？";
+					mes "[猎人雪琳]";
+					mes "请仔细听我描述的情景。当我提问时，你就选择一个答案。很简单吧？";
 					next;
-					mes "[猎人 谢琳]";
-					mes "我只是想了解你对生活的看法，以及你为何想成为猎人，所以不必紧张。";
+					mes "[猎人雪琳]";
+					mes "我只是想知道你如何看待人生，以及为什么想成为猎人，所以不必紧张。";
 					break;
 				case 2:
 					mes "[猎人公会成员]";
 					mes "转职";
-					mes "条件？";
-					mes "第一……";
-					mes "你必须是弓箭手。";
+					mes "条件是什么？";
+					mes "First...";
+					mes "必须是弓箭手。";
 					next;
 					mes "[猎人公会成员]";
-					mes "第二……";
-					mes "你的Job等级";
-					mes "至少要达到40级。";
+					mes "Second...";
+					mes "你一定";
+					mes "至少Job等级40。";
 					next;
 					mes "[猎人公会成员]";
-					mes "第三……";
-					mes "你必须准备好公会要求的所有物品。这个可以稍后再操心。";
+					mes "Third...";
+					mes "你必须带来公会要求的所有物品。那件事之后再操心吧。";
 					next;
 					mes "[猎人公会成员]";
-					mes "第四……";
-					mes "你必须通过公会的测试。如果你作为弓箭手训练得足够充分，应该能轻松通过测试～";
+					mes "Fourth...";
+					mes "你必须通过公会举办的考试。只要作为弓箭手的修行足够，应该就能通过~";
 					close;
 				case 3:
 					mes "[猎人公会成员]";
 					mes "那么，";
-					mes "下次再见啦～";
+					mes "下次见~";
 					close;
 				}
 			}
 			else if (HNTR_Q == 1) {
-				mes "[猎人 谢琳]";
+				mes "[猎人雪琳]";
 				mes "欢迎回来……！";
-				mes "那么，我们开始面试吧。这次，请认真思考每个问题的答案。";
+				mes "好，先从面试开始吧。这次请仔细思考每个问题的答案。";
 			}
 			next;
-			mes "[猎人 谢琳]";
+			mes "[猎人雪琳]";
 			mes "那么，";
 			mes "开始吧。";
 			next;
-			mes "[猎人 谢琳]";
-			mes "你是一名弓箭手，但不知道该去哪里狩猎。你会怎么做？";
+			mes "[猎人雪琳]";
+			mes "你是弓箭手，却不知道该去哪里狩猎。你会怎么做？";
 			next;
-			switch( select( "大声尖叫着问该去哪里。", "悄悄询问路过的行人。", "独自四处游荡寻找地点。" ) ) {
+			switch( select( "大声喊叫，问别人该去哪里。", "悄悄问路过的人。", "独自四处游荡，寻找地点。" ) ) {
 			case 2:
 			case 3:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人 谢琳]";
-			mes "你已决定狩猎地点——前往苏克拉特沙漠猎杀名为‘蚯蚓’的怪物。";
+			mes "[猎人雪琳]";
+			mes "于是你决定好狩猎地点，要去苏克拉特沙漠猎杀被称为蚯蚓的怪物。";
 			next;
-			mes "[猎人 谢琳]";
-			mes "但你现在在斐扬！！";
-			mes "你如何前往沙漠？";
+			mes "[猎人雪琳]";
+			mes "可你现在在裴扬！！";
+			mes "你要怎么去沙漠？";
 			next;
-			switch( select( "请牧师免费开启传送之阵。", "使用卡普拉服务。", "和朋友一起走。" ) ) {
+			switch( select( "请牧师免费开一个传送之阵。", "使用卡普拉服务。", "和朋友一起走过去。" ) ) {
 			case 2:
 			case 3:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人谢琳]";
-			mes "没有牧师可以为你开启传送之阵，也没有朋友在身边陪你同行。你必须使用卡普拉服务，但你身上没有Zeny！";
+			mes "[猎人雪琳]";
+			mes "既没有牧师可以替你传送，身边也没有朋友陪你同行。你只能使用卡普拉服务，可你没有Zeny！";
 			next;
-			mes "[猎人谢琳]";
-			mes "你打算如何";
-			mes "赚取所需的";
+			mes "[猎人雪琳]";
+			mes "你要怎么";
+			mes "凑出所需的";
 			mes "Zeny呢？";
 			next;
-			switch( select( "四处乞讨。", "卖掉不需要的物品。", "在附近野外狩猎。" ) ) {
+			switch( select( "四处乞讨。", "卖掉不需要的物品。", "在附近的野外狩猎。" ) ) {
 			case 2:
 			case 3:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人谢琳]";
-			mes "你终于抵达了苏克拉特沙漠。但你发现蚯蚓对你来说有点太强，独自狩猎很吃力。";
+			mes "[猎人雪琳]";
+			mes "你终于抵达了苏克拉特沙漠。但你发现蚯蚓对你来说有点太强，无法独自猎杀。";
 			next;
-			mes "[猎人谢琳]";
+			mes "[猎人雪琳]";
 			mes "面对这种";
 			mes "情况，你的";
-			mes "解决方法是？";
+			mes "解决办法是什么？";
 			next;
-			if (select( "从山顶攻击蚯蚓。", "返回城镇。", "攻击别人正在打的蚯蚓。" ) == 2)
+			if (select( "从山丘上攻击蚯蚓。", "回到城里。", "攻击别人的蚯蚓。" ) == 2)
 				.@hunter_t += 10;
-			mes "[猎人谢琳]";
-			mes "假设你因狩猎蚯蚓太困难而返回城镇。现在你HP耗尽，恰好有位牧师在附近。你会如何请求治愈术？";
+			mes "[猎人雪琳]";
+			mes "假设你狩猎蚯蚓太过艰难，回到了城里。此时你的生命值所剩无几，恰好有位牧师在附近。你会怎么请求治愈术？";
 			next;
-			if (select( "请问可以帮我施放一下治愈术吗？", "请帮我加血。", "给我加血。" ) == 1)
+			if (select( "请问可以帮我治愈一下吗？", "请帮我治愈。", "给我治愈。" ) == 1)
 				.@hunter_t += 10;
-			mes "[猎人谢琳]";
-			mes "这次，你在整理背包时发现了一件稀有物品。你出去兜售它，周围有许多玩家开着商店和聊天室。";
+			mes "[猎人雪琳]";
+			mes "这次，你在整理背包时发现了一件稀有物品。你出去准备卖掉它，外面有许多人开着商店和聊天室。";
 			next;
-			mes "[猎人谢琳]";
-			mes "此时最有效";
-			mes "的销售方式";
-			mes "是什么呢？";
+			mes "[猎人雪琳]";
+			mes "卖掉这件";
+			mes "物品最好的";
+			mes "方法是什么？";
 			next;
-			switch( select( "对所有看到的人惊声尖叫。", "开个聊天室等待买家。", "看看是否已有人在求购此物。" ) ) {
+			switch( select( "对着眼前所有人大声喊叫。", "开一个聊天室等待。", "看看有没有人已经想要它。" ) ) {
 			case 2:
 			case 3:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人谢琳]";
-			mes "在你等待期间，有人正在乞讨物品和Zeny。你该怎么做？";
+			mes "[猎人雪琳]";
+			mes "等待期间，有人在乞讨物品和Zeny。你该怎么做？";
 			next;
-			if (select("分一些我的物品和Zeny给他。", "无视并走开。", "告诉对方一个不错的狩猎地点。") == 1)
+			if (select("分给他一些物品和Zeny。", "无视他，走开。", "告诉他一个好狩猎地点。") == 1)
 				.@hunter_t += 10;
-			mes "[猎人谢琳]";
-			mes "此时，你决定独自前往迷宫。";
+			mes "[猎人雪琳]";
+			mes "这时，你决定独自前往迷宫。";
 			next;
-			mes "[猎人谢琳]";
-			mes "但在途中，你遇到了";
-			mes "一位迷路的人。";
+			mes "[猎人雪琳]";
+			mes "但在路上，你";
+			mes "遇到了一位迷路的人。";
 			mes "你该怎么做？";
 			next;
-			switch( select( "告诉他们该怎么走。", "亲自带他们到目的地。", "无视。" ) ) {
+			switch( select( "告诉他该往哪边走。", "带他前往目的地。", "Ignore." ) ) {
 			case 1:
 			case 2:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人谢琳]";
-			mes "遇到这位迷路者后，你决定继续狩猎。就在这时，你发现有人正在攻击一只BOSS！";
+			mes "[猎人雪琳]";
+			mes "与那位迷路的人分别后，你决定继续狩猎。就在这时，你发现有人正在攻击首领！";
 			next;
-			mes "[猎人谢琳]";
+			mes "[猎人雪琳]";
 			mes "你该怎么做？";
 			next;
-			if (select( "先旁观，等对方求助时再出手。", "直接攻击，看看会发生什么。", "直接回城。" ) == 1)
+			if (select( "先观望，等对方求助时再出手。", "Attack and see what happens.", "Just go back to town." ) == 1)
 				.@hunter_t += 10;
-			mes "[猎人谢琳]";
-			mes "经过一整天的狩猎，你现在筋疲力尽，是时候回城了。";
+			mes "[猎人雪琳]";
+			mes "狩猎了一整天，你现在非常疲惫。该回城了。";
 			next;
-			mes "[猎人谢琳]";
-			mes "咦！这是什么！？你发现地上躺着一件贵重物品！你打算怎么处理？";
+			mes "[猎人雪琳]";
+			mes "可这是怎么回事！？你发现地上躺着一件昂贵的物品！你该怎么处理它？";
 			next;
-			switch( select( "捡起来据为己有。", "尝试寻找失主。", "直接走过，不予理会。" ) ) {
+			switch( select( "捡起来据为己有。", "试着寻找失主。", "直接走过去。" ) ) {
 			case 2:
 			case 3:
 				.@hunter_t += 10;
 			default:
 				break;
 			}
-			mes "[猎人谢琳]";
-			mes "好了，测试到此结束！";
+			mes "[猎人雪琳]";
+			mes "好，考试到此结束！";
 			next;
 			if (.@hunter_t == 100) {
 				HNTR_Q = 2;
 				changequest 4000,4001;
-				mes "[猎人谢琳]";
-				mes "干得好！你的回答显示出你拥有正确的人生观。你绝对具备成为猎人的素质～";
+				mes "[猎人雪琳]";
+				mes "干得好！你的回答表明你有着正确的人生观。你绝对具备成为猎人的资质~";
 				next;
-				mes "[猎人谢琳]";
-				mes "我很高兴地通知你，你通过了面试～现在，请去角落那位NPC那里确认转职所需物品～";
+				mes "[猎人雪琳]";
+				mes "很高兴地告诉你，你通过了面试~ 现在去角落里的那个人那里，确认转职考试需要哪件物品吧~";
 				close;
 			}
 			else if (.@hunter_t == 90) {
 				HNTR_Q = 2;
 				changequest 4000,4001;
-				mes "[猎人谢琳]";
-				mes "嗯，我看了你的答案，分数并不完美。但我还是让你通过吧。不过我不确定我们公会会长会怎么想。";
+				mes "[猎人雪琳]";
+				mes "嗯，我看了你的答案，分数并不完美。不过我还是让你通过吧。只是不知道我们会长会怎么想。";
 				next;
-				mes "[Hunter Sherin]";
-				mes "请务必时刻谨记基本礼仪。在接下来的测试中再加把劲，让我开心，好吗？";
+				mes "[猎人雪琳]";
+				mes "记住要时刻把基本礼仪放在心上。在接下来的考试中多努力，让我高兴，好吗？";
 				close;
 			}
 			HNTR_Q = 1;
-			mes "[猎人 谢琳]";
-			mes "嗯……我觉得这样不行。不懂基本礼仪的人是无法成为猎人的。";
+			mes "[猎人雪琳]";
+			mes "嗯……我觉得这样不行。不懂基本礼仪是无法成为猎人的。";
 			next;
-			mes "[猎人 谢琳]";
-			mes "再仔细想想你答题时的态度吧。若想珍视自然，首先必须珍视与他人的关系。";
+			mes "[猎人雪琳]";
+			mes "再想想你是怎么回答问题的。要珍视自然，必须先珍视与他人的关系。";
 			next;
-			mes "[猎人 谢琳]";
-			mes "如此一来，你才能与自然、与他人更加和谐共鸣。正是这种和谐，造就了最优秀的猎人。";
+			mes "[猎人雪琳]";
+			mes "这样，你才能更贴近自然，也更贴近他人。正是这种和谐造就了最优秀的猎人。";
 			close;
 		}
 		else if (HNTR_Q > 2 && HNTR_Q < 10) {
-			mes "[猎人 谢琳]";
-			mes "只要把物品交给恶魔猎人就行了，就是这个区域最左边那位~";
+			mes "[猎人雪琳]";
+			mes "把物品交给恶魔猎人，就是这片区域最左边的那个人~";
 			next;
-			mes "[猎人 谢琳]";
+			mes "[猎人雪琳]";
 			if (Sex == SEX_MALE)
-				mes "如果你决定成为猎人，答应我一定要回来看我哦。我想亲眼看看你作为猎人的样子，一定超棒的！！";
+				mes "如果你决定成为猎人，答应我来看我。我想看看你成为猎人的样子。你一定会很好看！！";
 			else
-				mes "如果你决定成为猎人，记得回来看我哦？你已经很漂亮了，但……穿上猎人装束会更美呢。嘿嘿~";
+				mes "如果你决定成为猎人，就来看我，好吗？你很好看，不过……成为猎人后你会更好看。嘿嘿~";
 			close;
 		}
 		else if (HNTR_Q == 2) {
-			mes "[猎人 谢琳]";
-			mes "????";
+			mes "[猎人雪琳]";
+			mes "？？？？";
 			next;
-			mes "[猎人 谢琳]";
-			mes "还没找到恶魔猎人吗？那家伙就在左边啊！嘿嘿~";
+			mes "[猎人雪琳]";
+			mes "你没找到恶魔猎人？那家伙就在左边啊！嘿嘿~";
 			next;
-			mes "[猎人 谢琳]";
-			mes "我好想看到你成为猎人……！哇啊~ 我觉得你一定会超好看的，快点加油吧！";
+			mes "[猎人雪琳]";
+			mes "我想看你成为猎人……！哇~ 我觉得你一定会很好看，所以快点吧！";
 			close;
 		}
-		mes "[猎人 谢琳]";
-		mes "嗯，我觉得你现在该去找的不是我，而是我们外出办事的公会会长，知道吗？";
+		mes "[猎人雪琳]";
+		mes "嗯，我想你该去找别人，而不是我。比如我们出门办事的会长，你懂吧？";
 		next;
-		mes "[猎人 谢琳]";
-		mes "听说他在斐扬中央宫殿……或者山岳之都 斐扬，这两个地方之一。去那里找找看吧，好吗？";
+		mes "[猎人雪琳]";
+		mes "我听说他在裴扬中央宫殿……或者弓箭手村，总之是这两个地方之一。去那些地方找找他吧，好吗？";
 		close;
 	}
-	mes "[猎人公会职员]";
-	mes "咦？你的弓箭手训练还不够。要成为猎人，必须先积累更多弓箭手的经验。";
+	mes "[猎人公会成员]";
+	mes "咦？你作为弓箭手的修行还不够。要成为猎人，必须先积累更多弓箭手经验。";
 	next;
-	mes "[猎人公会职员]";
-	mes "那么，再去多练练吧。确切地说，Job等级至少要达到40级。当然，更高也没问题。下次再见啦~";
+	mes "[猎人公会成员]";
+	mes "那么，再去多修炼吧。准确地说，至少要达到Job等级40。当然，练得更高也无妨。下次见~";
 	close;
 }
 
-hu_in01,382,382,4	script	猎人公会考试接待人员#hnt	732,{
+hu_in01,382,382,4	script	公会接待员#hnt	732,{
 	if (HNTR_Q == 2) {
 		mes "[猎人公会考试接待人员]";
-		mes "你好。人们称我为……^660000恶魔猎人^000000。我是负责处理申请的人。你的名字是……" + strcharinfo(0) + "，对吧？";
+		mes "你好。人们叫我……^660000恶魔猎人^000000。我负责处理申请。你的名字是……" + strcharinfo(0) + "，对吗？";
 		next;
-		if (select( "是的，没错。", "不对哦～～（嘻嘻嘻）" ) == 2) {
-			mes "[戴蒙猎人]";
-			mes "喂，别闹了。";
+		if (select( "是的，没错。", "不对~~（嘿嘿嘿）" ) == 2) {
+			mes "[恶魔猎人]";
+			mes "喂，别胡闹了。";
 			mes "你的名字是" + strcharinfo(0) + "，对吧？";
 			next;
-			if (select("嗯……", "嘿嘿嘿，我都说了多少次啦，根本不是这样～～") == 2) {
-				mes "[戴蒙猎人]";
-				mes "若打算用这些小把戏戏弄我，就请立刻离开！你难道没意识到——自己正在挑衅^660000戴蒙猎人^000000吗？！";
+			if (select("Yes...", "嘿嘿嘿。我都说了不是啦~~") == 2) {
+				mes "[恶魔猎人]";
+				mes "如果你打算耍这种小把戏糊弄我，就请离开。你难道不知道自己在戏弄^660000恶魔猎人^000000吗？！'";
 				close2;
 				warp "hugel",208,223;
 				end;
 			}
 		}
-		mes "[戴蒙猎人]";
-		mes "好的，这是测试所需的物品清单。由于本次测试所用的所有箭矢均由我们提供，因此需要你自行收集制作箭矢所需的材料。";
+		mes "[恶魔猎人]";
+		mes "好。这些是考试所需的物品。由于我们会提供考试中你要用的所有箭矢，所以需要你去准备制作它们的材料。";
 		next;
-		mes "[戴蒙猎人]";
-		mes "实不相瞒，我们公会目前正面临一些财务问题……让我看看，眼下紧缺以下这些物资……";
+		mes "[恶魔猎人]";
+		mes "你看，我们有些财务困难。让我看看，我们缺这些物品……";
 		next;
 		if (checkre(0) == true)
 			.@i = 1;
@@ -515,20 +515,20 @@ hu_in01,382,382,4	script	猎人公会考试接待人员#hnt	732,{
 			changequest 4001,4008;
 			break;
 		}
-		mes "[戴蒙猎人]";
-		mes "嗯……^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000用于制作箭头。^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000零散使用。另外，请务必准备^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000。";
+		mes "[恶魔猎人]";
+		mes "嗯。^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000用来做箭头。^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000 to use here and there. And ^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000 please.";
 		HNTR_Q = .@items[6];
 		next;
-		mes "[戴蒙猎人]";
+		mes "[恶魔猎人]";
 		if (HNTR_Q >= 5)
-			mes "对了，我们猎人公会的一名成员目前正在弓箭手公会执行公务。由于他负责本次测试的考核工作，你必须前去拜访他。";
+			mes "顺便一提，我们猎人公会的一位成员正在弓箭手公会办公。我想你得去拜访他，因为他负责考试。";
 		else {
-			mes "啊，对了！我们公会会长已前往斐扬中央宫殿执行公务。因测试主考官正是他，你必须前去面见。";
-			mes "他就在斐扬中央宫殿东侧的一栋建筑内。";
+			mes "对了。我们会长出差去了裴扬中央宫殿。你必须去拜访他，因为他是主持考试的人。";
+			mes "你可以在裴扬中央宫殿东边的一栋建筑里找到他。";
 		}
 		next;
-		mes "[戴蒙猎人]";
-		mes "那么，等你把所有东西都备齐后，再回来找我吧～";
+		mes "[恶魔猎人]";
+		mes "那么，等你全部准备好再来找我~";
 		close;
 	}
 	else if (HNTR_Q >= 3 && HNTR_Q <= 9) {
@@ -564,7 +564,7 @@ hu_in01,382,382,4	script	猎人公会考试接待人员#hnt	732,{
 			setarray .@items[0], 1027,2, 942,1, 1026,1, 11;
 			break;
 		}
-		mes "[戴蒙猎人]";
+		mes "[恶魔猎人]";
 		mes "嗯？";
 		next;
 		if (countitem(.@items[0]) >= .@items[1] && countitem(.@items[2]) >= .@items[3] && countitem(.@items[4]) >= .@items[5]) {
@@ -586,39 +586,39 @@ hu_in01,382,382,4	script	猎人公会考试接待人员#hnt	732,{
 			delitem .@items[0],.@items[1];
 			delitem .@items[2],.@items[3];
 			delitem .@items[4],.@items[5];
-			mes "[戴蒙猎人]";
+			mes "[恶魔猎人]";
 			if (HNTR_Q == 10)
-				mes "你带来了所有必要的材料... 你可以从目前在斐扬中央宫殿的猎人公会会长那里获得测试区域的方向。";
+				mes "你带来了所有必需的材料……你可以向目前身在裴扬中央宫殿的会长询问考场的位置。";
 			else
-				mes "你带来了所有必要的材料... 要获得测试区域的方向，请去弓箭手公会找我们的猎人公会会长。";
+				mes "你带来了所有必需的材料……要询问考场的位置，去找弓箭手公会的会长谈谈吧。";
 			close;
 		}
-		mes "[戴蒙猎人]";
-		mes "你没有带齐";
-		mes "所有必需的材料...";
+		mes "[恶魔猎人]";
+		mes "你还没有集齐";
+		mes "所有必需的材料……";
 		next;
-		mes "[戴蒙猎人]";
+		mes "[恶魔猎人]";
 		mes "你需要的物品是";
-		mes "^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000,";
-		mes "^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000 和";
-		mes "^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000.";
-		mes "等你收集齐了";
-		mes "所有的物品再来。";
+		mes "^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000，";
+		mes "^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000以及";
+		mes "^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000。";
+		mes "等你集齐";
+		mes "所有物品再回来吧。";
 		close;
 	}
 	else if (HNTR_Q > 9 && HNTR_Q < 17) {
-		mes "[戴蒙猎人]";
-		mes "嗯？你既没有去斐扬中央宫殿，也没有去弓箭手公会找猎人公会会长吗？他应该在这两个地方之一，所以去找找他吧。";
+		mes "[恶魔猎人]";
+		mes "嗯？裴扬中央宫殿和弓箭手公会，你都没去找会长吗？他应该在这两个地方之一，去找找他吧。";
 		close;
 	}
 	else if (HNTR_Q == 17) {
-		mes "[戴蒙猎人]";
-		mes "哦，你通过了测试。恭喜~ 你现在应该去找谢林谈谈。";
+		mes "[恶魔猎人]";
+		mes "哦。你通过了考试。恭喜~ 现在该去找雪琳谈谈了。";
 		close;
 	}
 	else {
 		mes "[猎人公会考试接待人员]";
-		mes "如果你想转职成为猎人，你必须先注册。";
+		mes "如果你想转职为猎人，必须先登记。";
 		close;
 	}
 }
@@ -626,32 +626,32 @@ hu_in01,382,382,4	script	猎人公会考试接待人员#hnt	732,{
 payon_in03,131,7,3	script	猎人#htnGM	59,{
 	if (HNTR_Q == 10) {
 		mes "[猎人公会会长]";
-		mes "哼，你一定是来参加猎人职业测试的。让我告诉你测试的过程。你想知道什么？";
+		mes "哼。你一定是来参加猎人转职考试的。让我给你讲讲考试流程。你想知道什么？";
 		next;
-		switch( select( "测试内容是什么？", "通过条件是什么？", "有什么注意事项？", "开始测试。" ) ) {
+		switch( select( "考试是什么？", "合格条件是什么？", "有什么注意事项吗？", "开始考试。" ) ) {
 		case 1:
 			mes "[猎人公会会长]";
-			mes "你必须狩猎特定名字的怪物。但在此过程中，你必须避开所有的陷阱。";
+			mes "你必须猎杀特定名称的怪物。但在此期间必须避开所有陷阱。";
 			next;
 			mes "[猎人公会会长]";
 			mes "这是为了测试你在各种情况下快速移动和定位目标的能力。";
 			close;
 		case 2:
 			mes "[猎人公会会长]";
-			mes "在限定时间内，从地图的6点钟方向开始，你必须狩猎目标怪物，然后按下出现在地图中心的紧急脱身开关。";
+			mes "在限定时间内，从地图6点钟方向出发，猎杀目标怪物，然后按下将出现在地图中央的逃脱开关。";
 			next;
 			mes "[猎人公会会长]";
-			mes "如果你能在按下开关后从地图的12点钟方向逃脱，就算通过测试。";
+			mes "按下开关后，若能在地图12点钟方向逃脱，就算合格。";
 			close;
 		case 3:
 			mes "[猎人公会会长]";
-			mes "嗯。警告...好吧，如果你掉入陷阱，你必须从头开始。此外，一次只能有一个人参加测试。";
+			mes "嗯。注意事项……好吧，如果落入陷阱，就必须从头开始。另外，同一时间只能有一个人参加考试。";
 			next;
 			mes "[猎人公会会长]";
-			mes "我会把你送到测试地点。那里会有一个等待室，但如果有人正在测试，你必须在聊天室等待。";
+			mes "我会把你送到考场。那里会有等候室，但如果有人在考试，你就必须在聊天室里等待。";
 			next;
 			mes "[猎人公会会长]";
-			mes "如果前面的人成功、放弃或失败，下一个在聊天室等待的人会被送到测试区。如果没有人在等待，你一进入聊天室测试就会开始。";
+			mes "如果前面的人成功、放弃或失败，在聊天室等待的下一个人就会被送往考场。如果没有人等待，你一进入聊天室考试就会开始。";
 			close;
 		case 4:
 			// Note: aegis typo
@@ -665,11 +665,11 @@ payon_in03,131,7,3	script	猎人#htnGM	59,{
 			// 	mes "I'll send you right now.";
 			// }
 			mes "[猎人公会会长]";
-			mes "好的。我现在就送你去测试区。如果你因为没有听我的解释而迷路或困惑，不要怪我。";
+			mes "好。我现在就把你送到考场。如果你因为没听我的说明而迷路或困惑，可别怪我。";
 			next;
 		}
 		mes "[猎人公会会长]";
-		mes "那么。你的箭矢可能还在制作中，所以你可以用我的箭矢来参加测试。";
+		mes "那么。你的箭矢大概还在制作中，就用我的箭矢去考试吧。";
 		HNTR_Q = 12;
 		changequest 4009,4011;
 		getitem 1751,200; // Silver_Arrow
@@ -679,103 +679,103 @@ payon_in03,131,7,3	script	猎人#htnGM	59,{
 	}
 	else if (HNTR_Q > 1 && HNTR_Q < 10) {
 		mes "[猎人公会会长]";
-		mes "嗯...？";
-		mes "弓箭手";
-		mes "来找我有什么事？";
+		mes "嗯……？";
+		mes "一名弓箭手";
+		mes "来找我做什么？";
 		next;
 		mes "[猎人公会会长]";
-		mes "我没有收到猎人公会的任何特别通知。你不是想跳过猎人测试的中间部分吧？";
+		mes "我没收到猎人公会的任何特别通知。你不是想跳过猎人考试的中间环节吧？";
 		next;
 		mes "[猎人公会会长]";
-		mes "去收集测试所需的物品，然后在拜访了猎人公会后再回来。";
+		mes "去收集考试所需的物品，拜访过猎人公会后再回来。";
 		close;
 	}
 	else if (HNTR_Q == 11) {
 		mes "[猎人]";
-		mes "嗯？我能帮你什么？如果你想转职，你应该去找弓箭手公会的人，而不是我。";
+		mes "嗯？有什么事吗？如果你想转职，应该去找弓箭手公会的那个人，而不是我。";
 		close;
 	}
 	else if (HNTR_Q > 11 && HNTR_Q < 16) {
 		mes "[猎人公会会长]";
-		mes "嗯。你就是那个差点放弃转职的弓箭手。你已经准备好一切了吧？那我马上送你去参加测试。";
+		mes "嗯。你就是那个差点放弃转职的弓箭手。你已经全部准备好了吧？那我马上送你去考试。";
 		next;
 		mes "[猎人公会会长]";
-		mes "如果你有任何";
-		mes "问题，现在就问。";
+		mes "如果有任何";
+		mes "问题，现在就问吧。";
 		next;
-		switch( select( "测试是什么？", "通过要求是什么？", "有什么警告吗？", "开始测试。" ) ) {
+		switch( select( "考试是什么？", "合格条件是什么？", "有什么注意事项吗？", "开始考试。" ) ) {
 		case 1:
 			mes "[猎人公会会长]";
-			mes "你需要猎杀特定名字的怪物，同时还要避开所有的陷阱。这是为了测试你在各种情况下快速移动和定位目标的能力。";
+			mes "你必须猎杀特定名称的怪物，同时还要避开所有陷阱。这是为了测试你在各种情况下快速移动和定位目标的能力。";
 			close;
 		case 2:
 			mes "[猎人公会会长]";
-			mes "在规定的时间内，你将从地图的6点钟方向开始，猎杀目标怪物，然后按下出现在地图中心的紧急脱身开关。";
+			mes "在限定时间内，你将从地图6点钟方向出发，猎杀目标怪物，然后按下将出现在地图中央的逃脱开关。";
 			next;
 			mes "[猎人公会会长]";
-			mes "如果你能在按下开关后从地图的12点钟方向逃脱，就算通过了。";
+			mes "按下开关后，若能在地图12点钟方向逃脱，就算合格。";
 			close;
 		case 3:
 			mes "[猎人公会会长]";
-			mes "嗯，注意事项……如果你掉入陷阱，就必须从头开始。另外，每次只能有一个人进行测试。";
+			mes "嗯。注意事项……好吧，如果落入陷阱，就必须从头开始。另外，同一时间只能有一个人参加考试。";
 			next;
 			mes "[猎人公会会长]";
-			mes "我会把你送到测试地点。那里有一个等待室，但如果有人正在测试，你就必须在聊天室等待。";
+			mes "我会把你送到考场。那里有等候室，但如果有人在考试，你就必须在聊天室里等待。";
 			next;
 			mes "[猎人公会会长]";
-			mes "如果前面的人成功、放弃或失败，下一个在聊天室等待的人会被送到测试区。如果没有人在等待，你一进入聊天室测试就会开始。";
+			mes "如果前面的人成功、放弃或失败，在聊天室等待的下一个人就会被送往考场。如果没有人等待，你一进入聊天室考试就会开始。";
 			close;
 		case 4:
 			mes "[猎人公会会长]";
-			mes "好的。祝你好运。";
+			mes "好。祝你好运。";
 			mes "我现在就送你过去。";
 			next;
 		}
 		mes "[猎人公会会长]";
-		mes "咦？为什么我不给你银箭？没有带材料就不要指望什么。";
+		mes "咦？我为什么不给你箭矢？你没带材料来，就别指望拿到任何东西。";
 		next;
 		mes "[猎人公会会长]";
-		mes "总之，我相信你自己已经准备好了。我们现在就开始吧。";
+		mes "总之，我相信你自己已经准备好了。现在开始吧。";
 		next;
-		if (select( "好吧。我们开始吧...", "啊，等一下。" ) == 1) {
+		if (select( "好。开始吧……", "啊，等一下。" ) == 1) {
 			mes "[猎人公会会长]";
-			mes "好吧！！希望";
-			mes "这次你能通过！";
+			mes "好！！希望你";
+			mes "这次能通过！";
 			close2;
 			HNTR_Q = 12;
 			warp "job_hunte",176,22;
 			end;
 		}
 		mes "[猎人公会会长]";
-		mes "那么赶快完成";
-		mes "所有的准备工作。";
+		mes "那就快点完成";
+		mes "所有准备吧。";
 		close;
 	}
 	else if (HNTR_Q == 16) {
 		mes "[猎人公会会长]";
 		mes "哇，你完好无损地回来了！";
-		mes "我的意思是，干得好。我会给你证明你通过测试的物品。";
+		mes "我是说，干得好。我会给你能证明你通过考试的物品。";
 		HNTR_Q = 17;
-		savepoint "斐扬",104,99,1,1;
+		savepoint "payon",104,99,1,1;
 		getitem 1007,1; // Penetration
 		changequest 4012,4013;
 		next;
 		mes "[猎人公会会长]";
-		mes "好的，给你。现在，回到猎人公会。我这里还有一些事情要处理，但我希望你能尽快成为一名猎人。";
+		mes "好，给你。现在回猎人公会去吧。我在这里还有些事要办，但希望你能早日成为猎人。";
 		close;
 	}
 	else if (HNTR_Q == 17) {
 		mes "[猎人公会会长]";
-		mes "我看你似乎并不急着成为猎人？我刚成为猎人那会儿，因为太开心了，整整一个月都兴奋地挥舞着弓箭到处乱跑。呵呵~";
+		mes "看来你并不急着成为猎人？我第一次成为猎人时，高兴得挥着弓到处跑了一个月。嘿嘿~";
 		next;
 		mes "[猎人公会会长]";
-		mes "那么，你现在该回猎人公会去了~";
+		mes "现在，你该回猎人公会了~";
 		close;
 	}
 	else {
 		mes "[猎人]";
-		mes "……有什么事吗？";
-		mes "我正在处理公务，现在很忙。失陪了……";
+		mes "...Can I help you?";
+		mes "我是来办公事的，现在很忙。恕我失陪……";
 		close;
 	}
 }
@@ -784,32 +784,32 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 	cutin "job_huntermaster",2;
 	if (HNTR_Q == 11) {
 		mes "[猎人公会会长]";
-		mes "嗯……看来你是来参加猎人转职考试的。让我说明一下考试流程吧。你想了解哪方面？";
+		mes "嗯。看来你是来参加猎人转职考试的。让我说明一下考试流程。你想知道什么？";
 		next;
-		switch( select( "考试内容是什么？", "通过条件是什么？", "有什么需要注意的事项吗？", "开始考试。" ) ) {
+		switch( select( "考试是什么？", "合格条件是什么？", "有什么注意事项吗？", "开始考试。" ) ) {
 		case 1:
 			mes "[猎人公会会长]";
-			mes "你需要猎杀特定名称的怪物，同时还要避开这里所有的陷阱。";
+			mes "你必须猎杀特定名称的怪物，同时必须避开这里的所有陷阱。";
 			next;
 			mes "[猎人公会会长]";
-			mes "这是为了测试你在各种情况下迅速移动并锁定目标的能力。";
+			mes "这是为了测试你在各种情况下快速移动和定位目标的能力。";
 			close3;
 		case 2:
 			mes "[猎人公会会长]";
-			mes "在限定时间内，你会从地图6点钟方向出发，猎杀指定怪物，然后触发地图中央出现的紧急脱身开关。";
+			mes "在限定时间内，你将从地图6点钟方向出发，猎杀目标怪物，然后按下将出现在地图中央的逃脱开关。";
 			next;
 			mes "[猎人公会会长]";
-			mes "当你激活开关后，若能从地图12点钟方向成功脱身，就算通过。";
+			mes "开关启动后，若能在地图12点钟方向逃脱，就算合格。";
 			close3;
 		case 3:
 			mes "[猎人公会会长]";
-			mes "嗯……注意事项嘛……如果你掉进陷阱，就必须从头开始重考。而且每次只能有一个人进行考试。";
+			mes "嗯。注意事项……好吧，如果落入陷阱，考试就必须从头开始。而且同一时间只能有一个人参加考试。";
 			next;
 			mes "[猎人公会会长]";
-			mes "我会把你传送到考场。那里有个等候室，但如果有人正在考试，你就得在聊天室里等待。";
+			mes "我送你去考场。那里有等候室，但如果有人正在考试，你就得在聊天室里等候。";
 			next;
 			mes "[猎人公会会长]";
-			mes "当前考生一旦通过或失败，聊天室里等待的下一位就会被送入考场。如果没人排队，你一进入聊天室考试就会立刻开始。";
+			mes "如果正在考试的人通过或失败，下一位在聊天室等候的人就会被送到考场。如果没人在等，你进入聊天室后考试就会立刻开始。";
 			close3;
 		case 4:
 			// Note: aegis typo
@@ -825,11 +825,11 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 			// }
 			// next;
 			mes "[猎人公会会长]";
-			mes "...好的。我马上送你去测试区。如果因为没听解释而迷路或困惑，别怪我。";
+			mes "...Okay. I'll send you to the testing area right now. Don't blame me if you get lost or confused because you didn't listen to the explanation.";
 			next;
 		}
 		mes "[猎人公会会长]";
-		mes "嗯，你的箭矢可能还在制作中，所以你可以用我的来参加测试。";
+		mes "这个嘛，你的箭大概还在制作中，就用我的箭去考试吧。";
 		getitem 1751,200; // Silver_Arrow
 		next;
 		mes "[猎人公会会长]";
@@ -841,79 +841,79 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 	}
 	else if (HNTR_Q > 1 && HNTR_Q < 10) {
 		mes "[猎人公会会长]";
-		mes "嗯...？";
-		mes "为什么一个弓箭手";
-		mes "会来找我？";
+		mes "嗯……？";
+		mes "为什么会有弓箭手";
+		mes "来找我呢？";
 		next;
 		mes "[猎人公会会长]";
-		mes "猎人公会没有通知我任何事情。你不是想跳过猎人测试的中间部分吧？";
+		mes "猎人公会可没通知过我任何事。你该不会是想跳过猎人考试的中间环节吧？";
 		next;
 		mes "[猎人公会会长]";
-		mes "等你收集齐测试所需的物品后再过来吧。";
+		mes "等你集齐考试所需的全部物品后，再来找我吧。";
 		close3;
 	}
 	else if (HNTR_Q == 10) {
 		mes "[猎人]";
 		mes "嗯？";
-		mes "有什么可以帮你的吗";
-		mes "吗？";
+		mes "有什么";
+		mes "需要帮忙的吗？";
 		mes "哦，你一定是";
-		mes "猎人申请者。";
+		mes "来报考猎人的吧。";
 		next;
 		mes "[猎人]";
-		mes "如果你想转职，我想你需要去斐扬中央宫殿找那个人。";
+		mes "如果你想转职，我想你得去裴扬中央宫殿找那个人。";
 		close3;
 	}
 	else if (HNTR_Q > 11 && HNTR_Q < 16) {
 		mes "[猎人公会会长]";
-		mes "嗯？你不是上次放弃的那个弓箭手吗？现在准备好了，对吧？那我现在就送你去转职区域。";
+		mes "嗯？你不是上次放弃的那个弓箭手吗？现在准备好了吧？那我这就送你去转职考场。";
 		next;
 		mes "[猎人公会会长]";
 		mes "如果你还有";
-		mes "问题，";
-		mes "随时问我。";
+		mes "疑问，";
+		mes "尽管问吧。";
 		next;
-		switch( select( "测试是什么？", "通过测试的要求是什么？", "有什么警告吗？", "开始测试。" ) ) {
+		switch( select( "考试内容是什么？", "通过考试的条件是什么？", "有什么注意事项吗？", "开始考试。" ) ) {
 		case 1:
 			mes "[猎人公会会长]";
-			mes "你必须猎杀特定名字的怪物，但同时必须避开这里的所有陷阱。";
+			mes "你必须猎杀特定名称的魔物，同时还要避开这里的所有陷阱。";
 			next;
 			mes "[猎人公会会长]";
-			mes "这是为了测试你在各种情况下迅速移动和定位目标的能力。";
+			mes "这是为了测试你在各种情况下迅速移动和锁定目标的能力。";
 			close3;
 		case 2:
 			mes "[猎人公会会长]";
-			mes "在规定时间内，你将从地图的6点钟方向开始，猎杀目标怪物，并触碰地图中心会出现的紧急脱身开关。";
+			mes "在规定时间内，你将从地图6点钟方向出发，猎杀目标魔物，并击打地图中央出现的脱出开关。";
 			next;
 			mes "[猎人公会会长]";
-			mes "当开关被激活时，如果你能从地图的12点钟方向逃脱，就算通过。";
+			mes "开关启动后，只要你能从地图12点钟方向逃脱，就算通过。";
 			close3;
 		case 3:
 			mes "[猎人公会会长]";
-			mes "嗯……提醒一下……如果你掉进陷阱，就必须从头开始测试。而且每次只能有一个人进行测试。";
+			mes "嗯，注意事项啊……如果你掉进陷阱，就得从考试开头重新开始。而且一次只能有一个人参加考试。";
 			next;
 			mes "[猎人公会会长]";
-			mes "我会送你去测试地点。那里有个等待室，但如果有人正在测试，你就得在聊天室里等候。";
+			mes "我送你去考场。那里有等候室，但如果有人正在考试，你就得在聊天室里等候。";
 			next;
 			mes "[猎人公会会长]";
-			mes "当前正在测试的人一旦通过或失败，聊天室里下一位等候者就会被送入测试区域。如果没人等候，你一进入聊天室测试就会立刻开始。";
+			mes "如果正在考试的人通过或失败，下一位在聊天室等候的人就会被送到考场。如果没人在等，你进入聊天室后考试就会立刻开始。";
 			close3;
 		case 4:
 			mes "[猎人公会会长]";
 			mes "好，祝你好运。";
-			mes "我现在就送你过去……";
+			mes "我这就送你去……";
 			next;
 		}
 		mes "[猎人公会会长]";
-		mes "呃？为什么我不给你银箭？哼，你连材料都没带，就别指望能拿到东西了。";
+		mes "咦？为什么我不给你银箭矢？这个嘛，你连材料都没带，就别指望能拿到东西了。";
 		next;
 		mes "[猎人公会会长]";
-		mes "嗯……";
+		mes "Well...";
 		mes "我相信";
 		mes "你已经准备好了。";
-		mes "我们开始吧。";
+		mes "开始吧。";
 		next;
-		if (select( "好的，开始吧。", "啊，请稍等一下。" ) == 1) {
+		if (select( "好，开始吧。", "啊，请等一下。" ) == 1) {
 			mes "[猎人公会会长]";
 			mes "好！！那么……";
 			mes "这次一定要通过！";
@@ -924,93 +924,93 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 			end;
 		}
 		mes "[猎人公会会长]";
-		mes "*叹气……*";
-		mes "等你准备好";
-		mes "一切";
-		mes "再来吧。";
+		mes "*唉……*";
+		mes "等你做好";
+		mes "准备之后";
+		mes "再回来吧。";
 		close3;
 	}
 	else if (HNTR_Q == 16) {
 		mes "[猎人公会会长]";
-		mes "哇！你平安回来了！";
-		mes "我是说，干得漂亮！那么，我就把这件证明你通过测试的物品交给你。";
+		mes "哇，你居然完好无损地回来了！";
+		mes "我是说，干得不错。那么，我这就把证明你通过考试的东西给你。";
 		HNTR_Q = 17;
 		savepoint "payon",104,99,1,1;
 		getitem 1007,1; //Penetration
 		changequest 4012,4013;
 		next;
 		mes "[猎人公会会长]";
-		mes "嗯……";
-		mes "给你。";
-		mes "快回猎人公会吧，加入我们～";
+		mes "Well...";
+		mes "拿去吧。";
+		mes "现在快回猎人公会，加入我们吧~";
 		close3;
 	}
 	else if (HNTR_Q == 17) {
 		mes "[猎人公会会长]";
-		mes "看来你并不急着成为猎人啊。我刚当上猎人的第一个月，可是高兴得满世界跑，还挥舞着弓到处炫耀呢。嘿嘿～";
+		mes "看来你并不急着成为猎人啊。我刚当上猎人的第一个月，可是高兴得四处乱跑，挥舞着弓呢。呵呵~";
 		next;
 		mes "[猎人公会会长]";
-		mes "快去吧～";
-		mes "他们还在";
+		mes "快去吧~";
+		mes "他们正在";
 		mes "猎人公会";
-		mes "等着你呢。";
+		mes "等着你回去。";
 		close3;
 	}
 	else {
 		mes "[猎人]";
-		mes "有什么事吗？我正在执行公务，现在很忙。失陪了。";
+		mes "有什么事？我正在出差，现在很忙。恕我失陪了。";
 		close3;
 	}
 }
 
-job_hunte,178,32,1	script	Guide#hnt	107,5,2,{
+job_hunte,178,32,1	script	引导员#hnt	107,5,2,{
 OnTouch_:
 	if (HNTR_Q == 12) {
-		mes "[向导]";
-		mes "你好，欢迎来到猎人测试场地。当你进入下一个房间时，测试就开始了。";
+		mes "[引导员]";
+		mes "你好。欢迎来到猎人考场。进入下一个房间后，考试就开始了。";
 		next;
-		mes "[向导]";
-		mes "如之前所说明的，狩猎4只或更多名为^3355FF转职考试用魔物^000000的怪物。完成后，地图中央会出现一个开关。";
+		mes "[引导员]";
+		mes "如前所述，请猎杀4只以上名为^3355FF转职考试用魔物^000000的魔物。完成后，地图中央就会出现一个开关。";
 		next;
-		mes "[指南]";
-		mes "当你破坏开关后，出口将出现在地图的12点钟方向。请在规定时间内完成所有内容并紧急脱身。";
+		mes "[引导员]";
+		mes "破坏开关后，地图12点钟方向会出现出口。请在规定时间内完成所有事项并逃离。";
 		next;
-		mes "[指南]";
-		mes "如果你中途昏迷、掉入陷阱或超过时间限制，你将失败，然后必须重新参加考试。";
+		mes "[引导员]";
+		mes "如果中途昏倒、掉进陷阱或超过时间限制，就会被判失败，然后必须重新参加考试。";
 		next;
-		mes "[指南]";
-		mes "我们会提供箭矢，所以只需确保你带了弓。那么，请准备好了再进入。";
+		mes "[引导员]";
+		mes "箭矢由我们提供，你只要记得带弓来就行。那么，准备好后就请进吧。";
 		savepoint "job_hunte",176,22,1,1;
 		close;
 	}
 	else if (HNTR_Q > 12 && HNTR_Q < 16) {
-		mes "[指南]";
-		mes "嗯...";
-		mes "你搞砸了吗？";
+		mes "[引导员]";
+		mes "Hmm...";
+		mes "搞砸了吗？";
 		mes "我先帮你恢复一些";
-		mes "你的HP和SP吧。";
+		mes "HP和SP。";
 		percentheal 100,100;
 		next;
-		mes "[指南]";
-		mes "如果太难了，下次再试也没关系。你现在想放弃吗？";
+		mes "[引导员]";
+		mes "如果觉得太难，下次再挑战也无妨。你现在要放弃吗？";
 		next;
-		if (select( "继续尝试。", "放弃。" ) == 1) {
-			mes "[指南]";
-			mes "好的。尽你最大的努力成为一名出色的猎人。请进入竞速场地 等待室。如果有人正在考试，你必须等到那个人完成。";
+		if (select( "继续挑战。", "Resign." ) == 1) {
+			mes "[引导员]";
+			mes "好。加油，成为一位出色的猎人吧。请进入等候室。如果已经有人在考试，你必须等到那个人结束。";
 			close;
 		}
-		mapannounce "job_hunte",strcharinfo(0)+ "已经放弃了。下一位，请进入。",bc_map;
-		mes "[指南]";
-		mes "很好。我会送你去斐扬。希望下次能再见到你。离开时别忘了保存。";
-		// donpcevent "竞技场 等候室#hnt::OnStart";
+		mapannounce "job_hunte",strcharinfo(0)+ "已放弃考试。请下一位进入。",bc_map;
+		mes "[引导员]";
+		mes "好吧。我送你回裴扬。希望下次再见。离开时别忘了记录。";
+		// donpcevent "等候室#hnt::OnStart";
 		close2;
 		HNTR_Q = 13;
 		savepoint "payon",104,99,1,1;
 		warp "payon_in02",21,27;
 	}
 	else if (HNTR_Q > 15) {
-		mes "[指南]";
-		mes "你不应该在这里。不如先去找找所需的转职物品？";
+		mes "[引导员]";
+		mes "你不该来这里。还是先去找转职所需的物品吧？";
 		close2;
 		savepoint "payon",104,99,1,1;
 		warp "payon_in02",21,27;
@@ -1018,11 +1018,11 @@ OnTouch_:
 	end;
 }
 
-job_hunte,178,38,1	script	竞技场 等候室#hnt	66,{
+job_hunte,178,38,1	script	等候室#hnt	66,{
 	end;
 
 OnInit:
-	waitingroom "竞技场 等候室", 10,"等候室#hnt::OnStartArena",1;
+	waitingroom "Waiting Room", 10,"Waiting Room#hnt::OnStartArena",1;
 	enablewaitingroomevent;
 	end;
 
@@ -1048,64 +1048,64 @@ OnEnable:
 	.MyMobs = 6;
 	initnpctimer;
 	// Target Mosnters
-	monster "job_hunte",67,80,"转职考试用魔物",1015,1,"管理员#hnt::OnMyMobDead";
-	monster "job_hunte",114,78,"转职考试用魔物",1015,1,"管理员#hnt::OnMyMobDead";
-	monster "job_hunte",89,127,"转职考试用魔物",1002,1,"管理员#hnt::OnMyMobDead";
-	monster "job_hunte",53,73,"转职考试用魔物",1041,1,"管理员#hnt::OnMyMobDead";
-	monster "job_hunte",125,70,"转职考试用魔物",1016,1,"管理员#hnt::OnMyMobDead";
-	monster "job_hunte",90,92,"转职考试用魔物",1015,1,"管理员#hnt::OnMyMobDead";
+	monster "job_hunte",67,80,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",114,78,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",89,127,"Job Change Monster",1002,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",53,73,"Job Change Monster",1041,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",125,70,"Job Change Monster",1016,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",90,92,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
 	// Decoy Monsters
-	monster "job_hunte",85,100,"转职测试用魔物",1016,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",72,102,"转职测试用魔物",1041,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",108,103,"转职测试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",88,127,"转职测试用魔物",1002,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",125,69,"转职测试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",77,112,"转职测试用魔物",1016,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,106,"转职测试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,73,"转职测试用魔物",1002,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",125,70,"转职测试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",90,91,"转职测试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",67,80,"猎人转职用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",77,112,"猎人转职用魔物",1016,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,106,"猎人转职用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,73,"猎人转职用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",125,70,"猎人转职用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",90,91,"转职转移用魔物",1041,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",85,100,"转职转移用魔物",1002,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",72,102,"转职转移用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",108,103,"转职考试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",77,112,"转职考试用魔物",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"宾妮",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"达雷尔",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"雷克斯",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"安塞尔莫",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",90,91,"虎蜥人",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,73,"怪物样本",1002,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",53,106,"不是我",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",77,112,"帮帮我",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",72,102,"不要打我",1015,1,"管理员#hnt::OnMyMobDead2";
-	monster "job_hunte",108,103,"攻击速度 184",1015,1,"管理员#hnt::OnMyMobDead2";
+	monster "job_hunte",85,100,"Job Test Monster",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"Job Test Monster",1041,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"Job Test Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",88,127,"Job Test Monster",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,69,"Job Test Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"Job Tester Monster",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"Job Tester Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"Job Tester Monster",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,70,"Job Tester Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"Job Tester Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",67,80,"Hunter Change Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"Hunter Change Monster",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"Hunter Change Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"Hunter Change Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,70,"Hunter Change Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"Job Transfer Monster",1041,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",85,100,"Job Transfer Monster",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"Job Transfer Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"Job Transfer Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"Job Transfer Monster",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"Binnie",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"Darrel",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"Rex",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"Anselmo",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"Anolian",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"Monster Sample",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"Not Me",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"Help Me",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"Do Not Hit Me",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"Attack Speed 184",1015,1,"Manager#hnt::OnMyMobDead2";
 	end;
 
 OnMyMobDead:
 	.MyMobs--;
 	if (.MyMobs < 3) {
-		mapannounce "job_hunte","好的，干得不错...现在，请找到地图中央的开关!!小心陷阱!!",bc_map;
+		mapannounce "job_hunte","好，干得不错……现在去找地图中央的开关！！小心陷阱！！",bc_map;
 		HNTR_Q = 14;
 		donpcevent "switch#hnt::OnEnable";
 		donpcevent "管理员#hnt::OnDisable";
 	}
 	else {
-		mapannounce "job_hunte","好的~你快成功了!!",bc_map;
+		mapannounce "job_hunte","好~ 就快到了！！",bc_map;
 	}
 	end;
 
 OnMyMobDead2:
-	mapannounce "job_hunte",strcharinfo(0)+ "%s!! 你犯了一个错误...请再试一次。",bc_map;
+	mapannounce "job_hunte",strcharinfo(0)+ "！！你弄错了……请再试一次。",bc_map;
 	HNTR_Q = 13;
 	warp "job_hunte",176,22;
 	donpcevent "管理员#hnt::OnReset";
-	donpcevent "竞速场地 等待室#hnt::OnStart";
+	donpcevent "等候室#hnt::OnStart";
 	end;
 
 OnReset:
@@ -1117,31 +1117,31 @@ OnDisable:
 	end;
 
 OnTimer1000:
-	mapannounce "job_hunte","测试现在开始。",bc_map;
+	mapannounce "job_hunte","考试现在开始。",bc_map;
 	end;
 
 OnTimer3000:
-	mapannounce "job_hunte","如前所述，只猎杀标记为'转职考试用魔物'的怪物。",bc_map;
+	mapannounce "job_hunte","如前所述，只猎杀标记为“转职考试用魔物”的魔物。",bc_map;
 	end;
 
 OnTimer5000:
-	mapannounce "job_hunte","***** 猎杀时请注意陷阱。 *****",bc_map;
+	mapannounce "job_hunte","***** 狩猎时请小心陷阱。 *****",bc_map;
 	end;
 
 OnTimer7000:
-	mapannounce "job_hunte","当你猎杀了4个'转职考试用魔物'后，中央的开关将开始运作。",bc_map;
+	mapannounce "job_hunte","猎杀4只“转职考试用魔物”后，中央的开关就会启动。",bc_map;
 	end;
 
 OnTimer9000:
-	mapannounce "job_hunte","激活逃生开关后，通过12点钟方向的传送之阵离开测试区域。",bc_map;
+	mapannounce "job_hunte","启动脱出开关后，请从12点钟方向的传送之阵离开考场。",bc_map;
 	end;
 
 OnTimer11000:
-	mapannounce "job_hunte","所有任务必须在3分钟内完成。",bc_map;
+	mapannounce "job_hunte","必须在3分钟内完成所有事项。",bc_map;
 	end;
 
 OnTimer13000:
-	mapannounce "job_hunte","从现在起，你有3分钟时间。每过一分钟，系统都会通知你。",bc_map;
+	mapannounce "job_hunte","从现在起你有3分钟。每过一分钟都会收到通知。",bc_map;
 	end;
 
 OnTimer14000:
@@ -1161,31 +1161,31 @@ OnTimer164000:
 	end;
 
 OnTimer187000:
-	mapannounce "job_hunte","测试将在5秒后结束……",bc_map;
+	mapannounce "job_hunte","考试还有5秒结束……",bc_map;
 	end;
 
 OnTimer188000:
-	mapannounce "job_hunte","测试将在4秒后结束……",bc_map;
+	mapannounce "job_hunte","考试还有4秒结束……",bc_map;
 	end;
 
 OnTimer189000:
-	mapannounce "job_hunte","测试将在3秒后结束……",bc_map;
+	mapannounce "job_hunte","考试还有3秒结束……",bc_map;
 	end;
 
 OnTimer191000:
-	mapannounce "job_hunte","测试将在2秒后结束……",bc_map;
+	mapannounce "job_hunte","考试还有2秒结束……",bc_map;
 	end;
 
 OnTimer192000:
-	mapannounce "job_hunte","测试将在1秒后结束。",bc_map;
+	mapannounce "job_hunte","考试还有1秒结束。",bc_map;
 	end;
 
 OnTimer193000:
-	mapannounce "job_hunte","0",bc_map;
+	mapannounce "job_hunte"," 0 ",bc_map;
 	end;
 
 OnTimer194000:
-	mapannounce "job_hunte","时间到，请重试。",bc_map;
+	mapannounce "job_hunte","时间到。请再试一次。",bc_map;
 	end;
 
 OnTimer195000:
@@ -1194,62 +1194,62 @@ OnTimer195000:
 
 OnTimer197000:
 	donpcevent "管理员#hnt::OnReset";
-	donpcevent "竞速场地 等待室#hnt::OnStart";
+	donpcevent "等候室#hnt::OnStart";
 	end;
 }
 
-job_hunte,93,101,1	script	Switch#hnt	723,1,1,{
+job_hunte,93,101,1	script	开关#hnt	723,1,1,{
 OnTouch_:
-	mes "^3355FF逃生开关上有3个按钮";
-	mes "已启用。^000000";
+	mes "^3355FF脱出开关上有";
+	mes "3个按钮。^000000";
 	HNTR_Q = 15;
 	next;
-	switch( select( "紧急脱身", "取消", "重新测试" ) ) {
+	switch( select( "脱出", "取消", "重新考试" ) ) {
 	case 1:
-		mes "^3355FF紧急脱身传送之阵";
-		mes "现已激活。^000000";
+		mes "^3355FF脱出传送之阵";
+		mes "已经启动。^000000";
 		close2;
-		mapannounce "job_hunte","!! 紧急脱身传送之阵已成功激活。 !!",bc_map;
-		enablenpc "exit#hnttest";
+		mapannounce "job_hunte","!! 脱出传送之阵启动完成。 !!",bc_map;
+		enablenpc "出口#hnttest";
 		end;
 	case 2:
-		mes "^3355FF正在取消";
+		mes "^3355FF取消";
 		mes "操作。^000000";
 		close2;
 		mapannounce "job_hunte","!! 操作已取消。 !!",bc_map;
 		end;
 	case 3:
-		mapannounce "job_hunte","!! 正在启动取消传送…… !!",bc_map;
-		mes "^3355FF你即将被";
-		mes "传送回";
-		mes "竞速场地 等待室。^000000";
+		mapannounce "job_hunte","!! 取消传送启动中…… !!",bc_map;
+		mes "^3355FF你很快就会";
+		mes "被送回";
+		mes "等候室。^000000";
 		close2;
 		HNTR_Q = 13;
 		warp "job_hunte",176,22;
 		donpcevent "管理员#hnt::OnReset";
-		donpcevent "竞速场地 等待室#hnt::OnStart";
+		donpcevent "等候室#hnt::OnStart";
 		end;
 	}
 
 OnDisable:
-	disablenpc "exit#hnttest";
-	disablenpc "Switch#hnt";
+	disablenpc "出口#hnttest";
+	disablenpc "开关#hnt";
 	end;
 
 OnEnable:
-	enablenpc "Switch#hnt";
+	enablenpc "开关#hnt";
 	end;
 }
 
-job_hunte,89,139,0	script	exit#hnttest	45,2,2,{
+job_hunte,89,139,0	script	出口#hnttest	45,2,2,{
 	end;
 OnInit:
-	disablenpc "exit#hnttest";
+	disablenpc "出口#hnttest";
 	end;
 
 OnTouch_:
 	donpcevent "管理员#hnt::OnReset";
-	donpcevent "竞速场地 等待室#hnt::OnStart";
+	donpcevent "等候室#hnt::OnStart";
 	HNTR_Q = 16;
 	changequest 4011,4012;
 	savepoint "payon",104,99,1,1;
@@ -1266,142 +1266,142 @@ job_hunte,52,140,0	script	1-1::HntTrap	-1,0,1,{
 OnTouch_:
 	switch( rand(200) ) {
 	default:
-	case 1: mapannounce "job_hunte",strcharinfo(0) + "，你中了陷阱！将被传送回起点。",bc_map; break;
-	case 2: mapannounce "job_hunte",strcharinfo(0) + "，说的就是你！快回去重新开始！",bc_map; break;
-	case 3: mapannounce "job_hunte",strcharinfo(0) + "已失败！……呃……如果你不重来的话，就真的失败了……",bc_map; break;
-	case 4: mapannounce "job_hunte",strcharinfo(0) + "，你让我失望了！快回到起点去！",bc_map; break;
-	case 5: mapannounce "job_hunte",strcharinfo(0) + "，你莽撞地踏入了陷阱。很抱歉，目前——你输了。",bc_map; break;
-	case 6: mapannounce "job_hunte",strcharinfo(0) + "，你在干什么！？快回去重做！",bc_map; break;
-	case 7: mapannounce "job_hunte",strcharinfo(0) + "，加油！你一定能做得更好！！再试一次！",bc_map; break;
-	case 8: mapannounce "job_hunte",strcharinfo(0) + "，又掉进陷阱了……不过别担心，你正在进步。",bc_map; break;
-	case 9: mapannounce "job_hunte",strcharinfo(0) + "，失败失败失败……回到起点去吧！",bc_map; break;
-	case 10: mapannounce "job_hunte",strcharinfo(0) + "……哎呀~ 再试一次！你能行的！",bc_map; break;
-	case 11: mapannounce "job_hunte",strcharinfo(0) + "，@#$%#^!@ 你还想成为什么？猎人？给我回去那里！",bc_map; break;
-	case 12: mapannounce "job_hunte",strcharinfo(0) + "被邪恶势力击败了。别放弃，英雄！",bc_map; break;
-	case 13: mapannounce "job_hunte","我对你施了咒语" + strcharinfo(0) + "，现在你是我的了！从头开始吧。",bc_map; break;
-	case 14: mapannounce "job_hunte",strcharinfo(0) + "。你好啊朋友，欢迎来到地底世界。作为礼物，我会把你送回起点……",bc_map; break;
-	case 15: mapannounce "job_hunte","那是我的巢穴" + strcharinfo(0) + "！别踩在那里，咯咯~ 重新开始吧。",bc_map; break;
-	case 16: mapannounce "job_hunte",strcharinfo(0) + "，又一个弓箭手倒下了。还有三个！",bc_map; break;
-	case 17: mapannounce "job_hunte",strcharinfo(0) + "，你有这个本事吗？那就再试一次。",bc_map; break;
-	case 18: mapannounce "job_hunte","唉，" + strcharinfo(0) + "，你已经落入了最可怕的陷阱——臭气炸弹！快跑快跑快跑啊啊啊啊！",bc_map; break;
-	case 19: mapannounce "job_hunte",strcharinfo(0) + "今天喝了太多李子汁。回到起点吧~",bc_map; break;
-	case 20: mapannounce "job_hunte","不……" + strcharinfo(0) + "，你掉进了陷阱。你将被送回起点。",bc_map; break;
-	case 21: mapannounce "job_hunte","喵 *扑* 看哪，我的小猫们，我们会有" + strcharinfo(0) + "史都。如果你不想变成史都，就回到起点吧！",bc_map; break;
-	case 22: mapannounce "job_hunte","抱歉" + strcharinfo(0) + "，但你实际上发现了一个糟糕的秘密。你将被送回起点。",bc_map; break;
-	case 23: mapannounce "job_hunte",strcharinfo(0) + "，傻乎乎的弓箭手……你的执着令人感动。但你得回到起点了……",bc_map; break;
-	case 24: mapannounce "job_hunte",strcharinfo(0) + "，你摔倒了爬不起来。我们会把你抬回起点。",bc_map; break;
-	case 25: mapannounce "job_hunte","跳过一回合" + strcharinfo(0) + "，请返回起点。",bc_map; break;
+	case 1: mapannounce "job_hunte",strcharinfo(0) + "，你落入了陷阱。将被送回起点。",bc_map; break;
+	case 2: mapannounce "job_hunte",strcharinfo(0) + "，就是你！回去重新开始！",bc_map; break;
+	case 3: mapannounce "job_hunte",strcharinfo(0) + "失败了！……这个嘛……你要是不重新开始，就真的失败了……",bc_map; break;
+	case 4: mapannounce "job_hunte",strcharinfo(0) + "，你辜负了我！回到你出发的地方去！",bc_map; break;
+	case 5: mapannounce "job_hunte",strcharinfo(0) + "，你一头栽进了陷阱。很遗憾，这一次，你输了。",bc_map; break;
+	case 6: mapannounce "job_hunte",strcharinfo(0) + "，你在干什么！？回去重做一遍！",bc_map; break;
+	case 7: mapannounce "job_hunte",strcharinfo(0) + "，加把劲！你能做得更好！！再试一次！",bc_map; break;
+	case 8: mapannounce "job_hunte",strcharinfo(0) + "，又掉进陷阱了……不过别担心，你越来越熟练了。",bc_map; break;
+	case 9: mapannounce "job_hunte",strcharinfo(0) + "，失败，失败，失败……回到你出发的地方去！",bc_map; break;
+	case 10: mapannounce "job_hunte",strcharinfo(0) + "... aww~ Try again! You can do it!",bc_map; break;
+	case 11: mapannounce "job_hunte",strcharinfo(0) + "，@#$%#^!@，你还想当什么？猎人？给我回去！",bc_map; break;
+	case 12: mapannounce "job_hunte",strcharinfo(0) + "被邪恶势力打败了。别放弃，英雄！",bc_map; break;
+	case 13: mapannounce "job_hunte","我对你施了咒，" + strcharinfo(0) + "现在你是我的了！快回去重新开始。",bc_map; break;
+	case 14: mapannounce "job_hunte",strcharinfo(0) + ". G'day mate, welcome to the land down under. As a present, I'll send you to the starting point...",bc_map; break;
+	case 15: mapannounce "job_hunte","那是我的巢，" + strcharinfo(0) + "！别踩那里，嘎~ 重新开始。",bc_map; break;
+	case 16: mapannounce "job_hunte",strcharinfo(0) + "，又倒下了一个弓箭手。还剩3个！",bc_map; break;
+	case 17: mapannounce "job_hunte",strcharinfo(0) + "，你有那个本事吗？那就再试一次。",bc_map; break;
+	case 18: mapannounce "job_hunte","唉，" + strcharinfo(0) + ", you have fallen prey to the most feared of traps. The dreaded stink bomb! Run run run awaaaaaay!",bc_map; break;
+	case 19: mapannounce "job_hunte",strcharinfo(0) + "今天西梅汁喝太多了。回起点去吧~",bc_map; break;
+	case 20: mapannounce "job_hunte","不……" + strcharinfo(0) + "，你落入了陷阱。将被送回起点。",bc_map; break;
+	case 21: mapannounce "job_hunte","喵 *扑* 看啊小猫们，我们今天有" + strcharinfo(0) + "炖菜吃了。不想变成炖菜就回起点去！",bc_map; break;
+	case 22: mapannounce "job_hunte","抱歉，" + strcharinfo(0) + "，你其实发现了一个糟糕的秘密。将被送回起点。",bc_map; break;
+	case 23: mapannounce "job_hunte",strcharinfo(0) + "，傻弓箭手……你的执着真让人感动。不过你还是得回起点……",bc_map; break;
+	case 24: mapannounce "job_hunte",strcharinfo(0) + "，你摔倒了，爬不起来了。会被抬回起点。",bc_map; break;
+	case 25: mapannounce "job_hunte","跳过一回合，" + strcharinfo(0) + "回到起点。",bc_map; break;
 	case 26: mapannounce "job_hunte",strcharinfo(0) + "，喵喵，嘿嘿嘿。你将被送回起点。",bc_map; break;
-	case 27: mapannounce "job_hunte","练习结束了" + strcharinfo(0) + "。这次给我来点真本事吧。",bc_map; break;
-	case 28: mapannounce "job_hunte",strcharinfo(0) + "，这是波利杰勒比结晶潜击行动……快出去！如果你想继续，请从头开始。",bc_map; break;
+	case 27: mapannounce "job_hunte","练习结束了，" + strcharinfo(0) + ". This time show me for real.",bc_map; break;
+	case 28: mapannounce "job_hunte",strcharinfo(0) + "，这是波利的杰勒比结晶抢夺战……出去！想继续就从头开始。",bc_map; break;
 	case 29: mapannounce "job_hunte","与服务器断开连接。" + strcharinfo(0) + "，你必须重新开始。",bc_map; break;
-	case 30: mapannounce "job_hunte",strcharinfo(0) + "，这个按钮是干什么的……哎呀！恐怕你得从头开始了。",bc_map; break;
-	case 31: mapannounce "job_hunte",strcharinfo(0) + "，你进入了奖励关卡！啊——然后，你输了。你将被送回起点。",bc_map; break;
-	case 32: mapannounce "job_hunte","哦，不" + strcharinfo(0) + "，你踩到了蜂巢。你侥幸逃脱，一路回到了起点。",bc_map; break;
-	case 33: mapannounce "job_hunte",strcharinfo(0) + "，等等等等，那是陷阱！哦等等，那是狗……",bc_map; break;
-	case 34: mapannounce "job_hunte","住手" + strcharinfo(0) + "！因为你踩中了陷阱，我必须惩罚你！",bc_map; break;
+	case 30: mapannounce "job_hunte",strcharinfo(0) + "，这个按钮是干什么的……哎呀！看来你得重新开始了。",bc_map; break;
+	case 31: mapannounce "job_hunte",strcharinfo(0) + "，你进入了奖励关卡！然——后，你输了。将被送回起点。",bc_map; break;
+	case 32: mapannounce "job_hunte","哦，不，" + strcharinfo(0) + ", you've stepped on a hive of bees. You narrowly escaped, all the way back to the beginning.",bc_map; break;
+	case 33: mapannounce "job_hunte",strcharinfo(0) + "，等等等等。那是陷阱！哦不对，那是狗……",bc_map; break;
+	case 34: mapannounce "job_hunte","站住，" + strcharinfo(0) + "！竟敢踩那个陷阱，我要惩罚你！",bc_map; break;
 	case 35: mapannounce "job_hunte",strcharinfo(0) + "，我会回来的……希望你也一样。",bc_map; break;
-	case 36: mapannounce "job_hunte",strcharinfo(0) + "，想活命就跟我走……去起点。",bc_map; break;
-	case 37: mapannounce "job_hunte",strcharinfo(0) + "，我的……宝贝！请回到起点。",bc_map; break;
-	case 38: mapannounce "job_hunte","沿着黄砖路走...不，" + strcharinfo(0) + "!! 不是那条路...回到起点吧。",bc_map; break;
-	case 39: mapannounce "job_hunte",strcharinfo(0) + "，你真的需要掌握这种‘与自然和谐相处’的事情。现在，你迷路了！",bc_map; break;
-	case 40: mapannounce "job_hunte",strcharinfo(0) + "，这只是个故事...不是真的。但你会被送回起点。",bc_map; break;
-	case 41: mapannounce "job_hunte",strcharinfo(0) + "，你掉进了陷阱。而陷阱...也掉进了你。现在将你送回起点。",bc_map; break;
-	case 42: mapannounce "job_hunte","不要害怕" + strcharinfo(0) + "，你也会学会黑暗力量。你现在会被送回起点。",bc_map; break;
-	case 43: mapannounce "job_hunte",strcharinfo(0) + "，掉进了陷阱。很轻易地就中招了，恐怕。但这位英雄不会这么容易就被打败！",bc_map; break;
-	case 44: mapannounce "job_hunte","今日小贴士：不要踩到陷阱。你会被送回起点。",bc_map; break;
-	case 45: mapannounce "job_hunte",strcharinfo(0) + "掉进了陷阱。再次强调，名字是" + strcharinfo(0) + ".",bc_map; break;
-	case 46: mapannounce "job_hunte","喂喂，" + strcharinfo(0) + ".. 我见过瞎眼的波利都走得更远！回到起点去。",bc_map; break;
-	case 47: mapannounce "job_hunte","我的眼睛！！" + strcharinfo(0) + "，你...你...踩到了它们。再去试试...如果我能流泪的话，我会为你哭泣...",bc_map; break;
-	case 48: mapannounce "job_hunte",strcharinfo(0) + "，你在哪儿？对...不在你通过测试应该在的地方。",bc_map; break;
-	case 49: mapannounce "job_hunte","哇，他们真的花钱请人想出这些评论。" + strcharinfo(0) + "，你可以回到起点了。",bc_map; break;
-	case 50: mapannounce "job_hunte","哎呀，" + strcharinfo(0) + "！你不小心掉进陷阱里了！你会被传送回起点。再见咯～！",bc_map; break;
-	case 51: mapannounce "job_hunte",strcharinfo(0) + ", 你知道你要去哪里吗？重新开始吧*叹气*。",bc_map; break;
-	case 52: mapannounce "job_hunte",strcharinfo(0) + ", 你喜欢绿茶冰淇淋吗？不喜欢？那就回到起点吧...*哼*",bc_map; break;
-	case 53: mapannounce "job_hunte","哦，不……" + strcharinfo(0) + ", 你受伤了吗？来吧，我们回起点去。",bc_map; break;
-	case 54: mapannounce "job_hunte","嗨" + strcharinfo(0) + ", 你好吗？这是给你的礼物～免费传送！回起点去吧。",bc_map; break;
-	case 55: mapannounce "job_hunte",strcharinfo(0) + "..........你知道那是个陷阱吗？我希望你知道，不然的话，我想你会挺尴尬的。",bc_map; break;
-	case 56: mapannounce "job_hunte",strcharinfo(0) + ", 你觉得内部设计怎么样？我可是很努力设计的……还有这个送你回起点的可爱功能。",bc_map; break;
-	case 57: mapannounce "job_hunte","砰啪砰！" + strcharinfo(0) + ", 你掉进我的陷阱了！但我不会杀你……只是……羞辱一下你……",bc_map; break;
-	case 58: mapannounce "job_hunte","哦，" + strcharinfo(0) + "……你可以做得更好。再试一次！",bc_map; break;
-	case 59: mapannounce "job_hunte","你好，我是当地的卡普拉工作人员……" + strcharinfo(0) + ", 你妈妈正在收银台等你呢。",bc_map; break;
-	case 60: mapannounce "job_hunte",strcharinfo(0) + ", 如果你表现好的话。我会为你准备一份不错的礼物……是什么？通过了你就知道啦～现在再去试试吧！",bc_map; break;
-	case 61: mapannounce "job_hunte",strcharinfo(0) + "失aaaaaaaaaaaaaaaaaaaa败了……嘿嘿，开玩笑的。你会被传送回起点，所以再试一次吧！",bc_map; break;
-	case 62: mapannounce "job_hunte",strcharinfo(0) + "，你掉进陷阱了。你应该多注意脚下。什么？隐形的？那是宝宝才会说的话！现在再去试试吧！",bc_map; break;
-	case 63: mapannounce "job_hunte","抱歉，" + strcharinfo(0) + "，你掉进陷阱了。但我心肠好，送你回起点。",bc_map; break;
-	case 64: mapannounce "job_hunte",strcharinfo(0) + "，哈哈哈！！！我真不敢相信你居然中了这招！",bc_map; break;
-	case 65: mapannounce "job_hunte",strcharinfo(0) + "，我本来想提醒你那个陷阱的……但，我没说？回起点吧。",bc_map; break;
-	case 66: mapannounce "job_hunte",strcharinfo(0) + "……抱歉我的朋友，你输了。不过别担心，这条消息又不会广播出去。",bc_map; break;
-	case 67: mapannounce "job_hunte",strcharinfo(0) + "，我不确定你现在还有资格继续……再试一次，证明我错了。",bc_map; break;
-	case 68: mapannounce "job_hunte",strcharinfo(0) + "，哎哟……那一定很疼吧。回起点咯～",bc_map; break;
-	case 69: mapannounce "job_hunte",strcharinfo(0) + "，我对你的缺乏信任感到不安……我们重新开始吧。",bc_map; break;
-	case 70: mapannounce "job_hunte",strcharinfo(0) + "，你的眼睛会欺骗你，别相信它们。用你的感觉去感知。现在再试一次吧。",bc_map; break;
-	case 71: mapannounce "job_hunte",strcharinfo(0) + "，一旦踏上黑暗之路，它将永远主宰你的命运。你将被送回起点。",bc_map; break;
-	case 72: mapannounce "job_hunte",strcharinfo(0) + "，体型无关紧要。但抓到你的陷阱数量才重要。再试一次，这次一定要赢！",bc_map; break;
-	case 73: mapannounce "job_hunte",strcharinfo(0) + "，不要‘试试看’。要么做，要么不做。没有‘试试看’这种事。",bc_map; break;
+	case 36: mapannounce "job_hunte",strcharinfo(0) + "，想活命就跟我来……回起点去。",bc_map; break;
+	case 37: mapannounce "job_hunte",strcharinfo(0) + "，我的……宝贝！回起点去。",bc_map; break;
+	case 38: mapannounce "job_hunte","沿着黄砖路走……不对，" + strcharinfo(0) + "!! Not that way...Back to the starting point it is.",bc_map; break;
+	case 39: mapannounce "job_hunte",strcharinfo(0) + "，你真该好好学学怎么“与自然融为一体”了。现在，你迷路了！",bc_map; break;
+	case 40: mapannounce "job_hunte",strcharinfo(0) + "，那只是个故事……不是真的。不过你还是会被送回起点。",bc_map; break;
+	case 41: mapannounce "job_hunte",strcharinfo(0) + "，你落入了陷阱。而陷阱……也落入了你。现在送你回起点。",bc_map; break;
+	case 42: mapannounce "job_hunte","别怕，" + strcharinfo(0) + "，因为你也将领悟黑暗面的力量。现在你将被送回起点。",bc_map; break;
+	case 43: mapannounce "job_hunte",strcharinfo(0) + "，掉进了陷阱。而且掉得还挺轻松。不过这位英雄可不会这么容易被打倒！",bc_map; break;
+	case 44: mapannounce "job_hunte","今日提示：不要踩陷阱。你将被送回起点。",bc_map; break;
+	case 45: mapannounce "job_hunte",strcharinfo(0) + "落入了陷阱。再说一遍，为了让你听清楚，名字是" + strcharinfo(0) + ".",bc_map; break;
+	case 46: mapannounce "job_hunte","喂喂，" + strcharinfo(0) + ".. I've seen blind Porings get further! Go back to the starting point.",bc_map; break;
+	case 47: mapannounce "job_hunte","我的眼睛！！" + strcharinfo(0) + "，你……你……踩到它们了。再去试一次吧……要是我能流泪，真想为你哭一场……",bc_map; break;
+	case 48: mapannounce "job_hunte",strcharinfo(0) + "，你在哪儿呢？没错……不在你通过考试该在的地方。",bc_map; break;
+	case 49: mapannounce "job_hunte","哇，他们居然花钱请人想这些台词。" + strcharinfo(0) + ", you can go back to the starting point.",bc_map; break;
+	case 50: mapannounce "job_hunte","天哪，" + strcharinfo(0) + "! You've precariously fallen into a trap! You will be returned back to the start. Cheerio~!",bc_map; break;
+	case 51: mapannounce "job_hunte",strcharinfo(0) + "，你知道自己在往哪儿走吗？重来吧*叹气*。",bc_map; break;
+	case 52: mapannounce "job_hunte",strcharinfo(0) + "，你喜欢绿茶冰淇淋吗？不喜欢？那就回起点去……*哼*",bc_map; break;
+	case 53: mapannounce "job_hunte","哦，不……" + strcharinfo(0) + ", are you hurt? Come now, let's go back to the starting point.",bc_map; break;
+	case 54: mapannounce "job_hunte","嗨，" + strcharinfo(0) + "，你好吗？送你一份礼物~ 免费传送！回起点去。",bc_map; break;
+	case 55: mapannounce "job_hunte",strcharinfo(0) + ".......... did you know that that was a trap? I hope so, otherwise, I guess you'd be pretty embarassed.",bc_map; break;
+	case 56: mapannounce "job_hunte",strcharinfo(0) + "，你觉得这室内设计怎么样？我可是费了好大功夫……还有这个把你送回起点的贴心功能。",bc_map; break;
+	case 57: mapannounce "job_hunte","砰！轰！砰！" + strcharinfo(0) + "，你掉进了我的陷阱！但我不会杀你……只是……让你丢脸……",bc_map; break;
+	case 58: mapannounce "job_hunte","哦，" + strcharinfo(0) + ".. You can do better. Try again!",bc_map; break;
+	case 59: mapannounce "job_hunte","你好，这里是本地的卡普拉职员……" + strcharinfo(0) + ", your mommy is waiting for you at the checkout line.",bc_map; break;
+	case 60: mapannounce "job_hunte",strcharinfo(0) + "，如果你表现出色，我会给你准备一份好礼物……是什么？通过了就知道~ 现在再去试一次吧！",bc_map; break;
+	case 61: mapannounce "job_hunte",strcharinfo(0) + "失——败——了……嘿嘿，开玩笑的。你将被送回起点，再去试一次吧！",bc_map; break;
+	case 62: mapannounce "job_hunte",strcharinfo(0) + "，你掉进陷阱了。你该多留意脚下。什么？看不见？那是小孩子的借口！现在再去试一次！",bc_map; break;
+	case 63: mapannounce "job_hunte","抱歉，" + strcharinfo(0) + ", you have fallen into a trap. But I'll be nice and send you to the starting point.",bc_map; break;
+	case 64: mapannounce "job_hunte",strcharinfo(0) + "，哈哈哈哈哈哈！！！！真不敢相信你居然中了这招！",bc_map; break;
+	case 65: mapannounce "job_hunte",strcharinfo(0) + "，我刚要跟你讲那个陷阱……可是，我没讲？回起点吧。",bc_map; break;
+	case 66: mapannounce "job_hunte",strcharinfo(0) + "...I'm sorry my friend, but you lose. But don't worry, its not like this message is broadcast or anything.",bc_map; break;
+	case 67: mapannounce "job_hunte",strcharinfo(0) + "，我不太确定你还够不够格了……再试一次，证明我错了。",bc_map; break;
+	case 68: mapannounce "job_hunte",strcharinfo(0) + "，哎哟……那一定很疼。回起点吧~",bc_map; break;
+	case 69: mapannounce "job_hunte",strcharinfo(0) + "，你的信念不足让我很不安……重新开始吧。",bc_map; break;
+	case 70: mapannounce "job_hunte",strcharinfo(0) + "，你的眼睛会欺骗你。别相信它们。用感觉去感知。现在再试一次。",bc_map; break;
+	case 71: mapannounce "job_hunte",strcharinfo(0) + "，一旦踏上黑暗之路，它将永远支配你的命运。你将被送回起点。",bc_map; break;
+	case 72: mapannounce "job_hunte",strcharinfo(0) + "，大小并不重要。但你踩中陷阱的次数很重要。再试一次，这次一定要赢！",bc_map; break;
+	case 73: mapannounce "job_hunte",strcharinfo(0) + "，别去“试”。要么做，要么不做。没有“试”这回事。",bc_map; break;
 	case 74: mapannounce "job_hunte",strcharinfo(0) + "，这就是你失败的原因。现在再试一次！",bc_map; break;
-	case 75: mapannounce "job_hunte",strcharinfo(0) + "，听着。如果是金属做的、看起来像有牙齿的东西，你就别把脚放进去。其实很简单，真的……",bc_map; break;
-	case 76: mapannounce "job_hunte",strcharinfo(0) + "，你已经被打败了。抵抗是徒劳的。",bc_map; break;
-	case 77: mapannounce "job_hunte",strcharinfo(0) + "，我期待完成你的训练。终有一天，你会称我为议员。",bc_map; break;
-	case 78: mapannounce "job_hunte",strcharinfo(0) + "，你的过度自信就是你的弱点。",bc_map; break;
-	case 79: mapannounce "job_hunte",strcharinfo(0) + ", 注意脚下。这里有点崎岖。",bc_map; break;
-	case 80: mapannounce "job_hunte",strcharinfo(0) + ", 哦，我告诉过你这里很危险。",bc_map; break;
-	case 81: mapannounce "job_hunte",strcharinfo(0) + ", 一切都在按我的预想进行。",bc_map; break;
-	case 82: mapannounce "job_hunte",strcharinfo(0) + ", 你不应该回来。",bc_map; break;
-	case 83: mapannounce "job_hunte",strcharinfo(0) + ", 除了战斗还有其他选择。但不能在这个测试中失败。现在再试一次！",bc_map; break;
-	case 84: mapannounce "job_hunte",strcharinfo(0) + ", 这个名字我已经很久没听到了...希望以后不要再听到~！",bc_map; break;
-	case 85: mapannounce "job_hunte",strcharinfo(0) + ", 我们这里不训练仁慈，仁慈是弱者的专利！",bc_map; break;
-	case 86: mapannounce "job_hunte",strcharinfo(0) + ", 失败在这里不存在，不是吗？！",bc_map; break;
-	case 87: mapannounce "job_hunte",strcharinfo(0) + ", 集中精神。集中你的力量！",bc_map; break;
-	case 88: mapannounce "job_hunte",strcharinfo(0) + ", 是我疯了，还是你说出了“思考”这个词？",bc_map; break;
-	case 89: mapannounce "job_hunte",strcharinfo(0) + ", 你现在只是在拖延时间。",bc_map; break;
-	case 90: mapannounce "job_hunte",strcharinfo(0) + ", 生活并不总是公平的。",bc_map; break;
-	case 91: mapannounce "job_hunte",strcharinfo(0) + ".... 嗯...这不关我们的事....",bc_map; break;
-	case 92: mapannounce "job_hunte",strcharinfo(0) + ", 生存优先。",bc_map; break;
-	case 93: mapannounce "job_hunte",strcharinfo(0) + ", 人们都有克服障碍的力量...每个人都可以。",bc_map; break;
-	case 94: mapannounce "job_hunte",strcharinfo(0) + ", 接受命运的人会得到幸福，反抗命运的人会得到荣耀。",bc_map; break;
-	case 95: mapannounce "job_hunte",strcharinfo(0) + ", 有些事情是真的，有些事情是假的。你能分辨出来吗？",bc_map; break;
-	case 96: mapannounce "job_hunte",strcharinfo(0) + ", 我们玩得很开心，不是吗？这里的每一天都像做梦一样。我真的希望永远都是这样。",bc_map; break;
-	case 97: mapannounce "job_hunte",strcharinfo(0) + ", 我只给你一个建议... 死亡非常痛苦。",bc_map; break;
-	case 98: mapannounce "job_hunte",strcharinfo(0) + ", 不要放弃！只是要更加小心...",bc_map; break;
-	case 99: mapannounce "job_hunte",strcharinfo(0) + ", 死亡是出生时就赋予的礼物。但是...这些陷阱不会杀死你，不用担心。",bc_map; break;
-	case 100: mapannounce "job_hunte",strcharinfo(0) + "，我从一开始就在指望你。但看来你又要让我多等一会儿了……",bc_map; break;
-	case 101: mapannounce "job_hunte",strcharinfo(0) + "，终结之后总伴随着希望与重生。但对你来说，又得从头开始了～",bc_map; break;
-	case 102: mapannounce "job_hunte",strcharinfo(0) + "，我有没有告诉过你，一滴眼泪中蕴藏着怎样的力量？现在哭出来也没关系，我知道这很难……",bc_map; break;
-	case 103: mapannounce "job_hunte",strcharinfo(0) + "，幸福常常会从你未曾察觉敞开的门悄悄溜进来。有点像……隐藏的陷阱！",bc_map; break;
-	case 104: mapannounce "job_hunte",strcharinfo(0) + "，……奇？",bc_map; break;
+	case 75: mapannounce "job_hunte",strcharinfo(0) + "，你看。如果那东西是金属做的，还长着牙，你就不该把脚伸进去。多简单啊……",bc_map; break;
+	case 76: mapannounce "job_hunte",strcharinfo(0) + "，你败了。抵抗是没用的。",bc_map; break;
+	case 77: mapannounce "job_hunte",strcharinfo(0) + "，我很期待完成对你的训练。迟早你会叫我师父。",bc_map; break;
+	case 78: mapannounce "job_hunte",strcharinfo(0) + "，过度自信就是你的弱点。",bc_map; break;
+	case 79: mapannounce "job_hunte",strcharinfo(0) + "，小心脚下。这地方有点不太好走。",bc_map; break;
+	case 80: mapannounce "job_hunte",strcharinfo(0) + "，哦，我早说过这里很危险。",bc_map; break;
+	case 81: mapannounce "job_hunte",strcharinfo(0) + "，一切都按我的预知在进行。",bc_map; break;
+	case 82: mapannounce "job_hunte",strcharinfo(0) + "，你不该回来的。",bc_map; break;
+	case 83: mapannounce "job_hunte",strcharinfo(0) + "，战斗之外还有别的选择。但输给这场考试可没有。现在再试一次！",bc_map; break;
+	case 84: mapannounce "job_hunte",strcharinfo(0) + "，这名字我好久没听到了……希望别再听到~！",bc_map; break;
+	case 85: mapannounce "job_hunte",strcharinfo(0) + "，我们在这里训练可不是为了仁慈，仁慈是弱者的东西！",bc_map; break;
+	case 86: mapannounce "job_hunte",strcharinfo(0) + "，这里可没有“失败”这回事，对吧？！",bc_map; break;
+	case 87: mapannounce "job_hunte",strcharinfo(0) + "，集中精神。凝聚你的力量！",bc_map; break;
+	case 88: mapannounce "job_hunte",strcharinfo(0) + "，是我疯了，还是“思考”这个词从你嘴里溜出来了？",bc_map; break;
+	case 89: mapannounce "job_hunte",strcharinfo(0) + "，你现在只是在拖延时间。",bc_map; break;
+	case 90: mapannounce "job_hunte",strcharinfo(0) + "，人生并不总是公平的。",bc_map; break;
+	case 91: mapannounce "job_hunte",strcharinfo(0) + ".... Uhhh...it's not OUR fault....",bc_map; break;
+	case 92: mapannounce "job_hunte",strcharinfo(0) + "，生存才是第一位的。",bc_map; break;
+	case 93: mapannounce "job_hunte",strcharinfo(0) + "，人有力量克服自己的障碍……每个人都可以。",bc_map; break;
+	case 94: mapannounce "job_hunte",strcharinfo(0) + "，接受命运的人会得到幸福，反抗命运的人会得到荣耀。",bc_map; break;
+	case 95: mapannounce "job_hunte",strcharinfo(0) + "，有些事是真的，有些事是假的。你分不清吗？",bc_map; break;
+	case 96: mapannounce "job_hunte",strcharinfo(0) + "，我们玩得很开心，对吧？这里的每一天都像梦一样。真希望永远都能这样。",bc_map; break;
+	case 97: mapannounce "job_hunte",strcharinfo(0) + "，我只给你一句忠告……死起来可疼得要命。",bc_map; break;
+	case 98: mapannounce "job_hunte",strcharinfo(0) + "，别把命丢了！小心一点……",bc_map; break;
+	case 99: mapannounce "job_hunte",strcharinfo(0) + "，死亡是出生时就得到的礼物。不过……这些陷阱不会要你的命，别担心。",bc_map; break;
+	case 100: mapannounce "job_hunte",strcharinfo(0) + "，我从一开始就对你寄予厚望。不过看来你还得让我多等一阵……",bc_map; break;
+	case 101: mapannounce "job_hunte",strcharinfo(0) + "，终结总是伴随着希望与重生。不过你还是得回到起点~",bc_map; break;
+	case 102: mapannounce "job_hunte",strcharinfo(0) + "，我有没有跟你说过一滴眼泪里蕴含的力量？现在哭出来也没关系，我知道这很难……",bc_map; break;
+	case 103: mapannounce "job_hunte",strcharinfo(0) + "，幸福常常从你不知道自己留了条缝的门里溜进来。就像……隐藏的陷阱！",bc_map; break;
+	case 104: mapannounce "job_hunte",strcharinfo(0) + "，……叽？",bc_map; break;
 	case 105: mapannounce "job_hunte",strcharinfo(0) + "，我的！我的！我的！我的！",bc_map; break;
-	case 106: mapannounce "job_hunte",strcharinfo(0) + "，是时候决斗了！",bc_map; break;
-	case 107: mapannounce "job_hunte",strcharinfo(0) + "，我选你！……等等……呃啊……不是你！……",bc_map; break;
+	case 106: mapannounce "job_hunte",strcharinfo(0) + "，决斗的时间到了！",bc_map; break;
+	case 107: mapannounce "job_hunte",strcharinfo(0) + "，就决定是你了！……等等……呃啊……不是你！……",bc_map; break;
 	case 108: mapannounce "job_hunte",strcharinfo(0) + "，现在可不是夸它的时候！",bc_map; break;
-	case 109: mapannounce "job_hunte",strcharinfo(0) + "……哦太好了，今天还能出什么更糟的事？",bc_map; break;
-	case 110: mapannounce "job_hunte",strcharinfo(0) + "，别担心，我总是备着备用的。我们一时半会儿不会用完陷阱……",bc_map; break;
-	case 111: mapannounce "job_hunte",strcharinfo(0) + "，当坏事发生时，别放弃。终有一天你会回头笑看它们——但不是今天。",bc_map; break;
-	case 112: mapannounce "job_hunte",strcharinfo(0) + "，别担心。我们最擅长打必输的仗，记得吗？",bc_map; break;
-	case 113: mapannounce "job_hunte",strcharinfo(0) + "，你还记得上次那种得意洋洋的感觉吗？那种感觉暂时是不会回来了……",bc_map; break;
-	case 114: mapannounce "job_hunte",strcharinfo(0) + "，为了自己的幸福，你必须忘掉过去。",bc_map; break;
-	case 115: mapannounce "job_hunte",strcharinfo(0) + "，如果你能骗过朋友，就能骗过敌人。",bc_map; break;
+	case 109: mapannounce "job_hunte",strcharinfo(0) + "...Oh great, what else could go wrong today?",bc_map; break;
+	case 110: mapannounce "job_hunte",strcharinfo(0) + "，别担心，我总是留着备用的。陷阱可没那么快用完……",bc_map; break;
+	case 111: mapannounce "job_hunte",strcharinfo(0) + "，遇到坏事时，别放弃。总有一天你会回头笑着谈起它们。但不是今天。",bc_map; break;
+	case 112: mapannounce "job_hunte",strcharinfo(0) + "，别放在心上。我们可是很擅长打必败之仗的，记得吗？",bc_map; break;
+	case 113: mapannounce "job_hunte",strcharinfo(0) + "，你还记得自己感觉特别潇洒时的样子吗？那种感觉暂时不会回来了……",bc_map; break;
+	case 114: mapannounce "job_hunte",strcharinfo(0) + "，为了你自己的幸福，你必须忘掉过去。",bc_map; break;
+	case 115: mapannounce "job_hunte",strcharinfo(0) + "，能骗过朋友，就能骗过敌人。",bc_map; break;
 	case 116: mapannounce "job_hunte",strcharinfo(0) + "，这个世界是由爱与和平组成的！",bc_map; break;
-	case 117: mapannounce "job_hunte",strcharinfo(0) + "，如果你失败了，就得喝下这个……*邪恶一笑*",bc_map; break;
-	case 118: mapannounce "job_hunte",strcharinfo(0) + "，可别说我们没警告过你！",bc_map; break;
-	case 119: mapannounce "job_hunte",strcharinfo(0) + "，好奇心害死猫。幸好我不是猫。哦，当然，你也不是啦。",bc_map; break;
+	case 117: mapannounce "job_hunte",strcharinfo(0) + "，如果你失败了，就得喝下这个……*邪恶地笑*",bc_map; break;
+	case 118: mapannounce "job_hunte",strcharinfo(0) + "，别说我们没警告过你！",bc_map; break;
+	case 119: mapannounce "job_hunte",strcharinfo(0) + "，好奇心害死猫。幸好我不是猫。哦，对了，当然还有你。",bc_map; break;
 	case 120: mapannounce "job_hunte",strcharinfo(0) + "，学习！学习！学习！学习！学习！学习！学习！学习！学习！学习！",bc_map; break;
-	case 121: mapannounce "job_hunte",strcharinfo(0) + "，现在感觉如何？没错，那可是我设的陷阱！",bc_map; break;
-	case 122: mapannounce "job_hunte",strcharinfo(0) + "……太精彩了……简直……天才。抱歉，我是在说这些疯狂的陷阱。",bc_map; break;
-	case 123: mapannounce "job_hunte",strcharinfo(0) + "，是时候像胡迪尼那样逃出陷阱了！嘿，等等……别跑啊！",bc_map; break;
-	case 124: mapannounce "job_hunte",strcharinfo(0) + "，看来这次你真遇到麻烦了……别担心，再试一次吧！",bc_map; break;
-	case 125: mapannounce "job_hunte",strcharinfo(0) + "……不够酷啊，伙计。再来一次，就一次！",bc_map; break;
-	case 126: mapannounce "job_hunte",strcharinfo(0) + "，看来你真是陷入困境了。回到起点吧……",bc_map; break;
-	case 127: mapannounce "job_hunte",strcharinfo(0) + "，就当这是因果报应吧。总有一天，你会亲手布置成百上千个陷阱……",bc_map; break;
-	case 128: mapannounce "job_hunte",strcharinfo(0) + "，坏消息，伙计……又踩到陷阱了。不过我相信你，很快就能掌握诀窍的！",bc_map; break;
-	case 129: mapannounce "job_hunte",strcharinfo(0) + "，别放弃！这个世界还需要你！",bc_map; break;
-	case 130: mapannounce "job_hunte",strcharinfo(0) + "，想哭就哭吧。只要别哭得太大声就行。",bc_map; break;
-	case 131: mapannounce "job_hunte",strcharinfo(0) + "……天啊，布置这么多陷阱真是累死我了。你们可得少踩点啊！",bc_map; break;
+	case 121: mapannounce "job_hunte",strcharinfo(0) + "，现在觉得我怎么样？没错，那就是我的陷阱！",bc_map; break;
+	case 122: mapannounce "job_hunte",strcharinfo(0) + "...brilliant...just absolutely...genius. Sorry, I was talking about all these crazy traps.",bc_map; break;
+	case 123: mapannounce "job_hunte",strcharinfo(0) + "，该像胡迪尼那样从陷阱里脱身了！嘿，等等……回来！",bc_map; break;
+	case 124: mapannounce "job_hunte",strcharinfo(0) + "，看来你这次真的遇上麻烦了……别担心，再试一次就好！",bc_map; break;
+	case 125: mapannounce "job_hunte",strcharinfo(0) + "...not smooth, dude. Go for it again, one more time!",bc_map; break;
+	case 126: mapannounce "job_hunte",strcharinfo(0) + "，看来你这次真的陷入困境了。回起点去……",bc_map; break;
+	case 127: mapannounce "job_hunte",strcharinfo(0) + "，就当是因果报应吧。总有一天，你也会亲手布下成百上千个陷阱……",bc_map; break;
+	case 128: mapannounce "job_hunte",strcharinfo(0) + "，坏消息，老兄……又是一个陷阱。你会掌握窍门的，我相信你！",bc_map; break;
+	case 129: mapannounce "job_hunte",strcharinfo(0) + "，别放弃！世界还需要你！",bc_map; break;
+	case 130: mapannounce "job_hunte",strcharinfo(0) + "，哭出来也没关系。只是别太大声。",bc_map; break;
+	case 131: mapannounce "job_hunte",strcharinfo(0) + "...oh man. It's tiring setting up all these traps. You guys have got to stop falling into them!",bc_map; break;
 	}
 	HNTR_Q = 13;
 	warp "job_hunte",176,22;
 	donpcevent "管理员#hnt::OnReset";
-	donpcevent "竞速场地 等待室#hnt::OnStart";
+	donpcevent "等候室#hnt::OnStart";
 	end;
 }
 
@@ -1633,11 +1633,11 @@ job_hunte,65,92,0	duplicate(HntTrap)	57-3	-1,0,0
 
 job_hunte,65,93,0	script	57-4::HntTrap2	-1,{
 OnTouch_:
-	mapannounce "job_hunte",strcharinfo(0) + "，辜负我了！回到起点去吧！",bc_map;
+	mapannounce "job_hunte",strcharinfo(0) + "，你辜负了我！回到你出发的地方去！",bc_map;
 	HNTR_Q = 13;
 	warp "job_hunte",176,22;
 	donpcevent "管理员#hnt::OnReset";
-	donpcevent "竞速场地 等待室#hnt::OnStart";
+	donpcevent "等候室#hnt::OnStart";
 	end;
 }
 

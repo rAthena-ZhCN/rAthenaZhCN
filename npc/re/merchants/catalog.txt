@@ -17,94 +17,94 @@
 
 // Main NPC :: catalog_merchant
 //============================================================
-moc_para01,22,16,5	script	Catalog Magician#catal01	704,{
+moc_para01,22,16,5	script	目录魔术师#catal01	704,{
 	if (!checkweight(1301,3)) {
-		mes "- You have too many items. Please make space. -";
+		mes "- 您的物品太多了。请腾出空间。-";
 		close;
 	}
 	set .@ticket_cost, 200;
-	mes "[Catalog Magician]";
-	mes "Look... the Magic Academy";
-	mes "in Geffen is now directly";
-	mes "selling the brand new";
-	mes "^007777Universal Catalog Silver^000000!";
+	mes "[目录魔术师]";
+	mes "看……魔法学院";
+	mes "在吉芬现在直接";
+	mes "出售全新的";
+	mes "^007777通用商品目录·银版^000000！";
 	next;
-	mes "He is looking at the words";
-	mes "written on his hand.";
-	mes "He seems too busy";
-	mes "to look at you.";
+	mes "他正看着";
+	mes "写在他手上的字。";
+	mes "他似乎太忙了";
+	mes "没空看你。";
 	next;
-	mes "[Catalog Magician]";
-	mes "A brand new catalog";
-	mes "has just come out!";
-	mes "You can check";
-	mes "what items you can trade";
-	mes "and what items are on sale";
-	mes "from the vendor.";
+	mes "[目录魔术师]";
+	mes "全新的商品目录";
+	mes "刚刚上市！";
+	mes "你可以查看";
+	mes "可以交易哪些物品";
+	mes "以及哪些物品正在出售";
+	mes "从商人那里。";
 	next;
-	mes "[Catalog Magician]";
-	mes "The ^007777Universal Catalog Silver^000000";
-	mes "costs only 200z!";
-	mes "You can buy up to 50 pieces at once!";
+	mes "[目录魔术师]";
+	mes "^007777通用商品目录·银版^000000";
+	mes "只需200z！";
+	mes "一次最多可购买50个！";
 	next;
-	switch(select("Buy a ^007777Universal Catalog Silver^000000:I don't need it!:You don't look like a vendor!")) {
+	switch(select("购买^007777通用商品目录·银版^000000:我不需要！:你看起来不像商人！")) {
 	case 1:
-		mes "[Catalog Magician]";
-		mes "You... want all 50 pieces?";
-		mes "Or how many do you need?";
+		mes "[目录魔术师]";
+		mes "你……要全部50个？";
+		mes "还是说你需要几个？";
 		next;
 		while (1) {
 			input .@input;
-			mes "[Catalog Magician]";
+			mes "[目录魔术师]";
 			if (.@input == 0) {
-				mes "The trade has been stopped!";
-				mes "I don't know what to do next...";
-				mes "What should I do?";
+				mes "交易已停止！";
+				mes "我不知道接下来该怎么办……";
+				mes "我该怎么办？";
 				emotion ET_PROFUSELY_SWEAT, playerattached();
 				close;
 			} else if (.@input < 1 || .@input > 50) {
-				mes "It should be less than 50 pieces.";
+				mes "数量应少于50个。";
 				next;
 			} else
 				break;
 		}
 		set .@sell, .@ticket_cost * .@input;
-		mes "The total number of catalog(s) that you're trying to purchase is " + .@input + " pieces.";
-		mes "It costs " + .@sell + " z.";
+		mes "您要购买的商品目录总数为" + .@input + " pieces.";
+		mes "共需" + .@sell + "z。";
 		if (Zeny < .@sell) {
-			mes "It seems you don't have enough money.";
-			mes "You can sell your equipment";
-			mes "to make more money... if you want.";
+			mes "看来你的钱不够。";
+			mes "你可以卖掉装备";
+			mes "换些钱……如果你愿意的话。";
 			close;
 		}
-		mes "Ok, here you go.";
+		mes "好，给你。";
 		set Zeny, Zeny - .@sell;
 		getitem 12580,.@input; //Vending_Search_Scroll
 		close;
 	case 2:
-		mes "[Catalog Magician]";
-		mes "Argh... you really need this";
-		mes "item... Do you want me to";
-		mes "explain again? I don't know";
-		mes "what to do next...";
-		mes "What should I do?";
+		mes "[目录魔术师]";
+		mes "唉……你真的需要这个";
+		mes "物品……要我";
+		mes "再说明一次吗？我不知道";
+		mes "接下来该怎么办……";
+		mes "我该怎么办？";
 		emotion ET_PROFUSELY_SWEAT, playerattached();
 		close;
 	case 3:
-		mes "[Catalog Magician]";
-		mes "My real job is a magician.";
-		mes "I was going to ask the merchant";
-		mes "guild to sell them, but they were";
-		mes "trying use them as an appendix";
-		mes "into broom sales. That's why";
-		mes "I'm selling these by myself.";
+		mes "[目录魔术师]";
+		mes "我的本职是魔术师。";
+		mes "我本想请商人";
+		mes "公会帮忙出售，但他们";
+		mes "想把这些当作附录";
+		mes "附在扫帚销售里。所以";
+		mes "我才自己来卖。";
 		next;
-		mes "[Catalog Magician]";
-		mes "There are many adventurers";
-		mes "here who come and go.";
-		mes "I'm pretty sure that I can sell to all of them soon.";
-		mes "Don't you think so?";
-		mes "So... let's start!! Buy more of them, please! PLEASE...!";
+		mes "[目录魔术师]";
+		mes "这里有许多冒险者";
+		mes "来来往往。";
+		mes "我很确定很快就能卖给他们所有人。";
+		mes "你不这么觉得吗？";
+		mes "那么……开始吧！！请多买一些！拜托了……！";
 		close;
 	}
 }

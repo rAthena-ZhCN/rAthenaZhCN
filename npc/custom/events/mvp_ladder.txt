@@ -12,60 +12,60 @@
 //= 1.0 First version, edited. [Euphy]
 //============================================================
 
-prontera,164,171,3	script	MvP Ladder Warper	56,{
-	mes "[MvP Ladder Warper]";
-	mes "Say... do you want to play the MvP Ladder game?";
+prontera,164,171,3	script	MVP阶梯传送员	56,{
+	mes "[MvP 阶梯赛传送员]";
+	mes "我说……你想玩 MvP 阶梯赛吗？";
 	next;
-	switch(select("Yes, let's get it on!:Information.:Show me the best record.:No.")) {
+	switch(select("好，来吧！:说明。:看看最佳纪录。:不。")) {
 	case 1:
 		break;
 	case 2:
-		mes "[MvP Ladder Warper]";
-		mes "In this game, your party has to kill every single MvP monster in ascending order, from the weakest to strongest.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "在这个游戏中，你的队伍必须按从最弱到最强的顺序，击杀每一只 MvP 怪物。";
 		if ( .finish_item_amount )
-			mes "If your party can finish the MVP ladder game, each member will earn "+ callfunc("F_InsertPlural", .finish_item_amount, getitemname( .finish_item_id )) +".";
+			mes "如果你的队伍能够完成 MvP 阶梯赛，每位成员将获得"+ callfunc("F_InsertPlural", .finish_item_amount, getitemname( .finish_item_id )) +".";
 		if ( .register_cost )
-			mes "But the entrance fee is "+ callfunc( "F_InsertComma", .register_cost ) +" zeny.";
+			mes "但入场费是"+ callfunc( "F_InsertComma", .register_cost ) +" zeny.";
 		next;
-		mes "[MvP Ladder Warper]";
-		mes "You lose the game if you can't finish in "+ .timeout +" minutes, or if your entire party is killed.";
-		mes "Good luck!";
+		mes "[MvP 阶梯赛传送员]";
+		mes "若未能在"+ .timeout +" minutes, or if your entire party is killed.";
+		mes "祝你好运！";
 		close;
 	case 3:
-		mes "[MvP Ladder Warper]";
+		mes "[MvP 阶梯赛传送员]";
 		if ( !$mvpladdderparty_time ) {
-			mes "Nobody has finished this game yet.";
+			mes "至今还没有人完成过这个游戏。";
 			close;
 		}
-		mes "The best record is";
-		mes "[ "+( $mvpladdderparty_time / 60 )+" min "+( $mvpladdderparty_time % 60 )+" sec ]";
-		mes "By the party ^FF0000"+ $mvpladdderparty_name$ +"^000000.";
+		mes "最佳纪录为";
+		mes "["+( $mvpladdderparty_time / 60 )+"分"+( $mvpladdderparty_time % 60 )+"秒 ]";
+		mes "由队伍 ^FF0000"+ $mvpladdderparty_name$ +"^000000。";
 		.@size = getarraysize( $mvpladderparty_member$ );
 		for ( .@i = 0; .@i < .@size; .@i++ )
 			mes "^000000"+ ( .@i +1 ) +". ^0000FF"+ $mvpladderparty_member$[.@i];
 		if ( getgmlevel() < .gmlvlreset ) close;
 		next;
-		if ( select( "Close.", "Reset the record." ) == 1 ) close;
-		if ( select( "Never mind.", "I really want to reset it." ) == 1 ) close;
+		if ( select( "Close.", "重置纪录。" ) == 1 ) close;
+		if ( select( "算了。", "我真的想重置。" ) == 1 ) close;
 		$mvpladdderparty_time = 0;
 		$mvpladdderparty_name$ = "";
 		deletearray $mvpladderparty_member$[.@i];
-		mes "[MvP Ladder Warper]";
-		mes "Record reset successfully.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "纪录重置成功。";
 		close;
 	case 4:
-		mes "[MvP Ladder Warper]";
-		mes "When you are strong enough to complete the game, please come back.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "等你足够强大、能够完成这个游戏时，请再来。";
 		close;
 	}
 	if ( !getcharid(1) ) {
-		mes "[MvP Ladder Warper]";
-		mes "You have to form a party to play.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "必须组队才能参加。";
 		close;
 	}
 	if ( is_party_leader() == false ) {
-		mes "[MvP Ladder Warper]";
-		mes "Only the party leader can register.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "只有队长可以报名。";
 		close;
 	}
 	.@origin = getcharid(3);
@@ -80,35 +80,35 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 	}
 	attachrid .@origin;
 	if ( $@partymembercount != .register_min ) {
-		mes "[MvP Ladder Warper]";
-		mes "You have to form a party with exactly "+ .register_min +" members to play.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "你必须组成恰好"+ .register_min +"人的队伍才能参加。";
 		close;
 	}
 	else if ( .@online != .register_min )  {
-		mes "[MvP Ladder Warper]";
-		mes "Your party must have "+ .register_min +" members online on map '"+ strnpcinfo(4) +"'.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "你的队伍必须有"+ .register_min +"名成员在线，所在地图为 '"+ strnpcinfo(4) +"'。";
 		close;
 	}
 	else if ( .register_cost && Zeny < .register_cost ) {
-		mes "[MvP Ladder Warper]";
-		mes "You don't have enough zeny. Please come back when you do.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "你的 Zeny 不足。请凑够后再来。";
 		close;
 	}
 	else if ( .party_id ) {
-		mes "[MvP Ladder Warper]";
-		mes "I'm sorry, but a party is currently playing the game. Please standby until the party is finished.";
-		mes "Thank you.";
+		mes "[MvP 阶梯赛传送员]";
+		mes "抱歉，目前已有队伍在进行游戏。请等该队伍结束后再报名。";
+		mes "谢谢。";
 		close;
 	}
 	Zeny -= .register_cost;
-	announce "The party ["+ strcharinfo(1) +"] has started the MvP ladder game.", bc_all;
+	announce "队伍 ["+ strcharinfo(1) +"] 开始了 MvP 阶梯赛。", bc_all;
 	set .party_id, getcharid(1);
 	set .@time_enter, gettimetick(2);
 	for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
 		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 			attachrid $@partymemberaid[.@i];
 			if ( strcharinfo(3) == strnpcinfo(4) ) {
-				announce "You have "+ .timeout +" minutes to complete "+ .totalround +" rounds.", bc_self;
+				announce "你有"+ .timeout +"分钟内完成"+ .totalround +"个回合。", bc_self;
 				.@name$[.@c] = strcharinfo(0);
 				.@c++;
 			}
@@ -121,7 +121,7 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 	if ( .round == .totalround +1 ) {
 		getpartymember .party_id, 1;
 		getpartymember .party_id, 2;
-		mapannounce .eventmap$, "Congratulations... You were able to defeat all the MVPs!", bc_map;
+		mapannounce .eventmap$, "恭喜……你成功击败了所有 MVP！", bc_map;
 		for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
 			if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 				attachrid $@partymemberaid[.@i];
@@ -131,7 +131,7 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 		}
 		set .@timeused, gettimetick(2) - .@time_enter;
 		if ( .bonus_item_amount && .@timeused < .bonus_time * 60 ) {
-			mapannounce .eventmap$, "You are rewarded a bonus item for completing the ladder within "+ .bonus_time +" minutes.", bc_map;
+			mapannounce .eventmap$, "可获额外奖励物品，条件是完成阶梯赛用时在"+ .bonus_time +" minutes.", bc_map;
 			for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
 				if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 					attachrid $@partymemberaid[.@i];
@@ -142,18 +142,18 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 		}
 
 		if ( !$mvpladdderparty_time || .@timeused < $mvpladdderparty_time ) {
-			mapannounce .eventmap$, "And you broke the record! [ "+( .@timeused / 60 )+" min "+( .@timeused % 60 )+" sec ]", bc_map;
+			mapannounce .eventmap$, "而且你打破了纪录！["+( .@timeused / 60 )+"分"+( .@timeused % 60 )+"秒 ]", bc_map;
 			set $mvpladdderparty_time, .@timeused;
 			set $mvpladdderparty_name$, getpartyname( .party_id );
 			copyarray $mvpladderparty_member$, .@name$, .register_min;
 		}
 		else
-			mapannounce .eventmap$, "Time used [ "+( .@timeused / 60 )+" min "+( .@timeused % 60 )+" sec ]", bc_map;
+			mapannounce .eventmap$, "用时 ["+( .@timeused / 60 )+"分"+( .@timeused % 60 )+"秒 ]", bc_map;
 		sleep 10000;
-		announce "The party ["+ getpartyname( .party_id ) +"] has finished the MvP ladder game!", bc_all;
+		announce "队伍 ["+ getpartyname( .party_id ) +"] 完成了 MvP 阶梯赛！", bc_all;
 	}
 	else
-		announce "The party ["+ getpartyname( .party_id ) +"] has failed to finish the MvP ladder game.", bc_all;
+		announce "队伍 ["+ getpartyname( .party_id ) +"] 未能完成 MvP 阶梯赛。", bc_all;
 	mapwarp .eventmap$, .map$, .x, .y;
 	killmonsterall .eventmap$;
 	.party_id = .round = 0;
@@ -177,9 +177,9 @@ OnMvpDead:
 		end;
 	}
 	else if ( .round == .totalround )
-		mapannounce .eventmap$, "The final Round will begin in "+ .delay +" seconds...", bc_map;
+		mapannounce .eventmap$, "最终回合将在"+ .delay +"秒后开始……", bc_map;
 	else
-		mapannounce .eventmap$, "Starting round "+ .round +" in "+ .delay +" seconds...", bc_map;
+		mapannounce .eventmap$, "第"+ .round +"回合将在"+ .delay +"秒后开始……", bc_map;
 	sleep .delay * 1000;
 	if ( .mvpid[.round] == 1646 )  // pick random Bio3 MVP
 		.mvpid[.round] = rand(1646,1651);
@@ -207,7 +207,7 @@ OnPCDieEvent:
 	if ( .@less_one )
 		.@alive--;
 	if ( !.@alive ) {
-		mapannounce .eventmap$, "Party wiped!", bc_map;
+		mapannounce .eventmap$, "队伍全灭！", bc_map;
 		sleep 10000;
 		awake strnpcinfo(0);
 	}
@@ -310,7 +310,7 @@ OnInit:
 
 //	Config Ends --------------------------------------------------------------
 
-	mapannounce .eventmap$, "An administrator has refreshed the server. Please re-register. We apologize for the inconvenience.", bc_map;
+	mapannounce .eventmap$, "管理员已重启服务器。请重新报名。对由此带来的不便，我们深表歉意。", bc_map;
 	getmapxy .map$, .x, .y, BL_NPC;
 	mapwarp .eventmap$, .map$, .x, .y;
 	killmonsterall .eventmap$;

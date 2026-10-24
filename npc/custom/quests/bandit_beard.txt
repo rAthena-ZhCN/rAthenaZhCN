@@ -17,61 +17,61 @@
 //= 1.3 Removed duplicates [L0ne_W0lf]
 //============================================================
 
-umbala,126,129,4	script	Bearded Man#bandit	120,{
+umbala,126,129,4	script	胡须男子#bandit	120,{
 	if(BEARD_QUEST == 4 ) goto L_MAKE;
 	if(BEARD_QUEST >= 5 ) goto L_DONE;
 	if(BEARD_QUEST >= 1 ) goto L_THREAD;
 
-	mes "[Bearded Man]";
-	mes "Beards! Get your wonderful beards!";
-	mes "Would you like a beard?";
+	mes "[大胡子]";
+	mes "胡须！来买上好的胡须！";
+	mes "想要一副胡须吗？";
 	next;
-	menu "Yes, I'd like some facial hair!",-,"No thanks, thats gross!",M_NO;
+	menu "我要胡须！",-,"不了，太恶心了！",M_NO;
 
-	mes "[Bearded Man]";
-	mes "HoHo~ So you want some whiskers.";
+	mes "[大胡子]";
+	mes "呵呵～原来你想要胡须啊。";
 	emotion ET_SMILE;
-	mes "Well I would give you my beards but there not cheap.";
-	mes "Matter of fact I have only one left...";
-	mes "but I'm not selling it.";
-	mes "But don't get mad! I can make you one.";
+	mes "我倒是想给你胡须，可它们可不便宜。";
+	mes "其实我只剩一副了……";
+	mes "但我不卖它。";
+	mes "别生气！我可以给你做一副。";
 	next;
 	set BEARD_QUEST,1;
 L_THREAD:
-	mes "[Bearded Man]";
-	mes "I would need some ^8080FFThread^000000 for the Beard.";
-	mes "Talk to my friend in Izlude for some ^8080FFThread^000000.";
+	mes "[大胡子]";
+	mes "做胡须我需要一些^8080FF线^000000。";
+	mes "去伊斯鲁得找我的朋友拿些^8080FF线^000000。";
 	next;
 
-	mes "[Bearded Man]";
-	mes "Also I would need you to get me some things for the beard.";
-	mes "They are:";
+	mes "[大胡子]";
+	mes "另外，我还需要你帮我找些做胡须的材料。";
+	mes "它们是：";
 L_LIST:
-	mes "^8080FFElastic Band^000000";
-	mes "^8080FF5 Animal Skins^000000";
-	mes "^8080FFBlack Dye Stuff^000000";
-	mes "^8080FFGranpa Beard^000000";
-	mes "^8080FF100 sticky Mucus^000000";
-	mes "^8080FFCounteragent^000000";
-	mes " and one ^8080FF2 Carat Diamond^000000";
+	mes "^8080FF橡皮筋^000000";
+	mes "^8080FF5 动物外皮^000000";
+	mes "^8080FF黑色染料^000000";
+	mes "^8080FF爷爷的胡须^000000";
+	mes "^8080FF100 黏稠液体^000000";
+	mes "^8080FF中和剂^000000";
+	mes "还有一颗^8080FF2克拉钻石^000000";
 	close;
 
 M_NO:
-	mes "[Bearded Man]";
-	mes "Fine, be that way!";
+	mes "[大胡子]";
+	mes "随你便吧！";
 	emotion ET_ANGER;
 	close;
 
 L_DONE:
-	mes "[Bearded Man]";
-	mes "Sorry, I can only make one per person.";
-	mes "We don't want too many beards now. Right?";
+	mes "[大胡子]";
+	mes "抱歉，我每人只能做一副。";
+	mes "胡须太多可不行，对吧？";
 	emotion ET_KIK;
 	close;
 
 L_MAKE:
-	mes "[Bearded Man]";
-	mes "Let's make you your beard!";
+	mes "[大胡子]";
+	mes "来给你做胡须吧！";
 	next;
 	if(countitem(7200) < 1 || countitem(919) < 1 ||	countitem(983) < 1 || countitem(2241) < 1 ||
 	countitem(938) < 100 || countitem(973) < 1 || countitem(731) < 1) goto L_NOITEMS;
@@ -82,129 +82,129 @@ L_MAKE:
 	delitem 938, 100;
 	delitem 973, 1;
 	delitem 731, 1;
-	mes "^8080FF~You see him cutting and sewing the beard together~^000000";
+	mes "^8080FF~只见他剪裁、缝制着胡须~^000000";
 	next;
-	mes "^8080FF~He hands you the finished beard~^000000";
+	mes "^8080FF~他把做好的胡须递给你~^000000";
 	next;
 	getitem 2237, 1;
 	set BEARD_QUEST, 5;
-	mes "[Bearded Man]";
-	mes "Have a nice day!";
+	mes "[大胡子]";
+	mes "祝你过得愉快！";
 	emotion ET_KIK;
 	close;
 
 L_NOITEMS:
-	mes "[Bearded Man]";
-	mes "What the hell! I can't make a beard without the items!";
-	mes "Here is the list again:";
+	mes "[大胡子]";
+	mes "搞什么！没有材料我可做不出胡须！";
+	mes "再给你看一遍清单：";
 	emotion ET_HUK;
 	goto L_LIST;
 }  
 
 //Master Tailor----------
-izlude_in,123,175,4	script	Master Tailor#bandit	50,{
-	mes "[Master Tailor]";
-	mes "Good evening! I am the Master Tailor!";
+izlude_in,123,175,4	script	裁缝大师#bandit	50,{
+	mes "[裁缝大师]";
+	mes "晚上好！我是裁缝大师！";
 	if(BEARD_QUEST != 1 ) close;
 
 	next;
-	mes "[Master Tailor]";
-	mes "What? A Bearded Man sent you...";
-	mes "Well I'm sorry to say that I am out of ^8080FFThread^000000.";
-	mes "But I have the address to where I get the shipments.";
-	mes "It is in Al de Baran Kafra Inc. warehouse area.";
-	mes "The address is: Al de Baran 59, 221";
-	mes "See you later.";
+	mes "[裁缝大师]";
+	mes "什么？是大胡子让你来的……";
+	mes "很遗憾，我的^8080FF线^000000用完了。";
+	mes "不过我有进货的地址。";
+	mes "就在艾尔帕兰卡普拉公司的仓库区。";
+	mes "地址是：艾尔帕兰 59, 221";
+	mes "回头见。";
 	set BEARD_QUEST, 2;
 	close;
 }
 // Kafra Thread Clerk---
-aldeba_in,70,179,5	script	Kafra Clerk#bandit	113,{
-	mes "[Kafra Clerk]";
+aldeba_in,70,179,5	script	卡普拉职员#bandit	113,{
+	mes "[卡普拉职员]";
 	if(BEARD_QUEST == 3 ) goto L_REPEAT;
 	if(BEARD_QUEST > 3 ) goto L_DONE;
 
-	mes "What can I do for you?";
+	mes "有什么能为您效劳的？";
 	next;
 	if(BEARD_QUEST == 2 ) goto L_DELIVERY;
 
-	menu "What's in the boxes?",-,"Nothing.",M_NOPE;
+	menu "箱子里装的是什么？",-,"Nothing.",M_NOPE;
 
-	mes "[Kafra Clerk]";
-	mes "They're empty.";
+	mes "[卡普拉职员]";
+	mes "都是空的。";
 M_NOPE:
 	close;
 
 L_DELIVERY:
 
-	mes "[Kafra Clerk]";
-	mes "Sorry but we have not received any ^8080FFThread^000000.";
-	mes "Our shipments have been put off until its safe.";
-	mes "You see we get our ^8080FFThread^000000 from Alberta and a monsters keeps attacking our merchants.";
+	mes "[卡普拉职员]";
+	mes "抱歉，我们还没收到任何^8080FF线^000000。";
+	mes "我们的货运要等到安全了才能恢复。";
+	mes "我们的^8080FF线^000000是从阿尔贝塔进的，可有只怪物老是袭击我们的商人。";
 	next;
-	mes "[Kafra Clerk]";
-	mes "Now this monsters has not been doing this before.";
-	mes "It may have to do with the warmer months.";
-	mes "Please help us out!";
+	mes "[卡普拉职员]";
+	mes "这只怪物以前从没这样过。";
+	mes "也许和天气变暖有关。";
+	mes "请帮帮我们！";
 	set BEARD_QUEST,3;
 	next;
-	mes "[Kafra Clerk]";
+	mes "[卡普拉职员]";
 L_REPEAT:
-	mes "Oh by the way, that Thread Merchant is somewhere around Alberta 60 and 100...";
+	mes "对了，那位线商就在阿尔贝塔 60、100 附近……";
 L_DONE:
-	mes "Thank You!";
+	mes "谢谢！";
 	close;
 }
 
 //Thread Merchant ------
-alberta,65,123,6	script	Man#bandit	85,{
+alberta,65,123,6	script	男子#bandit	85,{
 	if(BEARD_QUEST == 3 && $@beardMobD) goto L_KILLED;
 	if(BEARD_QUEST > 3) goto L_DONE;
 
-	mes "[Thread Merchant]";
-	mes "ARGGG!! I can never get my stuff to Al de Baran!";
-	mes "I keep getting mobbed by some bugs.";
-	mes "They steal all my supplies and ^8080FFThread^000000.";
+	mes "[线商]";
+	mes "啊啊啊！！我的货永远送不到艾尔帕兰！";
+	mes "老是被一群虫子围攻。";
+	mes "它们抢走了我所有的货物和^8080FF线^000000。";
 	next;
-	mes "[Thread Merchant]";
+	mes "[线商]";
 
-	if(BEARD_QUEST != 3) mes "What am I to do?";
+	if(BEARD_QUEST != 3) mes "我该怎么办啊？";
 	if(BEARD_QUEST != 3) close;
 
-	if($@beardmob > 0) mes "Kill! Kill them already!!!";
+	if($@beardmob > 0) mes "杀！把它们全杀掉！！！";
 	if($@beardmob > 0) close;
-	mes "Are you here to help me?";
+	mes "你是来帮我的吗？";
 	emotion ET_QUESTION;
 	next;
-	menu "Yes",-,"No",M_NO;
+	menu "是",-,"否",M_NO;
 
-	mes "[Thread Merchant]";
-	mes "Oh thank the Gods!";
-	mes "If you can only just kill the bugs I would be able to make my delivery.";
+	mes "[线商]";
+	mes "哦，感谢神明！";
+	mes "只要你能把那些虫子杀掉，我就能送货了。";
 	next;
-	mes "[Thread Merchant]";
-	mes "Oh NO! Here they come!!";
+	mes "[线商]";
+	mes "糟了！它们来了！！";
 	emotion ET_PROFUSELY_SWEAT;
 	donpcevent "BRDQ_MOBS::OnStart";
 	close;
 
 L_KILLED:
 	set $@beardMobD,0;
-	mes "[Thread Merchant]";
-	mes "Thank you for killing the Thief Bugs.";
-	mes "As a token of my gratitude here is a box full of ^8080FFThread^000000.";
+	mes "[线商]";
+	mes "谢谢你杀掉那些盗虫。";
+	mes "为表谢意，这箱^8080FF线^000000送给你。";
 	set BEARD_QUEST,4;
 	close;
 
 L_DONE:
-	mes "[Thread Merchant]";
-	mes "Thank you again!";
+	mes "[线商]";
+	mes "再次感谢你！";
 	emotion ET_THANKS;
 	close;
 
 M_NO:
-	mes "[Thread Merchant]";
-	mes "What to do...";
+	mes "[线商]";
+	mes "该怎么办呢……";
 	close;
 }
 

@@ -22,47 +22,47 @@
 	mes .@n$;
 	if (isequipped(2782) && ep13_2_rhea == 100) {
 		if (!checkweight(1201,1)) {
-			mes "It looks like you're carrying too many things.";
-			mes "Why not put some of your items in storage and come back?";
+			mes "看来你带的东西太多了。";
+			mes "何不先把一些物品放进仓库再回来？";
 			close;
 		}
 		mes "Hello.";
-		mes "What are you looking for?";
+		mes "你在找什么？";
 		next;
 		if (strnpcinfo(1) == "Merchant of Manuk") {
 			setarray .@Items[2],12342,12343,12348;
 			set .@Book,11019; //Manuk_Selling_Item
 			set .@Coin,6080; //Manuk_Coin
-			set .@i, select("View item description:Manuk's Opportunity:Manuk's Courage:Manuk's Faith:Cancel");
+			set .@i, select("查看物品说明:马努克的机遇:马努克的勇气:马努克的信仰:取消");
 		}
 		else {
 			setarray .@Items[2],12344,12345,12349;
 			set .@Book,11018; //Splendide_Selling_Item
 			set .@Coin,6081; //Splendide_Coin
-			set .@i, select("View item description:Buy Pinguicula's Fruit Jam:Buy Luciola's Honey Jam:Buy Cornus' Tears:Do nothing");
+			set .@i, select("查看物品说明:购买捕虫堇的果实酱:购买萤火虫的蜂蜜酱:购买山茱萸的眼泪:什么也不做");
 		}
 		mes .@n$;
 		if (.@i == 1) {
-			mes "Here are the item descriptions.";
+			mes "这是物品说明。";
 			close2;
 			readbook .@Book,1;
 			end;
 		}
 		else if (.@i < 5) {
-			mes "I can sell you 3 "+getitemname(.@Items[.@i])+" for ^3131FF1 coin^000000.";
+			mes "我可以卖给你 3 个"+getitemname(.@Items[.@i])+"，只要 ^3131FF1 枚硬币^000000。";
 			next;
-			switch(select("Purchase:Do not purchase")) {
+			switch(select("购买:不购买")) {
 			case 1:
 				if (countitem(.@Coin)) {
 					mes .@n$;
-					mes "Thank you for coming.";
+					mes "感谢光临。";
 					delitem .@Coin,1; 
 					getitem .@Items[.@i],3;
 					close;
 				}
 				else {
 					mes .@n$;
-					mes "You don't have enough coins.";
+					mes "你的硬币不够。";
 					close;
 				}
 			case 2:
@@ -70,7 +70,7 @@
 				break;
 			}
 		}
-		mes "Come again if you change your mind.";
+		mes "改变主意的话再来吧。";
 		close;
 	}
 	else {

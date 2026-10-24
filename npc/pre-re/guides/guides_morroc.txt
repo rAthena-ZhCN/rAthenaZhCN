@@ -18,98 +18,98 @@
 //	-Thanks to $ephiroth.
 //============================================================
 
-morocc,153,286,6	script	Guide#moc::MocGuide	707,{
+morocc,153,286,6	script	向导#moc::MocGuide	707,{
 	cutin "moc_soldier",2;
-	mes "[Morocc Guide]";
-	mes "Welcome to Morocc,";
-	mes "the frontier town of the";
-	mes "Rune-Midgarts Kingdom.";
-	mes "Please ask me for help if";
-	mes "you're having any trouble";
-	mes "finding anything in town.";
+	mes "[梦罗克向导]";
+	mes "欢迎来到梦罗克，";
+	mes "这里是边境城镇，";
+	mes "卢恩-米德加尔特王国。";
+	mes "如果您在城里";
+	mes "遇到任何困难，";
+	mes "请来找我帮忙。";
 	set .@loop1,1;
 	while (.@loop1) {
 		next;
-		switch(select("City Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		switch(select("城市向导:清除小地图标记:公告:取消")) {
 		case 1:
-			mes "[Morocc Guide]";
-			mes "Please select";
-			mes "a location from";
-			mes "the following menu.";
+			mes "[梦罗克向导]";
+			mes "请从下列";
+			mes "菜单中选择";
+			mes "一个地点。";
 			if (.@compass_check == 0) {
-				mes "Would you like me";
-				mes "to mark locations";
-				mes "on your Mini-Map?";
+				mes "要我把地点";
+				mes "标记在您的";
+				mes "小地图上吗？";
 				next;
-				if (select("Yes.:No.") == 1) set .@compass_check,1;
+				if (select("是。:否。") == 1) set .@compass_check,1;
 			}
 			set .@loop2,1;
 			while(.@loop2) {
 				if (.@wait_button_chk == 0) set .@wait_button_chk,1;
 				else next;
 				
-				switch(select("^FF0000Thief Guild^000000:Weapon Shop:Inn:Pub:Mercenary Guild:Forge:Cancel")) {
+				switch(select("^FF0000盗贼公会^000000:武器店:旅馆:酒馆:佣兵公会:铁匠铺:取消")) {
 				case 1:
-					mes "[Morocc Guide]";
-					mes "The Thief Guild is";
-					mes "in charge of all Job";
-					mes "Changes to the Thief";
-					mes "Class. From what I hear,";
-					mes "you can find them inside";
-					mes "the Pyramids nearby...";
+					mes "[梦罗克向导]";
+					mes "盗贼公会";
+					mes "负责所有盗贼";
+					mes "职业的转职";
+					mes "事宜。我听说，";
+					mes "他们就在附近的";
+					mes "金字塔里……";
 					if (.@compass_check)
 						viewpoint 1,24,297,2,0xFF0000;
 					break;
 				case 2:
-					mes "[Morocc Guide]";
-					mes "The Weapon Shop";
-					mes "is in the southeast";
-					mes "end of Morocc.";
+					mes "[梦罗克向导]";
+					mes "武器店";
+					mes "位于梦罗克";
+					mes "东南端。";
 					if (.@compass_check)
 						viewpoint 1,253,56,3,0xFF00FF;
 					break;
 				case 3:
-					mes "[Morocc Guide]";
-					mes "There are Inns";
-					mes "where you can rest";
-					mes "at the southeast and";
-					mes "northeast ends of Morocc.";
+					mes "[梦罗克向导]";
+					mes "东南端与";
+					mes "东北端都设有";
+					mes "旅馆，您可以";
+					mes "在那里好好休息。";
 					if (.@compass_check) {
 						viewpoint 1,197,66,4,0xFF00FF;
 						viewpoint 1,273,269,5,0xFF00FF;
 					}
 					break;
 				case 4:
-					mes "[Morocc Guide]";
-					mes "You can find the";
-					mes "Pub in northeast Morocc.";
+					mes "[梦罗克向导]";
+					mes "酒馆位于";
+					mes "梦罗克东北方。";
 					if (.@compass_check)
 						viewpoint 1,52,259,6,0xFF00FF;
 					break;
 				case 5:
-					mes "[Morocc Guide]";
-					mes "The Mercenary";
-					mes "Guild is located";
-					mes "in East Morocc.";
+					mes "[梦罗克向导]";
+					mes "佣兵公会";
+					mes "位于梦罗克";
+					mes "东部。";
 					if (.@compass_check)
 						viewpoint 1,284,171,7,0x00FF00;
 					break;
 				case 6:
-					mes "[Morocc Guide]";
-					mes "The Forge is";
-					mes "located just";
-					mes "southwest from";
-					mes "the center of Morocc.";
+					mes "[梦罗克向导]";
+					mes "铁匠铺就在";
+					mes "梦罗克中心";
+					mes "往西南的";
+					mes "不远处。";
 					if (.@compass_check)
 						viewpoint 1,47,47,7,0xFF00FF;
 					break;
 				case 7:
-					mes "[Morocc Guide]";
-					mes "Please ask me to ''Remove";
-					mes "Marks from Mini-Map'' if you";
-					mes "no longer wish to have the";
-					mes "location marks displayed";
-					mes "on your Mini-Map.";
+					mes "[梦罗克向导]";
+					mes "如果您不再需要";
+					mes "小地图上的标记，";
+					mes "请对我说";
+					mes "“清除小地图标记”，";
+					mes "就能清除它们。";
 					set .@loop2,0;
 				}
 			}
@@ -124,35 +124,35 @@ morocc,153,286,6	script	Guide#moc::MocGuide	707,{
 			set .@compass_check,0;
 			break;
 		case 3:
-			mes "[Morocc Guide]";
-			mes "Advances in sorcery and";
-			mes "technology have allowed";
-			mes "us to update our information";
-			mes "system, enabling up to mark";
-			mes "locations on your Mini-Map";
-			mes "for easier navigation.";
+			mes "[梦罗克向导]";
+			mes "魔法与科技的";
+			mes "进步，让我们";
+			mes "得以更新信息";
+			mes "系统，最多可在";
+			mes "小地图上标记";
+			mes "地点，方便导航。";
 			next;
-			mes "[Morocc Guide]";
-			mes "Your Mini-Map is located";
-			mes "in the upper right corner";
-			mes "of the screen. If you can't";
-			mes "see it, press the Ctrl + Tab";
-			mes "keys or click the ''Map'' button in your Basic Info Window.";
+			mes "[梦罗克向导]";
+			mes "您的小地图位于";
+			mes "屏幕的右上角。";
+			mes "如果看不到，";
+			mes "请按 Ctrl + Tab";
+			mes "键，或点击基本状态窗口中的“地图”按钮。";
 			next;
-			mes "[Morocc Guide]";
-			mes "On your Mini-Map,";
-			mes "click on the ''+'' and ''-''";
-			mes "symbols to zoom in and";
-			mes "our of your Mini-Map. We";
-			mes "hope you enjoy your travels";
-			mes "here in the city of Morocc.";
+			mes "[梦罗克向导]";
+			mes "在小地图上，";
+			mes "点击“+”和“-”";
+			mes "符号，即可放大";
+			mes "或缩小地图。我们";
+			mes "希望您在这里";
+			mes "旅途愉快。";
 			break;
 		case 4:
-			mes "[Morocc Guide]";
-			mes "Alright then,";
-			mes "try to stay out of";
-			mes "too much trouble";
-			mes "out there, adventurer.";
+			mes "[梦罗克向导]";
+			mes "那么，";
+			mes "在外冒险时";
+			mes "尽量别惹";
+			mes "太多麻烦，冒险者。";
 			close2;
 			set .@loop1,0;
 		}

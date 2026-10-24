@@ -15,8 +15,8 @@ function calcexp;
 function calcjobexp;
 
 	if (!checkweight(1201,3)){
-		mes "You have too many items to proceed with the quest.";
-		mes "Please lighten your load and try again.";
+		mes "你的道具太多，无法进行任务。";
+		mes "请减轻负重后再试一次。";
 		close;
 	}
 
@@ -53,27 +53,27 @@ function calcjobexp;
 	.@npcname$ = .npcname$[.@zoneid];
 
 	mes .@npcname$;
-	mes "We provide missions and daily quests that you can complete in the region of " + .region$[.@zoneid] + ".";
-	mes "There are simple daily quests as well as missions that you have to complete within the siege hours only. So, think about it~";
+	mes "我们提供可在" + .region$[.@zoneid] + ".";
+	mes "既有简单的每日任务，也有只能在攻城时段内完成的任务。请好好考虑吧～";
 	next;
-	switch(select("Conquering " + .region$[.@zoneid], "Guild Dungeon Daily Quests", "About quests", "I don't need it.")){
+	switch(select("征服" + .region$[.@zoneid], "公会地下城每日任务", "关于任务", "我不需要。")){
 		case 1: // Conquering.
 			.@gid = getcharid(2);
 			if(.@gid && is_guild_leader() == true){
 				.@time_check1 = checkquest(.conquer_delay_questid[.@zoneid], PLAYTIME);
 				if(.@time_check1 == 0){
 					mes .@npcname$;
-					mes "It's been less than an hour since the last time we've checked!";
-					mes "Come back when the waiting time is over.";
+					mes "距离上次确认还不到一小时！";
+					mes "等待时间结束后再来吧。";
 					next;
 					mes .@npcname$;
-					mes "If you have luck on your side, you'll have good results.";
+					mes "若运气站在你这边，就会有好结果。";
 					close;
 				} else if(.@time_check1 == 2){
 					erasequest .conquer_delay_questid[.@zoneid];
 					mes .@npcname$;
-					mes "I have confirmed that the waiting time for conquering missions has ended.";
-					mes "I'll delete unnecessary records for you.";
+					mes "已确认征服任务的等待时间结束了。";
+					mes "我来为你删除不必要的记录。";
 					close;
 				} else {
 					.@siege_check = (.@edition == 1 ? agitcheck() : .@edition == 2 ? agitcheck2() : agitcheck3());
@@ -82,13 +82,13 @@ function calcjobexp;
 
 					if(.@siege_check && .@after_time){
 						mes .@npcname$;
-						mes "According to ^4d4dffthe number of fortresses that your guild has conquered at this very moment,^000000 I'll give you a reward.";
-						mes "Do you want to check right now? You're aware that ^4d4dffthe number can change even as we speak,^000000 right?";
+						mes "我会根据^4d4dff此刻贵公会所占领的城塞数量^000000给予奖励。";
+						mes "要现在确认吗？你也知道^4d4dff这个数字随时都可能变化，^000000对吧？";
 						next;
-						if(select("I'll come back later.","Let's check right now!") == 1){
+						if(select("我稍后再来。","现在就确认吧！") == 1){
 							mes .@npcname$;
-							mes "Right. Life is all about timing.";
-							mes "Come back when it's shining the most.";
+							mes "没错。人生重在时机。";
+							mes "等它最闪耀的时候再来吧。";
 							close;
 						} else {
 							.@total = 0;
@@ -98,26 +98,26 @@ function calcjobexp;
 
 							if(!.@total){
 								mes .@npcname$;
-								mes "Unfortunately, there is no fortress that your guild has conquered.";
-								mes "Try again!";
+								mes "很遗憾，贵公会尚未占领任何城塞。";
+								mes "再试一次！";
 								close;
 							} else {
 								mes .@npcname$;
 								if(.@total == 5)
 									mes "Incredible.";
 								else
-									mes "Currently, the total number of fortresses that your guild has conquered";
+									mes "目前贵公会已占领的城塞总数为";
 								for(.@i = 0; .@i < 5; ++.@i){
-									mes getcastlename(.castle$[.@i+.@zoneid*5]) + (.@gid == getcastledata(.castle$[.@i+.@zoneid*5],CD_GUILD_ID) ? ": ^4d4dffOccupied^000000" : "");
+									mes getcastlename(.castle$[.@i+.@zoneid*5]) + (.@gid == getcastledata(.castle$[.@i+.@zoneid*5],CD_GUILD_ID) ? "：^4d4dff占领中^000000" : "");
 								}
 								if(.@total == 5)
-									mes "Your guild has conquered " + .region$[.@zoneid] + "!";
+									mes "贵公会已占领" + .region$[.@zoneid] + "！";
 								else
-									mes "is " + .@total + "!";
+									mes "共" + .@total + "座！";
 								next;
 								mes .@npcname$;
-								mes "I'll give you a reward accordingly. I hope you make good use of it.";
-								mes "You have an hour of waiting time until the next report. Keep that in mind and try again.";
+								mes "我会相应给予奖励。希望你能好好利用。";
+								mes "距离下次报告有一小时的等待时间。请记住这一点再试。";
 								setquest .conquer_delay_questid[.@zoneid];
 								getitem 6489,.@total;
 								getitem 6615,.@total;
@@ -127,39 +127,39 @@ function calcjobexp;
 						}
 					} else {
 						mes .@npcname$;
-						mes "I'm sorry but you can complete this mission only during the siege hours. I'm afraid I can't do anything here.";
+						mes "抱歉，此任务只能在攻城时段内完成。这一点我无能为力。";
 						close;
 					}
 				}
 			} else {
 				mes .@npcname$;
-				mes "I'm sorry but conquering missions are for guild masters only.";
-				mes "Members should try guild dungeon daily quests instead.";
+				mes "抱歉，征服任务仅限公会会长。";
+				mes "普通成员请尝试公会地下城每日任务。";
 				close;
 			}
 			break;
 		case 2: // Daily Quests
 			mes .@npcname$;
-			mes "These are missions that you can complete in guild dungeons of " + .region$[.@zoneid] + " area.";
-			mes "You can cancel them if you want to. Feel free to challenge yourself.";
+			mes "这些是可在" + .region$[.@zoneid] + "地区完成的任务。";
+			mes "想取消的话也可以。请随意挑战。";
 			next;
 			.@cancel_index = (.@edition == 1 ? 3 : 2);
 			for(.@i = 0; .@i < 3; ++.@i){
 				if(.daily_hunting_questid[.@zoneid*3 + .@i])
-					.@menu$ = .@menu$ + .region$[.@zoneid] + " Mission " + (.@i+1) + (isbegin_quest(.daily_hunting_questid[.@zoneid*3 + .@i]) ? " ^4d4dffCheck the result^000000" : "") + ":";
+					.@menu$ = .@menu$ + .region$[.@zoneid] + "任务" + (.@i+1) + (isbegin_quest(.daily_hunting_questid[.@zoneid*3 + .@i]) ? "^4d4dff确认结果^000000" : "") + ":";
 			}
 			.@sel = select(.@menu$) - 1;
 			.@index = .@zoneid*3 + .@sel;
 			if(.@sel == .@cancel_index){
 				mes .@npcname$;
-				mes "You don't need to rush since these missions take place in guild dungeons.";
-				mes "Feel free to give it a try whenever you want to.";
+				mes "这些任务都在公会地下城进行，不必着急。";
+				mes "随时都可以随意尝试。";
 				close;
 			}
 			if(BaseLevel < .level_req[.@index]){
 				mes .@npcname$;
-				mes "Hmm, unfortunately, this mission is limited to users with ^4d4dfflevel " + .level_req[.@index] + "^000000 or higher only.";
-				mes "Your level is not high enough.";
+				mes "嗯，很遗憾，此任务仅限^4d4dff等级" + .level_req[.@index] + "^000000 以上者。";
+				mes "你的等级不够。";
 				close;
 			}
 			.@hunting = checkquest(.daily_hunting_questid[.@index], HUNTING);
@@ -167,26 +167,26 @@ function calcjobexp;
 			if(.@hunting > -1){
 				if(.@hunting == 2){
 					mes .@npcname$;
-					mes "Oh, you've done a good job.";
-					mes "It isn't much, but hopefully it will be helpful.";
+					mes "哦，你做得不错。";
+					mes "虽然不多，但希望能帮上忙。";
 					setquest .daily_delay_questid[.@index];
 					erasequest .daily_hunting_questid[.@index];
 					getexp calcexp(.@zoneid,.@index),calcjobexp(.@edition);
 					getitem 6615,1;
 				} else {
 					mes .@npcname$;
-					mes "Hmm? It seems like you haven't completed the mission yet..";
-					mes "Is there any problem?";
+					mes "嗯？看来你还没完成任务……";
+					mes "有什么问题吗？";
 					next;
-					if(select("No.","Give up the quest.") == 1){
+					if(select("No.","放弃任务。") == 1){
 						mes .@npcname$;
-						mes "I'm not sure how long you can use the guild dungeon, but good luck.";
+						mes "我不知道你能使用公会地下城多久，祝你好运。";
 						close;
 					} else {
 						mes .@npcname$;
-						mes "Well, no one's forcing you.";
-						mes "Do whatever you like to do.";
-						mes "I'll cancel the mission then.";
+						mes "好吧，没人强迫你。";
+						mes "随你喜欢吧。";
+						mes "那么，我取消这个任务。";
 						erasequest .daily_hunting_questid[.@index];
 						close;
 					}
@@ -194,36 +194,36 @@ function calcjobexp;
 			} else {
 				if(.@playtime == 0 || .@playtime == 1){
 					mes .@npcname$;
-					mes "The rule is set here so that you're only allowed to complete one mission each day.";
-					mes "I would like you to come back when the waiting time is over.";
+					mes "这里规定每人每天只能完成一个任务。";
+					mes "请在等待时间结束后再来。";
 					close;
 				} else if(.@playtime == 2){
 					erasequest .daily_delay_questid[.@index];
 					mes .@npcname$;
-					mes "I have confirmed that the waiting time for this mission is over.";
-					mes "I'll delete the records used for confirmation.";
-					mes "Now, give it a try to complete the quest!";
+					mes "已确认此任务的等待时间结束了。";
+					mes "我来删除用于确认的记录。";
+					mes "那么，试着完成任务吧！";
 					close;
 				} else {
 					mes .@npcname$;
-					mes "This is the " + .ordinal$[.@sel] + " mission in " + .region$[.@zoneid] + ".";
+					mes "这是" + .ordinal$[.@sel] + "任务，位于" + .region$[.@zoneid] + ".";
 					brief(.daily_hunting_questid[.@index]);
 					next;
 					mes .@npcname$;
 					if(mob_brief(.daily_hunting_questid[.@index]))
-						mes "I'll reward you accordingly upon completing this mission.";
+						mes "完成此任务后，我会相应给予奖励。";
 					else
-						mes "I'll give you experience points in return.";
+						mes "作为回报，我会给予你经验值。";
 					next;
-					if(select("Accept it.","Reject it.") == 1){
+					if(select("接受。","拒绝。") == 1){
 						mes .@npcname$;
-						mes "Entrance to the guild dungeon is restricted. But it's not like you can't find a way to go there, either.";
-						mes "I'll pray for your success in fighting those monsters.";
+						mes "公会地下城的入口是受限的。但也不是完全找不到进去的办法。";
+						mes "我会祈祷你讨伐那些怪物顺利。";
 						setquest .daily_hunting_questid[.@index];
 						close;
 					} else {
 						mes .@npcname$;
-						mes "Well, do as you wish.";
+						mes "好吧，随你便。";
 						close;
 					}
 				}
@@ -231,24 +231,24 @@ function calcjobexp;
 			break;
 		case 3: // About quests
 			mes .@npcname$;
-			mes "It's not difficult at all.";
-			mes "I give a reward ^4d4dffdepending on how many fortresses you have conquered.^000000";
-			mes "^4d4dffThe type and quality of the reward depend on the number of conquered fortresses at the very moment I check.^000000";
+			mes "一点也不难。";
+			mes "我会^4d4dff根据你占领的城塞数量^000000给予奖励。";
+			mes "^4d4dff奖励的种类与品质取决于我确认那一刻的城塞占领数。^000000";
 			next;
 			mes .@npcname$;
-			mes "And of course, I check during the siege hours only.";
-			mes "^4d4dffReceiving a reward is followed by an hour of waiting time. So you'd better figure out the right timing as well.^000000";
+			mes "当然，我只在攻城时段内确认。";
+			mes "^4d4dff领取奖励后有一小时的等待时间。所以你最好也把握好时机。^000000";
 			next;
 			mes .@npcname$;
-			mes "If you are a master of a guild that is currently participating in siege battles, you should give it a try.";
+			mes "如果你是正在参与攻城战的公会会长，不妨试一试。";
 			next;
 			mes .@npcname$;
-			mes "Guild dungeon daily quests consist of combat quests that you can complete in guild dungeons.";
-			mes "It's simple.";
+			mes "公会地下城每日任务由可在公会地下城完成的战斗任务组成。";
+			mes "很简单。";
 			close;
 		case 4: // I don't need it.
 			mes .@npcname$;
-			mes "You're really something else~!";
+			mes "你还真不简单～！";
 			close;
 	}
 	end;
@@ -320,10 +320,10 @@ OnInit:
 			case 7530:
 			case 7533:
 			case 7536:
-				mes "It is to deal with the powerful creatures that appear in the Corridor of the Abyss.";
+				mes "这是为了对付出现在深渊回廊的强力怪物。";
 				break;
 			default:
-				mes "It is to eliminate the monsters that appear in the guild dungeon.";
+				mes "这是为了消灭出现在公会地下城的怪物。";
 				break;
 		}
 		return;
@@ -332,64 +332,64 @@ OnInit:
 	function mob_brief {
 		switch(getarg(0)){
 			case 7525:
-				mes "You should hunt 50 or more Caterpillars and Creamy Fear monsters..";
+				mes "请狩猎 50 只以上的狂暴绿棉虫和狂暴克瑞米。";
 				break;
 			case 7526:
-				mes "Hunt down 30 or more of all 3 types of Abyss Kobolds.";
+				mes "请狩猎 3 种深渊犬妖各 30 只以上。";
 				break;
 			case 7527:
-				mes "^4d4dffYou should kill furious 'Pyuriel' and warrior 'Lora'.^000000";
+				mes "^4d4dff请击杀愤怒的'傅立叶'与战士'劳拉'。^000000";
 				return 1;
 			case 7528:
-				mes "^4d4dffHunt 50 or more of Giant Hornets and Ancient Worms, respectively.^000000";
+				mes "^4d4dff请分别狩猎 50 只以上的狂暴蜂兵与狂暴蜈蚣。^000000";
 				break;
 			case 7529:
-				mes "^4d4dffHunt 40 or more of Killer Mantises and 50 or more of Angra Mantises.^000000";
+				mes "^4d4dff请狩猎 40 只以上的狂暴螳螂和 50 只以上的疯狂螳螂。^000000";
 				break;
 			case 7530:
-				mes "They are ^4d4dff'Elvira' and 'Gioia,' which is a strange mechanical creature of heroes' tears.^000000";
+				mes "^4d4dff他们是'埃维亚'与'乔伊亚'，那是英雄之泪形成的奇异机械生物。^000000";
 				return 1;
 			case 7531:
-				mes "^4d4dffHunt 50 or more Zombie Masters and Wraith Deads, respectively.^000000";
+				mes "^4d4dff请分别狩猎 50 只以上的腐尸首领与狂暴恶灵。^000000";
 				break;
 			case 7532:
-				mes "^4d4dffHunt 50 GLD_DARK_SHADOW, 20 GLD_DARK_FRAME, and 20 GLD_DARK_PRIEST monsters.^000000";
+				mes "^4d4dff请狩猎 50 只 GLD_DARK_SHADOW、20 只 GLD_DARK_FRAME 和 20 只 GLD_DARK_PRIEST 怪物。^000000";
 				break;
 			case 7533:
-				mes "They are ^4d4dff'Kades' and 'Rudo' who wander around the dead's hill.^000000";
+				mes "^4d4dff他们是在亡者之丘徘徊的'卡德斯'与'鲁盗'。^000000";
 				return 1;
 			case 7534:
-				mes "^4d4dffHunt 50 or more Gullinbursti and Leib Olmai, respectively.^000000";
+				mes "^4d4dff请分别狩猎 50 只以上的狂暴野猪与狂暴大脚熊。^000000";
 				break;
 			case 7535:
-				mes "^4d4dffHunt 45 or more Skeleton General, 20 or more Am Mut and 25 or more Gajomart, respectively.^000000";
+				mes "^4d4dff请分别狩猎 45 只以上的邪骸战士长、20 只以上的狂暴小土人和 25 只以上的狂暴鬼火。^000000";
 				break;
 			case 7536:
-				mes "^4d4dffThey are Old Empire's General 'Daehyon' and Guard 'Soheon'.^000000";
+				mes "^4d4dff他们是旧帝国的将军'大贤'与守卫'小贤'。^000000";
 				return 1;
 			case 7537:
-				mes "^4d4dffHunt 50 or more Hell Apocalypse and Zakudam, respectively.^000000";
+				mes "^4d4dff请分别狩猎 50 只以上的地狱阿修罗机械战士与扎古丹。^000000";
 				break;
 			case 7538:
-				mes "^4d4dffHunt 35 or more Heavy Metaling and Cobalt Mineral, respectively.^000000";
+				mes "^4d4dff请分别狩猎 35 只以上的重金属波利与恶精灵矿石。^000000";
 				break;
 			case 7539:
-				mes "^4d4dffHunt more than 50 Banshee Masters and 30 Beholder Masters.^000000";
+				mes "^4d4dff请狩猎 50 只以上的爱尔兰女妖首领与 30 只以上的眼魔首领。^000000";
 				break;
 			case 7540:
-				mes "^4d4dffHunt 50 Aunoes, and 20 Fanats.^000000";
+				mes "^4d4dff请狩猎 50 只阿吾诺耶和 20 只泛特。^000000";
 				break;
 			case 7541:
-				mes "^4d4dffHunt 30 or more Knight, Blacksmith, Assassin, respectively.^000000";
+				mes "^4d4dff请分别狩猎 30 只以上的骑士、铁匠、刺客。^000000";
 				break;
 			case 7542:
-				mes "^4d4dffHunt 30 or more Wizard, Priest, Hunter respectively.^000000";
+				mes "^4d4dff请分别狩猎 30 只以上的巫师、牧师、猎人。^000000";
 				break;
 			case 7561:
-				mes "^4d4dffHunt 30 or more, Crusader, Rogue, Alchemist, respectively.^000000";
+				mes "^4d4dff请分别狩猎 30 只以上的十字军、流氓、炼金术师。^000000";
 				break;
 			case 7562:
-				mes "^4d4dffHunt 30 or more Sage, Monk, Bard, respectively.^000000";
+				mes "^4d4dff请分别狩猎 30 只以上的贤者、武僧、诗人。^000000";
 				break;
 		}
 		return 0;

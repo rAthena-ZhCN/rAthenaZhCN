@@ -21,8 +21,8 @@
 //============================================================
 
 -	script	Bank Clerk::bankg	833,{
-	mes"[Maniss]";
-	mes strcharinfo(0)+", welcome to the 2nd Bank of Prontera!";
+	mes"[玛妮丝]";
+	mes strcharinfo(0)+"，欢迎光临普隆德拉第二银行！";
 
 	set @kb_int,(gettime(DT_MONTH)*31)+gettime(DT_DAYOFMONTH); //today's number
 	set @income,0;
@@ -34,17 +34,17 @@
 L_NoIncomeToday:
 	set #kb_int,@kb_int; //reset days timer
 
-	if(#kafrabank==0) mes "We could open you an account.";
-	if(@income>0) mes "Today's income: ^135445" + callfunc("F_InsertComma",@income) + "^000000 zeny.";
+	if(#kafrabank==0) mes "我们可以为您开立账户。";
+	if(@income>0) mes "今日收入：^135445" + callfunc("F_InsertComma",@income) + "^000000 zeny.";
 	set #kafrabank,#kafrabank+@income;
-	if(#kafrabank>0) mes "Your account: ^135445" + callfunc("F_InsertComma",#kafrabank) + "^000000 zeny.";
-	mes "What would you like?";
+	if(#kafrabank>0) mes "您的账户：^135445" + callfunc("F_InsertComma",#kafrabank) + "^000000 zeny.";
+	mes "您需要什么？";
 	next;
-	if(#kafrabank==0) menu "-Open an account",-,"-Quit",B_EXIT2;
-	if(#kafrabank>0) menu "-Deposit money",-,"-Withdraw money",M_WITHDRAW,"-Quit",B_EXIT2;
+	if(#kafrabank==0) menu "-开立账户",-,"-退出",B_EXIT2;
+	if(#kafrabank>0) menu "-存款",-,"-取款",M_WITHDRAW,"-退出",B_EXIT2;
 
-	mes"[Maniss]";
-	mes "Please, tell me how much zeny you would like to deposit.";
+	mes"[玛妮丝]";
+	mes "请告诉我您想存入多少 Zeny。";
 	next;
 	if(input(@kafrabank) == 1) goto L_TOO_BIG_AMOUNT;
 
@@ -52,17 +52,17 @@ L_NoIncomeToday:
 	if(@kafrabank>zeny) goto L_NOT_ENOUGH;
 	set Zeny, Zeny-@kafrabank;
 	set #kafrabank,#kafrabank+@kafrabank;
-	mes"[Maniss]";
-	mes "You've made a deposit of ^135445" + callfunc("F_InsertComma",@kafrabank) + "z^000000.";
+	mes"[玛妮丝]";
+	mes "您已存入 ^135445" + callfunc("F_InsertComma",@kafrabank) + "z^000000.";
 	//we log these zeny operations into the log db
 	logmes "Bank %: " + @income +"z, Deposit: "+ @kafrabank +"z, Final: "+ #kafrabank +"z";
 	goto B_EXIT;
 
 M_WITHDRAW:
 	if(#kafrabank==0) goto L_ZERO_ACCOUNT;
-	mes"[Maniss]";
-	mes "Your account: ^135445" + callfunc("F_InsertComma",#kafrabank) + "^000000 zeny.";
-	mes "How much zeny would you like to withdraw?";
+	mes"[玛妮丝]";
+	mes "您的账户：^135445" + callfunc("F_InsertComma",#kafrabank) + "^000000 zeny.";
+	mes "您想取出多少 Zeny？";
 	next;
 	if(input(@kafrabank) == 1) goto L_TOO_BIG_AMOUNT;
 
@@ -70,43 +70,43 @@ M_WITHDRAW:
 	if(@kafrabank>#kafrabank) goto L_NOT_ENOUGH;
 	set #kafrabank,#kafrabank-@kafrabank;
 	set Zeny, Zeny+@kafrabank;
-	mes"[Maniss]";
-	mes "Here is your ^135445" + callfunc("F_InsertComma",@kafrabank) + "z^000000, put your sign here...";
+	mes"[玛妮丝]";
+	mes "这是您的 ^135445" + callfunc("F_InsertComma",@kafrabank) + "z^000000, put your sign here...";
 	//we log these zeny operations into the log db
 	logmes "Bank %: " + @income +"z, Withdraw: "+ @kafrabank +"z, Final: "+ #kafrabank +"z";
 	goto B_EXIT;
 
 L_NOT_ENOUGH:
-	mes"[Maniss]";
-	mes "You don't have enough zeny for this operation.";
+	mes"[玛妮丝]";
+	mes "您的 Zeny 不足以完成此操作。";
 	next;
 	goto B_EXIT2;
 
 L_ZERO_ACCOUNT:
-	mes"[Maniss]";
-	mes "You don't have any zeny on your account!";
+	mes"[玛妮丝]";
+	mes "您的账户中没有 Zeny！";
 	next;
 	goto B_EXIT2;
 
 L_TOO_BIG_AMOUNT:
-	mes"[Maniss]";
-	mes "Sorry. The maximum deposit you can make on a time is 10,000,000 zeny.";
+	mes"[玛妮丝]";
+	mes "抱歉。单次存款上限为 10,000,000 Zeny。";
 	next;
 	goto B_EXIT2;
 
 L_LESS_1000:
-	mes"[Maniss]";
-	mes "We're sorry, the minimum amount of zeny you can deposit is 1,000 zeny.";
+	mes"[玛妮丝]";
+	mes "抱歉，最低存款金额为 1,000 Zeny。";
 	next;
 	goto B_EXIT2;
 
 B_EXIT:
-	mes "Very well... Come again soon!";
+	mes "好的……欢迎下次光临！";
 	next;
 
 B_EXIT2:
-	mes"[Maniss]";
-	mes "Thank you for using our Bank Service. We hope to see you again soon.";
+	mes"[玛妮丝]";
+	mes "感谢您使用本行的银行服务。期待您再次光临。";
 	close;
 }
 

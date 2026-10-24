@@ -21,41 +21,41 @@ function	script	F_Flags	{
 	set .@GID, GetCastleData(getarg(1),1);
 	if (getarg(5) == 0) return;
 	if (.@GID == 0) {
-		mes " [ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 卢恩米德加尔特王国敕令 ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. 遵守卢恩米德加尔特王国的法令，";
+		mes "兹宣告";
+		mes "本城堡没有正式的主人。";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. 对于能够";
+		mes "克服所有试炼";
+		mes "并破坏华丽金属之人，";
+		mes "国王将授予其";
+		mes "本城堡的所有权。";
 		return;
 	}
 	else {
 		if (getcharid(2) == .@GID && getarg(4) == 1) {
-			mes "Brave ones...";
-			mes "Do you wish to return to your honorable place?";
+			mes "勇敢的人们……";
+			mes "您是否愿意回到属于您的荣耀之地？";
 			next;
-			if (select("Return to the guild castle.:Quit.") == 1) {
+			if (select("返回公会城堡:退出。") == 1) {
 				if (getcharid(2) == GetCastleData(getarg(1),1))
 					warp getarg(1),getarg(2),getarg(3);
 			}
 			return;
 		}
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 卢恩米德加尔特王国敕令 ]";
 		mes " ";
-		mes "1. Following the ordinance of the";
-		mes "Divine Rune-Midgarts Kingdom,";
-		mes "we approve that this place is in";
-		mes "the private possession of ^ff0000" + GetGuildName(.@GID) + "^000000 Guild.";
+		mes "1. 遵照";
+		mes "卢恩米德加尔特王国的法令，";
+		mes "本处为";
+		mes "^ff0000" + GetGuildName(.@GID) + "^000000 公会的私有领地。";
 		mes " ";
-		mes "2. The guild Master of ^ff0000"+ GetGuildName(.@GID) + "^000000 Guild is";
+		mes "2. ^ff0000"+ GetGuildName(.@GID) + "^000000 公会的会长是";
 		mes "^FF0000" + GetGuildMaster(.@GID) + "^000000";
-		mes "If there is anyone who objects to this,";
-		mes " prove your strength and honor with a steel blade in your hand.";
+		mes "若有任何人对此有异议，";
+		mes "请以手中钢刃证明自己的力量与荣耀。";
 		return;
 	}
 }
@@ -63,7 +63,7 @@ function	script	F_Flags	{
 //============================================================================//
 // 			Castle 1
 //============================================================================//
-n_castle,110,96,1	script	NGuild Aldebaran#a1-1	722,{
+n_castle,110,96,1	script	艾尔帕兰公会城堡#a1-1	722,{
 	callfunc "F_Flags","Al De Baran","nguild_alde",218,170,1,1;
 	close;
 
@@ -72,7 +72,7 @@ OnRecvCastleN01:
 	end;
 }
 
-nguild_alde,30,248,4	script	NGuild Aldebaran#a1-6::NGuildAlde	722,{
+nguild_alde,30,248,4	script	艾尔帕兰公会城堡#a1-6::NGuildAlde	722,{
 	callfunc "F_Flags","Al De Baran","nguild_alde",218,170,0,1;
 	close;
 
@@ -102,7 +102,7 @@ nguild_alde,210,150,4	duplicate(NGuildAlde)	NGuild Aldebaran#a1-20	722
 //============================================================================//
 // 			Castle 2
 //============================================================================//
-n_castle,110,109,3	script	NGuild Geffen#g1-1	722,{
+n_castle,110,109,3	script	吉芬公会城堡#g1-1	722,{
 	callfunc "F_Flags","Geffen","nguild_gef",83,47,1,1;
 	close;
 
@@ -111,7 +111,7 @@ OnRecvCastleN02:
 	end;
 }
 
-nguild_gef,28,157,4	script	NGuild Geffen#g1-6::NGuildGef	722,{
+nguild_gef,28,157,4	script	吉芬公会城堡#g1-6::NGuildGef	722,{
 	callfunc "F_Flags","Geffen","nguild_gef",83,47,0,1;
 	close;
 
@@ -132,7 +132,7 @@ nguild_gef,64,16,4	duplicate(NGuildGef)	NGuild Geffen#g1-12	722
 //============================================================================//
 // 			Castle 3
 //============================================================================//
-n_castle,94,109,5	script	NGuild Payon#f1-1	722,{
+n_castle,94,109,5	script	裴扬公会城堡#f1-1	722,{
 	callfunc "F_Flags","Payon","nguild_pay",87,29,1,1;
 	close;
 
@@ -141,7 +141,7 @@ OnRecvCastleN03:
 	end;
 }
 
-nguild_pay,238,67,4	script	NGuild Payon#f1-6::NGuildPay	722,{
+nguild_pay,238,67,4	script	裴扬公会城堡#f1-6::NGuildPay	722,{
 	callfunc "F_Flags","Payon","nguild_pay",87,29,0,1;
 	close;
 
@@ -163,7 +163,7 @@ nguild_pay,212,108,4	duplicate(NGuildPay)	NGuild Payon#f1-11	722
 //=============================================================================//
 // 			Castle 4
 //=============================================================================//
-n_castle,94,96,7	script	NGuild Prontera#p1-1	722,{
+n_castle,94,96,7	script	普隆德拉公会城堡#p1-1	722,{
 	callfunc "F_Flags","Prontera","nguild_prt",97,174,1,1;
 	close;
 
@@ -172,7 +172,7 @@ OnRecvCastleN04:
 	end;
 }
 
-nguild_prt,58,56,4	script	NGuild Prontera#p1-7::NGuildPrt	722,{
+nguild_prt,58,56,4	script	普隆德拉公会城堡#p1-7::NGuildPrt	722,{
 	callfunc "F_Flags","Prontera","nguild_prt",97,174,0,1;
 	close;
 

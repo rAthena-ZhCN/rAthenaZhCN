@@ -13,89 +13,89 @@
 //= 1.0 First version.
 //============================================================
 
-lou_fild01,240,354,4	script	Mantis Researcher	878,{
+lou_fild01,240,354,4	script	螳螂研究者	878,{
 
 	if (checkquest(60179) != -1) {
 		if (checkquest(60179,HUNTING) != 2 ) {
-			mes "[Mantis Researcher]";
-			mes "Have you finished hunting the 50 Mantis?";
+			mes "[螳螂研究者]";
+			mes "你已经猎杀完 50 只螳螂了吗？";
 			next;
-			switch(select("Yes:No:I want to quit")) {
+			switch(select("是:否:我想放弃")) {
 			case 1:
-				mes "[Mantis Researcher]";
-				mes "Hmm, I don't think you've hunted 50 yet.";
+				mes "[螳螂研究者]";
+				mes "嗯，你好像还没猎杀满 50 只。";
 				close;
 			case 2:
-				mes "[Mantis Researcher]";
-				mes "Remember, I need help hunting Mantis so go and hunt 50 of them.";
+				mes "[螳螂研究者]";
+				mes "记住，我需要帮手猎杀螳螂，去猎杀 50 只吧。";
 				close;
 			case 3:
-				mes "[Mantis Researcher]";
-				mes "Are you sure that you want to stop hunting?";
-				mes "Any progress that you've made will be erased";
+				mes "[螳螂研究者]";
+				mes "你确定要停止狩猎吗？";
+				mes "你目前取得的进度将被清除";
 				next;
-				switch(select("Yes:No")) {
+				switch(select("是:否")) {
 				case 1:
-					mes "[Mantis Researcher]";
-					mes "Ok then, well come back here if you change your mind.";
+					mes "[螳螂研究者]";
+					mes "那好吧，如果你改变主意就回来这里。";
 					erasequest 60179;
 					close;
 				case 2:
-					mes "[Mantis Researcher]";
-					mes "Please kill 50 Mantis in order to make this a Place were people can go to and gather Experience.";
+					mes "[螳螂研究者]";
+					mes "请猎杀 50 只螳螂，让这里成为人们可以来获取经验的地方。";
 					close;
 				}
 			}
 		}
-		mes "[Mantis Researcher]";
-		mes "Amazing, you did that with speed.";
+		mes "[螳螂研究者]";
+		mes "太厉害了，你动作真快。";
 		getexp 18818,7527;
 		erasequest 60179;
 		close;
 	}
 	if ((BaseLevel > 34) && (BaseLevel < 71)) {
-		mes "[Mantis Researcher]";
-		mes "Oh great!";
-		mes "You are here to help me right?";
-		mes "If not, i don't know what to do with the Monsters in this Place!";
+		mes "[螳螂研究者]";
+		mes "太好了！";
+		mes "你是来帮我的吧？";
+		mes "如果不是，我真不知道该怎么对付这里的怪物！";
 		next;
-		switch(select("Sure:No")) {
+		switch(select("好:不")) {
 		case 1:
-			mes "[Mantis Researcher]";
-			mes "Great! I knew the moment i saw you that i can count on you!";
-			mes "I need you to reduce the Amount of Monsters which are currently rampaging on this Map!";
-			mes "There are to many Mantis around, which makes it impossible for the lower level players to gain good experience here.";
+			mes "[螳螂研究者]";
+			mes "太好了！我一看到你就知道可以信赖你！";
+			mes "我需要你减少目前在这张地图上肆虐的怪物数量！";
+			mes "这附近的螳螂太多了，低等级玩家根本没法在这里获得好的经验。";
 			next;
-			mes "[Mantis Researcher]";
-			mes "So, would you still like to help me?";
+			mes "[螳螂研究者]";
+			mes "那么，你还愿意帮我吗？";
 			next;
-			switch(select("Sure:Cancel")) {
+			switch(select("好:取消")) {
 			case 1:
 				if (BaseLevel > 70) {
-					mes "[Mantis Researcher]";
-					mes "Thank you for your great help with the Mantis!";
-					mes "Currently the Situation is stable and i'm not in need of your help anymore to kill them.";
+					mes "[螳螂研究者]";
+					mes "非常感谢你帮忙对付螳螂！";
+					mes "目前情况已经稳定，我不再需要你帮忙猎杀它们了。";
 					close;
 				}
-				mes "[Mantis Researcher]";
-				mes "Kill 50 of those Mantis and let me know when you're done. I will reward you for your efforts.";
+				mes "[螳螂研究者]";
+				mes "猎杀 50 只螳螂，完成后告诉我。我会为你的付出给予报酬。";
 				setquest 60179;
 				close;
 			case 2:
-				mes "[Mantis Researcher]";
-				mes "If you change your mind, please come back.";
+				mes "[螳螂研究者]";
+				mes "如果你改变主意，请再回来。";
 				close;
 			}
 		case 2:
-			mes "[Mantis Researcher]";
-			mes "If you change your mind, please come back.";
+			mes "[螳螂研究者]";
+			mes "如果你改变主意，请再回来。";
 			close;
 		}
 	}
-	mes "[Mantis Researcher]";
-	mes "Oh boy, Oh boy!";
+	mes "[螳螂研究者]";
+	mes "哎呀，哎呀！";
 	next;
-	mes "[Mantis Researcher]";
-	mes "Sorry I can't talk right now I am in a world of pain here, these darn Mantis are going to kill me.";
+	mes "[螳螂研究者]";
+	mes "抱歉，我现在没法跟你说话，我这里痛得要命，这些该死的螳螂要杀了我。";
 	close;
 }

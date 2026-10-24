@@ -19,69 +19,69 @@
 
 // Poring War Recruiter
 //============================================================
-prt_fild08,159,371,3	script	Poring War Recruiter#wop	909,{
-	mes "[Poring]";
-	mes "!!!!!";
-	mes "Whoa-! Humans, ring~!!";
-	mes "Gotta hide, hide, right~!";
-	mes "They're tempting us with Jellopy! Don't be fooled!";
+prt_fild08,159,371,3	script	波利大战招募员#wop	909,{
+	mes "[波利]";
+	mes "！！！！！";
+	mes "哇——！是人类，波利~！！";
+	mes "得藏起来，藏起来，对吧~！";
+	mes "他们想用杰勒比结晶引诱我们！别上当！";
 	next;
-	mes "[Poring]";
-	mes "Hwak!!";
-	mes "Ring, Ring~ What's wrong with you people..?";
-	mes "Hey.. Hey, there. Hu.. Humans...";
+	mes "[波利]";
+	mes "啪！！";
+	mes "波利，波利~ 你们这些人怎么了……？";
+	mes "喂……喂，那边。人……人类……";
 	mes "Poring..";
 	next;
-	mes "[Poring]";
-	mes "I.. I've got some interesting work for ya.. Would you be interested?";
-	mes "We.. we porings need lots and lots of brave human worriers, ring~.";
+	mes "[波利]";
+	mes "我……我有个有趣的活儿给你……你有兴趣吗？";
+	mes "我们……我们波利需要很多很多勇敢的人类战士，波利~。";
 	next;
-	switch(select("Alright, I'm with you!:What's that?:Ignore")) {
+	switch(select("好，我加入！:那是什么？:无视")) {
 	case 1:
 		if (Zeny > 499) {
-			mes "[Poring]";
-			mes "Oh, and there's an entrance fee of 500 zeny, ring.";
-			mes "Have a good time, ring.";
+			mes "[波利]";
+			mes "哦，还有，入场费是 500 Zeny，波利。";
+			mes "玩得开心，波利。";
 			delitem 7773,countitem(7773);
 			set Zeny,Zeny-500;
 			close2;
 			warp "poring_w01",112,138;
 			end;
 		} else {
-			mes "[Poring]";
-			mes "Oh, and there's an entrance fee of 500 zeny, ring.";
+			mes "[波利]";
+			mes "哦，还有，入场费是 500 Zeny，波利。";
 			mes "...........";
-			mes "Hey, that's life, ring. We need zeny too you know~!";
+			mes "嘿，生活就是这样，波利。我们也需要 Zeny 啊~！";
 			close;
 		}
 	case 2:
-		mes "[Poring]";
-		mes "That's.. because there's been a.. slight confliction in our.. Ring Society..";
-		mes "So we've got to.............have a battle to settle this problem..";
-		mes "You'll see when you get there!";
+		mes "[波利]";
+		mes "那是……因为我们的……波利协会……出了点小冲突……";
+		mes "所以我们必须…………用一场战斗来解决这个问题……";
+		mes "到了那里你就知道了！";
 		close;
 	case 3:
-		mes "[Poring]";
-		mes "Huhhhh! Hu.. Humans are so cold and cruel!!!";
+		mes "[波利]";
+		mes "呜哇！人……人类真是冷酷无情！！！";
 		close;
 	}
 }
 
 // Poring Vending Machine
 //============================================================
-poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
+poring_w01,100,97,3	script	波利自动贩卖机#w	909,{
 	if (checkweight(714,3) == 0) {
-		mes "- You are carrying too much items in order to use the Vending Machine. -";
+		mes "- 你携带的物品过多，无法使用自动售货机。 -";
 		close;
 	}
-	mes "It's a vending machine. You can use Poring Coints to purchase.";
+	mes "这是自动售货机。可以使用波利代币购买。";
 	next;
-	if(select("Purchase.:Read the descriptions of goods.") == 1) {
-		mes "You need Poring Coins to purchase items.";
-		mes "You cannot use any zeny.";
-		mes "Item name - Price Poring Coin(P.Co)";
+	if(select("购买:查看商品说明") == 1) {
+		mes "购买物品需要波利代币。";
+		mes "不能使用 Zeny。";
+		mes "物品名称 - 价格 波利代币(P.Co)";
 		next;
-		switch(select("Marvelous Medal - 4 P.Co:Union of Tribe - 20 P.Co:Poring Box - 30 P.Co:Next")) {
+		switch(select("奇妙勋章 - 4 P.Co:组织的团结力 - 20 P.Co:波利箱子 - 30 P.Co:下一页")) {
 		case 1:
 			callsub S_PoringVending,7515,4;
 		case 2:
@@ -89,10 +89,10 @@ poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
 		case 3:
 			callsub S_PoringVending,12109,30;
 		case 4:
-			mes "This is a special item.";
-			mes "Item name - Poring Coin(P.Co)";
+			mes "这是特殊物品。";
+			mes "物品名称 - 波利代币(P.Co)";
 			next;
-			switch(select("Wild Rose - 15 P.Co:Doppelganger - 20 P.Co:Egnigem Cenia - 20 P.Co:Collection Item")) {
+			switch(select("野玫瑰 - 15 P.Co:死灵 - 20 P.Co:艾格尼格姆·塞尼亚 - 20 P.Co:收藏品")) {
 			case 1:
 				callsub S_PoringVending,12300,15;
 			case 2:
@@ -100,12 +100,12 @@ poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
 			case 3:
 				callsub S_PoringVending,12302,20;
 			case 4:
-				mes "Figures of 1st Job Class Characters including Novice are finally on sale!";
-				mes "Figures except for Novice are all ^4d4dffCharacter bound items^000000.";
-				mes "Please be aware before you make a purchase~";
-				mes "Item name - Poring Coin(P.Co)";
+				mes "包含初心者在内的初级职业角色公仔终于开卖了！";
+				mes "除初心者外，所有公仔均为^4d4dff角色绑定物品^000000。";
+				mes "购买前请注意~";
+				mes "物品名称 - 波利代币(P.Co)";
 				next;
-				switch(select("Novice Figure - 50 P.Co:Swordman Figure - 100 P.Co:Thief Figure - 100 P.Co:Merchant Figure - 100 P.Co:Acolyte Figure - 100 P.Co:Mage Figure - 100 P.Co:Archer Figure - 100 P.Co:Random Draw - 50 P.Co:Cancel")) {
+				switch(select("初心者公仔 - 50 P.Co:剑士公仔 - 100 P.Co:盗贼公仔 - 100 P.Co:商人公仔 - 100 P.Co:服事公仔 - 100 P.Co:魔法师公仔 - 100 P.Co:弓箭手公仔 - 100 P.Co:随机抽取 - 50 P.Co:取消")) {
 				case 1:
 					callsub S_PoringVending,2765,50;
 				case 2:
@@ -121,14 +121,14 @@ poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
 				case 7:
 					callsub S_PoringVending,2769,100;
 				case 8:
-					mes "You have chosen Random Draw.";
-					mes "1 of 7 diffeent kinds of figures will be selected.";
+					mes "你选择了随机抽取。";
+					mes "将从 7 种不同的公仔中随机选出 1 种。";
 					next;
-					if(select("Draw:Cancel") == 1) {
+					if(select("抽取:取消") == 1) {
 						if (countitem(7539) >= 50) {
-							mes "Insert the Poring coin and pull the lever.";
-							mes "Click~ The item came out of the mouth of the Poring with a rumbling sound.";
-							mes "What could it be?";
+							mes "投入波利代币，然后拉下拉杆。";
+							mes "咔嗒~ 伴随着一阵轰鸣声，物品从波利口中掉了出来。";
+							mes "会是什么呢？";
 							next;
 							switch(rand(1,17)) {
 							case 5: set .@Random_Figure,2766; break; // Swordman_Figure
@@ -139,12 +139,12 @@ poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
 							case 14: set .@Random_Figure,2768; break; // Mage_Figure
 							default: set .@Random_Figure,2765; break; // Novice_Figure
 							}
-							mes "A nice " + getitemname(.@Random_Figure) + ".";
+							mes "一个漂亮的" + getitemname(.@Random_Figure) + ".";
 							delitem 7539,50; // Poring_Coin
 							getitem .@Random_Figure,1;
 							close;
 						} else {
-							mes "Not enough coins.";
+							mes "代币不足。";
 							close;
 						}
 					}
@@ -159,137 +159,137 @@ poring_w01,100,97,3	script	Poring Vending Machine#w	909,{
 			}
 		}
 	}
-	mes "Selling Item List";
+	mes "出售物品列表";
 	mes "====================";
-	mes "[Marvelous Medal]";
-	mes " : A medal made of special metal only produced in Hugel.";
+	mes "[奇妙勋章]";
+	mes "：用只有休格尔才出产的特殊金属制成的勋章。";
 	mes " ";
-	mes "[Union of Tribe]";
-	mes " : A statue with the image of a strong union of Tribes. People believe watching this statue actually helps strengthen the relationships between Tribes.";
+	mes "[组织的团结力]";
+	mes "：刻有部落坚固团结之像的雕像。人们相信凝视这座雕像有助于增进部落之间的情谊。";
 	mes " ";
-	mes "[Poring Box]";
-	mes " : A box wrapped with Poring patterned wrapping paper. Something's inside.";
+	mes "[波利箱子]";
+	mes "：用波利图案包装纸包着的盒子。里面装着东西。";
 	mes " ";
-	mes "[Wild Rose]";
-	mes " : Your friend Wild Rose will come and help you.";
+	mes "[野玫瑰]";
+	mes "：你的朋友野玫瑰会来帮助你。";
 	mes " ";
-	mes "[Mr. Doppel]";
-	mes " : A young nobe, Doppelganger will come and help you.";
+	mes "[死灵先生]";
+	mes "：年轻的贵族死灵会来帮助你。";
 	mes " ";
-	mes "[Egnigem Cenia]";
-	mes " : A beautiful girl, Egnigem Cenia from Somatology Laboratory, is going to come and help you.";
+	mes "[艾格尼格姆·塞尼亚]";
+	mes "：来自生物体试验研究所的美丽少女艾格尼格姆·塞尼亚会来帮助你。";
 	mes " ";
-	mes "[Novice Figure]";
-	mes " : A fine figure of a Novice. Can be equiped as an '^4d4dffaccessory^000000'.";
-	mes " HP + 70, extra effect of HP + 30 when equipped by a Novices.";
+	mes "[初心者公仔]";
+	mes "：精美的初心者公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "HP + 70，初心者装备时额外效果 HP + 30。";
 	mes " ";
-	mes "[Swordman Figure]";
-	mes " : A nice figure of a Swordman. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " VIT + 1, extra effect of DEF + 2 when equipped by Swordman classes.";
+	mes "[剑士公仔]";
+	mes "：精美的剑士公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "VIT + 1，剑士系装备时额外效果 DEF + 2。";
 	mes " ";
-	mes "[Merchant Figure]";
-	mes " : A fine figure of a Merchant. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " STR + 1, extra effect of CRI + 5 when equipped by Merchant classes.";
+	mes "[商人公仔]";
+	mes "：精美的商人公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "STR + 1，商人系装备时额外效果 CRI + 5。";
 	mes " ";
-	mes "[Thief Figure]";
-	mes " : A fine Figure of a Thief. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " AGI + 1, extra effectASPD + 3% when equipped by Thief classes.";
+	mes "[盗贼公仔]";
+	mes "：精美的盗贼公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "AGI + 1，盗贼系装备时额外效果 ASPD + 3%。";
 	mes " ";
-	mes "[Mage Figure]";
-	mes " : A fine figure of a Mage. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " INT + 1, an extra SP Recovery increase by 5% when equipped by Mage classes.";
+	mes "[魔法师公仔]";
+	mes "：精美的魔法师公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "INT + 1，魔法师系装备时额外 SP 恢复量增加 5%。";
 	mes " ";
-	mes "[Acolyte Figure]";
-	mes " : A fine figure of an Acolyte. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " INT + 1, extra effct of SP + 50 when equipped by Acolyte classes.";
+	mes "[服事公仔]";
+	mes "：精美的服事公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "INT + 1，服事系装备时额外效果 SP + 50。";
 	mes " ";
-	mes "[Archer Figure]";
-	mes " : A fine figure of an Archer. Can be equipped as an '^4d4dffaccessory^000000'.";
-	mes " DEX + 1, extra effct of ATK + 10 when equipped by Archer classes.";
+	mes "[弓箭手公仔]";
+	mes "：精美的弓箭手公仔。可作为'^4d4dff饰品^000000'装备。";
+	mes "DEX + 1，弓箭手系装备时额外效果 ATK + 10。";
 	close;
 	end;
 
 S_PoringVending:
 	if (countitem(7539) >= getarg(1)) {
-		mes "Click~ The item came out of the mouth of the Poring with a rumbling sound.";
+		mes "咔嗒~ 伴随着一阵轰鸣声，物品从波利口中掉了出来。";
 		delitem 7539,getarg(1); // Poring_Coin
 		getitem getarg(0),1;
 	} else {
-		mes "Not enough coins.";
+		mes "代币不足。";
 	}
 	close;
 }
 
 // Information
 //============================================================
-poring_w01,96,97,3	script	Sweet Devi#wop	738,{
+poring_w01,96,97,3	script	甜心恶魔#wop	738,{
 	if (MaxWeight-Weight < 2000 || checkweight(1201,1) == 0) {
-		mes "- Wait a minute !! -";
-		mes "- Currently you're carrying -";
-		mes "- too many items with you. -";
-		mes "- Please try again -";
-		mes "- after you lose some weight. -";
+		mes "- 请等一下！！ -";
+		mes "- 您目前携带的 -";
+		mes "- 物品太多了。 -";
+		mes "- 请减轻负重后 -";
+		mes "- 再行尝试。 -";
 		close;
 	}
-	mes "[Deviruchi]";
-	mes "Oh, Another Human Warrior!";
-	mes "How come so many humans want to join our Poring War these days?";
+	mes "[小恶魔]";
+	mes "哦，又一位人类战士！";
+	mes "最近怎么有这么多人类想参加我们的波利大战？";
 	next;
-	mes "[Deviruchi]";
-	mes "Well, whatever, as long as I make money out of it~";
-	mes "Ok, Warriors-! Hahaha How badly have I wanted to shout it out~!!";
+	mes "[小恶魔]";
+	mes "算了，无所谓，只要能赚钱就行~";
+	mes "好，战士们——！哈哈哈，我早就想这么喊了~！！";
 	next;
-	mes "[Deviruchi]";
-	mes "You, brave warrior, are you ready to join the holy battle of Angeling and Deviling?";
+	mes "[小恶魔]";
+	mes "勇敢的战士，你准备好参加天使波利与恶魔波利的圣战了吗？";
 	next;
-	mes "[Deviruchi]";
-	mes "Hehehee, I feel kinda shy now.";
-	mes "Anyway, human. Do you want to join our Poring War?";
+	mes "[小恶魔]";
+	mes "嘿嘿嘿，我现在有点不好意思了。";
+	mes "总之，人类。你想参加我们的波利大战吗？";
 	next;
-	switch(select("Am I qualified to join?:How do I join the war?:Cancel:Let me out of here, please!")) {
+	switch(select("我有资格参加吗？:如何参战？:取消:请放我出去！")) {
 	case 1:
-		mes "[Deviruchi]";
-		mes "No racial discrimination! Anyone can join if they're willing to fight.";
-		mes "But the weird thing is that you humans who used to be our greatest enemies are now our participants.";
+		mes "[小恶魔]";
+		mes "没有种族歧视！只要愿意战斗，任何人都能参加。";
+		mes "但奇怪的是，曾经是我们最大敌人的人类，现在却成了参赛者。";
 		next;
-		mes "[Deviruchi]";
-		mes "If you really want to fight in the war or whatever.. the Team recruiter's right there.";
-		mes "Also, it's totally up to you which team you want to fight for~";
+		mes "[小恶魔]";
+		mes "如果你真的想参战什么的……队伍招募员就在那边。";
+		mes "另外，想为哪支队伍而战完全由你决定~";
 		close;
 	case 2:
-		mes "[Deviruchi]";
-		mes "It's simple. You see that Team recruiting room?";
-		mes "Each team is composed of 5 people. As soon as 5 members are collected, the battle starts.";
-		mes "You win if you kill the other team's Porings.";
+		mes "[小恶魔]";
+		mes "很简单。看到那个队伍招募室了吗？";
+		mes "每支队伍由 5 人组成。集齐 5 名成员后，战斗立即开始。";
+		mes "杀死对方队伍的波利即可获胜。";
 		next;
-		mes "[Deviruchi]";
-		mes "This also means that the battle needs the total of 10 members.";
+		mes "[小恶魔]";
+		mes "这也意味着战斗总共需要 10 名成员。";
 		next;
-		mes "[Deviruchi]";
-		mes "When all 10 members are collected, those participants get to choose a team. Each team then should have 5 members who are in the SAME party.";
+		mes "[小恶魔]";
+		mes "集齐 10 名成员后，这些参赛者便可选择队伍。每支队伍必须有 5 名成员，且这 5 人须属于同一组队。";
 		next;
-		mes "[Deviruchi]";
-		mes "So, finally, half of the members joins the Angeling Team";
-		mes "and the other half joins the Deviling Team.";
+		mes "[小恶魔]";
+		mes "于是，最后一半成员加入天使波利队";
+		mes "另一半则加入恶魔波利队。";
 		next;
-		mes "[Deviruchi]";
-		mes "If you're a member of the Angeling Team, your goal is to kill the Devilings at the other team's base and vice versa.";
+		mes "[小恶魔]";
+		mes "如果你是天使波利队的成员，你的目标就是杀死对方基地的恶魔波利，反之亦然。";
 		next;
-		mes "[Deviruchi]";
-		mes "Each team should try killing both Porings in the other team's base. After killing one Poring, you have a limited time to kill the other Poring. Otherwise, the one you killed will come back alive.";
+		mes "[小恶魔]";
+		mes "每支队伍都要设法杀死对方基地的两只波利。杀死一只波利后，必须在限定时间内杀死另一只。否则，已被杀死的那只将会复活。";
 		next;
-		mes "[Deviruchi]";
-		mes "It's sort of like a capture the flag game but with Porings instead. Understood?";
-		mes "And you need to make sure you know who's in which party.";
+		mes "[小恶魔]";
+		mes "这有点像夺旗游戏，只不过换成了波利。明白了吗？";
+		mes "另外，你必须清楚谁在哪支队伍里。";
 		close;
 	case 3:
 		mes "[" + strcharinfo(0) + "]";
-		mes "hmm, I see.";
+		mes "嗯，我明白了。";
 		close;
 	case 4:
-		mes "[Deviruchi]";
-		mes "Oh, Alright. I can help.";
-		mes "I'll send you back to your savepoint.";
+		mes "[小恶魔]";
+		mes "哦，好吧。我可以帮忙。";
+		mes "我把你送回存档点。";
 		close2;
 		if (WoP_SaveMap$ != "") {
 			savepoint WoP_SaveMap$,WoP_SaveMap_X,WoP_SaveMap_Y,1,1;
@@ -356,7 +356,7 @@ OnInit:
 
 // Poring Registers
 //============================================================
-poring_w01,91,97,3	script	Poring#wop_door_all	1002,{
+poring_w01,91,97,3	script	波利#wop_door_all	1002,{
 	end;
 	
 OnInit:
@@ -379,7 +379,7 @@ OnDisable:
 	end;
 }
 
-poring_w01,91,68,5	script	Poring#wop_door_a	1002,{
+poring_w01,91,68,5	script	波利#wop_door_a	1002,{
 	end;
 
 OnInit:
@@ -392,12 +392,12 @@ OnStartArena:
 	disablewaitingroomevent;
 	if ($@wop_teamcount == 0) {
 		set $@wop_teamcount,1;
-		donpcevent "Poring#wop_door_d::OnDevilingStart";
+		donpcevent "波利#wop_door_d::OnDevilingStart";
 		donpcevent "#wop_warp_rtry::OnStop";
 	}
 	else if ($@wop_teamcount == 1) {
 		donpcevent "#wop_master::OnStart";
-		donpcevent "Poring#wop_door_d::OnStop";
+		donpcevent "波利#wop_door_d::OnStop";
 		stopnpctimer;
 	}
 	end;
@@ -419,46 +419,46 @@ OnStop:
 	end;
 
 OnTimer1000:
-	mapannounce "poring_w01","The greatest battle of all time, the recruitment for the Deviling Team is over, ring!",0,0xf08080;
+	mapannounce "poring_w01","史上最伟大的战斗，恶魔波利队的招募已经结束，波利！",0,0xf08080;
 	end;
 
 OnTimer4000:
-	mapannounce "poring_w01","Join the proud Angeling Team with angel wings!!",0,0xf08080;
+	mapannounce "poring_w01","加入拥有天使之翼、荣耀的天使波利队！！",0,0xf08080;
 	end;
 
 OnTimer8000:
-	mapannounce "poring_w01","You got one minute to join the Angeling Team. The battle will be cancelled in 1 minute if not ready!!",0,0xf08080;
+	mapannounce "poring_w01","你有一分钟时间加入天使波利队。若未准备好，战斗将在 1 分钟后取消！！",0,0xf08080;
 	donpcevent "#wop_master::OnAngelingWarn";
 	end;
 
 OnTimer13000:
-	mapannounce "poring_w01","This is the time to join the great Angeling Team, ring!",0,0xf08080;
+	mapannounce "poring_w01","现在正是加入伟大的天使波利队的时候，波利！",0,0xf08080;
 	end;
 
 OnTimer20000:
-	mapannounce "poring_w01","This battle is the proud of the porings! Ring! Join the Angeling Team!!",0,0xf08080;
+	mapannounce "poring_w01","这场战斗是波利们的骄傲！波利！加入天使波利队！！",0,0xf08080;
 	end;
 
 OnTimer30000:
-	mapannounce "poring_w01","We don't have much time, ring. Don't let the Devilings contaminate you!",0,0xf08080;
+	mapannounce "poring_w01","我们时间不多了，波利。别让恶魔波利污染了你！",0,0xf08080;
 	end;
 
 OnTimer40000:
-	mapannounce "poring_w01","Come! Join us!",0,0xf08080;
+	mapannounce "poring_w01","来吧！加入我们！",0,0xf08080;
 	end;
 
 OnTimer50000:
-	mapannounce "poring_w01","What a pitty! I can't believe that brave warriors are missing!",0,0xf08080;
+	mapannounce "poring_w01","真可惜！真不敢相信竟然缺少勇敢的战士！",0,0xf08080;
 	end;
 
 OnTimer55000:
-	mapannounce "poring_w01","Deviling: You can't leave us waiting for ever!! We're going to cancel the battle, ring!",0,0x33FF66;
+	mapannounce "poring_w01","恶魔波利：你不能让我们一直等下去！！我们要取消战斗了，波利！",0,0x33FF66;
 	end;
 
 OnTimer55100:
-	donpcevent "Poring#wop_door_a::OnDisable";
-	donpcevent "Poring#wop_door_d::OnDisable";
-	donpcevent "Poring#wop_door_all::OnDisable";
+	donpcevent "波利#wop_door_a::OnDisable";
+	donpcevent "波利#wop_door_d::OnDisable";
+	donpcevent "波利#wop_door_all::OnDisable";
 	set $@wop_teamcount,0;
 	donpcevent "#wop_master::OnAngelingEnd";
 	donpcevent "#wop_warp_rtry::OnEnable";
@@ -471,7 +471,7 @@ OnTimer58000:
 	end;
 }
 
-poring_w01,112,68,3	script	Poring#wop_door_d	1002,{
+poring_w01,112,68,3	script	波利#wop_door_d	1002,{
 	end;
 
 OnInit:
@@ -484,12 +484,12 @@ OnStartArena:
 	disablewaitingroomevent;
 	if ($@wop_teamcount == 0) {
 		set $@wop_teamcount,1;
-		donpcevent "Poring#wop_door_a::OnAngelingStart";
+		donpcevent "波利#wop_door_a::OnAngelingStart";
 		donpcevent "#wop_warp_rtry::OnStop";
 	}
 	else if ($@wop_teamcount == 1) {
 		donpcevent "#wop_master::OnStart";
-		donpcevent "Poring#wop_door_a::OnStop";
+		donpcevent "波利#wop_door_a::OnStop";
 		stopnpctimer;
 	}
 	end;
@@ -511,46 +511,46 @@ OnStop:
 	end;
 
 OnTimer1000:
-	mapannounce "poring_w01","No more good people, the recruitment for the Angeling Team is over, ring!",0,0x33FF66;
+	mapannounce "poring_w01","没有更多好人了，天使波利队的招募结束，波利！",0,0x33FF66;
 	end;
 
 OnTimer4000:
-	mapannounce "poring_w01","Nice members of the Deviling Team! Lets gather, ring!!",0,0x33FF66;
+	mapannounce "poring_w01","优秀的恶魔波利队成员们！集合吧，波利！！",0,0x33FF66;
 	end;
 
 OnTimer8000:
-	mapannounce "poring_w01","The battle will be cancelled if the members aren't recruited in one minute!!",0,0x33FF66;
+	mapannounce "poring_w01","若一分钟后仍未招募到成员，战斗将被取消！！",0,0x33FF66;
 	donpcevent "#wop_master::OnDevilingWarn";
 	end;
 
 OnTimer13000:
-	mapannounce "poring_w01","This is the time to join the brave Deviling Team, ring!",0,0x33FF66;
+	mapannounce "poring_w01","现在正是加入勇敢的恶魔波利队的时候，波利！",0,0x33FF66;
 	end;
 
 OnTimer20000:
-	mapannounce "poring_w01","D,E,V,I,L,I,N,G! Deviling Team! Come and join us!",0,0x33FF66;
+	mapannounce "poring_w01","D,E,V,I,L,I,N,G！恶魔波利队！快来加入我们！",0,0x33FF66;
 	end;
 
 OnTimer30000:
-	mapannounce "poring_w01","There ain't much time left, ring! If you wish to became a member of Deviling Team, Come and Join!",0,0x33FF66;
+	mapannounce "poring_w01","时间不多了，波利！如果你想成为恶魔波利队的一员，就来加入吧！",0,0x33FF66;
 	end;
 
 OnTimer40000:
-	mapannounce "poring_w01","D,E,V,I,L,I,N,G! Deviling Team! Come and Join us!!",0,0x33FF66;
+	mapannounce "poring_w01","D,E,V,I,L,I,N,G！恶魔波利队！快来加入我们！！",0,0x33FF66;
 	end;
 
 OnTimer50000:
-	mapannounce "poring_w01","What a pitty! I can't believe there aren't enough players!",0,0x33FF66;
+	mapannounce "poring_w01","真可惜！真不敢相信玩家人数不够！",0,0x33FF66;
 	end;
 
 OnTimer55000:
-	mapannounce "poring_w01","Angeling: We got no time to wait, stupid Deviling! The battle has been cancelled, ring!",0,0xf08080;
+	mapannounce "poring_w01","天使波利：我们没时间等，愚蠢的恶魔波利！战斗已经取消，波利！",0,0xf08080;
 	end;
 
 OnTimer55100:
-	donpcevent "Poring#wop_door_a::OnDisable";
-	donpcevent "Poring#wop_door_d::OnDisable";
-	donpcevent "Poring#wop_door_all::OnDisable";
+	donpcevent "波利#wop_door_a::OnDisable";
+	donpcevent "波利#wop_door_d::OnDisable";
+	donpcevent "波利#wop_door_all::OnDisable";
 
 	set $@wop_teamcount,0;
 	donpcevent "#wop_master::OnDevilingEnd";
@@ -592,19 +592,19 @@ OnTouch:
 	end;
 
 OnTimer3000:
-	mapannounce "poring_w01","Porings: I am giving you 1 minute. Choose your team, ring!",0,0xf08080;
+	mapannounce "poring_w01","波利们：我给你们 1 分钟。选择你的队伍，波利！",0,0xf08080;
 	end;
 
 OnTimer33000:
-	mapannounce "poring_w01","Porings: 30 seconds left! Come on, Choose a team now, ring?!!",0,0xf08080;
+	mapannounce "poring_w01","波利们：还剩 30 秒！快点，现在就选队伍，波利？！！",0,0xf08080;
 	end;
 
 OnTimer58000:
-	mapannounce "poring_w01","Porings: You sure you're a warrior?!!! I'm disappointed, ring!",0,0xf08080;
+	mapannounce "poring_w01","波利们：你确定自己是战士吗？！！！我很失望，波利！",0,0xf08080;
 	end;
 
 OnTimer60000:
-	mapannounce "poring_w01","The battle has been canceled since not all teams are full!!",0,0xf08080;
+	mapannounce "poring_w01","由于并非所有队伍都满员，战斗已取消！！",0,0xf08080;
 	end;
 
 OnTimer61000:
@@ -620,46 +620,46 @@ OnTimer65000:
 
 // Mr. Doppel
 //============================================================
-poring_w02,26,181,3	script	Mr. Doppel#wop_team_a	739,{
+poring_w02,26,181,3	script	死灵先生#wop_team_a	739,{
 	if (checkweight(714,3) == 0) {
-		mes "- Wait a minute !! -";
-		mes "- Currently you're carrying -";
-		mes "- too many items with you. -";
-		mes "- Please try again -";
-		mes "- after you lose some weight. -";
+		mes "- 请等一下！！ -";
+		mes "- 您目前携带的 -";
+		mes "- 物品太多了。 -";
+		mes "- 请减轻负重后 -";
+		mes "- 再行尝试。 -";
 		close;
 	}
 	set .@a_tname$,getpartyname($@wop_team_a);
 	set .@pname$,getpartyname(getcharid(1));
 	if ($@wop_team_a != 0 && $@wop_team_a == getcharid(1)) {
-		mes "[Mr. Doppel]";
-		mes "So, everyone joined the party?";
-		mes "The name of the party is... " + .@pname$ + ", right?";
-		mes "I'll transfer you to the battle staging area.";
+		mes "[死灵先生]";
+		mes "那么，大家都加入队伍了吗？";
+		mes "队伍名称是……" + .@pname$ + "，没错吧？";
+		mes "我将把你传送到战斗准备区。";
 		next;
-		switch(select("No! Wait!:Go to the staging area.")) {
+		switch(select("不！等等！:前往准备区")) {
 		case 1:
-			mes "[Mr. Doppel]";
-			mes "What is it now?";
-			mes "Can't you have a little more consideration?";
-			mes "You don't have much time. Decide now!";
+			mes "[死灵先生]";
+			mes "又怎么了？";
+			mes "你就不能多替别人想想吗？";
+			mes "你没多少时间了。现在决定！";
 			next;
-			mes "[Mr. Doppel]";
-			mes "If you don't get there in time, you won't make it to the battle.";
+			mes "[死灵先生]";
+			mes "如果不能及时赶到，你就赶不上战斗了。";
 			close;
 		case 2:
 			if (is_party_leader() == true) {
-				mes "[Mr. Doppel]";
-				mes "So, you are the leader. Before going to the battlefield, you should check all your members.";
+				mes "[死灵先生]";
+				mes "那么，你就是队长。上战场之前，应该确认所有成员。";
 				next;
-				switch(select("Very well. I'll be the last.:I am the last. Send me to the battlefield.")) {
+				switch(select("好吧，我最后进去。:我是最后一个，送我上战场。")) {
 				case 1:
-					mes "[Mr. Doppel]";
-					mes "First, make sure all the members are in your party.";
+					mes "[死灵先生]";
+					mes "首先，确认所有成员都在你的队伍里。";
 					close;
 				case 2:
-					mes "[Mr. Doppel]";
-					mes "Very well. Nice you have done everything on time.";
+					mes "[死灵先生]";
+					mes "很好。你们按时完成了所有事。";
 					delitem 7773,countitem(7773);
 					close2;
 					set wop_team,0;
@@ -668,9 +668,9 @@ poring_w02,26,181,3	script	Mr. Doppel#wop_team_a	739,{
 				}
 			}
 			else {
-				mes "[Mr. Doppel]";
-				mes "Right. I'm gonna send you to the battle staging area.";
-				mes "Wait for all the other party members there.";
+				mes "[死灵先生]";
+				mes "好。我这就把你们传送到战斗准备区。";
+				mes "在那里等待其他队员。";
 				delitem 7773,countitem(7773);
 				close2;
 				set wop_team,0;
@@ -682,115 +682,115 @@ poring_w02,26,181,3	script	Mr. Doppel#wop_team_a	739,{
 	else {
 		if (is_party_leader() == true) {
 			if ($@wop_team_a == 0) {
-				mes "[Mr. Doppel]";
-				mes "So, you are the party leader of Angeling Team.";
-				mes "Are you sure all the members are in your party?";
-				mes "First, lets register your party name, after, we'll check the members.";
+				mes "[死灵先生]";
+				mes "那么，你就是天使波利队的队长。";
+				mes "你确定所有成员都在你的队伍里吗？";
+				mes "首先登记队伍名称，然后我们检查成员。";
 				next;
-				mes "[Mr. Doppel]";
-				mes "Lets see... The name of the party is...";
+				mes "[死灵先生]";
+				mes "让我看看……队伍名称是……";
 				mes " ";
-				mes "^4d4dff " + .@pname$ + " ^000000";
+				mes "^4d4dff" + .@pname$ + "^000000";
 				mes " ";
-				mes "Right? That is the name you wish?";
+				mes "对吧？这就是你想要的名称？";
 				next;
-				switch(select("No! You're wrong.:Yes. I would like to register that name.:Cancel")) {
+				switch(select("不！你弄错了。:是的，我想登记这个名字。:取消")) {
 				case 1:
-					mes "[Mr. Doppel]";
-					mes "Hey, I don't have all day! Make your mind and register as fast as you can.";
-					mes "Don't forget to let all the members join the party. Only the members of a registered party can join the battle.";
+					mes "[死灵先生]";
+					mes "喂，我可没一整天！快做决定，尽快登记。";
+					mes "别忘了让所有成员加入队伍。只有已登记队伍的成员才能参加战斗。";
 					close;
 				case 2:
-					mes "[Mr. Doppel]";
-					mes "So, I'll register your party name as - " +.@pname$ + " -.";
-					mes "Now, Tell your ^4d4dffmembers to confirm your party^000000.";
-					mes "I'll send you to the battlefield as soon as I confirm your party.";
+					mes "[死灵先生]";
+					mes "那么，我就把你们的队伍名称登记为——" +.@pname$ + " -.";
+					mes "现在，让你的^4d4dff队员确认队伍^000000。";
+					mes "确认队伍后，我会立刻送你们上战场。";
 					set $@wop_team_a,getcharid(1);
-					mapannounce "poring_w02","The registration of the Angeling Team has been confirmed. The party members must confirm their team with Mr. Doppel.",0,0x33FF66;
+					mapannounce "poring_w02","天使波利队的登记已确认。队伍成员必须向死灵先生确认所属队伍。",0,0x33FF66;
 					close;
 				case 3:
-					mes "[Mr. Doppel]";
-					mes "The clock is ticking. Make up your mind and register as soon as you can.";
+					mes "[死灵先生]";
+					mes "时间在流逝。快做决定，尽快登记。";
 					close;
 				}
 			}
 			else {
-				mes "[Mr. Doppel]";
-				mes "So, you are the leader of the party.";
-				mes "Haven't you finished the party registration yet?";
-				mes "You must stay on the one that has been registered!";
+				mes "[死灵先生]";
+				mes "那么，你就是这支队伍的队长。";
+				mes "你们还没完成队伍登记吗？";
+				mes "你们必须留在已登记的队伍中！";
 				next;
-				mes "[Mr. Doppel]";
-				mes "The name of the party is ";
+				mes "[死灵先生]";
+				mes "队伍名称是";
 				mes " " + .@a_tname$ + " ";
-				mes "Please, confirm.";
+				mes "请确认。";
 				close;
 			}
 		}
 		else {
-			mes "[Mr. Doppel]";
-			mes "If you aren't a registered member of the party, you can't join the battle.";
+			mes "[死灵先生]";
+			mes "如果你不是已登记队伍的成员，就不能参加战斗。";
 			next;
-			mes "[Mr. Doppel]";
-			mes "I'll check again and, after the registeration of the party name, you'll be sent to the battlefield.";
-			mes "We must stay together as a party, since this is a team game. Otherwise, we'll have problems.";
+			mes "[死灵先生]";
+			mes "我会再确认一次，队伍名称登记完成后，你们就会被送上战场。";
+			mes "这是团队战，我们必须作为一支队伍共同行动。否则会出问题。";
 			close;
 		}
 	}
 
 OnInit:
-	disablenpc "Mr. Doppel#wop_team_a";
+	disablenpc "死灵先生#wop_team_a";
 	end;
 
 OnEnable:
-	enablenpc "Mr. Doppel#wop_team_a";
+	enablenpc "死灵先生#wop_team_a";
 	end;
 
 OnDisable:
-	disablenpc "Mr. Doppel#wop_team_a";
+	disablenpc "死灵先生#wop_team_a";
 	end;
 }
 
-poring_w02,170,181,3	script	Mr. Doppel#wop_team_d	739,{
+poring_w02,170,181,3	script	死灵先生#wop_team_d	739,{
 	if (checkweight(714,3) == 0) {
-		mes "- Wait a minute !! -";
-		mes "- Currently you're carrying -";
-		mes "- too many items with you. -";
-		mes "- Please try again -";
-		mes "- after you lose some weight. -";
+		mes "- 请等一下！！ -";
+		mes "- 您目前携带的 -";
+		mes "- 物品太多了。 -";
+		mes "- 请减轻负重后 -";
+		mes "- 再行尝试。 -";
 		close;
 	}
 	set .@d_tname$,getpartyname($@wop_team_d);
 	set .@pname$,getpartyname(getcharid(1));
 	if ($@wop_team_d != 0 && $@wop_team_d == getcharid(1)) {
-		mes "[Mr. Doppel]";
-		mes "So, everyone joined the party?";
-		mes "The name of the party is... " + .@pname$ + ", right?";
-		mes "I'll transfer you to the battle staging area.";
+		mes "[死灵先生]";
+		mes "那么，大家都加入队伍了吗？";
+		mes "队伍名称是……" + .@pname$ + "，没错吧？";
+		mes "我将把你传送到战斗准备区。";
 		next;
-		switch(select("No! Wait!:Go to the staging area.")) {
+		switch(select("不！等等！:前往准备区")) {
 		case 1:
-			mes "[Mr. Doppel]";
-			mes "What is it now?";
-			mes "Can't you have a little more consideration?";
-			mes "You don't have much time. Decide now!";
+			mes "[死灵先生]";
+			mes "又怎么了？";
+			mes "你就不能多替别人想想吗？";
+			mes "你没多少时间了。现在决定！";
 			next;
-			mes "[Mr. Doppel]";
-			mes "If you don't get there in time, you won't make it to the battle.";
+			mes "[死灵先生]";
+			mes "如果不能及时赶到，你就赶不上战斗了。";
 			close;
 		case 2:
 			if (is_party_leader() == true) {
-				mes "[Mr. Doppel]";
-				mes "So, you are the leader. Before going to the battlefield, you should check all your members.";
+				mes "[死灵先生]";
+				mes "那么，你就是队长。上战场之前，应该确认所有成员。";
 				next;
-				switch(select("Very well. I'll be the last.:I am the last. Send me to the battlefield.")) {
+				switch(select("好吧，我最后进去。:我是最后一个，送我上战场。")) {
 				case 1:
-					mes "[Mr. Doppel]";
-					mes "First, make sure all the members are in your party.";
+					mes "[死灵先生]";
+					mes "首先，确认所有成员都在你的队伍里。";
 					close;
 				case 2:
-					mes "[Mr. Doppel]";
-					mes "Very well. Nice you have done everything on time.";
+					mes "[死灵先生]";
+					mes "很好。你们按时完成了所有事。";
 					delitem 7773,countitem(7773);
 					close2;
 					set wop_team,0;
@@ -798,9 +798,9 @@ poring_w02,170,181,3	script	Mr. Doppel#wop_team_d	739,{
 					end;
 				}
 			} else {
-				mes "[Mr. Doppel]";
-				mes "Right. I'm gonna send you to the battle staging area.";
-				mes "Wait for all the other party members there.";
+				mes "[死灵先生]";
+				mes "好。我这就把你们传送到战斗准备区。";
+				mes "在那里等待其他队员。";
 				delitem 7773,countitem(7773);
 				close2;
 				set wop_team,0;
@@ -811,70 +811,70 @@ poring_w02,170,181,3	script	Mr. Doppel#wop_team_d	739,{
 	} else {
 		if (is_party_leader() == true) {
 			if ($@wop_team_d == 0) {
-				mes "[Mr. Doppel]";
-				mes "So, you are the party leader of Deviling Team.";
-				mes "Are you sure all the members are in your party?";
-				mes "First, lets register your party name, after, we'll check the members.";
+				mes "[死灵先生]";
+				mes "那么，你就是恶魔波利队的队长。";
+				mes "你确定所有成员都在你的队伍里吗？";
+				mes "首先登记队伍名称，然后我们检查成员。";
 				next;
-				mes "[Mr. Doppel]";
-				mes "Lets see... The name of the party is...";
+				mes "[死灵先生]";
+				mes "让我看看……队伍名称是……";
 				mes " ";
-				mes "^4d4dff " + .@pname$ + " ^000000";
+				mes "^4d4dff" + .@pname$ + "^000000";
 				mes " ";
-				mes "Right? That is the name you wish?";
+				mes "对吧？这就是你想要的名称？";
 				next;
-				switch(select("No! You're wrong.:Yes. I would like to register that name.:Cancel")) {
+				switch(select("不！你弄错了。:是的，我想登记这个名字。:取消")) {
 				case 1:
-					mes "[Mr. Doppel]";
-					mes "Hey, I don't have all day! Make your mind and register as fast as you can.";
-					mes "Don't forget to let all the members join the party. Only the members of a registered party can join the battle.";
+					mes "[死灵先生]";
+					mes "喂，我可没一整天！快做决定，尽快登记。";
+					mes "别忘了让所有成员加入队伍。只有已登记队伍的成员才能参加战斗。";
 					close;
 				case 2:
-					mes "[Mr. Doppel]";
-					mes "So, I'll register your party name as - " + .@pname$ + " -.";
-					mes "Now, Tell your ^4d4dffmembers to confirm your party^000000.";
-					mes "I'll send you to the battlefield as soon as I confirm your party.";
+					mes "[死灵先生]";
+					mes "那么，我就把你们的队伍名称登记为——" + .@pname$ + " -.";
+					mes "现在，让你的^4d4dff队员确认队伍^000000。";
+					mes "确认队伍后，我会立刻送你们上战场。";
 					set $@wop_team_d,getcharid(1);
-					mapannounce "poring_w02","The registration of the Deviling Team has been confirmed. The party members must confirm their team with Mr. Doppel.",0,0x33FF66;
+					mapannounce "poring_w02","恶魔波利队的登记已确认。队伍成员必须向死灵先生确认所属队伍。",0,0x33FF66;
 					close;
 				case 3:
-					mes "[Mr. Doppel]";
-					mes "The clock is ticking. Make up your mind and register as soon as you can.";
+					mes "[死灵先生]";
+					mes "时间在流逝。快做决定，尽快登记。";
 					close;
 				}
 			} else {
-				mes "[Mr. Doppel]";
-				mes "So, you are the leader of the party.";
-				mes "Haven't you finished the party registration yet?";
-				mes "You must stay on the one that has been registered!";
+				mes "[死灵先生]";
+				mes "那么，你就是这支队伍的队长。";
+				mes "你们还没完成队伍登记吗？";
+				mes "你们必须留在已登记的队伍中！";
 				next;
-				mes "[Mr. Doppel]";
-				mes "The name of the party is ";
+				mes "[死灵先生]";
+				mes "队伍名称是";
 				mes " " + .@d_tname$ + " ";
-				mes "Please, confirm.";
+				mes "请确认。";
 				close;
 			}
 		} else {
-			mes "[Mr. Doppel]";
-			mes "If you aren't a registered member of the party, you can't join the battle.";
+			mes "[死灵先生]";
+			mes "如果你不是已登记队伍的成员，就不能参加战斗。";
 			next;
-			mes "[Mr. Doppel]";
-			mes "I'll check again and, after the registeration of the party name, you'll be sent to the battlefield.";
-			mes "We must stay together as a party, since this is a team game. Otherwise, we'll have problems.";
+			mes "[死灵先生]";
+			mes "我会再确认一次，队伍名称登记完成后，你们就会被送上战场。";
+			mes "这是团队战，我们必须作为一支队伍共同行动。否则会出问题。";
 			close;
 		}
 	}
 
 OnInit:
-	disablenpc "Mr. Doppel#wop_team_d";
+	disablenpc "死灵先生#wop_team_d";
 	end;
 
 OnEnable:
-	enablenpc "Mr. Doppel#wop_team_d";
+	enablenpc "死灵先生#wop_team_d";
 	end;
 
 OnDisable:
-	disablenpc "Mr. Doppel#wop_team_d";
+	disablenpc "死灵先生#wop_team_d";
 	end;
 }
 
@@ -901,9 +901,9 @@ OnReset:
 	donpcevent "#wop_warp_a::OnDisable";
 	donpcevent "#wop_warp_d::OnDisable";
 	donpcevent "#wop_warp_rtry::OnDisable";
-	donpcevent "Poring#wop_door_a::OnEnable";
-	donpcevent "Poring#wop_door_d::OnEnable";
-	donpcevent "Poring#wop_door_all::OnEnable";
+	donpcevent "波利#wop_door_a::OnEnable";
+	donpcevent "波利#wop_door_d::OnEnable";
+	donpcevent "波利#wop_door_all::OnEnable";
 	stopnpctimer;
 	end;
 
@@ -912,19 +912,19 @@ OnStart:
 	end;
 
 OnAngelingWarn:
-	mapannounce "poring_w02","Deviling Team Recruitment is complete. The battle will be canceled automatically if the Angeling Team Recruitment isn't ready in 1 minute.",0,0xf08080;
+	mapannounce "poring_w02","恶魔波利队招募完成。若天使波利队招募未能在 1 分钟内就绪，战斗将自动取消。",0,0xf08080;
 	end;
 
 OnDevilingWarn:
-	mapannounce "poring_w02","Angeling Team Recruitment is complete. The battle will be canceled automatically if the Deviling Team Recruitment isn't ready in 1 minute.",0,0xf08080;
+	mapannounce "poring_w02","天使波利队招募完成。若恶魔波利队招募未能在 1 分钟内就绪，战斗将自动取消。",0,0xf08080;
 	end;
 
 OnDevilingEnd:
-	mapannounce "poring_w02","Deviling Team Recruitment failed. The battle will be canceled shortly.",0,0xf08080;
+	mapannounce "poring_w02","恶魔波利队招募失败。战斗即将取消。",0,0xf08080;
 	end;
 
 OnAngelingEnd:
-	mapannounce "poring_w02","Angeling Team Recruitment failed. The battle will be canceled shortly.",0,0xf08080;
+	mapannounce "poring_w02","天使波利队招募失败。战斗即将取消。",0,0xf08080;
 	end;
 
 OnStop:
@@ -939,10 +939,10 @@ OnDevilingWin:
 	removemapflag "poring_w02",mf_pvp_noguild;
 	removemapflag "poring_w02",mf_pvp_nocalcrank;
 	if (.@i)
-		mapannounce "poring_w02","Mr. Doppel: Angeling Team of party " + getpartyname($@wop_team_a) + " won the battle!",0,0xf08080;
+		mapannounce "poring_w02","死灵先生：天使波利队，队伍" + getpartyname($@wop_team_a) + "赢得了战斗！",0,0xf08080;
 	else
-		mapannounce "poring_w02","Mr. Doppel: Deviling Team of party " + getpartyname($@wop_team_d) + " won the battle!",0,0xf08080;
-	donpcevent "Deviruchi#wop_endmaster::OnEnable";
+		mapannounce "poring_w02","死灵先生：恶魔波利队，队伍" + getpartyname($@wop_team_d) + "赢得了战斗！",0,0xf08080;
+	donpcevent "小恶魔#wop_endmaster::OnEnable";
 	stopnpctimer;
 	// Reset Barriers
 	donpcevent "#aroom_ingate_wop::OnDisable";
@@ -952,53 +952,53 @@ OnDevilingWin:
 	end;
 
 OnTimer5000:
-	mapannounce "poring_w02","Mr. Doppel: Welcome to all the warriors that have come to fight the battle.",0,0xf08080;
-	donpcevent "Mr. Doppel#wop_team_a::OnEnable";
-	donpcevent "Mr. Doppel#wop_team_d::OnEnable";
+	mapannounce "poring_w02","死灵先生：欢迎所有前来参战的战士。",0,0xf08080;
+	donpcevent "死灵先生#wop_team_a::OnEnable";
+	donpcevent "死灵先生#wop_team_d::OnEnable";
 	end;
 
 OnTimer8000:
-	mapannounce "poring_w02","Mr. Doppel: Each member of the team must join the group, and the leader will register their team name.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：队伍中的每名成员都必须加入组队，队长负责登记队伍名称。",0,0xf08080;
 	end;
 
 OnTimer12000:
-	mapannounce "poring_w02","Mr. Doppel: You have 50 seconds. Join the group, register it's name and go to the battlefield.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：你们有 50 秒。加入组队、登记名称，然后前往战场。",0,0xf08080;
 	end;
 
 OnTimer32000:
-	mapannounce "poring_w02","Mr. Doppel: You still have 30 seconds. Join the group, register it's name and go to the battlefield.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：你们还有 30 秒。加入组队、登记名称，然后前往战场。",0,0xf08080;
 	end;
 
 OnTimer62000:
-	mapannounce "poring_w02","Mr. Doppel: Time is up. The rules will be explained shortly before the battle.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：时间到。战斗开始前将简要说明规则。",0,0xf08080;
 	end;
 
 OnTimer70000:
-	mapannounce "poring_w02","Mr. Doppel: All ready? Let me explain the battle rules.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：都准备好了吗？我来讲解战斗规则。",0,0xf08080;
 	end;
 
 OnTimer75000:
-	mapannounce "poring_w02","Mr. Doppel: The Angeling Team has to protect 2 Angelings on their bases and, at the same time, eliminate the Devilings on their Deviling Team bases, and vice-versa.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：天使波利队必须保护自家基地的 2 只天使波利，同时消灭恶魔波利队基地的恶魔波利，反之亦然。",0,0xf08080;
 	end;
 
 OnTimer80000:
-	mapannounce "poring_w02","Mr. Doppel: Your team wins if you eliminate the 2 monsters of the enemy team. The rules are as simple as that.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：消灭敌方队伍的 2 只怪物即可获胜。规则就这么简单。",0,0xf08080;
 	end;
 
 OnTimer85000:
-	mapannounce "poring_w02","Mr. Doppel: But the Angelings or the Devilings return to life after a certain period of time, so it's important to eliminate the other Poring quickly, after you have eliminated the first.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：但天使波利或恶魔波利会在一段时间后复活，所以消灭第一只后，必须迅速消灭另一只波利。",0,0xf08080;
 	end;
 
 OnTimer90000:
-	mapannounce "poring_w02","Mr. Doppel: Also know that those Porings are furious and will attack everybody, it doesnt matter to what team they belong.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：另外要注意，那些波利非常狂暴，会攻击所有人，不管对方属于哪支队伍。",0,0xf08080;
 	end;
 
 OnTimer95000:
-	mapannounce "poring_w02","Mr. Doppel: Basically, the Porings are natural enemies of the humans, so the attack is innevitable, even if both are on the same team.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：基本上，波利是人类的天敌，所以即使同属一队，攻击也在所难免。",0,0xf08080;
 	end;
 
 OnTimer100000:
-	mapannounce "poring_w02","Mr. Doppel: In certain areas, you will need War Badges that are obtained by eliminating members of the other team. Alright, lets begin!",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：在某些区域，你需要通过消灭对方队伍成员来获得战斗徽章。好，开始吧！",0,0xf08080;
 	setmapflag "poring_w02",mf_partylock;
 	setmapflag "poring_w02",mf_pvp;
 	setmapflag "poring_w02",mf_pvp_noguild;
@@ -1012,7 +1012,7 @@ OnTimer100000:
 	end;
 
 OnTimer700000:
-	mapannounce "poring_w02","Mr. Doppel: Time is up. Soon, you will be teleported to the Winners Stage.",0,0xf08080;
+	mapannounce "poring_w02","死灵先生：时间到。很快你们将被传送到优胜者舞台。",0,0xf08080;
 	removemapflag "poring_w02",mf_partylock;
 	removemapflag "poring_w02",mf_pvp;
 	removemapflag "poring_w02",mf_pvp_noguild;
@@ -1024,7 +1024,7 @@ OnTimer700000:
 	end;
 
 OnTimer703000:
-	donpcevent "Deviruchi#wop_endmaster::OnEnable";
+	donpcevent "小恶魔#wop_endmaster::OnEnable";
 	stopnpctimer;
 	end;
 }
@@ -1090,7 +1090,7 @@ OnAngelingSpawn:
 OnMyMobDead:
 	set $@wop_deadcount_a,$@wop_deadcount_a + 1;
 	if ($@wop_deadcount_a == 1) {
-		mapannounce "poring_w02","Mr. Doppel: The Angeling on the 1st base has been killed! 1 point lost!!",0,0x00ff00;
+		mapannounce "poring_w02","死灵先生：第 1 基地的天使波利被击杀了！失去 1 分！！",0,0x00ff00;
 		initnpctimer;
 	}
 	else {
@@ -1105,7 +1105,7 @@ OnMyMobDead:
 OnTimer120000:
 	set $@wop_deadcount_a,$@wop_deadcount_a - 1;
 	donpcevent "#wop_angellium1::OnAngelingSpawn";
-	mapannounce "poring_w02","Mr. Doppel: The Angeling on the 1st base has been revived! 1 point gained!!",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：第 1 基地的天使波利复活了！获得 1 分！！",0,0x00ff00;
 	stopnpctimer;
 }
 
@@ -1124,7 +1124,7 @@ OnAngelingSpawn:
 OnMyMobDead:
 	set $@wop_deadcount_a,$@wop_deadcount_a + 1;
 	if ($@wop_deadcount_a == 1) {
-		mapannounce "poring_w02","Mr. Doppel: The Angeling on the 2nd base has been killed! 1 point lost!!",0,0x00ff00;
+		mapannounce "poring_w02","死灵先生：第 2 基地的天使波利被击杀了！失去 1 分！！",0,0x00ff00;
 		initnpctimer;
 	}
 	else {
@@ -1139,7 +1139,7 @@ OnMyMobDead:
 OnTimer120000:
 	set $@wop_deadcount_a,$@wop_deadcount_a - 1;
 	donpcevent "#wop_angellium2::OnAngelingSpawn";
-	mapannounce "poring_w02","Mr. Doppel: The Angeling on the 2nd base has been revived! 1 point gained!!",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：第 2 基地的天使波利复活了！获得 1 分！！",0,0x00ff00;
 	stopnpctimer;
 	end;
 }
@@ -1159,7 +1159,7 @@ OnDevilingSpawn:
 OnMyMobDead:
 	set $@wop_deadcount_d,$@wop_deadcount_d + 1;
 	if ($@wop_deadcount_d == 1) {
-		mapannounce "poring_w02","Mr. Doppel: The Deviling on the 1st base has been killed! 1 point lost!!",0,0x00ff00;
+		mapannounce "poring_w02","死灵先生：第 1 基地的恶魔波利被击杀了！失去 1 分！！",0,0x00ff00;
 		initnpctimer;
 	}
 	else {
@@ -1174,7 +1174,7 @@ OnMyMobDead:
 OnTimer120000:
 	set $@wop_deadcount_d,$@wop_deadcount_d - 1;
 	donpcevent "#wop_devillium1::OndevilingSpawn";
-	mapannounce "poring_w02","Mr. Doppel: The Deviling on the 1st base has been revived! 1 point gained!!",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：第 1 基地的恶魔波利复活了！获得 1 分！！",0,0x00ff00;
 	stopnpctimer;
 	end;
 }
@@ -1194,7 +1194,7 @@ OndevilingSpawn:
 OnMyMobDead:
 	set $@wop_deadcount_d,$@wop_deadcount_d + 1;
 	if ($@wop_deadcount_d == 1) {
-		mapannounce "poring_w02","Mr. Doppel: The deviling on the 2nd base has been killed! 1 point lost!!",0,0x00ff00;
+		mapannounce "poring_w02","死灵先生：第 2 基地的恶魔波利被击杀了！失去 1 分！！",0,0x00ff00;
 		initnpctimer;
 	}
 	else {
@@ -1209,44 +1209,44 @@ OnMyMobDead:
 OnTimer120000:
 	set $@wop_deadcount_d,$@wop_deadcount_d - 1;
 	donpcevent "#wop_devillium2::OndevilingSpawn";
-	mapannounce "poring_w02","Mr. Doppel: The deviling on the 2nd base has been revived! 1 point gained!!",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：第 2 基地的恶魔波利复活了！获得 1 分！！",0,0x00ff00;
 	stopnpctimer;
 }
 
 // Deviruchi
 //============================================================
-poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
+poring_w02,99,201,3	script	小恶魔#wop_endmaster	738,{
 	if (MaxWeight-Weight < 2000 || checkweight(1201,1) == 0) {
-		mes "- Wait a minute !! -";
-		mes "- Currently you're carrying -";
-		mes "- too many items with you. -";
-		mes "- Please try again -";
-		mes "- after you lose some weight. -";
+		mes "- 请等一下！！ -";
+		mes "- 您目前携带的 -";
+		mes "- 物品太多了。 -";
+		mes "- 请减轻负重后 -";
+		mes "- 再行尝试。 -";
 		close;
 	}
 	set .@a_point,$@wop_deadcount_a;
 	set .@d_point,$@wop_deadcount_d;
 	if (getcharid(1) == $@wop_team_a) {
 		if (.@a_point < .@d_point) {
-			mes "[Devi]";
-			mes "Good work!";
-			mes "Thanks to you, we increased our chances of victory.";
-			mes "Please, accept these Poring Coins as a sign of our appreciation.";
+			mes "[德维]";
+			mes "干得好！";
+			mes "多亏了你，我们获胜的机会增加了。";
+			mes "请收下这些波利代币，聊表我们的谢意。";
 			next;
 			if (wop_team == 1) {
-				mes "[Devi]";
-				mes "Goodbye, my human friend.";
+				mes "[德维]";
+				mes "再见，我的人类朋友。";
 				close2;
 				getitem 7539,3; // Poring_Coin
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute, you look suspicious!!";
-				mes "Ah, I got it! You are on the side of the Devilings?!";
-				mes "You are spying on us!";
-				mes "I will never forgive you!";
+				mes "[德维]";
+				mes "等一下，你很可疑！！";
+				mes "啊，我知道了！你是恶魔波利那边的人？！";
+				mes "你在监视我们！";
+				mes "我绝不会原谅你！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1254,26 +1254,26 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 			}
 		}
 		else if (.@a_point == .@d_point) {
-			mes "[Devi]";
-			mes "You did the best you could.";
-			mes "I' ts a shame the battle was tied...";
-			mes "Even so, thanks for coming to fight for us. Please, accept this Poring Coin.";
+			mes "[德维]";
+			mes "你已经尽力了。";
+			mes "真遗憾，战斗打成了平局……";
+			mes "尽管如此，还是谢谢你前来为我们而战。请收下这枚波利代币。";
 			next;
 			if (wop_team == 1) {
-				mes "[Devi]";
-				mes "Goodbye, my human friend.";
+				mes "[德维]";
+				mes "再见，我的人类朋友。";
 				close2;
 				getitem 7539,1; // Poring_Coin
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute, you look suspicious!!";
-				mes "Ah, I got it! You are on the side of the Devilings?!";
-				mes "You are spying on us!";
-				mes "It must have been you that made us tie the battle!!";
-				mes "I will never forgive you!";
+				mes "[德维]";
+				mes "等一下，你很可疑！！";
+				mes "啊，我知道了！你是恶魔波利那边的人？！";
+				mes "你在监视我们！";
+				mes "一定是你害我们打成了平局！！";
+				mes "我绝不会原谅你！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1282,24 +1282,24 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 		}
 		else {
 			if (wop_team == 1) {
-				mes "[Devi]";
-				mes "Well, I guess we had bad luck...";
-				mes "I cant give you anything, since we lost and everything...";
+				mes "[德维]";
+				mes "唉，看来是我们运气不好……";
+				mes "既然我们输了，我也没什么能给你的……";
 				next;
-				mes "[Devi]";
-				mes "Goodbye, my human friend.";
+				mes "[德维]";
+				mes "再见，我的人类朋友。";
 				close2;
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute... There is a traitor here!";
-				mes "Ah, I got it! You are on the side of the Devilings?!";
-				mes "You are spying on us, Angelings!";
+				mes "[德维]";
+				mes "等一下……这里有叛徒！";
+				mes "啊，我知道了！你是恶魔波利那边的人？！";
+				mes "天使波利，你在监视我们！";
 				next;
-				mes "[Devi]";
-				mes "You should be ashamed!";
+				mes "[德维]";
+				mes "你真该感到羞耻！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1309,25 +1309,25 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 	}
 	else if (getcharid(1) == $@wop_team_d) {
 		if (.@a_point > .@d_point) {
-			mes "[Devi]";
-			mes "Good work!";
-			mes "Thanks to you, we increased our chances of victory.";
-			mes "Please, accept these Poring Coins as a sign of our appreciation.";
+			mes "[德维]";
+			mes "干得好！";
+			mes "多亏了你，我们获胜的机会增加了。";
+			mes "请收下这些波利代币，聊表我们的谢意。";
 			next;
 			if (wop_team == 2) {
-				mes "[Devi]";
-				mes "Goodbye, my human friend.";
+				mes "[德维]";
+				mes "再见，我的人类朋友。";
 				close2;
 				getitem 7539,3; // Poring_Coin
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute, you look suspicious!!";
-				mes "Ah, I got it! You are on the side of the Angelings?!";
-				mes "You are spying on us!!";
-				mes "I will never forgive you!";
+				mes "[德维]";
+				mes "等一下，你很可疑！！";
+				mes "啊，我知道了！你是天使波利那边的人？！";
+				mes "你在监视我们！！";
+				mes "我绝不会原谅你！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1335,26 +1335,26 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 			}
 		}
 		else if (.@a_point == .@d_point) {
-			mes "[Devi]";
-			mes "You did the best you could.";
-			mes "It's a shame the battle was tied...";
-			mes "Even so, thanks for coming to fight for us. Please, accept this Poring Coin.";
+			mes "[德维]";
+			mes "你已经尽力了。";
+			mes "真遗憾，战斗打成了平局……";
+			mes "尽管如此，还是谢谢你前来为我们而战。请收下这枚波利代币。";
 			next;
 			if (wop_team == 2) {
-				mes "[Devi]";
-				mes "Goodbye, my human friend.";
+				mes "[德维]";
+				mes "再见，我的人类朋友。";
 				close2;
 				getitem 7539,1; // Poring_Coin
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute, you look suspicious!!";
-				mes "Ah, I got it! You are on the side of the Angelings?!";
-				mes "You are spying on us!";
-				mes "It must have been you that made us tie the battle!!";
-				mes "I will never forgive you!";
+				mes "[德维]";
+				mes "等一下，你很可疑！！";
+				mes "啊，我知道了！你是天使波利那边的人？！";
+				mes "你在监视我们！";
+				mes "一定是你害我们打成了平局！！";
+				mes "我绝不会原谅你！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1363,24 +1363,24 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 		}
 		else {
 			if (wop_team == 2) {
-				mes "[Devi]";
-				mes "Well, I guess we had bad luck...";
-				mes "I cant give you anything, since we lost and everything...";
+				mes "[德维]";
+				mes "唉，看来是我们运气不好……";
+				mes "既然我们输了，我也没什么能给你的……";
 				next;
-				mes "[Devi]";
-				mes "I will allow you to return to your human world.";
+				mes "[德维]";
+				mes "我准许你回到人类世界。";
 				close2;
 				warp "prt_fild08",150,370;
 				end;
 			}
 			else {
-				mes "[Devi]";
-				mes "Wait a minute, you look suspicious!!";
-				mes "Ah, I got it! You are on the side of the Angelings?!";
-				mes "You are spying on us, Devilings!";
+				mes "[德维]";
+				mes "等一下，你很可疑！！";
+				mes "啊，我知道了！你是天使波利那边的人？！";
+				mes "恶魔波利，你在监视我们！";
 				next;
-				mes "[Devi]";
-				mes "You should be ashamed!";
+				mes "[德维]";
+				mes "你真该感到羞耻！";
 				close2;
 				percentheal 99,0;
 				warp "prt_fild08",150,370;
@@ -1389,22 +1389,22 @@ poring_w02,99,201,3	script	Deviruchi#wop_endmaster	738,{
 		}
 	}
 	else {
-		mes "[Devi]";
-		mes "This is weird...Your party name ain't registered.";
-		mes "Im sorry, but rules are rules. I can't help you if your party ain't registered.";
+		mes "[德维]";
+		mes "真奇怪……你们的队伍名称还没有登记。";
+		mes "抱歉，但规则就是规则。如果你们的队伍没有登记，我也无能为力。";
 		close;
 	}
 OnInit:
-	disablenpc "Deviruchi#wop_endmaster";
+	disablenpc "小恶魔#wop_endmaster";
 	end;
 
 OnEnable:
-	enablenpc "Deviruchi#wop_endmaster";
+	enablenpc "小恶魔#wop_endmaster";
 	initnpctimer;
 	end;
 
 OnDisable:
-	disablenpc "Deviruchi#wop_endmaster";
+	disablenpc "小恶魔#wop_endmaster";
 	end;
 
 OnTimer3000:
@@ -1412,11 +1412,11 @@ OnTimer3000:
 	end;
 
 OnTimer5000:
-	mapannounce "poring_w02","Mr. Doppel: Allow me to offer a souvenir to the humans that fought bravely for the Porings! Please, speak to Devi.",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：请允许我为波利英勇而战的人类送上一份纪念品！请与德维交谈。",0,0x00ff00;
 	end;
 
 OnTimer65000:
-	mapannounce "poring_w02","Mr. Doppel: Time is up! Let me teleport you.",0,0x00ff00;
+	mapannounce "poring_w02","死灵先生：时间到！我来传送你。",0,0x00ff00;
 	end;
 
 OnTimer68000:
@@ -1438,49 +1438,49 @@ OnTimer68100:
 	set $@wop_doorcount_d,0;
 	donpcevent "#wop_warp_a::OnDisable";
 	donpcevent "#wop_warp_d::OnDisable";
-	donpcevent "Mr. Doppel#wop_team_a::OnDisable";
-	donpcevent "Mr. Doppel#wop_team_d::OnDisable";
+	donpcevent "死灵先生#wop_team_a::OnDisable";
+	donpcevent "死灵先生#wop_team_d::OnDisable";
 	donpcevent "#wop_warp_rtry::OnDisable";
-	donpcevent "Poring#wop_door_a::OnEnable";
-	donpcevent "Poring#wop_door_d::OnEnable";
-	donpcevent "Poring#wop_door_all::OnEnable";
+	donpcevent "波利#wop_door_a::OnEnable";
+	donpcevent "波利#wop_door_d::OnEnable";
+	donpcevent "波利#wop_door_all::OnEnable";
 	stopnpctimer;
 	end;
 }
 
 // Gate Guardian
 //============================================================
-poring_w02,99,52,0	script	Angeling Guardian#wop_da	111,{
+poring_w02,99,52,0	script	天使波利守卫#wop_da	111,{
 	cutin "wop_emb0" + $@wop_doorcount_a,1;
 	if ($@wop_doorcount_a < 4) {
 		if (wop_team == 2) {
-			mes "There is a device to equip the War Badges.";
-			mes "I can see the empty slots to equip the Badges.";
+			mes "这里有一台可以装备战斗徽章的装置。";
+			mes "我能看到用于装备徽章的空槽位。";
 			next;
-			switch(select("Equip War Badge.:Cancel.")) {
+			switch(select("装备战斗徽章。:取消。")) {
 			case 1:
 				if (countitem(7773)) {
 					if ($@wop_doorcount_a < 4) {
-						mes "War Badge equipped.";
+						mes "战斗徽章已装备。";
 						delitem 7773,1; // War_Badge
 						set $@wop_doorcount_a,$@wop_doorcount_a + 1;
 						cutin "wop_emb0" + $@wop_doorcount_a,1;
 						if ($@wop_doorcount_a == 4) {
 							next;
-							mes "Gate Activated.";
+							mes "大门已启动。";
 							donpcevent "#aroom_ingate_wop::OnEnable";
 							donpcevent "#aroom_outgate_wop::OnEnable";
 						}
 						close2;
 					}
 					else {
-						mes "All War Badges equipped.";
-						mes "No need to equip any more.";
+						mes "所有战斗徽章已装备。";
+						mes "无需再装备了。";
 						close2;
 					}
 				}
 				else {
-					mes "^4d4dff - War Badge missing. You can obtain a War badge by killing members of the other team. - ^000000";
+					mes "^4d4dff - 缺少战斗徽章。击杀对方阵营的成员即可获得战斗徽章。 - ^000000";
 					close2;
 				}
 				break;
@@ -1490,13 +1490,13 @@ poring_w02,99,52,0	script	Angeling Guardian#wop_da	111,{
 			}
 		}
 		else {
-			mes "There is a device to equip a War Badge.";
-			mes "Be carefull to not allow the enemy to take and equip your War Badge here.";
+			mes "这里有可以装备战斗徽章的装置。";
+			mes "小心，别让敌人夺走并在此装备你的战斗徽章。";
 			close2;
 		}
 	}
 	else {
-		mes "All War Badges have been equipped.";
+		mes "所有战斗徽章都已装备。";
 		close2;
 	}
 	cutin "",255;
@@ -1547,37 +1547,37 @@ OnTouch_:
 	end;
 }
 
-poring_w02,98,113,0	script	Deviling Guardian#wop_dd	111,{
+poring_w02,98,113,0	script	恶魔波利守卫#wop_dd	111,{
 	cutin "wop_emb0" + $@wop_doorcount_d,1;
 	if ($@wop_doorcount_d < 4) {
 		if (wop_team == 1) {
-			mes "There is a device to equip the War Badges.";
-			mes "I can see the empty slots to equip the Badges.";
+			mes "这里有可以装备战斗徽章的装置。";
+			mes "我能看到用于装备徽章的空位。";
 			next;
-			switch(select("Equip War Badge.:Cancel.")) {
+			switch(select("装备战斗徽章。:取消。")) {
 			case 1:
 				if (countitem(7773)) {
 					if ($@wop_doorcount_d < 4) {
-						mes "War Badge equipped.";
+						mes "战斗徽章已装备。";
 						delitem 7773,1; // War_Badge
 						set $@wop_doorcount_d,$@wop_doorcount_d + 1;
 						cutin "wop_emb0" + $@wop_doorcount_d,1;
 						if ($@wop_doorcount_d == 4) {
 							next;
-							mes "Gate Activated.";
+							mes "大门已启动。";
 							donpcevent "#droom_ingate_wop::OnEnable";
 							donpcevent "#droom_outgate_wop::OnEnable";
 						}
 						close2;
 					}
 					else {
-						mes "All War Badges equipped.";
-						mes "No need to equip any more.";
+						mes "所有战斗徽章已装备。";
+						mes "无需再装备了。";
 						close2;
 					}
 				}
 				else {
-					mes "^4d4dff - War Badge missing. You can obtain a War badge by killing members of the other team. - ^000000";
+					mes "^4d4dff - 缺少战斗徽章。击杀对方阵营的成员即可获得战斗徽章。 - ^000000";
 					close2;
 				}
 				break;
@@ -1587,13 +1587,13 @@ poring_w02,98,113,0	script	Deviling Guardian#wop_dd	111,{
 			}
 		}
 		else {
-			mes "There is a device to equip a War Badge.";
-			mes "Be carefull to not allow the enemy to take and equip your War Badge here.";
+			mes "这里有可以装备战斗徽章的装置。";
+			mes "小心，别让敌人夺走并在此装备你的战斗徽章。";
 			close2;
 		}
 	}
 	else {
-		mes "All War Badges have been equipped.";
+		mes "所有战斗徽章都已装备。";
 		close2;
 	}
 	cutin "",255;
@@ -1670,13 +1670,13 @@ poring_w01,84,108,3	script	#wop_ex_1	139,3,3,{
 	end;
 
 OnTouch:
-	mes "[Porings]";
-	mes "P~ooooooooo -!!!";
-	mes "Let's teach them a lesson, ring!";
-	mes "We are no longer betting our lives for Jellopies, ring!!!";
+	mes "[波利们]";
+	mes "噗~哦哦哦哦哦哦哦——！！！";
+	mes "给他们点教训吧，ring！";
+	mes "我们不会再为了杰勒比结晶赌上性命了，ring！！！";
 	next;
-	mes "[Porings]";
-	mes "Let's go! Let's fight! Let's win, win, win!!!";
+	mes "[波利们]";
+	mes "上吧！战斗吧！胜利，胜利，胜利！！！";
 	emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa1");
 	emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa2");
 	emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa3");
@@ -1684,17 +1684,17 @@ OnTouch:
 	emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa5");
 	next;
 	if (wop_team == 1) {
-		mes "[Porings]";
-		mes "Ohhhhhh, there he is, the warrior that fought for us!!";
-		mes "Oh my god... Nice, ring!";
-		mes "Poring~ Poring~ Poooooo~";
-		mes "Party of Angeling~ Popopo, Poring!";
+		mes "[波利们]";
+		mes "哦哦哦哦哦，他来了，为我们而战的战士！！";
+		mes "天啊……干得好，ring！";
+		mes "波利~ 波利~ 噗哦哦哦哦哦~";
+		mes "天使波利队~ 噗噗噗，波利！";
 	}
 	else if (wop_team == 2) {
-		mes "[Porings]";
-		mes "Wait, YOU! Aren't you on the side of the Devilings?!";
-		mes "Get out now! Leave!!";
-		mes "Booooo~ Boo~ Boooo~";
+		mes "[波利们]";
+		mes "等等，你！你不是恶魔波利那边的吗？！";
+		mes "马上滚出去！走开！！";
+		mes "嘘~ 嘘~ 嘘~";
 		emotion ET_HUK, getnpcid(0, "Angeling Side Poring#wa1");
 		emotion ET_FRET, getnpcid(0, "Angeling Side Poring#wa2");
 		emotion ET_HUK, getnpcid(0, "Angeling Side Poring#wa3");
@@ -1702,8 +1702,8 @@ OnTouch:
 		emotion ET_SURPRISE, getnpcid(0, "Angeling Side Poring#wa5");
 	}
 	else {
-		mes "[Porings]";
-		mes "Hey, human. How about fighting for us Porings on Angeling's side??!";
+		mes "[波利们]";
+		mes "喂，人类。要不要加入天使波利这边，为我们波利而战？？！";
 		emotion ET_HELP, getnpcid(0, "Angeling Side Poring#wa1");
 		emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa2");
 		emotion ET_HELP, getnpcid(0, "Angeling Side Poring#wa3");
@@ -1711,11 +1711,11 @@ OnTouch:
 		emotion ET_GO, getnpcid(0, "Angeling Side Poring#wa5");
 	}
 	next;
-	mes "[Porings]";
-	mes "Party of Angeling~ Popopo, Poring!";
-	mes "Victory~ Victory~ Pooooooo~";
+	mes "[波利们]";
+	mes "天使波利队~ 噗噗噗，波利！";
+	mes "胜利~ 胜利~ 噗哦哦哦哦哦~";
 	next;
-	mes "- Porings are cheerfully shouting for the victory. -";
+	mes "- 波利们正在为胜利欢呼。 -";
 	close;
 }
 
@@ -1723,13 +1723,13 @@ poring_w01,119,107,3	script	#wop_ex_2	139,3,3,{
 	end;
 
 OnTouch:
-	mes "[Marins]";
-	mes "Woooooaaaaaaaaaaa!";
-	mes "Finally, it's time for us to teach those stupid pigs a lesson!!";
-	mes "Those Porings with low-grades are all idiots!!";
+	mes "[冰波利们]";
+	mes "呜哇啊啊啊啊啊啊啊啊！";
+	mes "终于，是时候给那些愚蠢的猪一点教训了！！";
+	mes "那些低等级的波利全都是白痴！！";
 	next;
-	mes "[Marins]";
-	mes "Let's go! Let's fight! Fight for Triumph!!!!";
+	mes "[冰波利们]";
+	mes "上吧！战斗吧！为胜利而战！！！！";
 	emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd1");
 	emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd2");
 	emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd3");
@@ -1737,16 +1737,16 @@ OnTouch:
 	emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd5");
 	next;
 	if (wop_team == 2) {
-		mes "[Marins]";
-		mes "Ohhhh... Here is the warrior that fought for us!!";
-		mes "Amazing!";
-		mes "This proves that humans recognize us as true monsters!!";
+		mes "[冰波利们]";
+		mes "哦哦哦……为我们而战的战士在这里！！";
+		mes "太厉害了！";
+		mes "这证明人类认可我们是真正的魔物！！";
 	}
 	else if (wop_team == 1) {
-		mes "[Marins]";
-		mes "Wait, YOU! Aren't you on the side of the Angelings?!";
-		mes "Get out now! Leave!!";
-		mes "Booooo~ Boo~ Boooo~";
+		mes "[冰波利们]";
+		mes "等等，你！你不是天使波利那边的吗？！";
+		mes "马上滚出去！走开！！";
+		mes "嘘~ 嘘~ 嘘~";
 		emotion ET_HUK, getnpcid(0, "Deviling Side Marin#wd1");
 		emotion ET_FRET, getnpcid(0, "Deviling Side Marin#wd2");
 		emotion ET_HUK, getnpcid(0, "Deviling Side Marin#wd3");
@@ -1754,8 +1754,8 @@ OnTouch:
 		emotion ET_SURPRISE, getnpcid(0, "Deviling Side Marin#wd5");
 	}
 	else {
-		mes "[Marins]";
-		mes "Hey, human. Don't you wanna fight for Deviling, the noble of darkness? What do you say?!";
+		mes "[冰波利们]";
+		mes "喂，人类。要不要为暗之贵族恶魔波利而战？你说呢？！";
 		emotion ET_HELP, getnpcid(0, "Deviling Side Marin#wd1");
 		emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd2");
 		emotion ET_HELP, getnpcid(0, "Deviling Side Marin#wd3");
@@ -1763,9 +1763,9 @@ OnTouch:
 		emotion ET_GO, getnpcid(0, "Deviling Side Marin#wd5");
 	}
 	next;
-	mes "[Marins]";
-	mes "The world's Best Miraculous Poring! Deviling has it all! Go, Deviling, Go-!!";
+	mes "[冰波利们]";
+	mes "全世界最棒的奇迹波利！恶魔波利无所不能！冲啊，恶魔波利，冲啊——！！";
 	next;
-	mes "- Marins are cheerfully shouting for the victory. -";
+	mes "- 冰波利们正在为胜利欢呼。 -";
 	close;
 }

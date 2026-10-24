@@ -8,51 +8,51 @@
 //============================================================
 
 // Enchant
-prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
-	mes "[Veggie Enchanter]";
-	mes "50 Jellopies and 20,000 zeny are all you need to get special effect on your green onion or carrot!";
+prt_fild05,174,238,7	script	蔬菜附魔师#0	4_F_02,2,2,{
+	mes "[蔬菜附魔师]";
+	mes "只需50个杰勒比结晶和20,000 Zeny，就能让你的大葱或胡萝卜获得特殊效果！";
 	next;
-	mes "[Veggie Enchanter]";
-	mes "Enchant and reset have ^ff000030% of failure.^000000 Invest in your veggie and luck!";
+	mes "[蔬菜附魔师]";
+	mes "^ff0000附魔和重置有30%的失败率。^000000 赌上你的蔬菜和运气吧！";
 	next;
-	switch( select( "How much do I need to enchant?", "Enchant to Poring Village Veggie", "Reset Poring Village Veggie" ) ) {
+	switch( select( "附魔需要多少？", "为波利村蔬菜附魔", "重置波利村蔬菜" ) ) {
 	case 1:
-		mes "[Veggie Enchanter]";
-		mes "As I heard, you can get Poring Village Green Onion or Carrot if you go west a bit more from here.";
+		mes "[蔬菜附魔师]";
+		mes "听说从这里再往西走一点，就能得到波利村大葱或胡萝卜。";
 		next;
-		mes "[Veggie Enchanter]";
-		mes "I do enchant to the fresh vegetable.";
+		mes "[蔬菜附魔师]";
+		mes "我会为新鲜蔬菜附魔。";
 		next;
-		mes "[Veggie Enchanter]";
-		mes "Enchant or Reset requires 20,000z and 50 Jellopy! It's not bad, is it?";
+		mes "[蔬菜附魔师]";
+		mes "附魔或重置需要20,000z和50个杰勒比结晶！还不错吧？";
 		next;
-		mes "[Veggie Enchanter]";
-		mes "Well... As you know, it's a vegetable any way. So sometimes it can be broken.";
+		mes "[蔬菜附魔师]";
+		mes "嗯……你也知道，它毕竟是蔬菜。所以有时会坏掉。";
 		close;
 	case 2:
 		.@equip_id = getequipid(EQI_HEAD_LOW);
 
 		switch( .@equip_id ) {
 		case -1:
-			mes "[Veggie Enchanter]";
-			mes "Please put on the equipment you'd like to enchant first.";
+			mes "[蔬菜附魔师]";
+			mes "请先穿上你想附魔的装备。";
 			close;
 		case 19238:	// PoringTownOnion
 		case 19239:	// PoringTownCarrot
 			break;
 		default:
-			mes "[Veggie Enchanter]";
-			mes "This is not a vegetable!?";
+			mes "[蔬菜附魔师]";
+			mes "这不是蔬菜！？";
 			close;
 		}
 		if (getequipcardid(EQI_HEAD_LOW,3) > 0) {
-			mes "[Veggie Enchanter]";
-			mes "This vegetable cannot be enchanted anymore.";
+			mes "[蔬菜附魔师]";
+			mes "这个蔬菜已经无法再附魔了。";
 			close;
 		}
 		if (countitem(909) < 50 || Zeny < 20000) {
-			mes "[Veggie Enchanter]";
-			mes "This enchant requires 50 Jellopy and 20,000z..... But... you don't have them.";
+			mes "[蔬菜附魔师]";
+			mes "这次附魔需要50个杰勒比结晶和20,000z……但是……你没有。";
 			close;
 		}
 		delequip EQI_HEAD_LOW;
@@ -76,13 +76,13 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 			else if (.@r < 5356) .@card = 4993;	// SPdrain1
 
 			getitem2 .@equip_id,1,1,0,0,0,0,0,.@card;
-			mes "[Veggie Enchanter]";
-			mes "Tada! Enchant is done! Check your vegetable.";
+			mes "[蔬菜附魔师]";
+			mes "锵！附魔完成！看看你的蔬菜吧。";
 			specialeffect2 EF_REPAIRWEAPON;
 			close;
 		}
-		mes "[Veggie Enchanter]";
-		mes "It must have been a rotten vegetable. It's a shame that I can't stand this level of power...";
+		mes "[蔬菜附魔师]";
+		mes "一定是蔬菜烂掉了。真可惜，我承受不了这种程度的力量……";
 		specialeffect2 EF_LORD;
 		close;
 	case 3:
@@ -90,25 +90,25 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 
 		switch( .@equip_id ) {
 		case -1:
-			mes "[Veggie Enchanter]";
-			mes "Please put on the equipment you'd like to enchant first.";
+			mes "[蔬菜附魔师]";
+			mes "请先穿上你想附魔的装备。";
 			close;
 		case 19238:	// PoringTownOnion
 		case 19239:	// PoringTownCarrot
 			break;
 		default:
-			mes "[Veggie Enchanter]";
-			mes "This is not a vegetable!?";
+			mes "[蔬菜附魔师]";
+			mes "这不是蔬菜！？";
 			close;
 		}
 		if (getequipcardid(EQI_HEAD_LOW,3) == 0) {
-			mes "[Veggie Enchanter]";
-			mes "This is a vegetable that has never been fortified...";
+			mes "[蔬菜附魔师]";
+			mes "这是从未被强化过的蔬菜……";
 			close;
 		}
 		if (countitem(909) < 50 || Zeny < 20000) {
-			mes "[Veggie Enchanter]";
-			mes "This enchant requires 50 Jellopy and 20,000z..... But... you don't have them.";
+			mes "[蔬菜附魔师]";
+			mes "这次附魔需要50个杰勒比结晶和20,000z……但是……你没有。";
 			close;
 		}
 		delequip EQI_HEAD_LOW;
@@ -117,72 +117,72 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 
 		if (rand(100) < 70) {
 			getitem .@equip_id,1;
-			mes "[Veggie Enchanter]";
-			mes "The item is complete! Check it out.";
+			mes "[蔬菜附魔师]";
+			mes "物品完成了！看看吧。";
 			specialeffect2 EF_REPAIRWEAPON;
 			close;
 		}
-		mes "[Veggie Enchanter]";
-		mes "It must have been a rotten vegetable. It's a shame that I can't stand this level of power...";
+		mes "[蔬菜附魔师]";
+		mes "一定是蔬菜烂掉了。真可惜，我承受不了这种程度的力量……";
 		specialeffect2 EF_LORD;
 		close;
 	}
 	end;
 
 OnTouch:
-	npctalk "Veggie Enchanter: Make your green onion or carrot stronger!", "", bc_self;
+	npctalk "蔬菜附魔师：让你的大葱或胡萝卜变得更强！", "", bc_self;
 	end;
 }
 
 
 // Instance
-prt_fild05,145,235,5	script	Emily#0	4_GEFFEN_03,4,4,{
+prt_fild05,145,235,5	script	艾米莉#0	4_GEFFEN_03,4,4,{
 	if (BaseLevel < 30) {
-		mes "[Emily]";
-		mes "Wow~ You look like a novice. I do want to adventure with you someday when you grow up!";
+		mes "[艾米莉]";
+		mes "哇～你看起来像个初心者。等你长大，我真想和你一起去冒险！";
 		close;
 	}
 	if (BaseLevel > 60) {
-		mes "[Emily]";
-		mes "Oh, now you are stronger than me. How did you grow so fast?";
+		mes "[艾米莉]";
+		mes "哦，你现在比我还强了。你怎么成长得这么快？";
 		next;
-		mes "[Emily]";
-		mes "I should find another adventurer who is similar with my level. It's been nice knowing you.";
+		mes "[艾米莉]";
+		mes "我该去找个等级和我相近的冒险者了。认识你很高兴。";
 		close;
 	}
 	if (isbegin_quest(12416) == 0) {
-		mes "[Emily]";
-		mes "My name is Emily. I was waiting for someone who will go on adventures with me!";
+		mes "[艾米莉]";
+		mes "我叫艾米莉。我一直在等一个能和我一起冒险的人！";
 		next;
-		select("Who said I will adventure with you?");
-		mes "[Emily]";
-		mes "Well, come one. Don't be stern. Listen, you can decide after listening to my story. Of course, I can give you a proper reward.";
+		select("谁说要和你一起冒险了？");
+		mes "[艾米莉]";
+		mes "来嘛，别这么严肃。听我说完再决定也不迟。当然，我会给你合适的报酬。";
 		next;
-		if (select( "Proper Reward?", "I'm not interested." ) == 2) {
-			mes "[Emily]";
-			mes "How square! It's much better to be together!";
+		if (select( "合适的报酬？", "我没兴趣。" ) == 2) {
+			mes "[艾米莉]";
+			mes "真死板！一起行动不是好得多吗！";
 			close;
 		}
-		mes "[Emily]";
-		mes "Yes! Proper Reward.";
+		mes "[艾米莉]";
+		mes "对！合适的报酬。";
 		next;
-		mes "[Emily]";
-		mes "It seems this Poring Village can be defeated by beginners just like us. It's just a wild guess though...";
+		mes "[艾米莉]";
+		mes "看来这个波利村，像我们这样的初心者也能攻下。不过只是我的猜测……";
 		next;
-		mes "[Emily]";
-		mes "Well, actually I cannot give you the reward officially through adventurer association. But we can separate the income after hunting.";
+		mes "[艾米莉]";
+		mes "其实，我没法通过冒险者协会正式给你报酬。但狩猎后的收入我们可以分。";
 		next;
-		select("But 50-50 sounds fair to me.");
-		mes "[Emily]";
-		mes "No way. 70-30. And I'm 70 of course.";
+		select("但五五分才公平。");
+		mes "[艾米莉]";
+		mes "不行。七三开。当然我拿七成。";
 		next;
-		select("It's gotta be 50-50 or it's no good");
-		mes "[Emily]";
-		mes "How about 60-40!!";
+		select("必须五五分，否则免谈");
+		mes "[艾米莉]";
+		mes "六四开怎么样！！";
 		next;
 		select("50-50 ...");
-		mes "[Emily]";
-		mes "This drives me crazy. OK, 50-50. Let's go with this.";
+		mes "[艾米莉]";
+		mes "真拿你没办法。好吧，五五分。就这么定了。";
 		setquest 12416;	// Contract with Emily
 		completequest 12416;
 		close;
@@ -192,70 +192,70 @@ prt_fild05,145,235,5	script	Emily#0	4_GEFFEN_03,4,4,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Any processing of monsters such as monster taming inside the dungeon will not be considered a normal progress. Please note that.^000000";
+		mes "^ff0000在地下城内对怪物进行驯服等任何处理，都不会被视为正常进度。请注意。^000000";
 		next;
-		mes "^ff0000In beginner mode, the player transforms into a monster. Please note that the existing transformation effect disappears when entering and proceeding.^000000";
+		mes "^ff0000在初心者模式中，玩家会变成怪物。请注意，进入并继续后，原有的变身效果会消失。^000000";
 		next;
-		mes "[Emily]";
-		mes "So, are you ready?";
+		mes "[艾米莉]";
+		mes "那么，准备好了吗？";
 		next;
-		mes "[Emily]";
-		mes "You look very tired.";
+		mes "[艾米莉]";
+		mes "你看起来很累。";
 		next;
-		mes "[Emily]";
-		mes "Why don't you come back after a while? Take a break for now.";
+		mes "[艾米莉]";
+		mes "不如过一会儿再来？先休息一下吧。";
 		close;
 	case 2:
-		mes "^ff0000Any processing of monsters such as monster taming inside the dungeon will not be considered a normal progress. Please note that.^000000";
+		mes "^ff0000在地下城内对怪物进行驯服等任何处理，都不会被视为正常进度。请注意。^000000";
 		next;
-		mes "^ff0000In beginner mode, the player transforms into a monster. Please note that the existing transformation effect disappears when entering and proceeding. ^000000";
+		mes "^ff0000在初心者模式中，玩家会变成怪物。请注意，进入并继续后，原有的变身效果会消失。 ^000000";
 		next;
-		mes "[Emily]";
-		mes "So, are you ready?";
+		mes "[艾米莉]";
+		mes "那么，准备好了吗？";
 		next;
-		mes "^0000ffAll Traces of the Poring Village quest were removed. Now, talk to Emily again to enter^000000";
+		mes "^0000ff波利村任务的所有痕迹已被清除。现在再次与艾米莉交谈即可进入^000000";
 		erasequest 12417;
 		close;
 	}
-	mes "^ff0000Any processing of monsters such as monster taming inside the dungeon will not be considered a normal progress. Please note that.^000000";
+	mes "^ff0000在地下城内对怪物进行驯服等任何处理，都不会被视为正常进度。请注意。^000000";
 	next;
-	mes "^ff0000In beginner mode, the player transforms into a monster. Please note that the existing transformation effect disappears when entering and proceeding.^000000";
+	mes "^ff0000在初心者模式中，玩家会变成怪物。请注意，进入并继续后，原有的变身效果会消失。^000000";
 	next;
-	mes "[Emily]";
-	mes "So, are you ready?";
+	mes "[艾米莉]";
+	mes "那么，准备好了吗？";
 	if (isbegin_quest(12418) == 0)
 		setquest 12418;	// First Visit to Poring Village
 	next;
 	if (getcharid(1) < 1) {
-		mes "[Emily]";
-		mes "Hmm you should create a party first to start this grand adventure.";
+		mes "[艾米莉]";
+		mes "嗯，要开始这场盛大冒险，你得先组建队伍。";
 		close;
 	}
 	.@md_name$ = "Poring Village";
 
 	if (is_party_leader())
-		.@menu$[0] = "Create the entrance";
+		.@menu$[0] = "创建入口";
 	if (instance_live_info(ILI_NAME, instance_id(IM_PARTY)) == .@md_name$)
-		.@menu$[1] = "Enter the dungeon";
+		.@menu$[1] = "进入地下城";
 
-	switch( select( .@menu$[0], .@menu$[1], "Cancel" ) ) {
+	switch( select( .@menu$[0], .@menu$[1], "取消" ) ) {
 	case 1:
-		mes "[Emily]";
-		mes "Now I'm looking for the entrance, please talk to me again after it's totally open.";
+		mes "[艾米莉]";
+		mes "我现在正在寻找入口，等它完全开启后再来找我吧。";
 		instance_create(.@md_name$);
 		close;
 	case 2:
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "An unknown error occurred.";
+			mes "发生了未知错误。";
 			close;
 		case IE_NOINSTANCE:
-			mes "^ff0000Time's crack is not created yet.^000000";
+			mes "^ff0000时间裂缝尚未生成。^000000";
 			close;
 		case IE_NOMEMBER:
 			end;
 		case IE_OK:
-			mapannounce "prt_fild05", "Party member " + strcharinfo(0) + " of the party " + getpartyname(getcharid(0)) + " enters " + .@md_name$ + ".", bc_map,0xFF9900;
+			mapannounce "prt_fild05", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname(getcharid(0)) + "进入了" + .@md_name$ + ".", bc_map,0xFF9900;
 			setquest 12417;	// Overcoming fatigue
 			// warp "1@begi",100,22;
 			end;
@@ -268,7 +268,7 @@ prt_fild05,145,235,5	script	Emily#0	4_GEFFEN_03,4,4,{
 
 OnTouch:
 	if (isbegin_quest(12416) == 0 && BaseLevel >= 30 && BaseLevel <= 60)
-		npctalk "Emily: Hey, there! May I talk to you for a minute?";
+		npctalk "艾米莉：喂，那边那位！能和你聊一会儿吗？";
 	end;
 
 OnInit:
@@ -296,14 +296,14 @@ OnInstanceInit:
 }
 
 1@begi,106,30,5	script	#start_wp1_1	4_GEFFEN_03,{
-	mes "[Emily]";
-	mes "Let's go forward.";
+	mes "[艾米莉]";
+	mes "我们往前走吧。";
 	close;
 
 OnStart:
-	npctalk "Emily: So.. is this Poring Village?";
+	npctalk "艾米莉：那么……这里就是波利村吗？";
 	sleep 2000;
-	npctalk "Emily: OK. Let's go!";
+	npctalk "艾米莉：好。出发吧！";
 	sleep 2000;
 	disablenpc();
 	donpcevent instance_npcname("#start_wp1_2") + "::OnStart";
@@ -312,31 +312,31 @@ OnStart:
 }
 
 1@begi,140,37,5	script	#start_wp1_2	4_GEFFEN_03,{
-	mes "[Emily]";
-	mes "I'm going to start slowly now...";
+	mes "[艾米莉]";
+	mes "我现在要慢慢开始了……";
 	close;
 
 OnStart:
 	enablenpc();
 	sleep 1000;
-	npctalk "Emily: Hmmm. It seems they made barriers not to let us go easily.";
+	npctalk "艾米莉：嗯……看来他们设下了屏障，不想让我们轻易过去。";
 	sleep 3000;
-	npctalk "Emily: I'm quite sure Poring gathered a lot of treasure somewhere.";
+	npctalk "艾米莉：我很确定波利在某个地方收集了大量宝物。";
 	sleep 4000;
-	mapannounce 'map_begi$, "???: I can hear a human's voice. Make them welcome, everybody.", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "？？？：我听到了人类的声音。大家来欢迎他们吧。", bc_map, 0xFFFF00;
 	sleep 4000;
-	npctalk "Emily: What is it saying?";
+	npctalk "艾米莉：它在说什么？";
 	sleep 3000;
-	npctalk "Emily: It sounds someone is rushing here... ";
+	npctalk "艾米莉：好像有什么人正冲过来……";
 	sleep 2500;
-	mapannounce 'map_begi$, "???: Don't let them run! Take all valuable items from them!", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "？？？：别让他们跑了！把他们身上值钱的东西全拿走！", bc_map, 0xFFFF00;
 	sleep 2500;
-	npctalk "Emily: Well... OK. They don't seem very friendly. Quick, hide!";
+	npctalk "艾米莉：这个……好吧。他们看起来不太友善。快躲起来！";
 	sleep 4000;
 	// disablenpc();
 	hideonnpc();	// hideonnpc instead of disablenpc (official) to display text on rAthena
 	sleep 1000;
-	npctalk "Emily: Oooops. Can't you hide? Well..... Cheer up!";
+	npctalk "艾米莉：哎呀。你躲不了吗？那……振作点！";
 	// disablenpc instance_npcname("#poring_wl18");
 	hideonnpc instance_npcname("#poring_wl18");
 	specialeffect EF_LORD,AREA, instance_npcname("#poring_wl18");
@@ -383,7 +383,7 @@ OnStart:
 1@begi,154,107,6	duplicate(dummy_npc)	#poring_wl8	4_ROPEPILE,1,0
 
 
-1@begi,1,1,5	script	poring_village_1	-1,{
+1@begi,1,1,5	script	波利村1	-1,{
 	end;
 OnStart:
 	.@event$ = instance_npcname("poring_village_1") + "::OnMobDead";
@@ -413,11 +413,11 @@ OnMobDead:
 	if (mobcount( 'map_begi$, instance_npcname("poring_village_1") + "::OnMobDead" ) > 3)
 		end;
 	killmonster 'map_begi$, instance_npcname("poring_village_1") + "::OnMobDead";
-	mapannounce 'map_begi$, "Emily: Wow~ You are quite strong! You defeated all these Porings!", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：哇～你真强！把这些波利全打倒了！", bc_map, 0xFFFF00;
 	sleep 2000;
-	mapannounce 'map_begi$, "Emily: But the Poring looks unique somehow. Be careful!", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：但这些波利看起来有点特别。小心！", bc_map, 0xFFFF00;
 	sleep 2000;
-	mapannounce 'map_begi$, "Emily: Ah, there is a unique force if you go near the column of blue light.", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：啊，靠近蓝色光柱时能感觉到一股奇特的力量。", bc_map, 0xFFFF00;
 	sleep 2000;
 	monster 'map_begi$,132,103,"--en--","MD_GOLDRING",1, instance_npcname("poring_village_1") + "::OnBossDead";
 	end;
@@ -457,7 +457,7 @@ OnBossDead:
 	end;
 }
 
-1@begi,1,1,5	script	poring_village_2	-1,{
+1@begi,1,1,5	script	波利村2	-1,{
 	end;
 OnStart:
 	.@event$ = instance_npcname("poring_village_2") + "::OnMobDead";
@@ -531,9 +531,9 @@ OnMobDead:
 	if (mobcount( 'map_begi$, instance_npcname("poring_village_2") + "::OnMobDead" ) > 4)
 		end;
 	killmonster 'map_begi$, instance_npcname("poring_village_2") + "::OnMobDead";
-	mapannounce 'map_begi$, "Emily: Hmm.. here is another Boss... It looks strong...", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：嗯……这里还有个Boss……看起来很强……", bc_map, 0xFFFF00;
 	sleep 2000;
-	mapannounce 'map_begi$, "Emily: I'm not good at battle.. Let me look for treasure first. See you soon~", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：我不擅长战斗……我先去找宝物，回头见～", bc_map, 0xFFFF00;
 	sleep 2000;
 	monster 'map_begi$,42,173,"--en--","MD_AMERING",1, instance_npcname("poring_village_2") + "::OnBossDead";
 	end;
@@ -567,7 +567,7 @@ OnBossDead:
 	end;
 }
 
-1@begi,1,1,5	script	poring_village_3	-1,{
+1@begi,1,1,5	script	波利村3	-1,{
 	end;
 OnStart:
 	.@event$ = instance_npcname("poring_village_3") + "::OnMobDead";
@@ -613,17 +613,17 @@ OnMobDead:
 	if (mobcount( 'map_begi$, instance_npcname("poring_village_3") + "::OnMobDead" ) > 4)
 		end;
 	killmonster 'map_begi$, instance_npcname("poring_village_3") + "::OnMobDead";
-	mapannounce 'map_begi$, "King Poring: Excuse me... But... Would you please get back now?...", bc_map, 0xFFFF;
+	mapannounce 'map_begi$, "国王波利：打扰一下……那个……你们能现在回去吗……？", bc_map, 0xFFFF;
 	sleep 2000;
-	mapannounce 'map_begi$, "Emily: What? Who are you?", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：什么？你是谁？", bc_map, 0xFFFF00;
 	sleep 2000;
-	mapannounce 'map_begi$, "King Poring: I am the leader of this Poring Village. Sorry for the late introduction.", bc_map, 0xFFFF;
+	mapannounce 'map_begi$, "国王波利：我是这个波利村的领袖。抱歉这么晚才自我介绍。", bc_map, 0xFFFF;
 	sleep 2000;
-	mapannounce 'map_begi$, "King Poring: Maybe there is some misunderstanding on our flyers. This village is so poor and has nothing valuable.", bc_map, 0xFFFF;
+	mapannounce 'map_begi$, "国王波利：我们的传单可能有些误会。这个村子很穷，没有什么值钱的东西。", bc_map, 0xFFFF;
 	sleep 2000;
-	mapannounce 'map_begi$, "Emily: It's for me to judge after looking around more....", bc_map, 0xFFFF00;
+	mapannounce 'map_begi$, "艾米莉：等我再四处看看，自然由我判断……", bc_map, 0xFFFF00;
 	sleep 2000;
-	mapannounce 'map_begi$, "King Poring: Ugh.... I don't like fighting but there is no choice.", bc_map, 0xFFFF;
+	mapannounce 'map_begi$, "国王波利：唉……我不喜欢战斗，但别无选择。", bc_map, 0xFFFF;
 	sleep 2000;
 	monster 'map_begi$,182,194,"--en--","PORING",10;
 	for ( .@i = 0; .@i < 10; ++.@i ) {
@@ -640,18 +640,18 @@ OnBossDead:
 	end;
 }
 
-1@begi,117,108,5	script	Blue Light Column#1	4_ENERGY_BLUE,4,4,{
+1@begi,117,108,5	script	蓝色光柱#1	4_ENERGY_BLUE,4,4,{
 	end;
 OnTouch:
 	switch( rand(3) ) {
 	case 0:
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Ohhhhh!!! Release the parrot inside!!!!";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：哦哦哦！！！把里面的鹦鹉放出来！！！！";
 		break;
 	case 1:
-		unittalk getcharid(3), "" + strcharinfo(0) + " : I think it's ok to peck someone right now!!";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：现在啄人应该也没问题！！";
 		break;
 	case 2:
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Have you been bitten by a mad parrot?";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：你被疯鹦鹉咬过吗？";
 		break;
 	}
 	transform 1629,60000;
@@ -659,17 +659,17 @@ OnTouch:
 	sc_start SC_GLASTHEIM_STATE,30000,20;
 	end;
 }
-1@begi,37,165,5	duplicate(Blue Light Column#1)	Blue Light Column#2	4_ENERGY_BLUE,4,4
-1@begi,175,199,5	duplicate(Blue Light Column#1)	Blue Light Column#3	4_ENERGY_BLUE,4,4
+1@begi,37,165,5	duplicate(蓝色光柱#1)	Blue Light Column#2	4_ENERGY_BLUE,4,4
+1@begi,175,199,5	duplicate(蓝色光柱#1)	Blue Light Column#3	4_ENERGY_BLUE,4,4
 
 
 1@begi,199,186,5	script	#gift	4_GEFFEN_03,{
-	mes "[Emily]";
-	mes "You can have all of the items you find in this dungeon. I already have some.";
+	mes "[艾米莉]";
+	mes "这个地下城里找到的物品都归你。我已经有一些了。";
 	next;
 	if (isbegin_quest(12418) == 1) {
-		mes "[Emily]";
-		mes "Ah, I found some items. Let me give you one of them. Just to celebrate your first visit!";
+		mes "[艾米莉]";
+		mes "啊，我找到了一些物品。分你一件吧，就当庆祝你第一次来访！";
 		next;
 		if (rand(100) < 50)
 			getitem 19238,1;	// PoringTownOnion
@@ -677,8 +677,8 @@ OnTouch:
 			getitem 19239,1;	// PoringTownCarrot
 		completequest 12418;
 	}
-	mes "[Emily]";
-	mes "I don't need this novice box. You can take it. Now, let's go out side!";
+	mes "[艾米莉]";
+	mes "我不需要这个初心者箱子。你拿去吧。现在，我们出去吧！";
 	close2;
 	getitem 23302,1;	// PoringsPreciousBox
 	warp "prt_fild05",149,238;

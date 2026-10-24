@@ -28,10 +28,10 @@
 //= TODO: The official entrance is in Izlude.
 //============================================================
 
-prontera,146,163,6	script	Novice Castles	729,{
-	mes "[Cita]";
+prontera,146,163,6	script	初心者城堡	729,{
+	mes "[西塔]";
 	if (!getcharid(2)) {
-		mes "^FF0000You have to enter a guild to be able to hit Emperium!^000000";
+		mes "^FF0000必须加入公会，才能攻击华丽金属！^000000";
 	} else if (getgdskilllv(getcharid(2),10013) || 
 	         (getgdskilllv(getcharid(2),10000) +
 	          getgdskilllv(getcharid(2),10001) +
@@ -49,18 +49,18 @@ prontera,146,163,6	script	Novice Castles	729,{
 	          getgdskilllv(getcharid(2),10013) +
 	          getgdskilllv(getcharid(2),10014) > 9)
 	          ) {
-		mes "I see... your guild has Emergency Call mastered.";
-		mes "You cannot enter the Novice Castle area.";
+		mes "原来如此……您的公会已经掌握了紧急呼叫。";
+		mes "您无法进入初心者城堡区域。";
 		emotion ET_SCRATCH;
 		emotion ET_KEK, playerattached();
 	} else {
-		mes "I'm a new usher of Novice Castles.";
+		mes "我是初心者城堡的新任引路人。";
 		next;
-		mes "[Cita]";
+		mes "[西塔]";
 		if ((eaclass()&(EAJL_2|EAJL_UPPER)) || BaseLevel>=60) {
-			mes "I'm sorry, you can't enter the sacred Novice Castles place.";
+			mes "抱歉，您不能进入神圣的初心者城堡。";
 			emotion ET_SORRY;
-		} else if (select("Warp me to Novice Castles","Cancel") == 1) {
+		} else if (select("传送我到初心者城堡","取消") == 1) {
 			// remove several unallowed buffs
 			sc_end SC_ASSUMPTIO;
 			sc_end SC_IMPOSITIO;
@@ -82,14 +82,14 @@ prontera,146,163,6	script	Novice Castles	729,{
 	close;
 }
 
-n_castle,102,107,5	script	Cita	729,{
-	mes "[Cita]";
-	mes "Hello, "+ strcharinfo(0) +". Can I help you?";
+n_castle,102,107,5	script	西塔	729,{
+	mes "[西塔]";
+	mes "您好，"+ strcharinfo(0) +". Can I help you?";
 	next;
-	if (select("Warp me to Prontera!","Cancel") == 1) {
+	if (select("传送我到普隆德拉！","取消") == 1) {
 		warp "prontera",155,177+rand(5);
 	} else {
-		mes "[Cita]";
+		mes "[西塔]";
 		mes "Ok.";
 	}
 	close;

@@ -17,56 +17,56 @@
 
 // Main NPC :: 201105_luk_enc
 //============================================================
-itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
+itemmall,29,71,3	script	恶魔附魔大师#prq	63,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "You are carrying too many items, please reduce it and come back again!";
+		mes "你携带的物品太多了，请减少一些后再来吧！";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "You are over the weight limit, please reduce it and come back again!";
+		mes "你的负重已超过上限，请减轻负重后再来吧！";
 		close;
 	}
-	mes "[Devil Enchant Master]";
-	mes "Yes?";
-	mes "You are looking for me?";
+	mes "[恶魔附魔大师]";
+	mes "有什么事吗？";
+	mes "你找我？";
 	next;
-	switch(select("This is the first time seeing you!:I heard that you are the best!:Please initialize the enchant.")) {
+	switch(select("第一次见到你！:听说你是最厉害的！:请初始化附魔。")) {
 	case 1:
-		mes "[Devil Enchant Master]";
-		mes "Ha ha ha~ Of course, I am not the kind of person that simply deals with people.";
+		mes "[恶魔附魔大师]";
+		mes "哈哈哈～当然，我可不是那种随随便便就替人办事的人。";
 		next;
-		mes "[Devil Enchant Master]";
-		mes "Including you! Even if you offer me plenty of money, I will not simply enchant for you!!";
+		mes "[恶魔附魔大师]";
+		mes "包括你！就算你给我再多的钱，我也不会随随便便为你附魔！！";
 		next;
-		mes "[Devil Enchant Master]";
-		mes "Have you seen my title? Very few people have this title for a reason!";
+		mes "[恶魔附魔大师]";
+		mes "你看到我的称号了吗？很少有人拥有这个称号，这可不是没有原因的！";
 		next;
-		mes "[Devil Enchant Master]";
-		mes "I will only enchant if you bring an ^0000ffEnchant Book^000000 along!";
+		mes "[恶魔附魔大师]";
+		mes "只有带上^0000ff附魔书^000000，我才会为你附魔！";
 		next;
-		mes "[Devil Enchant Master]";
-		mes "Else, I will not enchant for you....";
+		mes "[恶魔附魔大师]";
+		mes "否则，我是不会为你附魔的……";
 		close;
 	case 2:
 		if (!countitem(6484)) {
-			mes "[Devil Enchant Master]";
-			mes "Are you listening to me? I will only do for you if you bring the Enchant Book!";
+			mes "[恶魔附魔大师]";
+			mes "你在听我说话吗？只有带来附魔书，我才会为你办事！";
 			close;
 		}
 		set .@select,1;
 		break;
 	case 3:
-		mes "[Devil Enchant Master]";
+		mes "[恶魔附魔大师]";
 		if (Zeny < 100000) {
-			mes "Initializing will cost 100,000 zeny. It seems you do not have enough zeny...";
+			mes "初始化需要花费 100,000 Zeny。看来你的 Zeny 不够……";
 			close;
 		}
-		mes "Initializing will cost 100,000 zeny and confirming whether the weapon is enchanted!";
+		mes "初始化需要花费 100,000 Zeny，并确认武器是否已附魔！";
 		next;
-		if (select("Let me think about it.:Initialize it now!") == 1) {
-			mes "[Devil Enchant Master]";
-			mes "Come back after you have confirmed!";
+		if (select("让我想想。:现在就初始化！") == 1) {
+			mes "[恶魔附魔大师]";
+			mes "确认好之后再回来吧！";
 			close;
 		}
 		set .@select,2;
@@ -74,9 +74,9 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 	}
 	set .@part, EQI_HAND_R;
 
-	mes "[Devil Enchant Master]";
+	mes "[恶魔附魔大师]";
 	if (!getequipisequiped(.@part)) {
-		mes "Are you trying to remove the enchanted equipment?";
+		mes "你是想解除已附魔的装备吗？";
 		close;
 	}
 	setarray .@equip_card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
@@ -88,21 +88,21 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 	.@equip_refine = getequiprefinerycnt(.@part);
 	set .@item$, "|1292|1394|1491|1585|2015|13071|13115|16019|18112|21000|";
 	if (!compare(.@item$,"|"+.@equip_id+"|")) {
-		mes "I don't want to touch your equipment now!";
+		mes "我现在可不想碰你的装备！";
 		close;
 	}
 
 	if (.@select == 1) {
 		if (!countitem(6484)) {
-			mes "Are you listening to me? I will only do for you if you bring the Enchant Book!";
+			mes "你在听我说话吗？只有带来附魔书，我才会为你办事！";
 			close;
 		}
-		mes "Which type of effect do you want to enchant?";
+		mes "你想附魔哪种类型的效果？";
 		next;
-		switch(select("Let me think about it.:Physical Series:Magical Series")) {
+		switch(select("让我想想。:物理系:魔法系")) {
 		case 1:
-			mes "[Devil Enchant Master]";
-			mes "Come back again after you change your mind!";
+			mes "[恶魔附魔大师]";
+			mes "改变主意后再来吧！";
 			close;
 		case 2:
 			set .@enc_type,1;
@@ -111,21 +111,21 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 			set .@enc_type,2;
 			break;
 		}
-		mes "[Devil Enchant Master]";
+		mes "[恶魔附魔大师]";
 		if (.@equip_card[3]) {
-			mes "This equipment has been enchanted! You need to initialize first before you want to enchant it again.";
+			mes "这件装备已经附魔过了！想再次附魔，需要先进行初始化。";
 			close;
 		}
-		mes "The enchant process might fail, and ^ff0000it will reduce partial refine level^000000, but the slotted card and weapon will not be broken! Are you sure you want to continue?";
+		mes "附魔过程可能会失败，^ff0000会降低部分精炼等级^000000，但插槽中的卡片和武器不会损坏！你确定要继续吗？";
 		next;
-		if (select("Next time!:Start now!") == 1) {
-			mes "[Devil Enchant Master]";
-			mes "Come back again after you have decided!";
+		if (select("下次吧！:现在开始！") == 1) {
+			mes "[恶魔附魔大师]";
+			mes "决定好之后再回来吧！";
 			close;
 		}
 		if (.@equip_card[3]) {
-			mes "[Devil Enchant Master]";
-			mes "It seems there's a problem, let me take a look.";
+			mes "[恶魔附魔大师]";
+			mes "好像出了问题，让我看看。";
 			close;
 		}
 
@@ -206,27 +206,27 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 			else if (.@i < 1124)  set .@enchant,4806; //Matk3
 			else set .@enchant,0;
 		} else {
-			mes "[Devil Enchant Master]";
-			mes "Hmm! This item is having a problem, please check it again!";
+			mes "[恶魔附魔大师]";
+			mes "嗯！这件物品有问题，请再检查一遍！";
 			close;
 		}
-		mes "[Devil Enchant Master]";
+		mes "[恶魔附魔大师]";
 		if (.@equip_card[3]) {
-			mes "This item has been enchanted!";
+			mes "这件物品已经附魔过了！";
 			close;
 		}
 		if (!countitem(6484)) {
-			mes "Are you listening to me? I will only do for you if you bring the Enchant Book!";
+			mes "你在听我说话吗？只有带来附魔书，我才会为你办事！";
 			close;
 		}
 		if (.@enchant == 0) {
 			specialeffect EF_SHIELDCHARGE;
-			mes "Oh! Unbelievable!! It failed!! Please come again!";
+			mes "哦！真是难以置信！！竟然失败了！！请再来一次吧！";
 			set .@lost_refine, rand(0,.@equip_refine);
 			set .@equip_refine, .@equip_refine - .@lost_refine;
 		} else {
 			specialeffect EF_REPAIRWEAPON;
-			mes "The slot ^9900004^000000 has been enchanted!";
+			mes "插槽 ^9900004^000000 已附魔成功！";
 		}
 		delitem 6484,1; //Enchant_Book
 
@@ -242,25 +242,25 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 
 		if (.@lost_refine) {
 			next;
-			mes "[Devil Enchant Master]";
-			mes "The failure has reduced the refine by "+callfunc("F_InsertPlural",.@lost_refine,"level")+"! Don't be depressed!";
+			mes "[恶魔附魔大师]";
+			mes "失败使精炼等级降低了"+callfunc("F_InsertPlural",.@lost_refine,"level")+"! Don't be depressed!";
 		}
 		close;
 	} else if (.@select == 2) {
 		if (Zeny < 100000) {
-			mes "You need to bring some money to initialize!!";
+			mes "初始化需要带钱来！！";
 			close;
 		}
 		if (getiteminfo(.@equip_card[3], ITEMINFO_SUBTYPE) != CARD_ENCHANT) {
-			mes "This item is not enchanted!";
+			mes "这件物品没有附魔！";
 			close;
 		}
 		if (!getequipisequiped(.@part)) {
-			mes "Are you unequipping now?";
+			mes "你现在要卸下装备吗？";
 			close;
 		}
 		specialeffect EF_REPAIRWEAPON;
-		mes "I initialized the enchant effects.";
+		mes "我已经初始化了附魔效果。";
 		set Zeny, Zeny - 100000;
 
 		// anti-hack
@@ -275,7 +275,7 @@ itemmall,29,71,3	script	Devil Enchant Master#prq	63,{
 
 		close;
 	} else {
-		mes "It seems you have chosen the wrong job??";
+		mes "看来你选错职业了？？";
 		close;
 	}
 }

@@ -14,16 +14,16 @@
 //= 2.1 Fixes Issue #1482, where Rebellion jobs cannot use this npc. [Limestone]
 //============================================================
 
-que_ng,187,149,3	script	Magazine Dealer Kenny::mdk	4_M_01,{
-	mes "[Kenny]";
+que_ng,187,149,3	script	弹匣商人 肯尼::mdk	4_M_01,{
+	mes "[肯尼]";
 	if (BaseClass == Job_Gunslinger) {
-		mes "Welcome to my Magazine Shop.";
-		mes "As you may know, large numbers";
-		mes "of bullets can be carried more";
-		mes "easily when they're in Magazines. Now, can I interest you in";
-		mes "anything in particular?";
+		mes "欢迎光临我的弹匣商店。";
+		mes "您也知道，大量";
+		mes "子弹装在弹匣里";
+		mes "会更容易携带。那么，您想看看";
+		mes "些什么呢？";
 		next;
-		switch(select("Wind Sphere Pack:Shadow Sphere Pack:Poison Sphere Pack:Water Sphere Pack:Fire Sphere Pack:Cartridge:Blood Cartridge:Silver Cartridge:Cancel")) {
+		switch(select("风之弹匣:暗影弹匣:毒物弹匣:水之弹匣:火焰弹匣:子弹盒:血色子弹盒:银色子弹盒:取消")) {
 		case 1: callsub S_Casing,13204,12144;// <bullet id>, <pack id>
 		case 2: callsub S_Casing,13206,12145;
 		case 3: callsub S_Casing,13205,12146;
@@ -33,94 +33,94 @@ que_ng,187,149,3	script	Magazine Dealer Kenny::mdk	4_M_01,{
 		case 7: callsub S_Casing,13202,12150;
 		case 8: callsub S_Casing,13201,12151;
 		case 9:
-			mes "[Kenny]";
-			mes "Well, if you ever find";
-			mes "that you have too many";
-			mes "bullets, come and see me.";
-			mes "It's a smart idea to store";
-			mes "bullets with my Magazines.";
+			mes "[肯尼]";
+			mes "那么，如果您觉得";
+			mes "自己的子弹太多";
+			mes "就来找我吧。";
+			mes "把子弹存进弹匣";
+			mes "是个聪明的主意。";
 			close;
 		}
 	}
-	mes "Welcome to my shop.";
-	mes "Here, I provide Magazines";
-	mes "and Cartridges for Gunslingers.";
-	mes "Sorry, but it doesn't look like";
-	mes "my services would be of any";
-	mes "use to you, adventurer.";
+	mes "欢迎光临本店。";
+	mes "本店提供弹匣";
+	mes "以及给神枪手的子弹盒。";
+	mes "抱歉，看来";
+	mes "我的服务对您";
+	mes "没什么用处，冒险者。";
 	next;
-	mes "[Kenny]";
-	mes "Eh, but if you happen to";
-	mes "know any Gunslingers, send";
-	mes "them my way. You can never";
-	mes "have too many bullets.";
+	mes "[肯尼]";
+	mes "不过，如果您认识";
+	mes "什么神枪手，请";
+	mes "介绍给我。子弹";
+	mes "永远不嫌多。";
 	close;
 
 S_Casing:
 	.@bullet_id = getarg(0);
 	.@pack_id = getarg(1);
 
-	mes "[Kenny]";
-	mes "Now, you can trade";
+	mes "[肯尼]";
+	mes "现在，您可以用";
 	mes callfunc("F_InsertPlural",500,getitemname(.@bullet_id));
-	mes "and 500 zeny for 1 "+getitemname(.@pack_id)+", so make sure";
-	mes "you have sufficient bullets";
-	mes "and zeny for this exchange.";
+	mes "以及 500 Zeny 换取 1 个"+getitemname(.@pack_id)+", so make sure";
+	mes "请确保您有足够的子弹";
+	mes "和 Zeny 来完成这次兑换。";
 	next;
-	mes "[Kenny]";
-	mes "You can exchange "+callfunc("F_InsertPlural",500,getitemname(.@bullet_id))+" and 500 zeny";
-	mes "with 1 "+getitemname(.@pack_id)+".";
+	mes "[肯尼]";
+	mes "您可以用"+callfunc("F_InsertPlural",500,getitemname(.@bullet_id))+" and 500 zeny";
+	mes "换取 1 个"+getitemname(.@pack_id)+".";
 	next;
-	mes "[Kenny]";
-	mes "Remember that I can't give";
-	mes "you more than 50 Magazines";
-	mes "at a time. Now please enter";
-	mes "the number of Magazines you";
-	mes "want to receive. If you want to cancel, then just enter ''0.''";
+	mes "[肯尼]";
+	mes "请记住，我一次最多";
+	mes "只给您 50 个弹匣。";
+	mes "现在请输入";
+	mes "您想领取的弹匣数量。";
+	mes "如果想取消，请输入 ''0.''";
 	next;
 	input .@amount;
-	mes "[Kenny]";
+	mes "[肯尼]";
 	if (.@amount > 50 || .@amount == 0) {
-		mes "Hey, I can't give you";
-		mes "that many Magazines.";
-		mes "Please try again, and";
-		mes "enter a number no";
-		mes "greater than 50.";
+		mes "喂，我不能给您";
+		mes "那么多弹匣。";
+		mes "请再试一次，";
+		mes "输入一个不超过";
+		mes "50 的数字。";
 	}
 	else if (countitem(.@bullet_id) >= (500*.@amount)) {
 		if (Zeny >= (500*.@amount)) {
 			if (checkweight(.@pack_id,.@amount) == 0) {
-				mes "Hey, you've got a lot";
-				mes "of junk crammed in your";
-				mes "Inventory. Free up some";
-				mes "space, and then come back";
-				mes "and trade your bullets for";
-				mes "some Magazines later, okay?";
+				mes "喂，您的物品栏里";
+				mes "塞满了乱七八糟的";
+				mes "东西。腾出一些";
+				mes "空间，然后再回来";
+				mes "用子弹换取";
+				mes "一些弹匣，好吗？";
 			} else {
-				mes "Alright, here are";
-				mes "your Magazines. Thanks";
-				mes "for visiting my shop, and";
-				mes "I hope that you use all";
-				mes "of your ammo wisely.";
+				mes "好，这是您的";
+				mes "弹匣。感谢";
+				mes "光临本店，";
+				mes "希望您能善加使用";
+				mes "所有的弹药。";
 				Zeny = Zeny -500*.@amount;
 				delitem .@bullet_id,(500*.@amount);
 				getitem .@pack_id,.@amount;
 			}
 		} else {
-			mes "Sorry, but you don't";
-			mes "have enough zeny for";
-			mes "this Magazine exchange.";
-			mes "Come back to my shop";
-			mes "after you've saved up";
-			mes "some more money.";
+			mes "抱歉，您的 Zeny";
+			mes "不足以进行";
+			mes "这次弹匣兑换。";
+			mes "等您攒够";
+			mes "更多的钱，";
+			mes "再来本店吧。";
 		}
 	} else {
-		mes "Sorry, but you don't";
-		mes "have enough bullets for";
-		mes "this Magazine exchange.";
-		mes "Maybe you should double";
-		mes "check your Inventory, and";
-		mes "then come back to me later.";
+		mes "抱歉，您的子弹";
+		mes "不足以进行";
+		mes "这次弹匣兑换。";
+		mes "也许您该再仔细";
+		mes "检查一下物品栏，";
+		mes "然后再来找我。";
 	}
 	close;
 }

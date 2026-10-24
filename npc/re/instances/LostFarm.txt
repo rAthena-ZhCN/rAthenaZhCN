@@ -9,205 +9,205 @@
 //= 1.2 Cleanup [Capuche]
 //============================================================
 
-ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
+ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 	if (checkweight(1000103,20) == 0) {
-		mes "- You cannot proceed with the quest because you have too many items. -";
+		mes "- 由于道具过多，无法继续任务。-";
 		close;
 	}
 	if (BaseLevel < 150) {
-		mes "[Cotton]";
-		mes "Well, you look to weak to work. I don't think you can do it right now.";
+		mes "[柯顿]";
+		mes "嗯，你看起来太虚弱了，根本干不了活。我觉得你现在还不行。";
 		next;
-		mes "- This quest is for level 150 or higher -";
+		mes "- 此任务需要等级 150 以上 -";
 		close;
 	}
 	if (ep17_2_main < 9) {
-		mes "- I've met eyes with the automatic doll in front of the farming facility. -";
+		mes "- 我与农场设施前的机器人对上了视线。-";
 		next;
-		mes "- The doll looked at me up and down, and turn its head. -";
+		mes "- 那机器人把我上下打量了一番，然后转过头去。-";
 		close;
 	}
 	if (isbegin_quest(8586) == 0) {
-		mes "- I've met eyes with the automatic doll in front of the farming facility. -";
+		mes "- 我与农场设施前的机器人对上了视线。-";
 		next;
-		mes "[Automatic Doll]";
-		mes "Heart rate, blood pressure, and body temperature is all normal.";
-		mes "Breathing is normal. Eyes stability normal.";
-		mes "Checking registration information...";
+		mes "[机器人]";
+		mes "心率、血压与体温均正常。";
+		mes "呼吸正常。眼部稳定性正常。";
+		mes "正在核对登记信息……";
 		next;
-		mes "- The doll looked at me up and down, and as if she look satisfied. -";
+		mes "- 那机器人把我上下打量了一番，似乎很满意。-";
 		next;
-		mes "[Automatic Doll]";
-		mes "Hello, " + strcharinfo(0) + "?";
-		mes "Did you come to see farming facility?";
+		mes "[机器人]";
+		mes "你好，" + strcharinfo(0) + "？";
+		mes "你是来看农场设施的吗？";
 		npctalk "Meow.", "Kitty#greeen", bc_self;
 		next;
 		if (select( "Huh.", "No." ) == 2) {
-			mes "[Automatic Doll]";
-			mes "This is the farming facility, where Kitty and the others live.";
-			mes "Just talk to me, if you're interested.";
-			mes "I will explain everything to you.";
+			mes "[机器人]";
+			mes "这里是农场设施，喵喵它们就住在这里。";
+			mes "如果有兴趣，就跟我谈谈吧。";
+			mes "我会为你详细说明。";
 			close;
 		}
-		mes "[Automatic Doll]";
-		mes "Kitty, hold still for a minute. Good boy~";
-		mes "I am in charge of the farm facility here.";
-		mes "I fix the plants, give it fertilizer and feed kitty here and his friends.";
+		mes "[机器人]";
+		mes "喵喵，乖乖别动。好孩子~";
+		mes "我负责管理这里的农场设施。";
+		mes "我照料植物、施肥，还喂养这里的喵喵和它的伙伴们。";
 		npctalk "Purr.", "Kitty#greeen", bc_self;
 		next;
-		mes "[Automatic Doll]";
-		mes "The ingredients for the dessert that comes out from the cafeteria is harvested here.";
+		mes "[机器人]";
+		mes "食堂供应的甜点原料就是在这里采收的。";
 		mes "Ehem.";
 		next;
-		mes "[Automatic Doll]";
-		mes "There have been a lot of guests lately, so we've been given more orders to harvest.";
-		mes "My colleague from an another job has just been assigned to this place, but she's a little clumsy.";
-		mes "It's easy to get a good harvest when everyone listens.";
+		mes "[机器人]";
+		mes "最近客人很多，我们接到的采收订单也增加了。";
+		mes "我那位从别的岗位调来的同事刚被分配到这里，不过她有点笨手笨脚。";
+		mes "只要大家听话，就能轻松获得好收成。";
 		next;
-		select( "You're talkative." );
-		mes "[Luina]";
-		mes "Oh, I forgot that I should introduce myself first, if I wanted to talk to a guest for a long time.";
-		mes "My name is Luina.";
+		select( "你真健谈。" );
+		mes "[露依纳]";
+		mes "啊，我忘了，想和客人长谈的话，应该先自我介绍。";
+		mes "我叫露依纳。";
 		next;
-		mes "[Luina]";
-		mes "Kitty here is a plant called a Pitaya. It's an improved ancient species that lived somewhere on this island.";
-		mes "I don't know if it's weird, but I'm not a Pitaya, but I'm good at listening.";
+		mes "[露依纳]";
+		mes "喵喵是名为肉食人火龙果的植物。它是曾栖息在这座岛某处的古代种改良而来。";
+		mes "不知道这算不算奇怪，我虽然不是肉食人火龙果，却很擅长倾听。";
 		next;
-		mes "- Luina stroked the Pitaya. -";
+		mes "- 露依纳轻抚着肉食人火龙果。-";
 		npctalk "Purr.", "Kitty#greeen", bc_self;
 		next;
-		mes "[Luina]";
-		mes "My master told me, I should name cute little things.";
-		mes "Kitty, Butterfly, Happy, and so on.";
-		mes "Pitaya is a small and cute creature, so I gave them a name.";
+		mes "[露依纳]";
+		mes "主人吩咐过我，要给可爱的小家伙们取名字。";
+		mes "喵喵、蝴蝶、快乐，等等。";
+		mes "肉食人火龙果是又小又可爱的生物，所以我给它们取了名字。";
 		next;
-		mes "[Luina]";
-		mes "Kitty is the cutest, the pitaya over here is Kitty.";
+		mes "[露依纳]";
+		mes "喵喵是最可爱的，这边的肉食人火龙果就是喵喵。";
 		next;
-		mes "[Luina]";
+		mes "[露依纳]";
 		mes "So...";
-		mes "Are you here to cut off some tails?";
+		mes "你是来切尾巴的吗？";
 		next;
-		select( "Tail?", "I don't have a tail." );
-		mes "[Luina]";
-		mes "You're here to cut off some tails, aren't you?";
-		mes "Oh, I've made a mistake.";
-		mes "Hold on for a while. I'll process the explanation.";
+		select( "尾巴？", "我没有尾巴。" );
+		mes "[露依纳]";
+		mes "你是来切尾巴的，对吧？";
+		mes "啊，我说错了。";
+		mes "请稍等一会儿。我来整理一下说明。";
 		setquest 8586;
 		close;
 	}
 	if (isbegin_quest(8586) == 1) {
-		mes "[Luina]";
-		mes "If you look at Kitty right now, He doesn't have roots, right?";
-		mes "It absorbs moisture from the air and photosyntheses it even without the roots.";
-		mes "Just some fertilizer... and some foods.";
+		mes "[露依纳]";
+		mes "你现在看喵喵，它没有根吧？";
+		mes "即使没有根，它也能从空气中吸收水分进行光合作用。";
+		mes "只需要一些肥料……还有一些食物。";
 		next;
-		mes "[Luina]";
-		mes "When you plant the seeds, they grow out of the ground, but I've never seen a multiple sprout before.";
+		mes "[露依纳]";
+		mes "播下种子后它们会从土里长出来，但我从没见过多株萌芽的情况。";
 		next;
-		mes "[Luina]";
-		mes "For the tail, You just grab the Pitaya, stroke it like this, and let them go.";
+		mes "[露依纳]";
+		mes "至于尾巴，只要抓住肉食人火龙果，像这样抚摸，再放开就行。";
 		next;
-		mes "- Luina held the Pitaya, demo to on how to pull the tail and put it down. -";
+		mes "- 露依纳抱起肉食人火龙果，示范了如何取下尾巴再放下它。-";
 		next;
-		mes "[Luina]";
-		mes "No, no. I didn't pull it.";
-		mes "The harvested tail is not necessarily enough to eat.";
-		mes "You have to take the loss into account.";
-		npctalk "Cluck...!", "Kitty#greeen", bc_self;
+		mes "[露依纳]";
+		mes "不，不。我没有硬扯。";
+		mes "采收下来的尾巴未必够吃。";
+		mes "你得把损耗考虑进去。";
+		npctalk "咕咕……！", "Kitty#greeen", bc_self;
 		next;
-		mes "[Luina]";
-		mes "You need to remove the seeds and the skin, but it's not difficult.";
-		mes "After processing it, the harvested Pitaya tail goes up to the table.";
+		mes "[露依纳]";
+		mes "需要去掉种子和外皮，但并不难。";
+		mes "处理过后，采收的肉食人火龙果尾巴就能端上餐桌。";
 		next;
-		mes "[Luina]";
-		mes "Harvesting is actually a bit difficult, so my colleague, 'Silk', will guide you.";
-		mes "You can enter even without a harvest. I'll just let you in here without a guide.";
+		mes "[露依纳]";
+		mes "采收其实有点困难，所以我的同事“席克”会引导你。";
+		mes "就算不采收也能进去。我就这样让你无向导进入这里。";
 		next;
-		mes "[Luina]";
-		mes "If you're free, talk to 'Cotton' here, she's the play manager, and she'll let you know what to do.";
-		mes "I know it's a little hard for you, but... if you lend us a hand, we will properly compensate you.";
-		npctalk "Cotton : I wish it's a little higher...", "Cotton#172_lost_0", bc_self;
+		mes "[露依纳]";
+		mes "如果有空，就跟这里的“柯顿”谈谈，她是游乐管理员，会告诉你该做什么。";
+		mes "我知道这对你有点难，不过……如果你肯帮忙，我们会好好酬谢你。";
+		npctalk "柯顿：要是再高一点就好了……", "Cotton#172_lost_0", bc_self;
 		next;
-		mes "[Luina]";
-		mes "Now that you've heard the instructions, you can enter now.";
-		mes "You can just go in if you want to look around.";
+		mes "[露依纳]";
+		mes "既然你已经听完说明，现在可以进去了。";
+		mes "如果只是想四处看看，直接进去就好。";
 		next;
-		mes "[Luina]";
-		mes "We talked about Cotton's job first, but it's actually the harvest that's more urgent.";
-		mes "If you're confident in your combat skills, I'd like you to help with the harvest.";
-		mes "I wish you can help me with the harvest...";
-		mes "We have to feed Boss Kitty also.";
+		mes "[露依纳]";
+		mes "我们先说了柯顿的工作，但其实采收更紧急。";
+		mes "如果你对自己的战斗能力有信心，我希望你能帮忙采收。";
+		mes "希望你能帮我采收……";
+		mes "我们还得喂喵喵大王。";
 		next;
-		select( "Boss Kitty?" );
-		mes "[Luina]";
-		mes "I just call him that, He is a little different from the other, it's hiding in a place that's hard to see.";
-		mes "If you want to see him around, you'll have to sprink the food and make it a little noisy around the farm.";
+		select( "喵喵大王？" );
+		mes "[露依纳]";
+		mes "我只是这么叫它。它和其他家伙有点不同，躲在不容易看见的地方。";
+		mes "想见到它，就得撒些食物，把农场周围弄得热闹一点。";
 		next;
-		mes "[Luina]";
-		mes "I'm the one in charge of the harvest, so please talk to me anytime you want!";
+		mes "[露依纳]";
+		mes "我负责采收，所以随时都可以来找我谈！";
 		completequest 8586;
 		next;
-		mes "[Luina]";
-		mes "Let's talk about the details when you want to help.";
+		mes "[露依纳]";
+		mes "等你想帮忙时，我们再谈细节。";
 		close;
 	}
 	if (isbegin_quest(8589) == 1) {
-		mes "[Luina]";
-		mes "Did the younglings came to play with you?";
-		mes "That's strange... I heard you very well.";
+		mes "[露依纳]";
+		mes "小家伙们来找你玩了吗？";
+		mes "真奇怪……我听得很清楚啊。";
 		mes "... what? Even Silk?";
-		mes "What happened?";
+		mes "怎么了？";
 		next;
-		select( "She is pretending to be a cat." );
+		select( "它在假装自己是猫。" );
 		emotion ET_FRET, getnpcid(0,"Kitty#greeen");
-		mes "[Kitty]";
+		mes "[喵喵]";
 		mes "Cluck.";
 		next;
-		mes "-- The cat hid behind Luina before she reached it. --";
+		mes "-- 那只猫在露依纳伸手之前就躲到了她身后。--";
 		next;
-		mes "[Luina]";
+		mes "[露依纳]";
 		mes "What...";
 		next;
-		mes "[Luina]";
-		mes "Maybe... just maybe?";
-		mes "It's listening to me?";
+		mes "[露依纳]";
+		mes "也许……只是也许？";
+		mes "它在听我说话？";
 		next;
-		select( "I guess." );
-		mes "[Luina]";
+		select( "我想是吧。" );
+		mes "[露依纳]";
 		mes "Kitty.";
-		npctalk "*Growl*", "Kitty#greeen", bc_self;
+		npctalk "*低吼*", "Kitty#greeen", bc_self;
 		next;
-		mes "[Luina]";
+		mes "[露依纳]";
 		mes "...";
-		mes "Is this what the guests would say as 'embarassed'?";
-		npctalk "*Croak*", "Kitty#greeen", bc_self;
+		mes "客人说的“害羞”就是这个意思吗？";
+		npctalk "*呱*", "Kitty#greeen", bc_self;
 		next;
-		mes "- When Luina reached out her hand to the cat, it put it's heads up to her hand. -";
+		mes "- 露依纳向猫伸出手，它便把头凑到她手上。-";
 		next;
-		mes "- Luina's face became complex with a satisfied expression while petting the cat. -";
+		mes "- 露依纳抚摸着猫，脸上浮现出满足又复杂的神情。-";
 		next;
-		mes "[Luina]";
+		mes "[露依纳]";
 		mes "Hmm...";
-		mes "Won't the guest will be able to befriend meow someday?";
+		mes "客人总有一天也能和喵喵成为朋友吧？";
 		next;
-		mes "[Luina]";
-		mes "Wouldn't it be great if we continued playing with them like this?";
-		npctalk "*Croak*", "Kitty#greeen", bc_self;
+		mes "[露依纳]";
+		mes "要是能就这样一直和它们玩下去，该多好？";
+		npctalk "*呱*", "Kitty#greeen", bc_self;
 		next;
-		mes "[Luina]";
-		mes "Yes! Please help Silk again tomorrow as well.";
-		mes "Then, one day... You'll be able to befriend all of the Pitayas!";
-		mes "Here... it's a token of promise.";
+		mes "[露依纳]";
+		mes "是的！明天也请再帮帮席克。";
+		mes "那么，总有一天……你就能和所有肉食人火龙果成为朋友！";
+		mes "给你……这是约定的信物。";
 		completequest 8589;
 		getitem 1000103,20;
 		getexp 3094009,0;
 		next;
-		mes "[Luina]";
+		mes "[露依纳]";
 		mes "Probably.";
-		npctalk "Quack Quack.", "Kitty#greeen", bc_self;
+		npctalk "嘎嘎。", "Kitty#greeen", bc_self;
 		next;
-		mes "- The cat cried with a high pitch sound as if it's excited. -";
+		mes "- 那猫兴奋似地发出高亢的叫声。-";
 		next;
 	}
 	switch( checkquest(8587,PLAYTIME) ) {
@@ -215,20 +215,20 @@ ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 		break;
 	case 0:
 	case 1:
-		mes "[Luina]";
-		mes "We have completed the necessary harvest for today.";
-		mes "We will resume our harvest again by dawn. Come back by then.";
+		mes "[露依纳]";
+		mes "今天的必要采收已经完成了。";
+		mes "天亮时我们会再次开始采收。到时候再来吧。";
 		close;
 	case 2:
-		mes "[Luina]";
-		mes "^0000FFOur struggle with the Pitaya seems like a long time ago.^000000";
-		mes "^0000FFI now have the courage again to go back into the farming facility again.^000000";
+		mes "[露依纳]";
+		mes "^0000FF与肉食人火龙果的苦战仿佛已是很久以前的事了。^000000";
+		mes "^0000FF我现在又有勇气再次回到农场设施了。^000000";
 		erasequest 8587;
 		close;
 	}
 	.@party_id = getcharid(1);
 	if (.@party_id < 1) {
-		mes "^FF0000You must organize for atleast one person or join a party to enter.^000000";
+		mes "^FF0000必须至少组好一人以上的队伍或加入队伍才能进入。^000000";
 		close;
 	}
 	.@md_name$ = "Farm Lost in Time";
@@ -241,34 +241,34 @@ ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 		}
 	}
 	if (.@count > 0) {
-		mes "[Luina]";
-		mes "!? What happened? You have a broken tail.";
-		mes "I'll take care of that, please.";
-		mes "Thank you.... After the next harvest experience, be sure to deliver it to Silk and come out.";
+		mes "[露依纳]";
+		mes "！？怎么了？你的尾巴断了。";
+		mes "那个我来处理吧，请交给我。";
+		mes "谢谢你……下次采收体验结束后，一定要把它交给席克再出来。";
 		next;
 	}
-	mes "[Luina]";
-	mes "Hello, " + strcharinfo(0) + ".";
-	mes "Are you going to enter the farming facility today?";
+	mes "[露依纳]";
+	mes "你好，" + strcharinfo(0) + ".";
+	mes "你今天要进入农场设施吗？";
 	next;
-	switch( select( (is_party_leader() ? "Create " + .@md_name$ : ""), "Enter the dungeon.", "Cancel" ) ) {
+	switch( select( (is_party_leader() ? "创建" + .@md_name$ : ""), "进入副本。", "取消" ) ) {
 	case 1:
 		if (instance_create(.@md_name$) == -3)
 			dispbottom "The reservation of the instance '" + .@md_name$ + "' has failed due to an active instance.";
-		mes "[Luina]";
-		mes "Please wait for a moment~";
-		mes "I'll prepare the food for today.";
+		mes "[露依纳]";
+		mes "请稍等一会儿~";
+		mes "我来准备今天的食物。";
 		close;
 	case 2:
 		if (instance_enter(.@md_name$) != IE_OK) {
-			mes "^FF0000The memorial dungeon hasn't been created yet.^000000";
+			mes "^FF0000纪念副本尚未创建。^000000";
 			close;
 		}
 		setquest 8587;
 		if (isbegin_quest(8588) > 0)
 			erasequest 8588;
 		setquest 8588;
-		mapannounce "ba_maison", "" + strcharinfo(0) + " of the party, " + .@party_name$ + ", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
+		mapannounce "ba_maison", "" + strcharinfo(0) + "的队伍，" + .@party_name$ + ", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
 		end;
 	case 3:
 		end;
@@ -299,25 +299,25 @@ OnTouch:
 	disablenpc();
 	'lost_farm = 0;
 	enablenpc instance_npcname("Wooden Box#01");
-	npctalk "Oh! Guest! Over here!!", instance_npcname("Wooden Box#01");
+	npctalk "哦！客人！这边！！", instance_npcname("Wooden Box#01");
 	end;
 }
 
 1@lost,163,47,3	script(DISABLED)	Wooden Box#01	4_WOODBOX,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm == 0) {
-		mes "[Silk]";
-		mes "Welcome to the breeding ground! I'm silk the one in charge of collecting!";
-		npctalk "Silk : Welcome to the breeding ground! I'm silk the one in charge of collecting!";
+		mes "[席克]";
+		mes "欢迎来到培育场！我是负责采集的席克！";
+		npctalk "席克：欢迎来到培育场！我是负责采集的席克！";
 		next;
-		mes "[Silk]";
-		mes "Eeek... Save me!";
-		npctalk "Silk : Eeek... Save me!";
+		mes "[席克]";
+		mes "咿呀……救命！";
+		npctalk "席克：咿呀……救命！";
 		close2;
 		if ('lost_farm == 0) {
 			'lost_farm = 1;
@@ -325,7 +325,7 @@ OnTouch:
 		}
 		end;
 	}
-	npctalk "Silk : Calm down the Pitayas!";
+	npctalk "席克：让肉食人火龙果冷静下来！";
 	end;
 
 OnStart:
@@ -345,7 +345,7 @@ OnMobDead:
 		disablenpc();
 		enablenpc instance_npcname("Silk#01");
 		sleep 1000;
-		npctalk "Silk : !!", instance_npcname("Silk#01");
+		npctalk "席克：！！", instance_npcname("Silk#01");
 	}
 	end;
 }
@@ -353,52 +353,52 @@ OnMobDead:
 
 1@lost,163,47,3	script(DISABLED)	Silk#01	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm != 2)
 		end;
-	mes "[Silk]";
-	mes "Thank you for saving my life! According to Luina, the Pitaya are a gentle creature!";
-	npctalk "Silk : Thank you for saving my life! According to Luina, the Pitaya are a gentle creature!";
+	mes "[席克]";
+	mes "谢谢你救了我！听露依纳说，肉食人火龙果是温顺的生物！";
+	npctalk "席克：谢谢你救了我！听露依纳说，肉食人火龙果是温顺的生物！";
 	next;
-	mes "[Silk]";
-	mes "You've seen it too! I'm scared!";
-	npctalk "Silk : You've seen it too! I'm scared!";
+	mes "[席克]";
+	mes "你也看见了吧！我好害怕！";
+	npctalk "席克：你也看见了吧！我好害怕！";
 	next;
-	mes "[Silk]";
-	mes "Feed and hug for five minutes each? How do I pet them, when they keep showing their teeth?";
-	npctalk "Silk : Feed and hug for five minutes each? How do I pet them, when they keep showing their teeth?";
+	mes "[席克]";
+	mes "喂食和拥抱各五分钟？它们一直龇着牙，我怎么抚摸它们啊？";
+	npctalk "席克：喂食和拥抱各五分钟？它们一直龇着牙，我怎么抚摸它们啊？";
 	next;
-	mes "[Silk]";
-	mes "What else should be done in 5 minutes!";
-	npctalk "Silk : What else should be done in 5 minutes!";
+	mes "[席克]";
+	mes "五分钟里还能做什么啊！";
+	npctalk "席克：五分钟里还能做什么啊！";
 	next;
-	mes "[Silk]";
+	mes "[席克]";
 	mes "...";
-	npctalk "Silk : ...";
+	npctalk "席克：……";
 	next;
-	mes "[Silk]";
-	mes "Dear guest...";
-	npctalk "Silk : Dear guest...";
+	mes "[席克]";
+	mes "亲爱的客人……";
+	npctalk "席克：亲爱的客人……";
 	next;
-	mes "[Silk]";
-	mes "I understand why Luina asked for more worker because she couldn't harvest quickly herself.";
-	npctalk "Silk : I understand why Luina asked for more worker because she couldn't harvest quickly herself.";
+	mes "[席克]";
+	mes "我明白露依纳为什么要多找人手了，因为她自己没法很快采收。";
+	npctalk "席克：我明白露依纳为什么要多找人手了，因为她自己没法很快采收。";
 	next;
-	mes "[Silk]";
-	mes "But it would be faster to hold it and play with it just like you did, rather than petting it for 5 minutes.";
-	npctalk "Silk : But it would be faster to hold it and play with it just like you did, rather than petting it for 5 minutes.";
+	mes "[席克]";
+	mes "但像你那样抱起它陪它玩，会比抚摸五分钟快得多。";
+	npctalk "席克：但像你那样抱起它陪它玩，会比抚摸五分钟快得多。";
 	next;
-	mes "[Silk]";
+	mes "[席克]";
 	mes "... though I can't hold onto it.";
-	npctalk "Silk : ... though I can't hold onto it.";
+	npctalk "席克：……不过我可抓不住它。";
 	next;
-	mes "[Silk]";
-	mes "Let's move on to the next habitat, it's around here. Ready? Here we go!";
-	npctalk "Silk : Let's move on to the next habitat, it's around here. Ready? Here we go!";
+	mes "[席克]";
+	mes "我们去下一个栖息地吧，就在这附近。准备好了吗？走吧！";
+	npctalk "席克：我们去下一个栖息地吧，就在这附近。准备好了吗？走吧！";
 	close2;
 	if ('lost_farm == 2) {
 		'lost_farm = 3;
@@ -412,60 +412,60 @@ OnMobDead:
 
 1@lost,214,146,3	script(DISABLED)	Silk#02	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm == 3) {
-		mes "[Silk]";
-		mes "This facility... As you can see, this is a convenient breeding ground for our scaled friends.";
-		npctalk "Silk : This facility... As you can see, this is a convenient breeding ground for our scaled friends.";
+		mes "[席克]";
+		mes "这个设施……如你所见，是为我们这些有鳞的朋友准备的便利培育场。";
+		npctalk "席克：这个设施……如你所见，是为我们这些有鳞的朋友准备的便利培育场。";
 		next;
-		mes "[Silk]";
-		mes "Whether it's plants or animals. The temperature and humidity are always constant.";
-		npctalk "Silk : Whether it's plants or animals. The temperature and humidity are always constant.";
+		mes "[席克]";
+		mes "无论是植物还是动物。这里的温度与湿度始终保持恒定。";
+		npctalk "席克：无论是植物还是动物。这里的温度与湿度始终保持恒定。";
 		next;
-		mes "[Silk]";
-		mes "I heard it's not pleasant for people, how about breathing?";
-		npctalk "Silk : I heard it's not pleasant for people, how about breathing?";
+		mes "[席克]";
+		mes "听说对人类来说不太舒服，呼吸没问题吗？";
+		npctalk "席克：听说对人类来说不太舒服，呼吸没问题吗？";
 		next;
-		mes "[Silk]";
-		mes "Now I'm going to sprinkle some food here, too. Let's get this over with. I'll go hide...";
-		npctalk "Silk : Now I'm going to sprinkle some food here, too. Let's get this over with... I'll go hide.";
+		mes "[席克]";
+		mes "我现在也要在这里撒些食物。赶紧结束吧。我去躲起来……";
+		npctalk "席克：我现在也要在这里撒些食物。赶紧结束吧……我去躲起来。";
 		next;
-		mes "[Silk]";
-		mes "Hey... Guys, it's time for bars and rice~";
-		npctalk "Silk : Hey... Guys, it's time for bars and rice~";
+		mes "[席克]";
+		mes "喂……各位，吃饭时间到了~";
+		npctalk "席克：喂……各位，吃饭时间到了~";
 		close2;
 		if ('lost_farm == 3) {
 			'lost_farm = 4;
-			npctalk "Silk : I've sprinkled the food already, they'll show up soon!";
+			npctalk "席克：食物已经撒好了，它们很快就会出来！";
 			disablenpc();
 			donpcevent instance_npcname("Wooden Box#02") + "::OnStart";
 		}
 		end;
 	}
 	if ('lost_farm == 4) {
-		mes "[Silk]";
-		mes "Haa, haa... I was so scared...";
-		npctalk "Silk : Haa, haa... I was so scared...";
+		mes "[席克]";
+		mes "哈啊，哈啊……吓死我了……";
+		npctalk "席克：哈啊，哈啊……吓死我了……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Are you sure that you're not playing right now?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you sure that you're not playing right now?";
+		mes "你确定你现在不是在玩吗？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：你确定你现在不是在玩吗？";
 		next;
-		mes "[Silk]";
-		mes "I think it's right for them. I told you before, they'll only produce tails if they're in a good mood.";
-		npctalk "Silk : I think it's right for them. I told you before, they'll only produce tails if they're in a good mood.";
+		mes "[席克]";
+		mes "我觉得这对它们来说很正常。我之前说过，它们只有在心情好的时候才会长出尾巴。";
+		npctalk "席克：我觉得这对它们来说很正常。我之前说过，它们只有在心情好的时候才会长出尾巴。";
 		next;
-		mes "[Silk]";
-		mes "By the way, shall we move on to the next location...? We're not done yet, so...";
-		npctalk "Silk : By the way, shall we move on to the next location...? We're not done yet, so...";
+		mes "[席克]";
+		mes "对了，我们要不要前往下一个地点……？还没结束呢，所以……";
+		npctalk "席克：对了，我们要不要前往下一个地点……？还没结束呢，所以……";
 		next;
-		mes "[Silk]";
-		mes "The next one is a playground with rocks and sand. When I harvest, I'll have to shake off the sand first...";
-		npctalk "Silk : The next one is a playground with rocks and sand. When I harvest, I'll have to shake off the sand first...";
+		mes "[席克]";
+		mes "下一个是有岩石和沙子的游乐场。采收时我得先把沙子抖掉……";
+		npctalk "席克：下一个是有岩石和沙子的游乐场。采收时我得先把沙子抖掉……";
 		close2;
 		if ('lost_farm == 4) {
 			'lost_farm = 5;
@@ -479,7 +479,7 @@ OnMobDead:
 }
 
 1@lost,214,146,3	script(DISABLED)	Wooden Box#02	4_WOODBOX,{
-	npctalk "Silk : Save me! I'm going to get eaten by the Pitayas!";
+	npctalk "席克：救命！我要被肉食人火龙果吃掉了！";
 	end;
 OnStart:
 	enablenpc();
@@ -493,9 +493,9 @@ OnStart:
 	monster 'map_lost$,211,144,"Cloud",20663,1, .@event$;
 	monster 'map_lost$,216,151,"Harmony",20660,1, .@event$;
 	sleep 3000;
-	npctalk "Silk : He~, Help me~~~~";
+	npctalk "席克：救、救命~~~~";
 	sleep 3000;
-	npctalk "Silk : Save the automatic doll~~~~~";
+	npctalk "席克：救救机器人~~~~~";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#02") + "::OnMobDead");
@@ -503,74 +503,74 @@ OnMobDead:
 		'lost_farm = 4;
 		disablenpc();
 		enablenpc instance_npcname("Silk#02");
-		npctalk "Silk : ...Is it over?", instance_npcname("Silk#02");
+		npctalk "席克：……结束了吗？", instance_npcname("Silk#02");
 		end;
 	}
-	npctalk "Silk : There " + (.@count == 1 ? "is" : "are") + " " + .@count + " left!";
+	npctalk "席克：剩下" + (.@count == 1 ? "的" : "的") + " " + .@count + "只！";
 	end;
 }
 
 
 1@lost,91,92,3	script(DISABLED)	Silk#03	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm == 5) {
-		mes "[Silk]";
-		mes "Don't mind my location...";
-		npctalk "Silk : Don't mind my location...";
+		mes "[席克]";
+		mes "别在意我所在的位置……";
+		npctalk "席克：别在意我所在的位置……";
 		next;
-		mes "[Silk]";
-		mes "Even if it's right to come over to play, at least not with me.";
-		npctalk "Silk : Even if it's right to come over to play, at least not with me.";
+		mes "[席克]";
+		mes "就算过来玩是对的，至少别找我。";
+		npctalk "席克：就算过来玩是对的，至少别找我。";
 		next;
-		mes "[Silk]";
-		mes "But I think they should be playing with you! That's right!";
-		npctalk "Silk : But I think they should be playing with you! That's right!";
+		mes "[席克]";
+		mes "但我觉得它们应该和你玩！没错！";
+		npctalk "席克：但我觉得它们应该和你玩！没错！";
 		next;
-		mes "[Silk]";
-		mes "Anyway, help me with the next harvest! Hey, guys~ It's time to eat~~";
-		npctalk "Silk : Anyway, help me with the next harvest! Hey, guys~ It's time to eat~~";
+		mes "[席克]";
+		mes "总之，帮我进行下一次采收吧！喂，各位~吃饭时间到了~~";
+		npctalk "席克：总之，帮我进行下一次采收吧！喂，各位~吃饭时间到了~~";
 		close2;
 		if ('lost_farm == 5) {
 			'lost_farm = 6;
-			npctalk "Silk : I've spread the food, so they'll show up soon!";
+			npctalk "席克：食物已经撒好了，它们很快就会出来！";
 			disablenpc();
 			donpcevent instance_npcname("Wooden Box#03") + "::OnStart";
 		}
 		end;
 	}
 	if ('lost_farm == 7) {
-		mes "[Silk]";
+		mes "[席克]";
 		mes "Woo...";
-		npctalk "Silk : Woo...";
+		npctalk "席克：呜……";
 		next;
-		mes "[Silk]";
-		mes "You and I... are covered in sand...";
-		npctalk "Silk : You and I... are covered in sand...";
+		mes "[席克]";
+		mes "你和我……都满身是沙……";
+		npctalk "席克：你和我……都满身是沙……";
 		next;
-		mes "[Silk]";
-		mes "Oh, I'm waterproof and dustproof, my core is fine.";
-		npctalk "Silk : Oh, I'm waterproof and dustproof, my core is fine.";
+		mes "[席克]";
+		mes "哦，我防水防尘，核心没事。";
+		npctalk "席克：哦，我防水防尘，核心没事。";
 		next;
-		mes "[Silk]";
-		mes "Am I angry? to the guest? no...";
-		npctalk "Silk : Am I angry? to the guest? no...";
+		mes "[席克]";
+		mes "我生气了吗？对客人？没有……";
+		npctalk "席克：我生气了吗？对客人？没有……";
 		next;
-		mes "[Silk]";
-		mes "The automatic doll... can I be angry? ...Hmmm...";
-		npctalk "Silk : The automatic doll... can I be angry? ...Hmmm...";
+		mes "[席克]";
+		mes "机器人……我可以生气吗？……嗯……";
+		npctalk "席克：机器人……我可以生气吗？……嗯……";
 		next;
-		mes "[Silk]";
+		mes "[席克]";
 		mes "...not now, but I feel like I can... hmmm.";
-		npctalk "Silk : ...not now, but I feel like I can... hmmm.";
+		npctalk "席克：……现在不行，不过我觉得我可以……嗯。";
 		next;
-		mes "[Silk]";
-		mes "Next is the playground with an oasis-like pool. Let us go...";
-		npctalk "Silk : Next is the playground with an oasis-like pool. Let us go...";
+		mes "[席克]";
+		mes "下一个是有着绿洲般水池的游乐场。我们走吧……";
+		npctalk "席克：下一个是有着绿洲般水池的游乐场。我们走吧……";
 		close2;
 		if ('lost_farm == 7) {
 			'lost_farm = 8;
@@ -584,7 +584,7 @@ OnMobDead:
 }
 
 1@lost,91,92,3	script(DISABLED)	Wooden Box#03	4_WOODBOX,{
-	npctalk "Silk : Kyaaah!";
+	npctalk "席克：呀啊啊！";
 	end;
 OnStart:
 	enablenpc();
@@ -598,9 +598,9 @@ OnStart:
 	monster 'map_lost$,92,99,"Rony",20664,1, .@event$;
 	monster 'map_lost$,89,94,"Mikey",20663,1, .@event$;
 	sleep 3000;
-	npctalk "Silk : Oh, don't come here~~~";
+	npctalk "席克：哦，别过来~~~";
 	sleep 3000;
-	npctalk "Silk : Not me, not meeee~~~";
+	npctalk "席克：不是我，不是我啊~~~";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#03") + "::OnMobDead");
@@ -610,7 +610,7 @@ OnMobDead:
 		enablenpc instance_npcname("Silk#03");
 		end;
 	}
-	npctalk "Silk : There " + (.@count == 1 ? "is" : "are") + " " + .@count + " left!";
+	npctalk "席克：剩下" + (.@count == 1 ? "的" : "的") + " " + .@count + "只！";
 	end;
 }
 
@@ -621,31 +621,31 @@ OnMobDead:
 
 1@lost,232,257,3	script(DISABLED)	Silk#04	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm == 8) {
-		mes "[Silk]";
-		mes "Again, don't worry about my location...";
-		npctalk "Silk : Again, don't worry about my location...";
+		mes "[席克]";
+		mes "再说一次，别在意我所在的位置……";
+		npctalk "席克：再说一次，别在意我所在的位置……";
 		next;
-		mes "[Silk]";
-		mes "What do you think? I think you're doing good for a first timer.";
-		npctalk "Silk : What do you think? I think you're doing good for a first timer.";
+		mes "[席克]";
+		mes "你觉得呢？我认为你作为新手做得不错。";
+		npctalk "席克：你觉得呢？我认为你作为新手做得不错。";
 		next;
-		mes "[Silk]";
-		mes "As expected, you have a talent for this! I was right!";
-		npctalk "Silk : As expected, you have a talent for this! I was right!";
+		mes "[席克]";
+		mes "果然，你在这方面很有天赋！我说得没错！";
+		npctalk "席克：果然，你在这方面很有天赋！我说得没错！";
 		next;
-		mes "[Silk]";
-		mes "Do you think an automatic doll can flatter people? I only told the truth.";
-		npctalk "Silk : Do you think an automatic doll can flatter people? I only told the truth.";
+		mes "[席克]";
+		mes "你觉得机器人会奉承人吗？我只是说了实话。";
+		npctalk "席克：你觉得机器人会奉承人吗？我只是说了实话。";
 		next;
-		mes "[Silk]";
-		mes "Let's look at your talent and spread the food! Guys~~ It's time to eat~~~";
-		npctalk "Silk : Let's look at your talent and spread the food! Guys~~ It's time to eat~~~";
+		mes "[席克]";
+		mes "让我看看你的本事，再撒食物吧！各位~~吃饭时间到了~~~";
+		npctalk "席克：让我看看你的本事，再撒食物吧！各位~~吃饭时间到了~~~";
 		close2;
 		if ('lost_farm == 8) {
 			'lost_farm = 9;
@@ -655,37 +655,37 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 10) {
-		mes "[Silk]";
+		mes "[席克]";
 		mes "...";
-		npctalk "Silk : ...";
+		npctalk "席克：……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Are you okay?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you okay?";
+		mes "你没事吧？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：你没事吧？";
 		next;
-		mes "[Silk]";
-		mes "I think it's a little different from geting used to a guest and getting used to this kind of work.";
-		npctalk "Silk : I think it's a little different from geting used to a guest and getting used to this kind of work";
+		mes "[席克]";
+		mes "我觉得这和习惯接待客人、习惯这类工作有点不同。";
+		npctalk "席克：我觉得这和习惯接待客人、习惯这类工作有点不同。";
 		next;
-		mes "[Silk]";
-		mes "Let's move on to the next location!";
-		npctalk "Silk : Let's move on to the next location!";
+		mes "[席克]";
+		mes "我们前往下一个地点吧！";
+		npctalk "席克：我们前往下一个地点吧！";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Is there another one?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Is there another one?";
+		mes "还有另一个吗？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：还有另一个吗？";
 		next;
-		mes "[Silk]";
-		mes "It may have been a small greenhouse from the outside, but it's an illusion. Look at the ceiling... It's really high, right?";
-		npctalk "Silk : It may have been a small greenhouse from the outside, but it's an illusion. Look at the ceiling... It's really high, right?";
+		mes "[席克]";
+		mes "从外面看或许只是个小温室，但那是错觉。看看天花板……很高吧？";
+		npctalk "席克：从外面看或许只是个小温室，但那是错觉。看看天花板……很高吧？";
 		next;
-		mes "[Silk]";
-		mes "There is a reason why I always guide guests.";
-		npctalk "Silk : There is a reason why I always guide guests.";
+		mes "[席克]";
+		mes "我总为客人带路是有原因的。";
+		npctalk "席克：我总为客人带路是有原因的。";
 		next;
-		mes "[Silk]";
-		mes "Next up is near the entrance, but according to Luina's information, it's a sleepy area. You think it's about to wake up?";
-		npctalk "Silk : Next up is near the entrance, but according to Luina's information, it's a sleepy area. You think he's about to wake up?";
+		mes "[席克]";
+		mes "接下来是入口附近，但根据露依纳的情报，那是一片沉睡的区域。你觉得它快要醒了吗？";
+		npctalk "席克：接下来是入口附近，但根据露依纳的情报，那是一片沉睡的区域。你觉得它快要醒了吗？";
 		close2;
 		if ('lost_farm == 10) {
 			'lost_farm = 11;
@@ -699,11 +699,11 @@ OnMobDead:
 }
 
 1@lost,232,257,3	script(DISABLED)	Wooden Box#04	4_WOODBOX,{
-	npctalk "Silk : Don't come! Don't come!";
+	npctalk "席克：别过来！别过来！";
 	end;
 OnStart:
 	enablenpc();
-	npctalk "Silk : Hey, guys~ Not me~";
+	npctalk "席克：喂，各位~不是我~";
 	sleep 1000;
 	.@event$ = instance_npcname("Wooden Box#04") + "::OnMobDead";
 	monster 'map_lost$,227,261,"Rudolf",20664,1, .@event$;
@@ -714,9 +714,9 @@ OnStart:
 	monster 'map_lost$,228,247,"Sammy",20661,1, .@event$;
 	monster 'map_lost$,234,253,"Joy",20662,1, .@event$;
 	sleep 3000;
-	npctalk "Silk : Don't come! Don't comeee!";
+	npctalk "席克：别过来！别过来啊！";
 	sleep 3000;
-	npctalk "Silk : Don't come this waaaaaay!";
+	npctalk "席克：别往这边来啊啊啊！";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#04") + "::OnMobDead");
@@ -724,41 +724,41 @@ OnMobDead:
 		'lost_farm = 10;
 		disablenpc();
 		enablenpc instance_npcname("Silk#04");
-		npctalk "Silk : ...Oh, my...", instance_npcname("Silk#04");
+		npctalk "席克：……哦，天哪……", instance_npcname("Silk#04");
 		end;
 	}
-	npctalk "Silk : There " + (.@count == 1 ? "is" : "are") + " " + .@count + " left!";
+	npctalk "席克：剩下" + (.@count == 1 ? "的" : "的") + " " + .@count + "只！";
 	end;
 }
 
 
 1@lost,247,119,3	script(DISABLED)	Silk#05	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带过来！";
 		close;
 	}
 	if ('lost_farm == 11) {
-		mes "[Silk]";
-		mes "Deep breaths... Deep Breaths...";
-		npctalk "Silk : Deep breaths... Deep Breaths...";
+		mes "[席克]";
+		mes "深呼吸……深呼吸……";
+		npctalk "席克：深呼吸……深呼吸……";
 		next;
-		mes "[Silk]";
-		mes "What? Does an automatic doll breathe deeply? Wouldn't you want to catch a breath if you can't control your mind?";
-		npctalk "Silk : What? Does an automatic doll breathe deeply? Wouldn't you want to catch a breath if you can't control your mind?";
+		mes "[席克]";
+		mes "什么？机器人也会深呼吸吗？心绪控制不住的时候，谁不想喘口气呢？";
+		npctalk "席克：什么？机器人也会深呼吸吗？心绪控制不住的时候，谁不想喘口气呢？";
 		next;
-		mes "[Silk]";
-		mes "Not with lungs, but... Come to think of it, how does Pitaya make a sounds?";
-		npctalk "Silk : Not with lungs, but... Come to think of it, how does Pitaya make a sounds?";
+		mes "[席克]";
+		mes "不是用肺，不过……说起来，肉食人火龙果是怎么发出声音的？";
+		npctalk "席克：不是用肺，不过……说起来，肉食人火龙果是怎么发出声音的？";
 		next;
-		mes "[Silk]";
+		mes "[席克]";
 		mes "...I don't want to be afraid.";
-		npctalk "Silk : ...I don't want to be afraid.";
+		npctalk "席克：……我不想害怕。";
 		next;
-		mes "[Silk]";
-		mes "So let's move on... The Pitayas here are sleepyheads, so the responses may be a little different. Now, guys...Come here...";
-		npctalk "Silk : So let's move on... The Pitayas here are sleepyheads, so the responses may be a little different. Now, guys...Come here...";
+		mes "[席克]";
+		mes "那我们继续吧……这里的肉食人火龙果是贪睡鬼，反应可能会有点不同。好了，各位……过来吧……";
+		npctalk "席克：那我们继续吧……这里的肉食人火龙果是贪睡鬼，反应可能会有点不同。好了，各位……过来吧……";
 		close2;
 		if ('lost_farm == 11) {
 			'lost_farm = 12;
@@ -768,44 +768,44 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 13) {
-		mes "[Silk]";
+		mes "[席克]";
 		mes "Phew...";
-		npctalk "Silk : Phew...";
+		npctalk "席克：呼……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Are you okay?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you okay?";
+		mes "你没事吧？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：你没事吧？";
 		next;
-		mes "[Silk]";
-		mes "Do 'Cats' bite you?";
+		mes "[席克]";
+		mes "“猫”会咬人吗？";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "I think so.";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : I think so.";
+		mes "我想是的。";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：我想是的。";
 		next;
-		mes "[Silk]";
-		mes "Is there a condition that requires you to bite people to be cute?";
-		npctalk "Silk : Is there a condition that requires you to bite people to be cute?";
+		mes "[席克]";
+		mes "难道要咬人才算可爱吗？";
+		npctalk "席克：难道要咬人才算可爱吗？";
 		next;
-		mes "[Silk]";
-		mes "As expected... Joy comes with a price.";
-		npctalk "Silk : As expected... Joy comes with a price.";
+		mes "[席克]";
+		mes "果然……快乐是有代价的。";
+		npctalk "席克：果然……快乐是有代价的。";
 		next;
-		mes "[Silk]";
-		mes "To enjoy it's cuteness, I'm ready to give my arms and legs...!";
-		npctalk "Silk : To enjoy it's cuteness, I'm ready to give my arms and legs...!";
+		mes "[席克]";
+		mes "为了享受它的可爱，我连手脚都愿意付出……！";
+		npctalk "席克：为了享受它的可爱，我连手脚都愿意付出……！";
 		next;
-		mes "[Silk]";
-		mes "I saw the guests again. I respect you. Oh, of course, it was admirable from the beginning.";
-		npctalk "Silk : I saw the guests again. I respect you. Oh, of course, it was admirable from the beginning.";
+		mes "[席克]";
+		mes "我又见到客人了。我尊敬你。哦，当然，从一开始就令人敬佩。";
+		npctalk "席克：我又见到客人了。我尊敬你。哦，当然，从一开始就令人敬佩。";
 		next;
-		mes "[Silk]";
-		mes "Does an automatic doll make jokes? Oh, you're pretty good at joking. I always mean it.";
-		npctalk "Silk : Does an automatic doll make jokes? Oh, you're pretty good at joking. I always mean it.";
+		mes "[席克]";
+		mes "机器人会开玩笑吗？哦，你还挺会开玩笑的。我一向是认真的。";
+		npctalk "席克：机器人会开玩笑吗？哦，你还挺会开玩笑的。我一向是认真的。";
 		next;
-		mes "[Silk]";
-		mes "Do we still have something to harvest? I'm sorry about that, too. Let's move to the next section.";
-		npctalk "Silk : Do we still have something to harvest? I'm sorry about that, too. Let's move to the next section.";
+		mes "[席克]";
+		mes "我们还有要采收的吗？对此我也很抱歉。我们前往下一个区域吧。";
+		npctalk "席克：我们还有要采收的吗？对此我也很抱歉。我们前往下一个区域吧。";
 		close2;
 		if ('lost_farm == 13) {
 			'lost_farm = 14;
@@ -819,11 +819,11 @@ OnMobDead:
 }
 
 1@lost,247,119,3	script(DISABLED)	Wooden Box#05	4_WOODBOX,{
-	npctalk "Silk : Save the automatic doll!";
+	npctalk "席克：救救机器人！";
 	end;
 OnStart:
 	enablenpc();
-	npctalk "Silk : ...";
+	npctalk "席克：……";
 	sleep 1000;
 	.@event$ = instance_npcname("Wooden Box#05") + "::OnMobDead";
 	monster 'map_lost$,248,115,"Dough",20664,1, .@event$;
@@ -834,9 +834,9 @@ OnStart:
 	monster 'map_lost$,244,115,"Sandy",20662,1, .@event$;
 	monster 'map_lost$,243,116,"Bonnie",20661,1, .@event$;
 	sleep 3000;
-	npctalk "Silk : .....";
+	npctalk "席克：……";
 	sleep 3000;
-	npctalk "Silk : ........... what's the difference!";
+	npctalk "席克：……到底有什么区别！";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#05") + "::OnMobDead");
@@ -844,45 +844,45 @@ OnMobDead:
 		'lost_farm = 13;
 		disablenpc();
 		enablenpc instance_npcname("Silk#05");
-		npctalk "Silk : Is it over?!", instance_npcname("Silk#05");
+		npctalk "席克：结束了吗？！", instance_npcname("Silk#05");
 		end;
 	}
-	npctalk "Silk : There " + (.@count == 1 ? "is" : "are") + " " + .@count + " left!";
+	npctalk "席克：剩下" + (.@count == 1 ? "的" : "有") + " " + .@count + "个！";
 	end;
 }
 
 
 1@lost,106,160,3	script(DISABLED)	Silk#06	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席尔克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带到这里来！";
 		close;
 	}
 	if ('lost_farm == 14) {
-		mes "[Silk]";
-		mes "I'm worried...";
-		npctalk "Silk : I'm worried...";
+		mes "[席尔克]";
+		mes "我很担心……";
+		npctalk "席尔克：我很担心……";
 		next;
-		mes "[Silk]";
-		mes "There's no distinction between us, but how canthey tell us apart?";
-		npctalk "Silk : There's no distinction between us, but how canthey tell us apart?";
+		mes "[席尔克]";
+		mes "我们之间没有区别，但他们是怎么分辨我们的？";
+		npctalk "席尔克：我们之间没有区别，但他们是怎么分辨我们的？";
 		next;
-		mes "[Silk]";
-		mes "Do I smell...? Sniff, sniff.";
-		npctalk "Silk : Do I smell...? Sniff, sniff.";
+		mes "[席尔克]";
+		mes "我闻到了……？嗅嗅。";
+		npctalk "席尔克：我闻到了……？嗅嗅。";
 		next;
-		mes "[Silk]";
-		mes "By the way... Today's quota is finally over half.";
-		npctalk "Silk : By the way... Today's quota is finally over half.";
+		mes "[席尔克]";
+		mes "话说回来……今天的配额终于过半了。";
+		npctalk "席尔克：话说回来……今天的配额终于过半了。";
 		next;
-		mes "[Silk]";
-		mes "This is all thanks to your help... Thank you so much.";
-		npctalk "Silk : This is all thanks to your help... Thank you so much.";
+		mes "[席尔克]";
+		mes "这全靠你的帮助……真是太感谢了。";
+		npctalk "席尔克：这全靠你的帮助……真是太感谢了。";
 		next;
-		mes "[Silk]";
-		mes "So let me call the Pitayas around here...";
-		npctalk "Silk : So let me call the Pitayas around here...";
+		mes "[席尔克]";
+		mes "那就让我把附近的肉食人火龙果叫过来……";
+		npctalk "席尔克：那就让我把附近的肉食人火龙果叫过来……";
 		close2;
 		if ('lost_farm == 14) {
 			'lost_farm = 15;
@@ -892,54 +892,54 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 16) {
-		mes "[Silk]";
+		mes "[席尔克]";
 		mes "Sigh...";
-		npctalk "Silk : Sigh...";
+		npctalk "席尔克：唉……";
 		next;
-		mes "[Silk]";
-		mes "According to Luina's instructions, what's left now is...";
-		npctalk "Silk : According to Luina's instructions, what's left now is...";
+		mes "[席尔克]";
+		mes "按照露依纳的指示，接下来只剩下……";
+		npctalk "席尔克：按照露依纳的指示，接下来只剩下……";
 		next;
-		mes "[Silk]";
-		mes "Only Boss Meow...";
-		npctalk "Silk : Only Boss Meow...";
+		mes "[席尔克]";
+		mes "只剩下大王喵喵……";
+		npctalk "席尔克：只剩下大王喵喵……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Boss Meow?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Boss Meow?";
+		mes "大王喵喵？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：大王喵喵？";
 		next;
-		mes "[Silk]";
-		mes "If the condition of being cute is biting, then boss meow would be cutest and better at biting as much as the others...";
-		npctalk "Silk : If the condition of being cute is biting, then boss meow would be cutest and better at biting as much as the others..";
+		mes "[席尔克]";
+		mes "如果可爱的条件是咬人，那大王喵喵就是最可爱的，咬起来也不输给其他家伙……";
+		npctalk "席尔克：如果可爱的条件是咬人，那大王喵喵就是最可爱的，咬起来也不输给其他家伙……";
 		next;
-		mes "[Silk]";
+		mes "[席尔克]";
 		mes "...will bite well...?";
-		npctalk "Silk : ...it will bite well...?";
+		npctalk "席尔克：……它会咬得很好……？";
 		next;
-		mes "[Silk]";
-		mes "To enjoy it's cuteness, I'm ready to give it not only arms and legs but also my colleagues...!";
-		npctalk "Silk : To enjoy it's cuteness, I'm ready to give it not only arms and legs but also my colleagues...!";
+		mes "[席尔克]";
+		mes "为了欣赏它的可爱，我不只愿意献出手脚，连同事们也愿意献上……！";
+		npctalk "席尔克：为了欣赏它的可爱，我不只愿意献出手脚，连同事们也愿意献上……！";
 		next;
-		mes "[Silk]";
-		mes "How about it... Dear guest?";
-		npctalk "Silk : How about it... Dear guest?";
+		mes "[席尔克]";
+		mes "怎么样……亲爱的客人？";
+		npctalk "席尔克：怎么样……亲爱的客人？";
 		next;
-		mes "[Silk]";
-		mes "Shall we go?";
-		npctalk "Silk : Shall we go?";
+		mes "[席尔克]";
+		mes "我们走吧？";
+		npctalk "席尔克：我们走吧？";
 		close2;
 		if ('lost_farm == 16) {
 			'lost_farm = 17;
 			sleep 3000;
-			npctalk "Silk : The rose garden is where Boss Meow usually sleeps, is on the second floor.";
+			npctalk "席尔克：玫瑰花园在二楼，那里是大王喵喵平时睡觉的地方。";
 			sleep 3000;
-			npctalk "Silk : Let's see, Luina's record... I need to wake up a Big Meow. To get there...";
+			npctalk "席尔克：我看看，露依纳的记录……我需要叫醒一只大喵喵。要到达那里……";
 			sleep 3000;
-			npctalk "Silk : ...so, two Big Meow... Boss Meow and Big Meow have a hierarchy, so they have a specific location for napping before mealtime...";
+			npctalk "席尔克：……那么，两只大喵喵……大王喵喵和大喵喵有等级之分，所以它们在饭前打盹都有固定的位置……";
 			sleep 3000;
-			npctalk "Silk: I guess we just have to soothe one to make them clear the way. Well, if you choose one side, I'll go and... I'll feed the other side...";
+			npctalk "席尔克：我想我们只要安抚好其中一只，让它们让开路就行。这样吧，你选一边，我去……我去喂另一边……";
 			sleep 3000;
-			npctalk "Silk : That's okay, I have a good eyesight, so if you get there and give me a signal, I'll take care of it! Now, for the closest one, I'll show you the coordinates on the map...";
+			npctalk "席尔克：没关系，我视力很好，你到了那里给我个信号，我就来处理！那么，先从最近的那个开始，我在地图上给你显示坐标……";
 			enablenpc instance_npcname("#compass01");
 			viewpointmap 'map_lost$,1,38,253,1,0xFFFF00;
 			viewpointmap 'map_lost$,1,287,253,2,0xFFFF00;
@@ -947,8 +947,8 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 17) {
-		mes "[Silk]";
-		mes "You can choose one of the locations on the map and go.";
+		mes "[席尔克]";
+		mes "你可以从地图上选择一个地点前往。";
 		viewpointmap 'map_lost$,1,38,253,1,0xFFFF00;
 		viewpointmap 'map_lost$,1,287,253,2,0xFFFF00;
 		close;
@@ -966,7 +966,7 @@ OnTouch:
 }
 
 1@lost,106,160,3	script(DISABLED)	Wooden Box#06	4_WOODBOX,{
-	npctalk "Silk : Save me!";
+	npctalk "席尔克：救救我！";
 	end;
 OnStart:
 	enablenpc();
@@ -979,11 +979,11 @@ OnStart:
 	monster 'map_lost$,119,169,"Lala",20662,1, .@event$;
 	monster 'map_lost$,111,160,"Sasha",20664,1, .@event$;
 	monster 'map_lost$,115,161,"Emerald",20660,1, .@event$;
-	npctalk "Silk : I'm~~~";
+	npctalk "席尔克：我~~~";
 	sleep 1000;
-	npctalk "Silk : ...fine~~~~~";
+	npctalk "席尔克：……没~~~~~事";
 	sleep 1000;
-	npctalk "Silk : Well, I'm telling you~~~~~~~~ Ugh!";
+	npctalk "席尔克：我说，我跟你讲~~~~~~~~ 呃啊！";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#06") + "::OnMobDead");
@@ -991,20 +991,20 @@ OnMobDead:
 		'lost_farm = 16;
 		disablenpc();
 		enablenpc instance_npcname("Silk#06");
-		npctalk "Silk : Sigh...", instance_npcname("Silk#06");
+		npctalk "席尔克：唉……", instance_npcname("Silk#06");
 		end;
 	}
-	npctalk "Silk : There " + (.@count == 1 ? "is" : "are") + " " + .@count + " left!";
+	npctalk "席尔克：还" + (.@count == 1 ? "有" : "有") + " " + .@count + "个！";
 	end;
 }
 
 
 // traps left side
-1@lost,38,257,3	script	Big Meow#01	MD_PITAYA_B,{
-	mes "[Big Meow]";
+1@lost,38,257,3	script	大喵喵#01	MD_PITAYA_B,{
+	mes "[大喵喵]";
 	mes "Purr.";
 	next;
-	mes "-- Big meow is taking a nap. --";
+	mes "-- 大喵喵正在打盹。 --";
 	close;
 }
 
@@ -1013,7 +1013,7 @@ OnMobDead:
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "Big Meow : Grrrrrrr.", instance_npcname("Big Meow#01");
+		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("Big Meow#01");
 		disablenpc instance_npcname("Big Meow#01");
 		disablenpc instance_npcname("#cat01warp");
 		disablenpc instance_npcname("#compass01");
@@ -1029,7 +1029,7 @@ OnTouch:
 		monster 'map_lost$,38,257,"Big Meow",20662,1, instance_npcname("Wooden Box#10") + "::OnMobDead";
 		end;
 	}
-	npctalk "Big Meow : *Sneeze*";
+	npctalk "大喵喵：*打喷嚏*";
 	warp 'map_lost$,38,226;
 	end;
 }
@@ -1111,14 +1111,14 @@ OnTouch_:
 
 
 // traps right side
-1@lost,286,253,3	duplicate(Big Meow#01)	Big Meow#02	MD_PITAYA_Y
+1@lost,286,253,3	duplicate(大喵喵#01)	Big Meow#02	MD_PITAYA_Y
 
 1@lost,287,253,0	script	#cat02warp	HIDDEN_WARP_NPC,4,4,{
 	end;
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "Big Meow : Grrrrrrr.", instance_npcname("Big Meow#02");
+		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("Big Meow#02");
 		disablenpc instance_npcname("Big Meow#02");
 		disablenpc instance_npcname("#cat02warp");
 		disablenpc instance_npcname("#compass01");
@@ -1134,7 +1134,7 @@ OnTouch:
 		monster 'map_lost$,286,253,"Big Meow",20661,1, instance_npcname("Wooden Box#10") + "::OnMobDead";
 		end;
 	}
-	npctalk "Big Meow : *Sneeze*";
+	npctalk "大喵喵：*打喷嚏*";
 	warp 'map_lost$,287,226;
 	end;
 }
@@ -1213,23 +1213,23 @@ OnTouch_:
 // boss
 1@lost,161,315,3	script(DISABLED)	Wooden Box#10	4_WOODBOX,{
 	if ('lost_farm < 19) {
-		npctalk "Silk : You must play with all the Pitayas on your way here.";
+		npctalk "席尔克：来这里的一路上，你必须和所有的肉食人火龙果玩耍。";
 		end;
 	}
 	if (!is_party_leader()) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席尔克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带到这里来！";
 		close;
 	}
 	if ('lost_farm == 19) {
-		mes "[Silk]";
+		mes "[席尔克]";
 		mes ".... come this way.";
-		npctalk "Silk : .... come this way.";
+		npctalk "席尔克：……请往这边来。";
 		next;
-		mes "[Silk]";
-		mes "Boss Meow...!";
-		npctalk "Silk : Boss Meow...!";
+		mes "[席尔克]";
+		mes "大王喵喵……！";
+		npctalk "席尔克：大王喵喵……！";
 		close2;
 		disablenpc();
 		enablenpc instance_npcname("Wooden Box#10-1");
@@ -1241,25 +1241,25 @@ OnTouch_:
 		end;
 	}
 	if ('lost_farm == 21) {
-		mes "[Silk]";
-		mes "Guest... Huh...";
-		npctalk "Silk : Guest... Huh...";
+		mes "[席尔克]";
+		mes "客人……嗯……";
+		npctalk "席尔克：客人……嗯……";
 		next;
-		mes "[Silk]";
-		mes "This is... it's not fear, it's more like resentment...";
-		npctalk "Silk : This is... it's not fear, it's more like resentment...";
+		mes "[席尔克]";
+		mes "这是……不是恐惧，更像是怨恨……";
+		npctalk "席尔克：这是……不是恐惧，更像是怨恨……";
 		next;
-		mes "[Silk]";
-		mes "We are all the same, but I can't do the same job as Luina...";
-		npctalk "Silk : We are all the same, but I can't do the same job as Luina...";
+		mes "[席尔克]";
+		mes "我们都是一样的，但我没法像露依纳那样完成同样的工作……";
+		npctalk "席尔克：我们都是一样的，但我没法像露依纳那样完成同样的工作……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Come out for now.";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Come out for now.";
+		mes "先出来吧。";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：先出来吧。";
 		close2;
 		disablenpc();
 		enablenpc instance_npcname("Silk#10");
-		npctalk "Silk : Yah!", instance_npcname("Silk#10");
+		npctalk "席尔克：呀！", instance_npcname("Silk#10");
 		end;
 	}
 	end;
@@ -1267,11 +1267,11 @@ OnTouch_:
 OnStart:
 	enablenpc();
 	sleep 3000;
-	mapannounce 'map_lost$, "Silk : Ahhhhhhhhhhhh! Save me!!",bc_yellow;
+	mapannounce 'map_lost$, "席尔克：啊啊啊啊啊啊啊啊！救救我！！",bc_yellow;
 	sleep 3000;
-	mapannounce 'map_lost$, "Silk : I was successful!!!!!!",bc_yellow;
+	mapannounce 'map_lost$, "席尔克：我成功了！！！！！！",bc_yellow;
 	sleep 3000;
-	mapannounce 'map_lost$, "Silk : I'll wait in front of the Boss Meow!",bc_yellow;
+	mapannounce 'map_lost$, "席尔克：我会在大王喵喵前面等着！",bc_yellow;
 	end;
 
 OnMobDead:
@@ -1279,7 +1279,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_lost$, instance_npcname("Wooden Box#10") + "::OnMobDead") == 0) {
 		'lost_farm = 19;
-		npctalk "Silk : Shh.";
+		npctalk "席尔克：嘘。";
 	}
 	end;
 }
@@ -1287,13 +1287,13 @@ OnMobDead:
 1@lost,161,315,3	script(DISABLED)	Wooden Box#10-1	4_WOODBOX,{
 	switch (rand(1,3)) {
 	case 1:
-		npctalk "Silk : He-Help me~~~~!";
+		npctalk "席尔克：救、救救我~~~~！";
 		break;
 	case 2:
-		npctalk "Silk : Ca-calm Boss Meow down~~~";
+		npctalk "席尔克：让、让大王喵喵冷静下来~~~";
 		break;
 	case 3:
-		npctalk "Silk : Here~~ You can have my arm~~";
+		npctalk "席尔克：这里~~ 我的手臂给你~~";
 		break;
 	}
 	end;
@@ -1301,42 +1301,42 @@ OnMobDead:
 
 1@lost,161,315,3	script(DISABLED)	Silk#10	4_EP17_BASKET,{
 	if (!is_party_leader() && 'lost_farm < 22) {
-		mes "[Silk]";
-		mes "I'll talk to the leader of the guests!";
-		mes "Please bring the leader here!";
+		mes "[席尔克]";
+		mes "我要和客人中的领队谈谈！";
+		mes "请把领队带到这里来！";
 		close;
 	}
 	if ('lost_farm == 21) {
-		mes "[Silk]";
-		mes "The parts that make up each one are different, so what can we use this for...?";
+		mes "[席尔克]";
+		mes "每一只的组成部位都不同，那我们能用这个做什么……？";
 		next;
-		mes "[Silk]";
-		mes "So this is the only way to harvest in the future...?";
+		mes "[席尔克]";
+		mes "所以今后只能这样采收了吗……？";
 		next;
-		mes "[Silk]";
-		mes "Well, I can't help it! Did the guests have fun?";
+		mes "[席尔克]";
+		mes "唉，没办法！客人们玩得开心吗？";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Did you have fun?";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Did you have fun?";
+		mes "玩得开心吗？";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：玩得开心吗？";
 		next;
-		mes "[Silk]";
-		mes "Yes! It's over! Isn't work supposed to be fun when it's over?";
+		mes "[席尔克]";
+		mes "是啊！结束了！工作结束的时候不就是最开心的吗？";
 		next;
-		mes "[Silk]";
-		mes "If you give me the Pitaya tail you have collected, today's farm experience is over! Come on, let's go outside!";
+		mes "[席尔克]";
+		mes "把你收集到的肉食人火龙果尾巴交给我，今天的农场体验就结束了！来吧，我们到外面去！";
 		if ('lost_farm == 21)
 			'lost_farm = 22;
 		close;
 	}
 	if (isbegin_quest(8588) == 1) {
 		if (checkweight(1000103,8) == 0) {	// (custom)
-			mes "^008800Wait a sec!!";
-			mes "You cannot receive any more items because you're carrying too many items. Please try again after you lighten up.^000000";
+			mes "^008800等一下！！";
+			mes "你携带的物品太多，无法再获得物品。请减轻负重后再试。^000000";
 			close;
 		}
-		mes "[Silk]";
-		mes "Let's see... How many did you collect?";
+		mes "[席尔克]";
+		mes "我看看……你收集了多少？";
 		next;
 		setarray .@item[0],1000093,1000094,1000095,1000096,1000097;
 		for ( .@i = 0; .@i < 5; ++.@i ) {
@@ -1353,29 +1353,29 @@ OnMobDead:
 			delitem 1000098, countitem(1000098);
 			.@reward += 2;
 		}
-		mes "[Silk]";
-		mes "The total is " + .@count + ".";
-		mes "Thank you for your hard work!";
+		mes "[席尔克]";
+		mes "总共是" + .@count + ".";
+		mes "辛苦了！";
 		erasequest 8588;
 		getitem 1000103, .@reward;
 		next;
 	}
-	mes "[Silk]";
-	mes "So... do you want to go out?";
+	mes "[席尔克]";
+	mes "那么……你想出去吗？";
 	next;
-	if (select( "Go out.", "Don't go out." ) == 2) {
-		mes "[Silk]";
-		mes "Are you waiting for your colleagues?";
-		mes "I'll wait for you, so please tell me when you want to go out~";
+	if (select( "出去。", "不出去。" ) == 2) {
+		mes "[席尔克]";
+		mes "你在等同伴吗？";
+		mes "我会等你的，想出去的时候告诉我~";
 		close;
 	}
 	if (isbegin_quest(8589) == 0) {	// first time entering the instance
-		mes "[Silk]";
-		mes "Luina... I finished the extension report, please say something to the guest after this!";
-		mes "I did a great job... *sob*";
+		mes "[席尔克]";
+		mes "露依纳……扩建报告我写完了，接下来请跟客人说几句吧！";
+		mes "我干得很棒……*抽泣*";
 		setquest 8589;
 	}
-	mes "See you next time!";
+	mes "下次见！";
 	close2;
 	warp "ba_maison",308,202;
 	end;

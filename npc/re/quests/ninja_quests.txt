@@ -16,56 +16,56 @@
 
 // Armor and Weapon NPCs :: kaboro_gearmix
 //============================================================
-que_ng,21,72,6	script	Master Armor Craftsman	4_M_RASWORD,{
-	mes "[Gyo]";
-	mes "How would you define victory?";
-	mes "To fell the enemy...";
-	mes "However, the most important thing is...";
-	mes "Never to fall yourself!";
+que_ng,21,72,6	script	防具名匠	4_M_RASWORD,{
+	mes "[吉奥]";
+	mes "你如何定义胜利？";
+	mes "击倒敌人……";
+	mes "然而，最重要的是……";
+	mes "自己绝不能倒下！";
 	next;
-	mes "[Gyo]";
-	mes "For that, you must better protect yourself.";
-	mes "You cannot protect 'others' while you hinder your 'own' protection.";
+	mes "[吉奥]";
+	mes "为此，你必须更好地保护自己。";
+	mes "若连“自己”都护不住，便无法保护“他人”。";
 	next;
-	if(select("Combine armor.:End conversation.") == 2) {
-		mes "[Gyo]";
-		mes "Prudence is also an important virtue in battle.";
+	if(select("合成防具。:结束对话。") == 2) {
+		mes "[吉奥]";
+		mes "谨慎也是战斗中重要的美德。";
 		close;
 	}
-	switch(select("Wolf Armguard[1]:Crescent Armguard[1]:Ninja Scale Armor[1]:Tenebris Latitantes[1]:Quit.")) {
+	switch(select("狼臂甲[1]:新月臂甲[1]:忍者鳞甲[1]:暗影潜藏者[1]:退出。")) {
 	case 1:
-		mes "[Gyo]";
-		mes "Wolf Armguard... One beastly piece of armor.";
+		mes "[吉奥]";
+		mes "狼臂甲……一件充满野性的防具。";
 		next;
 		callsub L_Select,2172;
 		if (countitem(2171) > 0 && countitem(6252) > 9) {  //custom translation
 			delitem 2171,1; //Fox_Armguard
 			delitem 6252,10; //Wolf_Blood
 			getitem 2172,1; //Wolf_Armguard
-			mes "[Gyo]";
-			mes "Do you feel the nature of the wolf?";
-			mes "Both wild and charming...";
+			mes "[吉奥]";
+			mes "你能感受到狼的本性吗？";
+			mes "既狂野又迷人……";
 			close;
 		}
 		break;
 	case 2:
-		mes "[Gyo]";
-		mes "Crescent Armguard... A thing of beauty and strength... With none the lesser.";
+		mes "[吉奥]";
+		mes "新月臂甲……兼具美感与力量……二者皆不逊色。";
 		next;
 		callsub L_Select,2173;
 		if (countitem(2171) > 0 && countitem(7321) > 99) {  //custom translation
 			delitem 2171,1; //Fox_Armguard
 			delitem 7321,100; //Fragment_Of_Crystal
 			getitem 2173,1; //Crescent_Armguard
-			mes "[Gyo]";
-			mes "Such beauty...";
-			mes "As if the whole body is overflowing with magic.";
+			mes "[吉奥]";
+			mes "何等美丽……";
+			mes "仿佛全身都充盈着魔力。";
 			close;
 		}
 		break;
 	case 3:
-		mes "[Gyo]";
-		mes "Ninja Scale Armor... It's said that a legendary Ninja once wore it.";
+		mes "[吉奥]";
+		mes "忍者鳞甲……据说曾有一位传说中的忍者穿过它。";
 		next;
 		callsub L_Select,15054;
 		if (countitem(7451) > 29 && countitem(7562) > 29 && countitem(6091) > 29) {  //custom translation
@@ -73,33 +73,33 @@ que_ng,21,72,6	script	Master Armor Craftsman	4_M_RASWORD,{
 			delitem 7562,30; //Ice_Scale
 			delitem 6091,30; //Dark_Red_Scale
 			getitem 15054,1; //Ninja_Scale_Armor
-			mes "[Gyo]";
-			mes "This is truly a legendary armor...";
-			mes "Even if I don't believe in legends...";
+			mes "[吉奥]";
+			mes "这真是一件传说中的防具……";
+			mes "即便我不相信传说……";
 			close;
 		}
 		break;
 	case 4:
-		mes "[Gyo]";
-		mes "Shadow King's Armor... It was made to protect others.";
+		mes "[吉奥]";
+		mes "影王铠甲……它是为了保护他人而造的。";
 		next;
 		callsub L_Select,15055;
 		if (countitem(15056) > 0 && countitem(6089) > 9) {  //custom translation
 			delitem 15056,1; //Special_Ninja_Suit_
 			delitem 6089,10; //Piece_Of_Darkness
 			getitem 15055,1; //Tenebris_Latitantes
-			mes "[Gyo]";
-			mes "How is it?";
-			mes "Does the armor not appear as if there are two?";
+			mes "[吉奥]";
+			mes "怎么样？";
+			mes "这防具看起来是不是像有两件？";
 			close;
 		}
 		break;
 	case 5:
 		close;
 	}
-	mes "[Gyo]";
-	mes "You don't have enough ingredients.";
-	mes "Look again...";
+	mes "[吉奥]";
+	mes "你的材料不够。";
+	mes "再仔细看看吧……";
 	close;
 
 L_Select:
@@ -119,30 +119,30 @@ L_Select:
 			callsub L_Combine;
 			return;
 		case 4:
-			mes "[Gyo]";
-			mes "Looks like you need more time to decide.";
+			mes "[吉奥]";
+			mes "看来你需要更多时间考虑。";
 			close;
 		}
 	}
 
 L_Ingredients:
-	mes "[Gyo]";
+	mes "[吉奥]";
 	switch (getarg(0)) {
 	case 2172:	//Wolf_Armguard
-		mes "To make a ^ff0000Wolf Armguard, you need 1 Fox Armguard and 10 Blood of Wolf^000000.";
-		mes "Can you feel it? The throbbing of the wolf blood...";
+		mes "要制作^ff0000狼臂甲，需要1件狐臂甲与10份狼血^000000。";
+		mes "你能感觉到吗？狼血在搏动……";
 		break;
 	case 2173:	//Crescent_Armguard
-		mes "To make a ^ff0000Crescent Armguard, you need 1 Fox Armguard and 100 Crystal Fragments^000000.";
-		mes "A crescent as beautiful and clear as a crystal will be engraved on it.";
+		mes "要制作^ff0000新月臂甲，需要1件狐臂甲与100个水晶碎片^000000。";
+		mes "其上将刻下一弯如水晶般美丽清澈的新月。";
 		break;
 	case 15054:	//Ninja_Scale_Armor
-		mes "To make a ^ff0000Ninja Scale Armor, you need 30 Fire Dragon Scales, 30 Ice Scales, and 30 Darkred Scale Pieces^000000.";
-		mes "You can feel its legendary powers.";
+		mes "要制作^ff0000忍者鳞甲，需要30片火龙鳞片、30片冰块鳞片与30片暗红鳞片^000000。";
+		mes "你能感受到它传说般的力量。";
 		break;
 	case 15055:	//Tenebris_Latitantes
-		mes "To make a ^ff0000Shadow King's Armor, you'll need a Special Ninja Suit with a slot and 10 Dark Pieces^000000.";
-		mes "With the darkness it erases existence itself...";
+		mes "要制作^ff0000影王铠甲，需要1件带洞的特殊忍者服与10个黑暗碎片^000000。";
+		mes "借由黑暗，它连存在本身都能抹去……";
 		break;
 	}
 	next;
@@ -152,123 +152,123 @@ L_Stats:
 	mes "[" + getitemname(getarg(0)) + "]";
 	switch (getarg(0)) {
 	case 2172:	//Wolf_Armguard
-		mes "Chance to have 5 sec. of ATK+100, FLEE -50 upon melee attack.";
-		mes "Shield Type, Defense 45, Slot 1";
-		mes "Required Level 100, Ninja Type Only";
+		mes "近战攻击时，有几率在5秒内攻击力+100、回避率-50。";
+		mes "盾牌类，防御45，1洞";
+		mes "要求等级100，仅限忍者系";
 		break;
 	case 2173:	//Crescent_Armguard
-		mes "Decreases post skill delay for 2% for every enhancement.";
-		mes "Shield Type, Defense 70, Slot 1";
-		mes "Required Level 100, Ninja Type Only";
+		mes "每强化1次，技能后延迟减少2%。";
+		mes "盾牌类，防御70，1洞";
+		mes "要求等级100，仅限忍者系";
 		break;
 	case 15054:	//Ninja_Scale_Armor
-		mes "MHP+15%, MSP-30%";
-		mes "Armor Type, Defense 90, Slot 1";
-		mes "Required Level 100, Ninja Type Only";
+		mes "MHP+15%，MSP-30%";
+		mes "铠甲类，防御90，1洞";
+		mes "要求等级100，仅限忍者系";
 		break;
 	case 15055:	//Tenebris_Latitantes
-		mes "Chance to activate Lvl. 1 Illusion - Shadow when attacked by melee attacks.";
-		mes "Armor Type, Defense 60, Slot 1";
-		mes "Required Level 100, Ninja Type Only";
+		mes "受到近战攻击时，有几率发动1级幻术-残影。";
+		mes "铠甲类，防御60，1洞";
+		mes "要求等级100，仅限忍者系";
 		break;
 	}
 	next;
 	return;
 
 L_Combine:
-	mes "[Gyo]";
-	mes "Make sure that ^ff0000you have the correct ingredients and equipment at hand^000000.";
-	mes "No use crying over it later.";
+	mes "[吉奥]";
+	mes "请务必确保^ff0000你手边备齐了正确的材料与装备^000000。";
+	mes "事后再后悔也没用。";
 	next;
-	switch(select("Combine.:Quit.")) {
+	switch(select("合成。:退出。")) {
 	case 1:
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-			mes "- Hold on!! -";
-			mes "- You cannot receive items -";
-			mes "- because you carry too much. -";
-			mes "- Please try again -";
-			mes "- after lightening your burden. -";
+			mes "- 请等一下！！ -";
+			mes "- 你无法获得物品 -";
+			mes "- 因为你的负重过高。 -";
+			mes "- 请减轻负重后 -";
+			mes "- 减轻负重之后。 -";
 			close;
 		}
 		return;
 	case 2:
-		mes "[Gyo]";
-		mes "Looks like you need more time to decide.";
+		mes "[吉奥]";
+		mes "看来你需要更多时间考虑。";
 		close;
 	}
 	end;
 }
 
-que_ng,23,70,3	script	Master Weapon Craftsman	4_DST_SOLDIER,{
-	mes "[Ki]";
-	mes "To attack is the best means of defense.";
-	mes "A powerful weapon ill make you truly complete.";
+que_ng,23,70,3	script	武器名匠	4_DST_SOLDIER,{
+	mes "[基]";
+	mes "攻击是最好的防御手段。";
+	mes "一把强大的武器会让你真正完整。";
 	next;
-	mes "[Ki]";
-	mes "Of course, it would be better to have something special at hand.";
+	mes "[基]";
+	mes "当然，手边有件特别的东西会更好。";
 	next;
-	if(select("Combine weapon.:End conversation.") == 2) {
-		mes "[Ki]";
-		mes "Being too careful could sometimes be lethal.";
+	if(select("合成武器。:结束对话。") == 2) {
+		mes "[基]";
+		mes "过于谨慎有时也会致命。";
 		close;
 	}
-	switch(select("Raksasa Dagger[1]:Mikatsuki[1]:Huuma Swirling Petal[2]:Quit.")) {
+	switch(select("罗刹短剑[1]:三日月[1]:风魔旋花飞镖[2]:退出。")) {
 	case 1:
-		mes "[Ki]";
-		mes "Raksasa Dagger can only be used after plenty of training.";
+		mes "[基]";
+		mes "罗刹短剑唯有经过充分修炼才能使用。";
 		next;
 		callsub L_Select,13076;
 		if (countitem(13013) > 0 && countitem(718) > 0) {  //custom translation
 			delitem 13013,1; //Murasame_
 			delitem 718,1; //Dark_Red_Jewel
 			getitem 13076,1; //Raksasa_Dagger
-			mes "[Ki]";
+			mes "[基]";
 			mes "Ah...";
-			mes "What a beautiful luster...";
+			mes "多么美丽的光泽……";
 			close;
 		}
-		mes "[Ki]";
-		mes "Hmm... You do not have enough to make a Raksasa Dagger.";
+		mes "[基]";
+		mes "嗯……你的材料不足以制作罗刹短剑。";
 		break;
 	case 2:
-		mes "[Ki]";
-		mes "Mikatsuki... A beautiful curve like the crescent moon...";
-		mes "There aren't many who can make them.";
+		mes "[基]";
+		mes "三日月……如新月般优美的弧线……";
+		mes "能打造它的人并不多。";
 		next;
 		callsub L_Select,13078;
 		if (countitem(13015) > 0 && countitem(727) > 0) {  //custom translation
 			delitem 13015,1; //Hakujin_
 			delitem 727,1; //White_Jewel
 			getitem 13078,1; //Mikatsuki
-			mes "[Ki]";
-			mes "Truly beautiful...";
-			mes "I am so fortunate to be able to see such a magnificent dagger.";
+			mes "[基]";
+			mes "真是美丽……";
+			mes "能见到如此出色的短剑，我真是幸运。";
 			close;
 		}
-		mes "[Ki]";
-		mes "Hmm... You do not have enough to make a Mikatsuki.";
+		mes "[基]";
+		mes "嗯……你的材料不足以制作三日月。";
 		break;
 	case 3:
-		mes "[Ki]";
-		mes "Huuma Swirling Petal... Have you ever seen petals swirl?";
+		mes "[基]";
+		mes "风魔旋花飞镖……你可曾见过花瓣旋舞？";
 		next;
 		callsub L_Select,13313;
 		if (countitem(13304) > 0 && countitem(7156) > 99) {  //custom translation
 			delitem 13304,1; //Huuma_Calm_Mind
 			delitem 7156,100; //Broken_Shuriken
 			getitem 13313,1; //Huuma_Swirling_Petal
-			mes "[Ki]";
-			mes "Flying... petals!!";
+			mes "[基]";
+			mes "飞舞的……花瓣！！";
 			close;
 		}
-		mes "[Ki]";
-		mes "Hmm... You do not have enough to make a Huuma Swirling Petal.";
+		mes "[基]";
+		mes "嗯……你的材料不足以制作风魔旋花飞镖。";
 		break;
 	case 4:
 		close;
 	}
-	mes "Why don't you check again?";
-	mes "Some just can't give up what they hold.";
+	mes "何不再确认一下？";
+	mes "有些人就是放不下手里的东西。";
 	close;
 
 L_Select:
@@ -288,26 +288,26 @@ L_Select:
 			callsub L_Combine;
 			return;
 		case 4:
-			mes "[Ki]";
-			mes "Think carefully~~";
+			mes "[基]";
+			mes "仔细想清楚~~";
 			close;
 		}
 	}
 
 L_Ingredients:
-	mes "[Ki]";
+	mes "[基]";
 	switch (getarg(0)) {
 	case 13076:	//Raksasa_Dagger
-		mes "For a ^ff0000Raksasa Dagger, you need 1 Murasame with 2 sockets and 1 Garnet^000000.";
-		mes "The garnet gives the Raksasa Dagger its unique color.";
+		mes "要制作^ff0000罗刹短剑，需要1把2洞村雨与1颗深红宝石^000000。";
+		mes "深红宝石赋予了罗刹短剑独特的色泽。";
 		break;
 	case 13078:	//Mikatsuki
-		mes "For a ^ff0000Mikatsuki, you need a Hakujin with a Slot and an Opal^000000.";
-		mes "The opal is what gives off the translucent glow.";
+		mes "要制作^ff0000三日月，需要1把带洞的白刃与1颗蛋白石^000000。";
+		mes "那种半透明的光芒正是蛋白石带来的。";
 		break;
 	case 13313:	//Huuma_Swirling_Petal
-		mes "For a ^ff0000Huuma Swirling Petal, you need one Huuma Calm Mind Shuriken and 100 Broken Shurikens^000000.";
-		mes "It may seem like too many shurikens are needed... But it is essential for the beautiful fluttering effect.";
+		mes "要制作^ff0000风魔旋花飞镖，需要1枚风魔静心手里剑与100枚破旧之手里剑^000000。";
+		mes "需要的飞镖似乎太多了……但这对那美丽的纷飞效果不可或缺。";
 		break;
 	}
 	next;
@@ -317,44 +317,44 @@ L_Stats:
 	mes "[" + getitemname(getarg(0)) + "]";
 	switch (getarg(0)) {
 	case 13076:	//Raksasa_Dagger
-		mes "INT+3 MATK+100.";
-		mes "Dagger Type, ATK 120, Slot 1";
-		mes "Required Level 110, Ninja Type Only";
+		mes "INT+3 MATK+100。";
+		mes "短剑类，攻击120，1洞";
+		mes "要求等级110，仅限忍者系";
 		break;
 	case 13078:	//Mikatsuki
-		mes "MATK + 120, Flucuated Casting and SP use decreased by 5% upon skill use.";
-		mes "Dagger Type, ATK 50, Weapon Lvl. 4 Slot 1";
-		mes "Required Level 100, Ninja Type Only";
+		mes "魔法攻击+120，使用技能时变动咏唱与SP消耗减少5%。";
+		mes "短剑类，攻击50，武器等级4，1洞";
+		mes "要求等级100，仅限忍者系";
 		break;
 	case 13313:	//Huuma_Swirling_Petal
-		mes "MATK + 50, Huuma Swirling Petal skill damage increased by 20%.";
-		mes "Shuriken Type, ATK 150";
-		mes "Weapon Lvl. 3, Slot 2";
-		mes "Required Level 110, Ninja Type Only";
+		mes "魔法攻击+50，风魔旋花飞镖技能伤害增加20%。";
+		mes "手里剑类，攻击150";
+		mes "武器等级3，2洞";
+		mes "要求等级110，仅限忍者系";
 		break;
 	}
 	next;
 	return;
 
 L_Combine:
-	mes "[Ki]";
-	mes "Make sure that ^ff0000you have the correct ingredients and equipment at hand^000000.";
-	mes "Once done, it cannot be undone.";
+	mes "[基]";
+	mes "请务必确保^ff0000你手边备齐了正确的材料与装备^000000。";
+	mes "一旦完成，便无法挽回。";
 	next;
-	switch(select("Combine.:Quit.")) {
+	switch(select("合成。:退出。")) {
 	case 1:
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-			mes "- Hold on!! -";
-			mes "- You cannot receive items -";
-			mes "- because you carry too much. -";
-			mes "- Please try again -";
-			mes "- after lightening your burden. -";
+			mes "- 请等一下！！ -";
+			mes "- 你无法获得物品 -";
+			mes "- 因为你的负重过高。 -";
+			mes "- 请减轻负重后 -";
+			mes "- 减轻负重之后。 -";
 			close;
 		}
 		return;
 	case 2:
-		mes "[Ki]";
-		mes "Think carefully~~";
+		mes "[基]";
+		mes "仔细想清楚~~";
 		close;
 	}
 	end;

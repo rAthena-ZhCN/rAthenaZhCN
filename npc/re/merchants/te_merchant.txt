@@ -8,13 +8,13 @@
 //= 1.0 First Version. [Capuche]
 //============================================================
 
-te_prt_gld,114,153,4	shop	TE Potion Merchant#prt	4_M_TELEPORTER,11557:-1,11558:-1
-te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	4_M_TELEPORTER
+te_prt_gld,114,153,4	shop	TE 药水商人#prt	4_M_TELEPORTER,11557:-1,11558:-1
+te_alde_gld,215,184,4	duplicate(TE 药水商人#prt)	TE Potion Merchant#alde	4_M_TELEPORTER
 
 // Rental Items manager
 //=======================================
 -	script	rental_woe_TE	-1,{
-	mes "[Rental Items Manager]";
+	mes "[租赁道具管理员]";
 	if (jobcanentermap("te_prtcas01") == 1) {
 		.@list01$ = "[Shield] [Armor] [Garment]";
 		.@list02$ = "[Helmet] [Accessory] [Shoes]";
@@ -22,21 +22,21 @@ te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	
 		.@list04$ = "[Mace] [Staff] [Fist] [Book]";
 		.@list05$ = "[Bow] [Gun] [Musical Instrument] [Whip]";
 
-		mes "^4d4dffWe offer various battlegears that you can use in the regions of Gloria and Kafragarten based on the rules of Siege Battle TE.^000000";
+		mes "^4d4dff我们提供各种战斗装备，可在 Gloria 与 Kafragarten 地区依据攻城战 TE 的规则使用。^000000";
 		next;
-		mes "[Rental Items Manager]";
-		mes "^4d4dffWe provide 1-day rental periods for free.^000000";
-		mes "However, the provided rental items ^4d4dffwill not be effective outside the Siege Battle TE area.^000000";
+		mes "[租赁道具管理员]";
+		mes "^4d4dff我们免费提供 1 天租期。^000000";
+		mes "但是，所租借的道具 ^4d4dff在攻城战 TE 区域外将不会生效。^000000";
 		next;
-		mes "[Rental Items Manager]";
-		mes "^4d4dffYou have to be Lv 40 or higher in order to rent an item.^000000";
-		mes "Select the desired equipment.";
+		mes "[租赁道具管理员]";
+		mes "^4d4dff等级需达到 40 级以上才能租借道具。^000000";
+		mes "请选择想要的装备。";
 		next;
 		while(1) {
-			switch( select( "View rental equipments", .@list01$, .@list02$, .@list03$, .@list04$, .@list05$, "Leave" ) ) {
+			switch( select( "查看租赁装备", .@list01$, .@list02$, .@list03$, .@list04$, .@list05$, "离开" ) ) {
 			case 1:
-				mes "[Rental Items Manager]";
-				mes "Here is a list of rental items and descriptions.";
+				mes "[租赁道具管理员]";
+				mes "这里是租赁道具的列表与说明。";
 				close2;
 				readbook 11059,1;// WoE_TE_Rental_List
 				end;
@@ -96,32 +96,32 @@ te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	
 					1987,"TE Siege Rope" );			// TE_Woe_Rope
 				break;
 			case 7:
-				mes "[Rental Items Manager]";
-				mes "Come back anytime then.";
+				mes "[租赁道具管理员]";
+				mes "那么随时再来吧。";
 				close;
 			}
 		}
 	}
-	mes "We offer various battlegears that you can use in the regions of Gloria and Kafragarten based on the rules of Siege Battle TE.";
+	mes "我们提供各种战斗装备，可在 Gloria 与 Kafragarten 地区依据攻城战 TE 的规则使用。";
 	next;
-	mes "[Rental Items Manager]";
-	mes "I'm sorry but your job class is not allowed to participate in Siege Battles TE.";
-	mes "I'm afraid I can't offer any items to you.";
+	mes "[租赁道具管理员]";
+	mes "很抱歉，你的职业无法参加攻城战 TE。";
+	mes "恐怕我无法向你提供任何道具。";
 	close;
 
 S_Rent:
-	mes "[Rental Items Manager]";
+	mes "[租赁道具管理员]";
 	if (checkweight(1304,3) == 0) {
-		mes "You already have too many items to receive a new rental equipment.";
-		mes "Please organize your items and try again.";
+		mes "你持有的道具太多了，无法再领取新的租赁装备。";
+		mes "请整理好道具后再试。";
 		close;
 	}
-	mes "We have "+ getarg(0) +" ready for you.";
-	mes "Select the desired item.";
+	mes "我们已为你准备好"+ getarg(0) +"。";
+	mes "请选择想要的道具。";
 	next;
 	for ( .@i = 1; .@i < getargcount(); .@i += 2 ) {
 		if (rentalcountitem(getarg(.@i)) > isequippedcnt(getarg(.@i)))// don't count item equipped
-			.@menu$ = .@menu$ + "^4d4dff"+ getarg(.@i+1) +" - Checked out^000000:";
+			.@menu$ = .@menu$ + "^4d4dff"+ getarg(.@i+1) +"- 已借出^000000:";
 		else
 			.@menu$ = .@menu$ + getarg(.@i+1) + ":";
 	}
@@ -129,15 +129,15 @@ S_Rent:
 	.@s = select( .@menu$ + ":View other items" ) -1;
 	if (.@s <= .@total_item) {
 		.@index = .@s *2 +1;
-		mes "[Rental Items Manager]";
+		mes "[租赁道具管理员]";
 		if (rentalcountitem(getarg(.@index)) > isequippedcnt(getarg(.@index)))
-			mes "You already have "+ getarg(.@index+1) +".";
+			mes "你已持有"+ getarg(.@index+1) +".";
 		else {
-			mes "Here is "+ getarg(.@index+1) +".";
-			mes "^4d4dffThis item is effective for the next 24 hours^000000 and after that it expires.";
+			mes "这是"+ getarg(.@index+1) +".";
+			mes "^4d4dff该道具在接下来的 24 小时内有效^000000，之后便会失效。";
 			rentitem getarg(.@index),86400;
 		}
-		mes "Do you need anything else?";
+		mes "还需要别的吗？";
 		next;
 	}
 	return;

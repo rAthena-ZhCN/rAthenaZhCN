@@ -15,87 +15,87 @@
 //= 1.2 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
+moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 	cutin "gelca01",2;
 	if (checkweight(1201,1) == 0) {
-		mes "^FF0000-Warning Message-";
-		mes "- Wait for a minute !! -";
-		mes "- You have too many items -";
-		mes "- Not able to receive items. -";
-		mes "- Reduce the weight of body -";
-		mes "- Please try again. -^000000";
+		mes "^FF0000-警告信息-";
+		mes "- 请稍等片刻！！ -";
+		mes "- 你的道具太多了 -";
+		mes "- 无法领取道具。 -";
+		mes "- 请减轻负重 -";
+		mes "- 请再试一次。 -^000000";
 		close2;
 		cutin "",255;
 		end;
 	}
-	mes "[Gelkah]";
+	mes "[盖尔卡]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "Show me proof that you're part of the Eden Group or I have no business with you.";
-		mes "I'm giving requests to base level ^FF0000100 - 110^000000 adventurers.";
+		mes "先出示你是乐园团一员的证明，否则我没什么好跟你谈的。";
+		mes "我只把委托交给基础等级 ^FF0000100 - 110^000000 的冒险者。";
 	}
 	else if (BaseLevel < 100) {
-		mes "You're not a mature enough adventurer. You should be at least base level 100. So basically at least a third class.";
+		mes "你还算不上成熟的冒险者。至少要有基础等级100，也就是说至少得是三转职业。";
 		next;
-		mes "[Gelkah]";
-		mes "The request is from ^FF0000somewhere else^000000 other than Midgard.";
+		mes "[盖尔卡]";
+		mes "这份委托来自米德加尔特以外的^FF0000其他地方^000000。";
 	}
 	else if (BaseLevel < 111) {
 		if (para_100lv01 == 0) {
-			mes "Adventurers!";
+			mes "冒险者们！";
 			emotion ET_SMILE;
 			next;
 			cutin "gelca03",2;
-			mes "[Gelkah]";
-			mes "I've recently received several requests from clients that need the help of Adventurers just like yourself.";
+			mes "[盖尔卡]";
+			mes "我最近收到了几份委托，委托人需要像你这样的冒险者相助。";
 			next;
-			if (select( "I like requests!", "A boring quest... No thanks!" ) == 2) {
-				mes "[Gelkah]";
-				mes "You know that harder requests yield better rewards right?";
+			if (select( "我喜欢接委托！", "无聊的任务……还是算了！" ) == 2) {
+				mes "[盖尔卡]";
+				mes "你知道委托越难，报酬越好吧？";
 				next;
 			}
-			mes "[Gelkah]";
-			mes "Actually, I can't just accept just any schmo off the street. My Master hates indecisive people.";
+			mes "[盖尔卡]";
+			mes "其实，我不能随便在街上拉个人就接受。我师父最讨厌优柔寡断的人。";
 			next;
-			if (select( "Who's your master?", "I am not indecisive!" ) == 1) {
+			if (select( "你师父是谁？", "我才不优柔寡断！" ) == 1) {
 				cutin "gelca03",2;
-				mes "[Gelkah]";
-				mes "That person standing next to me is my master... He came back after long journey of practice.";
+				mes "[盖尔卡]";
+				mes "站在我旁边的那位就是我师父……他外出修行了很久，最近才回来。";
 				next;
-				mes "[Gelkah]";
-				mes "I understand you might	wonder why a Sura wants an Archbishop as a teacher...";
+				mes "[盖尔卡]";
+				mes "我明白你可能会	纳闷，为什么一个修罗要拜大主教为师……";
 			}
 			else {
 				cutin "gelca03",2;
-				mes "[Gelkah]";
+				mes "[盖尔卡]";
 				if (BaseLevel < 110)
-					mes "You think you're a veteran just because you've become a third class...";
+					mes "你以为转了三转就算是老手了……";
 				else
-					mes "I know you're not exactly a novice but my Master thinks you're no different from one. In my opinion, You are a great adventurer!";
+					mes "我知道你不算新手，但在我师父眼里你跟新手没什么两样。不过在我看来，你是很棒的冒险者！";
 			}
 			next;
-			mes "[Gelkah]";
-			mes "We need adventurers that are willing to help. Will you help us?";
+			mes "[盖尔卡]";
+			mes "我们需要愿意帮忙的冒险者。你愿意帮我们吗？";
 			next;
 			cutin "gelca01",2;
-			if (select( "Ok, I'll help.", "I have no interest in helping you." ) == 2) {
-				mes "[Gelkah]";
-				mes "How do you know without doing it.";
+			if (select( "好，我帮你。", "我没兴趣帮你。" ) == 2) {
+				mes "[盖尔卡]";
+				mes "你不去做又怎么会知道。";
 			}
 			else {
-				mes "[Gelkah]";
-				mes "That is what an Adventurer does!";
+				mes "[盖尔卡]";
+				mes "冒险者就该做这种事！";
 				next;
-				mes "[Gelkah]";
-				mes "I would like to know if you are capable of doing a request. Let me see...";
+				mes "[盖尔卡]";
+				mes "我想知道你是否有能力完成委托。让我看看……";
 				next;
-				mes "[Gelkah]";
-				mes "Collect 50 ^ff0000Brigan.^000000 It is a simple and complicated test.";
+				mes "[盖尔卡]";
+				mes "收集50个^ff0000Brigan。^000000 这既简单又复杂的考验。";
 				next;
-				mes "[Gelkah]";
-				mes "It is easy to find from monsters at Turtle Island or at Glastheim.";
+				mes "[盖尔卡]";
+				mes "在乌龟岛或克雷斯特汉姆古城的怪物身上很容易找到。";
 				next;
-				mes "[Gelkah]";
-				mes "Lets do the real request after clearing the simple one.";
+				mes "[盖尔卡]";
+				mes "先完成这个简单的，再去做真正的委托。";
 				setquest 13002;// Brigan collecting
 				para_100lv01 = 1;
 				para_100lv02 += 1;
@@ -103,35 +103,35 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 		}
 		else if (para_100lv01 == 1) {
 			if (countitem(7054) > 49) {// Brigan
-				mes "Did you bring all the Brigans I asked for?";
+				mes "我要求的Brigan都带来了吗？";
 				next;
-				mes "[Gelkah]";
-				mes "I do not need to count one by one. This request is for selecting the best adventurer.";
+				mes "[盖尔卡]";
+				mes "我不必一个一个数。这份委托是为了选出最优秀的冒险者。";
 				next;
-				mes "[Gelkah]";
-				mes "Don't be upset because Master is ultimately responsible if an Adventurer gets injured during a request.";
+				mes "[盖尔卡]";
+				mes "别不高兴，因为冒险者在委托中受伤，最终要负责的是师父。";
 				next;
-				mes "[Gelkah]";
-				mes "Master decided that adventurer's safety is important because lots of new requests are dangerous.";
+				mes "[盖尔卡]";
+				mes "师父认为冒险者的安全很重要，因为许多新委托都很危险。";
 				next;
 				cutin "rote01",2;
-				mes "[Rohtert]";
+				mes "[罗特尔]";
 				mes "Hmm...";
 				emotion ET_HNG, getnpcid(0, "Rohtert#12");
 				next;
 				cutin "gelca01",2;
-				mes "[Gelkah]";
-				mes "I hope you didn't peek. The Assessment for your capability of standard requests is almost done.";
+				mes "[盖尔卡]";
+				mes "希望你没偷看。对你标准委托能力的评估快完成了。";
 				next;
-				mes "[Gelkah]";
-				mes "No time to make ^ff0000The badge of advanced Eden Group.^000000";
+				mes "[盖尔卡]";
+				mes "没时间制作^ff0000乐园团高级徽章。^000000";
 				next;
-				mes "[Gelkah]";
-				mes "^ff0000Time is money novice!^000000";
-				mes "I think that's what a true master would sound like right?";
+				mes "[盖尔卡]";
+				mes "^ff0000时间就是金钱，新手！^000000";
+				mes "我觉得真正的师父就该这么说话，对吧？";
 				next;
-				mes "[Gelkah]";
-				mes strcharinfo(0) +" will make a request list for you so go talk to my Master now and show your respects.";
+				mes "[盖尔卡]";
+				mes strcharinfo(0) +"会为你整理委托清单，现在就去见我师父，向他问个好吧。";
 				delitem 7054,50;// Brigan
 				completequest 13002;// Brigan collecting
 				para_100lv01 = 2;
@@ -139,478 +139,478 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 			}
 			else {
 				cutin "gelca02",2;
-				mes "Haven't found 50 Brigan yet? Master says that it's such a simple task...";
+				mes "还没找到50个Brigan？师父说这任务明明很简单……";
 				next;
-				mes "[Gelkah]";
-				mes "Please hurry up! We need a real adventurer to perform the request.";
+				mes "[盖尔卡]";
+				mes "请快点！我们需要真正的冒险者来执行委托。";
 			}
 		}
 		else if (para_100lv01 == 2)
-			mes "Wait a minute. I am making a request list. I just do not know which one I have to give to you. I am a good man.";
+			mes "等一下。我正在整理委托清单。我只是不知道该派哪一个给你。我可是个好人。";
 		else if (para_100lv01 > 2) {
-			mes "The request list is ready. Do you want to start?";
+			mes "委托清单整理好了。要开始吗？";
 			next;
-			switch( select( "Hunting Quests", "Inquire regards", "Show kindness pass" ) ) {
-				mes "[Gelkah]";
+			switch( select( "讨伐委托", "问候近况", "出示亲切券" ) ) {
+				mes "[盖尔卡]";
 			case 1:
-				mes "You don't need to take all requests at once. Choose a request area that suits your particular skills. One that enables you to perform the request and enjoy the trip at the same time.";
+				mes "你不用一次接下所有委托。挑一个适合你本领的委托地区吧，既能完成委托，又能享受旅途。";
 				next;
-				switch( select( "Glastheim related request", "Ash Vacuum related request", "Ice Dungeon related request", "Magma Dungeon related request", "Other requests" ) ) {
-					mes "[Gelkah]";
+				switch( select( "克雷斯特汉姆古城相关委托", "灰暗的尘世相关委托", "冰洞穴相关委托", "熔岩洞穴相关委托", "其他委托" ) ) {
+					mes "[盖尔卡]";
 				case 1:
-					mes "Here are the requests from the Glastheim area.";
+					mes "这些是克雷斯特汉姆古城地区的委托。";
 					next;
-					switch( select( "Carat Hunting", "Arclouse Hunting", "Anolian Hunting", "Sting Hunting", "Majoruros Hunting" ) ) {
-						mes "[Gelkah]";
+					switch( select( "讨伐卡拉特小丑", "讨伐卷甲虫", "讨伐虎蜥人", "讨伐史汀", "讨伐狂暴米诺斯" ) ) {
+						mes "[盖尔卡]";
 					case 1:
 						if (checkquest(13004,PLAYTIME) == 0)
-							mes "You just finished a request. It is important that you rest for a while. There will always be a requests waiting for you.";
+							mes "你刚完成一份委托。稍微休息一下很重要。总会有委托在等着你。";
 						else if (checkquest(13003,HUNTING) == 1) {
 							cutin "某返墨靛",3;  //carat_card
-							mes "This request is to clear ^0000FF30^000000 ^FF0000Carat^000000 inside of Glastheim castle's first floor.";
+							mes "这份委托是讨伐克雷斯特汉姆古城城堡1层内的^0000FF30^000000只^FF0000卡拉特小丑^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've completed the request.";
+							mes "[盖尔卡]";
+							mes "完成委托后请告诉我。";
 						}
 						else if (checkquest(13003,HUNTING) == 2) {
-							mes "Visiting to scary old castle must be tough. I am sure it would be a good experience for me someday.";
+							mes "去那座阴森的古堡一定很辛苦。我相信有朝一日那对我也会是很好的经历。";
 							callsub S_Quest,13003,13004,106000,148000;
 						}
 						else {
 							cutin "某返墨靛",3;  //carat_card
-							mes "This request is from a merchant from Morocc who is somehow losing business from these monsters in Glastheim.";
+							mes "这份委托来自梦罗克的一位商人，他因为克雷斯特汉姆古城的这些怪物而生意受损。";
 							next;
-							mes "[Gelkah]";
-							mes "Eden Group is aware that this is not a great reason but a request is a request. So please clear ^FF000030 Carat^000000 monsters inside of Glastheim castle.";
+							mes "[盖尔卡]";
+							mes "乐园团知道这理由不怎么充分，但委托就是委托。所以请讨伐克雷斯特汉姆古城城堡内的^FF000030只卡拉特小丑^000000。";
 							callsub S_Quest,13004,13003;
 						}
 						break;
 					case 2:
 						if (checkquest(13006,PLAYTIME) == 0)
-							mes "You just finished a request. Please take a rest. There will always be a request for you.";
+							mes "你刚完成一份委托。请休息一下。总会有委托等着你。";
 						else if (checkquest(13005,HUNTING) == 1) {
 							cutin "酒农扼快胶墨靛",3;  //arclouse_card
-							mes "Please clear ^FF000022 Arclouse^000000.";
+							mes "请讨伐^FF000022只卷甲虫^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13005,HUNTING) == 2) {
-							mes "You did a great job.";
+							mes "你做得很好。";
 							emotion ET_BEST;
 							callsub S_Quest,13005,13006,106000,148000;
 						}
 						else {
 							cutin "酒农扼快胶墨靛",3;  //arclouse_card
-							mes "Do you know there are beans used as food here in Midgard? When an Arclouse rolls, it resembles a bean.";
+							mes "你知道米德加尔特有种当食物用的豆子吗？卷甲虫滚起来的时候，就像颗豆子。";
 							next;
-							mes "[Gelkah]";
-							mes "Eden Group Headquarters wants to investigate the Arclouse as a possible mascot.";
+							mes "[盖尔卡]";
+							mes "乐园团总部想把卷甲虫作为吉祥物候补来调查。";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000022 Arclouse^000000.";
+							mes "[盖尔卡]";
+							mes "请讨伐^FF000022只卷甲虫^000000。";
 							if (callsub( S_Quest,13006,13005 ) == 0) {
-								mes "[Gelkah]";
-								mes "That is too bad. It was an interesting request.";
+								mes "[盖尔卡]";
+								mes "太可惜了。那本来是份有趣的委托。";
 							}
 						}
 						break;
 					case 3:
 						if (checkquest(13008,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too. There will always be a request waiting for.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。总会有委托在等着你。";
 						else if (checkquest(13007,HUNTING) == 1) {
 							cutin "酒愁府救墨靛",3;  //anolian_card
-							mes "A monk is on a pilgrimage and seeks protection against some alligator-like creatures.";
+							mes "有位僧侣正在朝圣，希望有人保护他免受那些形似鳄鱼的怪物侵扰。";
 							next;
-							mes "[Gelkah]";
-							mes "Anyways, this request is to clear out Anolians in underground waterway to make way for a safe pilgrimage.";
+							mes "[盖尔卡]";
+							mes "总之，这份委托是清除地下水道里的虎蜥人，为安全的朝圣之路开路。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13007,HUNTING) == 2) {
-							mes "You fared well with this request.";
+							mes "这份委托你做得不错。";
 							callsub S_Quest,13007,13008,112000,186500;
 						}
 						else {
 							cutin "酒愁府救墨靛",3;  //anolian_card
-							mes "Glastheim seems to be a good sacred place not only to adventurers but also to monks. I have no idea what really attracts them there.";
+							mes "克雷斯特汉姆古城似乎不只是冒险者，连僧侣也视其为圣地。我真不知道那里究竟有什么吸引他们。";
 							next;
-							mes "[Gelkah]";
-							mes "A Pilgrimage from the monastery to the underground waterway is a journey. The request is to clear ^FF000030 Anolian^000000 in the Glastheim sewer for a safe pilgrimage.";
+							mes "[盖尔卡]";
+							mes "从修道院到地下水道的朝圣是一段旅程。这份委托是清除克雷斯特汉姆古城地下水道的^FF000030只虎蜥人^000000，以保朝圣安全。";
 							callsub S_Quest,13008,13007;
 						}
 						break;
 					case 4:
 						if (checkquest(13010,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too. There will always be a request waiting for.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。总会有委托在等着你。";
 						else if (checkquest(13009,HUNTING) == 1) {
 							cutin "胶泼墨靛",3;  //sting_card
-							mes "There are many Sting monsters in the underground waterway and underground cave so it will be easy to clear.";
+							mes "地下水道和地下洞穴里有很多史汀，应该很容易完成。";
 							next;
-							mes "[Gelkah]";
-							mes "The request is to clear ^FF000030 Sting^000000 in underground waterway and underground cave for a safe pilgrimage.";
+							mes "[盖尔卡]";
+							mes "这份委托是清除地下水道和地下洞穴里的^FF000030只史汀^000000，以保朝圣安全。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13009,HUNTING) == 2) {
-							mes "Visiting to filthy and smelly underground must be tough. It would be a good experience for you.";
+							mes "去又脏又臭的地下一定很辛苦。那对你来说会是很好的经历。";
 							callsub S_Quest,13009,13010,112000,186500;
 						}
 						else {
 							cutin "胶泼墨靛",3;  //sting_card
-							mes "Have you heard about a monk's pilgrimage? There are so many Stings in the underground waterway and cave so they disturb the peaceful monks.";
+							mes "你听说过僧侣的朝圣吗？地下水道和洞穴里史汀太多了，搅得那些清修的僧侣不得安宁。";
 							next;
-							mes "[Gelkah]";
-							mes "Master accepted this request because he respects those monks. The request is to clear ^FF000030 Sting^000000 monsters in underground waterway for a safe pilgrimage.";
+							mes "[盖尔卡]";
+							mes "师父敬重那些僧侣，所以接下了这份委托。委托内容是清除地下水道的^FF000030只史汀^000000，以保朝圣安全。";
 							callsub S_Quest,13010,13009;
 						}
 						break;
 					case 5:
 						if (checkquest(13012,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too. Pilgrimage will be continued so there will be another request again.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。朝圣还会继续，所以还会有新的委托。";
 						else if (checkquest(13011,HUNTING) == 1) {
 							cutin "皋捞历快肺胶墨靛",3;  //majoruros_card
-							mes "I wonder what the reason is behind these monk pilgrimages and why they keep doing it... There must be a hidden reason.";
+							mes "我很好奇这些僧侣朝圣的原因，还有他们为何一再如此……其中一定另有隐情。";
 							next;
-							mes "[Gelkah]";
-							mes "I used to take care of the request but I am worried. The request is to clear ^FF000030 Majoruros^000000 from the 2nd floor of the underground cave.";
+							mes "[盖尔卡]";
+							mes "这份委托本来是我在负责，但我有点担心。委托内容是清除地下洞穴2层的^FF000030只狂暴米诺斯^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13011,HUNTING) == 2) {
-							mes "Visiting for a long pilgrimage must be tiring.";
-							mes "It would be a good experience for you.";
+							mes "长途朝圣一定很累吧。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13011,13012,112000,252000;
 						}
 						else {
 							cutin "皋捞历快肺胶墨靛",3;  //majoruros_card
-							mes "The monk's pilgrimage destination is on the 2nd floor of the Glastheim castle underground cave. It is not an easy journey but will be a good experience.";
+							mes "僧侣朝圣的目的地在克雷斯特汉姆古城城堡地下洞穴2层。这段路不好走，但会是很好的经历。";
 							next;
-							mes "[Gelkah]";
-							mes "Majoururos is not easy to hunt so be careful. The request is to clear ^FF000030 Majoruros^000000 in the underground cave second floor.";
+							mes "[盖尔卡]";
+							mes "狂暴米诺斯不好对付，请小心。委托内容是清除地下洞穴2层的^FF000030只狂暴米诺斯^000000。";
 							callsub S_Quest,13012,13011;
 						}
 					}
 					break;
 				case 2:
-					mes "There are many requests coming through from the Midgard Expedition.";
+					mes "有很多委托来自米德加尔特联合驻地。";
 					next;
-					if (select( "Hunting Quests","Trauma" ) == 1) {
-						mes "[Gelkah]";
+					if (select( "讨伐委托","心理创伤" ) == 1) {
+						mes "[盖尔卡]";
 						if (checkquest(13014,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too. Please take a rest. There will always be a request for you.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。请休息一下。总会有委托等着你。";
 						else if (checkquest(13013,HUNTING) == 1) {
 							cutin "巧蓖脓扼墨靛",3;  //pinguicula_card
-							mes "Outbound space is mysterious.. Monsters are unique.";
+							mes "外域空间很神秘……怪物也很独特。";
 							next;
-							mes "[Gelkah]";
-							mes "This is an unusual request. Please clear ^FF000030 Pinguicula^000000.";
+							mes "[盖尔卡]";
+							mes "这是份不寻常的委托。请讨伐^FF000030只捕虫堇妖^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13013,HUNTING) == 2) {
-							mes "Visiting the Ash Vacuum must be tough.";
-							mes "It would be a good experience for you.";
+							mes "去灰暗的尘世一定很辛苦。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13013,13014,106000,148000;
 						}
 						else {
 							cutin "巧蓖脓扼墨靛",3;  //pinguicula_card
-							mes "Pinguicula is one of the first monsters that adventurers encounter when they step into the Ash Vacuum. They expect us to reduce monsters around the Expedition Camp.";
+							mes "捕虫堇妖是冒险者踏入灰暗的尘世后最先遇到的怪物之一。他们希望我们减少联合驻地周边的怪物。";
 							next;
-							mes "[Gelkah]";
-							mes "It is natural to have more accidents with new monsters. It is a common request. Please clear ^FF000030 Pinguicula^000000.";
+							mes "[盖尔卡]";
+							mes "遇到新怪物时事故增多是常事。这是很普通的委托。请讨伐^FF000030只捕虫堇妖^000000。";
 							callsub S_Quest,13014,13013;
 						}
 					}
 					else {
-						mes "[Gelkah]";
+						mes "[盖尔卡]";
 						if (checkquest(13016,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too. Please take a rest. This request is not worth working so hard.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。请休息一下。这份委托不值得你这么拼命。";
 						else if (checkquest(13015,HUNTING) == 1) {
 							cutin "风矫棵扼海胶颇墨靛",3;  //luciola_vespa_card
-							mes "This is a strange request and a strange reason but we should accept it anyway.";
+							mes "这份委托很奇怪，理由也很奇怪，但我们还是该接下来。";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000030 Luciola Vespa^000000.";
+							mes "[盖尔卡]";
+							mes "请讨伐^FF000030只鲁修拉黄蜂^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13015,HUNTING) == 2) {
-							mes "It must be very tough to do such a strange request.";
+							mes "做这种奇怪的委托一定很辛苦。";
 							callsub S_Quest,13015,13016,112000,186500;
 						}
 						else {
 							cutin "风矫棵扼海胶颇墨靛",3;  //luciola_vespa_card
-							mes "This is a very personal request. It is unusual but this request is from an adventurer who is friendly with Rohtert.. It is requested by Pretty Boy. Why did he write this?";
+							mes "这是份非常私人的委托。虽然不寻常，但委托人是罗特尔的熟人冒险者。提出委托的是“帅哥”。他为什么要写这个？";
 							next;
-							mes "[Gelkah]";
-							mes "It is too personal that he got stung by a bee when he was young. It traumatized him so he can't travel to Ash Vacuum.";
+							mes "[盖尔卡]";
+							mes "私事到这个地步：他小时候被蜂蜇过，留下了心理阴影，所以没法去灰暗的尘世。";
 							next;
-							mes "Gelkah is staring at Rohtert.";
+							mes "盖尔卡盯着罗特尔。";
 							next;
-							mes "[Gelkah]";
-							mes "This seems to be a request for increased travelers to the new world. Please clear ^FF000030 Luciola Vespa^000000.";
+							mes "[盖尔卡]";
+							mes "这似乎是为了让更多人前往新世界的委托。请讨伐^FF000030只鲁修拉黄蜂^000000。";
 							callsub S_Quest,13016,13015;
 						}
 					}
 					break;
 				case 3:
-					mes "There are many request near or in the Ice Dungeon in Rachel.";
+					mes "拉赫的冰洞穴附近及内部有很多委托。";
 					next;
-					switch( select( "Desert Wolf Hunting", "Snowier Hunting", "Ice Titans..." ) ) {
-						mes "[Gelkah]";
+					switch( select( "讨伐沙漠之狼", "讨伐雪怪", "寒冰巨人……" ) ) {
+						mes "[盖尔卡]";
 					case 1:
 						if (checkquest(13018,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。";
 						else if (checkquest(13017,HUNTING) == 1) {
 							cutin "单历飘匡橇墨靛",3;  //desert_wolf_card
-							mes "Have you read old books? That is about an adventurer who was fighting with big wolves and it ended up with a friendship. It's called Samba's with Wolves.";
+							mes "你读过旧书吗？讲的是一个冒险者与巨狼搏斗，最后却结下友谊的故事。书名叫《与狼共桑巴》。";
 							next;
-							mes "[Gelkah]";
-							mes "A novel is a novel. Please clear ^FF000030 Desert Wolf^000000 near the entrance to the Ice dungeon in Rachel.";
+							mes "[盖尔卡]";
+							mes "小说归小说。请讨伐拉赫冰洞穴入口附近的^FF000030只沙漠之狼^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13017,HUNTING) == 2) {
-							mes "Wasn't that cute?";
-							mes "It would be a good experience for you.";
+							mes "是不是很可爱？";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13017,13018,106000,148000;
 						}
 						else {
 							cutin "单历飘匡橇墨靛",3;  //desert_wolf_card
-							mes "The Ice cave is directly north of Rachel. The problem is that the Wolves frighten tourists when they are heading to see the Ice cave.";
+							mes "冰洞穴就在拉赫正北方。问题是游客去看冰洞穴的途中会被那些狼吓到。";
 							next;
-							mes "[Gelkah]";
-							mes "It would be fun if we can talk and samba with wolves! Please clear ^FF000030 Desert Wolf^000000 near Ice dungeon.";
+							mes "[盖尔卡]";
+							mes "要是能和狼说说话、跳跳桑巴，那该多有趣！请讨伐冰洞穴附近的^FF000030只沙漠之狼^000000。";
 							callsub S_Quest,13018,13017;
 						}
 						break;
 					case 2:
 						if (checkquest(13020,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。";
 						else if (checkquest(13019,HUNTING) == 1) {
 							cutin "胶畴捞绢墨靛",3;  //snowier_card
-							mes "Rough breath, insecure eyes, freezing cold.. It is not easy request so get yourself warm.";
+							mes "粗重的呼吸、不安的眼神、刺骨的寒冷……这委托不容易，先把自己暖和起来吧。";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000030 Snowier^000000 on the second floor of Ice dungeon.";
+							mes "[盖尔卡]";
+							mes "请讨伐冰洞穴2层的^FF000030只雪怪^000000。";
 							cutin "gelca01",2;
 							next;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13019,HUNTING) == 2) {
-							mes "Visiting the freezing ice dungeon must be tough.";
-							mes "It would be a good experience for you.";
+							mes "去冰冷的冰洞穴一定很辛苦。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13019,13020,106000,148000;
 						}
 						else {
 							cutin "胶畴捞绢墨靛",3;  //snowier_card
-							mes "People who have been to ice dungeon say there are noisy monsters disturbing their visits. Please clear them if you can put up with it.";
+							mes "去过冰洞穴的人说那里有吵闹的怪物妨碍参观。如果你忍受得了，请去讨伐它们。";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000030 Snowier^000000 on the second floor of Ice dungeon.";
+							mes "[盖尔卡]";
+							mes "请讨伐冰洞穴2层的^FF000030只雪怪^000000。";
 							callsub S_Quest,13020,13019;
 						}
 						break;
 					case 3:
 						if (checkquest(13022,PLAYTIME) == 0)
-							mes "You just finished a request. Adventure is important but taking a rest is important too.";
+							mes "你刚完成一份委托。冒险固然重要，休息也同样重要。";
 						else if (checkquest(13021,HUNTING) == 1) {
 							cutin "酒捞胶萍藕墨靛",3;  //ice_titan_card
-							mes "Please clear ^FF000030 Ice Titan^000000 at the Ice cave.";
+							mes "请讨伐冰洞穴的^FF000030只寒冰巨人^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13021,HUNTING) == 2) {
-							mes "Visiting that cold dark cave must be tough.";
-							mes "It would be a good experience for you.";
+							mes "去那个又冷又暗的洞穴一定很辛苦。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13021,13022,112000,186500;
 						}
 						else {
 							cutin "酒捞胶萍藕墨靛",3;  //ice_titan_card
-							mes "Have you been to Ice cave north of Rachel? There are monsters called as Ice Titans deep in the dungeon. Scholars want to determine if they are golems or not.";
+							mes "你去过拉赫北边的冰洞穴吗？洞穴深处有种叫寒冰巨人的怪物。学者们想弄清它们是不是魔像。";
 							next;
-							mes "[Gelkah]";
-							mes "The request is to reduce the number of them for the scholar's safety. Please clear ^FF000030 Ice Titan^000000 at the Ice cave.";
+							mes "[盖尔卡]";
+							mes "委托内容是减少它们的数量以保障学者的安全。请讨伐冰洞穴的^FF000030只寒冰巨人^000000。";
 							callsub S_Quest,13022,13021;
 						}
 					}
 					break;
 				case 4:
-					mes "There is a request for monster hunts in Magma Dungeon. ^DA26DAPretty girl wanderer^000000 is requesting this from Comodo.";
+					mes "有一份在熔岩洞穴讨伐怪物的委托。提出委托的是在克魔岛的^DA26DA流浪美少女^000000。";
 					next;
-					if (select( "Nightmare Terror Hunting","Deleter Hunting" ) == 1) {
-						mes "[Gelkah]";
+					if (select( "讨伐七彩梦魇","讨伐七彩地龙" ) == 1) {
+						mes "[盖尔卡]";
 						if (checkquest(13024,PLAYTIME) == 0)
-							mes "You just finished a request. Thanks for keeping memory.. but You should take a rest.";
+							mes "你刚完成一份委托。谢谢你守护那份回忆……不过你该休息一下了。";
 						else if (checkquest(13023,HUNTING) == 1) {
 							cutin "唱捞飘皋绢抛矾墨靛",3;  //nightmare_terror_card
-							mes "The memory of a girl is important ! Please clear ^FF000030 Nightmare Terror^000000.";
+							mes "少女的回忆很重要！请讨伐^FF000030只七彩梦魇^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13023,HUNTING) == 2) {
-							mes "Consider the memory of others. There is stil abeauty in the world. It would be a good experience for you.";
+							mes "也替别人的回忆想想吧。这世上仍有美好存在。那对你来说会是很好的经历。";
 							callsub S_Quest,13023,13024,106000,148000;
 						}
 						else {
 							cutin "唱捞飘皋绢抛矾墨靛",3;  //nightmare_terror_card
-							mes "This request is from a client that is sad because the magma dungeon is full of monsters when she came back to return after breaking up with her lover. Apparently, she spent a lot of time with him there and wants some peace.";
+							mes "这份委托来自一位伤心的委托人。她和恋人分手后回到熔岩洞穴，那里却满是怪物。据说她曾和他在那里度过许多时光，如今只想要一份安宁。";
 							next;
-							mes "[Gelkah]";
-							mes "The memory of a girl is important! Please clear ^FF000030 Nightmare Terror^000000.";
+							mes "[盖尔卡]";
+							mes "少女的回忆很重要！请讨伐^FF000030只七彩梦魇^000000。";
 							callsub S_Quest,13024,13023;
 						}
 					}
 					else {
-						mes "[Gelkah]";
+						mes "[盖尔卡]";
 						if (checkquest(13026,PLAYTIME) == 0)
-							mes "You just finished a request. Did you take enough time to cool down? Take enough rest.";
+							mes "你刚完成一份委托。有好好冷静下来吗？多休息一会儿吧。";
 						else if (checkquest(13025,HUNTING) == 1) {
 							cutin "傍吝掉府磐墨靛",3;  //flying_deleter_card
-							mes "A client showed a wonderful dance to a lover. One day, they were attacked from a Deleter while they are dancing in the magma dungeon.";
+							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩地龙的袭击。";
 							next;
-							mes "[Gelkah]";
-							mes "The attack ruined their dance and eventually their relationship because the guy blamed the girl for being attacked.";
+							mes "[盖尔卡]";
+							mes "那次袭击毁了他们的舞，也最终毁了他们的感情，因为那男人怪她招来了袭击。";
 							next;
-							mes "[Gelkah]";
-							mes "Now she blames the Deleters so she has made this request. Please clear ^FF000030 Flying Deleter^000000.";
+							mes "[盖尔卡]";
+							mes "如今她把一切都怪到七彩地龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
 							next;
 							cutin "gelca03",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13025,HUNTING) == 2) {
 							cutin "gelca03",2;
-							mes "Eden Group protects love, justice and Midgard! hurrah!";
-							mes "It would be a good memory.";
+							mes "乐园团守护爱情、正义与米德加尔特！万岁！";
+							mes "那会成为美好的回忆。";
 							callsub S_Quest,13025,13026,106000,148000;
 						}
 						else {
 							cutin "傍吝掉府磐墨靛",3;  //flying_deleter_card
-							mes "A client showed a wonderful dance to a lover. One day, they were attacked from a Deleter while they are dancing in the magma dungeon.";
+							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩地龙的袭击。";
 							next;
-							mes "[Gelkah]";
-							mes "The attack ruined their dance and eventually their relationship because the guy blamed the girl for being attacked.";
+							mes "[盖尔卡]";
+							mes "那次袭击毁了他们的舞，也最终毁了他们的感情，因为那男人怪她招来了袭击。";
 							next;
-							mes "[Gelkah]";
-							mes "Now she blames the Deleters so she has made this request. Please clear ^FF000030 Flying Deleter^000000.";
+							mes "[盖尔卡]";
+							mes "如今她把一切都怪到七彩地龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
 							callsub S_Quest,13026,13025;
 						}
 					}
 					break;
 				case 5:
-					mes "Here is a list of other requests from all over Midgard.";
+					mes "这是来自米德加尔特各地的其他委托清单。";
 					next;
-					switch( select( "Loli Ruri Hunting - Niflheim", "Medusa Hunting - Comodo", "Anubis Hunting - Sphinx" ) ) {
-						mes "[Gelkah]";
+					switch( select( "讨伐银月魔女 - 尼芙菲姆", "讨伐米杜沙 - 克魔岛", "讨伐安毕斯 - 史芬克斯" ) ) {
+						mes "[盖尔卡]";
 					case 1:
 						if (checkquest(13041,PLAYTIME) == 0)
-							mes "I think you should rest a bit. Even adventurers need their rest right?";
+							mes "我觉得你该休息一下。冒险者也需要休息，对吧？";
 						else if (checkquest(13040,HUNTING) == 1) {
 							cutin "肺府风府墨靛",3;  //loli_ruri_card
-							mes "Eden Group is planning to send a notice that unmature adventurers are not sent to night time requests because it is too dangerous.";
+							mes "乐园团打算发出通知，不再派不成熟的冒险者执行夜间委托，因为太危险了。";
 							next;
-							mes "[Gelkah]";
-							mes "I wonder why they are scheming this kind of ^FF0000nonsense^000000... makes me wonder if they even know anything about adventuring.";
+							mes "[盖尔卡]";
+							mes "我真不懂他们为什么要盘算这种^FF0000荒唐事^000000……让人怀疑他们到底懂不懂冒险。";
 							next;
-							mes "[Gelkah]";
-							mes "We should accept this simple request before we start getting even more nonsense ones. Please clear ^FF000030 Loli Ruri^000000 in Niflheim.";
+							mes "[盖尔卡]";
+							mes "在更多荒唐委托找上门之前，我们该先接下这份简单的。请讨伐尼芙菲姆的^FF000030只银月魔女^000000。";
 							next;
 							cutin "gelca02",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13040,HUNTING) == 2) {
-							mes "Are you mentally wounded? I am happy that you're back safely.";
-							mes "It would be a good experience for you.";
+							mes "你心里受伤了吗？我很高兴你能平安回来。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13040,13041,112000,186500;
 						}
 						else {
 							cutin "肺府风府墨靛",3;  //loli_ruri_card
-							mes "A secret society requested the protection of the Eden Group from the Loli Ruris because they believe that they have mental powers.";
+							mes "有个秘密结社请求乐园团保护他们免受银月魔女侵扰，因为他们相信那些魔女拥有念力。";
 							next;
-							mes "[Gelkah]";
-							mes "They said that they would heal Eden Group adventurers who are exhausted in exchange for the request but we're not sure they'll follow through.";
+							mes "[盖尔卡]";
+							mes "他们说作为委托的交换，会治疗疲惫的乐园团冒险者，但我们不确定他们会不会履行。";
 							next;
-							mes "[Gelkah]";
-							mes "We should accept the simple request anyways. Please clear ^FF000030 Loli Ruri^000000 in Niflheim.";
+							mes "[盖尔卡]";
+							mes "不管怎样，这份简单的委托我们还是该接下。请讨伐尼芙菲姆的^FF000030只银月魔女^000000。";
 							callsub S_Quest,13041,13040;
 						}
 						break;
 					case 2:
 						if (checkquest(13043,PLAYTIME) == 0)
-							mes "Adventure is important but taking a rest is important too.";
+							mes "冒险固然重要，休息也同样重要。";
 						else if (checkquest(13042,HUNTING) == 1) {
 							cutin "皋滴荤墨靛",3;  //medusa_card
-							mes "I do not know why master likes this kind of request. He also used to say any request is a good request for an adventurer...";
+							mes "我不知道师父为什么喜欢这种委托。他还常说，对冒险者来说任何委托都是好委托……";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000030 Medusa^000000 in the western cave of Comodo.";
+							mes "[盖尔卡]";
+							mes "请讨伐克魔岛西边洞穴的^FF000030只米杜沙^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13042,HUNTING) == 2) {
-							mes "How is Comodo beach? Take a look around instead of paying too much attention to the request.";
-							mes "It will be a good experience for sure.";
+							mes "克魔岛的海边怎么样？别太在意委托，四处逛逛吧。";
+							mes "那一定会是很好的经历。";
 							callsub S_Quest,13042,13043,106000,148000;
 						}
 						else {
 							cutin "皋滴荤墨靛",3;  //medusa_card
-							mes "This is a request from a hair designer in Alberta. He wants to know if the snakes on the Medusa's head are really snakes or fancy hair...";
+							mes "这份委托来自阿尔贝塔的一位发型设计师。他想知道米杜沙头上的蛇究竟是真蛇，还是别致的发型……";
 							next;
-							mes "[Gelkah]";
-							mes "Obviously they're snakes but who are we to stamp on this crazy guy's dreams right?";
+							mes "[盖尔卡]";
+							mes "那当然是蛇，但我们又凭什么踩碎这个疯子的梦想呢？";
 							next;
-							mes "[Gelkah]";
-							mes "My master accepted this request simply because it was insane. Please clear ^FF000030 Medusa^000000 monster in the west cave of Comodo.";
+							mes "[盖尔卡]";
+							mes "师父接这份委托，纯粹是因为它太离谱了。请讨伐克魔岛西边洞穴的^FF000030只米杜沙^000000。";
 							callsub S_Quest,13043,13042;
 						}
 						break;
 					case 3:
 						if (checkquest(13045,PLAYTIME) == 0)
-							mes "The request from Sphinx is done. Please take a rest.";
+							mes "史芬克斯的委托完成了。请休息一下。";
 						else if (checkquest(13044,HUNTING) == 1) {
 							cutin "酒穿厚胶墨靛",3;  //anubis_card
-							mes "I shoud investigate about the client by myself but for now please clear ^FF000020 Anubis^000000 on the 4th floor of Sphinx dungeon.";
+							mes "我本该亲自调查这位委托人，但眼下请先讨伐史芬克斯迷宫4层的^FF000020只安毕斯^000000。";
 							next;
 							cutin "gelca01",2;
-							mes "[Gelkah]";
-							mes "Please inform me when you've cleared this request.";
+							mes "[盖尔卡]";
+							mes "完成这份委托后请告诉我。";
 						}
 						else if (checkquest(13044,HUNTING) == 2) {
 							cutin "gelca02",2;
-							mes "Sphinx dungeon is such a maze.";
-							mes "It would be a good experience for you.";
+							mes "史芬克斯迷宫真是错综复杂。";
+							mes "那对你来说会是很好的经历。";
 							callsub S_Quest,13044,13045,112000,186500;
 						}
 						else {
 							cutin "酒穿厚胶墨靛",3;  //anubis_card
-							mes "An anonymous client sent a request to help clear monsters in Sphinx dungeon because adventurers hardly visit Morocc anymore. The monsters seem to be running rampant there.";
+							mes "一位匿名委托人发来委托，希望协助清理史芬克斯迷宫里的怪物，因为已经很少有冒险者去梦罗克了。那里的怪物似乎很猖獗。";
 							next;
-							mes "[Gelkah]";
-							mes "Please clear ^FF000020 Anubis^000000 on the 4th floor of Sphinx dungeon.";
+							mes "[盖尔卡]";
+							mes "请讨伐史芬克斯迷宫4层的^FF000020只安毕斯^000000。";
 							callsub S_Quest,13045,13044;
 						}
 					}
@@ -620,41 +620,41 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				if (para_100lv02 < 20) {
 					.@ran = rand(1,3);
 					if (.@ran == 1)
-						mes "We are so busy taking requests that need to be taken care of. It is my first time handling so much pressure.";
+						mes "我们忙着接下那些必须处理的委托。我还是第一次承受这么大的压力。";
 					else if (.@ran == 2)
-						mes "I thought Eden Group was busy but I could not imagine it is this much. I should do more as an adventurer!";
+						mes "我以为乐园团很忙，但没想到会忙成这样。作为冒险者我该更加努力！";
 					else {
 						cutin "gelca02",2;
-						mes "I wish I could have a glass of fresh fruit juice...";
+						mes "真希望能喝上一杯新鲜果汁……";
 					}
 				}
 				else if (para_100lv02 < 40) {
 					.@ran = rand(1,3);
 					if (.@ran == 1) {
 						cutin "gelca03",2;
-						mes "Adventurers sometimes bring special things or trophies from where they visited for a request. It is very good!";
+						mes "冒险者有时会从委托地点带回些特别的东西或战利品。真是太好了！";
 					}
 					else if (.@ran == 2)
-						mes "If there is something good "+ strcharinfo(0) +" I will try to give you a couple things. I am not sure if there will be enough to give because of so many adventurers.";
+						mes "如果有什么好东西，"+ strcharinfo(0) +"我会尽量分你几件。冒险者太多了，我不确定够不够分。";
 					else
-						mes "Handling documents must be difficult. It's so much easier to just be out in the field.";
+						mes "处理文件一定很辛苦。还是到外面跑现场轻松多了。";
 				}
 				else if (para_100lv02 < 60) {
 					if (para_100lv01 > 3) {
 						.@ran = rand(1,3);
 						if (.@ran == 1)
-							mes "I will let you know if there is something good.";
+							mes "要是有好东西，我会告诉你的。";
 						else if (.@ran == 2)
-							mes "Are you get used to the requests? It is weird that I am guiding adventurers instead of taking requests myself.";
+							mes "你习惯这些委托了吗？明明该自己去接委托，却在这里给冒险者指路，感觉真奇怪。";
 						else
-							mes "It will be good if you clear one at a time after receiving all the requests from Glastheim.";
+							mes "把克雷斯特汉姆古城的委托都接齐后，再一件一件地完成会比较好。";
 					}
 					else {
 						cutin "gelca03",2;
-						mes "I am busy but clearing a lot of requests "+ strcharinfo(0) +" I appreciate it. Lets see. I got some good food from an adventurer that he received during a request.";
+						mes "我很忙，但你能完成这么多委托，"+ strcharinfo(0) +"我很感激。让我看看。我从一位冒险者那里得到了一些不错的食物，是他在委托中拿到的。";
 						next;
-						mes "[Gelkah]";
-						mes "Oops I ate all? Okay just one left. Please drop by later!";
+						mes "[盖尔卡]";
+						mes "哎呀，我全吃光了吗？好吧，只剩一个了。回头再来吧！";
 						para_100lv01 = 4;
 						getitem 608,1;// Seed_Of_Yggdrasil
 					}
@@ -662,106 +662,106 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				else if (para_100lv02 < 80) {
 					cutin "gelca03",2;
 					if (para_100lv01 > 4)
-						mes "Cheer up! "+ strcharinfo(0) +" I'm not sure if he thinks of you as his pupil. He is just out of control.";
+						mes "打起精神！"+ strcharinfo(0) +"我不确定他有没有把你当弟子。他只是管不住自己。";
 					else {
-						mes "There are a lot of presents coming in whenever the requests are done efficiently. Here, take this as a prize.";
+						mes "只要委托处理得利落，就会收到很多礼物。来，这个就当奖品收下吧。";
 						para_100lv01 = 5;
 						getitem 607,1;// Yggdrasilberry
 					}
 				}
 				else if (para_100lv02 > 100) {
-					mes "It is tough work but also fun to with master right "+ strcharinfo(0) +"?";
+					mes "虽然很辛苦，但和师父一起也挺有意思的吧，"+ strcharinfo(0) +"？";
 					next;
-					switch( select( "I hate that hot-tempered fool.", "I want you to be the master.", "I would follow you to any battle." ) ) {
-						mes "[Gelkah]";
+					switch( select( "我讨厌那个暴躁的笨蛋。", "我希望你来当师父。", "无论什么战斗我都会跟着你。" ) ) {
+						mes "[盖尔卡]";
 					case 1:
-						mes "I understand you. I got into a fight when I first met master in Mora village.";
+						mes "我理解你。我第一次在穆拉村见到师父时就和他吵了一架。";
 						next;
-						mes "[Gelkah]";
-						mes "He was almost crying when I first met him. It was difficult to pretend to lose to him. Please keep it a secret.";
+						mes "[盖尔卡]";
+						mes "我第一次见到他时，他差点哭出来。要假装输给他可真不容易。请替我保密。";
 						emotion ET_SMILE;
 						break;
 					case 2:
 						if (Sex == SEX_MALE)
-							mes "I'm not sure if I'm cut out for that job. Besides...";
+							mes "我不确定自己是否适合那份差事。而且……";
 						else
-							mes "I am sorry to say this but I am the only pupil of master now and forever... He said ^FF0000I don't need an ugly female pupil^000000 but I still stick to him.";
+							mes "不好意思这么说，但现在以至永远，我都是师父唯一的弟子……他说过^FF0000我不需要丑女弟子^000000，可我还是赖着他。";
 						break;
 					case 3:
 						cutin "gelca04",2;
-						mes "Oh no... Please don't do that. I am sorry please keep it as a secret to a master. I was careless.";
+						mes "不行……请不要那样做。对不起，请对师父保密。是我大意了。";
 						emotion ET_SHY;
 						break;
 					}
 					next;
 					cutin "gelca03",2;
-					mes "[Gelkah]";
+					mes "[盖尔卡]";
 					if (para_100lv01 > 5)
-						mes "Good luck on the remained requests.";
+						mes "剩下的委托，祝你好运。";
 					else {
-						mes "Good luck on the remained request. ^FF0000Master says he has something to say to you.^000000";
+						mes "剩下的委托，祝你好运。^FF0000师父说他有话要对你说。^000000";
 						para_100lv01 = 6;
 					}
 				}
 				else
-					mes "I am sorry but I am a little bit busy. Can we talk later?";
+					mes "抱歉，我有点忙。以后再聊好吗？";
 				break;
 			case 3:
 				cutin "gelca03",2;
-				mes "Did you bring the kindness pass?";
+				mes "你把亲切券带来了吗？";
 				next;
 				if (countitem(6549) > 0) {// Courtesy_Ticket
-					if (select( "The ^FF0000kindness pass^000000?", "Exchange pass for prizes." ) == 1) {
-						mes "[Gelkah]";
-						mes "I know it sounds childish. Right? The shape is just like the card we used to play when we were kids.";
+					if (select( "^FF0000亲切券^000000？", "用券兑换奖品。" ) == 1) {
+						mes "[盖尔卡]";
+						mes "我知道这听起来很幼稚，对吧？形状就跟我们小时候玩的卡片一样。";
 						next;
-						if (select( "A card? What is it?", "Uh, yeah those were fun..." ) == 1) {
+						if (select( "卡片？那是什么？", "呃，是啊，那些还挺好玩的……" ) == 1) {
 							cutin "gelca02",2;
-							mes "[Gelkah]";
-							mes "I am sorry... It must be popular only in our village. Throw, heat and let it fly it.";
+							mes "[盖尔卡]";
+							mes "抱歉……大概只有我们村子流行这个吧。扔出去、拍一下，让它飞起来。";
 							emotion ET_SORRY;
 							next;
 						}
 						cutin "gelca01",2;
-						mes "[Gelkah]";
-						mes "As you see, master made it himself and put his picture on it. He used to travel aroung for looking for the paper material to make the card.";
+						mes "[盖尔卡]";
+						mes "如你所见，这是师父亲手做的，还印上了他的照片。他以前为了找做卡片的纸材四处奔波。";
 						next;
 						cutin "gelca02",2;
-						mes "[Gelkah]";
-						mes "If they were not filed properly, the request of looking for a paper will be included to the request list.";
+						mes "[盖尔卡]";
+						mes "要是没有好好归档，找纸的委托也会被列进委托清单里。";
 						next;
-						mes "[Gelkah]";
-						mes "He is very kind even though he doesn't look like it. Master used it to give something to adventurers for their devotion.";
+						mes "[盖尔卡]";
+						mes "别看他那样，其实心地很好。师父用它来奖赏尽心尽力的冒险者。";
 						next;
 						cutin "gelca01",2;
-						mes "[Gelkah]";
-						mes "Give the story about adventure or trophy by using 1,10,20 and 30 cards.";
+						mes "[盖尔卡]";
+						mes "使用1张、10张、20张、30张卡券，可以获得冒险故事或战利品。";
 						next;
-						mes "[Gelkah]";
-						mes "It will be agood experience if you listen to the story of adventurer. There are so much adventure that we heard from a master.";
+						mes "[盖尔卡]";
+						mes "听听冒险者的故事会是很好的经历。我们从师父那里听过太多冒险故事了。";
 						next;
-						mes "[Gelkah]";
-						mes "If you are matured enough not to need a request Make sure that you are not allowed to use a pass.";
+						mes "[盖尔卡]";
+						mes "如果你已经成熟到不需要委托，那就不能使用卡券了。";
 					}
 					else {
-						mes "[Gelkah]";
-						mes "How do you want to use this pass?";
+						mes "[盖尔卡]";
+						mes "你想怎么使用这张券？";
 						next;
-						if (select( "Exchange for prizes", "Listen to a story and get EXP" ) == 1) {
+						if (select( "兑换奖品", "Listen to a story and get EXP" ) == 1) {
 							cutin "gelca03",2;
-							mes "[Gelkah]";
-							mes "You can pick a trophy in this bag. Please do not be disappointed even if you picked up something you do not want. How many do you want to exchange?";
+							mes "[盖尔卡]";
+							mes "你可以在这个袋子里挑一件战利品。就算抽到不想要的东西，也请不要失望。你要兑换几张？";
 							next;
-							.@amount = select( "Exchange kindness ^FF00001^000000 pass", "Exchange kindness ^FF000010^000000 pass" ) == 1 ? 1 : 10;
-							mes "[Gelkah]";
-							mes "Please give me a pass and put your hand in a bag to pick.";
+							.@amount = select( "兑换亲切券 ^FF00001^000000张", "兑换亲切券 ^FF000010^000000张" ) == 1 ? 1 : 10;
+							mes "[盖尔卡]";
+							mes "请把通行证给我，然后把手伸进袋子里抽一个吧。";
 							next;
 							if (countitem(6549) < .@amount) {// Courtesy_Ticket
-								mes "[Gelkah]";
-								mes "^FF0000Kindness pass^000000 is insufficient.";
+								mes "[盖尔卡]";
+								mes "^FF0000善意通行证^000000不足。";
 							}
 							else {
-								mes "browsing";
+								mes "浏览";
 								next;
 								.@ran = rand(1,1000);
 								if (.@amount == 1) {
@@ -792,47 +792,47 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								}
 								delitem 6549,.@amount;// Courtesy_Ticket
 								getitem .@item[0], .@item[1];
-								mes "You reach into the bag and grab ^0000FF"+ .@item[1] +" "+ getitemname(.@item[0]) +"^000000.";
+								mes "你把手伸进袋子里，抓到了^0000FF"+ .@item[1] +" "+ getitemname(.@item[0]) +"^000000。";
 								next;
 								if (.@amount == 10)
 									cutin "gelca03",2;
-								mes "[Gelkah]";
-								mes "Make good use of it.";
+								mes "[盖尔卡]";
+								mes "好好利用它吧。";
 							}
 						}
 						else {
-							mes "[Gelkah]";
-							mes "Ok, I've got a story for you in exchange for the kindness pass.";
+							mes "[盖尔卡]";
+							mes "好，我用一个故事跟你换善意通行证。";
 							next;
-							switch( select( "Give ^FF000010^000000 kindness pass", "Give ^FF000020^000000 kindness pass", "Give ^FF000030^000000 kindness pass" ) ) {
-								mes "[Gelkah]";
+							switch( select( "交出^FF000010^000000张善意通行证", "交出^FF000020^000000张善意通行证", "交出^FF000030^000000张善意通行证" ) ) {
+								mes "[盖尔卡]";
 							case 1:
 								if (countitem(6549) < 10)// Courtesy_Ticket
-									mes "You don't have enough kindness passes.";
+									mes "你的善意通行证不够。";
 								else {
 									.@story = rand(1,3);
 									if (.@story == 1) {
 										cutin "gelca02",2;
-										mes "Have you seen the sunken ship near Alberta?";
+										mes "你见过阿尔贝塔附近的那艘沉船吗？";
 										next;
-										mes "Master Rohter and I traveled deep into the ship and battled a monster known as ^FF0000Drake^000000. That day I was determined that I would be the best adventurer.";
+										mes "我和罗赫特师父深入那艘船，与一只叫^FF0000德古拉^000000的怪物战斗。那天我下定决心，要成为最棒的冒险者。";
 										.@exp = 200000;
 										.@jexp = 148000;
 									}
 									else if (.@story == 2) {
 										cutin "gelca03",2;
-										mes "One time, master and I went to the cave west of Comodo and when we saw the Medusa monster...";
+										mes "有一次，我和师父去克魔岛西边的洞穴，看到美杜莎怪物的时候……";
 										next;
-										mes "Oh boy the look on his face was priceless!";
+										mes "天啊，他当时的表情真是无价！";
 										emotion ET_BIGTHROB;
 										emotion ET_THINK, playerattached();
 										.@exp = 180000;
 										.@jexp = 168000;
 									}
 									else {
-										mes "I once got lost in a maze north of Prontera. I thought I was going in circles forever until I finally made it out.";
+										mes "我有一次在普隆德拉北边的迷宫里迷路了。我以为会一直在里面打转，直到最后才终于走出来。";
 										next;
-										mes "Rumor has it that if you get lost in that maze you'll turn into one of the monsters there.";
+										mes "听说如果在那个迷宫里迷路，就会变成那里的怪物。";
 										.@exp = 220000;
 										.@jexp = 128000;
 									}
@@ -845,30 +845,30 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								break;
 							case 2:
 								if (countitem(6549) < 20)// Courtesy_Ticket
-									mes "You don't have enough kindness passes.";
+									mes "你的善意通行证不够。";
 								else {
 									.@story = rand(1,3);
 									if (.@story == 1) {
 										cutin "gelca04",2;
-										mes "Once I found a secret route to get to Jawaii... It's only for couples but some of us know how to get there still.";
+										mes "我曾经找到过一条去贾瓦伊的秘密路线……那是给情侣走的，不过我们当中还是有人知道怎么去。";
 										next;
-										mes "Kind of useless to be there without a partner but oh well.";
+										mes "没有伴侣去那里有点没用，不过算了。";
 										emotion ET_THROB;
 										.@exp = 550000;
 										.@jexp = 340000;
 									}
 									else if (.@story == 2) {
 										cutin "gelca03",2;
-										mes "So one time, master was part of a guild called wing something... Chicken wing...?";
+										mes "有一次，师父加入了一个叫翅膀什么的公会……鸡翅……？";
 										next;
-										mes "It was a fun guild because no one took things seriously but master got tired of their laziness so he left.";
+										mes "那是个有趣的公会，因为没人把事情当真，但师父受不了他们的懒散，所以离开了。";
 										.@exp = 400000;
 										.@jexp = 240000;
 									}
 									else {
-										mes "Have you been up to ^FF0000endless tower^000000? Master and I went there but only got to the 20th floor because his knee gave out while climbing...";
+										mes "你去过^FF0000无尽之塔^000000吗？我和师父去过，但只爬到第20层，因为他爬到一半膝盖就不行了……";
 										next;
-										mes "^FF0000Endless tower^000000 is somewhere in the sea. You have to find a guy named Jansor or Jans-something in Alberta and he'll sail you there.";
+										mes "^FF0000无尽之塔^000000在海上的某个地方。你得在阿尔贝塔找到一个叫詹索还是詹什么的人，他会载你过去。";
 										.@exp = 550000;
 										.@jexp = 290000;
 									}
@@ -881,27 +881,27 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								break;
 							case 3:
 								if (countitem(6549) < 30)// Courtesy_Ticket
-									mes "You don't have enough kindness passes.";
+									mes "你的善意通行证不够。";
 								else {
 									.@story = rand(1,2);
 									if (.@story == 1) {
 										cutin "gelca04",2;
-										mes "Master's guild was dismissed at the Ash Vacuum because their guild master went missing after a battle with some Cornus monsters.";
+										mes "师父的公会在灰烬之地解散了，因为他们的会长在与一些科努斯怪物战斗后失踪了。";
 										next;
-										mes "[Gelkah]";
-										mes "Ever since then he started being mean to weaker adventurers...";
+										mes "[盖尔卡]";
+										mes "从那以后，他就开始对较弱的冒险者刻薄……";
 										next;
-										mes "[Gelkah]";
-										mes "I don't think he ever saw that guild master again after that day.";
+										mes "[盖尔卡]";
+										mes "我想那天之后他就再也没见过那位会长了。";
 										getexp 650000,488000;
 									}
 									else {
 										cutin "gelca03",2;
-										mes "[Gelkah]";
-										mes "Master started out as a popular support Monk at the Prontera monastery.";
+										mes "[盖尔卡]";
+										mes "师父最初是普隆德拉修道院里很受欢迎的辅助武僧。";
 										next;
-										mes "[Gelkah]";
-										mes "But he was also regarded as a troublemaker because of his competitive nature so he left.";
+										mes "[盖尔卡]";
+										mes "但他也因为好胜的性格被人当成惹事精，所以离开了。";
 										getexp 700000,430000;
 									}
 									delitem 6549,30;
@@ -913,8 +913,8 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					}
 				}
 				else {
-					mes "[Gelkah]";
-					mes "Please come back to me if you are received more kindness passes!";
+					mes "[盖尔卡]";
+					mes "如果你拿到更多善意通行证，请再回来找我！";
 				}
 			}
 		}
@@ -922,9 +922,9 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 	else {
 		cutin "gelca03",2;
 		if (para_100lv02 > 100)
-			mes strcharinfo(0) +"! You did a good job! There are more requests but reserve them for the other adventurers.";
+			mes strcharinfo(0) +"！你做得很好！还有更多委托，但把那些留给其他冒险者吧。";
 		if (para_100lv02 < 101)
-			mes "I do not think you are suitable to the request I can give. Please find other adventures.";
+			mes "我觉得你不适合我能给你的委托。请去找别的冒险者吧。";
 		callsub S_Hunting,13003,106000,148000,"Carat";// <quest id>, <job exp if joblevel < 6>, <job exp>, <quest name>
 		callsub S_Hunting,13005,106000,148000,"Arclouse";
 		callsub S_Hunting,13007,112000,186500,"Anolian";
@@ -963,14 +963,14 @@ S_Quest:
 	else {
 		next;
 		cutin "gelca01",2;
-		if (select( "Accept the request.","Decline." ) == 2)
+		if (select( "接受委托。","Decline." ) == 2)
 			return 0;
-		mes "[Gelkah]";
-		mes "Please inform me when you've cleared the request.";
+		mes "[盖尔卡]";
+		mes "完成委托后请告诉我。";
 		if (getarg(0) == 13012) {
 			next;
-			mes "[Gelkah]";
-			mes "The journey to the lowest floor of Glastheim is a long trip but it can be fun if you go with a party.";
+			mes "[盖尔卡]";
+			mes "前往克雷斯特汉姆最深处的旅程很漫长，但如果组队前往会很有趣。";
 		}
 	}
 	if (isbegin_quest(getarg(0)))
@@ -984,10 +984,10 @@ S_Hunting:
 		return;
 	case 2:
 		next;
-		mes "[Gelkah]";
-		mes "You completed the request";
-		mes "^FF0000"+ getarg(3) +" Hunting^000000.";
-		mes "I will mark you down as having completed this request.";
+		mes "[盖尔卡]";
+		mes "你完成了委托";
+		mes "^FF0000"+ getarg(3) +"狩猎^000000。";
+		mes "我会记录你已经完成了这个委托。";
 		para_100lv02 += 1;
 		if (JobLevel < 6)
 			getexp 550000,getarg(1);
@@ -1003,22 +1003,22 @@ S_Hunting:
 	end;
 }
 
-moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
-	mes "[Rohtert]";
+moc_para01,41,95,5	script	罗赫特#12	4_M_ROTERT,{
+	mes "[罗赫特]";
 	if (!callfunc("F_HasEdenGroupMark")) {
 		cutin "rote01",2;
-		mes "You are not even a member of Eden Group. What are you doing here?";
-		mes "I'm only dealing with base level ^FF0000100 - 110^000000 adventurers.";
+		mes "你连伊甸园集团的成员都不是。你在这里做什么？";
+		mes "我只接待基础等级^FF0000100 - 110^000000的冒险者。";
 	}
 	else {
 		cutin "rote03",2;
 		mes "......";
 		next;
-		mes "[Rohtert]";
+		mes "[罗赫特]";
 		if (BaseLevel < 100)
-			mes "Such a novice... go and train yourself more. What? Don't like the way I talk? Then get stronger.";
+			mes "真是个新手……再去多锻炼锻炼吧。怎么？不喜欢我说话的方式？那就变强啊。";
 		else if (BaseLevel > 110) {
-			mes "You are a little bit too mature of an adventurer. You have no business with me. Just leave. My business is with new third class adventurers up to level 110.";
+			mes "你这个冒险者有点太成熟了。你跟我没什么事。走吧。我负责的是110级以下的新三转冒险者。";
 			if (checkquest(13047,PLAYTIME) == 2)
 				erasequest 13047;
 			if (checkquest(13049,PLAYTIME) == 2)
@@ -1029,100 +1029,100 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 				erasequest 13046;
 		}
 		else if (para_100lv01 < 2) {
-			mes "Yeah waddya want from me kid? You think I'm just gonna say ok I'll be your master and teach you everything I know?";
+			mes "是啊，小子，你想从我这儿要什么？你以为我会说好，我来当你师父，把我懂的全都教给你？";
 			next;
-			mes "[Rohtert]";
-			mes "I'm not a charity so get lost.";
+			mes "[罗赫特]";
+			mes "我不是做慈善的，滚吧。";
 		}
 		else if (para_100lv01 == 2) {
-			mes "You a new adventurer?";
+			mes "你是新来的冒险者？";
 			next;
-			mes "[Rohtert]";
-			mes "There are so much things to do and you're wasting your time with me. Talk to Gelkah she's more chatty than I'll ever be to you.";
+			mes "[罗赫特]";
+			mes "有那么多事要做，你却在跟我浪费时间。去找盖尔卡吧，她对你话会比我多得多。";
 			next;
-			mes "[Rohtert]";
-			mes "You seem brave enough to be a good adventurer but you're nothing but a Novice in my eyes.";
+			mes "[罗赫特]";
+			mes "你看起来够勇敢，能当个好冒险者，但在我眼里你不过是个新手。";
 			para_100lv01 = 3;
 		}
 		else if (para_100lv01 == 3) {
-			mes "I used to an adventurer for the Eden Group just like you but of course I was the best.";
+			mes "我以前也和你一样是伊甸园集团的冒险者，不过当然，我是最棒的。";
 			next;
-			mes "[Rohtert]";
-			mes "I guess I'm retired now because my adventuring skills are just too good to compete with all you kids.";
+			mes "[罗赫特]";
+			mes "我想我现在是退休了，因为我的冒险技巧太好，跟你们这些孩子比太不公平了。";
 		}
 		else if (para_100lv01 == 4) {
-			mes "Anyway, I'm doing this a favor to the Eden Group.";
+			mes "总之，我这是在帮伊甸园集团一个忙。";
 			next;
-			mes "[Rohtert]";
-			mes "I am looking for someone who regards friendship or loyalty like a Spoon Stub.";
+			mes "[罗赫特]";
+			mes "我在找一个把友情或忠诚看得像汤匙柄一样的人。";
 			next;
-			if (select( "A Spoon what?", "You're a bad person." ) == 1) {
+			if (select( "汤匙什么？", "你是个坏人。" ) == 1) {
 				cutin "rote03",2;
-				mes "[Rohtert]";
-				mes "You know? A Spoon Stub. Zombie Prisoners drop them and they seem like they're usefull but really they're kinda worthless.";
+				mes "[罗赫特]";
+				mes "知道吗？汤匙柄。僵尸囚犯会掉落，看起来挺有用，其实没什么价值。";
 				next;
-				mes "[Rohtert]";
-				mes "Anyway, I guess you seem like the loyal type... sort of...";
+				mes "[罗赫特]";
+				mes "总之，你看起来像是忠诚的那种人……大概吧……";
 			}
 			else {
-				mes "[Rohtert]";
-				mes "That makes me feel weird. That is not bad but I guess I'm bad and I don't care.";
+				mes "[罗赫特]";
+				mes "这让我感觉怪怪的。那不坏，但我想我就是坏，而且我不在乎。";
 			}
 			next;
 			cutin "rote04",2;
-			mes "[Rohtert]";
-			mes "Remember to stay brave you silly adventurer.";
+			mes "[罗赫特]";
+			mes "记得保持勇敢，你这个傻冒险者。";
 		}
 		else if (para_100lv01 == 5) {
 			cutin "rote03",2;
-			mes "Okay ! You are doing the best that you can do.";
+			mes "好！你已经尽力了。";
 			next;
-			mes "[Rohtert]";
-			mes "I am afraid if you are becoming like Gelkah. She's like a lost puppy. Don't be like her. Okay?";
+			mes "[罗赫特]";
+			mes "我怕你会变得像盖尔卡。她就像只迷路的小狗。别学她，好吗？";
 		}
 		else if (para_100lv01 == 6) {
 			cutin "rote03",2;
-			mes "You busy looking all around.";
+			mes "你忙着到处看。";
 			next;
-			mes "[Rohtert]";
+			mes "[罗赫特]";
 			if (checkquest(13046) == 2) {
 				if (checkquest(13047,PLAYTIME) == 0) {
-					mes "I am done with my business.";
-					mes "I am responsible for clearing documents. I hate doing this stuff.";
+					mes "我的事办完了。";
+					mes "我负责处理文件。我讨厌干这些。";
 					next;
-					mes "[Rohtert]";
-					mes "I guess I should talk to him one more time... Come back tomorrow!";
+					mes "[罗赫特]";
+					mes "我想我该再跟他谈一次……明天再来吧！";
 				}
 				else if (checkquest(13047,PLAYTIME) == 2) {
-					mes "Oh, how long has it been?";
+					mes "哦，过了多久了？";
 					erasequest 13047;// Tendrilion Request Timer
 				}
 				else if (checkquest(13049,PLAYTIME) == 0)
-					mes "White is a paper and black is a letters. I hate public documents. But, I have to do this so I am busy for a while.";
+					mes "白的是纸，黑的是字。我讨厌公文。但我必须做，所以我会忙一阵子。";
 				else if (checkquest(13048,HUNTING) == 1)
-					mes "I know that hunting the Tens Drillion can't be too difficult for you.";
+					mes "我知道猎杀腾斯德里昂对你来说不会太难。";
 				else if (checkquest(13048,HUNTING) == 2) {
 					cutin "rote02",2;
-					mes "Good ! You are becoming a good adventurer! Do your best!";
+					mes "好！你正在成为优秀的冒险者！加油！";
 					erasequest 13048;// Tendrilion Request
 					setquest 13049;// Tendrilion Request Timer
 					getexp 352000,253000;
 				}
 				else {
 					cutin "rote02",2;
-					mes "Tens Drillion I think we should teach it more lessons to show it who's boss!";
+					mes "腾斯德里昂，我想我们应该再给它点教训，让它知道谁才是老大！";
 					next;
-					if (select( "Lets give a good lesson for sure.", "I think once is enough." ) == 2) {
-						mes "[Rohtert]";
-						mes "It is fine there are still many adventurers that can do this.";
+					if (select( "一定要好好教训它一顿。", "I think once is enough." ) == 2) {
+						mes "[罗赫特]";
+						mes "没关系，还有很多冒险者能做这件事。";
 					}
 					else {
 						cutin "rote04",2;
-						mes "[Rohtert]";
-						mes "It is not because I am coward.";
+						mes "[罗赫特]";
+						mes "这不是因为我胆小。";
 						next;
-						mes "[Rohtert]";
-						mes "Good luck. Make sure you finish it off this time. Hah hah!";
+						mes "[罗赫特]";
+						mes "祝你好运。这次一定要把它解决掉。哈哈！";
 						if (checkquest(13049,PLAYTIME) == 2)
 							erasequest 13049;
 						setquest 13048;// Tendrilion Request
@@ -1130,98 +1130,98 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 				}
 			}
 			else if (checkquest(13046,HUNTING) == 1)
-				mes "You still there novice? If you can't handle this by yourself then ask your friends because this is not the easiest thing to do.";
+				mes "你还在吗，新手？如果一个人应付不了，就叫上朋友，因为这可不是最容易的事。";
 			else if (checkquest(13046,HUNTING) == 2) {
-				mes "Oh you're back safely!";
-				mes "I guess you're not a scrub like I thought you were.";
+				mes "哦，你平安回来了！";
+				mes "看来你不像我想的那样是个废物。";
 				completequest 13046;// Tendrilion Request
 				setquest 13047;// Tendrilion Request Timer
 				getexp 352000,253000;
 			}
 			else {
 				cutin "rote04",2;
-				mes "Do you mind doing a simple errand?";
+				mes "你介意帮我跑个简单的腿吗？";
 				next;
-				if (select( "No I don't mind!", "Simple errands are for simpletons." ) == 2) {
-					mes "[Rohtert]";
-					mes "You are a strange adventurer...";
+				if (select( "不，我不介意！", "简单的差事是给笨蛋做的。" ) == 2) {
+					mes "[罗赫特]";
+					mes "你是个奇怪的冒险者……";
 				}
 				else {
-					mes "[Rohtert]";
-					mes "One fine windy day, I was collecting flowers in west south of the Midgard Allied Forces Post to fulfill an Eden Group request.";
+					mes "[罗赫特]";
+					mes "某个风很大的日子，我在米德加尔特联军哨所西南方采花，为了完成伊甸园集团的委托。";
 					next;
-					mes "[Rohtert]";
-					mes "Then that one suddenly showed up.";
+					mes "[罗赫特]";
+					mes "然后那家伙突然出现了。";
 					next;
-					select("One what?");
+					select("那什么？");
 					cutin "rote02",2;
-					mes "[Rohtert]";
-					mes "It was a ^FF0000Tens Drillion.^000000";
+					mes "[罗赫特]";
+					mes "是一只^FF0000腾斯德里昂。^000000";
 					next;
 					cutin "gelca03",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "Oops! Its actually ^FF0000Tendrilion^000000!! Master!";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "哎呀！其实那是^FF0000腾德里利昂^000000！！师父！";
 					next;
 					cutin "rote04",2;
-					mes "[Rohtert]";
-					mes "Yeah yeah potato po-tah-toh!";
+					mes "[罗赫特]";
+					mes "是是是，土豆就是马铃薯！";
 					emotion ET_HNG;
 					next;
 					cutin "gelca02",2;
-					mes "[^FF0000Gelkah^000000]";
+					mes "[^FF0000盖尔卡^000000]";
 					mes "......";
 					next;
 					cutin "rote04",2;
-					mes "[Rohtert]";
-					mes "We realized when we faced the eyes of the beast that it looked like a lion but it isn't any normal animal.";
+					mes "[罗赫特]";
+					mes "当我们对上那野兽的眼睛时才明白，它看起来像狮子，但绝不是普通的动物。";
 					emotion ET_HNG;
 					next;
-					mes "[Rohtert]";
-					mes "^8008F8I knew that it was kill or be killed.^000000";
+					mes "[罗赫特]";
+					mes "^8008F8我知道，不是它死就是我亡。^000000";
 					next;
-					mes "[Rohtert]";
-					mes "Of course I beat that beast easily! It was easier than taking candy from a Poring.";
+					mes "[罗赫特]";
+					mes "当然，我轻松就打倒了那野兽！比从波利手里抢糖果还容易。";
 					next;
-					mes "[Rohtert]";
-					mes "But to my surprise, the beast got back up. I was forced to beat it down 12 more times before it stayed down. This was not a normal Tens Drillion.";
+					mes "[罗赫特]";
+					mes "但出乎我意料的是，那野兽又站了起来。我被迫又把它打倒12次，它才终于不再起来。这可不是普通的腾斯德里昂。";
 					next;
-					mes "[Rohtert]";
-					mes "I heard it is still wandering place to palce but I am kind of busy now.";
+					mes "[罗赫特]";
+					mes "我听说它还在到处游荡，但我现在有点忙。";
 					next;
-					mes "[Rohtert]";
-					mes "I want you to take care of it. For me it was fine to be there alone. But for you.. I recommend you to bring more adventurers.";
+					mes "[罗赫特]";
+					mes "我想让你去处理它。对我来说一个人去没问题。但对你……我建议你多带些冒险者。";
 					next;
-					select("You sure you did this yourself?");
-					mes "[Rohtert]";
-					mes "The fact that I am strong is more important than the number. Just go there and take the beast out.";
+					select("你确定这是你自己做到的？");
+					mes "[罗赫特]";
+					mes "我强这件事比次数重要。你只管去那里把那野兽解决掉。";
 					next;
-					mes "[Rohtert]";
-					mes "You'll find it west of the Midgard Allied Forces Post at the Ash Vacuum.";
+					mes "[罗赫特]";
+					mes "你会在灰烬之地米德加尔特联军哨所的西边找到它。";
 					next;
-					select("I guess I have no choice.");
+					select("看来我别无选择。");
 					cutin "rote03",2;
-					mes "[Rohtert]";
-					mes "You still there novice? If you can not handle by yourself then ask to your friends because it is not easy one.";
+					mes "[罗赫特]";
+					mes "你还在吗，新手？如果一个人应付不了，就叫上朋友，因为这可不是容易的事。";
 					next;
 					cutin "gelca02",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "......."+ strcharinfo(0) +" wait...";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "......."+ strcharinfo(0) +"等等……";
 					next;
 					cutin "gelca01",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "If you find it don't be scared. Master did not have to fight the Tendrilion 12 times.";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "如果你找到它，别害怕。师父可没有跟腾德里利昂打12次。";
 					next;
 					cutin "gelca03",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "In fact, master was so drunk he barely remembers the thing.";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "其实师父醉得厉害，几乎不记得那回事了。";
 					next;
 					cutin "gelca04",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "I just left it alone because it was a little bit cute that a master was fighting with one Tendrilion. Now its becoming a problem.";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "我本来没管，因为师父跟一只腾德里利昂搏斗的样子有点可爱。现在它成了问题。";
 					next;
 					cutin "gelca01",2;
-					mes "[^FF0000Gelkah^000000]";
-					mes "Please come back after clearing one Tendrilion. Oh and please keep this a secret from master.";
+					mes "[^FF0000盖尔卡^000000]";
+					mes "解决掉一只腾德里利昂后再回来吧。哦，还有，请对师父保密。";
 					setquest 13046;// Tendrilion Request
 				}
 			}

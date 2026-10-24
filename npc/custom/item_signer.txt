@@ -13,111 +13,111 @@
 //= 1.1a Added 'disable_items' command. [Euphy]
 //============================================================
 
-prt_in,24,61,7	script	Perchik	47,{
+prt_in,24,61,7	script	佩尔奇克	47,{
 	
 	setarray .@Item[0],644,3;	// Item requirements: <ID>,<Count>{,...} (0 to disable)
 	setarray .@Cost[0],0,5000;	// Zeny requirements: <base price>,<price per refine>
 
 	disable_items;
-	mes "[Perchik]";
-	mes "I can ^0055FFsign your name^000000 on almost any rare item you hold.";
+	mes "[佩尔奇克]";
+	mes "我可以在你拥有的几乎所有稀有物品上^0055FF签下你的名字^000000。";
 	next;
-	if(select("Tell me more...:Sign my items, please!") == 1) {
-		mes "[Perchik]";
-		mes "I can put your name on any slotless equipment or weapon.";
+	if(select("再详细说说……:请给我的物品签名！") == 1) {
+		mes "[佩尔奇克]";
+		mes "我可以把你的名字刻在任何无插槽的装备或武器上。";
 		emotion ET_AHA;
 		next;
-		mes "[Perchik]";
+		mes "[佩尔奇克]";
 		if (getarraysize(.@Item) || getarraysize(.@Cost)) {
-			mes "For my work I accept:";
+			mes "我的报酬是：";
 			if (getarraysize(.@Item)) for(set .@i,0; .@i<getarraysize(.@Item); set .@i,.@i+2)
-				mes " ~ "+.@Item[.@i+1]+"x "+getitemname(.@Item[.@i]);
-			if (.@Cost[0]) mes " ~ "+callfunc("F_InsertComma",.@Cost[0])+" Zeny";
-			if (.@Cost[1]) mes " ~ "+callfunc("F_InsertComma",.@Cost[1])+" Zeny per refine";
+				mes "~"+.@Item[.@i+1]+"x"+getitemname(.@Item[.@i]);
+			if (.@Cost[0]) mes "~"+callfunc("F_InsertComma",.@Cost[0])+" Zeny";
+			if (.@Cost[1]) mes "~"+callfunc("F_InsertComma",.@Cost[1])+" Zeny per refine";
 		}
-		else mes "I work for free, but...";
+		else mes "我免费服务，但是……";
 		next;
 		emotion ET_CRY;
-		mes "[Perchik]";
-		mes "Alas, I have 12 hungry children";
-		mes "and a very angry wife.";
+		mes "[佩尔奇克]";
+		mes "唉，我有12个饿着肚子的孩子";
+		mes "还有个非常生气的妻子。";
 		next;
-		mes "[Perchik]";
-		mes "Or it was 12 angry children";
-		mes "and a very hungry wife...";
+		mes "[佩尔奇克]";
+		mes "或者说是12个生气的孩子";
+		mes "和一位非常饿的妻子……";
 		emotion ET_SCRATCH;
 		close;
 	}
-	mes "[Perchik]";
-	mes "Show me your items to sign...";
+	mes "[佩尔奇克]";
+	mes "让我看看你要签名的物品……";
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for (set .@i,1; .@i<=10; set .@i,.@i+1) {
 		if (getequipisequiped(.@indices[.@i]))
-			set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) +" [^0055FF"+getequipname(.@indices[.@i])+"^000000]";
+			set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) +"[^0055FF"+getequipname(.@indices[.@i])+"^000000]";
 		set .@menu$, .@menu$+":";
 	}
 	set .@part, .@indices[ select(.@menu$) ];
 	set .@id, getequipid(.@part);
 	set .@ref, getequiprefinerycnt(.@part);
-	mes "[Perchik]";
+	mes "[佩尔奇克]";
 	if (!getequipisequiped(.@part)) {
-		mes "Nothing is equipped there!";
+		mes "那个位置没有装备任何东西！";
 		emotion ET_KEK;
 		close;
 	}
 	for(set .@i,0; .@i<4; set .@i,.@i+1)
 		set .@slot[.@i], getequipcardid(.@part,.@i);
 	if (.@slot[0]==255 || .@slot[0]==254 || .@slot[0]<0) {
-		mes "Alas, this item's already signed.";
-		mes "I would never touch a master's work.";
+		mes "唉，这件物品已经签过名了。";
+		mes "我绝不会碰大师的作品。";
 		emotion ET_SCRATCH;
 		close;
 	}
 	if (.@slot[0]>4000 && .@slot[0]<5000) {
-		mes "A card? Here?!";
-		mes "As I said before, I don't sign items with cards.";
+		mes "卡片？在这里？！";
+		mes "我说过了，我不给镶嵌了卡片的物品签名。";
 		emotion ET_SCRATCH;
 		close;
 	}
 	if (getiteminfo(.@id, ITEMINFO_SLOT)) {
-		mes "Sorry, I don't sign slotted items.";
+		mes "抱歉，我不给有插槽的物品签名。";
 		emotion ET_SORRY;
 		close;
 	}
 	getinventorylist;
 	for(set .@i,0; .@i<@inventorylist_count; set .@i,.@i+1)
 		if (@inventorylist_expire[.@i] != 0) {
-			mes "Sorry, I don't sign rental items!";
+			mes "抱歉，我不给租借物品签名！";
 			emotion ET_SCRATCH;
 			close;
 		}
 	set .@price, .@Cost[0]+(.@Cost[1]*.@ref);
 	if (getarraysize(.@Item) || .@price) {
-		mes "I will need:";
+		mes "我需要：";
 		if (getarraysize(.@Item)) for(set .@i,0; .@i<getarraysize(.@Item); set .@i,.@i+2) {
-			mes " ~ "+.@Item[.@i+1]+"x "+getitemname(.@Item[.@i]);
+			mes "~"+.@Item[.@i+1]+"x"+getitemname(.@Item[.@i]);
 			if (countitem(.@Item[.@i]) < .@Item[.@i+1]) set .@nr,1;
 		}
-		if (.@price) mes " ~ "+.@price+" Zeny";
+		if (.@price) mes "~"+.@price+"Zeny";
 	}
-	mes "Shall I sign your ^0055FF"+getitemname(.@id)+"^000000?";
+	mes "你要我签名的就是^0055FF"+getitemname(.@id)+"^000000吗？";
 	next;
-	if(select("Ok!:Leave")==2) {
-		mes "[Perchik]";
-		mes "See you...";
+	if(select("好的！:离开")==2) {
+		mes "[佩尔奇克]";
+		mes "再见……";
 		emotion ET_SLEEPY;
 		close;
 	}
-	mes "[Perchik]";
+	mes "[佩尔奇克]";
 	if (Zeny < .@price || .@nr) {
-		mes "I don't work for 'thanks'.";
+		mes "我可不靠一句“谢谢”干活。";
 		emotion ET_SORRY;
 		close;
 	}
 	if (!countitem2(.@id,1,.@ref,0,.@slot[0],.@slot[1],.@slot[2],.@slot[3])) {
-		mes "Where is "+getitemname(@id)+"...?";
-		npctalk "Perchik : You're a snoozy cheater!";
+		mes "找不到你的"+getitemname(@id)+"...?";
+		npctalk "佩尔奇克：你这个耍诈的骗子！";
 		logmes "Hack: Tried to sign an item not having it: "+getitemname(@id);
 		emotion ET_KEK;
 		close;
@@ -126,7 +126,7 @@ prt_in,24,61,7	script	Perchik	47,{
 	if (getarraysize(.@Item))  for(set .@i,0; .@i<getarraysize(.@Item); set .@i,.@i+2)
 		delitem .@Item[.@i], .@Item[.@i+1];
 	delitem2 .@id,1,1,.@ref,0,.@slot[0],.@slot[1],.@slot[2],.@slot[3];
-	mes "Done!";
+	mes "完成了！";
 	emotion ET_OK;
 	getitem2 .@id,1,1,.@ref,0,254,0,getcharid(0)&0xffff,(getcharid(0)>>16)&0xffff;
 	equip .@id;

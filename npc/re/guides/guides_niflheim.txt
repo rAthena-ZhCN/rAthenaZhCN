@@ -15,19 +15,19 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-niflheim,201,187,3	script	Niflheim Guide#01nif	849,{
-	mes "[Niflheim Guide]";
-	mes "Welcome to.. ^8B4513Niflheim^000000...";
-	mes "the Realm of the Dead...";
-	mes "Do you need help navigating the realm...?";
+niflheim,201,187,3	script	尼芙菲姆向导#01nif	849,{
+	mes "[尼芙菲姆向导]";
+	mes "欢迎来到……^8B4513尼芙菲姆^000000……";
+	mes "亡者之国……";
+	mes "需要我为您指引这片国度的道路吗……？";
 	if (F_Navi() == 0) {
 		next;
-		mes "[Niflheim Guide]";
-		mes "When you click on the.. ^B9062F[location name]^000000... you'll receive the most advanced ^B9062FNavigation^000000 services...!";
+		mes "[尼芙菲姆向导]";
+		mes "点击……^B9062F[地点名称]^000000……即可享受最先进的^B9062F导航^000000服务……！";
 	}
 	while (1) {
 		next;
-		switch(select("[ Tool Shop ]:[ Pub ]:[ Weapon Shop ]:[ Witch's Castle ]:Remove Marks from Mini-Map:Cancel")) {
+		switch(select("[ 道具店 ]:[ 酒馆 ]:[ 武器店 ]:[ 魔女城堡 ]:清除小地图标记:取消")) {
 		case 1:
 			callsub L_Mark, F_Navi("Tool Shop","niflheim,218,196","^0000FF");
 			viewpoint 1,218,196,0,0x0A82FF;
@@ -45,26 +45,26 @@ niflheim,201,187,3	script	Niflheim Guide#01nif	849,{
 			viewpoint 1,255,195,3,0xFF1493;
 			break;
 		case 5:
-			mes "[Niflheim Guide]";
-			mes "Sure, I'll remove all marks from your mini-map...";
-			mes "Is there anything else I can do for you...?";
+			mes "[尼芙菲姆向导]";
+			mes "好的，我会清除您小地图上的所有标记……";
+			mes "还有什么需要我为您效劳的吗……？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
 			viewpoint 2,1,1,3,0xFFFFFF;
 			break;
 		case 6:
-			mes "[Niflheim Guide]";
+			mes "[尼芙菲姆向导]";
 			mes "......Bye~!..";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Niflheim Guide]";
-	mes "Let me mark the location of the";
-	mes getarg(0)+"^000000...";
-	mes "on your mini-map.";
-	mes "Would you like to check any other locations?";
+	mes "[尼芙菲姆向导]";
+	mes "让我把";
+	mes getarg(0)+"^000000……";
+	mes "的位置标记在您的小地图上。";
+	mes "还想查看其他地点吗？";
 	return;
 }

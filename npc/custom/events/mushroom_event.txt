@@ -14,27 +14,27 @@
 //= 3.6a Slightly edited. [Euphy]
 //============================================================ 
 
-prontera,142,228,6	script	Find the Mushroom	1084,{
-	mes "[ Find The Mushroom ]";
+prontera,142,228,6	script	寻找蘑菇	1084,{
+	mes "[ 寻找蘑菇 ]";
 	if (.status == 1) {
 		.@count = mobcount( .event_map$, strnpcinfo(0) + "::OnMobKilled" );
 		if (.@count > 0) {
-			mes "There are " + .@count + " Mushrooms left in " + .event_map$ + "!";
-			mes "Find and kill the mushrooms to gain " + getitemname(.prize) + "!";
+			mes "还有" + .@count + "个蘑菇留在" + .event_map$ + "！";
+			mes "找到并击杀蘑菇，即可获得" + getitemname(.prize) + "！";
 			close;
 		}
 		.event_map$ = "";
 		.status = 0;
-		mes "All the mushrooms are killed?";
+		mes "所有蘑菇都被击杀了吗？";
 	}
-	mes "There is no event at the moment!";
+	mes "目前没有活动！";
 	if (.status || getgmlevel() < .GM) close;
-	mes "Start the event?";
+	mes "要开始活动吗？";
 	next;
-	if (select("- No:- Yes") == 1) close;
+	if (select("- 否:- 是") == 1) close;
 	donpcevent strnpcinfo(0) + "::OnMinute10";
-	mes "[ Find The Mushroom ]";
-	mes "Event started!";
+	mes "[ 寻找蘑菇 ]";
+	mes "活动开始了！";
 	close;
 
 OnInit:
@@ -52,9 +52,9 @@ OnMinute10:	// Start time (every hour)
 	.@label$ = strnpcinfo(0) + "::OnMobKilled";
 	killmonster .event_map$, .@label$;
 	monster .event_map$,0,0,"Please don't kill me!",1084,.@spawn, .@label$;
-	announce "Find the Mushroom : Total of " + .@spawn + " Mushrooms have been spawned in " + .event_map$ + "!",0;
+	announce "寻找蘑菇：共" + .@spawn + "个蘑菇已在以下地图生成：" + .event_map$ + "！",0;
 	sleep 2500;
-	announce "Find the Mushroom : Every Mushroom you kill will give you " + getitemname(.prize) + "!",0;
+	announce "寻找蘑菇：每击杀一个蘑菇，你将获得" + getitemname(.prize) + "！",0;
 	end;
 
 OnMobKilled:
@@ -63,9 +63,9 @@ OnMobKilled:
 	getitem .prize, .amount;
 	.@spawn = mobcount( .event_map$, strnpcinfo(0) + "::OnMobKilled" );
 	if (.@spawn > 0)
-		announce "[ " + strcharinfo(0) + " ] has killed a Mushroom. There are now " + .@spawn + " Mushroom(s) left.",bc_map;
+		announce "[" + strcharinfo(0) + "] 击杀了一个蘑菇。现在还剩下" + .@spawn + "个蘑菇。",bc_map;
 	else {
-		announce "The Find the Mushroom Event has ended. All the Mushrooms have been killed.",0;
+		announce "寻找蘑菇活动已结束。所有蘑菇都已被击杀。",0;
 		.status = 0;
 		.event_map$ = "";
 	}

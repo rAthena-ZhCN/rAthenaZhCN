@@ -12,19 +12,19 @@
 	.@storage_ticket = 7059;	// Cargo_Free_Ticket
 	.@storage_ticket_name$ = getitemname(.@storage_ticket);
 
-	mes "Vending Machine for Novices.";
-	mes "There are many buttons.";
+	mes "初心者自动贩卖机。";
+	mes "上面有许多按钮。";
 	next;
-	switch( select( "Manual", "Trade " + .@storage_ticket_name$, "Trade Novice equipments" ) ) {
+	switch( select( "使用说明", "兑换" + .@storage_ticket_name$, "兑换初心者装备" ) ) {
 	case 1:
-		mes "[Exchange " + .@storage_ticket_name$ + "]";
-		mes "4 " + .@storage_ticket_name$ + " can be exchanged into 1 Free Ticket for Warp, Airship or the Cart Service, or 1 Free Ticket for Peco Ride, 15 Novice Fly Wing, 5 Novice Butterfly Wing, 30 Novice Potion.";
+		mes "[兑换" + .@storage_ticket_name$ + "]";
+		mes "4 " + .@storage_ticket_name$ + "可兑换 1 张传送、飞空艇或手推车服务免费券，或 1 张骑乘大嘴鸟免费券、15 个初心者苍蝇翅膀、5 个初心者蝴蝶翅膀、30 瓶初心者药水。";
 		next;
-		mes "[Trade Novice Gears]";
-		mes "Armor, Hood, Sandals, Main Gauche and Guard for Novice from Criatura Academy can be exchanged into 4 " + .@storage_ticket_name$ + ".";
+		mes "[兑换初心者装备]";
+		mes "克里图拉学院的初心者铠甲、头巾、凉鞋、左手短剑与守卫盾可兑换为 4" + .@storage_ticket_name$ + ".";
 		next;
-		mes "[Trade Novice Gears]";
-		mes "Novice Eggshell can be exchanged into Criatura Hair Coupon for changing your hairstyle.";
+		mes "[兑换初心者装备]";
+		mes "初心者蛋壳可兑换为用于更换发型的克里图拉发型券。";
 		close;
 	case 2:
 		setarray .@exchange[0],
@@ -44,24 +44,24 @@
 		}
 		.@s = (select(.@menu$) - 1) * 2;
 		if (countitem(.@storage_ticket) < 4) {
-			mes "The number of " + .@storage_ticket_name$ + " is insufficient to proceed with the exchange.";
+			mes "所需" + .@storage_ticket_name$ + "数量不足，无法进行兑换。";
 			close;
 		}
 		if (.@exchange[.@s+1] > 1)
 			.@amount$ = .@exchange[.@s+1] + " ";
-		mes "Exchanged 4 " + .@storage_ticket_name$ + " to " + .@amount$ + getitemname(.@exchange[.@s]);
+		mes "已将 4" + .@storage_ticket_name$ + "兑换为" + .@amount$ + getitemname(.@exchange[.@s]);
 		delitem .@storage_ticket,4;
 		getitem .@exchange[.@s],.@exchange[.@s+1];
 		close;
 	case 3:
-		mes "Exchange all Novice equipments into coupons.";
-		mes "Select continue to proceed.";
+		mes "将全部初心者装备兑换为兑换券。";
+		mes "选择“继续”以进行。";
 		next;
-		if (select( "Continue", "Cancel." ) == 2) {
-			mes "The trade was interrupted.";
+		if (select( "继续", "Cancel." ) == 2) {
+			mes "兑换已中断。";
 			close;
 		}
-		mes "Exchanging all equipment into coupons.";
+		mes "正在将全部装备兑换为兑换券。";
 		setarray .@list[0],2352,2510,2414,1243,2112,5055;
 		.@size = getarraysize(.@list);
 		

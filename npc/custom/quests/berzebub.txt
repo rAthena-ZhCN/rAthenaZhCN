@@ -13,52 +13,52 @@
 //= 1.2 Optimized. [Euphy]
 //============================================================
 
-prontera,165,178,8	script	Old Woman	103,{
+prontera,165,178,8	script	老妇人	103,{
 
 	setarray .@Items[0],714,25,1061,100,1095,200,618,10,1551,2,1614,1,727,20;
 	set .@n$,"[Old Woman]";
 
 	mes .@n$;
 	if(BerzQuest == 1) {
-		mes "Hey, I remember you! I already told you that you may only complete this quest once.";
+		mes "嘿，我记得你！我已经说过，这个任务只能完成一次。";
 		close; }
-	mes "Greeting, lad. I found a really nifty item while I was picking mushrooms near Glast Heim.";
+	mes "你好啊，小伙子。我在克雷斯特汉姆附近采蘑菇时，捡到了一件很不错的物品。";
 	next;
-	if(select("Keep Talking:Leave")==2) goto M_Leave;
+	if(select("继续交谈:离开")==2) goto M_Leave;
 
 	mes .@n$;
-	mes "I have never seen an item like this before. I am told it can be placed inside any accessory with a slot available.";
+	mes "我从未见过这样的物品。据说它可以镶嵌进任何带孔的饰品里。";
 	next;
 	mes .@n$;
-	mes "If you're interested in this item, I'll tell you what you need for me to make you one of your own. I can only give one of these to each player, so once you finish this quest, you may not do it again.";
+	mes "如果你对这件物品感兴趣，我可以告诉你需要哪些材料，好让我为你做一个。每位玩家只能获得一个，所以完成这个任务后就不能再做了。";
 	next;
-	if(select("Tell me more about it:Nah, I don't care about it")==2) goto M_Leave;
+	if(select("再多告诉我一些:算了，我不感兴趣")==2) goto M_Leave;
 
 	mes .@n$;
-	mes "I believe the item is called a ^FF0000Berzebub Card^000000. It makes you cast spells really fast!";
+	mes "我记得这件物品叫^FF0000贝尔泽布卡片^000000。它能让你的施法速度变得非常快！";
 	next;
 	mes .@n$;
-	mes "I need all of the following items:";
+	mes "我需要以下所有物品：";
 	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2) {
-		mes " ~ "+.@Items[.@i+1]+"x "+getitemname(.@Items[.@i]);
+		mes "~"+.@Items[.@i+1]+"x"+getitemname(.@Items[.@i]);
 		if (countitem(.@Items[.@i]) < .@Items[.@i+1]) set .@nr,1; }
 	next;
-	if(select("I have all of that!:I'll get those ASAP")==2) goto M_Leave;
+	if(select("我全都有了！:我尽快去弄")==2) goto M_Leave;
 
 	mes .@n$;
 	if (.@nr) {
-		mes "You lie! Get out of here and get those items, you sorry excuse for a rock star.";
+		mes "你撒谎！滚出去把东西凑齐，你这个蹩脚的摇滚明星。";
 		close; }
 	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2)
 		delitem .@Items[.@i], .@Items[.@i+1];
 	getitem 4145,1;
 	set BerzQuest, 1;
-	mes "Congratulations! You have all the items. Here is your ^FF0000Berzebub Card^000000, as promised.";
+	mes "恭喜！你集齐了所有物品。这是答应给你的^FF0000贝尔泽布卡片^000000。";
 	emotion ET_CONGRATULATION;
 	close;
 
 M_Leave:
 	mes .@n$;
-	mes "Such a great item I have right here...";
+	mes "我这儿可是有件好东西……";
 	close;
 }

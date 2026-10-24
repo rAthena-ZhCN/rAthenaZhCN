@@ -15,18 +15,18 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
-	mes "[Juno Guide]";
-	mes "A place that takes the vision of the future, and gives it form in the present. Welcome to";
-	mes "the city of ^8B4513Juno^000000!";
+yuno,59,212,4	script	朱诺向导#yuno01::GuideJuno	700,{
+	mes "[朱诺向导]";
+	mes "一个将未来的愿景化为现实的地方。欢迎来到";
+	mes "^8B4513朱诺^000000城！";
 	F_Navi("[Juno Guide]");
 	next;
 	while (1) {
-		switch(select("[ Main Facilities ]:[ Merchants & Helpers ]:Remove marks from Mini-Map:Cancel")) {
+		switch(select("[ 主要设施 ]:[ 商人与帮手 ]:移除迷你地图标记:取消")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Tool Shop ]:[ Forge ]:[ Airport ]:[ Government Building ]:[ Street of Book Stores ]:[ Inn & Pub ]:[ Sage Castle ]:[ Monster Academy ]:[ Library of the Republic ]:[ Weapon & Armor Shop ]:[ Juphero Plaza ]:[ Monster Museum ]:[ Schweicherbil Magic Academy ]:Previous Menu")) {
+				switch(select("[ 道具店 ]:[ 锻造坊 ]:[ 机场 ]:[ 政府大楼 ]:[ 书店街 ]:[ 旅店与酒馆 ]:[ 贤者城堡 ]:[ 怪物学院 ]:[ 共和国图书馆 ]:[ 武器与防具店 ]:[ 朱庇罗广场 ]:[ 怪物博物馆 ]:[ 施魏歇尔比尔魔法学院 ]:上一页菜单")) {
 				case 1:
 					callsub L_Mark, F_Navi("Tool Shop","yuno,194,140","^FF0000");
 					viewpoint 1,194,140,0,0xFF0000;
@@ -88,11 +88,11 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 					next;
 					break;
 				case 13:
-					mes "[Juno Guide]";
-					mes "I will mark the location of the";
-					mes F_Navi("Schweicherbil Magic Academy","yuno,323,280","^CD1039");
-					mes "on your mini-map.";
-					mes "Would you like to check any other locations?";
+					mes "[朱诺向导]";
+					mes "我会在地图上标出";
+					mes F_Navi("施魏歇尔比尔魔法学院","yuno,323,280","^CD1039");
+					mes "的位置。";
+					mes "还想查看其他地点吗？";
 					viewpoint 1,323,280,12,0xCD1039;
 					next;
 					break;
@@ -105,7 +105,7 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Kafra Employees ]:[ Eden Teleport Officer ]:Previous Menu")) {
+				switch(select("[ 卡普拉职员 ]:[ 伊甸传送员 ]:上一页菜单")) {
 				case 1:
 					callsub L_Mark, "^FA8072Kafra Employees^000000";
 					viewpoint 1,152,187,13,0xFA8072;
@@ -125,9 +125,9 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			}
 			break;
 		case 3:
-			mes "[Juno Guide]";
-			mes "Sure, I'll remove all marks from your mini-map.";
-			mes "Is there anything else I can do for you?";
+			mes "[朱诺向导]";
+			mes "好的，我会清除你迷你地图上的所有标记。";
+			mes "还有什么需要我帮忙的吗？";
 			viewpoint 2,194,140,0,0xFFFFFF;
 			viewpoint 2,120,137,1,0xFFFFFF;
 			viewpoint 2,16,261,2,0xFFFFFF;
@@ -148,18 +148,18 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			next;
 			break;
 		case 4:
-			mes "[Juno Guide]";
-			mes "Have fun on your adventures!";
+			mes "[朱诺向导]";
+			mes "祝你冒险愉快！";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Juno Guide]";
-	mes "I will mark the location";
-	mes "of the "+getarg(0);
-	mes "on your mini-map.";
-	mes "Would you like to check any other locations?";
+	mes "[朱诺向导]";
+	mes "我会在地图上";
+	mes "标出"+getarg(0);
+	mes "的位置。";
+	mes "还想查看其他地点吗？";
 	return;
 }
 yuno,153,47,4	duplicate(GuideJuno)	Juno Guide#yuno02	700

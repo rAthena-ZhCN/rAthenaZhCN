@@ -7,30 +7,30 @@
 //      tra_fild01, tra_fild02 and tra_fild03 [Atemo]
 //============================================================
 
-prontera,246,62,3	script	Training Instructor#prontera_in	8W_SOLDIER,{
-	mes "[Training Instructor]";
-	mes "The royal court has set up a training ground for adventurers who wish to test their skills. If you wish to test your skills under various conditions, we will send you to the training ground.";
+prontera,246,62,3	script	训练教官#prontera_in	8W_SOLDIER,{
+	mes "[训练教官]";
+	mes "王宫为希望测试自身实力的冒险者设立了训练场。如果你想在各种条件下测试自己的实力，我们会将你送往训练场。";
 	next;
-	switch( select( "⒑Enter Basic Training Ground", "⒑Enter 1/10 Training Ground", "⒑Enter 1/100 Training Ground", "⒑Cancel" ) ) {
+	switch( select( "⒑进入基础训练场", "⒑进入1/10训练场", "⒑进入1/100训练场", "⒑取消" ) ) {
 	case 1:
-		mes "[Training Instructor]";
-		mes "I'll send you to the Basic Training Ground.";
+		mes "[训练教官]";
+		mes "我将把你送往基础训练场。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
 		warp "tra_fild01",.@x,.@y;
 		break;
 	case 2:
-		mes "[Training Instructor]";
-		mes "I'll send you to the 1/10 Training Ground.";
+		mes "[训练教官]";
+		mes "我将把你送往1/10训练场。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
 		warp "tra_fild02",109,94;
 		break;
 	case 3:
-		mes "[Training Instructor]";
-		mes "I'll send you to the 1/100 Training Ground.";
+		mes "[训练教官]";
+		mes "我将把你送往1/100训练场。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
@@ -44,37 +44,37 @@ prontera,246,62,3	script	Training Instructor#prontera_in	8W_SOLDIER,{
 
 
 // Warps
-tra_fild01,204,117,2	script	Training Ground Manager#fild01_1	8W_SOLDIER,{
-	mes "[Training Ground Manager]";
-	mes "Need to move to a different area within the training ground? Please select the location you'd like to move to.";
+tra_fild01,204,117,2	script	训练场管理员#fild01_1	8W_SOLDIER,{
+	mes "[训练场管理员]";
+	mes "需要移动到训练场内的其他区域吗？请选择你想前往的位置。";
 	next;
 	switch( atoi( charat(strnpcinfo(2), 7) ) ) {
 	case 1:
-		.@menu$[0] = "⒑ Central Area";
+		.@menu$[0] = "⒑ 中央区域";
 		.@menu$[1] = "";
-		.@menu$[2] = "⒑ 9 O'Clock Area";
-		.@menu$[3] = "⒑ 6 O'Clock Area";
+		.@menu$[2] = "⒑ 9点方向区域";
+		.@menu$[3] = "⒑ 6点方向区域";
 		break;
 	case 2:
-		.@menu$[0] = "⒑ Central Area";
-		.@menu$[1] = "⒑ 3 O'Clock Area";
+		.@menu$[0] = "⒑ 中央区域";
+		.@menu$[1] = "⒑ 3点方向区域";
 		.@menu$[2] = "";
-		.@menu$[3] = "⒑ 6 O'Clock Area";
+		.@menu$[3] = "⒑ 6点方向区域";
 		break;
 	case 3:
-		.@menu$[0] = "⒑ Central area";
-		.@menu$[1] = "⒑ 3 O'Clock Area";
-		.@menu$[2] = "⒑ 9 O'Clock Area";
+		.@menu$[0] = "⒑ 中央区域";
+		.@menu$[1] = "⒑ 3点方向区域";
+		.@menu$[2] = "⒑ 9点方向区域";
 		.@menu$[3] = "";
 		break;
 	case 4:
 		.@menu$[0] = "";
-		.@menu$[1] = "⒑ 3 O'Clock Area";
-		.@menu$[2] = "⒑ 9 O'Clock Area";
-		.@menu$[3] = "⒑ 6 O'Clock Area";
+		.@menu$[1] = "⒑ 3点方向区域";
+		.@menu$[2] = "⒑ 9点方向区域";
+		.@menu$[3] = "⒑ 6点方向区域";
 		break;
 	}
-	switch( select( .@menu$[0], .@menu$[1], .@menu$[2], .@menu$[3], "⒑ To Prontera", "⒑ Cancel" ) ) {
+	switch( select( .@menu$[0], .@menu$[1], .@menu$[2], .@menu$[3], "⒑ 前往普隆德拉", "⒑ 取消" ) ) {
 	case 1:
 		warp strcharinfo(3),109,94;
 		break;
@@ -95,19 +95,19 @@ tra_fild01,204,117,2	script	Training Ground Manager#fild01_1	8W_SOLDIER,{
 	}
 	end;
 }
-tra_fild01,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_2	8W_SOLDIER
-tra_fild01,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_3	8W_SOLDIER
-tra_fild01,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_4	8W_SOLDIER
+tra_fild01,15,117,6	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild01_2	8W_SOLDIER
+tra_fild01,106,32,0	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild01_3	8W_SOLDIER
+tra_fild01,108,100,4	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild01_4	8W_SOLDIER
 
-tra_fild02,204,117,2	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_1	8W_SOLDIER
-tra_fild02,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_2	8W_SOLDIER
-tra_fild02,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_3	8W_SOLDIER
-tra_fild02,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_4	8W_SOLDIER
+tra_fild02,204,117,2	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild02_1	8W_SOLDIER
+tra_fild02,15,117,6	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild02_2	8W_SOLDIER
+tra_fild02,106,32,0	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild02_3	8W_SOLDIER
+tra_fild02,108,100,4	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild02_4	8W_SOLDIER
 
-tra_fild03,204,117,2	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_1	8W_SOLDIER
-tra_fild03,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_2	8W_SOLDIER
-tra_fild03,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_3	8W_SOLDIER
-tra_fild03,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_4	8W_SOLDIER
+tra_fild03,204,117,2	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild03_1	8W_SOLDIER
+tra_fild03,15,117,6	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild03_2	8W_SOLDIER
+tra_fild03,106,32,0	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild03_3	8W_SOLDIER
+tra_fild03,108,100,4	duplicate(训练场管理员#fild01_1)	Training Ground Manager#fild03_4	8W_SOLDIER
 
 tra_fild01,12,114,0	script	tra_fild01_out1	WARPNPC,2,2,{
 	end;
@@ -115,21 +115,21 @@ OnTouch:
 	switch( atoi( charat(strnpcinfo(1), 9) ) ) {
 	case 1:
 		.@menu$[0] = "";
-		.@menu$[1] = "⒑Enter 1/10 Training Ground";
-		.@menu$[2] = "⒑Enter 1/100 Training Ground";
+		.@menu$[1] = "⒑进入1/10训练场";
+		.@menu$[2] = "⒑进入1/100训练场";
 		break;
 	case 2:
-		.@menu$[0] = "⒑Enter Basic Training Grounds";
+		.@menu$[0] = "⒑进入基础训练场";
 		.@menu$[1] = "";
-		.@menu$[2] = "⒑Enter 1/100 Training Grounds";
+		.@menu$[2] = "⒑进入1/100训练场";
 		break;
 	case 3:
-		.@menu$[0] = "⒑Enter Basic Training Grounds";
-		.@menu$[1] = "⒑Enter 1/10 Training Grounds";
+		.@menu$[0] = "⒑进入基础训练场";
+		.@menu$[1] = "⒑进入1/10训练场";
 		.@menu$[2] = "";
 		break;
 	}
-	switch( select( "⒑To Prontera", .@menu$[0], .@menu$[1], .@menu$[2], "⒑Cancel" ) ) {
+	switch( select( "⒑前往普隆德拉", .@menu$[0], .@menu$[1], .@menu$[2], "⒑取消" ) ) {
 	case 1:
 		warp "prontera",246,60;
 		break;

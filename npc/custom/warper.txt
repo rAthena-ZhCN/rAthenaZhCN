@@ -23,14 +23,14 @@ function Go; function Disp; function Pick; function Restrict;
 //	Main Menu:
 // --------------------------------------------------
 
-menu	"Last Warp ^777777["+lastwarp$+"]^000000",-,
-    	" ~ Towns",Towns,
-    	" ~ Fields",Fields,
-    	" ~ Dungeons",Dungeons,
-    	" ~ Guild Castles",Castles,
-    	" ~ Guild Dungeons",Guild_Dungeons,
-    	" ~ Instances",Instances,
-    	" ~ Special Areas",Special;
+menu	"上次传送 ^777777["+lastwarp$+"]^000000",-,
+    	"~ 城镇",Towns,
+    	"~ 野外",Fields,
+    	"~ 迷宫",Dungeons,
+    	"~ 公会城堡",Castles,
+    	"~ 公会迷宫",Guild_Dungeons,
+    	"~ 副本",Instances,
+    	"~ 特殊区域",Special;
 
 	if (lastwarp$ == "")
 		message strcharinfo(0),"You haven't warped anywhere yet.";
@@ -137,14 +137,14 @@ function Restrict {
 // --------------------------------------------------
 	Towns:
 // --------------------------------------------------
-menu	"Prontera",T1, "Alberta",T2, "Aldebaran",T3, "Amatsu",T4, "Ayothaya",T5,
-    	"Brasilis",T6, "Comodo",T7, "Dewata",T8, "Eclage",T9, "Einbech",T10,
-		"Einbroch",T11, "El Dicastes",T12, "Geffen",T13, "Hugel",T14, "Ice Castle",T15,
-		"Izlude",T16, "Jawaii",T17, "Juno",T18, "Kunlun",T19, "Lasagna",T20,
-		"Lighthalzen",T21, "Luoyang",T22, "Lutie",T23, "Malangdo",T24, "Malaya",T25,
-		"Manuk",T26, "Midgarts Expedition Camp",T27, "Mora",T28, "Morocc",T29, "Moscovia",T30,
-		"Nameless Island (Day)",T31, "Nameless Island (Night)",T32, "Niflheim",T33, "Payon",T34, "Rachel",T35,
-		"Rockridge",T36, "Special Security Area, Cor",T37, "Splendide",T38, "Thor Camp",T39, "Umbala",T40,
+menu	"普隆德拉",T1, "alberta",T2, "艾尔帕兰",T3, "天津",T4, "哎哟泰雅",T5,
+    	"巴西",T6, "克魔岛",T7, "德瓦他",T8, "埃克拉珠",T9, "艾因贝赫",T10,
+		"艾音布罗克",T11, "埃迪斯特斯",T12, "吉芬",T13, "休格尔",T14, "冰封之城",T15,
+		"伊斯鲁得",T16, "爪哇",T17, "朱诺",T18, "昆仑",T19, "罗札纳",T20,
+		"里希塔乐镇",T21, "洛阳",T22, "姜饼城",T23, "绵绵岛",T24, "马来港",T25,
+		"马努克",T26, "米德加尔特远征营地",T27, "穆拉",T28, "梦罗克",T29, "莫斯科比亚",T30,
+		"无名岛（白天）",T31, "无名岛（夜晚）",T32, "尼芙菲姆",T33, "裴扬",T34, "拉赫",T35,
+		"洛克里奇",T36, "Special Security Area, Cor",T37, "Splendide",T38, "Thor Camp",T39, "Umbala",T40,
 		"Varmundt's Mansion",T41, "Veins",T42, "Verus Findspot",T43, "Wolf Village",T44;
 
 T1: Go("prontera",155,183);
@@ -210,15 +210,15 @@ T44: Restrict("RE");
 	Fields:
 // --------------------------------------------------
 @f = true;
-menu	"Amatsu Fields",F1, "Ayothaya Fields",F2, "Bifrost Fields", F3,
-    	"Brasilis Fields",F4, "Comodo Fields",F5, "Dewata Fields",F6,
-    	"Eclage Fields",F7, "Einbroch Fields",F8, "El Dicastes Fields",F9,
-    	"Frozen Scale Fields",F10, "Geffen Fields",F11, "Grey Wolf Forest",F12,
-		"Hugel Fields",F13, "Juno Fields",F14, "Kiwawa Desert",F15,
-		"Kunlun Fields",F16, "Lasagna Fields",F17, "Lighthalzen Fields",F18,
-		"Luoyang Field",F19, "Lutie Field",F20, "Malaya Fields",F21,
-		"Manuk Fields",F22, "Mjolnir Fields",F23, "Moscovia Fields",F24,
-		"Niflheim Fields",F25, "Payon Forests",F26, "Prontera Fields",F27,
+menu	"天津旷野",F1, "哎哟泰雅旷野",F2, "彩虹桥旷野", F3,
+    	"巴西平原",F4, "克魔岛旷野",F5, "德瓦他旷野",F6,
+    	"埃克拉珠旷野",F7, "艾音布罗克旷野",F8, "埃迪斯特斯旷野",F9,
+    	"冰鳞平原",F10, "吉芬旷野",F11, "灰狼森林",F12,
+		"休格尔旷野",F13, "朱诺旷野",F14, "契瓦瓦沙漠",F15,
+		"昆仑旷野",F16, "罗札纳旷野",F17, "里希塔乐镇旷野",F18,
+		"洛阳旷野",F19, "姜饼城旷野",F20, "马来港旷野",F21,
+		"马努克旷野",F22, "妙勒尼旷野",F23, "莫斯科比亚旷野",F24,
+		"尼芙菲姆旷野",F25, "裴扬森林",F26, "Prontera Fields",F27,
 		"Rachel Fields",F28, "Sograt Deserts",F29, "Splendide Fields",F30,
 		"Umbala Fields",F31, "Veins Fields",F32;
 
@@ -315,16 +315,16 @@ F32: Restrict("Pre-RE",5);
 	Dungeons:
 // --------------------------------------------------
 @d = true;
-menu	"Abandoned Lab Amicitia",D1, "Abyss Lakes",D2, "Amatsu Dungeon",D3,
-		"Anthell",D4, "Ayothaya Dungeon",D5, "Beach Dungeon",D6,
-		"Bifrost Tower",D7, "Bio Labs",D8, "Brasilis Dungeon",D9,
-		"Byalan Dungeon",D10, "Clock Tower",D11, "Coal Mines",D12,
-		"Culvert",D13, "Cursed Abbey",D14, "Dewata Dungeon",D15,
-		"Einbroch Dungeon",D16, "Flame Basin",D17, "Gefenia",D18,
-		"Geffen Dungeon",D19, "Glast Heim",D20, "Hidden Dungeon",D21,
-		"Ice Dungeon",D22, "Illusion Dungeon",D23, "Issgard Dungeon",D24,
-		"Juperos",D25, "Kiel Dungeon",D26, "Kunlun Dungeon",D27,
-		"Lasagna Dungeon",D28, "Luoyang Dungeon",D29, "Magma Dungeon",D30,
+menu	"废弃研究所阿米希缇亚",D1, "深渊湖水",D2, "天津迷宫",D3,
+		"蚂蚁地狱",D4, "哎哟泰雅迷宫",D5, "海滩迷宫",D6,
+		"彩虹桥高塔",D7, "生体研究所",D8, "巴西迷宫",D9,
+		"海底洞窟",D10, "钟塔",D11, "煤矿",D12,
+		"排水沟",D13, "无名岛修道院",D14, "德瓦他迷宫",D15,
+		"艾音布罗克迷宫",D16, "火焰盆地",D17, "盖菲尼亚",D18,
+		"吉芬迷宫",D19, "克雷斯特汉姆古城",D20, "秘密迷宫",D21,
+		"冰洞穴",D22, "幻影迷宫",D23, "伊斯加德迷宫",D24,
+		"优配擂斯",D25, "基尔迷宫",D26, "昆仑迷宫",D27,
+		"罗札纳迷宫",D28, "洛阳迷宫",D29, "Magma Dungeon",D30,
 		"Malangdo Dungeon",D31, "Moscovia Dungeon",D32, "Nidhogg's Dungeon",D33,
 		"Niflheim Dungeon",D34, "Odin Temple",D35, "Orc Dungeon",D36,
 		"Oz Labyrinth Dungeon",D37, "Payon Dungeon",D38, "Prontera Underground",D39,
@@ -390,9 +390,9 @@ D21: setarray @c[2],99,31,93,20,182,88;
 	 Disp("Hidden Dungeon",1,3); Pick("prt_maze");
 D22: setarray @c[2],157,14,151,155,149,22,33,158;
 	 Disp("Ice Dungeon",1,4); Pick("ice_dun");
-D23: menu	"Illusion of Abyss",SubD1, "Illusion of Frozen",SubD2, "Illusion of Labyrinth",SubD3,
-			"Illusion of Luanda",SubD4, "Illusion of Moonlight",SubD5, "Illusion of Teddy Bear",SubD6,
-			"Illusion of Twins",SubD7, "Illusion of Underwater",SubD8, "Illusion of Vampire",SubD9;
+D23: menu	"深渊幻影",SubD1, "冰封幻影",SubD2, "迷宫幻影",SubD3,
+			"卢安达幻影",SubD4, "月光幻影",SubD5, "泰迪熊幻影",SubD6,
+			"双子幻影",SubD7, "水下幻影",SubD8, "吸血鬼幻影",SubD9;
 	SubD1: Restrict("RE");
 		   setarray @c[2],132,189,99,186;
 		   Disp("Desolate Village:Bleak Turtle Palace"); Pick("","tur_d03_i","tur_d04_i");
@@ -496,9 +496,9 @@ D53: Restrict("RE");
 // --------------------------------------------------
 	Castles:
 // --------------------------------------------------
-menu	"[FE] Aldebaran Castles",C1, "[FE] Geffen Castles",C2, "[FE] Payon Castles",C3,
-    	"[FE] Prontera Castles",C4, "[SE] Arunafeltz Castles",C5, "[SE] Schwarzwald Castles",C6,
-		"[TE] Aldebaran Castles",C7, "[TE] Prontera Castles",C8;
+menu	"[FE] 艾尔帕兰城堡",C1, "[FE] 吉芬城堡",C2, "[FE] 裴扬城堡",C3,
+    	"[FE] 普隆德拉城堡",C4, "[SE] 阿鲁纳贝兹城堡",C5, "[SE] 黑森林城堡",C6,
+		"[TE] 艾尔帕兰城堡",C7, "[TE] 普隆德拉城堡",C8;
 
 C1: setarray @c[2],48,83,95,249,142,85,239,242,264,90;
 	Disp("Neuschwanstein:Hohenschwangau:Nuenberg:Wuerzburg:Rothenburg");
@@ -530,9 +530,9 @@ C8: Restrict("RE");
 // --------------------------------------------------
 	Guild_Dungeons:
 // --------------------------------------------------
-menu	"Baldur",G1, "Luina",G2, "Valkyrie",G3, "Britoniah",G4,
-    	"Arunafeltz",G5, "Schwarzwald",G6, "Kafragarten",G7,
-		"Gloria",G8;
+menu	"巴尔德",G1, "露依纳",G2, "瓦尔基里",G3, "怖立特离亚",G4,
+    	"阿鲁纳贝兹",G5, "黑森林",G6, "卡夫拉加登",G7,
+		"葛洛莉亚",G8;
 
 G1: Restrict("RE",2,3);
 	setarray @c[2],119,93,119,93,120,130;
@@ -560,13 +560,13 @@ G8: Restrict("RE");
 // --------------------------------------------------
 	Instances:
 // --------------------------------------------------
-menu	"Bakonawa Lake",I1, "Bangungot Hospital 2F",I2, "Buwaya Cave",I3,
-		"Devil Tower",I4, "Eclage Interior",I5, "Endless Tower",I6,
-		"Faceworms Nest",I7, "Geffen Magic Tournament",I8, "Ghost Palace",I9,
-		"Hazy Forest",I10, "Horror Toy Factory",I11, "Malangdo Culvert",I12,
-		"Nidhoggur's Nest",I13, "Octopus Cave",I14, "Old Glast Heim",I15,
-		"Orc's Memory",I16, "Sarah and Fenrir",I17, "Sara Memory",I18,
-		"Sealed Shrine",I19, "Wolfchev's Laboratory",I20;
+menu	"食月者之湖",I1, "噩梦医院2层",I2, "宝箱巨鳄洞穴",I3,
+		"恶魔塔",I4, "埃克拉珠内部",I5, "无尽塔",I6,
+		"人面虫洞穴",I7, "吉芬魔法大赛",I8, "幽灵皇宫",I9,
+		"迷雾森林",I10, "恐怖玩具工厂",I11, "绵绵岛排水沟",I12,
+		"尼德霍格的巢穴",I13, "章鱼洞穴",I14, "旧克雷斯特汉姆古城",I15,
+		"兽人的记忆",I16, "莎拉与芬里尔",I17, "莎拉的记忆",I18,
+		"封印的神殿",I19, "保罗协夫研究室",I20;
 
 I1: Restrict("RE");
 	Go("ma_scene01",172,175);
@@ -608,9 +608,9 @@ I20: Restrict("RE");
 // --------------------------------------------------
 	Special:
 // --------------------------------------------------
-menu	"Auction Hall",S1, "Battlegrounds",S2, "Casino",S3, "Dimensional Rift",S4,
-		"Eden Group Headquarters",S5, "Kunlun Arena",S6, "Izlude Arena",S7, 
-		"Monster Race Arena",S8, "Para Market",S9, "Turbo Track",S10;
+menu	"拍卖场",S1, "战场",S2, "赌场",S3, "次元裂缝",S4,
+		"乐园团总部",S5, "昆仑竞技场",S6, "伊斯鲁得竞技场",S7, 
+		"魔物赛跑竞赛场",S8, "乐园团集市",S9, "竞速场",S10;
 
 S1: Go("auction_01",22,68);
 S2: Go("bat_room",154,150);

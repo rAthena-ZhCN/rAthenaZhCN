@@ -18,37 +18,37 @@
 //= 1.3a Kagerou/Oboro support (BaseJob -> BaseClass) [Euphy]
 //============================================================
 
-que_ng,72,29,3	script	Kunai Merchant Kashin	83,{
+que_ng,72,29,3	script	飞刀商人卡辛	83,{
 	if(BaseClass == Job_Ninja) {
-		mes "[Kashin]";
-		mes "I am Kashin, distributor";
-		mes "of Kunai for Ninjas. Take";
-		mes "a look around and let me";
-		mes "know if you're interested";
-		mes "in any of my wares.";
+		mes "[卡辛]";
+		mes "我是卡辛，专营";
+		mes "忍者飞刀的经销商。随便";
+		mes "看看吧，如果";
+		mes "对我的货物感兴趣，";
+		mes "就告诉我。";
 		next;
-		switch(select("10 Fell Poison Kunai:10 Icicle Kunai:10 High Wind Kunai:10 Black Earth Kunai:10 Heat Wave Kunai:Cancel")) {
+		switch(select("10 剧毒飞刀:10 垂冰飞刀:10 强风飞刀:10 黑土飞刀:10 火焰飞刀:取消")) {
 		case 1: callfunc "Kunai_Trade",13250,20,7524,1,13259; break;
 		case 2: callfunc "Kunai_Trade",13251,8,7522,2,13255; break;
 		case 3: callfunc "Kunai_Trade",13252,4,7523,2,13257; break;
 		case 4: callfunc "Kunai_Trade",13253,2,7524,1,13256; break;
 		case 5: callfunc "Kunai_Trade",13254,1,7521,2,13258; break;
 		case 6:
-			mes "[Kashin]";
-			mes "Well then, thank you";
-			mes "for visiting my shop.";
-			mes "Please come to me when";
-			mes "you need to buy some";
-			mes "Kunais. Goodbye for now~";
+			mes "[卡辛]";
+			mes "那么，感谢";
+			mes "光临本店。";
+			mes "需要买飞刀时";
+			mes "请来找我。";
+			mes "那么，再会~";
 			close;
 		}
 	}
-	mes "[Kashin]";
-	mes "I am Kashin, distributor";
-	mes "of Kunai for Ninjas. If you";
-	mes "have any friends that are";
-	mes "Ninjas, then you might";
-	mes "want to tell them about me.";
+	mes "[卡辛]";
+	mes "我是卡辛，专营";
+	mes "忍者飞刀的经销商。如果你";
+	mes "有朋友是忍者，";
+	mes "也许可以";
+	mes "跟他们提提我。";
 	close;
 }
 
@@ -57,50 +57,50 @@ function	script	Kunai_Trade	{
 	setarray .@req_amount[0], getarg(1), getarg(3);
 	.@item_id = getarg(4);
 
-	mes "[Kashin]";
-	mes "You can exchange";
-	mes .@req_amount[0] +" "+ getitemname(.@item_req[0]) +" and";
-	mes .@req_amount[1] +" "+ getitemname(.@item_req[1]) +" for every";
-	mes "set of 10 "+ getitemname(.@item_id) +".";
+	mes "[卡辛]";
+	mes "你可以用";
+	mes .@req_amount[0] +" "+ getitemname(.@item_req[0]) +"和";
+	mes .@req_amount[1] +" "+ getitemname(.@item_req[1]) +"来换取每";
+	mes "套 10 个"+ getitemname(.@item_id) +".";
 	next;
-	mes "[Kashin]";
-	mes "I can only give you a maximum of 500 sets of Kunais at a time.";
-	mes "If you want to cancel the trade, then please enter ''0.'' How many";
-	mes "Kunai sets would you like?";
+	mes "[卡辛]";
+	mes "我一次最多只能给你 500 套飞刀。";
+	mes "如果要取消交易，请输入''0''。你要多少";
+	mes "套飞刀？";
 	next;
 	input .@amount;
 	if(.@amount < 1 || .@amount > 500) {
-		mes "[Kashin]";
-		mes "Eh? I'm sorry, but";
-		mes "I can't give you that";
-		mes "many Kunai sets. Please";
-		mes "enter a value less than 500.";
+		mes "[卡辛]";
+		mes "咦？抱歉，";
+		mes "我没办法给你";
+		mes "那么多套飞刀。请";
+		mes "输入小于 500 的数值。";
 		close;
 	}
 	if (countitem(.@item_req[0]) < .@amount*.@req_amount[0] || countitem(.@item_req[1]) < .@amount*.@req_amount[1]) {
-		mes "[Kashin]";
-		mes "Hmm, you don't have";
-		mes "enough items for this";
-		mes "Kunai exchange. Please";
-		mes "check your items again.";
+		mes "[卡辛]";
+		mes "嗯，你的";
+		mes "物品不够";
+		mes "兑换这些飞刀。请";
+		mes "再检查一下你的物品。";
 		close;
  	}
 	if (checkweight(.@item_id, .@amount*10) == 0) {
-		mes "[Kashin]";
-		mes "Hmm, it seems like your";
-		mes "Inventory doesn't have";
-		mes "enough space to store";
-		mes "more items. You better";
-		mes "free up some space first.";
+		mes "[卡辛]";
+		mes "嗯，你的";
+		mes "背包似乎没有";
+		mes "足够的空间";
+		mes "存放更多物品。你最好";
+		mes "先腾出一些空间。";
 		close;
 	}
-	mes "[Kashin]";
-	mes "Great, everything is in";
-	mes "order, so let's go ahead";
-	mes "and complete this trade.";
-	mes "I'm sure that you'll be";
-	mes "quite satisfied with";
-	mes "these Kunais.";
+	mes "[卡辛]";
+	mes "好极了，一切都没问题，";
+	mes "那我们这就";
+	mes "完成交易。";
+	mes "我相信你会";
+	mes "对这批飞刀";
+	mes "相当满意。";
 	delitem .@item_req[0],.@req_amount[0]*.@amount;
 	delitem .@item_req[1],.@req_amount[1]*.@amount;
 	getitem .@item_id,10*.@amount;

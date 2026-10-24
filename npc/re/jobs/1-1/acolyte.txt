@@ -13,133 +13,133 @@
 //= 1.1 Added back the npcs used for the priest quest.
 //= 1.2 Added support for Baby classes. [Euphy]
 //============================================================ 
-prt_church,184,41,4	script	Cleric#aco	60,{
+prt_church,184,41,4	script	神职人员#aco	60,{
 	if (Upper == 1) {
 		if (ADVJOB == Job_High_Priest || ADVJOB == Job_Champion) {
 			if (Class == Job_Novice_High) {
-				mes "[Father Mareusis]";
-				mes "Ah, I sense you have endured";
-				mes "a past life experience. You must have learned many things before entering Valhalla.";
+				mes "[马雷乌西斯神父]";
+				mes "啊，我感觉到你经历过";
+				mes "前世的历练。你在进入瓦尔哈拉之前，一定学到了很多东西。";
 				next;
 				if (!callfunc("F_CanChangeJob")) {
-					mes "[Father Mareusis]";
-					mes "Unfortunately, I don't think you're ready to become an Acolyte yet. Please finish learning all of the Basic Skills first.";
+					mes "[马雷乌西斯神父]";
+					mes "很遗憾，我认为你还没准备好成为服事。请先学会所有基本技能。";
 					next;
-					mes "[Father Mareusis]";
-					mes "In the meantime,";
-					mes "I will wait until";
-					mes "you are ready.";
-					mes "May God be";
-					mes "with you.";
+					mes "[马雷乌西斯神父]";
+					mes "在那之前，";
+					mes "我会等待，直到";
+					mes "你做好准备。";
+					mes "愿神";
+					mes "与你同在。";
 					close;
 				}
-				mes "[Father Mareusis]";
-				mes "Well, I welcome you";
-				mes "back from Valhalla and";
-				mes "wish you luck on your";
-				mes "new life's journey.";
+				mes "[马雷乌西斯神父]";
+				mes "那么，欢迎你";
+				mes "从瓦尔哈拉归来，";
+				mes "祝愿你在";
+				mes "新的人生旅程中一切顺利。";
 				next;
 				skill "NV_TRICKDEAD",0,SKILL_PERM;
 				jobchange Job_Acolyte_High;
 				skill "AL_HOLYLIGHT",1,SKILL_PERM;
-				mes "[Father Mareusis]";
-				mes "Now, venture forth and seek those who need your help. May God light your path.";
+				mes "[马雷乌西斯神父]";
+				mes "现在，出发去寻找需要你帮助的人吧。愿神照亮你的道路。";
 				close;
 			}else{
-				mes "[Father Mareusis]";
-				mes "Now, venture forth to seek people who need your help. May God enlighten your way.";
+				mes "[马雷乌西斯神父]";
+				mes "现在，出发去寻找需要你帮助的人吧。愿神指引你的道路。";
 				close;
 			}
 		}else{
-			mes "[Father Mareusis]";
-			mes "I sense that you have endured a past life experience. You must have learned many things before entering Valhalla.";
+			mes "[马雷乌西斯神父]";
+			mes "我感觉到你经历过前世的历练。你在进入瓦尔哈拉之前，一定学到了很多东西。";
 			next;
-			mes "[Father Mareusis]";
-			mes "However, I can tell that you are not suited to be an Acolyte. Please remember who you were in your past life and find your path.";
+			mes "[马雷乌西斯神父]";
+			mes "不过，我看得出你不适合成为服事。请回想你前世是谁，然后找到属于自己的道路。";
 			close;
 		}
 	}
-	mes "[Father Mareusis]";
-	mes "What is it that you seek?";
+	mes "[马雷乌西斯神父]";
+	mes "你在寻求什么？";
 	next;
-	switch(select("Change your job to acolyte.:Ask the requirements to be an acolyte.:Quit it.")) {
+	switch(select("转职为服事。:询问成为服事的条件。:放弃。")) {
 	case 1:
-		mes "[Father Mareusis]";
+		mes "[马雷乌西斯神父]";
 		if(BaseJob != Job_Novice) {
 			if(BaseJob == Job_Acolyte)
-				mes "Are you feeling okay today? I can tell by your attire that you are already an Acolyte. You're not joking around, are you?";
+				mes "你今天还好吗？从你的穿着我就看得出你已经是服事了。你不是在开玩笑吧？";
 			else
-				mes "I'm sorry but it seems you already have your own job, aren't you?";
+				mes "抱歉，看来你已经有自己的职业了，不是吗？";
 			close;
 		}else{
-			mes "Do you truly wish to become a servant of God?";
-			mes "Let's see whether you are ready for it or not... Hmm...";
+			mes "你真的愿意成为神的仆人吗？";
+			mes "让我看看你是否准备好了……嗯……";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[Father Mareusis]";
-				mes "Oh my?! You haven't accomplished the basic practice yet?! You have a long way to go! Come again after increasing your job level!";
+				mes "[马雷乌西斯神父]";
+				mes "哎呀？！你还没完成基础修行？！你还差得远呢！等Job等级提升后再来吧！";
 				close;
 			}
-			mes "[Father Mareusis]";
-			mes "Hmm... your job level is enough...";
-			mes "Good. Now I will give you the qualification to become an Acolyte.";
+			mes "[马雷乌西斯神父]";
+			mes "嗯……你的Job等级足够了……";
+			mes "很好。现在我就赋予你成为服事的资格。";
 			next;
-			mes "[Father Mareusis]";
-			mes "Always remember to be thankful to God, who takes care of us all the time. In chaos and times of difficulty, face your hardships with unwavering faith.";
+			mes "[马雷乌西斯神父]";
+			mes "要时刻记得感谢一直眷顾我们的神。在混乱与艰难的时刻，要以坚定不移的信仰面对苦难。";
 			callfunc "Job_Change",Job_Acolyte;
 			getitem 1545,1;	// N_Mace
 			next;
-			mes "[Father Mareusis]";
-			mes "Lastly, I want to sincerely congratulate you on persevering through your trial of penance.";
+			mes "[马雷乌西斯神父]";
+			mes "最后，我要衷心祝贺你坚持完成了苦修考验。";
 			close;
 		}
 	case 2:
-		mes "[Father Mareusis]";
-		mes "Do you wish to become an Acolyte?";
-		mes "Then, you must fulfill the following requirements thinking those are the practices given by God.";
+		mes "[马雷乌西斯神父]";
+		mes "你想成为服事吗？";
+		mes "那么，你必须完成以下条件，并把它们当作神赐予的修行。";
 		next;
-		mes "[Father Mareusis]";
-		mes "First, you have to reach at least Novice Job Level 9 and learn all of the Basic Skills.";
-		mes "This is the most basic thing to do, so you need to regard it as the way of training yourself.";
+		mes "[马雷乌西斯神父]";
+		mes "首先，你必须至少达到初心者Job等级9，并学会所有基本技能。";
+		mes "这是最基本的事情，你需要把它当作锻炼自己的方式。";
 		next;
-		mes "[Father Mareusis]";
-		mes "When you think you fulfilled this requirement, then come back to me again. Then you will have a holy job in which you can spread God's will.";
+		mes "[马雷乌西斯神父]";
+		mes "当你认为自己已经达成这个条件时，再来找我。届时你将拥有一份神圣的职业，可以传播神的旨意。";
 		close;
 	case 3:
 		close;
 	}
 }
 
-prt_fild03,365,255,2	script	Ascetic#aco	89,{
-	mes "[Father Rubalkabara]";
+prt_fild03,365,255,2	script	苦行者#aco	89,{
+	mes "[鲁巴尔卡巴拉神父]";
 	if (BaseJob == Job_Novice) {
 		if (job_acolyte_q == 6) {
-			mes "Please take care. They should know that you've met me by the time you arrive at the Prontera Sanctuary.";
+			mes "请保重。等你抵达普隆德拉圣堂时，他们应该已经知道你见过我了。";
 			next;
-			mes "[Father Rubalkabara]";
-			mes "I've sent a carrier pigeon with a message. I hope it will arrive there safely...";
+			mes "[鲁巴尔卡巴拉神父]";
+			mes "我已经用信鸽送出消息了。希望它能平安送达……";
 			close;
 		}
 		if (job_acolyte_q != 0) {
 			if (job_acolyte_q == 2) {
-				mes "Oh...? You must be the one who aspires to become an Acolyte. I've already received news from the Sanctuary that you might be coming.";
+				mes "哦……？你一定是那位立志成为服事的人。我已经收到圣堂的消息，说你可能要来。";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "Now, your name was " + strcharinfo(0) + ", right? Excellent, thank you for visiting me.";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "那么，你的名字是" + strcharinfo(0) + "，对吧？太好了，谢谢你来看我。";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "I believe you've been told much about Acolytes from Friar Mareusis. Plus, there's plenty of helpful people in the Prontera Sanctuary.";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "我相信马雷乌西斯修士已经跟你讲过很多关于服事的事了。而且，普隆德拉圣堂里还有许多乐于助人的人。";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "I guess there's really no need for me to teach you much. Besides, I'm sure your someone from your generation may have trouble listening to an old man like me. Hahaha~";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "我想其实用不着我教你太多。再说，你们这一代人恐怕不太愿意听我这样的老头子唠叨。哈哈哈~";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "Still, lessons may come from the places you'd least expect. God loves to teach his children in strange ways. You'll see.";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "不过，教训往往来自你最意想不到的地方。神喜欢用奇妙的方式教导他的孩子。你以后会明白的。";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "Well, I'll send the message telling them that you've come to visit me. So, you may now return to the Prontera Sanctuary.";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "好，我会传消息告诉他们你来看过我了。所以，你现在可以回普隆德拉圣堂了。";
 				next;
-				mes "[Father Rubalkabara]";
+				mes "[鲁巴尔卡巴拉神父]";
 				mes "Farewell.";
 				close2;
 				savepoint "prt_fild03",361,255,1,1;
@@ -148,22 +148,22 @@ prt_fild03,365,255,2	script	Ascetic#aco	89,{
 			}
 			else {
 				mes "Oh...";
-				mes "Are you one of the";
-				mes "Acolyte applicants...?";
-				mes "Let's see...";
+				mes "你是";
+				mes "服事申请者……？";
+				mes "我看看……";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "Your name is " + strcharinfo(0) + "?";
-				mes "I don't think your name";
-				mes "is on my list. Hmmm...";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "你的名字是" + strcharinfo(0) + "？";
+				mes "我想你的名字";
+				mes "不在我的名单上。嗯……";
 				next;
-				mes "[Father Rubalkabara]";
-				mes "Why don't you go back to the Prontera Sanctuary and check again?";
+				mes "[鲁巴尔卡巴拉神父]";
+				mes "你为什么不回普隆德拉圣堂再确认一次呢？";
 				close;
 			}
 		}
 		else {
-			mes "Huh? What brings you here? This is a very dangerous place for a Novice like yourself!";
+			mes "咦？你怎么会来这里？对像你这样的初心者来说，这里非常危险！";
 			close;
 		}
 	}
@@ -172,65 +172,65 @@ prt_fild03,365,255,2	script	Ascetic#aco	89,{
 		if (BaseJob == Job_Priest) {
 			mes "Greetings.";
 			next;
-			mes "[Father Rubalkabara]";
-			mes "Welcome to the Deep. Feel free to sit and contemplate God's message with me. This place is beautiful, even if danger accompanies its sense of serenity...";
+			mes "[鲁巴尔卡巴拉神父]";
+			mes "欢迎来到深渊。请随意坐下，和我一起冥想神的话语。这里很美，尽管这份宁静中伴随着危险……";
 			close;
 		}
 		else {
-			mes "Oh ho...";
-			mes "Have you come into the Deep here for training? Or are you just a Wanderer?";
+			mes "哦呵……";
+			mes "你是来这深渊修行的吗？还是只是个流浪者？";
 			next;
-			mes "[Father Rubalkabara]";
-			mes "Whoever you are, please take care of yourself. The monsters in here are shockingly strong, contrary to their cute appearance.";
+			mes "[鲁巴尔卡巴拉神父]";
+			mes "不管你是谁，请照顾好自己。这里的怪物强得惊人，和它们可爱的外表完全不相称。";
 			close;
 		}
 	}
 }
 
-moc_fild07,41,355,4	script	Ascetic#2aco	95,{
-	mes "[Mother Mathilda]";
+moc_fild07,41,355,4	script	苦行者#2aco	95,{
+	mes "[玛蒂尔达修女]";
 	if (BaseJob == Job_Novice) {
 		if (job_acolyte_q == 7) {
-			mes "I will send a carrier pigeon to the Prontera Sanctuary. When you return, the Priest there should already have received my message.";
+			mes "我会用信鸽送信到普隆德拉圣堂。等你回去时，那里的牧师应该已经收到我的消息了。";
 			next;
-			mes "[Mother Mathilda]";
-			mes "I will pray to God, and hope that you become an Acolyte soon.";
+			mes "[玛蒂尔达修女]";
+			mes "我会向神祈祷，希望你早日成为服事。";
 			close;
 		}
 		if (job_acolyte_q != 0) {
 			if (job_acolyte_q == 3) {
-				mes "Ah, you must be one of the Acolyte applicants. I sincerely welcome you.";
+				mes "啊，你一定是服事申请者之一。我衷心欢迎你。";
 				next;
-				mes "[Mother Mathilda]";
-				mes "What is your name? " + strcharinfo(0) + "? Let's see... Ah, you're on my list.";
+				mes "[玛蒂尔达修女]";
+				mes "你的名字是" + strcharinfo(0) + "？让我看看……啊，你在我的名单上。";
 				next;
-				mes "[Mother Mathilda]";
-				mes "I will send a message to the Sanctuary confirming that you, " + strcharinfo(0) + " visited me and completed your penance.";
+				mes "[玛蒂尔达修女]";
+				mes "我会传消息给圣堂，确认你，" + strcharinfo(0) + "来看望过我，并完成了苦修。";
 				next;
-				mes "[Mother Mathilda]";
-				mes "Please return to the Prontera Sanctuary and speak to the Priest in charge.";
+				mes "[玛蒂尔达修女]";
+				mes "请回普隆德拉圣堂，找负责的牧师谈谈。";
 				close2;
 				savepoint "moc_fild07",35,355,1,1;
 				set job_acolyte_q,7;
 				end;
 			}
 			else {
-				mes "Ah...!";
-				mes "You must be one";
-				mes "of the Acolyte applicants.";
-				mes "I sincerely welcome you.";
+				mes "啊……！";
+				mes "你一定就是";
+				mes "服事申请者之一。";
+				mes "我衷心欢迎你。";
 				next;
-				mes "[Mother Mathilda]";
-				mes "Now, what is your name?";
-				mes "" + strcharinfo(0) + "? Let's see...";
+				mes "[玛蒂尔达修女]";
+				mes "那么，你叫什么名字？";
+				mes "" + strcharinfo(0) + "？让我看看……";
 				next;
-				mes "[Mother Mathilda]";
+				mes "[玛蒂尔达修女]";
 				mes "Hmm...";
-				mes "It seems your name";
-				mes "is not on my list...";
+				mes "看来你的名字";
+				mes "不在我的名单上……";
 				next;
-				mes "[Mother Mathilda]";
-				mes "Perhaps you should return to the Prontera Sanctuary and check the destination for your penance trial once again.";
+				mes "[玛蒂尔达修女]";
+				mes "也许你该回普隆德拉圣堂，再确认一次苦修考验的目的地。";
 				close;
 			}
 		}
@@ -242,50 +242,50 @@ moc_fild07,41,355,4	script	Ascetic#2aco	95,{
 	else if (BaseJob == Job_Acolyte) callfunc "F_MotherMart";
 	else {
 		if (BaseJob == Job_Priest) {
-			mes "Hello there~";
+			mes "你好啊~";
 			next;
-			mes "[Mother Mathilda]";
-			mes "How is your practice coming along? I certainly hope you're enjoying living in the grace of God.";
+			mes "[玛蒂尔达修女]";
+			mes "修行进行得怎么样？我真心希望你能在神的恩典中过得愉快。";
 			close;
 		}
 		else {
-			mes "May God";
-			mes "be with you...";
+			mes "愿神";
+			mes "与你同在……";
 			close;
 		}
 	}
 }
 
-prt_fild00,208,218,6	script	Ascetic#3aco	98,{
-	mes "[Father Yosuke]";
+prt_fild00,208,218,6	script	苦行者#3aco	98,{
+	mes "[洋介神父]";
 	if (BaseJob == Job_Novice) {
 		if (job_acolyte_q == 8) {
-			mes "What?";
+			mes "什么？";
 			next;
-			mes "[Father Yosuke]";
-			mes "Have you any more business with me?! You don't! Go back to the Sanctuary now!";
+			mes "[洋介神父]";
+			mes "你还有什么事找我吗？！没有了！现在就回圣堂去！";
 			close;
 		}
 		if (job_acolyte_q != 0) {
 			if (job_acolyte_q == 4) {
 				mes "Hey.";
-				mes "Whatever you are,";
-				mes "you look like an";
-				mes "Acolyte applicant.";
-				mes "Right?";
+				mes "不管你是什么人，";
+				mes "你看起来像是";
+				mes "服事申请者。";
+				mes "对吧？";
 				next;
-				mes "[Father Yosuke]";
-				mes "Not bad, not bad. You withstood the penance trial pretty well.";
-				mes "So what's your name?";
+				mes "[洋介神父]";
+				mes "不错，不错。你相当出色地通过了苦修考验。";
+				mes "那么你叫什么名字？";
 				next;
-				mes "[Father Yosuke]";
-				mes "" + strcharinfo(0) + ", huh?";
+				mes "[洋介神父]";
+				mes "" + strcharinfo(0) + "，是吧？";
 				next;
-				mes "[Father Yosuke]";
-				mes "Okay. I'll send a message to the Sanctuary that you, " + strcharinfo(0) + ", came to visit me.";
+				mes "[洋介神父]";
+				mes "好。我会传消息给圣堂，说你，" + strcharinfo(0) + "，来看望我了。";
 				next;
-				mes "[Father Yosuke]";
-				mes "Now go back to the Santuary and finish becoming an Acolyte, kid.";
+				mes "[洋介神父]";
+				mes "现在回圣堂去，把成为服事的程序办完吧，小鬼。";
 				close2;
 				savepoint "prt_fild00",206,230,1,1;
 				set job_acolyte_q,8;
@@ -293,24 +293,24 @@ prt_fild00,208,218,6	script	Ascetic#3aco	98,{
 			}
 			else {
 				mes "Hey.";
-				mes "You look like an Acolyte Applicant. Am I right?";
+				mes "你看起来像服事申请者。我没说错吧？";
 				next;
-				mes "[Father Yosuke]";
-				mes "Not bad at all, you've made it all the way here from Prontera. So what's your name, kid?";
+				mes "[洋介神父]";
+				mes "真不错，你居然从普隆德拉一路走到这里。那么你叫什么名字，小鬼？";
 				next;
-				mes "[Father Yosuke]";
-				mes "" + strcharinfo(0) + ", huh? Why isn't your name on my list?";
+				mes "[洋介神父]";
+				mes "" + strcharinfo(0) + "，是吧？为什么我的名单上没有你的名字？";
 				next;
-				mes "[Father Yosuke]";
-				mes "You probably made a mistake. Go back to the Santuary, and check with the Bishop.";
+				mes "[洋介神父]";
+				mes "你大概是弄错了。回圣堂去，向主教确认一下。";
 				close;
 			}
 		}
 		else {
 			mes "You...";
 			mes "Novice.";
-			mes "There something";
-			mes "you wanna tell me?";
+			mes "你有";
+			mes "什么想告诉我的吗？";
 			close;
 		}
 	}
@@ -319,13 +319,13 @@ prt_fild00,208,218,6	script	Ascetic#3aco	98,{
 		if (BaseJob == Job_Priest) {
 			mes "Hey...";
 			next;
-			mes "[Father Yosuke]";
-			mes "If you like, come sit here with me and meditate the great truths. God's majesty is truly inspiring...";
+			mes "[洋介神父]";
+			mes "如果你愿意，就来这里和我一起坐下，冥想伟大的真理。神的威严实在令人敬畏……";
 			close;
 		}
 		else {
-			mes "Do you have anything to say? Because unfortunately for you,";
-			mes "I don't any replies.";
+			mes "你有什么话要说吗？因为很遗憾，";
+			mes "我没什么可回答的。";
 			close;
 		}
 	}

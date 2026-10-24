@@ -17,60 +17,60 @@
 //============================================================
 
 -	script	Ice Cream Maker::IceCreamer	-1,{
-	mes "[Ice Cream Maker]";
-	mes "Fresh Ice Cream made with snow from Lutie!";
-	mes "Enjoy it now, it won't be on sale for long!";
-	mes "^3355FF100 Zeny^000000 Ice Cream,";
-	mes "Ice Cream!";
+	mes "[冰淇淋小贩]";
+	mes "用姜饼城的雪做成的新鲜冰淇淋！";
+	mes "趁现在享用吧，很快就要停售了！";
+	mes "^3355FF100 Zeny^000000 冰淇淋，";
+	mes "冰淇淋！";
 	next;
-	if(select("Gimme Ice Cream!:Cancel Trade") == 2) {
-		mes "Are you sure you don't want any?";
-		mes "I won't be selling it for long,";
-		mes "and once I run out,";
-		mes "there won't be any more!!!";
+	if(select("给我冰淇淋！:取消交易") == 2) {
+		mes "你确定不要吗？";
+		mes "我卖不了多久了，";
+		mes "一旦卖完，";
+		mes "就再也没有了！！！";
 		close;
 	}
-	mes "[Ice Cream Maker]";
-	mes "Fresh Ice Cream made with snow from Lutie!";
-	mes "Everyone wants our delicious ice cream, ";
-	mes "but we have a limited amount,";
-	mes "so you can only purchase 5 at a time!!";
+	mes "[冰淇淋小贩]";
+	mes "用姜饼城的雪做成的新鲜冰淇淋！";
+	mes "大家都想要我们美味的冰淇淋，";
+	mes "但我们的量有限，";
+	mes "所以一次只能买 5 个！！";
 	next;
 	while(true) {
 		input .@input;
 		if(.@input < 1) {
-			mes "[Ice Cream Maker]";
-			mes "If you don't want to buy any,";
-			mes "could you please let the next customer";
-			mes "make a purchase?";
-			mes "Thank you.";
+			mes "[冰淇淋小贩]";
+			mes "如果你不想买，";
+			mes "能不能请让下一位顾客";
+			mes "购买？";
+			mes "谢谢。";
 			close;
 		}
 		if(.@input > 5) {
-			mes "[Ice Cream Maker]";
-			mes "Ouch";
-			mes "You expect too much.";
-			mes "Dear customer,";
-			mes "If you eat more than 5 Ice creams,";
-			mes "If you might haveto make a lot of trips";
-			mes "to the bathroom tonight.";
+			mes "[冰淇淋小贩]";
+			mes "好痛";
+			mes "你期望太高了。";
+			mes "亲爱的顾客，";
+			mes "如果吃超过 5 个冰淇淋，";
+			mes "今晚你可能会";
+			mes "频繁跑厕所。";
 			next;
 			continue;
 		}
 		break;
 	}
 	if(Zeny<.@input*100) {
-		mes "[Ice Cream Maker]";
-		mes "Dear customer, your wallet seems to be light.";
-		mes "Price is ^3355FF100 Zeny^000000 per ice cream.";
+		mes "[冰淇淋小贩]";
+		mes "亲爱的顾客，您的钱包似乎有点轻。";
+		mes "每个冰淇淋的价格是 ^3355FF100 Zeny^000000。";
 		close;
 	}
 	if(checkweight(536,.@input) == 0) {
-		mes "[Ice Cream Maker]";
-		mes "Dear customer,you look like you're carrying a lot.";
-		mes "Ice Cream is fine,";
-		mes "but you must consider your weight";
-		mes "before making a purchase.";
+		mes "[冰淇淋小贩]";
+		mes "亲爱的顾客，您看起来带了不少东西。";
+		mes "冰淇淋是没问题，";
+		mes "但您得考虑自己的体重";
+		mes "再决定购买。";
 		close;
 	}
 	set Zeny,Zeny-100*.@input;

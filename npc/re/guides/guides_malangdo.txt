@@ -4,18 +4,18 @@
 //= 1.0 First Version. [JohnnyPlayy]
 //============================================================
 
-malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
-	mes "[Malangdo Guide]";
-	mes "Nice to meet you, welcome to ^8C4210Malangdo^000000. The island of cat paw!";
-	mes "Need some guidance?";
+malangdo,218,101,3	script	绵绵岛向导#Malangdo	4_CAT_SAILOR3,{
+	mes "[绵绵岛向导]";
+	mes "很高兴见到你，欢迎来到^8C4210绵绵岛^000000——猫爪之岛！";
+	mes "需要指引吗？";
 	F_Navi("[Malangdo Guide]");
 	while(1) {
 		next;
-		switch(select("[ Major Facilities ]:[ Trader & Assistant ]:Clear Mini-Map:Cancel")) {
+		switch(select("[ 主要设施 ]:[ 商人与助手 ]:清除迷你地图:取消")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Cat Gamers Director ]:[ Special Vending Machine ]:[ Coin Exchanger ]:[ Starry Coral ]:Previous Menu")) {
+				switch(select("[ 猫咪游戏主管 ]:[ 特别自动贩卖机 ]:[ 硬币兑换员 ]:[ 星光珊瑚 ]:上一页菜单")) {
 				case 1:
 					callsub L_Mark, F_Navi("Cat Gamers Director","malangdo,119,137","FF0000");
 					viewpoint 1,119,137,0,0xFF0000;
@@ -45,7 +45,7 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Chief Thomas ]:[ Stinky Merchant ]:[ Wandering Merchant ]:[ Inn Owner ]:[ Storekeeper ]:[ Tool Dealer ]:[ Portali ]:[ Clink ]:[ Holink ]:[ Roving Merchant ]:Previous Menu")) {
+				switch(select("[ 托马斯酋长 ]:[ 臭烘烘的商人 ]:[ 流浪商人 ]:[ 旅店老板 ]:[ 店主 ]:[ 道具商人 ]:[ 波塔利 ]:[ 克林克 ]:[ 霍林克 ]:[ 巡回商人 ]:上一页菜单")) {
 				case 1:
 					callsub L_Mark, F_Navi("Chief Thomas","malangdo,164,163","0A9696");
 					viewpoint 1,164,163,4,0x0A9696;
@@ -103,9 +103,9 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 			}
 			break;
 		case 3:
-			mes "[Malangdo Guide]";
-			mes "I will remove all marks from your Mini-Map.";
-			mes "Need more help?";
+			mes "[绵绵岛向导]";
+			mes "我会清除你迷你地图上的所有标记。";
+			mes "还需要其他帮助吗？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -122,14 +122,14 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 			viewpoint 2,1,1,13,0xFFFFFF;
 			break;
 		case 4:
-			mes "[Malangdo Guide]";
-			mes "I wish you a pleasant trip.";
+			mes "[绵绵岛向导]";
+			mes "祝你旅途愉快。";
 			close;
 		}
 	}
 L_Mark:
-	mes "[Malangdo Guide]";
-	mes "I will show you the location of the " + getarg(0);
-	mes "Do you need other information?";
+	mes "[绵绵岛向导]";
+	mes "我来为你在地图上标出" + getarg(0);
+	mes "还需要其他信息吗？";
 	return;
 }

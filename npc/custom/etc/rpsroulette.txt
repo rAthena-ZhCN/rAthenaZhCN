@@ -13,18 +13,18 @@
 //= 1.2 Fixes by Blackthunder and me [Poki#3]
 //============================================================
 
-cmd_in02,182,126,2	script	Crazy Boris	85,{
+cmd_in02,182,126,2	script	疯狂鲍里斯	85,{
 	set .@counter,1;
-	mes "Hey you! Up for Rock Scissors Roulette?";
+	mes "喂，你！想玩石头剪刀布轮盘吗？";
 	next;
-	menu "Let me play.",PLAY,"Explain the rules.",RULES,"Leave",LEAVE;
+	menu "我要玩。",PLAY,"说明规则。",RULES,"离开",LEAVE;
 SAME:
-	mes "Draw! Again!";
+	mes "平手！再来！";
 	next;
 PLAY:
-	mes "Rock... Paper...";
+	mes "石头……布……";
 	set .@opp, rand(1,3);
-	menu "^0000FFROCK!",-,"^FF0000SCISSORS!",SCISSORS,"^00FF00PAPER!^000000",PAPER;
+	menu "^0000FF石头！",-,"^FF0000剪刀！",SCISSORS,"^00FF00布！^000000",PAPER;
 
   	if (.@lastchoice == 1) set .@opp, rand(1,3);
   	if (.@opp == 1) emotion ET_ROCK;
@@ -56,7 +56,7 @@ PAPER:
 	goto SAME;
 
 WIN:
-	mes "Damnit, You Win!";
+	mes "可恶，你赢了！";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	set .@win, 1;
@@ -64,14 +64,14 @@ WIN:
 
 LOSE:
 	emotion ET_SMILE;
-	mes "Boorah! You Lose!";
+	mes "哈哈！你输了！";
 	next;
 	set .@win, 0;
 
 YOUPULL:
-	mes .@counter +" of 6";
+	mes .@counter +"/ 6";
 	if ( .@counter == 6 )
-		mes "Say your prayers";
+		mes "祈祷吧";
 	set .@pull, rand( 1,( 7 -.@counter ) );
 	set .@counter, .@counter +1;
 	next;
@@ -80,31 +80,31 @@ YOUPULL:
 		specialeffect2 EF_SUI_EXPLOSION;
 		emotion ET_KIK;
 		percentheal -100,-100;
-		mes "*^0000FFClick^000000* *^FF0000BANG^000000*";
-		mes "You're dead!";
+		mes "*^0000FF咔哒^000000* *^FF0000砰^000000*";
+		mes "你死了！";
 		close;
 	}
 	emotion ET_HNG;
-	mes "*^0000FFClick^000000* whew...";
+	mes "*^0000FF咔哒^000000* 呼……";
 	goto PLAY;
 
 RULES:
-	mes "Ok here are the rules:";
-	mes "I have with me a ^FF00006^000000 chamber pistol with ^FF00001^000000 round. First we play ^FF0000Scissors ^00FF00Paper ^0000FFRock^000000. The loser pulls the trigger. The winner is whoever comes out best.";
-	mes "Beat me to win a prize.";
+	mes "好，规则如下：";
+	mes "我这儿有一把 ^FF00006^000000 发弹巢的手枪，里面只装了 ^FF00001^000000 发子弹。我们先玩 ^FF0000剪刀 ^00FF00布 ^0000FF石头^000000。输的人扣动扳机。最后活下来的人获胜。";
+	mes "赢了我就能拿奖品。";
 	next;
-	menu "Let me play.",-,"No thanks.",LEAVE;
-	mes "Ok here we go...";
+	menu "我要玩。",-,"不用了。",LEAVE;
+	mes "好，开始了……";
 	next;
 	goto PLAY;
 
 KILL:
 	specialeffect EF_SUI_EXPLOSION;
 	emotion ET_HUK;
-	mes "*^0000FFClick^000000* *^FF0000BANG^000000*";
-	mes "OWWW @#$%^!! THAT HURT LIKE HELL!!";
+	mes "*^0000FF咔哒^000000* *^FF0000砰^000000*";
+	mes "嗷呜 @#$%^！！痛死了！！";
 	next;
-	mes "Congratulations! You have won...";
+	mes "恭喜！你赢得了……";
 	switch( rand( 1,10 ) ) {
 		case 1: setarray .@reward[0], 10,984; break;
 		case 3: setarray .@reward[0],100,601; break;	// 100x Fly Wings
@@ -118,7 +118,7 @@ KILL:
 		case 9:
 			setarray .@reward[0], 10,985;
 	}
-	mes .@reward[0] +"x "+ getitemname( .@reward[1] ) +"!";
+	mes .@reward[0] +"x"+ getitemname( .@reward[1] ) +"！";
 	getitem .@reward[1], .@reward[0];
 	close;
 

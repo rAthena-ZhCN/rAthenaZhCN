@@ -19,33 +19,33 @@
 
 // Acolyte Warper (part of other/acolyte_warp.txt)
 //============================================================
-moc_para01,14,32,5	script	Aperture#acolytewarp	90,{
-	mes "[Aperture]";
-	mes "Hello there, adventurer.";
-	mes "I've been studying magic from all over Midgard to upgrade what I believe to be one of the greatest skills available to the acolyte class.";
+moc_para01,14,32,5	script	光圈#acolytewarp	90,{
+	mes "[艾珀彻]";
+	mes "你好，冒险者。";
+	mes "我一直在研究米德加尔特各地的魔法，想把我认为服事职业最强的技能之一再加以强化。";
 	next;
 
 	if (is_function("VIP_iRO_Acolyte"))
 		callfunc "VIP_iRO_Acolyte","[Aperture]","Prontera";
 
-	mes "[Aperture]";
-	mes "I am the one and only Acolyte that has attained the Level 10 Warp Portal skill!";
+	mes "[艾珀彻]";
+	mes "我是唯一一个将传送之阵修炼到10级的服事！";
 	emotion ET_THINK, playerattached();
 	next;
-	mes "[Aperture]";
-	mes "That's right! And...";
-	mes "I promise you that I don't forget locations that I have already memorized.";
-	mes "One day I will level up my skills to warp to wherever I please~";
+	mes "[艾珀彻]";
+	mes "没错！而且……";
+	mes "我保证，只要是我记住的地点，就绝不会忘记。";
+	mes "总有一天我要把技能练到能传送去任何我想去的地方～";
 	next;
-	mes "[Aperture]";
-	mes "I am willing to warp you to the many locations that I have memorized for a small fee.";
-	mes "Would you like to use this service?";
+	mes "[艾珀彻]";
+	mes "只要支付少量费用，我就愿意把您传送到我记住的众多地点。";
+	mes "您要使用这项服务吗？";
 	next;
-	switch(select("Yes:No")) {
+	switch(select("是:否")) {
 	case 1:
-		mes "[Aperture]";
-		mes "Where would you like to go to?";
-		mes "I wish you goodluck on your journey.";
+		mes "[艾珀彻]";
+		mes "您想去哪里？";
+		mes "祝您旅途顺利。";
 		next;
 
 		setarray .@towns$[0], "Prontera", "Izlude", "Geffen", "Payon", "Morocc", "Alberta", "Al De Baran", "Comodo", "Umbala", "Juno", "Einbroch", "Lighthalzen", "Hugel", "Rachel";
@@ -53,19 +53,19 @@ moc_para01,14,32,5	script	Aperture#acolytewarp	90,{
 
 		set .@size, getarraysize(.@towns$);
 		for(set .@i,0; .@i<.@size; set .@i,.@i+1)
-			set .@menu$, .@menu$+.@towns$[.@i]+" -> "+.@cost[.@i]+"z:";
-		set .@i, select(.@menu$+"Cancel")-1;
+			set .@menu$, .@menu$+.@towns$[.@i]+"->"+.@cost[.@i]+"z:";
+		set .@i, select(.@menu$+"取消")-1;
 		if (.@i == .@size) {
-			mes "[Aperture]";
-			mes "Come back when you need a warp.";
+			mes "[艾珀彻]";
+			mes "需要传送时再来找我。";
 			close;
 		}
 		if (Zeny < .@cost[.@i]) {
-			mes "[Aperture]";
-			mes "I'm sorry, but you don't have";
-			mes "enough zeny for the Teleport";
-			mes "Service. The fee to teleport";
-			mes "to "+.@towns$[.@i]+" is "+.@cost[.@i]+" zeny.";
+			mes "[艾珀彻]";
+			mes "很抱歉，您的";
+			mes "zeny 不足以支付传送";
+			mes "服务费用。";
+			mes "传送到"+.@towns$[.@i]+"的费用为"+.@cost[.@i]+"zeny。";
 			close;
 		}
 		specialeffect2 EF_READYPORTAL;
@@ -91,8 +91,8 @@ moc_para01,14,32,5	script	Aperture#acolytewarp	90,{
 		}
 		close;
 	case 2:
-		mes "[Aperture]";
-		mes "Come back when you need a warp.";
+		mes "[艾珀彻]";
+		mes "需要传送时再来找我。";
 		close;
 	}
 }
@@ -100,17 +100,17 @@ moc_para01,14,32,5	script	Aperture#acolytewarp	90,{
 function	script	VIP_iRO_Acolyte	{
 	if (!vip_status(VIP_STATUS_ACTIVE)) {
 		mes getarg(0);
-		mes "But, my full powers are only available to those who have are VIPs.";
-		mes "I can still offer you a warp to "+getarg(1)+" though.";
+		mes "不过，我的全部力量只提供给VIP。";
+		mes "不过我仍可为您开启通往"+getarg(1)+"的传送。";
 		next;
-		switch(select(getarg(0)+" -> 1800z:Cancel")) {
+		switch(select(getarg(0)+"-> 1800z:取消")) {
 		case 1:
 			if (Zeny < 1800) {
 				mes getarg(0);
-				mes "I'm sorry, but you don't have";
-				mes "enough zeny for the Teleport";
-				mes "Service. The fee to teleport";
-				mes "to "+getarg(1)+" is 1,800 zeny.";
+				mes "很抱歉，您的";
+				mes "zeny 不足以支付传送";
+				mes "服务费用。";
+				mes "传送到"+getarg(1)+"的费用为 1,800 zeny。";
 				close;
 			}
 			specialeffect2 EF_READYPORTAL;
@@ -133,26 +133,26 @@ function	script	VIP_iRO_Acolyte	{
 
 // Primo d'Buffer, VIP stat bonuses
 //============================================================
-moc_para01,26,15,3	script	Primo d'Buffer	790,{
-	mes "[Primo d'Buffer]";
-	mes "Hello adventurer, you look like you are itching to get out there and save the world!";
+moc_para01,26,15,3	script	普里莫·巴弗	790,{
+	mes "[普里莫·德巴弗]";
+	mes "你好，冒险者，看你一副迫不及待要出去拯救世界的样子！";
 	if (!vip_status(VIP_STATUS_ACTIVE)) {
-		mes "I can also tell that you haven't been blessed with '^6666ffVIP Status^000000'.";
+		mes "我还看得出，您并没有获得'^6666ffVIP状态^000000'的眷顾。";
 		next;
-		mes "[Primo d'Buffer]";
-		mes "My orders are to help out any Adventurer marked as VIP with special Buffs!";
-		mes "Currently I will give you ^ff0000+7 to all of your Stats for 30 minutes^000000 if you are VIP.";
+		mes "[普里莫·德巴弗]";
+		mes "我的任务是帮助所有被标记为VIP的冒险者，为他们施加特殊增益！";
+		mes "目前只要您是VIP，我就会让您^ff0000全属性+7，持续30分钟^000000。";
 		next;
-		mes "[Primo d'Buffer]";
-		mes "If you would like to be VIP, you can use WarpPortal to ^FF8C42Power-UP^000000 your game account with VIP Status. Of course there are many other advantages to being VIP, like higher EXP and Drop Rates, more Storage, and special buff NPCs like me!";
-		mes "Happy Journeys!";
+		mes "[普里莫·德巴弗]";
+		mes "如果您想成为VIP，可以使用WarpPortal为您的游戏账号^FF8C42升级^000000VIP状态。当然，成为VIP还有很多其他好处，例如更高的经验值和掉宝率、更大的仓库容量，还有像我这样的特殊增益NPC！";
+		mes "旅途愉快！";
 		close;
 	}
-	mes "I can also tell that you have been blessed with '^007FFFVIP Status^000000'.";
+	mes "我还看得出，您已经获得了'^007FFFVIP状态^000000'的眷顾。";
 	next;
-	mes "[Primo d'Buffer]";
-	mes "That is awesome!";
-	mes "Here is +7 to all your stats for 30 minutes to help you on your journey. Just come back when you need to refill your stats!";
+	mes "[普里莫·德巴弗]";
+	mes "太棒了！";
+	mes "这是全属性+7、持续30分钟的增益，助您一路顺利。需要再次补充时来找我就行！";
 	close2;
 	sc_start SC_FOOD_STR_CASH,1200000,7;
 	sc_start SC_FOOD_AGI_CASH,1200000,7;
@@ -165,36 +165,36 @@ moc_para01,26,15,3	script	Primo d'Buffer	790,{
 
 // Clearchus, VIP mercenary rentals
 //============================================================
-moc_para01,53,30,3	script	Clearchus	470,{
+moc_para01,53,30,3	script	克利尔库斯	470,{
 	if (checkquest(62238,PLAYTIME) > -1 && checkquest(62238,PLAYTIME) < 2) {
-		mes "You must wait for the timer to finish before you can hire a new mercenary.";
+		mes "必须等计时结束，才能雇佣新的佣兵。";
 		close;	
 	}
-	mes "[Clearchus]";
-	mes "Greetings young adventurer! I represent the Midgardian Mercenary Mission.";
+	mes "[克利尔库斯]";
+	mes "年轻的冒险者，你好！我是米德加尔佣兵任务团的代表。";
 	next;
-	mes "[Clearchus]";
-	mes "We provide training to aspiring mercenaries by pairing them with adventurers such as yourself.";
+	mes "[克利尔库斯]";
+	mes "我们把有志成为佣兵的人与您这样的冒险者组成搭档，借此为他们提供训练。";
 	next;
-	mes "[Clearchus]";
-	mes "Our organization is 10,000 strong! Now let me see if you are registered for this service.";
+	mes "[克利尔库斯]";
+	mes "我们的组织有一万名成员！现在让我确认您是否已登记这项服务。";
 	next;
 	if (!vip_status(VIP_STATUS_ACTIVE)) {
-		mes "[Clearchus]";
-		mes "Unfortunately it appears that you are not VIP, please get VIP so that you can use this service. You can get a temporary VIP access by talking to Gramps at the Eden Group Headquarters.";
+		mes "[克利尔库斯]";
+		mes "很遗憾，您似乎不是VIP，请先取得VIP才能使用这项服务。您可以到伊甸园集团总部找葛兰普斯获取临时VIP资格。";
 		next;
-		mes "[Clearchus]";
-		mes "Vip is a very useful tool for adventurers to have, giving access to extra Kafra Services, discounted warps, exclusive content, and use of Primo d'Buffer. If an adventurer has full vip they even get an Exp, Drops, and storage boost!";
+		mes "[克利尔库斯]";
+		mes "VIP对冒险者来说非常实用，可以享受额外的卡普拉服务、折扣传送、专属内容，以及使用普里莫·德巴弗的服务。如果拥有完整VIP，还能获得经验值、掉宝率和仓库容量的提升！";
 		close;
 	}
-	mes "[Clearchus]";
-	mes "Your name is on the list.";
+	mes "[克利尔库斯]";
+	mes "名单上有您的名字。";
 	next;
-	mes "[Clearchus]";
-	mes "What kind of skill set are you looking for in a mercenary?";
+	mes "[克利尔库斯]";
+	mes "您想要什么类型的佣兵？";
 	next;
 
-	switch(select("Swordsman:Archer:Lancer")) {
+	switch(select("剑士:弓箭手:枪兵")) {
 	case 1:
 		set .@base_id,12163; //SwordMercenary_Scroll
 		break;
@@ -216,11 +216,11 @@ moc_para01,53,30,3	script	Clearchus	470,{
 	else if (BaseLevel < 91) set .@i,8;
 	else set .@i,9;
 
-	mes "[Clearchus]";
-	mes "I have just the mercenary in mind!";
+	mes "[克利尔库斯]";
+	mes "我正好有一位合适的人选！";
 	next;
-	mes "[Clearchus]";
-	mes "Have fun now, ya hear?";
+	mes "[克利尔库斯]";
+	mes "玩得开心点，听到了吗？";
 	getitem .@base_id + .@i,1;
 	if (isbegin_quest(62238) > 0)
 		erasequest 62238;
@@ -230,91 +230,91 @@ moc_para01,53,30,3	script	Clearchus	470,{
 
 // Carrot & Red Potion Traders
 //============================================================
-moc_para01,166,51,3	script	Phelix#edco	85,{
-	mes "[Phelix]";
-	mes "Oh... I see from that look that you want me to work and give you Meat and Carrots...";
-	mes "Well my friend Izaac here has some Red Potions with him, but I only have some Carrots.";
-	mes "So I can trade you ^0000CC1 Carrot for 3 Jellopy^000000.";
+moc_para01,166,51,3	script	菲利克斯#edco	85,{
+	mes "[菲利克斯]";
+	mes "哦……看你那表情，是想让我干活，给你肉和胡萝卜……";
+	mes "这个嘛，我的朋友伊扎克身上有些红色药水，但我只有胡萝卜。";
+	mes "所以我可以拿^0000CC1 根胡萝卜换你 3 个杰勒比结晶^000000。";
 	next;
-	mes "[Phelix]";
-	mes "If you're interested in my offer, get me the Jellopies I mentioned.";
+	mes "[菲利克斯]";
+	mes "如果你对我的提议感兴趣，就把我说的杰勒比结晶拿来。";
 	next;
-	select("Carrots please.");
-	mes "[Phelix]";
-	mes "Alright, let's see what ya got...";
+	select("请给我胡萝卜。");
+	mes "[菲利克斯]";
+	mes "好吧，让我看看你带了什么……";
 	next;
 	if (countitem(909) < 3) {
-		mes "[Phelix]";
-		mes "Hmm, look dude, I said 3 Jellopies for 1 Carrot... got it?";
+		mes "[菲利克斯]";
+		mes "嗯，我说伙计，我说的是 3 个杰勒比结晶换 1 根胡萝卜……懂了吗？";
 		close;
 	}
-	mes "[Phelix]";
-	mes "Not too bad...";
-	mes "How many do you want?";
+	mes "[菲利克斯]";
+	mes "还不错……";
+	mes "你要多少？";
 	next;
-	switch(select("As many as I can get, please.:I want to choose.:Never mind, I like my Jellopy.")) {
+	switch(select("能换多少换多少。:我想自己挑。:算了，我还是喜欢我的杰勒比结晶。")) {
 	case 1:
 		set .@amount, countitem(909) / 3;
 		break;
 	case 2:
 		set .@available, countitem(909) / 3;
-		mes "[Phelix]";
-		mes "How many do you want?";
-		mes "^ff0000You have enough for up to " + .@available + " Carrots.^000000";
+		mes "[菲利克斯]";
+		mes "你要多少？";
+		mes "^ff0000您最多可以换" + .@available + " Carrots.^000000";
 		input .@input;
 		next;
 		if (.@input < 1 || .@input > 10000) {
-			mes "[Phelix]";
-			mes "Don't want to deal? Fair enough...";
+			mes "[菲利克斯]";
+			mes "不想交易？那就算了……";
 			close;
 		}
 		if (.@input > .@available) {
-			mes "[Phelix]";
-			mes "Dude, I said for every 3 Jellopy I'll give you 1 Carrot.";
+			mes "[菲利克斯]";
+			mes "伙计，我说过每 3 个杰勒比结晶换 1 根胡萝卜。";
 			close;
 		}
 		set .@amount, .@input;
 		break;
 	case 3:
-		mes "[Phelix]";
-		mes "Don't bother me if you don't want to trade.";
+		mes "[菲利克斯]";
+		mes "不想交易就别来烦我。";
 		close;
 	}
 	if (checkweight(515,.@amount) == 0) {
-		mes "[Phelix]";
-		mes "You are overweight.";
+		mes "[菲利克斯]";
+		mes "您的负重已满。";
 		close;
 	}
-	mes "[Phelix]";
-	mes "There you go~! As I promised.";
-	mes "Try not to stuff yer face.";
+	mes "[菲利克斯]";
+	mes "给你～！我说到做到。";
+	mes "别一口气全塞进嘴里。";
 	delitem 909,.@amount*3; //Jellopy
 	getitem 515,.@amount; //Carrot
 	end;
 }
 
-moc_para01,163,51,7	script	Izaac#edco	86,{
-	mes "[Izaac]";
-	mes "Good day!";
-	mes "Have you collected any weird stuff from monsters?";
-	mes "I want things like Jellopy, Fluff, Shell, Feather of Birds, Tree Root, Worm Peelings, and Chrysalis.";
-	mes "I need those for something.";
+moc_para01,163,51,7	script	艾萨克#edco	86,{
+	mes "[伊扎克]";
+	mes "你好！";
+	mes "你有没有从怪物身上收集到什么奇怪的东西？";
+	mes "我想要杰勒比结晶、绒毛、贝壳、鸟羽、树根、蠕虫皮和蛹壳这类东西。";
+	mes "我有些用处。";
 	next;
-	mes "[Izaac]";
-	mes "Of course, I won't ask you to give me that stuff for free. What if I traded the following for ^CC00001 Red Potion^000000:";
-	mes "^00CC005 Shell^000000";
-	mes "^0000CC10 Fluff^000000";
-	mes "^00CC0010 Jellopy^000000";
-	mes "^0000CC6 Tree Root^000000";
-	mes "^00CC001 Worm Peeling^000000";
-	mes "^0000CC7 Feather of Birds^000000";
-	mes "^00CC006 Chrysalis^000000";
+	mes "[伊扎克]";
+	mes "当然，我不会白拿你的东西。用下面这些换^CC00001 瓶红色药水^000000怎么样：";
+	mes "^00CC005 个贝壳^000000";
+	mes "^0000CC10 个绒毛^000000";
+	mes "^00CC0010 个杰勒比结晶^000000";
+	mes "^0000CC6 个树根^000000";
+	mes "^00CC001 张蠕虫皮^000000";
+	mes "^0000CC7 根鸟羽^000000";
+	mes "^00CC006 个蛹壳^000000";
 	next;
-	switch(select("Sure!:I think it's a rip-off!:No, thanks.")) {
+	switch(select("好！:我觉得这是在坑人！:不用了，谢谢。")) {
 	case 1:
-		mes "[Izaac]";
-		mes "So which items do";
-		mes "you want to bring me?";
+		mes "[伊扎克]";
+		mes "那么你想拿";
+		mes "哪些东西来给我？";
 		next;
 
 		setarray .@items[0], 935, 914, 909, 902, 955, 916, 915;
@@ -323,11 +323,11 @@ moc_para01,163,51,7	script	Izaac#edco	86,{
 		set .@size, getarraysize(.@items);
 		for(set .@i,0; .@i<.@size; set .@i,.@i+1)
 			set .@menu$, .@menu$+getitemname(.@items[.@i])+":";
-		set .@select, select(.@menu$+"Cancel")-1;
+		set .@select, select(.@menu$+"取消")-1;
 		if (.@select == .@size) {
-			mes "[Izaac]";
-			mes "Sure~";
-			mes "No problem.";
+			mes "[伊扎克]";
+			mes "好的～";
+			mes "没问题。";
 			close;
 		}
 		set .@item, .@items[.@select];
@@ -335,98 +335,98 @@ moc_para01,163,51,7	script	Izaac#edco	86,{
 		set .@price, .@count[.@select];
 
 		if (countitem(.@item) < .@price) {
-			mes "[Izaac]";
-			mes "Hey, where's all";
-			mes "that "+.@item$+" that";
-			mes "you promised me?";
-			mes "Give me "+.@item$+"!";
+			mes "[伊扎克]";
+			mes "喂，你答应给我的";
+			mes "那个"+.@item$+"在哪儿？";
+			mes "你答应过我的。";
+			mes "把"+.@item$+"交出来！";
 			close;
 		}
-		mes "[Izaac]";
-		mes "Okay, let me check";
-		mes "how much "+.@item$;
-		mes "you have on you.";
+		mes "[伊扎克]";
+		mes "好，让我看看";
+		mes "你身上有多少"+.@item$;
+		mes "带在身上。";
 		mes "Hmm...";
 		next;
 		set .@amount, countitem(.@item) / .@price;
 		set .@trade_amount, .@amount * .@price;
-		mes "[Izaac]";
-		mes "You have";
-		mes "a total of "+countitem(.@item)+" "+.@item$+"...";
-		mes "For all those, I can give you";
-		mes "a total of "+.@amount+" Red Potion(s).";
+		mes "[伊扎克]";
+		mes "你身上有";
+		mes "总计"+countitem(.@item)+" "+.@item$+"...";
+		mes "这些全部加起来，我可以给你";
+		mes "总计"+.@amount+"瓶红色药水。";
 		next;
-		mes "[Izaac]";
-		mes "What do you say?";
-		mes "Do we have a deal?";
+		mes "[伊扎克]";
+		mes "你觉得怎么样？";
+		mes "成交吗？";
 		next;
-		if(select("Deal.:No deal.") == 2) {
-			mes "[Izaac]";
-			mes "Huh~";
+		if(select("成交。:不成交。") == 2) {
+			mes "[伊扎克]";
+			mes "嗯～";
 			mes "Alright.";
-			mes "Though are";
-			mes .@item$ + " more useful";
-			mes "to an adventurer like you?";
+			mes "不过，";
+			mes .@item$ + "是不是更有用";
+			mes "对您这样的冒险者来说？";
 			close;
 		}
 		if (checkweight(501,.@amount) == 0) { //custom check
-			mes "[Izaac]";
-			mes "You are overweight.";
+			mes "[伊扎克]";
+			mes "您的负重已满。";
 			close;
 		}
 		delitem .@item,.@trade_amount;
 		getitem 501,.@amount; //Red_Potion
-		mes "[Izaac]";
-		mes "There you go!";
-		mes "Check how many "+.@item$;
-		mes "I've given you, it should be good.";
-		mes "Thanks, that was a good deal~";
+		mes "[伊扎克]";
+		mes "给你！";
+		mes "看看有多少"+.@item$;
+		mes "我已经给你了，应该没错。";
+		mes "谢谢，这笔交易不错～";
 		close;
 	case 2:
-		mes "[Izaac]";
-		mes "A rip-off...?";
-		mes "If you check the market value";
-		mes "of the items being traded, I'm actually the one getting";
-		mes "ripped off here.";
+		mes "[伊扎克]";
+		mes "坑人……？";
+		mes "要是你查查市场价";
+		mes "看看这些交易物品的价值，其实吃亏的";
+		mes "是我才对。";
 		close;
 	case 3:
-		mes "[Izaac]";
-		mes "Alright, No problem.";
-		mes "But come back to me if you change your mind.";
+		mes "[伊扎克]";
+		mes "好吧，没问题。";
+		mes "不过要是你改变主意，就回来找我。";
 		close;
 	}
 }
 
 // Safe to 7 Certificate Exchanger
 //============================================================
-moc_para01,50,39,4	script	Eve Natalia	882,{
-	mes "[Eve Natalia]";
-	mes "So I'm in town for a while to see if I can strike up some commerce with MVP hunters!";
-	mes "I'm willing to take some MVP gear and give you these upgrade Certificates I have in exchange;";
-	mes "if things go well enough I'll open up further business opportunities!";
+moc_para01,50,39,4	script	伊芙·娜塔莉亚	882,{
+	mes "[伊芙·娜塔莉亚]";
+	mes "所以我会在城里待一阵子，看看能不能和MVP猎人做点生意！";
+	mes "我愿意收下一些MVP装备，用我手上的这些升级认证书和你交换；";
+	mes "如果一切顺利，我还会开拓更多生意机会！";
 	next;
-	mes "[Eve Natalia]";
-	mes "So do you have any of the gears I'm looking for to get some random Safe to 7 Certificates?";
+	mes "[伊芙·娜塔莉亚]";
+	mes "那么，你有没有我想要的装备，可以换些随机安全强化至7券？";
 	next;
-	switch(select("What gear?:Yes I am!:Never mind.")) {
+	switch(select("什么装备？:是的，我有！:算了。")) {
 	case 1:
-		mes "[Eve Natalia]";
-		mes "Nidhoggur's Shadow Garb 4 Random Safe to 7 Certificates";
-		mes "Valkyrja's Shield 4 Random Safe to 7 Certificates";
-		mes "Valkyrian Armor 5 Random Safe to 7 Certificates";
-		mes "Diabolus Robe 5 Random Safe to 7 Certificates";
-		mes "Diabolus Armor 2 Random Safe to 7 Certificates";
-		mes "Diabolus Boots 2 Random Safe to 7 Certificates";
-		mes "Diabolus Manteau 4 Random Safe to 7 Certificates";
-		mes "Twin Edge of Naght Sieger Blue 2 Random Safe to 7 Certificates";
-		mes "Twin Edge of Naght Sieger Red 2 Random Safe to 7 Certificates";
+		mes "[伊芙·娜塔莉亚]";
+		mes "尼德霍格暗影外套 4 张随机安全强化至7券";
+		mes "瓦尔基里之盾 4 张随机安全强化至7券";
+		mes "瓦尔基里铠甲 5 张随机安全强化至7券";
+		mes "迪亚波罗斯长袍 5 张随机安全强化至7券";
+		mes "迪亚波罗斯铠甲 2 张随机安全强化至7券";
+		mes "迪亚波罗斯靴子 2 张随机安全强化至7券";
+		mes "迪亚波罗斯披风 4 张随机安全强化至7券";
+		mes "纳赫特·齐格双刃·蓝 2 张随机安全强化至7券";
+		mes "纳赫特·齐格双刃·红 2 张随机安全强化至7券";
 		close;
 	case 2:
-		mes "[Eve Natalia]";
-		mes "I'm going to ask you which piece of gear you want to trade in, please verify that the 1st one in your inventory is one you want to give up.";
-		mes "^CC0000So if it is carded, upgraded, enchanted etc, you should put it in storage before we continue.^000000";
+		mes "[伊芙·娜塔莉亚]";
+		mes "我会问你想要拿哪件装备来交换，请先确认背包里的第一件就是你想放弃的那件。";
+		mes "^CC0000所以如果它插了卡片、精炼过、附魔过等，请在我们继续之前先把它放进仓库。^000000";
 		next;
-		set .@i, select("Wait a minute:Nidhoggur's Shadow Garb 4:Valkyrja's Shield 4:Valkyrian Armor 5:Diabolus Robe 5:Diabolus Armor 2:Diabolus Boots 2:Diabolus Manteau 4:Twin Edge of Naght Sieger Blue 2:Twin Edge of Naght Sieger Red 2")-2;
+		set .@i, select("等一下:尼德霍格暗影外套 4:瓦尔基里之盾 4:瓦尔基里铠甲 5:迪亚波罗斯长袍 5:迪亚波罗斯铠甲 2:迪亚波罗斯靴子 2:迪亚波罗斯披风 4:纳赫特·齐格双刃·蓝 2:纳赫特·齐格双刃·红 2")-2;
 		if (.@i == -1)
 			break;
 
@@ -436,28 +436,28 @@ moc_para01,50,39,4	script	Eve Natalia	882,{
 		set .@item, .@items[.@i];
 		set .@amount, .@tickets[.@i];
 
-		mes "[Eve Natalia]";
-		mes "I see you have "+countitem(.@item)+" "+getitemname(.@item)+".";
-		mes "So do you want to trade the 1st one in your inventory for ^00CC00"+.@amount+" Random Safe to 7 Certificates^000000?";
-		mes "Tell me '1' if you do, or '0' to cancel.";
+		mes "[伊芙·娜塔莉亚]";
+		mes "我看到你有"+countitem(.@item)+" "+getitemname(.@item)+".";
+		mes "那么，你想用背包里的第一件换 ^00CC00"+.@amount+" Random Safe to 7 Certificates^000000?";
+		mes "愿意就输入'1'，取消请输入'0'。";
 		next;
 		input .@input;
 		if (.@input < 0 || .@input > 1) {
-			mes "[Eve Natalia]";
-			mes "It is a 0 or 1, it can't be that difficult.";
+			mes "[伊芙·娜塔莉亚]";
+			mes "就是 0 或 1，没那么难吧。";
 			close;
 		} else if (.@input == 0) {
-			mes "[Eve Natalia]";
-			mes "It's best to be sure before trading, have a good day.";
+			mes "[伊芙·娜塔莉亚]";
+			mes "交易前最好确认清楚，祝你愉快。";
 			close;
 		}
 		if (countitem(.@item) == 0) {
-			mes "[Eve Natalia]";
-			mes "You don't even have 1... stop wasting my time.";
+			mes "[伊芙·娜塔莉亚]";
+			mes "你连一个都没有……别浪费我的时间。";
 			close;
 		}
-		mes "[Eve Natalia]";
-		mes "Oh perfect, you get ^CC0000" + .@amount + "^000000 Safe to 7 Certificates!";
+		mes "[伊芙·娜塔莉亚]";
+		mes "太好了，你获得了 ^CC0000" + .@amount + "^000000 张安全强化至7券！";
 		delitem .@item,1;
 		for(set .@i,0; .@i<.@amount; set .@i,.@i+1) {
 			// Note: iRO lists item 6235 as "Safe to 7 Headgear Certificate", but it's Guarantee_Armor_6Up in our database.
@@ -470,30 +470,30 @@ moc_para01,50,39,4	script	Eve Natalia	882,{
 	case 3:
 		break;
 	}
-	mes "[Eve Natalia]";
-	mes "Fair enough, if you have business with me in the future don't be shy!";
+	mes "[伊芙·娜塔莉亚]";
+	mes "好吧，以后要是有生意找我，别客气！";
 	close;
 }
 
 // Bubble Gum & Battle Manual Exchanger
 //============================================================
-moc_para01,48,184,2	script	Gum & Manual Exchanger	562,{
+moc_para01,48,184,2	script	口香糖 & 手册兑换员	562,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "You're carrying too many items right now.";
+		mes "您身上的物品太多了。";
 		close;	
 	}
-	mes "[Trader Machine]";
-	mes "Insert Bubble Gums and/or Battle Manuals to trade for higher efficiency Gums and Manuals.";
+	mes "[交易机器]";
+	mes "投入泡泡糖和/或战斗手册，可换取效率更高的泡泡糖和手册。";
 	next;
-	mes "[Trader Machine]";
-	mes "Exchange rate:";
-	mes "2 Bubble Gum -> 1 HE Bubble Gum";
-	mes "2 Battle Manual -> 1 HE Battle Manual";
-	mes "4 HE Battle Manual -> 1 Battle Manual X3";
-	mes "3 Thick Battle Manual -> 2 Battle Manual X3";
-	mes "What would you like to exchange for?";
+	mes "[交易机器]";
+	mes "兑换比例：";
+	mes "2 个泡泡糖 -> 1 个HE泡泡糖";
+	mes "2 本战斗手册 -> 1 本HE战斗手册";
+	mes "4 本HE战斗手册 -> 1 本战斗手册X3";
+	mes "3 本厚战斗手册 -> 2 本战斗手册X3";
+	mes "您想兑换什么？";
 	next;
-	switch(select("HE Bubble Gum:HE Battle Manual:1 Battle Manual X3:2 Battle Manual X3:1 Costume Corsair:Nothing")) {
+	switch(select("HE泡泡糖:HE战斗手册:1 本战斗手册X3:2 本战斗手册X3:1 个海盗时装:取消")) {
 	case 1:
 		callsub L_Exchange,12210,2,12412,1;
 		break;
@@ -507,23 +507,23 @@ moc_para01,48,184,2	script	Gum & Manual Exchanger	562,{
 		callsub L_Exchange,12312,3,14545,2;
 		break;
 	case 5:
-		mes "[Trader Machine]";
-		mes "I can give you 1 Battle Manual X3 for 1 Costume Corsair.";
+		mes "[交易机器]";
+		mes "我可以用 1 本战斗手册X3 换 1 个海盗时装。";
 		next;
 		if (countitem(19619) == 0) {
-			mes "[Trader Machine]";
-			mes "You don't have a Costume Corsair hat to make that trade.";
+			mes "[交易机器]";
+			mes "您没有海盗时装帽，无法进行这项交易。";
 			close;
 		}
 		next;
-		if(select("Yes, give it to me!:No, wait not yet.") == 2)
+		if(select("好，给我吧！:不，再等等。") == 2)
 			close;
 		// Unofficial dialogue.
-		mes "[Trader Machine]";
-		mes "You place the required items into the machine...";
+		mes "[交易机器]";
+		mes "您把所需的物品放进了机器……";
 		next;
-		mes "[Trader Machine]";
-		mes "The Machine has given you an item in return!";
+		mes "[交易机器]";
+		mes "机器回赠了您一件物品！";
 		delitem 19619,1; //C_Corsair
 		getitem 14545,1; //Battle_Manual_X3
 		close;
@@ -533,32 +533,32 @@ moc_para01,48,184,2	script	Gum & Manual Exchanger	562,{
 
 //callsub L_Exchange,<Insert Item>,<Amount>,<Return Item>,<Amount>
 L_Exchange:
-	mes "[Trader Machine]";
-	mes "How many "+getitemname(getarg(2))+" do you want?";
-	mes "I can give you up to 60.";
-	mes "Type 0 to cancel.";
+	mes "[交易机器]";
+	mes "您想要"+getitemname(getarg(2))+"多少个？";
+	mes "我最多可以给您 60 个。";
+	mes "输入 0 取消。";
 	next;
 	input .@amount;
 	if (.@amount == 0) {
-		mes "[Trader Machine]";
+		mes "[交易机器]";
 		mes "Cancelled.";
 		close;
 	} else if (.@amount < 0 || .@amount > 60) {
-		mes "[Trader Machine]";
-		mes "I said only 60 max.";
+		mes "[交易机器]";
+		mes "我说了最多只能 60 个。";
 		close;
 	}
-	mes "[Trader Machine]";
-	mes "That's a total of "+.@amount+" "+getitemname(getarg(2))+".";
-	mes "Is this correct?";
+	mes "[交易机器]";
+	mes "总计是"+.@amount+" "+getitemname(getarg(2))+".";
+	mes "这样对吗？";
 	next;
-	if(select("Yes, give them to me!:No, wait not yet.") == 2)
+	if(select("好，都给我吧！:不，再等等。") == 2)
 		close;
 	set .@cost, getarg(1) * .@amount;
 	set .@total_amount, getarg(3) * .@amount;
 	if (countitem(getarg(0)) < .@cost) {
-		mes "[Trader Machine]";
-		mes "You don't have enough "+getitemname(getarg(0))+" to make that trade.";
+		mes "[交易机器]";
+		mes "您的"+getitemname(getarg(0))+"不够，无法进行这项交易。";
 		close;
 	}
 	delitem getarg(0),.@cost;
@@ -568,17 +568,17 @@ L_Exchange:
 
 // Merry Badger
 //============================================================
-moc_para01,13,22,4	script	Merry Badger#xch	882,{
+moc_para01,13,22,4	script	快乐獾#xch	882,{
 	disable_items;
-	mes "[Merry Badger]";
-	mes "Hello there!  I'm Merry Badger and I was hired to exchange the ^00CC00Eden Merit Badges^000000!";
+	mes "[梅里·巴杰]";
+	mes "你好！我是梅里·巴杰，受雇来兑换^00CC00伊甸园勋章^000000！";
 	next;
-	mes "[Merry Badger]";
-	mes "I can take your Merit Badges and give you some useful stuff, or I can take some of your stuff and give you some Eden Merit Badges.";
-	mes "As I get more authorization I can offer more things to trade with you, so definitely keep me in mind when visiting the Eden Group.";
+	mes "[梅里·巴杰]";
+	mes "我可以收下你的勋章，给你一些实用的东西；也可以收下你的东西，给你一些伊甸园勋章。";
+	mes "随着我获得更多授权，我能提供交换的东西也会更多，所以来伊甸园集团时一定要记得找我。";
 	next;
 	// switch( select( "Redeem Badges", "Trade in FOR badges", "Exchange Rates", "15 Job Manuals - 1 JM Box", "Sky Fortress Tickets", "Weekly Special" ) ) {// Sky Fortress Tickets meaningless without the instance
-	switch( select( "Redeem Badges", "Trade in FOR badges", "Exchange Rates", "15 Job Manuals - 1 JM Box", "", "Weekly Special" ) ) {
+	switch( select( "兑换勋章", "用物品换勋章", "兑换比例", "15 本职业手册 - 1 个职业手册箱", "", "每周特惠" ) ) {
 	case 1:
 		setarray .@menu_list$[0],
 			"4 EMB for 10 KVM Badge",
@@ -600,8 +600,8 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			"Nothing Now";
 		.@menu$ = implode( .@menu_list$, ":" );
 		while(1) {
-			mes "[Merry Badger]";
-			mes "Sure thing, I have several options currently for your Badges!";
+			mes "[梅里·巴杰]";
+			mes "没问题，目前您的勋章有几种兑换选择！";
 			next;
 			switch( select(.@menu$) ) {
 			case 1:// "4 EMB for 10 KVM Badge"
@@ -637,21 +637,21 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			case 11:// "5 EMB for Miracle Buff"
 				.@item_id = 22819;
 				if (countitem(6495) < 5) {
-					mes "[Merry Badger]";
-					mes "You don't have enough ^00CC00Eden Merit Badges^000000. Let's start over!";
+					mes "[梅里·巴杰]";
+					mes "您的^00CC00伊甸园勋章^000000不够。重新开始吧！";
 					break;
 				}
-				mes "[Merry Badger]";
-				mes "Ok, I can give you ^ff0000" + getitemname(.@item_id) + "^000000 for ^0066CC5 of your Eden Merit Badge(s)^000000.";
-				mes "Do you want to?";
+				mes "[梅里·巴杰]";
+				mes "好，我可以给您 ^ff0000" + getitemname(.@item_id) + "^000000，只要您 ^0066CC5 枚伊甸园勋章^000000。";
+				mes "您愿意吗？";
 				next;
-				if (select("Yes", "No") == 2) {
-					mes "[Merry Badger]";
-					mes "I understand, let's see if you'd like something different!";
+				if (select("是", "否") == 2) {
+					mes "[梅里·巴杰]";
+					mes "我明白了，看看您是否想换别的！";
 					break;
 				}
-				mes "[Merry Badger]";
-				mes "There you go! What else would you like?";
+				mes "[梅里·巴杰]";
+				mes "给您！还需要别的吗？";
 				delitem 6495, 5;// Para_Logro_Badge
 				consumeitem .@item_id;
 				break;
@@ -661,21 +661,21 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			case 13:// "5 EMB for Rental Wing of Beelzebub"
 				.@item_id = 14645;
 				if (countitem(6495) < 5) {
-					mes "[Merry Badger]";
-					mes "You don't have enough ^00CC00Eden Merit Badges^000000. Let's start over!";
+					mes "[梅里·巴杰]";
+					mes "您的^00CC00伊甸园勋章^000000不够。重新开始吧！";
 					break;
 				}
-				mes "[Merry Badger]";
-				mes "Ok, I can give you ^ff0000" + getitemname(.@item_id) + "^000000 for ^0066CC5 of your Eden Merit Badge(s)^000000.";
-				mes "Do you want to?";
+				mes "[梅里·巴杰]";
+				mes "好，我可以给您 ^ff0000" + getitemname(.@item_id) + "^000000，只要您 ^0066CC5 枚伊甸园勋章^000000。";
+				mes "您愿意吗？";
 				next;
-				if (select("Yes", "No") == 2) {
-					mes "[Merry Badger]";
-					mes "I understand, let's see if you'd like something different!";
+				if (select("是", "否") == 2) {
+					mes "[梅里·巴杰]";
+					mes "我明白了，看看您是否想换别的！";
 					break;
 				}
-				mes "[Merry Badger]";
-				mes "There you go! What else would you like?";
+				mes "[梅里·巴杰]";
+				mes "给您！还需要别的吗？";
 				delitem 6495, 5;// Para_Logro_Badge
 				rentitem .@item_id, 604800;	// 7 days
 				break;
@@ -687,60 +687,60 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 				break;
 			case 16:// Token of Siegfried
 				if (vip_status(VIP_STATUS_ACTIVE) == false) {
-					mes "[Merry Badger]";
-					mes "VIP Services offers those to any user with VIP!!";
+					mes "[梅里·巴杰]";
+					mes "VIP服务会向所有VIP用户提供这些！！";
 					close;
 				}
 				// custom from here
 				.@date = gettime(DT_YYYYMMDD);
 				if (.@date <= eden_iro_token_date) {
-					mes "[Merry Badger]";
-					mes "You already got your Token today!";
+					mes "[梅里·巴杰]";
+					mes "您今天已经领取过令牌了！";
 					close;
 				}
-				mes "[Merry Badger]";
-				mes "There you go! What else would you like?";
+				mes "[梅里·巴杰]";
+				mes "给您！还需要别的吗？";
 				eden_iro_token_date = .@date;
 				getitem 7621,10;// Token_Of_Siegfried
 				close;
 			case 17:// Nothing Now
-				mes "[Merry Badger]";
-				mes "Wonderful!";
-				mes "I'll be here if you ever want to exchange for Eden Merit Badges!";
+				mes "[梅里·巴杰]";
+				mes "太好了！";
+				mes "您想兑换伊甸园勋章时，我一直在这里！";
 				close;
 			}
 			next;
 		}
 	case 2:
-		mes "[Merry Badger]";
-		mes "I have a limited selection as of right now, but here is what I can offer to get 1 Eden Merit Badge!";
+		mes "[梅里·巴杰]";
+		mes "目前我的选择有限，不过这些是我能提供、用来换 1 枚伊甸园勋章的东西！";
 		next;
-		switch( select( "Etc Items", "Equipments", "Cancel" ) ) {
+		switch( select( "其他物品", "装备", "取消" ) ) {
 		case 1:
 			while(1) {
-				if (select( "5x Old Purple Box", "Nothing" ) == 2) {
-					mes "[Merry Badger]";
-					mes "Wonderful!";
-					mes "I'll be here if you ever want to exchange for Eden Merit Badges!";
+				if (select( "5 个旧紫色箱子", "取消" ) == 2) {
+					mes "[梅里·巴杰]";
+					mes "太好了！";
+					mes "您想兑换伊甸园勋章时，我一直在这里！";
 					close;
 				}
 				while(1) {
 					if (countitem(617) < 5) {
-						mes "[Merry Badger]";
-						mes "You don't have enough of that to get 1 Eden Merit Badge. Lets start over!";
+						mes "[梅里·巴杰]";
+						mes "您的数量不足以换 1 枚伊甸园勋章。重新开始吧！";
 						break;
 					}
-					mes "[Merry Badger]";
-					mes "Ok, I can give you ^CC00001 Eden Merit Badge^000000 for ^0000CC5 of your Old Purple Boxes^000000. Do you want to?";
+					mes "[梅里·巴杰]";
+					mes "好，我可以给您 ^CC00001 枚伊甸园勋章^000000，换取您的 ^0000CC5 个旧紫色箱子^000000。您愿意吗？";
 					next;
-					if (select( "Yes", "No" ) == 2) {
-						mes "[Merry Badger]";
-						mes "I understand, lets see if you'd like something different!";
+					if (select( "是", "否" ) == 2) {
+						mes "[梅里·巴杰]";
+						mes "我明白了，看看您是否想换别的！";
 						break;
 					}
 					else {
-						mes "[Merry Badger]";
-						mes "There you go!  What else would you like?";
+						mes "[梅里·巴杰]";
+						mes "给您！还需要别的吗？";
 						delitem 617,5;// Old_Violet_Box
 						getitem 6495,1;// Para_Logro_Badge
 						next;
@@ -750,10 +750,10 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			}
 		case 2:
 			while(1) {
-				mes "[Merry Badger]";
-				mes "I will take the top item in your inventory! MAKE SURE YOU DONT HAVE ANY OF THESE ITEMS THAT YOU DONT WANT TO EXCHANGE.";
+				mes "[梅里·巴杰]";
+				mes "我会拿走您背包最上面那一件物品！请务必确认您没有不想交换的这种物品。";
 				next;
-				switch( select( "Giant Faceworm Snake Skin", "Giant Faceworm Snake Skin [1]", "Nothing" ) ) {
+				switch( select( "巨型脸虫蛇皮", "巨型脸虫蛇皮 [1]", "取消" ) ) {
 				case 1:
 					.@item_req = 20717;// FaceWorm_Skin
 					.@item_name$ = "Giant Faceworm Snake Skin";
@@ -765,94 +765,94 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 					.@amount_reward = 7;
 					break;
 				case 3:
-					mes "[Merry Badger]";
-					mes "Wonderful!";
-					mes "I'll be here if you ever want to exchange for Eden Merit Badges!";
+					mes "[梅里·巴杰]";
+					mes "太好了！";
+					mes "您想兑换伊甸园勋章时，我一直在这里！";
 					next;
-					mes "[Merry Badger]";
-					mes "Well that is OK, if you want to see what I offer just ask!";
+					mes "[梅里·巴杰]";
+					mes "没关系，想看看我提供什么，问一声就行！";
 					close;
 				}
 				while(1) {
 					if (countitem(.@item_req) < 1) {
-						mes "[Merry Badger]";
-						mes "You don't have enough of that to get 1 Eden Merit Badge. Lets start over!";
+						mes "[梅里·巴杰]";
+						mes "您的数量不足以换 1 枚伊甸园勋章。重新开始吧！";
 						break;
 					}
-					mes "[Merry Badger]";
-					mes "Ok, I can give you ^ff0000" + .@amount_reward + " Eden Merit Badge^000000 for ^00ff00" + .@item_name$ + "^000000. Do you want to?";
+					mes "[梅里·巴杰]";
+					mes "好，我可以给您 ^ff0000" + .@amount_reward + "枚伊甸园勋章^000000，换取您的 ^00ff00" + .@item_name$ + "^000000. Do you want to?";
 					next;
-					if (select( "Yes", "No" ) == 2) {
-						mes "[Merry Badger]";
-						mes "I understand, lets see if you'd like something different!";
+					if (select( "是", "否" ) == 2) {
+						mes "[梅里·巴杰]";
+						mes "我明白了，看看您是否想换别的！";
 						break;
 					}
 					delitem .@item_req, 1;
 					getitem 6495, .@amount_reward;// Para_Logro_Badge
-					mes "[Merry Badger]";
-					mes "There you go! What else do you like?";
+					mes "[梅里·巴杰]";
+					mes "给您！还想要什么？";
 					next;
 				}
 				next;
 			}
 		case 3:
-			mes "[Merry Badger]";
-			mes "Well that is OK, if you want to see what I offer just ask!";
+			mes "[梅里·巴杰]";
+			mes "没关系，想看看我提供什么，问一声就行！";
 			close;
 		}
 	case 3:
-		mes "[Merry Badger]";
-		mes "This is what I'll give you for your ^00CC00Eden Merit Badges^000000!";
-		mes "Ok, I have a special for 3 Merit Badge. This week I'll give you ^00CC0040 Light Granule^000000, ^00CC0040 Gun Powder^000000, ^0000CC3 Izidor^000000, ^00CC0010 Prickly Fruit^000000, ^0000CC1 Mandragora Flowerpot^000000, and ^00CC003 Elder Branch^000000.";
-		mes "^00CC002 Eden Merit Badges^000000 = ^0000CC10x KVM Badge^000000";
-		mes "^00CC002 Eden Merit Badges^000000 = ^0000CC10x Bravery Medals^000000";
-		mes "^00CC002 Eden Merit Badges^000000 = ^0000CC10x Valor Medals^000000";
-		mes "^00CC005 Eden Merit Badges^000000 = ^0000CC5x Medium Life Potion^000000";
-		mes "^00CC005 Eden Merit Badges^000000 = ^0000CC5x Life Insurance^000000";
-		mes "^00CC005 Eden Merit Badges^000000 = ^0000CC5x Token Of Siegfried^000000";
-		mes "^00CC007 Eden Merit Badges^000000 = ^0000CC1x Job Battle Manual^000000";
-		mes "^00CC008 Eden Merit Badges^000000 = ^0000CC1x Reset Stone^000000";
+		mes "[梅里·巴杰]";
+		mes "这就是用您的^00CC00伊甸园勋章^000000可以换到的东西！";
+		mes "好，我有个 3 枚勋章的特别兑换。本周我会给您 ^00CC0040 个光之颗粒^000000、^00CC0040 个火药^000000、^0000CC3 个伊西多尔^000000、^00CC0010 个带刺果实^000000、^0000CC1 个曼陀罗花盆^000000，以及 ^00CC003 根长老树枝^000000。";
+		mes "^00CC002 枚伊甸园勋章^000000 = ^0000CC10 个KVM徽章^000000";
+		mes "^00CC002 枚伊甸园勋章^000000 = ^0000CC10 枚勇气勋章^000000";
+		mes "^00CC002 枚伊甸园勋章^000000 = ^0000CC10 枚英勇勋章^000000";
+		mes "^00CC005 枚伊甸园勋章^000000 = ^0000CC5 瓶中型生命药水^000000";
+		mes "^00CC005 枚伊甸园勋章^000000 = ^0000CC5 张生命保险^000000";
+		mes "^00CC005 枚伊甸园勋章^000000 = ^0000CC5 个齐格弗里德之证^000000";
+		mes "^00CC007 枚伊甸园勋章^000000 = ^0000CC1 本职业战斗手册^000000";
+		mes "^00CC008 枚伊甸园勋章^000000 = ^0000CC1 个重置石^000000";
 		next;
-		mes "[Merry Badger]";
-		mes "This is what you can give me to get ^00CC001 Eden Merit Badge^000000!";
-		mes "^0000CC5x Old Purple Box^000000";
+		mes "[梅里·巴杰]";
+		mes "这些是您交给我就能换到 ^00CC001 枚伊甸园勋章^000000 的东西！";
+		mes "^0000CC5 个旧紫色箱子^000000";
 		close;
 	case 4:
-		mes "[Merry Badger]";
-		mes "I was strong armed into giving this, but you are worth it!";
-		mes "Do you want to exchange 15 Job Manuals to get 1 Tradable box of 10 Job Manuals?";
-		mes "I know 15 does not equal 10, but boxes are expensive you know.";
+		mes "[梅里·巴杰]";
+		mes "我可是被迫才拿出这个的，不过你值得！";
+		mes "您想用 15 本职业手册换 1 个可交易的 10 本职业手册箱吗？";
+		mes "我知道 15 不等于 10，但箱子很贵嘛。";
 		next;
 		if (countitem(14592) < 15) {
-			mes "[Merry Badger]";
-			mes "You don't have 15 or more Job Manuals to get 1 Box!";
+			mes "[梅里·巴杰]";
+			mes "您的职业手册不足 15 本，换不到 1 个箱子！";
 			close;
 		}
 		// custom dialogue below
-		if (select("Yes", "No") == 2) {
-			mes "[Merry Badger]";
-			mes "Wonderful!";
-			mes "I'll be here if you ever want to exchange for Eden Merit Badges!";
+		if (select("是", "否") == 2) {
+			mes "[梅里·巴杰]";
+			mes "太好了！";
+			mes "您想兑换伊甸园勋章时，我一直在这里！";
 			close;
 		}
-		mes "[Merry Badger]";
-		mes "Wonderful, what else do you want?";
+		mes "[梅里·巴杰]";
+		mes "太好了，还想要什么？";
 		delitem 14592,15; //Job_Manual50
 		getitem 13990,1; //Job_Manual50_Box
 		close;
 	case 5:
-		mes "[Merry Badger]";
-		mes "I don't really understand why but I have this stack of coupons to sell.";
-		mes "Do you want to exchange 25 Eden Merit Badges for 1 dungeon ticket? If you are VIP your ticket will last much longer!";
+		mes "[梅里·巴杰]";
+		mes "我也不太明白为什么，但我手上有一叠兑换券要卖。";
+		mes "您想用 25 枚伊甸园勋章换 1 张副本入场券吗？如果您是VIP，入场券的持续时间会长得多！";
 		next;
-		if (select( "Yes", "No" ) == 2) {
-			mes "[Merry Badger]";
-			mes "I understand, lets see if you'd like something different!";
+		if (select( "是", "否" ) == 2) {
+			mes "[梅里·巴杰]";
+			mes "我明白了，看看您是否想换别的！";
 			close;
 		}
 		if (countitem(6495) < 25) {
-			mes "[Merry Badger]";
-			mes "You don't have enough badges!";
+			mes "[梅里·巴杰]";
+			mes "您的勋章不够！";
 			close;
 		}
 		delitem 6495,25;
@@ -860,23 +860,23 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			getitem 17570,1;// Sky Fortress Ticket 3 Hour Box
 		else
 			getitem 17569,1;// Sky Fortress Ticket 1 Hour Box
-		mes "[Merry Badger]";
-		mes "There you go! What else would you like?";
+		mes "[梅里·巴杰]";
+		mes "给您！还需要别的吗？";
 		close;
 	case 6:
 		while(1) {
-			mes "[Merry Badger]";
-			mes "The Weekly special is ....";
+			mes "[梅里·巴杰]";
+			mes "每周特惠是……";
 			next;
-			mes "[Merry Badger]";
-			mes "Ok, I have a special for 3 Merit Badge or 1,000,000 zeny.  This week I'll give you ^00CC0040 Light Granule^000000, 40 Gun Powder^000000, ^0000CC3 Izidor^000000";
-			mes "^00CC0010 Prickly Fruit^000000, ^0000CC1 Mandragora Flowerpot^000000, and ^00CC003 Elder Branch^000000.";
+			mes "[梅里·巴杰]";
+			mes "好，我有个 3 枚勋章或 1,000,000 zeny 的特别兑换。本周我会给您 ^00CC0040 个光之颗粒^000000、40 个火药^000000、^0000CC3 个伊西多尔^000000";
+			mes "^00CC0010 个带刺果实^000000、^0000CC1 个曼陀罗花盆^000000，以及 ^00CC003 根长老树枝^000000。";
 			next;
-			switch( select( "Badges", "Zeny", "No" ) ) {
+			switch( select( "勋章", "Zeny", "否" ) ) {
 			case 1:
 				if (countitem(6495) < 3) {
-					mes "[Merry Badger]";
-					mes "You don't have enough ^00CC00Eden Merit Badges^000000. Lets start over!";
+					mes "[梅里·巴杰]";
+					mes "您的^00CC00伊甸园勋章^000000不够。重新开始吧！";
 					next;
 					continue;
 				}
@@ -884,16 +884,16 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 				break;
 			case 2:
 				if (Zeny < 1000000) {
-					mes "[Merry Badger]";
-					mes "You don't have enough ^00CC00Zeny^000000. Lets start over!";
+					mes "[梅里·巴杰]";
+					mes "您的^00CC00Zeny^000000不够。重新开始吧！";
 					next;
 					continue;
 				}
 				Zeny -= 1000000;
 				break;
 			case 3:
-				mes "[Merry Badger]";
-				mes "I understand, lets see if you'd like something different!";
+				mes "[梅里·巴杰]";
+				mes "我明白了，看看您是否想换别的！";
 				close;
 			}
 			getitem 7938,40;// Light_Granule
@@ -902,8 +902,8 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 			getitem 576,10;	// Prickly_Fruit
 			getitem 6217,1;	// Mandragora_Flowerpot
 			getitem 7939,3;	// Elder_Branch
-			mes "[Merry Badger]";
-			mes "There you go! What else would you like?";
+			mes "[梅里·巴杰]";
+			mes "给您！还需要别的吗？";
 			next;
 		}
 	}
@@ -912,22 +912,22 @@ moc_para01,13,22,4	script	Merry Badger#xch	882,{
 //callsub L_Exchange,<badge cost>,<item id>,<amount>;
 L_Exchange:
 	if (countitem(6495) < getarg(0)) {
-		mes "[Merry Badger]";
-		mes "You don't have enough ^00CC00Eden Merit Badges^000000. Let's start over!";
+		mes "[梅里·巴杰]";
+		mes "您的^00CC00伊甸园勋章^000000不够。重新开始吧！";
 		return;
 	}
-	mes "[Merry Badger]";
-	mes sprintf("Ok, I can give you ^ff0000%s^000000 for ^0066CC%d of your Eden Merit Badge(s)^000000.",
+	mes "[梅里·巴杰]";
+	mes sprintf("好，我可以给您 ^ff0000%s^000000，只要您 ^0066CC%d 枚伊甸园勋章^000000。",
 				callfunc("F_InsertPlural",getarg(2),getitemname(getarg(1))), getarg(0));
-	mes "Do you want to?";
+	mes "您愿意吗？";
 	next;
-	if (select("Yes", "No") == 2) {
-		mes "[Merry Badger]";
-		mes "I understand, let's see if you'd like something different!";
+	if (select("是", "否") == 2) {
+		mes "[梅里·巴杰]";
+		mes "我明白了，看看您是否想换别的！";
 		return;
 	}
-	mes "[Merry Badger]";
-	mes "There you go! What else would you like?";
+	mes "[梅里·巴杰]";
+	mes "给您！还需要别的吗？";
 	delitem 6495, getarg(0); //Para_Logro_Badge
 	getitem getarg(1),getarg(2);
 	return;
@@ -935,62 +935,62 @@ L_Exchange:
 
 // Kafra Stacker
 //============================================================
-moc_para01,41,169,2	script	Kafra Stacker#eden	749,{
+moc_para01,41,169,2	script	卡普拉堆叠员#eden	749,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "- Wait a moment! -";
-		mes "- Currently you're carrying -";
-		mes "- too much weight in items. -";
-		mes "- Please come back later -";
-		mes "- after you put some into Kafra storage. -";
+		mes "- 请稍等片刻！-";
+		mes "- 您目前携带的 -";
+		mes "- 物品太重了。-";
+		mes "- 请稍后再来 -";
+		mes "- 请先把一些物品放进卡普拉仓库。-";
 		close;
 	}
-	mes "[Toma]";
-	mes "I can take your non-stacking Kafra Consumables";
-	mes "and make them fit neatly into stacks!";
+	mes "[托马]";
+	mes "我可以收下您那些无法堆叠的卡普拉消耗品";
+	mes "把它们整齐地叠成一堆！";
 	next;
-	mes "[Toma]";
-	mes "Please understand that I can";
-	mes "only stack 10 groups at a time";
-	mes "so keep talking to me until";
-	mes "you have 1 stack of each!";
+	mes "[托马]";
+	mes "请您理解，我一次";
+	mes "只能堆叠 10 组";
+	mes "所以请一直来找我，直到";
+	mes "每种都叠成一堆为止！";
 	next;
 	while(1) {
-		if(select("Do it!:Never mind.") == 2)
+		if(select("动手吧！:算了。") == 2)
 			break;
 		// Something strange goes on here, haven't quite figured it out...
-		mes "[Toma]";
-		mes "Ten stack down!";
-		mes "Want to do another?";
+		mes "[托马]";
+		mes "十组搞定！";
+		mes "还要再来一次吗？";
 		next;
 	}
-	mes "[Toma]";
-	mes "Ok then, laterz.";
+	mes "[托马]";
+	mes "那好吧，回头见。";
 	close;
 }
 
 // Code Redeemer
 //============================================================
-moc_para01,38,162,2	script	Code the Redeemer#Give1	405,{
+moc_para01,38,162,2	script	救赎者·科德#Give1	405,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "^0000ffHold it right there!";
-		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.^000000";
+		mes "^0000ff站住！";
+		mes "您携带的物品太多，背包空间不足以领取奖励。请腾出更多背包空间后再来挑战。^000000";
 		close;
 	}
-	mes "[Code the Redeemer]";
-	mes "Welcome, "+strcharinfo(0)+"!";
-	mes "I've been expecting you.";
+	mes "[救赎者·科德]";
+	mes "欢迎，"+strcharinfo(0)+"！";
+	mes "我一直在等你。";
 	next;
-	mes "[Code the Redeemer]";
-	mes "I am a distributor of all the";
-	mes "items that adventurers like";
-	mes "yourself purchase on websites";
-	mes "or receive as promotions.";
+	mes "[救赎者·科德]";
+	mes "我是负责分发所有";
+	mes "冒险者们喜欢的、";
+	mes "在网站购买";
+	mes "或活动赠送的物品的人。";
 	next;
-	mes "[Code the Redeemer]";
-	mes "^0000FFIf the list is empty,";
-	mes "that means that you have";
-	mes "not purchased, or inputted";
-	mes "your serial code from the purchasing website.^000000";
+	mes "[救赎者·科德]";
+	mes "^0000FF如果列表是空的，";
+	mes "就表示你还没有";
+	mes "购买，或者没有输入";
+	mes "在购买网站获得的序列号。^000000";
 	next;
 
 	// If you have a code redemption system, write your SQL queries here.
@@ -1015,13 +1015,13 @@ moc_para01,35,168,1	cashshop	Kafra Utility Shop#eden	113,16677:25,13990:400,1639
 /* Technically these NPC names are different, but it's not worth editing the original scripts. */
 
 // Weapon/Armor Refiner "Normalson" (merchants/refine.txt)
-moc_para01,14,185,4	script	Normalson#ed	826,{
+moc_para01,14,185,4	script	诺马尔森#ed	826,{
 	callfunc "refinemain","Normalson",0;
 	end;
 }
 
 // Advanced Refiner "Suhnmi" (merchants/advanced_refiner.txt)
-moc_para01,26,185,4	duplicate(Suhnbi#cash)	Suhnmi#eden	85
+moc_para01,26,185,4	duplicate(苏恩比#cash)	Suhnmi#eden	85
 
 // HD Refiner "Blacksmith Mighty Hammer" (re/merchants/hd_refiner.txt)
 // A combination of the +7~9 and +10 and up refiner, currently a placeholder.
@@ -1040,75 +1040,75 @@ OnTimer5000:
 }
 
 // Gym Pass Trainer "Ripped Cabus" (other/gympass)
-moc_para01,33,162,6	duplicate(Ripped Cabus#GymPass)	Ripped Callus#ed	899
+moc_para01,33,162,6	duplicate(猛男卡布斯#GymPass)	Ripped Callus#ed	899
 
 // RWC 2012 Enchanter "Goldenthiefberg" (events/RWC_2012.txt)
 // A combination of the slotter and enchanter, currently a placeholder.
-moc_para01,27,179,4	script	RWC Enchanter#new10	87,{ end; }
+moc_para01,27,179,4	script	RWC 附魔师#new10	87,{ end; }
 
 // Cash Headgear Dyer "Alora" (merchants/cashheadgear_dye.txt)
 // Also converts some +8 and up headgears into costumes, currently a placeholder.
-moc_para01,21,185,4	duplicate(Alora)	Alora#headgear_dye2	862
+moc_para01,21,185,4	duplicate(阿洛拉)	Alora#headgear_dye2	862
 
 // Stylist "Dinorah Lacostt" (?)
 // Dyes clothing for an Omni Clothing Dye, currently a placeholder.
-moc_para01,33,185,4	script	Dinorah Lacostt#ed	862,{ end; }
+moc_para01,33,185,4	script	迪诺拉·拉科斯特#ed	862,{ end; }
 
 // Commonly Updated NPCs
 //============================================================
 /* These scripts change on a regular basis, so they're mostly just placeholders for now. */
 
-moc_para01,29,35,4	script	Gramps#huntquests	866,{
-	mes "[Gramps]";
-	mes "When you get to being my";
-	mes "age, you become bitter.";
-	mes "Too long I've done nothing about the monsters that roam around";
+moc_para01,29,35,4	script	老爷爷#huntquests	866,{
+	mes "[老爷爷]";
+	mes "等你到了我这个";
+	mes "年纪，就会变得爱发牢骚。";
+	mes "这么久以来，我一直对四处游荡的怪物束手无策";
 	mes "Midgard.";
 	next;
-	mes "[Gramps]";
-	mes "That's why I'm asking you wippersnappers to help";
-	mes "me hunt some monsters.";
-	mes "Will you help me, young adventurer?";
+	mes "[老爷爷]";
+	mes "所以我才请你们这些年轻人帮忙";
+	mes "帮我猎杀一些怪物。";
+	mes "年轻的冒险者，你愿意帮我吗？";
 	close;
 	//next;
 	//switch(select("Yes, I'll help.:Reward Me!:^ff0000I want to quit hunting^000000:^0000ffCan you warp me?^000000:Can you erase the timer?:What missions are you giving?:Give me Limited 3 day VIP:Tell me more about the VIP Access:No thanks, pops.")) {
 }
 
-moc_para01,174,33,3	script	Bathory#2012spirits	1102,{
-	mes "[Bathory]";
-	mes "Eheeheeheehee! The spotlight is on Glast Heim this week, so I'm ferrying people there for a mere 1,000z!";
+moc_para01,174,33,3	script	巴托丽#2012spirits	1102,{
+	mes "[巴托丽]";
+	mes "嘻嘻嘻嘻嘻嘻！这周的热门地点是葛拉斯特海姆，我只收 1,000z 就载大家过去！";
 	next;
-	mes "[Bathory]";
-	mes "How about it? Want to take a ride on a beautiful Bathory's broom?";
+	mes "[巴托丽]";
+	mes "怎么样？要不要坐上美丽巴托丽的扫帚飞一趟？";
 	next;
-	switch(select("Prepare for Takeoff!:No thanks.")) {
+	switch(select("准备起飞！:不用了。")) {
 	case 1:
 		if (Zeny < 1000) {
-			mes "[Bathory]";
-			mes "Come on dearie...";
-			mes "You don't even have 1,000 zeny?";
+			mes "[巴托丽]";
+			mes "来吧，亲爱的……";
+			mes "你连 1,000 Zeny 都没有吗？";
 			close;
 		}
-		mes "[Bathory]";
-		mes "Alright, hold on tight!";
+		mes "[巴托丽]";
+		mes "好，抓稳了！";
 		close2;
 		set Zeny, Zeny-1000;
 		warp "niflheim",194,185;
 		end;
 	case 2:
 		mes "["+strcharinfo(0)+"]";
-		mes "No thanks, maybe later.";
+		mes "不用了，以后再说吧。";
 		close;
 	}
 }
 
-moc_para01,26,174,4	script	Grandma Boxter#boxx	840,{ end; }
+moc_para01,26,174,4	script	博克斯特奶奶#boxx	840,{ end; }
 
 // Mail Annex Station
 //============================================================
 /* Map "auction_03" is a duplicate of "auction_02".
 
-moc_para01,30,187,4	script	Mail Annex Station	888,{
+moc_para01,30,187,4	script	邮件收发站	888,{
 	mes "[Mail Annex Station]";
 	mes "Would you like to go to the Kafra Mail Annex Station?";
 	next;
@@ -1127,7 +1127,7 @@ moc_para01,30,187,4	script	Mail Annex Station	888,{
 }
 auction_03,152,16,0	warp	#mail_annex_warp	1,1,moc_para01,30,184
 
-auction_03,152,42,4	script	Kafra Employee#annex	117,{
+auction_03,152,42,4	script	卡普拉职员#annex	117,{
 	mes "[Kafra Employee]";
 	mes "Welcome to the Kafra's Mail Annex Station. This is now the only place to send and retrieve mail.";
 	next;
@@ -1159,26 +1159,26 @@ auction_03,152,42,4	script	Kafra Employee#annex	117,{
 	}
 }
 
-auction_03,145,47,2	shop	Tool Dealer#annex	83,611:-1,501:-1,502:-1,503:-1,506:-1,504:-1,645:-1,656:-1,657:-1,601:-1,602:-1,1065:-1,911:-1,910:-1,717:-1,1092:-1,1093:-1,713:400
+auction_03,145,47,2	shop	道具商人#annex	83,611:-1,501:-1,502:-1,503:-1,506:-1,504:-1,645:-1,656:-1,657:-1,601:-1,602:-1,1065:-1,911:-1,910:-1,717:-1,1092:-1,1093:-1,713:400
 
 */
 
 // Fallen_Angel_Wing Enchant
 //============================================================
-moc_para01,179,27,3	script	Dark Luhir#new10	4_F_VALKYRIE2,{
+moc_para01,179,27,3	script	黑暗卢希尔#new10	4_F_VALKYRIE2,{
 	disable_items;
-	mes "[Dark Luhir]";
-	mes "Hello~ I am giving away extra stats to those who have a Fallen Angel Wing item.";
+	mes "[黑暗卢希尔]";
+	mes "你好~ 我会为拥有堕天使之翼的人赋予额外属性。";
 	next;
 	if (getequipid(EQI_GARMENT) != 2589) {// Fallen_Angel_Wing
-		mes "[Dark Luhir]";
-		mes "Please ^0000ffwear your Fallen Angel Wing item first^000000, and then I will give you extra stats.";
+		mes "[黑暗卢希尔]";
+		mes "请先^0000ff装备堕天使之翼^000000，然后我会为你赋予额外属性。";
 		close;
 	}
-	switch( select( "Cancel", "Enchant Fallen Angel Wing", "Reset Fallen Angel Wing Stats" ) ) {
+	switch( select( "取消", "附魔堕天使之翼", "重置堕天使之翼属性" ) ) {
 	case 1:
-		mes "[Dark Luhir]";
-		mes "Later then...";
+		mes "[黑暗卢希尔]";
+		mes "那就下次见……";
 		close;
 	case 2:
 		.@refine = getequiprefinerycnt(EQI_GARMENT);
@@ -1187,24 +1187,24 @@ moc_para01,179,27,3	script	Dark Luhir#new10	4_F_VALKYRIE2,{
 			getequipcardid(EQI_GARMENT,1),
 			getequipcardid(EQI_GARMENT,2),
 			getequipcardid(EQI_GARMENT,3);
-		mes "[Dark Luhir]";
-		mes "Only 1 socket can get an extra stat when refine level is between 1~6.";
-		mes "If refine level is 7~8, it can receive stats for 2 sockets.";
-		mes "+9 can receive stats to all 3 sockets.";
+		mes "[黑暗卢希尔]";
+		mes "精炼等级在 1~6 之间时，只有 1 个插槽能获得额外属性。";
+		mes "精炼等级为 7~8 时，可以获得 2 个插槽的属性。";
+		mes "+9 时可以为全部 3 个插槽获得属性。";
 		next;
-		mes "[Dark Luhir]";
+		mes "[黑暗卢希尔]";
 		if (.@refine < 7)
-			mes "This item's refine level is lower than 7. Only ^ff0000socket slot 4^000000 can receive extra stats.";
+			mes "该物品的精炼等级低于 7。只有 ^ff0000插槽 4^000000 能获得额外属性。";
 		else if (.@refine < 9)
-			mes "This item's refine level is between 7~8. ^ff0000Socket slot 3 and 4^000000 can receive extra stats.";
+			mes "该物品的精炼等级在 7~8 之间。^ff0000插槽 3 和 4^000000 能获得额外属性。";
 		else
-			mes "This item's refine level is more than 9. All 3 of ^ff0000Socket slot 2, 3 and 4^000000 can receive extra stats.";
-		mes "What kind of extra stats do you want?";
+			mes "该物品的精炼等级高于 9。^ff0000插槽 2、3 和 4^000000 全部 3 个都能获得额外属性。";
+		mes "你想要哪种额外属性？";
 		next;
-		switch( select( "Let me get my gear on", "1.Fighting spirit", "2.Magic Attack", "3.Archery", "4.Critical", "5.MaxHP", "6.MaxSP", "7.Atk speed", "8.STR", "9.AGI", "10.VIT", "11.INT", "12.DEX", "13.LUK" ) ) {
+		switch( select( "我先穿上装备", "1.斗志", "2.魔法攻击", "3.弓箭", "4.暴击", "5.最大HP", "6.最大SP", "7.攻击速度", "8.STR", "9.AGI", "10.VIT", "11.INT", "12.DEX", "13.LUK" ) ) {
 		case 1:
-			mes "[Dark Luhir]";
-			mes "Please come back after equipping your item.";
+			mes "[黑暗卢希尔]";
+			mes "请装备好物品后再来。";
 			close;
 		case 2:
 			setarray .@enchants[0],4809,4808,4820,4821;		// Fighting Spirit 3~5 / Fighting Spirit 6
@@ -1259,12 +1259,12 @@ moc_para01,179,27,3	script	Dark Luhir#new10	4_F_VALKYRIE2,{
 			.@string$ = "LUK stats will be given randomly by 3~5.";
 			break;
 		}
-		mes "[Dark Luhir]";
-		mes .@string$ + " ^ff0000Given stats cannot be turned back.^000000 Do you want to proceed?";
+		mes "[黑暗卢希尔]";
+		mes .@string$ + "^ff0000已赋予的属性无法撤回。^000000 要继续吗？";
 		next;
-		if (select( "1.Quit", "2.Yes, I want to try this." ) == 1) {
-			mes "[Dark Luhir]";
-			mes "Later then...";
+		if (select( "1.退出", "2.是，我想试试。" ) == 1) {
+			mes "[黑暗卢希尔]";
+			mes "那就下次见……";
 			close;
 		}
 
@@ -1285,35 +1285,35 @@ moc_para01,179,27,3	script	Dark Luhir#new10	4_F_VALKYRIE2,{
 			.@slot = 2;
 		}
 		else {
-			mes "[Dark Luhir]";
-			mes "It seems this item is already has max enchanting. Please bring another one for extra stats.";
+			mes "[黑暗卢希尔]";
+			mes "这件物品似乎已经达到最大附魔了。请再带一件来获取额外属性。";
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Dark Luhir]";
-		mes "Giving ability to item's ^990000" + .@slot + " socket^000000.";
+		mes "[黑暗卢希尔]";
+		mes "正在为物品的 ^990000" + .@slot + "号插槽^000000 赋予能力。";
 		delequip EQI_GARMENT;
 		getitem2 2589,1,1, .@refine,0, .@card[0], .@card[1], .@card[2], .@card[3];
 		close;
 	case 3:
-		mes "[Dark Luhir]";
-		mes "Stat reset of the Fallen Angel Wing will cost you 1,000,000 zeny?";
-		mes "Do you wish to proceed?";
+		mes "[黑暗卢希尔]";
+		mes "重置堕天使之翼的属性需要 1,000,000 Zeny，确定吗？";
+		mes "你希望继续吗？";
 		next;
-		if (select( "Yes", "No thanks!" ) == 2)
+		if (select( "是", "不了，谢谢！" ) == 2)
 			close;
 		if (Zeny < 1000000) {
-			mes "[Dark Luhir]";
-			mes "You liar you don't have enough zeny!";
+			mes "[黑暗卢希尔]";
+			mes "你骗人！你的 Zeny 根本不够！";
 			close;
 		}
 		if (getequipid(EQI_GARMENT) == 2589) {
 			.@refine = getequiprefinerycnt(EQI_GARMENT);
 			.@card[0] = getequipcardid(EQI_GARMENT,0);
 
-			mes "[Dark Luhir]";
+			mes "[黑暗卢希尔]";
 			specialeffect2 EF_REPAIRWEAPON;
-			mes "Reseting item stats.";
+			mes "正在重置物品属性。";
 			delequip EQI_GARMENT;
 			Zeny -= 1000000;
 			getitem2 2589,1,1, .@refine,0, .@card[0],0,0,0;// Fallen_Angel_Wing

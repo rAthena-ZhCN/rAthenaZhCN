@@ -28,204 +28,204 @@
 
 // PecoPeco Breeder (for Knights) :: breeder
 //============================================================
-prontera,55,350,5	script	Peco Peco Breeder#knt	105,{
+prontera,55,350,5	script	大嘴鸟饲养员#knt	105,{
 	if(Upper==0) set .@price,2500; //Normal Peco - default price
 	if(Upper==1) set .@price,2500; //Armored Peco
 	if(Upper==2) set .@price,2500; //Baby Peco
 
-	mes "[Peco Peco Breeder]";
+	mes "[大嘴鸟饲养员]";
 	if (BaseJob == Job_Knight && Class < Job_Rune_Knight) {
 		mes "Welcome.";
-		mes "Honorable Knight,";
-		mes "would you like to rent";
-		mes "a Peco Peco? The rental";
-		mes "fee is "+.@price+" zeny.";
+		mes "尊敬的骑士，";
+		mes "您是否愿意租借";
+		mes "一只大嘴鸟？租借";
+		mes "费用为"+.@price+"Zeny。";
 		next;
-		switch(select("Rent Peco Peco:Cancel")) {
+		switch(select("租借大嘴鸟:取消")) {
 		case 1:
 			if (Zeny < .@price) {
-				mes "[Peco Peco Breeder]";
-				mes "You do not";
-				mes "have enough zeny.";
-				mes "Are you...";
-				mes "bankrupt?";
+				mes "[大嘴鸟饲养员]";
+				mes "您拥有的";
+				mes "Zeny不足。";
+				mes "难道您……";
+				mes "破产了吗？";
 				close;
 			}
 			else if(getskilllv("KN_RIDING") == 0) {
-				mes "[Peco Peco Breeder]";
-				mes "I'm sorry, but you're";
-				mes "not eligible for this";
-				mes "service. Please go learn";
-				mes "the Peco Peco Ride skill first.";
+				mes "[大嘴鸟饲养员]";
+				mes "很抱歉，您";
+				mes "不符合这项";
+				mes "服务的使用条件。请先学会";
+				mes "大嘴鸟骑乘技能。";
 				close;
 			}
 			else if(checkriding()) {
-				mes "[Peco Peco Breeder]";
-				mes "You're already";
-				mes "mounted on a";
-				mes "Peco Peco.";
+				mes "[大嘴鸟饲养员]";
+				mes "您已经";
+				mes "骑乘着";
+				mes "大嘴鸟了。";
 				close;
 			}
 			else if(ismounting()) {
-				mes "[Peco Peco Breeder]";
-				mes "Please remove your cash mount.";
+				mes "[大嘴鸟饲养员]";
+				mes "请先解除您的商城坐骑。";
 				close;
 			}
 			set Zeny, Zeny-.@price;
 			setriding;
 			close;
 		case 2:
-			mes "[Peco Peco Breeder]";
-			mes "I see.";
-			mes "Well then,";
-			mes "have a good day.";
+			mes "[大嘴鸟饲养员]";
+			mes "我明白了。";
+			mes "那么，";
+			mes "祝你今天愉快。";
 			close;
 		}
 	} else {
-		mes "I'm sorry, but these";
-		mes "Peco Pecos are only";
-		mes "available for Knights";
-		mes "and Lord Knights.";
+		mes "很抱歉，这些";
+		mes "大嘴鸟只";
+		mes "提供给骑士";
+		mes "和骑士领主。";
 		close;
 	}
 }
 
 // Grand PecoPeco Breeder (for Crusaders)
 //============================================================
-prontera,232,318,3	script	Peco Peco Breeder#cru	105,{
+prontera,232,318,3	script	大嘴鸟饲养员#cru	105,{
 	if(Upper==0) set .@price,3500; //Normal Peco - default price
 	if(Upper==1) set .@price,3500; //Armored Peco
 	if(Upper==2) set .@price,3500; //Baby Peco
 
-	mes "[Peco Peco Breeder]";
+	mes "[大嘴鸟饲养员]";
 	if (BaseJob == Job_Crusader && Class < Job_Rune_Knight) {
-		if(Upper != 1 ) mes "Welcome, Crusader.";
-		else mes "Welcome, Paladin.";
-		mes "We have a special";
-		mes "Peco Peco prepared";
-		mes "for you. To rent one";
-		mes "will cost "+.@price+" zeny.";
+		if(Upper != 1 ) mes "欢迎您，十字军。";
+		else mes "欢迎您，圣殿十字军。";
+		mes "我们为您准备了";
+		mes "一只特别的大嘴鸟";
+		mes "。租借它";
+		mes "需要"+.@price+"Zeny。";
 		next;
-		switch(select("Rent a PecoPeco:Quit")) {
+		switch(select("租借大嘴鸟:离开")) {
 		case 1:
 			if (Zeny < .@price) {
-				mes "[Peco Peco Breeder]";
-				mes "You do not";
-				mes "have enough zeny.";
-				mes "If you would like";
-				mes "a Peco Peco please";
-				mes "bring "+.@price+" zeny...";
+				mes "[大嘴鸟饲养员]";
+				mes "您拥有的";
+				mes "Zeny不足。";
+				mes "如果您想要";
+				mes "租借大嘴鸟，请";
+				mes "带上"+.@price+"Zeny来……";
 				close;
 			}
 			else if(getskilllv("KN_RIDING") == 0) {
-				mes "[Peco Peco Breeder]";
-				mes "You must first learn";
-				mes "to ride a PecoPeco before";
-				mes "I can rent one to you.";
+				mes "[大嘴鸟饲养员]";
+				mes "您必须先学会";
+				mes "骑乘大嘴鸟，";
+				mes "我才能租借给您。";
 				close;
 			}
 			else if(checkriding()) {
-				mes "[Peco Peco Breeder]";
-				mes "You are already";
-				mes "mounted on a Peco Peco.";
+				mes "[大嘴鸟饲养员]";
+				mes "您已经";
+				mes "骑乘着大嘴鸟了。";
 				close;
 			}
 			else if(ismounting()) {
-				mes "[Peco Peco Breeder]";
-				mes "Please remove your cash mount.";
+				mes "[大嘴鸟饲养员]";
+				mes "请先解除您的商城坐骑。";
 				close;
 			}
 			set Zeny, Zeny-.@price;
 			setriding;
 			close;
 		case 2:
-			mes "[Peco Peco Breeder]";
-			mes "See you around.";
+			mes "[大嘴鸟饲养员]";
+			mes "后会有期。";
 			close;
 		}
 	} else {
-		mes "What can I do for you?";
-		mes "Please be aware that";
-		mes "this Peco Peco rental";
-		mes "service is strictly for";
-		mes "Crusaders and Paladins.";
+		mes "有什么可以为您效劳的吗？";
+		mes "请注意，";
+		mes "这项大嘴鸟租借";
+		mes "服务仅限";
+		mes "十字军与圣殿十字军。";
 		close;
 	}
 }
 
 // Falcon Master :: breeder
 //============================================================
-hu_in01,381,304,5	script	Falcon Breeder#hnt	105,{
+hu_in01,381,304,5	script	猎鹰饲养员#hnt	105,{
 	if(Upper==0) set .@price,2500; //Normal Falcon - default price
 	if(Upper==1) set .@price,2500; //Scarf Falcon
 	if(Upper==2) set .@price,2500; //Baby Falcon
 
-	mes "[Falcon Breeder]";
+	mes "[猎鹰饲养员]";
 	if (BaseJob == Job_Hunter) {
 		if (checkwug()) {
 			mes "Um...";
-			mes "You can't rent a Falcon";
-			mes "until you dismiss your warg first!";
+			mes "在解除座狼之前，";
+			mes "无法租借猎鹰！";
 			close;
 		}
-		mes "Do you need a Falcon?";
-		mes "You can rent your own";
-		mes "trusty bird of prey for a";
-		mes "fee of just "+.@price+" zeny~";
+		mes "您需要一只猎鹰吗？";
+		mes "您可以租借一只";
+		mes "可靠的猛禽，";
+		mes "费用仅需"+.@price+"Zeny~";
 		next;
-		switch(select("Rent Falcon:Cancel")) {
+		switch(select("租借猎鹰:取消")) {
 		case 1:
 			if (checkwug()) {
-				mes "[Falcon Breeder]";
+				mes "[猎鹰饲养员]";
 				mes "Um...";
-				mes "You can't rent a Falcon";
-				mes "until you dismiss your warg first!";
+				mes "在解除座狼之前，";
+				mes "无法租借猎鹰！";
 				close;
 			}
 			if (Zeny < .@price) {
-				mes "[Falcon Breeder]";
-				mes "What is this?";
-				mes "You don't have";
-				mes "enough zeny?!";
-				mes "You better start";
-				mes "hunting money";
-				mes "instead of monsters~";
+				mes "[猎鹰饲养员]";
+				mes "这是怎么回事？";
+				mes "您的";
+				mes "Zeny不够？！";
+				mes "您最好开始";
+				mes "去猎取钱财";
+				mes "而不是猎杀怪物~";
 				close;
 			}
 			else if(getskilllv("HT_FALCON") == 0) {
-				mes "[Falcon Breeder]";
-				mes "Gosh~";
-				mes "Go learn how to";
-				mes "manage a Falcon";
-				mes "first! I can't rent one";
-				mes "to you if you can't";
-				mes "handle it, you know.";
+				mes "[猎鹰饲养员]";
+				mes "天哪~";
+				mes "先去学会";
+				mes "如何驾驭猎鹰";
+				mes "吧！如果您驾驭不了，";
+				mes "我是不会把它";
+				mes "租给您的。";
 				close;
 			}
 			else if(checkfalcon()) {
-				mes "[Falcon Breeder]";
+				mes "[猎鹰饲养员]";
 				mes "Um...";
-				mes "You already have";
-				mes "a Falcon. It's right";
-				mes "there, can't you see it?";
+				mes "您已经";
+				mes "有一只猎鹰了。它就在";
+				mes "那里，您看不见吗？";
 				close;
 			}
 			set Zeny, Zeny-.@price;
 			setfalcon;
 			close;
 		case 2:
-			mes "[Falcon Breeder]";
-			mes "W-wait, where're";
-			mes "you goin'? These";
-			mes "Falcons are top notch,";
-			mes "I guarantee it! C'mon, yo~";
+			mes "[猎鹰饲养员]";
+			mes "等、等等，您要";
+			mes "去哪儿？这些";
+			mes "猎鹰可是顶级的，";
+			mes "我保证！来吧，哟~";
 			close;
 		}
 	} else {
-		mes "Young fool!";
-		mes "Falcons can only";
-		mes "be used by Hunters";
-		mes "and Snipers, capish?";
+		mes "年轻的傻瓜！";
+		mes "猎鹰只能";
+		mes "由猎人";
+		mes "和神射手使用，懂吗？";
 		mes "...Heh heh, jealous?";
 		close;
 	}

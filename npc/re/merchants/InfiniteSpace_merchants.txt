@@ -12,59 +12,59 @@
 // Food Merchant
 -	shop	inf_ration	-1,512:-1,513:-1,515:-1,516:-1
 
-cmd_fild07,63,268,1	script	Emergency Food Merchant#pa0829_01	4_M_BIBI,{
-	mes "[Emergency Food Merchant]";
-	mes "I have a lot of stuff over here, of course, not for free.";
+cmd_fild07,63,268,1	script	应急食品商人#pa0829_01	4_M_BIBI,{
+	mes "[应急食品商人]";
+	mes "我这里有很多东西，当然，不是免费的。";
 	close2;
 	callshop "inf_ration",1;
 	end;
 }
 
 // Warp Scroll Seller
-cmd_fild07,375,167,1	script	Ruins Black Trader#pa0829_01	4_F_JOB_HUNTER,{
-	mes "[Ruins Black Trader]";
-	mes "Hey, isn't it hard to walk in and out of here every time? For just ^0000ff20,000^000000 Zeny, you can have a scroll that will take you directly to the entrance of the ruins, what do you think?";
+cmd_fild07,375,167,1	script	遗迹黑市商人#pa0829_01	4_F_JOB_HUNTER,{
+	mes "[遗迹黑市商人]";
+	mes "嘿，每次进出这里不觉得麻烦吗？只要 ^0000ff20,000^000000 Zeny，你就能拿到一张直接通往遗迹入口的卷轴，怎么样？";
 Purchase:
 	next;
-	switch( select( "Give me one", "I don't think so" )) {
+	switch( select( "给我一张", "不用了" )) {
 		case 1:
 			if (!checkweight(22980,1) || (MaxWeight - Weight) < 1000) {
-				mes "You can't proceed with the conversation because you have a large quantity of items.";
-				mes "Please organize your items and try again.";
+				mes "你携带的物品数量过多，无法继续对话。";
+				mes "请整理物品后再试。";
 				close;
 			}
 			else if (Zeny < 20000) {
-				mes "[Ruins Black Trader]";
-				mes "You don't seem to have any more money. A scroll costs 20,000 Zeny.";
+				mes "[遗迹黑市商人]";
+				mes "你似乎没有钱了。一张卷轴要 20,000 Zeny。";
 				close;
 			}
 			Zeny -= 20000;
 			getitem 22980,1;
-			mes "[Ruins Black Trader]";
-			mes "It was a good deal. Need more?";
+			mes "[遗迹黑市商人]";
+			mes "交易愉快。还要更多吗？";
 			goto Purchase;
 		case 2:
-			mes "[Ruins Black Trader]";
-			mes "Come back anytime";
+			mes "[遗迹黑市商人]";
+			mes "随时再来";
 			close;
 	}
 }
 
 // Equipment Shop
-cmd_fild07,57,275,5	script	Artifact Appraiser#pa0829_01	1_F_02,{
+cmd_fild07,57,275,5	script	神器鉴定师#pa0829_01	1_F_02,{
 	if (!checkweight(1201,1) || (MaxWeight - Weight) < 1000) {
-		mes "You can't proceed with the conversation because you have a large quantity of items.";
-		mes "Please organize your items and try again.";
+		mes "你携带的物品数量过多，无法继续对话。";
+		mes "请整理物品后再试。";
 		close;
 	}
 	.@stone_id = 6905;
-	mes "[ Artifact Appraiser ]";
-	mes "Choose the type of equipment that you want to purchase. You can purchase as many as you want, as long as you have " + getitemname(.@stone_id) + ".";
+	mes "[ 神器鉴定师 ]";
+	mes "请选择你想购买的装备类型。只要你有" + getitemname(.@stone_id) + ".";
 	next;
-	switch (select("Cancel:Weapons:Armors")) {
+	switch (select("取消:武器:防具")) {
 		case 1:
-			mes "[ Artifact Appraiser ]";
-			mes "Please come back whenever you want~";
+			mes "[ 神器鉴定师 ]";
+			mes "随时欢迎你再来～";
 			close;
 
 		case 2:
@@ -77,33 +77,33 @@ cmd_fild07,57,275,5	script	Artifact Appraiser#pa0829_01	1_F_02,{
 			.@price = 50;
 			break;
 	}
-	.@menu$ = "Cancel:";
+	.@menu$ = "取消:";
 	for (.@i = 0; .@i < getarraysize(.@equip_id); .@i++)
 		.@menu$ += getitemname(.@equip_id[.@i]) + ":";
 	.@s = select(.@menu$) - 1;
 	switch (.@s) {
 		case 0:
-			mes "[ Artifact Appraiser ]";
-			mes "Please come back whenever you want~";
+			mes "[ 神器鉴定师 ]";
+			mes "随时欢迎你再来～";
 			close;
 
 		default:
 			.@s--;
-			mes "[ Artifact Appraiser ]";
-			mes "You need ^0000FF" + .@price + "^000000 " + getitemname(.@stone_id) + " to purchase the " + getitemname(.@equip_id[.@s]) + "~";
+			mes "[ 神器鉴定师 ]";
+			mes "您需要 ^0000ff" + .@price + "^000000 个" + getitemname(.@stone_id) + "，用来购买" + getitemname(.@equip_id[.@s]) + "~";
 			next;
-			if (select("Cancel:Purchase") == 1) {
-				mes "[ Artifact Appraiser ]";
-				mes "Please come back whenever you want~";
+			if (select("取消:购买") == 1) {
+				mes "[ 神器鉴定师 ]";
+				mes "随时欢迎你再来～";
 				close;
 			}
 			if (countitem(.@stone_id) < .@price) {
-				mes "[ Artifact Appraiser ]";
-				mes "You don't have enough " + getitemname(.@stone_id) + " to purchase this item.";
+				mes "[ 神器鉴定师 ]";
+				mes "你的" + getitemname(.@stone_id) + "不足，无法购买此物品。";
 				close;
 			}
-			mes "[ Artifact Appraiser ]";
-			mes "Thank you for your trust. Please come back again next time.";
+			mes "[ 神器鉴定师 ]";
+			mes "感谢你的信任。下次请再来。";
 			delitem .@stone_id,.@price;
 			getitem .@equip_id[.@s],1;
 			close;
@@ -111,47 +111,47 @@ cmd_fild07,57,275,5	script	Artifact Appraiser#pa0829_01	1_F_02,{
 }
 
 // Equipment Enchanter
-cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
+cmd_fild07,60,275,3	script	神器强化师#pa0829_01	4_F_JOB_BLACKSMITH,{
 	if (!checkweight(1201,1) || (MaxWeight - Weight) < 1000) {
-		mes "You can't proceed with the conversation because you have a large quantity of items.";
-		mes "Please organize your items and try again.";
+		mes "你携带的物品数量过多，无法继续对话。";
+		mes "请整理物品后再试。";
 		close;
 	}
 	disable_items;
 	.@stone_id = 6905;
 	function equip_check;
-	mes "[ Artifact Enhancer ]";
-	mes "If you're looking to strengthen the equipment that you've obtained in the Infinite Space, you have come to the right place.";
-	mes "Do you have any " + getitemname(.@stone_id) + "?";
+	mes "[ 神器强化师 ]";
+	mes "如果你想强化在无限空间获得的装备，那就来对地方了。";
+	mes "你有" + getitemname(.@stone_id) + "吗？";
 	next;
-	switch (select("How do I enchant my equipment?:Enchant equipment.:Initialize equipment's enchant.")) {
+	switch (select("如何给我的装备附魔？:为装备附魔。:初始化装备的附魔。")) {
 		case 1:
-			mes "[ Artifact Enhancer ]";
-			mes "You'll be able to obtain " + getitemname(.@stone_id) + ", if you explore the space under the Paros Lighthouse.";
+			mes "[ 神器强化师 ]";
+			mes "你将能够获得" + getitemname(.@stone_id) + "，只要你去探索帕罗斯灯塔下方的空间。";
 			next;
-			mes "[ Artifact Enhancer ]";
-			mes "For that material, I can reinforce the equipment that you got from the Infinite Space.";
+			mes "[ 神器强化师 ]";
+			mes "用那种材料，我可以强化你从无限空间获得的装备。";
 			next;
-			mes "[ Artifact Enhancer ]";
-			mes "I can only enchant the 3rd and the 4th slot.";
+			mes "[ 神器强化师 ]";
+			mes "我只能附魔第 3 和第 4 个插槽。";
 			next;
-			mes "[ Artifact Enhancer ]";
-			mes "There is no chance of the equipment being destroyed during the enchanting process, but there's a high probability that it will be destroyed when initializing the enchants.";
+			mes "[ 神器强化师 ]";
+			mes "附魔过程中装备不会损坏，但初始化附魔时损坏的概率很高。";
 			next;
-			mes "[ Artifact Enhancer ]";
-			mes "Then come visit me when you want to enchant the equipment.";
+			mes "[ 神器强化师 ]";
+			mes "那么想给装备附魔时，就来找我吧。";
 			break;
 
 		case 2:
 			.@stone_id = 6905;
 			.@fee = 20;
-			mes "[ Artifact Enhancer ]";
-			mes "Please select the equipment that you want to enchant.";
+			mes "[ 神器强化师 ]";
+			mes "请选择你想附魔的装备。";
 			next;
-			switch (select("Cancel:Weapon:Armor:Shoes:Garment:Helm")) {
+			switch (select("取消:武器:铠甲:鞋子:披风:头盔")) {
 				case 1:
-					mes "[ Artifact Enhancer ]";
-					mes "Then come visit me when you want to enchant the equipment.";
+					mes "[ 神器强化师 ]";
+					mes "那么想给装备附魔时，就来找我吧。";
 					close;
 
 				case 2:
@@ -182,8 +182,8 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 				.@check[.@i] = getequipcardid(.@part,.@i);
 			}
 			if (.@card[2] > 0) {
-				mes "[ Artifact Enhancer ]";
-				mes "I can only enchant up to the third slot. Your equipment can't be further enchanted.";
+				mes "[ 神器强化师 ]";
+				mes "我最多只能附魔到第 3 个插槽。你的装备无法再继续附魔了。";
 				close;
 			}
 			switch (.@part) {
@@ -209,25 +209,25 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 			}
 			.@slot = (.@card[3] > 0 ? 2 : 3);
 			.@index = (.@slot == 3 ? 0 : 1);
-			mes "[ Artifact Enhancer ]";
-			mes "You can choose 3 types of enchant, and the enchant fee is " + .@fee + " " + getitemname(.@stone_id) + ".";
-			mes "I'll make sure it gets enchanted without a problem.";
+			mes "[ 神器强化师 ]";
+			mes "你可以选择 3 种附魔类型，附魔费用为" + .@fee + " " + getitemname(.@stone_id) + ".";
+			mes "我会确保顺利附魔。";
 			next;
-			.@type = select("Quit:Physical:Magical:Range") - 2;
-			mes "[ Artifact Enhancer ]";
+			.@type = select("退出:物理:魔法:远程") - 2;
+			mes "[ 神器强化师 ]";
 			if (.@slot == 3)
-				mes "Okay, let's begin the first enchantment.";
+				mes "好，开始第一次附魔。";
 			else
-				mes "Okay, let's proceed with the second enchantment.";
+				mes "好，进行第二次附魔。";
 			next;
-			if (select("I'll return later.:Please proceed.") == 1) {
-				mes "[ Artifact Enhancer ]";
-				mes "If you change your mind, just return to me.";
+			if (select("我稍后再来。:请继续。") == 1) {
+				mes "[ 神器强化师 ]";
+				mes "如果改变主意，就来找我。";
 				close;
 			}
 			if (countitem(.@stone_id) < .@fee) {
-				mes "[ Artifact Enhancer ]";
-				mes "Hm. By the way, I don't think you were listening, you don't have enough " + getitemname(.@stone_id) + ".";
+				mes "[ 神器强化师 ]";
+				mes "嗯。话说回来，你好像没在听，你的" + getitemname(.@stone_id) + ".";
 				close;
 			}
 			explode(.@T$,.@enchant$[.@index],":");
@@ -240,21 +240,21 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 			delequip .@part;
 			getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
 			specialeffect2 EF_REPAIRWEAPON;
-			mes "[ Artifact Enhancer ]";
-			mes "Hm. It was well done. Check your equipment at once.";
+			mes "[ 神器强化师 ]";
+			mes "嗯。做得不错。快看看你的装备。";
 			break;
 		
 		case 3:
 			.@stone_id = 6905;
 			.@fee = 30;
 			.@break_chance = 30;
-			mes "[ Artifact Enhancer ]";
-			mes "Please select the equipment that you want to enchant.";
+			mes "[ 神器强化师 ]";
+			mes "请选择你想附魔的装备。";
 			next;
-			switch (select("Cancel:Weapon:Armor:Shoes:Garment:Helm")) {
+			switch (select("取消:武器:铠甲:鞋子:披风:头盔")) {
 				case 1:
-					mes "[ Artifact Enhancer ]";
-					mes "Then come visit me when you want to enchant the equipment.";
+					mes "[ 神器强化师 ]";
+					mes "那么想给装备附魔时，就来找我吧。";
 					close;
 
 				case 2:
@@ -285,21 +285,21 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 				.@check[.@i] = .@card[.@i];
 			}
 			if (.@card[3] == 0) {
-				mes "[ Artifact Enhancer ]";
-				mes "Your equipment doesn't have any enchant on it.";
+				mes "[ 神器强化师 ]";
+				mes "你的装备没有任何附魔。";
 				close;
 			}
-			mes "[ Artifact Enhancer ]";
-			mes "There is a chance that your infinite space equipment will be destroyed on the initializion process. Are you still willing to proceed?";
+			mes "[ 神器强化师 ]";
+			mes "初始化过程中，你的无限空间装备有可能被破坏。你还愿意继续吗？";
 			next;
-			if (select("Quit:Proceed") == 1) {
-				mes "[ Artifact Enhancer ]";
-				mes "If you change your mind, just return to me.";
+			if (select("退出:继续") == 1) {
+				mes "[ 神器强化师 ]";
+				mes "如果改变主意，就来找我。";
 				close;
 			}
 			if (countitem(.@stone_id) < .@fee) {
-				mes "[ Artifact Enhancer ]";
-				mes "Hm. By the way, I don't think you were listening, you don't have enough " + getitemname(.@stone_id) + ".";
+				mes "[ 神器强化师 ]";
+				mes "嗯。话说回来，你好像没在听，你的" + getitemname(.@stone_id) + ".";
 				close;
 			}
 			delitem .@stone_id,.@fee;
@@ -309,12 +309,12 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 			if (rand(1,100) > .@chance) {
 				getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],0,0;
 				specialeffect2 EF_REPAIRWEAPON;
-				mes "[ Artifact Enhancer ]";
-				mes "Hm. It was well done. Check your equipment at once.";
+				mes "[ 神器强化师 ]";
+				mes "嗯。做得不错。快看看你的装备。";
 			} else {
 				specialeffect2 EF_REFINEFAIL;
-				mes "[ Artifact Enhancer ]";
-				mes "Well, I did warn you. You aren't lucky, eh?";
+				mes "[ 神器强化师 ]";
+				mes "唉，我警告过你了。运气不好吧？";
 			}
 			break;
 	}
@@ -323,13 +323,13 @@ cmd_fild07,60,275,3	script	Artifact Enhancer#pa0829_01	4_F_JOB_BLACKSMITH,{
 	function	equip_check	{
 		setarray .@equip_id,1994,1938,13323,13126,28703,2024,16038,21014,28105,18128,15141,22075,20779,19033;
 		if (!getarg(0)) {
-			mes "[ Artifact Enhancer ]";
-			mes "Did you take off your equipment?";
+			mes "[ 神器强化师 ]";
+			mes "你把装备脱下来了吗？";
 			close;
 		}
 		if (inarray(.@equip_id,getarg(0)) == -1) {
-			mes "[ Artifact Enhancer ]";
-			mes "This equipment is not suitable for enchanting. Don't forget that only the infinite equipment series can be enchanted.";
+			mes "[ 神器强化师 ]";
+			mes "这件装备不适合附魔。别忘了，只有无限系列装备才能附魔。";
 			close;
 		}
 		return;

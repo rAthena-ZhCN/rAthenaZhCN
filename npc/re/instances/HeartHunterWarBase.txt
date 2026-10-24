@@ -8,14 +8,14 @@
 //============================================================
 
 // Einbroch Field - instance
-ein_fild04,275,342,5	script	Striker Unit Commander#	4_M_REBELLION3,{
+ein_fild04,275,342,5	script	突击队指挥官#	4_M_REBELLION3,{
 	if (terra_gloria_main < 19) {
-		mes "[Striker Unit Commander]";
-		mes "Hey, who's there?";
+		mes "[突击队指挥官]";
+		mes "喂，是谁？";
 		next;
-		select("I am executing my mission with the Rebellion unit.");
-		mes "[Striker Unit Commander]";
-		mes "This place is dangerous and you must leave quickly. We are near the enemy base.";
+		select("我正在随反叛军部队执行任务。");
+		mes "[突击队指挥官]";
+		mes "这里很危险，你必须赶快离开。我们已经在敌人基地附近了。";
 		close;
 	}
 	switch( checkquest(12375,PLAYTIME) ) {
@@ -23,24 +23,24 @@ ein_fild04,275,342,5	script	Striker Unit Commander#	4_M_REBELLION3,{
 		break;
 	case 0:
 	case 1:
-		mes "[Striker Unit Commander]";
-		mes "We are arranging the situation inside the base. We cannot let you in yet.";
+		mes "[突击队指挥官]";
+		mes "我们正在整理基地内部的情况。现在还不能让你进去。";
 		close;
 	case 2:
-		mes "^0000ffSeems like the base has been arranged inside. ^000000";
+		mes "^0000ff看来基地内部已经整理好了。 ^000000";
 		erasequest 12375;// Base maintenance
 		break;
 	}
 	if (isbegin_quest(12374) == 0) {
-		mes "[Striker Unit Commander]";
-		mes "Once we are ready for the operation, you will get in there with me.";
+		mes "[突击队指挥官]";
+		mes "等作战准备完毕，你就和我一起进去。";
 		next;
-		mes "[Striker Unit Commander]";
-		mes "By the way, did you receive a briefing from the general Julian? Come back after receiving the briefing.";
+		mes "[突击队指挥官]";
+		mes "对了，你向朱利安将军听取简报了吗？听取之后再回来吧。";
 		close;
 	}
-	mes "[Striker Unit Commander]";
-	mes "Once we are ready for the operation, you will get in there with me.";
+	mes "[突击队指挥官]";
+	mes "等作战准备完毕，你就和我一起进去。";
 	next;
 	if (terra_gloria_main == 19)
 		.@md_name$ = "Heart Hunter War Base 1";
@@ -48,23 +48,23 @@ ein_fild04,275,342,5	script	Striker Unit Commander#	4_M_REBELLION3,{
 		.@md_name$ = "Heart Hunter War Base 2";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_NOMEMBER:
-		mes "^0000ffSeems like an adventurer without his/her unit (party) cannot enter.^000000";
+		mes "^0000ff看来没有所属部队（队伍）的冒险者无法进入。^000000";
 		close;
 	case IE_NOINSTANCE:
-		mes "[Striker Unit Commander]";
-		mes "The field of operation is " + .@md_name$ + " Check whether the operation was applied properly.";
+		mes "[突击队指挥官]";
+		mes "作战区域是" + .@md_name$ + "请确认作战是否已正确应用。";
 		next;
-		mes "^ff0000Goint to the outer boundary of Heart Hunter War Base without clearing the Heart Hunter War Base is prohibited. Also, you cannot enter the Heart Hunter War Base that has already been cleared. Please check your operation point^000000";
+		mes "^ff0000未通关心猎者战争基地时，禁止前往心猎者战争基地外围。此外，已经通关的心猎者战争基地也无法进入。请确认你的作战进度^000000";
 		next;
-		mes "^ff0000This is when your progress is different from your party leader of the party member. In this case, find another party member who can go to the same place with you.^000000";
+		mes "^ff0000这种情况表示你的进度与队伍中的队长不同。此时请寻找其他能与你前往同一地点的队伍成员。^000000";
 		next;
-		mes "^ff0000The entry is also impossible if the Memorial Dungeon has not been created as an operation field.^000000";
+		mes "^ff0000若尚未创建作为作战区域的记忆副本，同样无法进入。^000000";
 		close;
 	case IE_OTHER:
-		mes "An unknown error has occurred.";
+		mes "发生了未知错误。";
 		close;
 	case IE_OK:
-		mapannounce "ein_fild04", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "ein_fild04", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
 		setquest 12375;// Base maintenance
 		// if (terra_gloria_main == 20)
 		// 	warp "1@swat",35,65;
@@ -74,25 +74,25 @@ ein_fild04,275,342,5	script	Striker Unit Commander#	4_M_REBELLION3,{
 	}
 }
 
-ein_fild04,281,337,3	script	Julian#ep16.2	4_M_REBELLION2,{
+ein_fild04,281,337,3	script	朱利安#ep16.2	4_M_REBELLION2,{
 	if (terra_gloria_main < 19) {
-		mes "^ff0000If you deal with monsters arbitrarily inside a dungeon, such as Monster taming, it will not be regarded as a normal progress. Please be aware of it.^000000";
+		mes "^ff0000若在副本内随意处置怪物，例如驯服怪物，将不被视为正常进度。请注意。^000000";
 		next;
-		mes "[Julian]";
-		mes "Stop, which unit are you from? According to your answer, we may have to suppress you using an armed force.";
+		mes "[朱利安]";
+		mes "站住，你是哪个部队的？根据你的回答，我们可能会动用武力镇压你。";
 		next;
-		select("I am executing my mission with the Rebellion unit.");
-		mes "[Julian]";
-		mes "Hmm, you are our troop? Since the scouting is not over yet, don't wander around here carelessly.";
+		select("我正在随反叛军部队执行任务。");
+		mes "[朱利安]";
+		mes "嗯，你是我们部队的？侦察还没结束，不要在这里乱走。";
 		close;
 	}
-	mes "^ff0000If you deal with monsters arbitrarily inside a dungeon, such as Monster taming, it will not be regarded as a normal progress. Please be aware of it.^000000";
+	mes "^ff0000若在副本内随意处置怪物，例如驯服怪物，将不被视为正常进度。请注意。^000000";
 	next;
 	if (getcharid(1) < 1) {
-		mes "[Julian]";
-		mes "Are you a deserter wandering around without a position?";
+		mes "[朱利安]";
+		mes "你是没有岗位、到处游荡的逃兵吗？";
 		next;
-		mes "^ff0000Only the party leader can talk to Julian in detail.^000000";
+		mes "^ff0000只有队伍队长才能与朱利安详谈。^000000";
 		close;
 	}
 	switch( checkquest(12375,PLAYTIME) ) {
@@ -100,62 +100,62 @@ ein_fild04,281,337,3	script	Julian#ep16.2	4_M_REBELLION2,{
 		break;
 	case 0:
 	case 1:
-		mes "[Julian]";
-		mes "We are arranging the situation inside the base. You cannot enter yet.";
+		mes "[朱利安]";
+		mes "我们正在整理基地内部的情况。现在还不能进入。";
 		close;
 	case 2:
-		mes "^0000ffSeems like the base has been arranged inside. ^000000";
+		mes "^0000ff看来基地内部已经整理好了。 ^000000";
 		erasequest 12375;// Base maintenance
 		next;
 		break;
 	}
 	switch( isbegin_quest(12374) ) {
 	case 0:
-		mes "[Julian]";
-		mes "Are you the augmentation force in striking Heart Hunter base? I think we met before.";
+		mes "[朱利安]";
+		mes "你是攻打心猎者基地的增援部队吗？我们好像见过。";
 		next;
-		select("Just a thought.");
-		mes "[Julian]";
-		mes "Well, it doesn't matter. You should have a rough idea of what's going on here. Just remember that it's not going to be an easy task.";
+		select("随口一说。");
+		mes "[朱利安]";
+		mes "嗯，无所谓。这里的情况你应该大致了解了。只要记住这任务并不轻松就行。";
 		next;
-		if (select( "Explain the situation to me.", "No time, let's proceed now." ) == 2) {
-			mes "[Julian]";
-			mes "Sounds cool. You are like a foreign legion, so stay beside me during the operation.";
+		if (select( "请向我说明情况。", "没时间了，现在就出发。" ) == 2) {
+			mes "[朱利安]";
+			mes "听起来不错。你就像外籍军团一样，作战时待在我身边。";
 		}
 		else {
-			mes "[Julian]";
-			mes "Hmm, you haven't received a briefing yet? Since we don't have enough time, let me explain briefly.";
+			mes "[朱利安]";
+			mes "嗯，你还没听取简报？既然时间不多，我就简单说明一下。";
 			next;
-			mes "[Julian]";
-			mes "We don't have enough forces to strike the base.";
+			mes "[朱利安]";
+			mes "我们没有足够的兵力攻打基地。";
 			next;
-			mes "[Julian]";
-			mes "For the sake of mobility, we abandoned heavy firearms. Since our top priority mission is to occupy the base without destroying it much, most of explosive weapons have been excluded as well.";
+			mes "[朱利安]";
+			mes "为了机动性，我们放弃了重型火器。由于首要任务是尽可能不破坏基地地占领它，大部分爆炸性武器也被排除在外。";
 			next;
-			mes "[Julian]";
-			mes "If necessary, we can reinforce our firearms using the terrain features in the field... But it must be minimized.";
+			mes "[朱利安]";
+			mes "必要时，我们可以利用现场地形来增强火力……但必须控制在最低限度。";
 			next;
-			mes "[Julian]";
-			mes "In any case, most of the operation must be anti-personnel damage and the base facilities have to be maintained whenever possible.";
+			mes "[朱利安]";
+			mes "总之，作战应主要以对人伤害为主，并尽可能保全基地设施。";
 			next;
-			mes "[Julian]";
-			mes "Our advance party has secured the boundary surface in the southern base. We will take that route to move to the central part. And each striker unit will move in an individual route.";
+			mes "[朱利安]";
+			mes "我们的先遣队已经确保了南侧基地的边界表面。我们将沿那条路线前往中央区域。各突击部队则分别沿各自的路线前进。";
 			next;
-			mes "[Julian]";
-			mes "You are like a foreign legion, so stay beside me during the operation. Any more question? Of course, I won't take any, even though you have one.";
+			mes "[朱利安]";
+			mes "你就像外籍军团一样，作战时待在我身边。还有问题吗？当然，即使你有问题，我也不会回答。";
 		}
 		next;
 		setquest 12374;// Heart Hunter Base occupation
-		mes "[Julian]";
-		mes "After that, follow the instruction of the chief of your unit. Once the gate to the base is opened, talk to the Striker Unit Commander over there and start.";
+		mes "[朱利安]";
+		mes "之后请听从你所在部队长官的指示。基地大门打开后，与那边的突击队指挥官交谈并开始行动。";
 		if (is_party_leader() == true) {
 			next;
-			mes "[Julian]";
-			mes "If you are ready, I will let you know the attack time.";
+			mes "[朱利安]";
+			mes "如果你准备好了，我就通知你进攻时间。";
 			next;
-			if (select( "I'm ready.", "I need some more time." ) == 2) {
-				mes "[Julian]";
-				mes "I see. Since we are in a hurry, complete your preparation quickly and let me know.";
+			if (select( "我准备好了。", "我还需要一些时间。" ) == 2) {
+				mes "[朱利安]";
+				mes "我知道了。我们时间紧迫，请尽快完成准备并通知我。";
 				close;
 			}
 			break;
@@ -163,37 +163,37 @@ ein_fild04,281,337,3	script	Julian#ep16.2	4_M_REBELLION2,{
 		close;
 	case 1:
 		if (is_party_leader() == false) {
-			mes "[Julian]";
-			mes "After that, follow the instruction of the chief of your unit. Once the gate to the base is opened, talk to the Striker Unit Commander over there and start.";
+			mes "[朱利安]";
+			mes "之后请听从你所在部队长官的指示。基地大门打开后，与那边的突击队指挥官交谈并开始行动。";
 			close;
 		}
-		mes "[Julian]";
-		mes "Have you been to the toilet? I was looking for you.";
+		mes "[朱利安]";
+		mes "你去上厕所了吗？我一直在找你。";
 		next;
-		mes "[Julian]";
-		mes "If you are ready, I will let you know the attack time.";
+		mes "[朱利安]";
+		mes "如果你准备好了，我就通知你进攻时间。";
 		next;
-		if (select( "I'm ready.", "I need some more time." ) == 2) {
-			mes "[Julian]";
-			mes "I see. Since we are in a hurry, complete your preparation quickly and let me know.";
+		if (select( "我准备好了。", "我还需要一些时间。" ) == 2) {
+			mes "[朱利安]";
+			mes "我知道了。我们时间紧迫，请尽快完成准备并通知我。";
 			close;
 		}
 		break;
 	case 2:
 		if (is_party_leader() == false) {
-			mes "[Julian]";
-			mes "After that, follow the instruction of the chief of your unit. Once the gate to the base is opened, talk to the Striker Unit Commander over there and start.";
+			mes "[朱利安]";
+			mes "之后请听从你所在部队长官的指示。基地大门打开后，与那边的突击队指挥官交谈并开始行动。";
 			close;
 		}
-		mes "[Julian]";
-		mes "There is a broad vacant land on the outer boundary of the base we have occupied. We built a training ground there, but the facilities are imperfect. I need elite personnel who can examine it.";
+		mes "[朱利安]";
+		mes "在我们占领的基地外围有一片广阔的空地。我们在那里建了训练场，但设施还不完善。我需要能检验它的精锐人员。";
 		next;
-		mes "[Julian]";
-		mes "Oh, isn't this the first time I tell you this? I would be glad if you can examine the facilities. What do you think?";
+		mes "[朱利安]";
+		mes "哦，这不是我第一次跟你说这件事吧？如果你能检验一下设施，我会很高兴。你觉得如何？";
 		next;
-		if (select( "Let me do it.", "Maybe next time..." ) == 2) {
-			mes "[Julian]";
-			mes "I got it. I asked a little too much.";
+		if (select( "交给我吧。", "下次再说吧……" ) == 2) {
+			mes "[朱利安]";
+			mes "我明白了。是我要求得太多了。";
 			close;
 		}
 		break;
@@ -202,8 +202,8 @@ ein_fild04,281,337,3	script	Julian#ep16.2	4_M_REBELLION2,{
 		instance_create("Heart Hunter War Base 1");
 	else
 		instance_create("Heart Hunter War Base 2");
-	mes "[Julian]";
-	mes "It will open soon. Once the gate to the base is opened, talk to the Striker Unit Commander over there and start.";
+	mes "[朱利安]";
+	mes "很快就会打开。基地大门打开后，与那边的突击队指挥官交谈并开始行动。";
 	close;
 }
 
@@ -541,25 +541,25 @@ OnTouch:
 
 // First entrance (instance 1)
 // Entrance
-1@swat,40,65,6	script	Julian#0_1	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "We don't have time to joke";
+1@swat,40,65,6	script	朱利安#0_1	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "我们没时间开玩笑";
 	close;
 
 OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "Julian: According to the estimation, there must be a greeting here. But there is nothing.";
+	npctalk "朱利安：按推算，这里本应有迎接的人。但什么都没有。";
 	end;
 OnTimer4000:
-	npctalk "Julian: From here, we split. Each of us will find the weak spots and annihilate the enemies.";
+	npctalk "朱利安：从这里开始分头行动。各自找出弱点，歼灭敌人。";
 	end;
 OnTimer10000:
-	npctalk "Julian: These might be sharpshooters around, so do not gather. Accomplish the operation individually.";
+	npctalk "朱利安：周围可能有狙击手，不要聚在一起。各自完成作战。";
 	end;
 OnTimer14000:
-	npctalk "Julian: Now, move out!";
+	npctalk "朱利安：现在，出发！";
 	disablenpc instance_npcname("#ext1");
 	disablenpc instance_npcname("#ext2");
 	disablenpc instance_npcname("#ext3");
@@ -640,19 +640,19 @@ OnTouch:
 	end;
 }
 
-1@swat,105,50,6	script	Julian#1	4_M_REBELLION2,{
+1@swat,105,50,6	script	朱利安#1	4_M_REBELLION2,{
 	// note: officially they only check the item
 	if (countitem(25154) < 1 || 'event != 1) {
-		mes "[Julian]";
-		mes "We can just sneak in like this. But we'd better secure a path for the cleanup party. How can we do that?";
+		mes "[朱利安]";
+		mes "我们就这样潜入也可以。但最好为清扫部队确保一条通路。该怎么做呢？";
 		next;
 		select("");
 		close;
 	}
-	mes "[Julian]";
-	mes "Why are they all coming out all of a sudden. Just hand me the gunpowder";
+	mes "[朱利安]";
+	mes "他们怎么突然全跑出来了。快把火药给我";
 	next;
-	select("Give him the gunpowder");
+	select("把火药给他");
 	if ('event == 1) {
 		'event = 2;
 		delitem 25154, countitem(25154);// Antique_Powder
@@ -662,31 +662,31 @@ OnTouch:
 
 OnStart:
 	initnpctimer;
-	npctalk "Julian: Wait!";
+	npctalk "朱利安：等等！";
 	end;
 OnTimer3000:
-	npctalk "Julian: There is a security system being operated in front of this. If you take one step ahead, you will be riddled with bullets.";
+	npctalk "朱利安：这前面有正在运作的安保系统。再往前一步，你就会被子弹打成筛子。";
 	end;
 OnTimer7000:
 	stopnpctimer;
-	npctalk "Julian: We are in trouble from the beginning.";
+	npctalk "朱利安：一开始就遇上麻烦了。";
 	enablenpc instance_npcname("Pile of gunpowder#1");
 	end;
 }
 
-1@swat,105,50,6	script	Julian#1_1	4_M_REBELLION2,{
+1@swat,105,50,6	script	朱利安#1_1	4_M_REBELLION2,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Julian#1");
 	enablenpc instance_npcname("Julian#1_1");
 	initnpctimer;
-	npctalk "Julian: Well, it's a nice gunpowder.";
+	npctalk "朱利安：嗯，是上好的火药。";
 	end;
 OnTimer3000:
-	npctalk "Julian: This is good enough to get rid of the security system and the Heart Hunter guys who rushed a moment ago.";
+	npctalk "朱利安：这足够解决安保系统和刚才冲过来的心猎者了。";
 	end;
 OnTimer9000:
-	npctalk "Julian: Now, let me blow them away!";
+	npctalk "朱利安：那么，让我把它们炸飞吧！";
 	end;
 OnTimer12000:
 	killmonster 'map_swat$, instance_npcname("#hunter_instance_1_mob_1") + "::OnMobDead";
@@ -707,14 +707,14 @@ OnTimer12000:
 	end;
 OnTimer17000:
 	stopnpctimer;
-	mapannounce 'map_swat$, "Julian: Let me go first. I have to deal with the obstacles in front.", bc_map,0xFFFF77;
+	mapannounce 'map_swat$, "朱利安：我先走。我得处理前面的障碍。", bc_map,0xFFFF77;
 	disablenpc instance_npcname("Julian#1_1");
 	enablenpc instance_npcname("Julian#1_2");
 	enablenpc instance_npcname("#start_npc3");
 	end;
 }
 
-1@swat,58,90,0	script	Pile of gunpowder#1	4_ENERGY_YELLOW,{
+1@swat,58,90,0	script	火药堆#1	4_ENERGY_YELLOW,{
 	if ('event != 0)
 		end;
 	'event = 1;
@@ -725,11 +725,11 @@ OnTimer17000:
 	initnpctimer;
 	end;
 OnTimer3000:
-	mapannounce 'map_swat$, "Intruders detected in the restricted area. Heart Hunters, heighten the security!", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "在限制区域检测到入侵者。心猎者们，加强警戒！", bc_map,0xFF5555;
 	end;
 OnTimer9000:
 	stopnpctimer;
-	mapannounce 'map_swat$, "I repeat. Intruders detected in the restricted area. Heart Hunters, heighten the security!", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "重复。在限制区域检测到入侵者。心猎者们，加强警戒！", bc_map,0xFF5555;
 	donpcevent instance_npcname("#hunter_instance_1_mob_1") + "::OnWave2";
 	end;
 }
@@ -747,34 +747,34 @@ OnTouch:
 
 OnStart:
 	initnpctimer;
-	npctalk "Julian: Don't worry about this place. I can handle it with the remaining gunpowder.", instance_npcname("Julian#1_2");
+	npctalk "朱利安：这里不用担心。我用剩下的火药就能应付。", instance_npcname("Julian#1_2");
 	end;
 OnTimer5000:
-	npctalk "Julian: You go up and check if there is any remaining force or threat.", instance_npcname("Julian#1_2");
+	npctalk "朱利安：你上去看看还有没有残余兵力或威胁。", instance_npcname("Julian#1_2");
 	end;
 OnTimer10000:
 	stopnpctimer;
-	npctalk "Julian: Don't take your time and move out", instance_npcname("Julian#1_2");
+	npctalk "朱利安：别磨蹭，快出发", instance_npcname("Julian#1_2");
 	enablenpc instance_npcname("Suspicious instrument#1");
 	end;
 }
 
 // 1@swat,140,50,0	duplicate(dummy_npc)	#start_npc3_1	HIDDEN_WARP_NPC,4,4
 
-1@swat,140,50,6	script	Julian#1_2	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "It takes some time in assembling the explosive. You go up and check if there is any threat.";
+1@swat,140,50,6	script	朱利安#1_2	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "组装炸药需要一些时间。你上去看看有没有威胁。";
 	next;
-	mes "[Julian]";
-	mes "If you find an enemy, don't forget to kill it without reporting me.";
+	mes "[朱利安]";
+	mes "如果发现敌人，不必向我报告，直接杀掉。";
 	close;
 
 OnStart:
 	initnpctimer;
-	npctalk "Julian: Great. We have finished making the explosive.";
+	npctalk "朱利安：很好。炸药做好了。";
 	end;
 OnTimer4000:
-	npctalk "Julian: over your ears to protect your eardrum! I am exploding it now!";
+	npctalk "朱利安：捂住耳朵保护耳膜！我现在就引爆！";
 	end;
 OnTimer7000:
 	disablenpc instance_npcname("#tr124");
@@ -794,28 +794,28 @@ OnTimer7000:
 	end;
 OnTimer15000:
 	stopnpctimer;
-	mapannounce 'map_swat$, "Julian: Excellent. Let's go forward.", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：很好。继续前进。", bc_map,0xFF99;
 	disablenpc instance_npcname("Julian#1_2");
 	enablenpc instance_npcname("Julian#2_ep16_2");
 	enablenpc instance_npcname("#start_npc4");
 	end;
 }
 
-1@swat,150,119,0	script	Suspicious instrument#1	4_ENERGY_YELLOW,{
+1@swat,150,119,0	script	可疑的装置#1	4_ENERGY_YELLOW,{
 	if ('event != 2)
 		end;
-	mes "There is a warning written in red color.";
+	mes "上面用红色写着警告。";
 	mes "-----------------------";
-	mes "[^ff0000Do not push^000000]";
+	mes "[^ff0000请勿按下^000000]";
 	next;
-	if (select( "Stop it.", "Push the button" ) == 1) {
-		mes "I never push a suspicious button.";
+	if (select( "住手。", "按下按钮" ) == 1) {
+		mes "我绝不会按可疑的按钮。";
 		close;
 	}
 	if ('event == 2) {
 		'event = 3;
 		disablenpc instance_npcname("Suspicious instrument#1");
-		mapannounce 'map_swat$, "Intruders detected in Section 2. Heart Hunters, heighten the security!", bc_map,0xFF5555;
+		mapannounce 'map_swat$, "在第2区域检测到入侵者。心猎者们，加强警戒！", bc_map,0xFF5555;
 		initnpctimer;
 	}
 	end;
@@ -823,7 +823,7 @@ OnTimer1000:
 	donpcevent instance_npcname("#hunter_instance_1_mob_2") + "::OnStart";
 	end;
 OnTimer5000:
-	mapannounce 'map_swat$, "I repeat. Intruders detected in the restricted area. Heart Hunters, heighten the security!", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "重复。在限制区域检测到入侵者。心猎者们，加强警戒！", bc_map,0xFF5555;
 	stopnpctimer;
 	end;
 }
@@ -847,7 +847,7 @@ OnMobDead:
 	if (rand(100) < 5)
 		areamonster 'map_swat$, 122,99,140,120, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
-	mapannounce 'map_swat$, "Remaining " + .@count + " Heart Hunter", bc_map,0xFFFFFF;
+	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
 		initnpctimer;
 	end;
@@ -865,26 +865,26 @@ OnTimer1000:
 OnTouch:
 	disablenpc instance_npcname("#start_npc4");
 	initnpctimer;
-	npctalk "Julian: This might be the last security system. But we ran out of gunpowder.", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：这可能是最后的安保系统了。但我们的火药已经用完了。", instance_npcname("Julian#2_ep16_2");
 	end;
 OnTimer4000:
-	npctalk "Julian: We must secure a path for the cleanup party. Find gunpowder nearby.", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：我们必须为清扫部队确保一条通路。在附近找找火药。", instance_npcname("Julian#2_ep16_2");
 	end;
 OnTimer7000:
-	mapannounce 'map_swat$, "Intruders detected deep in the Section 3. Heart Hunters, protect the base at all cost!", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "在第3区域深处检测到入侵者。心猎者们，不惜一切代价守住基地！", bc_map,0xFF5555;
 	end;
 OnTimer10000:
-	npctalk "Julian: Well, looks like they started the battle against our members who had scattered. We might be in danger soon.", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：看来他们开始与我们分散的成员交战了。我们可能很快也会有危险。", instance_npcname("Julian#2_ep16_2");
 	end;
 OnTimer14000:
 	stopnpctimer;
-	npctalk "Julian: The battle can start while you are finding gunpowder. Prepare for it.", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：在你寻找火药期间战斗就可能开始。做好准备。", instance_npcname("Julian#2_ep16_2");
 	enablenpc instance_npcname("Pile of gunpowder#2");
 	donpcevent instance_npcname("#hunter_instance_1_mob_3") + "::OnStart";
 	end;
 }
 
-1@swat,163,58,0	script	Pile of gunpowder#2	4_ENERGY_YELLOW,{
+1@swat,163,58,0	script	火药堆#2	4_ENERGY_YELLOW,{
 	if ('event != 3)
 		end;
 	'event = 4;
@@ -917,16 +917,16 @@ OnMobDead:
 	end;
 }
 
-1@swat,238,39,5	script	Julian#2_ep16_2	4_M_REBELLION2,{
+1@swat,238,39,5	script	朱利安#2_ep16_2	4_M_REBELLION2,{
 	if (countitem(25154) < 1 || 'event != 4) {
-		mes "[Julian]";
-		mes "Is the gunpowder ready?";
+		mes "[朱利安]";
+		mes "火药准备好了吗？";
 		close;
 	}
-	mes "[Julian]";
-	mes "Is the gunpowder ready?";
+	mes "[朱利安]";
+	mes "火药准备好了吗？";
 	next;
-	select("Give him the gunpowder");
+	select("把火药给他");
 	if ('event == 4) {
 		'event = 5;
 		delitem 25154, countitem(25154);// Antique_Powder
@@ -935,11 +935,11 @@ OnMobDead:
 	end;
 
 OnStart:
-	npctalk "Julian: Great. We have finished making the explosive.";
+	npctalk "朱利安：很好。炸药做好了。";
 	initnpctimer;
 	end;
 OnTimer6000:
-	npctalk "Julian: over your ears to protect your eardrum! I am exploding it now!";
+	npctalk "朱利安：捂住耳朵保护耳膜！我现在就引爆！";
 	end;
 OnTimer9000:
 	disablenpc instance_npcname("#tr129");
@@ -958,7 +958,7 @@ OnTimer9000:
 	setcell 'map_swat$,250,30,250,46,cell_walkable,1;
 	end;
 OnTimer14000:
-	mapannounce 'map_swat$, "Julian: Great. Shall we go now!", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：很好。那我们出发吧！", bc_map,0xFF99;
 	disablenpc instance_npcname("Julian#2_ep16_2");
 	enablenpc instance_npcname("#expl1");
 	enablenpc instance_npcname("#expl2");
@@ -996,45 +996,45 @@ OnTouch:
 	end;
 }
 
-1@swat,310,47,6	script	Julian#3	4_M_REBELLION2,{
+1@swat,310,47,6	script	朱利安#3	4_M_REBELLION2,{
 	end;
 OnStart:
-	mapannounce 'map_swat$, "Voice communication: We have occupied the communication room of Heart Hunter. The battle seems to have ended. All unit members defend the occupied strongholds and standby.", bc_map,0x77FFFF;
+	mapannounce 'map_swat$, "通讯：我们已占领心猎者的通讯室。战斗似乎已经结束。所有部队成员守住已占领的据点并待命。", bc_map,0x77FFFF;
 	initnpctimer;
 	end;
 OnTimer6000:
-	npctalk "Julian: Since we occupied the communication room, it is practically our victory. We don't seem to have taken much damage.";
+	npctalk "朱利安：既然我们占领了通讯室，实际上就等于胜利了。我们似乎没有受到太大损失。";
 	end;
 OnTimer11000:
-	npctalk "Julian: We still have some time until our main unit arrives. Keep the caution and standby.";
+	npctalk "朱利安：距离主力部队到达还有一段时间。保持警惕，原地待命。";
 	end;
 OnTimer16000:
-	mapannounce 'map_swat$, "???: Who's there...?", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "？？？：是谁……？", bc_map,0xFF5555;
 	end;
 OnTimer20000:
-	npctalk "Julian: What? Remaining force?";
+	npctalk "朱利安：什么？残余兵力？";
 	end;
 OnTimer24000:
 	emotion ET_SURPRISE;
-	npctalk "Julian: Something is coming!! Evade!!";
+	npctalk "朱利安：有什么东西来了！！快躲开！！";
 	end;
 OnTimer28000:
 	specialeffect EF_LORD, AREA, "Julian#3";
 	cloakonnpc instance_npcname("Julian#3");	// cloakonnpc to display EF_LORD properly
 	enablenpc instance_npcname("Ebel#1_1");
-	npctalk "Ebel: Did I miss...", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：我失手了吗……", instance_npcname("Ebel#1_1");
 	end;
 OnTimer32000:
-	npctalk "Ebel: ... Who are you?", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：……你是谁？", instance_npcname("Ebel#1_1");
 	end;
 OnTimer36000:
-	mapannounce 'map_swat$, "Julian: Evade foe now! She is not an ordinary human.", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：快避开！她不是普通人。", bc_map,0xFF99;
 	end;
 OnTimer40000:
-	npctalk "Ebel: Running away?", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：想逃？", instance_npcname("Ebel#1_1");
 	end;
 OnTimer45000:
-	npctalk "Ebel: Sorry, no escape.", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：抱歉，你逃不掉的。", instance_npcname("Ebel#1_1");
 	end;
 OnTimer50000:
 	disablenpc instance_npcname("Ebel#1_1");
@@ -1046,19 +1046,19 @@ OnTimer50000:
 	donpcevent instance_npcname("#hunter_instance_ebel") + "::OnStart";
 	end;
 OnTimer53000:
-	mapannounce 'map_swat$, "Julian: Damn, escaping will be tough.", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：可恶，想逃可不容易。", bc_map,0xFF99;
 	end;
 OnTimer56000:
-	mapannounce 'map_swat$, "Julian: Hey! I will back you up from a long range. Hang on until then!", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：喂！我会从远处支援你。在那之前撑住！", bc_map,0xFF99;
 	end;
 OnTimer64000:
-	mapannounce 'map_swat$, "Julian: Hang on for a minute. I am getting ready to suppress her", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：再撑一分钟。我正在准备压制她", bc_map,0xFF99;
 	end;
 OnTimer71000:
-	mapannounce 'map_swat$, "Julian: It's almost done! Stick to it!", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：快好了！坚持住！", bc_map,0xFF99;
 	end;
 OnTimer80000:
-	mapannounce 'map_swat$, "Julian: Great! Stay away from her! Let me give a big shop to her!", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：很好！离她远点！让我给她来一发大的！", bc_map,0xFF99;
 	end;
 OnTimer82000:
 	donpcevent instance_npcname("#hunter_instance_ebel") + "::OnStop";
@@ -1086,10 +1086,10 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer7000:
-	unittalk 'boss_id, "It doesn't hurt me...";
+	unittalk 'boss_id, "这点攻击伤不了我……";
 	end;
 OnTimer14000:
-	unittalk 'boss_id, "You... slow.";
+	unittalk 'boss_id, "你……太慢了。";
 	end;
 OnTimer21000:
 	unittalk 'boss_id, "Weak...";
@@ -1107,54 +1107,54 @@ OnMobDead:
 	end;
 }
 
-1@swat,315,47,3	script	Ebel#1_1	4_F_HUNTER_EVIL,{
+1@swat,315,47,3	script	艾贝尔#1_1	4_F_HUNTER_EVIL,{
 	cutin "ep16_evil101.bmp",2;
-	mes "[Ebel]";
-	mes "You... Enemy? Our troop? Which side are you on?";
+	mes "[艾贝尔]";
+	mes "你……敌人？同伴？你到底站在哪一边？";
 	close3;
 }
 
-1@swat,320,47,4	script	Julian#3_1	4_M_REBELLION2,{
+1@swat,320,47,4	script	朱利安#3_1	4_M_REBELLION2,{
 	end;
 OnStart:
 	enablenpc instance_npcname("Julian#3_1");
 	enablenpc instance_npcname("Ebel#1_3");
-	npctalk "Julian: I'm glad you're all safe.";
+	npctalk "朱利安：你们都平安无事，太好了。";
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Ebel: What was that thing you used just now?", instance_npcname("Ebel#1_3");
+	npctalk "艾贝尔：你刚才用的是什么？", instance_npcname("Ebel#1_3");
 	end;
 OnTimer6000:
-	npctalk "Julian: It's a paralyzing shot. When it hits someone, it creates a confusion in the nerve system.";
+	npctalk "朱利安：那是麻痹弹。击中后会使神经系统紊乱。";
 	end;
 OnTimer10000:
-	npctalk "Ebel: Why didn't you kill me?", instance_npcname("Ebel#1_3");
+	npctalk "艾贝尔：为什么不杀我？", instance_npcname("Ebel#1_3");
 	end;
 OnTimer13000:
-	npctalk "Julian: I didn't want to kill our people at the same time. Besides... You are an unknown force to us";
+	npctalk "朱利安：我不想同时杀掉自己人。而且……你对我们来说是未知的势力";
 	end;
 OnTimer18000:
-	npctalk "Julian: We must capture you alive and find out about you.";
+	npctalk "朱利安：我们必须活捉你，查明你的来历。";
 	end;
 OnTimer22000:
 	enablenpc instance_npcname("#ext1_1");
 	enablenpc instance_npcname("#ext1_2");
 	end;
 OnTimer23000:
-	npctalk "All the remaining force has in outer boundary has been cleaned up.", instance_npcname("#ext1_1");
+	npctalk "外围的残余兵力已全部清除。", instance_npcname("#ext1_1");
 	end;
 OnTimer25000:
-	npctalk "Five minutes until the main unit arrives.", instance_npcname("#ext1_2");
+	npctalk "距离主力部队到达还有五分钟。", instance_npcname("#ext1_2");
 	end;
 OnTimer30000:
-	npctalk "Julian: Good. Put her in a jail. She is a research object so handle her with care.";
+	npctalk "朱利安：很好。把她关进牢里。她是研究对象，要小心对待。";
 	end;
 OnTimer35000:
-	npctalk "Yes!", instance_npcname("#ext1_1");
+	npctalk "是！", instance_npcname("#ext1_1");
 	end;
 OnTimer36000:
-	npctalk "I see.", instance_npcname("#ext1_2");
+	npctalk "我明白了。", instance_npcname("#ext1_2");
 	end;
 OnTimer40000:
 	stopnpctimer;
@@ -1170,11 +1170,11 @@ OnTimer40000:
 1@swat,308,45,6	duplicate(dummy_npc)	#ext1_2	4_F_ESTLOVELOY
 1@swat,310,47,6	duplicate(dummy_npc)	Ebel#1_3	4_F_HUNTER_EVIL
 
-1@swat,320,47,4	script	Julian#3_2	4_M_REBELLION2,{
+1@swat,320,47,4	script	朱利安#3_2	4_M_REBELLION2,{
 	if ('event != 5)
 		end;
-	mes "[Julian]";
-	mes "Hmm. The engineers need to repair the occupied base. It's time for battle force step outside.";
+	mes "[朱利安]";
+	mes "嗯。工兵需要修复被占领的基地。战斗部队该退到外面了。";
 	if (isbegin_quest(12374) == 1) {
 		getitem 25155,10;// Swz_Honor_Token
 		completequest 12374;// Heart Hunter Base occupation
@@ -1246,16 +1246,16 @@ OnInstanceInit:
 
 
 // Entrance
-1@swat,53,122,1	script	Julian#4	4_M_REBELLION2,{
+1@swat,53,122,1	script	朱利安#4	4_M_REBELLION2,{
 	if (is_party_leader() == false) {
-		mes "[Julian]";
-		mes "I'm talking to your leader now " + strcharinfo(0) + ".";
+		mes "[朱利安]";
+		mes "我现在正与你们的队长" + strcharinfo(0) + ".";
 		close;
 	}
-	mes "[Julian]";
-	mes "" + strcharinfo(0) + ", is this your first visit here?";
+	mes "[朱利安]";
+	mes "" + strcharinfo(0) + "，你是第一次来这里吗？";
 	next;
-	.@s = select( "Yes, it is.", "No, I've been here before." );
+	.@s = select( "是的。", "不，我以前来过。" );
 	if ('status_instance != 0)
 		end;
 	'status_instance = 1;
@@ -1268,11 +1268,11 @@ OnInstanceInit:
 OnStart:
 	disablenpc instance_npcname("Julian#4");
 	enablenpc instance_npcname("Julian#4_1");
-	npctalk "Julian: Oh, how many trainings have we had so far?", instance_npcname("Julian#4_1");
+	npctalk "朱利安：哦，到目前为止我们进行过几次训练了？", instance_npcname("Julian#4_1");
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Julian: As before, please attack without mercy, just like in a real combat.", instance_npcname("Julian#4_1");
+	npctalk "朱利安：和之前一样，请毫不留情地进攻，就像实战一样。", instance_npcname("Julian#4_1");
 	end;
 OnTimer9000:
 	stopnpctimer;
@@ -1281,31 +1281,31 @@ OnTimer9000:
 	end;
 }
 
-1@swat,53,122,1	script	Julian#4_1	4_M_REBELLION2,{
+1@swat,53,122,1	script	朱利安#4_1	4_M_REBELLION2,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Julian#4");
 	enablenpc instance_npcname("Julian#4_1");
-	npctalk "Julian: You might find this place unfamiliar.";
+	npctalk "朱利安：你可能对这里不太熟悉。";
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Julian: There was a pretty large space behind the zone that we had occupied.";
+	npctalk "朱利安：在我们占领的区域后方，有一片相当大的空间。";
 	end;
 OnTimer7000:
-	npctalk "Julian: Although we cannot use it to move our troops, it is a perfect location to experience a mock combat.";
+	npctalk "朱利安：虽然无法用它来调动部队，但这里是体验模拟战斗的绝佳地点。";
 	end;
 OnTimer12000:
-	npctalk "Julian: So we remodeled it as a training ground to have a mock combat similar to the previous combat.";
+	npctalk "朱利安：所以我们把它改造成了训练场，用来进行与上次战斗相似的模拟战。";
 	end;
 OnTimer17000:
-	npctalk "Julian: You will play the role of the invaders. Our troops will disguise as Heart Hunters and defend.";
+	npctalk "朱利安：你将扮演入侵者。我们的部队会伪装成心猎者进行防守。";
 	end;
 OnTimer22000:
-	npctalk "Julian: It's a sort of defense training. It is to understand how much force we require to defend this area.";
+	npctalk "朱利安：这是一种防御训练。目的是了解防守这片区域需要多少兵力。";
 	end;
 OnTimer27000:
-	npctalk "Julian: Now, please attack without mercy, just like in a real battle.";
+	npctalk "朱利安：现在，请像实战一样毫不留情地进攻。";
 	end;
 OnTimer33000:
 	stopnpctimer;
@@ -1320,7 +1320,7 @@ OnTimer33000:
 OnStart:
 	enablenpc instance_npcname("#remaining_hunter2_step1");
 	.@label$ = instance_npcname("#remaining_hunter2_step1") + "::OnMobDead";
-	mapannounce 'map_swat$, "Attack to the base detected. Everyone, start a defense tactic.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "检测到对基地的攻击。全体人员，开始防御战术。", bc_map,0xFF5555;
 	for ( .@y = 145; .@y <= 199; .@y += 9 ) {
 		for ( .@x = 28; .@x <= 48; .@x += 10 ) {
 			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
@@ -1332,13 +1332,13 @@ OnMobDead:
 	if (rand(100) < 5)
 		areamonster 'map_swat$, 28,145,48,199, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
-	mapannounce 'map_swat$, "Remaining " + .@count + " Heart Hunter", bc_map,0xFFFFFF;
+	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
 		initnpctimer;
 	end;
 OnTimer1000:
 	stopnpctimer;
-	mapannounce 'map_swat$, "Julian: Section 1 taken. Those in charge of Section 1's defense must assemble behind the barrack later.", bc_map,0xFF99;
+	mapannounce 'map_swat$, "朱利安：第1区域已被攻下。负责第1区域防御的人员稍后到兵营后方集合。", bc_map,0xFF99;
 	disablenpc instance_npcname("#remaining_hunter2_step1");
 	enablenpc instance_npcname("#start2_1_1");
 	end;
@@ -1348,7 +1348,7 @@ OnTimer1000:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start2_1_1");
-	mapannounce 'map_swat$, "Enemies reached the 1st security system. Security system is disabled.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "敌人已抵达第1安保系统。安保系统已失效。", bc_map,0xFF5555;
 	disablenpc instance_npcname("#tr132");
 	disablenpc instance_npcname("#tr133");
 	disablenpc instance_npcname("#tr134");
@@ -1377,24 +1377,24 @@ OnTouch:
 	end;
 }
 
-1@swat,31,233,1	script	Julian#5	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "You safely passed Section 1. Now help us with the defense training for Section 2.";
+1@swat,31,233,1	script	朱利安#5	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "你顺利通过了第1区域。现在请协助我们进行第2区域的防御训练。";
 	close;
 OnStart:
-	npctalk "Julian: Was it too easy? In Section 2, we also have a training for the annihilation operation.";
+	npctalk "朱利安：太简单了吗？在第2区域，我们还准备了歼灭作战的训练。";
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Julian: This time, the defensive force and great number of force upgraded during the battle will be input.";
+	npctalk "朱利安：这次将投入防御兵力，以及在战斗中强化的大量兵力。";
 	end;
 OnTimer7000:
-	npctalk "Julian: Please help us in the remaining training.";
+	npctalk "朱利安：请协助我们完成接下来的训练。";
 	end;
 OnTimer11000:
 	stopnpctimer;
 	disablenpc instance_npcname("Julian#5");
-	mapannounce 'map_swat$, "Enemies are approaching the 2nd defensive base. Phase 2 is announced.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "敌人正在接近第2防御基地。现宣布进入第2阶段。", bc_map,0xFF5555;
 	donpcevent instance_npcname("#remaining_hunter2_step2") + "::OnStart";
 	end;
 }
@@ -1415,14 +1415,14 @@ OnMobDead:
 	if (rand(100) < 10)
 		areamonster 'map_swat$, 25,250,60,265, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
-	mapannounce 'map_swat$, "Remaining " + .@count + " Heart Hunter", bc_map,0xFFFFFF;
+	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
 		initnpctimer;
 	end;
 OnTimer1000:
 	stopnpctimer;
 	disablenpc instance_npcname("#remaining_hunter2_step2");
-	mapannounce 'map_swat$, "Enemies reached Section 2. Security system disabled.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "敌人已抵达第2区域。安保系统已失效。", bc_map,0xFF5555;
 	disablenpc instance_npcname("#tr136");
 	disablenpc instance_npcname("#tr137");
 	disablenpc instance_npcname("#tr138");
@@ -1454,55 +1454,55 @@ OnTouch:
 	end;
 }
 
-1@swat,56,283,1	script	Julian#6	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "This security system here controls plenty of system devices over there.";
+1@swat,56,283,1	script	朱利安#6	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "这里的安保系统控制着那边的大量系统装置。";
 	next;
-	mes "[Julian]";
-	mes "If you activate the device, they will open a narrow passage you can barely go through.";
+	mes "[朱利安]";
+	mes "如果启动装置，它们会打开一条仅容一人通过的狭窄通道。";
 	next;
-	mes "[Julian]";
-	mes "Unless you activate the device, the defensive training does not start. Activate it when you are ready.";
+	mes "[朱利安]";
+	mes "不启动装置，防御训练就不会开始。准备好后请启动它。";
 	close;
 
 OnStart:
 	initnpctimer;
-	npctalk "Julian: You have easily annihilated the upgraded force in Section 2. I'd better change our defensive tactic.";
+	npctalk "朱利安：你轻松歼灭了第2区域的强化兵力。看来我得改变防御战术了。";
 	end;
 OnTimer6000:
-	npctalk "Julian: By the way, the defensive device left in front of you will be quite different from those you have faced so far.";
+	npctalk "朱利安：另外，前方留下的防御装置会和此前遇到的完全不同。";
 	end;
 OnTimer10000:
-	npctalk "Julian: I have constructed an automatic defense system by extensively installing the security system of Heart Hunter guys.";
+	npctalk "朱利安：我大量安装了心猎者的安保系统，构建了一套自动防御系统。";
 	end;
 OnTimer16000:
-	npctalk "Julian: The goal is to check how we can block enemies when we use the automatic devices and forces together in our defense tactic.";
+	npctalk "朱利安：目标是检验在防御战术中同时运用自动装置和兵力时，能如何阻挡敌人。";
 	end;
 OnTimer20000:
-	npctalk "Julian: If you operate the controller in front of me, the 3rd course begins.";
+	npctalk "朱利安：如果你操作我面前的控制器，第3个课程就会开始。";
 	end;
 OnTimer24000:
 	stopnpctimer;
-	npctalk "Julian: If you come through the narrow passage and annihilate half of the force, I will judge that the defense has failed.";
+	npctalk "朱利安：如果你穿过狭窄通道并歼灭半数兵力，我就会判定防御失败。";
 	end;
 }
 
 1@swat,60,286,4	script	SWT_8309#1	4_SCR_MT_ROBOTS,{
 	if ('status_instance != 1)
 		end;
-	mes "You can see an unusually attractive";
-	mes "red button.";
+	mes "你看到一个格外显眼的";
+	mes "红色按钮。";
 	mes "---------------------";
-	mes "^ff0000[Do not push]^000000";
+	mes "^ff0000[请勿按下]^000000";
 	next;
-	if (select( "Ignore it", "Push it" ) == 1) {
-		mes "You ignored the button and stepped back. Nothing happened.";
+	if (select( "无视它", "按下它" ) == 1) {
+		mes "你无视按钮并退后了一步。什么都没有发生。";
 		close;
 	}
 	if ('status_instance != 1)	// note: officially several maze can be made
 		end;
 	'status_instance = 2;
-	mapannounce 'map_swat$, "There is an intruder in the restricted area. All unit members assemble.", bc_map,0xFF99;
+	mapannounce 'map_swat$, "限制区域出现入侵者。全体部队成员集合。", bc_map,0xFF99;
 	specialeffect EF_FIREPILLARBOMB;
 	disablenpc instance_npcname("SWT_8309#1");
 	donpcevent instance_npcname("#hunter_instance_2_maze") + "::OnStart";
@@ -1535,14 +1535,14 @@ OnStart:
 OnMobDead:
 	.@label$ = instance_npcname("#hunter_instance_2_maze") + "::OnMobDead";
 	.@count = mobcount( 'map_swat$, .@label$ );
-	mapannounce 'map_swat$, "Remaining defensive force " + .@count + "%", bc_map,0xFFFFFF;
+	mapannounce 'map_swat$, "剩余防御兵力" + .@count + "%", bc_map,0xFFFFFF;
 	if (.@count <= 20)
 		initnpctimer;
 	end;
 OnTimer1000:
 	stopnpctimer;
 	disablenpc instance_npcname("#hunter_instance_2_maze");
-	mapannounce 'map_swat$, "Enemies disabled the Third security system. Base defense failed.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "敌人使第3安保系统失效。基地防御失败。", bc_map,0xFF5555;
 	killmonster 'map_swat$, instance_npcname("#hunter_instance_2_maze") + "::OnMobDead";
 	enablenpc instance_npcname("Julian#7");
 	enablenpc instance_npcname("Ebel#3");
@@ -1552,7 +1552,7 @@ OnTimer1000:
 	end;
 }
 
-1@swat,82,248,0	script	Pile of gunpowder#4	4_ENERGY_YELLOW,{
+1@swat,82,248,0	script	火药堆#4	4_ENERGY_YELLOW,{
 	specialeffect EF_COIN;
 	disablenpc instance_npcname("Pile of gunpowder#4");
 	for ( .@i = 0; .@i < 4; .@i++ )
@@ -1561,12 +1561,12 @@ OnTimer1000:
 	end;
 }
 
-1@swat,164,300,6	script	Julian#7	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "We have something as the last resort, in case we fail to defend the base. It's time to test it now.";
+1@swat,164,300,6	script	朱利安#7	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "万一基地防守失败，我们还有最后的王牌。现在是测试它的时候了。";
 	next;
-	mes "[Julian]";
-	mes "Enter the door in front of you.";
+	mes "[朱利安]";
+	mes "进入你面前的门。";
 	close;
 }
 
@@ -1575,41 +1575,41 @@ OnTimer1000:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start2_boss");	// note: this npc is only disabled from here
-	npctalk "Julian: Great. Well done, Ebel. No, don't kick the dog... He's not an enemy.", instance_npcname("Julian#8_0");
+	npctalk "朱利安：很好。干得漂亮，艾贝尔。不，别踢那只狗……它不是敌人。", instance_npcname("Julian#8_0");
 	end;
 }
 
-1@swat,129,258,6	script	Ebel#3	4_F_HUNTER_EVIL,{
-	mes "[Ebel]";
-	mes "Are you my companion? Or an enemy? Which side are you on?";
+1@swat,129,258,6	script	艾贝尔#3	4_F_HUNTER_EVIL,{
+	mes "[艾贝尔]";
+	mes "你是我的同伴？还是敌人？你到底站在哪一边？";
 	cutin "ep16_evil101.bmp",2;
 	close3;
 }
 
-1@swat,136,258,3	script	Julian#8_0	4_M_REBELLION2,{
+1@swat,136,258,3	script	朱利安#8_0	4_M_REBELLION2,{
 	if ('status_instance != 2)
 		end;
 	if (is_party_leader() == false) {
-		mes "[Julian]";
-		mes "Wait for a while " + strcharinfo(0) + " we will proceed once your unit leader comes.";
+		mes "[朱利安]";
+		mes "请稍等一会儿，" + strcharinfo(0) + " we will proceed once your unit leader comes.";
 		close;
 	}
-	mes "[Julian]";
-	mes "It took me more than a week until I was able to talk to her. Now she speaks well.";
+	mes "[朱利安]";
+	mes "我花了一个多星期才能和她说话。现在她已经能好好交流了。";
 	next;
-	if (select( "Are you close enough to call her by the first name?", "I know. Let's start right now." ) == 1) {
-		mes "[Julian]";
-		mes "No, don't look at me like that. This girl would never talk to other guys. So I became in charge of her.";
+	if (select( "你们熟到可以直呼她的名字了吗？", "我知道。我们马上开始吧。" ) == 1) {
+		mes "[朱利安]";
+		mes "不，别用那种眼神看我。这女孩从不跟其他男人说话。所以我就成了负责她的人。";
 		next;
-		mes "[Julian]";
+		mes "[朱利安]";
 		mes "... It's real.";
 		close2;
 		if (is_party_leader() == true && 'status_instance == 2)
 			donpcevent instance_npcname("Julian#8") + "::OnStart";
 		end;
 	}
-	mes "[Julian]";
-	mes "Hmm. Great. Let's start right away.";
+	mes "[朱利安]";
+	mes "嗯。很好。我们马上开始吧。";
 	if (is_party_leader() == true && 'status_instance == 2)
 		donpcevent instance_npcname("Julian#8_0") + "::OnStart";
 	close;
@@ -1618,45 +1618,45 @@ OnStart:
 	disablenpc instance_npcname("Julian#8_0");
 	enablenpc instance_npcname("Julian#8");
 	initnpctimer;
-	npctalk "Julian: Ebel~ You confronted this fellow last time. Do you remember?", instance_npcname("Julian#8");
+	npctalk "朱利安：艾贝尔～你上次和这家伙交过手。还记得吗？", instance_npcname("Julian#8");
 	end;
 OnTimer4000:
-	npctalk "Ebel: I don't remember. Has he come to destroy this place?", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：我不记得了。他是来摧毁这里的吗？", instance_npcname("Ebel#3");
 	stopnpctimer;
 	donpcevent instance_npcname("#hunter_instance_2_talk") + "::OnStart";
 	end;
 }
 
-1@swat,136,258,3	script	Julian#8	4_M_REBELLION2,{
+1@swat,136,258,3	script	朱利安#8	4_M_REBELLION2,{
 	end;
 OnStart:
 	'status_instance = 3;
 	disablenpc instance_npcname("Julian#8_0");
 	enablenpc instance_npcname("Julian#8");
 	initnpctimer;
-	npctalk "Julian: This is the girl we captured last time.";
+	npctalk "朱利安：这就是我们上次抓到的女孩。";
 	end;
 OnTimer3000:
-	npctalk "Julian: We don't know who she is and where she is from. All we know is her name, Ebel...";
+	npctalk "朱利安：我们不知道她是谁、从哪里来。只知道她的名字，艾贝尔……";
 	end;
 OnTimer8000:
-	npctalk "Julian: Without any previous memory or rationality, only the intention to protect the base is left in her.";
+	npctalk "朱利安：她没有了过去的记忆和理性，只剩下保护基地的意志。";
 	end;
 OnTimer13000:
-	npctalk "Julian: She is in such a mechanical status that it is difficult to see a human in her. But she doesn't attack anyone, unless judged as an enemy.";
+	npctalk "朱利安：她处于如此机械的状态，很难看出她还是个人。但她不会攻击任何人，除非被判定为敌人。";
 	end;
 OnTimer18000:
-	npctalk "Julian: You have to help me in finding out her potential ability.";
+	npctalk "朱利安：你必须帮我查明她的潜在能力。";
 	end;
 OnTimer22000:
-	npctalk "Ebel: Julian, is that an enemy?", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：朱利安，那是敌人吗？", instance_npcname("Ebel#3");
 	end;
 OnTimer25000:
-	npctalk "Julian: Oh, the person in front of you is your enemy only for a while.";
+	npctalk "朱利安：哦，你面前的人只是暂时当你的敌人。";
 	end;
 OnTimer29000:
 	stopnpctimer;
-	npctalk "Ebel: Has he come to destroy this place?", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：他是来摧毁这里的吗？", instance_npcname("Ebel#3");
 	donpcevent instance_npcname("#hunter_instance_2_talk") + "::OnStart";
 	end;
 }
@@ -1667,18 +1667,18 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Julian: Well... Sort of.", instance_npcname("Julian#8");
+	npctalk "朱利安：嗯……差不多吧。", instance_npcname("Julian#8");
 	end;
 OnTimer5000:
 	specialeffect EF_INCAGILITY, AREA, instance_npcname("Ebel#3");
-	npctalk "Ebel: Then...", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：那么……", instance_npcname("Ebel#3");
 	end;
 OnTimer7000:
 	specialeffect EF_SIGNUM, AREA, instance_npcname("Ebel#3");
-	npctalk "Ebel: I will stop him.", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：我会阻止他。", instance_npcname("Ebel#3");
 	end;
 OnTimer8000:
-	mapannounce 'map_swat$, "Security system: Phase 2 of the emergency situation is announced. Automatic defensive device is activated.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "安保系统：现宣布进入紧急状态第2阶段。自动防御装置已启动。", bc_map,0xFF5555;
 	end;
 OnTimer12000:
 	stopnpctimer;
@@ -1701,7 +1701,7 @@ OnMobDead:
 		initnpctimer;
 	end;
 OnTimer1000:
-	mapannounce 'map_swat$, "Security system: Emergency situation is discharged. Terminating the automatic defense device.", bc_map,0xFF5555;
+	mapannounce 'map_swat$, "安保系统：紧急状态已解除。正在终止自动防御装置。", bc_map,0xFF5555;
 	end;
 OnTimer4000:
 	enablenpc instance_npcname("Julian#8_1");
@@ -1715,66 +1715,66 @@ OnTimer7000:
 	end;
 }
 
-1@swat,129,258,6	script	Ebel#3_1	4_F_HUNTER_EVIL,{
+1@swat,129,258,6	script	艾贝尔#3_1	4_F_HUNTER_EVIL,{
 	switch( rand(4) ) {
 	case 0:
 		cutin "ep16_evil103.bmp",2;
-		mes "[Ebel]";
-		mes "Where did you learn the technique you have used a moment ago?";
+		mes "[艾贝尔]";
+		mes "你刚才用的技术是在哪里学的？";
 		close3;
 	case 1:
 		cutin "ep16_evil102.bmp",2;
-		mes "[Ebel]";
+		mes "[艾贝尔]";
 		mes "...";
 		close3;
 	case 2:
 		cutin "ep16_evil103.bmp",2;
-		mes "[Ebel]";
-		mes "Where did you learn the technique you have used a moment ago?";
+		mes "[艾贝尔]";
+		mes "你刚才用的技术是在哪里学的？";
 		close3;
 	case 3:
 		cutin "ep16_evil101.bmp",2;
-		mes "[Ebel]";
-		mes "You... You're stronger than me. I have never experienced this before...";
+		mes "[艾贝尔]";
+		mes "你……你比我强。我以前从未遇到过这种情况……";
 		close3;
 	}
 }
 
-1@swat,136,258,3	script	Julian#8_1	4_M_REBELLION2,{
-	mes "[Julian]";
-	mes "Hmm. Good job. Let us leave the training ground. The gateway is upstairs. Go up the stairs behind me.";
+1@swat,136,258,3	script	朱利安#8_1	4_M_REBELLION2,{
+	mes "[朱利安]";
+	mes "嗯。干得好。我们离开训练场吧。出口在楼上。从我身后的楼梯上去。";
 	close;
 OnStart:
 	initnpctimer;
-	npctalk "Julian: I am not trying to underestimate your combat ability";
+	npctalk "朱利安：我并不是想低估你的战斗能力";
 	end;
 OnTimer5000:
-	npctalk "Julian: But I don't think Ebel is using 100% of her power.";
+	npctalk "朱利安：但我觉得艾贝尔并没有使出全力。";
 	end;
 OnTimer10000:
-	npctalk "Julian We have to check her a little longer...";
+	npctalk "朱利安：我们还得再观察她一段时间……";
 	end;
 OnTimer13000:
-	npctalk "Ebel: Am I... being disposed?", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：我……要被处理掉了吗？", instance_npcname("Ebel#3_1");
 	end;
 OnTimer16000:
-	npctalk "Julian: What are you talking about? Disposing is only for machines.";
+	npctalk "朱利安：你在说什么？处理掉只适用于机器。";
 	end;
 OnTimer20000:
-	npctalk "Ebel: Then you are not disposing me?", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：那么，你不会处理掉我？", instance_npcname("Ebel#3_1");
 	end;
 OnTimer23000:
-	npctalk "Julian: Stop nagging. The training is over, get ready for the meal. It's time to eat.";
+	npctalk "朱利安：别啰嗦了。训练结束了，准备吃饭吧。到吃饭时间了。";
 	end;
 OnTimer28000:
-	npctalk "Ebel: Meal...", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：吃饭……", instance_npcname("Ebel#3_1");
 	emotion ET_SURPRISE, getnpcid(0, instance_npcname("Ebel#3_1") );
 	end;
 OnTimer31000:
-	npctalk "Julian: Yes. Go and change into casual clothes.";
+	npctalk "朱利安：对。去换上便服吧。";
 	end;
 OnTimer35000:
-	npctalk "Ebel: Ebel follows Julian's instruction.", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：艾贝尔听从朱利安的指示。", instance_npcname("Ebel#3_1");
 	emotion ET_OK;
 	end;
 OnTimer41000:
@@ -1782,7 +1782,7 @@ OnTimer41000:
 	end;
 OnTimer42000:
 	stopnpctimer;
-	npctalk "Julian: Hmm. Good job. Let us leave the training ground. The gateway is upstairs. Go up the stairs behind me.", instance_npcname("Julian#8_1");
+	npctalk "朱利安：嗯。干得好。我们离开训练场吧。出口在楼上。从我身后的楼梯上去。", instance_npcname("Julian#8_1");
 	enablenpc instance_npcname("#wp_out");
 	end;
 

@@ -16,128 +16,128 @@ slabw01,232,91,5	duplicate(dummy_cloaked_npc)	Skia#ep162_06	4_EP16_SKIA
 slabw01,233,92,3	duplicate(dummy_cloaked_npc)	Scared researcher#ep162	4_M_ALCHE_A
 
 // Werner Laboratory central room (solo instance)
-slabw01,236,91,3	script	Rookie#ep162_04	4_M_ROOKIE,{
+slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 	if (terra_gloria_main == 20) {
-		mes "[Rookie]";
-		mes "Take a look at this.";
-		mes "According to the design drawing, this part is connected to the central room... But I only see a suspicious gate.";
+		mes "[新兵]";
+		mes "你看看这个。";
+		mes "根据设计图，这里应该与中枢室相连……但我只看到一扇可疑的门。";
 		next;
-		mes "[Rookie]";
-		mes "No wonder it looked like they had something to back them up.";
-		mes "Shall we use an explosive and blow it up?";
+		mes "[新兵]";
+		mes "难怪看起来他们有所依仗。";
+		mes "要不要用炸药把它炸开？";
 		next;
 		cloakoffnpc( "Skia#ep162_06", getcharid(0) );
 		cloakoffnpc( "Scared researcher#ep162", getcharid(0) );
-		npctalk "Wait!", "Skia#ep162_06", bc_self;
-		mes "[Skia]";
-		mes "Not in such a crude way!";
-		mes "Well, I made a great decision when I came here.";
-		mes "Tell him to open this.";
+		npctalk "等等！", "斯琪亚#ep162_06", bc_self;
+		mes "[斯琪亚]";
+		mes "别用这么粗鲁的办法！";
+		mes "嗯，我来这里真是个明智的决定。";
+		mes "让他把这个打开。";
 		next;
-		npctalk "Wow! This lady is quite smart!", "", bc_self;
-		npctalk "Why ... why are you doing this to me?!", "Scared researcher#ep162", bc_self;
-		mes "[Skia]";
-		mes "I asked him whether he knows the paths here, and his answer was yes. So I brought him here.";
-		mes "He will activate the gate to the central room.";
+		npctalk "哇！这位女士真聪明！", "", bc_self;
+		npctalk "为……为什么这样对我？！", "害怕的研究员#ep162", bc_self;
+		mes "[斯琪亚]";
+		mes "我问过他是否认得这里的路，他说认得。所以我就把他带来了。";
+		mes "他会启动通往中枢室的门。";
 		next;
-		npctalk "This ... is the way to do it.", "Scared researcher#ep162", bc_self;
-		mes "[Rookie]";
-		mes "Hmm, I see. That's the way to operate it.";
-		mes "Great, now I got it.";
-		mes "And we don't need him anymore.";
+		npctalk "这……就是这样操作。", "害怕的研究员#ep162", bc_self;
+		mes "[新兵]";
+		mes "嗯，原来如此。是这样操作的。";
+		mes "好，现在我明白了。";
+		mes "而且我们不再需要他了。";
 		next;
-		npctalk "Wh... what?! Please don't kill me!", "Scared researcher#ep162", bc_self;
-		mes "[Skia]";
-		mes "Really? Then I will bring this researcher to the squadron outside.";
-		mes "About the central room, " + strcharinfo(0) + " I am counting on you!";
+		npctalk "什……什么？！求你别杀我！", "害怕的研究员#ep162", bc_self;
+		mes "[斯琪亚]";
+		mes "真的吗？那我就把这位研究员带到外面的部队去。";
+		mes "关于中枢室，" + strcharinfo(0) + "就拜托你了！";
 		next;
 		cloakonnpc( "Skia#ep162_06", getcharid(0) );
 		cloakonnpc( "Scared researcher#ep162", getcharid(0) );
-		mes "[Rookie]";
-		mes "Haha, they let us open the gate of the central room!";
-		mes "Please speak to me again once you are ready to go in here.";
+		mes "[新兵]";
+		mes "哈哈，他们让我们打开中枢室的门！";
+		mes "准备好进去之后，请再来跟我说一声。";
 		next;
-		mes "[Rookie]";
-		mes "After activating the gate, we have to guard it from outside.";
-		mes "So I cannot go in there with you.";
+		mes "[新兵]";
+		mes "启动门之后，我们得在外面守着。";
+		mes "所以我不能和你一起进去。";
 		terra_gloria_main = 21;
 		close;
 	}
 	if (terra_gloria_main == 21) {
 		if (is_party_leader() == false) {
-			mes "^4d4dffThis event is proceeded to the Memorial.";
-			mes "Please try again after organizing a party.^000000";
+			mes "^4d4dff此活动将移至纪念馆进行。";
+			mes "请组建队伍后再试。^000000";
 			close;
 		}
-		mes "[Rookie]";
-		mes "Are you ready?";
-		mes "If you are entering now, I will activate the gate.";
+		mes "[新兵]";
+		mes "准备好了吗？";
+		mes "如果现在就进去，我就启动门。";
 		next;
-		if (select( "Enter now.", "Do not enter." ) == 2) {
-			mes "[Rookie]";
-			mes "We both know that we don't have time for this, don't we?";
+		if (select( "现在进去。", "不进去。" ) == 2) {
+			mes "[新兵]";
+			mes "我们都知道没时间耗下去了，对吧？";
 			close;
 		}
-		mes "[Rookie]";
-		mes "Wow! This is it! I always learn things quickly!";
-		mes "Well, please go in now!";
+		mes "[新兵]";
+		mes "哇！就是这样！我学东西一向很快！";
+		mes "好，现在就请进去吧！";
 		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
 		instance_create("Werner Laboratory central room#1");	// officially there is only one 'Werner Laboratory central room' instance
 		close;
 	}
 	if (terra_gloria_main == 22) {
-		mes "[Rookie]";
-		mes "Have you reclaimed the stuff?";
+		mes "[新兵]";
+		mes "你把东西取回来了吗？";
 		close;
 	}
 	switch( checkquest(7742,HUNTING) ) {
 	case -1:
-		mes "[Rookie]";
-		mes "We have found a strange phenomenon in the central room. We are not investigating it.";
-		mes "Perhaps there was a strong experimental subject left inside.";
+		mes "[新兵]";
+		mes "我们在中枢室发现了奇怪的现象。我们还没有调查它。";
+		mes "也许里面还留着一个强大的实验体。";
 		next;
-		mes "[Rookie]";
-		mes "What kind of facility is this?";
+		mes "[新兵]";
+		mes "这是什么样的设施？";
 		mes "Ssss.";
-		mes "Once it is identified appropriately, I might ask you for a settlement ...";
-		mes "I will have to guard the gate of the central room again.";
+		mes "等适当鉴定之后，我或许会请你做个了结……";
+		mes "我又得去守中枢室的门了。";
 		close;
 	case 0:
 	case 1:
 		if (getcharid(1) < 1) {
-			mes "^4d4dffThis event is proceeded to the Memorial.";
-			mes "Please try again after organizing a party.^000000";
+			mes "^4d4dff此活动将移至纪念馆进行。";
+			mes "请组建队伍后再试。^000000";
 			close;
 		}
 		if (is_party_leader() == false) {
-			mes "[Rookie]";
-			mes "If there is a gate that has already been activated, you can see it.";
+			mes "[新兵]";
+			mes "如果有已经启动的门，你就能看见。";
 			next;
-			mes "[Rookie]";
-			mes "Otherwise, please ask your party leader for entrance.";
+			mes "[新兵]";
+			mes "否则，请向你的队长申请进入。";
 			close;
 		}
-		mes "[Rookie]";
-		mes "Are you ready?";
-		mes "If you are entering now, I will activate the gate.";
+		mes "[新兵]";
+		mes "准备好了吗？";
+		mes "如果现在就进去，我就启动门。";
 		next;
-		if (select( "Enter now.", "Do not enter." ) == 2) {
-			mes "[Rookie]";
-			mes "We both know that we don't have time for this, don't we?";
+		if (select( "现在进去。", "不进去。" ) == 2) {
+			mes "[新兵]";
+			mes "我们都知道没时间耗下去了，对吧？";
 			close;
 		}
-		mes "[Rookie]";
-		mes "Wow! This is it! I always learn things quickly!";
-		mes "Well, please go in now!";
+		mes "[新兵]";
+		mes "哇！就是这样！我学东西一向很快！";
+		mes "好，现在就请进去吧！";
 		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
 		instance_create("Werner Laboratory central room#2");
 		close;
 	case 2:
-		mes "[Rookie]";
-		mes "We are not sure how many more experimental subjects are there that were made and abandoned by that Eisen Werner guy.";
+		mes "[新兵]";
+		mes "我们不确定那个叫艾森·维尔纳的家伙还制造并抛弃了多少实验体。";
 		next;
-		mes "[Rookie]";
-		mes "But let's call it a day.";
+		mes "[新兵]";
+		mes "不过今天就到此为止吧。";
 		close;
 	}
 	end;
@@ -147,18 +147,18 @@ OnInit:
 	end;
 }
 
-slabw01,246,88,3	script	Central_room#evt_gate01	PORTAL,{
+slabw01,246,88,3	script	中枢室#evt_gate01	PORTAL,{
 	if (terra_gloria_main != 21 && terra_gloria_main < 23)
 		end;
 	if (getcharid(1) < 1 || (terra_gloria_main == 21 && is_party_leader() == false)) {
-		mes "^4d4dffMD Only the party leader can enter [Central room] now.^000000";
+		mes "^4d4dffMD 现在只有队长可以进入[中枢室]。^000000";
 		close;
 	}
-	mes "You can move to the central room.";
+	mes "你可以移动到中枢室了。";
 	next;
-	if (select( "Go in.", "Do not go in." ) == 2) {
-		mes "[Rookie]";
-		mes "Oh ... I have to turn it on every time. It's so inconvenient!";
+	if (select( "进去。", "不进去。" ) == 2) {
+		mes "[新兵]";
+		mes "唉……每次都得启动一次。真不方便！";
 		close;
 	}
 	if (terra_gloria_main == 21)
@@ -169,15 +169,15 @@ slabw01,246,88,3	script	Central_room#evt_gate01	PORTAL,{
 	case IE_NOMEMBER:
 		end;
 	case IE_NOINSTANCE:
-		mes "[Rookie]";
-		mes "The gate is malfunctioning now. It's dangerous like this ...";
-		mes "Please wait for a while.";
+		mes "[新兵]";
+		mes "门现在出故障了。这样很危险……";
+		mes "请稍等一下。";
 		close;
 	case IE_OTHER:
-		mes "An unknown error has occurred.";
+		mes "发生了未知错误。";
 		close;
 	case IE_OK:
-		mapannounce "slabw01", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "slabw01", "" + strcharinfo(0) + "，所属队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
 		// warp "1@slw",187,24;
 		end;
 	}
@@ -191,7 +191,7 @@ OnInit:
 // warps
 1@slw,187,170,0	warp	#slwwarp01	1,1,1@slw,71,32
 1@slw,71,77,0	warp	#slwwarp02	1,1,1@slw,54,134
-1@slw,55,150,0	warp	Emergency exit#exit_war	1,1,que_swat,155,58
+1@slw,55,150,0	warp	紧急出口#exit_war	1,1,que_swat,155,58
 
 // Entrance - event type
 1@slw,187,25,0	script	#sl_evt01	HIDDEN_WARP_NPC,2,2,{
@@ -248,7 +248,7 @@ OnInstanceInit:
 
 // Room 1
 // * Samples and devices
-1@slw,174,145,3	script	Displayed sample#01	CLEAR_NPC,{
+1@slw,174,145,3	script	展示样本#01	CLEAR_NPC,{
 	setarray .@sample$[0],
 		"^ff0000Purity^000000", "MT-Wxx0s57b",
 		"^4d4dffRose^000000", "MT-Wxx00b21",
@@ -264,79 +264,79 @@ OnInstanceInit:
 		"^4d4dffGirl^000000's ^ff0000dream^000000", "MT-Wxx0ax2-1";
 	.@num = (atoi(strnpcinfo(2)) - 1) * 2;
 	mes "[" + .@sample$[.@num] + "]";
-	mes "Experiment_number: " + .@sample$[.@num+1] + "";
+	mes "实验体编号：" + .@sample$[.@num+1] + "";
 	close;
 }
-1@slw,201,145,3	duplicate(Displayed sample#01)	Displayed sample#02	CLEAR_NPC
-1@slw,174,132,3	duplicate(Displayed sample#01)	Displayed sample#03	CLEAR_NPC
-1@slw,201,132,3	duplicate(Displayed sample#01)	Displayed sample#04	CLEAR_NPC
-1@slw,174,118,3	duplicate(Displayed sample#01)	Displayed sample#05	CLEAR_NPC
-1@slw,201,118,3	duplicate(Displayed sample#01)	Displayed sample#06	CLEAR_NPC
-1@slw,174,104,3	duplicate(Displayed sample#01)	Displayed sample#07	CLEAR_NPC
-1@slw,201,104,3	duplicate(Displayed sample#01)	Displayed sample#08	CLEAR_NPC
-1@slw,174,90,3	duplicate(Displayed sample#01)	Displayed sample#09	CLEAR_NPC
-1@slw,201,90,3	duplicate(Displayed sample#01)	Displayed sample#10	CLEAR_NPC
-1@slw,174,76,3	duplicate(Displayed sample#01)	Displayed sample#11	CLEAR_NPC
-1@slw,201,76,3	duplicate(Displayed sample#01)	Displayed sample#12	CLEAR_NPC
+1@slw,201,145,3	duplicate(展示样本#01)	Displayed sample#02	CLEAR_NPC
+1@slw,174,132,3	duplicate(展示样本#01)	Displayed sample#03	CLEAR_NPC
+1@slw,201,132,3	duplicate(展示样本#01)	Displayed sample#04	CLEAR_NPC
+1@slw,174,118,3	duplicate(展示样本#01)	Displayed sample#05	CLEAR_NPC
+1@slw,201,118,3	duplicate(展示样本#01)	Displayed sample#06	CLEAR_NPC
+1@slw,174,104,3	duplicate(展示样本#01)	Displayed sample#07	CLEAR_NPC
+1@slw,201,104,3	duplicate(展示样本#01)	Displayed sample#08	CLEAR_NPC
+1@slw,174,90,3	duplicate(展示样本#01)	Displayed sample#09	CLEAR_NPC
+1@slw,201,90,3	duplicate(展示样本#01)	Displayed sample#10	CLEAR_NPC
+1@slw,174,76,3	duplicate(展示样本#01)	Displayed sample#11	CLEAR_NPC
+1@slw,201,76,3	duplicate(展示样本#01)	Displayed sample#12	CLEAR_NPC
 
 // * Events - First entrance
-1@slw,188,42,3	script	Eisen Werner#werner01	4_M_EISEN,{
+1@slw,188,42,3	script	艾森·维尔纳#werner01	4_M_EISEN,{
 	if (is_party_leader() == false)
 		end;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Here comes the main character.";
-	mes "Honestly, I'm impressed. I never expected you would come all the way here.";
+	mes "[艾森·维尔纳]";
+	mes "主角登场了。";
+	mes "说实话，我很佩服。没想到你竟然一路来到这里。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Well, whatever.";
+	mes "[艾森·维尔纳]";
+	mes "算了，随便吧。";
 	mes "Welcome.";
-	mes "Welcome to Eisen Werner's world.";
+	mes "欢迎来到艾森·维尔纳的世界。";
 	next;
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "I never imagined that it would be done all of a sudden like this.";
-	mes "Whatever. Who cares?";
+	mes "[艾森·维尔纳]";
+	mes "我从没想过事情会这样突然完成。";
+	mes "随便。谁在乎呢？";
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "I've given up saving this laboratory anyway.";
-	mes "Would you like to take a look?";
+	mes "[艾森·维尔纳]";
+	mes "反正我已经放弃拯救这座研究所了。";
+	mes "你想看看吗？";
 	next;
-	mes "[Eisen Werner]";
-	mes "There were many things, including cracks in dimensions, etc.";
-	mes "In some worlds, the flow of time is twisted.";
+	mes "[艾森·维尔纳]";
+	mes "有很多东西，包括次元的裂缝等等。";
+	mes "在某些世界里，时间的流动是扭曲的。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Is it a parallel world?";
-	mes "Or has someone been to a certain point in the past?";
+	mes "[艾森·维尔纳]";
+	mes "是平行世界吗？";
+	mes "还是说有人去过过去的某个时间点？";
 	next;
-	mes "[Eisen Werner]";
-	mes "What does time mean? Have you ever thought about it?";
-	mes "Its flow is relative.";
+	mes "[艾森·维尔纳]";
+	mes "时间意味着什么？你想过吗？";
+	mes "它的流动是相对的。";
 	next;
-	mes "[Eisen Werner]";
-	mes "That guy has stopped now.";
-	mes "If time goes biologically, it means someone gets older.";
+	mes "[艾森·维尔纳]";
+	mes "那家伙现在已经停下来了。";
+	mes "如果时间在生理上流逝，就意味着有人在变老。";
 	next;
-	mes "[Eisen Werner]";
-	mes "That was stopped by force.";
-	mes "In that case, we use an expression such as this.";
+	mes "[艾森·维尔纳]";
+	mes "那是被强行停止的。";
+	mes "那种情况下，我们会用这样的说法。";
 	next;
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "The time has stopped.";
+	mes "[艾森·维尔纳]";
+	mes "时间已经停止了。";
 	next;
-	mes "[Eisen Werner]";
+	mes "[艾森·维尔纳]";
 	mes "....";
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Would you like to take a look inside?";
-	mes "Take your time and look through the corridor.";
+	mes "[艾森·维尔纳]";
+	mes "你想进去看看吗？";
+	mes "慢慢看，沿着走廊走一遍吧。";
 	next;
-	mes "[Eisen Werner]";
-	mes "I will guide you.";
+	mes "[艾森·维尔纳]";
+	mes "我来为你引路。";
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
@@ -346,45 +346,45 @@ OnInstanceInit:
 	end;
 }
 
-1@slw,189,164,3	script	Eisen Werner#werner02	4_M_EISEN,{
+1@slw,189,164,3	script	艾森·维尔纳#werner02	4_M_EISEN,{
 	if (is_party_leader() == false)
 		end;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Did you enjoy my work?";
-	mes "I sent the silly guys back to start over.";
+	mes "[艾森·维尔纳]";
+	mes "你喜欢我的作品吗？";
+	mes "我把那些愚蠢的家伙送回去重新开始了。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Well, it wasn't easy at all.";
+	mes "[艾森·维尔纳]";
+	mes "唉，那可一点都不容易。";
 	mes "......";
 	next;
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "If only that kid had gone back, he would not have ended that way...";
+	mes "[艾森·维尔纳]";
+	mes "要是那孩子当时回去了，就不会落得那种下场……";
 	next;
-	mes "[Eisen Werner]";
-	mes "I mean, if only he stopped...";
+	mes "[艾森·维尔纳]";
+	mes "我是说，要是他能停下来……";
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "The chairman... I mean, that person is obsessed with the past.";
-	mes "Thanks to the chairman, I can do my research as I want.";
+	mes "[艾森·维尔纳]";
+	mes "会长……我是说，那个人对过去执迷不悟。";
+	mes "多亏了会长，我才能随心所欲地做研究。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Aren't you curious about it?";
-	mes "Why is he so obsessed with the past?";
+	mes "[艾森·维尔纳]";
+	mes "你就不觉得好奇吗？";
+	mes "他为什么对过去如此执着？";
 	next;
-	mes "[Eisen Werner]";
-	mes "By the way, you have to operate the instruments on the right and left if you want to go beyond this.... Can you do it?";
+	mes "[艾森·维尔纳]";
+	mes "顺便一提，想越过这里，你得操作左右两侧的装置……你能做到吗？";
 	next;
-	mes "[Eisen Werner]";
-	mes "Since it's a simple device, I guess you can.";
-	mes "Change ^ff0000red^000000 to ^4d4dffblue^000000.";
-	mes "And change ^4d4dffblue^000000 to ^ff0000red^000000. That's it.";
+	mes "[艾森·维尔纳]";
+	mes "既然是很简单的装置，我想你应该能行。";
+	mes "把^ff0000红色^000000改成^4d4dff蓝色^000000。";
+	mes "再把^4d4dff蓝色^000000改成^ff0000红色^000000。就这样。";
 	next;
-	mes "[Eisen Werner]";
-	mes "If you looked at my work properly, you'll understand what I am saying.";
-	mes "Then I'll see you in the next zone.";
+	mes "[艾森·维尔纳]";
+	mes "只要你认真看过我的作品，就会明白我在说什么。";
+	mes "那么，下个区域见。";
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
@@ -395,36 +395,36 @@ OnInstanceInit:
 	end;
 }
 
-1@slw,155,191,3	script	Security device#switch01	CLEAR_NPC,{
+1@slw,155,191,3	script	安保装置#switch01	CLEAR_NPC,{
 	if (is_party_leader() == false)
 		end;
 	.@number = atoi( replacestr( strnpcinfo(2), "switch", "" ) );
 	.@type = (.@number < 10) ? 0 : 1;
 	.@npc_num = (.@number < 10) ? .@number : (.@number-10);
 	if ('device_state[.@type] & .@npc_num) {
-		mes "It is already activated.";
+		mes "它已经启动了。";
 		close;
 	}
 	callsub S_Code, .@string$, .@answer;
-	mes "There are security codes written down.";
+	mes "上面写着安全密码。";
 	mes "[" + .@string$ + "]";
-	mes "What will you input?";
+	mes "你要输入什么？";
 	next;
-	if (select( "^ff0000" + .@string$ + "^000000", "^4d4dff" + .@string$ + "^000000" ) != .@answer) {
+	if (select( "^FF0000" + .@string$ + "^000000", "^4d4dff" + .@string$ + "^000000" ) != .@answer) {
 		'device_state[.@type] = 0;
-		mes "The device has been initialized.";
+		mes "装置已初始化。";
 		close;
 	}
 	if (is_party_leader() == false)
 		end;
 	'device_state[.@type] = 'device_state[.@type] | .@npc_num;
 	if ('device_state[.@type] != 3) {
-		mes "Operated the security device.";
-		mes "Seems like there is one more security device.";
+		mes "已操作安全装置。";
+		mes "似乎还有一个安全装置。";
 		close;
 	}
-	mes "Operated the security device.";
-	mes "The gate is now activated.";
+	mes "已操作安全装置。";
+	mes "门现已启动。";
 	switch( .@type ) {
 	case 0:
 		enablenpc instance_npcname("#slwwarp01");
@@ -465,13 +465,13 @@ S_Code:
 	set getarg(1), .@sample$[.@r+1];
 	return;
 }
-1@slw,220,191,3	duplicate(Security device#switch01)	Security device#switch02	CLEAR_NPC
-1@slw,22,61,3	duplicate(Security device#switch01)	Security device#switch11	CLEAR_NPC
-1@slw,122,61,3	duplicate(Security device#switch01)	Security device#switch12	CLEAR_NPC
+1@slw,220,191,3	duplicate(安保装置#switch01)	Security device#switch02	CLEAR_NPC
+1@slw,22,61,3	duplicate(安保装置#switch01)	Security device#switch11	CLEAR_NPC
+1@slw,122,61,3	duplicate(安保装置#switch01)	Security device#switch12	CLEAR_NPC
 
 
 // * Events - Daily
-1@slw,188,58,3	script	Guard#gard01	3622,4,4,{
+1@slw,188,58,3	script	守卫#gard01	3622,4,4,{
 	end;
 OnTouch:
 	.@num = atoi( replacestr( strnpcinfo(2), "gard0", "" ) );
@@ -503,12 +503,12 @@ OnTouch:
 		.@label$ = instance_npcname("#security_device_lab") + "::OnRight1";
 		break;
 	case 6:
-		npctalk "Who's there?";
+		npctalk "是谁？";
 		.@mob_count = 3;
 		.@label$ = instance_npcname("#security_device_lab") + "::OnLeft2";
 		break;
 	case 7:
-		npctalk "Let me finish you!";
+		npctalk "让我来了结你！";
 		.@mob_count = 3;
 		.@label$ = instance_npcname("#security_device_lab") + "::OnRight2";
 		break;
@@ -517,36 +517,36 @@ OnTouch:
 	areamonster .@map$, (.@x-2), (.@y-2), (.@x+2), (.@y+2), "Special Guard", 3622, .@mob_count, .@label$;	// EP16_2_MM_S_GUARDS
 	end;
 }
-1@slw,189,117,3	duplicate(Guard#gard01)	Guard#gard02	3622,4,4
-1@slw,171,167,3	duplicate(Guard#gard01)	Guard#gard03	3622,4,4
-1@slw,206,167,3	duplicate(Guard#gard01)	Guard#gard04	3622,4,4
-1@slw,70,38,5	duplicate(Guard#gard01)	Guard#gard05	3622,4,4
-1@slw,33,52,3	duplicate(Guard#gard01)	Guard#gard06	3622,4,4
-1@slw,111,52,3	duplicate(Guard#gard01)	Guard#gard07	3622,4,4
+1@slw,189,117,3	duplicate(守卫#gard01)	Guard#gard02	3622,4,4
+1@slw,171,167,3	duplicate(守卫#gard01)	Guard#gard03	3622,4,4
+1@slw,206,167,3	duplicate(守卫#gard01)	Guard#gard04	3622,4,4
+1@slw,70,38,5	duplicate(守卫#gard01)	Guard#gard05	3622,4,4
+1@slw,33,52,3	duplicate(守卫#gard01)	Guard#gard06	3622,4,4
+1@slw,111,52,3	duplicate(守卫#gard01)	Guard#gard07	3622,4,4
 
 1@slw,1,1,3	script	#security_device_lab	HIDDEN_WARP_NPC,{
 	end;
 OnLeft1:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft1" ) < 1) {
-		mapannounce 'map_slw$, "Security device L-01 has been activated.", bc_map,0xFF99;
+		mapannounce 'map_slw$, "安全装置 L-01 已启动。", bc_map,0xFF99;
 		enablenpc instance_npcname("Security device#switch01");
 	}
 	end;
 OnRight1:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight1" ) < 1) {
-		mapannounce 'map_slw$, "Security device R-01 has been activated.", bc_map,0xFF99;
+		mapannounce 'map_slw$, "安全装置 R-01 已启动。", bc_map,0xFF99;
 		enablenpc instance_npcname("Security device#switch02");
 	}
 	end;
 OnLeft2:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft2" ) < 1) {
-		mapannounce 'map_slw$, "Security device L-02 has been activated.", bc_map,0xFF99;
+		mapannounce 'map_slw$, "安全装置 L-02 已启动。", bc_map,0xFF99;
 		enablenpc instance_npcname("Security device#switch11");
 	}
 	end;
 OnRight2:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight2" ) < 1) {
-		mapannounce 'map_slw$, "Security device R-02 has been activated.", bc_map,0xFF99;
+		mapannounce 'map_slw$, "安全装置 R-02 已启动。", bc_map,0xFF99;
 		enablenpc instance_npcname("Security device#switch12");
 	}
 	end;
@@ -555,54 +555,54 @@ OnRight2:
 
 // Room 2
 // * Events - First entrance
-1@slw,72,70,3	script	Eisen Werner#werner03	4_M_EISEN,{
+1@slw,72,70,3	script	艾森·维尔纳#werner03	4_M_EISEN,{
 	if (is_party_leader() == false)
 		end;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Easier than you thought?";
-	mes "The next security devices are similar, so I won't have to explain again.";
+	mes "[艾森·维尔纳]";
+	mes "比你想象的容易吧？";
+	mes "接下来的安全装置都类似，我就不用再解释了。";
 	next;
-	mes "[Eisen Werner]";
-	mes "After looking around here, what do you think?";
-	mes "Isn't it amazing?";
-	mes "Have you been to ^4d4dffVerus^000000?";
+	mes "[艾森·维尔纳]";
+	mes "在这里转了一圈，你觉得怎么样？";
+	mes "很了不起吧？";
+	mes "你去过^4d4dff贝鲁兹^000000吗？";
 	next;
-	mes "[Eisen Werner]";
-	mes "That is the laboratory I built by referring to it.";
-	mes "It was my type.";
+	mes "[艾森·维尔纳]";
+	mes "那就是我参照它建造的研究所。";
+	mes "那很合我的胃口。";
 	mes "......";
 	next;
-	mes "[Eisen Werner]";
-	mes "The technology was completely different from what we'd had until then.";
-	mes "We've used everything available.";
+	mes "[艾森·维尔纳]";
+	mes "那项技术与我们此前拥有的完全不同。";
+	mes "我们把能用的都用上了。";
 	next;
-	mes "[Eisen Werner]";
-	mes "What do you say?";
-	mes "Does it look good?";
+	mes "[艾森·维尔纳]";
+	mes "你觉得如何？";
+	mes "看起来不错吧？";
 	next;
-	select("Do you wonder why I'm saying these things?");
-	mes "[Eisen Werner]";
-	mes "Hmm, that's because you're going to die here anyway.";
-	mes "So I would like to promote my achievements.";
+	select("你奇怪我为什么要说这些吗？");
+	mes "[艾森·维尔纳]";
+	mes "嗯，那是因为你反正要死在这里。";
+	mes "所以我想宣扬一下我的成就。";
 	next;
-	select("Die here? Me?");
-	mes "[Eisen Werner]";
-	mes "Certainly. You'll die here.";
-	mes "Do you think I am just stupid enough to be left here alone?";
+	select("死在这里？我？");
+	mes "[艾森·维尔纳]";
+	mes "当然。你会死在这里。";
+	mes "你以为我蠢到会独自留在这里吗？";
 	next;
-	mes "[Eisen Werner]";
-	mes "I know you've come here for the affair of Rune-Midgarts kingdom.";
-	mes "So I've prepared something.";
+	mes "[艾森·维尔纳]";
+	mes "我知道你是为了卢恩·米德加兹王国的事而来。";
+	mes "所以我准备了一些东西。";
 	next;
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "With a huge sensation.";
-	mes "You shall die. Right here.";
+	mes "[艾森·维尔纳]";
+	mes "会轰动一时。";
+	mes "你会死。就在这里。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Therefore, just be my guest.";
-	mes "Let's move to the next zone.";
+	mes "[艾森·维尔纳]";
+	mes "所以，请自便吧。";
+	mes "去下一个区域吧。";
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
@@ -616,38 +616,38 @@ OnRight2:
 
 // Room 3
 // * Events - First entrance
-1@slw,57,141,3	script	Eisen Werner#werner04	4_M_EISEN,{
+1@slw,57,141,3	script	艾森·维尔纳#werner04	4_M_EISEN,{
 	if (is_party_leader() == false)
 		end;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Beyond this wall, there will be something you have come to obtain.";
+	mes "[艾森·维尔纳]";
+	mes "这面墙的另一边，有你前来取回的东西。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Right. That thing you carved into a gem and used as a decoration on the crown.";
-	mes "Do you even know what it is?";
+	mes "[艾森·维尔纳]";
+	mes "没错。就是你们把它雕成宝石、镶在王冠上作装饰的那东西。";
+	mes "你知道它到底是什么吗？";
 	next;
-	mes "[Eisen Werner]";
-	mes "Although it is a scrap, it's the heart fragment of Ymir.";
-	mes "It cannot be compared to an imitation.";
+	mes "[艾森·维尔纳]";
+	mes "虽然只是一块碎片，但它是依美乐心脏的碎片。";
+	mes "它可不是仿制品能比的。";
 	next;
-	mes "[Eisen Werner]";
+	mes "[艾森·维尔纳]";
 	mes "... The fools in the kingdom cannot even utilize the power they already have.";
-	mes "What a pity.";
-	mes "So I decided to use it...";
+	mes "真可惜。";
+	mes "所以我决定用它……";
 	next;
-	mes "[Eisen Werner]";
-	mes "You want to reclaim it? It's all up to your capability.";
-	mes "I haven't been waiting with empty hands.";
+	mes "[艾森·维尔纳]";
+	mes "你想夺回去？那就全看你的本事了。";
+	mes "我可没有空着手等待。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Let me tell you once again. Don't be surprised.";
-	mes "No, I'd be glad if you were surprised.";
+	mes "[艾森·维尔纳]";
+	mes "我再告诉你一次。别吃惊。";
+	mes "不，你要是吃惊，我反而高兴。";
 	mes "Huhuhuhuhu....";
 	next;
 	cutin "ep16_eisen03.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Now, take a look at the gift I've prepared.";
+	mes "[艾森·维尔纳]";
+	mes "来，看看我准备的礼物吧。";
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
@@ -657,7 +657,7 @@ OnRight2:
 	end;
 }
 
-1@slw,54,146,0	script	Central Entrance#door	WARPNPC,1,1,{
+1@slw,54,146,0	script	中央入口#door	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (is_party_leader() == false) {
@@ -674,7 +674,7 @@ OnTouch:
 	}
 	switch( 'event_final ) {
 	case 1:
-		mes "Replaying the story.";
+		mes "重播故事。";
 		close2;
 		warp 'map_slw$,55,153;
 		end;
@@ -682,11 +682,11 @@ OnTouch:
 		warp 'map_slw$,55,153;
 		end;
 	}
-	mes "You have two choices in the next zone.";
-	mes "If you want to replay the story of Seyren Windsor, please select ^4d4dffProceed with the story^000000. If you want to see the masterpiece of Eisen Werner, please select ^4d4dffProceed with the battle^000000.";
+	mes "在下一个区域你有两个选择。";
+	mes "如果你想重播赛依连·温莎的故事，请选择^4d4dff继续故事^000000。如果你想看看艾森·维尔纳的杰作，请选择^4d4dff继续战斗^000000。";
 	next;
-	if (select( "Proceed with the story.", "Proceed with the battle." ) == 1) {
-		mes "You've selected the story.";
+	if (select( "继续故事。", "继续战斗。" ) == 1) {
+		mes "你选择了故事。";
 		close2;
 		if ('event_final == 0) {
 			'event_final = 1;
@@ -695,7 +695,7 @@ OnTouch:
 		warp 'map_slw$,55,153;
 		end;
 	}
-	mes "You've selected the battle.";
+	mes "你选择了战斗。";
 	close2;
 	if ('event_final == 0) {
 		'event_final = 2;
@@ -711,53 +711,53 @@ OnTouch:
 // * Story
 1@slw,56,171,3	duplicate(dummy_npc)	Seyren Windsor#seiren	4_M_SEIREN_UC
 
-1@slw,53,171,5	script	Eisen Werner#werner05	4_M_EISEN,{
+1@slw,53,171,5	script	艾森·维尔纳#werner05	4_M_EISEN,{
 	if (is_party_leader() == false) {
-		mes "^4d4dffOnly the party leader can proceed with this event.^000000";
+		mes "^4d4dff只有队长才能进行此活动。^000000";
 		close;
 	}
 	if (checkweight(501,1) == 0) {
-		mes "- Cannot progress with quest because you have too many items in your possession. -";
+		mes "- 携带物品过多，无法推进任务。 -";
 		close;
 	}
 	.@seyren$ = instance_npcname("Seyren Windsor#seiren");
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "This place is the core of the laboratory, and contains everything of my research.";
-	npctalk "This place is the core of the laboratory, and contains everything of my research.";
+	mes "[艾森·维尔纳]";
+	mes "这里是研究所的核心，包含我研究的全部。";
+	npctalk "这里是研究所的核心，包含我研究的全部。";
 	next;
-	mes "[Eisen Werner]";
-	mes "It is the heart fragment of Ymir that holds the fundamental power to constitute the world. It also holds the origin of life.";
-	npctalk "It is the heart fragment of Ymir that holds the fundamental power to constitute the world. It also holds the origin of life.";
+	mes "[艾森·维尔纳]";
+	mes "那是依美乐心脏的碎片，蕴含着构成世界的根本力量。它也蕴含着生命的起源。";
+	npctalk "那是依美乐心脏的碎片，蕴含着构成世界的根本力量。它也蕴含着生命的起源。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Look at this carefully.";
-	mes "What you've come to reclaim is doing something marvelous!";
-	npctalk "Look at this carefully. What you've come to reclaim is doing something marvelous!";
+	mes "[艾森·维尔纳]";
+	mes "仔细看着这个。";
+	mes "你来取回的东西正在做着了不起的事！";
+	npctalk "仔细看着这个。你来取回的东西正在做着了不起的事！";
 	next;
-	mes "[Eisen Werner]";
-	mes "The energy extracted from this flows into the magic circle on the ground... Ha ha ha. Of course, this magic circle has been reinterpreted magically.";
-	npctalk "The energy extracted from this flows into the magic circle on the ground... Ha ha ha. Of course, this magic circle has been reinterpreted magically.";
+	mes "[艾森·维尔纳]";
+	mes "从中提取的能量会流入地面的魔法阵……哈哈哈。当然，这个魔法阵已经被魔法重新诠释过了。";
+	npctalk "从中提取的能量会流入地面的魔法阵……哈哈哈。当然，这个魔法阵已经被魔法重新诠释过了。";
 	next;
-	mes "[Eisen Werner]";
-	mes "In any case, the energy goes into the experimental subject... Using that power, I've adjusted their time.";
+	mes "[艾森·维尔纳]";
+	mes "总之，能量会进入实验体……我利用那股力量调整了他们的时间。";
 	next;
 	cutin "ep16_eisen03.bmp",1;
-	mes "[Eisen Werner]";
+	mes "[艾森·维尔纳]";
 	mes "... Certainly, some of them get killed due to chapped cells. Ha ha!";
 	next;
-	select("Is that all you want to say?");
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Is that all you want to say?";
+	select("你想说的就这些吗？");
+	unittalk getcharid(3), "" + strcharinfo(0) + "：你想说的就这些吗？";
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "No! Never!";
-	mes "Have you already forgotten what I told you earlier?";
-	mes "I told you I'd prepared a gift.";
+	mes "[艾森·维尔纳]";
+	mes "不！绝不可能！";
+	mes "你已经忘了我之前说过的话吗？";
+	mes "我说过我准备了一份礼物。";
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
+	mes "[艾森·维尔纳]";
 	mes "Something...";
-	mes "that will surprise you.";
+	mes "一份会让你吃惊的礼物。";
 	close2;
 	setpcblock PCBLOCK_NPC, true;
 	cutin "",255;
@@ -766,130 +766,130 @@ OnTouch:
 	npctalk "......", .@seyren$;
 	sleep2 1000;
 	setpcblock PCBLOCK_NPC, false;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : ... Seyren?!";
-	mes "[Eisen Werner]";
-	mes "How do you like the gift I've prepared?!";
-	mes "Are you satisfied?";
+	unittalk getcharid(3), "" + strcharinfo(0) + "：……赛依连？！";
+	mes "[艾森·维尔纳]";
+	mes "我准备的礼物怎么样？！";
+	mes "你满意吗？";
 	cutin "ep16_eisen01.bmp",1;
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "This fellow was among the delegation of that silly royal family.";
-	mes "Thanks to the experiment of some brave guy, I have obtained this great stuff.";
+	mes "[艾森·维尔纳]";
+	mes "这家伙是那个愚蠢王族的使节团中的一员。";
+	mes "多亏了某个勇敢家伙的实验，我才得到了这件好东西。";
 	next;
-	select("Are you talking about the In Vivo Experiment?");
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Are you talking about the In Vivo Experiment?";
+	select("你说的是活体实验吗？");
+	unittalk getcharid(3), "" + strcharinfo(0) + "：你说的是活体实验吗？";
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Yeah, exactly.";
-	mes "Well, there are plenty guys who do In Vivo Experiments apart from that fellow, but he was the first one brave enough to enhance a living creature.";
+	mes "[艾森·维尔纳]";
+	mes "对，没错。";
+	mes "嗯，除了那家伙之外，做活体实验的人多得是，但他是第一个敢强化活体的人。";
 	next;
 	cutin "ep16_eisen01.bmp",1;
-	mes "[Eisen Werner]";
-	mes "using the imitated heart fragment of Ymir";
-	mes "It was a great turning point for the In Vivo Experiments.";
+	mes "[艾森·维尔纳]";
+	mes "使用仿制的依美乐心脏碎片";
+	mes "那是活体实验的一大转折点。";
 	next;
-	mes "[Eisen Werner]";
-	mes "I was trying to apply it to many kinds of stuff.";
+	mes "[艾森·维尔纳]";
+	mes "我试着把它应用到各种各样的东西上。";
 	next;
-	mes "[Eisen Werner]";
-	mes "By the way....";
-	mes "You should say hello to it. Right?";
+	mes "[艾森·维尔纳]";
+	mes "顺便一提……";
+	mes "你应该跟它打个招呼。对吧？";
 	next;
-	mes "[Eisen Werner]";
-	mes "Ah~. That's right.";
-	mes "You don't need to say hello, because both of you are going to die!";
+	mes "[艾森·维尔纳]";
+	mes "啊～。说得对。";
+	mes "不用打招呼了，因为你们两个都要死了！";
 	cutin "ep16_eisen03.bmp",1;
 	next;
 	cutin "ep16_eisen02.bmp",1;
-	mes "[Eisen Werner]";
-	mes "Seyren, escort these guests to hell.";
-	mes "Do you understand what I am saying?";
+	mes "[艾森·维尔纳]";
+	mes "赛依连，送这些客人下地狱。";
+	mes "你明白我在说什么吗？";
 	next;
 	cutin "ep16_seiren02.bmp",2;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes ".......";
 	npctalk "......", .@seyren$;
 	next;
 	cutin "ep16_evt_ws.bmp",4;
-	mes "[Eisen Werner]";
-	mes "Hmm?";
-	mes "What is this, Seyren? Is it a negative phase now?";
+	mes "[艾森·维尔纳]";
+	mes "嗯？";
+	mes "这是怎么回事，赛依连？现在进入反抗期了吗？";
 	next;
-	mes "[Seyren]";
-	mes "I feel like I've woken up from a long sleep.";
-	mes "Maybe it was for this day.";
-	npctalk "I feel like I've woken up from a long sleep. Maybe it was for this day.", .@seyren$;
+	mes "[赛依连]";
+	mes "我感觉像是从长眠中醒来了。";
+	mes "也许就是为了这一天。";
+	npctalk "我感觉像是从长眠中醒来了。也许就是为了这一天。", .@seyren$;
 	next;
-	mes "[Eisen Werner]";
-	mes "Do not forget your duty, Seyren.";
-	mes "You are a weapon. You are nothing more than a puppet with the outfit of a knight called Seyren Windsor.";
+	mes "[艾森·维尔纳]";
+	mes "别忘了你的职责，赛依连。";
+	mes "你只是一件武器。你不过是披着赛依连·温莎这名骑士外衣的木偶。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Do you need me to explain step by step?";
-	mes "After transplanting the dummy of Ymir's Heart, the body could not endure the power and eventually collapsed.";
+	mes "[艾森·维尔纳]";
+	mes "需要我一步一步解释吗？";
+	mes "移植了依美乐心脏的仿制品后，身体无法承受那股力量，最终崩溃了。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Then its spirit duplicated the main body and kept dividing over and over.";
-	mes "During that process, its memory, consciousness, soul, mind and ego were all scattered like sand. They became meaningless.";
+	mes "[艾森·维尔纳]";
+	mes "随后它的灵魂复制了本体，不断地分裂再分裂。";
+	mes "在这个过程中，它的记忆、意识、灵魂、心智和自我都像沙一样散落。它们变得毫无意义。";
 	next;
-	mes "[Eisen Werner]";
-	mes "When we transplanted the dummy of Ymir's Heart into someone with a strong mind and body, we expected that person would become a stronger biological weapon.";
+	mes "[艾森·维尔纳]";
+	mes "当我们把依美乐心脏的仿制品移植到心智与肉体都很强的人身上时，我们期待那个人会成为更强的生物武器。";
 	next;
-	mes "[Eisen Werner]";
-	mes "We never expected that it would duplicate itself and divide endlessly. As a result, that experiment was regarded as a failure.";
+	mes "[艾森·维尔纳]";
+	mes "我们没想到它会自我复制、无休止地分裂。结果，那次实验被视为失败。";
 	next;
-	mes "[Eisen Werner]";
-	mes "To make things worse, it was an uncontrollable creature that was filled only with fury.";
+	mes "[艾森·维尔纳]";
+	mes "更糟的是，那是个只充满愤怒、无法控制的生物。";
 	next;
-	mes "[Seyren]";
-	mes "I am here.";
-	npctalk "I am here.", .@seyren$;
+	mes "[赛依连]";
+	mes "我在这里。";
+	npctalk "我在这里。", .@seyren$;
 	next;
-	mes "[Eisen Werner]";
-	mes "You know what? They are still dividing now.";
-	mes "Just imitating the main body, they are even growing inside it.";
+	mes "[艾森·维尔纳]";
+	mes "你知道吗？它们现在还在分裂。";
+	mes "它们只是模仿本体，甚至还在本体内部成长。";
 	next;
-	mes "[Eisen Werner]";
-	mes "Since they are imperfect beings now, they want to become perfect.";
-	mes "They are imperfect beings now, so they want to become perfect, rather than just imitating the main body and living as a virtual image.";
+	mes "[艾森·维尔纳]";
+	mes "既然它们现在是不完整的存在，它们就想变得完整。";
+	mes "它们现在是不完整的存在，所以想变得完整，而不是仅仅模仿本体、作为虚像活着。";
 	next;
-	mes "[Eisen Werner]";
-	mes "They wish to exist as a singular entity.";
+	mes "[艾森·维尔纳]";
+	mes "它们希望作为单一的存在而存在。";
 	next;
-	mes "[Eisen Werner]";
-	mes "And the only successful experiment is you. We call you Seyren now.";
+	mes "[艾森·维尔纳]";
+	mes "而唯一成功的实验就是你。我们现在称你为赛依连。";
 	next;
 	cutin "ep16_seiren02.bmp",2;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes "...... Is it the end of your will?";
 	npctalk "...... Is it the end of your will?", .@seyren$;
 	next;
 	cutin "ep16_eisen03.bmp",0;
-	mes "[Eisen Werner]";
-	mes "Hey, baby? You can't do this to me.";
-	mes "You must obey me!";
+	mes "[艾森·维尔纳]";
+	mes "喂，宝贝？你不能这样对我。";
+	mes "你必须服从我！";
 	next;
 	cutin "ep16_eisen02.bmp",0;
-	mes "[Eisen Werner]";
-	mes "Don't you remember how much I struggled to bring you here out of that hell?";
-	mes "Do not be swayed by the consciousness of someone who's already dead.";
+	mes "[艾森·维尔纳]";
+	mes "你不记得我费了多大劲才把你从那个地狱带到这里吗？";
+	mes "别被一个早已死去的人的意志动摇。";
 	next;
 	cutin "ep16_seiren02.bmp",2;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes "... Eisen Werner.";
-	mes "Let me ask you again. Is it the end of your will?";
+	mes "我再问你一次。你的意志就止于此吗？";
 	npctalk "... Eisen Werner. Let me ask you again. Is it the end of your will?", .@seyren$;
 	next;
 	cutin "ep16_eisen01.bmp",0;
-	mes "[Eisen Werner]";
-	mes "Damn!";
-	mes "I never expected this!";
-	mes "Isn't this world a funny place? Ha ha ha ha ha";
+	mes "[艾森·维尔纳]";
+	mes "该死！";
+	mes "我完全没想到！";
+	mes "这个世界是不是很可笑？哈哈哈哈哈";
 	next;
-	mes "[Eisen Werner]";
-	mes "Never think that I'm finished here.";
-	mes "I don't need a loser either.";
+	mes "[艾森·维尔纳]";
+	mes "别以为我到此为止了。";
+	mes "我也不需要废物。";
 	close2;
 	setpcblock PCBLOCK_NPC, true;
 	cutin "",255;
@@ -902,101 +902,101 @@ OnTouch:
 	sleep2 2000;
 	setpcblock PCBLOCK_NPC, false;
 	npctalk "Oh....", .@seyren$;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes "... Eisen. You have abandoned everything like this.";
 	npctalk "... Eisen. You have abandoned everything like this.", .@seyren$;
 	specialeffect2 EF_DEVIL3;
 	cutin "ep16_seiren01.bmp",2;
 	next;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes ".. Ah...";
 	npctalk ".. Ah...", .@seyren$;
 	cutin "ep16_seiren02.bmp",2;
 	next;
-	mes "[Seyren]";
-	mes "The solidity is weakening again.";
-	mes "Now, I have a much more urgent message for you rather than for Eisen.";
-	npctalk "The solidity is weakening again. Now, I have a much more urgent message for you rather than for Eisen.", .@seyren$;
+	mes "[赛依连]";
+	mes "实体化又开始减弱了。";
+	mes "现在，比起艾森，我有更紧要的话要对你说。";
+	npctalk "实体化又开始减弱了。现在，比起艾森，我有更紧要的话要对你说。", .@seyren$;
 	next;
-	mes "[Seyren]";
-	mes "I've been waiting for you for a long time.";
-	mes "As Eisen said, it's no longer important whether I'm Seyren or not.";
-	npctalk "I've been waiting for you for a long time. As Eisen said, it's no longer important whether I'm Seyren or not.", .@seyren$;
+	mes "[赛依连]";
+	mes "我已经等了你很久。";
+	mes "正如艾森所说，我是不是赛依连已经不重要了。";
+	npctalk "我已经等了你很久。正如艾森所说，我是不是赛依连已经不重要了。", .@seyren$;
 	next;
-	mes "[Seyren]";
-	mes "Since I had the ability to think, I didn't know who I was nor why I existed.";
+	mes "[赛依连]";
+	mes "自从我有了思考的能力，我就不知道自己是谁，也不知道自己为何存在。";
 	next;
 	specialeffect2 EF_DEVIL4;
-	mes "[Seyren]";
-	mes "The continuous division created countless copies of myself.";
+	mes "[赛依连]";
+	mes "不断的分裂创造出了无数个我。";
 	next;
-	mes "[Seyren]";
-	mes "The power entwined with the dummy of Ymir's Heart, which responded to my will and that of my companions. They wanted to unite, but kept dividing themselves over and over.";
+	mes "[赛依连]";
+	mes "那股与依美乐心脏仿制品交织的力量，回应了我和同伴们的意志。它们想要合而为一，却不断地分裂再分裂。";
 	next;
 	specialeffect2 EF_DEVIL5;
 	cutin "ep16_seiren01.bmp",2;
-	mes "[Seyren]";
-	mes "How many copies of myself have been created so far?";
+	mes "[赛依连]";
+	mes "到目前为止，已经创造出了多少个我？";
 	next;
 	cutin "ep16_seiren02.bmp",2;
-	mes "[Seyren]";
-	mes "I lost the ego after continuous division, but was regenerated as the previous shape. I don't think it was a coincidence.";
+	mes "[赛依连]";
+	mes "在持续分裂中我失去了自我，却又以先前的模样重生。我认为那不是巧合。";
 	next;
-	mes "[Seyren]";
-	mes "I thought there must have been a reason.";
+	mes "[赛依连]";
+	mes "我想一定有其原因。";
 	next;
-	mes "[Seyren]";
-	mes "And I realized it after looking at ^4d4dffTerra Gloria^000000.";
-	mes "The reason why the god gave me this opportunity.";
+	mes "[赛依连]";
+	mes "而我在看到^4d4dffTerra Gloria^000000之后明白了。";
+	mes "神明给我这个机会的原因。";
 	next;
 	specialeffect2 EF_DEVIL6;
 	cutin "ep16_seiren01.bmp",2;
-	mes "[Seyren]";
-	mes "Have you come to reclaim this?";
+	mes "[赛依连]";
+	mes "你是来取回这个的吗？";
 	mes "... The land is gone and only the star remains.";
 	next;
 	specialeffect2 EF_DEVIL7;
 	cutin "ep16_seiren02.bmp",2;
-	mes "[Seyren]";
-	mes "Eisen is right. ^4d4dffSeyren Windsor is no longer in this world.^000000";
-	mes "All I have now is the strong will to transfer something on and on.";
+	mes "[赛依连]";
+	mes "艾森说得对。^4d4dff赛依连·温莎已不在这个世界上了。^000000";
+	mes "我现在拥有的，只有将某样东西不断传承下去的强烈意志。";
 	next;
 	specialeffect2 EF_SCREEN_QUAKE;
 	specialeffect2 EF_DEVIL8;
 	cutin "ep16_seiren01.bmp",2;
-	mes "[Seyren]";
-	mes "Maybe that bit of will made me exist.";
-	mes "But it's over now.";
+	mes "[赛依连]";
+	mes "也许正是那一点意志让我得以存在。";
+	mes "但现在已经结束了。";
 	cutin "ep16_seiren02.bmp",2;
 	next;
 	specialeffect2 EF_DEVIL9;
 	cutin "ep16_seiren01.bmp",2;
-	mes "[Seyren]";
+	mes "[赛依连]";
 	mes ".....";
 	next;
-	mes "[Seyren]";
-	mes "I really don't have more time.";
-	mes "After this moment, ^4d4dffI will be divided and scattered.^000000 again.";
+	mes "[赛依连]";
+	mes "我真的没有更多时间了。";
+	mes "这一刻之后，^4d4dff我将再次分裂消散。^000000";
 	next;
-	mes "[Seyren]";
-	mes "While I still have my will now, I have one message to give you.";
+	mes "[赛依连]";
+	mes "趁我现在还有意志，我有一句话要告诉你。";
 	next;
 	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1") {
-		mes "[Seyren]";
-		mes "Please, go ahead.";
-		mes "Seyren Windsor, the knight of Prontera failed in the task.";
+		mes "[赛依连]";
+		mes "请说吧。";
+		mes "普隆德拉的骑士赛依连·温莎任务失败了。";
 		next;
-		mes "[Seyren]";
-		mes "^4d4dffMe and all my companions died long ago.";
-		mes "Please don't waste your affections on the bodies that are already dead.^000000";
+		mes "[赛依连]";
+		mes "^4d4dff我和我所有的同伴早已死去。";
+		mes "请不要把感情浪费在早已死去的躯壳上。^000000";
 		next;
-		mes "[Seyren]";
-		mes "They are just like ghosts covered with peels.";
-		mes "I was lucky to show my last will in front of you.";
+		mes "[赛依连]";
+		mes "它们就像披着外皮的幽灵。";
+		mes "我很幸运能在你面前表达最后的意愿。";
 		next;
-		mes "[Seyren]";
-		mes "They are ^4d4dffrelics^000000 of me and my companions.";
-		mes "Please give them to our families.";
+		mes "[赛依连]";
+		mes "它们是^4d4dff我和同伴们的遗物^000000。";
+		mes "请把它们交给我们的家人。";
 		if (is_party_leader() == true) {
 			getitem 25179,1;	// Blessing_Star
 			getitem 23087,1;	// Small_Leather_Bag
@@ -1020,9 +1020,9 @@ OnTouch:
 		end;
 	}
 	// daily
-	mes "[Seyren]";
-	mes "It was great to see you at the end.";
-	mes "Thank you... Bye.";
+	mes "[赛依连]";
+	mes "最后能见到你，真好。";
+	mes "谢谢你……再见。";
 	close2;
 	setpcblock PCBLOCK_NPC, true;
 	cutin "",255;
@@ -1037,7 +1037,7 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, false;
 	if (is_party_leader() == true)
 		'event_final = 0;
-	mapannounce 'map_slw$, "The setting of the central room has been initialized.", bc_map,0xFF99;
+	mapannounce 'map_slw$, "中枢室的设置已初始化。", bc_map,0xFF99;
 	warpparty 'map_slw$,54,134,getcharid(1),'map_slw$,2,2;
 	disablenpc .@seyren$;
 	end;
@@ -1053,23 +1053,23 @@ OnTouch:
 		end;
 	setpcblock PCBLOCK_NPC, true;
 	.@npc_name$ = instance_npcname("Pet child#boss_master");
-	npctalk "How dare you come in! You're so brave!", .@npc_name$;
+	npctalk "你竟敢进来！真够勇敢的！", .@npc_name$;
 	sleep2 3000;
-	npctalk "You must be honored to fight me!", .@npc_name$;
+	npctalk "能与我战斗，你该感到荣幸！", .@npc_name$;
 	sleep2 3000;
 	npctalk ".......", .@npc_name$;
 	sleep2 3000;
 	npctalk ".. Damn Werner. Why did you mix me with a wolf?", .@npc_name$;
 	sleep2 3000;
-	npctalk "A... anyway, you are dead meat.", .@npc_name$;
+	npctalk "反……反正，你死定了。", .@npc_name$;
 	sleep2 3000;
 	setpcblock PCBLOCK_NPC, false;
 	disablenpc instance_npcname("#boss_master_dummy");
-	npctalk "Beeee prepared!!!", .@npc_name$;
+	npctalk "准——备——好——了——吗！！！", .@npc_name$;
 	specialeffect EF_DANCE_BLADE_ATK, AREA, instance_npcname("Pet child#boss_master");
 	specialeffect EF_ALL_FULL_THROTTLE, AREA, instance_npcname("Pet child#boss_master");
 	donpcevent instance_npcname("#boss_master_lab") + "::OnStart";
-	mapannounce 'map_slw$, "The Magic field has been activated.", bc_map,0xFF99;
+	mapannounce 'map_slw$, "魔法领域已启动。", bc_map,0xFF99;
 	cloakonnpc instance_npcname("Pet child#boss_master");
 	end;
 }
@@ -1083,7 +1083,7 @@ OnStart:
 	end;
 OnMobDead:
 	if (mobcount( 'map_slw$, instance_npcname("#boss_master_lab") + "::OnMobDead" ) < 1) {
-		mapannounce 'map_slw$, "The Magic field has been eliminated. An entrance has been created.", bc_map,0xFF99;
+		mapannounce 'map_slw$, "魔法领域已消除。入口已生成。", bc_map,0xFF99;
 		enablenpc instance_npcname("Emergency exit#exit_war");
 		disablenpc instance_npcname("#boss_master_lab");
 	}

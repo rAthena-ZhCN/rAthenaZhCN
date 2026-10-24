@@ -9,20 +9,20 @@
 //		monsters killed. [Capuche]
 //============================================================
 
-lhz_dun_n,0,0	monster	--ja--	3208,20,5000,0,"lhz_dun_n::OnRegularDead3208"
-lhz_dun_n,0,0	monster	--ja--	3209,10,5000,0,"lhz_dun_n::OnRegularDead3209"
-lhz_dun_n,0,0	monster	--ja--	3210,15,5000,0,"lhz_dun_n::OnRegularDead3210"
-lhz_dun_n,0,0	monster	--ja--	3211,20,5000,0,"lhz_dun_n::OnRegularDead3211"
-lhz_dun_n,0,0	monster	--ja--	3212,10,5000,0,"lhz_dun_n::OnRegularDead3212"
-lhz_dun_n,0,0	monster	--ja--	3213,10,5000,0,"lhz_dun_n::OnRegularDead3213"
+lhz_dun_n,0,0	monster	Eremes Guille	3208,20,5000,0,"lhz_dun_n::OnRegularDead3208"
+lhz_dun_n,0,0	monster	Magaleta Sorin	3209,10,5000,0,"lhz_dun_n::OnRegularDead3209"
+lhz_dun_n,0,0	monster	Catherine Cheiron	3210,15,5000,0,"lhz_dun_n::OnRegularDead3210"
+lhz_dun_n,0,0	monster	Shecil Damon	3211,20,5000,0,"lhz_dun_n::OnRegularDead3211"
+lhz_dun_n,0,0	monster	Harword Alt-Eisen	3212,10,5000,0,"lhz_dun_n::OnRegularDead3212"
+lhz_dun_n,0,0	monster	Seyren Windsor	3213,10,5000,0,"lhz_dun_n::OnRegularDead3213"
 
-lhz_dun_n,0,0	monster	--ja--	3226,10,5000,0,"lhz_dun_n::OnRegularDead3226"
-lhz_dun_n,0,0	monster	--ja--	3227,10,5000,0,"lhz_dun_n::OnRegularDead3227"
-lhz_dun_n,0,0	monster	--ja--	3228,15,5000,0,"lhz_dun_n::OnRegularDead3228"
-lhz_dun_n,0,0	monster	--ja--	3229,15,5000,0,"lhz_dun_n::OnRegularDead3229"
-lhz_dun_n,0,0	monster	--ja--	3230,15,5000,0,"lhz_dun_n::OnRegularDead3230"
-lhz_dun_n,0,0	monster	--ja--	3231,10,5000,0,"lhz_dun_n::OnRegularDead3231"
-lhz_dun_n,0,0	monster	--ja--	3232,10,5000,0,"lhz_dun_n::OnRegularDead3232"
+lhz_dun_n,0,0	monster	Randel Lawrence	3226,10,5000,0,"lhz_dun_n::OnRegularDead3226"
+lhz_dun_n,0,0	monster	Flamel Emule	3227,10,5000,0,"lhz_dun_n::OnRegularDead3227"
+lhz_dun_n,0,0	monster	Celia Alde	3228,15,5000,0,"lhz_dun_n::OnRegularDead3228"
+lhz_dun_n,0,0	monster	Chen Liu	3229,15,5000,0,"lhz_dun_n::OnRegularDead3229"
+lhz_dun_n,0,0	monster	Gertie Wie	3230,15,5000,0,"lhz_dun_n::OnRegularDead3230"
+lhz_dun_n,0,0	monster	Alphoccio Basil	3231,10,5000,0,"lhz_dun_n::OnRegularDead3231"
+lhz_dun_n,0,0	monster	Trentini	3232,10,5000,0,"lhz_dun_n::OnRegularDead3232"
 
 lhz_dun_n,0,0,0	script	lhz_dun_n	-1,{
 	end;
@@ -82,7 +82,7 @@ S_Mini:
 			}
 			// MvP monster seems to only spawn at 12 o'clock
 			monster "lhz_dun_n",140,230,"--en--", F_Rand(3220,3221,3222,3223,3224,3225,3240,3241,3242,3243,3244,3245,3246),1, "lhz_dun_n::OnMyMVPDead";
-			mapannounce "lhz_dun_n", "Voice of Reaper: It's been a while.", bc_map;	// unknown message
+			mapannounce "lhz_dun_n", "死神之声：好久不见。", bc_map;	// unknown message
 			.lhz_dun_n_boss = 1;
 			deletearray .lhz_dun_n;
 		}
@@ -92,7 +92,7 @@ OnMyMVPDead:
 	initnpctimer;
 	.lhz_dun_n_delay = 0;
 	killmonster "lhz_dun_n", "lhz_dun_n::OnMyMVPDead";
-	mapannounce "lhz_dun_n", "Voice of Reaper: See you soon.", bc_map, "0x00FF00";
+	mapannounce "lhz_dun_n", "死神之声：很快再见。", bc_map, "0x00FF00";
 	end;
 OnTimer60000:
 	.lhz_dun_n_delay++;

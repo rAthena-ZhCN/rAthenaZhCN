@@ -36,9 +36,9 @@
 // - No arguments.
 function	script	F_CashStore	{
 	cutin "kafra_01",2;
-	mes "[Kafra Employee]";
-	mes "Welcome to the Kafra Corporation.";
-	mes "Here, let me open your Storage for you.";
+	mes "[卡普拉职员]";
+	mes "欢迎来到卡普拉公司。";
+	mes "来，我为你打开仓库。";
 	close2;
 	openstorage;
 	cutin "",255;
@@ -78,7 +78,7 @@ function	script	F_CashReset	{
 function	script	F_CashDungeon	{
 	switch(getarg(0)) {
 	case 1:
-		switch(select("Nogg Road:Mjolnir Dead Pit:"+((checkre(0))?"":"Umbala Dungeon")+":Einbroch Mine Dungeon:Payon Dungeon:Toy Dungeon:Glast Heim Underprison:Luoyang Dungeon:Hermit's Checkers:Izlude Dungeon:Turtle Island Dungeon:Clock Tower B3f:Clock Tower 3f:Glast Heim Culvert 2f:Sphinx Dungeon 4f:Inside Pyramid 4f:Prontera Culvert 3f:Amatsu Dungeon 1f (Tatami Maze):Somatology Laboratory 1st floor:Ayothya Ancient Shrine 2nd floor")) {
+		switch(select("诺格路:妙尔尼尔死坑:"+((checkre(0))?"":"乌姆巴拉地下城")+":艾音布罗克矿山地下城:裴扬地下城:玩具地下城:葛拉斯特海姆地下监狱:洛阳地下城:隐士的棋盘:伊斯鲁得地下城:乌龟岛地下城:钟塔地下3层:钟塔3层:葛拉斯特海姆下水道2层:狮身人面像地下城4层:金字塔内部4层:普隆德拉下水道3层:天津地下城1层（榻榻米迷宫）:人体学实验室1层:阿育塔雅古代神殿2层")) {
 		case 1: warp "mag_dun01",125,71; end;	// Nogg Road
 		case 2: warp "mjo_dun02",80,297; end;	// Mjolnir Dead Pit
 		case 3: warp "um_dun02",125,122; end;	// Umbala Dungeon (Pre-Renewal only)
@@ -101,7 +101,7 @@ function	script	F_CashDungeon	{
 		case 20: warp "ayo_dun02",70,240; end;	// Ayothaya Dungeon 2F
 		}
 	case 2: // Menu names are not official.
-		switch(select("Thor Volcano 2f:Ice Dungeon Entrance:Nameless Island Entrance:Niflheim:Labyrinth Forest 2f:Ruins of Juperos Entrance:Ant Hell 2f:Kiel Hyre's Academy Entrance:Thanatos Tower Entrance:Abyss Lake Entrance:Rachel Sanctuary Entrance:Odin Temple 2f")) {
+		switch(select("托尔火山2层:冰洞窟入口:无名岛入口:尼芙菲姆:迷宫森林2层:朱佩罗斯遗迹入口:蚂蚁地狱2层:基尔海尔学院入口:塔纳托斯之塔入口:深渊湖入口:拉赫圣域入口:奥丁神殿2层")) {
 		case 1: warp "thor_v02",77,208; end;	// Thor Volcano 2F
 		case 2: warp "ra_fild01",237,333; end;	// Ice Dungeon
 		case 3: warp "ve_fild07",127,131; end;	// Nameless Island
@@ -116,7 +116,7 @@ function	script	F_CashDungeon	{
 		case 12: warp "odin_tem02",257,374; end;	// Odin Temple F2
 		}
 	case 3:
-		switch(select("Bio Lab (2nd Floor):Ice Dungeon (3rd Floor):Odin Temple (3rd Floor):Thor Volcano (3rd Floor):Abyss Lake (3rd Floor):Juperos Ruins (2nd Floor)")) {
+		switch(select("生物实验室（2层）:冰洞窟（3层）:奥丁神殿（3层）:托尔火山（3层）:深渊湖（3层）:朱佩罗斯遗迹（2层）")) {
 		case 1: warp "lhz_dun02",145,149; end;	// Somatology Laboratory 2F
 		case 2: warp "ice_dun03",150,176; end;	// Ice Dungeon 3F
 		case 3: warp "odin_tem03",278,235; end;	// Odin Temple 3F
@@ -135,7 +135,7 @@ function	script	F_CashDungeon	{
 function	script	F_CashCity	{
 	switch(getarg(0)) {
 	case 1: // Yellow - Rune-Midgarts
-		switch(select("Prontera:Izlude:Geffen:Payon:Morocc:Alberta:Al de Baran")) {
+		switch(select("普隆德拉:伊斯鲁得:吉芬:裴扬:梦罗克:阿尔贝塔:艾尔帕兰")) {
 			case 1: warp "prontera",122,87; end;
 			case 2: if (checkre(0)) warp "izlude",130,90; else warp "izlude",91,105; end;
 			case 3: warp "geffen",128,48; end;
@@ -145,7 +145,7 @@ function	script	F_CashCity	{
 			case 7: warp "aldebaran",140,110; end;
 		}
 	case 2: // Green - Schwarzwald
-		switch(select("Juno:Lighthalzen:Einbroch:Einbech:Hugel")) {
+		switch(select("朱诺:里希塔乐镇:艾音布罗克:艾音贝赫:休格尔")) {
 			case 1: warp "yuno",160,170; end;
 			case 2: warp "lighthalzen",190,310; end;
 			case 3: warp "einbroch",230,190; end;
@@ -153,19 +153,19 @@ function	script	F_CashCity	{
 			case 5: warp "hugel",92,165; end;
 		}
 	case 3: // Red - Arunafeltz
-		switch(select("Rachel:Veins")) {
+		switch(select("拉赫:维恩斯")) {
 			case 1: warp "rachel",120,125; end;
 			case 2: warp "veins",215,105; end;
 		}
 	case 4: // Blue - Islands
-		switch(select("Amatsu:Kunlun:Ayothaya:Luoyang")) {
+		switch(select("天津:昆仑:阿育塔雅:洛阳")) {
 			case 1: warp "amatsu",110,140; end;
 			case 2: warp "gonryun",160,115; end;
 			case 3: warp "ayothaya",220,170; end;
 			case 4: warp "louyang",217,95; end;
 		}
 	case 5: // Blue - Islands (Renewal)
-		switch(select("Amatsu:Kunlun:Ayothaya:Luoyang:Moscovia:Dewata:Brasilis")) {
+		switch(select("天津:昆仑:阿育塔雅:洛阳:莫斯科维亚:德瓦塔:巴西利斯")) {
 			case 1: warp "amatsu",110,140; end;
 			case 2: warp "gonryun",160,115; end;
 			case 3: warp "ayothaya",220,170; end;
@@ -185,7 +185,7 @@ function	script	F_CashCity	{
 function	script	F_CashTele	{
 	switch(getarg(0)) {
 	case 1:
-		switch(select("Prontera:Geffen:Al de Baran:Izlude:Savepoint")) {
+		switch(select("普隆德拉:吉芬:艾尔帕兰:伊斯鲁得:存档点")) {
 		case 1: warp "prontera",119,77; end;
 		case 2: warp "geffen",119,39; end;
 		case 3: warp "aldebaran",165,107; end;
@@ -193,7 +193,7 @@ function	script	F_CashTele	{
 		case 5: warp "SavePoint",0,0; end;
 		}
 	case 2:
-		switch(select("Payon:Alberta:Morocc:Comodo:Savepoint")) {
+		switch(select("裴扬:阿尔贝塔:梦罗克:科莫多:存档点")) {
 		case 1: warp "payon",158,55; end;
 		case 2: warp "alberta",115,57; end;
 		case 3: warp "morocc",158,48; end;
@@ -201,7 +201,7 @@ function	script	F_CashTele	{
 		case 5: warp "SavePoint",0,0; end;
 		}
 	case 3:
-		switch(select("Luoyang:Amatsu:Kunlun Field:Ayothaya:Savepoint")) {
+		switch(select("洛阳:天津:昆仑原野:阿育塔雅:存档点")) {
 		case 1: warp "louyang",214,101; end;
 		case 2: warp "amatsu",112,145; end;
 		case 3: warp "gonryun",160,118; end;
@@ -209,14 +209,14 @@ function	script	F_CashTele	{
 		case 5: warp "SavePoint",0,0; end;
 		}
 	case 4:
-		switch(select("Lutie Field:Umbala:Niflheim:Savepoint")) {
+		switch(select("露缇原野:乌姆巴拉:尼芙菲姆:存档点")) {
 		case 1: warp "xmas",148,131; end;
 		case 2: warp "umbala",93,154; end;
 		case 3: warp "niflheim",187,189; end;
 		case 4: warp "SavePoint",0,0; end;
 		}
 	case 5:
-		switch(select("Juno:Einbroch:Lighthalzen:Hugel:Savepoint")) {
+		switch(select("朱诺:艾音布罗克:里希塔乐镇:休格尔:存档点")) {
 		case 1: warp "yuno",157,124; end;
 		case 2: warp "einbroch",230,192; end;
 		case 3: warp "lighthalzen",158,94; end;
@@ -224,7 +224,7 @@ function	script	F_CashTele	{
 		case 5: warp "SavePoint",0,0; end;
 		}
 	case 6:
-		switch(select("Rachel:Veins:Savepoint")) {
+		switch(select("拉赫:维恩斯:存档点")) {
 		case 1: warp "rachel",118,132; end;
 		case 2: warp "veins",214,125; end;
 		case 3: warp "SavePoint",0,0; end;
@@ -238,7 +238,7 @@ function	script	F_CashTele	{
 // - Warp player to selected guild castle.
 // - No arguments.
 function	script	F_CashSiegeTele	{
-	switch(select("Neuschwanstein (aldeg_cas01):Hohenschwangau (aldeg_cas02):Nuernberg (aldeg_cas03):Wuerzburg (aldeg_cas04):Rothenburg (aldeg_cas05):Repherion (gefg_cas01):Eeyorbriggar (gefg_cas02):Yesnelph (gefg_cas03):Bergel (gefg_cas04):Mersetzdeitz (gefg_cas05):Bright Arbor (payg_cas01):Sacred Altar (payg_cas02):Holy Shadow (payg_cas03):Scarlet Palace (payg_cas04):Bamboo Grove Hill (payg_cas05):Kriemhild (prtg_cas01):Swanhild (prtg_cas02):Fadhgridh (prtg_cas03):Skoegul (prtg_cas04):Gondul (prtg_cas05)")) {
+	switch(select("新天鹅堡（aldeg_cas01）:霍恩施旺高（aldeg_cas02）:纽伦堡（aldeg_cas03）:维尔茨堡（aldeg_cas04）:罗滕堡（aldeg_cas05）:雷菲里昂（gefg_cas01）:伊约布里格（gefg_cas02）:耶斯内尔夫（gefg_cas03）:贝格尔（gefg_cas04）:梅尔塞兹代茨（gefg_cas05）:光辉凉亭（payg_cas01）:神圣祭坛（payg_cas02）:圣影（payg_cas03）:绯红宫殿（payg_cas04）:竹林山丘（payg_cas05）:克里姆希尔特（prtg_cas01）:斯万希尔德（prtg_cas02）:法德格里德（prtg_cas03）:斯科古尔（prtg_cas04）:贡杜尔（prtg_cas05）")) {
 	case 1: warp "alde_gld",48,91; end;
 	case 2: warp "alde_gld",103,245; end;
 	case 3: warp "alde_gld",142,87; end;
@@ -268,7 +268,7 @@ function	script	F_CashSiegeTele	{
 // - Warp player to selected guild castle.
 // - No arguments.
 function	script	F_CashSiegeTele2	{
-	switch(select("Mardoll (arug_cas01):Cyr (arug_cas02):Horn (arug_cas03):Gefn (arug_cas04):Badanis (arug_cas05):Himinn (schg_cas01):Andlangr (schg_cas02):Vidblainn (schg_cas03):Hljod (schg_cas04):Schatirnil (schg_cas05)")) {
+	switch(select("玛尔多尔（arug_cas01）:希尔（arug_cas02）:霍恩（arug_cas03）:格芙恩（arug_cas04）:巴达尼斯（arug_cas05）:希米恩（schg_cas01）:安德朗格（schg_cas02）:维德布莱恩（schg_cas03）:赫利约德（schg_cas04）:沙提尔尼尔（schg_cas05）")) {
 	case 1: warp "aru_gld",159,272; end;
 	case 2: warp "aru_gld",86,50; end;
 	case 3: warp "aru_gld",63,157; end;
@@ -289,33 +289,33 @@ function	script	F_CashSiegeTele2	{
 // - No arguments.
 function	script	F_Snowball	{
 	cutin "rutie_snownow03",2;
-	mes "[Snowman]";
-	mes "Merry Christmas!";
-	switch(select("Restore Some HP/SP:Strengthen My Body!:Restore My SP Fully.:Return to Savepoint")) {
+	mes "[雪人]";
+	mes "圣诞快乐！";
+	switch(select("恢复部分HP/SP:强化我的身体！:完全恢复SP。:返回存档点")) {
 	case 1:
-		mes "Aha!";
-		mes "Quiet night~";
+		mes "啊哈！";
+		mes "平安夜~";
 		percentheal 70,70;
 		close2;
 		cutin "",255;
 		break;
 	case 2:
 		mes "Blessings.";
-		mes "Holy night~";
+		mes "圣夜~";
 		unitskilluseid getcharid(3),"SM_ENDURE",10;
 		close2;
 		cutin "",255;
 		break;
 	case 3:
-		mes "Hey!";
-		mes "White Christmas~";
+		mes "嘿！";
+		mes "白色圣诞~";
 		percentheal 0,100;
 		close2;
 		cutin "",255;
 		break;
 	case 4:
-		mes "Jingle Bells~";
-		mes "Jingle Bells~ Jingle Bells!";
+		mes "铃儿响叮当~";
+		mes "铃儿响叮当~ 铃儿响叮当！";
 		close2;
 		cutin "",255;
 		warp "SavePoint",0,0;

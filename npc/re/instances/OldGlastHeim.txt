@@ -21,60 +21,60 @@
 //      Note: The treasure room is not accessible in fast mode.
 //============================================================
 
-glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
+glast_01,204,273,5	script	福金	4_M_SAGE_C,{
 	if (BaseLevel < 130) {
-		mes "[Hugin]";
-		mes "Why don't you come back after becoming stronger?";
-		mes "Maybe, level 130.";
+		mes "[福金]";
+		mes "等你变得更强之后再来吧？";
+		mes "大概，130级吧。";
 		close;
 	}
 	if (isbegin_quest(12316) == 0) {
-		mes "[Hugin]";
-		mes "A long time ago, this castle did not look like this.";
+		mes "[福金]";
+		mes "很久以前，这座城堡并不是现在这个样子。";
 		next;
-		mes "[Hugin]";
-		mes "Ah, I'm sorry. I'm muttering in front of a stranger.";
+		mes "[福金]";
+		mes "啊，抱歉。我竟在陌生人面前自言自语。";
 		next;
-		mes "[Hugin]";
-		mes "My name is Hugin. I'm studying the dimensional gap between time and space.";
+		mes "[福金]";
+		mes "我叫福金。我正在研究时间与空间之间的次元裂隙。";
 		next;
-		select("There's something like that here?");
-		mes "[Hugin]";
-		mes "Have you ever wondered about the history of Glast Heim?";
+		select("这里会有那种东西？");
+		mes "[福金]";
+		mes "你可曾好奇过克雷斯特汉姆古城的历史？";
 		next;
-		mes "[Hugin]";
-		mes "There was a King named Shumiche who was known as a tyrant in the history of the Rune-Midgarts Kingdom.";
+		mes "[福金]";
+		mes "在卢恩米德加尔特王国的历史上，曾有一位被称为暴君的国王，名叫舒米切。";
 		next;
-		mes "[Hugin]";
-		mes "Time will reveal the true answers if we look in the right places.";
+		mes "[福金]";
+		mes "只要找对地方，时间终会揭示真正的答案。";
 		next;
-		if (select("I don't care about history","That is interesting. Did you find anything?") == 1) {
-			mes "[Hugin]";
-			mes "Really? Hmm, please come back later when you are interested then.";
+		if (select("我对历史不感兴趣","真有意思。你有什么发现吗？") == 1) {
+			mes "[福金]";
+			mes "是吗？嗯，那等你感兴趣的时候再来吧。";
 			close;
 		}
-		mes "[Hugin]";
-		mes "Actually, dimensional time travel is possible but I'm too afraid to go there.";
+		mes "[福金]";
+		mes "其实，次元时间旅行是可行的，但我不敢前往那里。";
 		next;
-		mes "[Hugin]";
-		mes "It might be possible for you!";
+		mes "[福金]";
+		mes "也许你可以做到！";
 		next;
-		mes "[Hugin]";
-		mes "Do you want to time travel?";
+		mes "[福金]";
+		mes "你想进行时间旅行吗？";
 		next;
-		if (select("No, thanks.","Yes, of course I do!") == 1) {
-			mes "[Hugin]";
-			mes "Really? But, jumping gigawatts, this is such a great opportunity.";
+		if (select("不，谢谢。","当然，我想！") == 1) {
+			mes "[福金]";
+			mes "真的吗？不过，我的天，这可是个大好机会。";
 			close;
 		}
-		mes "[Hugin]";
-		mes "I knew that you would understand what I said. Well, please tell me what you want to do.";
+		mes "[福金]";
+		mes "我就知道你能理解我的话。那么，请告诉我你想做什么。";
 		setquest 12316;// Meeting Hugin
 		completequest 12316;
 	}
 	else {
-		mes "[Hugin]";
-		mes "Umm? Did you see me at another place? I don't think so. What about this time?";
+		mes "[福金]";
+		mes "嗯？你在别的地方见过我？我不这么认为。这次呢？";
 		if (isbegin_quest(12322) == 1)
 			erasequest 12322;
 	}
@@ -86,19 +86,19 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 		.@md_name$ = "Old Glast Heim";
 
 		if (!instance_check_party(.@party_id)) {
-			mes "[Hugin]";
-			mes "Why don't you make a party with more than 1 person and talk to me again?";
+			mes "[福金]";
+			mes "不如你先组建一支两人以上的队伍，再来找我吧？";
 			close;
 		}
 		if (is_party_leader() == true)
-			.@menu$ = "Generate Time Gap";
+			.@menu$ = "生成时空裂隙";
 		else {
-			mes "[Hugin]";
-			mes "Have we met before? No way. It's my first time seeing you. What do you want?";
+			mes "[福金]";
+			mes "我们以前见过吗？不可能。我可是第一次见到你。你有什么事？";
 		}
 		if (isbegin_quest(12318) == 0)
 			setquest 12318;// Corrupted Soul Hunt
-		switch( select( .@menu$, "Enter Old Glast Heim", "Cancel" ) ) {
+		switch( select( .@menu$, "进入旧克雷斯特汉姆", "取消" ) ) {
 		case 1:
 			switch( instance_create(.@md_name$) ) {
 			case -3:
@@ -107,30 +107,30 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 			case -4:
 			case -2:
 			case -1:
-				mes "Party Name: " + getpartyname( getcharid(1) );
-				mes "Party Leader: " + strcharinfo(0);
-				mes "^0000ff" + .@md_name$ + "^000000 - time gap generation failed.";
+				mes "队伍名称：" + getpartyname( getcharid(1) );
+				mes "队长：" + strcharinfo(0);
+				mes "^0000ff" + .@md_name$ + "^000000 - 时空裂隙生成失败。";
 				close;
 			}
-			mes "[Hugin]";
-			mes "After the time gap opens, please tell me again.";
+			mes "[福金]";
+			mes "等时空裂隙开启后，请再告诉我。";
 			close;
 		case 2:
 			switch( instance_enter(.@md_name$) ) {
 			case IE_OTHER:
-				mes "[Hugin]";
-				mes "An unknown error has occurred.";
+				mes "[福金]";
+				mes "发生了未知错误。";
 				close;
 			case IE_NOINSTANCE:
-				mes "[Hugin]";
-				mes "The time gap is not yet open.";
+				mes "[福金]";
+				mes "时空裂隙尚未开启。";
 				close;
 			case IE_NOMEMBER:
-				mes "[Hugin]";
-				mes "Your body is not fit to enter the time gap. You won't be able to get in if you're not in a party.";
+				mes "[福金]";
+				mes "你的身体状态不适合进入时空裂隙。若不在队伍中，你将无法进入。";
 				close;
 			case IE_OK:
-				mapannounce "glast_01", "" + getpartyname( getcharid(1) ) + " party member " + strcharinfo(0) + " enters the " + .@md_name$ + ".", bc_map,0x00FF99;
+				mapannounce "glast_01", "" + getpartyname( getcharid(1) ) + "队伍成员" + strcharinfo(0) + "进入了" + .@md_name$ + ".", bc_map,0x00FF99;
 				setquest 12317;// Trace of Time Travel
 				// warp "1@gl_k",150,20;
 				end;
@@ -140,15 +140,15 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 		}
 	case 0:
 	case 1:
-		mes "[Hugin]";
-		mes "Oh, my...";
-		mes "You still have after-effects of time travel. You can't travel again with this condition.";
+		mes "[福金]";
+		mes "哦，天哪……";
+		mes "时间旅行的后遗症仍未消退。以你现在的状态无法再次旅行。";
 		next;
-		mes "[Hugin]";
-		mes "Staying healthy is important, so please take a break and come back again later.";
+		mes "[福金]";
+		mes "保持健康很重要，请先休息一下，之后再回来吧。";
 		close;
 	case 2:
-		mes "^0000ffAll traces of access to Old Glast Heim have been removed. Now you can talk with Hugin again.^000000";
+		mes "^0000ff所有进入旧克雷斯特汉姆的痕迹都已清除。现在你可以再次与福金交谈了。^000000";
 		if (isbegin_quest(12318) == 0)
 			setquest 12318;// Corrupted Soul Hunt
 		erasequest 12317;
@@ -175,22 +175,22 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 
 // Floor 1
 //============================================================
-1@gl_k,149,41,5	script	Varmundt#0	4_M_BARMUND,{
+1@gl_k,149,41,5	script	霸肋门德#0	4_M_BARMUND,{
 	if (is_party_leader() == false) {
-		mes "[Varmundt]";
-		mes "Where's your leader? I need his help.";
+		mes "[巴尔蒙德]";
+		mes "你们的队长在哪？我需要他的帮助。";
 		cutin "gl_barmund2",2;
 		close3;
 	}
 	// If the instance has already been completed once, the player can skip sector 1,2,3 and starts from the 1st boss MG_CORRUPTION_ROOT
 	if (isbegin_quest(12321) == 2) {
-		mes "You have a previous clear record. You can skip the scenario and proceed accordingly.";
+		mes "你已有通关记录。可以跳过剧情，直接继续。";
 		next;
-		if (select( "Omit moderately.", "Appreciate everything." ) == 1) {
+		if (select( "适度省略。", "细细品味全部。" ) == 1) {
 			cutin "GL_BARMUND1.bmp",2;
-			mes "[Varmundt]";
-			mes "I've seen you, " + strcharinfo(0) + ".";
-			mes "I'm sure I can trust you. Let's leave right away.";
+			mes "[巴尔蒙德]";
+			mes "又见到你了，" + strcharinfo(0) + ".";
+			mes "我确信可以信任你。我们立刻出发吧。";
 			close2;
 			cutin "",255;
 			if ('step == 0) {
@@ -206,43 +206,43 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 	}
 	.@account_id = getcharid(3);
 	.@player_name$ = strcharinfo(0);
-	mes "[Varmundt]";
-	mes "Are you the one ^0000ffHerico^000000 sent to help me?";
-	npctalk "Varmundt: Are you the one Herico sent to help me?";
+	mes "[巴尔蒙德]";
+	mes "你就是^0000ff赫里科^000000派来帮我的人吗？";
+	npctalk "巴尔蒙德：你就是赫里科派来帮我的人吗？";
 	cutin "gl_barmund1",2;
 	next;
-	select("Oh. Well I...");
+	select("哦。那个，我……");
 	mes "[" + .@player_name$ + "]";
-	mes "Ah yes, I am. Herico told me to meet you.";
-	unittalk .@account_id, .@player_name$ + " : Ah yes, I am. Herico told me to meet you.";
+	mes "啊，是的，我就是。赫里科让我来见你。";
+	unittalk .@account_id, .@player_name$ + "：啊，是的，我就是。赫里科让我来见你。";
 	next;
-	mes "[Varmundt]";
-	mes "We don't have much time. We must report to Sir Heinrich about Himelmez's invasion.";
-	npctalk "Varmundt: We don't have much time. We must report to Sir Heinrich about Himelmez's invasion.";
+	mes "[巴尔蒙德]";
+	mes "我们时间不多了。必须向海因里希爵士报告希梅尔梅兹的入侵。";
+	npctalk "巴尔蒙德：我们时间不多了。必须向海因里希爵士报告希梅尔梅兹的入侵。";
 	cutin "gl_barmund2",2;
 	next;
 	select("Himelmez...");
 	mes "[" + .@player_name$ + "]";
-	mes "Who is Himelmez?";
-	unittalk .@account_id, .@player_name$ + " : Who is Himelmez?";
+	mes "希梅尔梅兹是谁？";
+	unittalk .@account_id, .@player_name$ + "：希梅尔梅兹是谁？";
 	next;
-	mes "[Varmundt]";
-	mes "Herico didn't tell you?";
-	npctalk "Varmundt: Herico didn't tell you?";
+	mes "[巴尔蒙德]";
+	mes "赫里科没告诉你吗？";
+	npctalk "巴尔蒙德：赫里科没告诉你吗？";
 	cutin "gl_barmund3",2;
 	next;
-	mes "[Varmundt]";
-	mes "She is the Ruler of Death, Dead man's Valkyrie. Himelmez is looking to take the heart of Ymir from us.";
-	npctalk "Varmundt: She is the Ruler of Death, Dead man's Valkyrie. Himelmez is looking to take the heart of Ymir from us.";
+	mes "[巴尔蒙德]";
+	mes "她是死亡统治者，亡者的瓦尔基里。希梅尔梅兹正企图从我们手中夺走依美乐心脏。";
+	npctalk "巴尔蒙德：她是死亡统治者，亡者的瓦尔基里。希梅尔梅兹正企图从我们手中夺走依美乐心脏。";
 	cutin "gl_barmund2",2;
 	next;
-	mes "[Varmundt]";
-	mes "She might even destroy this whole castle if she wanted to.";
-	npctalk "Varmundt: She might even destroy this whole castle if she wanted to.";
+	mes "[巴尔蒙德]";
+	mes "只要她愿意，甚至可能摧毁整座城堡。";
+	npctalk "巴尔蒙德：只要她愿意，甚至可能摧毁整座城堡。";
 	next;
-	mes "[Varmundt]";
-	mes "Hurry! Report to Sir. Heinrich about Himelmez. I must check the defense barrier here!";
-	npctalk "Varmundt: Hurry! Report to Sir. Heinrich about Himelmez. I must check the defense barrier here!";
+	mes "[巴尔蒙德]";
+	mes "快！去向海因里希爵士报告希梅尔梅兹的事。我得检查这里的防御屏障！";
+	npctalk "巴尔蒙德：快！去向海因里希爵士报告希梅尔梅兹的事。我得检查这里的防御屏障！";
 	close2;
 	cutin "",255;
 	if ('step == 0) {
@@ -255,103 +255,103 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 	end;
 }
 
-1@gl_k,145,104,6	script	Khalitzburg Knightage#1	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "My work shift will be over soon, but the next crew is not coming.";
+1@gl_k,145,104,6	script	卡利斯格骑士团#1	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "我的班就快结束了，可接替的人还没来。";
 	close;
 }
 
-1@gl_k,154,104,3	script	Khalitzburg Knightage#2	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "Something you want to tell me?";
+1@gl_k,154,104,3	script	卡利斯格骑士团#2	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "你有什么想对我说的吗？";
 	close;
 }
 
-1@gl_k,145,99,6	script	White Knight#3	4_WHITEKNIGHT,{
-	mes "[White Knight]";
-	mes "Are you with Varmundt? Commander is waiting for you.";
+1@gl_k,145,99,6	script	白骑士#3	4_WHITEKNIGHT,{
+	mes "[白骑士]";
+	mes "你是和巴尔蒙德一起来的吗？指挥官正在等你。";
 	close;
 }
 
-1@gl_k,154,99,3	duplicate(Khalitzburg Knightage#1)	White Knight#4	4_WHITEKNIGHT
+1@gl_k,154,99,3	duplicate(卡利斯格骑士团#1)	White Knight#4	4_WHITEKNIGHT
 
-1@gl_k,145,94,6	script	Khalitzburg Knightage#5	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "I had a weird dream last night. My mom was in it... Wonder if she is ok...";
+1@gl_k,145,94,6	script	卡利斯格骑士团#5	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "我昨晚做了个奇怪的梦，梦里出现了我妈妈……不知道她现在好不好……";
 	close;
 }
 
-1@gl_k,154,94,3	duplicate(White Knight#3)	Khalitzburg Knightage#6	4_F_KHALITZBURG
+1@gl_k,154,94,3	duplicate(白骑士#3)	Khalitzburg Knightage#6	4_F_KHALITZBURG
 
-1@gl_k,145,89,6	script	White Knight#7	4_WHITEKNIGHT,{
-	mes "[White Knight]";
-	mes "Please do not make a mess here.";
+1@gl_k,145,89,6	script	白骑士#7	4_WHITEKNIGHT,{
+	mes "[白骑士]";
+	mes "请不要在这里弄出乱子。";
 	close;
 }
-1@gl_k,154,89,3	duplicate(White Knight#7)	White Knight#8	4_WHITEKNIGHT
+1@gl_k,154,89,3	duplicate(白骑士#7)	White Knight#8	4_WHITEKNIGHT
 
-1@gl_k,145,84,6	script	Khalitzburg Knightage#9	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "Orders please.";
+1@gl_k,145,84,6	script	卡利斯格骑士团#9	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "请下命令吧。";
 	close;
 }
-1@gl_k,154,84,3	duplicate(Khalitzburg Knightage#9)	Khalitzburg Knightage#10	4_F_KHALITZBURG
+1@gl_k,154,84,3	duplicate(卡利斯格骑士团#9)	Khalitzburg Knightage#10	4_F_KHALITZBURG
 
-1@gl_k,145,79,6	script	White Knight#11	4_WHITEKNIGHT,{
-	mes "[White Knight]";
-	mes "How do you know Varmundt? I heard that he's not really a friendly man...";
+1@gl_k,145,79,6	script	白骑士#11	4_WHITEKNIGHT,{
+	mes "[白骑士]";
+	mes "你怎么会认识巴尔蒙德？我听说他可不是个友善的人……";
 	close;
 }
-1@gl_k,154,79,3	duplicate(White Knight#11)	White Knight#12	4_WHITEKNIGHT
+1@gl_k,154,79,3	duplicate(白骑士#11)	White Knight#12	4_WHITEKNIGHT
 
-1@gl_k,145,74,6	script	Khalitzburg Knightage#13	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "Doesn't this castle seem weird all of a sudden? Something's not quite right.";
+1@gl_k,145,74,6	script	卡利斯格骑士团#13	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "这座城堡是不是突然变得很奇怪？总有些不对劲。";
 	close;
 }
-1@gl_k,154,74,3	duplicate(Khalitzburg Knightage#13)	Khalitzburg Knightage#14	4_F_KHALITZBURG
+1@gl_k,154,74,3	duplicate(卡利斯格骑士团#13)	Khalitzburg Knightage#14	4_F_KHALITZBURG
 
-1@gl_k,145,69,6	script	White Knight#15	4_WHITEKNIGHT,{
-	mes "[White Knight]";
-	mes "I do not like to chat during work.";
+1@gl_k,145,69,6	script	白骑士#15	4_WHITEKNIGHT,{
+	mes "[白骑士]";
+	mes "我不喜欢在工作时闲聊。";
 	close;
 }
-1@gl_k,154,69,3	duplicate(White Knight#15)	White Knight#16	4_WHITEKNIGHT
+1@gl_k,154,69,3	duplicate(白骑士#15)	White Knight#16	4_WHITEKNIGHT
 
-1@gl_k,145,64,6	script	Khalitzburg Knightage#17	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
+1@gl_k,145,64,6	script	卡利斯格骑士团#17	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
 	mes "...";
 	close;
 }
-1@gl_k,154,64,3	duplicate(Khalitzburg Knightage#17)	Khalitzburg Knightage#18	4_F_KHALITZBURG
+1@gl_k,154,64,3	duplicate(卡利斯格骑士团#17)	Khalitzburg Knightage#18	4_F_KHALITZBURG
 
-1@gl_k,145,59,6	script	White Knight#19	4_WHITEKNIGHT,{
-	mes "[White Knight]";
-	mes "What can I do for you?";
+1@gl_k,145,59,6	script	白骑士#19	4_WHITEKNIGHT,{
+	mes "[白骑士]";
+	mes "有什么我能为你效劳的吗？";
 	close;
 }
-1@gl_k,154,59,3	duplicate(White Knight#19)	White Knight#20	4_WHITEKNIGHT
+1@gl_k,154,59,3	duplicate(白骑士#19)	White Knight#20	4_WHITEKNIGHT
 
-1@gl_k,145,54,6	script	Khalitzburg Knightage#21	4_F_KHALITZBURG,{
-	mes "[Khalitzburg Knightage]";
-	mes "Is there something you need?";
+1@gl_k,145,54,6	script	卡利斯格骑士团#21	4_F_KHALITZBURG,{
+	mes "[卡利斯格骑士团]";
+	mes "你有什么需要吗？";
 	close;
 }
-1@gl_k,154,54,3	duplicate(Khalitzburg Knightage#21)	Khalitzburg Knightage#22	4_F_KHALITZBURG
+1@gl_k,154,54,3	duplicate(卡利斯格骑士团#21)	Khalitzburg Knightage#22	4_F_KHALITZBURG
 
-1@gl_k,149,100,5	script	Heinrich#1	4_M_HEINRICH,{
+1@gl_k,149,100,5	script	海因里希#1	4_M_HEINRICH,{
 	if (is_party_leader() == false || 'step != 1) {
-		mes "[Heinrich]";
-		mes "Where is your leader? I must talk to him.";
+		mes "[海因里希]";
+		mes "你们的队长在哪？我必须和他谈谈。";
 		cutin "gl_heinrich2",2;
 		close3;
 	}
 	if ('mode == 2) {
 		cutin "GL_HEINRICH2.bmp",2;
-		select( "Heinrich, you are in the castle now..." );
-		mes "[Heinrich]";
-		mes "Ohh " + strcharinfo(0) + "";
-		mes "I guess I can trust you. Let's leave right away.";
+		select( "海因里希，你现在就在城堡里……" );
+		mes "[海因里希]";
+		mes "哦，" + strcharinfo(0) + "";
+		mes "我想我可以信任你。我们立刻出发吧。";
 		close2;
 		cutin "",255;
 		if ('step == 1) {
@@ -363,52 +363,52 @@ glast_01,204,273,5	script	Hugin	4_M_SAGE_C,{
 	.@account_id = getcharid(3);
 	.@player_name$ = strcharinfo(0);
 	cutin "gl_heinrich2",2;
-	select("Sir Heinrich. Varmundt...");
+	select("海因里希爵士。巴尔蒙德他……");
 	mes "[" + .@player_name$ + "]";
-	mes "Sir Heinrich. Do you know what is happening in the castle now?";
-	unittalk .@account_id, .@player_name$ + " : Sir Heinrich. Do you know what is happening in the castle now?";
+	mes "海因里希爵士。您知道城堡里现在发生了什么吗？";
+	unittalk .@account_id, .@player_name$ + "：海因里希爵士。您知道城堡里现在发生了什么吗？";
 	next;
-	mes "[Heinrich]";
-	mes "Aren't you the adventurer that came along with Varmundt?";
-	npctalk "Heinrich: Aren't you the adventurer that came along with Varmundt?";
+	mes "[海因里希]";
+	mes "你不就是和巴尔蒙德一起来的那位冒险者吗？";
+	npctalk "海因里希：你不就是和巴尔蒙德一起来的那位冒险者吗？";
 	next;
-	mes "[Heinrich]";
-	mes "What is it? Something wrong with the castle?";
-	npctalk "Heinrich: What is it? Something wrong with the castle?";
+	mes "[海因里希]";
+	mes "什么事？城堡出问题了吗？";
+	npctalk "海因里希：什么事？城堡出问题了吗？";
 	next;
-	select("Himelmez's invasion...");
+	select("希梅尔梅兹的入侵……");
 	mes "[" + .@player_name$ + "]";
-	mes "Dead man's Valkyrie, Himelmez is coming to take the Ymir's Heart piece hidden inside this castle!";
-	unittalk .@account_id, .@player_name$ + " : Dead man's Valkyrie, Himelmez is coming to take the Ymir's Heart piece hidden inside this castle!";
+	mes "亡者的瓦尔基里希梅尔梅兹，正来夺取藏在这座城堡里的依美乐心脏碎片！";
+	unittalk .@account_id, .@player_name$ + "：亡者的瓦尔基里希梅尔梅兹，正来夺取藏在这座城堡里的依美乐心脏碎片！";
 	next;
-	mes "[Heinrich]";
-	mes "Haha. Funny. Do you really think that is possible?";
-	npctalk "Heinrich: Haha. Funny. Do you really think that is possible?";
+	mes "[海因里希]";
+	mes "哈哈。真可笑。你真觉得那可能吗？";
+	npctalk "海因里希：哈哈。真可笑。你真觉得那可能吗？";
 	cutin "gl_heinrich1",2;
 	next;
-	mes "[Varmundt]";
-	mes "I'm not kidding, Sir Heinrich. If I'm correct, then she will be here very soon.";
-	npctalk "Varmundt: I'm not kidding, Sir Heinrich. If I'm correct, then she will be here very soon.", instance_npcname("Varmundt#1");
+	mes "[巴尔蒙德]";
+	mes "我不是在开玩笑，海因里希爵士。如果我没算错，她很快就会到这里。";
+	npctalk "巴尔蒙德：我不是在开玩笑，海因里希爵士。如果我没算错，她很快就会到这里。", instance_npcname("巴尔蒙德#1");
 	cutin "gl_barmund2",2;
 	next;
-	mes "[Varmundt]";
-	mes "We must hide the heart piece in a safe place before Himelmez's attack starts!";
-	npctalk "Varmundt: We must hide the heart piece in a safe place before Himelmez's attack starts!", instance_npcname("Varmundt#1");
+	mes "[巴尔蒙德]";
+	mes "必须在希梅尔梅兹发起攻击之前，把心脏碎片藏到安全的地方！";
+	npctalk "巴尔蒙德：必须在希梅尔梅兹发起攻击之前，把心脏碎片藏到安全的地方！", instance_npcname("巴尔蒙德#1");
 	next;
-	select("Even if you don't believe me...");
+	select("就算你不相信我……");
 	mes "[" + .@player_name$ + "]";
-	mes "I can't make you believe me, but there's no time to argue!";
-	unittalk .@account_id, .@player_name$ + " : I can't make you believe me, but there's no time to argue!";
+	mes "我无法让你相信我，但没时间争辩了！";
+	unittalk .@account_id, .@player_name$ + "：我无法让你相信我，但没时间争辩了！";
 	cutin "",255;
 	next;
-	mes "[Heinrich]";
-	mes "Thank you for the help. But we don't even have our king with us right now.";
-	npctalk "Heinrich: Thank you for the help. But we don't even have our king with us right now.";
+	mes "[海因里希]";
+	mes "感谢你的帮助。可我们现在连国王都不在身边。";
+	npctalk "海因里希：感谢你的帮助。可我们现在连国王都不在身边。";
 	cutin "gl_heinrich1",2;
 	next;
-	mes "[Heinrich]";
-	mes "We cannot risk moving the heart just because some stranger says so.";
-	npctalk "Heinrich: We cannot risk moving the heart just because some stranger says so.";
+	mes "[海因里希]";
+	mes "我们不能仅凭一个陌生人的话就冒险转移心脏。";
+	npctalk "海因里希：我们不能仅凭一个陌生人的话就冒险转移心脏。";
 	close2;
 	cutin "",255;
 	if ('step == 1) {
@@ -431,7 +431,7 @@ OnEnable:
 	disablenpc instance_npcname("Heinrich#1");
 	enablenpc instance_npcname("Heinrich#2");
 	enablenpc instance_npcname("Himelmez#1");
-	mapannounce 'map_name$[0], "????'s: Muahahahaha~!", bc_map,0xFFFF00,FW_NORMAL,18;
+	mapannounce 'map_name$[0], "？？？：哇哈哈哈～！", bc_map,0xFFFF00,FW_NORMAL,18;
 	initnpctimer;
 	'npc_himelmez1$ = instance_npcname("Himelmez#1");
 	'npc_varmundt1$ = instance_npcname("Varmundt#1");
@@ -439,53 +439,53 @@ OnEnable:
 	'npc_heinrich3$ = instance_npcname("Heinrich#3");
 	end;
 OnTimer1500:
-	npctalk "Heinrich: Who are you?", 'npc_heinrich2$;
+	npctalk "海因里希：你是谁？", 'npc_heinrich2$;
 	end;
 OnTimer4500:
-	npctalk "Himelmez: Well well~ Am I interrupting you? Weren't you expecting me?", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：哎呀呀～我打扰到你们了吗？难道你们没在等我？", 'npc_himelmez1$;
 	end;
 OnTimer10000:
-	npctalk "Varmundt: Himelmez!! Already!", 'npc_varmundt1$;
+	npctalk "巴尔蒙德：希梅尔梅兹！！竟然已经！", 'npc_varmundt1$;
 	end;
 OnTimer17500:
-	npctalk "Himelmez: My name is Lisa Kahn Himelmez. Master of Dullahan, Dead man's Valkyrie, that's what they call me.", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：我叫莉莎·卡恩·希梅尔梅兹。无颅武士之主，亡者的瓦尔基里，人们这样称呼我。", 'npc_himelmez1$;
 	end;
 OnTimer22000:
-	npctalk "Heinrich: Aren't you a little too feminine to be the Ruler of death? We are not afraid of you...", 'npc_heinrich2$;
+	npctalk "海因里希：作为死亡统治者，你是不是太女人气了？我们可不怕你……", 'npc_heinrich2$;
 	end;
 OnTimer28500:
-	npctalk "Himelmez: Let's see if you can relax like that after you find out where your king is.", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：等你弄清你们的国王在哪里之后，再看看还能不能这么悠闲吧。", 'npc_himelmez1$;
 	end;
 OnTimer36000:
-	npctalk "Heinrich: What?", 'npc_heinrich2$;
+	npctalk "海因里希：什么？", 'npc_heinrich2$;
 	end;
 OnTimer41000:
-	npctalk "Himelmez: Hmm, now I have your attention do I not?", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：嗯，现在我总算引起你们的注意了吧？", 'npc_himelmez1$;
 	end;
 OnTimer47000:
-	npctalk "Himelmez: You don't want the king's position, just wait for him to come back. I like your purity.", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：你不觊觎王位，只是等他回来。我喜欢你这份纯粹。", 'npc_himelmez1$;
 	end;
 OnTimer54000:
-	npctalk "Himelmez: It's a pity to meet you in a situation like this.", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：在这种情形下相见，真是遗憾。", 'npc_himelmez1$;
 	end;
 OnTimer59000:
-	npctalk "Heinrich: My king is visiting the Rune-Midgarts royal family. He's not back yet.", 'npc_heinrich2$;
+	npctalk "海因里希：我的国王正在拜访卢恩米德加尔特王室。他还没有回来。", 'npc_heinrich2$;
 	end;
 OnTimer66500:
-	npctalk "Heinrich: And now you are trying to trick me, what has happened to him?!", 'npc_heinrich2$;
+	npctalk "海因里希：现在你又想骗我，他到底出了什么事？！", 'npc_heinrich2$;
 	end;
 OnTimer71500:
-	npctalk "Himelmez: Well~ I would love to sit down and explain for you, but I'm kind of busy today~", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：这个嘛～我倒是很想坐下来为你们解释，可惜我今天有点忙～", 'npc_himelmez1$;
 	end;
 OnTimer78000:
-	npctalk "Himelmez: I have business to take care of. My minions will treat you well enough for me~", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：我还有事要办。我的手下会代我好好招待你们的～", 'npc_himelmez1$;
 	end;
 OnTimer84500:
-	npctalk "Heinrich: She probably already knows where the Ymir's heart piece is.", 'npc_heinrich2$;
+	npctalk "海因里希：她大概已经知道依美乐心脏碎片在哪里了。", 'npc_heinrich2$;
 	disablenpc 'npc_himelmez1$;
 	end;
 OnTimer90500:
-	npctalk "Heinrich: All Khalitzburg and White Knights should follow me now...", 'npc_heinrich2$;
+	npctalk "海因里希：所有卡利斯格与白骑士，现在都跟我来……", 'npc_heinrich2$;
 	end;
 OnTimer92000:
 	for (.@i = 1; .@i <= 20; .@i += 4) {
@@ -510,47 +510,47 @@ OnTimer92000:
 	monster 'map_name$[0],154,99,"Abysmal Knight",2470,1,.@label$;
 
 	monster 'map_name$[0],145,54,"Khalitzburg",2471,1,.@label$;// G_MG_KHALITZBURG
-	unittalk $@mobid[0],"Water... Someone give me water...";
+	unittalk $@mobid[0],"水……谁来给我水……";
 	monster 'map_name$[0],154,54,"Khalitzburg",2471,1,.@label$;
 	unittalk $@mobid[0],"Kkkrrrruughgh...";
 	monster 'map_name$[0],145,64,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Sir Heinrich. Save me...";
+	unittalk $@mobid[0],"海因里希爵士。救救我……";
 	monster 'map_name$[0],154,64,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I miss my sister...";
+	unittalk $@mobid[0],"我想我姐姐……";
 	monster 'map_name$[0],145,74,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Don't leave me alone, help me.";
+	unittalk $@mobid[0],"别丢下我一个人，救救我。";
 	monster 'map_name$[0],154,74,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Aaarrrrrhhhh";
+	unittalk $@mobid[0],"啊啊啊啊啊啊";
 	monster 'map_name$[0],145,84,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I am so thirsty.";
+	unittalk $@mobid[0],"我好渴。";
 	monster 'map_name$[0],154,84,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Oh...No...I can't die yet...";
+	unittalk $@mobid[0],"哦……不……我还不能死……";
 	monster 'map_name$[0],145,94,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I feel sick to my stomach urrgg";
+	unittalk $@mobid[0],"我的胃好难受，呃啊";
 	monster 'map_name$[0],154,94,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Can someone...";
+	unittalk $@mobid[0],"谁能来……";
 	monster 'map_name$[0],145,104,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Arrgg... My body";
+	unittalk $@mobid[0],"呃啊……我的身体";
 	monster 'map_name$[0],154,104,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"My throat is burning!";
+	unittalk $@mobid[0],"我的喉咙在燃烧！";
 	end;
 OnTimer94000:
-	npctalk "Heinrich: My men... This can't be happening!", 'npc_heinrich2$;
+	npctalk "海因里希：我的部下……这不可能！", 'npc_heinrich2$;
 	end;
 OnTimer96500:
-	npctalk "Varmundt: Sir Heinrich, they're all monsters. You need to give them rest!", 'npc_varmundt1$;
+	npctalk "巴尔蒙德：海因里希爵士，他们全都变成怪物了。你必须让他们安息！", 'npc_varmundt1$;
 	end;
 OnTimer100000:
-	npctalk "Heinrich: I'm so sorry...", 'npc_heinrich2$;
+	npctalk "海因里希：对不起……", 'npc_heinrich2$;
 	end;
 OnTimer103000:
-	npctalk "Heinrich: I am sorry, my knights! Forgive me!", 'npc_heinrich2$;
+	npctalk "海因里希：对不起，我的骑士们！原谅我！", 'npc_heinrich2$;
 	end;
 OnTimer106000:
-	mapannounce 'map_name$[0], "Sir Heinrich: Death to all!", bc_map,0xFFFF33,FW_NORMAL,15;
+	mapannounce 'map_name$[0], "海因里希爵士：全部去死吧！", bc_map,0xFFFF33,FW_NORMAL,15;
 	end;
 OnTimer109000:
-	mapannounce 'map_name$[0], "Sir Heinrich: Go back to the darkness!", bc_map,0xFFFF33,FW_NORMAL,15;
+	mapannounce 'map_name$[0], "海因里希爵士：回到黑暗中去吧！", bc_map,0xFFFF33,FW_NORMAL,15;
 	end;
 OnTimer109500:
 	specialeffect EF_GRANDCROSS,AREA, instance_npcname("Khalitzburg Knightage#1");
@@ -612,34 +612,34 @@ OnTimer112000:
 	killmonster 'map_name$[0], instance_npcname("#talkinstance1") + "::OnMyMobDead";
 	end;
 OnTimer112500:
-	npctalk "Heinrich: I killed my own men...", 'npc_heinrich3$;
+	npctalk "海因里希：我亲手杀死了自己的部下……", 'npc_heinrich3$;
 	end;
 OnTimer115500:
-	npctalk "Varmundt: Sir Heinrich! We don't have much time!", 'npc_varmundt1$;
+	npctalk "巴尔蒙德：海因里希爵士！我们时间不多了！", 'npc_varmundt1$;
 	end;
 OnTimer118500:
-	npctalk "Varmundt: If you hurry now, there's a chance!", 'npc_varmundt1$;
+	npctalk "巴尔蒙德：如果现在赶去，还有机会！", 'npc_varmundt1$;
 	end;
 OnTimer121500:
-	npctalk "Heinrich: Varmundt is right. Now is not the time for mourning.", 'npc_heinrich3$;
+	npctalk "海因里希：巴尔蒙德说得对。现在不是哀悼的时候。", 'npc_heinrich3$;
 	end;
 OnTimer124500:
-	npctalk "Heinrich: I have a request to you followers.", 'npc_heinrich3$;
+	npctalk "海因里希：追随者们，我有个请求。", 'npc_heinrich3$;
 	end;
 OnTimer127500:
-	npctalk "Heinrich: Himelmez can turn living beings into monsters.", 'npc_heinrich3$;
+	npctalk "海因里希：希梅尔梅兹能把活人变成怪物。", 'npc_heinrich3$;
 	end;
 OnTimer130500:
-	npctalk "Heinrich: But, there might still be survivors here.", 'npc_heinrich3$;
+	npctalk "海因里希：但是，这里也许还有幸存者。", 'npc_heinrich3$;
 	end;
 OnTimer134500:
-	npctalk "Heinrich: Destroy the monsters and find any survivors.", 'npc_heinrich3$;
+	npctalk "海因里希：消灭怪物，寻找幸存者。", 'npc_heinrich3$;
 	end;
 OnTimer138500:
-	npctalk "Heinrich: Varmundt and I will chase Himelmez.", 'npc_heinrich3$;
+	npctalk "海因里希：我和巴尔蒙德去追希梅尔梅兹。", 'npc_heinrich3$;
 	end;
 OnTimer143500:
-	npctalk "Heinrich: Very well, Varmundt. Let's find Himelmez.", 'npc_heinrich3$;
+	npctalk "海因里希：很好，巴尔蒙德。我们去找希梅尔梅兹。", 'npc_heinrich3$;
 	end;
 OnTimer147500:
 	disablenpc 'npc_heinrich3$;
@@ -663,7 +663,7 @@ OnEnable:
 	disablenpc instance_npcname("Heinrich#1");
 	enablenpc instance_npcname("Heinrich#2");
 	enablenpc instance_npcname("Himelmez#1");
-	mapannounce 'map_name$[0], "????'s: Muahahahaha~!", bc_map,0xFFFF00,FW_NORMAL,18;
+	mapannounce 'map_name$[0], "？？？：哇哈哈哈～！", bc_map,0xFFFF00,FW_NORMAL,18;
 	initnpctimer;
 	'npc_himelmez1$ = instance_npcname("Himelmez#1");
 	'npc_varmundt1$ = instance_npcname("Varmundt#1");
@@ -671,19 +671,19 @@ OnEnable:
 	'npc_heinrich3$ = instance_npcname("Heinrich#3");
 	end;
 OnTimer1500:
-	npctalk "Heinrich: Who are you?", 'npc_heinrich2$;
+	npctalk "海因里希：你是谁？", 'npc_heinrich2$;
 	end;
 OnTimer3500:
-	npctalk "Himelmez: Well well~ Am I interrupting you? Weren't you expecting me?", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：哎呀呀～我打扰到你们了吗？难道你们没在等我？", 'npc_himelmez1$;
 	end;
 OnTimer7500:
-	npctalk "Himelmez: I have business to take care of. My minions will treat you well enough for me~", 'npc_himelmez1$;
+	npctalk "希梅尔梅兹：我还有事要办。我的手下会代我好好招待你们的～", 'npc_himelmez1$;
 	end;
 OnTimer11500:
 	disablenpc 'npc_himelmez1$;
 	end;
 OnTimer12500:
-	npctalk "Heinrich: She probably already knows where the Ymir's heart piece is.", 'npc_heinrich2$;
+	npctalk "海因里希：她大概已经知道依美乐心脏碎片在哪里了。", 'npc_heinrich2$;
 	end;
 OnTimer16500:
 	for (.@i = 1; .@i <= 20; .@i += 4) {
@@ -708,32 +708,32 @@ OnTimer16500:
 	monster 'map_name$[0],154,99,"Abysmal Knight",2470,1,.@label$;
 
 	monster 'map_name$[0],145,54,"Khalitzburg",2471,1,.@label$;// G_MG_KHALITZBURG
-	unittalk $@mobid[0],"Water... Someone give me water...";
+	unittalk $@mobid[0],"水……谁来给我水……";
 	monster 'map_name$[0],154,54,"Khalitzburg",2471,1,.@label$;
 	unittalk $@mobid[0],"Kkkrrrruughgh...";
 	monster 'map_name$[0],145,64,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Sir Heinrich. Save me...";
+	unittalk $@mobid[0],"海因里希爵士。救救我……";
 	monster 'map_name$[0],154,64,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I miss my sister...";
+	unittalk $@mobid[0],"我想我姐姐……";
 	monster 'map_name$[0],145,74,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Don't leave me alone, help me.";
+	unittalk $@mobid[0],"别丢下我一个人，救救我。";
 	monster 'map_name$[0],154,74,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Aaarrrrrhhhh";
+	unittalk $@mobid[0],"啊啊啊啊啊啊";
 	monster 'map_name$[0],145,84,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I am so thirsty.";
+	unittalk $@mobid[0],"我好渴。";
 	monster 'map_name$[0],154,84,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Oh...No...I can't die yet...";
+	unittalk $@mobid[0],"哦……不……我还不能死……";
 	monster 'map_name$[0],145,94,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"I feel sick to my stomach urrgg";
+	unittalk $@mobid[0],"我的胃好难受，呃啊";
 	monster 'map_name$[0],154,94,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Can someone...";
+	unittalk $@mobid[0],"谁能来……";
 	monster 'map_name$[0],145,104,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"Arrgg... My body";
+	unittalk $@mobid[0],"呃啊……我的身体";
 	monster 'map_name$[0],154,104,"Khalitzburg",2471,1,.@label$;
-	unittalk $@mobid[0],"My throat is burning!";
+	unittalk $@mobid[0],"我的喉咙在燃烧！";
 	end;
 OnTimer17500:
-	npctalk "The dead go where the dead belong! Everyone go back!", 'npc_heinrich2$;
+	npctalk "死者就该回到死者该去的地方！所有人都退回去！", 'npc_heinrich2$;
 	end;
 OnTimer18500:
 	specialeffect EF_GRANDCROSS,AREA, instance_npcname("Khalitzburg Knightage#1");
@@ -793,10 +793,10 @@ OnTimer21500:
 	disablenpc 'npc_heinrich2$;
 	enablenpc 'npc_heinrich3$;
 	killmonster 'map_name$[0], instance_npcname("#talkinstance1") + "::OnMyMobDead";
-	npctalk "Heinrich: Very well, Varmundt. Let's find Himelmez.", 'npc_heinrich3$;
+	npctalk "海因里希：很好，巴尔蒙德。我们去找希梅尔梅兹。", 'npc_heinrich3$;
 	end;
 OnTimer25500:
-	npctalk "Varmundt: Wait, I don't have time to go around the castle and clear a path. I will open a portal that can be tracked as quickly as possible.", 'npc_varmundt1$;
+	npctalk "巴尔蒙德：等等，我没时间绕遍城堡清理道路。我会尽快开启一道可被追踪的传送门。", 'npc_varmundt1$;
 	end;
 OnTimer27000:
 	specialeffect EF_BEGINSPELL_N5, AREA, 'npc_varmundt1$;
@@ -832,7 +832,7 @@ OnStart:
 	enablenpc instance_npcname("#ghmemorialmob01");
 	enablenpc instance_npcname("#2Control");
 	enablenpc instance_npcname("#2Control2");
-	mapannounce 'map_name$[0], "A portal has opened to the west.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[0], "西侧开启了一道传送门。", bc_map,0xFFFF00;
 
 	// note: x17 MG_GHOUL / x17 MG_ZOMBIE / x17 MG_WRAITH
 	.@label$ = instance_npcname("#ghmemorialmob01") + "::OnMyMobDead";
@@ -846,7 +846,7 @@ OnMyMobDead:
 	.@label$ = instance_npcname("#ghmemorialmob01") + "::OnMyMobDead";
 	.@mob_dead_num = 51 - mobcount('map_name$[0],.@label$);
 	if (.@mob_dead_num > 35) {
-		mapannounce 'map_name$[0], "Himelmez's curse is getting weaker. Find any survivors!", bc_map,0xFFFFFF;
+		mapannounce 'map_name$[0], "希梅尔梅兹的诅咒正在减弱。快去寻找幸存者！", bc_map,0xFFFFFF;
 		killmonster 'map_name$[0], .@label$;
 		enablenpc instance_npcname("Altar boy Domun#1");
 		disablenpc instance_npcname("#ghmemorialmob01");
@@ -854,48 +854,48 @@ OnMyMobDead:
 	end;
 }
 
-1@gl_k,17,51,3	script	Altar boy Domun#1	4_M_KID1,{
+1@gl_k,17,51,3	script	祭坛侍童多蒙#1	4_M_KID1,{
 	if (is_party_leader() == false || 'step != 2) {
-		mes "[Altar boy Domun]";
-		mes "Save me, save me, please...";
+		mes "[祭坛侍童多蒙]";
+		mes "救救我，救救我，求你了……";
 		close;
 	}
 	.@account_id = getcharid(3);
 	.@player_name$ = strcharinfo(0);
-	mes "[Altar boy Domun]";
-	mes "Save me! Save me!!!";
-	npctalk "Save me! Save me!!!";
+	mes "[祭坛侍童多蒙]";
+	mes "救救我！救救我！！！";
+	npctalk "救救我！救救我！！！";
 	next;
-	select("Hold on! Are you the only survivor?");
+	select("等等！你是唯一的幸存者吗？");
 	mes "[" + .@player_name$ + "]";
-	mes "Hold on! Are you the only survivor?";
-	unittalk .@account_id, .@player_name$ + " : Hold on! Are you the only survivor?";
+	mes "等等！你是唯一的幸存者吗？";
+	unittalk .@account_id, .@player_name$ + "：等等！你是唯一的幸存者吗？";
 	next;
-	mes "[Altar boy Domun]";
-	mes "Chamberlains... monks... They all turned into monsters. I couldn't do anything.";
-	npctalk "Altar boy Domun: Chamberlains... monks... They all turned into monsters. I couldn't do anything.";
+	mes "[祭坛侍童多蒙]";
+	mes "侍从长……修士们……他们都变成了怪物。我什么都做不了。";
+	npctalk "祭坛侍童多蒙：侍从长……修士们……他们都变成了怪物。我什么都做不了。";
 	next;
-	mes "[Altar boy Domun]";
-	mes "All I could do was... Just hide in here... Nothing, nothing I could do...";
-	npctalk "Altar boy Domun: All I could do was... Just hide in here... Nothing, nothing I could do...";
+	mes "[祭坛侍童多蒙]";
+	mes "我能做的……就只有躲在这里……什么都，什么都做不了……";
+	npctalk "祭坛侍童多蒙：我能做的……就只有躲在这里……什么都，什么都做不了……";
 	next;
-	select("Pull it together!");
+	select("振作起来！");
 	mes "[" + .@player_name$ + "]";
-	mes "Wake up kid! Go east and find the middle passage to the outside! It is safe there!";
-	unittalk .@account_id, .@player_name$ + " : Wake up kid! Go east and find the middle passage to the outside! It is safe there!";
+	mes "醒醒，孩子！往东走，找到通向外面的中央通道！那里很安全！";
+	unittalk .@account_id, .@player_name$ + "：醒醒，孩子！往东走，找到通向外面的中央通道！那里很安全！";
 	next;
-	mes "[Altar boy Domun]";
-	mes "To the east passage? Alone? How?";
-	npctalk "Altar boy Domun: To the east passage? Alone? How?";
+	mes "[祭坛侍童多蒙]";
+	mes "去东边的通道？一个人？怎么去？";
+	npctalk "祭坛侍童多蒙：去东边的通道？一个人？怎么去？";
 	next;
-	select("I will give you a weapon.");
+	select("我给你一件武器。");
 	mes "[" + .@player_name$ + "]";
-	mes "Here's a weapon. Just close your eye and swing for those monsters.";
-	unittalk .@account_id, .@player_name$ + " : Here's a weapon. Just close your eye and swing for those monsters.";
+	mes "这是武器。闭上眼睛，朝那些怪物挥下去就好。";
+	unittalk .@account_id, .@player_name$ + "：这是武器。闭上眼睛，朝那些怪物挥下去就好。";
 	next;
-	mes "[Altar boy Domun]";
-	mes "Ok, I... I'll try.";
-	npctalk "Altar boy Domun: Ok, I... I'll try.";
+	mes "[祭坛侍童多蒙]";
+	mes "好，我……我试试。";
+	npctalk "祭坛侍童多蒙：好，我……我试试。";
 	if ('step == 2) {
 		'step = 3;
 		disablenpc instance_npcname("Altar boy Domun#1");
@@ -914,7 +914,7 @@ OnStart:
 	enablenpc instance_npcname("#3Control2");
 	for ( .@i = 1; .@i <= 26; .@i++ )
 		enablenpc instance_npcname("A dead man#" + .@i);
-	mapannounce 'map_name$[0], "A portal has opened to the east.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[0], "东侧开启了一道传送门。", bc_map,0xFFFF00;
 
 	// note: x34 MG_ZOMBIE / x35 MG_GHOUL
 	.@label$ = instance_npcname("#ghmemorialmob02") + "::OnMyMobDead";
@@ -927,7 +927,7 @@ OnMyMobDead:
 	.@label$ = instance_npcname("#ghmemorialmob02") + "::OnMyMobDead";
 	.@mob_dead_num = 69 - mobcount('map_name$[0],.@label$);
 	if (.@mob_dead_num > 56) {
-		mapannounce 'map_name$[0], "Himelmez's curse is getting weaker. Find any survivors!", bc_map,0xFFFFFF;
+		mapannounce 'map_name$[0], "希梅尔梅兹的诅咒正在减弱。快去寻找幸存者！", bc_map,0xFFFFFF;
 		killmonster 'map_name$[0],.@label$;
 		enablenpc instance_npcname("Holgren the Destroyer#1");
 		disablenpc instance_npcname("#ghmemorialmob02");
@@ -935,45 +935,45 @@ OnMyMobDead:
 	end;
 }
 
-1@gl_k,291,145,3	script	Holgren the Destroyer#1	4_F_JOB_BLACKSMITH,{
+1@gl_k,291,145,3	script	破坏者霍尔格伦#1	4_F_JOB_BLACKSMITH,{
 	if (is_party_leader() == false || 'step != 3) {
-		mes "[Holgren the Destroyer]";
-		mes "You human?";
+		mes "[破坏者霍尔格伦]";
+		mes "你是人类？";
 		close;
 	}
 	.@account_id = getcharid(3);
 	.@player_name$ = strcharinfo(0);
-	mes "[Holgren the Destroyer]";
-	mes "Die!! You shall die!!!";
-	npctalk "Holgren the Destroyer: Die!! You shall die!!!";
+	mes "[破坏者霍尔格伦]";
+	mes "死！！去死吧！！！";
+	npctalk "破坏者霍尔格伦：死！！去死吧！！！";
 	specialeffect EF_CRASHEARTH;
 	next;
-	select("Relax! I'm not a monster!");
+	select("别紧张！我不是怪物！");
 	mes "[" + .@player_name$ + "]";
-	mes "Relax! I am Human. Are you alone? Is anyone else here?";
-	unittalk .@account_id, .@player_name$ + " : Relax! I am Human. Are you alone? Is anyone else here?";
+	mes "别紧张！我是人类。你一个人吗？这里还有别人吗？";
+	unittalk .@account_id, .@player_name$ + "：别紧张！我是人类。你一个人吗？这里还有别人吗？";
 	next;
-	mes "[Holgren the Destroyer]";
-	mes "It's only me.";
-	npctalk "Holgren the Destroyer: It's only me.";
+	mes "[破坏者霍尔格伦]";
+	mes "只有我。";
+	npctalk "破坏者霍尔格伦：只有我。";
 	next;
-	select("It's dangerous here...");
+	select("这里很危险……");
 	mes "[" + .@player_name$ + "]";
-	mes "It's dangerous here. You know the way to the middle passage? Can you move?";
-	unittalk .@account_id, .@player_name$ + " : It's dangerous here. You know the way to the middle passage? Can you move?";
+	mes "这里很危险。你知道通往中央通道的路吗？你能走动吗？";
+	unittalk .@account_id, .@player_name$ + "：这里很危险。你知道通往中央通道的路吗？你能走动吗？";
 	next;
-	mes "[Holgren the Destroyer]";
-	mes "Yes, I can move. I need to get out of here.";
-	npctalk "Holgren the Destroyer: Yes, I can move. I need to get out of here.";
+	mes "[破坏者霍尔格伦]";
+	mes "能，我能走。我得离开这里。";
+	npctalk "破坏者霍尔格伦：能，我能走。我得离开这里。";
 	next;
-	select("Be safe...");
+	select("保重……");
 	mes "[" + .@player_name$ + "]";
-	mes "Sorry, I can't go with you.";
-	unittalk .@account_id, .@player_name$ + " : Sorry, I can't go with you.";
+	mes "抱歉，我不能和你一起走。";
+	unittalk .@account_id, .@player_name$ + "：抱歉，我不能和你一起走。";
 	next;
-	mes "[Holgren the Destroyer]";
-	mes "It's ok. You've already done enough. I can help myself. Good luck to you too.";
-	npctalk "Holgren the Destroyer: It's ok. You've already done enough. I can help myself. Good luck to you too.";
+	mes "[破坏者霍尔格伦]";
+	mes "没关系。你已经做得够多了。我自己能行。也祝你好运。";
+	npctalk "破坏者霍尔格伦：没关系。你已经做得够多了。我自己能行。也祝你好运。";
 	if ('step == 3) {
 		'step = 4;
 		disablenpc instance_npcname("Holgren the Destroyer#1");
@@ -984,7 +984,7 @@ OnMyMobDead:
 
 // Tramp Mobs
 //============================================================
-1@gl_k,221,82,3	script	A dead man#1	4_M_DIEMAN,5,5,{
+1@gl_k,221,82,3	script	死去的男人#1	4_M_DIEMAN,5,5,{
 	end;
 OnTouch_:
 	.@i = rand(1,10);
@@ -999,31 +999,31 @@ OnTouch_:
 	disablenpc();
 	end;
 }
-1@gl_k,233,123,4	duplicate(A dead man#1)	A dead man#2	4_M_DIEMAN,5,5
-1@gl_k,258,150,2	duplicate(A dead man#1)	A dead man#3	4_M_DIEMAN,5,5
-1@gl_k,255,157,5	duplicate(A dead man#1)	A dead man#4	4_M_DIEMAN,5,5
-1@gl_k,280,167,4	duplicate(A dead man#1)	A dead man#5	4_M_DIEMAN,5,5
-1@gl_k,293,161,2	duplicate(A dead man#1)	A dead man#6	4_M_DIEMAN,5,5
-1@gl_k,249,101,3	duplicate(A dead man#1)	A dead man#7	4_M_DIEMAN,5,5
-1@gl_k,241,86,6	duplicate(A dead man#1)	A dead man#8	4_M_DIEMAN,5,5
-1@gl_k,246,62,0	duplicate(A dead man#1)	A dead man#9	4_M_DIEMAN,5,5
-1@gl_k,240,43,7	duplicate(A dead man#1)	A dead man#10	4_M_DIEMAN,5,5
-1@gl_k,271,19,1	duplicate(A dead man#1)	A dead man#11	4_M_DIEMAN,5,5
-1@gl_k,282,48,5	duplicate(A dead man#1)	A dead man#12	4_M_DIEMAN,5,5
-1@gl_k,285,81,7	duplicate(A dead man#1)	A dead man#13	4_M_DIEMAN,5,5
-1@gl_k,276,106,0	duplicate(A dead man#1)	A dead man#14	4_M_DIEMAN,5,5
-1@gl_k,261,164,0	duplicate(A dead man#1)	A dead man#15	4_M_DIEMAN,5,5
-1@gl_k,269,173,0	duplicate(A dead man#1)	A dead man#16	4_M_DIEMAN,5,5
-1@gl_k,252,120,0	duplicate(A dead man#1)	A dead man#17	4_M_DIEMAN,5,5
-1@gl_k,213,63,0	duplicate(A dead man#1)	A dead man#18	4_M_DIEMAN,5,5
-1@gl_k,222,39,0	duplicate(A dead man#1)	A dead man#19	4_M_DIEMAN,5,5
-1@gl_k,214,27,0	duplicate(A dead man#1)	A dead man#20	4_M_DIEMAN,5,5
-1@gl_k,223,17,1	duplicate(A dead man#1)	A dead man#21	4_M_DIEMAN,5,5
-1@gl_k,230,50,2	duplicate(A dead man#1)	A dead man#22	4_M_DIEMAN,5,5
-1@gl_k,235,16,3	duplicate(A dead man#1)	A dead man#23	4_M_DIEMAN,5,5
-1@gl_k,226,96,4	duplicate(A dead man#1)	A dead man#24	4_M_DIEMAN,5,5
-1@gl_k,222,119,5	duplicate(A dead man#1)	A dead man#25	4_M_DIEMAN,5,5
-1@gl_k,251,20,6	duplicate(A dead man#1)	A dead man#26	4_M_DIEMAN,5,5
+1@gl_k,233,123,4	duplicate(死去的男人#1)	A dead man#2	4_M_DIEMAN,5,5
+1@gl_k,258,150,2	duplicate(死去的男人#1)	A dead man#3	4_M_DIEMAN,5,5
+1@gl_k,255,157,5	duplicate(死去的男人#1)	A dead man#4	4_M_DIEMAN,5,5
+1@gl_k,280,167,4	duplicate(死去的男人#1)	A dead man#5	4_M_DIEMAN,5,5
+1@gl_k,293,161,2	duplicate(死去的男人#1)	A dead man#6	4_M_DIEMAN,5,5
+1@gl_k,249,101,3	duplicate(死去的男人#1)	A dead man#7	4_M_DIEMAN,5,5
+1@gl_k,241,86,6	duplicate(死去的男人#1)	A dead man#8	4_M_DIEMAN,5,5
+1@gl_k,246,62,0	duplicate(死去的男人#1)	A dead man#9	4_M_DIEMAN,5,5
+1@gl_k,240,43,7	duplicate(死去的男人#1)	A dead man#10	4_M_DIEMAN,5,5
+1@gl_k,271,19,1	duplicate(死去的男人#1)	A dead man#11	4_M_DIEMAN,5,5
+1@gl_k,282,48,5	duplicate(死去的男人#1)	A dead man#12	4_M_DIEMAN,5,5
+1@gl_k,285,81,7	duplicate(死去的男人#1)	A dead man#13	4_M_DIEMAN,5,5
+1@gl_k,276,106,0	duplicate(死去的男人#1)	A dead man#14	4_M_DIEMAN,5,5
+1@gl_k,261,164,0	duplicate(死去的男人#1)	A dead man#15	4_M_DIEMAN,5,5
+1@gl_k,269,173,0	duplicate(死去的男人#1)	A dead man#16	4_M_DIEMAN,5,5
+1@gl_k,252,120,0	duplicate(死去的男人#1)	A dead man#17	4_M_DIEMAN,5,5
+1@gl_k,213,63,0	duplicate(死去的男人#1)	A dead man#18	4_M_DIEMAN,5,5
+1@gl_k,222,39,0	duplicate(死去的男人#1)	A dead man#19	4_M_DIEMAN,5,5
+1@gl_k,214,27,0	duplicate(死去的男人#1)	A dead man#20	4_M_DIEMAN,5,5
+1@gl_k,223,17,1	duplicate(死去的男人#1)	A dead man#21	4_M_DIEMAN,5,5
+1@gl_k,230,50,2	duplicate(死去的男人#1)	A dead man#22	4_M_DIEMAN,5,5
+1@gl_k,235,16,3	duplicate(死去的男人#1)	A dead man#23	4_M_DIEMAN,5,5
+1@gl_k,226,96,4	duplicate(死去的男人#1)	A dead man#24	4_M_DIEMAN,5,5
+1@gl_k,222,119,5	duplicate(死去的男人#1)	A dead man#25	4_M_DIEMAN,5,5
+1@gl_k,251,20,6	duplicate(死去的男人#1)	A dead man#26	4_M_DIEMAN,5,5
 
 // Sector 3 Mobs
 //============================================================
@@ -1033,7 +1033,7 @@ OnEnable:
 	enablenpc instance_npcname("#ghmemorialmob03");
 	enablenpc instance_npcname("#4Control");
 	enablenpc instance_npcname("#4Control2");
-	mapannounce 'map_name$[0], "A portal has appeared to the northwest.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[0], "西北方出现了一道传送门。", bc_map,0xFFFF00;
 
 	// note: x50 MG_RAYDRIC / x50 MG_RAYDRIC_ARCHER
 	.@label$ = instance_npcname("#ghmemorialmob03") + "::OnMyMobDead";
@@ -1054,37 +1054,37 @@ OnMyMobDead:
 		enablenpc instance_npcname("Varmundt#2");
 		enablenpc instance_npcname("Heinrich#4");
 		disablenpc instance_npcname("#ghmemorialmob03");
-		mapannounce 'map_name$[0], "Himelmez: Not bad. Thought you would be dead by now by my creatures~", bc_map,0xFFFFFF;
+		mapannounce 'map_name$[0], "希梅尔梅兹：不错嘛。我还以为你们早该被我的造物弄死了～", bc_map,0xFFFFFF;
 		initnpctimer;
 	}
 	end;
 OnTimer5000:
-	mapannounce 'map_name$[0], "Himelmez: I'll wait for you at the north of the castle. I want to see how lucky you are.", bc_map,0xFFFFFF;
+	mapannounce 'map_name$[0], "希梅尔梅兹：我会在城堡北边等你们。我想看看你们运气能有多好。", bc_map,0xFFFFFF;
 	stopnpctimer;
 	end;
 }
 
 // 1st MVP
 //============================================================
-1@gl_k,144,258,6	script	Heinrich#4	4_M_HEINRICH,{
-	mes "[Heinrich]";
-	mes "Himelmez... I will never forget what you've done to my men.";
+1@gl_k,144,258,6	script	海因里希#4	4_M_HEINRICH,{
+	mes "[海因里希]";
+	mes "希梅尔梅兹……我永远不会忘记你对我部下所做的一切。";
 	cutin "gl_heinrich1",2;
 	close3;
 }
 
-1@gl_k,156,258,3	script	Varmundt#2	4_M_BARMUND,{
+1@gl_k,156,258,3	script	霸肋门德#2	4_M_BARMUND,{
 	if ('step < 6)
 		end;
 	if (checkweight(6607,1, 6608,1) == 0) {
-		mes "^ff0000It seems like you have too many types or weights of items. Please organize your inventory.^000000";
+		mes "^ff0000你的物品栏种类或重量似乎超出上限。请整理你的物品栏。^000000";
 		close;
 	}
 	cutin "gl_barmund1",2;
-	mes "[Varmundt]";
+	mes "[巴尔蒙德]";
 	if (checkquest(12318,HUNTING) != 2) {
-		mes "I guess this is it. Is it impossible to stop the time traveler's will?!";
-		mes "A portal seems to have appeared to the north.";
+		mes "看来就是这里了。难道时间旅行者的意志无法阻止吗？！";
+		mes "北边似乎出现了一道传送门。";
 		close3;
 	}
 	erasequest 12318;
@@ -1095,16 +1095,16 @@ OnTimer5000:
 		completequest 12320;
 		getexp 250000,250000;
 	}
-	mes "This item has an extraordinary aura with it. Can be very useful for someone special.";
+	mes "这件物品散发着非凡的气息。对某个特别的人或许很有用。";
 	getitem 6607,1;// Temporal_Crystal
 	getitem 6608,1;// Coagulated_Spell
 	close3;
 }
 
-1@gl_k,150,257,3	script	Himelmez#2	4_F_HIMEL,{
+1@gl_k,150,257,3	script	希梅尔兹#2	4_F_HIMEL,{
 	cutin "gl_himel2",2;
-	mes "[Himelmez]";
-	mes "Don't look at me nervous like that. It will be over soon...";
+	mes "[希梅尔梅兹]";
+	mes "别那样紧张地看着我。很快就会结束的……";
 	close3;
 }
 
@@ -1130,43 +1130,43 @@ OnStart:
 	'npc_heinrich4$ = instance_npcname("Heinrich#4");
 	end;
 OnTimer3000:
-	npctalk "Himelmez: Guess you are either lucky or powerful to make it this far.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：能走到这一步，你们要么运气好，要么实力强。", 'npc_himelmez2$;
 	end;
 OnTimer6000:
-	npctalk "Himelmez: But it doesn't matter.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：不过都无所谓了。", 'npc_himelmez2$;
 	end;
 OnTimer9000:
-	npctalk "Himelmez: You will all die here.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：你们都会死在这里。", 'npc_himelmez2$;
 	end;
 OnTimer12000:
-	npctalk "Heinrich: Himelmez! We will not let you get away from us!", 'npc_heinrich4$;
+	npctalk "海因里希：希梅尔梅兹！我们不会让你逃掉！", 'npc_heinrich4$;
 	end;
 OnTimer15000:
-	npctalk "Himelmez: Ha ha ha, worry about yourself. You think I am alone here?", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：哈哈哈，担心你自己吧。你以为我在这里是一个人？", 'npc_himelmez2$;
 	end;
 OnTimer18000:
-	npctalk "Varmundt: Sir Heinrich! I sense something strange and strong coming!", instance_npcname("Varmundt#2");
+	npctalk "巴尔蒙德：海因里希爵士！我感觉到有什么奇怪而强大的东西正在靠近！", instance_npcname("巴尔蒙德#2");
 	end;
 OnTimer21000:
-	npctalk "Heinrich: What... These are!", 'npc_heinrich4$;
+	npctalk "海因里希：什么……这些是！", 'npc_heinrich4$;
 	end;
 OnTimer24000:
-	npctalk "Himelmez: I will go on my way while my new toy entertains you.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：就让我的新玩具陪你们玩玩，我先走一步了。", 'npc_himelmez2$;
 	end;
 OnTimer27000:
-	npctalk "Himelmez: Fare well~, hope to see you again sometime, Heinrich.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：再会～希望以后还能见到你，海因里希。", 'npc_himelmez2$;
 	end;
 OnTimer28000:
 	disablenpc 'npc_himelmez2$;
 	end;
 OnTimer31000:
-	npctalk "Heinrich: Sir Varmundt! Help those adventurers. I will go after Himelmez!", 'npc_heinrich4$;
+	npctalk "海因里希：巴尔蒙德爵士！去帮助那些冒险者。我去追希梅尔梅兹！", 'npc_heinrich4$;
 	end;
 OnTimer32000:
 	disablenpc 'npc_heinrich4$;
 	end;
 OnTimer35000:
-	mapannounce 'map_name$[0], "An echoing comes from deep inside of the knight's shrine.", bc_map,0xFFFFFF;
+	mapannounce 'map_name$[0], "骑士圣殿深处传来回响。", bc_map,0xFFFFFF;
 	end;
 OnTimer38000:
 	donpcevent instance_npcname("#ghmemorialmob04") + "::OnStart";
@@ -1181,19 +1181,19 @@ OnStart:
 	initnpctimer;
 	'npc_himelmez2$ = instance_npcname("Himelmez#2");
 	'npc_heinrich4$ = instance_npcname("Heinrich#4");
-	npctalk "Himelmez: Guess you are either lucky or powerful to make it this far.", 'npc_himelmez2$;
+	npctalk "希梅尔梅兹：能走到这一步，你们要么运气好，要么实力强。", 'npc_himelmez2$;
 	end;
 OnTimer3500:
 	disablenpc 'npc_himelmez2$;
 	end;
 OnTimer4500:
-	npctalk "Heinrich: Sir Varmundt! Help those adventurers. I will go after Himelmez!", 'npc_heinrich4$;
+	npctalk "海因里希：巴尔蒙德爵士！去帮助那些冒险者。我去追希梅尔梅兹！", 'npc_heinrich4$;
 	end;
 OnTimer6500:
 	disablenpc 'npc_heinrich4$;
 	end;
 OnTimer9500:
-	mapannounce 'map_name$[0], "An echoing comes from deep inside of the knight's shrine.", bc_map,0xFFFFFF;
+	mapannounce 'map_name$[0], "骑士圣殿深处传来回响。", bc_map,0xFFFFFF;
 	end;
 OnTimer14500:
 	stopnpctimer;
@@ -1207,12 +1207,12 @@ OnTimer14500:
 OnStart:
 	enablenpc instance_npcname("#ghmemorialmob04");
 	monster 'map_name$[0],150,259,"Corrupted Soul",2475,1, instance_npcname("#ghmemorialmob04") + "::OnMyMobDead";// MG_CORRUPTION_ROOT
-	unittalk $@mobid[0],"Grrrrrrhh~~~";
+	unittalk $@mobid[0],"呜噜噜噜噜～～";
 	end;
 OnMyMobDead:
 	if (mobcount('map_name$[0], instance_npcname("#ghmemorialmob04") + "::OnMyMobDead") < 1) {
-		mapannounce 'map_name$[0], "Opening 2nd floor entrance towards 12 O'clock direction.", bc_map,0xFFFF00;
-		npctalk "Varmundt: I collected some items dropped from its body. You can take it from me.", instance_npcname("Varmundt#2");
+		mapannounce 'map_name$[0], "正在开启朝向12点方向的二楼入口。", bc_map,0xFFFF00;
+		npctalk "巴尔蒙德：我收集了一些从它身体上掉落的物品。你可以从我这里拿走。", instance_npcname("巴尔蒙德#2");
 
 		enablenpc instance_npcname("#2F Entrance");
 		enablenpc instance_npcname("#1 Control");
@@ -1230,7 +1230,7 @@ OnMyMobDead:
 	end;
 OnTouch:
 	if (checkquest(12318,HUNTING) == 2) {
-		mes "^0000ffIt seems that you did not receive a reward for clearing the first floor. Talk to Varmundt and receive your reward.^000000";
+		mes "^0000ff你似乎还没有领取第一层的通关奖励。请与巴尔蒙德交谈，领取你的奖励。^000000";
 		close2;
 		warp 'map_name$[0],156,256;
 		end;
@@ -1241,16 +1241,16 @@ OnTouch:
 
 // Floor 2
 //============================================================
-2@gl_k,148,67,1	script	Heinrich#21	4_M_HEINRICH,{
-	mes "[Heinrich]";
-	mes "Himelmez's closed space covers everywhere...";
+2@gl_k,148,67,1	script	海因里希#21	4_M_HEINRICH,{
+	mes "[海因里希]";
+	mes "希梅尔梅兹的封闭空间遮蔽了四周……";
 	cutin "gl_heinrich1",2;
 	close3;
 }
 
-2@gl_k,151,71,7	script	Varmundt#21	4_M_BARMUND,{
-	mes "[Varmundt]";
-	mes "How many times have I done this job? In my dream, I did it over and over again...";
+2@gl_k,151,71,7	script	霸肋门德#21	4_M_BARMUND,{
+	mes "[巴尔蒙德]";
+	mes "这份差事我到底做过多少次了？在梦里，我一次又一次地重复着……";
 	cutin "gl_barmund2",2;
 	close3;
 }
@@ -1284,74 +1284,74 @@ OnStart:
 	'npc_varmundt$ = instance_npcname("Varmundt#21");
 	end;
 OnTimer3000:
-	npctalk "Heinrich: This structure was not in the castle before!", 'npc_heinrich$;
+	npctalk "海因里希：这座建筑以前并不在城堡里！", 'npc_heinrich$;
 	end;
 OnTimer6000:
-	npctalk "Varmundt: This is Himelmez's closed space. We blocked each area and aisle.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：这是希梅尔梅兹的封闭空间。我们堵住了每个区域和通道。", 'npc_varmundt$;
 	end;
 OnTimer9000:
-	npctalk "Heinrich: We tried to break it down but it's really strong.", 'npc_heinrich$;
+	npctalk "海因里希：我们试过打破它，但它非常坚固。", 'npc_heinrich$;
 	end;
 OnTimer12000:
-	npctalk "Varmundt: Step back. Let me try to dispel the magic.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：退后。让我试着解除这魔法。", 'npc_varmundt$;
 	end;
 OnTimer15000:
 	specialeffect EF_LORD,AREA, instance_npcname("#Servanton_effect");
 	disablenpc instance_npcname("#Servanton_effect");
 	end;
 OnTimer18000:
-	npctalk "Varmundt: I think that part of closed space is broken down.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：我想那部分封闭空间已经瓦解了。", 'npc_varmundt$;
 	end;
 OnTimer21000:
-	npctalk "Varmundt: I have never seen this closed space.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：我从未见过这种封闭空间。", 'npc_varmundt$;
 	end;
 OnTimer24000:
-	npctalk "Varmundt: Himelmez hides stone chains in undead people's body.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：希梅尔梅兹把石锁链藏在不死者的体内。", 'npc_varmundt$;
 	end;
 OnTimer27000:
-	npctalk "Varmundt: Maybe this closed space is maintained with these stone chains.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：这座封闭空间也许就是靠这些石锁链维持的。", 'npc_varmundt$;
 	end;
 OnTimer30000:
-	npctalk "Varmundt: If you want to break it, you have to kill one of those who have a stone chain.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：想打破它，就必须杀死一个体内带有石锁链的人。", 'npc_varmundt$;
 	end;
 OnTimer33000:
-	npctalk "Varmundt: But we can't recognize who has a stone chain so we have to purify everything.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：但我们分辨不出谁带有石锁链，所以只能净化一切。", 'npc_varmundt$;
 	end;
 OnTimer36000:
-	npctalk "Heinrich: It is inexcusable behavior.", 'npc_heinrich$;
+	npctalk "海因里希：这是不可饶恕的行径。", 'npc_heinrich$;
 	end;
 OnTimer39000:
-	npctalk "Heinrich: I already exterminated all my soldiers and maybe more...", 'npc_heinrich$;
+	npctalk "海因里希：我已经消灭了我所有的士兵，或许还有更多……", 'npc_heinrich$;
 	end;
 OnTimer42000:
-	npctalk "Varmundt: Commander...", 'npc_varmundt$;
+	npctalk "巴尔蒙德：指挥官……", 'npc_varmundt$;
 	end;
 OnTimer45000:
-	npctalk "Varmundt: Commander! You need to be strong.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：指挥官！你必须坚强。", 'npc_varmundt$;
 	end;
 OnTimer48000:
-	npctalk "Varmundt: Our enemy is not human.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：我们的敌人已不是人类。", 'npc_varmundt$;
 	end;
 OnTimer51000:
-	npctalk "Varmundt: Even though you deny it, they'll never turn back to human.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：就算你不愿承认，他们也永远变不回人类了。", 'npc_varmundt$;
 	end;
 OnTimer54000:
-	npctalk "Heinrich: ...", 'npc_heinrich$;
+	npctalk "海因里希：……", 'npc_heinrich$;
 	end;
 OnTimer57000:
-	npctalk "Varmundt: Well, let's go then.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：那么，我们走吧。", 'npc_varmundt$;
 	end;
 OnTimer60000:
-	npctalk "Varmundt: And you guys, just take a break and follow us.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：你们几个就先休息一下，然后跟上来。", 'npc_varmundt$;
 	end;
 OnTimer63000:
-	npctalk "Varmundt: It could be hard fighting so stay strong.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：接下来的战斗会很艰难，要坚持住。", 'npc_varmundt$;
 	end;
 OnTimer66000:
-	npctalk "Varmundt: Ok, it's time to begin Heinrich.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：好，该开始了，海因里希。", 'npc_varmundt$;
 	end;
 OnTimer69000:
-	mapannounce 'map_name$[1], "A portal to the west has opened in the central hallway.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "中央走廊的西侧开启了一道传送门。", bc_map,0xFFFF00;
 	disablenpc 'npc_varmundt$;
 	disablenpc 'npc_heinrich$;
 	stopnpctimer;
@@ -1367,14 +1367,14 @@ OnStart:
 	initnpctimer;
 	'npc_heinrich$ = instance_npcname("Heinrich#21");
 	'npc_varmundt$ = instance_npcname("Varmundt#21");
-	npctalk "Heinrich: This structure was not in the castle before!", 'npc_heinrich$;
+	npctalk "海因里希：这座建筑以前并不在城堡里！", 'npc_heinrich$;
 	end;
 OnTimer2000:
-	npctalk "Varmundt: Ok, it's time to begin Heinrich.", 'npc_varmundt$;
+	npctalk "巴尔蒙德：好，该开始了，海因里希。", 'npc_varmundt$;
 	end;
 OnTimer3500:
 	stopnpctimer;
-	mapannounce 'map_name$[1], "A portal to the west has opened in the central hallway.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "中央走廊的西侧开启了一道传送门。", bc_map,0xFFFF00;
 	disablenpc 'npc_varmundt$;
 	disablenpc 'npc_heinrich$;
 	'npc_varmundt$ = 'npc_heinrich$ = "";
@@ -1452,7 +1452,7 @@ OnMyMobDead7:
 	else
 		.@r = 50;
 	if (rand(.@r) == 0) {
-		mapannounce 'map_name$[1], "Evil Forces are appearing in this area.", bc_map,0xFFFF44,FW_NORMAL,15;
+		mapannounce 'map_name$[1], "这片区域出现了邪恶势力。", bc_map,0xFFFF44,FW_NORMAL,15;
 		killmonster 'map_name$[1], instance_npcname("#ghmemorialmob05") + "::OnBossDead";
 
 		.@r = rand(4) * 2;
@@ -1463,7 +1463,7 @@ OnMyMobDead7:
 
 OnBossDead:
 	disablenpc();
-	mapannounce 'map_name$[1], "A portal has opened to the east in the central hallway.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "中央走廊的东侧开启了一道传送门。", bc_map,0xFFFF00;
 	enablenpc instance_npcname("#23 Control");
 	enablenpc instance_npcname("#23 Control2");
 	donpcevent instance_npcname("#ghmemorialmob06") + "::OnStart";
@@ -1549,7 +1549,7 @@ OnMyMobDead7:
 	else
 		.@r = 50;
 	if (rand(.@r) == 0) {
-		mapannounce 'map_name$[1], "An evil presence has teleported into this area.", bc_map,0xFFFF44,FW_NORMAL,15;
+		mapannounce 'map_name$[1], "一股邪恶的气息传送到了这片区域。", bc_map,0xFFFF44,FW_NORMAL,15;
 		killmonster 'map_name$[1], instance_npcname("#ghmemorialmob06") + "::OnBossDead";
 
 		.@r = rand(4) * 2;
@@ -1560,7 +1560,7 @@ OnMyMobDead7:
 
 OnBossDead:
 	disablenpc();
-	mapannounce 'map_name$[1], "A new portal has appeared at the end of the central corridor.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "中央走廊的尽头出现了一道新的传送门。", bc_map,0xFFFF00;
 	enablenpc instance_npcname("#24 Control");
 	enablenpc instance_npcname("#24 Control2");
 	enablenpc instance_npcname("#Geron");
@@ -1595,7 +1595,7 @@ OnTouch_:
 		end;
 	'step = 8;
 	disablenpc instance_npcname("#Geron");
-	mapannounce 'map_name$[1], "???: Do not come here! It's a trap... Kkkkah!!!", bc_map,0xFF7777,FW_NORMAL,15;
+	mapannounce 'map_name$[1], "？？？：别过来！这是陷阱……呃啊啊！！！", bc_map,0xFF7777,FW_NORMAL,15;
 	enablenpc instance_npcname("Himelmez#22");
 	enablenpc instance_npcname("Varmundt#23");
 	enablenpc instance_npcname("Heinrich#23");
@@ -1603,7 +1603,7 @@ OnTouch_:
 	end;
 }
 
-2@gl_k,143,260,4	script	Decomposed body#1	4_M_DIEMAN,5,5,{
+2@gl_k,143,260,4	script	腐烂的尸体#1	4_M_DIEMAN,5,5,{
 	end;
 OnTouch_:
 	disablenpc();
@@ -1627,66 +1627,66 @@ OnTimer45000:
 OnMobDead:
 	end;
 }
-2@gl_k,145,236,4	duplicate(Decomposed body#1)	Decomposed body#2	4_M_DIEMAN,5,5
-2@gl_k,141,222,2	duplicate(Decomposed body#1)	Decomposed body#3	4_M_DIEMAN,5,5
-2@gl_k,147,203,5	duplicate(Decomposed body#1)	Decomposed body#4	4_M_DIEMAN,5,5
-2@gl_k,167,225,4	duplicate(Decomposed body#1)	Decomposed body#5	4_M_DIEMAN,5,5
-2@gl_k,172,233,2	duplicate(Decomposed body#1)	Decomposed body#6	4_M_DIEMAN,5,5
-2@gl_k,176,244,3	duplicate(Decomposed body#1)	Decomposed body#7	4_M_DIEMAN,5,5
-2@gl_k,184,248,6	duplicate(Decomposed body#1)	Decomposed body#8	4_M_DIEMAN,5,5
-2@gl_k,193,228,0	duplicate(Decomposed body#1)	Decomposed body#9	4_M_DIEMAN,5,5
-2@gl_k,206,250,7	duplicate(Decomposed body#1)	Decomposed body#10	4_M_DIEMAN,5,5
-2@gl_k,130,249,1	duplicate(Decomposed body#1)	Decomposed body#11	4_M_DIEMAN,5,5
-2@gl_k,122,236,5	duplicate(Decomposed body#1)	Decomposed body#12	4_M_DIEMAN,5,5
-2@gl_k,130,228,7	duplicate(Decomposed body#1)	Decomposed body#13	4_M_DIEMAN,5,5
-2@gl_k,106,226,0	duplicate(Decomposed body#1)	Decomposed body#14	4_M_DIEMAN,5,5
-2@gl_k,104,245,0	duplicate(Decomposed body#1)	Decomposed body#15	4_M_DIEMAN,5,5
-2@gl_k,131,187,0	duplicate(Decomposed body#1)	Decomposed body#16	4_M_DIEMAN,5,5
-2@gl_k,121,197,0	duplicate(Decomposed body#1)	Decomposed body#17	4_M_DIEMAN,5,5
-2@gl_k,107,194,0	duplicate(Decomposed body#1)	Decomposed body#18	4_M_DIEMAN,5,5
-2@gl_k,92,187,0	duplicate(Decomposed body#1)	Decomposed body#19	4_M_DIEMAN,5,5
-2@gl_k,153,214,3	duplicate(Decomposed body#1)	Decomposed body#20	4_M_DIEMAN,5,5
-2@gl_k,155,195,4	duplicate(Decomposed body#1)	Decomposed body#21	4_M_DIEMAN,5,5
-2@gl_k,154,188,2	duplicate(Decomposed body#1)	Decomposed body#22	4_M_DIEMAN,5,5
-2@gl_k,143,195,5	duplicate(Decomposed body#1)	Decomposed body#23	4_M_DIEMAN,5,5
-2@gl_k,132,214,4	duplicate(Decomposed body#1)	Decomposed body#24	4_M_DIEMAN,5,5
-2@gl_k,125,208,2	duplicate(Decomposed body#1)	Decomposed body#25	4_M_DIEMAN,5,5
-2@gl_k,114,210,3	duplicate(Decomposed body#1)	Decomposed body#26	4_M_DIEMAN,5,5
-2@gl_k,137,182,6	duplicate(Decomposed body#1)	Decomposed body#27	4_M_DIEMAN,5,5
-2@gl_k,138,246,0	duplicate(Decomposed body#1)	Decomposed body#28	4_M_DIEMAN,5,5
-2@gl_k,132,260,7	duplicate(Decomposed body#1)	Decomposed body#29	4_M_DIEMAN,5,5
-2@gl_k,128,251,1	duplicate(Decomposed body#1)	Decomposed body#30	4_M_DIEMAN,5,5
-2@gl_k,179,260,3	duplicate(Decomposed body#1)	Decomposed body#31	4_M_DIEMAN,5,5
-2@gl_k,170,261,4	duplicate(Decomposed body#1)	Decomposed body#32	4_M_DIEMAN,5,5
-2@gl_k,177,219,2	duplicate(Decomposed body#1)	Decomposed body#33	4_M_DIEMAN,5,5
-2@gl_k,190,214,5	duplicate(Decomposed body#1)	Decomposed body#34	4_M_DIEMAN,5,5
-2@gl_k,201,214,4	duplicate(Decomposed body#1)	Decomposed body#35	4_M_DIEMAN,5,5
+2@gl_k,145,236,4	duplicate(腐烂的尸体#1)	Decomposed body#2	4_M_DIEMAN,5,5
+2@gl_k,141,222,2	duplicate(腐烂的尸体#1)	Decomposed body#3	4_M_DIEMAN,5,5
+2@gl_k,147,203,5	duplicate(腐烂的尸体#1)	Decomposed body#4	4_M_DIEMAN,5,5
+2@gl_k,167,225,4	duplicate(腐烂的尸体#1)	Decomposed body#5	4_M_DIEMAN,5,5
+2@gl_k,172,233,2	duplicate(腐烂的尸体#1)	Decomposed body#6	4_M_DIEMAN,5,5
+2@gl_k,176,244,3	duplicate(腐烂的尸体#1)	Decomposed body#7	4_M_DIEMAN,5,5
+2@gl_k,184,248,6	duplicate(腐烂的尸体#1)	Decomposed body#8	4_M_DIEMAN,5,5
+2@gl_k,193,228,0	duplicate(腐烂的尸体#1)	Decomposed body#9	4_M_DIEMAN,5,5
+2@gl_k,206,250,7	duplicate(腐烂的尸体#1)	Decomposed body#10	4_M_DIEMAN,5,5
+2@gl_k,130,249,1	duplicate(腐烂的尸体#1)	Decomposed body#11	4_M_DIEMAN,5,5
+2@gl_k,122,236,5	duplicate(腐烂的尸体#1)	Decomposed body#12	4_M_DIEMAN,5,5
+2@gl_k,130,228,7	duplicate(腐烂的尸体#1)	Decomposed body#13	4_M_DIEMAN,5,5
+2@gl_k,106,226,0	duplicate(腐烂的尸体#1)	Decomposed body#14	4_M_DIEMAN,5,5
+2@gl_k,104,245,0	duplicate(腐烂的尸体#1)	Decomposed body#15	4_M_DIEMAN,5,5
+2@gl_k,131,187,0	duplicate(腐烂的尸体#1)	Decomposed body#16	4_M_DIEMAN,5,5
+2@gl_k,121,197,0	duplicate(腐烂的尸体#1)	Decomposed body#17	4_M_DIEMAN,5,5
+2@gl_k,107,194,0	duplicate(腐烂的尸体#1)	Decomposed body#18	4_M_DIEMAN,5,5
+2@gl_k,92,187,0	duplicate(腐烂的尸体#1)	Decomposed body#19	4_M_DIEMAN,5,5
+2@gl_k,153,214,3	duplicate(腐烂的尸体#1)	Decomposed body#20	4_M_DIEMAN,5,5
+2@gl_k,155,195,4	duplicate(腐烂的尸体#1)	Decomposed body#21	4_M_DIEMAN,5,5
+2@gl_k,154,188,2	duplicate(腐烂的尸体#1)	Decomposed body#22	4_M_DIEMAN,5,5
+2@gl_k,143,195,5	duplicate(腐烂的尸体#1)	Decomposed body#23	4_M_DIEMAN,5,5
+2@gl_k,132,214,4	duplicate(腐烂的尸体#1)	Decomposed body#24	4_M_DIEMAN,5,5
+2@gl_k,125,208,2	duplicate(腐烂的尸体#1)	Decomposed body#25	4_M_DIEMAN,5,5
+2@gl_k,114,210,3	duplicate(腐烂的尸体#1)	Decomposed body#26	4_M_DIEMAN,5,5
+2@gl_k,137,182,6	duplicate(腐烂的尸体#1)	Decomposed body#27	4_M_DIEMAN,5,5
+2@gl_k,138,246,0	duplicate(腐烂的尸体#1)	Decomposed body#28	4_M_DIEMAN,5,5
+2@gl_k,132,260,7	duplicate(腐烂的尸体#1)	Decomposed body#29	4_M_DIEMAN,5,5
+2@gl_k,128,251,1	duplicate(腐烂的尸体#1)	Decomposed body#30	4_M_DIEMAN,5,5
+2@gl_k,179,260,3	duplicate(腐烂的尸体#1)	Decomposed body#31	4_M_DIEMAN,5,5
+2@gl_k,170,261,4	duplicate(腐烂的尸体#1)	Decomposed body#32	4_M_DIEMAN,5,5
+2@gl_k,177,219,2	duplicate(腐烂的尸体#1)	Decomposed body#33	4_M_DIEMAN,5,5
+2@gl_k,190,214,5	duplicate(腐烂的尸体#1)	Decomposed body#34	4_M_DIEMAN,5,5
+2@gl_k,201,214,4	duplicate(腐烂的尸体#1)	Decomposed body#35	4_M_DIEMAN,5,5
 
 // Amdarais Spawn
-2@gl_k,153,250,8	script	Heinrich#23	4_M_HEINRICH,{
+2@gl_k,153,250,8	script	海因里希#23	4_M_HEINRICH,{
 	cutin "gl_heinrich1",2;
-	mes "[Heinrich]";
-	mes "What are you putting on Himelmez!";
+	mes "[海因里希]";
+	mes "你对希梅尔梅兹做了什么！";
 	close3;
 }
 
-2@gl_k,162,250,1	script	Varmundt#23	4_M_BARMUND,{
-	mes "[Varmundt]";
-	mes "Can't take off this bridle...";
+2@gl_k,162,250,1	script	霸肋门德#23	4_M_BARMUND,{
+	mes "[巴尔蒙德]";
+	mes "这副笼头摘不下来……";
 	cutin "gl_barmund2",2;
 	close3;
 }
 
-2@gl_k,158,255,1	script	Gerhalt#23	4_LEVITATEMAN,{
-	mes "[Gerhalt]";
-	mes "Uuuuu... Khhhah! Just run away with the commander.";
+2@gl_k,158,255,1	script	盖尔哈特#23	4_LEVITATEMAN,{
+	mes "[格哈尔特]";
+	mes "呜……呃啊！快和指挥官一起逃吧。";
 	close;
 }
 
-2@gl_k,158,252,1	script	Himelmez#22	4_F_HIMEL,3,3,{
+2@gl_k,158,252,1	script	希梅尔兹#22	4_F_HIMEL,3,3,{
 	cutin "gl_himel2",2;
-	mes "[Himelmez]";
-	mes "That is amazing ~ you made it all the way here. May I say thank you?";
+	mes "[希梅尔梅兹]";
+	mes "真了不起～你们居然一路走到了这里。我可以说声谢谢吗？";
 	close3;
 OnTouch_:
 	if ('step != 8)
@@ -1711,58 +1711,58 @@ OnStart:
 	'npc_varmundt$ = instance_npcname("Varmundt#23");
 	end;
 OnTimer3000:
-	npctalk "Himelmez: Amazing~ I thought that you were not even close to getting here...", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：真了不起～我还以为你们根本到不了这里……", 'npc_himelmez$;
 	end;
 OnTimer6000:
-	npctalk "Gerhalt: Kkkkah! Run away! I can't endure anymore!", 'npc_gerhalt$;
+	npctalk "格哈尔特：呃啊啊！快逃！我快撑不住了！", 'npc_gerhalt$;
 	end;
 OnTimer9000:
-	npctalk "Heinrich: Gerhalt!", 'npc_heinrich$;
+	npctalk "海因里希：格哈尔特！", 'npc_heinrich$;
 	end;
 OnTimer15000:
-	npctalk "Heinrich: What are you doing to my soldier Himelmez!", 'npc_heinrich$;
+	npctalk "海因里希：希梅尔梅兹，你对我的士兵做了什么！", 'npc_heinrich$;
 	end;
 OnTimer18000:
-	npctalk "Himelmez: Hoo hoo, I already found a piece of Ymir's heart, Heinrich.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：呵呵，我已经找到了一块依美乐心脏，海因里希。", 'npc_himelmez$;
 	end;
 OnTimer21000:
-	npctalk "Himelmez: If he did not bother me it would have been faster.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：要是他没来碍事，本可以更快些。", 'npc_himelmez$;
 	end;
 OnTimer24000:
-	npctalk "Gerhalt: Commandant... Come on, you need to run away from here... Ugh.", 'npc_gerhalt$;
+	npctalk "格哈尔特：指挥官……快，你必须离开这里……呃。", 'npc_gerhalt$;
 	end;
 OnTimer27000:
-	npctalk "Himelmez: Really? What makes you think so?", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：是吗？你凭什么这么想？", 'npc_himelmez$;
 	end;
 OnTimer30000:
-	npctalk "Heinrich: Himelmez! You already made what you wanted so there is no more need for a sacrifice!", 'npc_heinrich$;
+	npctalk "海因里希：希梅尔梅兹！你想要的东西已经得手，不再需要牺牲品了！", 'npc_heinrich$;
 	end;
 OnTimer33000:
-	npctalk "Heinrich: Let him go! I don't need to see anyone else suffer!", 'npc_heinrich$;
+	npctalk "海因里希：放了他！我不想再看到任何人受苦！", 'npc_heinrich$;
 	end;
 OnTimer36000:
-	npctalk "Himelmez: Let him go? I think... No...", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：放了他？我想想……不……", 'npc_himelmez$;
 	end;
 OnTimer39000:
-	npctalk "Himelmez: Besides, this is your last surviving soldier, Heinrich.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：况且，这是你最后一名幸存的士兵了，海因里希。", 'npc_himelmez$;
 	end;
 OnTimer42000:
-	npctalk "Himelmez: He made life difficult for me.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：他让我吃了不少苦头。", 'npc_himelmez$;
 	end;
 OnTimer45000:
-	npctalk "Himelmez: He is perfectly fit for my new creation Amdarais.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：他正适合成为我的新造物暗答莱尸。", 'npc_himelmez$;
 	end;
 OnTimer48000:
-	npctalk "Heinrich: I'll never forgive you.", 'npc_heinrich$;
+	npctalk "海因里希：我绝不会原谅你。", 'npc_heinrich$;
 	end;
 OnTimer51000:
-	npctalk "Himelmez: Uh uh~ I'm so scared.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：哎呀呀～我好害怕。", 'npc_himelmez$;
 	end;
 OnTimer54000:
-	npctalk "Himelmez: Anyway, we will have a chance to see because we need to talk more.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：总之，我们还有机会再见，因为还有很多话要谈。", 'npc_himelmez$;
 	end;
 OnTimer57000:
-	npctalk "Himelmez: So long boys.", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：再见了，小子们。", 'npc_himelmez$;
 	end;
 OnTimer60000:
 	specialeffect EF_BARRIER, AREA, 'npc_gerhalt$;
@@ -1771,28 +1771,28 @@ OnTimer63000:
 	disablenpc 'npc_himelmez$;
 	end;
 OnTimer65000:
-	npctalk "Gerhalt: You can make my body but you can't take my soul, Himelmez!", 'npc_gerhalt$;
+	npctalk "格哈尔特：你可以夺走我的身体，但夺不走我的灵魂，希梅尔梅兹！", 'npc_gerhalt$;
 	end;
 OnTimer66000:
 	specialeffect EF_CHAINCOMBO, AREA, 'npc_gerhalt$;
 	end;
 OnTimer67000:
-	npctalk "Heinrich: I'll never let you get away Himelmez!!", 'npc_heinrich$;
+	npctalk "海因里希：我绝不会让你逃掉，希梅尔梅兹！！", 'npc_heinrich$;
 	specialeffect EF_MAPPILLAR, AREA, 'npc_gerhalt$;
 	end;
 OnTimer70000:
 	specialeffect EF_MAPPILLAR2, AREA, 'npc_gerhalt$;
 	specialeffect EF_MAPPILLAR, AREA, 'npc_gerhalt$;
 	disablenpc 'npc_heinrich$;
-	npctalk "Varmundt: We have no choice. We have to fight against Amdarais!", 'npc_varmundt$;
+	npctalk "巴尔蒙德：别无选择。我们必须与暗答莱尸一战！", 'npc_varmundt$;
 	end;
 OnTimer73000:
-	mapannounce 'map_name$[1], "Gerhalt's body is changing.", bc_map,0xFFFFFF;
+	mapannounce 'map_name$[1], "格哈尔特的身体正在发生变化。", bc_map,0xFFFFFF;
 	end;
 OnTimer76000:
 	specialeffect EF_LORD, AREA, 'npc_gerhalt$;
 	disablenpc 'npc_varmundt$;
-	mapannounce 'map_name$[1], "Varmundt: Let me help this battle with my illusion. Just follow the illusion's orders.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "巴尔蒙德：让我用幻影助战。听从幻影的指示即可。", bc_map,0xFFFF00;
 	end;
 OnTimer80000:
 	disablenpc 'npc_gerhalt$;
@@ -1812,7 +1812,7 @@ OnStart:
 	'npc_heinrich$ = instance_npcname("Heinrich#23");
 	'npc_varmundt$ = instance_npcname("Varmundt#23");
 
-	npctalk "Himelmez: Amazing~ I thought that you were not even close to getting here...", 'npc_himelmez$;
+	npctalk "希梅尔梅兹：真了不起～我还以为你们根本到不了这里……", 'npc_himelmez$;
 	end;
 OnTimer1500:
 	specialeffect EF_BARRIER, AREA, 'npc_gerhalt$;
@@ -1830,22 +1830,22 @@ OnTimer7000:
 	specialeffect EF_CHAINCOMBO, AREA, 'npc_gerhalt$;
 	end;
 OnTimer10000:
-	npctalk "Heinrich: I'll never let you get away Himelmez!!", 'npc_heinrich$;
+	npctalk "海因里希：我绝不会让你逃走，希梅尔兹！！", 'npc_heinrich$;
 	end;
 OnTimer11000:
 	disablenpc 'npc_heinrich$;
-	npctalk "Varmundt: We have no choice. We have to fight against Amdarais!", 'npc_varmundt$;
+	npctalk "霸肋门德：我们别无选择。只能与暗答莱尸一战！", 'npc_varmundt$;
 	end;
 OnTimer14000:
 	specialeffect EF_MAPPILLAR2, AREA, 'npc_gerhalt$;
 	specialeffect EF_MAPPILLAR, AREA, 'npc_gerhalt$;
 	end;
 OnTimer14500:
-	mapannounce 'map_name$[1], "Gerhalt's body is changing.", bc_map,0xFFFFFF;
+	mapannounce 'map_name$[1], "盖尔哈特的身体正在发生变化。", bc_map,0xFFFFFF;
 	end;
 OnTimer15500:
 	disablenpc 'npc_varmundt$;
-	mapannounce 'map_name$[1], "Varmundt: Let me help this battle with my illusion. Just follow the illusion's orders.", bc_map,0xFFFF00;
+	mapannounce 'map_name$[1], "霸肋门德：让我的幻影来协助这场战斗吧。只需听从幻影的指示。", bc_map,0xFFFF00;
 	end;
 OnTimer17500:
 	specialeffect EF_LORD, AREA, 'npc_gerhalt$;
@@ -1858,10 +1858,10 @@ OnTimer20500:
 	end;
 }
 
-2@gl_k,158,252,4	script	Himelmez#23	4_F_HIMEL,{
+2@gl_k,158,252,4	script	希梅尔兹#23	4_F_HIMEL,{
 	cutin "gl_himel2",2;
-	mes "[Himelmez]";
-	mes "That is amazing ~ you made it all the way here. May I say thank you?";
+	mes "[希梅尔兹]";
+	mes "太惊人了～你竟然一路来到了这里。我能向你道谢吗？";
 	close3;
 }
 
@@ -1871,20 +1871,20 @@ OnStart:
 	enablenpc instance_npcname("#ghmemorialmob07");
 	monster 'map_name$[1],158,255,"Amdarais",2476,1,instance_npcname("#ghmemorialmob07") + "::OnMyMobDead";// MG_AMDARAIS
 	'boss_id = $@mobid[0];
-	unittalk 'boss_id, "Run away... run away from me...";
+	unittalk 'boss_id, "快逃……快逃离我……";
 	initnpctimer;
 	end;
 OnTimer5000:
-	unittalk 'boss_id, "I don't want... I don't want to kill anyone. Uhuuuuuh";
+	unittalk 'boss_id, "我不想……我不想杀害任何人。呜啊啊啊啊";
 	end;
 OnTimer10000:
-	unittalk 'boss_id, "Please kill me! Please!";
+	unittalk 'boss_id, "请杀了我！求你了！";
 	end;
 OnTimer16000:
-	unittalk 'boss_id, "Eeeeee...eee...die... die...";
+	unittalk 'boss_id, "咿咿咿咿……咿……死……死……";
 	end;
 OnTimer22000:
-	unittalk 'boss_id, "Demolition... Death!...";
+	unittalk 'boss_id, "毁灭……死亡！……";
 	end;
 OnTimer55000:
 	donpcevent instance_npcname("#ghmemorialmob08") + "::OnStart";// Varmundt buffs and additionnal monsters
@@ -1919,7 +1919,7 @@ OnTimer5000:
 	}
 	getunitdata 'boss_id, .@data;
 	.@percent_hp = (.@data[UMOB_HP] * 100) / .@data[UMOB_MAXHP];
-	mapannounce 'map_name$[1], "Amdarais HP " + .@percent_hp + "% reach!", bc_map,0x70DBDB;
+	mapannounce 'map_name$[1], "暗答莱尸 HP" + .@percent_hp + "%达成！", bc_map,0x70DBDB;
 
 	// event type every 10%
 	switch( .@percent_hp / 10 ) {
@@ -1973,7 +1973,7 @@ OnMobDead:
 	end;
 }
 
-2@gl_k,150,247,5	script	Varmundt's Ghost#Buff1	4_M_BARMUND,2,2,{
+2@gl_k,150,247,5	script	霸肋门德的幽灵#Buff1	4_M_BARMUND,2,2,{
 	end;
 OnTouch:
 	specialeffect2 EF_ENHANCE;
@@ -1996,34 +1996,34 @@ OnEvent:
 	enablenpc();
 	.@num = atoi( replacestr(strnpcinfo(2), "Buff", "") );
 	if (.@num == 1)
-		npctalk "Varmundt's Ghost: Amdarais may use a strong magic shield! Stay close to me and I'll protect you!";
+		npctalk "霸肋门德的幽灵：暗答莱尸可能会使用强大的魔法护盾！靠近我，我会保护你！";
 	else if (.@num == 2)
-		npctalk "Varmundt's Ghost: Now's a chance to attack! Come closer to me and strike!";
+		npctalk "霸肋门德的幽灵：现在正是进攻的机会！靠近我发动攻击！";
 	else if (.@num == 3)
-		npctalk "Varmundt's Ghost: If you don't want to be attacked by Amdarais' zombie, come to me and get more power!";
+		npctalk "霸肋门德的幽灵：如果你不想被暗答莱尸的僵尸袭击，就到我这里来获得更强的力量！";
 	else
-		npctalk "Varmundt's Ghost: If you don't want to be attacked by Amdarais's power, come to me and get more power!";
+		npctalk "霸肋门德的幽灵：如果你不想被暗答莱尸的力量袭击，就到我这里来获得更强的力量！";
 	end;
 OnTimer10000:
 	stopnpctimer;
 	disablenpc();
 	end;
 }
-2@gl_k,165,247,3	duplicate(Varmundt's Ghost#Buff1)	Varmundt's Ghost#Buff2	4_M_BARMUND,2,2
-2@gl_k,150,232,8	duplicate(Varmundt's Ghost#Buff1)	Varmundt's Ghost#Buff3	4_M_BARMUND,2,2
-2@gl_k,165,232,2	duplicate(Varmundt's Ghost#Buff1)	Varmundt's Ghost#Buff4	4_M_BARMUND,2,2
+2@gl_k,165,247,3	duplicate(霸肋门德的幽灵#Buff1)	Varmundt's Ghost#Buff2	4_M_BARMUND,2,2
+2@gl_k,150,232,8	duplicate(霸肋门德的幽灵#Buff1)	Varmundt's Ghost#Buff3	4_M_BARMUND,2,2
+2@gl_k,165,232,2	duplicate(霸肋门德的幽灵#Buff1)	Varmundt's Ghost#Buff4	4_M_BARMUND,2,2
 
 
-2@gl_k,158,241,1	script	Hugin#21	4_M_SAGE_C,{
+2@gl_k,158,241,1	script	福金#21	4_M_SAGE_C,{
 	if ('step != 9)
 		end;
 	if (checkquest(12319,HUNTING) == 2) {// note: complete hunting 'Corrupted Soul Hunt' prerequis
 		if (checkweight(6607,5, 6608,5) == 0) {
-			mes "^ff0000It seems like you have too many types or weights of items. Please organize your inventory.^000000";
+			mes "^ff0000你的物品种类或重量似乎过多。请整理你的背包。^000000";
 			close;
 		}
-		mes "[Hugin]";
-		mes "Hm, you are very well. First of all, let me give you some loot from Amdarais.";
+		mes "[福金]";
+		mes "嗯，你做得很好。首先，让我把从暗答莱尸那里得到的战利品分一些给你。";
 		erasequest 12319;
 		setquest 12322;// Space Distortion
 		if (isbegin_quest(12321) == 0) {
@@ -2038,36 +2038,36 @@ OnTimer10000:
 			getitem 6608,1;// Coagulated_Spell
 		}
 		next;
-		mes "[Hugin]";
-		mes "Varmundt's time is stopped by me.";
-		mes "And your time will be distorted soon.";
+		mes "[福金]";
+		mes "我已让霸肋门德的时间停止。";
+		mes "而你的时间也即将被扭曲。";
 		specialeffect2 EF_BLIND;
 		soundeffect "_blind.wav",0;
 		next;
-		mes "[Hugin]";
-		mes "Maybe this poor time traveler will try to stop Glast Heim's tragedy from happening.";
+		mes "[福金]";
+		mes "也许这个可怜的时间旅行者会试图阻止克雷斯特汉姆古城的悲剧发生。";
 		next;
-		mes "[Hugin]";
-		mes "However, we will never overlook his behavior now and forever...";
+		mes "[福金]";
+		mes "然而，无论现在还是将来，我们都绝不会放过他的所作所为……";
 		next;
-		mes "[Hugin]";
-		mes "Now let me remove your memory. If you see me again it will be someone new.";
+		mes "[福金]";
+		mes "现在，让我抹去你的记忆。若你再次见到我，那会是另一个人。";
 		specialeffect2 EF_FREEZE;
 		close2;
 		warp 'map_name$[1],158,244;
 		end;
 	}
-	mes "[Hugin]";
-	mes "Oops. I almost distorted the time gap. Come over here. We need to go out!";
+	mes "[福金]";
+	mes "哎呀。我差点扭曲了时间的缝隙。到这边来。我们必须离开这里！";
 	next;
-	select("You were just with me...");
-	mes "[Hugin]";
-	mes "What did you say just before?";
-	mes "Anyway, that is not important. The gap of time will be closed so we need to get out of here.";
+	select("你刚才还和我在一起……");
+	mes "[福金]";
+	mes "你刚才说了什么？";
+	mes "总之，那并不重要。时间裂隙即将闭合，我们必须离开这里。";
 	next;
-	if (select("Let me look around more:Please let me out") == 1) {
-		mes "[Hugin]";
-		mes "Really? This place will be break down soon. Please look around quickly.";
+	if (select("让我再四处看看:请放我出去") == 1) {
+		mes "[福金]";
+		mes "真的吗？这个地方很快就要崩塌了。请快点四处看看吧。";
 		close;
 	}
 	close2;
@@ -2077,11 +2077,11 @@ OnTimer10000:
 
 // Treasure Room
 //============================================================
-1@gl_k,165,136,3	script	Strange crack#2	CLEAR_NPC,{
+1@gl_k,165,136,3	script	奇怪的裂缝#2	CLEAR_NPC,{
 	if ('step != 9)
 		end;
 	if (isbegin_quest(12322) == 0) {// Space Distortion
-		mes "The crack looks suspicious but nothing more to check.";
+		mes "这道裂缝看起来很可疑，但已经没有别的可查看了。";
 		close;
 	}
 	specialeffect EF_SPELLBREAKER;
@@ -2144,16 +2144,16 @@ OnTimer10000:
 	disablenpc();
 	end;
 }
-1@gl_k,159,136,3	duplicate(Strange crack#2)	Strange crack#3	CLEAR_NPC
-1@gl_k,153,136,3	duplicate(Strange crack#2)	Strange crack#4	CLEAR_NPC
-1@gl_k,147,136,3	duplicate(Strange crack#2)	Strange crack#5	CLEAR_NPC
-1@gl_k,141,136,3	duplicate(Strange crack#2)	Strange crack#6	CLEAR_NPC
-1@gl_k,135,136,3	duplicate(Strange crack#2)	Strange crack#7	CLEAR_NPC
-1@gl_k,129,136,3	duplicate(Strange crack#2)	Strange crack#8	CLEAR_NPC
+1@gl_k,159,136,3	duplicate(奇怪的裂缝#2)	Strange crack#3	CLEAR_NPC
+1@gl_k,153,136,3	duplicate(奇怪的裂缝#2)	Strange crack#4	CLEAR_NPC
+1@gl_k,147,136,3	duplicate(奇怪的裂缝#2)	Strange crack#5	CLEAR_NPC
+1@gl_k,141,136,3	duplicate(奇怪的裂缝#2)	Strange crack#6	CLEAR_NPC
+1@gl_k,135,136,3	duplicate(奇怪的裂缝#2)	Strange crack#7	CLEAR_NPC
+1@gl_k,129,136,3	duplicate(奇怪的裂缝#2)	Strange crack#8	CLEAR_NPC
 
-1@gl_k,269,267,3	script	Strange crack#1	CLEAR_NPC,{
+1@gl_k,269,267,3	script	奇怪的裂缝#1	CLEAR_NPC,{
 	if (isbegin_quest(12322) == 0) {// Space Distortion
-		mes "The crack looks suspicious but nothing more to check.";
+		mes "这道裂缝看起来很可疑，但已经没有别的可查看了。";
 		close;
 	}
 	warp 'map_name$[0],149,198;

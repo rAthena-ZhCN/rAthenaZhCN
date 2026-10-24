@@ -16,69 +16,69 @@
 //= 1.6 Cleaning. [Euphy]
 //============================================================ 
 
-alberta,26,229,0	script	Kafra Employee#bunny	83,{
+alberta,26,229,0	script	卡普拉职员#bunny	83,{
 	if (BUNYBND == 1) {
-		mes "[Kafra Employee]";
-		mes "Hello there~!";
-		mes "How'd you like to";
-		mes "participate in Kafra";
-		mes "Corporation's special";
-		mes "^529DFFBunny Band Event^000000?";
+		mes "[卡普拉职员]";
+		mes "你好呀~！";
+		mes "你要不要";
+		mes "参加卡普拉";
+		mes "公司的特别";
+		mes "^529DFF兔耳发带活动^000000？";
 		next;
-		switch(select("Sure, I brought the items.:Event Information:Cancel")) {
+		switch(select("好的，我带来了物品。:活动介绍:取消")) {
 		case 1:
-			mes "[Kafra Employee]";
-			mes "Alrighty~";
-			mes "Let me check to";
-			mes "see if you brought";
-			mes "all the items...";
+			mes "[卡普拉职员]";
+			mes "好的~";
+			mes "让我看看";
+			mes "你是否带来了";
+			mes "所有物品……";
 			next;
 			setarray .@Items[0],949,100,706,1,722,1,2213,1;
 			for(set .@i,0; .@i<8; set .@i,.@i+2)
 				if (countitem(.@Items[.@i]) < .@Items[.@i+1]) {
-					mes "[Kafra Employee]";
-					mes "Ooh, I'm sorry";
-					mes "but you need to";
-					mes "bring at least";
+					mes "[卡普拉职员]";
+					mes "哎呀，抱歉";
+					mes "不过你需要";
+					mes "至少带来";
 					mes callfunc("F_InsertPlural",.@Items[.@i+1],getitemname(.@Items[.@i]))+".";
 					close;
 				}
-			mes "[Kafra Employee]";
-			mes "Great, I see that";
-			mes "you've gathered";
-			mes "everything I need to";
-			mes "make the Bunny Band.";
-			mes "Please wait a moment";
-			mes "while I put it together...";
+			mes "[卡普拉职员]";
+			mes "太好了，看来";
+			mes "你已经凑齐了";
+			mes "制作兔耳发带所需的";
+			mes "全部材料。";
+			mes "请稍等片刻";
+			mes "我这就把它组装起来……";
 			next;
 			for(set .@i,0; .@i<8; set .@i,.@i+2)
 				if (countitem(.@Items[.@i]) < .@Items[.@i+1]) {
-					mes "[Kafra Employee]";
-					mes "Hm? I'm sorry,";
-					mes "but I actually can't";
-					mes "make this right now. You";
-					mes "need "+callfunc("F_InsertPlural",.@Items[.@i+1],getitemname(.@Items[.@i]));
-					mes "in order for me to put this";
-					mes "Bunny Band together...";
+					mes "[卡普拉职员]";
+					mes "嗯？抱歉，";
+					mes "其实我现在";
+					mes "还做不出来。你";
+					mes "还需要"+callfunc("F_InsertPlural",.@Items[.@i+1],getitemname(.@Items[.@i]));
+					mes "才能让我把这条";
+					mes "兔耳发带组装起来……";
 					close;
 				}
 			delitem 949,100; //Feather
 			delitem 706,1; //Four_Leaf_Clover
 			delitem 722,1; //Scarlet_Jewel
 			delitem 2213,1; //Cat_Hairband
-			mes "[Kafra Employee]";
-			mes "Ah, here you go~";
-			mes "The perfect Bunny Band!";
-			mes "Well, I hope you enjoy it.";
+			mes "[卡普拉职员]";
+			mes "啊，给你~";
+			mes "完美的兔耳发带！";
+			mes "那么，希望你喜欢。";
 			getitem 2214,1; //Bunny_Band
 			set BUNYBND,0;
 			next;
-			mes "[Kafra Employee]";
-			mes "Thank you for";
-			mes "participating in this";
-			mes "special event and your";
-			mes "continued patronage";
-			mes "of the Kafra Services~";
+			mes "[卡普拉职员]";
+			mes "感谢您";
+			mes "参加这次";
+			mes "特别活动，以及你";
+			mes "一直以来";
+			mes "对卡普拉服务的支持~";
 			close;
 		case 2:
 			goto L_Info;
@@ -86,31 +86,31 @@ alberta,26,229,0	script	Kafra Employee#bunny	83,{
 			close;
 		}
 	}
-	mes "[Kafra Employee]";
-	mes "Hi there~! Would you like";
-	mes "to join our special ^529DFFBunny";
-	mes "Band Event^000000 hosted by the Kafra";
-	mes "Corporation and sponsored by";
-	mes "the Alberta Merchant Guild?";
+	mes "[卡普拉职员]";
+	mes "你好~！你想不想";
+	mes "参加我们特别的^529DFF兔耳";
+	mes "发带活动^000000，这场活动由卡普拉";
+	mes "公司主办，并由";
+	mes "阿尔贝塔商人公会赞助？";
 	next;
-	switch(select("Join the Event:Event Information:Cancel")) {
+	switch(select("参加活动:活动介绍:取消")) {
 	case 1:
 		set BUNYBND,1;
-		mes "[Kafra Employee]";
-		mes "Great! Thanks for";
-		mes "participating! If you";
-		mes "haven't already heard,";
-		mes "you need to collect these";
-		mes "items if you want me put a";
-		mes "Bunny Band together for you...";
+		mes "[卡普拉职员]";
+		mes "太好了！感谢你";
+		mes "参与！如果你";
+		mes "还没听说，";
+		mes "你需要收集这些";
+		mes "物品，我才能为你";
+		mes "组装一条兔耳发带……";
 		next;
-		mes "[Kafra Employee]";
-		mes "100 Feathers,";
-		mes "1 Four-Leaf Clover,";
-		mes "1 Kitty Band and";
-		mes "1 Pearl. That's it!";
-		mes "Good luck and I'll be";
-		mes "waiting for you here~";
+		mes "[卡普拉职员]";
+		mes "100个柔毛，";
+		mes "1个四叶草，";
+		mes "1个猫耳发带，以及";
+		mes "1颗珍珠。就这些！";
+		mes "祝你好运，我会";
+		mes "在这里等你~";
 		close;
 	case 2:
 		break;
@@ -118,28 +118,28 @@ alberta,26,229,0	script	Kafra Employee#bunny	83,{
 		close;
 	}
 L_Info:
-	mes "[Kafra Employee]";
-	mes "To thank our valued";
-	mes "customers, Kafra Corporation";
-	mes "has prepared a special event";
-	mes "where Kafra Employee will assemble";
-	mes "Bunny Bands for adventurers";
-	mes "who bring the required items.";
+	mes "[卡普拉职员]";
+	mes "为感谢我们尊贵的";
+	mes "顾客，卡普拉公司";
+	mes "准备了一场特别活动，";
+	mes "由卡普拉职员为";
+	mes "带来所需物品的冒险者";
+	mes "组装兔耳发带。";
 	next;
-	mes "[Kafra Employee]";
-	mes "For this special,";
-	mes "one of a kind item,";
-	mes "bring 100 Feathers,";
-	mes "1 Four-Leaf Clover,";
-	mes "1 Kitty Band and";
-	mes "1 Pearl.";
+	mes "[卡普拉职员]";
+	mes "为了这件特别的、";
+	mes "独一无二的物品，";
+	mes "请带来100个柔毛，";
+	mes "1个四叶草，";
+	mes "1个猫耳发带，以及";
+	mes "1颗珍珠。";
 	next;
-	mes "[Kafra Employee]";
-	mes "When you're ready,";
-	mes "come back and bring";
-	mes "those items to me.";
-	mes "(Sponsored by the";
-	mes "Alberta Merchant Guild).";
+	mes "[卡普拉职员]";
+	mes "等你准备好后，";
+	mes "回来把这些";
+	mes "物品交给我。";
+	mes "（由";
+	mes "阿尔贝塔商人公会赞助）。";
 	close;
 }
 

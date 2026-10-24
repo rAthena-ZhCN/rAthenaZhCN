@@ -17,113 +17,113 @@
 //= 1.1 Some small changes. [Kisuka]
 //============================================================
 
-payon,162,176,4	script	Halloween Magician#iRO08	704,{
+payon,162,176,4	script	万圣节魔法师#iRO08	704,{
 	if (Hallow08 < 1) {
-		mes "[Halloween Magician]";
-		mes "Kkkkkkkkk!";
-		mes "I have a special event this Halloween that tests your luck and agility.";
-		mes "Are you interested?";
+		mes "[万圣节魔法师]";
+		mes "嘿嘿嘿嘿嘿！";
+		mes "这个万圣节我准备了一项特别活动，可以测试你的运气和敏捷。";
+		mes "你有兴趣吗？";
 		next;
-		mes "[Halloween Magician]";
-		mes "Come on! Don't be a wuss!";
-		mes "If you collect enough tickets you can get good prizes!";
-		mes "So what do you say?";
+		mes "[万圣节魔法师]";
+		mes "来吧！别这么胆小！";
+		mes "只要收集足够的票券，就能获得很棒的奖品！";
+		mes "你觉得怎么样？";
 		next;
 		goto MainMenu;
 	}
 	if (Hallow08Kill == 1) {
-		mes "[Halloween Magician]";
-		mes "You a 'fraidy cat or something?!";
-		mes "You know you want to try again...";
-		mes "Do you know the rules?";
+		mes "[万圣节魔法师]";
+		mes "你是个胆小鬼还是什么？！";
+		mes "你知道你想再试一次……";
+		mes "你知道规则吗？";
 		next;
 		set Hallow08Kill,0;
-		if(select("Yes, I know.:No, I don't know.") == 2) {
+		if(select("知道。:不知道。") == 2) {
 			goto Rules;
 		}
 		goto Participate;
 	}
 	if (Hallow08Kill == 2) {
-		mes "[Halloween Magician]";
-		mes "Oh, well done! You are alright!";
-		mes "Isn't it fun with zombies??";
-		mes "You know, zombies were people too!";
-		mes "Ha!";
+		mes "[万圣节魔法师]";
+		mes "哦，干得好！你挺厉害的！";
+		mes "和腐尸一起玩不是很有趣吗？？";
+		mes "你知道吗，腐尸生前也是人！";
+		mes "哈！";
 		mes "Kkkkkkk.";
 		next;
 		getitem 7941,1;
 		set Hallow08Kill,0;
-		mes "[Halloween Magician]";
-		mes "As I promised";
-		mes "You can get Halloween tickets for cool items.";
+		mes "[万圣节魔法师]";
+		mes "就像我承诺的那样";
+		mes "你可以用万圣节票券换取很棒的物品。";
 		close;
 	}
 	if (Hallow08 > 0) {
-		mes "[Halloween Magician]";
-		mes "Well, do you want to hear the rules again or, just get back to it...";
+		mes "[万圣节魔法师]";
+		mes "那么，你是想再听一遍规则，还是直接继续……";
 		next;
 		goto MainMenu2;
 	}
 
 		Rules:
-			mes "[Halloween Magician]";
-			mes "This village is like a virtual Payon.";
-			mes "There are zombies and ghouls roaming around and three southern exits, but only one works.";
-			mes "That's up to you to find out.";
+			mes "[万圣节魔法师]";
+			mes "这个村庄就像是虚拟的裴扬。";
+			mes "周围有腐尸和绿腐尸游荡，南边有三个出口，但只有一个能走通。";
+			mes "那就靠你自己去发现了。";
 			next;
-			mes "[Halloween Magician]";
-			mes "You can't use any skills to kill the ghouls or zombies.";
-			mes "And one more thing...";
-			mes "you shouldn't forget...";
+			mes "[万圣节魔法师]";
+			mes "你不能使用任何技能杀死绿腐尸或腐尸。";
+			mes "还有一件事……";
+			mes "你可别忘了……";
 			next;
-			mes "[Halloween Magician]";
-			mes "All participants should be wearing nothing.";
-			mes "Put all belongings in your storage and come back here when your weight is '0'.";
+			mes "[万圣节魔法师]";
+			mes "所有参赛者都不能穿戴任何装备。";
+			mes "把所有物品放进仓库，等负重为'0'时再回来这里。";
 			next;
-			mes "[Halloween Magician]";
-			mes "Oh and one more thing!";
-			mes "You can't be riding a PecoPeco or have a Cart.";
-			mes "If you are, then I will remove them before you enter.";
-			mes "Got it?";
+			mes "[万圣节魔法师]";
+			mes "哦，还有一件事！";
+			mes "你不能骑乘大嘴鸟，也不能携带手推车。";
+			mes "如果你有，我会在你进入前帮你解除。";
+			mes "明白了吗？";
 			next;
-			mes "[Halloween Magician]";
-			mes "Remember, there are three exits but only one works randomly, the zombies and ghouls roaming around there can't be killed and you can't be wearing anything.";
+			mes "[万圣节魔法师]";
+			mes "记住，有三个出口，但只有一个会随机生效；在那里游荡的腐尸和绿腐尸无法被杀死，而且你不能穿戴任何装备。";
 			next;
 			if (Hallow08 > 0) {
-				mes "[Halloween Magician]";
+				mes "[万圣节魔法师]";
 				mes "Hey...";
-				mes "Come back once you're ready.";
+				mes "准备好了就回来。";
 				close;
 			} else {
 				goto MainMenu;
 			}
 
 		Participate:
-			mes "[Halloween Magician]";
-			mes "Ok, you are ready.";
-			mes "Let me check your weight.";
+			mes "[万圣节魔法师]";
+			mes "好，你准备好了。";
+			mes "让我检查一下你的负重。";
 			next;
 			if (Weight > 0) {
-				mes "[Halloween Magician]";
-				mes "Gosh!";
-				mes "There's always a black sheep anywhere.";
+				mes "[万圣节魔法师]";
+				mes "天啊！";
+				mes "不管在哪里，总会有害群之马。";
 				next;
-				mes "[Halloween Magician]";
-				mes "You think I wouldn't notice that your weight is above '0'?";
-				mes "You're overweight...";
+				mes "[万圣节魔法师]";
+				mes "你以为我会没注意到你的负重超过'0'吗？";
+				mes "你超重了……";
 				close;
 			} else {
-				mes "[Halloween Magician]";
-				mes "You seem good to go, and your weight is just right.";
+				mes "[万圣节魔法师]";
+				mes "看来你可以出发了，负重刚刚好。";
 				next;
-				mes "[Halloween Magician]";
-				mes "I was quite swamped with my work, so I'm exhausted.";
+				mes "[万圣节魔法师]";
+				mes "我工作忙得不可开交，所以累坏了。";
 				next;
-				mes "[Halloween Magician]";
-				mes "I sometimes forget to send you there...";
+				mes "[万圣节魔法师]";
+				mes "我有时会忘记把你送过去……";
 				next;
-				mes "[Halloween Magician]";
-				mes "I hope you come back well.";
+				mes "[万圣节魔法师]";
+				mes "希望你平安归来。";
 				close2;
 				if (Hallow08 < 1) {
 					set Hallow08,1;
@@ -138,24 +138,24 @@ payon,162,176,4	script	Halloween Magician#iRO08	704,{
 			}
 
 		TicketExchange:
-			mes "[Halloween Magician]";
-			mes "You want to exchange tickets for prizes?";
-			mes "Good job! Kkkkkk!";
+			mes "[万圣节魔法师]";
+			mes "你想用票券兑换奖品吗？";
+			mes "干得好！嘿嘿嘿嘿！";
 			next;
-			mes "[Halloween Magician]";
-			mes "Lemme tell you what items you can exchange for.";
+			mes "[万圣节魔法师]";
+			mes "我来告诉你能兑换哪些物品。";
 			next;
-			mes "[Halloween Magician]";
-			mes "5 tickets for Pumpkin Pie.";
-			mes "20 tickets for Pumpkin-Head.";
-			mes "50 tickets for Old Blue Box.";
-			mes "70 tickets for Old Purple Box.";
-			mes "200 tickets for Old Card Album.";
+			mes "[万圣节魔法师]";
+			mes "5张票券兑换甜蜜的南瓜派。";
+			mes "20张票券兑换南瓜头饰。";
+			mes "50张票券兑换神秘箱子。";
+			mes "70张票券兑换神秘紫箱。";
+			mes "200张票券兑换老旧卡册。";
 			next;
-			mes "[Halloween Magician]";
-			mes "What would you like to exchange for?";
+			mes "[万圣节魔法师]";
+			mes "你想兑换什么？";
 			next;
-			switch(select("Pumpkin Pie:Pumpkin-Head:Old Blue Box:Old Purple Box:Old Card Album")) {
+			switch(select("甜蜜的南瓜派:南瓜头饰:神秘箱子:神秘紫箱:老旧卡册")) {
 			case 1:
 				if (countitem(7941) < 5) {
 					goto NotEnough;
@@ -203,29 +203,29 @@ payon,162,176,4	script	Halloween Magician#iRO08	704,{
 			}
 
 		NextTime:
-			mes "[Halloween Magician]";
-			mes "Ok, see you then.";
+			mes "[万圣节魔法师]";
+			mes "好，到时候见。";
 			mes "Kkkkkkkk.";
 			close;
 
 	MainMenu:
-		menu "Explain it to me.",Rules,"I want to participate.",Participate,"I want to exchange tickets for prizes.",TicketExchange,"I'll come back next time.",NextTime;
+		menu "向我说明。",Rules,"我想参加。",Participate,"我想用票券兑换奖品。",TicketExchange,"I'll come back next time.",NextTime;
 
 	MainMenu2:
-		menu "Get me back there now!",Participate,"Please, tell me the rules",Rules,"I want to exchange tickets for prizes.",TicketExchange,"I'll come back next time.",NextTime;
+		menu "现在送我回去！",Participate,"请告诉我规则",Rules,"我想用票券兑换奖品。",TicketExchange,"I'll come back next time.",NextTime;
 
 	NotEnough:
-		mes "[Halloween Magician]";
-		mes "You don't have enough tickets!";
-		mes "Can't you even count?";
-		mes "Please come here with the right number of tickets.";
+		mes "[万圣节魔法师]";
+		mes "你的票券不够！";
+		mes "你连数都不会数吗？";
+		mes "请带够票券再来。";
 		close;
 
 	Enough:
-		mes "[Halloween Magician]";
-		mes "Here it is.";
-		mes "Do you need...";
-		mes "anything else?";
+		mes "[万圣节魔法师]";
+		mes "给你。";
+		mes "你还需要……";
+		mes "别的什么吗？";
 		next;
 		if (Hallow08 == 1) {
 			goto MainMenu2;
@@ -234,7 +234,7 @@ payon,162,176,4	script	Halloween Magician#iRO08	704,{
 		}
 }
 
-evt_zombie,16,142,1	script	zombiewarp001	45,2,2,{
+evt_zombie,16,142,1	script	腐尸传送点001	45,2,2,{
 OnTouch:
 	if (@Hallow08Warp == 1) {
 		set Hallow08Kill,2;
@@ -244,7 +244,7 @@ OnTouch:
 	end;
 }
 
-evt_zombie,122,27,1	script	zombiewarp002	45,2,2,{
+evt_zombie,122,27,1	script	腐尸传送点002	45,2,2,{
 OnTouch:
 	if (@Hallow08Warp == 2) {
 		set Hallow08Kill,2;
@@ -254,7 +254,7 @@ OnTouch:
 	end;
 }
 
-evt_zombie,267,89,1	script	zombiewarp003	45,2,2,{
+evt_zombie,267,89,1	script	腐尸传送点003	45,2,2,{
 OnTouch:
 	if (@Hallow08Warp == 3) {
 		set Hallow08Kill,2;

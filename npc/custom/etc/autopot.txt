@@ -120,14 +120,14 @@ OnCommand:
 			for(.@i = 0;.@i < @inventorylist_count;.@i++){
 				if (getiteminfo(@inventorylist_id[.@i], ITEMINFO_TYPE) == IT_HEALING) {
 					.@items[.@count] = @inventorylist_id[.@i];
-					.@menu$ = .@menu$ + sprintf("~ ^0055FF%s^000000 (%dx)" + (inarray(.blackList[0],@inventorylist_id[.@i]) != -1? " ^364022Black Listed^000000":"") + (BaseLevel < getiteminfo(@inventorylist_id[.@i], ITEMINFO_EQUIPLEVELMIN)? " ^E82C0CNeed Higher Level^000000":"") + ":", getitemname(@inventorylist_id[.@i]), countitem(@inventorylist_id[.@i]));
+					.@menu$ = .@menu$ + sprintf("~ ^0055FF%s^000000 (%dx)" + (inarray(.blackList[0],@inventorylist_id[.@i]) != -1? "^364022黑名单^000000":"") + (BaseLevel < getiteminfo(@inventorylist_id[.@i], ITEMINFO_EQUIPLEVELMIN)? "^E82C0C等级不足^000000":"") + ":", getitemname(@inventorylist_id[.@i]), countitem(@inventorylist_id[.@i]));
 					.@count++;
 				}
 			}
 			if(.@count){
-				mes "[ Auto-Potion ]";
-				mes "Select a " + strtoupper(.@command$[0]) + " item.";
-				.@select = select(.@menu$ + "   ^777777Cancel^000000") - 1;
+				mes "[ 自动药水 ]";
+				mes "请选择" + strtoupper(.@command$[0]) + "道具。";
+				.@select = select(.@menu$ + "^777777取消^000000") - 1;
 				if (.@select != .@count)
 					callsub L_Start,.@command$[0],.@items[.@select];
 				close2;

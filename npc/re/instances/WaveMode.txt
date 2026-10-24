@@ -58,7 +58,7 @@ function	script	F_mobidle	{
 	end;
 }
 
-prontera,146,75,1	script	Zonda Rep#pron	4_F_ZONDAGIRL,{
+prontera,146,75,1	script	宗达代表#pron	4_F_ZONDAGIRL,{
 	.@player_name$ = strcharinfo(0);
 	getmapxy .@map_name$,.@x,.@y, BL_PC;
 
@@ -73,85 +73,85 @@ prontera,146,75,1	script	Zonda Rep#pron	4_F_ZONDAGIRL,{
 		.@menu_entry$ = "Request entry.";
 	}
 
-	mes "[Belka]";
-	mes "Welcome to Zonda, where innovation begins. What can I do for you?";
+	mes "[贝尔卡]";
+	mes "欢迎来到创新起始之地宗达。请问有什么可以为您效劳？";
 	next;
-	switch( select( "Why are you here?", .@menu_entry$, "Enter ^6B9900<Wave Mode - Forest>^000000.", "Enter ^6B9900<Wave Mode - Sky>^000000.", "Cancel." ) ) {
+	switch( select( "你为什么会在这里？", .@menu_entry$, "进入 ^6B9900<波次模式 - 森林>^000000。", "进入 ^6B9900<波次模式 - 天空>^000000。", "Cancel." ) ) {
 	case 1:
-		mes "[Belka]";
-		mes "We now offer a new service. Have you heard about the dimensional rifts?";
+		mes "[贝尔卡]";
+		mes "我们现在推出了一项新服务。您听说过次元裂缝吗？";
 		next;
-		mes "[Belka]";
-		mes "In case you haven't, many organizations and scientists study the rifts formed between dimensions.";
+		mes "[贝尔卡]";
+		mes "若您没听说过，许多组织与科学家都在研究次元之间形成的裂缝。";
 		next;
-		mes "[Belka]";
-		mes "One of them is my company, Zonda, and after long, painstaking research...";
+		mes "[贝尔卡]";
+		mes "其中之一便是我的公司宗达，经过漫长而艰苦的研究……";
 		next;
-		mes "[Belka]";
-		mes "We've developed two different dimensional rifts that we call Wave Modes - Forest and Sky!";
+		mes "[贝尔卡]";
+		mes "我们开发出了两处不同的次元裂缝，分别称为波次模式——森林与天空！";
 		next;
-		mes "[Belka]";
-		mes "Do you have any questions about Zonda's ambitious new project, Wave Mode?";
+		mes "[贝尔卡]";
+		mes "关于宗达雄心勃勃的新项目“波次模式”，您有什么疑问吗？";
 		while(true) {
 			next;
-			switch( select( "About ^6B9900<Wave Mode - Forest>^000000", "About ^6B9900<Wave Mode - Sky>^000000", "No." ) ) {
+			switch( select( "关于 ^6B9900<波次模式 - 森林>^000000", "关于 ^6B9900<波次模式 - 天空>^000000", "No." ) ) {
 			case 1:
-				mes "[Belka]";
-				mes "The ^6B9900<Wave Mode - Forest>^000000";
-				mes "Introducing the first Wave Mode service, Zonda's objective is to work with your party members to keep monster waves from reaching the other side of the bridge.";
+				mes "[贝尔卡]";
+				mes "^6B9900<波次模式 - 森林>^000000";
+				mes "作为首个波次模式服务，宗达的目标是与您的队友合作，阻止怪物浪潮抵达桥的对岸。";
 				next;
-				mes "[Belka]";
-				mes "Monsters will advance without fighting, but the party will fail if 20 monsters are let go..";
+				mes "[贝尔卡]";
+				mes "怪物不会战斗，只会前进；但若放过 20 只怪物，队伍就会失败。";
 				break;
 			case 2:
-				mes "[Belka]";
-				mes "The ^6B9900<Wave Mode - Sky>^000000";
-				mes "Available once a day. Like the other Wave Mode, keep the monsters away from reaching the other side of the map.";
+				mes "[贝尔卡]";
+				mes "^6B9900<波次模式 - 天空>^000000";
+				mes "每日可进入一次。与其他波次模式相同，请阻止怪物抵达地图的另一侧。";
 				next;
-				mes "[Belka]";
-				mes "Feel free to come back with your party.";
+				mes "[贝尔卡]";
+				mes "欢迎您与队伍一同再来。";
 				break;
 			case 3:
-				mes "[Belka]";
-				mes "Thank you for visiting Zonda, where innovation begins.";
+				mes "[贝尔卡]";
+				mes "感谢您光临创新起始之地宗达。";
 				close;
 			}
 			next;
-			mes "[Belka]";
-			mes "Any other questions?";
+			mes "[贝尔卡]";
+			mes "还有其他问题吗？";
 		}
 	case 2:
-		mes "[Belka]";
-		mes "Which Wave Mode would you like to enter: Forest or Sky?";
+		mes "[贝尔卡]";
+		mes "您想进入哪种波次模式：森林还是天空？";
 		next;
-		.@s = select( "Enter ^6B9900<Wave Mode - Forest>^000000.", "Enter ^6B9900<Wave Mode - Sky>^000000." ) - 1;
+		.@s = select( "进入 ^6B9900<波次模式 - 森林>^000000。", "进入 ^6B9900<波次模式 - 天空>^000000。" ) - 1;
 		setarray .@instance_name$[0], "Wave Mode - Forest", "Wave Mode - Sky";
-		mes "[Belka]";
-		mes "" + .@count_online + " party " + (.@count_online == 1 ? "member" : "members") + " found " + .@player_name$ + ", right? To enter the ^6B9900<" + .@instance_name$[.@s] + ">^000000, please sign here.";
+		mes "[贝尔卡]";
+		mes "" + .@count_online + "名队伍" + (.@count_online == 1 ? "成员" : "成员们") + "，已找到" + .@player_name$ + "，对吗？要进入 ^6B9900<" + .@instance_name$[.@s] + ">^000000，请在此签名。";
 		next;
 		select("Sign.");
-		mes "[Belka]";
-		mes "" + .@player_name$ + " has requested to enter the ^6B9900<" + .@instance_name$[.@s] + ">^000000. Please come back when it's your turn to enter.";
+		mes "[贝尔卡]";
+		mes "" + .@player_name$ + "已申请进入 ^6B9900<" + .@instance_name$[.@s] + ">^000000。轮到您入场时请再来。";
 		if (instance_create(.@instance_name$[.@s]) < 0) {
-			mes "Party Name: " + getpartyname( getcharid(1) );
-			mes "Party Leader: " + strcharinfo(0);
-			mes "^0000ff" + .@instance_name$[.@s] + " ^000000 - Reservation Failed.";
+			mes "队伍名称：" + getpartyname( getcharid(1) );
+			mes "队长：" + strcharinfo(0);
+			mes "^0000ff" + .@instance_name$[.@s] + "^000000 - 预约失败。";
 			close;
 		}
 		close;
 	case 3:
 		switch( instance_enter("Wave Mode - Forest") ) {
 		case IE_OTHER:
-			mes "[Belka]";
-			mes "An unknown error has occurred.";
+			mes "[贝尔卡]";
+			mes "发生了未知错误。";
 			close;
 		case IE_NOINSTANCE:
 		case IE_NOMEMBER:
-			mes "[Belka]";
-			mes "Please wait for ^6B9900<Wave Mode - Forest>^000000 stabilization.";
+			mes "[贝尔卡]";
+			mes "请等待 ^6B9900<波次模式 - 森林>^000000 稳定。";
 			close;
 		case IE_OK:
-			mapannounce .@map_name$, "" + .@player_name$ + " of the party " + getpartyname(getcharid(1)) + " is entering <Wave Mode - Forest>.", bc_map,0xFF99;
+			mapannounce .@map_name$, "" + .@player_name$ + "，队伍" + getpartyname(getcharid(1)) + "正在进入 <波次模式 - 森林>。", bc_map,0xFF99;
 			// warp "1@def01",50,21;
 			break;
 		}
@@ -159,23 +159,23 @@ prontera,146,75,1	script	Zonda Rep#pron	4_F_ZONDAGIRL,{
 	case 4:
 		switch( instance_enter("Wave Mode - Sky") ) {
 		case IE_OTHER:
-			mes "[Belka]";
-			mes "An unknown error has occurred.";
+			mes "[贝尔卡]";
+			mes "发生了未知错误。";
 			close;
 		case IE_NOINSTANCE:
 		case IE_NOMEMBER:
-			mes "[Belka]";
-			mes "Currently the ^6B9900<Wave Mode - Sky>^000000 is being stabilized for your convenience. Please wait.";
+			mes "[贝尔卡]";
+			mes "目前 ^6B9900<波次模式 - 天空>^000000 正在为您进行稳定化处理，请稍候。";
 			close;
 		case IE_OK:
-			mapannounce .@map_name$, "" + .@player_name$ + " of the party " + getpartyname(getcharid(1)) + " is entering <Wave Mode - Sky>.", bc_map,0xFF99;
+			mapannounce .@map_name$, "" + .@player_name$ + "，队伍" + getpartyname(getcharid(1)) + "正在进入 <波次模式 - 天空>。", bc_map,0xFF99;
 			// warp "1@def02",29,35;
 			break;
 		}
 		break;
 	case 5:
-		mes "[Belka]";
-		mes "Thank you for visiting Zonda, where innovation begins.";
+		mes "[贝尔卡]";
+		mes "感谢您光临创新起始之地宗达。";
 		close;
 	}
 	wave_mode_map$ = .@map_name$;
@@ -183,9 +183,9 @@ prontera,146,75,1	script	Zonda Rep#pron	4_F_ZONDAGIRL,{
 	wave_mode_y = .@y;
 	end;
 }
-payon,166,98,1	duplicate(Zonda Rep#pron)	Zonda Rep#pay	4_F_ZONDAGIRL
-moc_para01,45,89,3	duplicate(Zonda Rep#pron)	Zonda Rep#para	4_F_ZONDAGIRL
-morocc,168,271,4	duplicate(Zonda Rep#pron)	Zonda Rep#mor	4_F_ZONDAGIRL
+payon,166,98,1	duplicate(宗达代表#pron)	Zonda Rep#pay	4_F_ZONDAGIRL
+moc_para01,45,89,3	duplicate(宗达代表#pron)	Zonda Rep#para	4_F_ZONDAGIRL
+morocc,168,271,4	duplicate(宗达代表#pron)	Zonda Rep#mor	4_F_ZONDAGIRL
 
 
 // Wave mode forest
@@ -196,16 +196,16 @@ OnTouch:
 	initnpctimer;
 	end;
 OnTimer2000:
-	mapannounce 'map_def01$, "We would like to thank all loyal customers of the Cool Event Corporation.", bc_map;
+	mapannounce 'map_def01$, "感谢所有酷炫活动公司的忠实顾客。", bc_map;
 	end;
 OnTimer7000:
-	mapannounce 'map_def01$, "<Wave mode - Forest> prevent monsters from reaching the other side of the bridge.", bc_map;
+	mapannounce 'map_def01$, "<波次模式 - 森林> 请阻止怪物抵达桥的对岸。", bc_map;
 	end;
 OnTimer12000:
-	mapannounce 'map_def01$, "If 20 monsters reach the other side, the game is over.", bc_map;
+	mapannounce 'map_def01$, "若有 20 只怪物抵达对岸，游戏即告结束。", bc_map;
 	end;
 OnTimer17000:
-	mapannounce 'map_def01$, "Ok, here they come.", bc_map;
+	mapannounce 'map_def01$, "好，它们来了。", bc_map;
 	end;
 OnTimer22000:
 	stopnpctimer;
@@ -230,13 +230,13 @@ OnTimer3000:
 OnTimer4000:
 	'wave++;
 	if ('wave % 5)
-		mapannounce 'map_def01$, "-- Wave " + 'wave + " --", bc_map;
+		mapannounce 'map_def01$, "-- 第" + 'wave + " --", bc_map;
 	else
-		mapannounce 'map_def01$, "!! Champions summoned !!", bc_map;
+		mapannounce 'map_def01$, "！！精英怪物已召唤！！", bc_map;
 	donpcevent 'npc_name$ + "::OnSpawn";
 	end;
 OnTimer24000:
-	mapannounce 'map_def01$, "Next monsters will come out soon. Get ready.", bc_map;
+	mapannounce 'map_def01$, "下一批怪物即将出现，请做好准备。", bc_map;
 	initnpctimer;
 	end;
 OnStop:
@@ -517,7 +517,7 @@ S_Idle:
 	callfunc( "F_mobidle", ('npc_name$ + "::OnIdle" + getarg(0)), 'size_coord, 'x_mob, getarg(0), 'y_mob, 'dist_spot_AZ );
 	'mob_escaped++;
 	if ('mob_escaped <= 20)
-		mapannounce 'map_def01$, "" + 'mob_escaped + " " + ('mob_escaped == 1 ? "monster has" : "monsters have") + " escaped.", bc_map;
+		mapannounce 'map_def01$, "" + 'mob_escaped + " " + ('mob_escaped == 1 ? "只怪物已" : "只怪物已") + "逃脱。", bc_map;
 	if ('mob_escaped == 20)
 		donpcevent instance_npcname("#wave_mode_forest_out") + "::OnFail";
 	end;
@@ -542,12 +542,12 @@ OnTouch:
 OnFail:
 	donpcevent instance_npcname("#wave_mode_forest_system") + "::OnStop";
 
-	mapannounce 'map_def01$, "You have failed the <Wave mode - Forest> challenge.", bc_map;
+	mapannounce 'map_def01$, "您未能通过 <波次模式 - 森林> 的挑战。", bc_map;
 	enablenpc instance_npcname("#wave_mode_forest_warp");
 	initnpctimer;
 	end;
 OnTimer1000:
-	mapannounce 'map_def01$, "<Wave mode - Forest> service has closed. You will be returned to the place you entered if you use the warp at the entrance.", bc_map;
+	mapannounce 'map_def01$, "<波次模式 - 森林> 服务已关闭。使用入口处的传送点即可返回进入时的位置。", bc_map;
 	end;
 OnTimer30000:
 	stopnpctimer;
@@ -609,7 +609,7 @@ OnTimer4000:
 	end;
 OnStart:
 	initnpctimer;
-	mapannounce 'map_def02$, "We would like to thank all costumers who always use Zonda Agency.", bc_map;
+	mapannounce 'map_def02$, "感谢所有一直光顾宗达代理的顾客。", bc_map;
 	end;
 OnTimer1000:
 	mapannounce 'map_def02$, "3", bc_map;
@@ -632,7 +632,7 @@ OnTimer4000:
 	}
 	end;
 OnTimer24000:
-	mapannounce 'map_def02$, "Next monster wave will come out soon. Get ready.", bc_map;
+	mapannounce 'map_def02$, "下一波怪物即将出现，请做好准备。", bc_map;
 	initnpctimer;
 	end;
 OnStop:
@@ -645,7 +645,7 @@ OnStop:
 OnStart:
 	if ('treasure_num < 5)
 		'treasure_num++;
-	mapannounce 'map_def02$, "!! " + 'treasure_num + " treasure box appeared !!", bc_map;
+	mapannounce 'map_def02$, "！！" + 'treasure_num + "个宝箱出现了！！", bc_map;
 	for ( .@i = 0; .@i < 'treasure_num; .@i++ ) {
 		monster 'map_def02$,0,0, "Treasure box",3075,1;	// WA_TREASURE
 		'treasure_gid[.@i] = $@mobid[0];
@@ -698,7 +698,7 @@ OnIdle:
 1@def02,1,1,0	script	#wave_mode_sky_mob_spawn	-1,{
 	end;
 OnSpawn:
-	mapannounce 'map_def02$, "-- Wave " + 'wave_num + " --", bc_map;
+	mapannounce 'map_def02$, "-- 第" + 'wave_num + " --", bc_map;
 
 	.@i = ('wave_num % 10) - 1;
 	setarray .@mob_list[0],
@@ -749,7 +749,7 @@ OnIdle:
 	callfunc( "F_mobidle", ('npc_name_mob$ + "::OnIdle"), 'size_coord, 'x_mob, 0, 'y_mob, 'dist_spot_AZ );
 	'mob_escaped++;
 	if ('mob_escaped <= 20)
-		mapannounce 'map_def02$, "" + 'mob_escaped + " " + ('mob_escaped == 1 ? "monster has" : "monsters have") + " escaped.", bc_map;
+		mapannounce 'map_def02$, "" + 'mob_escaped + " " + ('mob_escaped == 1 ? "只怪物已" : "只怪物已") + "逃脱。", bc_map;
 	if ('mob_escaped == 20)
 		donpcevent instance_npcname("#wave_mode_sky_out") + "::OnFail";
 	end;
@@ -762,13 +762,13 @@ OnFail:
 	// monsters timers continue
 	donpcevent instance_npcname("#wave_mode_sky_system") + "::OnStop";
 
-	mapannounce 'map_def02$, "You have failed the <Wave mode - Sky> challenge.", bc_map;
+	mapannounce 'map_def02$, "您未能通过 <波次模式 - 天空> 的挑战。", bc_map;
 	'status_instance = 2;
 	enablenpc instance_npcname("#wave_mode_sky_entrance");
 	initnpctimer;
 	end;
 OnTimer1000:
-	mapannounce 'map_def02$, "<Wave mode - Sky> service has closed. You will be returned to the place you entered if you use the warp at the entrance.", bc_map;
+	mapannounce 'map_def02$, "<波次模式 - 天空> 服务已关闭。使用入口处的传送点即可返回进入时的位置。", bc_map;
 	end;
 OnTimer30000:
 	stopnpctimer;

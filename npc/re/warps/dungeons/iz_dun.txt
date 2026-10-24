@@ -16,48 +16,48 @@
 
 // Undersea Tunnel Warper :: iz_dun05
 //============================================================
-iz_dun04,130,234,5	script	Gatekeeper#iz_dun	413,{
-	mes "[Gatekeeper]";
-	mes "Halt!";
-	mes "What brings you here, Adventurer?";
-	mes "We've discovered a new floor of this underwater city.";
+iz_dun04,130,234,5	script	守门人#iz_dun	413,{
+	mes "[守门人]";
+	mes "站住！";
+	mes "冒险家，你来这里有什么事？";
+	mes "我们发现了这座海底城市的一个新楼层。";
 	next;
-	mes "[Gatekeeper]";
-	mes "Do you think you're up to the challenge?";
-	mes "The monsters here are between levels 110 and 124.";
-	mes "And you must beware of the Kraken!";
+	mes "[守门人]";
+	mes "你认为自己能迎接这个挑战吗？";
+	mes "这里的怪物等级在110到124之间。";
+	mes "而且你必须提防魔鬼大乌贼！";
 	next;
-	switch(select("Release the Kraken!:I'll stay here.")) {
+	switch(select("放出魔鬼大乌贼！:我留在这里。")) {
 	case 1:
-		mes "[Gatekeeper]";
-		mes "Be cautious and good luck.";
-		mes "If you see the Kraken be sure you have your friends to help or do what we do and run.";
+		mes "[守门人]";
+		mes "务必小心，祝你好运。";
+		mes "如果遇到魔鬼大乌贼，一定要有朋友相助，否则就像我们一样赶快逃吧。";
 		close2;
 		warp "iz_dun05",141,187;
 		end;
 	case 2:
-		mes "[Gatekeeper]";
-		mes "It's always best to be prepared before exploring a new area.";
-		mes "Come back when you're ready to go.";
+		mes "[守门人]";
+		mes "探索新区域之前，最好先做好准备。";
+		mes "准备好出发后再回来吧。";
 		close;
 	}
 }
 
-iz_dun05,142,190,5	script	Guard#iz_dun	413,{
-	mes "[Gatekeeper]";
-	mes "So I guess you want to go back to the fifth floor?";
+iz_dun05,142,190,5	script	守卫#iz_dun	413,{
+	mes "[守门人]";
+	mes "所以你是想回到第五层吗？";
 	next;
-	switch(select("Yes!:No, I'll stay.")) {
+	switch(select("是！:不，我留在这里。")) {
 	case 1:
-		mes "[Gatekeeper]";
-		mes "Be safe, adventurer.";
+		mes "[守门人]";
+		mes "注意安全，冒险家。";
 		close2;
 		warp "iz_dun04",129,232;
 		end;
 	case 2:
-		mes "[Gatekeeper]";
-		mes "You're not going?";
-		mes "You're braver than I thought.";
+		mes "[守门人]";
+		mes "你不去吗？";
+		mes "你比我想象中更勇敢。";
 		close;
 	}
 }

@@ -17,51 +17,51 @@
 //= 1.5 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,48,175,3	script	86-90 Mission Board	857,{
+moc_para01,48,175,3	script	86-90任务公告板	857,{
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "Wait a minute!";
-		mes "-You need to have an-";
-		mes "-^4d4dff'Eden Group Mark'^000000-";
-		mes "-to receive these missions.-";
+		mes "等一下！";
+		mes "-你需要持有-";
+		mes "-^4d4dff'乐园团标志'^000000-";
+		mes "-才能接取这些任务。-";
 		next;
-		switch(select("Just walk away.:^0000FFEden Group^000000 missions?:How can I be a member of the ^0000FFEden Group^000000?")) {
+		switch(select("直接离开:^0000FF乐园团^000000任务？:怎样才能成为^0000FF乐园团^000000的一员？")) {
 		case 1:
 			close;
 		case 2:
-			mes "::The Eden Group Missions";
-			mes "::are basically missions";
-			mes "::requested by";
-			mes "::people from all around the kingdom.";
-			mes "::We just categorize them.";
+			mes "::乐园团任务";
+			mes "::基本上是由";
+			mes "::王国各地的人们";
+			mes "::所委托的任务。";
+			mes "::我们只是将它们分类。";
 			next;
-			mes "::In the Eden Group,";
-			mes "::we sorted out the missions";
-			mes "::according to the level of difficulty.";
-			mes "::According to this level,";
-			mes "::you can find";
-			mes "::missions that";
-			mes "::suit you.";
+			mes "::在乐园团里，";
+			mes "::我们将任务";
+			mes "::按难度等级整理。";
+			mes "::根据这个等级，";
+			mes "::你可以找到";
+			mes "::适合你的";
+			mes "::任务。";
 			next;
-			mes "::When you are done,";
-			mes "::you can come back";
-			mes "::to the mission board.";
+			mes "::完成之后，";
+			mes "::你可以回到";
+			mes "::任务公告板。";
 			next;
-			mes "::Then you will be";
-			mes "::rewarded!!";
-			mes "::Simple, isn't it!!";
-			mes "::No commission required!!";
+			mes "::然后你就会";
+			mes "::获得奖励！！";
+			mes "::很简单，对吧！！";
+			mes "::不需要手续费！！";
 			close;
 		case 3:
-			mes "::You can become a member";
-			mes "::of the Eden Group";
-			mes "::to ^0000FFLaime Evenor^000000,";
-			mes "::who is waiting on the 1st floor.";
+			mes "::你可以加入";
+			mes "::乐园团，";
+			mes "::去找 ^0000FF莱姆·伊万诺^000000，";
+			mes "::她正在一楼等候。";
 			next;
-			mes "::If you become a member,";
-			mes "::you will get an";
-			mes "::\"^006400Eden Group Mark^000000\".";
-			mes "::Then you will be able";
-			mes "::to see the mission board.";
+			mes "::如果你成为团员，";
+			mes "::你就会获得";
+			mes "::“^006400乐园团标志^000000”.";
+			mes "::然后你就能";
+			mes "::看到任务公告板了。";
 			close;
 		}
 	}
@@ -78,25 +78,25 @@ moc_para01,48,175,3	script	86-90 Mission Board	857,{
 			72000,76000,
 			72000,78000,82000,80000,
 			72000,72000,72000,86000,80000;
-		mes "You must be within level 86-90 to accept these missions.";
+		mes "必须处于86-90级才能接取这些任务。";
 		for(set .@quest,4167; .@quest<=4180; set .@quest,.@quest+1) {
 			set .@hunting, checkquest(.@quest,HUNTING);
 			if (.@hunting == 0 || .@hunting == 1) {
 				next;
-				mes ":: You cannot proceed in";
-				mes ":: ^0000FF"+.@names$[.@quest-4167]+" Hunting^000000.";
-				mes ":: The registration to the mission";
-				mes ":: is cancelled.";
+				mes ":: 你无法继续";
+				mes ":: ^0000FF"+.@names$[.@quest-4167]+"狩猎^000000。";
+				mes ":: 任务登记";
+				mes ":: 已取消。";
 				erasequest .@quest;
 				close;
 			} else if (.@hunting == 2) {
 				next;
-				mes ":: You added information";
-				mes ":: about the mission";
-				mes ":: ^0000FF"+.@names$[.@quest-4167]+" Hunting^000000";
-				mes ":: on the mission board.";
-				mes ":: You've got a";
-				mes ":: salutary experience.";
+				mes ":: 你在任务公告板上";
+				mes ":: 添加了";
+				mes ":: ^0000FF"+.@names$[.@quest-4167]+"狩猎^000000";
+				mes ":: 的相关信息。";
+				mes ":: 你获得了";
+				mes ":: 有益的经验。";
 				erasequest .@quest;
 				getexp .@exp[.@quest-4167],0;
 				close;
@@ -104,43 +104,43 @@ moc_para01,48,175,3	script	86-90 Mission Board	857,{
 		}
 		close;
 	}
-	mes "[86-90 Mission Board]";
-	mes "There are several requests on this board.";
+	mes "[86-90任务公告板]";
+	mes "这块公告板上有几项委托。";
 	next;
-	switch(select("^8B4513Turtle Island^000000:^8B4513Clock Tower Dungeon^000000:^8B4513Expansion Towns^000000:^8B4513Other Regions^000000")) {
+	switch(select("^8B4513乌龟岛^000000:^8B4513钟塔地下城^000000:^8B4513扩展城镇^000000:^8B4513其他地区^000000")) {
 	case 1:
-		mes "^8B4513Turtle Island^000000.";
-		mes "Which monster will you hunt or have you finished hunting?";
+		mes "^8B4513乌龟岛^000000。";
+		mes "你要猎杀哪种魔物，或者已经完成猎杀了吗？";
 		next;
-		switch(select("^0000FFDragon Tail^000000:^0000FFSpring Rabbit^000000:^0000FFPest^000000")) {
+		switch(select("^0000FF龙尾^000000:^0000FF弹簧兔^000000:^0000FF单眼虫^000000")) {
 			case 1: callsub L_Quest,4167,"Dragon Tail",76000,"靛贰帮抛老墨靛","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
 			case 2: callsub L_Quest,4168,"Spring Rabbit",82000,"胶橇傅贰壶墨靛","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
 			case 3: callsub L_Quest,4169,"Pest",82000,"其胶飘墨靛","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
 		}
 	case 2:
-		mes "^8B4513Clock Tower Dungeon^000000.";
-		mes "Which monster will you hunt or have you finished hunting?";
+		mes "^8B4513钟塔地下城^000000。";
+		mes "你要猎杀哪种魔物，或者已经完成猎杀了吗？";
 		next;
-		switch(select("^0000FFBathory^000000:^0000FFAlarm^000000")) {
+		switch(select("^0000FF巫婆^000000:^0000FF钟怪^000000")) {
 			case 1: callsub L_Quest,4170,"Bathory",72000,"官家府墨靛","The Clock Tower Dungeon is full of dangerous monsters.";
 			case 2: callsub L_Quest,4171,"Alarm",76000,"舅恩墨靛","The Clock Tower Dungeon is full of dangerous monsters.";
 		}
 	case 3:
-		mes "^8B4513Expansion Cities^000000";
-		mes "Which monster will you hunt or have you finished hunting?";
+		mes "^8B4513扩展城市^000000";
+		mes "你要猎杀哪种魔物，或者已经完成猎杀了吗？";
 		next;
-		switch(select("^0000FFBaba Yaga^000000:^0000FFYao Jun^000000:^0000FFFirelock Soldier^000000:^0000FFZipper Bear^000000")) {
+		switch(select("^0000FF芭芭亚卡^000000:^0000FF妖君^000000:^0000FF武士火枪兵^000000:^0000FF拉链熊^000000")) {
 			case 1: callsub L_Quest,4172,"Baba Yaga",72000,"","The witch Baba Yaga can be found in the outskirts of Moscovia.";
 			case 2: callsub L_Quest,4173,"Yao Jun",117000,"驱焙墨靛","There are human-like monsters that roam around the dungeon in Luoyang.";
 			case 3: callsub L_Quest,4174,"Firelock Soldier",82000,"备侥炼醚捍墨靛","There are human-like monsters that roam around the dungeon in Amatsu.","s";
 			case 4: callsub L_Quest,4175,"Zipper Bear",120000,"瘤欺海绢墨靛","There are bear monsters swarming in the Kunlun dungeon.";
 		}
 	case 4:
-		mes "[86-90 Mission Board]";
-		mes "Here is a list of random requests to hunt monsters in other regions of Midgard.";
-		mes "Which monster will you hunt or have you finished hunting?";
+		mes "[86-90任务公告板]";
+		mes "这是一份在米德加尔特其他地区猎杀魔物的随机委托列表。";
+		mes "你要猎杀哪种魔物，或者已经完成猎杀了吗？";
 		next;
-		switch(select("^0000FFGround Petite^000000:^0000FFRafflesia^000000:^0000FFVenomous^000000:^0000FFPitman^000000:^0000FFYellow Novus^000000")) {
+		switch(select("^0000FF七彩地龙^000000:^0000FF草精^000000:^0000FF毒液魔^000000:^0000FF矿工魔^000000:^0000FF黄诺博斯^000000")) {
 			case 1: callsub L_Quest,4176,"Ground Petite",72000,"瘤惑悔鹅墨靛","There are dragon type monsters swarming the western region of Geffen.";
 			case 2: callsub L_Quest,4177,"Rafflesia",72000,"扼敲饭矫酒墨靛","There are plant type monsters infesting the fields of Lighthalzen.";
 			case 3: callsub L_Quest,4178,"Venomous",72000,"海畴赣胶","There are formless monsters floating around the fields of Einbroch.";
@@ -157,19 +157,19 @@ L_Quest:
 	.@cutin$ = getarg(3);
 	set .@playtime, checkquest(.@quest2,PLAYTIME);
 	if (.@playtime == 0 || .@playtime == 1) {
-		mes "[86-90 Mission Board]";
-		mes "You need to wait 3 hours before you can take this mission again.";
+		mes "[86-90任务公告板]";
+		mes "你需要等待3小时才能再次接取这个任务。";
 		close;
 	}
 	set .@hunting, checkquest(.@quest1,HUNTING);
 	if (.@hunting == 0 || .@hunting == 1) {
-		mes "[86-90 Mission Board]";
-		mes "Have you finished hunting all 30 "+getarg(1)+getarg(5,"")+" yet?";
+		mes "[86-90任务公告板]";
+		mes "你已经猎杀完30只"+getarg(1)+getarg(5,"")+"了吗？";
 		close;
 	} else if (.@hunting == 2) {
-		mes "[86-90 Mission Board]";
-		mes "You have completed the hunting.";
-		mes "Please accept this reward as a compensation.";
+		mes "[86-90任务公告板]";
+		mes "你已完成猎杀。";
+		mes "请收下这份奖励作为补偿。";
 		erasequest .@quest1;
 		if (.@playtime > -1) erasequest .@quest2;
 		setquest .@quest2;
@@ -182,17 +182,17 @@ L_Quest:
 		mes "You have re-accepted the "+getarg(1)+" Hunting mission.";
 		close;
 	}*/ else {
-		mes "[86-90 Mission Board]";
+		mes "[86-90任务公告板]";
 		mes getarg(4);
 		next;
 		if (.@cutin$ != "") cutin .@cutin$,3;
-		mes "[86-90 Mission Board]";
-		mes "Hunt 30 "+getarg(1)+" monsters there and post your success on this board.";
+		mes "[86-90任务公告板]";
+		mes "猎杀30只"+getarg(1)+"魔物，并在此公告板上报告你的成果。";
 		next;
 		if (.@cutin$ != "") cutin .@cutin$,255;
-		if(select("I'll hunt them.:No thanks.") == 1) {
-			mes "[86-90 Mission Board]";
-			mes "When you have completed the mission, post it on this board and collect your reward.";
+		if(select("我去猎杀:不了，谢谢") == 1) {
+			mes "[86-90任务公告板]";
+			mes "完成任务后，请在此公告板上登记并领取奖励。";
 			if (.@playtime > -1) erasequest .@quest2;
 			setquest .@quest1;
 		}

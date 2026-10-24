@@ -15,86 +15,86 @@
 //= Skill Reset with payment, minimum BaseLv.60 to reset skill.
 //= Each 1 BaseLv need 20.000 Zeny, so be careful to use skill.
 //============================================================
-yuno,138,187,4	script	Hypnotist Teacher	124,{
+yuno,138,187,4	script	催眠教师	124,{
 	set @npcname$,"[^D5A500Hypnotist^000000]";
 	mes @npcname$;
 
 	if(MISC_QUEST & 1024){
-		mes "I already told you that you may only complete this event once.";
+		mes "我已经告诉过你，这个活动只能完成一次。";
 		close;
 	}
 	if(BaseLevel < 60) {
-		mes "Please return when you reach BaseLv 60 or higher.";
+		mes "请在基础等级达到60级或以上后再来。";
 		close;
 	}
 	if(SkillPoint != 0) {
-		mes "You will need to use up all of your skill points if you want me to continue.";
-		mes "Please come again soon!";
+		mes "如果你想让我继续，就必须把所有技能点用完。";
+		mes "请尽快再来！";
 		close;
 	}
 	if(Weight || checkfalcon() || checkcart() || checkriding()) {
-		mes "Would you like to reset skills?";
-		mes "I'm sorry, but...";
+		mes "你想重置技能吗？";
+		mes "抱歉，但是……";
 		next;
 		mes @npcname$;
 		if(Weight) {
-			mes "You cannot reset skills";
-			mes "when you keep";
-			mes "any items.";
+			mes "你无法重置技能，";
+			mes "只要你身上";
+			mes "还带着任何道具。";
 		} else if(checkcart())
-			mes "Please, drop your cart and we'll continue.";
+			mes "请先卸下你的手推车，我们再继续。";
 		else if(checkfalcon())
-			mes "Please, free your Falcon and we'll continue.";
+			mes "请先放飞你的猎鹰，我们再继续。";
 		else if(checkriding())
-			mes "Please, free your PecoPeco and we'll continue.";
+			mes "请先放走你的大嘴鸟，我们再继续。";
 		next;
 		mes @npcname$;
-		mes "Come back soon!";
+		mes "请尽快回来！";
 		close;
 	}
-	mes "Hello, I am the Skill Resetter.";
-	mes "Your name is ^0080FF"+strcharinfo(0)+"^000000.";
-	mes "How can I help you?";
+	mes "你好，我是技能重置员。";
+	mes "你的名字是^0080FF"+strcharinfo(0)+"^000000。";
+	mes "我能帮你什么？";
 	next;
-	menu "^009500Information about Reset skills.^000000",L_Info,"^00B6FFReset skills.^000000",L_Reset,"^000088Nevermind^000000",-;
+	menu "^009500关于技能重置的说明。^000000",L_Info,"^00B6FF重置技能。^000000",L_Reset,"^000088算了^000000",-;
 
 	mes @npcname$;
-	mes "You know where to find me,";
-	mes "if you ever want a reset!!"; 
+	mes "你知道在哪里能找到我，";
+	mes "如果你想重置技能的话！！"; 
 	close;
 
 L_Info:
 	mes @npcname$;
-	mes "This skill reset is not FREE OF CHARGE!!";
-	mes "Expense for the reset of skill is ^D5A50020000 Zeny x BaseLv^000000.";
-	mes "Yeah ...each One BaseLv costs 20000 Zeny to reset skill.";
+	mes "技能重置并不是免费的！！";
+	mes "技能重置费用为^D5A50020000 Zeny × 基础等级^000000。";
+	mes "是的……每一点基础等级需要20000 Zeny才能重置技能。";
 	next;
 	mes @npcname$;
-	mes "Oh yeah, one more thing!";
-	mes "Any carts, falcons or pecos you have equiped";
-	mes "will be removed if you reset your skills.";
+	mes "对了，还有一件事！";
+	mes "你装备的手推车、猎鹰或大嘴鸟";
+	mes "在重置技能后都会被移除。";
 	next;
 	mes @npcname$;
-	mes "Just one time does again to shake the skill point";
-	mes "Careful with your skills from here on.";
+	mes "技能点只能再重置一次。";
+	mes "今后请谨慎分配你的技能点。";
 	close;
 	
 L_Reset:
 	mes @npcname$;
-	mes "Before skill reset in starting.";
-	mes "You shall have to first tell me your Base Level."; 
+	mes "在开始重置技能之前，";
+	mes "你必须先告诉我你的基础等级。"; 
 	next;
 	mes "^D5A500[" + strcharinfo(0) + "]^000000";
-	mes "My Base level is ^AA00AALevel " + BaseLevel + "BaseLv.^000000"; 
+	mes "我的基础等级是^AA00AA" + BaseLevel + "BaseLv.^000000"; 
 	next;
 	set @zeny,BaseLevel*20000;
 	mes @npcname$;
-	mes "Total zeny to the reset of skill amount ^529DFF" + @zeny + "Zeny^000000  for the skill reset service.";
+	mes "技能重置所需的总金额为^529DFF" + @zeny + "Zeny^000000，用于技能重置服务。";
 	next;
 	if(Zeny < @zeny) {
 		mes @npcname$;
-		mes "It seems that you don't have enough money.";
-		mes "In addition we wait for the opportunity.";
+		mes "看来你的钱不够。";
+		mes "那就等下次机会吧。";
 		emotion ET_SCRATCH;
 		close;
 	}
@@ -102,7 +102,7 @@ L_Reset:
 	set MISC_QUEST,MISC_QUEST | 1024;
 	resetskill;
 	mes @npcname$;
-	mes "Thank you.";
+	mes "谢谢。";
 	emotion ET_THANKS;
 //	logmes "SKILL RESET EVENT";
 	close;

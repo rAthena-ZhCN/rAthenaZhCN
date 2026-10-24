@@ -13,74 +13,74 @@
 //= #Treasure_Token - used to keep track of tokens
 //============================================================
 
-yuno_in01,124,164,6	script	Guild Leader	108,{
-	mes "[Keegan]";
-	mes "What brings you here? Have something to say?";
+yuno_in01,124,164,6	script	公会会长	108,{
+	mes "[基根]";
+	mes "是什么风把你吹来了？有话要说吗？";
 	next;
-	menu "I want to be a Treasure Hunter",-,"Take a New Quest.",N_NQuest,"Take me to the Official Shop.",N_OShop,"Never mind.",N_NVM;
+	menu "我想成为寻宝猎人",-,"接取新任务。",N_NQuest,"带我去官方商店。",N_OShop,"算了。",N_NVM;
 	if(Event_THQS==1) goto N_AlreadyReg;
-	mes "[Keegan]";
-	mes "Well "+strcharinfo(0)+" if you want to be a Treasure Hunter first you must.";
+	mes "[基根]";
+	mes "那么，"+strcharinfo(0)+"如果你想成为寻宝猎人，首先必须做到。";
 	mes " ";
-	mes "^FF00001.^000000 You well be changed ^FF000025,000z^000000 for basic training and your proof of being a member.";
+	mes "^FF00001.^000000 基础训练以及会员证明将收取你^FF000025,000z^000000。";
 	mes " ";
-	mes "Umm... Well that is all you need to do. Hahaha.";
+	mes "呃……好了，你需要做的就这些。哈哈哈。";
 	next;
-	menu "Pay ^FF000025,000z^000000.",-,"Thats way to high!!",N_HighPrice;
+	menu "支付^FF000025,000z^000000。",-,"这也太贵了！！",N_HighPrice;
 	if (Zeny < 25000) goto N_NoZeny;
 	set Zeny,Zeny-25000;
 	//getitem 7950, 1;
 	//getitem 7951, 1;
 	set Event_THQS,1;
-	mes "[Keegan]";
-	mes "Congratulations!";
+	mes "[基根]";
+	mes "恭喜！";
 	emotion ET_CONGRATULATION;
 	next;
-	mes "[Keegan]";
-	mes "Welcome to the Guild of Treasure Hunters.";
-	mes "You may now take a Treasure Hunting Quest as you see fit.";
+	mes "[基根]";
+	mes "欢迎加入寻宝猎人公会。";
+	mes "现在你可以随意接取寻宝任务了。";
 	close;
 N_NoZeny:
-	mes "[Keegan]";
-	mes "Hmmm you don't seem to have ^FF000025,000z^000000 "+strcharinfo(0)+". Please come back when you do.";
+	mes "[基根]";
+	mes "嗯……你似乎没有^FF000025,000z^000000"+strcharinfo(0)+". Please come back when you do.";
 	close;
 N_HighPrice:
-	mes "[Keegan]";
-	mes "Well if you can't afford a small ^FF000025,000z^000000 you shouldn't be a Treasure Hunter yet.";
+	mes "[基根]";
+	mes "好吧，如果连区区^FF000025,000z^000000都拿不出来，你还不能当寻宝猎人。";
 	close;
 N_AlreadyReg:
-	mes "[Keegan]";
-	mes "Ha ha ha...you are already a member.";
+	mes "[基根]";
+	mes "哈哈哈……你已经是会员了。";
 	close;
 N_NQuest:
 	if (Event_THQS!=1) goto A_NeedReg;
-	mes "[Keegan]";
-	mes "Well "+strcharinfo(0)+" if you wish to take a quest go talk to the fellow Treasure Hunter in the other room there.";
+	mes "[基根]";
+	mes "那么，"+strcharinfo(0)+"如果你想接任务，就去那边另一个房间找同是寻宝猎人的人聊聊。";
 	close;
 A_NeedReg:
-	mes "[Keegan]";
-	mes "Sorry you must be a member of the Treasure Hunter Guild if you wish to take a quest.";
+	mes "[基根]";
+	mes "抱歉，若想接取任务，你必须先成为寻宝猎人公会的会员。";
 	mes " ";
-	mes "Also now that you are a member feel free to use our shops anytime you wish.They are all located on this floor.";
+	mes "另外，既然你已是会员，随时都可以使用我们的商店。它们都设在这一层。";
 	mes " ";
-	mes "We also have another shop for members only,in which we use little metal diamonds called Treasure Hunter Tokens to exchange for rare goods.";
+	mes "我们还有一间仅限会员的商店，在那里可以用一种叫做寻宝猎人代币的小金属钻石来兑换稀有物品。";
 	mes " ";
-	mes "You will even have access to our exclusive personal Dungeon.";
+	mes "你甚至还能进入我们专属的私人地下城。";
 	close;
 N_OShop:
 	if (Event_THQS!=1) goto N_NeedMem;
-	mes "[Keegan]";
-	mes "Yes "+strcharinfo(0)+" I will take you to our shop right away!";
+	mes "[基根]";
+	mes "是的，"+strcharinfo(0)+"我这就带你去我们的商店！";
 	next;
 	warp "prt_in",166,171;
 	close;
 	end;
 N_NeedMem:
-	mes "[Keegan]";
-	mes "I'm sorry only members may visit our private shop.";
+	mes "[基根]";
+	mes "抱歉，只有会员才能进入我们的私人商店。";
 	close;
 N_NVM:
-	mes "[Keegan]";
-	mes "Alright come back when you have the free time to spare.";
+	mes "[基根]";
+	mes "好吧，等你有空再来。";
 	close;
 }

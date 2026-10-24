@@ -18,33 +18,33 @@
 // Goods Cabinets :: pare_service
 //============================================================
 -	script	Goods Cabinet#00::pggc	-1,{
-	mes "It is a Goods Storage Cabinet.";
-	mes "A message is written on a piece of paper.";
+	mes "这是一个物品保管箱。";
+	mes "纸上写着一段留言。";
 	next;
-	mes "+ Cabinet is exclusively +";
-	mes "+ for the Eden group +";
-	mes "If you want to use this";
-	mes "cabinet please check";
-	mes "the following:";
+	mes "+ 本保管箱专供 +";
+	mes "+ 乐园团使用 +";
+	mes "若要使用本";
+	mes "保管箱，请确认";
+	mes "以下事项：";
 	next;
-	mes "1.Are you a member";
-	mes "   of Eden group?";
-	mes "2.Have you learned";
-	mes "   enough basic skills?";
-	mes "3.Cabinet fee is";
-	mes "  ^4d4dff500 zeny^000000!";
+	mes "1.您是否为";
+	mes "乐园团成员？";
+	mes "2.您是否已学会";
+	mes "足够的基础技能？";
+	mes "3.保管箱费用为";
+	mes "^4d4dff500 Zeny^000000！";
 	next;
 	if (callfunc("F_HasEdenGroupMark")) {
-		mes "You need to insert zeny to use the cabinet.";
-		mes "Cost : 500 Zeny ";
-		mes "Would you like to use it?";
+		mes "使用保管箱需要投入 Zeny。";
+		mes "费用：500 Zeny";
+		mes "要使用吗？";
 		next;
-		switch(select("Use the Cabinet.:Cancel.")) {
+		switch(select("使用保管箱。:取消。")) {
 			case 1:
 				if (Zeny > 499) {
 					if(!callfunc("F_CanOpenStorage")){
-						mes "The cabinet is not working for me.";
-						mes "Maybe I am not yet qualified to use Cabinet.";
+						mes "这个保管箱我无法使用。";
+						mes "也许我还没有使用保管箱的资格。";
 						close;
 					}
 					set Zeny, Zeny - 500;
@@ -52,15 +52,15 @@
 					openstorage;
 					end;
 				}
-				mes "I don't have enough zeny.";
-				mes "I need at least 500 zeny to use the Cabinet.";
+				mes "我的 Zeny 不够。";
+				mes "使用保管箱至少需要 500 Zeny。";
 				close;
 			case 2:
-				mes "I will use it next time.";
+				mes "我下次再使用吧。";
 				close;
 		}
 	}
-	mes "I need an Eden Group Mark to use this Cabinet.";
+	mes "使用这个保管箱需要乐园团徽章。";
 	close;
 }
 moc_para01,173,120,0	duplicate(pggc)	Goods Cabinet#01	111

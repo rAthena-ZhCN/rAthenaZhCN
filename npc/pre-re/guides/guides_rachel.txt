@@ -19,68 +19,68 @@
 //= 1.2b Deleted a unnecessary "end". [Samuray22]
 //============================================================
 
-rachel,138,146,5	script	Rachel Guide	934,{
-	mes "[Rachel Guide]";
-	mes "Welcome to the capital of";
-	mes "Arunafeltz, Rachel where a warm";
-	mes "breath of goddess Freya reaches.";
-	mes "If this is the first time for you";
-	mes "to use the guide services, why";
-	mes "don't you check the \"Notice\" menu first?";
+rachel,138,146,5	script	拉赫向导	934,{
+	mes "[拉赫向导]";
+	mes "欢迎来到阿鲁纳佩尔兹的";
+	mes "首都拉赫，这里是";
+	mes "芙蕾雅女神温暖气息所及之地。";
+	mes "如果您是第一次";
+	mes "使用向导服务，不如";
+	mes "先看看“公告”菜单如何？";
 	set .@loop1,1;
 	while(.@loop1) {
 		next;
-		switch(select("Village Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		switch(select("村庄指南:移除小地图标记:公告:取消")) {
 		case 1:
-			mes "[Rachel Guide]";
-			mes "I can tell you any building location as long as it is in Rachel.";
-			mes "So where do you want to go?";
+			mes "[拉赫向导]";
+			mes "只要是拉赫境内的建筑，我都能告诉您其位置。";
+			mes "那么，您想去哪里？";
 			if (.@compass_check == 0) {
-				mes "Would you like me";
-				mes "to mark locations";
-				mes "on your Mini-Map?";
+				mes "需要我";
+				mes "在小地图上";
+				mes "标记地点吗？";
 				next;
-				if (select("Yes:No") == 1) set .@compass_check,1;
+				if (select("是:否") == 1) set .@compass_check,1;
 			}
 			set .@loop2,1;
 			while(.@loop2) {
 				if (.@wait_button_chk == 0) set .@wait_button_chk,1;
 				else next;
 
-				switch(select("Cheshrumnir:Inn:Weapon Shop:Tool Shop:Airport:Cancel")) {
+				switch(select("切斯鲁姆尼尔:旅馆:武器店:道具店:机场:取消")) {
 				case 1:
-					mes "[Rachel Guide]";
-					mes "Cheshrumnir is a holy ground where pope, the incarnation of goddess Freya stays.";
-					mes "Take the road to the norh to find the building.";
+					mes "[拉赫向导]";
+					mes "切斯鲁姆尼尔是圣地，女神芙蕾雅的化身——教皇驻留于此。";
+					mes "沿北边的道路走，就能找到那座建筑。";
 					if (.@compass_check == 1) viewpoint 1,150,249,1,0xFF0000;
 					break;
 				case 2:
-					mes "[Rachel Guide]";
-					mes "You can rest your fatigue off the journey in the Inn.";
-					mes "The left building next to me is the Inn of Rachel.";
+					mes "[拉赫向导]";
+					mes "您可以在旅馆洗去旅途的疲惫。";
+					mes "我左边的建筑就是拉赫的旅馆。";
 					if (.@compass_check == 1) viewpoint 1,115,149,2,0xFF00FF;
 					break;
 				case 3:
-					mes "[Rachel Guide]";
-					mes "Do you want to check out the weapons that are sold in Rachel?";
-					mes "The weapon shop is located nearby the western gate.";
+					mes "[拉赫向导]";
+					mes "您想看看拉赫出售的武器吗？";
+					mes "武器店位于西门附近。";
 					if (.@compass_check == 1) viewpoint 1,42,87,3,0x99FFFF;
 					break;
 				case 4:
-					mes "[Rachel Guide]";
-					mes "Rachel tool shop sells the best quality potions.";
-					mes "It's located nearby the western gate.";
+					mes "[拉赫向导]";
+					mes "拉赫的道具店出售品质最好的药水。";
+					mes "它就位于西门附近。";
 					if (.@compass_check == 1) viewpoint 1,83,78,4,0x0000FF;
 					break;
 				case 5:
-					mes "[Rachel Guide]";
-					mes "The Airport is located outside the eastern gate.";
+					mes "[拉赫向导]";
+					mes "机场位于东门之外。";
 					if (.@compass_check == 1) viewpoint 1,273,125,5,0x00FF00;
 					break;
 				case 6:
-					mes "[Rachel Guide]";
-					mes "If you like to get rid of all the location marks on your Mini-Map,";
-					mes "just ask me again, and choose \"Remove Marks from Mini-Map\" menu.";
+					mes "[拉赫向导]";
+					mes "如果您想清除小地图上的所有地点标记，";
+					mes "再找我一次，选择“移除小地图标记”菜单即可。";
 					set .@loop2,0;
 					break;
 				}
@@ -93,20 +93,20 @@ rachel,138,146,5	script	Rachel Guide	934,{
 			viewpoint 2,42,87,3,0x99FFFF;
 			viewpoint 2,83,78,4,0x0000FF;
 			viewpoint 2,273,125,5,0x00FF00;
-			mes "[Rachel Guide]";
-			mes "Okay, they are gone now. If you have more locations to ask, just let me know.";
+			mes "[拉赫向导]";
+			mes "好了，标记都已清除。如果您还想查询其他地点，随时告诉我。";
 			break;
 		case 3:
-			mes "[Rachel Guide]";
-			mes "When you are using the ''Village Guide'' menu,";
-			mes "make sure that building locations will be marked on your mini-map at the upper right side of your screen.";
-			mes "If you cannot see your mini-map, use the short cut key ''ctrl+tab'' or press the ''Map'' button on your basic information windows, okay?";
-			mes "And you can also zoom out your mini-map by using the ''-'' button in case you cannot view the entire map of the village.";
+			mes "[拉赫向导]";
+			mes "使用“村庄指南”菜单时，";
+			mes "建筑位置会标记在屏幕右上方的小地图上，请注意查看。";
+			mes "如果看不到小地图，请使用快捷键“ctrl+tab”，或按下基本信息窗口上的“地图”按钮，明白了吗？";
+			mes "若无法看到村庄全图，您还可以用“-”按钮缩小地图。";
 			break;
 		case 4:
-			mes "[Rachel Guide]";
-			mes "Hope you have a wonderfull journey";
-			mes "in Arunafeltz.";
+			mes "[拉赫向导]";
+			mes "愿您在阿鲁纳佩尔兹的";
+			mes "旅途愉快。";
 			close2;
 			set .@loop1,0;
 			break;

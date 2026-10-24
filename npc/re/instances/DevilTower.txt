@@ -7,15 +7,15 @@
 //= 1.0 First version. [Capuche]
 //============================================================
 
-dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
+dali02,134,119,5	script	历史学家谢普#tnm01	4_F_NOVICE,{
 	if (BaseLevel < 130) {
-		mes "[Shep]";
-		mes "Are you volunteering to explore the Devil's Tower?";
-		mes "It's extremely dangerous so you need to be at least ^4d4dffLevel 130^000000.";
+		mes "[谢普]";
+		mes "你要自愿去探索恶魔塔吗？";
+		mes "那里极其危险，所以你至少需要达到^4d4dff等级 130^000000。";
 		next;
-		mes "[Shep]";
-		mes "Will you come back when you get stronger?";
-		mes "You know what I mean right?";
+		mes "[谢普]";
+		mes "等你变强后会再回来吗？";
+		mes "你明白我的意思吧？";
 		close;
 	}
 	switch( checkquest(7577,PLAYTIME) ) {// daily timer
@@ -23,36 +23,36 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		break;
 	case 0:
 	case 1:
-		mes "[Shep]";
-		mes "You want to explore again so soon?";
-		mes "Your body needs to recover from the time traveling.";
+		mes "[谢普]";
+		mes "这么快就想再去探索？";
+		mes "你的身体需要从时空旅行中恢复。";
 		next;
-		mes "[Shep]";
-		mes "Take a rest day and come back tomorrow.!";
-		mes "You understand?";
+		mes "[谢普]";
+		mes "休息一天，明天再来吧！";
+		mes "明白了吗？";
 		close;
 	case 2:
-		mes "[Shep]";
-		mes "Have you rested long enough?";
-		mes "I am scheduled to explore today!";
-		mes "I have always been waiting for a member of the expedition!";
+		mes "[谢普]";
+		mes "你休息够了吗？";
+		mes "我今天安排去探索！";
+		mes "我一直在等待探险队的成员！";
 		erasequest 7577;// Space distortion
 		devil_tower_can_reenter = 0;
 		devil_tower_enter = 0;
 		next;
-		mes "!- Notice -!";
-		mes "You can now re-enter the Devil's Tower.";
+		mes "！- 通知 -！";
+		mes "你现在可以重新进入恶魔塔了。";
 		close;
 	}
 	if (isbegin_quest(7576) > 0) {// instance completed
-		mes "[Shep]";
-		mes "So time and space seem to have converged there?";
-		mes "I'm amazed that time travel is possible.";
+		mes "[谢普]";
+		mes "所以时间和空间似乎在那里交汇了？";
+		mes "没想到时空旅行竟然真的可行。";
 		next;
-		mes "[Shep]";
-		mes "This is all you have.";
-		mes "You did a good job.";
-		mes "I look forward to more discoveries!";
+		mes "[谢普]";
+		mes "你就只有这些吗。";
+		mes "你做得很好。";
+		mes "期待你有更多发现！";
 		setquest 7577;// Space distortion
 		erasequest 7568;// Explore the tower
 		erasequest 7571;// Tower Expedition
@@ -61,18 +61,18 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		getexp 450000,450000;
 		devil_tower_can_reenter = 0;
 		devil_tower_enter = 0;
-		mes "Please come back tomorrow!";
+		mes "请明天再来！";
 		close;
 	}
 	if (isbegin_quest(7574) > 0) {// failed after seal
-		mes "[Shep]";
-		mes "Oh, you are back so soon...";
-		mes "Ok, I see what happened.";
+		mes "[谢普]";
+		mes "哦，你这么快就回来了……";
+		mes "好，我明白发生什么了。";
 		next;
-		mes "[Shep]";
-		mes "This is all you have.";
-		mes "You did a good job.";
-		mes "I look forward to more discoveries!";
+		mes "[谢普]";
+		mes "你就只有这些吗。";
+		mes "你做得很好。";
+		mes "期待你有更多发现！";
 		setquest 7577;// Space distortion
 		erasequest 7568;// Explore the tower
 		erasequest 7571;// Tower Expedition
@@ -80,18 +80,18 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		getexp 300000,300000;
 		devil_tower_can_reenter = 0;
 		devil_tower_enter = 0;
-		mes "Please come back tomorrow!";
+		mes "请明天再来！";
 		close;
 	}
 	if (isbegin_quest(7571) > 0) {// failed at stair 2 tnm1
-		mes "[Shep]";
-		mes "Oh, you are back.";
-		mes "Let me see... you mean this tower has a passage to connect to the demon world.";
+		mes "[谢普]";
+		mes "哦，你回来了。";
+		mes "让我看看……你是说这座塔有一条通往魔界的通道。";
 		next;
-		mes "[Shep]";
-		mes "This is all you have.";
-		mes "You did a good job.";
-		mes "I look forward to more discoveries!";
+		mes "[谢普]";
+		mes "你就只有这些吗。";
+		mes "你做得很好。";
+		mes "期待你有更多发现！";
 		setquest 7577;// Space distortion
 		erasequest 7568;// Explore the tower
 		erasequest 7571;// Tower Expedition
@@ -100,47 +100,47 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		getexp 200000,200000;
 		devil_tower_can_reenter = 0;
 		devil_tower_enter = 0;
-		mes "Please come back tomorrow!";
+		mes "请明天再来！";
 		close;
 	}
 	switch( checkquest(7568,PLAYTIME) ) {// entrance timer - 1h30 to enter
 	case -1:
-		mes "[Shep]";
-		mes "Are you volunteering to explore the Devil's Tower? I have been waiting for someone like you!";
+		mes "[谢普]";
+		mes "你要自愿去探索恶魔塔吗？我一直在等像你这样的人！";
 		next;
-		mes "[Shep]";
-		mes "Finally, someone to share the mysteries of the tower for me.";
-		mes "No one has been volunteering up this point so I was getting worried.";
+		mes "[谢普]";
+		mes "终于有人能和我一起分享这座塔的奥秘了。";
+		mes "到现在都没人愿意报名，我还一直在担心。";
 		next;
-		mes "[Shep]";
-		mes "Please report anything you find in the tower to me.";
-		mes "The better the info~ the better the zeny I'll pay you!";
+		mes "[谢普]";
+		mes "请把你在塔里发现的一切都报告给我。";
+		mes "情报越好~我付你的Zeny就越多！";
 		next;
-		mes "[Shep]";
-		mes "That Laphine scholar over there will open up the dimensional gap with this time device.";
-		mes "It is still unstable so your time for exploring will be limited.";
+		mes "[谢普]";
+		mes "那边那位拉菲尼学者会用这个时间装置打开次元裂缝。";
+		mes "它还不稳定，所以你的探索时间有限。";
 		next;
-		mes "[Shep]";
-		mes "If you are unexpectedly bounced back to here again, you should return quickly.";
-		mes "If you do you may or may not be able to re-enter depending on how fast you are.";
+		mes "[谢普]";
+		mes "如果你意外被弹回这里，要尽快回来。";
+		mes "至于能否再次进入，就要看你回来得够不够快了。";
 		next;
-		mes "[Shep]";
-		mes "But if you run out of time, the access to the tower will disappear.";
-		mes "So do you want to volunteer?";
+		mes "[谢普]";
+		mes "但如果你时间耗尽，通往塔的入口就会消失。";
+		mes "那么，你愿意报名吗？";
 		next;
-		if (select( "Volunteer", "No Thanks" ) == 2) {
-			mes "[Shep]";
-			mes "Oh that's too bad";
-			mes "There is nothing I can do I guess.";
-			mes "I'll just find someone else...";
+		if (select( "报名", "不了，谢谢" ) == 2) {
+			mes "[谢普]";
+			mes "哦，那真遗憾。";
+			mes "看来我也没办法了。";
+			mes "我只好去找别人了……";
 			close;
 		}
-		mes "[Shep]";
-		mes "Thank you.";
-		mes "Okay, gather your party and remember to report to me what you find.";
+		mes "[谢普]";
+		mes "谢谢。";
+		mes "好，集结你的队伍，记得把发现报告给我。";
 		next;
-		mes "[Shep]";
-		mes "^4d4dffExploring time limit is for your safety^000000!";
+		mes "[谢普]";
+		mes "^4d4dff探索时限是为了你的安全^000000！";
 		setquest 7568;// Explore the tower
 		close;
 	case 0:
@@ -149,15 +149,15 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 			break;
 		// fall through
 	case 2:
-		mes "[Shep]";
-		mes "You seem to be late.";
-		mes "You took an extraordinarily long time.";
+		mes "[谢普]";
+		mes "你好像来晚了。";
+		mes "你花的时间实在太久了。";
 		mes ".....";
-		mes "I can't use any of your info.";
+		mes "你的情报我一条也用不上。";
 		next;
-		mes "[Shep]";
-		mes "There is nothing we can do .";
-		mes "There's always opportunities for other expeditions.";
+		mes "[谢普]";
+		mes "我们也无能为力了。";
+		mes "总还会有其他探险的机会。";
 		setquest 7577;// Space distortion
 		erasequest 7568;
 		if (isbegin_quest(7569)) erasequest 7569;// Treat the injured
@@ -166,38 +166,38 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		devil_tower_enter = 0;
 		close;
 	}
-	mes "[Shep]";
-	mes "First of all, you need to reserve a queue at the gate.";
-	mes "The Laphine Scholar Artie will reserve your queue for you.";
+	mes "[谢普]";
+	mes "首先，你需要在门口预约排队。";
+	mes "拉菲尼学者阿尔蒂会为你预约排队。";
 	next;
-	mes "[Shep]";
-	mes "Time is limited because the dimensional gap is still unstable.";
-	mes "Make your exploration short and sweet.";
+	mes "[谢普]";
+	mes "由于次元裂缝仍不稳定，时间有限。";
+	mes "让你的探索简短而顺利。";
 	next;
-	mes "[Shep]";
-	mes "Rewards will be different depending on your time.";
-	mes "Good luck!";
+	mes "[谢普]";
+	mes "奖励会根据你所用的时间而不同。";
+	mes "祝你好运！";
 	next;
-	if (select( "Trust me!", "Cancel my reservation" ) == 1) {
-		mes "[Shep]";
-		mes "I believe that you can manage under these restrictions.";
-		mes "I believe in you!";
+	if (select( "相信我！", "取消我的预约" ) == 1) {
+		mes "[谢普]";
+		mes "我相信你能在这些限制下应付过来。";
+		mes "我相信你！";
 		close;
 	}
 	if (devil_tower_enter == 1) {
-		mes "[Shep]";
-		mes "You seem to be tired of exploring.";
-		mes "^4d4dffIf you cancel now. You will be able to challenge one day after.^000000";
-		mes "Is that okay?";
+		mes "[谢普]";
+		mes "你好像已经厌倦探索了。";
+		mes "^4d4dff如果你现在取消，要一天后才能再次挑战。^000000";
+		mes "这样可以吗？";
 		next;
-		if (select( "Yes Cancel.", "Wait, don't cancel!" ) == 2) {
-			mes "[Shep]";
-			mes "Ok, I won't cancel.";
+		if (select( "是，取消。", "等等，不要取消！" ) == 2) {
+			mes "[谢普]";
+			mes "好，我不取消了。";
 			close;
 		}
-		mes "[Shep]";
+		mes "[谢普]";
 		mes "Really.";
-		mes "then, come back tomorrow.";
+		mes "那么，明天再来吧。";
 		setquest 7577;// Space distortion
 		erasequest 7568;
 		if (isbegin_quest(7569)) erasequest 7569;// Treat the injured
@@ -206,37 +206,37 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 		devil_tower_can_reenter = 0;
 		close;
 	}
-	mes "[Shep]";
-	mes "Really?";
-	mes "After listening to all this explanation?";
+	mes "[谢普]";
+	mes "真的吗？";
+	mes "听完这么多说明之后？";
 	erasequest 7568;// Explore the tower
 	close;
 }
 
-dali02,137,121,3	script	Magic Scholar Artie#tnm	4_M_FAIRYKID6,{
+dali02,137,121,3	script	魔法学者阿蒂#tnm	4_M_FAIRYKID6,{
 	.@party_id = getcharid(1);
 	if (.@party_id == 0) {
-		mes "[Artie]";
-		mes "let's have fun since we just left bifrost.";
-		mes "No?";
-		mes "you are applying as a volunteer?";
-		mes "You'd better gather a party for this expedition.";
+		mes "[阿尔蒂]";
+		mes "既然我们刚离开比弗罗斯特，就好好玩一场吧。";
+		mes "不行吗？";
+		mes "你要报名做志愿者吗？";
+		mes "这次探险你最好组好队伍。";
 		next;
-		mes "[Artie]";
-		mes "Don't take any unncessary risks, okay?";
+		mes "[阿尔蒂]";
+		mes "不要冒不必要的险，好吗？";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "[Artie]";
-		mes "Bring the Expedition Chief.";
-		mes "Devil's Tower is not a place to visit alone.";
-		mes "Bring the manager.";
+		mes "[阿尔蒂]";
+		mes "带上探险队队长。";
+		mes "恶魔塔可不是能独自前往的地方。";
+		mes "带上队长。";
 		close;
 	}
 	if (devil_tower_enter == 1) {
-		mes "[Artie]";
-		mes "You have already entered by connecting it.";
-		mes "Connect to the space again? I can not do that.";
+		mes "[阿尔蒂]";
+		mes "你已经通过连接进入过了。";
+		mes "再次连接那个空间？我做不到。";
 		close;
 	}
 	switch( checkquest(7568,PLAYTIME) ) {
@@ -245,39 +245,39 @@ dali02,137,121,3	script	Magic Scholar Artie#tnm	4_M_FAIRYKID6,{
 		break;
 	case -1:
 	case 2:
-		mes "[Artie]";
-		mes "Hrm... It is difficult to connect to unless it is an appointed exploration time.";
-		mes "Not to mention dangerous as well.";
+		mes "[阿尔蒂]";
+		mes "嗯……除非是约定的探索时间，否则很难连接。";
+		mes "更别说还很危险。";
 		close;
 	}
-	mes "[Artie]";
-	mes "Are you a volunteer to explore the Devil's Tower?";
-	mes "Do you want me to activate the Dimensional Device?";
+	mes "[阿尔蒂]";
+	mes "你是自愿来探索恶魔塔的吗？";
+	mes "要我来启动次元装置吗？";
 	next;
-	mes "[Artie]";
-	mes "Decide quickly because you only have a finite amount of time in there.";
+	mes "[阿尔蒂]";
+	mes "快做决定，你在里面的时间有限。";
 	next;
-	if (select( "Yes, activate the device.", "Wait for a minute." ) == 2) {
-		mes "[Artie]";
-		mes "Your time to explore is dwindling.";
-		mes "Time is very important.";
-		mes "What are you waiting for?";
+	if (select( "是，启动装置。", "等一下。" ) == 2) {
+		mes "[阿尔蒂]";
+		mes "你的探索时间正在减少。";
+		mes "时间非常重要。";
+		mes "你还在等什么？";
 		close;
 	}
-	mes "[Artie]";
-	mes "The Dimensional Device is activated.";
-	mes "If you're lucky, you can get through this quickly.";
-	mes "I look forward to hearing good news.";
+	mes "[阿尔蒂]";
+	mes "次元装置已启动。";
+	mes "运气好的话，你能很快通过。";
+	mes "我期待听到好消息。";
 	instance_create("Devil's Tower");
 	close;
 }
 
-dali02,141,120,3	script	Dimensional Device#tnm0	PORTAL,{
+dali02,141,120,3	script	次元装置#tnm0	PORTAL,{
 	if (devil_tower_can_reenter == 1) {// can't re-enter
-		mes "[Artie]";
-		mes "Hey, Hey";
-		mes "It is difficult to send to you through the device right now.";
-		mes "We should stop exploring today and let's go again another day.";
+		mes "[阿尔蒂]";
+		mes "喂，喂";
+		mes "现在很难通过装置把你送过去。";
+		mes "今天就停止探索吧，改天再去。";
 		close;
 	}
 	switch( checkquest(7568,PLAYTIME) ) {
@@ -286,45 +286,45 @@ dali02,141,120,3	script	Dimensional Device#tnm0	PORTAL,{
 		break;
 	case -1:
 	case 2:
-		mes "[Artie]";
-		mes "Look, I am sorry but it is not allowed to enter except during the allowed time, Devil's Tower is dangerous.";
+		mes "[阿尔蒂]";
+		mes "听我说，很抱歉，除了允许的时间外不得进入，恶魔塔很危险。";
 		close;
 	}
-	mes "[Artie]";
-	mes "Yes, this is the Dimensional Device.";
-	mes "It is used to travel time.";
-	mes "It will be difficult to enter again if you leave.";
+	mes "[阿尔蒂]";
+	mes "是的，这就是次元装置。";
+	mes "它是用来进行时空旅行的。";
+	mes "一旦离开，就很难再进入。";
 	next;
-	mes "[Artie]";
-	mes "Don't worry though, I'm a genius scholar~";
-	mes "Anyway, ready to enter?";
+	mes "[阿尔蒂]";
+	mes "不过别担心，我可是天才学者~";
+	mes "总之，准备好进去了吗？";
 	next;
-	if (select( "Enter the device.", "Stop." ) == 2) {
-		mes "[Artie]";
+	if (select( "进入装置。", "Stop." ) == 2) {
+		mes "[阿尔蒂]";
 		mes "Right.";
-		mes "It seems like quite a long time has passed since you activated the device. Am I right?";
+		mes "从你启动装置到现在，好像已经过了很久。我说得对吧？";
 		close;
 	}
 	.@md_name$ = "Devil's Tower";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "An unknown error occurred.";
+		mes "发生了未知错误。";
 		close;
 	case IE_NOINSTANCE:
-		mes "[Shep]";
-		mes "The Dimensional Device needs to be activated first before entering.";
-		mes "It doesn't seem to be activated yet.";
+		mes "[谢普]";
+		mes "进入前需要先启动次元装置。";
+		mes "它似乎还没有被启动。";
 		next;
-		mes "[Shep]";
-		mes "Please get a permission to activate it by talking to the Magic Scholar Artie.";
+		mes "[谢普]";
+		mes "请去找魔法学者阿尔蒂取得启动许可。";
 		close;
 	case IE_NOMEMBER:
-		mes "[Artie]";
-		mes "Exploring Devil's Tower will be permitted only for expeditions in parties.";
-		mes "Make sure you are ready.";
+		mes "[阿尔蒂]";
+		mes "恶魔塔的探索只允许组队进行。";
+		mes "请务必做好准备。";
 		close;
 	case IE_OK:
-		mapannounce "dali02", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters Room " + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "dali02", "队伍成员" + strcharinfo(0) + "所属队伍" + getpartyname( getcharid(1) ) + "进入了房间" + .@md_name$ + "", bc_map,0xFF99;
 		// warp "1@tnm1",50,104;
 		devil_tower_enter = 1;
 		end;
@@ -338,55 +338,55 @@ OnTouch_:
 	initnpctimer;
 	end;
 OnTimer1000:
-	npctalk "Artie: Hey, you! How is your research going?", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：喂，你！研究进展如何？", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer3000:
-	npctalk "Shep: Who are you calling hey you? You're just a dusty little fairy!", "Historian Shep#tnm01";
+	npctalk "谢普：你叫谁“喂”？你不过是个灰扑扑的小妖精！", "历史学家谢普#tnm01";
 	end;
 OnTimer6000:
-	npctalk "Artie: A dusty little what? I'll have you know, I have superior genes to your species you ape!", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：灰扑扑的小什么？告诉你，我的基因可比你们这个种族优秀多了，你这只猿猴！", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer9000:
-	npctalk "Shep: What do I care what you say? Even our kids are bigger than you tiny little fairies!", "Historian Shep#tnm01";
+	npctalk "谢普：我才不管你说什么！连我们的孩子都比你们这些小小妖精大！", "历史学家谢普#tnm01";
 	end;
 OnTimer12000:
-	npctalk "Shep: Think you're so big just because you're a magic scholar huh?", "Historian Shep#tnm01";
+	npctalk "谢普：以为自己是魔法学者就有多了不起吗？", "历史学家谢普#tnm01";
 	end;
 OnTimer14000:
-	npctalk "Artie: You know nothing human. Remind me again who found this tower entrance?", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：你什么都不懂，人类。再说一遍，是谁发现了这座塔的入口？", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer18000:
-	npctalk "Shep: *Sigh*... Y....You did.", "Historian Shep#tnm01";
+	npctalk "谢普：*叹气*……是……是你。", "历史学家谢普#tnm01";
 	end;
 OnTimer21000:
-	npctalk "Artie: Y....You? Did I stutter? And who solved the formula calculating the dimensional gap connected to the tower?", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：是……是你？我结巴了吗？那是谁算出了连接这座塔的次元裂缝的公式？", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer24000:
-	npctalk "Shep: Yes, yes it was you!", "Historian Shep#tnm01";
+	npctalk "谢普：对，对，是你！", "历史学家谢普#tnm01";
 	end;
 OnTimer27000:
-	npctalk "Artie: So I take it you're no longer questioning how smart I am right?", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：这么说，你不再怀疑我有多聪明了吧？", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer30000:
-	npctalk "Shep: Alright, alright. I need an adventurer to explore the tower for us.", "Historian Shep#tnm01";
+	npctalk "谢普：好，好。我需要一个冒险者替我们探索这座塔。", "Historian Shep#tnm01";
 	end;
 OnTimer33000:
-	npctalk "Shep: No one has volunteered because everyone says it's too dangerous!", "Historian Shep#tnm01";
+	npctalk "谢普：没人愿意报名，因为大家都说太危险了！", "历史学家谢普#tnm01";
 	end;
 OnTimer36000:
-	npctalk "Artie: No volunteers? Come on. Harness your motivational skills and find someone.", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：没人报名？拜托。拿出你的激励本领，去找个人来。", "魔法学者阿尔蒂#tnm";
 	end;
 OnTimer37000:
 	emotion ET_KIK, getnpcid(0, "Magic Scholar Artie#tnm");
 	end;
 OnTimer39000:
-	npctalk "Shep: Hello!!! Now recruiting new members to exploring the Devil's Tower!", "Historian Shep#tnm01";
+	npctalk "谢普：喂！！！现在招募探索恶魔塔的新成员！", "历史学家谢普#tnm01";
 	end;
 OnTimer42000:
-	npctalk "Shep: Please come! Now's your chance to possibly come face to face with the infamous minions of Satan Morocc himself!", "Historian Shep#tnm01";
+	npctalk "谢普：快来吧！现在你有机会与撒旦莫洛克手下那些臭名昭著的爪牙面对面！", "历史学家谢普#tnm01";
 	end;
 OnTimer45000:
-	npctalk "Artie: You sure that's the right thing to say? Maybe your recruiting tactics need refining...", "Magic Scholar Artie#tnm";
+	npctalk "阿尔蒂：你确定这样说合适吗？也许你的招募方式需要改进……", "魔法学者阿尔蒂#tnm";
 	stopnpctimer;
 	enablenpc "#tnmtks01";
 	end;
@@ -400,134 +400,134 @@ OnTouch:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "Officer Heim: This is an emergency.. How things are going?", instance_npcname("Officer Heim#heim0");
+	npctalk "海姆军官：这是紧急情况……情况怎么样了？", instance_npcname("海姆军官#heim0");
 	end;
 OnTimer5000:
-	npctalk "A tirailleur: Next floor is the highest one... but there are so many demons...", instance_npcname("A tirailleur#tnm01");
+	npctalk "散兵：下一层就是最高层……但恶魔实在太多了……", instance_npcname("散兵#tnm01");
 	end;
 OnTimer6000:
 	emotion ET_THINK, getnpcid(0, instance_npcname("Officer Heim#heim0"));
 	end;
 OnTimer8000:
-	npctalk "A tirailleur: It is impossible to break through with the number of our people.", instance_npcname("A tirailleur#tnm01");
+	npctalk "散兵：以我们的人数是冲不过去的。", instance_npcname("散兵#tnm01");
 	emotion ET_PROFUSELY_SWEAT, getnpcid(0, instance_npcname("A tirailleur#tnm01"));
 	end;
 OnTimer11000:
-	npctalk "Officer Heim: How many soldiers have survived now? When is the support team arriving?", instance_npcname("Officer Heim#heim0");
+	npctalk "海姆军官：现在还有多少士兵活着？支援部队什么时候到？", instance_npcname("海姆军官#heim0");
 	end;
 OnTimer12000:
 	emotion ET_THINK, getnpcid(0, instance_npcname("An aide#tnm02"));
 	end;
 OnTimer16000:
-	npctalk "An aide: There aren't enough to call in...", instance_npcname("An aide#tnm02");
+	npctalk "副官：人手不够，召集不齐……", instance_npcname("副官#tnm02");
 	end;
 OnTimer17000:
-	npctalk "An aide: The good news is the demons have stopped attacking.", instance_npcname("An aide#tnm02");
+	npctalk "副官：好消息是恶魔已经停止进攻了。", instance_npcname("副官#tnm02");
 	end;
 OnTimer21000:
-	npctalk "Officer Heim: We can't just be stuck here and can go further. Why did the demons stop attacking ?", instance_npcname("Officer Heim#heim0");
+	npctalk "海姆军官：我们不能就这样困在这里，还得继续前进。恶魔为什么停止进攻了？", instance_npcname("海姆军官#heim0");
 	end;
 OnTimer24000:
-	npctalk "A tirailleur: It seems like there is something going on up there...", instance_npcname("A tirailleur#tnm01");
+	npctalk "散兵：上面好像发生了什么事……", instance_npcname("散兵#tnm01");
 	end;
 OnTimer26000:
 	disablenpc instance_npcname("Officer Heim#heim0");
 	enablenpc instance_npcname("Officer Heim#heim");
-	npctalk "Officer Heim: Who are you?", instance_npcname("Officer Heim#heim");
+	npctalk "海姆军官：你是谁？", instance_npcname("海姆军官#heim");
 	stopnpctimer;
 	end;
 }
 
-1@tnm1,57,112,5	script	Officer Heim#heim0	4_TOWER_05,{ end; }
+1@tnm1,57,112,5	script	海姆军官#heim0	4_TOWER_05,{ end; }
 
-1@tnm1,56,110,3	script	Officer Heim#heim	4_TOWER_05,{
+1@tnm1,56,110,3	script	海姆军官#heim	4_TOWER_05,{
 	if (is_party_leader() == false) {
-		mes "[Officer Heim]";
-		mes "Who brought you all here?";
-		mes "I will talk to a representative.";
+		mes "[海姆军官]";
+		mes "是谁把你们带到这里来的？";
+		mes "我要和你们的代表谈。";
 		close;
 	}
 	switch('devil_tower) {
 	case 0:
-		mes "[Officer Heim]";
-		mes "Back up soldiers? So why are you just standing there?";
-		npctalk "Officer Heim: Back up soldiers? So why are you just standing there?";
+		mes "[海姆军官]";
+		mes "支援士兵？那你们为什么还站在那里？";
+		npctalk "海姆军官：支援士兵？那你们为什么还站在那里？";
 		next;
-		select("Right now?");
+		select("现在就去？");
 		if (is_party_leader() == true && 'devil_tower == 0) {
 			enablenpc instance_npcname("Healer Fama#feima");
 			'devil_tower = 1;
 		}
-		mes "[Healer Fama]";
-		mes "Commander please help me. I can't do it by myself~!";
-		npctalk "Healer Fama: Commander please help me. I can't do it by myself~!", instance_npcname("Healer Fama#feima");
+		mes "[治疗师法玛]";
+		mes "指挥官，请帮帮我。我一个人做不到~！";
+		npctalk "治疗师法玛：指挥官，请帮帮我。我一个人做不到~！", instance_npcname("治疗师法玛#feima");
 		next;
-		mes "[Officer Heim]";
-		mes "Do you hear that?";
-		mes "Help Fama take care of the injured soldiers.";
-		mes "Fama will give you first aid-kits, use it to help the injured people.";
+		mes "[海姆军官]";
+		mes "你听到了吗？";
+		mes "帮法玛照顾受伤的士兵。";
+		mes "法玛会给你急救包，用它去救助伤员。";
 		close2;
 		setpcblock PCBLOCK_NPC, true;
-		npctalk "Officer Heim: Do you hear that?";
+		npctalk "海姆军官：你听到了吗？";
 		sleep2 2000;
-		npctalk "Officer Heim: Help Fama take care of the injured soldiers.";
+		npctalk "海姆军官：帮法玛照顾受伤的士兵。";
 		sleep2 2000;
-		npctalk "Healer Fama: Okay~ You are going to help me? Come here and receive the first aid kit~!";
+		npctalk "治疗师法玛：好~你要来帮我吗？过来领急救包吧~！";
 		setpcblock PCBLOCK_NPC, false;
 		end;
 	case 1:
-		mes "[Officer Heim]";
-		mes "It is priority to treat the injured soldiers by assisting Fama.";
-		mes "Please do your best even if the environment is the worst.";
+		mes "[海姆军官]";
+		mes "首要任务是协助法玛救治受伤的士兵。";
+		mes "即使环境再糟，也请尽力而为。";
 		close;
 	default:
-		mes "[Officer Heim]";
-		mes "Luckily, no one is dead yet.";
-		mes "I do not want to see my soldiers die.";
+		mes "[海姆军官]";
+		mes "幸好目前还没有人死亡。";
+		mes "我不想看到我的士兵死去。";
 		close;
 	}
 }
 
-1@tnm1,47,109,3	script	Healer Fama#feima	4_TOWER_10,{
+1@tnm1,47,109,3	script	法玛治疗师#feima	4_TOWER_10,{
 	if ('devil_tower == 1) {
 		if (countitem(7641) < 1) {
-			mes "[Healer Fama]";
-			mes "Please cure the injured with this first aid kit.";
-			mes "It's not difficult. Just follow the instructions.";
+			mes "[治疗师法玛]";
+			mes "请用这个急救包救治伤员。";
+			mes "并不难，照着说明做就好。";
 			next;
-			mes "[Healer Fama]";
-			mes "We are low on supplies. So I will give them once at a time.";
-			mes "Sorry, please request again if you run out.";
+			mes "[治疗师法玛]";
+			mes "物资不够了，所以我一次只能给你一个。";
+			mes "抱歉，用完了请再来领。";
 			if ('devil_tower == 1)
 				getitem 7641,1;// Medical_Cure_Box
 			close;
 		}
-		mes "[Healer Fama]";
-		mes "Sorry... procurement is not good right now so I can only provide one first-aid kit at a time.";
-		mes "Please request again if you run out.";
+		mes "[治疗师法玛]";
+		mes "抱歉……现在补给不太顺利，我一次只能提供一个急救包。";
+		mes "用完了请再来领。";
 		close;
 	}
-	mes "[Healer Fama]";
-	mes "Huh... Okay, we can take a break now.";
-	mes "Thank you very much!";
+	mes "[治疗师法玛]";
+	mes "呼……好，我们现在可以休息一下了。";
+	mes "非常感谢！";
 	close;
 }
 
-1@tnm1,39,114,3	script	Injured Soldier#1_1	4_TOWER_01,3,3,{
+1@tnm1,39,114,3	script	受伤的士兵#1_1	4_TOWER_01,3,3,{
 	if ('devil_tower != 1)
 		end;
 	if (countitem(7641) < 1) {
-		mes "I need 1 first-aid-kit to treat the injured soldier.";
+		mes "我需要 1 个急救包来救治受伤的士兵。";
 		close;
 	}
-	mes "This soldier has lost consciousness and groaning.";
-	mes "Should I use the first-aid kit?";
+	mes "这名士兵已经失去意识，正在呻吟。";
+	mes "要使用急救包吗？";
 	next;
-	if (select( "Use first-aid kit.", "Observe condition." ) == 2) {
-		mes "You decide to observe the condition of the injured soldier more.";
+	if (select( "使用急救包。", "观察状况。" ) == 2) {
+		mes "你决定再观察一下受伤士兵的状况。";
 		close;
 	}
-	mes "You administer the first-aid-kit to the soldier.";
+	mes "你对这名士兵使用了急救包。";
 	next;
 	specialeffect EF_SPHERE;
 	progressbar "000000",10;
@@ -537,11 +537,11 @@ OnTimer26000:
 		disablenpc();
 		enablenpc instance_npcname( strnpcinfo(1) + "#" + replacestr( strnpcinfo(2), "_1", "" ) );
 		specialeffect EF_ENTRY,AREA, instance_npcname( strnpcinfo(1) + "#" + replacestr( strnpcinfo(2), "_1", "" ) );
-		mes "It worked.";
+		mes "有效果了。";
 		'heal_count++;
 		if ('heal_count == 7) {
 			'devil_tower = 2;
-			npctalk "Healer Fama: Assassins?!", instance_npcname("Healer Fama#feima");
+			npctalk "治疗师法玛：刺客？！", instance_npcname("治疗师法玛#feima");
 			enablenpc instance_npcname("Lucile#tnm01");
 			enablenpc instance_npcname("Magic Swordman#tnm01");
 			enablenpc instance_npcname("Assassin Huey#tnm01");
@@ -553,97 +553,97 @@ OnTimer26000:
 OnTouch:
 	.@num = atoi( replacestr( strnpcinfo(2), "_1", "" ) );
 	if (.@num == 1)
-		npctalk "Injured Soldier: groaning....";
+		npctalk "受伤的士兵：呻吟……";
 	else if (.@num == 2)
-		npctalk "Injured Soldier: Owww...";
+		npctalk "受伤的士兵：哎哟……";
 	else if (.@num == 3)
-		npctalk "Injured Soldier: .... aah.. aah..";
+		npctalk "受伤的士兵：……啊……啊……";
 	else if (.@num == 4)
-		npctalk "Injured Soldier: Owww...";
+		npctalk "受伤的士兵：哎哟……";
 	else if (.@num == 5)
-		npctalk "Injured Soldier: I do not want to die...";
+		npctalk "受伤的士兵：我不想死……";
 	else if (.@num == 6)
-		npctalk "Injured Soldier: Owww~";
+		npctalk "受伤的士兵：哎哟~";
 	else
-		npctalk "Injured Soldier: Groaning...";
+		npctalk "受伤的士兵：呻吟……";
 	end;
 }
 
-1@tnm1,30,120,3	duplicate(Injured Soldier#1_1)	Injured Soldier#2_1	4_TOWER_03,3,3
-1@tnm1,25,117,5	duplicate(Injured Soldier#1_1)	Injured Soldier#3_1	4_TOWER_06,3,3
-1@tnm1,19,118,4	duplicate(Injured Soldier#1_1)	Injured Soldier#4_1	4_TOWER_08,3,3
-1@tnm1,18,110,4	duplicate(Injured Soldier#1_1)	Injured Soldier#5_1	4_TOWER_11,3,3
-1@tnm1,24,104,7	duplicate(Injured Soldier#1_1)	Injured Soldier#6_1	4_TOWER_13,3,3
-1@tnm1,31,110,3	duplicate(Injured Soldier#1_1)	Injured Soldier#7_1	4_TOWER_03,3,3
+1@tnm1,30,120,3	duplicate(受伤的士兵#1_1)	Injured Soldier#2_1	4_TOWER_03,3,3
+1@tnm1,25,117,5	duplicate(受伤的士兵#1_1)	Injured Soldier#3_1	4_TOWER_06,3,3
+1@tnm1,19,118,4	duplicate(受伤的士兵#1_1)	Injured Soldier#4_1	4_TOWER_08,3,3
+1@tnm1,18,110,4	duplicate(受伤的士兵#1_1)	Injured Soldier#5_1	4_TOWER_11,3,3
+1@tnm1,24,104,7	duplicate(受伤的士兵#1_1)	Injured Soldier#6_1	4_TOWER_13,3,3
+1@tnm1,31,110,3	duplicate(受伤的士兵#1_1)	Injured Soldier#7_1	4_TOWER_03,3,3
 
-1@tnm1,39,114,3	script	Injured Soldier#1	4_TOWER_02,{
-	mes "[Injured soldiers]";
-	mes "whew.. it seems to be okay now.";
-	mes "Thank you.";
+1@tnm1,39,114,3	script	受伤的士兵#1	4_TOWER_02,{
+	mes "[受伤的士兵]";
+	mes "呼……现在好像没事了。";
+	mes "谢谢。";
 	close;
 }
 
-1@tnm1,30,120,3	script	Injured Soldier#2	4_TOWER_04,{
-	mes "[Injured soldiers]";
-	mes "Groaning... Just let me die.";
-	mes "No it hurts too much.";
+1@tnm1,30,120,3	script	受伤的士兵#2	4_TOWER_04,{
+	mes "[受伤的士兵]";
+	mes "呻吟……就让我死吧。";
+	mes "不，太痛了。";
 	close;
 }
 
-1@tnm1,25,117,5	script	Injured Soldier#3	4_TOWER_07,{
-	mes "[Injured soldiers]";
-	mes "His conscious seems to be blur still.";
-	mes "Leave him to get some rest.";
+1@tnm1,25,117,5	script	受伤的士兵#3	4_TOWER_07,{
+	mes "[受伤的士兵]";
+	mes "他的意识似乎还很模糊。";
+	mes "让他休息一下吧。";
 	close;
 }
 
-1@tnm1,19,118,4	script	Injured Soldier#4	4_TOWER_09,{
-	mes "[Injured soldiers]";
-	mes "I thought I was going to die.";
-	mes "But I'm alive!";
+1@tnm1,19,118,4	script	受伤的士兵#4	4_TOWER_09,{
+	mes "[受伤的士兵]";
+	mes "我以为我要死了。";
+	mes "但我还活着！";
 	close;
 }
 
-1@tnm1,18,110,4	script	Injured Soldier#5	4_TOWER_12,{
-	mes "[Injured soldiers]";
-	mes "I can't die here. I have to propose to my beloved when I get home.";
-	mes "We will be happy for sure?";
+1@tnm1,18,110,4	script	受伤的士兵#5	4_TOWER_12,{
+	mes "[受伤的士兵]";
+	mes "我不能死在这里。我回家后还要向我心爱的人求婚。";
+	mes "我们一定会幸福的吧？";
 	close;
 }
 
-1@tnm1,24,104,7	script	Injured Soldier#6	4_TOWER_14,{
-	mes "[Injured soldiers]";
-	mes "I feel much better but I still can't move.";
-	mes "Still I'm lucky to be alive.";
+1@tnm1,24,104,7	script	受伤的士兵#6	4_TOWER_14,{
+	mes "[受伤的士兵]";
+	mes "我感觉好多了，但还是动不了。";
+	mes "不过能活下来真是幸运。";
 	close;
 }
 
-1@tnm1,31,110,3	script	Injured Soldier#7	4_TOWER_04,{
-	mes "[Injured soldiers]";
-	mes "Thank you.. Thank you..";
+1@tnm1,31,110,3	script	受伤的士兵#7	4_TOWER_04,{
+	mes "[受伤的士兵]";
+	mes "谢谢你……谢谢你……";
 	close;
 }
 
-1@tnm1,61,110,3	script	An aide#tnm02	4_M_MOCASS2,{
-	mes "[An aide]";
-	mes "The calamity that happened hundreds of years ago will not happen again right?";
-	mes "Why have the demons showed up again so suddenly?";
+1@tnm1,61,110,3	script	副官#tnm02	4_M_MOCASS2,{
+	mes "[副官]";
+	mes "数百年前的那场灾难不会再发生了吧？";
+	mes "为什么恶魔又突然出现了？";
 	close;
 }
 
-1@tnm1,61,113,3	script	A tirailleur#tnm01	4_M_MOCASS1,{
-	mes "[A tirailleur]";
-	mes "Are you a member of back-up team?";
-	mes "Good. things are getting worse here.";
-	mes "Glad that you all are here to help.";
+1@tnm1,61,113,3	script	散兵#tnm01	4_M_MOCASS1,{
+	mes "[散兵]";
+	mes "你是支援队的成员吗？";
+	mes "很好。这里的情况越来越糟了。";
+	mes "很高兴你们都来帮忙。";
 	close;
 }
 
-1@tnm1,46,105,5	script	Lucile#tnm01	4_F_LUCILE,{
+1@tnm1,46,105,5	script	露西尔#tnm01	4_F_LUCILE,{
 	if (is_party_leader() == false) {
 		cutin "tnm_lucile01.bmp",2;
-		mes "[Lucile]";
-		mes "Who is in charge of the back-up team?";
+		mes "[露西尔]";
+		mes "支援队由谁负责？";
 		close3;
 	}
 	if ('devil_tower == 2) {
@@ -653,44 +653,44 @@ OnTouch:
 		setpcblock PCBLOCK_NPC, true;
 		cutin "tnm_lucile01.bmp",2;
 		sleep2 1500;
-		npctalk "Lucile: I am Lucile from the Assassin Guild.", .@lucile$;
+		npctalk "露西尔：我是刺客公会的露西尔。", .@lucile$;
 		sleep2 2000;
-		npctalk "Officer Heim: Our back-up is from the Assassin Guild? Thanks for arriving in time.", .@heim$;
+		npctalk "海姆军官：我们的支援来自刺客公会？感谢你们及时赶到。", .@heim$;
 		sleep2 3000;
-		npctalk "Lucile: The situation doesn't seem to be good.", .@lucile$;
+		npctalk "露西尔：情况似乎不太妙。", .@lucile$;
 		sleep2 3000;
-		npctalk "Lucile: What happened to the brave knights of Prontera?", .@lucile$;
+		npctalk "露西尔：普隆德拉勇敢的骑士们怎么了？", .@lucile$;
 		sleep2 3000;
-		npctalk "Officer Heim: Are you mocking me?", .@heim$;
+		npctalk "海姆军官：你在嘲笑我吗？", .@heim$;
 		sleep2 3000;
-		npctalk "Lucile: Not at all. I really want to know. What's going on upstairs?", .@lucile$;
+		npctalk "露西尔：绝无此意。我真的很想知道。楼上发生了什么？", .@lucile$;
 		sleep2 2500;
 		emotion ET_OHNO, getnpcid(0, .@heim$);
 		sleep2 1000;
-		npctalk "Officer Heim: How did you know that? Yes, the demons have stopped their attack from upstairs.", .@heim$;
+		npctalk "海姆军官：你怎么知道的？没错，楼上的恶魔已经停止进攻了。", .@heim$;
 		sleep2 3000;
 		emotion ET_SMILE, getnpcid(0, .@lucile$);
-		npctalk "Lucile: What do you think about the situation Magic Swordman?", .@lucile$;
+		npctalk "露西尔：魔剑士，你怎么看这个情况？", .@lucile$;
 		cutin "tnm_lucile01.bmp",0;
 		sleep2 3000;
-		npctalk "Magic swordman: Hmm, I will go and investigate.", instance_npcname("Magic Swordman#tnm01");
+		npctalk "魔剑士：嗯，我去调查一下。", instance_npcname("魔剑士#tnm01");
 		cutin "tnm_loki.bmp",2;
 		sleep2 2000;
 		cutin "",255;
 		disablenpc instance_npcname("Magic Swordman#tnm01");
 		sleep2 1000;
-		npctalk "Lucile: How are you so fast?", .@lucile$;
+		npctalk "露西尔：你怎么这么快？", .@lucile$;
 		cutin "tnm_lucile01.bmp",2;
 		sleep2 2000;
-		npctalk "Officer Heim: What are you doing? If you go alone you will be killed!", .@heim$;
+		npctalk "海姆军官：你在做什么？一个人去会死的！", .@heim$;
 		sleep2 3000;
-		npctalk "Lucile: I won't be alone. There are still some uninjured soldiers!", .@lucile$;
+		npctalk "露西尔：我不会一个人去。还有些没受伤的士兵！", .@lucile$;
 		sleep2 2500;
-		npctalk "Lucile: All right, I will ask you to be my back up. Hahaha right Dewey?", .@lucile$;
+		npctalk "露西尔：好，就请你来做我的后援。哈哈哈，对吧，杜威？", .@lucile$;
 		sleep2 500;
 		enablenpc instance_npcname("Assassin Dewey#tnm01");
 		enablenpc instance_npcname("#tnm1stepmob");
-		npctalk "Dewey: Okay, I will.", instance_npcname("Assassin Dewey#tnm01");
+		npctalk "杜威：好，我会的。", instance_npcname("刺客杜威#tnm01");
 		'devil_tower = 4;
 		sleep2 500;
 		cutin "",255;
@@ -698,36 +698,36 @@ OnTouch:
 		disablenpc instance_npcname("Assassin Huey#tnm01");
 		disablenpc instance_npcname("Assassin Louie#tnm01");
 		sleep2 2000;
-		npctalk "Officer Heim: They are so unpredictable. You know what is going on right? Back them up...", .@heim$;
+		npctalk "海姆军官：他们真是难以预测。你知道现在的情况吧？去支援他们……", .@heim$;
 		sleep2 2500;
-		npctalk "Officer Heim: Help us take care of the demons coming down from upstairs.", .@heim$;
+		npctalk "海姆军官：帮我们解决从楼上下来的恶魔。", .@heim$;
 		setpcblock PCBLOCK_NPC, false;
 		end;
 	}
 }
 
-1@tnm1,52,104,2	duplicate(Officer Heim#heim0)	Magic Swordman#tnm01	4_M_ROKI
-1@tnm1,42,104,4	duplicate(Officer Heim#heim0)	Assassin Huey#tnm01	4_TOWER_15
-1@tnm1,44,101,5	duplicate(Officer Heim#heim0)	Assassin Louie#tnm01	4_M_ACROSS
+1@tnm1,52,104,2	duplicate(海姆军官#heim0)	Magic Swordman#tnm01	4_M_ROKI
+1@tnm1,42,104,4	duplicate(海姆军官#heim0)	Assassin Huey#tnm01	4_TOWER_15
+1@tnm1,44,101,5	duplicate(海姆军官#heim0)	Assassin Louie#tnm01	4_M_ACROSS
 
-1@tnm1,70,108,3	script	Assassin Dewey#tnm01	4_M_ACROSS,{
+1@tnm1,70,108,3	script	刺客杜威#tnm01	4_M_ACROSS,{
 	if ('devil_tower < 4)
 		end;
 	if (isbegin_quest(7569) == 0)
 		setquest 7569;// Treat the injured
 	if (isbegin_quest(7570) == 0)
 		setquest 7570;// Destroy the demons
-	mes "[Dewey]";
-	mes "I will guide you to the upper floor.";
-	mes "Do not forget to get rid of any demons that you encounter on the way.";
+	mes "[杜威]";
+	mes "我来带你去上层。";
+	mes "别忘了清除路上遇到的所有恶魔。";
 	next;
-	if (select( "Move now", "I need more time to prepare." ) == 2) {
-		mes "[Dewey]";
-		mes "Be prepared for anything.";
+	if (select( "立即出发", "我需要更多时间准备。" ) == 2) {
+		mes "[杜威]";
+		mes "做好应对一切的准备。";
 		close;
 	}
-	mes "[Dewey]";
-	mes "Travel carefully.";
+	mes "[杜威]";
+	mes "小心前行。";
 	close2;
 	warp 'map_tnm1$,91,23;
 	devil_tower_can_reenter = 1;// nb. different from official (condition overcomplicated)
@@ -750,13 +750,13 @@ OnTouch:
 	end;
 OnTimer2000:
 	if (unitexists('mob_id) == true)
-		unittalk 'mob_id, "What is this? A human? How dare they must have lost their minds!";
+		unittalk 'mob_id, "这是什么？一个人类？他们竟敢来，一定是疯了！";
 	end;
 OnTimer5000:
 	monster 'map_tnm1$,103,21,"Evil Shadow",2940,1, instance_npcname("#tnm1stepmob") + "::OnMobDead";	// MM_EVIL_SHADOW2
-	unittalk $@mobid[0], "Did you make a resolution?";
+	unittalk $@mobid[0], "你做好觉悟了吗？";
 	monster 'map_tnm1$,103,26,"Evil Shadow",2941,1, instance_npcname("#tnm1stepmob") + "::OnMobDead";	// MM_EVIL_SHADOW3
-	unittalk $@mobid[0], "Ha ha ha ha....Let's fight..!!!";
+	unittalk $@mobid[0], "哈哈哈哈……开战吧！！！";
 	end;
 OnTimer11000:
 	monster 'map_tnm1$,106,25,"Evil Shadow",2939,1, instance_npcname("#tnm1stepmob") + "::OnMobDead";	// MM_EVIL_SHADOW1
@@ -799,67 +799,67 @@ OnMobDead:
 	end;
 }
 
-1@tnm1,158,24,3	script	Assassin Louie#tnm02	4_M_ACROSS,{
+1@tnm1,158,24,3	script	刺客鲁依#tnm02	4_M_ACROSS,{
 	if ('devil_tower < 4)
 		end;
 	if (checkquest(7570,HUNTING) != 2) {
-		mes "[Louie]";
-		mes "The Captain says that we need to get rid of all of the demons...";
-		mes "Better get to it.";
+		mes "[路易]";
+		mes "队长说我们必须清除所有恶魔……";
+		mes "最好快点动手。";
 		close;
 	}
-	mes "[Louie]";
-	mes "A lot of soldiers still survived the attacks.";
-	mes "They got rid of all the demons.";
+	mes "[路易]";
+	mes "很多士兵在攻击中活了下来。";
+	mes "他们清除了所有恶魔。";
 	next;
-	mes "[Louie]";
-	mes "I was making sure that no one goes upstairs, I was afraid something might happen again.";
+	mes "[路易]";
+	mes "我一直在确保没有人上楼，我怕又会出什么事。";
 	next;
-	mes "[Louie]";
-	mes "I wish you would help me.";
-	mes "I will guide you.";
+	mes "[路易]";
+	mes "希望你能帮帮我。";
+	mes "我来为你带路。";
 	if (isbegin_quest(7571) == 0) {
 		erasequest 7569;// Treat the injured
 		erasequest 7570;// Destroy the demons
 		setquest 7571;// Tower Expedition
 	}
 	next;
-	mes "I have been exploring the passages of this tower for a while now.";
+	mes "我探索这座塔的通道已经有一段时间了。";
 	close2;
 	warp 'map_tnm1$,124,86;
 	end;
 }
 
 // Stairs 2 tnm1
-1@tnm1,138,96,3	script	Lucile#tnm02	4_F_LUCILE,{
+1@tnm1,138,96,3	script	露西尔#tnm02	4_F_LUCILE,{
 	if (isbegin_quest(7571) == 0)
 		end;
 	if (is_party_leader() == false) {
-		mes "You wave your hand in front of her but she doesn't react.";
+		mes "你在她面前挥了挥手，但她毫无反应。";
 		close;
 	}
 	if ('devil_tower < 4)
 		end;
 	if ('devil_tower < 6) {
 		if ('devil_tower == 4) {
-			mes "[Lucile]";
-			mes "I am sorry if I'm giving you any attitude but I can't move.";
-			npctalk "Lucile: I am sorry if I'm giving you any attitude but I can't move.";
+			mes "[露西尔]";
+			mes "如果我态度不好，很抱歉，但我动不了。";
+			npctalk "露西尔：如果我态度不好，很抱歉，但我动不了。";
 			cutin "tnm_lucile02.bmp",2;
 			next;
-			select("Can I help?");
-			mes "[Lucile]";
-			mes "I can use self-recovery but I don't have time for that.";
-			mes "Will you share your power with me?";
-			npctalk "Lucile: I can use self-recovery but I don't have time for that. Will you share your power with me?";
+			select("我能帮忙吗？");
+			mes "[露西尔]";
+			mes "我可以使用自我修复，但我没时间那么做。";
+			mes "你愿意把力量分给我吗？";
+			npctalk "露西尔：我可以使用自我修复，但我没时间那么做。你愿意把力量分给我吗？";
 			next;
-			mes "[Lucile]";
-			mes "I need your help to activate my restoration system.";
-			mes "Please hold tight.";
-			npctalk "Lucile: I need your help to activate my restoration system.";
+			mes "[露西尔]";
+			mes "我需要你的帮助来启动我的修复系统。";
+			mes "请抓紧。";
+			npctalk "露西尔：我需要你的帮助来启动我的修复系统。";
 			next;
 			sleep2 750;
-			npctalk "Lucile: Please hold tight.";
+			npctalk "露西尔：请抓紧。";
 			if (is_party_leader() == true && 'devil_tower == 4) {
 				donpcevent instance_npcname("Huey#hui02") + "::OnEnable";
 				'devil_tower = 5;
@@ -867,8 +867,8 @@ OnMobDead:
 			percentheal -30,0;
 		}
 		cutin "tnm_lucile03.bmp",2;
-		mes "Lucile seems to be a machine.";
-		mes "I can hear mechanical sounds all of a sudden.";
+		mes "露西尔似乎是一台机器。";
+		mes "我突然听到了机械运作的声音。";
 		specialeffect EF_LEVEL99_3;
 		progressbar "000000",40;
 		if (is_party_leader() == true && 'devil_tower == 5) {
@@ -876,30 +876,30 @@ OnMobDead:
 				setquest 7572;// Lucile...?
 			'devil_tower = 6;
 		}
-		mes "System is restored.";
+		mes "系统已修复。";
 		next;
-		mes "[Lucile]";
-		mes "Wow! You fixed it faster than I thought.";
-		mes "Did that surprise you?";
-		mes "I have to be fixed occasionally because I don't have a normal body";
+		mes "[露西尔]";
+		mes "哇！你修得比我预想的还快。";
+		mes "这让你吃惊了吗？";
+		mes "因为我这副身体并不普通，所以偶尔需要修理。";
 		cutin "tnm_lucile02.bmp",2;
 		next;
-		mes "[Lucile]";
-		mes "This body was a gift from the gods.";
-		mes "Do you see the gate in the middle?";
+		mes "[露西尔]";
+		mes "这副身体是神明赐予的礼物。";
+		mes "你看到中间的那扇门了吗？";
 		cutin "tnm_lucile01.bmp",2;
 		next;
-		mes "[Lucile]";
-		mes "Hurry up or this world will be in a danger.";
+		mes "[露西尔]";
+		mes "快点，不然这个世界就危险了。";
 		close2;
 		cutin "",255;
 		// continue
 	}
 	if ('devil_tower == 6) {
 		sleep 1500;
-		npctalk "Lucile: Let me excuse myself, follow me if you want to save the world.";
+		npctalk "露西尔：恕我先走一步，想拯救世界的话就跟我来。";
 		sleep 2000;
-		npctalk "Huey: sister...", instance_npcname("Huey#hui02");
+		npctalk "修伊：姐姐……", instance_npcname("修伊#hui02");
 		if ('devil_tower == 6) {
 			disablenpc instance_npcname("Lucile#tnm02");
 			enablenpc instance_npcname("Lucile#tnm03");
@@ -911,38 +911,38 @@ OnMobDead:
 	end;
 }
 	
-1@tnm1,135,99,5	script	Huey#hui02	4_TOWER_15,{
+1@tnm1,135,99,5	script	修伊#hui02	4_TOWER_15,{
 	if ('devil_tower < 5)
 		end;
 	if ('devil_tower == 5 || 'devil_tower == 6) {
-		mes "[Huey]";
-		mes "I am concerned about her.";
-		mes "It happens whenever she's wounded.";
-		mes "Because she's mostly machine...";
+		mes "[修伊]";
+		mes "我很担心她。";
+		mes "她每次受伤都会这样。";
+		mes "因为她大半是机械……";
 		close;
 	}
 	if ('mob_count > 0) {
-		mes "[Huey]";
-		mes "I know the path upstairs...";
-		mes "First of all, we have to get rid of these demons!";
+		mes "[修伊]";
+		mes "我知道上楼的路……";
+		mes "首先，我们得清除这些恶魔！";
 		close;
 	}
-	mes "[Huey]";
-	mes "I wonder how the others are doing...";
-	mes "Only Thanatos and Lucile have ever entered to upper floor...";
+	mes "[修伊]";
+	mes "不知道其他人怎么样了……";
+	mes "只有塔纳托斯和露西尔曾经进入过上层……";
 	next;
-	mes "[Huey]";
-	mes "If you want to assist them, you must hurry.";
-	mes "I will guide the way for you.";
+	mes "[修伊]";
+	mes "如果你想协助他们，就必须快点。";
+	mes "我来为你带路。";
 	next;
-	if (select( "Move immediately.", "Do not follow." ) == 2) {
-		mes "[Huey]";
+	if (select( "立即出发。", "不要跟随。" ) == 2) {
+		mes "[修伊]";
 		mes "...I see.";
 		close;
 	}
-	mes "[Huey]";
-	mes "This way.";
-	mes "Be careful.";
+	mes "[修伊]";
+	mes "这边。";
+	mes "小心。";
 	close2;
 	warp 'map_tnm2$,152,130;
 	end;
@@ -952,7 +952,7 @@ OnEnable:
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Huey: Oh no, sister watch out! Demons have suddenly appeared!";
+	npctalk "修伊：不好了，姐姐小心！恶魔突然出现了！";
 	'mob_count = 16;
 	monster 'map_tnm1$,142,90,"Evil Shadow",2939,1, instance_npcname("Huey#hui02") + "::OnMobDead";	// MM_EVIL_SHADOW1
 	monster 'map_tnm1$,139,91,"Evil Shadow",2940,1, instance_npcname("Huey#hui02") + "::OnMobDead";	// MM_EVIL_SHADOW2
@@ -961,7 +961,7 @@ OnTimer3000:
 	monster 'map_tnm1$,134,90,"Evil Shadow",2941,1, instance_npcname("Huey#hui02") + "::OnMobDead";
 	end;
 OnTimer6000:
-	npctalk "Huey: Where are they coming from? Demons again......";
+	npctalk "修伊：它们是从哪里来的？又是恶魔……";
 	end;
 OnTimer8000:
 	monster 'map_tnm1$,137,103,"Evil Shadow",2939,1, instance_npcname("Huey#hui02") + "::OnMobDead";	// MM_EVIL_SHADOW1
@@ -972,7 +972,7 @@ OnTimer8000:
 	monster 'map_tnm1$,135,107,"Evil Shadow",2941,1, instance_npcname("Huey#hui02") + "::OnMobDead";	// MM_EVIL_SHADOW3
 	end;
 OnTimer11000:
-	npctalk "Huey: Oh, no...";
+	npctalk "修伊：哦，不……";
 	end;
 OnTimer12000:
 	monster 'map_tnm1$,135,107,"Evil Shadow",2939,1, instance_npcname("Huey#hui02") + "::OnMobDead";	// MM_EVIL_SHADOW1
@@ -985,36 +985,36 @@ OnTimer12000:
 OnMobDead:
 	'mob_count--;
 	if ('mob_count == 0)
-		npctalk "Huey: This way. This way... we can go upstairs by using the gap that the demons were coming from!";
+		npctalk "修伊：这边。这边……我们可以利用恶魔出来的裂缝上楼！";
 	end;
 }
 
 // Morocc - Thanatos Battle
-1@tnm2,136,139,3	script	Magic Swordman#tnm02	THANATOS_KEEP,{
-	mes "[Magic Swordman Thanatos]";
-	mes "I am sorry but I have been through tough time...";
+1@tnm2,136,139,3	script	魔法剑士#tnm02	THANATOS_KEEP,{
+	mes "[魔剑士塔纳托斯]";
+	mes "抱歉，我经历了一段艰难的时期……";
 	close;
 }
 
-1@tnm2,133,139,5	duplicate(Officer Heim#heim0)	Demon Morocc#tnm01	1916
+1@tnm2,133,139,5	duplicate(海姆军官#heim0)	Demon Morocc#tnm01	1916
 
-1@tnm2,144,137,3	script	Lucile#tnm03	4_F_LUCILE,{
+1@tnm2,144,137,3	script	露西尔#tnm03	4_F_LUCILE,{
 	if (is_party_leader() == false) {
-		mes "[Lucile]";
-		mes "I am talking to your party leader now so please step back for a while.";
+		mes "[露西尔]";
+		mes "我现在正在和你们的队长谈话，请先退后一下。";
 		cutin "tnm_lucile01.bmp",2;
 		close3;
 	}
 	if ('devil_tower == 7) {
-		mes "[Lucile]";
-		mes "Oh. You just have arrived in time.";
-		mes "Do you want to take a look over there?";
+		mes "[露西尔]";
+		mes "哦。你来得正是时候。";
+		mes "你想去那边看看吗？";
 		cutin "tnm_lucile01.bmp",2;
 		next;
-		mes "[Lucile]";
-		mes "We need to stop the demon...";
-		mes "Can you do that?";
-		npctalk "Lucile: We need to stop the demon... Can you do that?";
+		mes "[露西尔]";
+		mes "我们必须阻止那个恶魔……";
+		mes "你能做到吗？";
+		npctalk "露西尔：我们必须阻止恶魔……你能做到吗？";
 		if (is_party_leader() == true && 'devil_tower == 7) {
 			if (isbegin_quest(7573) == 0)
 				setquest 7573;// Magic Swordman Thanatos
@@ -1025,40 +1025,40 @@ OnMobDead:
 		}
 		close3;
 	}
-	mes "[Lucile]";
-	mes "We need to hold this spot until the trap is set by the Magic Swordman.";
+	mes "[露西尔]";
+	mes "在魔法剑士布置好陷阱之前，我们必须守住这里。";
 	cutin "tnm_lucile01.bmp",2;
 	close3;
 
 OnTimer2000:
-	npctalk "Demon Morocc: You silly human. How long do you think you can manage to tie me up!", 'demon$;
+	npctalk "恶魔梦罗克：愚蠢的人类。你以为你能困住我多久！", 'demon$;
 	end;
 OnTimer5000:
-	npctalk "Demon Morocc: Shadows! Come out and kill all enemies of darkness!", 'demon$;
+	npctalk "恶魔梦罗克：影子们！出来吧，杀光所有与黑暗为敌的人！", 'demon$;
 	end;
 OnTimer6000:
 	donpcevent instance_npcname("#devil_seal_timer") + "::OnStart";
 	end;
 OnTimer8000:
-	npctalk "Thanatos: You are so desperate that you're begging me to save you.", 'thanatos$;
+	npctalk "塔纳托斯：你竟绝望到向我求救。", 'thanatos$;
 	end;
 OnTimer11500:
-	npctalk "Lucile: Thanatos. Sir, should you be bluffing like that?";
+	npctalk "露西尔：塔纳托斯大人，您这样虚张声势好吗？";
 	end;
 OnTimer12000:
-	npctalk "Demon Morocc: Be afraid of the destruction that I will bring when I'm released!", 'demon$;
+	npctalk "恶魔梦罗克：畏惧吧，待我脱身之时，必将带来毁灭！", 'demon$;
 	end;
 OnTimer15000:
-	npctalk "Thanatos: Shut up! You will never leave here unless I kill you!", 'thanatos$;
+	npctalk "塔纳托斯：闭嘴！除非我杀了你，否则你永远别想离开这里！", 'thanatos$;
 	end;
 OnTimer16500:
-	npctalk "Thanatos: Lucile! Watch my back while I conjure up a shield to hold him!", 'thanatos$;
+	npctalk "塔纳托斯：露西尔！我来召唤盾牌困住他，你替我守着背后！", 'thanatos$;
 	end;
 OnTimer19500:
-	npctalk "Lucile: Yes sir.";
+	npctalk "露西尔：是，大人。";
 	end;
 OnTimer22500:
-	npctalk "Lucile: Okay everyone, now we know what to do. We have to prevent the Magic Seal from reaching here!";
+	npctalk "露西尔：各位，现在我们都清楚该怎么做了。必须阻止魔法封印抵达这里！";
 	stopnpctimer;
 	end;
 }
@@ -1066,8 +1066,8 @@ OnTimer22500:
 1@tnm2,1,1,0	script	#devil_flamecross	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
-	npctalk "Demon Morocc: No way!! Troublemakers!", 'demon$;
-	mapannounce 'map_tnm2$, "Demon Morocc: No way!! Troublemakers!", bc_map,0xFF0000;
+	npctalk "恶魔梦罗克：不可能！！你们这些捣乱的家伙！", 'demon$;
+	mapannounce 'map_tnm2$, "恶魔梦罗克：不可能！！你们这些捣乱的家伙！", bc_map,0xFF0000;
 	initnpctimer;
 	end;
 OnTimer1000:
@@ -1117,36 +1117,36 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer5000:
-	mapannounce 'map_tnm2$, "A Magic Seal has just appeared in southeast direction of the tower.", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "塔的东南方向刚刚出现了一个魔法封印。", bc_map,0xFFFFFF;
 	donpcevent instance_npcname("#devil_seal_spawn_global") + "::OnFirstSpawn";
 	end;
 OnTimer10000:
 	donpcevent instance_npcname("#devil_flamecross") + "::OnStart";
 	end;
 OnTimer25000:
-	mapannounce 'map_tnm2$, "Lucile: We should stop before Magic Seal has just started to move again.", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：趁魔法封印刚重新开始移动，我们得阻止它。", bc_map,0xFFFFFF;
 	end;
 OnTimer65000:
-	mapannounce 'map_tnm2$, "Lucile: We should stop before Magic Seal reaches the center.", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：必须在魔法封印抵达中央之前阻止它。", bc_map,0xFFFFFF;
 	end;
 OnTimer95000:
-	mapannounce 'map_tnm2$, "Lucile: The Magic Seal has just started to move again.", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：魔法封印刚刚又开始移动了。", bc_map,0xFFFFFF;
 	end;
 OnTimer125000:
-	mapannounce 'map_tnm2$, "Lucile: It is coming closer... No... It's too dangerous.", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：它越来越近了……不行……太危险了。", bc_map,0xFFFFFF;
 	end;
 OnTimer155000:
-	mapannounce 'map_tnm2$, "Lucile: The Magic Seal is almost approaching the center!!", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：魔法封印快要接近中央了！！", bc_map,0xFFFFFF;
 	end;
 OnTimer180000:
 	donpcevent instance_npcname("#devil_flamecross") + "::OnStop";
 	end;
 OnTimer185000:
-	mapannounce 'map_tnm2$, "Lucile: We should stop it now!", bc_map,0xFFFFFF;
+	mapannounce 'map_tnm2$, "露西尔：现在就阻止它！", bc_map,0xFFFFFF;
 	end;
 OnTimer191000:
-	npctalk "Thanatos: What are you doing!!! Are you playing a game now?!", 'thanatos$;
-	mapannounce 'map_tnm2$, "Thanatos: What are you doing!!! Are you playing a game now?!", bc_map,0xFF00;
+	npctalk "塔纳托斯：你们在干什么！！！现在是玩游戏的时候吗？！", 'thanatos$;
+	mapannounce 'map_tnm2$, "塔纳托斯：你们在干什么！！！现在是玩游戏的时候吗？！", bc_map,0xFF00;
 	end;
 OnTimer193000:
 	specialeffect EF_MAGNUMBREAK,AREA, 'thanatos$;
@@ -1156,16 +1156,16 @@ OnTimer193000:
 		donpcevent instance_npcname("devil_seal_spawn#" + .@direction$[.@i]) + "::OnStop";
 	end;
 OnTimer195000:
-	npctalk "Demon Morocc: Are you going to keep disturbing me!!!", 'demon$;
-	mapannounce 'map_tnm2$, "Demon Morocc: Are you going to keep disturbing me!!!", bc_map,0xFF0000;
+	npctalk "恶魔梦罗克：你们还要继续妨碍我吗！！！", 'demon$;
+	mapannounce 'map_tnm2$, "恶魔梦罗克：你们还要继续妨碍我吗！！！", bc_map,0xFF0000;
 	end;
 OnTimer198000:
-	npctalk "Demon Morocc: Okay, Let's see who is going to win!!! Come out!", 'demon$;
-	mapannounce 'map_tnm2$, "Demon Morocc: Okay, Let's see who is going to win!!! Come out!", bc_map,0xFF0000;
+	npctalk "恶魔梦罗克：好，就来看看谁能赢！！！出来吧！", 'demon$;
+	mapannounce 'map_tnm2$, "恶魔梦罗克：好，就来看看谁能赢！！！出来吧！", bc_map,0xFF0000;
 	end;
 OnTimer201000:
-	npctalk "Thanatos: It will be the same no matter how many times you try! Give up and go back to demon world!!", 'thanatos$;
-	mapannounce 'map_tnm2$, "Thanatos: It will be the same no matter how many times you try! Give up and go back to demon world!!", bc_map,0xFF00;
+	npctalk "塔纳托斯：无论你试多少次结果都一样！放弃吧，滚回魔界去！！", 'thanatos$;
+	mapannounce 'map_tnm2$, "塔纳托斯：无论你试多少次结果都一样！放弃吧，滚回魔界去！！", bc_map,0xFF00;
 	initnpctimer;
 	end;
 OnStop:
@@ -1298,12 +1298,12 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "Demon Morocc: Kuh ha ha ha ha Pieces of my power! Gather here again!!!", 'demon$;
-	mapannounce 'map_tnm2$, "Demon Morocc: Kuh ha ha ha ha Pieces of my power! Gather here again!!!", bc_map,0xFF0000;
+	npctalk "恶魔梦罗克：咳哈哈哈哈，我力量的碎片们！再次聚集于此！！！", 'demon$;
+	mapannounce 'map_tnm2$, "恶魔梦罗克：咳哈哈哈哈，我力量的碎片们！再次聚集于此！！！", bc_map,0xFF0000;
 	end;
 OnTimer4000:
-	npctalk "Thanatos: Stop him! Prevent him from coming closer!!!", 'thanatos$;
-	mapannounce 'map_tnm2$, "Thanatos: Stop him! Prevent him from coming closer!!!", bc_map,0xFF00;
+	npctalk "塔纳托斯：拦住他！别让他再靠近！！！", 'thanatos$;
+	mapannounce 'map_tnm2$, "塔纳托斯：拦住他！别让他再靠近！！！", bc_map,0xFF00;
 	stopnpctimer;
 	disablenpc();
 	end;
@@ -1327,9 +1327,9 @@ S_Sealdead:
 	.@total_seal = 'seal_dead[DIR_NORTHWEST] + 'seal_dead[DIR_SOUTHWEST] + 'seal_dead[DIR_SOUTHEAST] + 'seal_dead[DIR_NORTHEAST] + 'seal_dead[DIR_NORTH];
 	if (.@total_seal != 5) {
 		if (getarg(0) == DIR_NORTHWEST)
-			mapannounce 'map_tnm2$, "Lucile: It is too early to feel easy! There are Magic Seals that haven't been destroyed yet.", bc_map,0xFF00;
+			mapannounce 'map_tnm2$, "露西尔：现在放松还太早！还有没被破坏的魔法封印。", bc_map,0xFF00;
 		else
-			mapannounce 'map_tnm2$, "There are still Magic Seals to destroy.", bc_map,0xFF00;
+			mapannounce 'map_tnm2$, "还有需要破坏的魔法封印。", bc_map,0xFF00;
 	}
 	else {
 		donpcevent instance_npcname("#devil_seal_spawn_global") + "::OnStop";
@@ -1339,14 +1339,14 @@ S_Sealdead:
 		donpcevent instance_npcname("devil_seal_spawn#DIR_SOUTHEAST") + "::OnDisable";
 		donpcevent instance_npcname("devil_seal_spawn#DIR_NORTHEAST") + "::OnDisable";
 		donpcevent instance_npcname("devil_seal_spawn#DIR_NORTH") + "::OnDisable";
-		mapannounce 'map_tnm2$, "Demon Morocc: No.. This can't be.. Who the hell.. are you!", bc_map,0xFF0000;
-		npctalk "Demon Morocc: No.. This can't be.. Who the hell.. are you!", 'demon$;
+		mapannounce 'map_tnm2$, "恶魔梦罗克：不……这不可能……你到底……是什么人！", bc_map,0xFF0000;
+		npctalk "恶魔梦罗克：不……这不可能……你到底……是什么人！", 'demon$;
 		initnpctimer;
 	}
 	end;
 OnTimer3000:
-	mapannounce 'map_tnm2$, "Thanatos: It will be the last time to show off!! Good bye!!!", bc_map,0xFF0000;
-	npctalk "Thanatos: It will be the last time to show off!! Good bye!!!", 'thanatos$;
+	mapannounce 'map_tnm2$, "塔纳托斯：这是你最后一次逞威风了！！永别了！！！", bc_map,0xFF0000;
+	npctalk "塔纳托斯：这是你最后一次逞威风了！！永别了！！！", 'thanatos$;
 	end;
 OnTimer5000:
 	specialeffect EF_LORD,AREA, 'thanatos$;
@@ -1374,7 +1374,7 @@ OnTimer7000:
 	end;
 }
 
-1@tnm2,144,137,3	script	Lucile#tnm04	4_F_LUCILE,{
+1@tnm2,144,137,3	script	露西尔#tnm04	4_F_LUCILE,{
 	if ('devil_tower < 9)
 		end;
 	if (isbegin_quest(7574) == 0) {
@@ -1383,28 +1383,28 @@ OnTimer7000:
 		if (isbegin_quest(7573) == 1)	// leader
 			erasequest 7573;// Magic Swordman Thanatos
 		setquest 7574;// Thanatos Tower
-		mes "[Lucile]";
-		mes "I guess the power of Demon Morocc to break the shield of seal has collided with Thanatos.";
+		mes "[露西尔]";
+		mes "看来恶魔梦罗克击破封印之盾的力量与塔纳托斯发生了碰撞。";
 		cutin "tnm_lucile01.bmp",2;
 		next;
-		mes "[Lucile]";
-		mes "It has gone too far somewhere in the south";
-		mes "Will you go there?";
+		mes "[露西尔]";
+		mes "那股力量已经波及到南方的某处了";
+		mes "你要去那里吗？";
 	}
 	else {
-		mes "[Lucile]";
-		mes "The collision of those two powers is too much to handle.";
-		mes "It could have influenced the south of Rune-Midgarts.";
+		mes "[露西尔]";
+		mes "两股力量的碰撞太过猛烈，难以承受。";
+		mes "它可能已经影响到了卢恩-米德加尔特南部。";
 	}
 	next;
 	if (select( "Follow.", "Stop." ) == 2) {
-		mes "[Lucile]";
+		mes "[露西尔]";
 		mes "...I guess this is what you are able to?";
 		cutin "tnm_lucile02.bmp",2;
 		close3;
 	}
-	mes "[Lucile]";
-	mes "Good luck.";
+	mes "[露西尔]";
+	mes "祝你好运。";
 	close2;
 	warp 'map_tnm3$,21,171;
 	end;
@@ -1420,7 +1420,7 @@ OnTouch:
 	disablenpc instance_npcname("#tnm3event01");
 	enablenpc instance_npcname("Young Girl#tnm01");
 	sleep2 4000;
-	mapannounce 'map_tnm3$, "Young Girl: Odin Preserve me! A demon!! Help me!", bc_map,0xFF00;
+	mapannounce 'map_tnm3$, "少女：奥丁保佑我！有恶魔！！救救我！", bc_map,0xFF00;
 	'mob_count = 12;
 	initnpctimer;
 	setpcblock PCBLOCK_NPC, false;
@@ -1458,44 +1458,44 @@ OnTimer9000:
 	end;
 }
 
-1@tnm3,43,175,3	script	Young Girl#tnm01	4_F_DST_CHILD,{
+1@tnm3,43,175,3	script	少女#tnm01	4_F_DST_CHILD,{
 	if ('devil_tower < 9)
 		end;
 	if ('devil_tower == 9) {
-		mes "[Young Girl]";
-		mes "Why are there demons in the castle?!";
-		mes "HELP ME!";
+		mes "[少女]";
+		mes "为什么城堡里会有恶魔？！";
+		mes "救救我！";
 		close;
 	}
 	if ('devil_tower == 10) {
 		if (is_party_leader() == false) {
-			mes "[Young Girl]";
-			mes "*weeping* The demons are so scary.";
+			mes "[少女]";
+			mes "*哭泣* 那些恶魔好可怕。";
 			close;
 		}
-		mes "[Young Girl]";
-		mes "Why would demons come all of a sudden,";
-		mes "lots of guards are hurt.";
-		npctalk "Young Girl: Why would demons come all of a sudden, lots of guards are hurt.";
+		mes "[少女]";
+		mes "为什么恶魔会突然出现，";
+		mes "很多守卫都受伤了。";
+		npctalk "少女：为什么恶魔会突然出现，很多守卫都受伤了。";
 		next;
-		select("Where are they?");
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Where are they?";
-		mes "[Young Girl]";
-		mes "They are in Morocc castle. My father is a knight.";
-		npctalk "They are in Morocc castle. My father is a knight.";
+		select("他们在哪里？");
+		unittalk getcharid(3), "" + strcharinfo(0) + "：他们在哪里？";
+		mes "[少女]";
+		mes "他们在梦罗克城内。我父亲是一名骑士。";
+		npctalk "他们在梦罗克城内。我父亲是一名骑士。";
 		next;
-		mes "[Young Girl]";
-		mes "It seems like something is happening, I hear strange noises downstairs.";
-		npctalk "Young Girl: It seems like something is happening, I hear strange noises downstairs.";
+		mes "[少女]";
+		mes "好像出事了，我听到楼下有奇怪的声音。";
+		npctalk "少女：好像出事了，我听到楼下有奇怪的声音。";
 		next;
-		mes "[Young Girl]";
-		mes "I saw some guys in black entering. What is going on in the castle?";
-		npctalk "Young Girl: I saw some guys in black entering. What is going on in the castle?";
+		mes "[少女]";
+		mes "我看见一些穿黑衣的人进去了。城堡里到底发生了什么？";
+		npctalk "少女：我看见一些穿黑衣的人进去了。城堡里到底发生了什么？";
 		next;
-		mes "[Young Girl]";
-		mes "Papa.. Papa please be safe. *sob*";
-		mes "Please come with me through the passage behind that shelf!";
-		npctalk "Young Girl: Please come with me through the passage behind that shelf!";
+		mes "[少女]";
+		mes "爸爸……爸爸，请你一定要平安。*抽泣*";
+		mes "请跟我从那个架子后面的通道走！";
+		npctalk "少女：请跟我从那个架子后面的通道走！";
 		close2;
 		if (is_party_leader() == true && 'devil_tower == 10) {
 			enablenpc instance_npcname("#tnm3gate01");
@@ -1505,9 +1505,9 @@ OnTimer9000:
 		end;
 	}
 	if ('devil_tower == 11) {
-		mes "[Young Girl]";
-		mes "Behind that shelf is a secret passage to the basement!";
-		mes "Please come with me to make sure my Papa is safe.";
+		mes "[少女]";
+		mes "那个架子后面有一条通往地下室的秘密通道！";
+		mes "请跟我一起去确认我爸爸是否平安。";
 		close;
 	}
 	end;
@@ -1516,7 +1516,7 @@ OnMobDead:
 	'mob_count--;
 	if ('mob_count == 0) {
 		'devil_tower = 10;
-		npctalk "Young Girl: Thank you for saving me... but why is there a demon?";
+		npctalk "少女：谢谢你救了我……可是为什么会有恶魔？";
 	}
 	end;
 }
@@ -1531,7 +1531,7 @@ OnTouch:
 		end;
 	disablenpc instance_npcname("#tnm3event02ect");
 	enablenpc instance_npcname("Young Girl#tnm02");
-	npctalk "Young Girl: Look! More demons, they will overwhelm the castle soon!", instance_npcname("Young Girl#tnm02");
+	npctalk "少女：快看！更多的恶魔，它们很快就会占领城堡！", instance_npcname("少女#tnm02");
 	'mob_count = 18;
 	initnpctimer;
 	end;
@@ -1568,45 +1568,45 @@ OnTimer7000:
 	end;
 }
 
-1@tnm3,89,179,4	script	Young Girl#tnm02	4_F_DST_CHILD,{
+1@tnm3,89,179,4	script	少女#tnm02	4_F_DST_CHILD,{
 	end;
 OnMobDead:
 	'mob_count--;
 	if ('mob_count == 0) {
-		mapannounce 'map_tnm3$, "Young Girl: The way underground is along this aisle!", bc_map,0xFF00;
+		mapannounce 'map_tnm3$, "少女：通往地下的路就在这条通道上！", bc_map,0xFF00;
 		disablenpc instance_npcname("Young Girl#tnm02");
 		enablenpc instance_npcname("Young Girl#tnm03");
-		npctalk "Young Girl: The way underground is along this aisle!", instance_npcname("Young Girl#tnm03");
+		npctalk "少女：通往地下的路就在这条通道上！", instance_npcname("少女#tnm03");
 		enablenpc instance_npcname("#tnm3gate02");
 		enablenpc instance_npcname("Evil Shadow#tnm3mob01");
 	}
 	end;
 }
 
-1@tnm3,128,164,3	script	Young Girl#tnm03	4_F_DST_CHILD,{
-	mes "[Young Girl]";
-	mes "From here.. I do not know well...";
-	mes "I see so many stairs...";
-	mes "See there are so many demons. My father will be in a danger!";
-	mes "Please save him.";
+1@tnm3,128,164,3	script	少女#tnm03	4_F_DST_CHILD,{
+	mes "[少女]";
+	mes "从这里开始……我就不太清楚了……";
+	mes "我看到好多楼梯……";
+	mes "你看，有这么多恶魔。我父亲会有危险的！";
+	mes "请救救他。";
 	close;
 }
 
 1@tnm3,134,156,0	warp	#tnm3gate02	1,1,1@tnm3,169,165
 
 // tnm3 Stairs 3
-1@tnm3,179,172,3	script	Evil Shadow#tnm3mob01	2941,4,4,{
+1@tnm3,179,172,3	script	邪恶之影#tnm3mob01	2941,4,4,{
 	end;
 OnTouch_:
 	if ('devil_tower == 11) {
 		'devil_tower = 12;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 1000;
-		npctalk "Evil Shadow: I thought I smelled rats sneaking in here. I was right!!";
+		npctalk "邪恶之影：我就闻到有老鼠溜进来了。果然没错！！";
 		sleep2 3000;
-		npctalk "Evil Shadow: You will rue your curiosity and interference. Time to feed!";
+		npctalk "邪恶之影：你们会为这份好奇与多管闲事后悔的。该进食了！";
 		sleep2 3000;
-		npctalk "Evil Shadow: I summon the Darkness!!";
+		npctalk "邪恶之影：我召唤黑暗！！";
 		disablenpc instance_npcname("Evil Shadow#tnm3mob01");
 		donpcevent instance_npcname("Evil Shadow kill#tnm3mob01") + "::OnSummon";
 		setpcblock PCBLOCK_NPC, false;
@@ -1645,7 +1645,7 @@ OnMobDead:
 1@tnm3,183,177,0	warp	#tnm3gate03	1,1,1@tnm3,97,6
 
 // Demonic Shade (Boss room)
-1@tnm3,97,18,3	script	Demonic Shade#mobmaster	2939,5,5,{
+1@tnm3,97,18,3	script	魔影#mobmaster	2939,5,5,{
 	end;
 OnTouch_:// possibility to skip this step
 	if ('devil_tower < 12)
@@ -1654,11 +1654,11 @@ OnTouch_:// possibility to skip this step
 		'shade = 1;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 1000;
-		npctalk "Demonic Shade: So you are the trouble makers!";
+		npctalk "魔影：原来你们就是那些捣乱的家伙！";
 		sleep2 2000;
-		npctalk "Demonic Shade: Tsk, You couldn't even manage to protect..?.whatever.. you will all die here.";
+		npctalk "魔影：啧，连保护都做不到……算了……你们都会死在这里。";
 		sleep2 3000;
-		npctalk "Demonic Shade: The eternal truth is I will turn your deaths into the Demon's life with your hearts' blood!!!";
+		npctalk "魔影：永恒的真理便是——我将以你们的心头血，把你们的死亡化为恶魔的生命！！！";
 		disablenpc instance_npcname("Demonic Shade#mobmaster");
 		donpcevent instance_npcname("#mobmaster_kill") + "::OnSummon";
 		setpcblock PCBLOCK_NPC, false;
@@ -1714,24 +1714,24 @@ OnMobDead:
 	end;
 }
 
-1@tnm3,93,52,4	script	Morocc Lord Knight#mocl	1_M_MOC_LORD,{
-	mes "[Morocc Lord Knight]";
-	mes "You were the rats who were sneaking around here!";
+1@tnm3,93,52,4	script	梦罗克骑士领主#mocl	1_M_MOC_LORD,{
+	mes "[梦罗克骑士领主]";
+	mes "你们就是在这里偷偷摸摸的老鼠！";
 	close;
 }
 
-1@tnm3,97,48,3	script	Loki#tnmloki01	4_M_ROKI2,{
+1@tnm3,97,48,3	script	洛奇#tnmloki01	4_M_ROKI2,{
 	if ('devil_tower == 12) {
 		'devil_tower = 13;
 		donpcevent instance_npcname("#morocc_lord_talk") + "::OnStart";
 		end;
 	}
-	mes "[Loki]";
-	mes "You have no power here.";
+	mes "[洛奇]";
+	mes "你在这里没有力量。";
 	close;
 }
 
-1@tnm3,94,51,4	duplicate(Officer Heim#heim0)	Young Girl#tnm04	4_F_DST_CHILD
+1@tnm3,94,51,4	duplicate(海姆军官#heim0)	Young Girl#tnm04	4_F_DST_CHILD
 
 1@tnm2,1,1,0	script	#morocc_lord_talk	HIDDEN_WARP_NPC,{
 	end;
@@ -1739,49 +1739,49 @@ OnStart:
 	enablenpc instance_npcname("#morocc_lord_talk");
 	'Morocc$ = instance_npcname("Morocc Lord Knight#mocl");
 	'loki$ = instance_npcname("Loki#tnmloki01");
-	npctalk "Morocc Lord Knight: So.. the rat was an assassin? You came here to die?", 'Morocc$;
+	npctalk "梦罗克骑士领主：原来……那只老鼠是刺客？你是来送死的吗？", 'Morocc$;
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Loki: What will you accomplish by waking the Demon in the Wall?", 'loki$;
+	npctalk "洛奇：唤醒墙中之魔，你究竟想达成什么？", 'loki$;
 	end;
 OnTimer6000:
-	npctalk "Loki: My mission brought me here to bury it again.", 'loki$;
+	npctalk "洛奇：我的使命让我来到这里，将它重新埋葬。", 'loki$;
 	end;
 OnTimer9000:
-	npctalk "Morocc Lord Knight: Really.. the Assassin guild who I thought was on a mission to balance power in the world.", 'Morocc$;
+	npctalk "梦罗克骑士领主：真是……我原以为刺客公会以平衡世间力量为使命。", 'Morocc$;
 	end;
 OnTimer12000:
-	npctalk "Morocc Lord Knight: Resurrecting the demon would bring balance! Even the mightiest become slaves to a god..", 'Morocc$;
+	npctalk "梦罗克骑士领主：复活恶魔才能带来平衡！再强大的人也会沦为神的奴隶……", 'Morocc$;
 	end;
 OnTimer15000:
-	npctalk "Morocc Lord Knight: The gods have their own plans. Do you know what the gods plan for you or I?", 'Morocc$;
+	npctalk "梦罗克骑士领主：神有神自己的打算。你可知道神为你我安排了什么？", 'Morocc$;
 	end;
 OnTimer18000:
-	npctalk "Morocc Lord Knight: They want this world to only be in their image. Where do we fit into that?!", 'Morocc$;
+	npctalk "梦罗克骑士领主：他们想让这世界只按他们的样貌存在。那我们又算什么？！", 'Morocc$;
 	end;
 OnTimer20000:
-	npctalk "Loki: Shut up!", 'loki$;
+	npctalk "洛奇：闭嘴！", 'loki$;
 	end;
 OnTimer22000:
-	npctalk "Loki: I do not care about gods or demons or the plans that they have made. The only thing that matters is kill you.", 'loki$;
+	npctalk "洛奇：我不在乎神、恶魔，也不在乎他们定下的计划。唯一重要的，就是杀了你。", 'loki$;
 	end;
 OnTimer25000:
-	npctalk "Loki: That is my mission!", 'loki$;
+	npctalk "洛奇：这就是我的使命！", 'loki$;
 	end;
 OnTimer28000:
-	npctalk "Morocc Lord Knight: So all you want is to finish your damn mission?..", 'Morocc$;
+	npctalk "梦罗克骑士领主：所以你想要的只是完成你那该死的使命？……", 'Morocc$;
 	end;
 OnTimer31000:
-	npctalk "Loki: *Grins* Of course!!", 'loki$;
+	npctalk "洛奇：*咧嘴笑* 当然！！", 'loki$;
 	specialeffect EF_BEGINSPELL3,AREA, 'loki$;
 	end;
 OnTimer33000:
-	npctalk "Loki: Mind blaster-!!!", 'loki$;
+	npctalk "洛奇：心灵净化——！！！", 'loki$;
 	end;
 OnTimer34000:
 	enablenpc instance_npcname("Young Girl#tnm04");
-	npctalk "Young Girl: No..!! Don't hurt my Papa!!!", instance_npcname("Young Girl#tnm04");
+	npctalk "少女：不……！！不要伤害我爸爸！！！", instance_npcname("少女#tnm04");
 	specialeffect EF_HIT3,AREA, instance_npcname("Young Girl#tnm04");
 	end;
 OnTimer34500:
@@ -1791,30 +1791,30 @@ OnTimer35500:
 	specialeffect EF_ICECRASH,AREA, instance_npcname("Young Girl#tnm04");
 	end;
 OnTimer36500:
-	npctalk "!!!", 'loki$;
+	npctalk "！！！", 'loki$;
 	end;
 OnTimer38500:
-	npctalk "Morocc Lord Knight: Oh no.. They should have sent better than you, Mr. Assassin, for this mission.", 'Morocc$;
+	npctalk "梦罗克骑士领主：哎呀……这次任务，他们真该派个比你更强的刺客先生来。", 'Morocc$;
 	end;
 OnTimer41500:
-	npctalk "Young Girl: Something is wrong....", instance_npcname("Young Girl#tnm04");
+	npctalk "少女：有点不对劲……", instance_npcname("少女#tnm04");
 	end;
 OnTimer44500:
-	npctalk "Young Girl: My Papa would never act this way.. Ugh..", instance_npcname("Young Girl#tnm04");
+	npctalk "少女：我爸爸绝不会这样的……呃……", instance_npcname("少女#tnm04");
 	end;
 OnTimer47500:
-	npctalk "Morocc Lord Knight: Human.. To do such a stupid thing.. a sacrifice.", 'Morocc$;
+	npctalk "梦罗克骑士领主：人类……竟做出如此愚蠢的事……牺牲。", 'Morocc$;
 	end;
 OnTimer50500:
-	npctalk "Morocc Lord Knight: You know, the truth is, that it is useless.", 'Morocc$;
+	npctalk "梦罗克骑士领主：你知道吗，事实是，这一切都是徒劳。", 'Morocc$;
 	end;
 OnTimer53500:
-	npctalk "Morocc Lord Knight: Gwuaaa hahahaha. You stupid humans I will kill you all as sacrifices for the demon!!", 'Morocc$;
+	npctalk "梦罗克骑士领主：咕哇哈哈哈。你们这些愚蠢的人类，我要把你们全都杀掉，作为献给恶魔的祭品！！", 'Morocc$;
 	specialeffect EF_COUPLECASTING,AREA, 'Morocc$;
 	specialeffect EF_VOLCANO,AREA, 'Morocc$;
 	end;
 OnTimer54500:
-	npctalk "Loki:... tsk! useless....!", 'loki$;
+	npctalk "洛奇：……啧！没用的东西……！", 'loki$;
 	end;
 OnTimer55500:
 	enablenpc instance_npcname("Loki#tnmloki02");
@@ -1828,44 +1828,44 @@ OnTimer55500:
 	end;
 }
 
-1@tnm3,137,65,3	script	Loki#tnmloki02	4_M_ROKI2,{
+1@tnm3,137,65,3	script	洛奇#tnmloki02	4_M_ROKI2,{
 	if ('devil_tower != 13)
 		end;
 	if (is_party_leader() == false) {
-		mes "[Loki]";
-		mes "I am talking to your boss.";
+		mes "[洛奇]";
+		mes "我在跟你们的老板说话。";
 		close;
 	}
 	if (getmercinfo(0) > 0) {
-		mes "[Loki]";
+		mes "[洛奇]";
 		mes "...embarrassing.";
-		mes "You should ^4d4dffTerminate the mercenary contract^000000, if you want to help me on this mission.";
+		mes "若你想在这次任务中帮我，就该^4d4dff解除佣兵契约^000000。";
 		close;
 	}
-	mes "[Loki]";
-	mes "Where did you come from?";
-	mes "I may need help here.";
-	npctalk "Loki: Where did you come from? I may need help here.", instance_npcname("Loki#tnmloki02");
+	mes "[洛奇]";
+	mes "你从哪里来？";
+	mes "我在这里或许需要帮手。";
+	npctalk "洛奇：你从哪里来？我在这里或许需要帮手。", instance_npcname("洛奇#tnmloki02");
 	next;
-	mes "[Loki]";
-	mes "The Lord Knight is no longer human. I have to send him to his eternity for his demonic followings.";
-	npctalk "Loki: The Lord Knight is no longer human. I have to send him to his eternity.", instance_npcname("Loki#tnmloki02");
+	mes "[洛奇]";
+	mes "骑士领主已不再是人类。他追随恶魔，我必须送他归于永寂。";
+	npctalk "洛奇：骑士领主已不再是人类。我必须送他归于永寂。", instance_npcname("洛奇#tnmloki02");
 	next;
-	mes "[Loki]";
-	mes "^4d4dffThe ones who are infernally blessed by demons are invincible. We can sever the blessing with Mind Blaster.^000000";
-	npctalk "Loki: The ones who are infernally blessed by demons are invincible. We can sever the blessing with Mind Blaster.", instance_npcname("Loki#tnmloki02");
+	mes "[洛奇]";
+	mes "^4d4dff受恶魔邪恶庇佑者是不死不灭的。我们可用心灵净化斩断这份庇佑。^000000";
+	npctalk "洛奇：受恶魔邪恶庇佑者是不死不灭的。我们可用心灵净化斩断这份庇佑。", instance_npcname("洛奇#tnmloki02");
 	next;
-	mes "[Loki]";
-	mes "You will be in charge of activating Mind Blaster.";
-	npctalk "Loki: You will be in charge of activating Mind Blaster.", instance_npcname("Loki#tnmloki02");
+	mes "[洛奇]";
+	mes "由你负责启动心灵净化。";
+	npctalk "洛奇：由你负责启动心灵净化。", instance_npcname("洛奇#tnmloki02");
 	next;
 	if (is_party_leader() == true && 'devil_tower == 13) {
 		disablenpc instance_npcname("Loki#tnmloki02");
-		mes "^4d4dffLoki, Guillotine Cross of the Assassin Guild, has joined your party.";
-		mes "We have to get rid of the demonic Lord Knight by Mind Blasting him with Loki's skill.^000000";
+		mes "^4d4dff刺客公会的十字切割者洛奇加入了队伍。";
+		mes "我们必须借助洛奇的力量施展心灵净化，除掉被恶魔化的骑士领主。^000000";
 		'devil_tower = 14;
 		mercenary_create 2937,1800000;// M_LOKI
-		mapannounce 'map_tnm3$, "Demon Worshipper's Voice: Such rubbish! Where did you hide yourself?", bc_map,0xFF00;
+		mapannounce 'map_tnm3$, "恶魔崇拜者的声音：垃圾！你躲到哪里去了？", bc_map,0xFF00;
 		initnpctimer;
 	}
 	close;
@@ -1875,7 +1875,7 @@ OnTimer500:
 	'boss_id = $@mobid[0];
 	end;
 OnTimer2000:
-	mapannounce 'map_tnm3$, "Demon Worshipper's Voice: You will all be sacrificed to awaken the Demon!!!", bc_map,0xFF00;
+	mapannounce 'map_tnm3$, "恶魔崇拜者的声音：你们都将成为唤醒恶魔的祭品！！！", bc_map,0xFF00;
 	end;
 OnTimer12000:
 	donpcevent instance_npcname("#boss_skills_timer") + "::OnStart";
@@ -2004,7 +2004,7 @@ OnBossDead:
 	killmonster 'map_tnm3$, 'label$;
 	'x_boss = 'y_boss = 'boss_id = 0;
 	'label$ = "";
-	mapannounce 'map_tnm3$, "Demon Worshipper's Voice: NO it is impossible. It cannot be.. This force.. power.. you.. may..be you are..", bc_map,0xFF0000;
+	mapannounce 'map_tnm3$, "恶魔崇拜者的声音：不，不可能。这不可能……这股力量……这份力量……你……也许……你就是……", bc_map,0xFF0000;
 	sleep2 1000;
 	warpparty 'map_tnm3$,71,70, getcharid(1), 'map_tnm3$,1,1;
 	enablenpc instance_npcname("Loki#tnmloki03");
@@ -2014,7 +2014,7 @@ OnBossDead:
 	end;
 }
 
-1@tnm3,69,70,3	script	box#tnmbosang	4_TREASURE_BOX,{
+1@tnm3,69,70,3	script	箱子#tnmbosang	4_TREASURE_BOX,{
 	if ('devil_tower != 15)
 		end;
 	specialeffect EF_COIN;
@@ -2083,40 +2083,40 @@ OnBossDead:
 }
 
 //1@tnm3,69,72,3	script	Loki#tnmloki03	4_M_ROKI2,5,5,{
-1@tnm3,69,72,3	script	Loki#tnmloki03	4_M_ROKI2,{
+1@tnm3,69,72,3	script	洛奇#tnmloki03	4_M_ROKI2,{
 	if ('devil_tower != 15)
 		end;
 	if (isbegin_quest(7576) == 0) {
-		mes "[Loki]";
+		mes "[洛奇]";
 		mes ".. annoying";
-		mes "The demon was destroyed before the resurrection ceremony was completed.";
-		mes "Things will be fine for awhile.";
+		mes "复活仪式完成之前，恶魔就被消灭了。";
+		mes "暂时会平安无事。";
 		setquest 7576;// Morocc castle seal
 		next;
-		mes "I have gained unexpected information during my exploration of the Tower.";
+		mes "在探索这座塔的过程中，我得到了意外的情报。";
 		next;
-		mes "[Loki]";
-		mes "I will remain apart from my conscience for a bit longer";
-		mes "someday I'll let myself feel again, and today will occupy my thoughts..";
+		mes "[洛奇]";
+		mes "我会再让自己的良心沉睡一段时间";
+		mes "总有一天我会重新允许自己感受，而今天将占据我的思绪……";
 		close;
 	}
-	mes "[Loki]";
-	mes "Interesting.. there is a daughter..";
-	mes "What should be done about it?";
-	mes "I am not sure of what my next move is to be..";
+	mes "[洛奇]";
+	mes "有意思……竟然还有个女儿……";
+	mes "该怎么处理呢？";
+	mes "我还不确定下一步该怎么做……";
 	next;
-	mes "[Loki]";
-	mes "But no matter, you obviously shouldn't be here, now.";
-	mes "Will stay here any longer?";
-	mes "I can send you back where and when you belong.";
+	mes "[洛奇]";
+	mes "不过无所谓，你现在显然不该待在这里。";
+	mes "还要在这里多待下去吗？";
+	mes "我可以把你送回你所属的时空。";
 	next;
-	if (select( "Get out of here.", "Take a look around." ) == 2) {
-		mes "[Loki]";
-		mes "It is unwise to linger where time is distorted.";
+	if (select( "离开这里。", "四处看看。" ) == 2) {
+		mes "[洛奇]";
+		mes "在时间扭曲之地久留是不明智的。";
 		close;
 	}
-	mes "[Loki]";
-	mes "Perhaps, our missions will ally us again in the future..";
+	mes "[洛奇]";
+	mes "也许将来我们的使命还会让我们再度联手……";
 	close2;
 	warp "dali02",134,112;
 	end;

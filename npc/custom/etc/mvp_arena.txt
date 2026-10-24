@@ -17,25 +17,25 @@
 //============================================================
 
 // Entrance
-prontera,154,197,3	script	MVP Warper	768,{
-	mes "[ ^0065DFMVP Warper^000000 ]";
-	mes "Would you like to enter";
-	mes "the MVP Arena?";
-	if (select("Yes!","No thanks.") == 2) close;
+prontera,154,197,3	script	MVP传送员	768,{
+	mes "[ ^0065DFMVP 传送员^000000 ]";
+	mes "你想进入";
+	mes "MVP 竞技场吗？";
+	if (select("是！","不用了。") == 2) close;
 	warp "quiz_00",50,24;
 	close;
 }
 
 // Information
-quiz_00,49,31,4	script	MVP Arena Guide	778,{
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "Welcome and behold this sacred place. Here you will find out if you truly have what it takes to call yourself a warrior.";
+quiz_00,49,31,4	script	MVP竞技场向导	778,{
+	mes "[ ^0065DFMVP 竞技场向导^000000 ]";
+	mes "欢迎来到并好好瞻仰这处圣地。在这里，你将知道自己是否真的配称为战士。";
 	next;
-	switch(select("Information","Heal me!","Return to Prontera","Cancel")) {
+	switch(select("说明","治疗我！","返回普隆德拉","取消")) {
 	case 1:
-		mes "[ ^0065DFMVP Arena Guide^000000 ]";
-		mes "There are four Keepers, and each can spawn four different MVPs.";
-		mes "There are eight rooms per Keeper, and sixteen MVPs in total.";
+		mes "[ ^0065DFMVP 竞技场向导^000000 ]";
+		mes "共有四位守护者，每位都能召唤四种不同的 MVP。";
+		mes "每位守护者拥有八个房间，总计十六种 MVP。";
 		close;
 	case 2:
 		specialeffect2 EF_HEAL2;
@@ -53,27 +53,27 @@ quiz_00,49,31,4	script	MVP Arena Guide	778,{
 function	script	Keeper	{
 	set .@arg, getarg(0);
 	mes "[ ^0065DF"+strnpcinfo(1)+"^000000 ]";
-	mes "Which arena would you";
-	mes "like to enter?";
+	mes "你想进入哪个";
+	mes "竞技场？";
 	for(set .@i,1; .@i<9; set .@i,.@i+1)
-		set .@menu$, .@menu$+"Arena "+.@i+" ["+getmapusers("pvp_n_"+.@i+"-"+.@arg)+"/20]:";
+		set .@menu$, .@menu$+"竞技场"+.@i+"["+getmapusers("pvp_n_"+.@i+"-"+.@arg)+"/20]:";
 	set .@i, select(.@menu$);
 	if (getmapusers("pvp_n_"+.@i+"-"+ .@arg)>19) {
 		mes "[ ^0065DF"+strnpcinfo(1)+"^000000 ]";
-		mes "Sorry, this arena is full!";
+		mes "抱歉，这个竞技场已满！";
 		close;
 	}
 	warp "pvp_n_"+.@i+"-"+ .@arg,102,102;
 	close;
 }
-quiz_00,56,31,4	script	Alpha MVP	770,{ callfunc "Keeper",2; }
-quiz_00,58,31,4	script	Beta MVP	773,{ callfunc "Keeper",3; }
-quiz_00,60,31,4	script	Theta MVP	774,{ callfunc "Keeper",4; }
-quiz_00,62,31,4	script	Epsilon MVP	776,{ callfunc "Keeper",5; }
+quiz_00,56,31,4	script	阿尔法MVP	770,{ callfunc "Keeper",2; }
+quiz_00,58,31,4	script	贝塔MVP	773,{ callfunc "Keeper",3; }
+quiz_00,60,31,4	script	西塔MVP	774,{ callfunc "Keeper",4; }
+quiz_00,62,31,4	script	艾普西隆MVP	776,{ callfunc "Keeper",5; }
 
 // Protectors
 function	script	Protector	{
-	switch(select(""+((getarg(0)=="")?"":"Harder Monsters")+":Heal:Exit")) {
+	switch(select(""+((getarg(0)=="")?"":"更强的怪物")+":治疗:退出")) {
 	case 1:
 		warp getarg(0),102,102;
 		end;

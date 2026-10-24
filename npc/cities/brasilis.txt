@@ -14,50 +14,50 @@
 // Brasilis Transportation :: brasilis_trans
 //============================================================
 -	script	::Crewman_bra2	-1,{
-	mes "[Crewman]";
-	mes "Hey, have you heard of a place called Brasilis?";
-	mes "It's a tropical city that's hot like the desert but also rainy. It is a very mysterious place.";
+	mes "[船员]";
+	mes "嘿，你听说过一个叫巴西的地方吗？";
+	mes "那是一座热带城市，像沙漠一样炎热，却又多雨。是个非常神秘的地方。";
 	next;
-	mes "[Crewman]";
-	mes "We recently found a new ocean route to get there easily.";
+	mes "[船员]";
+	mes "我们最近发现了一条新的海上航线，可以轻松到达那里。";
 	if (VIP_SCRIPT) {
 		set .@cost, vip_status(VIP_STATUS_ACTIVE)?1000:10000;
-		mes "It's just 10,000 zeny for a round trip, and 1,000 for VIP! So do you want to go?"; //custom translation (VIP)
+		mes "往返只要 10,000 zeny，VIP 只要 1,000！那么，你想去吗？"; //custom translation (VIP)
 	} else {
 		set .@cost,10000;
-		mes "It's just 10,000 zeny for a round trip! So do you want to go?";
+		mes "往返只要 10,000 zeny！那么，你想去吗？";
 	}
 	next;
-	switch(select("Take me to Brasilis!:I'll stay here.")) {
+	switch(select("带我去巴西！:我留在这里.")) {
 	case 1:
 		if (Zeny < .@cost) {
-			mes "[Crewman]";
-			mes "I said "+callfunc("F_InsertComma",.@cost)+" zeny.";
+			mes "[船员]";
+			mes "我说的是"+callfunc("F_InsertComma",.@cost)+" zeny.";
 			close;
 		}
 		else {
-			mes "[Crewman]";
-			mes "Cool~!! Let's go~!";
+			mes "[船员]";
+			mes "太棒了~！！我们走吧~！";
 			set Zeny, Zeny-.@cost;
 			close2;
 			warp "brasilis",314,60;
 			end;
 		}
 	case 2:
-		mes "[Crewman]";
-		mes "Well if you're ever interested, let me know and I can take you there.";
+		mes "[船员]";
+		mes "如果你以后有兴趣，告诉我一声，我就带你去。";
 		close;
 	}
 }
 
-brasilis,316,57,3	script	Crewman#bra1	100,{
-	mes "[Crewman]";
-	mes "My ship is going to back to Alberta, do you want to join us?";
+brasilis,316,57,3	script	船员#bra1	100,{
+	mes "[船员]";
+	mes "我的船要回阿尔贝塔了，你要一起来吗？";
 	next;
-	switch(select("Go back to Alberta.:Not yet~.")) {
+	switch(select("返回阿尔贝塔.:还没~.")) {
 	case 1:
-		mes "[Crewman]";
-		mes "I sure do miss home.";
+		mes "[船员]";
+		mes "我真是想家了。";
 		close2;
 		if (checkre(0))
 			warp "alberta",245,87;
@@ -65,69 +65,69 @@ brasilis,316,57,3	script	Crewman#bra1	100,{
 			warp "alberta",244,115;
 		end;
 	case 2:
-		mes "[Crewman]";
-		mes "Ok, suit yourself. We'll see you when we get back then.";
+		mes "[船员]";
+		mes "好吧，随你。那等我们回来再见。";
 		close;
 	}
 }
 
 // Generic Brasilis NPCs :: brazil_tre
 //============================================================
-brasilis,155,165,3	script	Signpost#bra1	858,{
-	mes ":: Art Museum ::";
+brasilis,155,165,3	script	路标#bra1	858,{
+	mes ":: 美术馆 ::";
 	close;
 }
 
-brasilis,191,239,3	script	Signpost#bra2	858,{
-	mes ":: Verass Monument ::";
+brasilis,191,239,3	script	路标#bra2	858,{
+	mes ":: 维拉斯纪念碑 ::";
 	close;
 }
 
-brasilis,240,247,3	script	Signpost#bra3	858,{
-	mes ":: Market ::";
+brasilis,240,247,3	script	路标#bra3	858,{
+	mes ":: 市场 ::";
 	mes " ";
-	mes "- For your Potions and Weaponry -";
+	mes "- 供应药水与武器 -";
 	close;
 }
 
-brasilis,303,309,3	script	Signpost#bra4	858,{
-	mes ":: Jungle Cable ::";
-	mes "- Not for the faint of heart -";
+brasilis,303,309,3	script	路标#bra4	858,{
+	mes ":: 丛林缆车 ::";
+	mes "- 胆小者勿近 -";
 	close;
 }
 
-brasilis,278,137,3	script	Signpost#bra5	858,{
-	mes ":: Brasilis Hotel ::";
+brasilis,278,137,3	script	路标#bra5	858,{
+	mes ":: 巴西旅馆 ::";
 	close;
 }
 
-brasilis,137,77,5	script	Ice-Cream Maker	85,{
-	mes "[Ice Cream Maker]";
-	mes "Come~come~";
-	mes "Ice cream is the perfect snack for a hot day~";
-	mes "It's just ^3355FF100 Zeny^000000~";
-	mes "Ice Cream~";
-	mes "Get 'yer Ice Cream!";
+brasilis,137,77,5	script	冰淇淋小贩	85,{
+	mes "[冰淇淋小贩]";
+	mes "来呀~来呀~";
+	mes "冰淇淋是炎热日子里最棒的零食~";
+	mes "只要 ^3355FF100 Zeny^000000~";
+	mes "冰淇淋~";
+	mes "快来买冰淇淋！";
 	next;
-	switch(select("Give me one!:Ice Cream?:Cancel.")) {
+	switch(select("给我一支！:冰淇淋？:取消.")) {
 	case 1:
-		mes "[Ice Cream Maker]";
-		mes "Since there are so many people want to get a cool ice cream you can order only 5 at a time.";
-		mes "So how many d'ya want?";
+		mes "[冰淇淋小贩]";
+		mes "因为想买冰凉冰淇淋的人太多，一次只能订购 5 支。";
+		mes "那么，你要几支？";
 		next;
 		while(1) {
 			input .@input; //,1,5;
 			if (.@input == 0) {
-				mes "[Ice Cream Maker]";
-				mes "None?";
-				mes "Fine get outta the way, I have customers to serve.";
+				mes "[冰淇淋小贩]";
+				mes "一支都不要？";
+				mes "行吧，别挡道，我还有客人要招呼。";
 				close;
 			}
 			else if ((.@input < 0) || (.@input > 5)) {
-				mes "[Ice Cream Maker]";
+				mes "[冰淇淋小贩]";
 				mes "Wow.";
-				mes "You ordered too much.";
-				mes "If you eat over 5 you might need to fight with a monster in your stomach. Calm down buddy.";
+				mes "你订得太多了。";
+				mes "吃超过 5 支，你可能得跟肚子里的怪物打一架。冷静点，老兄。";
 				next;
 			}
 			else
@@ -135,35 +135,35 @@ brasilis,137,77,5	script	Ice-Cream Maker	85,{
 		}
 		set .@icecream_hap,.@input*100;
 		if (Zeny < .@icecream_hap) {
-			mes "[Ice Cream Maker]";
-			mes "Dood~! You don't have enough money.";
-			mes "It's only ^3355FF100 Zeny^000000~ Seriously!";
+			mes "[冰淇淋小贩]";
+			mes "喂~！你的钱不够。";
+			mes "只要 ^3355FF100 Zeny^000000~ 真的！";
 			close;
 		}
 		if (!checkweight(536,.@input)) {
-			mes "[Ice Cream Maker]";
-			mes "You seem to have too much stuff.";
-			mes "Lighten your pack before buying this.";
+			mes "[冰淇淋小贩]";
+			mes "你的东西好像太多了。";
+			mes "买之前请先减轻背包重量。";
 			close;
 		}
 		set Zeny, Zeny-.@icecream_hap;
 		getitem 536,.@input; //Ice_Cream
 		close;
 	case 2:
-		mes "[Ice Cream Maker]";
-		mes "'Ice cream is...";
-		mes "Wait, don't you know";
-		mes "what Ice Cream is?";
-		mes "What rock have you";
-		mes "been living under?";
+		mes "[冰淇淋小贩]";
+		mes "“冰淇淋是……";
+		mes "等等，你难道不知道";
+		mes "什么是冰淇淋吗？";
+		mes "你是从哪块";
+		mes "石头底下钻出来的？";
 		next;
-		mes "[Ice Cream Maker]";
-		mes "I'm not going to even start with how weird that sounds.";
-		mes "Anyway, get 'yer Ice Cream right here while it's nice and cold.";
+		mes "[冰淇淋小贩]";
+		mes "这话听起来有多怪，我都不想说。";
+		mes "总之，趁冰淇淋还冰凉，就在这里买吧。";
 		close;
 	case 3:
-		mes "[Ice Cream Maker]";
-		mes "Don't miss your chance to eat the greatest Ice Cream in all the land~!";
+		mes "[冰淇淋小贩]";
+		mes "别错过品尝全大陆最棒冰淇淋的机会~！";
 		close;
 	}
 }

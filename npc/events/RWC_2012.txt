@@ -13,40 +13,40 @@
 //= 1.0 First Version. [Euphy]
 //============================================================ 
 
-prontera,147,61,3	script	Driller#pron	87,{
+prontera,147,61,3	script	德里勒#pron	87,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "You're carrying too many items in your inventory. Visit Kafra storage and try again.";
+		mes "你背包里的物品太多了。请使用卡普拉仓库后再试。";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "You cannot proceed because you're overweight.";
+		mes "你负重过高，无法继续。";
 		close;
 	}
 	set .@part, EQI_ACC_L;
 	if (!getequipisequiped(.@part)) {
-		mes "[Driller]";
-		mes "My job is to drill a card slot into RWC Memorial accessories.";
+		mes "[德里勒]";
+		mes "我的工作是在 RWC 纪念饰品上钻出卡片插槽。";
 		next;
-		mes "[Driller]";
-		mes "I'm sorry but you don't have any item equipped on your right accessory position.";
+		mes "[德里勒]";
+		mes "很抱歉，你的右侧饰品栏没有装备任何物品。";
 		close;
 	}
-	mes "[Driller]";
-	mes "My job is to drill a card slot into RWC Memorial accessories. Moreover, I only treat ^ff0000pure items^000000, or those which have not been enchanted.";
+	mes "[德里勒]";
+	mes "我的工作是在 RWC 纪念饰品上钻出卡片插槽。而且我只处理 ^ff0000纯净的物品^000000，也就是尚未附魔过的物品。";
 	next;
 	set .@equip_id, getequipid(.@part);
 	if (.@equip_id != 2966 && .@equip_id != 2968) {
-		mes "[Driller]";
-		mes "However, I can see that the accessory you are wearing on the right side cannot be treated. Please equip a RWC Memorial accessory.";
+		mes "[德里勒]";
+		mes "不过，我看你右侧戴着的饰品无法处理。请装备 RWC 纪念饰品。";
 		close;
 	}
-	mes "[Driller]";
-	mes "You should also know that making a card slot it extremely dangerous. ^ff0000Chances to succeed are about 50%.^000000 Do you wish to proceed?";
+	mes "[德里勒]";
+	mes "另外你要知道，钻开卡片插槽极其危险。^ff0000成功率约为 50%。^000000 你还要继续吗？";
 	next;
-	if(select("Cancel:Let's go!") == 1) {
-		mes "[Driller]";
-		mes "See ya then.";
+	if(select("取消:开始吧！") == 1) {
+		mes "[德里勒]";
+		mes "那就再见了。";
 		close;
 	}
 	if (.@equip_id == 2966) {
@@ -58,13 +58,13 @@ prontera,147,61,3	script	Driller#pron	87,{
 		set .@name$,"RWC 2012 Memorial Pendant";
 		set .@str$,"pendant";
 	} else {
-		mes "[Driller]";
-		mes "I can't identify the accessory item you're wearing on your right hand. I can't work on it.";
+		mes "[德里勒]";
+		mes "我无法鉴定你右手上戴的饰品。我不能处理它。";
 		close;
 	}
 	if (getequipcardid(.@part,3) > 0) {
-		mes "[Driller]";
-		mes "This item has already been enchanted. I can't work on this as it is against the rules.";
+		mes "[德里勒]";
+		mes "这件物品已经附过魔了。按规定我不能处理它。";
 		close;
 	}
 
@@ -76,46 +76,46 @@ prontera,147,61,3	script	Driller#pron	87,{
 	if (rand(1,10) > 5) {
 		getitem .@slotted,1;
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Driller]";
-		mes "Yay! Success! Your "+.@name$+" now has a card slot. Check it out!";
+		mes "[德里勒]";
+		mes "太好了！成功了！你的"+.@name$+"现在有了卡片插槽。去看看吧！";
 		close;
 	} else {
 		specialeffect2 EF_LORD;
-		mes "[Driller]";
-		mes "Awww... Damn weak "+.@str$+"... It broke during the procedure. I'm sorry.";
+		mes "[德里勒]";
+		mes "哎呀……真脆弱的"+.@str$+"... It broke during the procedure. I'm sorry.";
 		close;
 	}
 }
 
-prontera,147,59,3	script	Goldberg#pron	878,{
+prontera,147,59,3	script	戈德堡#pron	878,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "You are carrying too many items. Come back after you have organized your inventory.";
+		mes "你携带的物品太多了。请整理好背包后再来。";
 		close;
 	}
 	if (MaxWeight - Weight < 10000) {
-		mes "You cannot proceed because you're overweight.";
+		mes "你负重过高，无法继续。";
 		close;
 	}
-	mes "[Goldberg]";
-	mes "Hello! I am in charge of enchanting RWC Memorial accessories with some mystic powers.";
+	mes "[戈德堡]";
+	mes "你好！我负责用神秘的力量为 RWC 纪念饰品附魔。";
 	next;
 	set .@part, EQI_ACC_L;
 	if (!getequipisequiped(.@part)) {
-		mes "[Goldberg]";
-		mes "I'm sorry but you don't have any item equipped on your right accessory position.";
+		mes "[戈德堡]";
+		mes "很抱歉，你的右侧饰品栏没有装备任何物品。";
 		close;
 	}
 	set .@equip_id, getequipid(.@part);
 	if (.@equip_id < 2966 || .@equip_id > 2969) {
-		mes "[Goldberg]";
-		mes "However, I can see that the accessory you are wearing is not something I can work on. Please equip a RWC Memorial accessory.";
+		mes "[戈德堡]";
+		mes "不过，我看你戴着的饰品不是我能够处理的。请装备 RWC 纪念饰品。";
 		close;
 	}
-	set .@select, select("Sorry, not interested.:Please, empower my accessory.:Remove the Enchant.")-1;
+	set .@select, select("抱歉，我不感兴趣。:请为我的饰品赋予力量。:移除附魔。")-1;
 	if (.@select == 0) {
-		mes "[Goldberg]";
-		mes "Alright, then, see you next time...";
+		mes "[戈德堡]";
+		mes "那么，下次再见……";
 		close;
 	}
 	setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
@@ -134,9 +134,9 @@ prontera,147,59,3	script	Goldberg#pron	878,{
 			setarray .@option[0],0,1,3,3;
 			break;
 		default:
-			mes "[Goldberg]";
-			mes "I'm sorry, but I cannot work on the accessory you are currently wearing.";
-			mes "If you have equipped your RWC Memorial accessory on the left side, try to swap it to the right side.";
+			mes "[戈德堡]";
+			mes "很抱歉，我无法处理你现在戴着的饰品。";
+			mes "如果你把 RWC 纪念饰品装备在左侧，请试着换到右侧。";
 			close;
 		}
 		for(set .@i,3; .@i>=0; set .@i,.@i-1) {
@@ -148,52 +148,52 @@ prontera,147,59,3	script	Goldberg#pron	878,{
 		}
 		switch(.@op_type) {
 		case 4:
-			mes "[Goldberg]";
-			mes "Which enchantment would you like to infuse?";
+			mes "[戈德堡]";
+			mes "你想注入哪种附魔？";
 			next;
 			setarray .@enchant_select[0],1,2,3,4;
-			set .@i, select("Cancel:Fighting Spirit:ATK (%):Max HP:HP")-2;
+			set .@i, select("取消:提升斗志:ATK (%):最大HP:HP")-2;
 			break;
 		case 3:
 			setarray .@enchant_select[0],5,6,7;
-			set .@i, select("Cancel:Spell:MATK (%):SP")-2;
+			set .@i, select("取消:魔法:MATK (%):SP")-2;
 			break;
 		case 2:
-			mes "[Goldberg]";
-			mes "^ff0000Be careful! There is about a 25% chance that the enchantment will fail. If this happens, the item will be destroyed.^000000 Which enchantment would you like to infuse?";
+			mes "[戈德堡]";
+			mes "^ff0000小心！附魔有约 25% 的几率失败。一旦失败，物品将会被破坏。^000000 你想注入哪种附魔？";
 			next;
 			setarray .@enchant_select[0],8,9,10,11,12,13,14;
-			set .@i, select("Cancel:STR:AGI:VIT:INT:DEX:LUK:SP")-2;
+			set .@i, select("取消:STR:AGI:VIT:INT:DEX:LUK:SP")-2;
 			break;
 		case 1:
-			mes "[Goldberg]";
-			mes "^ff0000There is about a 25% chance that the enchantment will fail. If this happens, the item will be destroyed.^000000 Which enchantment would you like to infuse?";
+			mes "[戈德堡]";
+			mes "^ff0000附魔有约 25% 的几率失败。一旦失败，物品将会被破坏。^000000 你想注入哪种附魔？";
 			next;
 			setarray .@enchant_select[0],8,9,10,11,12,13,15,16;
-			set .@i, select("Cancel:STR:AGI:VIT:INT:DEX:LUK:MHP:HP")-2;
+			set .@i, select("取消:STR:AGI:VIT:INT:DEX:LUK:MHP:HP")-2;
 			break;
 		case 0:
-			mes "[Goldberg]";
-			mes "Your accessory has received so many enchantments that I can hardly work on it anymore.";
+			mes "[戈德堡]";
+			mes "你的饰品已经接受了太多附魔，我几乎无法再处理了。";
 			close;
 		}
 		if (.@i == -1) {
-			mes "[Goldberg]";
-			mes "Alright, then, see you next time.";
+			mes "[戈德堡]";
+			mes "那么，下次再见。";
 			close;
 		}
-		mes "[Goldberg]";
-		mes "The power of the enchantment will be randomly chosen. ^ff0000Once infused, the enchantment cannot be removed.^000000 Shall we continue?";
+		mes "[戈德堡]";
+		mes "附魔的力量将随机决定。^ff0000附魔一旦注入，就无法移除。^000000 要继续吗？";
 		next;
-		if(select("No, please stop.:Yes, please proceed.") == 1) {
-			mes "[Goldberg]";
-			mes "Alright, then, see you next time...";
+		if(select("不，请停下。:是，请继续。") == 1) {
+			mes "[戈德堡]";
+			mes "那么，下次再见……";
 			close;
 		}
 		set .@enchant_type, .@enchant_select[.@i];
 		if (!getequipisequiped(.@part)) {
-			mes "[Goldberg]";
-			mes "Do not take off your equipment while I'm working, okay?";
+			mes "[戈德堡]";
+			mes "我工作的时候请不要脱下装备，好吗？";
 			close;
 		}
 		switch(.@enchant_type) {
@@ -246,8 +246,8 @@ prontera,147,59,3	script	Goldberg#pron	878,{
 			setarray .@enc[0],4795,4796,4797; //HP100,HP200,HP300
 			break;
 		default:
-			mes "[Goldberg]";
-			mes "We have got a problem, let me check it up.";
+			mes "[戈德堡]";
+			mes "出了问题呢，让我检查一下。";
 			close;
 		}
 
@@ -281,19 +281,19 @@ prontera,147,59,3	script	Goldberg#pron	878,{
 		set .@equip_refine, getequiprefinerycnt(.@part);
 		delequip .@part;
 		if (.@enchant == 9) {
-			mes "[Goldberg]";
-			mes "Oh gosh!";
- 			mes "The item was not strong enough to bear the enchantment and thus got destroyed. I am sorry.";
+			mes "[戈德堡]";
+			mes "哦，天哪！";
+ 			mes "这件物品承受不住附魔的力量，因此被破坏了。很抱歉。";
 			specialeffect2 EF_LORD;
 			close;
 		}
 		if (.@enchant == 0) { // Should never happen.
-			mes "[Goldberg]";
-			mes "Oh... It looks like there was an instability of some sort between all the powers infused. This caused all the enchantments to vanish. It is a shame, but please try again!";
+			mes "[戈德堡]";
+			mes "哦……看来注入的各种力量之间出现了某种不稳定。这导致所有附魔都消失了。真遗憾，不过请再试一次吧！";
 		} else {
-			mes "[Goldberg]";
-			mes "Great!";
-			mes "The enchantment is a success! It will be applied in socket No.^990000"+(.@slot+1)+"^000000.";
+			mes "[戈德堡]";
+			mes "太好了！";
+			mes "附魔成功了！它将附加在插槽编号^990000"+(.@slot+1)+"^000000。";
 			specialeffect2 EF_REPAIRWEAPON;
 		}
 
@@ -302,27 +302,27 @@ prontera,147,59,3	script	Goldberg#pron	878,{
 
 		close;
 	} else if (.@select == 2) {
-		mes "[Goldberg]";
-		mes "I will just initialize the enchant option without doing anything to the slotted card. You wanna continue?";
+		mes "[戈德堡]";
+		mes "我只会重置附魔选项，不会对已插卡的卡片做任何处理。你想继续吗？";
 		next;
-		if(select("I will stop.:Yep, sure, go on.") == 1) {
-			mes "[Goldberg]";
-			mes "Come back if you change your mind.";
+		if(select("我要停下。:好，请继续。") == 1) {
+			mes "[戈德堡]";
+			mes "改变主意了再来吧。";
 			close;
 		}
 		if (countitem(6665) == 0) {
-			mes "[Goldberg]";
-			mes "I'm sorry. But you don't have the RWC Initialization coupon. Can you check your inventory?";
+			mes "[戈德堡]";
+			mes "很抱歉。你没有 RWC 初始化券。可以检查一下背包吗？";
 			close;
 		}
 		if (getiteminfo(.@equip_card[3], ITEMINFO_SUBTYPE) != CARD_ENCHANT) {
-			mes "[Goldberg]";
-			mes "Hm... this equipment is clean. I cannot initialize it if there's nothing! Check it again.";
+			mes "[戈德堡]";
+			mes "嗯……这件装备干干净净。什么都没有，我可没法初始化！再检查一下吧。";
 			close;
 		}
 		specialeffect2 EF_REPAIRWEAPON;
-		mes "[Goldberg]";
-		mes "The enchant option in your item will be initialized.";
+		mes "[戈德堡]";
+		mes "你物品上的附魔选项将被初始化。";
 		delitem 6665,1; //RWC_Inicializer
 		delequip .@part;
 	
