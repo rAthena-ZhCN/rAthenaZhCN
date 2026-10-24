@@ -11090,8 +11090,6 @@ void clif_parse_LoadEndAck(int32 fd,map_session_data *sd)
 		status_change_clear_onChangeMap(sd, &sd->sc);
 		map_iwall_get(sd); // Updates Walls Info on this Map to Client
 		status_calc_pc(sd, sd->state.autotrade ? SCO_FIRST : SCO_NONE); // Some conditions are map-dependent so we must recalculate
-		// Re-send the base job sprite after recalculation, otherwise the client keeps the stale (often Novice) appearance.
-		clif_changelook(sd, LOOK_BASE, sd->vd.look[LOOK_BASE]);
 
 #ifdef VIP_ENABLE
 		if (!sd->state.connect_new &&
