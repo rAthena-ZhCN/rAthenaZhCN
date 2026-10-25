@@ -323,6 +323,33 @@ OnTouch_:
 	end;
 }
 
+function	script	F_MonkItem	{
+	switch(getarg(0)) {
+	case 938: return "<ITEM>粘稠液体<INFO>938</INFO></ITEM>";
+	case 1055: return "<ITEM>蚯蚓皮<INFO>1055</INFO></ITEM>";
+	case 511: return "<ITEM>绿色药草<INFO>511</INFO></ITEM>";
+	case 942: return "<ITEM>猴子尾巴<INFO>942</INFO></ITEM>";
+	case 1002: return "<ITEM>铁矿石<INFO>1002</INFO></ITEM>";
+	case 510: return "<ITEM>蓝色药草<INFO>510</INFO></ITEM>";
+	case 905: return "<ITEM>植物梗<INFO>905</INFO></ITEM>";
+	case 909: return "<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>";
+	case 955: return "<ITEM>昆虫外壳<INFO>955</INFO></ITEM>";
+	case 943: return "<ITEM>坚硬外皮<INFO>943</INFO></ITEM>";
+	case 935: return "<ITEM>坚硬外壳<INFO>935</INFO></ITEM>";
+	case 912: return "<ITEM>剎勒空结晶<INFO>912</INFO></ITEM>";
+	case 7053: return "<ITEM>赛依伐<INFO>7053</INFO></ITEM>";
+	case 509: return "<ITEM>白色药草<INFO>509</INFO></ITEM>";
+	case 508: return "<ITEM>黄色药草<INFO>508</INFO></ITEM>";
+	case 913: return "<ITEM>蝙蝠牙<INFO>913</INFO></ITEM>";
+	case 948: return "<ITEM>熊掌<INFO>948</INFO></ITEM>";
+	case 7033: return "<ITEM>毒魔菇芽孢<INFO>7033</INFO></ITEM>";
+	case 1027: return "<ITEM>刺猬尖刺<INFO>1027</INFO></ITEM>";
+	case 1025: return "<ITEM>蜘蛛丝<INFO>1025</INFO></ITEM>";
+	case 1042: return "<ITEM>昆虫后脚<INFO>1042</INFO></ITEM>";
+	default: return getitemname(getarg(0));
+	}
+}
+
 monk_in,99,58,1	script	武海长老#mk	60,{
 	mes "[武海长老]";
 	mes "你好，你似乎走在纯洁的道路上。";
@@ -389,9 +416,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 		case 7: setarray .@items[0], 1027,5, 1025,20, 1042,10, 9; changequest 3016,3023; break;
 		}
 		mes "[武海长老]";
-		mes .@items[1]+" "+getitemname(.@items[0])+"，";
-		mes .@items[3]+" "+getitemname(.@items[2])+"，";
-		mes .@items[5]+" "+getitemname(.@items[4])+".";
+		mes .@items[1]+" "+callfunc("F_MonkItem", .@items[0])+"，";
+		mes .@items[3]+" "+callfunc("F_MonkItem", .@items[2])+"，";
+		mes .@items[5]+" "+callfunc("F_MonkItem", .@items[4])+"。";
 		mes "找到这些物品，然后回来找我。";
 		set MONK_Q,.@items[6];
 		next;
@@ -436,9 +463,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你怎么会觉得已经完成了？";
 			mes "你并没有我要求的东西！";
-			mes "5个黏稠液体，";
-			mes "10个蚯蚓皮，";
-			mes "20个绿色药草。";
+			mes "5个<ITEM>粘稠液体<INFO>938</INFO></ITEM>，";
+			mes "10个<ITEM>蚯蚓皮<INFO>1055</INFO></ITEM>，";
+			mes "20个<ITEM>绿色药草<INFO>511</INFO></ITEM>。";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -467,9 +494,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你为什么回来了？";
 			mes "你并没有我要求的东西！";
-			mes "20个猴子尾巴，";
-			mes "5个铁矿石，";
-			mes "3个蓝色药草。";
+			mes "20个<ITEM>猴子尾巴<INFO>942</INFO></ITEM>，";
+			mes "5个<ITEM>铁矿石<INFO>1002</INFO></ITEM>，";
+			mes "3个<ITEM>蓝色药草<INFO>510</INFO></ITEM>。";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -498,9 +525,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你怎么会觉得已经完成了？";
 			mes "你并没有我要求的东西！";
-			mes "30个树茎，";
-			mes "5个杰勒比结晶";
-			mes "10个昆虫外壳";
+			mes "30个<ITEM>植物梗<INFO>905</INFO></ITEM>，";
+			mes "5个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>";
+			mes "10个<ITEM>昆虫外壳<INFO>955</INFO></ITEM>";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -529,9 +556,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你怎么会觉得已经完成了？";
 			mes "你并没有我要求的东西！";
-			mes "5个坚硬外皮，";
-			mes "20个坚硬外壳，";
-			mes "5个刹勒空结晶。";
+			mes "5个<ITEM>坚硬外皮<INFO>943</INFO></ITEM>，";
+			mes "20个<ITEM>坚硬外壳<INFO>935</INFO></ITEM>，";
+			mes "5个<ITEM>剎勒空结晶<INFO>912</INFO></ITEM>。";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -560,9 +587,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "那些物品在哪里……？";
 			mes "你并没有我要求的东西！";
-			mes "5个赛法，";
-			mes "10个白色药草，";
-			mes "10个黄色药草。";
+			mes "5个<ITEM>赛依伐<INFO>7053</INFO></ITEM>，";
+			mes "10个<ITEM>白色药草<INFO>509</INFO></ITEM>，";
+			mes "10个<ITEM>黄色药草<INFO>508</INFO></ITEM>。";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -591,9 +618,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你怎么会觉得已经完成了？";
 			mes "你并没有我要求的东西！";
-			mes "10个蝙蝠牙齿，";
-			mes "5个熊掌";
-			mes "20个毒孢子";
+			mes "10个<ITEM>蝙蝠牙<INFO>913</INFO></ITEM>，";
+			mes "5个<ITEM>熊掌<INFO>948</INFO></ITEM>";
+			mes "20个<ITEM>毒魔菇芽孢<INFO>7033</INFO></ITEM>";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
@@ -622,9 +649,9 @@ monk_in,99,58,1	script	武海长老#mk	60,{
 			mes "[武海长老]";
 			mes "你怎么会觉得已经完成了？";
 			mes "你并没有我要求的东西！";
-			mes "5个刺猬尖刺，";
-			mes "20个蜘蛛丝，";
-			mes "10个昆虫后脚。";
+			mes "5个<ITEM>刺猬尖刺<INFO>1027</INFO></ITEM>，";
+			mes "20个<ITEM>蜘蛛丝<INFO>1025</INFO></ITEM>，";
+			mes "10个<ITEM>昆虫后脚<INFO>1042</INFO></ITEM>。";
 			mes "这些就是我所需要的物品，全都去找来吧。";
 			close;
 		}
