@@ -2303,22 +2303,6 @@ struct PACKET_CZ_REQ_STYLE_CHANGE2 {
 	int16 BodyStyle;
 } __attribute__((packed));
 
-// 2025 client stylist UI (0x0bf7). The first seven fields match
-// CZ_REQ_STYLE_CHANGE2; the trailing fields were added by Gravity.
-struct PACKET_CZ_REQ_STYLE_CHANGE3 {
-	int16 PacketType;
-	int16 HeadPalette;
-	int16 HeadStyle;
-	int16 BodyPalette;
-	int16 TopAccessory;
-	int16 MidAccessory;
-	int16 BottomAccessory;
-	int16 BodyStyle;
-	int16 Unknown1;
-	int16 Unknown2;
-	int16 Unknown3;
-} __attribute__((packed));
-
 struct PACKET_ZC_STYLE_CHANGE_RES {
 	int16 PacketType;
 	int8 flag;
