@@ -247,6 +247,12 @@
 }
 
 
+function	script	F_SocketLink	{
+	if (getarg(0) <= 0)
+		return "";
+	return mesitemlink(getarg(0), false, callfunc("F_SocketName", getarg(0)));
+}
+
 function	script	F_SocketName	{
 	switch(getarg(0)) {
 	case 984: return "神之金属";
@@ -412,9 +418,9 @@ function	script	Func_Socket	{
 
 	disable_items;
 	mes "[赛亚布勒姆]";
-	mes "您想为"+ mesitemlink(.@item_id, false, F_SocketName(.@item_id)) +"增加插槽吗？";
-	mes "好的，请为我带来^FF0000"+ .@req_amount[0] +" "+ mesitemlink(.@item_req[0], false, F_SocketName(.@item_req[0])) +"^000000，"+ (.@item_req[1] != 0 && .@req_amount[1] != 0 ? ("^FF0000"+ .@req_amount[1] +" "+ mesitemlink(.@item_req[1], false, F_SocketName(.@item_req[1])) + "^000000") : "") + "以及我的 ^FF0000" + (.@zeny_req >= 1000 ? (.@zeny_req /1000 +",000") : .@zeny_req) +",000 Zeny^000000 服务费。";
-	mes "对了，别忘了带上"+ mesitemlink(.@item_id, false, F_SocketName(.@item_id)) +"！";
+	mes "您想为"+ callfunc("F_SocketLink", .@item_id) +"增加插槽吗？";
+	mes "好的，请为我带来^FF0000"+ .@req_amount[0] +" "+ callfunc("F_SocketLink", .@item_req[0]) +"^000000，"+ (.@item_req[1] != 0 && .@req_amount[1] != 0 ? ("^FF0000"+ .@req_amount[1] +" "+ callfunc("F_SocketLink", .@item_req[1]) + "^000000") : "") + "以及我的 ^FF0000" + (.@zeny_req >= 1000 ? (.@zeny_req /1000 +",000") : .@zeny_req) +",000 Zeny^000000 服务费。";
+	mes "对了，别忘了带上"+ callfunc("F_SocketLink", .@item_id) +"！";
 	next;
 	mes "[赛亚布勒姆]";
 	if (getiteminfo(.@item_id, ITEMINFO_LOCATIONS) & EQP_HAND_R) // weapon
