@@ -75,7 +75,7 @@
 					mes "好的，这是普通装备的分类。";
 					mes "请选择您希望我尝试增加插槽的武器。";
 					next;
-					switch(select("锁链:罗马短剑:角弓:长矛:海东剑:鲁特琴:铁丝鞭:虎爪拳刃:强弩弓"))
+					switch(select("链锤:罗马短剑:角弓:长矛:海东剑:鲁特琴:铁丝鞭:虎爪拳刃:强弩弓"))
 					{
 						case 1: callfunc "Func_Socket",1519,1520,40,61,300,1010,10;
 						case 2: callfunc "Func_Socket",1219,1220,40,61,300, 984, 1,999,5;
@@ -152,7 +152,7 @@
 					mes "您选择了普通的B级。";
 					mes "那么，您有什么样的防具？";
 					next;
-					switch(select("镜盾:锁子甲:圣职之衣:丝袍:战靴:鞋子:围巾:护手:圆盾:盾牌:妖道帽"))
+					switch(select("镜盾:锁子甲:圣职之衣:丝袍:战靴:鞋子:围巾:圆盾:圆盾:盾牌:妖道帽"))
 					{
 						case 1:  callfunc "Func_Socket",2107,2108,40,61,250,999,5;
 						case 2:  callfunc "Func_Socket",2314,2315,40,61,250,999,5;
@@ -172,7 +172,7 @@
 					mes "这可是高风险领域！";
 					mes "好的，您希望我尝试为哪件防具增加插槽？";
 					next;
-					switch(select("镶玉头盔:水桶帽:记忆之书:紧身便衣:军团铠甲:全身铠甲:盗贼之衣:胫甲:头巾:披肩:头盔:忍者服:兽人头盔:古代披风:僧帽:黄金齿轮:敏捷别针:僵尸帽"))
+					switch(select("镶玉头盔:水桶帽:记忆之书:紧身便衣:军团铠甲:全身铠甲:盗贼之衣:胫甲:头巾:披肩:头盔:忍者服:兽人头盔:古代披风:僧帽:黄金齿轮:胸针:僵尸帽"))
 					{
 						case 1:  callfunc "Func_Socket",2230,2231,40,61,400,985,1;
 						case 2:  callfunc "Func_Socket",5114,5120,40,61,400,985,1;
@@ -246,6 +246,164 @@
 	}
 }
 
+
+function	script	F_SocketName	{
+	switch(getarg(0)) {
+	case 984: return "神之金属";
+	case 985: return "铝";
+	case 999: return "钢铁";
+	case 1010: return "强化武器金属-级数一";
+	case 1011: return "强化武器金属-级数二";
+	case 1123: return "海东剑";
+	case 1128: return "海东剑";
+	case 1129: return "焰形剑";
+	case 1135: return "弯刀";
+	case 1149: return "焰形剑";
+	case 1163: return "阔剑";
+	case 1168: return "双手巨剑";
+	case 1171: return "双手巨剑";
+	case 1172: return "阔剑";
+	case 1219: return "罗马短剑";
+	case 1220: return "罗马短剑";
+	case 1230: return "冰镐";
+	case 1236: return "苏克萨马德";
+	case 1239: return "毒刀";
+	case 1261: return "刺杀拳刃";
+	case 1266: return "刺杀拳刃";
+	case 1407: return "长矛";
+	case 1408: return "长矛";
+	case 1413: return "冈格尼尔";
+	case 1418: return "冈格尼尔";
+	case 1460: return "三叉枪";
+	case 1461: return "三叉枪";
+	case 1466: return "新月镰刀";
+	case 1476: return "新月镰刀";
+	case 1519: return "链锤";
+	case 1520: return "链锤";
+	case 1522: return "眩晕锤";
+	case 1532: return "眩晕锤";
+	case 1617: return "生存之杖(DEX)";
+	case 1618: return "生存之杖(DEX)";
+	case 1619: return "生存之杖(INT)";
+	case 1620: return "生存之杖(INT)";
+	case 1713: return "强弩弓";
+	case 1714: return "角弓";
+	case 1715: return "强弩弓";
+	case 1716: return "角弓";
+	case 1718: return "猎人之弓";
+	case 1722: return "贝利斯塔强弩";
+	case 1726: return "猎人之弓";
+	case 1727: return "贝利斯塔强弩";
+	case 1801: return "虎爪拳刃";
+	case 1802: return "虎爪拳刃";
+	case 1814: return "狂怒";
+	case 1816: return "狂怒";
+	case 1901: return "小提琴";
+	case 1902: return "小提琴";
+	case 1905: return "鲁特琴";
+	case 1906: return "鲁特琴";
+	case 1950: return "绳鞭";
+	case 1951: return "绳鞭";
+	case 1954: return "铁丝鞭";
+	case 1955: return "铁丝鞭";
+	case 2101: return "圆盾";
+	case 2102: return "圆盾";
+	case 2103: return "圆盾";
+	case 2104: return "圆盾";
+	case 2105: return "盾牌";
+	case 2106: return "盾牌";
+	case 2107: return "镜盾";
+	case 2108: return "镜盾";
+	case 2109: return "记忆之书";
+	case 2121: return "记忆之书";
+	case 2216: return "四角帽";
+	case 2217: return "四角帽";
+	case 2228: return "头盔";
+	case 2229: return "头盔";
+	case 2230: return "镶玉头盔";
+	case 2231: return "镶玉头盔";
+	case 2232: return "头环";
+	case 2233: return "头环";
+	case 2234: return "宝冠";
+	case 2235: return "王冠";
+	case 2246: return "黄金齿轮";
+	case 2251: return "僧帽";
+	case 2256: return "山羊头盔";
+	case 2258: return "尖刺头箍";
+	case 2264: return "僵尸帽";
+	case 2299: return "兽人头盔";
+	case 2307: return "披肩";
+	case 2308: return "披肩";
+	case 2309: return "外套";
+	case 2310: return "外套";
+	case 2314: return "锁子甲";
+	case 2315: return "锁子甲";
+	case 2316: return "全身铠甲";
+	case 2317: return "全身铠甲";
+	case 2321: return "丝袍";
+	case 2322: return "丝袍";
+	case 2325: return "圣职之衣";
+	case 2326: return "圣职之衣";
+	case 2330: return "紧身便衣";
+	case 2331: return "紧身便衣";
+	case 2335: return "盗贼之衣";
+	case 2336: return "盗贼之衣";
+	case 2337: return "忍者服";
+	case 2341: return "军团铠甲";
+	case 2342: return "军团铠甲";
+	case 2343: return "施法长袍";
+	case 2359: return "忍者服";
+	case 2360: return "施法长袍";
+	case 2403: return "鞋子";
+	case 2404: return "鞋子";
+	case 2405: return "战靴";
+	case 2406: return "战靴";
+	case 2411: return "胫甲";
+	case 2412: return "胫甲";
+	case 2503: return "围巾";
+	case 2504: return "围巾";
+	case 2505: return "披肩";
+	case 2506: return "披肩";
+	case 2507: return "古代披风";
+	case 2525: return "古代披风";
+	case 2601: return "戒指";
+	case 2602: return "耳环";
+	case 2605: return "胸针";
+	case 2619: return "护弓套筒";
+	case 2621: return "戒指";
+	case 2622: return "耳环";
+	case 2625: return "胸针";
+	case 2671: return "护弓套筒";
+	case 5017: return "骨盔";
+	case 5019: return "海盗帽";
+	case 5046: return "妖道帽";
+	case 5053: return "狮身人面像帽";
+	case 5092: return "头巾";
+	case 5093: return "头巾";
+	case 5114: return "水桶帽";
+	case 5120: return "水桶帽";
+	case 5157: return "兽人头盔";
+	case 5158: return "僧帽";
+	case 5159: return "黄金齿轮";
+	case 5160: return "山羊头盔";
+	case 5161: return "尖刺头箍";
+	case 5162: return "骨盔";
+	case 5163: return "海盗帽";
+	case 5164: return "宝冠";
+	case 5165: return "王冠";
+	case 5166: return "狮身人面像帽";
+	case 5167: return "僵尸帽";
+	case 5168: return "妖道帽";
+	case 13002: return "金农加普";
+	case 13016: return "毒刀";
+	case 13017: return "冰镐";
+	case 13018: return "苏克萨马德";
+	case 13019: return "金农加普";
+	case 13400: return "弯刀";
+	default: return getitemname(getarg(0));
+	}
+}
+
 function	script	Func_Socket	{
 	.@item_id = getarg(0);
 	.@zeny_req = getarg(4);
@@ -254,9 +412,9 @@ function	script	Func_Socket	{
 
 	disable_items;
 	mes "[赛亚布勒姆]";
-	mes "您想为"+ getitemname(.@item_id) +"增加插槽吗？";
-	mes "好的，请为我带来^FF0000"+ .@req_amount[0] +" "+ getitemname(.@item_req[0]) + (.@req_amount[0] > 1 && .@item_req[0] != 999 ? "s":"") +"^000000，"+ (.@item_req[1] != 0 && .@req_amount[1] != 0 ? ("^FF0000"+ .@req_amount[1] +" "+ getitemname(.@item_req[1]) + (.@req_amount[1] > 1 && .@item_req[1] != 999 ? "s":"") + "^000000") : "") + "以及我的 ^FF0000" + (.@zeny_req >= 1000 ? (.@zeny_req /1000 +",000") : .@zeny_req) +",000 Zeny^000000 服务费。";
-	mes "对了，别忘了带上"+ getitemname(.@item_id) +"！";
+	mes "您想为"+ mesitemlink(.@item_id, false, F_SocketName(.@item_id)) +"增加插槽吗？";
+	mes "好的，请为我带来^FF0000"+ .@req_amount[0] +" "+ mesitemlink(.@item_req[0], false, F_SocketName(.@item_req[0])) +"^000000，"+ (.@item_req[1] != 0 && .@req_amount[1] != 0 ? ("^FF0000"+ .@req_amount[1] +" "+ mesitemlink(.@item_req[1], false, F_SocketName(.@item_req[1])) + "^000000") : "") + "以及我的 ^FF0000" + (.@zeny_req >= 1000 ? (.@zeny_req /1000 +",000") : .@zeny_req) +",000 Zeny^000000 服务费。";
+	mes "对了，别忘了带上"+ mesitemlink(.@item_id, false, F_SocketName(.@item_id)) +"！";
 	next;
 	mes "[赛亚布勒姆]";
 	if (getiteminfo(.@item_id, ITEMINFO_LOCATIONS) & EQP_HAND_R) // weapon
@@ -340,10 +498,10 @@ function	script	Func_Socket	{
 	}
 }
 
-payon,140,151,5	duplicate(SocketEnchant)	Seiyablem#pay	84
-lhz_in02,281,35,5	duplicate(SocketEnchant)	Seiyablem#lhz	84
-prt_in,33,70,5	duplicate(SocketEnchant)	Seiyablem#prt	84
-morocc,51,41,4	duplicate(SocketEnchant)	Seiyablem#moc	84
+payon,140,151,5	duplicate(SocketEnchant)	赛亚布勒姆#pay	84
+lhz_in02,281,35,5	duplicate(SocketEnchant)	赛亚布勒姆#lhz	84
+prt_in,33,70,5	duplicate(SocketEnchant)	赛亚布勒姆#prt	84
+morocc,51,41,4	duplicate(SocketEnchant)	赛亚布勒姆#moc	84
 
 -	script	Young Man#dummy::SocketMan	-1,{
 	mes "[年轻男子]";
