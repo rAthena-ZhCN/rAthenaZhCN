@@ -1,30 +1,27 @@
-//===== rAthena Script =======================================
-//= Vending Machine NPCs for Novice.
-//===== Description: ========================================= 
-//= [Walkthrough Conversion]
-//= Exchangers NPCs for Novice.
-//===== Additional Comments: =================================
-//= 1.0 Firt version. [Aleos] [Secret]
-//= 1.1 Additionnal clean-up. [Capuche]
-//============================================================
-
 -	script	novice_vending_machine#main	-1,{
 	.@storage_ticket = 7059;	// Cargo_Free_Ticket
 	.@storage_ticket_name$ = getitemname(.@storage_ticket);
 
-	mes "初心者自动贩卖机。";
+	mes "【初心者自动贩售机】";
 	mes "上面有许多按钮。";
 	next;
 	switch( select( "使用说明", "兑换" + .@storage_ticket_name$, "兑换初心者装备" ) ) {
 	case 1:
 		mes "[兑换" + .@storage_ticket_name$ + "]";
-		mes "4 " + .@storage_ticket_name$ + "可兑换 1 张传送、飞空艇或手推车服务免费券，或 1 张骑乘大嘴鸟免费券、15 个初心者苍蝇翅膀、5 个初心者蝴蝶翅膀、30 瓶初心者药水。";
+		mes "4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 可兑换以下任意一项：";
+		mes "- <ITEM>" + getitemname(7060) + "<INFO>7060</INFO></ITEM> × 1";
+		mes "- <ITEM>" + getitemname(7311) + "<INFO>7311</INFO></ITEM> × 1";
+		mes "- <ITEM>" + getitemname(7061) + "<INFO>7061</INFO></ITEM> × 1";
+		mes "- <ITEM>" + getitemname(7310) + "<INFO>7310</INFO></ITEM> × 1";
+		mes "- <ITEM>" + getitemname(12323) + "<INFO>12323</INFO></ITEM> × 15";
+		mes "- <ITEM>" + getitemname(12324) + "<INFO>12324</INFO></ITEM> × 5";
+		mes "- <ITEM>" + getitemname(569) + "<INFO>569</INFO></ITEM> × 30";
 		next;
 		mes "[兑换初心者装备]";
-		mes "克里图拉学院的初心者铠甲、头巾、凉鞋、左手短剑与守卫盾可兑换为 4" + .@storage_ticket_name$ + ".";
+		mes "克里图拉学院的初心者铠甲、头巾、凉鞋、左手短剑与守卫盾可兑换为 4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM>。";
 		next;
 		mes "[兑换初心者装备]";
-		mes "初心者蛋壳可兑换为用于更换发型的克里图拉发型券。";
+		mes "初心者蛋壳可兑换为用于更换发型的 <ITEM>" + getitemname(6593) + "<INFO>6593</INFO></ITEM>。";
 		close;
 	case 2:
 		setarray .@exchange[0],
@@ -44,12 +41,12 @@
 		}
 		.@s = (select(.@menu$) - 1) * 2;
 		if (countitem(.@storage_ticket) < 4) {
-			mes "所需" + .@storage_ticket_name$ + "数量不足，无法进行兑换。";
+			mes "所需 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 数量不足，无法进行兑换。";
 			close;
 		}
 		if (.@exchange[.@s+1] > 1)
 			.@amount$ = .@exchange[.@s+1] + " ";
-		mes "已将 4" + .@storage_ticket_name$ + "兑换为" + .@amount$ + getitemname(.@exchange[.@s]);
+		mes "已将 4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 兑换为 <ITEM>" + getitemname(.@exchange[.@s]) + "<INFO>" + .@exchange[.@s] + "</INFO></ITEM> × " + .@exchange[.@s+1];
 		delitem .@storage_ticket,4;
 		getitem .@exchange[.@s],.@exchange[.@s+1];
 		close;
@@ -57,14 +54,14 @@
 		mes "将全部初心者装备兑换为兑换券。";
 		mes "选择“继续”以进行。";
 		next;
-		if (select( "继续", "Cancel." ) == 2) {
+		if (select( "继续", "取消。" ) == 2) {
 			mes "兑换已中断。";
 			close;
 		}
 		mes "正在将全部装备兑换为兑换券。";
 		setarray .@list[0],2352,2510,2414,1243,2112,5055;
 		.@size = getarraysize(.@list);
-		
+
 		for ( .@i = 0, .@i < .@size; .@i++ ) {
 			.@count = countitem(.@list[.@i]);	// note: maybe check if equipped items are skipped
 			if (.@count < 1)
@@ -87,15 +84,15 @@
 		close;
 	}
 }
-izlude_in,69,177,5	duplicate(novice_vending_machine#main)	Vending Machine for Nov#iz	2_VENDING_MACHINE1
-payon_in02,71,75,5	duplicate(novice_vending_machine#main)	Vending Machine for Nov#pay	2_VENDING_MACHINE1
-prt_church,187,27,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#prt	2_VENDING_MACHINE1
+izlude_in,69,177,5	duplicate(novice_vending_machine#main)	初心者自动贩售机#iz	2_VENDING_MACHINE1
+payon_in02,71,75,5	duplicate(novice_vending_machine#main)	初心者自动贩售机#pay	2_VENDING_MACHINE1
+prt_church,187,27,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#prt	2_VENDING_MACHINE1
 
 // unknown facing
-alberta_in,60,52,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#alb	2_VENDING_MACHINE1
-geffen_in,158,107,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#gef	2_VENDING_MACHINE1
-moc_para01,17,37,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#para	2_VENDING_MACHINE1
-moc_prydb1,38,124,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#pryd	2_VENDING_MACHINE1
-payon_in01,59,20,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#pay2	2_VENDING_MACHINE1
-que_ng,28,73,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#que_ng1	2_VENDING_MACHINE1
-que_ng,168,39,3	duplicate(novice_vending_machine#main)	Vending Machine for Nov#que_ng2	2_VENDING_MACHINE1
+alberta_in,60,52,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#alb	2_VENDING_MACHINE1
+geffen_in,158,107,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#gef	2_VENDING_MACHINE1
+moc_para01,17,37,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#para	2_VENDING_MACHINE1
+moc_prydb1,38,124,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#pryd	2_VENDING_MACHINE1
+payon_in01,59,20,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#pay2	2_VENDING_MACHINE1
+que_ng,28,73,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#que_ng1	2_VENDING_MACHINE1
+que_ng,168,39,3	duplicate(novice_vending_machine#main)	初心者自动贩售机#que_ng2	2_VENDING_MACHINE1
