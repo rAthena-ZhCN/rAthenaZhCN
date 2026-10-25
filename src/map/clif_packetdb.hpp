@@ -1923,6 +1923,7 @@
 
 #if PACKETVER >= 20180516
 	parseable_packet( HEADER_CZ_REQ_STYLE_CHANGE2, sizeof( PACKET_CZ_REQ_STYLE_CHANGE2 ), clif_parse_stylist_buy, 0 );
+	parseable_packet( HEADER_CZ_REQ_STYLE_CHANGE3, sizeof( PACKET_CZ_REQ_STYLE_CHANGE3 ), clif_parse_stylist_buy, 0 );
 #endif
 
 #if PACKETVER_MAIN_NUM >= 20181002 || PACKETVER_RE_NUM >= 20181002 || PACKETVER_ZERO_NUM >= 20181010
