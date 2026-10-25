@@ -172,7 +172,7 @@ gon_test,42,89,4	script	召唤师#gnp	774,{
 	mes "战斗开始！";
 	close2;
 	set in_battle,2;
-	if (getnpctimer(0) < 180000) monster "gon_test",56,86,.gnpMobsName$[(.@gnpGroup-1)*6 + .@gnpMob - 1],.gnpMobsId[(.@gnpGroup-1)*6 + .@gnpMob - 1],1,"Summoner#gnp::OnGnpMobDead";
+	if (getnpctimer(0) < 180000) monster "gon_test",56,86,.gnpMobsName$[(.@gnpGroup-1)*6 + .@gnpMob - 1],.gnpMobsId[(.@gnpGroup-1)*6 + .@gnpMob - 1],1,"召唤师#gnp::OnGnpMobDead";
 	end;
 OnInit:
 	initnpctimer;
@@ -206,7 +206,7 @@ OnTimer120000:
 	end;
 
 OnTimer180000:
-	killmonster "gon_test","Summoner#gnp::OnGnpMobDead";
+	killmonster "gon_test","召唤师#gnp::OnGnpMobDead";
 	end;
 
 OnTimer182000:

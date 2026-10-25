@@ -1137,28 +1137,28 @@ lhz_in01,115,250,3	script	守卫#ep13_1-1	899,2,2,{
 OnTouch:
 	callfunc "Guard_13_1",1,108,252;
 }
-lhz_in01,115,252,3	duplicate(守卫#ep13_1-1)	Guard#ep13_1-2	899,2,2
+lhz_in01,115,252,3	duplicate(守卫#ep13_1-1)	守卫#ep13_1-2	899,2,2
 
 lhz_in01,147,252,7	script	守卫#ep13_1-3	899,2,2,{
 	callfunc "Guard_13_1",0,152,252;
 OnTouch:
 	callfunc "Guard_13_1",1,152,252;
 }
-lhz_in01,147,250,7	duplicate(守卫#ep13_1-3)	Guard#ep13_1-4	899,2,2
+lhz_in01,147,250,7	duplicate(守卫#ep13_1-3)	守卫#ep13_1-4	899,2,2
 
 lhz_in01,124,234,5	script	守卫#ep13_1-5	899,2,2,{
 	callfunc "Guard_13_1",0,123,229;
 OnTouch:
 	callfunc "Guard_13_1",1,123,229;
 }
-lhz_in01,121,234,5	duplicate(守卫#ep13_1-5)	Guard#ep13_1-6	899,2,2
+lhz_in01,121,234,5	duplicate(守卫#ep13_1-5)	守卫#ep13_1-6	899,2,2
 
 lhz_in01,137,234,5	script	守卫#ep13_1-7	899,2,2,{
 	callfunc "Guard_13_1",0,139,228;
 OnTouch:
 	callfunc "Guard_13_1",1,139,228;
 }
-lhz_in01,140,234,5	duplicate(守卫#ep13_1-7)	Guard#ep13_1-8	899,2,2
+lhz_in01,140,234,5	duplicate(守卫#ep13_1-7)	守卫#ep13_1-8	899,2,2
 
 lhz_in01,130,232,5	script	守卫#ep13_1-9	899,{
 	if (ep13_ryu > 19) {
@@ -1809,15 +1809,15 @@ OnEnable:
 	enablenpc "同盟首领#moo";
 	set $@ep13_test,1;
 	initnpctimer;
-	monster "moc_fild22b",0,0,"Allied Soldier",1851,80,"Head of the Alliance#moo::OnMyMobDead";
+	monster "moc_fild22b",0,0,"Allied Soldier",1851,80,"同盟首领#moo::OnMyMobDead";
 	end;
 
 OnReset:
-	killmonster "moc_fild22b","Head of the Alliance#moo::OnMyMobDead";
+	killmonster "moc_fild22b","同盟首领#moo::OnMyMobDead";
 	end;
 
 OnDisable:
-	killmonster "moc_fild22b","Head of the Alliance#moo::OnMyMobDead";
+	killmonster "moc_fild22b","同盟首领#moo::OnMyMobDead";
 	mapannounce "moc_fild22b","同盟长：全体同盟成员。所有人停止攻击，回到岗位。完毕。",bc_map;
 	set $@ep13_test,0;
 	disablenpc "同盟首领#moo";
@@ -1830,7 +1830,7 @@ OnMyMobDead:
 	end;
 
 OnTimer900000:
-	killmonster "moc_fild22b","Head of the Alliance#moo::OnMyMobDead";
+	killmonster "moc_fild22b","同盟首领#moo::OnMyMobDead";
 	mapannounce "moc_fild22b","同盟长：全体同盟成员。所有人停止攻击，回到岗位。完毕。",bc_map;
 	set $@ep13_test,2;
 	disablenpc "同盟首领#moo";
@@ -3483,10 +3483,10 @@ spl_fild02,348,76,0	script	树#ep13bs1::ep13tree	111,{
 	end;
 }
 
-spl_fild02,232,145,0	duplicate(ep13tree)	Tree#ep13bs2	111
-spl_fild02,380,197,0	duplicate(ep13tree)	Tree#ep13bs3	111
-spl_fild02,304,151,0	duplicate(ep13tree)	Tree#ep13bs4	111
-spl_fild02,183,235,0	duplicate(ep13tree)	Tree#ep13bs5	111
+spl_fild02,232,145,0	duplicate(ep13tree)	树#ep13bs2	111
+spl_fild02,380,197,0	duplicate(ep13tree)	树#ep13bs3	111
+spl_fild02,304,151,0	duplicate(ep13tree)	树#ep13bs4	111
+spl_fild02,183,235,0	duplicate(ep13tree)	树#ep13bs5	111
 
 mid_camp,267,263,0	script	木桩#ep13bs1	111,{
 	if (ep13_newbs < 6) {
@@ -4647,8 +4647,8 @@ mid_camp,336,171,1	script	营地守卫#man1	852,{
 		close;
 	}
 }
-mid_camp,13,143,5	duplicate(营地守卫#man1)	Camp Guard#man2	852
-mid_camp,9,215,5	duplicate(营地守卫#man1)	Camp Guard#man3	852
+mid_camp,13,143,5	duplicate(营地守卫#man1)	营地守卫#man2	852
+mid_camp,9,215,5	duplicate(营地守卫#man1)	营地守卫#man3	852
 
 mid_camp,49,154,0	script	#env_clear	-1,3,3,{
 OnTouch:
@@ -5456,16 +5456,16 @@ OnMeet:
 
 OnCall:
 	initnpctimer;
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"Research Official#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
 	donpcevent "研究官#ep131::OnDisable";
 	donpcevent "廖森#ep131_rhea05::OnDisable";
 	donpcevent "休#ep131_rhea06::OnDisable";
@@ -5480,7 +5480,7 @@ OnMyMobDead:
 	end;
 
 OnTimer300000:
-	killmonster "mid_campin","Research Official#ep131::OnMyMobDead";
+	killmonster "mid_campin","研究官#ep131::OnMyMobDead";
 	donpcevent "研究官#ep131::OnEnable";
 	stopnpctimer;
 	end;
@@ -8315,9 +8315,9 @@ spl_fild02,314,165,0	script	鱼群#1::Fishinghole	844,{
 	}
 }
 
-spl_fild02,321,169,0	duplicate(Fishinghole)	School of Fish#2	844
-spl_fild02,326,171,0	duplicate(Fishinghole)	School of Fish#3	844
-mid_camp,75,135,0	duplicate(Fishinghole)	School of Fish#4	844
+spl_fild02,321,169,0	duplicate(Fishinghole)	鱼群#2	844
+spl_fild02,326,171,0	duplicate(Fishinghole)	鱼群#3	844
+mid_camp,75,135,0	duplicate(Fishinghole)	鱼群#4	844
 
 mid_camp,66,122,55	script	亨利·克利福德	712,{
 	if (countitem(6049) > 0) {
@@ -9827,7 +9827,7 @@ mid_camp,206,286,3	script	远征队信使	997,{
 		mes "[远征队传令官]";
 		mes "你，前往施瓦尔茨瓦尔特共和国。";
 		mes "还有你，去阿鲁纳贝兹。我要去普隆德拉王宫。";
-		emotion ET_OK, getnpcid(0, "Expedition Messenger#2");
+		emotion ET_OK, getnpcid(0, "远征队信使#2");
 		next;
 		mes "[远征队传令官]";
 		mes "各位，后会有期。";
@@ -9835,7 +9835,7 @@ mid_camp,206,286,3	script	远征队信使	997,{
 		next;
 		mes "[远征队传令官]";
 		mes "怎么了？你怎么还没走……？";
-		specialeffect EF_SOULBREAKER,AREA,"Expedition Messenger";
+		specialeffect EF_SOULBREAKER,AREA,"远征队信使";
 		next;
 		mes "[远征队传令官]";
 		mes "呃……你为什么要这么做？！";
@@ -9857,13 +9857,13 @@ mid_camp,206,286,3	script	远征队信使	997,{
 			mes "现在，把它给我！";
 			next;
 			donpcevent "远征队信使#2::OnEnable";
-			emotion ET_SURPRISE, getnpcid(0, "Expedition Messenger#3");
+			emotion ET_SURPRISE, getnpcid(0, "远征队信使#3");
 			cutin "ep13_shadow_edq",2;
 			mes "[???]";
 			mes "Argh...";
 			next;
-			specialeffect EF_SOULBREAKER,AREA,"Expedition Messenger#3";
-			specialeffect EF_SOULBREAKER,AREA,"Expedition Messenger#3";
+			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
+			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
 			mes "[???]";
 			mes "呃……你……";
 			next;
@@ -9911,12 +9911,12 @@ mid_camp,206,286,3	script	远征队信使	997,{
 			mes "哦，是吗？那我就只能用武力了！";
 			next;
 			donpcevent "远征队信使#2::OnEnable";
-			emotion ET_SURPRISE, getnpcid(0, "Expedition Messenger#3");
+			emotion ET_SURPRISE, getnpcid(0, "远征队信使#3");
 			mes "[???]";
 			mes "呃啊！";
 			next;
-			specialeffect EF_SOULBREAKER,AREA,"Expedition Messenger#3";
-			specialeffect EF_SOULBREAKER,AREA,"Expedition Messenger#3";
+			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
+			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
 			mes "[???]";
 			mes "呃……你……";
 			next;
@@ -10129,9 +10129,9 @@ man_fild01,315,95,3	script	远征队侦察兵#1	707,{
 		close;
 	}
 }
-man_fild03,202,251,3	duplicate(远征队侦察兵#1)	Expedition Scout#2	707
-spl_fild02,295,368,3	duplicate(远征队侦察兵#1)	Expedition Scout#3	707
-spl_fild03,172,71,3	duplicate(远征队侦察兵#1)	Expedition Scout#4	707
+man_fild03,202,251,3	duplicate(远征队侦察兵#1)	远征队侦察兵#2	707
+spl_fild02,295,368,3	duplicate(远征队侦察兵#1)	远征队侦察兵#3	707
+spl_fild03,172,71,3	duplicate(远征队侦察兵#1)	远征队侦察兵#4	707
 
 -	script	Laur_	-1,{
 	mes "[劳尔]";
@@ -11539,7 +11539,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		specialeffect EF_BEGINSPELL2;
 		next;
 		mes "——火苗闪了一下，随即就熄灭了。——";
-		specialeffect EF_FIREARROW,AREA,"Wet Firewood#moc2";
+		specialeffect EF_FIREARROW,AREA,"潮湿的柴火#moc2";
 		next;
 		mes "[德帕里亚]";
 		mes "...............";
@@ -11558,7 +11558,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		specialeffect EF_BEGINSPELL2;
 		next;
 		mes "——火苗闪了一下，随即就熄灭了。——";
-		specialeffect EF_FIREARROW,AREA,"Wet Firewood#moc2";
+		specialeffect EF_FIREARROW,AREA,"潮湿的柴火#moc2";
 		next;
 		mes "[德帕里亚]";
 		mes "...............";
@@ -11795,8 +11795,8 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 			mes "希望我能用你带来的好木头生起火来……";
 			specialeffect EF_BEGINSPELL2;
 			next;
-			specialeffect EF_FIREWALL,AREA,"Wet Firewood#moc2";
-			specialeffect EF_TORCH,AREA,"Wet Firewood#moc2";
+			specialeffect EF_FIREWALL,AREA,"潮湿的柴火#moc2";
+			specialeffect EF_TORCH,AREA,"潮湿的柴火#moc2";
 			mes "[德帕里亚]";
 			mes "哦，这和我想的一样好！";
 			mes "看来我的魔法还没那么生疏……";
@@ -13087,17 +13087,17 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			cutin "moc2_dan02",255;
 			switch(select("敲他的头。:揍他的肚子。:打他的脸。")) {
 			case 1:
-				specialeffect EF_HIT2,AREA,"Rayan#moc_room2_2";
+				specialeffect EF_HIT2,AREA,"拉扬#moc_room2_2";
 				mes "- 为了阻止雷安暴走，你用日记敲了他的后脑勺。雷安摇晃了一下，然后倒在地上。干得好！-";
 				next;
 				break;
 			case 2:
-				specialeffect EF_HIT4,AREA,"Rayan#moc_room2_2";
+				specialeffect EF_HIT4,AREA,"拉扬#moc_room2_2";
 				mes "- 为了阻止雷安暴走，你一记冷拳打在他的肚子上。雷安摇晃了一下，然后倒在地上……！-";
 				next;
 				break;
 			case 3:
-				specialeffect EF_HIT1,AREA,"Rayan#moc_room2_2";
+				specialeffect EF_HIT1,AREA,"拉扬#moc_room2_2";
 				mes "- 为了阻止雷安暴走，你用日记打了他的脸。雷安摇晃了一下，然后倒在地上。哇！-";
 				next;
 				break;
@@ -13108,7 +13108,7 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			mes "[雷安]";
 			mes "Ahh....";
 			mes "....? Isn't.. Isn't this?!....";
-			specialeffect EF_POISON,AREA,"Rayan#moc_room2_2";
+			specialeffect EF_POISON,AREA,"拉扬#moc_room2_2";
 			next;
 			mes "[林]";
 			mes "哇！这是怎么回事？";
@@ -13150,7 +13150,7 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			mes "你是林，对吧？";
 			mes "这是你最后一次见到我。";
 			mes "哈哈……哇哈哈哈哈！！";
-			specialeffect EF_ENTRY,AREA,"Rayan#moc_room2_2";
+			specialeffect EF_ENTRY,AREA,"拉扬#moc_room2_2";
 			donpcevent "拉扬#moc_room2_2::OnDisable";
 			next;
 			cutin "moc2_rin03",2;
@@ -13457,14 +13457,14 @@ OnTimer306000:
 
 OnTimer307000:
 	donpcevent "尸体#moc2_dead01::OnDisable";
-	donpcevent "Rin#moc2_bt_rin01::OnDisable";
-	donpcevent "Rin#moc2_bt_rin02::OnDisable";
-	donpcevent "Rayan#moc2_bt_r01::OnDisable";
-	donpcevent "Dandelion Member#moc2_1::OnDisable";
-	donpcevent "Dandelion Member#moc2_2::OnDisable";
-	donpcevent "Dandelion Member#moc2_3::OnDisable";
-	donpcevent "Dandelion Member#moc2_4::OnDisable";
-	donpcevent "Dandelion Member#moc2_5::OnDisable";
+	donpcevent "凛#moc2_bt_rin01::OnDisable";
+	donpcevent "凛#moc2_bt_rin02::OnDisable";
+	donpcevent "拉扬#moc2_bt_r01::OnDisable";
+	donpcevent "蒲公英成员#moc2_1::OnDisable";
+	donpcevent "蒲公英成员#moc2_2::OnDisable";
+	donpcevent "蒲公英成员#moc2_3::OnDisable";
+	donpcevent "蒲公英成员#moc2_4::OnDisable";
+	donpcevent "蒲公英成员#moc2_5::OnDisable";
 	donpcevent "#moc2_event01::OnDisable";
 	donpcevent "尸体#moc2_dead01::OnReset";
 	end;
@@ -13507,10 +13507,10 @@ OnTouch_:
 	mes "咦？他们在打架吗？";
 	mes "我听到有一群人过来了……";
 	mes "呃！太黑了，看不见……！";
-	donpcevent "Rin#moc2_bt_rin01::OnEnable";
-	donpcevent "Rayan#moc2_bt_r01::OnEnable";
-	donpcevent "Dandelion Member#moc2_1::OnEnable";
-	donpcevent "Dandelion Member#moc2_2::OnEnable";
+	donpcevent "凛#moc2_bt_rin01::OnEnable";
+	donpcevent "拉扬#moc2_bt_r01::OnEnable";
+	donpcevent "蒲公英成员#moc2_1::OnEnable";
+	donpcevent "蒲公英成员#moc2_2::OnEnable";
 	next;
 	mes "[熟悉的女声]";
 	mes "闭嘴！你们全都长得一模一样，真让人发毛。放马过来吧！我才不怕你们！";
@@ -13524,18 +13524,18 @@ OnTouch_:
 	mes "为什么？林怎么会在这里？等等，我在哪里？";
 	mes "呃……我完全动不了……";
 	next;
-	specialeffect EF_BEGINSPELL2,AREA,"Dandelion Member#moc2_1";
-	specialeffect EF_BEGINSPELL2,AREA,"Dandelion Member#moc2_2";
-	emotion ET_SURPRISE, getnpcid(0, "Rin#moc2_bt_rin01");
+	specialeffect EF_BEGINSPELL2,AREA,"蒲公英成员#moc2_1";
+	specialeffect EF_BEGINSPELL2,AREA,"蒲公英成员#moc2_2";
+	emotion ET_SURPRISE, getnpcid(0, "凛#moc2_bt_rin01");
 	emotion ET_SURPRISE, playerattached();
 	mes "[林]";
 	mes "你不是一个人。那又怎样？";
 	mes "你还是得跟我走！";
 	next;
-	donpcevent "Rin#moc2_bt_rin01::OnDisable";
-	donpcevent "Rin#moc2_bt_rin02::OnEnable";
-	specialeffect EF_ICECRASH,AREA,"Rin#moc2_bt_rin01";
-	specialeffect EF_METEORSTORM,AREA,"Rin#moc2_bt_rin01";
+	donpcevent "凛#moc2_bt_rin01::OnDisable";
+	donpcevent "凛#moc2_bt_rin02::OnEnable";
+	specialeffect EF_ICECRASH,AREA,"凛#moc2_bt_rin01";
+	specialeffect EF_METEORSTORM,AREA,"凛#moc2_bt_rin01";
 	mes "[雷安]";
 	mes "哈，真了不起！你跑得像兔子一样快！";
 	mes "我当初有机会时就该杀了你。";
@@ -13548,40 +13548,40 @@ OnTouch_:
 	next;
 	mes "[雷安]";
 	mes "哈……你还完全不明白吗？这场游戏你早就输了，女士。";
-	donpcevent "Dandelion Member#moc2_3::OnEnable";
-	donpcevent "Dandelion Member#moc2_4::OnEnable";
-	donpcevent "Dandelion Member#moc2_5::OnEnable";
+	donpcevent "蒲公英成员#moc2_3::OnEnable";
+	donpcevent "蒲公英成员#moc2_4::OnEnable";
+	donpcevent "蒲公英成员#moc2_5::OnEnable";
 	next;
-	specialeffect EF_FREEZED,AREA,"Rin#moc2_bt_rin02";
+	specialeffect EF_FREEZED,AREA,"凛#moc2_bt_rin02";
 	emotion ET_SURPRISE;
 	mapannounce "que_dan01", "林：什……什么时候……！？！",bc_map,"0x7b68ee";
 	mes "[雷安]";
 	mes "很抱歉，我不得不这么做。";
 	mes "...";
 	mes "杀了她。";
-	specialeffect EF_BEGINSPELL2,AREA,"Dandelion Member#moc2_3";
-	specialeffect EF_BEGINSPELL2,AREA,"Dandelion Member#moc2_4";
-	specialeffect EF_BEGINSPELL2,AREA,"Dandelion Member#moc2_5";
+	specialeffect EF_BEGINSPELL2,AREA,"蒲公英成员#moc2_3";
+	specialeffect EF_BEGINSPELL2,AREA,"蒲公英成员#moc2_4";
+	specialeffect EF_BEGINSPELL2,AREA,"蒲公英成员#moc2_5";
 	next;
 	mapannounce "que_dan01", "雷安：解决她之后就跟上来。下次碰面的地点照旧。我先走了。",bc_map,"0xA8A8A8";
-	donpcevent "Rayan#moc2_bt_r01::OnDisable";
-	donpcevent "Dandelion Member#moc2_1::OnDisable";
-	donpcevent "Dandelion Member#moc2_2::OnDisable";
+	donpcevent "拉扬#moc2_bt_r01::OnDisable";
+	donpcevent "蒲公英成员#moc2_1::OnDisable";
+	donpcevent "蒲公英成员#moc2_2::OnDisable";
 	mes "[" + strcharinfo(0) + "]";
 	mes "林——！！！";
-	specialeffect EF_LIGHTBOLT,AREA,"Rin#moc2_bt_rin02";
-	specialeffect EF_FIREPILLARBOMB,AREA,"Rin#moc2_bt_rin02";
-	specialeffect EF_METEORSTORM,AREA,"Rin#moc2_bt_rin02";
-	donpcevent "Rin#moc2_bt_rin02::OnDisable";
+	specialeffect EF_LIGHTBOLT,AREA,"凛#moc2_bt_rin02";
+	specialeffect EF_FIREPILLARBOMB,AREA,"凛#moc2_bt_rin02";
+	specialeffect EF_METEORSTORM,AREA,"凛#moc2_bt_rin02";
+	donpcevent "凛#moc2_bt_rin02::OnDisable";
 	next;
 	mes "你感到无能为力：只能眼睁睁看着她逐渐被压制……";
 	mes "紧接着，压在你身上的力量突然消散了。";
 	changequest 7019,7020;
 	close2;
 	disablenpc "#moc2_event01";
-	donpcevent "Dandelion Member#moc2_3::OnDisable";
-	donpcevent "Dandelion Member#moc2_4::OnDisable";
-	donpcevent "Dandelion Member#moc2_5::OnDisable";
+	donpcevent "蒲公英成员#moc2_3::OnDisable";
+	donpcevent "蒲公英成员#moc2_4::OnDisable";
+	donpcevent "蒲公英成员#moc2_5::OnDisable";
 	donpcevent "尸体#moc2_dead01::OnEnable";
 	donpcevent "尸体#moc2_dead01::OnCall";
 	end;
@@ -13650,18 +13650,18 @@ OnEnable:
 	end;
 
 OnCall:
-	monster "que_dan01",26,40,"Dandelion Member",1985,1,"Corpse#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",21,35,"Dandelion Member",1985,1,"Corpse#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",25,32,"Dandelion Member",1985,1,"Corpse#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",34,34,"Dandelion Member",1985,1,"Corpse#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",36,34,"Dandelion Member",1985,1,"Corpse#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",26,40,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",21,35,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",25,32,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",34,34,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",36,34,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
 	end;
 
 OnMyMobDead:
 	end;
 
 OnReset:
-	killmonster "que_dan01","Corpse#moc2_dead01::OnMyMobDead";
+	killmonster "que_dan01","尸体#moc2_dead01::OnMyMobDead";
 	end;
 
 OnTimer4000:
@@ -13674,14 +13674,14 @@ OnTimer7000:
 
 OnTimer10000:
 	donpcevent "尸体#moc2_dead01::OnDisable";
-	donpcevent "Rin#moc2_bt_rin01::OnDisable";
-	donpcevent "Rin#moc2_bt_rin02::OnDisable";
-	donpcevent "Rayan#moc2_bt_r01::OnDisable";
-	donpcevent "Dandelion Member#moc2_1::OnDisable";
-	donpcevent "Dandelion Member#moc2_2::OnDisable";
-	donpcevent "Dandelion Member#moc2_3::OnDisable";
-	donpcevent "Dandelion Member#moc2_4::OnDisable";
-	donpcevent "Dandelion Member#moc2_5::OnDisable";
+	donpcevent "凛#moc2_bt_rin01::OnDisable";
+	donpcevent "凛#moc2_bt_rin02::OnDisable";
+	donpcevent "拉扬#moc2_bt_r01::OnDisable";
+	donpcevent "蒲公英成员#moc2_1::OnDisable";
+	donpcevent "蒲公英成员#moc2_2::OnDisable";
+	donpcevent "蒲公英成员#moc2_3::OnDisable";
+	donpcevent "蒲公英成员#moc2_4::OnDisable";
+	donpcevent "蒲公英成员#moc2_5::OnDisable";
 	donpcevent "#moc2_event01::OnDisable";
 	donpcevent "#moc2_event_on::OnEnable";
 	end;
@@ -13704,14 +13704,14 @@ OnEnable:
 	end;
 }
 
-que_dan01,34,34,7	duplicate(#dandelion_duplicates)	Rin#moc2_bt_rin01	885
-que_dan01,29,34,7	duplicate(#dandelion_duplicates)	Rin#moc2_bt_rin02	885
-que_dan01,36,34,3	duplicate(#dandelion_duplicates)	Rayan#moc2_bt_r01	456
-que_dan01,39,37,3	duplicate(#dandelion_duplicates)	Dandelion Member#moc2_1	456
-que_dan01,41,34,3	duplicate(#dandelion_duplicates)	Dandelion Member#moc2_2	456
-que_dan01,26,40,5	duplicate(#dandelion_duplicates)	Dandelion Member#moc2_3	456
-que_dan01,21,35,5	duplicate(#dandelion_duplicates)	Dandelion Member#moc2_4	456
-que_dan01,25,32,7	duplicate(#dandelion_duplicates)	Dandelion Member#moc2_5	456
+que_dan01,34,34,7	duplicate(#dandelion_duplicates)	凛#moc2_bt_rin01	885
+que_dan01,29,34,7	duplicate(#dandelion_duplicates)	凛#moc2_bt_rin02	885
+que_dan01,36,34,3	duplicate(#dandelion_duplicates)	拉扬#moc2_bt_r01	456
+que_dan01,39,37,3	duplicate(#dandelion_duplicates)	蒲公英成员#moc2_1	456
+que_dan01,41,34,3	duplicate(#dandelion_duplicates)	蒲公英成员#moc2_2	456
+que_dan01,26,40,5	duplicate(#dandelion_duplicates)	蒲公英成员#moc2_3	456
+que_dan01,21,35,5	duplicate(#dandelion_duplicates)	蒲公英成员#moc2_4	456
+que_dan01,25,32,7	duplicate(#dandelion_duplicates)	蒲公英成员#moc2_5	456
 
 yuno_fild09,234,133,0	warp	#moc2_fild09-que_dan02	1,1,que_dan02,13,10
 que_dan02,13,6,0	warp	#moc_que_dan02-fild09	1,1,yuno_fild09,234,129

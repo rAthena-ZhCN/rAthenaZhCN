@@ -100,7 +100,7 @@ izlude,161,199,0	script	#fgtg01	HIDDEN_WARP_NPC,3,5,{
 	end;
 OnTouch:
 	if (isbegin_quest(14688) == 0 && BaseLevel < 31)
-		cloakoffnpcself( "Black Shadow#fgtg01" );
+		cloakoffnpcself( "黑影#fgtg01" );
 	end;
 }
 izlude,194,209,0	duplicate(#fgtg01)	#fgtg02	HIDDEN_WARP_NPC,3,5
@@ -110,7 +110,7 @@ izlude,173,210,0	duplicate(#fgtg01)	#fgtg03	HIDDEN_WARP_NPC,3,5
 // Exchange npc. Step 1 of 2
 payon_in01,193,23,3	script	灿模#fgtg01	1_F_ORIENT_01,{
 	if (isbegin_quest(14693) == 1) {
-		cloakoffnpcself( "Shorty#fgtg004" );
+		cloakoffnpcself( "肖蒂#fgtg004" );
 		mes "[宅宅]";
 		mes "萨尔蒂！萨尔蒂~我来了~你等了吗？等了很久吗？";
 		next;
@@ -158,7 +158,7 @@ payon_in01,193,23,3	script	灿模#fgtg01	1_F_ORIENT_01,{
 		select("那好吧。");
 		mes "[宅宅]";
 		mes "那么，出发吧！！！";
-		cloakonnpcself("Shorty#fgtg004");
+		cloakonnpcself("肖蒂#fgtg004");
 		completequest 14693;
 		setquest 14694;
 		close;
@@ -168,7 +168,7 @@ payon_in01,193,23,3	script	灿模#fgtg01	1_F_ORIENT_01,{
 	close;
 }
 
-payon_in01,190,24,5	duplicate(dummy_cloaked_npc)	Shorty#fgtg004	4_GALAPAGO
+payon_in01,190,24,5	duplicate(dummy_cloaked_npc)	肖蒂#fgtg004	4_GALAPAGO
 
 
 // Exchange npc. Step 2 of 2
@@ -176,7 +176,7 @@ prt_fild10,318,191,0	script	#salt01	HIDDEN_WARP_NPC,3,5,{
 	end;
 OnTouch:
 	if (isbegin_quest(14694) == 1)
-		cloakoffnpcself( "Salty#fgtg01" );
+		cloakoffnpcself( "萨尔蒂#fgtg01" );
 	end;
 }
 prt_fild10,262,39,0	duplicate(#salt01)	#salt02	HIDDEN_WARP_NPC,3,5
@@ -193,7 +193,7 @@ prt_fild10,318,191,3	script	萨尔蒂#fgtg01	4_F_ALCHE_A,{
 		mes "[萨尔蒂]";
 		mes "哎呀！橡果！嚼嚼，橡果果冻！橡果用来做什么？就是做橡果果冻吃的呀~";
 		next;
-		cloakoffnpcself( "Shorty#fgtg005" );
+		cloakoffnpcself( "肖蒂#fgtg005" );
 		mes "[宅宅]";
 		mes "你看起来很高兴啊，萨尔蒂。没有我，你过得很开心吗？";
 		next;
@@ -254,8 +254,8 @@ prt_fild10,318,191,3	script	萨尔蒂#fgtg01	4_F_ALCHE_A,{
 		cloakonnpcself();
 		mes "[宅宅]";
 		mes "主人，就算过了很久很久，也不要忘记我，要成为名震大陆的出色冒险家！";
-		specialeffect EF_TELEPORTATION2, AREA, "Shorty#fgtg005";
-		cloakonnpcself( "Shorty#fgtg005" );
+		specialeffect EF_TELEPORTATION2, AREA, "肖蒂#fgtg005";
+		cloakonnpcself( "肖蒂#fgtg005" );
 		erasequest 14694;
 		if (isbegin_quest(14695) > 0)
 			erasequest 14695;
@@ -272,7 +272,7 @@ OnInit:
 	end;
 }
 
-prt_fild10,315,189,7	duplicate(dummy_cloaked_npc)	Shorty#fgtg005	4_GALAPAGO
+prt_fild10,315,189,7	duplicate(dummy_cloaked_npc)	肖蒂#fgtg005	4_GALAPAGO
 
 
 // Base for the dynamic npc

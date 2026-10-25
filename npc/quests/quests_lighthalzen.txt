@@ -35,11 +35,11 @@ OnEnable:
 	mapannounce "lighthalzen","各位市民请注意。我们的安保系统已遭突破，全城已进入流氓警报状态。请立即寻找避难场所！",bc_map;
 	initnpctimer;
 	for (set .@i, 0; .@i < 30; set .@i, .@i + 1)
-		monster "lighthalzen",0,0,"Gangster",1592,1,"Law Enforcement::OnMyMobDead";
+		monster "lighthalzen",0,0,"Gangster",1592,1,"执法者::OnMyMobDead";
 	end;
 
 OnTimer220000:
-	killmonster "lighthalzen","Law Enforcement::OnMyMobDead";
+	killmonster "lighthalzen","执法者::OnMyMobDead";
 	mapannounce "lighthalzen","各位市民请注意。执法部门已成功控制住局势，警戒状态已经解除。",bc_map;
 	set $@Lhz_Gangster_Alert, 0;
 	stopnpctimer;

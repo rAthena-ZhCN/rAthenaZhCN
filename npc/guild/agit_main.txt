@@ -17,14 +17,14 @@
 //=
 //= - Enables Stewards inside Guild Strongholds which let's
 //=   the guild master invest in Defense and Economy, and
-//=   to summon guardians, a Kafra, and enter master's room.
+//=   to summon guardians, a 卡普拉, and enter master's room.
 //=
 //= - Guardian Spawning Template
 //=   Visible Name required: Guardian
 //=   Spawn guardians when guild castle data is received.
 //=
-//= - Enables Kafra Services inside Guild Strongholds.
-//=   Visible Name required: Kafra Employee
+//= - Enables 卡普拉 Services inside Guild Strongholds.
+//=   Visible Name required: 卡普拉职员
 //=   Storage, Guild Storage, Teleport Service, Cart rental.
 //=
 //= - Treasure Chest spawning.
@@ -124,9 +124,9 @@ OnAgitBreak:
 	mapannounce strnpcinfo(2),"华丽金属已被摧毁。",bc_map|bc_woe,"0x00CCFF",FW_NORMAL,12;
 	MapRespawnGuildID strnpcinfo(2),.@GID,6;
 
-	// Refresh castle data, disable Kafra and reset Invest information.
+	// Refresh castle data, disable 卡普拉 and reset Invest information.
 	donpcevent strnpcinfo(0)+"::OnRecvCastle";
-	disablenpc "Kafra Staff#"+strnpcinfo(2);
+	disablenpc "卡普拉职员#"+strnpcinfo(2);
 	for( set .@i, CD_INVESTED_ECONOMY; .@i <= CD_ENABLED_KAFRA; set .@i, .@i+1 ) {
 		SetCastleData strnpcinfo(2), .@i, 0;
 	}
@@ -157,9 +157,9 @@ OnAgitEnd:
 // Occupying Guild has been disbanded.
 OnGuildBreak:
 	if (strnpcinfo(0) == "Gld_Agit_Manager") end;
-	// Kill guardians, disable the Kafra, and set owner to 0.
+	// Kill guardians, disable the 卡普拉, and set owner to 0.
 	killmonster strnpcinfo(2),"Guardian#"+strnpcinfo(2)+"::OnGuardianDied";
-	disablenpc "Kafra Staff#"+strnpcinfo(2);
+	disablenpc "卡普拉职员#"+strnpcinfo(2);
 	SetCastleData strnpcinfo(2),CD_GUILD_ID,0;
 	// Wait before refreshing guild information.
 	sleep 7000;
@@ -276,8 +276,8 @@ OnRecvCastle:
 			end;
 		}
 		donpcevent "Agit#"+strnpcinfo(2)+"::OnStartArena";
-		// Disable Kafra Staff...
-		disablenpc "Kafra Staff#"+strnpcinfo(2);
+		// Disable 卡普拉职员...
+		disablenpc "卡普拉职员#"+strnpcinfo(2);
 		end;
 	}
 	else {
@@ -308,15 +308,15 @@ OnRecvCastle:
 		}
 		// And load purchased Guardian in castles.
 		donpcevent "Guardian#"+strnpcinfo(2)+"::OnSpawnGuardians";
-		// And display Kafra if purchased.
-		if (GetCastleData(strnpcinfo(2),CD_ENABLED_KAFRA) < 1) disablenpc "Kafra Staff#"+strnpcinfo(2);
+		// And display 卡普拉 if purchased.
+		if (GetCastleData(strnpcinfo(2),CD_ENABLED_KAFRA) < 1) disablenpc "卡普拉职员#"+strnpcinfo(2);
 	}
 	end;
 }
 
-// WoE : Guild Kafras
+// WoE : Guild 卡普拉s
 //============================================================
--	script	Kafra Staff#woe::guildkafra	-1,{
+-	script	卡普拉职员#woe::guildkafra	-1,{
 
 	set .@GID,GetCastleData(strnpcinfo(2),CD_GUILD_ID);
 
@@ -849,7 +849,7 @@ OnRecvCastle:
 				mes "在我看来她很努力。留下她是个好决定。";
 				close;
 			}
-			disablenpc "Kafra Staff#"+strnpcinfo(2);
+			disablenpc "卡普拉职员#"+strnpcinfo(2);
 			SetCastleData strnpcinfo(2),CD_ENABLED_KAFRA,0;
 			mes "["+strnpcinfo(1)+"]";
 			mes "....";
@@ -873,7 +873,7 @@ OnRecvCastle:
 				close;
 			}
 			set Zeny, Zeny - 10000;
-			enablenpc "Kafra Staff#"+strnpcinfo(2);
+			enablenpc "卡普拉职员#"+strnpcinfo(2);
 			SetCastleData strnpcinfo(2),CD_ENABLED_KAFRA,1;
 			mes "["+strnpcinfo(1)+"]";
 			mes "我们与卡普拉总部签订了合约，并雇用了一名卡普拉职员。";

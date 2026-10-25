@@ -1489,8 +1489,8 @@ OnTimer30000:
 	stopnpctimer;
 	end;
 }
-malaya,66,277,0	duplicate(流沙陷阱#malaya)	Sand Trap#malaya01	557
-malaya,70,282,0	duplicate(流沙陷阱#malaya)	Sand Trap#malaya02	557
+malaya,66,277,0	duplicate(流沙陷阱#malaya)	流沙陷阱#malaya01	557
+malaya,70,282,0	duplicate(流沙陷阱#malaya)	流沙陷阱#malaya02	557
 
 ma_fild01,178,206,0	script	黑竹#malaya	844,4,4,{
 	if (MaxWeight - Weight < 1000 || checkweight(1201,1) == 0) {
@@ -1525,11 +1525,11 @@ OnTimer30000:
 	stopnpctimer;
 	end;
 }
-ma_fild01,225,186,0	duplicate(黑竹#malaya)	Black Bamboo#malaya01	844,4,4
-ma_fild01,230,244,0	duplicate(黑竹#malaya)	Black Bamboo#malaya02	844,4,4
-ma_fild01,174,238,0	duplicate(黑竹#malaya)	Black Bamboo#malaya03	844,4,4
-ma_fild01,180,273,0	duplicate(黑竹#malaya)	Black Bamboo#malaya04	844,4,4
-ma_fild01,179,145,0	duplicate(黑竹#malaya)	Black Bamboo#malaya05	844,4,4
+ma_fild01,225,186,0	duplicate(黑竹#malaya)	黑竹#malaya01	844,4,4
+ma_fild01,230,244,0	duplicate(黑竹#malaya)	黑竹#malaya02	844,4,4
+ma_fild01,174,238,0	duplicate(黑竹#malaya)	黑竹#malaya03	844,4,4
+ma_fild01,180,273,0	duplicate(黑竹#malaya)	黑竹#malaya04	844,4,4
+ma_fild01,179,145,0	duplicate(黑竹#malaya)	黑竹#malaya05	844,4,4
 
 malaya,295,171,3	script	收藏品商人卫恩	582,{
 	if (MaxWeight - Weight < 1000 || checkweight(1201,1) == 0) {
@@ -3139,9 +3139,9 @@ ma_fild01,251,93,3	script	迷路的孩子#malaya01	576,{
 		close2;
 		disablenpc();
 		if (strnpcinfo(0) == "Lost Child#malaya01") {
-			enablenpc "Lost Child#malaya02";
+			enablenpc "迷路的孩子#malaya02";
 		} else if (strnpcinfo(0) == "Lost Child#malaya01") {
-			enablenpc "Lost Child#malaya03";
+			enablenpc "迷路的孩子#malaya03";
 		} else {
 			enablenpc "迷路的孩子#malaya01";
 		}
@@ -3173,8 +3173,8 @@ OnInit:
 	if (strnpcinfo(0) != "Lost Child#malaya01")
 		disablenpc();
 }
-ma_fild01,114,141,3	duplicate(迷路的孩子#malaya01)	Lost Child#malaya02	576
-ma_fild01,130,314,3	duplicate(迷路的孩子#malaya01)	Lost Child#malaya03	576
+ma_fild01,114,141,3	duplicate(迷路的孩子#malaya01)	迷路的孩子#malaya02	576
+ma_fild01,130,314,3	duplicate(迷路的孩子#malaya01)	迷路的孩子#malaya03	576
 
 ma_fild02,241,39,5	script	善良的卡普雷布迪代	572,{
 	mes "[布迪代]";
@@ -7296,14 +7296,14 @@ malaya,55,72,4	script	护士#ma_n1	569,{
 			close;
 		}
 		mes "声音好像是从医院入口附近的灌木丛里传来的。";
-		specialeffect EF_STEAL,AREA,"Bushes#ma";
+		specialeffect EF_STEAL,AREA,"灌木丛#ma";
 		set malaya_bang,13;
 		changequest 11293,11294;
 		close;
 	} else if (malaya_bang == 13) {
 		mes "声音好像是从医院入口附近的灌木丛里传来的。";
 		mes "四处看看吧。";
-		specialeffect EF_STEAL,AREA,"Bushes#ma";
+		specialeffect EF_STEAL,AREA,"灌木丛#ma";
 		close;
 	} else if (malaya_bang == 14) {
 		mes "[护士拉斯]";
@@ -7358,7 +7358,7 @@ malaya,55,72,4	script	护士#ma_n1	569,{
 		next;
 		mes "[护士拉斯]";
 		mes "喂，灌木丛里的那个，你现在不回家我就去告发你！";
-		emotion ET_HUK, getnpcid(0, "Bushes#ma");
+		emotion ET_HUK, getnpcid(0, "灌木丛#ma");
 		close2;
 		cutin "",255;
 		end;
@@ -8379,7 +8379,7 @@ OnDisableNPC:
 	donpcevent "打鼓的年轻人#pin08"+.@str$;
 	donpcevent "打拍子的少年#pin09"+.@str$;
 	donpcevent "打拍子的少年#pin10"+.@str$;
-	donpcevent "Beat Catching Boy#pin11"+.@str$;
+	donpcevent "打拍子的少年#pin11"+.@str$;
 	end;
 }
 
@@ -8756,11 +8756,11 @@ ma_fild01,172,223,6	script	纹身师#pin	574,{
 	next;
 	mes "纹身师把远古怨念摆放在工作台周围。";
 	next;
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#01";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#02";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#03";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#04";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#05";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#01";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#02";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#03";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#04";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#05";
 	mes "远古怨念亮了起来，工具也开始发光。他看着发光的工具和材料，满意地笑了。";
 	next;
 	mes "接着，"+.@name$+"目不转睛地盯着人偶，似乎想把每个细节都记进脑海里。";
@@ -8870,11 +8870,11 @@ ma_fild01,172,223,6	script	纹身师#pin	574,{
 	}
 	mes "他双手捧起粉末，然后吹到画作上。";
 	next;
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#01";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#02";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#03";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#04";
-	specialeffect EF_FLAMELAUNCHER,AREA,"Ancient Grudge#05";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#01";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#02";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#03";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#04";
+	specialeffect EF_FLAMELAUNCHER,AREA,"远古怨念#05";
 	mes "所有远古怨念开始燃烧，接着"+.@name$+"画作上的光芒也随之消散。";
 	next;
 	specialeffect EF_LIGHTSPHERE;
@@ -8907,10 +8907,10 @@ ma_fild01,172,223,6	script	纹身师#pin	574,{
 }
 
 ma_fild01,171,224,0	script	远古怨念#01	139,{ end; }
-ma_fild01,173,224,0	duplicate(远古怨念#01)	Ancient Grudge#02	139
-ma_fild01,173,223,0	duplicate(远古怨念#01)	Ancient Grudge#03	139
-ma_fild01,172,222,0	duplicate(远古怨念#01)	Ancient Grudge#04	139
-ma_fild01,171,223,0	duplicate(远古怨念#01)	Ancient Grudge#05	139
+ma_fild01,173,224,0	duplicate(远古怨念#01)	远古怨念#02	139
+ma_fild01,173,223,0	duplicate(远古怨念#01)	远古怨念#03	139
+ma_fild01,172,222,0	duplicate(远古怨念#01)	远古怨念#04	139
+ma_fild01,171,223,0	duplicate(远古怨念#01)	远古怨念#05	139
 
 ma_fild01,192,200,8	script	观光客#pin01	58,{
 	mes "[观光客]";
@@ -9129,4 +9129,4 @@ OnDisable:
 	disablenpc();
 	end;
 }
-ma_fild01,170,228,4	duplicate(打拍子的少年#pin10)	Beat Catching Boy#pin11	577
+ma_fild01,170,228,4	duplicate(打拍子的少年#pin10)	打拍子的少年#pin11	577

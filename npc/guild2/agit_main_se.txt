@@ -43,7 +43,7 @@ OnRecvCastle2:
 		monster strnpcinfo(2),0,0,"Tower Keeper",1270,4;
 	}
 	if (getcastledata(strnpcinfo(2),CD_ENABLED_KAFRA) < 1)
-		disablenpc "Kafra Employee#"+substr(strnpcinfo(2),0,1)+substr(strnpcinfo(2),8,9);
+		disablenpc "卡普拉职员#"+substr(strnpcinfo(2),0,1)+substr(strnpcinfo(2),8,9);
 	end;
 
 OnAgitStart2:
@@ -72,7 +72,7 @@ OnGuildBreak:
 	if (strnpcinfo(2) == "template") end;
 	killmonster strnpcinfo(2),"gard1#"+strnpcinfo(2)+"::OnGuardianDied";
 	killmonster strnpcinfo(2),"gard2#"+strnpcinfo(2)+"::OnGuardianDied";
-	disablenpc "Kafra Employee#"+substr(strnpcinfo(2),0,1)+substr(strnpcinfo(2),8,9);
+	disablenpc "卡普拉职员#"+substr(strnpcinfo(2),0,1)+substr(strnpcinfo(2),8,9);
 	setcastledata strnpcinfo(2),CD_GUILD_ID,0;
 	sleep 7000;
 	announce "公会基地["+getcastlename(strnpcinfo(2))+"]已被放弃。",0;
@@ -477,7 +477,7 @@ OnTreasureDied:
 				mes "所有人的利益。";
 				close;
 			}
-			disablenpc "Kafra Employee#"+strnpcinfo(2);
+			disablenpc "卡普拉职员#"+strnpcinfo(2);
 			setcastledata strnpcinfo(4),CD_ENABLED_KAFRA,0;
 			mes "[ 管家 ]";
 			mes "那位卡普拉职员";
@@ -513,7 +513,7 @@ OnTreasureDied:
 					close;
 				}
 				set Zeny, Zeny-10000;
-				enablenpc "Kafra Employee#"+strnpcinfo(2);
+				enablenpc "卡普拉职员#"+strnpcinfo(2);
 				setcastledata strnpcinfo(4),CD_ENABLED_KAFRA,1;
 				mes "[ 管家 ]";
 				mes "好的。我们已与";
@@ -617,8 +617,8 @@ OnStartArena:
 	// Clear castle's data.
 	for(set .@i,CD_INVESTED_ECONOMY; .@i<CD_ENABLED_GUARDIAN00; set .@i,.@i+1)
 		setcastledata strnpcinfo(4),.@i,0;
-	// Disable Kafra
-	disablenpc "Kafra Employee#"+strnpcinfo(2);
+	// Disable 卡普拉
+	disablenpc "卡普拉职员#"+strnpcinfo(2);
 
 	announce "["+getguildname(.@GID)+"]公会攻占了["+.@region$+" "+charat(strnpcinfo(2),3)+"]据点"+getcastlename(strnpcinfo(4))+"！",bc_all|bc_woe;
 	mapannounce strnpcinfo(4),"华丽金属已被击碎！",bc_map,"0x00FF00",FW_NORMAL,20,0,40;
@@ -834,9 +834,9 @@ OnInit:
 	end;
 }
 
-// Guild Kafras
+// Guild 卡普拉s
 //============================================================
--	script	Kafra#template	-1,{
+-	script	卡普拉#template	-1,{
 	cutin "kafra_01",2;
 	set .@GID, getcastledata(strnpcinfo(4),CD_GUILD_ID);
 	if (getcharid(2) == .@GID && getgdskilllv(.@GID,10001)) {

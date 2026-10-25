@@ -740,20 +740,20 @@ prt_cas_q,29,30,3	script	Giant Beast Manager#ep16_s02	8W_SOLDIER,{
 
 prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 	cutin "kafra_02.bmp",2;
-	mes "[卡普拉职员]";
+	mes "[Kafra Employee]";
 	mes "Hello. This is Kafra Service.";
 	mes "What can I do for you?";
 	next;
 	switch( select( "Use Cargo Service", "Use Cart Service", "Quit" ) ) {
 	case 1:
 		if (!callfunc("F_CanOpenStorage")) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "I am sorry, dear customer.";
 			mes "You need to raise the novice skill level to 6 or higher to use the cargo service.";
 			close3;
 		}
 		if (countitem(7059) == 0 && Zeny < 50) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "You don't have enough money.";
 			mes "The Cargo Service costs 50 Zeny.";
 			close3;
@@ -762,7 +762,7 @@ prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 			delitem 7059,1;	// Cargo_Free_Ticket
 		else
 			Zeny -= 50;
-		mes "[卡普拉职员]";
+		mes "[Kafra Employee]";
 		mes "Let me open the warehouse for you.";
 		mes "Thank you for using Kafra Service.";
 		close2;
@@ -771,18 +771,18 @@ prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 		end;
 	case 2:
 		if (BaseClass != Job_Merchant) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "I am sorry,";
 			mes "The Cart Service is available for Merchant classes only.";
 			close3;
 		}
 		if (checkcart() == true) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "You are already equipped with a cart.";
 			close3;
 		}
 		if (getskilllv("MC_PUSHCART") == 0) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "You can use the cart after learning the 'Push Cart' skill.";
 			close3;
 		}
@@ -791,14 +791,14 @@ prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 			setcart();
 			close3;
 		}
-		mes "[卡普拉职员]";
+		mes "[Kafra Employee]";
 		mes "The Cart Service costs 800 Zeny.";
 		mes "Would you use it?";
 		next;
 		if (select( "Use", "Cancel" ) == 2)
 			close3;
 		if (Zeny < 800) {
-			mes "[卡普拉职员]";
+			mes "[Kafra Employee]";
 			mes "You don't have enough money, dear customer.";
 			mes "The Cart Service costs 800 Zeny.";
 			close3;
@@ -808,7 +808,7 @@ prt_cas_q,28,30,3	script	卡普拉职员#ep16_s01	4_F_KAFRA2,{
 		setcart();
 		close3;
 	case 3:
-		mes "[卡普拉职员]";
+		mes "[Kafra Employee]";
 		mes "Thank you for using Kafra Service as always.";
 		close2;
 		cutin "",255;

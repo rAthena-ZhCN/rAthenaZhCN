@@ -38,7 +38,7 @@ function	script	F_GuildBreak	{
 	killmonsterall .@map$;
 
 	Announce "Guild Base [" + GetCastleName(.@map$) + "] has been abandoned.",0;
-	disablenpc "Kafra Staff#"+.@castle$;
+	disablenpc "卡普拉职员#"+.@castle$;
 
 	SetCastleData .@map$,0,0;
 	return;
@@ -65,7 +65,7 @@ function	script	F_AgitBreak	{
 	Announce "The [" + GetCastleName(.@map$) + "] castle has been conquered by the [" + GetGuildName(.@GID) + "] guild.",bc_all;
 	donpcevent "::OnRecvCastle"+.@castle$;
 
-	disablenpc "Kafra Staff#"+.@castle$;
+	disablenpc "卡普拉职员#"+.@castle$;
 
 	// remove investment data and kafra
 	for( set .@i, 4; .@i <= 9; set .@i, .@i+1 )
@@ -114,7 +114,7 @@ OnGuildBreak:
 	end;
 OnAgitEliminate:
 	MapRespawnGuildID "nguild_alde",GetCastleData("nguild_alde",1),6;
-	Monster "nguild_alde",216,24,"EMPERIUM",1288,1,"Agit_N01::OnAgitBreak";
+	Monster "nguild_alde",216,24,"EMPERIUM",1288,1,"攻城_N01::OnAgitBreak";
 	end;
 OnAgitEnd:
 	callfunc "F_AgitEnd","nguild_alde","N01";
@@ -141,7 +141,7 @@ OnGuildBreak:
 	end;
 OnAgitEliminate:
 	MapRespawnGuildID "nguild_gef",GetCastleData("nguild_gef",1),6;
-	Monster "nguild_gef",198,182,"EMPERIUM",1288,1,"Agit_N02::OnAgitBreak";
+	Monster "nguild_gef",198,182,"EMPERIUM",1288,1,"攻城_N02::OnAgitBreak";
 	end;
 OnAgitEnd:
 	callfunc "F_AgitEnd","nguild_gef","N02";
@@ -168,7 +168,7 @@ OnGuildBreak:
 	end;
 OnAgitEliminate:
 	MapRespawnGuildID "nguild_pay",GetCastleData("nguild_pay",1),6;
-	Monster "nguild_pay",139,139,"EMPERIUM",1288,1,"Agit_N03::OnAgitBreak";
+	Monster "nguild_pay",139,139,"EMPERIUM",1288,1,"攻城_N03::OnAgitBreak";
 	end;
 OnAgitEnd:
 	callfunc "F_AgitEnd","nguild_pay","N03";
@@ -195,7 +195,7 @@ OnGuildBreak:
 	end;
 OnAgitEliminate:
 	MapRespawnGuildID "nguild_prt",GetCastleData("nguild_prt",1),6;
-	Monster "nguild_prt",197,197,"EMPERIUM",1288,1,"Agit_N04::OnAgitBreak";
+	Monster "nguild_prt",197,197,"EMPERIUM",1288,1,"攻城_N04::OnAgitBreak";
 	end;
 OnAgitEnd:
 	callfunc "F_AgitEnd","nguild_prt","N04";

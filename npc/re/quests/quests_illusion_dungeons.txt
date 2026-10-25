@@ -177,7 +177,7 @@ pay_arche,48,137,4	script	Young Scholar#ill_moon_arch	4_F_03,{
 		mes "[ Young Scholar ]";
 		mes "I hope nothing bad happens to those two.";
 		cloakoffnpcself( "Payon Soldier#ill_moon_arch" );
-		cloakoffnpcself( "Muyeon#ill_moon_arch" );
+		cloakoffnpcself( "穆延#ill_moon_arch" );
 		sleep2 750;
 		npctalk "There they are! They look fine!","Young Scholar#ill_moon_arch",bc_self;
 		sleep2 1500;
@@ -203,7 +203,7 @@ pay_arche,48,137,4	script	Young Scholar#ill_moon_arch	4_F_03,{
 		npctalk "Sigh. I'll go after her. Talk to the Elders, will you?","Payon Soldier#ill_moon_arch",bc_self;
 		sleep2 1500;
 		cloakonnpcself( "Payon Soldier#ill_moon_arch" );
-		cloakonnpcself( "Muyeon#ill_moon_arch" );
+		cloakonnpcself( "穆延#ill_moon_arch" );
 		mes "[ Young Scholar ]";
 		mes "That's....!";
 		mes "She left without telling us what happened.";
@@ -266,7 +266,7 @@ OnInit:
 }
 
 pay_arche,44,133,7	duplicate(dummy_cloaked_npc)	Payon Soldier#ill_moon_arch	4_M_PAY_SOLDIER
-pay_arche,46,135,5	duplicate(dummy_cloaked_npc)	Muyeon#ill_moon_arch	4_F_TAEKWON
+pay_arche,46,135,5	duplicate(dummy_cloaked_npc)	穆延#ill_moon_arch	4_F_TAEKWON
 
 payon_in03,33,95,3	script	Muyeon#ill_moon_pin	4_F_TAEKWON,{
 	if (checkweight(25271,1) == 0 || (MaxWeight - Weight) < 1000) {
@@ -631,7 +631,7 @@ pay_dun03,140,46,0	script	Shimmering Portal#ill_moon_in	4_ENERGY_BLUE,{
 	if (illusion_moonlight == 5) {
 		mes "There's a shimmering portal in the air.";
 		next;
-		cloakoffnpcself( "Young Scholar#ill_moon_pdun" );
+		cloakoffnpcself( "年轻学者#ill_moon_pdun" );
 		cloakoffnpcself( "Junghee#ill_moon_pdun" );
 		npctalk "*Panting* You're here.","Young Scholar#ill_moon_pdun",bc_self;
 		mes "[ Young Scholar ]";
@@ -652,11 +652,11 @@ pay_dun03,140,46,0	script	Shimmering Portal#ill_moon_in	4_ENERGY_BLUE,{
 		setquest 7781;
 		close2;
 		setpcblock PCBLOCK_NPC, true;
-		specialeffect EF_SPINMOVE,AREA,"Young Scholar#ill_moon_pdun";
-		specialeffect EF_DQ9_CHARGE,AREA,"Young Scholar#ill_moon_pdun";
+		specialeffect EF_SPINMOVE,AREA,"年轻学者#ill_moon_pdun";
+		specialeffect EF_DQ9_CHARGE,AREA,"年轻学者#ill_moon_pdun";
 		sleep2 350;
 		npctalk "Arghhhhh-!","",bc_self;
-		cloakonnpcself( "Young Scholar#ill_moon_pdun" );
+		cloakonnpcself( "年轻学者#ill_moon_pdun" );
 		sleep2 500;
 		npctalk "Chunghae!","Junghee#ill_moon_pdun",bc_self;
 		sleep2 2000;
@@ -685,7 +685,7 @@ OnInit:
 }
 
 pay_dun03,143,45,4	duplicate(dummy_cloaked_npc)	Junghee#ill_moon_pdun	4_M_PAY_SOLDIER
-pay_dun03,138,43,7	duplicate(dummy_cloaked_npc)	Young Scholar#ill_moon_pdun	4_F_03
+pay_dun03,138,43,7	duplicate(dummy_cloaked_npc)	年轻学者#ill_moon_pdun	4_F_03
 
 pay_d03_i,140,46,0	script	Shimmering Portal#ill_moon_out	4_ENERGY_BLUE,{
 	mes "I can go back to the ruined village.";
@@ -1374,9 +1374,9 @@ OnInit:
 	questinfo( QTYPE_QUEST, QMARK_YELLOW, (.@main_completed$ + " && checkquest(14680,PLAYTIME) == 2") );
 	end;
 }
-gef_dun01,133,221,1	duplicate(dummy_cloaked_npc)	Mojo#ilgf01	2_F_MAGICMASTER
-gef_dun01,130,222,5	duplicate(dummy_cloaked_npc)	Mojo#ilgf02	2_F_MAGICMASTER
-gef_dun01,130,224,5	duplicate(dummy_cloaked_npc)	Mojo#ilgf03	2_F_MAGICMASTER
+gef_dun01,133,221,1	duplicate(dummy_cloaked_npc)	莫乔#ilgf01	2_F_MAGICMASTER
+gef_dun01,130,222,5	duplicate(dummy_cloaked_npc)	莫乔#ilgf02	2_F_MAGICMASTER
+gef_dun01,130,224,5	duplicate(dummy_cloaked_npc)	莫乔#ilgf03	2_F_MAGICMASTER
 
 gef_dun01,132,223,5	script	Grimm#ilgf	4_M_MINISTER,{
 	if (checkweight(501,1) == 0 || (MaxWeight - Weight) < 1000) {
@@ -1395,21 +1395,21 @@ gef_dun01,132,223,5	script	Grimm#ilgf	4_M_MINISTER,{
 		npctalk "Please?", "Mojo#ilgf", bc_self;
 		sleep2 500;
 		cloakonnpcself( "Mojo#ilgf" );
-		cloakoffnpcself( "Mojo#ilgf01" );
-		emotion ET_QUESTION, getnpcid(0, "Mojo#ilgf01");
+		cloakoffnpcself( "莫乔#ilgf01" );
+		emotion ET_QUESTION, getnpcid(0, "莫乔#ilgf01");
 		npctalk "Please?", "Mojo#ilgf01", bc_self;
 		sleep2 500;
-		cloakonnpcself( "Mojo#ilgf01" );
-		cloakoffnpcself( "Mojo#ilgf02" );
-		emotion ET_QUESTION, getnpcid(0, "Mojo#ilgf02");
+		cloakonnpcself( "莫乔#ilgf01" );
+		cloakoffnpcself( "莫乔#ilgf02" );
+		emotion ET_QUESTION, getnpcid(0, "莫乔#ilgf02");
 		npctalk "Please?", "Mojo#ilgf02", bc_self;
 		sleep2 500;
-		cloakonnpcself( "Mojo#ilgf02" );
-		cloakoffnpcself( "Mojo#ilgf03" );
-		emotion ET_QUESTION, getnpcid(0, "Mojo#ilgf03");
+		cloakonnpcself( "莫乔#ilgf02" );
+		cloakoffnpcself( "莫乔#ilgf03" );
+		emotion ET_QUESTION, getnpcid(0, "莫乔#ilgf03");
 		npctalk "Please?", "Mojo#ilgf03", bc_self;
 		sleep2 500;
-		cloakonnpcself( "Mojo#ilgf03" );
+		cloakonnpcself( "莫乔#ilgf03" );
 		cloakoffnpcself( "Mojo#ilgf" );
 		npctalk "Please?", "Mojo#ilgf", bc_self;
 		emotion ET_QUESTION, getnpcid(0, "Mojo#ilgf");
@@ -1875,39 +1875,39 @@ OnTouch:
 		.@char_id = getcharid(0);
 		cloakoffnpcself( "Undead#ilgf06" );
 		cloakoffnpcself( "Wizard#ilgf06" );
-		cloakoffnpcself( "Wizard#ilgf07" );
+		cloakoffnpcself( "巫师#ilgf07" );
 
 		cloakoffnpcself( "Wizard#ilgf08" );
 		cloakoffnpcself( "Nameless Catacomb#ilgf01" );
 
 		cloakoffnpcself( "Wizard#ilgf09" );
-		cloakoffnpcself( "Wizard#ilgf10" );
+		cloakoffnpcself( "巫师#ilgf10" );
 
 		cloakoffnpcself( "Wizard#ilgf11" );
 
 		cloakoffnpcself( "Wizard#ilgf12" );
-		cloakoffnpcself( "Wizard#ilgf13" );
+		cloakoffnpcself( "巫师#ilgf13" );
 		cloakoffnpcself( "Nameless Catacomb#ilgf02" );
 
 		cloakoffnpcself( "Wizard#ilgf14" );
-		cloakoffnpcself( "Wizard#ilgf15" );
+		cloakoffnpcself( "巫师#ilgf15" );
 		cloakoffnpcself( "Nameless Catacomb#ilgf03" );
 
 		cloakoffnpcself( "Wizard#ilgf16" );
-		cloakoffnpcself( "Wizard#ilgf17" );
+		cloakoffnpcself( "巫师#ilgf17" );
 
 		cloakoffnpcself( "Wizard#ilgf18" );
 		cloakoffnpcself( "Someone's Dream#ilgf18" );
 
 		cloakoffnpcself( "Wizard#ilgf19" );
-		cloakoffnpcself( "Wizard#ilgf20" );
+		cloakoffnpcself( "巫师#ilgf20" );
 		cloakoffnpcself( "Undead#ilgf05" );
 
 		cloakoffnpcself( "Undead#ilgf02" );
 		cloakoffnpcself( "Undead#ilgf03" );
 		cloakoffnpcself( "Undead#ilgf04" );
 		cloakoffnpcself( "Wizard#ilgf21" );
-		cloakoffnpcself( "Wizard#ilgf22" );
+		cloakoffnpcself( "巫师#ilgf22" );
 
 		cloakoffnpcself( "Wizard#ilgf23" );
 		cloakoffnpcself( "Fast Undead#ilgf01" );
@@ -1916,10 +1916,10 @@ OnTouch:
 		cloakoffnpcself( "Shining Mushroom#ilgf01" );
 
 		cloakoffnpcself( "Wizard#ilgf25" );
-		cloakoffnpcself( "Wizard#ilgf26" );
+		cloakoffnpcself( "巫师#ilgf26" );
 		cloakoffnpcself( "Undead#ilgf01" );
 
-		cloakoffnpcself( "Wizard#ilgf27" );
+		cloakoffnpcself( "巫师#ilgf27" );
 		cloakoffnpcself( "Wizard#ilgf28" );
 	}
 	else if (ill_vampire == 10) {
@@ -1929,12 +1929,12 @@ OnTouch:
 	}
 	else if (ill_vampire == 12 || ill_vampire == 13) {
 		.@char_id = getcharid(0);
-		cloakoffnpcself( "Gem#ilgf02" );
-		cloakoffnpcself( "Marina#ilgf02" );
-		cloakoffnpcself( "Antoine#ilgf02" );
+		cloakoffnpcself( "杰姆#ilgf02" );
+		cloakoffnpcself( "玛丽娜#ilgf02" );
+		cloakoffnpcself( "安托万#ilgf02" );
 		if (ill_vampire == 13) {
 			cloakoffnpcself( "Dracula#ilgf03" );
-			cloakoffnpcself( "King#ilgf02" );
+			cloakoffnpcself( "国王#ilgf02" );
 			cloakoffnpcself( "Jojo#ilgf01" );
 		}
 	}
@@ -2431,12 +2431,12 @@ OnTouch:
 	}
 	end;
 }
-gef_d01_i,127,153,5	duplicate(Marina#ilgf03)	Marina#ilgf04	4_F_MONK,5,5
-gef_d01_i,213,237,5	duplicate(Marina#ilgf03)	Marina#ilgf05	4_F_MONK,5,5
-gef_d01_i,150,224,5	duplicate(Marina#ilgf03)	Marina#ilgf06	4_F_MONK,5,5
-gef_d01_i,208,144,5	duplicate(Marina#ilgf03)	Marina#ilgf07	4_F_MONK,5,5
-gef_d01_i,250,130,5	duplicate(Marina#ilgf03)	Marina#ilgf08	4_F_MONK,5,5
-gef_d01_i,255,202,5	duplicate(Marina#ilgf03)	Marina#ilgf09	4_F_MONK,5,5
+gef_d01_i,127,153,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf04	4_F_MONK,5,5
+gef_d01_i,213,237,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf05	4_F_MONK,5,5
+gef_d01_i,150,224,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf06	4_F_MONK,5,5
+gef_d01_i,208,144,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf07	4_F_MONK,5,5
+gef_d01_i,250,130,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf08	4_F_MONK,5,5
+gef_d01_i,255,202,5	duplicate(Marina#ilgf03)	玛丽娜#ilgf09	4_F_MONK,5,5
 
 
 
@@ -2450,7 +2450,7 @@ OnTouch:
 
 gef_d01_i,254,162,1	duplicate(dummy_cloaked_npc)	Undead#ilgf08	ILL_ZOMBIE
 gef_d01_i,252,160,1	duplicate(dummy_cloaked_npc)	Undead#ilgf09	ILL_ZOMBIE
-gef_d01_i,253,165,3	duplicate(dummy_cloaked_npc)	Marina#ilgf10	4_F_MONK
+gef_d01_i,253,165,3	duplicate(dummy_cloaked_npc)	玛丽娜#ilgf10	4_F_MONK
 
 gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	if (ill_vampire != 6)
@@ -2476,8 +2476,8 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	mes "Could he be Father Jubilee?";
 	mes "Marina, I think we've found him!";
 	sleep2 500;
-	cloakoffnpcself( "Marina#ilgf10" );
-	specialeffect EF_TELEPORTATION2, AREA, "Marina#ilgf10";
+	cloakoffnpcself( "玛丽娜#ilgf10" );
+	specialeffect EF_TELEPORTATION2, AREA, "玛丽娜#ilgf10";
 	npctalk "What are you doing here?", "Marina#ilgf10", bc_self;
 	next;
 	mes "[Marina]";
@@ -2489,7 +2489,7 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	sleep2 500;
 	specialeffect EF_GLASSWALL2;
 	sleep2 1000;
-	npctalk "Adventurer?", "Marina#ilgf10", bc_self;
+	npctalk "Adventurer?", "玛丽娜#ilgf10", bc_self;
 	sleep2 1000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : Yes, I'm ready!", bc_self;
 	next;
@@ -2563,9 +2563,9 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	mes "[Marina]";
 	mes "Let's go.";
 	unittalk getcharid(3), "" + strcharinfo(0) + " : I'd better look for Jojo.", bc_self;
-	specialeffect EF_TELEPORTATION2, AREA, "Marina#ilgf10";
+	specialeffect EF_TELEPORTATION2, AREA, "玛丽娜#ilgf10";
 	specialeffect EF_TELEPORTATION2;
-	cloakonnpcself( "Marina#ilgf10" );
+	cloakonnpcself( "玛丽娜#ilgf10" );
 	cloakonnpcself( "Priest#ilgf01" );
 	erasequest 14658;// Jubilee Is the Priest's Name
 	ill_vampire = 7;
@@ -2575,39 +2575,39 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 
 	cloakoffnpcself( "Undead#ilgf06" );
 	cloakoffnpcself( "Wizard#ilgf06" );
-	cloakoffnpcself( "Wizard#ilgf07" );
+	cloakoffnpcself( "巫师#ilgf07" );
 
 	cloakoffnpcself( "Wizard#ilgf08" );
 	cloakoffnpcself( "Nameless Catacomb#ilgf01" );
 
 	cloakoffnpcself( "Wizard#ilgf09" );
-	cloakoffnpcself( "Wizard#ilgf10" );
+	cloakoffnpcself( "巫师#ilgf10" );
 
 	cloakoffnpcself( "Wizard#ilgf11" );
 
 	cloakoffnpcself( "Wizard#ilgf12" );
-	cloakoffnpcself( "Wizard#ilgf13" );
+	cloakoffnpcself( "巫师#ilgf13" );
 	cloakoffnpcself( "Nameless Catacomb#ilgf02" );
 
 	cloakoffnpcself( "Wizard#ilgf14" );
-	cloakoffnpcself( "Wizard#ilgf15" );
+	cloakoffnpcself( "巫师#ilgf15" );
 	cloakoffnpcself( "Nameless Catacomb#ilgf03" );
 
 	cloakoffnpcself( "Wizard#ilgf16" );
-	cloakoffnpcself( "Wizard#ilgf17" );
+	cloakoffnpcself( "巫师#ilgf17" );
 
 	cloakoffnpcself( "Wizard#ilgf18" );
 	cloakoffnpcself( "Someone's Dream#ilgf18" );
 
 	cloakoffnpcself( "Wizard#ilgf19" );
-	cloakoffnpcself( "Wizard#ilgf20" );
+	cloakoffnpcself( "巫师#ilgf20" );
 	cloakoffnpcself( "Undead#ilgf05" );
 
 	cloakoffnpcself( "Undead#ilgf02" );
 	cloakoffnpcself( "Undead#ilgf03" );
 	cloakoffnpcself( "Undead#ilgf04" );
 	cloakoffnpcself( "Wizard#ilgf21" );
-	cloakoffnpcself( "Wizard#ilgf22" );
+	cloakoffnpcself( "巫师#ilgf22" );
 
 	cloakoffnpcself( "Wizard#ilgf23" );
 	cloakoffnpcself( "Fast Undead#ilgf01" );
@@ -2616,10 +2616,10 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	cloakoffnpcself( "Shining Mushroom#ilgf01" );
 
 	cloakoffnpcself( "Wizard#ilgf25" );
-	cloakoffnpcself( "Wizard#ilgf26" );
+	cloakoffnpcself( "巫师#ilgf26" );
 	cloakoffnpcself( "Undead#ilgf01" );
 
-	cloakoffnpcself( "Wizard#ilgf27" );
+	cloakoffnpcself( "巫师#ilgf27" );
 	cloakoffnpcself( "Wizard#ilgf28" );
 	close;
 
@@ -2631,9 +2631,9 @@ OnTouch:
 
 /*
 // never enabled?
-gef_d01_i,131,155,3	duplicate(dummy_npc)	Wizard#ilgf03	4_F_BOMI,5,5
-gef_d01_i,129,154,7	duplicate(dummy_npc)	Wizard#ilgf04	4_GEFFEN_05
-gef_d01_i,113,97,7	duplicate(dummy_npc)	Wizard#ilgf05	2_M_SAGE_B,5,5
+gef_d01_i,131,155,3	duplicate(dummy_npc)	巫师#ilgf03	4_F_BOMI,5,5
+gef_d01_i,129,154,7	duplicate(dummy_npc)	巫师#ilgf04	4_GEFFEN_05
+gef_d01_i,113,97,7	duplicate(dummy_npc)	巫师#ilgf05	2_M_SAGE_B,5,5
 gef_d01_i,116,96,1	duplicate(dummy_npc)	Undead#ilgf07	GHOUL
 */
 
@@ -2656,13 +2656,13 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf07";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf07";
 	// specialeffect EF_GUARD2, AREA, "Undead#ilgf06";	// already hidden
 	cloakonnpcself( "Wizard#ilgf06" );
-	cloakonnpcself( "Wizard#ilgf07" );
+	cloakonnpcself( "巫师#ilgf07" );
 	end;
 }
-gef_d01_i,46,112,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf07	4_M_ARUNA_NFM1
+gef_d01_i,46,112,5	duplicate(dummy_cloaked_npc)	巫师#ilgf07	4_M_ARUNA_NFM1
 gef_d01_i,47,110,7	duplicate(dummy_cloaked_npc)	Undead#ilgf06	GHOUL
 
 
@@ -2708,12 +2708,12 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf10";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf10";
 	cloakonnpcself( "Wizard#ilgf09" );
-	cloakonnpcself( "Wizard#ilgf10" );
+	cloakonnpcself( "巫师#ilgf10" );
 	end;
 }
-gef_d01_i,67,83,1	duplicate(dummy_cloaked_npc)	Wizard#ilgf10	4_GEFFEN_05
+gef_d01_i,67,83,1	duplicate(dummy_cloaked_npc)	巫师#ilgf10	4_GEFFEN_05
 
 
 gef_d01_i,156,234,3	script(CLOAKED)	Wizard#ilgf11	4_M_SIT_NOVICE,5,5,{
@@ -2754,14 +2754,14 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf13";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf13";
 	specialeffect EF_GUARD2, AREA, "Nameless Catacomb#ilgf02";
 	cloakonnpcself();
-	cloakonnpcself( "Wizard#ilgf13" );
+	cloakonnpcself( "巫师#ilgf13" );
 	cloakonnpcself( "Nameless Catacomb#ilgf02" );
 	end;
 }
-gef_d01_i,50,257,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf13	2_F_MAGICMASTER
+gef_d01_i,50,257,5	duplicate(dummy_cloaked_npc)	巫师#ilgf13	2_F_MAGICMASTER
 gef_d01_i,50,254,5	duplicate(dummy_cloaked_npc)	Nameless Catacomb#ilgf02	4_SOIL
 
 
@@ -2784,14 +2784,14 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf15";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf15";
 	specialeffect EF_GUARD2, AREA, "Nameless Catacomb#ilgf03";
 	cloakonnpcself( "Wizard#ilgf14" );
-	cloakonnpcself( "Wizard#ilgf15" );
+	cloakonnpcself( "巫师#ilgf15" );
 	cloakonnpcself( "Nameless Catacomb#ilgf03" );
 	end;
 }
-gef_d01_i,110,266,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf15	4_M_ARUNA_NFM1
+gef_d01_i,110,266,5	duplicate(dummy_cloaked_npc)	巫师#ilgf15	4_M_ARUNA_NFM1
 gef_d01_i,111,264,5	duplicate(dummy_cloaked_npc)	Nameless Catacomb#ilgf03	4_SOIL
 
 
@@ -2809,10 +2809,10 @@ OnTouch:
 	specialeffect EF_GUARD2, AREA, "Wizard#ilgf16";
 	specialeffect EF_GUARD2, AREA, "Wizard#ilgf16";
 	cloakonnpcself( "Wizard#ilgf16" );
-	cloakonnpcself( "Wizard#ilgf17" );
+	cloakonnpcself( "巫师#ilgf17" );
 	end;
 }
-gef_d01_i,53,166,7	duplicate(dummy_cloaked_npc)	Wizard#ilgf17	2_F_MAGICMASTER
+gef_d01_i,53,166,7	duplicate(dummy_cloaked_npc)	巫师#ilgf17	2_F_MAGICMASTER
 
 
 gef_d01_i,236,235,1	script(CLOAKED)	Wizard#ilgf18	1_M_WIZARD,5,5,{
@@ -2840,7 +2840,7 @@ gef_d01_i,255,201,5	script(CLOAKED)	Wizard#ilgf19	4_GEFFEN_05,5,5,{
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	specialeffect EF_GLASSWALL2;
-	specialeffect EF_GLASSWALL2, AREA, "Wizard#ilgf20";
+	specialeffect EF_GLASSWALL2, AREA, "巫师#ilgf20";
 	npctalk "Ah, what do we do? They're stronger than I thought.", "", bc_self;
 	sleep2 1500;
 	npctalk "When can we leave?", "Wizard#ilgf20", bc_self;
@@ -2851,14 +2851,14 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf20";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf20";
 	specialeffect EF_GUARD2, AREA, "Undead#ilgf05";
 	cloakonnpcself( "Wizard#ilgf19" );
-	cloakonnpcself( "Wizard#ilgf20" );
+	cloakonnpcself( "巫师#ilgf20" );
 	cloakonnpcself( "Undead#ilgf05" );
 	end;
 }
-gef_d01_i,254,200,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf20	2_F_MAGICMASTER
+gef_d01_i,254,200,5	duplicate(dummy_cloaked_npc)	巫师#ilgf20	2_F_MAGICMASTER
 gef_d01_i,256,198,1	duplicate(dummy_cloaked_npc)	Undead#ilgf05	GHOUL
 
 
@@ -2869,7 +2869,7 @@ OnTouch:
 	emotion ET_HUK;
 	npctalk "Hey, there are too many of them! I told you to lure just one, not this many!", "", bc_self;
 	sleep2 1500;
-	emotion ET_HELP, getnpcid(0, "Wizard#ilgf22");
+	emotion ET_HELP, getnpcid(0, "巫师#ilgf22");
 	npctalk "I can't stop them from following me!", "Wizard#ilgf22", bc_self;
 	sleep2 1500;
 	npctalk "Get down!", "", bc_self;
@@ -2887,12 +2887,12 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf22";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf22";
 	cloakonnpcself( "Wizard#ilgf21" );
-	cloakonnpcself( "Wizard#ilgf22" );
+	cloakonnpcself( "巫师#ilgf22" );
 	end;
 }
-gef_d01_i,202,149,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf22	4_M_ARUNA_NFM1
+gef_d01_i,202,149,5	duplicate(dummy_cloaked_npc)	巫师#ilgf22	4_M_ARUNA_NFM1
 gef_d01_i,202,152,5	duplicate(dummy_cloaked_npc)	Undead#ilgf02	GHOUL
 gef_d01_i,200,151,5	duplicate(dummy_cloaked_npc)	Undead#ilgf03	ZOMBIE
 gef_d01_i,204,151,3	duplicate(dummy_cloaked_npc)	Undead#ilgf04	GHOUL
@@ -2962,18 +2962,18 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect EF_GUARD2;
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf26";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf26";
 	specialeffect EF_GUARD2, AREA, "Undead#ilgf01";
 	cloakonnpcself( "Wizard#ilgf25" );
-	cloakonnpcself( "Wizard#ilgf26" );
+	cloakonnpcself( "巫师#ilgf26" );
 	cloakonnpcself( "Undead#ilgf01" );
 	end;
 }
-gef_d01_i,94,37,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf26	1_M_WIZARD
+gef_d01_i,94,37,3	duplicate(dummy_cloaked_npc)	巫师#ilgf26	1_M_WIZARD
 gef_d01_i,91,35,5	duplicate(dummy_cloaked_npc)	Undead#ilgf01	GHOUL
 
-// gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf27	4_F_BOMI,5,5	// npc has official range. Effect ?
-gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf27	4_F_BOMI
+// gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	巫师#ilgf27	4_F_BOMI,5,5	// npc has official range. Effect ?
+gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	巫师#ilgf27	4_F_BOMI
 gef_d01_i,99,122,7	script(CLOAKED)	Wizard#ilgf28	4_F_BOMI,5,5,{
 	end;
 OnTouch:
@@ -2992,20 +2992,20 @@ OnTouch:
 	sleep2 2500;
 	setpcblock PCBLOCK_NPC, false;
 
-	specialeffect EF_GUARD2, AREA, "Wizard#ilgf27";
+	specialeffect EF_GUARD2, AREA, "巫师#ilgf27";
 	specialeffect EF_GUARD2, AREA, "Wizard#ilgf28";
-	cloakonnpcself( "Wizard#ilgf27" );
+	cloakonnpcself( "巫师#ilgf27" );
 	cloakonnpcself( "Wizard#ilgf28" );
 	end;
 }
 // End of the "Wizard illusions"
 
 
-gef_d01_i,80,139,5	duplicate(dummy_cloaked_npc)	Gem#ilgf02	1_F_PRIEST,5,5
-gef_d01_i,86,133,1	duplicate(dummy_cloaked_npc)	Marina#ilgf02	4_F_MONK,5,5
-gef_d01_i,85,139,3	duplicate(dummy_cloaked_npc)	Antoine#ilgf02	4_GEFFEN_01,5,5
+gef_d01_i,80,139,5	duplicate(dummy_cloaked_npc)	杰姆#ilgf02	1_F_PRIEST,5,5
+gef_d01_i,86,133,1	duplicate(dummy_cloaked_npc)	玛丽娜#ilgf02	4_F_MONK,5,5
+gef_d01_i,85,139,3	duplicate(dummy_cloaked_npc)	安托万#ilgf02	4_GEFFEN_01,5,5
 gef_d01_i,84,135,3	duplicate(dummy_cloaked_npc)	Dracula#ilgf03	4_DRACULA,5,5
-gef_d01_i,87,137,3	duplicate(dummy_cloaked_npc)	King#ilgf02	4_NFBAT,5,5
+gef_d01_i,87,137,3	duplicate(dummy_cloaked_npc)	国王#ilgf02	4_NFBAT,5,5
 gef_d01_i,80,132,7	duplicate(dummy_cloaked_npc)	Jojo#ilgf01	4_M_JOB_WIZARD,5,5
 
 
@@ -3311,9 +3311,9 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 	}
 	if (ill_vampire == 12) {
 		viewpoint 2,85,131,1,0x00FF00;
-		cloakoffnpcself( "Gem#ilgf02" );
-		cloakoffnpcself( "Marina#ilgf02" );
-		cloakoffnpcself( "Antoine#ilgf02" );
+		cloakoffnpcself( "杰姆#ilgf02" );
+		cloakoffnpcself( "玛丽娜#ilgf02" );
+		cloakoffnpcself( "安托万#ilgf02" );
 
 		mes "[Bomi]";
 		mes "Stay away from me, and I won't hurt you.";
@@ -3358,9 +3358,9 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		specialeffect EF_TEIHIT1X, AREA, "Dracula#ilgf03";
 		npctalk "Ugh!", "Dracula#ilgf03", bc_self;
 		next;
-		cloakoffnpcself( "King#ilgf02" );
-		specialeffect EF_M01, AREA, "King#ilgf02";
-		emotion ET_ANGER, getnpcid(0, "King#ilgf02");
+		cloakoffnpcself( "国王#ilgf02" );
+		specialeffect EF_M01, AREA, "国王#ilgf02";
+		emotion ET_ANGER, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "Argh, I can't believe you threw yourself in the middle of that! This is why I can't leave you alone!";
 		next;
@@ -3373,7 +3373,7 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		sleep2 1000;
 		npctalk "Did the vampire call for help?", "Antoine#ilgf02", bc_self;
 		next;
-		emotion ET_FRET, getnpcid(0, "King#ilgf02");
+		emotion ET_FRET, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "Human, did you just call me a bat? How dare you?";
 		next;
@@ -3388,9 +3388,9 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		next;
 		mes "[King]";
 		mes "Who wants to talk? Because I don't! I'm not going to go down without a fight!";
-		specialeffect EF_TEIHIT1X, AREA, "King#ilgf02";
-		specialeffect EF_SUI_EXPLOSION, AREA, "Marina#ilgf02";
-		specialeffect EF_DARKBREATH, AREA, "Marina#ilgf02";
+		specialeffect EF_TEIHIT1X, AREA, "国王#ilgf02";
+		specialeffect EF_SUI_EXPLOSION, AREA, "玛丽娜#ilgf02";
+		specialeffect EF_DARKBREATH, AREA, "玛丽娜#ilgf02";
 		next;
 		mes "[Marina]";
 		mes "Grr, let me go! Enough is enough!";
@@ -3558,7 +3558,7 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		sleep2 500;
 		npctalk "Mushrooms and zombies. Same difference to me.", "King#ilgf02", bc_self;
 		next;
-		emotion ET_GO, getnpcid(0, "King#ilgf02");
+		emotion ET_GO, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "Drac, let's go. I know you're not hurting anymore. We should really go back to our castle this time.";
 		next;
@@ -3583,7 +3583,7 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		mes "[Gem]";
 		mes "But that doesn't change the fact that your existence in itself defies our god's will. We can't leave you alone.";
 		next;
-		emotion ET_ANGER, getnpcid(0, "King#ilgf02");
+		emotion ET_ANGER, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "Drac, they won't leave us alone. Let's just get rid of them!";
 		npctalk "No!", "", bc_self;
@@ -3601,7 +3601,7 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		mes "[Antoine]";
 		mes "But you're dangerous to others, whether you like it or not.";
 		next;
-		emotion ET_FRET, getnpcid(0, "King#ilgf02");
+		emotion ET_FRET, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "Why are you looking at me? I didn't do anything!";
 		next;
@@ -3612,18 +3612,18 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		mes "[Antoine]";
 		mes "We're not going to make any decision. Instead, we'll ^0000cdstay here with you^000000.";
 		next;
-		emotion ET_ANGER, getnpcid(0, "King#ilgf02");
+		emotion ET_ANGER, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "So you can keep an eye on us. Drac, I can't take this anymore!";
-		specialeffect EF_PORTAL4, AREA, "King#ilgf02";
-		cloakoffnpcself( "King#ilgf02" );
-		specialeffect EF_M01, AREA, "King#ilgf02";
+		specialeffect EF_PORTAL4, AREA, "国王#ilgf02";
+		cloakoffnpcself( "国王#ilgf02" );
+		specialeffect EF_M01, AREA, "国王#ilgf02";
 		sleep2 1000;
 		npctalk "I'm going to kill them all!", "King#ilgf02", bc_self;
 		sleep2 1000;
 		npctalk "Okay.", "", bc_self;
 		next;
-		emotion ET_FRET, getnpcid(0, "King#ilgf02");
+		emotion ET_FRET, getnpcid(0, "国王#ilgf02");
 		mes "[King]";
 		mes "What? Drac! Stop acting like a human! We're proud, dignified vampires!";
 		next;
@@ -3631,37 +3631,37 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		mes "Let's go back. I'm tired. I want to sleep.";
 		npctalk "Let me go with you. I want to stay with you until you fully recover.", "Jojo#ilgf01", bc_self;
 		next;
-		emotion ET_ANGER, getnpcid(0, "King#ilgf02");
-		specialeffect EF_PORTAL4, AREA, "King#ilgf02";
-		cloakoffnpcself( "King#ilgf02" );
-		specialeffect EF_M01, AREA, "King#ilgf02";
+		emotion ET_ANGER, getnpcid(0, "国王#ilgf02");
+		specialeffect EF_PORTAL4, AREA, "国王#ilgf02";
+		cloakoffnpcself( "国王#ilgf02" );
+		specialeffect EF_M01, AREA, "国王#ilgf02";
 		mes "[King]";
 		mes "I'm not happy with this arrangement, Drac. I'm going back to our castle once you get better, got it?";
 		next;
 		mes "[Gem]";
 		mes "So we've come to an agreement. We'll leave now.";
-		specialeffect EF_TELEPORTATION2, AREA, "Gem#ilgf02";
+		specialeffect EF_TELEPORTATION2, AREA, "杰姆#ilgf02";
 		sleep2 500;
-		cloakonnpcself( "Gem#ilgf02" );
+		cloakonnpcself( "杰姆#ilgf02" );
 		next;
 		mes "[Marina]";
 		mes "You! I'm watching you! Better keep your coffin lid shut tight while you sleep!";
-		specialeffect EF_TELEPORTATION2, AREA, "Marina#ilgf02";
+		specialeffect EF_TELEPORTATION2, AREA, "玛丽娜#ilgf02";
 		sleep2 500;
-		cloakonnpcself( "Marina#ilgf02" );
+		cloakonnpcself( "玛丽娜#ilgf02" );
 		next;
 		npctalk "What? Hey, you stop right there!", "King#ilgf02", bc_self;
 		mes "[Antoine]";
 		mes "I should leave too. Excuse me.";
-		specialeffect EF_TELEPORTATION2, AREA, "Antoine#ilgf02";
+		specialeffect EF_TELEPORTATION2, AREA, "安托万#ilgf02";
 		sleep2 500;
-		cloakonnpcself( "Antoine#ilgf02" );
+		cloakonnpcself( "安托万#ilgf02" );
 		next;
 		mes "[King]";
 		mes "Argh! I don't ever want to see them again! Let's go!";
-		specialeffect EF_M01, AREA, "King#ilgf02";
+		specialeffect EF_M01, AREA, "国王#ilgf02";
 		sleep2 500;
-		cloakonnpcself( "King#ilgf02" );
+		cloakonnpcself( "国王#ilgf02" );
 		next;
 		mes "[Jojo]";
 		mes "Let's go.";
@@ -3888,12 +3888,12 @@ OnTouch:
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Typical wizard... Wait, could that be Jojo??", bc_self;
 	}
 	else if (ill_vampire == 12 || ill_vampire == 13) {
-		cloakoffnpcself( "Gem#ilgf02" );
-		cloakoffnpcself( "Marina#ilgf02" );
-		cloakoffnpcself( "Antoine#ilgf02" );
+		cloakoffnpcself( "杰姆#ilgf02" );
+		cloakoffnpcself( "玛丽娜#ilgf02" );
+		cloakoffnpcself( "安托万#ilgf02" );
 		if (ill_vampire == 13) {
 			cloakoffnpcself( "Dracula#ilgf03" );
-			cloakoffnpcself( "King#ilgf02" );
+			cloakoffnpcself( "国王#ilgf02" );
 			cloakoffnpcself( "Jojo#ilgf01" );
 		}
 	}
@@ -3911,7 +3911,7 @@ OnInit:
 		disablenpc();
 	end;
 }
-gef_d01_i,81,135,3	duplicate(Wizard#ilgf01)	Wizard#ilgf001	4_NFCOFFIN,5,5
+gef_d01_i,81,135,3	duplicate(Wizard#ilgf01)	巫师#ilgf001	4_NFCOFFIN,5,5
 
 gef_d01_i,82,132,3	duplicate(dummy_npc)	Mushroom#ilgf01	ILL_BLACK_MUSHROOM
 gef_d01_i,86,133,1	duplicate(dummy_cloaked_npc)	Dracula#ilgf01	4_DRACULA
@@ -3928,7 +3928,7 @@ OnStart:
 	}
 	end;
 OnMobDead:
-	enablenpc( "Wizard#ilgf001" );
+	enablenpc( "巫师#ilgf001" );
 	disablenpc( "Dracula#ilgf02" );
 	mapannounce "gef_d01_i", "Bomi is falling into a long, deep sleep.", bc_map, 0x00ff00;
 	mapannounce "gef_d01_i", "Angry Dracula: Who dares hurt my Bomi?!", bc_map, 0x00ff00;
@@ -3952,7 +3952,7 @@ OnMobDead:
 	sleep 2000;
 	mapannounce "gef_d01_i", "Bomi is stirring from her long, deep sleep.", bc_map, 0x00ff00;
 	if (mobcount("gef_d01_i", "ill_vampire_spawn_bomi::OnMobDead") < 1) {
-		disablenpc( "Wizard#ilgf001" );
+		disablenpc( "巫师#ilgf001" );
 		enablenpc( "Wizard#ilgf01" );
         enablenpc "Dracula#ilgf02";
 	}
@@ -4850,9 +4850,9 @@ OnTimer1000:
 	}
 	end;
 }
-ice_d03_i,172,126,3	duplicate(Orb of Seal#frozen1)	Orb of Seal#frozen2	CLEAR_NPC
-ice_d03_i,172,173,3	duplicate(Orb of Seal#frozen1)	Orb of Seal#frozen3	CLEAR_NPC
-ice_d03_i,127,172,3	duplicate(Orb of Seal#frozen1)	Orb of Seal#frozen4	CLEAR_NPC
+ice_d03_i,172,126,3	duplicate(Orb of Seal#frozen1)	封印宝珠#frozen2	CLEAR_NPC
+ice_d03_i,172,173,3	duplicate(Orb of Seal#frozen1)	封印宝珠#frozen3	CLEAR_NPC
+ice_d03_i,127,172,3	duplicate(Orb of Seal#frozen1)	封印宝珠#frozen4	CLEAR_NPC
 
 ice_d03_i,149,112,0	script	bosseff#frozen	HIDDEN_WARP_NPC,{
 	end;
@@ -5476,35 +5476,35 @@ OnTimer30000:
 	enablenpc();
 	end;
 }
-ice_d03_i,111,45,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen2	4_SOIL
-ice_d03_i,65,70,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen3	4_SOIL
-ice_d03_i,86,87,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen4	4_SOIL
-ice_d03_i,70,113,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen5	4_SOIL
-ice_d03_i,46,206,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen6	4_SOIL
-ice_d03_i,64,231,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen7	4_SOIL
-ice_d03_i,84,208,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen8	4_SOIL
-ice_d03_i,100,246,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen9	4_SOIL
-ice_d03_i,196,246,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen10	4_SOIL
-ice_d03_i,238,231,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen11	4_SOIL
-ice_d03_i,252,206,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen12	4_SOIL
-ice_d03_i,238,64,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen13	4_SOIL
-ice_d03_i,186,44,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen14	4_SOIL
-ice_d03_i,160,48,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen15	4_SOIL
-ice_d03_i,126,73,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen16	4_SOIL
-ice_d03_i,70,184,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen17	4_SOIL
-ice_d03_i,214,208,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen18	4_SOIL
-ice_d03_i,228,184,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen19	4_SOIL
-ice_d03_i,230,111,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen20	4_SOIL
-ice_d03_i,219,90,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen21	4_SOIL
-ice_d03_i,171,72,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen22	4_SOIL
-ice_d03_i,112,111,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen23	4_SOIL
-ice_d03_i,112,188,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen24	4_SOIL
-ice_d03_i,186,188,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen25	4_SOIL
-ice_d03_i,189,112,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen26	4_SOIL
-ice_d03_i,150,104,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen27	4_SOIL
-ice_d03_i,110,150,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen28	4_SOIL
-ice_d03_i,150,187,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen29	4_SOIL
-ice_d03_i,187,149,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen30	4_SOIL
+ice_d03_i,111,45,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen2	4_SOIL
+ice_d03_i,65,70,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen3	4_SOIL
+ice_d03_i,86,87,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen4	4_SOIL
+ice_d03_i,70,113,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen5	4_SOIL
+ice_d03_i,46,206,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen6	4_SOIL
+ice_d03_i,64,231,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen7	4_SOIL
+ice_d03_i,84,208,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen8	4_SOIL
+ice_d03_i,100,246,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen9	4_SOIL
+ice_d03_i,196,246,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen10	4_SOIL
+ice_d03_i,238,231,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen11	4_SOIL
+ice_d03_i,252,206,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen12	4_SOIL
+ice_d03_i,238,64,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen13	4_SOIL
+ice_d03_i,186,44,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen14	4_SOIL
+ice_d03_i,160,48,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen15	4_SOIL
+ice_d03_i,126,73,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen16	4_SOIL
+ice_d03_i,70,184,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen17	4_SOIL
+ice_d03_i,214,208,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen18	4_SOIL
+ice_d03_i,228,184,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen19	4_SOIL
+ice_d03_i,230,111,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen20	4_SOIL
+ice_d03_i,219,90,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen21	4_SOIL
+ice_d03_i,171,72,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen22	4_SOIL
+ice_d03_i,112,111,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen23	4_SOIL
+ice_d03_i,112,188,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen24	4_SOIL
+ice_d03_i,186,188,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen25	4_SOIL
+ice_d03_i,189,112,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen26	4_SOIL
+ice_d03_i,150,104,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen27	4_SOIL
+ice_d03_i,110,150,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen28	4_SOIL
+ice_d03_i,150,187,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen29	4_SOIL
+ice_d03_i,187,149,3	duplicate(Heap of Dry Soil#frozen1)	干燥的土堆#frozen30	4_SOIL
 
 
 //============================================================
@@ -5889,8 +5889,8 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		sleep2 500;
 		unittalk .@account_id, "" + .@player_name$ + " : It's ok, Professor.", bc_self;
 		sleep2 2000;
-		cloakoffnpcself( "Archeologist Leiphen#illtur01" );
-		emotion ET_SWEAT, getnpcid(0,"Archeologist Leiphen#illtur01");
+		cloakoffnpcself( "考古学家雷芬#illtur01" );
+		emotion ET_SWEAT, getnpcid(0,"考古学家雷芬#illtur01");
 		npctalk "Archeologist Leiphen : ......Oh, I thought I was going to die.", "Archeologist Leiphen#illtur01", bc_self;
 		next;
 		mes "[Girl]";
@@ -5904,7 +5904,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		next;
 		mes "[Girl]";
 		mes "Why do you ignore my warnings? Arrogant.";
-		emotion ET_HNG, getnpcid(0,"Archeologist Leiphen#illtur01");
+		emotion ET_HNG, getnpcid(0,"考古学家雷芬#illtur01");
 		npctalk "Archeologist Leiphen : I am a professor of archeology.", "Archeologist Leiphen#illtur01", bc_self;
 		mes "You may be a professor but that does not give you the right to walk around here.";
 		next;
@@ -5934,7 +5934,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		mes "[Girl]";
 		mes "......No one comes back. It's better to not come here. It's full of danger.";
 		next;
-		emotion ET_SURPRISE, getnpcid(0,"Archeologist Leiphen#illtur01");
+		emotion ET_SURPRISE, getnpcid(0,"考古学家雷芬#illtur01");
 		mes "[Archeologist Leiphen]";
 		mes "You want that, but still someone is going to come back here.";
 		sleep2 1000;
@@ -5953,7 +5953,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		next;
 		npctalk "Archeologist Leiphen : Then let me look around here for a while.", "Archeologist Leiphen#illtur01", bc_self;
 		sleep2 1000;
-		cloakonnpcself( "Archeologist Leiphen#illtur01" );
+		cloakonnpcself( "考古学家雷芬#illtur01" );
 		emotion ET_OHNO, .@account_id;
 		unittalk .@account_id, "" + .@player_name$ + " : Even though it's so dangerous, you can't resist curiosity... Be careful anyway.", bc_self;
 		mes "[Girl]";
@@ -5965,7 +5965,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 	}
 	if (ill_turtle == 9) {
 		setpcblock PCBLOCK_NPC, true;
-		cloakoffnpcself( "Archeologist Leiphen#illtur01" );
+		cloakoffnpcself( "考古学家雷芬#illtur01" );
 		sleep2 500;
 		setpcblock PCBLOCK_NPC, false;
 
@@ -6021,15 +6021,15 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		erasequest 16116;	// Continuous story
 		setquest 16117;	// Continuous story 2
 		close2;
-		cloakonnpcself( "Archeologist Leiphen#illtur01" );
+		cloakonnpcself( "考古学家雷芬#illtur01" );
 		end;
 	}
 	if (ill_turtle == 10) {
 		mes "[Narin]";
 		mes "Thank you for waiting. I'm good now. Let me finish.";
 		next;
-		cloakoffnpcself( "Archeologist Leiphen#illtur01" );
-		emotion ET_DELIGHT, getnpcid(0,"Archeologist Leiphen#illtur01");
+		cloakoffnpcself( "考古学家雷芬#illtur01" );
+		emotion ET_DELIGHT, getnpcid(0,"考古学家雷芬#illtur01");
 		npctalk "Archeologist Leiphen : I'm ready. There are a lot of interesting things around here.", "Archeologist Leiphen#illtur01", bc_self;
 		mes "[Narin]";
 		mes "It's not the first time, someone is here. It's a rare event. When I first saw someone, I remembered what I wanted.";
@@ -6058,9 +6058,9 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		specialeffect EF_DETECT3;
 		sleep2 1000;
 		specialeffect2 EF_DETECT3;
-		specialeffect EF_DETECT3, AREA, "Archeologist Leiphen#illtur01";
+		specialeffect EF_DETECT3, AREA, "考古学家雷芬#illtur01";
 		specialeffect2 EF_CIRCLEPOWER8;
-		specialeffect EF_CIRCLEPOWER8, AREA, "Archeologist Leiphen#illtur01";
+		specialeffect EF_CIRCLEPOWER8, AREA, "考古学家雷芬#illtur01";
 		next;
 		if (select( "It's been hard on you being alone.", "I am not going back." ) == 2) {
 			mes "[Narin]";
@@ -6133,9 +6133,9 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		next;
 		delitem 25315, countitem(25315);	// Piece_Of_Shell
 		specialeffect2 EF_CIRCLEPOWER2;
-		specialeffect EF_CIRCLEPOWER2, AREA, "Archeologist Leiphen#illtur01";
+		specialeffect EF_CIRCLEPOWER2, AREA, "考古学家雷芬#illtur01";
 		sleep2 500;
-		emotion ET_SURPRISE, getnpcid(0,"Archeologist Leiphen#illtur01");
+		emotion ET_SURPRISE, getnpcid(0,"考古学家雷芬#illtur01");
 		mes "[Archeologist Leiphen]";
 		mes "Hu? Huh? It's just gone. The " + getitemname(25315) + ".";
 		mes "Suddenly from my hands... like it melted away.";
@@ -6185,7 +6185,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		getexp 2880000,1920000;
 		close2;
 		npctalk "Archeologist Leiphen : Okay, see you again!", "Archeologist Leiphen#illtur01", bc_self;
-		cloakonnpcself( "Archeologist Leiphen#illtur01" );
+		cloakonnpcself( "考古学家雷芬#illtur01" );
 		end;
 	}
 	switch( checkquest(16105,PLAYTIME) ) {
@@ -6251,7 +6251,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		mes "The professor will just come back. Let's find him.^000000 -";
 		close;
 	case 2:
-		cloakoffnpcself( "Archeologist Leiphen#illtur01" );
+		cloakoffnpcself( "考古学家雷芬#illtur01" );
 		mes "[Archeologist Leiphen]";
 		mes "I came here again. Well, everyday.";
 		sleep2 500;
@@ -6284,9 +6284,9 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		specialeffect EF_DETECT3;
 		sleep2 500;
 		specialeffect2 EF_DETECT3;
-		specialeffect EF_DETECT3, AREA, "Archeologist Leiphen#illtur01";
+		specialeffect EF_DETECT3, AREA, "考古学家雷芬#illtur01";
 		specialeffect2 EF_CIRCLEPOWER8;
-		specialeffect EF_CIRCLEPOWER8, AREA, "Archeologist Leiphen#illtur01";
+		specialeffect EF_CIRCLEPOWER8, AREA, "考古学家雷芬#illtur01";
 		next;
 		mes "[Narin]";
 		mes "And here, a sign of promise. Professor and brother. I'm glad you came.";
@@ -6298,7 +6298,7 @@ tur_d03_i,139,186,3	script	Girl#illtur01	4_F_NARIN,{
 		getitem 25271,1;	// IllusionStone
 		getexp 1200000,1000000;
 		close2;
-		cloakonnpcself( "Archeologist Leiphen#illtur01" );
+		cloakonnpcself( "考古学家雷芬#illtur01" );
 		end;
 	}
 	end;
@@ -6317,7 +6317,7 @@ OnInit:
 	end;
 }
 
-tur_d03_i,136,187,5	duplicate(dummy_cloaked_npc)	Archeologist Leiphen#illtur01	2_M_ALCHE
+tur_d03_i,136,187,5	duplicate(dummy_cloaked_npc)	考古学家雷芬#illtur01	2_M_ALCHE
 
 
 tur_d03_i,80,180,1	script	Impatient Man#illtur	4_M_URGENT_MAN,{
@@ -6666,7 +6666,7 @@ tur_d04_i,96,112,1	script	Fragile Woman#illtur	4_F_SLOPPY_WOMAN,{
 	}
 	if (ill_turtle == 7) {
 		setpcblock PCBLOCK_NPC, true;
-		cloakoffnpcself( "Archeologist Leiphen#illtur03" );
+		cloakoffnpcself( "考古学家雷芬#illtur03" );
 		npctalk "Archeologist Leiphen : Is this the place? I've been here a few times...", "Archeologist Leiphen#illtur03", bc_self;
 		sleep2 1000;
 		setpcblock PCBLOCK_NPC, false;
@@ -6729,7 +6729,7 @@ tur_d04_i,96,112,1	script	Fragile Woman#illtur	4_F_SLOPPY_WOMAN,{
 		mes "[Archeologist Leiphen]";
 		mes "Aargh! What is this!";
 		next;
-		cloakoffnpcself( "Girl#illtur02" );
+		cloakoffnpcself( "少女#illtur02" );
 		unittalk .@account_id, "" + .@player_name$ + " : Look out, it's dangerous!", bc_self;
 		mes "[Girl]";
 		mes "Put this in your mouth. Shh, quietly!";
@@ -6743,7 +6743,7 @@ tur_d04_i,96,112,1	script	Fragile Woman#illtur	4_F_SLOPPY_WOMAN,{
 		npctalk "Girl : Don't breathe! Don't talk!", "Girl#illtur02", bc_self;
 		sleep2 1000;
 		npctalk "Archeologist Leiphen : H...", "Archeologist Leiphen#illtur03", bc_self;
-		specialeffect EF_CLOAKING, AREA, "Archeologist Leiphen#illtur03";
+		specialeffect EF_CLOAKING, AREA, "考古学家雷芬#illtur03";
 		sleep2 1000;
 		npctalk "Where are they?", "Rancorous Ghost#illtur02", bc_self;
 		npctalk "They just vanished.", "Rancorous Ghost#illtur04", bc_self;
@@ -6789,7 +6789,7 @@ tur_d04_i,96,112,1	script	Fragile Woman#illtur	4_F_SLOPPY_WOMAN,{
 		cloakonnpcself( "Rancorous Ghost#illtur05" );
 		npctalk "Let's go back.", "Girl#illtur02", bc_self;
 		sleep2 1000;
-		cloakonnpcself( "Girl#illtur02" );
+		cloakonnpcself( "少女#illtur02" );
 		npctalk "I'm hungry... Hungry.", "Rancorous Ghost#illtur02", bc_self;
 		sleep2 1000;
 		specialeffect EF_DANCE1, AREA, "Rancorous Ghost#illtur02";
@@ -6812,7 +6812,7 @@ tur_d04_i,96,112,1	script	Fragile Woman#illtur	4_F_SLOPPY_WOMAN,{
 		erasequest 16103;	// The Secret of Strangers
 		setquest 16104;	// A long-forgotten story
 		close2;
-		cloakonnpcself( "Archeologist Leiphen#illtur03" );
+		cloakonnpcself( "考古学家雷芬#illtur03" );
 		end;
 	}
 	if (ill_turtle > 10) {
@@ -6986,8 +6986,8 @@ OnInit:
 	end;
 }
 
-tur_d04_i,100,112,3	duplicate(dummy_cloaked_npc)	Girl#illtur02	4_F_NARIN
-tur_d04_i,101,110,3	duplicate(dummy_cloaked_npc)	Archeologist Leiphen#illtur03	2_M_ALCHE
+tur_d04_i,100,112,3	duplicate(dummy_cloaked_npc)	少女#illtur02	4_F_NARIN
+tur_d04_i,101,110,3	duplicate(dummy_cloaked_npc)	考古学家雷芬#illtur03	2_M_ALCHE
 tur_d04_i,96,112,5	duplicate(dummy_cloaked_npc)	Rancorous Ghost#illtur02	4_F_NFDEADMGCIAN
 tur_d04_i,94,108,7	duplicate(dummy_cloaked_npc)	Rancorous Ghost#illtur03	4_M_NFDEADSWDMAN
 tur_d04_i,91,111,5	duplicate(dummy_cloaked_npc)	Rancorous Ghost#illtur04	4_F_NFDEADMGCIAN
@@ -7852,9 +7852,9 @@ OnTouch:
 	}
 	if (ill_luanda == 14) {
 		cloakoffnpcself( "Chief#LuE06" );
-		cloakoffnpcself( "Villager#LuE061" );
-		cloakoffnpcself( "Villager#LuE062" );
-		cloakoffnpcself( "Villager#LuE063" );
+		cloakoffnpcself( "村民#LuE061" );
+		cloakoffnpcself( "村民#LuE062" );
+		cloakoffnpcself( "村民#LuE063" );
 		end;
 	}
 	end;
@@ -8234,9 +8234,9 @@ com_d02_i,157,28,4	script(CLOAKED)	Chief#LuE06	4_M_JPNOJI2,{
 		mes "We're in no position to take care of anyone right now, so take care of yourself..";
 		next;
 		cloakonnpcself();
-		cloakonnpcself( "Villager#LuE061" );
-		cloakonnpcself( "Villager#LuE062" );
-		cloakonnpcself( "Villager#LuE063" );
+		cloakonnpcself( "村民#LuE061" );
+		cloakonnpcself( "村民#LuE062" );
+		cloakonnpcself( "村民#LuE063" );
 		ill_luanda = 15;
 		setquest 5847;
 		mes "The Chief who is worried about me has disappeared. I have to tell Mr. Luanda what I've been through.";
@@ -8245,9 +8245,9 @@ com_d02_i,157,28,4	script(CLOAKED)	Chief#LuE06	4_M_JPNOJI2,{
 	end;
 }
 
-com_d02_i,155,29,6	duplicate(dummy_cloaked_npc)	Villager#LuE061	4_M_ALCHE_A
-com_d02_i,153,28,6	duplicate(dummy_cloaked_npc)	Villager#LuE062	4_M_03
-com_d02_i,154,26,6	duplicate(dummy_cloaked_npc)	Villager#LuE063	4_M_02
+com_d02_i,155,29,6	duplicate(dummy_cloaked_npc)	村民#LuE061	4_M_ALCHE_A
+com_d02_i,153,28,6	duplicate(dummy_cloaked_npc)	村民#LuE062	4_M_03
+com_d02_i,154,26,6	duplicate(dummy_cloaked_npc)	村民#LuE063	4_M_02
 
 
 // SATURDAY
@@ -8960,7 +8960,7 @@ OnTouch:
 		cloakoffnpcself( "Sirood#SRD2" );
 	end;
 }
-izlude,132,54,0	duplicate(Sirood#SRD1)	Jerrymon#jerry1	HIDDEN_WARP_NPC,4,4
+izlude,132,54,0	duplicate(Sirood#SRD1)	杰里蒙#jerry1	HIDDEN_WARP_NPC,4,4
 
 izlude,126,53,4	script	Sirood#SRD2	1_M_04,{
 	mes "[Sirood]";
@@ -12015,9 +12015,9 @@ ein_dun01,189,84,7	script	Bear#3	4_NASARIAN,{
 	close;
 }
 
-ein_dun01,189,82,7	duplicate(dummy_npc)	Bear#4	4_NASARIAN
-ein_dun01,190,80,7	duplicate(dummy_npc)	Bear#5	4_NASARIAN
-ein_dun01,191,80,5	duplicate(dummy_npc)	Bear#6	4_NASARIAN
+ein_dun01,189,82,7	duplicate(dummy_npc)	熊#4	4_NASARIAN
+ein_dun01,190,80,7	duplicate(dummy_npc)	熊#5	4_NASARIAN
+ein_dun01,191,80,5	duplicate(dummy_npc)	熊#6	4_NASARIAN
 
 ein_dun01,195,80,5	script	Resident#8	4_M_EINMAN2,{
 	mes "[Resident]";
@@ -12118,7 +12118,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 		mes "This sucks!!!!";
 		npctalk "Steven: Can't you let me go?!", "", bc_self;
 		cloakoffnpcself( "White Teddy Bear#IBT" );
-		cloakoffnpcself( "Teddy Bear#IBT" );
+		cloakoffnpcself( "玩偶熊#IBT" );
 		next;
 		mes "[Teddy Bear]";
 		mes "Oops!";
@@ -12131,7 +12131,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 		setquest 11559;
 		close2;
 		cloakonnpcself( "White Teddy Bear#IBT" );
-		cloakonnpcself( "Teddy Bear#IBT" );
+		cloakonnpcself( "玩偶熊#IBT" );
 		end;
 	}
 	if (ill_teddy == 4) {
@@ -12377,7 +12377,7 @@ OnTouch:
 		mes "This sucks!!!!";
 		npctalk "Steven: Can't you let me go?!", "", bc_self;
 		cloakoffnpcself( "White Teddy Bear#IBT" );
-		cloakoffnpcself( "Teddy Bear#IBT" );
+		cloakoffnpcself( "玩偶熊#IBT" );
 		next;
 		mes "[Teddy Bear]";
 		mes "Oops!";
@@ -12390,7 +12390,7 @@ OnTouch:
 		setquest 11559;
 		close2;
 		cloakonnpcself( "White Teddy Bear#IBT" );
-		cloakonnpcself( "Teddy Bear#IBT" );
+		cloakonnpcself( "玩偶熊#IBT" );
 		end;
 	}
 	end;
@@ -12411,7 +12411,7 @@ OnInit:
 
 ein_d02_i,135,229,1	duplicate(dummy_cloaked_npc)	Acid#IBT_inN	4_M_NFMAN
 ein_d02_i,169,193,5	duplicate(dummy_cloaked_npc)	White Teddy Bear#IBT	4_TEDDY_BEAR_W
-ein_d02_i,171,193,3	duplicate(dummy_cloaked_npc)	Teddy Bear#IBT	4_NASARIAN
+ein_d02_i,171,193,3	duplicate(dummy_cloaked_npc)	玩偶熊#IBT	4_NASARIAN
 ein_d02_i,172,192,1	duplicate(dummy_cloaked_npc)	Acid#IBT_inN01	4_M_NFMAN
 
 ein_d02_i,132,233,0	script	#ITBSuspicious place	HIDDEN_WARP_NPC,3,3,{
@@ -12502,7 +12502,7 @@ OnTouch:
 		mes "Waaaaaaaa!!!!";
 		mes "Long live the Emperor!!!!";
 		mes "Hooray!!! Hooray!!!";
-		cloakoffnpcself( "Steven#IBT_inN" );
+		cloakoffnpcself( "史蒂文#IBT_inN" );
 		cloakoffnpcself( "Acid#IBT_inN" );
 		next;
 		mes "[Steven]";
@@ -12561,7 +12561,7 @@ OnTouch:
 		setquest 11563;
 		setquest 11564;
 		close2;
-		cloakonnpcself( "Steven#IBT_inN" );
+		cloakonnpcself( "史蒂文#IBT_inN" );
 		cloakonnpcself( "Acid#IBT_inN" );
 		cloakonnpcself( "??????#IBT_inB01" );
 		cloakonnpcself( "??????#IBT_inB02_2" );
@@ -12616,7 +12616,7 @@ ein_d02_i,138,238,7	duplicate(dummy_cloaked_npc)	??????#IBT_inB19	4_NASARIAN
 ein_d02_i,141,241,7	duplicate(dummy_cloaked_npc)	??????#IBT_inB20	4_TEDDY_BEAR_B
 ein_d02_i,145,241,1	duplicate(dummy_cloaked_npc)	??????#IBT_inB21	4_NASARIAN
 ein_d02_i,140,243,5	duplicate(dummy_cloaked_npc)	??????#IBT_inB22	4_NASARIAN
-ein_d02_i,133,233,7	duplicate(dummy_cloaked_npc)	Steven#IBT_inN	4W_M_02
+ein_d02_i,133,233,7	duplicate(dummy_cloaked_npc)	史蒂文#IBT_inN	4W_M_02
 
 ein_d02_i,168,206,5	script	Gloomy Teddy Bear#ITB	4_TEDDY_BEAR_B_L,{
 	if (checkweight(1201,3) == 0) {

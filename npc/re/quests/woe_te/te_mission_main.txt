@@ -67,7 +67,7 @@ OnReset:
 
 S_Coord:
 	if (compare( strnpcinfo(4),"te_alde" )) {
-		set getarg(0), 7056;// Payroll_Of_Kafra
+		set getarg(0), 7056;// Payroll_Of_卡普拉
 		set getarg(1), 2450;// THIEF_PORING
 		.@hidden_name$ = strnpcinfo(2);
 
@@ -133,7 +133,7 @@ S_Coord:
 	.@map$ = strnpcinfo(4);
 	if (.@map$ == "te_alde_gld") {
 		.@npc_name$ = "Mana";
-		.@fortress$ = "Kafragarten";
+		.@fortress$ = "卡普拉garten";
 		.@menu$ = callsub( S_Menu, .@quest_id,
 			7510,"1 Suspicious Poring",
 			7511,"10 Suspicious Poring",
@@ -141,9 +141,9 @@ S_Coord:
 			7504,"Destroy 1 Emperium",
 			7505,"Destroy 3 Emperiums",
 			7506,"Destroy 5 Emperiums",
-			7513,"10 Kafra's Paychecks",
-			7514,"20 Kafra's Paychecks",
-			7515,"30 Kafra's Paychecks" );
+			7513,"10 卡普拉's Paychecks",
+			7514,"20 卡普拉's Paychecks",
+			7515,"30 卡普拉's Paychecks" );
 	}
 	else {
 		.@npc_name$ = "Rune";
@@ -329,7 +329,7 @@ S_Coord:
 						getexp .@exp[0],.@exp[1];
 						callsub( S_Rentbox, .@num_tool_box );
 					}
-					callsub( S_Cancelquest, .@main_quest, .@npc_name$, "This mission is to ^4d4dff destroy Emperiums that exist all over Gloria and Kafragarten regions.^000000" );
+					callsub( S_Cancelquest, .@main_quest, .@npc_name$, "This mission is to ^4d4dff destroy Emperiums that exist all over Gloria and 卡普拉garten regions.^000000" );
 				}
 				mes "时间到了。";
 				mes "很遗憾，任务失败！";
@@ -376,14 +376,14 @@ S_Coord:
 			mes "就是破坏华丽金属！那就给你这个破坏华丽金属的任务吧！";
 			next;
 			mes "["+ .@npc_name$ +"]";
-			mes "Gloria也好，Kafragarten也好，哪里都行！现在，就在这一刻，^4d4dff破坏华丽金属！^000000";
+			mes "Gloria也好，卡普拉garten也好，哪里都行！现在，就在这一刻，^4d4dff破坏华丽金属！^000000";
 			mes "^4d4dff目标数量为"+ .@num_kill +"个以上！^000000";
 			callsub( S_Acceptquest, .@main_quest, .@npc_name$ );
 		}
 		else if (.@s == 6 || .@s == 7 || .@s == 8) {
 			if (.@map$ == "te_alde_gld") {
-				.@item_quest = 7056;// Payroll_Of_Kafra
-				setarray .@string$[0], "paychecks", "I don't understand why Porings would steal Kafra's Paychecks", "Kafra's stolen paychecks";
+				.@item_quest = 7056;// Payroll_Of_卡普拉
+				setarray .@string$[0], "paychecks", "I don't understand why Porings would steal 卡普拉's Paychecks", "卡普拉's stolen paychecks";
 			}
 			else {
 				.@item_quest = 6592;// Small_Wooden_Chest

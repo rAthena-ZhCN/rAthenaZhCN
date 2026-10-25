@@ -17,7 +17,7 @@
 
 // Waiting Room NPCs
 //============================================================
-bat_room,225,226,5	script	KVM 等候室#a3::KvM03R_Guillaume	418,{
+bat_room,225,226,5	script	KVM Waiting Room#a3::KvM03R_Guillaume	418,{
 	end;
 OnInit:
 	waitingroom "Battle Station 5 Players",6,"KvM03_BG_Out::OnGuillaumeJoin",1;
@@ -27,7 +27,7 @@ OnEnterBG:
 	end;
 }
 
-bat_room,225,205,3	script	KVM 等候室#b3::KvM03R_Croix	414,{
+bat_room,225,205,3	script	KVM Waiting Room#b3::KvM03R_Croix	414,{
 	end;
 OnInit:
 	waitingroom "Battle Station 5 Players",6,"KvM03_BG_Out::OnCroixJoin",1;
@@ -118,7 +118,7 @@ OnInit:
 	setwall "bat_c03",55,122,5,7,0,"batc03wall_b";
 	setwall "bat_c03",140,56,6,7,0,"batc03wall_c";
 	setwall "bat_c03",140,57,5,7,0,"batc03wall_d";
-	disablenpc "KVM 军官#KVM03A";
+	disablenpc "KVM Officer#KVM03A";
 	disablenpc "KVM Officer#KVM03B";
 	end;
 
@@ -134,8 +134,8 @@ OnGuillaumeDie:
 		if( .Guillaume_Count < 1 )
 			donpcevent "KvM03_BG::OnCroixWin";
 		else {
-			mapannounce "bat_c03", "纪尧姆方人数为"+.Guillaume_Count+".",bc_map,"0x00ff00";
-			mapannounce "bat_c03", "克罗伊方人数为"+.Croix_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c03", "The number of Guillaumes is "+.Guillaume_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c03", "The number of Croixes is "+.Croix_Count+".",bc_map,"0x00ff00";
 		}
 	}
 	end;
@@ -152,8 +152,8 @@ OnCroixDie:
 		if( .Croix_Count < 1 )
 			donpcevent "KvM03_BG::OnGuillaumeWin";
 		else {
-			mapannounce "bat_c03", "纪尧姆方人数为"+.Guillaume_Count+".",bc_map,"0x00ff00";
-			mapannounce "bat_c03", "克罗伊方人数为"+.Croix_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c03", "The number of Guillaumes is "+.Guillaume_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c03", "The number of Croixes is "+.Croix_Count+".",bc_map,"0x00ff00";
 		}
 	}
 	end;
@@ -167,7 +167,7 @@ OnCroixActive:
 	end;
 
 OnStart:
-	disablenpc "KVM 军官#KVM03A";
+	disablenpc "KVM Officer#KVM03A";
 	disablenpc "KVM Officer#KVM03B";
 	set $@KvM03BG_Victory, 0;
 	// Warp Teams
@@ -177,16 +177,16 @@ OnStart:
 	end;
 
 OnTimer1000:
-	mapannounce "bat_c03", "1 分钟后，KVM 即将开始。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "In 1 minute, KVM will start.",bc_map,"0x00ff00";
 	end;
 
 OnTimer3000:
-	mapannounce "bat_c03", "KVM 战斗的最长时间为 5 分钟。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "The maximum time for a KVM battle is 5 minutes.",bc_map,"0x00ff00";
 	end;
 
 OnTimer6000:
-	mapannounce "bat_c03", "请为 KVM 战斗做好准备。",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "你可以为你的同伴施加增益效果。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Please prepare for the KVM battle.",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "You can buff your people.",bc_map,"0x00ff00";
 	donpcevent "#A_camp_start03::OnEnable";
 	donpcevent "#B_camp_start03::OnEnable";
 	end;
@@ -197,26 +197,26 @@ OnTimer13000:
 	end;
 
 OnTimer30000:
-	mapannounce "bat_c03", "距离 KVM 战斗开始还剩 30 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "30 seconds remaining to start KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer45000:
-	mapannounce "bat_c03", "距离 KVM 战斗开始还剩 15 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "15 seconds remaining to start KVM battle.",bc_map,"0x00ff00";
 	donpcevent "::OnKvM03One";
 	end;
 
 OnTimer50000:
-	mapannounce "bat_c03", "距离 KVM 战斗开始还剩 10 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "10 seconds remaining to start KVM battle.",bc_map,"0x00ff00";
 	donpcevent "::OnKvM03Two";
 	end;
 
 OnTimer55000:
-	mapannounce "bat_c03", "距离 KVM 战斗开始还剩 5 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "5 seconds remaining to start KVM battle.",bc_map,"0x00ff00";
 	donpcevent "::OnKvM03One";
 	end;
 
 OnTimer59000:
-	mapannounce "bat_c03", "KVM 现在开始。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "KVM is now commencing.",bc_map,"0x00ff00";
 	donpcevent "::OnKvM03Two";
 	end;
 
@@ -229,7 +229,7 @@ OnTimer61000:
 		if (.Guillaume_Count < 5 || .Croix_Count < 5) {
 			set $@KvM03BG_Victory, 3;
 			set $@KvM03BG, 3;
-			mapannounce "bat_c03","玩家人数不足，无法开始战斗",1,0xC0C0C0;
+			mapannounce "bat_c03","There are not enough players to start the battle",1,0xC0C0C0;
 			stopnpctimer;
 			donpcevent "KvM03_BG::OnStop";
 			end;
@@ -242,27 +242,27 @@ OnTimer61000:
 	end;
 
 OnTimer300000:
-	mapannounce "bat_c03", "距离 KVM 战斗结束还剩 1 分钟。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "1 minute remaining to finish the KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer330000:
-	mapannounce "bat_c03", "距离 KVM 战斗结束还剩 30 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "30 seconds remaining to finish the KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer345000:
-	mapannounce "bat_c03", "距离 KVM 战斗结束还剩 15 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "15 seconds remaining to finish the KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer350000:
-	mapannounce "bat_c03", "距离 KVM 战斗结束还剩 10 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "10 seconds remaining to finish the KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer355000:
-	mapannounce "bat_c03", "距离 KVM 战斗结束还剩 5 秒。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "5 seconds remaining to finish the KVM battle.",bc_map,"0x00ff00";
 	end;
 
 OnTimer360000:
-	mapannounce "bat_c03", "KVM 已结束。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "KVM has ended.",bc_map,"0x00ff00";
 	if( .Croix_Count > .Guillaume_Count )
 		donpcevent "KvM03_BG::OnCroixWin";
 	else if( .Croix_Count < .Guillaume_Count )
@@ -271,9 +271,9 @@ OnTimer360000:
 	{ // Draw Game
 		set $@KvM03BG, 3;
 		set $@KvM03BG_Victory, 3;
-		mapannounce "bat_c03", "纪尧姆方人数为"+.Guillaume_Count+".",bc_map,"0x00ff00";
-		mapannounce "bat_c03", "克罗伊方人数为"+.Croix_Count+".",bc_map,"0x00ff00";
-		mapannounce "bat_c03", "本次战斗以平局告终。",bc_map,"0x00ff00";
+		mapannounce "bat_c03", "The number of Guillaumes is "+.Guillaume_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_c03", "The number of Croixes is "+.Croix_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_c03", "This battle has ended in a draw.",bc_map,"0x00ff00";
 		donpcevent "KvM03_BG::OnStop";
 	}
 	end;
@@ -281,24 +281,24 @@ OnTimer360000:
 OnGuillaumeWin:
 	set $@KvM03BG, 3;
 	set $@KvM03BG_Victory, 1;
-	mapannounce "bat_c03", "纪尧姆获胜！",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "恭喜纪尧姆方成员。",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "所有人将被传送至起点。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Guillaume wins!",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Congratulations to Guillaume members.",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Everyone will be moved to the start point.",bc_map,"0x00ff00";
 	donpcevent "KvM03_BG::OnStop";
 	end;
 
 OnCroixWin:
 	set $@KvM03BG, 3;
 	set $@KvM03BG_Victory, 2;
-	mapannounce "bat_c03", "克罗伊获胜！",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "恭喜克罗伊方成员。",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "所有人将被传送至起点。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Croix wins!",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Congratulations to Croix members.",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Everyone will be moved to the start point.",bc_map,"0x00ff00";
 	donpcevent "KvM03_BG::OnStop";
 	end;
 
 OnStop:
 	stopnpctimer;
-	enablenpc "KVM 军官#KVM03A";
+	enablenpc "KVM Officer#KVM03A";
 	enablenpc "KVM Officer#KVM03B";
 	// Warp Teams
 	bg_warp $@KvM03BG_id1,"bat_c03",53,128;
@@ -317,21 +317,21 @@ OnBegin:
 	end;
 
 OnTimer1000:
-	mapannounce "bat_c03", "请向军官申请，以获取 KVM 点数。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Please apply with the Officer to acquire KVM points.",bc_map,"0x00ff00";
 	end;
 
 OnTimer3000:
-	mapannounce "bat_c03", "军官将在 30 秒内为你发放点数。",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "30 秒后，军官将被送离此处。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "The Officer will grant you the points for 30 seconds.",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "In 30 seconds, the Officer will be sent away.",bc_map,"0x00ff00";
 	end;
 
 OnTimer5000:
-	mapannounce "bat_c03", "除非与军官交谈，否则无法获得点数。",bc_map,"0x00ff00";
-	mapannounce "bat_c03", "请小心。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Unless you talk to the Officer, you cannot gain the points.",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "Please be careful.",bc_map,"0x00ff00";
 	end;
 
 OnTimer55000:
-	mapannounce "bat_c03", "你将被送回原处。",bc_map,"0x00ff00";
+	mapannounce "bat_c03", "You will be sent back.",bc_map,"0x00ff00";
 	end;
 
 OnTimer60000:
@@ -346,7 +346,7 @@ OnTimer60000:
 	if( $@KvM03BG_id2 ) { bg_destroy $@KvM03BG_id2; set $@KvM03BG_id2, 0; }
 	if (getbattleflag("feature.bgqueue"))
 		bg_unbook "bat_c03";
-	disablenpc "KVM 军官#KVM03A";
+	disablenpc "KVM Officer#KVM03A";
 	disablenpc "KVM Officer#KVM03B";
 	set $@KvM03BG, 0;
 	end;
@@ -370,20 +370,20 @@ OnCroixJoin:
 
 // Battleground rewards
 //============================================================
-bat_c03,51,130,5	script	KVM 军官#KVM03A	419,{
+bat_c03,51,130,5	script	KVM Officer#KVM03A	419,{
 	if( $@KvM03BG_Victory ) {
-		mes "[KVM 军官]";
+		mes "[KVM Officer]";
 		if( $@KvM03BG_Victory == Bat_Team ) {
-			mes "打得漂亮。";
-			mes "愿 KVM 的荣耀与你同在。";
-			mes "你获得了胜利点数：2";
+			mes "Good Game.";
+			mes "May the glory of KVM be with you.";
+			mes "You aquire the winning points: 2";
 			close2;
 			set kvm_point,kvm_point + 2;
 		}
 		else {
-			mes "非常抱歉。";
-			mes "祝你下次好运。";
-			mes "你获得了失败点数：1";
+			mes "I am so sorry.";
+			mes "I wish you better luck next time.";
+			mes "You aquire the losing points: 1";
 			close2;
 			set kvm_point,kvm_point + 1;
 		}
@@ -394,7 +394,7 @@ bat_c03,51,130,5	script	KVM 军官#KVM03A	419,{
 	}
 	end;
 }
-bat_c03,148,53,1	duplicate(KVM 军官#KVM03A)	KVM Officer#KVM03B	415
+bat_c03,148,53,1	duplicate(KVM Officer#KVM03A)	KVM Officer#KVM03B	415
 
 // BG Queue makes these scripts useless
 -	script	BGQueueInit#kvm03	-1,{

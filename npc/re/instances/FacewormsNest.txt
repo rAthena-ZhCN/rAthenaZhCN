@@ -11,67 +11,67 @@
 // Timeless Item Quests
 // The Owner Of Old Ring
 //============================================================
-payon,157,54,5	script	老妇人#pa0829	8_F_GRANDMOTHER,{
+payon,157,54,5	script	An Old Woman#pa0829	8_F_GRANDMOTHER,{
 	if (!checkweight(1201,1)) {
-		mes "您携带的物品类别过多。请减少物品种类后再试。";
+		mes "You have too many kind of belongings. Let's try again after reducing the kind of items.";
 		close;
 	}
 	if (MaxWeight - Weight < 1000) {
-		mes "您携带的物品过重，无法继续。请减轻重量后再试。";
+		mes "Your belongings are too heavy to continue. Let's try again after reducing the weight.";
 		close;
 	}
 	if (BaseLevel < 140) {
-		mes "[贞顺]";
-		mes "我仍活在那段回忆里。多留下些回忆吧……";
+		mes "[Jeum-sun]";
+		mes "I am still living in the memory. Make more memories...";
 		next;
-		mes "[贞顺]";
-		mes "哦，你已经达到 140 级了吗？我不和弱小的冒险者说话。";
+		mes "[Jeum-sun]";
+		mes "Oh are you level 140 yet? I won't talk to any weak adventurers.";
 		close;
 	}
 	switch( checkquest(12326,PLAYTIME) ) {
 	case -1:
-		mes "[贞顺]";
-		mes "许多年前我还是个少女时，曾倾心于一个男子。我不知道该如何向他表达心意……";
+		mes "[Jeum-sun]";
+		mes "When I was a young girl many years ago there was a man who I had crush on. I didn't know to tell him how I felt...";
 		next;
-		mes "[贞顺]";
-		mes "我常常逗弄他的大嘴鸟，想让他注意到我的心意。这样持续了好一阵子。";
+		mes "[Jeum-sun]";
+		mes "I used to tease his Peco Peco and wanted him to notice that I was interested. This went on and on for a while.";
 		next;
-		mes "[贞顺]";
-		mes "后来我们不知怎地就开始交往了。现在说起来还是很难为情。";
+		mes "[Jeum-sun]";
+		mes "Then we started dating somehow. It's still embarrasing to talk about it.";
 		next;
-		mes "[贞顺]";
-		mes "总之，到了可以成婚的年纪我们就结婚了。他总为买不起戒指送给我而道歉。";
+		mes "[Jeum-sun]";
+		mes "Anyway, we got married when we became old enough to marry. He used to say sorry for not being able to afford to buy a ring for me.";
 		next;
-		mes "[贞顺]";
-		mes "我们结婚已经 40 年了，他仍会说 ^0000ff'亲爱的～你想要戒指吗？'^000000。";
+		mes "[Jeum-sun]";
+		mes "It has been 40 years since we were married and he still says ^0000ff'Darling~ Do you want to have a ring?'^000000.";
 		next;
-		mes "[贞顺]";
-		mes "我告诉他……老太婆要戒指有什么用？";
+		mes "[Jeum-sun]";
+		mes "I told him.. What good is a ring for an old lady?";
 		next;
-		mes "[贞顺]";
-		mes "我当初该拦住他的。我还记得他年轻时的模样。";
+		mes "[Jeum-sun]";
+		mes "I should have stopped him. I still remember his face early.";
 		next;
-		select("他怎么了？");
-		mes "[贞顺]";
-		mes "他离家去买戒指之后，就再也没有回来。";
+		select("What happened to him?");
+		mes "[Jeum-sun]";
+		mes "He had not came back since he left home to buy a ring.";
 		next;
-		mes "^0000ff老妇人红着眼眶低下了头。^000000";
+		mes "^0000ffThe old lady turned her face down with reddened eyes.^000000";
 		if (countitem(6650)) {// Shabby_Ring
 			next;
-			if (select("别说了。:出示从人面虫洞穴得到的戒指。") == 2) {
-				mes "[贞顺]";
-				mes "这枚戒指呢？";
+			if (select("Stop talking.:Show the ring from the Faceworm's Nest.") == 2) {
+				mes "[Jeum-sun]";
+				mes "What about this ring?";
 				next;
-				mes "[贞顺]";
-				mes "哦……亲爱的～";
+				mes "[Jeum-sun]";
+				mes "Oh... Darling~";
 				next;
-				mes "^0000ff妇人读着戒指内侧的刻字，开始哭泣。";
-				mes "[贞顺，我心爱的花]^000000";
+				mes "^0000ffThe lady read an inscription inside the ring and started weeping.";
+				mes "[Jeum-sun, my darling flower]^000000";
 				next;
-				mes "^0000ff你感受到一股温暖的能量散发出来。或许这就是打造这枚戒指之人的心愿。^000000";
+				mes "^0000ffYou sense a warm energy emanating. Maybe this is the wish of the man who made this ring.^000000";
 				specialeffect EF_SPHERE;
 				next;
-				mes "温暖的能量鼓舞了你，赋予你力量。";
+				mes "The warm energy has inspired you with strength.";
 				delitem 6650,1;// Shabby_Ring
 				setquest 12326;// The owner of old ring
 				getexp 70000,55000;
@@ -80,10 +80,10 @@ payon,157,54,5	script	老妇人#pa0829	8_F_GRANDMOTHER,{
 		close;
 	case 0:
 	case 1:
-		mes "妇人握着戒指一遍又一遍地哭泣。现在和她说话似乎没有用。";
+		mes "The lady keeps crying over and over holding a ring. It seems to be no use talking to her right now.";
 		close;
 	case 2:
-		mes "遗憾的是，由于情绪骤变，这位女士似乎不记得过去了。让我们小心地和她交谈，听听她的故事。";
+		mes "Sadly, this woman does not seem to remember the past because of abrupt emotional changes. Let's talk carefully and listen to her story.";
 		erasequest 12326;
 		close;
 	}
@@ -91,54 +91,54 @@ payon,157,54,5	script	老妇人#pa0829	8_F_GRANDMOTHER,{
 
 // The Memory Of Old Photo Album
 //============================================================
-payon,161,54,3	script	异国商人#pa0829	4W_M_03,{
+payon,161,54,3	script	Exotic Merchant#pa0829	4W_M_03,{
 	if (!checkweight(1201,1)) {
-		mes "您携带的物品类别过多。请减少物品种类后再试。";
+		mes "You have too many types of belongings. Let's try again after reducing the types of items.";
 		close;
 	}
 	if (MaxWeight - Weight < 1000) {
-		mes "您携带的物品过重，无法继续。请减轻重量后再试。";
+		mes "Your belongings are too heavy to continue. Let's try again after reducing the weight.";
 		close;
 	}
 	if (BaseLevel < 140) {
-		mes "[塞尔吉奥]";
-		mes "财富与名声都不重要。最重要的是家人。";
+		mes "[Sergio]";
+		mes "Fortune or fame is not important. The most important thing is family.";
 		next;
-		mes "[塞尔吉奥]";
-		mes "你已经达到 140 级了吗？";
+		mes "[Sergio]";
+		mes "Are you at least level 140 yet?";
 		close;
 	}
 	switch( checkquest(12327,PLAYTIME) ) {
 	case -1:
-		mes "[塞尔吉奥]";
-		mes "我隐约记得曾随父亲的武装商队旅行。";
+		mes "[Sergio]";
+		mes "I have a blurry memory of when I used to travel with my father's armed-merchant group.";
 		next;
-		mes "[塞尔吉奥]";
-		mes "我模糊地记得，队伍遭到一条巨大蛇形生物袭击后就四散了。";
+		mes "[Sergio]";
+		mes "I vaguely remember everyone of the group were scattered after being attacked by a giant snake-like creature.";
 		next;
-		mes "[塞尔吉奥]";
-		mes "那时我失去了家人。连他们的面容都已记不清了。";
+		mes "[Sergio]";
+		mes "I had lost my family at that time. I do not clearly remember even their faces.";
 		next;
-		mes "[塞尔吉奥]";
-		mes "如今我组建了自己的武装商队，重拾了生活。但过去的记忆始终纠缠着我。";
+		mes "[Sergio]";
+		mes "Now I've made my own armed-merchant group and got my life back. But the memory of my past keeps haunting me.";
 		next;
-		mes "[塞尔吉奥]";
-		mes "我顺路来到这个小镇，想找找关于家人和武装商队的记录，但至今一无所获。";
+		mes "[Sergio]";
+		mes "I just stopped by this town to possibly find a record of my family and the armed-merchant group but so far I've found nothing.";
 		if (countitem(6652)) {
 			next;
-			if (select("别说了。:给他看老旧相簿") == 2) {
-				mes "[塞尔吉奥]";
-				mes "对！我想起来了。这个人曾在我父亲的武装商队里做事。";
+			if (select("Stop talking.:Show him the Old Photo Album") == 2) {
+				mes "[Sergio]";
+				mes "Yes! I remembered. This is the one who used to work for my father's armed-merchant group.";
 				next;
-				mes "[塞尔吉奥]";
-				mes "天啊……这里还有别的照片……";
+				mes "[Sergio]";
+				mes "Oh my... There are other pictures here too...";
 				next;
-				mes "^0000ff塞尔吉奥看着相簿，脸上浮现出孤独而满足的微笑。^000000";
+				mes "^0000ffA smile of lonely satisfaction spreads over the face of Sergio while looking at a photo album.^000000";
 				next;
-				mes "^0000ff一股柔和的力量环绕着塞尔吉奥。^000000";
+				mes "^0000ffA gentle energy surrounds Sergio.^000000";
 				specialeffect EF_SPHERE;
 				next;
-				mes "看到塞尔吉奥脸上满足的神情，你不禁动容。";
+				mes "You are touched by seeing the satisfaction on Sergio's face.";
 				delitem 6652,1;// Aged_Photo_Album
 				setquest 12327;// The memory of old photo album
 				getexp 70000,55000;
@@ -147,10 +147,10 @@ payon,161,54,3	script	异国商人#pa0829	4W_M_03,{
 		close;
 	case 0:
 	case 1:
-		mes "塞尔吉奥一直看着相簿。还是让他一个人待着吧。";
+		mes "Sergio keeps looking at the photo album. Let's leave him alone.";
 		close;
 	case 2:
-		mes "当你从人面虫洞穴取得新的相簿后，可以再和塞尔吉奥交谈。";
+		mes "You can talk to Sergio again when you pick up a new photo album from the Faceworm's Nest.";
 		erasequest 12327;
 		close;
 	}
@@ -158,55 +158,55 @@ payon,161,54,3	script	异国商人#pa0829	4W_M_03,{
 
 // Dol-Seoi's Sorrow
 //============================================================
-payon,161,50,1	script	健壮男子#pa829	4_M_ORIENT01,{
+payon,161,50,1	script	Strong Looking Man#pa829	4_M_ORIENT01,{
 	if (!checkweight(1201,1)) {
-		mes "您携带的物品类别过多。请减少物品种类后再试。";
+		mes "You have too many types of belongings. Let's try again after reducing the types of items.";
 		close;
 	}
 	if (MaxWeight - Weight < 1000) {
-		mes "您携带的物品过重，无法继续。请减轻重量后再试。";
+		mes "Your belongings are too heavy to continue. Let's try again after reducing the weight.";
 		close;
 	}
 	if (BaseLevel < 140) {
-		mes "[多尔索]";
-		mes "有什么我能帮你的吗？";
+		mes "[Dol-Seoi]";
+		mes "What can I do for you?";
 		next;
-		mes "[多尔索]";
-		mes "你已经达到 140 级了吗？";
+		mes "[Dol-Seoi]";
+		mes "Are you at least level 140 yet?";
 		close;
 	}
 	switch( checkquest(12328,PLAYTIME) ) {
 	case -1:
-		mes "[多尔索]";
-		mes "我曾是某位富有贵妇的仆人。她一向待我很好，却患有严重的咳嗽，若不服用一种特制药丸就止不住。";
+		mes "[Dol-Seoi]";
+		mes "I used to be a servant to a very wealthy lady. She was always kind to me but she suffered from a severe cough that wouldn't go away unless she took a special pill.";
 		next;
-		mes "[多尔索]";
-		mes "那种药丸我以前是从一队武装商人那里取得的，但我听说他们遭到蛇的袭击，从那以后我就再也拿不到药丸了。";
+		mes "[Dol-Seoi]";
+		mes "I used to get the pill from a group of armed-merchants but I heard that they were attacked by a snake and that's when I couldn't get any more pills.";
 		next;
-		mes "[多尔索]";
-		mes "我四处寻找，却没有人能替我弄到那种药丸，最终夫人去世了。若不是那条滑行的东西……";
+		mes "[Dol-Seoi]";
+		mes "I searched everywhere but no one could get that pill for me so eventually my lady passed away. If it wasn't for that slithering...";
 		next;
-		select("你想报仇吗？");
-		mes "[多尔索]";
+		select("Do you want to revenge?");
+		mes "[Dol-Seoi]";
 		mes "Well...";
 		next;
-		mes "[多尔索]";
-		mes "想……可是，我和那条蛇毫无关系。我只是个曾侍奉夫人的无用仆人。";
+		mes "[Dol-Seoi]";
+		mes "Yes... But, I have nothing to do with that snake. I am just a worthless servant who once served for my lady.";
 		next;
-		mes "^0000ff你在他眼中瞥见复杂的愤怒与悲伤。^000000";
+		mes "^0000ffYou catch a glimpse of complicated rage and sorrow in his eyes.^000000";
 		if (countitem(6653)) {
 			next;
-			if (select("别说了。:给他看古老的药丸。") == 2) {
-				mes "[多尔索]";
-				mes "等等！你从哪里得到这个的？";
+			if (select("Stop talking.:Show him the Old Pill.") == 2) {
+				mes "[Dol-Seoi]";
+				mes "Wait! Where did you get this?";
 				next;
-				select("我杀了一条蛇……");
-				mes "[多尔索]";
-				mes "这药丸……夫人，如果我当时有这药丸……";
+				select("I killed a snake...");
+				mes "[Dol-Seoi]";
+				mes "This pill... My lady, if I had this pill...";
 				next;
-				mes "^0000ff他像受伤的摩卡一样哭了起来。她对他一定意义非凡……^000000";
+				mes "^0000ffHe begins to weep like a wounded Muka. She must have meant a lot to him...^000000";
 				next;
-				mes "^0000ff我感觉到多尔索身边环绕着柔和的力量。^000000";
+				mes "^0000ffI feel gentle energy around Dol-Seoi.^000000";
 				specialeffect EF_SPHERE;
 				delitem 6653,1;// Aged_Tablet
 				setquest 12328;// Dol-Seoi's Sorrow
@@ -216,10 +216,10 @@ payon,161,50,1	script	健壮男子#pa829	4_M_ORIENT01,{
 		close;
 	case 0:
 	case 1:
-		mes "多尔索握着古老的药丸失神地站着。现在还是让他一个人待着吧。";
+		mes "Dol-Seoi is standing absent-mindedly clutching the Old Pill. Let's leave him alone now.";
 		close;
 	case 2:
-		mes "如果你从人面虫洞穴再取得古老的药丸，就可以再和多尔索交谈。";
+		mes "You can talk to Dol-Seoi again if you get another Old Pill from the Faceworm's Nest.";
 		erasequest 12328;
 		close;
 	}
@@ -227,49 +227,49 @@ payon,161,50,1	script	健壮男子#pa829	4_M_ORIENT01,{
 
 // Keaton's Bracelet
 //============================================================
-payon,139,68,4	script	阴郁的男子#pa0829	4_M_NFDEADMAN,{
+payon,139,68,4	script	A dreary man#pa0829	4_M_NFDEADMAN,{
 	if (!checkweight(1201,1)) {
-		mes "您携带的物品类别过多。请减少物品种类后再试。";
+		mes "You have too many types of belongings. Let's try again after reducing the types of items.";
 		close;
 	}
 	if (MaxWeight - Weight < 1000) {
-		mes "您携带的物品过重，无法继续。请减轻重量后再试。";
+		mes "Your belongings are too heavy to continue. Let's try again after reducing the weight.";
 		close;
 	}
 	if (BaseLevel < 140) {
-		mes "[凯顿]";
+		mes "[Keaton]";
 		mes "...";
 		next;
-		mes "[凯顿]";
-		mes "除非你达到 140 级，否则我不会和你正经交谈。";
+		mes "[Keaton]";
+		mes "Unless you're level 140, I won't have a real conversation with you.";
 		close;
 	}
 	switch( checkquest(12329,PLAYTIME) ) {
 	case -1:
-		mes "^0000ff它看起来像亡魂，却感觉不到恶意。它的思绪零零碎碎地传来，不容易理解。^000000";
+		mes "^0000ffIt looks like a dead soul but you don't feel maliciousness from it. His thoughts have been delivered piece by piece so it isn't easy to understand.^000000";
 		next;
-		mes "^999999[凯顿]";
-		mes "凯顿……不擅长说话。^000000";
+		mes "^999999[Keaton]";
+		mes "Keaton... Not good at speaking.^000000";
 		next;
-		mes "^999999[凯顿]";
-		mes "凯顿很久以前就死了。凯顿不是坏人。^000000";
+		mes "^999999[Keaton]";
+		mes "Keaton has died long time ago. Keaton is not bad.^000000";
 		next;
-		mes "^999999[凯顿]";
-		mes "凯顿……需要手环，那很重要。是凯顿的朋友送的手环。^000000";
+		mes "^999999[Keaton]";
+		mes "Keaton... Need bracelet, that is important. Keaton's friend gave the bracelet.^000000";
 		next;
-		mes "^999999[凯顿]";
-		mes "凯顿，要去找蛇，找手环。坏蛇杀了凯顿。^000000";
+		mes "^999999[Keaton]";
+		mes "Keaton, will go after a snake to find a bracelet. The bad snake killed keaton.^000000";
 		if (countitem(6651)) {
 			next;
-			if (select("别说了。:给他看生锈手环。") == 2) {
-				mes "^999999[凯顿]";
-				mes "这是凯顿的手环！！^000000";
+			if (select("Stop talking.:Show him the Rusty Bracelet.") == 2) {
+				mes "^999999[Keaton]";
+				mes "It is the bracelet of Keaton!!^000000";
 				specialeffect EF_MAPPILLAR2;
 				next;
-				mes "^999999[凯顿]";
-				mes "凯顿……高兴。打倒坏蛇！！^000000";
+				mes "^999999[Keaton]";
+				mes "Keaton...glad. Defeat bad snake!!^000000";
 				next;
-				mes "^0000ff凯顿似乎变得更明亮了。^000000";
+				mes "^0000ffKeaton seems to shine brighter.^000000";
 				delitem 6651,1;// Rusted_Bracalet
 				setquest 12329;// Keaton's Bracelet
 				getexp 70000,55000;
@@ -278,23 +278,23 @@ payon,139,68,4	script	阴郁的男子#pa0829	4_M_NFDEADMAN,{
 		close;
 	case 0:
 	case 1:
-		mes "凯顿的灵魂似乎在微笑。现在最好让他得到能有的安宁。";
+		mes "Keaton's soul seems to be smiling. Best to give him whatever peace he can have for now.";
 		close;
 	case 2:
-		mes "凯顿很伤心，也许是因为手环坏了。把人面虫洞穴中找到的其他生锈手环带给他吧。";
+		mes "Keaton is very sad maybe it is because the bracelet was broken. Bring him any other Rusty Bracelets found in the Faceworm's Nest.";
 		erasequest 12329;
 		close;
 	}
 }
 
-dali,83,67,5	script	古老告示牌#1	4_BOARD3,{
+dali,83,67,5	script	Old Sign#1	4_BOARD3,{
 	.@face_name$ = $120719_str_face$;
 	.@face_timer  = $120719_num_face;
 	.@face_member = $120903_num_face;
 	.@time_m = .@face_timer / 60;
 	.@time_s = .@face_timer - (.@time_m * 60);
 	if (.@face_name$ == "") {
-		mes "没有记录，因为没有人更新。";// Custom text
+		mes "There's no sign because no one updates the record.";// Custom text
 		close;
 	}
 	if (.@face_timer < 60)
@@ -303,9 +303,9 @@ dali,83,67,5	script	古老告示牌#1	4_BOARD3,{
 		.@time_txt$ = callfunc( "F_InsertPlural", .@time_m, "Minute" ) + " " + callfunc( "F_InsertPlural", .@time_s, "Second" );
 	if (.@face_member > 0)
 		.@string$ =  " with ^ff0044" + .@face_member + " party " + ( .@face_member > 1 ? "members" : "members" )  + "^000000";
-	mes "-- 人面虫洞穴记录 --";
-	mes "最佳时间属于冒险者 ^ff0044" + .@face_name$ + "^000000" + .@string$ + ".";
-	mes "当前记录时间为 ^0000ff" + .@time_txt$ + "^000000。";
+	mes "-- Faceworm's Nest Records --";
+	mes "Best time belongs to adventurer ^ff0044" + .@face_name$ + "^000000" + .@string$ + ".";
+	mes "Current record time is ^0000ff" + .@time_txt$ + "^000000.";
 	close;
 
 OnInit:
@@ -318,26 +318,26 @@ OnInit:
 	end;
 }
 
-dali,80,60,4	script	魔法学者	4_M_SAGE_C,{
+dali,80,60,4	script	Magic Scholar	4_M_SAGE_C,{
 	if (BaseLevel < 140) {
-		mes "[魔法学者]";
-		mes "你还没有资格进入这里。在达到 140 级之前，要不要先到别处走走？";
+		mes "[Magic Scholar]";
+		mes "You are not qualified enough to enter here. How about visiting other places until you become level 140.";
 		close;
 	}
 	.@party_id = getcharid(1);
 	.@md_name$ = "Faceworm's Nest";
 	if (.@party_id < 1) {
-		mes "[魔法学者]";
-		mes "你没有队伍吗？即使是一个人前来，也请先组建队伍再回来。";
+		mes "[Magic Scholar]";
+		mes "You don't have a party? Please come back again after creating a party even if you've come alone.";
 		close;
 	}
 	switch( checkquest(12325,PLAYTIME) ) {
 	case -1:
 		if (is_party_leader() == true) {
-			mes "[魔法学者]";
-			mes "有什么我能帮你的吗？";
+			mes "[Magic Scholar]";
+			mes "What can I do for you?";
 			next;
-			switch( select("预约人面虫洞穴:你在这里做什么？:不说了。") ) {
+			switch( select("Reserve Faceworm's Nest:What are you doing here?:Stop Talking.") ) {
 			case 1:
 				switch( instance_create(.@md_name$) ) {
 				case -3:
@@ -346,90 +346,90 @@ dali,80,60,4	script	魔法学者	4_M_SAGE_C,{
 				case -4:
 				case -2:
 				case -1:
-					mes "[魔法学者]";
-					mes "哎呀，我的手滑了一下。需要重新激活裂缝。";
+					mes "[Magic Scholar]";
+					mes "Oops, my hands are slip off. It is required to activate the craks again.";
 					close;
 				}
-				mes "[魔法学者]";
-				mes "空间已受到控制。";
-				mes "请稍等一分钟。";
+				mes "[Magic Scholar]";
+				mes "The spaces are under control.";
+				mes "Please wait for a minute.";
 				close;
 			case 2:
 				break;
 			case 3:
-				mes "[魔法学者]";
-				mes "好，我明白了。若你改变主意，请再来。";
+				mes "[Magic Scholar]";
+				mes "Okay, I got it. Please come back again if you change your mind.";
 				close;
 			}
 		}
-		mes "[魔法学者]";
-		mes "我正在研究此处的次元裂缝。";
+		mes "[Magic Scholar]";
+		mes "I am researching the dimensional cracks in space here.";
 		next;
-		mes "[魔法学者]";
-		mes "我的研究是用魔法稳定这里的空间，将其用于次元旅行。";
+		mes "[Magic Scholar]";
+		mes "My research is to stabilize the space here with magic to utilize it for dimensional travel.";
 		next;
-		mes "[魔法学者]";
-		mes "这道特别的裂缝通向过去的记忆。许多冒险者进去过，却没人愿意告诉我里面有什么……";
+		mes "[Magic Scholar]";
+		mes "This particular crack in space goes to a memory of the past. Many adventurers have been in there but no one will tell me what is in there...";
 		next;
-		mes "[魔法学者]";
-		mes "还有这块奇怪的牌子，上面记录着名字和时间，我只能猜想那是那些冒险者留下的。";
+		mes "[Magic Scholar]";
+		mes "And there's this strange sign here that records names and times on it which I can only assume belongs to those adventurers.";
 		next;
-		mes "[魔法学者]";
-		mes "总之，如果你是队长，我可以为你启动通道。";
+		mes "[Magic Scholar]";
+		mes "Anyways, I can activate the passage for you if you're a party leader.";
 		close;
 	case 0:
 	case 1:
-		mes "[魔法学者]";
-		mes "时间裂缝尚不安全，无法反复进出。请等副作用时间结束后再来。";
+		mes "[Magic Scholar]";
+		mes "The crack in time is not safe enough to pass back and forth. Please come back again if the after effect timer has passed.";
 		close;
 	case 2:
-		mes "^0000ff次元空间旅行的痕迹已经消失。你现在可以在次元之间移动了。^000000";
+		mes "^0000ffThe trace of dimensional space travelling has disappeared. You can now move between dimensions.^000000";
 		erasequest 12325;
 		close;
 	}
 }
 
-dali,72,55,4	script	跨次元装置	CLEAR_NPC,{
+dali,72,55,4	script	Interdimensional Device	CLEAR_NPC,{
 	if (BaseLevel < 140) {
-		mes "[跨次元装置]";
-		mes "你的力量等级不足以进行空间旅行。请至少达到 140 级后再来。";
+		mes "[Interdimensional Device]";
+		mes "Your power level is not high enough to travel the space. Please come back again when you reach at least level 140.";
 		close;
 	}
 	.@party_id = getcharid(1);
 	.@md_name$ = "Faceworm's Nest";
 	if (.@party_id < 1) {
-		mes "[跨次元装置]";
-		mes "没有队伍？即使是一个人前来，也请先组建队伍再回来。";
+		mes "[Interdimensional Device]";
+		mes "No party? Please come back again after creating a party even if you've come alone.";
 		close;
 	}
 	switch( checkquest(12325,PLAYTIME) ) {
 	case -1:
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "[跨次元装置]";
-			mes "发生了未知错误。";
+			mes "[Interdimensional Device]";
+			mes "An unknown error has occurred.";
 			close;
 		case IE_NOINSTANCE:
-			mes "[跨次元装置]";
-			mes "空间旅行的通道尚未启动。";
+			mes "[Interdimensional Device]";
+			mes "The passage for space travel is not activated yet.";
 			close;
 		case IE_NOMEMBER:// Custom text
-			mes "[跨次元装置]";
-			mes "你无权访问该装置。";
+			mes "[Interdimensional Device]";
+			mes "You are not allowed to access the device.";
 			close;
 		case IE_OK:
-			mapannounce "dali", getpartyname(.@party_id) + "队伍的队员" + strcharinfo(0) + "进入了" + .@md_name$ + ".",bc_map,"0x00ff99";
+			mapannounce "dali", getpartyname(.@party_id) + " party's party member " + strcharinfo(0) + " enters " + .@md_name$ + ".",bc_map,"0x00ff99";
 			setquest 12325;// Faceworm's Nest after-effects
 			//warp "1@face",112,374;
 			end;
 		}
 	case 0:
 	case 1:
-		mes "[跨次元装置]";
-		mes "检测到近期空间旅行的痕迹。拒绝访问。";
+		mes "[Interdimensional Device]";
+		mes "Traces of recent space travel have been detected. Access is denied.";
 		close;
 	case 2:
-		mes "^0000ff次元空间旅行的痕迹已经消失。你现在可以在次元之间移动了。^000000";
+		mes "^0000ffThe trace of dimensional space travelling has disappeared. You can now move between dimensions.^000000";
 		erasequest 12325;
 		close;
 	}
@@ -438,43 +438,43 @@ dali,72,55,4	script	跨次元装置	CLEAR_NPC,{
 // Instance Scripts :: in_face
 // 1st Stage
 //============================================================
-1@face,110,348,6	script	凯斯#0	4_M_CHAOS,{
+1@face,110,348,6	script	Chaos#0	4_M_CHAOS,{
 	cutin "h_chaos01",2;
 	if (is_party_leader() == false) {
-		mes "[凯斯]";
-		mes "我不知道这是怎么回事，我正在和你们的队长说话，请稍等一下好吗？";
+		mes "[Chaos]";
+		mes "I do not know what this is about, but I'm talking to your leader so please wait for a while ok?";
 		close2;
 		cutin "",255;
 		end;
 	}
 	.@account_id = getcharid(3);
 	.@player_name$ = strcharinfo(0);
-	mes "[凯斯]";
-	mes "真的吗？我可不知道有赏金猎人要来这儿。";
-	npctalk "凯斯：真的吗？我可不知道有赏金猎人要来这儿。";
+	mes "[Chaos]";
+	mes "Really? I didn't know that a bounty hunter was coming here.";
+	npctalk "Chaos: Really? I didn't know that a bounty hunter was coming here.";
 	next;
-	select("等等！这是误会。");
+	select("Wait! It's a misunderstanding.");
 	cutin "",255;
 	mes "[" + .@player_name$ + "]";
-	mes "不！我想你误会了！我们不是赏金猎人……";
-	unittalk .@account_id, .@player_name$ + ": 不！我想你误会了！我们不是赏金猎人……";
+	mes "No! I think you're mistaken! We are not bounty hunters...";
+	unittalk .@account_id, .@player_name$ + ": No! I think you're mistaken! We are not bounty hunters...";
 	next;
 	cutin "h_chaos01",2;
-	mes "[凯斯]";
-	mes "不，不必找借口……人面虫不属于任何人。";
-	npctalk "凯斯：不，不必找借口……人面虫不属于任何人。";
+	mes "[Chaos]";
+	mes "No, No need to make an excuse... The faceworm belongs to nobody.";
+	npctalk "Chaos: No, No need to make an excuse... The faceworm belongs to nobody.";
 	next;
-	select("人面虫？");
+	select("Faceworm?");
 	cutin "",255;
 	mes "[" + .@player_name$ + "]";
-	mes "人面虫？我从未听说过。";
-	unittalk .@account_id, .@player_name$ + ": 人面虫？我从未听说过。";
+	mes "Faceworm? I've never heard about it.";
+	unittalk .@account_id, .@player_name$ + ": Faceworm? I've never heard about it.";
 	close2;
 	donpcevent instance_npcname("Chaos#01") + "::OnStart";
 	end;
 }
 
-1@face,110,348,6	script	凯斯#01	4_M_CHAOS,{
+1@face,110,348,6	script	Chaos#01	4_M_CHAOS,{
 	end;
 OnStart:
 	.@iris_name$ = instance_npcname("Iris#0");
@@ -482,30 +482,30 @@ OnStart:
 	hideoffnpc instance_npcname("Chaos#01");
 	hideonnpc instance_npcname("Chaos#0");
 	sleep 5000;
-	npctalk "凯斯：哈哈哈，你真的没听说过？人面虫是最近在这一带出现的怪物之名。";
+	npctalk "Chaos: Hahaha, you really never heard about it? Faceworm is the name of a monster which has recently showed up in this area.";
 	sleep 5000;
-	npctalk "凯斯：我不在乎。只要你们别打扰我，我就不管。";
+	npctalk "Chaos: I don't care. I would not care as long as you don't disturb me.";
 	sleep 5000;
-	npctalk "艾丽斯：啊～微风真舒服～", .@iris_name$;
+	npctalk "Iris: Ah~ A gentle breeze~", .@iris_name$;
 	sleep 3000;
-	npctalk "艾丽斯：呵呵，天气真好。我好开心～", .@iris_name$;
+	npctalk "Iris: Hehe, the weather has been great. I'm so happy~", .@iris_name$;
 	sleep 3000;
-	npctalk "艾丽斯：凯斯，你觉得呢？", .@iris_name$;
+	npctalk "Iris: How about you Chaos?", .@iris_name$;
 	sleep 3000;
-	npctalk "凯斯：这只是一时的事。";
+	npctalk "Chaos: It will only be for the time being.";
 	sleep 3000;
-	npctalk "凯斯：开始刮起黑色的风了。";
+	npctalk "Chaos: A black wind has started blowing.";
 	sleep 4000;
-	npctalk "凯斯：艾丽斯！我感觉人面虫就在这附近。也许女王的巢穴就在这片森林的最深处！";
+	npctalk "Chaos: Iris! I feel like faceworms are around here. Maybe, the queen's nest is in the deepest side of this forest!";
 	sleep 5000;
-	npctalk "艾丽斯：啊哈～就和平常一样解决掉吧，好吗？", .@iris_name$;
+	npctalk "Iris: Ahah~ Let's take care of it as always like usual ok?", .@iris_name$;
 	sleep 3000;
-	npctalk "凯斯：好，解决掉就回去吧。喂，冒险者们，小心点！待会儿肯定会有一大群人面虫涌来。";
+	npctalk "Chaos: Yes, let's take care of it and go back. Hey, adventurers. Watch out! I'm sure lots of faceworms will be here soon.";
 	sleep 6000;
 	hideonnpc instance_npcname("Chaos#01");
 	hideonnpc instance_npcname("Iris#0");
 	donpcevent instance_npcname("#fwormcontrol1") + "::OnStart";
-	mapannounce 'map_name$, "人面虫限时挑战开始了。击杀越快，奖励比例越高。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "Faceworm time attack has started. Faster kill times gives a higher percentage of rewards.",bc_map,"0xffffff";
 	donpcevent instance_npcname("#fwormprize1") + "::OnStart";
 	end;
 OnInstanceInit:
@@ -513,10 +513,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,116,346,3	script	艾丽斯#0	4_F_IRIS,{
+1@face,116,346,3	script	Iris#0	4_F_IRIS,{
 	cutin "h_iris02",2;
-	mes "[艾丽斯]";
-	mes "抱歉～我正享受微风，下次再和我说话吧。";
+	mes "[Iris]";
+	mes "Sorry~ I enjoy a gentle breeze so talk to me next time.";
 	close2;
 	cutin "",255;
 	end;
@@ -534,14 +534,14 @@ OnStart:
 	end;
 OnMyMobDead:
 	.@mob_dead_num = mobcount( 'map_name$, instance_npcname("#fwormcontrol1") +"::OnMyMobDead" );
-	mapannounce 'map_name$, "还有" + ( .@mob_dead_num > 1 ? "有" : "有" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
+	mapannounce 'map_name$, "There " + ( .@mob_dead_num > 1 ? "are" : "is" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
 	if (.@mob_dead_num < 3)
 		initnpctimer;
 	end;
 OnTimer1000:
 	killmonster 'map_name$, instance_npcname("#fwormcontrol1") + "::OnMyMobDead";
 	donpcevent instance_npcname("#fwormboss1") + "::OnStart";
-	mapannounce 'map_name$, "一只巨大的人面虫突然出现了。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "A giant faceworm has suddenly appeared.",bc_map,"0xffffff";
 	stopnpctimer;
 	end;
 OnInstanceInit:
@@ -588,7 +588,7 @@ OnMyMobDead:
 		hideoffnpc instance_npcname("Chaos#1");
 		hideoffnpc instance_npcname("Iris#1");
 		donpcevent instance_npcname("#fwormboss12") + "::OnEnd";
-		mapannounce 'map_name$, "击杀暗黑人面虫后，出现了一个洞。",bc_map,"0xffffff";
+		mapannounce 'map_name$, "A hole appears after killing the dark faceworm.",bc_map,"0xffffff";
 		stopnpctimer;
 	}
 	end;
@@ -641,7 +641,7 @@ S_Heal:
 	if (.@dfacehp > .@r_hpp2)
 		.@dfacehp = .@r_hpp2;
 	setunitdata 'BOSS[1], UMOB_HP, .@dfacehp;
-	mapannounce 'map_name$, "暗黑人面虫吸收了" + getarg(0) + "个未破的卵的能量，恢复了" + .@r_hpp + "点能量。",bc_map,"0xff00ee";
+	mapannounce 'map_name$, "Dark faceworm absorbs the energy of " + getarg(0) + " unbroken eggs recovering " + .@r_hpp + " energy.",bc_map,"0xff00ee";
 	return;
 
 OnEnd:
@@ -678,28 +678,28 @@ OnInstanceInit:
 
 // 2nd Stage
 //============================================================
-1@face,120,97,6	script	凯斯#1	4_M_CHAOS,{
+1@face,120,97,6	script	Chaos#1	4_M_CHAOS,{
 	cutin "h_chaos01",2;
 	if (is_party_leader() == false) {
-		mes "[凯斯]";
-		mes "我不知道这是怎么回事，我正在和你们的队长说话，请稍等一下好吗？";
+		mes "[Chaos]";
+		mes "I do not know what this is about, but I'm talking to your leader so please wait for a while ok?";
 		close2;
 		cutin "",255;
 		end;
 	}
-	mes "[凯斯]";
-	mes "哇，你竟然快得能跟上我。";
-	npctalk "凯斯：哇，你竟然快得能跟上我。";
+	mes "[Chaos]";
+	mes "Wow, you're fast enough to follow me.";
+	npctalk "Chaos: Wow, you're fast enough to follow me.";
 	next;
-	select("刚才那只大家伙……");
+	select("The big one, just right before...");
 	cutin "",255;
 	mes "[" + strcharinfo(0) + "]";
-	mes "我们刚才看到的那只大家伙，是这里的首领吗？";
-	unittalk getcharid(3), strcharinfo(0) + ": 我们刚才看到的那只大家伙，是这里的首领吗？";
+	mes "The big one just right before we saw is a boss here?";
+	unittalk getcharid(3), strcharinfo(0) + ": The big one just right before we saw is a boss here?";
 	next;
 	cutin "h_chaos01",2;
-	mes "[凯斯]";
-	mes "不～～那不可能是人面虫皇后。";
+	mes "[Chaos]";
+	mes "No~~ It can't be the faceworm queen.";
 	close2;
 	donpcevent instance_npcname("Chaos#11") + "::OnStart";
 	cutin "",255;
@@ -710,32 +710,32 @@ OnInstanceInit:
 	end;
 }
 
-1@face,120,97,6	script	凯斯#11	4_M_CHAOS,{
+1@face,120,97,6	script	Chaos#11	4_M_CHAOS,{
 	end;
 OnStart:
 	.@iris_name$ = instance_npcname("Iris#1");
 	hideoffnpc instance_npcname("Chaos#11");
 	hideonnpc instance_npcname("Chaos#1");
-	npctalk "凯斯：不～～那不可能是人面虫皇后。";
+	npctalk "Chaos: No~~ It can't be the faceworm queen.";
 	sleep 4000;
-	npctalk "凯斯：我们刚才看到的那只是突变的人面虫。";
+	npctalk "Chaos: The one we just saw before is a mutant faceworm.";
 	sleep 5000;
-	npctalk "凯斯：等等！那只死掉的人面虫蜕下的皮也许有用。";
+	npctalk "Chaos: Wait! The dead faceworm's castoff skin might be useful.";
 	sleep 3000;
-	npctalk "艾丽斯：可是，如果战斗拖得太久，鳞片可能会受损。那就一文不值了！", .@iris_name$;
+	npctalk "Iris: But, if the fight takes too long. The scales might be damaged. They'll be worthless!", .@iris_name$;
 	sleep 5000;
-	npctalk "艾丽斯：我听说熟练的猎人都很擅长飞快地剥下鳞片。", .@iris_name$;
+	npctalk "Iris: I heard that skillful hunters are good at taking the scales off super fast.", .@iris_name$;
 	sleep 6000;
-	npctalk "艾丽斯：凯斯，你擅长这个吗？", .@iris_name$;
+	npctalk "Iris: Chaos, are you any good at it?", .@iris_name$;
 	sleep 3000;
-	npctalk "凯斯：不……一点都不擅长！我只会用怒爆，鳞片大概会被烧焦……";
+	npctalk "Chaos: No... Not at all! I use Magnum Break only, so the scales will probably get burned...";
 	sleep 3000;
-	npctalk "艾丽斯：没用的凯斯。", .@iris_name$;
+	npctalk "Iris: Useless Chaos.", .@iris_name$;
 	sleep 3000;
-	npctalk "凯斯：再说，我们要找的东西不在这里。我先回去了，剩下的就交给你了，好吗？";
+	npctalk "Chaos: Besides, the one we are looking for is not here. I will go back first, so take care of the rest ok?";
 	sleep 5000;
 	hideonnpc instance_npcname("Chaos#11");
-	npctalk "艾丽斯：凯斯！你要把我一个人丢下吗？", .@iris_name$;
+	npctalk "Iris: Chaos! Are you leaving me alone?", .@iris_name$;
 	sleep 3000;
 	hideonnpc .@iris_name$;
 	donpcevent instance_npcname("#fwormcontrol2") + "::OnStart";
@@ -746,10 +746,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,129,97,3	script	艾丽斯#1	4_F_IRIS,{
+1@face,129,97,3	script	Iris#1	4_F_IRIS,{
 	cutin "h_iris02",2;
-	mes "[艾丽斯]";
-	mes "凯斯虽然只会用怒爆，却是个好朋友……";
+	mes "[Iris]";
+	mes "Chaos is a good friend even though he's only able to use Magnum Break...";
 	close2;
 	cutin "",255;
 	end;
@@ -770,14 +770,14 @@ OnStart:
 	end;
 OnMyMobDead:
 	.@mob_dead_num = mobcount( 'map_name$,instance_npcname("#fwormcontrol2") +"::OnMyMobDead" );
-	mapannounce 'map_name$, "还有" + ( .@mob_dead_num > 1 ? "有" : "有" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
+	mapannounce 'map_name$, "There " + ( .@mob_dead_num > 1 ? "are" : "is" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
 	if (.@mob_dead_num < 3)
 		initnpctimer;
 	end;
 OnTimer1000:
 	killmonster 'map_name$, instance_npcname("#fwormcontrol2") + "::OnMyMobDead";
 	donpcevent instance_npcname("#fwormboss2") + "::OnStart";
-	mapannounce 'map_name$, "一只巨大的人面虫突然出现了。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "A giant faceworm has suddenly appeared.",bc_map,"0xffffff";
 	stopnpctimer;
 	end;
 OnInstanceInit:
@@ -824,7 +824,7 @@ OnMyMobDead:
 		hideoffnpc instance_npcname("Chaos#2");
 		hideoffnpc instance_npcname("Iris#2");
 		donpcevent instance_npcname("#fwormboss22") + "::OnEnd";
-		mapannounce 'map_name$, "你听见南边传来巨响。那一定是我们刚才除掉的那只的巢穴。",bc_map,"0xffffff";
+		mapannounce 'map_name$, "You hear something loud in the south. It must be the nest of the one we just got rid of.",bc_map,"0xffffff";
 		stopnpctimer;
 	}
 	end;
@@ -894,18 +894,18 @@ OnInstanceInit:
 
 // 3rd Stage
 //============================================================
-1@face,153,113,7	script	凯斯#2	4_M_CHAOS,{
+1@face,153,113,7	script	Chaos#2	4_M_CHAOS,{
 	cutin "h_chaos01",2;
 	if (is_party_leader() == false) {
-		mes "[凯斯]";
-		mes "我不知道这是怎么回事，我正在和你们的队长说话，请稍等一下好吗？";
+		mes "[Chaos]";
+		mes "I do not know what this is about, but I'm talking to your leader so please wait for a while ok?";
 		close2;
 		cutin "",255;
 		end;
 	}
-	mes "[凯斯]";
-	mes "你挺厉害的！但从现在起要小心。这条狭窄的峡谷似乎危机四伏。";
-	npctalk "凯斯：你挺厉害的！但从现在起要小心。这条狭窄的峡谷似乎危机四伏。";
+	mes "[Chaos]";
+	mes "You're pretty good! But you have to be careful from now on. This narrow canyon seems to be full of dangers.";
+	npctalk "Chaos: You're pretty good! But you have to be careful from now on. This narrow canyon seems to be full of dangers.";
 	close2;
 	donpcevent instance_npcname("Chaos#22") + "::OnStart";
 	cutin "",255;
@@ -916,15 +916,15 @@ OnInstanceInit:
 	end;
 }
 
-1@face,153,113,7	script	凯斯#22	4_M_CHAOS,{
+1@face,153,113,7	script	Chaos#22	4_M_CHAOS,{
 	end;
 OnStart:
 	hideoffnpc instance_npcname("Chaos#22");
 	hideonnpc instance_npcname("Chaos#2");
 	sleep 4000;
-	npctalk "艾丽斯：我在这里感觉不舒服。我们马上离开这儿吧，凯斯！", instance_npcname("Iris#2");
+	npctalk "Iris: I do not feel good here. Let's get outta here right now Chaos!", instance_npcname("Iris#2");
 	sleep 4000;
-	npctalk "凯斯：好，我们离开这里。小心跟着我！";
+	npctalk "Chaos: Ok, let's get out of here. Carefully follow me!";
 	sleep 4000;
 	hideonnpc instance_npcname("Chaos#22");
 	hideonnpc instance_npcname("Iris#2");
@@ -936,10 +936,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,160,113,1	script	艾丽斯#2	4_F_IRIS,{
+1@face,160,113,1	script	Iris#2	4_F_IRIS,{
 	cutin "h_iris01",2;
-	mes "[艾丽斯]";
-	mes "这条峡谷。我在这里感觉很不舒服。我不想再待下去了。";
+	mes "[Iris]";
+	mes "This canyon. I am not feeling good here. I don't want to stay anymore.";
 	close2;
 	cutin "",255;
 	end;
@@ -957,14 +957,14 @@ OnStart:
 	end;
 OnMyMobDead:
 	.@mob_dead_num = mobcount('map_name$,instance_npcname("#fwormcontrol3") + "::OnMyMobDead");
-	mapannounce 'map_name$, "还有" + ( .@mob_dead_num > 1 ? "有" : "有" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
+	mapannounce 'map_name$, "There " + ( .@mob_dead_num > 1 ? "are" : "is" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
 	if (.@mob_dead_num < 3)
 		initnpctimer;
 	end;
 OnTimer1000:
 	killmonster 'map_name$, instance_npcname("#fwormcontrol3") + "::OnMyMobDead";
 	donpcevent instance_npcname("#fwormboss3") + "::OnStart";
-	mapannounce 'map_name$, "一只巨大的人面虫突然出现了。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "A giant faceworm has suddenly appeared.",bc_map,"0xffffff";
 	stopnpctimer;
 	end;
 OnInstanceInit:
@@ -1008,7 +1008,7 @@ OnMyMobDead:
 		enablenpc instance_npcname("#fwormexit3");
 		enablenpc instance_npcname("#chaoson");
 		donpcevent instance_npcname("#fwormboss32") + "::OnEnd";
-		mapannounce 'map_name$, "你听见石头堆崩塌的声音。这也许是通往其他空间的入口。",bc_map,"0xffffff";
+		mapannounce 'map_name$, "You hear the pile of stones collapsing. This might be a gateway to go to other spaces.",bc_map,"0xffffff";
 		stopnpctimer;
 	}
 	end;
@@ -1021,7 +1021,7 @@ OnHeal01:
 	if (.@dfacehp > .@r_hpp2)
 		.@dfacehp = .@r_hpp2;
 	setunitdata 'BOSS[3], UMOB_HP, .@dfacehp;
-	mapannounce 'map_name$, "暗黑人面虫丢下一袋致命毒药，恢复了" + .@r_hpp + "点能量。",bc_map,"0x66ff00";
+	mapannounce 'map_name$, "Dark faceworm has dropped a sack of fatal poison and recovers " + .@r_hpp + " amount of energy.",bc_map,"0x66ff00";
 	end;
 OnInstanceInit:
 	hideonnpc instance_npcname("#fwormboss3");
@@ -1098,9 +1098,9 @@ OnInstanceInit:
 1@face,1,10,7	script	#announcer1	CLEAR_NPC,{
 	end;
 OnStart:
-	mapannounce 'map_name$, "凯斯的声音：喂，冒险者们，你们要小心！避开毒液！",bc_map,"0xffff00";
+	mapannounce 'map_name$, "The voice of Chaos: Hey adventurers, you should be careful! Avoid the poison!",bc_map,"0xffff00";
 	sleep 6000;
-	mapannounce 'map_name$, "凯斯的声音：我们正在找另一个巢穴，如果你们发现什么就告诉我。",bc_map,"0xffff00";
+	mapannounce 'map_name$, "The voice of Chaos: We are looking for another nest so let me know if you find anything.",bc_map,"0xffff00";
 	donpcevent instance_npcname("#fwormcontrol4") + "::OnStart";
 	donpcevent instance_npcname("#fwormcontrol42") + "::OnStart";
 	donpcevent instance_npcname("#fwormprize4") + "::OnStart";
@@ -1121,14 +1121,14 @@ OnStart:
 	end;
 OnMyMobDead:
 	.@mob_dead_num = mobcount('map_name$,instance_npcname("#fwormcontrol4") + "::OnMyMobDead");
-	mapannounce 'map_name$, "还有" + ( .@mob_dead_num > 1 ? "有" : "有" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
+	mapannounce 'map_name$, "There " + ( .@mob_dead_num > 1 ? "are" : "is" ) + " " + callfunc( "F_InsertPlural", .@mob_dead_num, "faceworm" ) + " still alive.",bc_map,"0xffffff";
 	if (.@mob_dead_num < 3)
 		initnpctimer;
 	end;
 OnTimer1000:
 	killmonster 'map_name$, instance_npcname("#fwormcontrol4") + "::OnMyMobDead";
 	donpcevent instance_npcname("#fwormboss4") + "::OnStart";
-	mapannounce 'map_name$, "你听见西边传来尖叫声。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "You hear something screaming to the west.",bc_map,"0xffffff";
 	stopnpctimer;
 	end;
 OnInstanceInit:
@@ -1194,7 +1194,7 @@ OnMyMobDead:
 		hideoffnpc instance_npcname("Iris#4");
 		enablenpc instance_npcname("#chaoson2");
 		donpcevent instance_npcname("#fwormboss42") + "::OnEnd";
-		mapannounce 'map_name$, "你听见石头堆崩塌的声音。我想又发现了一个入口。",bc_map,"0xffffff";
+		mapannounce 'map_name$, "You hear the pile of stones collapsing. I think another gateway is found.",bc_map,"0xffffff";
 		stopnpctimer;
 	}
 	end;
@@ -1283,17 +1283,17 @@ OnInstanceInit:
 	end;
 }
 
-1@face,213,153,6	script	凯斯#5	4_M_CHAOS,{
+1@face,213,153,6	script	Chaos#5	4_M_CHAOS,{
 	end;
 OnInstanceInit:
 	hideonnpc instance_npcname("Chaos#5");
 	end;
 }
 
-1@face,208,149,7	script	凯斯#4	4_M_CHAOS,{
+1@face,208,149,7	script	Chaos#4	4_M_CHAOS,{
 	cutin "h_chaos01",2;
-	mes "[凯斯]";
-	mes "嘿。这水洼真奇怪。";
+	mes "[Chaos]";
+	mes "Hew. This puddle is weird.";
 	close2;
 	cutin "",255;
 	end;
@@ -1302,49 +1302,49 @@ OnStart:
 	.@iris$ = instance_npcname("Iris#4");
 	.@chaos5$ = instance_npcname("Chaos#5");
 	sleep 2000;
-	npctalk "凯斯：艾丽斯，这水洼是做什么的？";
+	npctalk "Chaos: Iris, what is this puddle for?";
 	sleep 3000;
-	npctalk "艾丽斯：嗯，我觉得它太大了，不像是人面虫的巢穴。", .@iris$;
+	npctalk "Iris: Well, I think it is too big to be the nest of a faceworm.", .@iris$;
 	sleep 4000;
-	npctalk "凯斯：嗯，好吧，要不要我下去看看？";
+	npctalk "Chaos: Hmm, okay, should I go down there and check it out?";
 	sleep 3000;
-	npctalk "艾丽斯：凯斯！别胡说八道。", .@iris$;
+	npctalk "Iris: Chaos! Cut the crap.", .@iris$;
 	sleep 3000;
-	npctalk "凯斯：为什么不行？看起来根本没那么危险啊！";
+	npctalk "Chaos: Why not? It doesn't even look that dangerous!";
 	sleep 5000;
 	hideonnpc instance_npcname("Chaos#4");
 	sleep 3000;
-	npctalk "艾丽斯：啊啊，凯斯你真是个惹祸精。", .@iris$;
+	npctalk "Iris: Arrghh, Chaos you're such a troublemaker.", .@iris$;
 	sleep 6000;
-	npctalk "凯斯：呃！啊啊！！这是什么？", .@chaos5$;
+	npctalk "Chaos: Ugh! Arrgh!! What is this?", .@chaos5$;
 	sleep 2000;
-	npctalk "艾丽斯：凯斯！到底是什么？", .@iris$;
+	npctalk "Iris: Chaos! What is it?", .@iris$;
 	sleep 2000;
-	npctalk "凯斯：啊", .@chaos5$;
+	npctalk "Chaos: Ah", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊", .@chaos5$;
+	npctalk "Chaos: Argh", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊啊", .@chaos5$;
+	npctalk "Chaos: Argghh", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊啊啊", .@chaos5$;
+	npctalk "Chaos: Argghhhhh", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊啊啊啊", .@chaos5$;
+	npctalk "Chaos: Argghhhhhhh", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊啊啊啊啊", .@chaos5$;
+	npctalk "Chaos: Argghhhhhhhhh", .@chaos5$;
 	sleep 100;
-	npctalk "凯斯：啊啊啊啊啊啊啊！！", .@chaos5$;
+	npctalk "Chaos: Argghhhhhhhhhhh!!", .@chaos5$;
 	sleep 5000;
 	hideoffnpc instance_npcname("Chaos#4");
 	sleep 3000;
-	npctalk "凯斯：该死，我差点被活活吃掉。";
+	npctalk "Chaos: Damn, I was close to being eaten alive.";
 	sleep 3000;
-	npctalk "艾丽斯：我问你到底发生了什么，笨蛋！", .@iris$;
+	npctalk "Iris: I asked you what happened dummy!", .@iris$;
 	sleep 3000;
-	npctalk "凯斯：呃，人面虫皇后正爬上来，看起来气得要命。所以，呃，我们快离开这儿吧。";
+	npctalk "Chaos: Uhh, the faceworm queen is crawling up now and it looks like really pissed off. So let's, uh, get outta here.";
 	sleep 6000;
 	hideonnpc instance_npcname("Chaos#4");
 	sleep 1000;
-	npctalk "艾丽斯：凯斯你这个白痴！！", .@iris$;
+	npctalk "Iris: Chaos you idiot!!", .@iris$;
 	specialeffect EF_DUSTSTORM,AREA, .@chaos5$;
 	specialeffect EF_MAPPILLAR2,AREA, .@chaos5$;
 	sleep 5000;
@@ -1358,10 +1358,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,220,149,1	script	艾丽斯#4	4_F_IRIS,{
+1@face,220,149,1	script	Iris#4	4_F_IRIS,{
 	cutin "h_iris01",2;
-	mes "[艾丽斯]";
-	mes "这附近似乎有些不对劲。很危险。";
+	mes "[Iris]";
+	mes "Something seems fishy around here. It's dangerous.";
 	close2;
 	cutin "",255;
 	end;
@@ -1402,9 +1402,9 @@ S_Heal:
 		.@dfacehp = .@r_hpp2;
 	setunitdata 'BOSS[5], UMOB_HP, .@dfacehp;
 	if (.@type == 5)
-		mapannounce 'map_name$, "人面虫皇后丢下一袋致命毒药，恢复了" + .@r_hpp + "点能量。",bc_map,"0x66ff00",FW_NORMAL,14;
+		mapannounce 'map_name$, "The Faceworm Queen has dropped a sack of fatal poison and recovers " + .@r_hpp + " amount of energy.",bc_map,"0x66ff00",FW_NORMAL,14;
 	else
-		mapannounce 'map_name$, "人面虫皇后吸收了" + .@type + "个未破的" + ( .@type > 1 ? "卵" : "卵" ) + "的能量，恢复了" + .@r_hpp + "点能量。",bc_map,"0x66ff00",FW_NORMAL,14;
+		mapannounce 'map_name$, "The Faceworm Queen absorbs the energy of " + .@type + " unbroken " + ( .@type > 1 ? "eggs" : "egg" ) + " and recovers " + .@r_hpp + " amount of energy.",bc_map,"0x66ff00",FW_NORMAL,14;
 	end;
 OnDamage:
 	getunitdata 'BOSS[5],.@arr;
@@ -1414,7 +1414,7 @@ OnDamage:
 	if (.@dfacehp < 5000000)
 		.@dfacehp = 5000000;
 	setunitdata 'BOSS[5], UMOB_HP, .@dfacehp;
-	mapannounce 'map_name$, "凯斯造成了" + .@dr_hpp + "点致命伤害！！",bc_map,"0xffff33",FW_NORMAL,17;
+	mapannounce 'map_name$, "Chaos deals " + .@dr_hpp + " deadly damage hit points!!",bc_map,"0xffff33",FW_NORMAL,17;
 	end;
 OnBerserk2:
 	getunitdata 'BOSS[5],.@arr;
@@ -1425,7 +1425,7 @@ OnBerserk2:
 	'BOSS[5] = $@mobid[0];
 	setunitdata 'BOSS[5], UMOB_HP, 'BOSS_HP;
 	// monster 'map_name$,1,6,"Faceworm Queen's Life",2915,1,instance_npcname("#fwormboss5") + "::OnMyMobDead";
-	mapannounce 'map_name$, "人面虫狂怒起来，恢复了" + .@MOB_HP2 + "，攻击力提升了。",bc_map,"0xff8888",FW_NORMAL,13;
+	mapannounce 'map_name$, "The faceworm rages recovering " + .@MOB_HP2 + " and its attack power is increased.",bc_map,"0xff8888",FW_NORMAL,13;
 	end;
 OnBerserk:
 	getunitdata 'BOSS[5],.@arr;
@@ -1437,7 +1437,7 @@ OnBerserk:
 		// monster 'map_name$,1,6,"Faceworm Queen's Life",2915,1,instance_npcname("#fwormboss5") + "::OnMyMobDead";
 		'BOSS_HP = .@arr[UMOB_HP];
 		donpcevent instance_npcname("#fwormboss50") + "::OnCalm";
-		mapannounce 'map_name$, "距离巢穴太远了。人面虫皇后开始狂怒。",bc_map,"0xff3333",FW_NORMAL,15;
+		mapannounce 'map_name$, "It is too far away from the nest. The Faceworm Queen begins raging.",bc_map,"0xff3333",FW_NORMAL,15;
 	}
 	end;
 OnCalm:
@@ -1470,7 +1470,7 @@ OnChange:
 		.@element$ = "its original";
 		.@mob_id = 2529;
 	}
-	mapannounce 'map_name$, "人面虫皇后正试图蜕皮，转为" + .@element$ + "属性。",bc_map,"0xffffff";
+	mapannounce 'map_name$, "Faceworm Queen is trying to shed its skin to " + .@element$ + " attribute.",bc_map,"0xffffff";
 	sleep 1000;
 	if (unitexists('BOSS[5]) == false)
 		stopnpctimer;
@@ -1486,7 +1486,7 @@ OnChange:
 OnWarning:
 	getunitdata 'BOSS[5],.@arr;
 	if (.@arr[UMOB_X] < 190 || .@arr[UMOB_X] > 230 || .@arr[UMOB_Y] < 135 || .@arr[UMOB_Y] > 175)
-		mapannounce 'map_name$, "请不要再远离巢穴。人面虫皇后可能会变得狂暴。",bc_map,"0xff5555",FW_NORMAL,15;
+		mapannounce 'map_name$, "Please do not go farther from the nest. The Faceworm Queen can be violent.",bc_map,"0xff5555",FW_NORMAL,15;
 	end;
 OnEnd:
 	killmonster 'map_name$, instance_npcname("#fwormboss5") + "::OnMyMobDead";
@@ -1612,16 +1612,16 @@ OnSupport_2:
 	.@chan_f = rand(1,.@sup_m);
 	if (.@chan_f > 0 && .@chan_f < 3) {
 		donpcevent instance_npcname("#chaos_north") + "::OnStart";
-		mapannounce 'map_name$, "凯斯的声音：喂！把它引到北边去！我来打它！",bc_map,"0xff44aa",FW_NORMAL,14;
+		mapannounce 'map_name$, "The voice of Chaos: Hey! Lure it to the north! I will beat it!",bc_map,"0xff44aa",FW_NORMAL,14;
 	} else if (.@chan_f > 2 && .@chan_f < 5) {
 		donpcevent instance_npcname("#chaos_south") + "::OnStart";
-		mapannounce 'map_name$, "凯斯的声音：喂！把它引到南边去！我来打它！",bc_map,"0xff44aa",FW_NORMAL,14;
+		mapannounce 'map_name$, "The voice of Chaos: Hey! Lure it to the south! I will beat it!",bc_map,"0xff44aa",FW_NORMAL,14;
 	} else if (.@chan_f > 4 && .@chan_f < 7) {
 		donpcevent instance_npcname("#chaos_east") + "::OnStart";
-		mapannounce 'map_name$, "凯斯的声音：喂！把它引到东边去！我来打它！",bc_map,"0xff44aa",FW_NORMAL,14;
+		mapannounce 'map_name$, "The voice of Chaos: Hey! Lure it to the east! I will beat it!",bc_map,"0xff44aa",FW_NORMAL,14;
 	} else if (.@chan_f > 6 && .@chan_f < 9) {
 		donpcevent instance_npcname("#chaos_west") + "::OnStart";
-		mapannounce 'map_name$, "凯斯的声音：喂！把它引到西边去！我来打它！",bc_map,"0xff44aa",FW_NORMAL,14;
+		mapannounce 'map_name$, "The voice of Chaos: Hey! Lure it to the west! I will beat it!",bc_map,"0xff44aa",FW_NORMAL,14;
 	}
 	end;
 }
@@ -1637,7 +1637,7 @@ OnTouch_:
 			donpcevent instance_npcname("#fwormboss5") + "::OnDamage";
 		}
 		else
-			npctalk "凯斯：你连把皇后引到我这儿都做不到吗？";
+			npctalk "Chaos: You can't even manage to lure the queen to me?";
 	}
 	disablenpc instance_npcname("#chaos_north");
 	donpcevent instance_npcname("Chaos#north") + "::OnEnd";
@@ -1668,7 +1668,7 @@ OnTouch_:
 			donpcevent instance_npcname("#fwormboss5") + "::OnDamage";
 		}
 		else
-			npctalk "凯斯：喂～我们是伙伴啊。你可不能一直一个人跑！";
+			npctalk "Chaos: Hey~ We are partners. You can't just keep running alone!";
 	}
 	disablenpc instance_npcname("#chaos_south");
 	donpcevent instance_npcname("Chaos#south") + "::OnEnd";
@@ -1699,7 +1699,7 @@ OnTouch_:
 			donpcevent instance_npcname("#fwormboss5") + "::OnDamage";
 		}
 		else
-			npctalk "凯斯：把它引过来带上，我一个人打不过它！";
+			npctalk "Chaos: Lure and bring it with you, I can't beat it alone!";
 	}
 	disablenpc instance_npcname("#chaos_east");
 	donpcevent instance_npcname("Chaos#east") + "::OnEnd";
@@ -1730,7 +1730,7 @@ OnTouch_:
 			donpcevent instance_npcname("#fwormboss5") + "::OnDamage";
 		}
 		else
-			npctalk "凯斯：你为什么把皇后丢下了？我们这可是性命攸关。振作点！";
+			npctalk "Chaos: Why'd you leave the queen behind? Our lives are at stake here. Pull it together!";
 	}
 	disablenpc instance_npcname("#chaos_west");
 	donpcevent instance_npcname("Chaos#west") + "::OnEnd";
@@ -1750,7 +1750,7 @@ OnInstanceInit:
 	end;
 }
 
-1@face,214,172,5	script	凯斯#north	4_M_CHAOS,{
+1@face,214,172,5	script	Chaos#north	4_M_CHAOS,{
 	end;
 OnEnd:
 	initnpctimer;
@@ -1763,9 +1763,9 @@ OnInstanceInit:
 	hideonnpc instance_npcname(strnpcinfo(0));
 	end;
 }
-1@face,214,143,0	duplicate(凯斯#north)	Chaos#south	4_M_CHAOS
-1@face,226,158,3	duplicate(凯斯#north)	Chaos#east	4_M_CHAOS
-1@face,200,158,6	duplicate(凯斯#north)	Chaos#west	4_M_CHAOS
+1@face,214,143,0	duplicate(Chaos#north)	Chaos#south	4_M_CHAOS
+1@face,226,158,3	duplicate(Chaos#north)	Chaos#east	4_M_CHAOS
+1@face,200,158,6	duplicate(Chaos#north)	Chaos#west	4_M_CHAOS
 
 1@face,1,4,3	script	#fwormboss50	CLEAR_NPC,{
 	end;
@@ -1959,10 +1959,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,209,159,6	script	凯斯#6	4_M_CHAOS,{
+1@face,209,159,6	script	Chaos#6	4_M_CHAOS,{
 	cutin "h_chaos01",2;
-	mes "[凯斯]";
-	mes "嗯……你挺厉害的，我刮目相看了。";
+	mes "[Chaos]";
+	mes "Hmm.. You are pretty good, I am impressed.";
 	close2;
 	cutin "",255;
 	end;
@@ -1976,23 +1976,23 @@ OnStart:
 	hideoffnpc instance_npcname("Chaos#6");
 	hideoffnpc .@iris$;
 	sleep 2000;
-	npctalk "凯斯：呼……这场战斗打得可真久。";
+	npctalk "Chaos: Phew... That was quite a long fight.";
 	sleep 3000;
-	npctalk "艾丽斯：但那不是我们要找的那只。", .@iris$;
+	npctalk "Iris: But that is not the one we were looking for.", .@iris$;
 	sleep 4000;
-	npctalk "凯斯：没办法。我们的装备损坏了，暂时先撤退吧。";
+	npctalk "Chaos: We can't help it. Our equipment is damaged so we should retreat for now.";
 	sleep 3000;
-	npctalk "艾丽斯：是啊，没能见到人面虫之王真遗憾。不过幸好我们没受伤。", .@iris$;
+	npctalk "Iris: Yes, I feel bad that we could not see the Faceworm King. But luckily we weren't hurt.", .@iris$;
 	sleep 3000;
-	npctalk "凯斯：那么……喂，那边的你！身手还不错嘛。";
+	npctalk "Chaos: So... Hey, you over there! You're not too shabby.";
 	sleep 3000;
-	npctalk "凯斯：今天的猎物全归你，我不插手。";
+	npctalk "Chaos: Today's hunting is all yours, I won't touch it.";
 	sleep 3000;
-	npctalk "凯斯：啊哈～我还盼着会有商人王子掉落的宝物呢……";
+	npctalk "Chaos: Ahah~ I hoped that there would be some treasure that the merchant prince dropped...";
 	sleep 3000;
-	npctalk "艾丽斯：凯斯，我累了。我们回村子吧。", .@iris$;
+	npctalk "Iris: Chaos, I am getting tired. Let's go back to the village.", .@iris$;
 	sleep 3000;
-	npctalk "凯斯：抱歉，我们走吧？";
+	npctalk "Chaos: Sorry, shall we go?";
 	sleep 3000;
 	hideonnpc instance_npcname("Chaos#6");
 	hideonnpc .@iris$;
@@ -2003,10 +2003,10 @@ OnInstanceInit:
 	end;
 }
 
-1@face,220,159,4	script	艾丽斯#6	4_F_IRIS,{
+1@face,220,159,4	script	Iris#6	4_F_IRIS,{
 	cutin "h_iris02",2;
-	mes "[艾丽斯]";
-	mes "刚才真危险。呵呵呵……";
+	mes "[Iris]";
+	mes "That was dangerous. Hehehe...";
 	close2;
 	cutin "",255;
 	end;
@@ -2016,11 +2016,11 @@ OnInstanceInit:
 	end;
 }
 
-1@face,215,159,4	script	次元装置#6	PORTAL,{
-	mes "[次元装置]";
-	mes "你在这里的时间已结束。你可以四处看看或离开。你想怎么做？";
+1@face,215,159,4	script	Dimensional Device#6	PORTAL,{
+	mes "[Dimensional Device]";
+	mes "Your time is finished here. You may look arround or go leave. What do you want to do?";
 	next;
-	if (select("停止:返回次元间隙") == 2)
+	if (select("Stop:Return to Dimensional Gap") == 2)
 		warp "dali",85,62;
 	end;
 
@@ -2031,7 +2031,7 @@ OnInstanceInit:
 
 // Instance Traps :: in_face_l
 //============================================================
-1@face,61,132,5	script	可疑的土堆#1	4_SOIL,5,5,{
+1@face,61,132,5	script	Suspicious Mound#1	4_SOIL,5,5,{
 	end;
 OnTouch_:
 	setarray .@num[1],
@@ -2056,59 +2056,59 @@ OnMyMobDead:
 	end;
 }
 
-1@face,62,195,5	duplicate(可疑的土堆#1)	Suspicious Mound#2	4_SOIL,5,5
-1@face,66,94,5	duplicate(可疑的土堆#1)	Suspicious Mound#3	4_SOIL,5,5
-1@face,68,265,5	duplicate(可疑的土堆#1)	Suspicious Mound#4	4_SOIL,5,5
-1@face,68,108,5	duplicate(可疑的土堆#1)	Suspicious Mound#5	4_SOIL,5,5
-1@face,72,202,5	duplicate(可疑的土堆#1)	Suspicious Mound#6	4_SOIL,5,5
-1@face,75,73,5	duplicate(可疑的土堆#1)	Suspicious Mound#7	4_SOIL,5,5
-1@face,76,241,5	duplicate(可疑的土堆#1)	Suspicious Mound#8	4_SOIL,5,5
-1@face,79,274,5	duplicate(可疑的土堆#1)	Suspicious Mound#9	4_SOIL,5,5
-1@face,79,119,5	duplicate(可疑的土堆#1)	Suspicious Mound#10	4_SOIL,5,5
-1@face,97,59,5	duplicate(可疑的土堆#1)	Suspicious Mound#11	4_SOIL,5,5
-1@face,99,211,5	duplicate(可疑的土堆#1)	Suspicious Mound#12	4_SOIL,5,5
-1@face,100,122,5	duplicate(可疑的土堆#1)	Suspicious Mound#13	4_SOIL,5,5
-1@face,105,190,5	duplicate(可疑的土堆#1)	Suspicious Mound#14	4_SOIL,5,5
-1@face,108,264,5	duplicate(可疑的土堆#1)	Suspicious Mound#15	4_SOIL,5,5
-1@face,108,74,5	duplicate(可疑的土堆#1)	Suspicious Mound#16	4_SOIL,5,5
-1@face,111,178,5	duplicate(可疑的土堆#1)	Suspicious Mound#17	4_SOIL,5,5
-1@face,112,137,5	duplicate(可疑的土堆#1)	Suspicious Mound#18	4_SOIL,5,5
-1@face,112,159,5	duplicate(可疑的土堆#1)	Suspicious Mound#19	4_SOIL,5,5
-1@face,112,236,5	duplicate(可疑的土堆#1)	Suspicious Mound#20	4_SOIL,5,5
-1@face,118,109,5	duplicate(可疑的土堆#1)	Suspicious Mound#21	4_SOIL,5,5
-1@face,119,201,5	duplicate(可疑的土堆#1)	Suspicious Mound#22	4_SOIL,5,5
-1@face,123,257,5	duplicate(可疑的土堆#1)	Suspicious Mound#23	4_SOIL,5,5
-1@face,124,216,5	duplicate(可疑的土堆#1)	Suspicious Mound#24	4_SOIL,5,5
-1@face,125,228,5	duplicate(可疑的土堆#1)	Suspicious Mound#25	4_SOIL,5,5
-1@face,126,290,5	duplicate(可疑的土堆#1)	Suspicious Mound#26	4_SOIL,5,5
-1@face,128,174,5	duplicate(可疑的土堆#1)	Suspicious Mound#27	4_SOIL,5,5
-1@face,133,244,5	duplicate(可疑的土堆#1)	Suspicious Mound#28	4_SOIL,5,5
-1@face,139,218,5	duplicate(可疑的土堆#1)	Suspicious Mound#29	4_SOIL,5,5
-1@face,140,255,5	duplicate(可疑的土堆#1)	Suspicious Mound#30	4_SOIL,5,5
-1@face,148,238,5	duplicate(可疑的土堆#1)	Suspicious Mound#31	4_SOIL,5,5
-1@face,157,293,5	duplicate(可疑的土堆#1)	Suspicious Mound#32	4_SOIL,5,5
-1@face,158,138,5	duplicate(可疑的土堆#1)	Suspicious Mound#33	4_SOIL,5,5
-1@face,158,163,5	duplicate(可疑的土堆#1)	Suspicious Mound#34	4_SOIL,5,5
-1@face,167,277,5	duplicate(可疑的土堆#1)	Suspicious Mound#35	4_SOIL,5,5
-1@face,168,194,5	duplicate(可疑的土堆#1)	Suspicious Mound#36	4_SOIL,5,5
-1@face,170,251,5	duplicate(可疑的土堆#1)	Suspicious Mound#37	4_SOIL,5,5
-1@face,171,62,5	duplicate(可疑的土堆#1)	Suspicious Mound#38	4_SOIL,5,5
-1@face,171,149,5	duplicate(可疑的土堆#1)	Suspicious Mound#39	4_SOIL,5,5
-1@face,172,173,5	duplicate(可疑的土堆#1)	Suspicious Mound#40	4_SOIL,5,5
-1@face,175,296,5	duplicate(可疑的土堆#1)	Suspicious Mound#41	4_SOIL,5,5
-1@face,178,234,5	duplicate(可疑的土堆#1)	Suspicious Mound#42	4_SOIL,5,5
-1@face,183,185,5	duplicate(可疑的土堆#1)	Suspicious Mound#43	4_SOIL,5,5
-1@face,191,289,5	duplicate(可疑的土堆#1)	Suspicious Mound#44	4_SOIL,5,5
-1@face,194,192,5	duplicate(可疑的土堆#1)	Suspicious Mound#45	4_SOIL,5,5
-1@face,196,207,5	duplicate(可疑的土堆#1)	Suspicious Mound#46	4_SOIL,5,5
-1@face,198,257,5	duplicate(可疑的土堆#1)	Suspicious Mound#47	4_SOIL,5,5
-1@face,199,273,5	duplicate(可疑的土堆#1)	Suspicious Mound#48	4_SOIL,5,5
-1@face,211,244,5	duplicate(可疑的土堆#1)	Suspicious Mound#49	4_SOIL,5,5
-1@face,229,200,5	duplicate(可疑的土堆#1)	Suspicious Mound#50	4_SOIL,5,5
-1@face,232,271,5	duplicate(可疑的土堆#1)	Suspicious Mound#51	4_SOIL,5,5
-1@face,250,223,5	duplicate(可疑的土堆#1)	Suspicious Mound#52	4_SOIL,5,5
-1@face,254,324,5	duplicate(可疑的土堆#1)	Suspicious Mound#53	4_SOIL,5,5
-1@face,255,263,5	duplicate(可疑的土堆#1)	Suspicious Mound#54	4_SOIL,5,5
+1@face,62,195,5	duplicate(Suspicious Mound#1)	Suspicious Mound#2	4_SOIL,5,5
+1@face,66,94,5	duplicate(Suspicious Mound#1)	Suspicious Mound#3	4_SOIL,5,5
+1@face,68,265,5	duplicate(Suspicious Mound#1)	Suspicious Mound#4	4_SOIL,5,5
+1@face,68,108,5	duplicate(Suspicious Mound#1)	Suspicious Mound#5	4_SOIL,5,5
+1@face,72,202,5	duplicate(Suspicious Mound#1)	Suspicious Mound#6	4_SOIL,5,5
+1@face,75,73,5	duplicate(Suspicious Mound#1)	Suspicious Mound#7	4_SOIL,5,5
+1@face,76,241,5	duplicate(Suspicious Mound#1)	Suspicious Mound#8	4_SOIL,5,5
+1@face,79,274,5	duplicate(Suspicious Mound#1)	Suspicious Mound#9	4_SOIL,5,5
+1@face,79,119,5	duplicate(Suspicious Mound#1)	Suspicious Mound#10	4_SOIL,5,5
+1@face,97,59,5	duplicate(Suspicious Mound#1)	Suspicious Mound#11	4_SOIL,5,5
+1@face,99,211,5	duplicate(Suspicious Mound#1)	Suspicious Mound#12	4_SOIL,5,5
+1@face,100,122,5	duplicate(Suspicious Mound#1)	Suspicious Mound#13	4_SOIL,5,5
+1@face,105,190,5	duplicate(Suspicious Mound#1)	Suspicious Mound#14	4_SOIL,5,5
+1@face,108,264,5	duplicate(Suspicious Mound#1)	Suspicious Mound#15	4_SOIL,5,5
+1@face,108,74,5	duplicate(Suspicious Mound#1)	Suspicious Mound#16	4_SOIL,5,5
+1@face,111,178,5	duplicate(Suspicious Mound#1)	Suspicious Mound#17	4_SOIL,5,5
+1@face,112,137,5	duplicate(Suspicious Mound#1)	Suspicious Mound#18	4_SOIL,5,5
+1@face,112,159,5	duplicate(Suspicious Mound#1)	Suspicious Mound#19	4_SOIL,5,5
+1@face,112,236,5	duplicate(Suspicious Mound#1)	Suspicious Mound#20	4_SOIL,5,5
+1@face,118,109,5	duplicate(Suspicious Mound#1)	Suspicious Mound#21	4_SOIL,5,5
+1@face,119,201,5	duplicate(Suspicious Mound#1)	Suspicious Mound#22	4_SOIL,5,5
+1@face,123,257,5	duplicate(Suspicious Mound#1)	Suspicious Mound#23	4_SOIL,5,5
+1@face,124,216,5	duplicate(Suspicious Mound#1)	Suspicious Mound#24	4_SOIL,5,5
+1@face,125,228,5	duplicate(Suspicious Mound#1)	Suspicious Mound#25	4_SOIL,5,5
+1@face,126,290,5	duplicate(Suspicious Mound#1)	Suspicious Mound#26	4_SOIL,5,5
+1@face,128,174,5	duplicate(Suspicious Mound#1)	Suspicious Mound#27	4_SOIL,5,5
+1@face,133,244,5	duplicate(Suspicious Mound#1)	Suspicious Mound#28	4_SOIL,5,5
+1@face,139,218,5	duplicate(Suspicious Mound#1)	Suspicious Mound#29	4_SOIL,5,5
+1@face,140,255,5	duplicate(Suspicious Mound#1)	Suspicious Mound#30	4_SOIL,5,5
+1@face,148,238,5	duplicate(Suspicious Mound#1)	Suspicious Mound#31	4_SOIL,5,5
+1@face,157,293,5	duplicate(Suspicious Mound#1)	Suspicious Mound#32	4_SOIL,5,5
+1@face,158,138,5	duplicate(Suspicious Mound#1)	Suspicious Mound#33	4_SOIL,5,5
+1@face,158,163,5	duplicate(Suspicious Mound#1)	Suspicious Mound#34	4_SOIL,5,5
+1@face,167,277,5	duplicate(Suspicious Mound#1)	Suspicious Mound#35	4_SOIL,5,5
+1@face,168,194,5	duplicate(Suspicious Mound#1)	Suspicious Mound#36	4_SOIL,5,5
+1@face,170,251,5	duplicate(Suspicious Mound#1)	Suspicious Mound#37	4_SOIL,5,5
+1@face,171,62,5	duplicate(Suspicious Mound#1)	Suspicious Mound#38	4_SOIL,5,5
+1@face,171,149,5	duplicate(Suspicious Mound#1)	Suspicious Mound#39	4_SOIL,5,5
+1@face,172,173,5	duplicate(Suspicious Mound#1)	Suspicious Mound#40	4_SOIL,5,5
+1@face,175,296,5	duplicate(Suspicious Mound#1)	Suspicious Mound#41	4_SOIL,5,5
+1@face,178,234,5	duplicate(Suspicious Mound#1)	Suspicious Mound#42	4_SOIL,5,5
+1@face,183,185,5	duplicate(Suspicious Mound#1)	Suspicious Mound#43	4_SOIL,5,5
+1@face,191,289,5	duplicate(Suspicious Mound#1)	Suspicious Mound#44	4_SOIL,5,5
+1@face,194,192,5	duplicate(Suspicious Mound#1)	Suspicious Mound#45	4_SOIL,5,5
+1@face,196,207,5	duplicate(Suspicious Mound#1)	Suspicious Mound#46	4_SOIL,5,5
+1@face,198,257,5	duplicate(Suspicious Mound#1)	Suspicious Mound#47	4_SOIL,5,5
+1@face,199,273,5	duplicate(Suspicious Mound#1)	Suspicious Mound#48	4_SOIL,5,5
+1@face,211,244,5	duplicate(Suspicious Mound#1)	Suspicious Mound#49	4_SOIL,5,5
+1@face,229,200,5	duplicate(Suspicious Mound#1)	Suspicious Mound#50	4_SOIL,5,5
+1@face,232,271,5	duplicate(Suspicious Mound#1)	Suspicious Mound#51	4_SOIL,5,5
+1@face,250,223,5	duplicate(Suspicious Mound#1)	Suspicious Mound#52	4_SOIL,5,5
+1@face,254,324,5	duplicate(Suspicious Mound#1)	Suspicious Mound#53	4_SOIL,5,5
+1@face,255,263,5	duplicate(Suspicious Mound#1)	Suspicious Mound#54	4_SOIL,5,5
 
 // Instance Venom Bugs :: in_face_v
 //============================================================
@@ -2176,12 +2176,12 @@ OnT_s2:
 	else
 		.@time_txt$ = callfunc( "F_InsertPlural", .@time_m, "Minute" ) + " " + callfunc( "F_InsertPlural", .@time_s, "Second" );
 	if (.@current_timer >= .@face_timer)
-		mapannounce 'map_name$, "用时" + .@time_txt$ + "已记录在告示板上。但没有打破最佳记录。",bc_map,"0xffff33";
+		mapannounce 'map_name$, "A time of " + .@time_txt$ + " has been recorded on the board. But it did not beat the best record.",bc_map,"0xffff33";
 	else {
 		if (!.@face_member)
-			announce .@winner_name$ + "打破了通关人面虫洞穴的最佳记录（" + .@time_txt$ + ").",bc_all,"0xffff33",FW_NORMAL,15;
+			announce .@winner_name$ + " beat the best record for completing the Faceworm's Nest (" + .@time_txt$ + ").",bc_all,"0xffff33",FW_NORMAL,15;
 		else
-			announce .@winner_name$ + "与" + .@face_member + "队伍" + ( .@face_member > 1 ? "成员" : "成员" ) + "打破了通关人面虫洞穴的最佳记录（" + .@time_txt$ + ").",bc_all,"0xffff33",FW_NORMAL,15;
+			announce .@winner_name$ + " with " + .@face_member + " party " + ( .@face_member > 1 ? "members" : "members" ) + " beat the best record for completing the Faceworm's Nest (" + .@time_txt$ + ").",bc_all,"0xffff33",FW_NORMAL,15;
 		$120719_str_face$ = .@winner_name$;
 		$120719_num_face = .@current_timer;
 		$120903_num_face = .@face_member;
@@ -2213,7 +2213,7 @@ OnInstanceInit:
 		.@time_txt$ = callfunc( "F_InsertPlural", .@time_s, "Second" );
 	else
 		.@time_txt$ = callfunc( "F_InsertPlural", .@time_m, "Minute" ) + " " + callfunc( "F_InsertPlural", .@time_s, "Second" );
-	mapannounce 'map_name$, "本阶段战斗剩余的实际时间为" + .@time_txt$ + ".",bc_map,"0xffff33";
+	mapannounce 'map_name$, "The actual time for the battle at this stage remaining is " + .@time_txt$ + ".",bc_map,"0xffff33";
 
 	getmapxy .@map$, .@x, .@y, BL_NPC;
 	stopnpctimer;
@@ -2571,7 +2571,7 @@ OnInstanceInit:
 
 // Instance Treasures :: in_face_t
 //============================================================
-1@face,183,314,3	script	商王的宝箱#1	4_TREASURE_BOX,{
+1@face,183,314,3	script	Merchant Prince's Box#1	4_TREASURE_BOX,{
 	specialeffect EF_COIN;
 	hideonnpc instance_npcname(strnpcinfo(0));
 	initnpctimer;
@@ -2709,48 +2709,48 @@ OnInstanceInit:
 	hideonnpc instance_npcname(strnpcinfo(0));
 	end;
 }
-1@face,164,343,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#2	4_TREASURE_BOX
-1@face,31,364,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#3	4_TREASURE_BOX
-1@face,26,290,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#4	4_TREASURE_BOX
-1@face,56,269,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#5	4_TREASURE_BOX
-1@face,80,213,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#6	4_TREASURE_BOX
-1@face,51,174,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#7	4_TREASURE_BOX
-1@face,261,62,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#8	4_TREASURE_BOX
-1@face,70,36,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#9	4_TREASURE_BOX
-1@face,182,51,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#10	4_TREASURE_BOX
-1@face,128,139,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#11	4_TREASURE_BOX
-1@face,108,232,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#12	4_TREASURE_BOX
-1@face,117,303,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#13	4_TREASURE_BOX
-1@face,134,294,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#14	4_TREASURE_BOX
-1@face,152,159,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#15	4_TREASURE_BOX
-1@face,177,208,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#16	4_TREASURE_BOX
-1@face,260,220,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#17	4_TREASURE_BOX
-1@face,216,357,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#18	4_TREASURE_BOX
-1@face,310,263,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#19	4_TREASURE_BOX
-1@face,307,158,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#20	4_TREASURE_BOX
-1@face,307,56,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#21	4_TREASURE_BOX
-1@face,240,64,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#22	4_TREASURE_BOX
-1@face,214,90,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#23	4_TREASURE_BOX
-1@face,237,108,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#24	4_TREASURE_BOX
-1@face,284,165,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#25	4_TREASURE_BOX
-1@face,184,363,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#26	4_TREASURE_BOX
-1@face,48,220,3	duplicate(商王的宝箱#1)	Merchant Prince's Box#27	4_TREASURE_BOX
+1@face,164,343,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#2	4_TREASURE_BOX
+1@face,31,364,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#3	4_TREASURE_BOX
+1@face,26,290,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#4	4_TREASURE_BOX
+1@face,56,269,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#5	4_TREASURE_BOX
+1@face,80,213,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#6	4_TREASURE_BOX
+1@face,51,174,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#7	4_TREASURE_BOX
+1@face,261,62,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#8	4_TREASURE_BOX
+1@face,70,36,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#9	4_TREASURE_BOX
+1@face,182,51,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#10	4_TREASURE_BOX
+1@face,128,139,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#11	4_TREASURE_BOX
+1@face,108,232,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#12	4_TREASURE_BOX
+1@face,117,303,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#13	4_TREASURE_BOX
+1@face,134,294,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#14	4_TREASURE_BOX
+1@face,152,159,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#15	4_TREASURE_BOX
+1@face,177,208,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#16	4_TREASURE_BOX
+1@face,260,220,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#17	4_TREASURE_BOX
+1@face,216,357,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#18	4_TREASURE_BOX
+1@face,310,263,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#19	4_TREASURE_BOX
+1@face,307,158,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#20	4_TREASURE_BOX
+1@face,307,56,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#21	4_TREASURE_BOX
+1@face,240,64,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#22	4_TREASURE_BOX
+1@face,214,90,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#23	4_TREASURE_BOX
+1@face,237,108,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#24	4_TREASURE_BOX
+1@face,284,165,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#25	4_TREASURE_BOX
+1@face,184,363,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#26	4_TREASURE_BOX
+1@face,48,220,3	duplicate(Merchant Prince's Box#1)	Merchant Prince's Box#27	4_TREASURE_BOX
 
 // Instance GM Function :: in_face_ad
 //==========================================
 1@face,1,1,3	script	#forestspirit1	CLEAR_NPC,{
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
-		mes "[时间管理员]";
-		mes "你想回到哪个时间点？";
+		mes "[Time Manager]";
+		mes "What time would you like to return?";
 		next;
-		switch( select("取消:第一阶段开始:第二阶段开始:第三阶段开始:第四阶段开始:首领开始:宝物")) {
+		switch( select("Cancel:1st Stage Start:2nd Stage Start:3rd Stage Start:4th Stage Start:Boss Start:Treasures")) {
 		case 1:
 			break;
 		case 2:
 			hideonnpc instance_npcname("Chaos#0");
 			hideonnpc instance_npcname("Iris#0");
 			donpcevent instance_npcname("#fwormcontrol1") + "::OnStart";
-			mapannounce 'map_name$, "人面虫限时挑战开始了。击杀越快，奖励比例越高。",bc_map,"0xffffff";
+			mapannounce 'map_name$, "Faceworm time attack has started. Faster kill times gives a higher percentage of rewards.",bc_map,"0xffffff";
 			donpcevent instance_npcname("#globaltimer22") + "::OnT_s";
 			donpcevent instance_npcname("#fwormprize1") + "::OnStart";
 			warp 'map_name$,110,348;
@@ -2760,7 +2760,7 @@ OnInstanceInit:
 			enablenpc instance_npcname("#fwormexit1");
 			hideoffnpc instance_npcname("Chaos#1");
 			hideoffnpc instance_npcname("Iris#1");
-			mapannounce 'map_name$, "击杀暗黑人面虫后，出现了一个洞。",bc_map,"0xffffff";
+			mapannounce 'map_name$, "A hole appears after killing the dark faceworm.",bc_map,"0xffffff";
 			warp 'map_name$,127,95;
 			break;
 		case 4:
@@ -2768,14 +2768,14 @@ OnInstanceInit:
 			enablenpc instance_npcname("#fwormexit2");
 			hideoffnpc instance_npcname("Chaos#2");
 			hideoffnpc instance_npcname("Iris#2");
-			mapannounce 'map_name$, "你听见南边传来巨响。那一定是我们刚才除掉的那只的巢穴。",bc_map,"0xffffff";
+			mapannounce 'map_name$, "You hear something loud in the south. It must be the nest of the one we just got rid of.",bc_map,"0xffffff";
 			warp 'map_name$,156,117;
 			break;
 		case 5:
 			enablenpc instance_npcname("#fwormenter3");
 			enablenpc instance_npcname("#fwormexit3");
 			enablenpc instance_npcname("#chaoson");
-			mapannounce 'map_name$, "你听见石头堆崩塌的声音。这也许是通往其他空间的入口。",bc_map,"0xffffff";
+			mapannounce 'map_name$, "You hear the pile of stones collapsing. This might be a gateway to go to other spaces.",bc_map,"0xffffff";
 			warp 'map_name$,261,170;
 			break;
 		case 6:
@@ -2784,7 +2784,7 @@ OnInstanceInit:
 			hideoffnpc instance_npcname("Chaos#4");
 			hideoffnpc instance_npcname("Iris#4");
 			enablenpc instance_npcname("#chaoson2");
-			mapannounce 'map_name$, "你听见石头堆崩塌的声音。我想又发现了一个入口。",bc_map,"0xffffff";
+			mapannounce 'map_name$, "You hear the pile of stones collapsing. I think another gateway is found.",bc_map,"0xffffff";
 			warp 'map_name$,210,145;
 			break;
 		case 7:
@@ -2798,12 +2798,12 @@ OnInstanceInit:
 }
 
 1@face,3,1,3	script	#forestspiritboss1	CLEAR_NPC,{
-	mes "" + getmapusers('map_name$) + "人。";
+	mes "" + getmapusers('map_name$) + " people.";
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
-		mes "[首领管理员]";
-		mes "你想回到哪个时间点？";
+		mes "[Boss Manager]";
+		mes "What time would you like to return?";
 		next;
-		switch( select("取消:第1首领:第2首领:第3首领:第4首领:最终首领")) {
+		switch( select("Cancel:1st Boss:2nd Boss:3rd Boss:4th Boss:Final Boss")) {
 		case 1:
 			break;
 		case 2:

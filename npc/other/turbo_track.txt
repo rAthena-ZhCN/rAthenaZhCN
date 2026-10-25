@@ -69,25 +69,25 @@ turbo_room,84,135,3	duplicate(entrance#tt_main)	Normal mode - 8 person	124
 turbo_room,91,135,3	duplicate(entrance#tt_main)	Normal mode - 16 person	124
 turbo_room,72,132,3	duplicate(entrance#tt_main)	Solo Mode#n1	124
 	
-turbo_e_4,298,167,3	script	助手#tt_main	124,{
-	mes "[助手]";
-	mes "您现在位于";
-	mes "等待室。稍后您将被";
-	mes "引导至起跑线，";
-	mes "30 秒后将出发，请利用";
-	mes "这段时间准备您的物品";
-	mes "与装备。谢谢。";
+turbo_e_4,298,167,3	script	Helper#tt_main	124,{
+	mes "[Helper]";
+	mes "You are now in the";
+	mes "Waiting Room. You will";
+	mes "be guided to the Starting Line";
+	mes "after 30 seconds, so please use";
+	mes "this time to prepare your items";
+	mes "and equipment. Thank you.";
 	close;
 }
-turbo_e_4,298,167,3	duplicate(助手#tt_main)	Helper#e4_F	124
-turbo_e_8,298,167,3	duplicate(助手#tt_main)	Helper#e8_F	124
-turbo_e_16,298,167,3	duplicate(助手#tt_main)	Helper#e16_F	124
-turbo_n_4,298,167,3	duplicate(助手#tt_main)	Helper#n4_F	124
-turbo_n_8,298,167,3	duplicate(助手#tt_main)	Helper#n8_F	124
-turbo_n_16,298,167,3	duplicate(助手#tt_main)	Helper#n16_F	124
-turbo_n_1,298,167,3	duplicate(助手#tt_main)	Helper#n1_F	124
+turbo_e_4,298,167,3	duplicate(Helper#tt_main)	Helper#e4_F	124
+turbo_e_8,298,167,3	duplicate(Helper#tt_main)	Helper#e8_F	124
+turbo_e_16,298,167,3	duplicate(Helper#tt_main)	Helper#e16_F	124
+turbo_n_4,298,167,3	duplicate(Helper#tt_main)	Helper#n4_F	124
+turbo_n_8,298,167,3	duplicate(Helper#tt_main)	Helper#n8_F	124
+turbo_n_16,298,167,3	duplicate(Helper#tt_main)	Helper#n16_F	124
+turbo_n_1,298,167,3	duplicate(Helper#tt_main)	Helper#n1_F	124
 
-turbo_e_4,298,167,0	script	点数#tt_main	-1,15,15,{
+turbo_e_4,298,167,0	script	Point#tt_main	-1,15,15,{
 	end;
 
 OnTouch_:
@@ -104,13 +104,13 @@ OnInit:
 	disablenpc "Point Give-Away Guy#"+.@w$;
 	end;
 }
-turbo_e_4,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#e4	-1,15,15
-turbo_e_8,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#e8	-1,15,15
-turbo_e_16,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#e16	-1,15,15
-turbo_n_4,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#n4	-1,15,15
-turbo_n_8,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#n8	-1,15,15
-turbo_n_16,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#n16	-1,15,15
-turbo_n_1,298,167,0	duplicate(点数#tt_main)	Point Give-Away Guy#n1	-1,15,15
+turbo_e_4,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#e4	-1,15,15
+turbo_e_8,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#e8	-1,15,15
+turbo_e_16,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#e16	-1,15,15
+turbo_n_4,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#n4	-1,15,15
+turbo_n_8,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#n8	-1,15,15
+turbo_n_16,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#n16	-1,15,15
+turbo_n_1,298,167,0	duplicate(Point#tt_main)	Point Give-Away Guy#n1	-1,15,15
 
 -	script	Broadcast#tt_main	-1,{
 OnEnable:
@@ -120,55 +120,55 @@ OnEnable:
 	end;
 
 OnTimer2000:
-	mapannounce strnpcinfo(4),"您现在位于等待室，可以在这里检查物品，为比赛做准备。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You are now in the Waiting Room where you can check your items and prepare for the race.",bc_map,"0x33FF66";
 	end;
 
 OnTimer7000:
-	mapannounce strnpcinfo(4),"30 秒后您将被传送至起跑线。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You will have 30 seconds before you are transported to the Starting Line.",bc_map,"0x33FF66";
 	end;
 
 OnTimer10000:
-	mapannounce strnpcinfo(4),"请确认您已随身携带合适的装备与物品。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Please make sure that you have suitable equipment and items with you.",bc_map,"0x33FF66";
 	end;
 
 OnTimer15000:
-	mapannounce strnpcinfo(4),"30 秒倒计时即将开始。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"The 30 second countdown will begin shortly.",bc_map,"0x33FF66";
 	end;
 
 OnTimer17000:
-	mapannounce strnpcinfo(4),"剩余 30 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"30 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer27000:
-	mapannounce strnpcinfo(4),"剩余 20 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"20 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer37000:
-	mapannounce strnpcinfo(4),"剩余 10 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"10 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer42000:
-	mapannounce strnpcinfo(4),"剩余 5 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"5 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer43000:
-	mapannounce strnpcinfo(4),"剩余 4 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"4 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer44000:
-	mapannounce strnpcinfo(4),"剩余 3 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"3 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer45000:
-	mapannounce strnpcinfo(4),"剩余 2 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"2 seconds remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer46000:
-	mapannounce strnpcinfo(4),"剩余 1 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"1 second remaining.",bc_map,"0x33FF66";
 	end;
 
 OnTimer47000:
-	mapannounce strnpcinfo(4),"您即将被传送至起跑线。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You will be transported to the Starting Line shortly.",bc_map,"0x33FF66";
 	end;
 
 OnTimer49000:
@@ -217,23 +217,23 @@ OnDisable:
 	end;
 
 OnTimer7000:
-	mapannounce strnpcinfo(4),"欢迎来到竞速赛道。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Welcome to the Turbo Track.",bc_map,"0x33FF66";
 	end;
 
 OnTimer9000:
-	mapannounce strnpcinfo(4),"比赛将进行 15 分钟，且至少需要一人跑完全程。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"The game will be hosted for 15 minutes and at least one person must complete the entire course.",bc_map,"0x33FF66";
 	end;
 
 OnTimer11000:
-	mapannounce strnpcinfo(4),"希望您全力以赴。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"We hope you will do your best.",bc_map,"0x33FF66";
 	end;
 
 OnTimer13000:
-	mapannounce strnpcinfo(4),"比赛将在 5 秒倒计时后开始。请大家在起跑线后就位。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"The game will begin after a 5 second countdown. Everyone, please take your positions behind the Starting Line.",bc_map,"0x33FF66";
 	end;
 
 OnTimer15000:
-	mapannounce strnpcinfo(4),"倒计时即将开始。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"The countdown will commence shortly.",bc_map,"0x33FF66";
 	end;
 
 OnTimer17000:
@@ -262,115 +262,115 @@ OnTimer22000:
 
 OnTimer23000:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),"现在！比赛开始了！冲啊冲啊冲啊！！",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Now! The race has begun! Go Go Go!!",bc_map,"0x33FF66";
 	disablenpc "No_Unfair_Start#"+.@w$+"-1";
 	disablenpc "No_Unfair_Start#"+.@w$+"-2";
 	if (strnpcinfo(4) == "turbo_n_1") set $@start_time,gettimetick(0);
 	end;
 
 OnTimer30000:
-	mapannounce strnpcinfo(4),"请记住这是一场 15 分钟的比赛。15 分钟后，所有人都会被传送出赛道。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Remember that this is a 15 minute race. After 15 minutes, everyone will be transported out of the race track.",bc_map,"0x33FF66";
 	end;
 
 OnTimer83000:
-	mapannounce strnpcinfo(4),"剩余 14 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 14 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer143000:
-	mapannounce strnpcinfo(4),"剩余 13 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 13 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer203000:
-	mapannounce strnpcinfo(4),"剩余 12 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 12 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer263000:
-	mapannounce strnpcinfo(4),"剩余 11 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 11 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer323000:
-	mapannounce strnpcinfo(4),"剩余 10 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 10 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer383000:
-	mapannounce strnpcinfo(4),"剩余 9 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 9 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer443000:
-	mapannounce strnpcinfo(4),"剩余 8 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 8 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer503000:
-	mapannounce strnpcinfo(4),"剩余 7 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 7 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer563000:
-	mapannounce strnpcinfo(4),"剩余 6 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 6 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer623000:
-	mapannounce strnpcinfo(4),"剩余 5 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 5 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer683000:
-	mapannounce strnpcinfo(4),"剩余 4 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 4 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer743000:
-	mapannounce strnpcinfo(4),"剩余 3 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 3 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer803000:
-	mapannounce strnpcinfo(4),"剩余 2 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 2 minutes left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer863000:
-	mapannounce strnpcinfo(4),"剩余 1 分钟。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 1 minute left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer893000:
-	mapannounce strnpcinfo(4),"剩余 30 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 30 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer903000:
-	mapannounce strnpcinfo(4),"剩余 20 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 20 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer913000:
-	mapannounce strnpcinfo(4),"剩余 10 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 10 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer918000:
-	mapannounce strnpcinfo(4),"剩余 5 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 5 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer919000:
-	mapannounce strnpcinfo(4),"剩余 4 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 4 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer920000:
-	mapannounce strnpcinfo(4),"剩余 3 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 3 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer921000:
-	mapannounce strnpcinfo(4),"剩余 2 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 2 seconds left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer922000:
-	mapannounce strnpcinfo(4),"剩余 1 秒。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"You have 1 second left.",bc_map,"0x33FF66";
 	end;
 
 OnTimer923000:
-	mapannounce strnpcinfo(4),"时间到！",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Time's up!",bc_map,"0x33FF66";
 	end;
 
 OnTimer925000:
-	mapannounce strnpcinfo(4),"比赛结束。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"The race is over.",bc_map,"0x33FF66";
 	end;
 
 OnTimer927000:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),"[所有人将被传送至等待室。]",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"[Everyone will be transported to a Waiting Room.]",bc_map,"0x33FF66";
 	mapwarp strnpcinfo(4),"turbo_room",71,89;
 	disablenpc "Broadcast#"+.@w$;
 	donpcevent "Master#"+.@w$+"::OnDisable";
@@ -1182,56 +1182,56 @@ OnTouch_:
 	if (rand(1,3) == 1) {
 		set .@w$,callfunc("F_tt");
 		cutin "kafra_03",2;
-		mes "^4d4dff艾尔帕兰";
-		mes "竞速赛道";
-		mes "由以下赞助商为您呈现：";
-		mes "^800000卡普拉公司^4d4dff。^000000";
+		mes "^4d4dffAl De Baran";
+		mes "Turbo Track";
+		mes "is brought to you by";
+		mes "the ^800000Kafra Corporation^4d4dff.^000000";
 		next;
-		mes "^4d4dff祝愿今日所有";
-		mes "竞速赛道的参赛者";
-		mes "好运，并衷心感谢大家使用卡普拉服务。^000000";
+		mes "^4d4dffWe wish the best of luck to all";
+		mes "Turbo Track participants today";
+		mes "and thank everyone for using the Kafra Services with all our hearts.^000000";
 		next;
-		mes "^800000卡普拉公司^4d4dff多年来为尊贵的顾客提供仓库服务、";
-		mes "记录点服务与传送服务^4d4dff。听听这些真实顾客的心声……^000000";
+		mes "^800000Kafra Corporation^4d4dff has been providing Storage Services,";
+		mes "Save Point Services and Teleport Services^4d4dff to our valued customers for years. Just listen to these real customers...^000000";
 		next;
 		if (.@w$ == "e4") {
-			mes "^4d4dff[卡恰]";
-			mes "当然啦，他们的仓库服务最棒了！空间大到连";
-			mes "我的钻石都放得下！";
+			mes "^4d4dff[Kachua]";
+			mes "Oh yes, they provide the best Storage! There's even enough";
+			mes "room for my Diaaaamonds!";
 			mes " ";
-			mes "[曼苏族长]";
-			mes "我最爱卡普拉啦！^000000";
+			mes "[Chief Mahnsoo]";
+			mes "I looove you Kafra!^000000";
 		} else if (.@w$ == "e8" || .@w$ == "n8") {
-			mes "^4d4dff[埃伦德]";
-			mes "卡普拉小姐？真是太美了！哦，她们的服务也很棒呢~！^000000";
+			mes "^4d4dff[Errende]";
+			mes "Kafra Ladies? Exquisite! Oh, and their service is good too~!^000000";
 			mes " ";
-			mes "[特里斯坦三世]";
-			mes "以我的王冠起誓！价格真是太便宜了！";
+			mes "[Tristram III]";
+			mes "By my crown! Such low prices!";
 		} else if (.@w$ == "e16" || .@w$ == "n16") {
-			mes "^4d4dff[铁匠工会职员凯]";
-			mes "我当然喜欢，特别是他们的手推车服务~";
+			mes "^4d4dff[Union Staff Kay]";
+			mes "Of course I love 'em, especially their Pushcart Service~";
 			mes " ";
-			mes "[圣诞老人]";
-			mes "呵呵呵！";
-			mes "这价格真令人愉快！";
+			mes "[Santa Claus]";
+			mes "Ho ho ho!";
+			mes "Such Merry Prices!";
 		} else if (.@w$ == "n4") {
-			mes "^4d4dff[色诺芬·佐洛塔斯]";
-			mes "没有卡普拉服务，我的生意根本做不下去。谢谢你，卡普拉！";
+			mes "^4d4dff[Xenophon Zolotas]";
+			mes "I wouldn't be able to do business without the Kafra Services. Thank you, Kafra!";
 			mes " ";
-			mes "[曼苏族长]";
-			mes "我最爱卡普拉啦！^000000";				
+			mes "[Chief Mahnsoo]";
+			mes "I looove you Kafra!^000000";				
 		} else {
-			mes "^4d4dff[卡卡坦]";
-			mes "我的国家曾饱受恶劣服务之苦……直到卡普拉来到这里！";
+			mes "^4d4dff[Karkatan]";
+			mes "My land suffered from poor customer service...until Kafra came along!";
 			mes " ";
-			mes "[馆长吉斯]";
-			mes "哦，卡普拉简直是最棒的！^000000";
+			mes "[Curator Guiss]";
+			mes "Oh, Kafra is simply the best!^000000";
 		}			
 		next;
-		mes "^ff0000竞速赛道";
-		mes "^ff0000诅咒沙漠中的陷阱！";
-		mes "^4d4dff赞助单位：^800000卡普拉公司^4d4dff";
-		mes "''我们永远在您身边。''^000000";
+		mes "^ff0000Turbo Track";
+		mes "^ff0000Traps in the Cursed Desert!";
+		mes "^4d4dffSponsored by ^800000Kafra Corporation^4d4dff";
+		mes "''We are always by your side.''^000000";
 		close2;
 		cutin "kafra_03",255;
 		end;
@@ -1724,18 +1724,18 @@ OnTouch_:
 	set .@n, charat(strnpcinfo(2),getstrlen(strnpcinfo(2))-1);
 	switch (.@n) {
 		case 1:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了原木桥赛道！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Log Bridge course!",bc_map,"0x70DBDB";
 			switch (rand(1,3)) {
 				case 1: warp strnpcinfo(4),210,369; end;
 				case 2: warp strnpcinfo(4),210,361; end;
 				case 3: warp strnpcinfo(4),210,354; end;
 			}
 		case 2:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了方块山丘赛道！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Cube Hills course!",bc_map,"0x70DBDB";
 			warp strnpcinfo(4),316,365;
 			end;		
 		case 3:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了诅咒沙漠！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Cursed Desert!",bc_map,"0x70DBDB";
 			switch (rand(1,4)) {
 				case 1: warp strnpcinfo(4),46,254; end;
 				case 2: warp strnpcinfo(4),76,227; end;
@@ -1743,15 +1743,15 @@ OnTouch_:
 				case 4: warp strnpcinfo(4),86,220; end;
 			}
 		case 5:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了独行蜗牛赛道！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Single Snail course!",bc_map,"0x70DBDB";
 			warp strnpcinfo(4),268,275;
 			end;
 		case 6:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了蛇形骰子赛道！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Snake Dice course!",bc_map,"0x70DBDB";
 			warp strnpcinfo(4),5,91;
 			end;
 		case 7:
-			mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了小洞穴赛道！快，终点就在眼前！",bc_map,"0x70DBDB";
+			mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Small Cave course! Hurry, you're almost at the finish!",bc_map,"0x70DBDB";
 			switch(rand(1,3)) {
 				case 1: warp strnpcinfo(4),307,52; end;
 				case 2: warp strnpcinfo(4),307,46; end;
@@ -1926,10 +1926,10 @@ turbo_n_1,222,65,0	duplicate(TurboHint_4#tt_main)	#n1NoWayOut7	-1,1,1
 OnTouch_:
 	set .@w$,callfunc("F_tt");
 	if (.@w$ == "n1") set $@end_time,gettimetick(0);
-	mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚抵达终点线！恭喜！",bc_map,"0xFFFF00";
+	mapannounce strnpcinfo(4),strcharinfo(0) +" has just arrived at the Finish Line! Congratulations!",bc_map,"0xFFFF00";
 	if (.@w$ != "n1") {
 		setd "$ttnames$["+GetNumber(.@w$)+"]",strcharinfo(0);
-		donpcevent "竞速场向导::OnWin_"+.@w$;
+		donpcevent "Turbo Track Guide::OnWin_"+.@w$;
 	}
 	warp strnpcinfo(4),384,161;
 	if (.@w$ == "e4" || .@w$ == "n4" || .@w$ == "n1") {
@@ -1975,7 +1975,7 @@ turbo_n_1,371,47,0	duplicate(cos_end#tt_main)	#cos_n1_end	45,1,1
 -	script	cos_end2#tt_main	45,1,1,{
 OnTouch_:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),strcharinfo(0) +"第二个抵达终点线！恭喜！",bc_map,"0xFFFF00";
+	mapannounce strnpcinfo(4),strcharinfo(0) +" is second to reach the Finish Line! Congratulations!",bc_map,"0xFFFF00";
 	if (.@w$ == "e8" || .@w$ == "n8") setarray .@pts, 28961,40;
 	if (.@w$ == "e16" || .@w$ == "n16") setarray .@pts, 28951,50;
 	if (tt_point < .@pts[0]) set tt_point,tt_point+.@pts[1];
@@ -1997,7 +1997,7 @@ turbo_n_16,371,51,0	duplicate(cos_end2#tt_main)	#cos_n16_end2	45,1,1
 -	script	cos_end3#tt_main	-1,{
 OnTouch_:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),"" + strcharinfo(0) +"第三个抵达终点线！恭喜！",bc_map,"0xFFFF00";
+	mapannounce strnpcinfo(4),"" + strcharinfo(0) +" is third to reach the Finish Line! Congratulations!",bc_map,"0xFFFF00";
 	if (.@w$ == "e8" || .@w$ == "n8") setarray .@pts, 28971,30;
 	if (.@w$ == "e16" || .@w$ == "n16") setarray .@pts, 28951,50;
 	if (tt_point < .@pts[0]) set tt_point,tt_point+.@pts[1];
@@ -2038,7 +2038,7 @@ turbo_n_1,316,365,0	duplicate(DSwitch#tt_main)	Disposable_Switch#n1	-1,1,1
 
 -	script	Flasher#tt_main	-1,{
 OnTouch_:
-	mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚通过了闪光迷宫！",bc_map,"0x70DBDB";
+	mapannounce strnpcinfo(4),strcharinfo(0) +" has just passed the Flasher Maze!",bc_map,"0x70DBDB";
 	warp strnpcinfo(4),185,227;
 	end;
 	
@@ -2065,176 +2065,176 @@ turbo_n_1,114,190,0	duplicate(Flasher#tt_main)	Flasher_Exit_2#n1	45,1,1
 -	script	WHelper#tt_main	-1,{
 	function	RName;
 	if (tt_rank < 29999) {
-		mes "[向导]";
-		mes "恭喜！";
+		mes "[Guide]";
+		mes "Congratulations!";
 		set .@w$,callfunc("F_tt");
 		if (compare(.@w$,"4")) {
 			if (tt_point < 28961) {
-				mes "作为优胜者，您的奖励";
-				mes "是 40 竞速点数~";
+				mes "As the winner, your reward";
+				mes "is 40 Turbo Track Points~";
 				set tt_point,tt_point+40;
 				set my_point,tt_point;
-				mes "您现在总共拥有";
-				mes tt_point + "竞速点数，";
+				mes "You now have a total of";
+				mes tt_point + " Turbo Track points,";
 				mes strcharinfo(0) +".";
 			}
-			mes "很遗憾，我无法给予您";
-			mes "任何竞速点数";
-			mes "因为那会超过";
-			mes "上限。抱歉，";
+			mes "Unfortunately, I can't give";
+			mes "you any Turbo Track Points";
+			mes "since you would exceed the";
+			mes "maximum limit. Sorry,";
 			mes strcharinfo(0) +"...";
 		} else {
-			mes "作为优胜者，您的奖励";
-			mes "是"+((compare(.@w$,"8"))?"50":"40")+"竞速点数，";
+			mes "As the winner, your reward";
+			mes "is "+((compare(.@w$,"8"))?"50":"40")+" Turbo Track Points,";
 			mes strcharinfo(0) +"~";
 			next;
-			mes "[向导]";
-			mes "不过，如果超过";
-			mes "上限，您将无法获得";
-			mes "任何点数。您现在总共拥有" + my_point + "竞速点数。";
+			mes "[Guide]";
+			mes "However, you cannot receive";
+			mes "any points if you exceed the";
+			mes "point limit. You now have a total of " + my_point + " Turbo Track points.";
 		} 
 		set tt_rank,tt_rank+1;
 		next;
 		if (tt_rank > $ttranks[1]) {
 			setarray $ttranks[0],$ttranks[0],tt_rank,$ttranks[1],$ttranks[2],$ttranks[3],$ttranks[4];
 			setarray $ttnames$[9],strcharinfo(0);
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您被评为";
-			mes "赢得最多比赛的";
-			mes "顶尖玩家！";
-			donpcevent "竞速场向导::OnNew_Top1";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You are ranked as";
+			mes "the top player for";
+			mes "winning the most games!";
+			donpcevent "Turbo Track Guide::OnNew_Top1";
 			if (tt_rank == 29999) {
 				if ($ttnames$[7] == "Breezy Havana") {
 					set $ttnames$[7],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 				else if ($ttnames$[8] == "RS125") {
 					set $ttnames$[8],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					if (compare(.@w$,"4")) announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					if (compare(.@w$,"4")) announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 			}
 		}
 		else if (tt_rank > $ttranks[2]) {
 			setarray $ttranks[0],$ttranks[0],$ttranks[1],tt_rank,$ttranks[3],$ttranks[4],$ttranks[5];
 			setarray $ttnames$[10],strcharinfo(0);
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您位居第二，";
-			mes "在赢得比赛最多的";
-			mes "前五名玩家之中！";
-			donpcevent "竞速场向导::OnNew_Top2";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You've ranked Second";
+			mes "among the Top Five Players";
+			mes "who've won the most games!";
+			donpcevent "Turbo Track Guide::OnNew_Top2";
 			if (tt_rank == 29999) {
 				if ($ttnames$[7] == "Breezy Havana") {
 					set $ttnames$[7],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 				else if ($ttnames$[8] == "RS125") {
 					set $ttnames$[8],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 			}
 		}
 		else if (tt_rank > $ttranks[3]) {
 			setarray $ttranks[0],$ttranks[0],$ttranks[1],$ttranks[2],tt_rank,$ttranks[4],$ttranks[5];
 			setarray $ttnames$[11],strcharinfo(0);
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您位居第三，";
-			mes "在赢得比赛最多的";
-			mes "前五名玩家之中！";
-			donpcevent "竞速场向导::OnNew_Top3";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You've ranked Third";
+			mes "among the Top Five Players";
+			mes "who've won the most games!";
+			donpcevent "Turbo Track Guide::OnNew_Top3";
 			if (tt_rank == 29999) {
 				if ($ttnames$[7] == "Breezy Havana") {
 					set $ttnames$[7],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 				else if ($ttnames$[8] == "RS125") {
 					set $ttnames$[8],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 			}
 		}
 		else if (tt_rank > $ttranks[4]) {
 			setarray $ttranks[0],$ttranks[0],$ttranks[1],$ttranks[2],$ttranks[3],tt_rank,$ttranks[5];
 			setarray $ttnames$[12],strcharinfo(0);
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您位居第四，";
-			mes "在赢得比赛最多的";
-			mes "前五名玩家之中！";
-			donpcevent "竞速场向导::OnNew_Top4";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You've ranked Fourth";
+			mes "among the Top Five Players";
+			mes "who've won the most games!";
+			donpcevent "Turbo Track Guide::OnNew_Top4";
 			if (tt_rank == 29999) {
 				if ($ttnames$[7] == "Breezy Havana") {
 					set $ttnames$[7],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 				else if ($ttnames$[8] == "RS125") {
 					set $ttnames$[8],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 			}
 		}
 		else if (tt_rank > $ttranks[5]) {
 			setarray $ttranks[0],$ttranks[0],$ttranks[1],$ttranks[2],$ttranks[3],$ttranks[4],tt_rank;
 			setarray $ttnames$[13],strcharinfo(0);
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您位居第五，";
-			mes "在赢得比赛最多的";
-			mes "前五名玩家之中！";
-			donpcevent "竞速场向导::OnNew_Top5";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You've ranked Fifth";
+			mes "among the Top Five Players";
+			mes "who've won the most games!";
+			donpcevent "Turbo Track Guide::OnNew_Top5";
 			if (tt_rank == 29999) {
 				if ($ttnames$[7] == "Breezy Havana") {
 					set $ttnames$[7],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce "" + strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce "" + strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 				else if ($ttnames$[8] == "RS125") {
 					set $ttnames$[8],strcharinfo(0);
-					mes "您已成功跻身";
-					mes "竞速赛道荣誉殿堂！";
-					announce strcharinfo(0) + "已加入竞速赛道荣誉殿堂！",bc_all,"FF0000";
+					mes "You've secured your place in";
+					mes "the Turbo Track Hall of Honor!";
+					announce strcharinfo(0) + " has joined the Turbo Track Hall of Honor!",bc_all,"FF0000";
 				}
 			}
 		}
 		else {
-			mes "[向导]";
-			mes "如果您能赢得";
-			mes "比任何人都多的比赛，您的";
-			mes "名字将被登记在";
-			mes "我们的前五名玩家排行榜上。";
+			mes "[Guide]";
+			mes "If you can win more games";
+			mes "than everybody else, your";
+			mes "name will be registered in";
+			mes "our Top Five Player Ranking.";
 			next;
-			mes "[向导]";
-			mes "您觉得";
-			mes "如何，" + strcharinfo(0) +"？";
-			mes "只要赢得胜利，";
-			mes "荣耀就属于您！";
+			mes "[Guide]";
+			mes "What do you";
+			mes "think, " + strcharinfo(0) +"?";
+			mes "Glory can be yours if";
+			mes "you can achieve victory!";
 		}
 		next;
-		mes "[向导]";
-		mes "感谢您";
-		mes "感谢您参加";
-		mes "竞速赛道。";
-		mes "您很快会被传送";
-		mes "至等待室。";
+		mes "[Guide]";
+		mes "Thank you for";
+		mes "participating in";
+		mes "the Turbo Track.";
+		mes "You will be transported";
+		mes "to a Waiting Room shortly.";
 		close2;
 		warp "turbo_room",72,89;
 		end;
@@ -2242,123 +2242,123 @@ turbo_n_1,114,190,0	duplicate(Flasher#tt_main)	Flasher_Exit_2#n1	45,1,1
 	else {
 		if ($ttnames$[7] == strcharinfo(0)) {
 			if (compare(.@w$,"4")) {
-				mes "[向导]";
-				mes "哇哦！";
-				mes "您是";
-				mes "我们荣誉殿堂的成员，";
-				mes "对吧？太棒了！";
-				mes "我正在和活生生的传奇对话！";
+				mes "[Guide]";
+				mes "Oh wow!";
+				mes "You're a member";
+				mes "in our Hall of Honor,";
+				mes "aren't you? This is great!";
+				mes "I'm talking to a living legend!";
 				next;
-				mes "[向导]";
-				mes "对了，您的奖励……";
+				mes "[Guide]";
+				mes "Right, your reward...";
 				if (tt_point < 28961) {
-					mes "40 竞速点数！";
+					mes "40 Turbo Track Points!";
 					set tt_point,tt_point+40;
-					mes "您现在总共拥有";
-					mes tt_point +"竞速点数。";
+					mes "You now have a total of";
+					mes tt_point +" Turbo Track Points.";
 				}
 				else {
-					mes "很遗憾，我无法给予您";
-					mes "任何竞速点数";
-					mes "因为那会超过";
-					mes "上限。抱歉，";
+					mes "Unfortunately, I can't give";
+					mes "you any Turbo Track Points";
+					mes "since you would exceed the";
+					mes "maximum limit. Sorry,";
 					mes strcharinfo(0) +"...";
 				}
 			} else {
-				mes "哦，抱歉！您";
-				mes "来这里是想让我告诉您";
-				mes "您有多少竞速点数";
+				mes "Oh, I'm sorry! You're";
+				mes "here so that I can tell you";
+				mes "how many Turbo Track Points";
 				set my_point,tt_point;
-				mes "对吧？您总共拥有" + my_point + "竞速点数，"+ strcharinfo(0) +".";
+				mes "you have, right? You've got a total of " + my_point + " Turbo Track Points, "+ strcharinfo(0) +".";
 			}
 				next;
-				mes "[向导]";
-				mes "对了，感谢您";
-				mes "参加";
-				mes "竞速赛道！稍后您会被";
-				mes "送往等待室~";
+				mes "[Guide]";
+				mes "Oh, and thanks for";
+				mes "participating in the";
+				mes "Turbo Track! You'll be sent";
+				mes "to the Waiting Room soon~";
 				close2;
 				warp "turbo_room",72,89;
 				end;
 		}
 		else if ($ttnames$[8] == strcharinfo(0)) {
-			mes "[向导]";
-			mes "嘿，您不是";
-			mes "我们荣誉殿堂的成员吗？";
-			mes "我一直在看您的";
-			mes "比赛……您跑得真快";
-			mes "身手不错嘛，高手~";
+			mes "[Guide]";
+			mes "Hey, aren't you";
+			mes "in our Hall of Honor?";
+			mes "I've been watching your";
+			mes "races... You're pretty quick";
+			mes "on your feet, hotshot~";
 			next;
-			mes "[向导]";
+			mes "[Guide]";
 			if (compare(.@w$,"4")) {
-				mes "对了，您的奖励……";
+				mes "Right, your reward...";
 				if (tt_point < 28961) {
-					mes "40 竞速点数！";
+					mes "40 Turbo Track Points!";
 					set tt_point,tt_point+40;
-					mes "您现在总共拥有";
-					mes tt_point +"竞速点数。";
+					mes "You now have a total of";
+					mes tt_point +" Turbo Track Points.";
 				}
 				else {
-					mes "很遗憾，我无法给予您";
-					mes "任何竞速点数";
-					mes "因为那会超过";
-					mes "上限。抱歉……";
+					mes "Unfortunately, I can't give";
+					mes "you any Turbo Track Points";
+					mes "since you would exceed the";
+					mes "maximum limit. Sorry...";
 				} 
 			} else {
-				mes "对了，您当前的";
+				mes "Oh right, your current";
 				set my_point,tt_point;
-				mes "竞速点数总计！";
-				mes "您总共拥有";
-				mes my_point + "竞速点数，";
+				mes "Turbo Track Point total!";
+				mes "You've got a total of";
+				mes my_point + " Turbo Track points,";
 				mes strcharinfo(0) + ".";
 			}
 			next;
-			mes "[向导]";
-			mes "对了，感谢您";
-			mes "参加";
-			mes "竞速赛道！稍后您会被";
-			mes "送往等待室~";
+			mes "[Guide]";
+			mes "Oh, and thanks for";
+			mes "participating in the";
+			mes "Turbo Track! You'll be sent";
+			mes "to the Waiting Room soon~";
 			close2;
 			warp "turbo_room",72,89;
 			end;
 		}
 		else {
-			mes "[向导]";
-			mes "哎呀呀~";
-			mes "您差一点就能";
-			mes "加入我们的荣誉殿堂了……！";
-			mes "但别因此";
-			mes "气馁。下次再来！";
+			mes "[Guide]";
+			mes "Awwww~";
+			mes "You were almost able";
+			mes "to join our Hall of Honor...!";
+			mes "But don't let that get you";
+			mes "down. Maybe next time!";
 			next;
-			mes "[向导]";
+			mes "[Guide]";
 			if (compare(.@w$,"4")) {
-				mes "对了，您的奖励……";
-				mes "40 竞速点数！";
+				mes "Right, your reward...";
+				mes "40 Turbo Track Points!";
 				if (tt_point < 28961) {
 					set tt_point,tt_point+40;
 					set my_point,tt_point;
-					mes "您现在总共拥有";
-					mes tt_point +"竞速点数。";
+					mes "You now have a total of";
+					mes tt_point +" Turbo Track Points.";
 				}
 				else {
-					mes "很遗憾，我无法给予您";
-					mes "任何竞速点数";
-					mes "因为那会超过";
-					mes "上限。抱歉……";
+					mes "Unfortunately, I can't give";
+					mes "you any Turbo Track Points";
+					mes "since you would exceed the";
+					mes "maximum limit. Sorry...";
 				}
 			} else {
-				mes "哦，对了。";
-				mes "您目前";
-				mes "总共拥有";
-				mes tt_point + "竞速点数。";
+				mes "Oh, right.";
+				mes "Currently, you";
+				mes "have a total of";
+				mes tt_point + " Turbo Track points.";
 			}
 			next;
-			mes "[向导]";
-			mes "感谢您";
-			mes "感谢您参加";
-			mes "竞速赛道。";
-			mes "您很快会被传送";
-			mes "至等待室。";
+			mes "[Guide]";
+			mes "Thank you for";
+			mes "participating in";
+			mes "the Turbo Track.";
+			mes "You will be transported";
+			mes "to a Waiting Room shortly.";
 			close2;
 			warp "turbo_room",72,89;
 			end;
@@ -2373,100 +2373,100 @@ OnEnable:
 
 OnTimer4000:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),"这是竞速赛道的结束播报："+RName(.@w$)+".",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"This is the ending broadcast for Turbo Track "+RName(.@w$)+".",bc_map,"0x33FF66";
 	end;
 
 OnTimer8000:
-	mapannounce strnpcinfo(4),"为了游戏顺利进行，比赛将在约 1 分钟后结束。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"For smooth game play, the game will end in approximately 1 minute.",bc_map,"0x33FF66";
 	end;
 
 OnTimer12000:
-	mapannounce strnpcinfo(4),"届时将会开启传送之门。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"At that time, a Warp portal will open.",bc_map,"0x33FF66";
 	end;
 
 OnTimer16000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"赛场内的玩家请做好通过传送之门离开的准备。",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"Players in the arena must be ready to leave through the Warp Portal.",bc_map,"0x33FF66";
 	end;
 
 OnTimer20000:
 	set .@w$,callfunc("F_tt");
 	if (compare(.@w$,"4"))
-		mapannounce strnpcinfo(4),"同时，获胜者请尽快领取奖励。",bc_map,"0x33FF66";
+		mapannounce strnpcinfo(4),"In the meantime, winners must proceed to receive their rewards as soon as possible.",bc_map,"0x33FF66";
 	else
-		mapannounce strnpcinfo(4),"赛场内的玩家请做好进入传送门的准备。",bc_map,"0x33FF66";
+		mapannounce strnpcinfo(4),"Players within the arena must be in ready to enter the warp.",bc_map,"0x33FF66";
 	end;
 
 OnTimer24000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"感谢您光临艾尔帕兰竞速赛道。",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"Thank you for visiting Al De Baran Turbo Track.",bc_map,"0x33FF66";
 	end;
 
 OnTimer25000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"同时，获胜者请尽快领取奖励。",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"In the meantime, winners must procceed to receive their rewards as soon as possible.",bc_map,"0x33FF66";
 	end;
 	
 OnTimer28000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"艾尔帕兰竞速赛道由以下单位为您呈现……",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"Al De Baran Turbo Track is brought to you by...",bc_map,"0x33FF66";
 	end;
 	
 OnTimer30000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"感谢您光临艾尔帕兰竞速赛道。",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"Thank you for visiting Al De Baran Turbo Track.",bc_map,"0x33FF66";
 
 OnTimer32000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"[艾尔帕兰卡普拉公司总部]",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"[Al De Baran Kafra Corporation Headquarters]",bc_map,"0x33FF66";
 	end;
 
 OnTimer35000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"艾尔帕兰竞速赛道由以下单位为您呈现……",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"Al De Baran Turbo Track is brought to you by...",bc_map,"0x33FF66";
 	end;
 	
 OnTimer36000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"[艾尔帕兰公会城堡管理 露依纳]",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"[Al De Baran Guild Castle Management Luina]",bc_map,"0x33FF66";
 	end;
 
 OnTimer40000:
 	set .@w$,callfunc("F_tt");
 	if (compare(.@w$,"4")) 
-		mapannounce strnpcinfo(4),"[铁匠工会]",bc_map,"0x33FF66";
+		mapannounce strnpcinfo(4),"[Blacksmith Union]",bc_map,"0x33FF66";
 	else
-		mapannounce strnpcinfo(4),"[艾尔帕兰卡普拉公司总部]",bc_map,"0x33FF66";
+		mapannounce strnpcinfo(4),"[Al De Baran Kafra Corporation Headquarters]",bc_map,"0x33FF66";
 	end;
 
 OnTimer44000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"以及[克魔岛赌场]。",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"And [Comodo Casino].",bc_map,"0x33FF66";
 	end;
 
 OnTimer45000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"[艾尔帕兰公会城堡管理 露依纳]",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"[Al De Baran Guild Castle Management Luina]",bc_map,"0x33FF66";
 	end;
 
 OnTimer48000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"我们再次感谢各位赞助商。",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"Once again, we'd like to thank our sponsors.",bc_map,"0x33FF66";
 	end;
 	
 OnTimer50000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"[铁匠工会]",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"[Blacksmith Union]",bc_map,"0x33FF66";
 	end;
 
 OnTimer52000:
 	set .@w$,callfunc("F_tt");
-	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"祝你今天愉快。",bc_map,"0x33FF66";
+	if (compare(.@w$,"4")) mapannounce strnpcinfo(4),"Have a good day.",bc_map,"0x33FF66";
 	end;
 	
 OnTimer55000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"以及[克魔岛赌场]。",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"And [Comodo Casino].",bc_map,"0x33FF66";
 	end;
 
 OnTimer58000:
@@ -2492,13 +2492,13 @@ OnTimer60000:
 		enablenpc "#cos_"+.@w$+"_end";
 		stopnpctimer;
 	} else {
-		mapannounce strnpcinfo(4),"我们再次感谢各位赞助商。",bc_map,"0x33FF66";
+		mapannounce strnpcinfo(4),"Once again, we'd like to thank our sponsors.",bc_map,"0x33FF66";
 	}
 	end;
 	
 OnTimer65000:
 	set .@w$,callfunc("F_tt");
-	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"祝你今天愉快。",bc_map,"0x33FF66";
+	if (!compare(.@w$,"4")) mapannounce strnpcinfo(4),"Have a good day.",bc_map,"0x33FF66";
 	end;
 	
 OnTimer70000:
@@ -2563,36 +2563,36 @@ turbo_n_1,384,167,1	script	向导#TBT_n1	47,{
 	set .@record_min,((.@record_time % 3600) / 60);
 	set .@record_sec,.@record_time % 60;
 	if (.@record_min < 0) {
-		mes "[向导]";
-		mes "干得好！虽然您这次";
-		mes "没有刷新纪录，但您";
-		mes "跑完了全程。现在，让";
-		mes "我为您消除疲劳吧~";
+		mes "[Guide]";
+		mes "Good work! Maybe you didn't";
+		mes "set any new records, but you";
+		mes "went the distance. Now, let";
+		mes "me relieve you of your fatigue~";
 		percentheal 100,100;
 		next;
-		mes "[向导]";
+		mes "[Guide]";
 		if (tt_point < 28991) {
-			mes "您将获得";
-			mes "10 竞速点数~！";
+			mes "You will be rewarded";
+			mes "with 10 Turbo Track points~!";
 			set tt_point,tt_point+10;
 			set my_point,tt_point;
-			mes "您现在总共拥有";
-			mes tt_point + "竞速点数。";
+			mes "You now have a total of";
+			mes tt_point + " Turbo Track points.";
 		}
 		else {
-			mes "很遗憾，我无法给予您";
-			mes "任何竞速点数";
-			mes "因为那会超过";
-			mes "上限。抱歉，";
+			mes "Unfortunately, I can't give";
+			mes "you any Turbo Track Points";
+			mes "since you would exceed the";
+			mes "maximum limit. Sorry,";
 			mes strcharinfo(0) +"...";
 		}
 		next;
-		mes "[向导]";
-		mes "感谢您";
-		mes "感谢您参加";
-		mes "竞速赛道。";
-		mes "您很快会被引导";
-		mes "前往等待室。";
+		mes "[Guide]";
+		mes "Thank you for";
+		mes "participating in";
+		mes "in Turbo Track.";
+		mes "You will be guided";
+		mes "to a Waiting Room soon.";
 		close2;
 		warp "turbo_room",72,89;
 		end;
@@ -2602,75 +2602,75 @@ turbo_n_1,384,167,1	script	向导#TBT_n1	47,{
 		set .@topcho,$ttranks[0] % 60;
 		set .@gap,$ttranks[0] - .@record_time;
 		if (.@gap < 0) {
-			mes "[向导]";
-			mes "干得好！虽然您这次";
-			mes "没有刷新纪录，但您";
-			mes "跑完了全程。现在，让";
-			mes "我为您消除疲劳吧~";
+			mes "[Guide]";
+			mes "Good work! Maybe you didn't";
+			mes "set any new records, but you";
+			mes "went the distance. Now, let";
+			mes "me relieve you of your fatigue~";
 			percentheal 100,100;
 			next;
-			mes "[向导]";
+			mes "[Guide]";
 			if (tt_point < 28991) {
-				mes "您将获得";
-				mes "10 竞速点数~！";
+				mes "You will be rewarded";
+				mes "with 10 Turbo Track points~!";
 				set tt_point,tt_point+10;
 				set my_point,tt_point;
-				mes "您现在总共拥有";
-				mes tt_point + "竞速点数。";
+				mes "You now have a total of";
+				mes tt_point + " Turbo Track points.";
 			}
 			else {
-				mes "很遗憾，我无法给予您";
-				mes "任何竞速点数";
-				mes "因为那会超过";
-				mes "上限。抱歉，";
+				mes "Unfortunately, I can't give";
+				mes "you any Turbo Track Points";
+				mes "since you would exceed the";
+				mes "maximum limit. Sorry,";
 				mes strcharinfo(0) +"...";
 			}
 			next;
-			mes "[向导]";
-			mes "感谢您";
-			mes "感谢您参加";
-			mes "竞速赛道。";
-			mes "您很快会被引导";
-			mes "前往等待室。";
+			mes "[Guide]";
+			mes "Thank you for";
+			mes "participating in";
+			mes "in Turbo Track.";
+			mes "You will be guided";
+			mes "to a Waiting Room soon.";
 			close2;
 			warp "turbo_room",72,89;
 			end;
 		}
 		else {
-			mes "[向导]";
-			mes "恭喜！";
-			mes "您被评为";
-			mes "单人模式的顶尖玩家！";
-			mes "您的名字将被载入";
-			mes "我们的记录，"+ strcharinfo(0) +"~";
+			mes "[Guide]";
+			mes "Congratulations!";
+			mes "You ranked as the";
+			mes "top player in Solo Mode!";
+			mes "Your name will be entered";
+			mes "into our records, "+ strcharinfo(0) +"~";
 			setarray $ttranks[0],.@record_time;
 			setarray $ttnames$[0],strcharinfo(0);
 			next;
 			if (tt_point < 28961) {
-				mes "[向导]";
-				mes "既然您刷新了";
-				mes "新纪录，您将";
-				mes "获得奖励：";
-				mes "40 竞速点数！";
+				mes "[Guide]";
+				mes "Since you've set";
+				mes "a new record, you";
+				mes "will be rewarded with";
+				mes "40 Turbo Track Points!";
 				set tt_point,tt_point+40;
-				mes "您现在总共拥有";
-				mes tt_point + "竞速点数。";
+				mes "You now have a total of";
+				mes tt_point + " Turbo Track points.";
 			}
 			else {
-				mes "[向导]";
-				mes "很遗憾，我无法给予您";
-				mes "任何竞速点数";
-				mes "因为那会超过";
-				mes "上限。抱歉，";
+				mes "[Guide]";
+				mes "Unfortunately, I can't give";
+				mes "you any Turbo Track Points";
+				mes "since you would exceed the";
+				mes "maximum limit. Sorry,";
 				mes strcharinfo(0) +"...";
 			}
 			next;
-			mes "[向导]";
-			mes "感谢您";
-			mes "感谢您参加";
-			mes "竞速赛道。";
-			mes "您很快会被引导";
-			mes "前往等待室。";
+			mes "[Guide]";
+			mes "Thank you for";
+			mes "participating in";
+			mes "in Turbo Track.";
+			mes "You will be guided";
+			mes "to a Waiting Room soon.";
 			close2;
 			warp "turbo_room",72,89;
 			end;
@@ -2684,55 +2684,55 @@ OnEnable:
 	end;
 
 OnTimer4000:
-	mapannounce strnpcinfo(4),"这是竞速赛道单人模式的结束播报。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"This is the ending broadcast of Turbo Track Solo Mode.",bc_map,"0x33FF66";
 	end;
 
 OnTimer8000:
-	mapannounce strnpcinfo(4),"为了游戏顺利进行，比赛将在约 1 分钟后结束。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"For smooth game play, the game will end in approximately 1 minute from now.",bc_map,"0x33FF66";
 	end;
 
 OnTimer12000:
-	mapannounce strnpcinfo(4),"届时将会开启传送之门。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"At this time, the warp portal will open.",bc_map,"0x33FF66";
 	end;
 
 OnTimer16000:
-	mapannounce strnpcinfo(4),"赛场内的玩家请做好准备。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Players within the arena must be ready for this.",bc_map,"0x33FF66";
 	end;
 
 OnTimer20000:
-	mapannounce strnpcinfo(4),"同时，获胜者请尽快领取奖励。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"In the meantime, the winner must procceed to receive rewards as soon as possible.",bc_map,"0x33FF66";
 	end;
 
 OnTimer24000:
-	mapannounce strnpcinfo(4),"感谢您光临艾尔帕兰竞速赛道。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Thank you for visiting Al De Baran Turbo Track.",bc_map,"0x33FF66";
 	end;
 
 OnTimer28000:
-	mapannounce strnpcinfo(4),"艾尔帕兰竞速赛道由以下单位为您呈现……",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Al De Baran Turbo Track is brought to you by...",bc_map,"0x33FF66";
 	end;
 
 OnTimer32000:
-	mapannounce strnpcinfo(4),"[艾尔帕兰卡普拉公司总部]",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"[Al De Baran Kafra Corporation Headquarters]",bc_map,"0x33FF66";
 	end;
 
 OnTimer36000:
-	mapannounce strnpcinfo(4),"[艾尔帕兰公会城堡管理 露依纳]",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"[Al De Baran Guild Castle Management Luina]",bc_map,"0x33FF66";
 	end;
 
 OnTimer40000:
-	mapannounce strnpcinfo(4),"[铁匠工会]",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"[Blacksmith Union]",bc_map,"0x33FF66";
 	end;
 
 OnTimer44000:
-	mapannounce strnpcinfo(4),"以及[克魔岛赌场]。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"And [Comodo Casino].",bc_map,"0x33FF66";
 	end;
 
 OnTimer48000:
-	mapannounce strnpcinfo(4),"我们再次感谢各位赞助商。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Once again, we'd like to thank our sponsors.",bc_map,"0x33FF66";
 	end;
 
 OnTimer52000:
-	mapannounce strnpcinfo(4),"祝你今天愉快。",bc_map,"0x33FF66";
+	mapannounce strnpcinfo(4),"Have a good day.",bc_map,"0x33FF66";
 	end;
 
 OnTimer56000:
@@ -2766,8 +2766,8 @@ OnInit:
 -	script	NMaker1#tt_main	-1,{
 OnTouch_:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚进入小洞穴！" + strcharinfo(0) +"目前领先！",bc_map,"0xFFFF00";
-	donpcevent "竞速场向导::OnEnd_"+.@w$;
+	mapannounce strnpcinfo(4),strcharinfo(0) +" is now entering the Small Cave! " + strcharinfo(0) +" is now in the lead!",bc_map,"0xFFFF00";
+	donpcevent "Turbo Track Guide::OnEnd_"+.@w$;
 	disablenpc "Notice_Maker1#TBT_"+.@w$;
 	end;
 	
@@ -2787,7 +2787,7 @@ turbo_n_1,11,91,0	duplicate(NMaker1#tt_main)	Notice_Maker1#TBT_n1	-1,3,3
 -	script	NMaker3#tt_main	-1,{
 OnTouch_:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),strcharinfo(0) +"刚刚进入独行蜗牛！" + strcharinfo(0) +"目前领先！",bc_map,"0xFFFF00";
+	mapannounce strnpcinfo(4),strcharinfo(0) +" is now entering the Single Snail! " + strcharinfo(0) +" is now in the lead!",bc_map,"0xFFFF00";
 	disablenpc "Notice_Maker3#TBT_"+.@w$;
 	end;
 	
@@ -2807,7 +2807,7 @@ turbo_n_1,234,223,0	duplicate(NMaker3#tt_main)	Notice_Maker3#TBT_n1	-1,3,3
 -	script	NMaker4#tt_main	-1,{
 OnTouch_:
 	set .@w$,callfunc("F_tt");
-	mapannounce strnpcinfo(4),strcharinfo(0) +"目前位居第一！",bc_map,"0xFFFF00";
+	mapannounce strnpcinfo(4),strcharinfo(0) +" is currently in First Place!",bc_map,"0xFFFF00";
 	disablenpc "Notice_Maker4#TBT_"+.@w$;
 	end;
 
@@ -3644,13 +3644,13 @@ turbo_n_16,217,214,0	duplicate(bing_2#tt_main)	bing2#n16	45,3,3
 
 turbo_room,130,92,3	script	卡普拉职员#tt	115,{
 	cutin "kafra_03",2;
-	mes "[卡普拉职员]";
-	mes "欢迎光临~ 卡普拉服务";
-	mes "永远在您身边。请允许我";
-	mes "提醒您，使用这里的";
-	mes "记录点服务，将会把您的";
-	mes "复活点变更为艾尔帕兰。";
-	mes "那么，请问有什么可以帮您？";
+	mes "[Kafra Staff]";
+	mes "Welcome~ The Kafra Services";
+	mes "are always on your side. Let me";
+	mes "remind you that using the Save";
+	mes "Service here will change your";
+	mes "Respawn Point to Al De Baran.";
+	mes "Now, how may I assist you?";
 	callfunc "F_Kafra",5,8,1,40,0;
 
 	M_Save:
@@ -3659,216 +3659,216 @@ turbo_room,130,92,3	script	卡普拉职员#tt	115,{
 
 }
 
-turbo_room,124,86,0	shop	竞速场商人	90,501:-1,502:-1,503:-1,504:-1,645:-1,656:-1,1065:-1,1750:-1
+turbo_room,124,86,0	shop	Turbo Track Merchant	90,501:-1,502:-1,503:-1,504:-1,645:-1,656:-1,1065:-1,1750:-1
 
 // Official name: "TBT_Guide#Broadcast"
-turbo_room,99,120,4	script	竞速场向导	124,{
-	mes "[竞速赛道向导]";
-	mes "你好~";
-	mes "关于竞速赛道，";
-	mes "您有什么想";
-	mes "了解的吗？";
-	mes "有什么问题";
-	mes "尽管问我。";
+turbo_room,99,120,4	script	Turbo Track Guide	124,{
+	mes "[Turbo Track Guide]";
+	mes "Good day~";
+	mes "Is there anything that";
+	mes "you would like to know";
+	mes "about the Turbo Track?";
+	mes "Feel free to ask me";
+	mes "any questions.";
 	next;
 	while(1) {
-		switch(select("比赛规则:赛道介绍:游戏模式:禁止使用的道具与技能:取消")) {
+		switch(select("Race Rules:Game Courses:Game Modes:Prohibited Items and Skills:Cancel")) {
 		case 1:
-			mes "[竞速赛道向导]";
-			mes "所有比赛的规则";
-			mes "都很简单。只要越过";
-			mes "所有障碍，";
-			mes "尽可能快地";
-			mes "抵达终点线即可。";
+			mes "[Turbo Track Guide]";
+			mes "The rules for all the races";
+			mes "are pretty simple. Just get";
+			mes "past all the obstacles and";
+			mes "try to get to the Finish Line";
+			mes "as quickly as you can.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "当然，比赛中的某些赛道";
-			mes "可能会遇到一些";
-			mes "意想不到的情况，但我实在没法举例说明……";
-			mes "您只要知道，赛道上";
-			mes "会有陷阱。";
+			mes "[Turbo Track Guide]";
+			mes "Of course, some of the courses";
+			mes "in the races may present a few";
+			mes "unexpected situations, but I can't really illustrate an example...";
+			mes "Just know that there will";
+			mes "be traps lying about.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "能够骑乘";
-			mes "大嘴鸟的职业，例如骑士、";
-			mes "骑士领主、十字军和";
-			mes "圣殿十字军，必须在进入";
-			mes "竞速赛道竞技场之前";
-			mes "让大嘴鸟停下。";
+			mes "[Turbo Track Guide]";
+			mes "Classes that can mount";
+			mes "a Peco Peco, such as Knight,";
+			mes "Lord Knight, Crusader and";
+			mes "Paladin, must get off their";
+			mes "Peco Pecos before entering";
+			mes "the Turbo Track Arena.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "嗯，更准确地说，";
-			mes "竞速赛道入口的";
-			mes "工作人员会请您下鸟，";
-			mes "并给您一张票，";
-			mes "让您可以免费";
-			mes "再次租用大嘴鸟。";
+			mes "[Turbo Track Guide]";
+			mes "Well, more accurately,";
+			mes "someone at the Turbo Track";
+			mes "entrance will ask you to get";
+			mes "off and will give you a ticket";
+			mes "so that you can rent your";
+			mes "Peco again free of charge.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "那么，比赛的获胜者";
-			mes "就是最先抵达";
-			mes "终点线的人。一旦有人";
-			mes "越过终点线，比赛即结束，所有人会被自动传送至等待室。";
+			mes "[Turbo Track Guide]";
+			mes "Now, the winner of the race";
+			mes "is the person who reaches the";
+			mes "Finish Line first. Once someone";
+			mes "crosses the Finish Line, the race ends and everyone is automatically transported to a Waiting Room.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "请记住，每场";
-			mes "比赛只有 15 分钟。";
-			mes "如果在这段时间内";
-			mes "没有人能抵达终点线，";
-			mes "比赛将以无人获胜结束。";
+			mes "[Turbo Track Guide]";
+			mes "Keep in mind that every";
+			mes "race is only 15 minutes long.";
+			mes "If no one can reach the Finish";
+			mes "Line within that time, the race";
+			mes "will end without a winner.";
 			next;
-			mes "[竞速赛道向导]";
-			mes "本比赛没有角色";
-			mes "职业或等级限制";
-			mes "就能参加竞速场";
-			mes "的比赛。不过，需支付";
-			mes "1,000 zeny 的参赛费。";
+			mes "[Turbo Track Guide]";
+			mes "There are no character";
+			mes "class or level requirements";
+			mes "to participate in the Turbo";
+			mes "Track. However, there is a";
+			mes "participation fee of 1,000 zeny.";
 			next;
 			break;
 		case 2:
-			mes "[竞速场向导]";
-			mes "竞速场的比赛";
-			mes "由多种赛道组成：";
-			mes "^4d4dff圆木桥、方块山丘、";
-			mes "单只蜗牛、蛇形骰子、小";
-			mes "洞穴与隐形迷宫。";
+			mes "[Turbo Track Guide]";
+			mes "Races in the Turbo Track";
+			mes "consist of various courses:";
+			mes "^4d4dffLog Bridge, Cube Hills, the";
+			mes "Single Snail, Snake Dice, Small";
+			mes "Cave and the Invisible Maze.";
 			next;
-			mes "[竞速场向导]";
-			mes "各赛道的开放情况";
-			mes "取决于游戏";
-			mes "模式。您想进一步";
-			mes "了解某条赛道吗？";
+			mes "[Turbo Track Guide]";
+			mes "The availability of specific";
+			mes "courses is determined by the";
+			mes "game mode. Would you like to";
+			mes "learn more about a certain course?";
 			next;
 			set .@exitloop,1;
 			while (.@exitloop) {
-				switch(select("圆木桥与方块山丘:诅咒沙漠与闪光迷宫:单只蜗牛与隐形迷宫:蛇形骰子与小洞穴:不用了，谢谢。")) {
+				switch(select("Log Bridge and Cube Hills:Cursed Desert and Flasher Maze:Single Snail and Invisible Maze:Snake Dice and Small Cave:No, thanks.")) {
 				case 1:
-					mes "[竞速场向导]";
-					mes "在圆木桥";
-					mes "赛道，您必须走过";
-					mes "一根圆木。如果";
-					mes "掉落下去，您会被";
-					mes "送回圆木桥的";
-					mes "起点。";
+					mes "[Turbo Track Guide]";
+					mes "In the Log Bridge";
+					mes "course, you must cross";
+					mes "over a single log. If you";
+					mes "fall off, you'll be brought";
+					mes "back to the beginning of";
+					mes "the Log Bridge.";
 					next;
-					mes "[竞速场向导]";
-					mes "方块山丘是一座由";
-					mes "层层叠叠的箱子";
-					mes "堆成的迷宫。您可以爬过";
-					mes "部分箱子，但无法";
-					mes "穿过其他箱子。您得摸索着找出最佳路线。";
+					mes "[Turbo Track Guide]";
+					mes "The Cube Hills is a maze";
+					mes "consisting of piles and piles";
+					mes "of boxes. You can climb over";
+					mes "some boxes, but cannot pass";
+					mes ",through others. You'll have to navigate and find the best path.";
 					next;
 					break;
 				case 2:
-					mes "[竞速场向导]";
-					mes "诅咒沙漠是";
-					mes "一条充满意外的";
-					mes "短赛道。如果您真的";
-					mes "运气不好，可能会";
-					mes "陷入混乱，甚至被诅咒！";
+					mes "[Turbo Track Guide]";
+					mes "The Cursed Desert is";
+					mes "a short course that is full";
+					mes "of surprises. If you're really";
+					mes "unlucky, you may find yourself";
+					mes "confused or even cursed!";
 					next;
-					mes "[竞速场向导]";
-					mes "闪光迷宫";
-					mes "布满会让您失明的";
-					mes "陷阱，所以最好格外";
-					mes "小心地探索这座迷宫。或许放慢速度避开陷阱才是明智之举……";
+					mes "[Turbo Track Guide]";
+					mes "The Flasher Maze";
+					mes "is full of traps that will";
+					mes "blind so you better be extra";
+					mes "careful in navigating this maze. It might be wiser to try to slow down and avoid the traps...";
 					next;
 					break;
 				case 3:
-					mes "[竞速场向导]";
-					mes "单只蜗牛赛道是";
-					mes "一条狭窄的螺旋路径，";
-					mes "形状如同蜗牛壳。";
-					mes "虽然障碍不多，";
-					mes "但在这条赛道上很难全速奔驰。";
+					mes "[Turbo Track Guide]";
+					mes "The Single Snail is";
+					mes "a narrow, spiral path";
+					mes "shaped like a snail's shell.";
+					mes "There aren't many obstacles,";
+					mes "but it will be tough to race at your top speed in this course.";
 					next;
-					mes "[竞速场向导]";
-					mes "隐形迷宫";
-					mes "看起来是一间巨大而开阔的";
-					mes "大房间，但实际上布满";
-					mes "看不见的墙壁。您会";
-					mes "得到一些提示，所以";
-					mes "并非无法通过。";
+					mes "[Turbo Track Guide]";
+					mes "The Invisible Maze";
+					mes "looks like a huge, open";
+					mes "room, but it's actually full";
+					mes "of invisible walls. You'll";
+					mes "be given some hints, so";
+					mes "it's not impossible.";
 					next;
 					break;
 				case 4:
-					mes "[竞速场向导]";
-					mes "蛇形骰子赛道";
-					mes "有着蜿蜒曲折的路线，";
-					mes "就像蛇的身体一样。这条";
-					mes "赛道也受运气因素影响，您得";
-					mes "亲自体验才能明白。";
+					mes "[Turbo Track Guide]";
+					mes "The Snake Dice course";
+					mes "offers winding paths, much";
+					mes "like the body of a snake. The";
+					mes "factor of luck also plays a role in this course, which you'll";
+					mes "have to see for yourself.";
 					next;
-					mes "[竞速场向导]";
-					mes "小洞穴赛道其实只是";
-					mes "裴扬洞窟的复制品。";
-					mes "这一段应该轻而易举，";
-					mes "只要您对裴扬洞窟的狩猎相当熟悉。";
+					mes "[Turbo Track Guide]";
+					mes "The Small Cave is simply";
+					mes "a replica of the Payon Cave.";
+					mes "This part should be a breeze";
+					mes "if you're pretty comfortable with hunting in the Payon Cave.";
 					next;
 					break;
 				case 5:
-					mes "[竞速场向导]";
-					mes "我明白了。";
-					mes "那么，";
-					mes "祝您在赛场上";
-					mes "取得好成绩！";
+					mes "[Turbo Track Guide]";
+					mes "I see.";
+					mes "Okay then,";
+					mes "best of luck to";
+					mes "you in the races!";
 					next;
 					set .@exitloop,0;
 				}
 			}
-			mes "[竞速场向导]";
-			mes "您想搭乘";
-			mes "了解竞速场的";
-			mes "其他信息吗？";
+			mes "[Turbo Track Guide]";
+			mes "Would you like to";
+			mes "know anything else";
+			mes "about Turbo Track?";
 			next;
 			break;
 		case 3:
-			mes "[竞速场向导]";
-			mes "竞速场比赛共有";
-			mes "三种游戏模式";
-			mes "可供选择：";
-			mes "普通、专家和单人。";
+			mes "[Turbo Track Guide]";
+			mes "There are three different";
+			mes "game modes available for";
+			mes "races in the Turbo Track:";
+			mes "Normal, Expert and Solo.";
 			next;
-			mes "[竞速场向导]";
-			mes "与其他游戏";
-			mes "模式不同，^4d4dff专家模式";
-			mes "允许玩家进行 PvP^000000。这个模式";
-			mes "最适合在队伍";
-			mes "或公会之间比赛。";
+			mes "[Turbo Track Guide]";
+			mes "Unlike the other game";
+			mes "modes, ^4d4dffExpert Mode";
+			mes "allows players to PvP^000000. This mode";
+			mes "is ideal for races between";
+			mes "parties or guilds.";
 			next;
-			mes "[竞速场向导]";
-			mes "另外，隐形迷宫是";
-			mes "一条特殊赛道，只会在";
-			mes "16 人比赛中出现，";
-			mes "且仅限^4d4dff普通^000000与^4D4DFF专家^000000模式。";
+			mes "[Turbo Track Guide]";
+			mes "Now, the Invisible Maze is";
+			mes "a special course that is only";
+			mes "available in 16 person races";
+			mes "in ^4d4dffNormal^000000 and ^4D4DFFExpert^000000 modes.";
 			next;
-			mes "[竞速场向导]";
-			mes "如果进行单人模式，";
-			mes "您可以体验全部";
-			mes "赛道，最快玩家的名字与";
-			mes "所需时间都会被";
-			mes "记录在我们的名人堂中。";
+			mes "[Turbo Track Guide]";
+			mes "If you play Solo Mode,";
+			mes "you can experience every";
+			mes "course, and the name of time";
+			mes "of the fastest player will be";
+			mes "recorded in our Hall of Honor.";
 			next;
 			break;
 		case 4:
-			mes "[竞速场向导]";
-			mes "在竞速场中，";
-			mes "以下物品禁止";
-			mes "使用：绿色药水、万能药";
-			mes "和苍蝇翅膀。即使尝试使用也不会生效，要等离开赛道后才会恢复。";
+			mes "[Turbo Track Guide]";
+			mes "Now in Turbo Track, the";
+			mes "following items are prohibited";
+			mes "from use: Green Potion, Panacea";
+			mes "and Fly Wing. If you do try to use them, they won't work until after you leave the race track.";
 			next;
-			mes "[竞速场向导]";
-			mes "在竞速场比赛期间，";
-			mes "以下技能无法";
-			mes "使用：强夺、瞬间移动、";
-			mes "传送之阵、隐匿、伪装、隐形力场、治疗术、冰刃之墙、狂怒之枪、神圣殿堂、庇护祝福和长矛强击。";
+			mes "[Turbo Track Guide]";
+			mes "The following skills cannot";
+			mes "be used during Turbo Track";
+			mes "races: Snatch, Teleport, Warp";
+			mes "Portal, Hiding, Cloaking, Stealth, Cure, Ice Wall, Berserk, Basilica, Sheltering Bless and Spear Dynamo.";
 			next;
 			//this appears supposed to fall through.
 		case 5:
-			mes "[竞速场向导]";
-			mes "祝您在艾音布罗克";
-			mes "在艾尔帕兰";
-			mes "竞速场过得愉快。谢谢～";
+			mes "[Turbo Track Guide]";
+			mes "Please enjoy your";
+			mes "time in the Al De Baran";
+			mes "Turbo Track. Thank you~";
 			close;
 		}
 	}
@@ -3905,128 +3905,128 @@ OnInit:
 	end;
 
 OnEnd_n1:
-	mapannounce "turbo_room","一场[普通模式 - 单人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Normal Mode - Solo] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_n4:
-	mapannounce "turbo_room","一场[普通模式 - 4 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Normal Mode - 4 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_n8:
-	mapannounce "turbo_room","一场[普通模式 - 8 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Normal Mode - 8 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_n16:
-	mapannounce "turbo_room","一场[普通模式 - 16 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Normal Mode - 16 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_e4:
-	mapannounce "turbo_room","一场[专家模式 - 4 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Expert Mode - 4 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_e8:
-	mapannounce "turbo_room","一场[专家模式 - 8 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Expert Mode - 8 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnEnd_e16:
-	mapannounce "turbo_room","一场[专家模式 - 16 人]比赛即将结束。",bc_map,"0xadff2f";
+	mapannounce "turbo_room","A [Expert Mode - 16 Person] game will end shortly.",bc_map,"0xadff2f";
 	end;
 
 OnNew_Top1:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[9] + "在竞速场名人堂中排名第一！",bc_map,"0x00ff00";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[9] + " has ranked Number One in the Turbo Track Hall of Honor!",bc_map,"0x00ff00";
 	end;
 
 OnNew_Top2:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[10] + "在竞速场名人堂中排名第二！",bc_map,"0x00ff00";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[10] + " has ranked Second in the Turbo Track Hall of Honor!",bc_map,"0x00ff00";
 	end;
 
 OnNew_Top3:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[11] + "在竞速场名人堂中排名第三！",bc_map,"0x00ff00";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[11] + " has ranked Third in the Turbo Track Hall of Honor!",bc_map,"0x00ff00";
 	end;
 
 OnNew_Top4:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[12] + "在竞速场名人堂中排名第四！",bc_map,"0x00ff00";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[12] + " has ranked Fourth in the Turbo Track Hall of Honor!",bc_map,"0x00ff00";
 	end;
 
 OnNew_Top5:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[13] + "在竞速场名人堂中排名第五！",bc_map,"0x00ff00";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[13] + " has ranked Fifth in the Turbo Track Hall of Honor!",bc_map,"0x00ff00";
 	end;
 
 OnWin_n4:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[1] + "刚刚赢得了[普通模式 - 4 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[1] + " just won a [Normal Mode - 4 Person] game!",bc_map,"0x70DBDB";
 	end;
 
 OnWin_n8:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[2] + "刚刚赢得了[普通模式 - 8 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[2] + " just won a [Normal Mode - 8 Person] game!",bc_map,"0x70DBDB";
 	end;
 
 OnWin_n16:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[3] + "刚刚赢得了[普通模式 - 16 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[3] + " just won a [Normal Mode - 16 Person] game!",bc_map,"0x70DBDB";
 	end;
 
 OnWin_e4:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[4] + "刚刚赢得了[专家模式 - 4 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[4] + " just won an [Expert Mode - 4 Person] game!",bc_map,"0x70DBDB";
 	end;
 
 OnWin_e8:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[5] + "刚刚赢得了[专家模式 - 8 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[5] + " just won an [Expert Mode - 8 Person] game!",bc_map,"0x70DBDB";
 	end;
 
 OnWin_e16:
-	mapannounce "turbo_room","恭喜！" + $ttnames$[6] + "刚刚赢得了[专家模式 - 16 人]比赛的胜利！",bc_map,"0x70DBDB";
+	mapannounce "turbo_room","Congratulations! " + $ttnames$[6] + " just won an [Expert Mode - 16 Person] game!",bc_map,"0x70DBDB";
 	end;
 }
 
-turbo_room,102,117,3	script	荣誉殿堂#tt	857,{
-	mes "^2F4F4F竞速场名人堂^000000";
+turbo_room,102,117,3	script	Hall of Honor#tt	857,{
+	mes "^2F4F4FTurbo Track Hall of Honor^000000";
 	mes " ";
-	mes "第一名：";
+	mes "The First:";
 	mes "^4d4dff" + $ttnames$[7] + "^000000";
 	mes " ";
-	mes "最后一名：";
+	mes "The Last:";
 	mes "^4d4dff" + $ttnames$[8] + "^000000";
 	close;
 }
 
-turbo_room,77,115,5	script	单人模式#tt::TurboSoloNames	857,{
-	mes "^2F4F4F单人模式纪录^000000";
+turbo_room,77,115,5	script	Solo Mode#tt::TurboSoloNames	857,{
+	mes "^2F4F4FSolo Mode Record^000000";
 	mes " ";
-	mes "单人模式中";
-	mes "最优秀的玩家……";
-	mes "^4d4dff" + $ttnames$[0] + "^000000！";
+	mes "The best player";
+	mes "in Solo Mode...";
+	mes "^4d4dff" + $ttnames$[0] + "^000000 !";
 	close;
 }
 
-turbo_room,87,114,5	script	普通模式记录#tt::TurboNormalNames	857,{
-	mes "<<近期顶尖玩家>>";
-	mes "普通模式 - 4 人比赛的获胜者";
+turbo_room,87,114,5	script	Normal Mode Record#tt::TurboNormalNames	857,{
+	mes "<<Recent Top Players>>";
+	mes "Winners of Normal Mode - 4 Person";
 	mes "^4d4dff" + $ttnames$[1] + "^000000";
-	mes "普通模式 - 8 人比赛的获胜者";
+	mes "Winners of Normal Mode - 8 Person";
 	mes "^4d4dff" + $ttnames$[2] + "^000000";
-	mes "普通模式 - 16 人比赛的获胜者";
+	mes "Winners of Normal Mode - 16 Person";
 	mes "^4d4dff" + $ttnames$[3] + "^000000";
 	close;
 }
 
-turbo_room,112,114,3	script	专家模式记录::TurboExpertNames	857,{
-	mes "<<近期顶尖玩家>>";
-	mes "专家模式 - 4 人比赛的获胜者";
+turbo_room,112,114,3	script	Expert Mode Record::TurboExpertNames	857,{
+	mes "<<Recent Top Players>>";
+	mes "Winners of Expert Mode - 4 Person";
 	mes "^4d4dff" + $ttnames$[4] + "^000000";
-	mes "专家模式 - 8 人比赛的获胜者";
+	mes "Winners of Expert Mode - 8 Person";
 	mes "^4d4dff" + $ttnames$[5] + "^000000";
-	mes "专家模式 - 16 人比赛的获胜者";
+	mes "Winners of Expert Mode - 16 Person";
 	mes "^4d4dff" + $ttnames$[6] + "^000000";
 	close;
 }
 
-turbo_room,97,117,5	script	荣誉殿堂#tt2	857,{
-	mes "^2F4F4F竞速场名人堂^000000";
+turbo_room,97,117,5	script	Hall of Honor#tt2	857,{
+	mes "^2F4F4FTurbo Track Hall of Honor^000000";
 	mes " ";
-	mes "第1名：^4d4dff" + $ttnames$[9] + "^000000";
-	mes "第2名：^4d4dff" + $ttnames$[10] + "^000000";
-	mes "第3名：^4d4dff" + $ttnames$[11] + "^000000";
-	mes "第4名：^4d4dff" + $ttnames$[12] + "^000000";
-	mes "第5名：^4d4dff" + $ttnames$[13] + "^000000";
+	mes "1st: ^4d4dff" + $ttnames$[9] + "^000000";
+	mes "2nd: ^4d4dff" + $ttnames$[10] + "^000000";
+	mes "3rd: ^4d4dff" + $ttnames$[11] + "^000000";
+	mes "4th: ^4d4dff" + $ttnames$[12] + "^000000";
+	mes "5th: ^4d4dff" + $ttnames$[13] + "^000000";
 	close;
 }
 
@@ -4034,127 +4034,127 @@ turbo_room,75,95,5	duplicate(TurboSoloNames)	Solo Mode#1	857
 turbo_room,67,95,5	duplicate(TurboNormalNames)	Normal Mode Records#1	857
 turbo_room,71,95,5	duplicate(TurboExpertNames)	Expert Mode Records#1	857
 
-turbo_room,93,117,5	script	点数兑换助手	125,{
+turbo_room,93,117,5	script	Point Exchange Helper	125,{
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FF请等一下！";
-		mes "您现在携带的";
-		mes "物品太多了。";
-		mes "请先将一些物品";
-		mes "通过卡普拉服务";
-		mes "存放好后再来吧。^000000";
+		mes "^3355FFWait a second!";
+		mes "Right now, you're carrying";
+		mes "too many items with you.";
+		mes "Please come back after";
+		mes "putting storing some of your";
+		mes "things using the Kafra Service.^000000";
 		close;
 	}
 	if (tt_point < 10) {
-		mes "[道具兑换员]";
-		mes "您好，";
+		mes "[Item Exchange Helper]";
+		mes "Good day,";
 		mes "" + strcharinfo(0) + ".";
-		mes "您目前共有";
-		mes "" + tt_point + "点竞速场点数。";
+		mes "You've got a total of";
+		mes "" + tt_point + " Turbo Track Points.";
 		next;
-		mes "[道具兑换员]";
-		mes "如果您拥有至少";
-		mes "10 点竞速场点数，";
-		mes "就可以用这些";
-		mes "点数兑换道具。您";
-		mes "想看看竞速场";
-		mes "点数的兑换清单吗？";
+		mes "[Item Exchange Helper]";
+		mes "If you have at least";
+		mes "10 Turbo Track Points,";
+		mes "you can exchange these";
+		mes "points for items. Would";
+		mes "you like to see the Turbo";
+		mes "Track Point exchange list?";
 		next;
-		if (select("是。:取消。") == 1) {
-			mes "[道具兑换员]";
-			mes "^3355FF10 TTP^000000：1 张";
-			mes "卡普拉传送免费使用券";
-			mes "^3355FF12 TTP^000000：1 张 5 级魔法卷轴";
-			mes "^3355FF40 TTP^000000：经验值";
+		if (select("Yes.:Cancel.") == 1) {
+			mes "[Item Exchange Helper]";
+			mes "^3355FF10 TTP^000000: 1 Free Ticket";
+			mes "for Kafra Transportation";
+			mes "^3355FF12 TTP^000000: 1 Level 5 Magic Scroll";
+			mes "^3355FF40 TTP^000000: Experience Points";
 			next;
-			mes "[道具兑换员]";
-			mes "^3355FF150 TTP^000000：1 颗 3克拉钻石";
-			mes "^3355FF300 TTP^000000：1 个礼盒";
-			mes "^3355FF400 TTP^000000：1 瓶速度药水";
+			mes "[Item Exchange Helper]";
+			mes "^3355FF150 TTP^000000: 1 3 Carat Diamond";
+			mes "^3355FF300 TTP^000000: 1 Gift Box";
+			mes "^3355FF400 TTP^000000: 1 Speed Potion";
 			next;
-			mes "[道具兑换员]";
-			mes "您也可以将竞速场点数转换为竞技场点数。如需了解更多信息，请向竞技场点数管理员咨询。谢谢。";
+			mes "[Item Exchange Helper]";
+			mes "You can also convert Turbo Track Points into Arena Points. For more information, please speak to the Arena Point Manager. Thank you.";
 			close;
 		}
-		mes "[道具兑换员]";
-		mes "希望您能在";
-		mes "艾尔帕兰竞速场玩得愉快。";
-		mes "请尽可能多地赚取";
-		mes "点数，这样之后就能";
-		mes "用它们兑换";
-		mes "实用的道具。祝您比赛愉快～";
+		mes "[Item Exchange Helper]";
+		mes "We hope that you enjoy";
+		mes "Al De Baran's Turbo Track.";
+		mes "Try to earn as many points";
+		mes "as you can so that you can";
+		mes "exchange them for useful";
+		mes "stuff later. Happy racing~";
 		close;
 	}
 	else {
-		mes "[道具兑换员]";
-		mes "您好，";
+		mes "[Item Exchange Helper]";
+		mes "Good day,";
 		mes "" + strcharinfo(0) + ".";
-		mes "您目前共有";
-		mes "" + tt_point + "点竞速场点数。";
-		mes "您想用这些";
-		mes "点数兑换道具吗？";
+		mes "You've got a total of";
+		mes "" + tt_point + " Turbo Track Points.";
+		mes "Would you like to exchange";
+		mes "these points for items?";
 		next;
-		switch(select("兑换。:取消。")) {
+		switch(select("Exchange.:Cancel.")) {
 		case 1:
-			mes "[道具兑换员]";
-			mes "请选择您想用";
-			mes "竞速场点数兑换";
-			mes "的道具。";
+			mes "[Item Exchange Helper]";
+			mes "Please choose the item for";
+			mes "which you'd like to exchange";
+			mes "your Turbo Track Points.";
 			next;
-			switch(select("卡普拉传送免费使用券:5 级魔法卷轴:经验值:3克拉钻石:礼盒:速度药水:取消。")) {
+			switch(select("Free Ticket for Kafra Transportation:Level 5 Magic Scroll:Experience Points:3 Carat Diamond:Gift Box:Speed Potion:Cancel.")) {
 			case 1:
-				mes "[道具兑换员]";
-				mes "每张卡普拉";
-				mes "传送免费使用券";
-				mes "需要 10 点竞速场点数。";
-				mes "请输入您想要的";
-				mes "数量。若要取消，";
-				mes "请输入''^3355FF0^000000''。";
+				mes "[Item Exchange Helper]";
+				mes "Each Free Ticket for";
+				mes "Kafra Transportation";
+				mes "costs 10 Turbo Track Points.";
+				mes "Please enter the amount that";
+				mes "you wish to have. To cancel,";
+				mes "please enter ''^3355FF0^000000.''";
 				next;
 				input .@input;
 				if (.@input == 0) {
-					mes "[道具兑换员]";
-					mes "您已";
-					mes "取消";
-					mes "本次请求。";
+					mes "[Item Exchange Helper]";
+					mes "You have";
+					mes "canceled";
+					mes "your request.";
 					close;
 				}
 				else if (.@input < 0 || .@input > 50) {
-					mes "[道具兑换员]";
-					mes "您的请求超出了";
-					mes "最大上限。一次";
-					mes "最多只能领取";
-					mes "50 张票券。";
+					mes "[Item Exchange Helper]";
+					mes "Your request exceeds";
+					mes "the maximum limit. You";
+					mes "can only receive a maximum";
+					mes "of 50 tickets at once.";
 					close;
 				}
 				else {
 					set .@total_point,10 * .@input;
 					if (.@total_point > tt_point) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 					}
 					set tt_point,tt_point-.@total_point;
 					getitem 7060,.@input; //Warp_Free_Ticket
-					mes "[道具兑换员]";
-					mes "感谢您";
-					mes "您的惠顾。";
-					mes "希望您享受";
-					mes "在竞速场";
-					mes "度过的时光～";
+					mes "[Item Exchange Helper]";
+					mes "Thank you for";
+					mes "your patronage.";
+					mes "We hope you enjoy";
+					mes "your time here in";
+					mes "the Turbo Track~";
 					close;
 				}
 			case 2:
-				mes "[道具兑换员]";
-				mes "每张魔法卷轴";
-				mes "需要 12 点竞速场点数。请";
-				mes "选择您想领取的魔法卷轴。每张卷轴可让您使用一次 5 级魔法或技能。";
+				mes "[Item Exchange Helper]";
+				mes "Each Magic Scroll costs";
+				mes "12 Turbo Track Points. Please";
+				mes "select the Magic Scroll you would like to receive. Each scroll enables a one time use of a Level 5 spell or skill.";
 				next;
-				switch(select("地震术:冰箭术:火箭术:雷击术:圣灵召唤:火球术:火焰之壁:冰冻术:治愈术")) {
+				switch(select("Earth Spike:Cold Bolt:Fire Bolt:Lightning Bolt:Soul Strike:Fire Ball:Fire Wall:Frost Diver:Heal")) {
 				case 1:
 					set .@scroll,687; //Earth_Scroll_1_5
 					set .@name$,"Earth Spike";
@@ -4192,68 +4192,68 @@ turbo_room,93,117,5	script	点数兑换助手	125,{
 					set .@name$,"Heal";
 					break;
 				}
-				mes "[道具兑换员]";
-				mes "请输入您想领取";
-				mes "的 ^4d4dff"+.@name$+"^000000 魔法卷轴";
-				mes "的数量。";
-				mes "若要取消，请输入''^3355FF0^000000''。";
+				mes "[Item Exchange Helper]";
+				mes "Please enter the number";
+				mes "of ^4d4dff"+.@name$+"^000000 Magic Scrolls that";
+				mes "you would like to receive.";
+				mes "To cancel, enter ''^3355FF0^000000.''";
 				next;
 				input .@input;
 				if (.@input == 0) {
-					mes "[道具兑换员]";
-					mes "您已";
-					mes "取消";
-					mes "本次请求。";
+					mes "[Item Exchange Helper]";
+					mes "You have";
+					mes "canceled";
+					mes "your request.";
 					close;
 				}
 				else if (.@input < 0 || .@input > 50) {
-					mes "[道具兑换员]";
-					mes "抱歉，您的";
-					mes "请求已超出";
-					mes "最大上限。一次最多";
-					mes "只能申请 50 张卷轴。";
+					mes "[Item Exchange Helper]";
+					mes "I'm sorry, but your";
+					mes "request has exceeded the";
+					mes "maximum limit. You can only";
+					mes "request up to 50 scrolls at once.";
 					close;
 				}
 				else {
 					set .@total_point,12 * .@input;
 					if (.@total_point > tt_point) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 					}
 					set tt_point,tt_point-.@total_point;
 					getitem .@scroll,.@input;
-					mes "[道具兑换员]";
-					mes "感谢您";
-					mes "您的惠顾。";
-					mes "希望您享受";
-					mes "在竞速场";
-					mes "度过的时光～";
+					mes "[Item Exchange Helper]";
+					mes "Thank you for";
+					mes "your patronage.";
+					mes "We hope you enjoy";
+					mes "your time here in";
+					mes "the Turbo Track~";
 					close;
 				}
 			case 3:
-				mes "[道具兑换员]";
-				mes "您可以用";
-				mes "40 点竞速场点数";
-				mes "换取基础等级";
-				mes "经验值。您想";
-				mes "用竞速场";
-				mes "点数换取经验值吗？";
+				mes "[Item Exchange Helper]";
+				mes "You can exchange";
+				mes "40 Turbo Track Points";
+				mes "to receive Base Level";
+				mes "Experience. Would you";
+				mes "like to exchange your Turbo";
+				mes "Track Points for Experience?";
 				next;
-				if (select("否:是") == 2) {
+				if (select("No:Yes") == 2) {
 					if (tt_point < 40) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 	
 					}
@@ -4262,222 +4262,222 @@ turbo_room,93,117,5	script	点数兑换助手	125,{
 					else if (BaseLevel < 80) getexp (checkre(3))?900:9000,0;
 					else if (BaseLevel < 90) getexp (checkre(3))?1000:10000,0;
 					else if (BaseLevel < MAX_LEVEL) getexp (checkre(3))?3000:30000,0;
-					mes "[道具兑换员]";
-					mes "谢谢，您的";
-					mes "竞速场点数";
-					mes "已转换为";
-					mes "基础等级经验值。";
+					mes "[Item Exchange Helper]";
+					mes "Thank you, your";
+					mes "Turbo Track Points";
+					mes "have been converted into";
+					mes "Base Level Experience.";
 					close;
 				}
-				mes "[道具兑换员]";
-				mes "您已";
-				mes "取消";
-				mes "本次请求。";
+				mes "[Item Exchange Helper]";
+				mes "You have";
+				mes "canceled";
+				mes "your request.";
 				close;
 			case 4:
-				mes "[道具兑换员]";
-				mes "您可以用";
-				mes "150 点竞速场点数";
-				mes "换取 ^3131FF1 3克拉钻石^000000。";
-				mes "请输入您想领取的";
-				mes "钻石数量。";
-				mes "若要取消，请输入''^3355FF0^000000''。";
+				mes "[Item Exchange Helper]";
+				mes "You can exchange";
+				mes "150 Turbo Track Points";
+				mes "for ^3131FF1 3 Carat Diamond^000000.";
+				mes "Please enter the number of";
+				mes "diamonds you would like to receive.";
+				mes "To cancel, enter ''^3355FF0^000000.''";
 				next;
 				input .@input;
 				if (.@input == 0) {
-					mes "[道具兑换员]";
-					mes "您已";
-					mes "取消";
-					mes "本次请求。";
+					mes "[Item Exchange Helper]";
+					mes "You have";
+					mes "canceled";
+					mes "your request.";
 					close;
 				}
 				else if (.@input < 0 || .@input > 10) {
-					mes "[道具兑换员]";
-					mes "您的请求超出了";
-					mes "最大上限。一次";
-					mes "最多只能领取";
-					mes "10 颗钻石。";
+					mes "[Item Exchange Helper]";
+					mes "Your request exceeds";
+					mes "the maximum limit. You";
+					mes "can only receive a maximum";
+					mes "of 10 diamonds at once.";
 					close;
 				}
 				else {
 					set .@total_point,150 * .@input;
 					if (.@total_point > tt_point) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 					}
 					set tt_point,tt_point-.@total_point;
 					getitem 732,.@input; //Crystal_Jewel__
-					mes "[道具兑换员]";
-					mes "感谢您";
-					mes "您的惠顾。";
-					mes "希望您享受";
-					mes "在竞速场";
-					mes "度过的时光～";
+					mes "[Item Exchange Helper]";
+					mes "Thank you for";
+					mes "your patronage.";
+					mes "We hope you enjoy";
+					mes "your time here in";
+					mes "the Turbo Track~";
 					close;
 				}
 			case 5:
-				mes "[道具兑换员]";
-				mes "您可以用";
-				mes "300 点竞速场点数";
-				mes "换取 ^3131FF1 礼盒^000000。请输入";
-				mes "您想领取的";
-				mes "礼盒数量。";
-				mes "若要取消，请输入''^3355FF0^000000''。";
+				mes "[Item Exchange Helper]";
+				mes "You can exchange";
+				mes "300 Turbo Track Points";
+				mes "for ^3131FF1 Gift Box^000000. Please enter";
+				mes "the number of Gift Boxes";
+				mes "that you'd like to receive.";
+				mes "To cancel, enter ''^3355FF0^000000.''";
 				next;
 				input .@input;
 				if (.@input == 0) {
-					mes "[道具兑换员]";
-					mes "您已";
-					mes "取消";
-					mes "本次请求。";
+					mes "[Item Exchange Helper]";
+					mes "You have";
+					mes "canceled";
+					mes "your request.";
 					close;
 				}
 				else if (.@input < 0 || .@input > 10) {
-					mes "[道具兑换员]";
-					mes "您的请求超出了";
-					mes "最大上限。一次";
-					mes "最多只能领取";
-					mes "10 个礼盒。";
+					mes "[Item Exchange Helper]";
+					mes "Your request exceeds";
+					mes "the maximum limit. You";
+					mes "can only receive a maximum";
+					mes "of 10 Gift Boxes at once.";
 					close;
 				}
 				else {
 					set .@total_point,300 * .@input;
 					if (.@total_point > tt_point) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 					}
 					set tt_point,tt_point-.@total_point;
 					getitem 644,.@input; //Gift_Box
-					mes "[道具兑换员]";
-					mes "感谢您";
-					mes "您的惠顾。";
-					mes "希望您享受";
-					mes "在竞速场";
-					mes "度过的时光～";
+					mes "[Item Exchange Helper]";
+					mes "Thank you for";
+					mes "your patronage.";
+					mes "We hope you enjoy";
+					mes "your time here in";
+					mes "the Turbo Track~";
 					close;
 				}
 			case 6:
-				mes "[道具兑换员]";
-				mes "您可以用";
-				mes "400 点竞速场点数";
-				mes "换取 ^3131FF1 速度药水^000000。请";
-				mes "输入您想领取的";
-				mes "药水数量。";
-				mes "若要取消，请输入''^3355FF0^000000''。";
+				mes "[Item Exchange Helper]";
+				mes "You can exchange";
+				mes "400 Turbo Track Points";
+				mes "for ^3131FF1 Speed Potion^000000. Please";
+				mes "enter the number of potions";
+				mes "that you'd like to receive.";
+				mes "To cancel, enter ''^3355FF0^000000.''";
 				next;
 				input .@input;
 				if (.@input == 0) {
-					mes "[道具兑换员]";
-					mes "您已";
-					mes "取消";
-					mes "本次请求。";
+					mes "[Item Exchange Helper]";
+					mes "You have";
+					mes "canceled";
+					mes "your request.";
 					close;
 				}
 				else if (.@input < 0 || .@input > 10) {
-					mes "[道具兑换员]";
-					mes "您的请求超出了";
-					mes "最大上限。一次";
-					mes "最多只能领取";
-					mes "10 瓶药水。";
+					mes "[Item Exchange Helper]";
+					mes "Your request exceeds";
+					mes "the maximum limit. You";
+					mes "can only receive a maximum";
+					mes "of 10 potions at once.";
 					close;
 				}
 				else {
 					set .@total_point,400 * .@input;
 					if (.@total_point > tt_point) {
-						mes "[道具兑换员]";
-						mes "抱歉，您的";
-						mes "竞速场点数";
-						mes "不足。请确认";
-						mes "自己已获得的";
-						mes "竞速场点数数量，";
-						mes "再重新兑换。";
+						mes "[Item Exchange Helper]";
+						mes "I'm sorry, but you do";
+						mes "not have enough Turbo";
+						mes "Track Points. Please check";
+						mes "the amount of Turbo Track";
+						mes "Points you have earned before";
+						mes "redeeming your points again.";
 						close;
 					}
 					set tt_point,tt_point-.@total_point;
 					getitem 12016,.@input; //Speed_Up_Potion
-					mes "[道具兑换员]";
-					mes "感谢您";
-					mes "您的惠顾。";
-					mes "希望您享受";
-					mes "在竞速场";
-					mes "度过的时光～";
+					mes "[Item Exchange Helper]";
+					mes "Thank you for";
+					mes "your patronage.";
+					mes "We hope you enjoy";
+					mes "your time here in";
+					mes "the Turbo Track~";
 					close;
 				}
 			case 7:
-				mes "[道具兑换员]";
-				mes "本道具兑换";
-				mes "服务由以下单位";
-				mes "为您提供……";
+				mes "[Item Exchange Helper]";
+				mes "This Item Exchange";
+				mes "Service is brought";
+				mes "to you by...";
 				next;
-				mes "[道具兑换员]";
-				mes "本道具兑换服务";
-				mes "由卡普拉公司、";
-				mes "铁匠公会、";
-				mes "克魔岛赌场以及";
-				mes "艾尔帕兰公会城堡";
-				mes "管理处露伊娜提供。";
+				mes "[Item Exchange Helper]";
+				mes "This Item Exchange Service";
+				mes "is brought to you by the Kafra";
+				mes "Corporation, Blacksmith Guild";
+				mes "and the Comodo Casino and";
+				mes "the Al De Baran Guild Castle";
+				mes "Management Luina.";
 				close;
 			}
 		case 2:
-			mes "[道具兑换员]";
-			mes "竞速场点数可以";
-			mes "转换为竞技场点数。";
-			mes "最多可以保存";
-			mes "^4D4DFF29,000 点竞速场点数。";
+			mes "[Item Exchange Helper]";
+			mes "Turbo Track Points can be";
+			mes "converted into Arena Points.";
+			mes "You can save a maximum of";
+			mes "^4D4DFF29,000 Turbo Track Points.";
 			next;
-			mes "[道具兑换员]";
-			mes "在达到竞速场点数的";
-			mes "最大上限之前，";
-			mes "不妨先消耗一些，";
-			mes "这样您才能继续";
-			mes "在赢得竞速场比赛后获得点数奖励。";
+			mes "[Item Exchange Helper]";
+			mes "Before reaching the maximum";
+			mes "amount of Turbo Track Points,";
+			mes "you might want to spend some";
+			mes "of them so that you can keep";
+			mes "getting your point rewards after winning Turbo Track races.";
 			close;
 		}
 	}
 }
 
-turbo_room,106,117,3	script	点数管理员#tt	833,{
-	mes "[竞速场点数管理员]";
-	mes "您好。";
-	mes "您在竞速场";
-	mes "玩得开心吗？";
-	mes "有什么可以";
-	mes "为您效劳？";
+turbo_room,106,117,3	script	Point Manager#tt	833,{
+	mes "[Turbo Track Point Manager]";
+	mes "Good day.";
+	mes "Did you enjoy your";
+	mes "time in Turbo Track?";
+	mes "How may I be of";
+	mes "assistance?";
 	next;
-	switch(select("查询点数:转换点数:^660000转换说明^000000")) {
+	switch(select("Check Points:Convert Points:^660000Conversion Info^000000")) {
 	case 1:
-		mes "[竞速场点数管理员]";
-		mes "" + strcharinfo(0) + "，";
-		mes "您目前拥有";
-		mes "" + tt_point + "点竞速场点数";
-		mes "以及" + arena_point + "点竞技场点数。";
+		mes "[Turbo Track Point Manager]";
+		mes "" + strcharinfo(0) + ",";
+		mes "you currently have";
+		mes "" + tt_point + " Turbo Track Points";
+		mes "and " + arena_point + " Arena Points.";
 		close;
 	case 2:
-		mes "[竞速场点数管理员]";
-		mes "" + strcharinfo(0) + "，";
-		mes "您目前拥有";
-		mes "" + tt_point + "点竞速场点数";
-		mes "以及" + arena_point + "点竞技场点数。";
+		mes "[Turbo Track Point Manager]";
+		mes "" + strcharinfo(0) + ",";
+		mes "you currently have";
+		mes "" + tt_point + " Turbo Track Points";
+		mes "and " + arena_point + " Arena Points.";
 		next;
-		mes "[竞速场点数管理员]";
-		mes "请从以下竞技场点数转换方式中选择。当一次转换超过";
-		mes "10 点竞技场点数时，您";
-		mes "只能转换竞技场点数";
-		mes "以 ^4D4DFF10 的倍数^000000。";
+		mes "[Turbo Track Point Manager]";
+		mes "Please choose from among the following Arena Point conversions. When converting more than";
+		mes "10 Arena Points at once, you";
+		mes "can only convert Arena Points";
+		mes "in ^4D4DFFmultiples of 10^000000.";
 		next;
-		switch(select("2 竞技场点数 → 1 竞速场点数:4 竞技场点数 → 2 竞速场点数:6 竞技场点数 → 3 竞速场点数:8 竞技场点数 → 4 竞速场点数:10 竞技场点数以上:取消")) {
+		switch(select("2 AP -> 1 TTP:4 AP -> 2 TTP:6 AP -> 3 TTP:8 AP -> 4 TTP:10 AP or more:Cancel")) {
 		case 1:
 			callsub S_ExchangePoints,28999,2,1;
 		case 2:
@@ -4487,23 +4487,23 @@ turbo_room,106,117,3	script	点数管理员#tt	833,{
 		case 4:
 			callsub S_ExchangePoints,28996,8,4;
 		case 5:
-			mes "[竞速场点数管理员]";
-			mes "请输入您想将 10 竞技场点数兑换为竞速场点数的次数。可输入的最大值";
-			mes "为 20。若要取消，请输入‘^3355FF0^000000’。";
+			mes "[Turbo Track Point Manager]";
+			mes "Please enter the number of times you wish to convert 10 Arena Points into Turbo Track Points. The largest value you may enter";
+			mes "is 20. To cancel, enter '^3355FF0^000000.'";
 			next;
 			input .@input;
 			if (.@input <= 0) {
-				mes "[竞速场点数管理员]";
-				mes "您已";
-				mes "取消";
-				mes "您的请求。";
+				mes "[Turbo Track Point Manager]";
+				mes "You have";
+				mes "canceled";
+				mes "your request.";
 				close;
 			}
 			else if (.@input > 20) {
-				mes "[竞速场点数管理员]";
-				mes "您的请求超出";
-				mes "了上限。请";
-				mes "输入不超过 20 的数值。";
+				mes "[Turbo Track Point Manager]";
+				mes "Your request exceeds";
+				mes "the maximum limit. Please";
+				mes "enter a value no greater than 20.";
 				close;
 			}
 			else {
@@ -4512,44 +4512,44 @@ turbo_room,106,117,3	script	点数管理员#tt	833,{
 				set .@my_turbo_all,tt_point+.@want_point;
 				set .@my_arena_all,arena_point-.@want_point1;
 				if (.@my_turbo_all > 28999) {
-					mes "[竞速场点数管理员]";
-					mes "很抱歉，若进行点数兑换，您的竞速场点数将会超出上限。请先使用更多";
-					mes "竞速场点数，再使用本服务。谢谢。";
+					mes "[Turbo Track Point Manager]";
+					mes "Unfortunately, your Turbo Track Points will exceed the maximum limit if we proceed with point conversion. Please spend more";
+					mes "of your Turbo Track Points before using this service. Thank you.";
 					close;
 				}
 				if (.@my_arena_all < 0) {
-					mes "[竞速场点数管理员]";
-					mes "很抱歉，您";
-					mes "没有足够的竞技场点数";
-					mes "以进行本次竞速场";
-					mes "点数兑换。";
+					mes "[Turbo Track Point Manager]";
+					mes "I am sorry, but you do";
+					mes "not have enough Arena Points";
+					mes "to perform this Turbo Track";
+					mes "Point conversion.";
 					close;
 				}
 				else {
-					mes "[竞速场点数管理员]";
-					mes "您已将";
-					mes "10 竞技场点数兑换为";
-					mes "竞速场点数" + .@input + " times.";
-					mes "共计" + .@want_point1 + "竞技场点数";
-					mes "已兑换为";
-					mes "" + .@want_point +"竞速场点数。";
+					mes "[Turbo Track Point Manager]";
+					mes "You have converted";
+					mes "10 Arena Points into";
+					mes "Turbo Track Points " + .@input + " times.";
+					mes "A total of " + .@want_point1 + " Arena Points";
+					mes "has been converted into";
+					mes "" + .@want_point +" Turbo Track Points.";
 					set arena_point,.@my_arena_all; //arena_point
 					set tt_point,.@my_turbo_all;
 					next;
-					mes "[竞速场点数管理员]";
-					mes "" + strcharinfo(0) + "，";
-					mes "您现在拥有";
-					mes "^00688B" + tt_point + "^000000 竞速场点数";
-					mes "以及 ^4682B4" + arena_point + "^000000 竞技场点数。";
-					mes "感谢您的惠顾。";
+					mes "[Turbo Track Point Manager]";
+					mes "" + strcharinfo(0) + ",";
+					mes "you now have";
+					mes "^00688B" + tt_point + "^000000 Turbo Track Points";
+					mes "and ^4682B4" + arena_point + "^000000 Arena Points.";
+					mes "Thank you for your patronage.";
 					close;
 				}
 			}
 		case 6:
-			mes "[竞速场点数管理员]";
-			mes "您已";
-			mes "取消";
-			mes "您的请求。";
+			mes "[Turbo Track Point Manager]";
+			mes "You have";
+			mes "canceled";
+			mes "your request.";
 			close;
 		}
 	case 3:
@@ -4562,33 +4562,33 @@ turbo_room,106,117,3	script	点数管理员#tt	833,{
 
 S_ExchangePoints:
 	if (tt_point > getarg(0)) {
-		mes "[竞速场点数管理员]";
-		mes "很抱歉，若进行点数兑换，您的竞速场点数将会超出上限。请先使用更多";
-		mes "竞速场点数，再使用本服务。谢谢。";
+		mes "[Turbo Track Point Manager]";
+		mes "Unfortunately, your Turbo Track Points will exceed the maximum limit if we proceed with point conversion. Please spend more";
+		mes "of your Turbo Track Points before using this service. Thank you.";
 		close;
 	}
 	if (arena_point >= getarg(1)) {
-		mes "[竞速场点数管理员]";
-		mes "如您所愿，";
-		mes "2 竞技场点数";
-		mes "已兑换";
-		mes "为 1 竞速场点数。";
+		mes "[Turbo Track Point Manager]";
+		mes "As requested,";
+		mes "2 Arena Points";
+		mes "have been converted";
+		mes "into 1 Turbo Track Point.";
 		set arena_point,arena_point-getarg(1);
 		set tt_point,tt_point+getarg(2);
 		next;
-		mes "[竞速场点数管理员]";
-		mes "" + strcharinfo(0) + "，";
-		mes "您现在拥有";
-		mes "^00688B" + tt_point + "^000000 竞速场点数";
-		mes "以及 ^4682B4" + arena_point + "^000000 竞技场点数。";
-		mes "感谢您的惠顾。";
+		mes "[Turbo Track Point Manager]";
+		mes "" + strcharinfo(0) + ",";
+		mes "you now have";
+		mes "^00688B" + tt_point + "^000000 Turbo Track Points";
+		mes "and ^4682B4" + arena_point + "^000000 Arena Points.";
+		mes "Thank you for your patronage.";
 		close;
 	}
 	else {
-		mes "[竞速场点数管理员]";
-		mes "很抱歉，您没有足够的竞技场点数。您需要";
-		mes "至少 2 竞技场点数才能";
-		mes "使用本服务。";
+		mes "[Turbo Track Point Manager]";
+		mes "I'm sorry, but you do not have enough Arena Points. You need";
+		mes "at least 2 Arena Points in order";
+		mes "to use this service.";
 		close;
 	}
 }
@@ -4596,33 +4596,33 @@ S_ExchangePoints:
 alde_gld,183,204,0	script	en_turbo	45,1,1,{
 OnTouch_:
 	if (checkweight(1201,1) == 0) {
-		mes "^3355FF请稍等！";
-		mes "您现在携带的";
-		mes "物品太多了。";
-		mes "请先将部分随身物品";
-		mes "寄存在卡普拉";
-		mes "服务处后再来。^000000";
+		mes "^3355FFWait a second!";
+		mes "Right now, you're carrying";
+		mes "too many items with you.";
+		mes "Please come back after";
+		mes "putting storing some of your";
+		mes "things using the Kafra Service.^000000";
 		close;
 	}
 	if ((BaseJob == Job_Knight || BaseJob == Job_Crusader) && (checkriding() || checkdragon())) {
 		if (MaxWeight-Weight < 20000) {
 			if (!(eaclass()&EAJL_THIRD)) {
 				set .@mount$,(BaseJob == Job_Knight)?"Peco Peco":"Grand Peco";
-				mes "[助手]";
-				mes .@mount$+"禁止进入";
-				mes "竞速场。";
-				mes "请从你的";
-				mes .@mount$+"上下来，即可获得";
-				mes "一张大嘴鸟免费使用券";
-				mes "用于取回你的"+.@mount$+".";
+				mes "[Helper]";
+				mes .@mount$+"s are prohibited";
+				mes "in the Turbo Track Arena.";
+				mes "Please dismount from your";
+				mes .@mount$+" and you will receive";
+				mes "a Free Ticket for Peco Ride";
+				mes "for retrieving your "+.@mount$+".";
 			} else {
 				set .@mount$,(BaseJob == Job_Knight)?"Dragon":"Gryphon";
-				mes "[助手]";
-				mes .@mount$+"禁止进入";
-				mes "竞速场。";
-				mes "请从你的";
+				mes "[Helper]";
+				mes .@mount$+"s are prohibited";
+				mes "in the Turbo Track Arena.";
+				mes "Please dismount from your";
 				mes .@mount$+". You can retrieve";
-				mes "场外免费取回。";
+				mes "it for free outside.";
 			}
 			close2;
 			warp "alde_gld",183,199;
@@ -4641,10 +4641,10 @@ OnTouch_:
 		}
 	} else if ((Class == Job_Ranger || Class == Job_Ranger_T || Class == Job_Baby_Ranger) && checkoption(Option_Wugrider)) {
 		if (MaxWeight-Weight < 20000) {
-			mes "[助手]";
-			mes "狼禁止进入";
-			mes "竞速场。";
-			mes "请从您的狼上下来。";
+			mes "[Helper]";
+			mes "Wargs are prohibited";
+			mes "in the Turbo Track Arena.";
+			mes "Please dismount from your Warg.";
 			close2;
 			warp "alde_gld",183,199;
 			end;
@@ -4654,12 +4654,12 @@ OnTouch_:
 		}
 	} else if ((Class == Job_Mechanic || Class == Job_Mechanic_T || Class == Job_Baby_Mechanic) && checkmadogear()) {
 		if (MaxWeight-Weight < 20000) {
-			mes "[助手]";
-			mes "魔导机甲禁止进入";
-			mes "竞速场。";
-			mes "请从你的";
-			mes "魔导机甲上下来。可在";
-			mes "场外免费取回。";
+			mes "[Helper]";
+			mes "Magic Gears are prohibited";
+			mes "in the Turbo Track Arena.";
+			mes "Please dismount from your";
+			mes "Magic Gear. You can retrieve";
+			mes "it for free outside.";
 			close2;
 			warp "alde_gld",183,199;
 			end;
@@ -4672,23 +4672,23 @@ OnTouch_:
 	end;
 }
 
-alde_gld,186,199,3	script	竞速场向导#Entran	845,{
-	mes "[向导]";
-	mes "欢迎来到";
-	mes "艾尔帕兰的";
-	mes "竞速场～";
+alde_gld,186,199,3	script	Turbo Track Guide#Entran	845,{
+	mes "[Guide]";
+	mes "Welcome to";
+	mes "the Al De Baran";
+	mes "Turbo Track~";
 	next;
-	mes "[向导]";
+	mes "[Guide]";
 	if (checkre(0))
-		mes "大嘴鸟、七彩大嘴鸟、龙、狮鹫兽、狼和魔导机甲禁止进入竞速场。";
+		mes "Peco Pecos, Grand Pecos, Dragons, Gryphons, Wargs and Magic Gears are prohibited inside the Turbo Track Arena.";
 	else
-		mes "大嘴鸟禁止进入竞速场。";
-	mes "但骑乘大嘴鸟者可在竞速场入口领取大嘴鸟免费使用券，并自动下马。";
+		mes "Peco Pecos are prohibited inside the Turbo Track Arena.";
+	mes "But anyone riding on a Peco Peco will receive a Free Peco Peco Mount Ticket at the Turbo Track Entrance and automatically dismount.";
 	next;
-	mes "[向导]";
-	mes "那么，";
-	mes "在艾音布罗克塔";
-	mes "在竞速场中～！";
+	mes "[Guide]";
+	mes "Well then,";
+	mes "enjoy your time";
+	mes "in Turbo Track~!";
 	close;
 }
 
@@ -4696,8 +4696,8 @@ alde_gld,186,199,3	script	竞速场向导#Entran	845,{
 	set .@n$, "["+strnpcinfo(1)+"]";
 	mes .@n$;
 	if (ismounting()) {
-		mes "请先从您骑乘的生物上下来。";
-		mes "然后再和我说话。";
+		mes "Please get off of that creature you're riding on.";
+		mes "Then talk to me again.";
 		close;
 	}
 	if (BaseJob == Job_Knight || BaseJob == Job_Crusader) {
@@ -4737,45 +4737,45 @@ alde_gld,186,199,3	script	竞速场向导#Entran	845,{
 		set .@riding, checkmadogear();
 		set .@i,3;
 	} else {
-		mes "感谢您";
-		mes "造访艾尔帕兰的";
-		mes "竞速场～";
+		mes "Thank you for";
+		mes "visiting Al De Baran's";
+		mes "Turbo Track~";
 		close;
 	}
-	mes "欢迎，您想";
-	mes "取回您的"+.@mount$+"？";
+	mes "Welcome, would you like";
+	mes "to retrieve your "+.@mount$+"?";
 	if (.@zeny) {
-		mes "请出示您的";
-		mes "大嘴鸟免费使用券。您";
-		mes "也可以支付租金";
-		mes "为"+.@zeny$+"zeny。";
+		mes "Please show me your Free";
+		mes "Ticket for Peco Ride. You";
+		mes "may also pay a rental fee";
+		mes "of "+.@zeny$+" zeny.";
 	}
 	next;
-	switch(select("是:取消")) {
+	switch(select("Yes:Cancel")) {
 	case 1:
 		if (getskilllv(.@skill) == 0) {
 			mes .@n$;
-			mes "很抱歉，您";
-			mes "不符合使用本";
-			mes "服务的条件。请先学习";
-			mes "「"+.@skill$+"」技能。";
+			mes "I'm sorry, but you're";
+			mes "not eligible for this";
+			mes "service. Please go learn";
+			mes "the "+.@skill$+" skill first.";
 			close;
 		} else {
 			if (.@riding) {
 				mes .@n$;
-				mes "您已经";
-				mes "骑乘着";
+				mes "You're already";
+				mes "mounted on a";
 				mes .@mount$+".";
-				mes "谢谢～";
+				mes "Thank you~";
 				close;
 			} else {
 				if (.@zeny) {
 					if (countitem(7310) < 1 && Zeny < .@zeny) {
 						mes .@n$;
-						mes "很抱歉，你";
-						mes "没有大嘴鸟免费";
-						mes "使用券，或"+.@zeny$+" zeny.";
-						mes "即可使用大嘴鸟租赁服务。";
+						mes "I'm sorry, but you";
+						mes "don't have a Free Ticket";
+						mes "for Peco Ride or "+.@zeny$+" zeny.";
+						mes "to use the Peco rental service.";
 						close;
 					} else {
 						if (countitem(7310) > 0)
@@ -4790,30 +4790,30 @@ alde_gld,186,199,3	script	竞速场向导#Entran	845,{
 					case 3: setmadogear; break;
 				}
 				mes .@n$;
-				mes "感谢您";
-				mes "您的光临～";
+				mes "Thank you for";
+				mes "your patronage~";
 				close;
 			}
 		}
 	case 2:
 		mes .@n$;
-		mes "您要";
-		mes "回去参加";
-		mes "竞速场的比赛吗？";
-		mes "祝您好运！";
+		mes "Are you going";
+		mes "back to race in";
+		mes "the Turbo Track?";
+		mes "Good luck!";
 		close;
 	}
 }
 
-alde_gld,178,180,0	script	告示牌#TBT	837,{
-	mes "[艾尔帕兰竞速场]";
-	mes "这边请……";
-	mes "前往艾尔帕兰";
-	mes "竞速场！";
+alde_gld,178,180,0	script	Sign#TBT	837,{
+	mes "[Al De Baran Turbo Track]";
+	mes "This way...";
+	mes "to the Al De Baran";
+	mes "Turbo Track Arena!";
 	next;
-	mes "[艾尔帕兰竞速场]";
-	mes "竞速场是";
-	mes "一座让";
-	mes "参赛者争先抵达终点的竞技场！别错过与朋友同场竞速的机会！";
+	mes "[Al De Baran Turbo Track]";
+	mes "Turbo Track is";
+	mes "an arena where";
+	mes "participants compete to be the first to reach the Finish Line! Don't miss the chance to race against your friends!";
 	close;
 }
