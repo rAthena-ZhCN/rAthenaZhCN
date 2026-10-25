@@ -1,6 +1,6 @@
 -	script	novice_vending_machine#main	-1,{
 	.@storage_ticket = 7059;	// Cargo_Free_Ticket
-	.@storage_ticket_name$ = getitemname(.@storage_ticket);
+	.@storage_ticket_name$ = "卡普拉仓库 免费利用券";
 
 	mes "【初心者自动贩售机】";
 	mes "上面有许多按钮。";
@@ -9,19 +9,19 @@
 	case 1:
 		mes "[兑换" + .@storage_ticket_name$ + "]";
 		mes "4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 可兑换以下任意一项：";
-		mes "- <ITEM>" + getitemname(7060) + "<INFO>7060</INFO></ITEM> × 1";
-		mes "- <ITEM>" + getitemname(7311) + "<INFO>7311</INFO></ITEM> × 1";
-		mes "- <ITEM>" + getitemname(7061) + "<INFO>7061</INFO></ITEM> × 1";
-		mes "- <ITEM>" + getitemname(7310) + "<INFO>7310</INFO></ITEM> × 1";
-		mes "- <ITEM>" + getitemname(12323) + "<INFO>12323</INFO></ITEM> × 15";
-		mes "- <ITEM>" + getitemname(12324) + "<INFO>12324</INFO></ITEM> × 5";
-		mes "- <ITEM>" + getitemname(569) + "<INFO>569</INFO></ITEM> × 30";
+		mes "- <ITEM>卡普拉传送点 免费利用券<INFO>7060</INFO></ITEM> × 1";
+		mes "- <ITEM>飞空艇免费搭乘券<INFO>7311</INFO></ITEM> × 1";
+		mes "- <ITEM>卡普拉手推车 免费利用券<INFO>7061</INFO></ITEM> × 1";
+		mes "- <ITEM>大嘴鸟免费使用券<INFO>7310</INFO></ITEM> × 1";
+		mes "- <ITEM>非卖品 新手专用苍蝇翅膀<INFO>12323</INFO></ITEM> × 15";
+		mes "- <ITEM>非卖品 新手专用蝴蝶翅膀<INFO>12324</INFO></ITEM> × 5";
+		mes "- <ITEM>初学者专用药水<INFO>569</INFO></ITEM> × 30";
 		next;
 		mes "[兑换初心者装备]";
 		mes "克里图拉学院的初心者铠甲、头巾、凉鞋、左手短剑与守卫盾可兑换为 4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM>。";
 		next;
 		mes "[兑换初心者装备]";
-		mes "初心者蛋壳可兑换为用于更换发型的 <ITEM>" + getitemname(6593) + "<INFO>6593</INFO></ITEM>。";
+		mes "初心者蛋壳可兑换为用于更换发型的 <ITEM>克里图拉美发券<INFO>6593</INFO></ITEM>。";
 		close;
 	case 2:
 		setarray .@exchange[0],
@@ -32,21 +32,27 @@
 			12323,15,	// N_Fly_Wing
 			12324,5,	// N_Butterfly_Wing
 			569,30;		// Novice_Potion
+		setarray .@names$[0],
+			"卡普拉传送点 免费利用券",
+			"飞空艇免费搭乘券",
+			"卡普拉手推车 免费利用券",
+			"大嘴鸟免费使用券",
+			"非卖品 新手专用苍蝇翅膀",
+			"非卖品 新手专用蝴蝶翅膀",
+			"初学者专用药水";
 		.@size = getarraysize(.@exchange);
 
 		for ( .@i = 0; .@i < .@size; .@i += 2 ) {
 			if (.@exchange[.@i+1] > 1)
 				.@menu$ += .@exchange[.@i+1] + " ";
-			.@menu$ += getitemname(.@exchange[.@i]) + ":";
+			.@menu$ += .@names$[.@i/2] + ":";
 		}
 		.@s = (select(.@menu$) - 1) * 2;
 		if (countitem(.@storage_ticket) < 4) {
 			mes "所需 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 数量不足，无法进行兑换。";
 			close;
 		}
-		if (.@exchange[.@s+1] > 1)
-			.@amount$ = .@exchange[.@s+1] + " ";
-		mes "已将 4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 兑换为 <ITEM>" + getitemname(.@exchange[.@s]) + "<INFO>" + .@exchange[.@s] + "</INFO></ITEM> × " + .@exchange[.@s+1];
+		mes "已将 4 张 <ITEM>" + .@storage_ticket_name$ + "<INFO>7059</INFO></ITEM> 兑换为 <ITEM>" + .@names$[.@s/2] + "<INFO>" + .@exchange[.@s] + "</INFO></ITEM> × " + .@exchange[.@s+1];
 		delitem .@storage_ticket,4;
 		getitem .@exchange[.@s],.@exchange[.@s+1];
 		close;
