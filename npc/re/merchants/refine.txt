@@ -65,7 +65,7 @@ function	script	refinenew	{
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(.@i = 1; .@i<=10; ++.@i) {
 		if (getequipisequiped(.@indices[.@i])) {
-			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) + "]";
+			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
 			.@equipped = 1;
 		}
 		.@menu$ = .@menu$ + ":";
@@ -410,7 +410,7 @@ malangdo,224,172,6	script	克林克#mal_normal	544,{
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(.@i = 1; .@i<=10; set .@i,.@i+1)
-		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) : F_getpositionname(.@indices[.@i]) +"-[未装备物品]" ) +":";
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[未装备物品]" ) +":";
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
 		mes "[克林克]";

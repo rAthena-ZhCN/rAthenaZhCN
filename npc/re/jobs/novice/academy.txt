@@ -12792,7 +12792,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(set .@i,1; .@i<=10; set .@i,.@i+1)
-		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? callfunc("F_EquipNameCN", getequipid(.@indices[.@i])): F_getpositionname(.@indices[.@i]) +"- [未装备物品]" ) +":";
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]): F_getpositionname(.@indices[.@i]) +"- [未装备物品]" ) +":";
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
 		mes "[精炼机瓦克查]";
@@ -14117,7 +14117,7 @@ izlude,108,139,7	script	附魔师阿尔蒙德·J#iz	4_CAT_SAILOR3,{
 	case 13182: // Novice_Gatling
 	case 13183: // Novice_Grenade_Launcher
 	case 13415: // N_Falchion
-		mes "就是它！！^142ceb"+ callfunc("F_EquipNameCN", getequipid(.@part)) +"^000000。";
+		mes "就是它！！^142ceb"+ getequipname(.@part) +"^000000。";
 		next;
 		break;
 	default:
