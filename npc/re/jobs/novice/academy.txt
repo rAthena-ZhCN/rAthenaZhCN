@@ -12791,8 +12791,16 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 	mes "选择要精炼的装备。";
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
-	for(set .@i,1; .@i<=10; set .@i,.@i+1)
-		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]): F_getpositionname(.@indices[.@i]) +"- [未装备物品]" ) +":";
+	setarray .@slot$[1], "头饰1", "铠甲", "左手", "右手", "披风", "鞋子", "饰品1", "饰品2", "头饰2", "头饰3";
+	for(set .@i,1; .@i<=10; set .@i,.@i+1) {
+		if (getequipisequiped(.@indices[.@i])) {
+			.@nm$ = replacestr(getitemname(getequipid(.@indices[.@i])), ":", "：");
+			.@menu$ = .@menu$ + .@slot$[.@i] + "-[" + .@nm$ + "]";
+		}
+		else
+			.@menu$ = .@menu$ + .@slot$[.@i] + "-[未装备物品]";
+		if (.@i < 10) .@menu$ = .@menu$ + ":";
+	}
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
 		mes "[精炼机瓦克查]";
