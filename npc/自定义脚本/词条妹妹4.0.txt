@@ -1,3 +1,11 @@
+// 随机词条 ID 过滤：当前 item_randomopt_db 缺少 86/173/174/204/205
+function	script	F_RandOpt	{
+	do {
+		.@id = rand(1,254);
+	} while (.@id == 86 || .@id == 173 || .@id == 174 || .@id == 204 || .@id == 205);
+	return .@id;
+}
+
 -	script	::词条妹妹	-1,{
 
 
@@ -7,36 +15,36 @@
 	disable_items;
 	setarray .@indices[1],EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW,EQI_COSTUME_HEAD_TOP,EQI_COSTUME_HEAD_MID,EQI_COSTUME_HEAD_LOW,EQI_COSTUME_GARMENT,EQI_AMMO,EQI_SHADOW_ARMOR,EQI_SHADOW_WEAPON,EQI_SHADOW_SHIELD,EQI_SHADOW_SHOES,EQI_SHADOW_ACC_R,EQI_SHADOW_ACC_L;
 	for(set .@i,1; .@i<=21; set .@i,.@i+1)
-		set .@menu$, .@menu$ + ( getequipisequiped(.@indices[.@i] ) ? getequipname(.@indices[.@i]) + F_getpositionname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[Unequipped]" ) +":";
+		set .@menu$, .@menu$ + ( getequipisequiped(.@indices[.@i] ) ? getequipname(.@indices[.@i]) + F_getpositionname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[未装备物品]" ) +":";
 	set .@part, .@indices[ select(.@menu$) ];
 	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 	switch(select("全部词条:词条1:词条2:词条3:词条4:词条5:取消"))
 	{
-		case 1: setrandomoption(.@part,0,rand(1,254),rand(15,40),1);
-				setrandomoption(.@part,1,rand(1,254),rand(15,40),1);
-				setrandomoption(.@part,2,rand(1,254),rand(15,40),1);
-				setrandomoption(.@part,3,rand(1,254),rand(15,40),1);
-				setrandomoption(.@part,4,rand(1,254),rand(15,40),1);
+		case 1: setrandomoption(.@part,0,callfunc("F_RandOpt"),rand(15,40),1);
+				setrandomoption(.@part,1,callfunc("F_RandOpt"),rand(15,40),1);
+				setrandomoption(.@part,2,callfunc("F_RandOpt"),rand(15,40),1);
+				setrandomoption(.@part,3,callfunc("F_RandOpt"),rand(15,40),1);
+				setrandomoption(.@part,4,callfunc("F_RandOpt"),rand(15,40),1);
 				specialeffect EF_LORD;
                 set zeny,zeny-10000;
 				end;		
-		case 2:	setrandomoption(.@part,0,rand(1,254),rand(15,40),1);
+		case 2:	setrandomoption(.@part,0,callfunc("F_RandOpt"),rand(15,40),1);
 		specialeffect EF_LORD;
 		set zeny,zeny-10000;
 		end;
-		case 3: setrandomoption(.@part,1,rand(1,254),rand(15,40),1);
+		case 3: setrandomoption(.@part,1,callfunc("F_RandOpt"),rand(15,40),1);
 		specialeffect EF_LORD;
 		set zeny,zeny-10000;
 		end;		
-		case 4: setrandomoption(.@part,2,rand(1,254),rand(15,40),1);
+		case 4: setrandomoption(.@part,2,callfunc("F_RandOpt"),rand(15,40),1);
 		specialeffect EF_LORD;
 		set zeny,zeny-10000;
 		end;		
-		case 5: setrandomoption(.@part,3,rand(1,254),rand(15,40),1);
+		case 5: setrandomoption(.@part,3,callfunc("F_RandOpt"),rand(15,40),1);
 		specialeffect EF_LORD;
 		set zeny,zeny-10000;
 		end;		
-		case 6: setrandomoption(.@part,4,rand(1,254),rand(15,40),1);
+		case 6: setrandomoption(.@part,4,callfunc("F_RandOpt"),rand(15,40),1);
 		specialeffect EF_LORD;
 		set zeny,zeny-10000;
 		end;
