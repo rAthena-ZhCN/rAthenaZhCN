@@ -54,7 +54,7 @@ prt_in,24,61,7	script	Åå¶ûÆæ¿Ë	47,{
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for (set .@i,1; .@i<=10; set .@i,.@i+1) {
 		if (getequipisequiped(.@indices[.@i]))
-			set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) +"[^0055FF"+getequipname(.@indices[.@i])+"^000000]";
+			set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) +"[^0055FF"+callfunc("F_EquipNameCN", getequipid(.@indices[.@i]))+"^000000]";
 		set .@menu$, .@menu$+":";
 	}
 	set .@part, .@indices[ select(.@menu$) ];

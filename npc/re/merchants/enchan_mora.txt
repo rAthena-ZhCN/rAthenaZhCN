@@ -713,7 +713,7 @@ mora,148,98,3	script	神器研究员#new	521,{
 		break;
 	}
 	mes "[神器研究员]";
-	mes "^990099"+getequipname(.@part)+"^000000？？";
+	mes "^990099"+callfunc("F_EquipNameCN", getequipid(.@part))+"^000000？？";
 	mes "我真的很想研究这件装备……";
 	set @mora_equip_part,0;
 	close;
@@ -1387,7 +1387,7 @@ mora,124,82,4	script	神器收藏家#blan	522,{
 	mes "如果你准备好了，我这就让你看看我能对你那把 +" + .@equip_refine + "的神器做些什么！";
 	next;
 	mes "[神器收藏家]";
-	mes "我要收走你的 ^FF0000"+getequipname(EQI_HAND_R)+"^000000 并把它兑换掉，你准备好了吗？";
+	mes "我要收走你的 ^FF0000"+callfunc("F_EquipNameCN", getequipid(EQI_HAND_R))+"^000000 并把它兑换掉，你准备好了吗？";
 	next;
 	switch(select("不要啊！:是的，我准备好了！:之后会变成什么？")) {
 	case 1:

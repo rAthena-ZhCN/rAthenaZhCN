@@ -52,7 +52,7 @@
 
 	for(set .@i,0; .@i<getarraysize(.@equip_slot); set .@i,.@i+1) {
 		if (getequipisequiped(.@equip_slot[.@i]))
-			set .@menu$, .@menu$+getequipname(.@equip_slot[.@i])+":";
+			set .@menu$, .@menu$+callfunc("F_EquipNameCN", getequipid(.@equip_slot[.@i]))+":";
 		else
 			set .@menu$, .@menu$+"^999999"+.@equip_name$[.@i]+"(Пе)^000000:";
 	}

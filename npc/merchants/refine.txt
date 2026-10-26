@@ -642,7 +642,7 @@ function	script	refinemain	{
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
 		if(getequipisequiped(.@indices[.@i])) {
-			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
+			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) + "]";
 			.@equipped = 1;
 		}
 		.@menu$ = .@menu$ + ":";

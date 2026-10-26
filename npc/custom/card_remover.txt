@@ -33,7 +33,7 @@ prt_in,28,73,4	script	Ó£÷«¿œ∏æ#eAcustom	78,{
 		setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 		for( set .@i,1; .@i <= 10; set .@i,.@i+1 ) {
 			if( getequipisequiped(.@indices[.@i]) )
-				set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
+				set .@menu$, .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) + "]";
 			set .@menu$, .@menu$ + ":";
 		}
 		set .@part, .@indices[ select(.@menu$) ];

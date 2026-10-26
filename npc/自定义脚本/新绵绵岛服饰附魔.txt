@@ -91,7 +91,7 @@ OnReMagic://重置附魔 位置自选
 		setarray .@eid[1],EQI_COSTUME_HEAD_TOP,EQI_COSTUME_HEAD_MID,EQI_COSTUME_HEAD_LOW,EQI_COSTUME_GARMENT;
 		setarray .@a2$[1], "服装头上","服装头中","服装头下","服装披肩";
 		mes "请选择 要重置的装备";
-		for(.@i=1; .@i<getarraysize(.@eid); .@i++) set .@menu$,.@menu$+(getequipisequiped(.@eid[.@i])?.@a2$[.@i]+" - ^FF0000"+"+"+getequiprefinerycnt(.@eid[.@i])+"^000000^0066CC "+getequipname(.@eid[.@i]):""+.@a2$[.@i]+" - ^666666尚未装备^000000")+"^000000:";
+		for(.@i=1; .@i<getarraysize(.@eid); .@i++) set .@menu$,.@menu$+(getequipisequiped(.@eid[.@i])?.@a2$[.@i]+" - ^FF0000"+"+"+getequiprefinerycnt(.@eid[.@i])+"^000000^0066CC "+callfunc("F_EquipNameCN", getequipid(.@eid[.@i])):""+.@a2$[.@i]+" - ^666666尚未装备^000000")+"^000000:";
 		set .@select,select(.@menu$);
 		set .@id,getequipid(.@eid[.@select]);
 		if(.@id<=0){ mes "选择的位置 没有装备"; close; }
@@ -266,7 +266,7 @@ start_magic:
 		//set .@rate,50;
 		setarray .@id[1],EQI_COSTUME_HEAD_TOP,EQI_COSTUME_HEAD_MID,EQI_COSTUME_HEAD_LOW,EQI_COSTUME_GARMENT;
 		setarray .@name$[1],"服装头上","服装头中","服装头下","服装披肩";
-		for(.@i=1; .@i<getarraysize(.@id); .@i++) set .@test$,.@test$+(getequipisequiped(.@id[.@i])?.@name$[.@i]+" - ^0066CC"+"+"+getequiprefinerycnt(.@id[.@i])+"^000000^0066CC "+getequipname(.@id[.@i]):""+.@name$[.@i]+" - ^888888没有装备^000000")+"^000000:";
+		for(.@i=1; .@i<getarraysize(.@id); .@i++) set .@test$,.@test$+(getequipisequiped(.@id[.@i])?.@name$[.@i]+" - ^0066CC"+"+"+getequiprefinerycnt(.@id[.@i])+"^000000^0066CC "+callfunc("F_EquipNameCN", getequipid(.@id[.@i])):""+.@name$[.@i]+" - ^888888没有装备^000000")+"^000000:";
 		set .@select,select(.@test$);
 		set .@sok,.@id[.@select];
 		set .@eqid,getequipid(.@sok);			//装备的ID

@@ -26,7 +26,7 @@
 	setarray .@indices[1], EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_R, EQI_SHADOW_ACC_L;
 	.@indlen = getarraysize(.@indices) - 1;
 	for(.@i = 1; .@i <= .@indlen; .@i++)
-		.@menu$ = .@menu$ + (getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[未装备]") +":";
+		.@menu$ = .@menu$ + (getequipisequiped(.@indices[.@i]) ? callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) : F_getpositionname(.@indices[.@i]) +"-[未装备]") +":";
 	.@menu$ = .@menu$ + "精炼信息";
 	.@choice = select(.@menu$);
 	if (.@choice == .@indlen + 1) { // Refine info

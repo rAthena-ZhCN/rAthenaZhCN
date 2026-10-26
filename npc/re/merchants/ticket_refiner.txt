@@ -98,7 +98,7 @@ prontera,184,177,6	script	精炼大师	851,{
 	setarray .@position$[1],"Head upper","Armor","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head middle","Head lower";
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for ( .@i = 1; .@i <= 10; ++.@i )
-		.@menu$ += (getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : .@position$[.@i] + "- [空]") + ":";
+		.@menu$ += (getequipisequiped(.@indices[.@i]) ? callfunc("F_EquipNameCN", getequipid(.@indices[.@i])) : .@position$[.@i] + "- [空]") + ":";
 
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
@@ -184,7 +184,7 @@ prontera,184,177,6	script	精炼大师	851,{
 		close;
 	}
 	mes "[精炼大师]";
-	mes "我将把 ^006400"+getequipname(.@part)+"^8B4513 精炼至 +"+.@ticket_lv+"级^000000，使用 ^006400"+getitemname(.@ticket_id)+"^000000。";
+	mes "我将把 ^006400"+callfunc("F_EquipNameCN", getequipid(.@part))+"^8B4513 精炼至 +"+.@ticket_lv+"级^000000，使用 ^006400"+getitemname(.@ticket_id)+"^000000。";
 	mes "可以开始吗？";
 	next;
 	if(select("否。:是。") == 1) {

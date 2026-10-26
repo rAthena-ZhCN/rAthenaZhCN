@@ -2705,7 +2705,7 @@ iz_ac01,100,39,5	script	学院接待员#1	4_F_01,{
 					mes "<NAVI>[治疗师]<INFO>iz_ac01,59,43</INFO></NAVI>，状态恢复导师";
 					mes "<NAVI>[史必奴]<INFO>iz_ac01,59,83</INFO></NAVI>，战斗导师";
 					mes "<NAVI>[曼兹]<INFO>iz_ac01,134,47</INFO></NAVI>，异常状态导师";
-					mes "<NAVI>[达库瓦兹]<INFO>iz_ac01,147,50</INFO></NAVI>，烹饪导师。";
+					mes "<NAVI>[达库瓦兹]<INFO>iz_ac01,147,47</INFO></NAVI>，烹饪导师。";
 					mes "<NAVI>[精炼屋主人韩]<INFO>izlude,153,126</INFO></NAVI>，精炼导师。";
 					mes "<NAVI>[附魔师蒙德兹]<INFO>izlude,96,125</INFO></NAVI> 附魔导师。";
 					mes "<NAVI>[奶油泡芙]<INFO>iz_ac02,143,55</INFO></NAVI>，职业适应性测试。";
@@ -12780,7 +12780,7 @@ izlude_b,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_b	4_M_02
 izlude_c,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_c	4_M_02
 izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 
-// - Refining Machine Wagjak
+// - 精炼机瓦克查
 // -----------------------------------------------------------------------------
 -	script	::izludeWagjak	-1,{
 	disable_items;
@@ -12792,7 +12792,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(set .@i,1; .@i<=10; set .@i,.@i+1)
-		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]): F_getpositionname(.@indices[.@i]) +"- [空手]" ) +":";
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? callfunc("F_EquipNameCN", getequipid(.@indices[.@i])): F_getpositionname(.@indices[.@i]) +"- [未装备物品]" ) +":";
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
 		mes "[精炼机瓦克查]";
@@ -12810,7 +12810,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 		close;
 	}
 	// if (!getequipisidentify(.@part)) {// getequipisidentify command removed 
-		// mes "[Refining Machine Wagjak]";
+		// mes "[精炼机瓦克查]";
 		// mes "^FF0000- error number 5555 -^000000";
 		// mes "This item has not yet been identified.";
 		// close2;
@@ -12972,11 +12972,11 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 	close;
 }
 
-izlude,153,121,3	duplicate(izludeWagjak)	Refining Machine Wagjak::iz	2_MONEMUS
-izlude_a,153,121,3	duplicate(izludeWagjak)	Refining Machine Wagjak::iz_a	2_MONEMUS
-izlude_b,153,121,3	duplicate(izludeWagjak)	Refining Machine Wagjak::iz_b	2_MONEMUS
-izlude_c,153,121,3	duplicate(izludeWagjak)	Refining Machine Wagjak::iz_c	2_MONEMUS
-izlude_d,153,121,3	duplicate(izludeWagjak)	Refining Machine Wagjak::iz_d	2_MONEMUS
+izlude,153,121,3	duplicate(izludeWagjak)	精炼机瓦克查::iz	2_MONEMUS
+izlude_a,153,121,3	duplicate(izludeWagjak)	精炼机瓦克查::iz_a	2_MONEMUS
+izlude_b,153,121,3	duplicate(izludeWagjak)	精炼机瓦克查::iz_b	2_MONEMUS
+izlude_c,153,121,3	duplicate(izludeWagjak)	精炼机瓦克查::iz_c	2_MONEMUS
+izlude_d,153,121,3	duplicate(izludeWagjak)	精炼机瓦克查::iz_d	2_MONEMUS
 
 // - Tadde
 // -----------------------------------------------------------------------------
@@ -14117,7 +14117,7 @@ izlude,108,139,7	script	附魔师阿尔蒙德·J#iz	4_CAT_SAILOR3,{
 	case 13182: // Novice_Gatling
 	case 13183: // Novice_Grenade_Launcher
 	case 13415: // N_Falchion
-		mes "就是它！！^142ceb"+ getequipname(.@part) +"^000000。";
+		mes "就是它！！^142ceb"+ callfunc("F_EquipNameCN", getequipid(.@part)) +"^000000。";
 		next;
 		break;
 	default:
