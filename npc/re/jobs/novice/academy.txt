@@ -4434,7 +4434,7 @@ iz_ac01,68,49,3	script	杂货店老板#ac	4_F_03,{
 				getitem 11058,1;// Novice_Combi_Book
 			} else {
 				mes "[奎里]";
-				mes "书的价格是1000 zeny。";
+				mes "书的价格是1000 Zeny。";
 				mes "你的zeny似乎不够。";
 			}
 		}
@@ -12840,10 +12840,10 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 		if (getequipweaponlv(.@part) == 1) {
 			mes "[精炼机瓦克查]";
 			mes "类型：1级武器";
-			mes "费用：强化武器金属-级数一，1000 zeny";
+			mes "费用：强化武器金属-级数一，1000 Zeny";
 			mes "检测到服务使用券。不收取费用。要精炼吗？";
 			next;
-			if (select("Refine.", "不精炼。") == 2) {
+			if (select("精炼。", "不精炼。") == 2) {
 				mes "[精炼机瓦克查]";
 				mes "取消精炼。";
 				close;
@@ -12854,7 +12854,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 				mes "需要使用者确认。";
 				mes "你正在进行非安全精炼。若精炼失败，装备将被破坏。要继续吗？";
 				next;
-				if (select("Refine.", "不精炼。") == 2) {
+				if (select("精炼。", "不精炼。") == 2) {
 					mes "[精炼机瓦克查]";
 					mes "已按使用者的要求取消精炼。";
 					close;
@@ -12889,7 +12889,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 
 	if( .@itemtype == IT_ARMOR ){
 		.@equip_lv = getequiparmorlv( .@part );
-		.@type$ = "Armor";
+		.@type$ = "防具";
 
 		switch( .@equip_lv ){
 			case 1:
@@ -12901,7 +12901,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 		}
 	}else if( .@itemtype == IT_WEAPON ){
 		.@equip_lv = getequipweaponlv( .@part );
-		.@type$ = "Level " + .@equip_lv + " Weapon";
+		.@type$ = "武器等级 " + .@equip_lv;
 
 		switch( .@equip_lv ){
 			case 1:
@@ -12927,10 +12927,10 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 
 	mes "[精炼机瓦克查]";
 	mes "类型："+ .@type$ +"";
-	mes "费用："+ getitemname(.@material) +"，"+ .@price +"zeny";
+	mes "费用："+ getitemname(.@material) +"，"+ .@price +" Zeny";
 	mes "将收取上述费用。要精炼吗？";
 	next;
-	if (select("Refine.", "不精炼。") == 2) {
+	if (select("精炼。", "不精炼。") == 2) {
 		mes "[精炼机瓦克查]";
 		mes "已按使用者的要求取消精炼。";
 		close;
@@ -12941,7 +12941,7 @@ izlude_d,153,126,1	duplicate(精炼屋主人韩#iz)	精炼屋主人韩#iz_d	4_M_02
 		mes "需要使用者确认。";
 		mes "你正在进行非安全精炼。若精炼失败，装备将被破坏。要继续吗？";
 		next;
-		if (select("Refine.", "不精炼。") == 2) {
+		if (select("精炼。", "不精炼。") == 2) {
 			mes "[精炼机瓦克查]";
 			mes "已按使用者的要求取消精炼。";
 			close;
@@ -13082,7 +13082,7 @@ izlude,145,122,7	script	塔德#iz	4_M_04,{
 	mes "我们这里出售用于精炼铁制或钢制武器的金属！";
 	mes "我们有用于1级武器的^007777强化武器金属-级数一^000000，以及用于2级武器的^007777强化武器金属-级数二^000000。";
 	next;
-	switch(select("强化武器金属-级数一 - 200 zeny。", "强化武器金属-级数二 - 1000 zeny。", "询问其他金属。")) {
+	switch(select("强化武器金属-级数一 - 200 zeny。", "强化武器金属-级数二 - 1000 Zeny。", "询问其他金属。")) {
 	case 1:
 		mes "[塔德]";
 		mes "你要多少个？输入“0”结束。";
