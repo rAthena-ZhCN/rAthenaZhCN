@@ -148,13 +148,13 @@ function	script	F_Invest_Abyss	{
 				close;
 			} else if (.@units == 0) {
 				mes .@npc_name$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			} else
 				break;
 		case 5:
 			mes .@npc_name$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		set .@zeny, .@units * 10000;
@@ -164,7 +164,7 @@ function	script	F_Invest_Abyss	{
 			close;
 		}
 		mes .@npc_name$;
-		mes "您投资了"+callfunc("F_InsertPlural",.@units,"unit")+" "+callfunc("F_InsertComma",.@zeny)+" Zeny"+getarg(2,"")+".";
+		mes "您投资了"+callfunc("F_InsertPlural",.@units,"单位")+" "+callfunc("F_InsertComma",.@zeny)+" Zeny"+getarg(2,"")+".";
 		mes "虽然不多，但这是一份小礼物。您可以在绵绵岛用它兑换物品。";
 		set Zeny, Zeny-.@zeny;
 		setd getarg(0), getd(getarg(0)) + .@units;
@@ -196,13 +196,13 @@ function	script	F_Invest_Abyss	{
 				close;
 			} else if (.@tickets == 0) {
 				mes .@npc_name$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			} else
 				break;
 		case 4:
 			mes .@npc_name$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		if (countitem(6489) < .@tickets) {
@@ -220,7 +220,7 @@ function	script	F_Invest_Abyss	{
 		close;
 	case 3:
 		mes .@npc_name$;
-		mes "Canceled.";
+		mes "已取消。";
 		close;
 	}
 }
@@ -402,7 +402,7 @@ prt_gld,2,2,0	script	投资总额#fund00	844,{
 			mes "您已开启计时器。";
 			close;
 		case 2:
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 	} else {
@@ -670,7 +670,7 @@ OnTimer20000:
 
 /*
 prtg_cas01,2,2,0	script	阿布莱	55,{
-	mes "I should quit my steward job.";
+	mes "我该辞掉这份管家工作了。";
 	close;
 OnAgitInvest:
 	switch(callfunc("F_Invest_Status")) {
@@ -912,7 +912,7 @@ OnAgitInvest:
 			set .@i, select(.@menu$+"取消");
 			if (.@i == 6) {
 				mes .@n$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			}
 			if (.@guild != .@owner_id[.@i]) {
@@ -981,7 +981,7 @@ OnAgitInvest:
 		set .@i, select(.@realm$+"地下密穴1F - 10000z:"+.@realm$+"地下密穴2F - 10000z:取消");
 		if (.@i == 3) {
 			mes .@n$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		if (Zeny < 10000) {
@@ -1221,7 +1221,7 @@ OnAgitInvest:
 		end;
 	case 4:
 		mes "[深渊之门管理员]";
-		mes "Canceled.";
+		mes "已取消。";
 		close;
 	}
 	end;
@@ -1279,37 +1279,37 @@ malangdo,218,126,4	script	猫爪商会公告	857,{
 		mes "这是活动1的详细内容。";
 		next;
 		setarray .@event1$[0],
-			"Wings of the Insect Queen","Crown of the Fly King","I hear Dragon Scales are tough 01","The Meaning of the Mother's Nightmare",
-			"To refine ore","Hekekek Orcs, Orcs!!","Study of Yin-Yang","Secrets of the Pyramid King","Tick-tock the time goes",
-			"Planting trees on Mellow Island","Ancient language research","Weapons made of sharp teeth","Toy boss doll 01",
-			"A tiger is just a cat after all","The shattered spear and shield?","Toy boss doll 02","Best in summer! Cold scales",
-			"Piece of Thanatos' armor","I hear Dragon Scales are tough 02","The identity of the creepy eye","If only I could see!";
+			"女王的翅膀碎片","破裂的王冠","脱落的红色龙鳞","恶梦之石",
+			"宝石原石","兽人英雄之证","太极盘","破碎的法老王象征","怀表",
+			"小树枝","罗诫塔石头碎片","卡仑之牙","巴风特娃娃",
+			"虎掌","盾牌的碎片","俄塞里斯娃娃","冰块鳞片",
+			"骨制盔甲的碎片","红鳞碎片","红色的黑暗的意志","盲人之证";
 		set .@menu$, "退出:"+implode(.@event1$[0],":");
 		while(1) {
 			set .@i, select(.@menu$)-1;
 			switch(.@i) {
 				case 0: close;
-				case 1: set .@str$,"2 Pieces of Queen's Wing"; break;
-				case 2: set .@str$,"2 Broken Crowns"; break;
-				case 3: set .@str$,"2 Fire Dragon Scales"; break;
-				case 4: set .@str$,"3 Mother's Nightmares"; break;
-				case 5: set .@str$,"5 Gemstones"; break;
-				case 6: set .@str$,"5 Heroic Emblems"; break;
-				case 7: set .@str$,"3 Taeguk Plates"; break;
-				case 8: set .@str$,"3 Broken Pharaoh Symbols and 3 Tutankhamen's Masks"; break;
-				case 9: set .@str$,"2 Pocket Watches"; break;
-				case 10: set .@str$,"3 Young Twigs"; break;
-				case 11: set .@str$,"5 Rossata Pieces"; break;
-				case 12: set .@str$,"5 Fangs of Garm"; break;
-				case 13: set .@str$,"3 Baphomet Dolls"; break;
-				case 14: set .@str$,"1 Tiger's Footskin and 5 Tiger Skins"; break;
-				case 15: set .@str$,"3 Broken Shield Pieces and 3 Shining Spear Blades"; break;
-				case 16: set .@str$,"3 Osiris Dolls"; break;
-				case 17: set .@str$,"1 Ice Scale"; break;
-				case 18: set .@str$,"1 Skeletal Armor Piece"; break;
-				case 19: set .@str$,"1 Darkred Scale Piece"; break;
-				case 20: set .@str$,"2 Wills of Red Darkness"; break;
-				case 21: set .@str$,"2 Foolishness of the Blind"; break;
+				case 1: set .@str$,"女王的翅膀碎片 x2"; break;
+				case 2: set .@str$,"破裂的王冠 x2"; break;
+				case 3: set .@str$,"脱落的红色龙鳞 x2"; break;
+				case 4: set .@str$,"恶梦之石 x3"; break;
+				case 5: set .@str$,"宝石原石 x5"; break;
+				case 6: set .@str$,"兽人英雄之证 x5"; break;
+				case 7: set .@str$,"太极盘 x3"; break;
+				case 8: set .@str$,"破碎的法老王象征 x3 和 杜唐卡门面具 x3"; break;
+				case 9: set .@str$,"怀表 x2"; break;
+				case 10: set .@str$,"小树枝 x3"; break;
+				case 11: set .@str$,"罗诫塔石头碎片 x5"; break;
+				case 12: set .@str$,"卡仑之牙 x5"; break;
+				case 13: set .@str$,"巴风特娃娃 x3"; break;
+				case 14: set .@str$,"虎掌 x1 和 虎皮 x5"; break;
+				case 15: set .@str$,"盾牌的碎片 x3 和 闪亮的枪锥 x3"; break;
+				case 16: set .@str$,"俄塞里斯娃娃 x3"; break;
+				case 17: set .@str$,"冰块鳞片 x1"; break;
+				case 18: set .@str$,"骨制盔甲的碎片 x1"; break;
+				case 19: set .@str$,"红鳞碎片 x1"; break;
+				case 20: set .@str$,"红色的黑暗的意志 x2"; break;
+				case 21: set .@str$,"盲人之证 x2"; break;
 			}
 			mes "["+.@event1$[.@i-1]+"]";
 			mes .@str$+"，可兑换一张猫爪商会投资证书。";
@@ -1380,34 +1380,34 @@ malangdo,218,123,1	script	纳米斯#invest	545,4,4,{
 		mes "请从显示的列表中选择。";
 		next;
 		setarray .@event1$[0],
-			"Wings of the Insect Queen","Crown of the Fly King","I hear Dragon Scales are tough 01","The Meaning of the Mother's Nightmare",
-			"To refine ore","Hekekek Orcs, Orcs!!","Study of Yin-Yang","Secrets of the Pyramid King","Tick-tock the time goes",
-			"Planting trees on Mellow Island","Ancient language research","Weapons made of sharp teeth","Toy boss doll 01",
-			"A tiger is just a cat after all","The shattered spear and shield?","Toy boss doll 02","Best in summer! Cold scales",
-			"Piece of Thanatos' armor","I hear Dragon Scales are tough 02","The identity of the creepy eye","If only I could see!";
+			"女王的翅膀碎片","破裂的王冠","脱落的红色龙鳞","恶梦之石",
+			"宝石原石","兽人英雄之证","太极盘","破碎的法老王象征","怀表",
+			"小树枝","罗诫塔石头碎片","卡仑之牙","巴风特娃娃",
+			"虎掌","盾牌的碎片","俄塞里斯娃娃","冰块鳞片",
+			"骨制盔甲的碎片","红鳞碎片","红色的黑暗的意志","盲人之证";
 		set .@i, select(implode(.@event1$[0],":"))-1;
 		switch(.@i+1) {
-			case 1: callsub L_Check,"2 Pieces of Queen's Wing",6326,2,"Wings of the Insect Queen? What a pitiful name. I would've given some cool names!",.@event1$[.@i];
-			case 2: callsub L_Check,"2 Broken Crowns",7754,2,"For crying out loud! Those cats working on these events must be playing around. Can't they think of a better name?",.@event1$[.@i];
-			case 3: callsub L_Check,"2 Fire Dragon Scales",7451,2,"Dragon scales? Well... I guess they are tough. But what are they going to use them for?",.@event1$[.@i];
-			case 4: callsub L_Check,"3 Mother's Nightmares",7020,3,"Even though I don't have the authority to find out, I wonder what they're doing with the collected items?",.@event1$[.@i];
-			case 5: callsub L_Check,"5 Gemstones",7300,5,"Something useful for a change. The ore will end up as nice pieces of jewelry.",.@event1$[.@i];
-			case 6: callsub L_Check,"5 Heroic Emblems",968,5,"Good, good. This is the kind of name I wanted!",.@event1$[.@i];
-			case 7: callsub L_Check,"3 Taeguk Plates",7169,3,"Taking in something like this, maybe they're up to something dangerous.",.@event1$[.@i];
-			case 8: callsub L_Check,"3 Broken Pharaoh Symbols and 3 Tutankhamen's Masks",7113,3,"I hear the pyramids are in Morocc, but I've never been there. Some humans call it Morco.",.@event1$[.@i],7114,3;
-			case 9: callsub L_Check,"2 Pocket Watches",7513,2,"Those lazy merchants, why do they need pocket watches they don't even use?",.@event1$[.@i];
-			case 10: callsub L_Check,"3 Young Twigs",7018,3,"Mellow Island has a climate like with where we cats used to live. But the trees die out sometimes due to it being an island.",.@event1$[.@i];
-			case 11: callsub L_Check,"5 Rossata Pieces",7211,5,"I guess they collect these because humans have them, but what's the use of researching ancient languages?",.@event1$[.@i];
-			case 12: callsub L_Check,"5 Fangs of Garm",7036,5,"Weak humans need sharp weapons, but cats already have nice and sharp claws, so why are we collecting these!!",.@event1$[.@i];
-			case 13: callsub L_Check,"3 Baphomet Dolls",750,3,"Baphomet dolls are great for playing around with.",.@event1$[.@i];
-			case 14: callsub L_Check,"1 Tiger's Footskin and 5 Tiger Skins",1030,1,"Did you know that tigers are cats too? Therefore, cats are better than tigers.",.@event1$[.@i],1029,5;
-			case 15: callsub L_Check,"3 Broken Shield Pieces and 3 Shining Spear Blades",7108,3,"I don't know what they want with these.",.@event1$[.@i],7109,3;
-			case 16: callsub L_Check,"3 Osiris Dolls",751,3,"Shame~ I never got to play with an Osiris doll.",.@event1$[.@i];
-			case 17: callsub L_Check,"1 Ice Scale",7562,1,"Mellow Island is a fabulous place to live. But the ships are too hot.",.@event1$[.@i];
-			case 18: callsub L_Check,"1 Skeletal Armor Piece",7450,1,"Ewww... Why would they collect something so creepy?",.@event1$[.@i];
-			case 19: callsub L_Check,"1 Darkred Scale Piece",6091,1,"Dragon scales? Well... I guess they are tough. But what are they going to use them for?",.@event1$[.@i];
-			case 20: callsub L_Check,"2 Wills of Red Darkness",7566,2,"Interesting! Does it scream or something when I poke it in the eye?",.@event1$[.@i];
-			case 21: callsub L_Check,"2 Foolishness of the Blind",7021,2,"This blind man is foolish in not knowing that gathering 300 cats cures blindness...",.@event1$[.@i];
+			case 1: callsub L_Check,"女王的翅膀碎片 x2",6326,2,"女王的翅膀碎片？这名字真可怜。要是我会取个更酷的名字！",.@event1$[.@i];
+			case 2: callsub L_Check,"破裂的王冠 x2",7754,2,"那些办活动的猫肯定在偷懒，连个好名字都想不出来？",.@event1$[.@i];
+			case 3: callsub L_Check,"脱落的红色龙鳞 x2",7451,2,"龙鳞？确实很硬。但他们收集这些要做什么？",.@event1$[.@i];
+			case 4: callsub L_Check,"恶梦之石 x3",7020,3,"虽然我没权限查，但很好奇他们拿收集的道具做什么。",.@event1$[.@i];
+			case 5: callsub L_Check,"宝石原石 x5",7300,5,"这次终于有点有用的东西了。矿石最后会变成漂亮的珠宝吧。",.@event1$[.@i];
+			case 6: callsub L_Check,"兽人英雄之证 x5",968,5,"不错不错，这才是我想要的名字！",.@event1$[.@i];
+			case 7: callsub L_Check,"太极盘 x3",7169,3,"收集这种东西，也许他们在策划危险的事。",.@event1$[.@i];
+			case 8: callsub L_Check,"破碎的法老王象征 x3 和 杜唐卡门面具 x3",7113,3,"听说金字塔在莫洛克，但我没去过。有些人类叫它莫罗克。",.@event1$[.@i],7114,3;
+			case 9: callsub L_Check,"怀表 x2",7513,2,"那些懒惰的商人，明明不用怀表，为什么还需要？",.@event1$[.@i];
+			case 10: callsub L_Check,"小树枝 x3",7018,3,"绵绵岛的气候和我们猫以前住的地方很像。但因为是岛，树木有时会枯死。",.@event1$[.@i];
+			case 11: callsub L_Check,"罗诫塔石头碎片 x5",7211,5,"我猜他们收集是因为人类有这些东西，但研究古代语言有什么用？",.@event1$[.@i];
+			case 12: callsub L_Check,"卡仑之牙 x5",7036,5,"软弱的人类需要锋利武器，但猫已经有漂亮的利爪，为什么还要收集这些！",.@event1$[.@i];
+			case 13: callsub L_Check,"巴风特娃娃 x3",750,3,"巴风特娃娃很适合拿来玩。",.@event1$[.@i];
+			case 14: callsub L_Check,"虎掌 x1 和 虎皮 x5",1030,1,"你知道吗，老虎也是猫科动物。所以猫比老虎更厉害。",.@event1$[.@i],1029,5;
+			case 15: callsub L_Check,"盾牌的碎片 x3 和 闪亮的枪锥 x3",7108,3,"我不知道他们拿这些做什么。",.@event1$[.@i],7109,3;
+			case 16: callsub L_Check,"俄塞里斯娃娃 x3",751,3,"可惜~ 我从来没玩过俄塞里斯娃娃。",.@event1$[.@i];
+			case 17: callsub L_Check,"冰块鳞片 x1",7562,1,"绵绵岛是个很棒的居住地，但船太热了。",.@event1$[.@i];
+			case 18: callsub L_Check,"骨制盔甲的碎片 x1",7450,1,"呃……他们为什么要收集这么可怕的东西？",.@event1$[.@i];
+			case 19: callsub L_Check,"红鳞碎片 x1",6091,1,"龙鳞？确实很硬。但他们收集这些要做什么？",.@event1$[.@i];
+			case 20: callsub L_Check,"红色的黑暗的意志 x2",7566,2,"有意思！我戳它眼睛的时候它会尖叫吗？",.@event1$[.@i];
+			case 21: callsub L_Check,"盲人之证 x2",7021,2,"这个盲人真傻，不知道聚集300只猫就能治好失明……",.@event1$[.@i];
 		}
 	case 3:
 		mes "[纳米斯]";
@@ -1435,6 +1435,7 @@ L_Check:
 	}
 	mes "[纳米斯]";
 	mes "'^8E5601"+getarg(4)+"活动^000000'";
+	mes "所需物品：" + mesitemlink(getarg(1), false) + " x" + getarg(2) + "。";
 	mes "看起来是正确的物品。";
 	mes getarg(3);
 	mes "哦！差点忘了。您要投资吗？";
@@ -1449,7 +1450,7 @@ L_Check:
 		delitem getarg(5),getarg(6);
 	getitem 6489,1; //Cats_Invest_Certif
 	mes "[纳米斯]";
-	mes "这是您的证书。永远要感谢商会举办这些活动！";
+	mes "这是您的 " + mesitemlink(6489,false) + "。永远要感谢商会举办这些活动！";
 	close;
 OnTouch:
 	if (rand(2))
@@ -1659,7 +1660,8 @@ L_Purchase:
 	getitem getarg(1),getarg(2);
 	mes "- 完成！ -";
 	next;
-	mes "已获得物品 ^0000FF"+((getargcount() > 3)?getarg(3,""):getitemname(getarg(1)))+"^000000";
+	mes "消耗：" + mesitemlink(6488,false) + " x" + getarg(0) + "。";
+	mes "已获得：" + mesitemlink(getarg(1),false) + " x" + getarg(2) + "。";
 	close;
 
 //callsub L_Bag,<reward ID>,<reward amount>{,<reward name>};
@@ -1667,6 +1669,6 @@ L_Bag:
 	getitem getarg(0),getarg(1);
 	mes "- 完成！ -";
 	next;
-	mes "已获得物品 ^0000FF"+((getargcount() > 2)?getarg(2,""):getitemname(getarg(0)))+"^000000";
+	mes "已获得：" + mesitemlink(getarg(0),false) + " x" + getarg(1) + "。";
 	close;
 }
