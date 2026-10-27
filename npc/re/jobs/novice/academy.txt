@@ -65,7 +65,7 @@ iz_int04,51,30,0	duplicate(iz_int#intro_evt02)	iz_int04#intro_evt02	HIDDEN_WARP_
 
 //== 受伤的剑士 (iz_int) =================================
 iz_int,56,32,3	script	受伤的剑士#intro_npc01_iz_int	4_TOWER_01,5,5,{
-	npctalk "Oh...", "", bc_self;
+	npctalk "噢...", "", bc_self;
 	cloakonnpcself();
 	cloakoffnpcself( "受伤的剑士#intro_npc02_" + strnpcinfo(4) );
 	end;
@@ -93,7 +93,7 @@ iz_int,56,32,3	script	受伤的剑士#intro_npc02_iz_int	4_TOWER_02,{
 		mes "但我们应该去看看船长。";
 		next;
 		mes "[受伤者]";
-		mes "... ohh, it seems my body is too injured.";
+		mes "... 哦, 我的身体好像不是伤得很严重。";
 		mes "也许你可以不用管我，自己过去？";
 		setquest 21001;
 		next;
@@ -245,7 +245,7 @@ int_land04,78,103,5	duplicate(卡洛克船长#intro_npc03)	卡洛克船长#intro_npc03_04	
 int_land,73,100,3	script	卢敏#new_ship	4_M_NOV_RUMIN,{
 	if (isbegin_quest(7471) == 0) {
 		cutin "nov_lumin01.bmp",0;
-		mes "[露敏]";
+		mes "[卢敏]";
 		mes ".............";
 		mes "..?";
 		next;
@@ -280,8 +280,8 @@ int_land,73,100,3	script	卢敏#new_ship	4_M_NOV_RUMIN,{
 		completequest 7471;
 		next;
 		cutin "nov_lumin01.bmp", 0;
-		mes "[露敏]";
-		mes "Yes.";
+		mes "[卢敏]";
+		mes "好吧.";
 		next;
 		cloakonnpcself();
 		cutin "fly_trock.bmp",2;
@@ -293,19 +293,19 @@ int_land,73,100,3	script	卢敏#new_ship	4_M_NOV_RUMIN,{
 		end;
 	}
 	cutin "nov_lumin01.bmp",0;
-	mes "[露敏]";
+	mes "[卢敏]";
 	mes ".....";
 	next;
 	select("要我自我介绍吗？", "我叫~！");
 	mes "[" + strcharinfo(0) + "]";
 	mes "我是" + strcharinfo(0) + "！";
 	next;
-	mes "[卢]";
+	mes "[卢敏]";
 	mes ".....";
 	next;
-	mes "[卢]";
+	mes "[卢敏]";
 	mes ".....";
-	mes "....So?";
+	mes "....所以呢?";
 	next;
 	cloakonnpcself();
 	mes "- 卢带着讥讽的神情转身离开了。";
@@ -362,7 +362,7 @@ int_land,58,69,5	script	船员#intro_npc04	4W_SAILOR,{
 		mes "打怪时，你会找到^4d4dff未鉴定物品^000000。";
 		next;
 		mes "[水手]";
-		mes "使用放大镜就能鉴定物品。";
+		mes "使用放大镜就能鉴定这些物品。";
 		next;
 		mes "[水手]";
 		mes "也许你和那些波利战斗后，已经拿到一些未鉴定物品了？";
@@ -370,7 +370,7 @@ int_land,58,69,5	script	船员#intro_npc04	4W_SAILOR,{
 	}
 	mes "[水手]";
 	mes "船很快就要开往伊斯鲁德了~！";
-	mes "启航时我会通知你~！";
+	mes "赶快从下面的传送门上船吧~！";
 	close;
 
 OnInit:
@@ -447,7 +447,7 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 					next;
 					if (!isbegin_quest(7473)) {
 						mes "[卡罗克]";
-						mes "他叫^4d4dff汉^000000";
+						mes "他叫^4d4dff勋^000000";
 						mes "我会在地图上标出他的位置，你去找他吧。";
 						setquest 7472;
 						viewpoint 1,122,207,0,0x4d4dff;
@@ -466,11 +466,11 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 						next;
 						cutin "", 255;
 						mes "[卡罗克]";
-						mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>";
-						mes "对，就是写着“汉”的那部分。";
+						mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>";
+						mes "对，就是写着“勋”的那部分。";
 						next;
 						mes "!- 信息 -!";
-						mes "^4d4dff对话中的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>图标表示通往导航指引的链接。";
+						mes "^4d4dff对话中的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>图标表示通往导航指引的链接。";
 						cutin "navi01.bmp", 4;
 						next;
 						mes "!- 信息 -!";
@@ -491,7 +491,7 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 						next;
 						mes "[卡罗克]";
 						mes "好。我会给你指路。你再试一次。";
-						mes "对了，我告诉过你他的名字吗？他叫^4d4dff汉^000000";
+						mes "对了，我告诉过你他的名字吗？他叫^4d4dff勋^000000";
 						viewpoint 1,122,207,1,0x4d4dff;
 						next;
 						mes "!- 信息 -!";
@@ -499,11 +499,11 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 						mes "你可以用+放大，用-缩小。NPC的导航点会标记在上面。 ^000000";
 						next;
 						mes "[卡罗克]";
-						mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>";
-						mes "对，就是写着[汉]的那部分。";
+						mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>";
+						mes "对，就是写着[勋]的那部分。";
 						next;
 						mes "!- 信息 -!";
-						mes "^4d4dff对话中的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>图标表示";
+						mes "^4d4dff对话中的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>图标表示";
 						mes "通往导航指引的链接。";
 						cutin "navi01.bmp", 4;
 						next;
@@ -528,16 +528,16 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 					mes "学院里有可以成为你一生伙伴的人。";
 					next;
 					mes "[卡罗克]";
-					mes "我的朋友汉会在学院入口附近。";
+					mes "我的朋友勋会在学院入口附近。";
 					mes "如果你不认识路，我会再给你指一次。";
 					viewpoint 1,122,207,0,0x4d4dff;
 					next;
 					mes "[卡罗克]";
-					mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>";
-					mes "对，就是写着''汉''的那部分。";
+					mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>";
+					mes "对，就是写着''勋''的那部分。";
 					next;
 					mes "!- 信息 -!";
-					mes "^4d4dff对话中的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>图标表示";
+					mes "^4d4dff对话中的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>图标表示";
 					mes "通往导航指引的链接。";
 					cutin "navi01.bmp", 4;
 					next;
@@ -599,7 +599,7 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 						next;
 						if (!isbegin_quest(7473)) {
 							mes "[卡罗克]";
-							mes "他叫^4d4dff汉^000000";
+							mes "他叫^4d4dff勋^000000";
 							mes "我会在地图上标出他的位置，你去找他吧。";
 							setquest 7472;
 							viewpoint 1,122,207,0,0x4d4dff;
@@ -616,11 +616,11 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 							mes "按下^4d4dffAlt + u^000000键即可打开任务窗口。";
 							next;
 							mes "[卡罗克]";
-							mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>";
-							mes "对，就是写着[汉]的那部分。";
+							mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>";
+							mes "对，就是写着[勋]的那部分。";
 							next;
 							mes "!- 信息 -!";
-							mes "^4d4dff对话中的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>图标表示";
+							mes "^4d4dff对话中的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>图标表示";
 							mes "通往导航指引的链接。";
 							cutin "navi01.bmp", 4;
 							next;
@@ -642,7 +642,7 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 							next;
 							mes "[卡罗克]";
 							mes "好。我会给你指路。你再试一次。";
-							mes "对了，我告诉过你他的名字吗？他叫^4d4dff汉^000000";
+							mes "对了，我告诉过你他的名字吗？他叫^4d4dff勋^000000";
 							viewpoint 1,122,207,1,0x4d4dff;
 							next;
 							mes "!- 信息 -!";
@@ -650,11 +650,11 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 							mes "你可以用+放大，用-缩小。NPC的导航点会标记在上面。 ^000000";
 							next;
 							mes "[卡罗克]";
-							mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>";
-							mes "对，就是写着[汉]的那部分。";
+							mes "如果你还需要地图方面的帮助，请按这里的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>";
+							mes "对，就是写着[勋]的那部分。";
 							next;
 							mes "!- 信息 -!";
-							mes "^4d4dff对话中的<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>图标表示";
+							mes "^4d4dff对话中的<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>图标表示";
 							mes "通往导航指引的链接。";
 							cutin "navi01.bmp", 4;
 							next;
@@ -690,7 +690,7 @@ izlude,198,213,3	script	卡洛克船长#iz	4_M_REINDEER,5,5,{
 					mes "学院里有可以成为你一生伙伴的人。";
 					next;
 					mes "[卡罗克]";
-					mes "我的朋友<NAVI>[汉]<INFO>izlude,122,207</INFO></NAVI>会在学院入口附近。";
+					mes "我的朋友<NAVI>[勋]<INFO>izlude,122,207</INFO></NAVI>会在学院入口附近。";
 					mes "如果你不认识路，我会再给你指一次。";
 					viewpoint 1,122,207,1,0x4d4dff;
 					next;
@@ -1364,7 +1364,7 @@ izlude,120,207,4	script	咨询处职员#0	8W_SOLDIER,{
 			mes "看来你把我标记的地点都找到了。";
 			next;
 			mes "[卢敏]";
-			mes "Turtle...";
+			mes "乌龟...";
 			cutin "nov_lumin01.bmp", 2;
 			next;
 			select("你刚才叫我什么？");
@@ -1373,7 +1373,7 @@ izlude,120,207,4	script	咨询处职员#0	8W_SOLDIER,{
 			mes "是啊。我等你等得仿佛过了好久好久。";
 			next;
 			mes "[卢敏]";
-			mes ".......Shall I share with you?";
+			mes ".......要我分点给你吗?";
 			cutin "nov_lumin03.bmp", 2;
 			next;
 			if (select("我不需要你的同情。", "！！！！！") == 1) {
@@ -1675,19 +1675,19 @@ izlude,179,75,3	script	飞空艇#iz	4_BULLETIN_BOARD2,3,3,{
 				cutin "nov_lumin01.bmp", 2;
 				next;
 				mes "[卢敏]";
-				mes "Muahahahaha.";
+				mes "木哈哈哈哈.";
 				cutin "nov_lumin03.bmp", 2;
 				next;
 				if (select("你在开玩笑吧？！", "宝物在哪里？") == 1) {
 					mes "[卢敏]";
-					mes "No...";
+					mes "没有了...";
 					mes "一天之内相遇三次，一定是命运。";
-					mes "你我能够成为朋友。";
+					mes "你我看来能够成为朋友。";
 					cutin "nov_lumin05.bmp", 2;
 					next;
-					select("或者是亦敌亦友！");
+					select("我看是亦敌亦友！");
 					mes "[卢敏]";
-					mes "亦敌亦什么？算了，我的任务已经完成了。";
+					mes "什么敌亦友？算了，我的任务已经完成了。";
 					mes "保重。";
 					cutin "nov_lumin02.bmp", 2;
 					next;
@@ -1813,7 +1813,7 @@ izlude,207,167,3	script	竞技场#iz	4_BULLETIN_BOARD2,3,3,{
 				cutin "nov_lumin01.bmp", 2;
 				next;
 				mes "[卢敏]";
-				mes "Muahahaha.";
+				mes "木哈哈哈";
 				cutin "nov_lumin03.bmp", 2;
 				next;
 				switch(select("你在开玩笑吧？！", "宝物在哪里？") == 1) {
@@ -1823,7 +1823,7 @@ izlude,207,167,3	script	竞技场#iz	4_BULLETIN_BOARD2,3,3,{
 					mes "你我能够成为朋友。";
 					cutin "nov_lumin05.bmp", 2;
 					next;
-					select("或者是亦敌亦友！");
+					select("我看是亦敌亦友！");
 					mes "[卢敏]";
 					mes "亦敌亦什么？算了，我的任务已经完成了。";
 					mes "保重。";
@@ -1946,7 +1946,7 @@ izlude,45,94,3	script	公告板#iz	4_BULLETIN_BOARD2,3,3,{
 				mes "也许你知道？";
 				next;
 				mes "[卢敏]";
-				mes "...you don't know.";
+				mes "...你不懂.";
 				cutin "nov_lumin01.bmp", 2;
 				next;
 				cutin "", 255;
@@ -4467,7 +4467,7 @@ iz_ac01,68,49,3	script	杂货店老板#ac	4_F_03,{
 		}
 		set .@cost, .@input * (BaseLevel <= 20 ? 30 : 500);
 		mes "[奎里]";
-		mes .@input+" combination kits will cost you "+.@cost+".... zeny.";
+		mes .@input+" 组合工具一共是 "+.@cost+".... zeny.";
 		if (Zeny < .@cost) {
 			mes "那个数量的话，你的钱似乎不够。";
 			close;
@@ -4565,7 +4565,7 @@ iz_ac01,59,83,3	script	战斗导师#08	4_M_NOV_HUNT,{
 								mes "胡萝卜含有大量纤维细胞以及维生素A和胡萝卜素，对眼睛很好！";
 								next;
 							}
-							callsub L_Quest,11340,90,50,515,1,"疯兔","is easily found","捕捉","胡萝卜";
+							callsub L_Quest,11340,90,50,515,1,"疯兔","很容易找到","捕捉","胡萝卜";
 						case 3:
 							if (!isbegin_quest(11338)) {
 								setquest 11338;
@@ -4577,10 +4577,10 @@ iz_ac01,59,83,3	script	战斗导师#08	4_M_NOV_HUNT,{
 								mes "它是条虫子，但因为模样可爱而很受欢迎。";
 								next;
 								mes "[战斗教官史必奴]";
-								mes "克里图拉学院提供的大部分衣物都是用绿棉虫的^ff0000柔毛^000000制成的。它能织出非常结实暖和的布料。";
+								mes "克里图拉学院提供的大部分衣物都是用绿棉虫的^ff0000毛^000000制成的。它能织出非常结实暖和的布料。";
 								next;
 							}
-							callsub L_Quest,11341,135,100,914,3,"绿棉虫","is easily found","狩猎","毛";
+							callsub L_Quest,11341,135,100,914,3,"绿棉虫","很容易找到","狩猎","毛";
 						case 4:
 							if (!isbegin_quest(11338)) {
 								setquest 11338;
@@ -4595,7 +4595,7 @@ iz_ac01,59,83,3	script	战斗导师#08	4_M_NOV_HUNT,{
 								mes "正如绿棉虫蜕变成克瑞米，我希望所有初心者都能成为伟大的冒险者！所以这是^ff0000蛹壳^000000。";
 								next;
 							}
-							callsub L_Quest,11344,120,90,915,2,"Pupa","is easily found","狩猎","Chrysalises";
+							callsub L_Quest,11344,120,90,915,2,"虫蛹","很容易找到","狩猎","蛹壳";
 						case 5:
 							if (!isbegin_quest(11338)) {
 								setquest 11338;
@@ -4610,7 +4610,7 @@ iz_ac01,59,83,3	script	战斗导师#08	4_M_NOV_HUNT,{
 								mes "克里图拉学院正在研究用它们尾刺中提取的毒液制作解毒剂。";
 								next;
 							}
-							callsub L_Quest,11342,200,175,939,3,"Hornet","are found","狩猎","Bee Stings";
+							callsub L_Quest,11342,200,175,939,3,"蜂兵","很容易找到","狩猎","蜂针";
 						case 6:
 							mes "[战斗教官史必奴]";
 							mes "你似乎不感兴趣。";
@@ -10141,8 +10141,8 @@ iz_ac02,52,136,3	script	客座讲师梅塞尔#0	4_F_MAYSEL,{
 
 	if (isbegin_quest(4269) > 0 && Class == Job_Novice) {
 		if (!isbegin_quest(7480)) {
-			mes "[卢明]";
-			mes ".......... Then";
+			mes "[卢敏]";
+			mes ".......... 然后";
 			cutin "nov_lumin01.bmp", 2;
 			next;
 			cutin "gc_mayssel05.bmp", 1;
@@ -10181,7 +10181,7 @@ iz_ac02,52,136,3	script	客座讲师梅塞尔#0	4_F_MAYSEL,{
 			mes "首先，我们要说清楚。";
 			mes "我们不偷别人的财物。";
 			next;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "那怪物呢？";
 			cutin "nov_lumin01.bmp", 2;
 			next;
@@ -10828,13 +10828,13 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 				mes "此外，也有人提高^4d4dffVIT以增加HP体力^000000，在公会战中作战。";
 				next;
 				mes "[维森特]";
-				mes "流氓的技能中有一个叫“胁持”的技能，可以学习并使用他人的技能，";
+				mes "流氓的技能中有一个叫“抄袭”的技能，可以学习并使用他人的技能，";
 				mes "有些人会^4d4dff投资智力，以便使用由此学到的魔法^000000。";
 				next;
 				mes "[维森特]";
 				mes "我也说不准哪种才是正确的选择。";
 				mes "你要根据自己的喜好和目的来分配能力值。";
-				mes "But...";
+				mes "但是...";
 				next;
 				mes "[维森特]";
 				mes "流氓擅长^4d4dff卸除敌人的防具^000000，或是^4d4dff比盗贼更擅长偷窃^000000。";
@@ -10847,7 +10847,7 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 				next;
 				select("Haaaaam...", "是这样吗？");
 				mes "[维森特]";
-				mes ".........you were boring.";
+				mes ".........你好无聊.";
 				mes "盗贼的技能中，有一个叫“残影”的技能。";
 				mes "与回避率相关的属性是……";
 				cutin "sc_vicente02.bmp", 2;
@@ -10911,7 +10911,7 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 					mes "它并不像其他人抱怨的那样是个胆小的职业。";
 					next;
 					mes "[卢敏]";
-					mes ".....Don't you have a strange hobby?";
+					mes ".....难道你不是有奇怪的癖好吗?";
 					mes "脱掉别人的衣服。";
 					cutin "nov_lumin01.bmp", 2;
 					next;
@@ -10932,9 +10932,9 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 						mes "成为黑暗中的影子……";
 						cutin "nov_lumin03.bmp", 2;
 						next;
-						select("我不想当盗贼。", ".... I'm scared!");
+						select("我不想当盗贼。", ".... 我害怕了!");
 						mes "[卢敏]";
-						mes "... a headache.";
+						mes "... 真是令人头疼.";
 						cutin "nov_lumin02.bmp", 2;
 						next;
 						cutin "sc_vicente04.bmp", 2;
@@ -11231,7 +11231,7 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 				next;
 				mes "[维森特]";
 				mes "也许，我不会忘记你……";
-				mes "Haha...";
+				mes "哈哈...";
 				close2;
 				cutin "", 255;
 				end;
@@ -11290,7 +11290,7 @@ iz_ac02,49,134,5	script	维森特#ac	4_M_HUMAN_02,{
 				next;
 				mes "[维森特]";
 				mes "所以换句话说，我负责的是想成为盗贼的初心者。";
-				mes "Haha...";
+				mes "哈哈...";
 				close2;
 				cutin "", 255;
 				end;
@@ -11467,7 +11467,7 @@ iz_ac02,55,134,3	script	贝尔卡塞#ac	4_M_GUILLOTINE,{
 				mes "梅塞尔会替你做。";
 				next;
 				cutin "nov_lumin01.bmp", 2;
-				mes "[卢明]";
+				mes "[卢敏]";
 				mes "懒小子。";
 				mes "说实话……你真烦人……";
 				next;
@@ -11567,19 +11567,19 @@ iz_ac02,55,134,3	script	贝尔卡塞#ac	4_M_GUILLOTINE,{
 					setquest 7485;
 					next;
 					cutin "nov_lumin02.bmp", 2;
-					mes "[卢明]";
+					mes "[卢敏]";
 					mes "Eummm.";
 					mes "真悲哀……";
 					mes "你体验不了施毒，我先向你致哀吧……呵呵呵……";
 					next;
 					select("你在说什么？");
-					mes "[卢明]";
+					mes "[卢敏]";
 					mes "从现在起，我要去猎杀波利了……";
-					mes "...Don't misunderstand me for challenging you, as such I  want to make a bet with you.";
+					mes "...别误会我挑战你, 我只是想和你打赌.";
 					cutin "nov_lumin03.bmp", 2;
 					next;
 					cutin "", 255;
-					mes "卢明在赌输赢。";
+					mes "卢敏在赌输赢。";
 					close;
 				} else if (isbegin_quest(7485) == 1) {
 					if (checkquest(7485,HUNTING) == 2) {
@@ -11678,7 +11678,7 @@ iz_ac02,55,134,3	script	贝尔卡塞#ac	4_M_GUILLOTINE,{
 				cutin "gc_verkhasel01.bmp", 0;
 				next;
 				if (select("刺客！", "流氓！") == 1) {
-					mes "[卢明]";
+					mes "[卢敏]";
 					mes "欢迎你加入这条血腥的黑暗之路。";
 					mes "我的同伴。";
 					cutin "nov_lumin03.bmp", 2;
@@ -11757,21 +11757,21 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 	}
 	if (checkquest(7487,HUNTING) == -1) {
 		if (isbegin_quest(7485) == 2) {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "你完成任务的热心和努力打动了我，让我想给你点东西。";
 			cutin "nov_lumin01.bmp", 2;
 			next;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "^4d4dff要在 30 秒内猎杀这里的 4 只波利^000000。";
 			mes "如果你做到，我就把手上得到的物品全都让给你。";
 			next;
 			select("如果我失败了呢？");
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "这是我们的赌约。输了就得交出你的东西。";
 			mes "嗯。看我多大方，我就收下^4d4dff10 瓶初心者红色药水^000000吧。";
 			next;
 			if (select("放弃。", "我接受。") == 1) {
-				mes "[卢明]";
+				mes "[卢敏]";
 				mes ".... Eh...";
 				mes "胆小鬼！";
 				cutin "nov_lumin02.bmp", 2;
@@ -11779,8 +11779,8 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 				cutin "", 255;
 				end;
 			} else {
-				mes "[卢明]";
-				mes ".... Good!";
+				mes "[卢敏]";
+				mes ".... 好极了!";
 				mes "那么，^4d4dff等你 30 秒内猎杀完 4 只波利后再来找我。^000000";
 				setquest 7487;
 				close2;
@@ -11788,25 +11788,25 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 				end;
 			}
 		} else {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "中毒的敌人不会只因为中毒就死掉。";
 			mes "它们只会濒临死亡而已。";
 			cutin "nov_lumin01.bmp", 2;
 			next;
-			mes "[卢明]";
-			mes ".. Why do Porings turn their back?";
+			mes "[卢敏]";
+			mes ".. 为什么波利老是转身?";
 			close2;
 			cutin "", 255;
 			end;
 		}
 	} else if (checkquest(7487,HUNTING) == 1) {
 		if (checkquest(7487,PLAYTIME) == 2) {
-			mes "[卢明]";
-			mes "... 30 seconds have passed and you have not yet hunted 4 porings.";
+			mes "[卢敏]";
+			mes "... 30 秒过去了但你还没有杀死 4 个波利.";
 			mes "那就没意思了。";
 			cutin "nov_lumin01.bmp", 2;
 			next;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "如果你不想做……那也没办法。";
 			mes "看我多大方，这次赌约就算了。";
 			erasequest 7487;
@@ -11814,7 +11814,7 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 			cutin "", 255;
 			end;
 		} else {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "你大概正忙着^4d4dff在 30 秒内猎杀 4 只波利吧。^000000";
 			mes "喂，时间在流逝啊……";
 			cutin "nov_lumin01.bmp", 2;
@@ -11824,12 +11824,12 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 		}
 	} else if (checkquest(7487,HUNTING) == 2) {
 		if (checkquest(7487,PLAYTIME) == 0) {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "哦……你很强嘛！";
 			mes "那么，按约定，我会把我所有的东西都给你。";
 			cutin "nov_lumin03.bmp", 2;
 			next;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "托你的福，我玩得很开心！";
 			cutin "nov_lumin05.bmp", 2;
 			completequest 7487;
@@ -11842,12 +11842,12 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 			cutin "", 255;
 			end;
 		} else {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "很遗憾，30 秒已经过去了。";
 			cutin "nov_lumin02.bmp", 2;
 			mes ".....";
 			next;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "反正我还是会给你的。";
 			mes "来，拿着吧。";
 			cutin "nov_lumin03.bmp", 2;
@@ -11856,8 +11856,8 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 			getitem 512,22;// Apple
 			next;
 			select("你为什么这样对我？", "我不是输了吗？");
-			mes "[卢明]";
-			mes "你陪我度过了时间。";
+			mes "[卢敏]";
+			mes "你陪我度过了时光。";
 			mes "白送你的。这是我从波利身上偷来的。";
 			cutin "nov_lumin05.bmp", 2;
 			close2;
@@ -11866,33 +11866,33 @@ iz_ac02,62,139,3	script	卢敏#ac	4_M_NOV_RUMIN,{
 		}
 	} else {
 		if (Class == Job_Novice) {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "我们也许还会再见。";
 			mes "与人熟识，既快乐又悲伤。";
 			cutin "nov_lumin02.bmp", 2;
 			next;
-			mes "[卢明]";
-			mes "... It may be in trouble if it dies upfront...";
+			mes "[卢敏]";
+			mes "... 如果它一开始就死了就麻烦了...";
 			close2;
 			cutin "", 255;
 			end;
 		} else {
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "终于，这一天到来了。";
 			cutin "nov_lumin01.bmp", 2;
 			next;
 			cutin "", 255;
-			mes "卢明一件件地换着衣服。";
+			mes "卢敏一件件地换着衣服。";
 			specialeffect2 EF_SPHERE;
 			specialeffect2 EF_SPHERE;
 			setnpcdisplay( "卢敏#"+strnpcinfo(2), 4_M_THIEF_RUMIN );
 			next;
 			cutin "thf_lumin01.bmp", 2;
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "我是在执行任务。";
 			next;
 			select("不用找借口……");
-			mes "[卢明]";
+			mes "[卢敏]";
 			mes "至少对你，我不想做个陌生人。";
 			mes "忘掉你今天所看到的吧，因为我还要尽可能多地向人引介盗贼公会的道路。";
 			cutin "thf_lumin05.bmp", 2;
