@@ -1,0 +1,282 @@
+//===== rAthena Script =======================================
+//= Archer Skill Quest
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.7
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Quest for skills: Arrow Crafting, Arrow Repel
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//= 1.6 Updated to latest available official file.
+//=     also fixed Item issue [bugreport:5607]. [Masao]
+//= 1.7 Fixed JobLevel requirements. [Euphy]
+//============================================================
+
+moc_ruins,118,99,5	script	罗贝托	88,{
+	if (BaseClass == Job_Archer) {
+		if (getskilllv("AC_MAKINGARROW") == 1) {
+			mes "[罗贝托]";
+			mes "哦，你是从我的故乡来的！";
+			mes "见到你真好！";
+			mes "你好吗？";
+			mes "啊！那支箭！";
+			mes "你做到了，对吧！";
+			next;
+			mes "[罗贝托]";
+			mes "哈哈……！";
+			mes "你觉得好多了吗？";
+			mes "哈哈……总之，我很高兴。";
+			mes "有空就回来看看";
+			mes "带些故乡的消息来。";
+			mes "那么再见～";
+			close;
+		}
+		else if (JobLevel >= 30 || (BaseJob == Job_Hunter || BaseJob == Job_Bard || BaseJob == Job_Dancer)) {
+			mes "[罗贝托]";
+			mes "呃！";
+			mes " ";
+			mes "你是……";
+			next;
+			if ((countitem(907) > 19) && (countitem(921) > 6) && (countitem(906) > 40) && (countitem(1019) > 12) && (countitem(501) > 0)) {
+				mes "[罗贝托]";
+				mes "你带来了！";
+				mes "非常感谢。";
+				mes "那么，按照约定，我就教你这项技能。";
+				next;
+				delitem 907,20; //Resin
+				delitem 921,7; //Mushroom_Spore
+				delitem 906,41; //Pointed_Scale
+				delitem 1019,13; //Wooden_Block
+				delitem 501,1; //Red_Potion
+				skill "AC_MAKINGARROW",1,SKILL_PERM;
+				mes "[罗贝托]";
+				mes "现在不必再为箭矢发愁了。";
+				mes "对了，你有没有见过";
+				mes "裴扬一个叫杰森的人？";
+				mes "小心点。他是个";
+				mes "凶恶的家伙。";
+				next;
+				mes "[罗贝托]";
+				mes "你只要小心裴扬的杰森就行。";
+				mes "Remember.";
+				mes "那么再见～谢谢你的礼物～";
+				close;
+			}
+			mes "[罗贝托]";
+			mes "梦罗克的弓箭手！？";
+			mes "见到你真好！在这种地方遇到";
+			mes "同为弓箭手的人！*吸吸鼻子*！";
+			mes "我独自来到梦罗克……";
+			mes "可我是个新人，压力……哇啊～";
+			mes "我好寂寞～";
+			next;
+			switch (select("一定很辛苦吧。坚持下去就好。:继续受苦吧。")) {
+			case 1:
+				mes "[罗贝托]";
+				mes "是的。谢谢你……";
+				mes "在这种地方一定";
+				mes "过得很辛苦吧。";
+				mes "是不是很难找到箭矢？";
+				mes "所以我都自己做。";
+				next;
+				select("咦，真的吗？！");
+				mes "[罗贝托]";
+				mes "是啊！我收集各种材料";
+				mes "用它们来做箭。";
+				mes "这是一项很有用的技能，能帮我在";
+				mes "这艰难的世界里独自生存下去。";
+				mes "如果你愿意，我可以教你。";
+				next;
+				select("那真是太好了。");
+				mes "[罗贝托]";
+				mes "可是……我不能白教。";
+				mes "这世上没有白得的东西～";
+				mes "嗯……这样如何？";
+				mes "你把我需要的东西带来。";
+				mes "然后我就教你这项技能。";
+				next;
+				mes "[罗贝托]";
+				mes "离开故乡以后，我一直很寂寞。";
+				mes "我想用故乡的东西";
+				mes "来缓解思乡之情。";
+				mes "带给我 20 个来自";
+				mes "裴扬树林树木的树脂，还要 1 瓶红色药水，";
+				mes "商店里卖的那种。";
+				next;
+				mes "[罗贝托]";
+				mes "另外，13 个柳树精身上的玛哪树枝，它们";
+				mes "住在裴扬树林附近，";
+				mes "41 个尖刺鳞片，";
+				mes "7 个香菇芽孢。";
+				mes "如果你把这些全带来，";
+				next;
+				mes "[罗贝托]";
+				mes "我就教你这项技能。";
+				mes "那么……我等着你。";
+				mes "等着故乡的消息。";
+				close;
+			case 2:
+				mes "[罗贝托]";
+				mes "...hey "+((Sex == SEX_MALE)?"先生":"小姐")+".";
+				mes "...be careful at night.";
+				close;
+			}
+		}
+		mes "[罗贝托]";
+		mes "嗯……你";
+		mes "有什么话要说吗？";
+		mes "我没什么可说的。";
+		mes "等级上的差距";
+		mes "会让对话无法继续。";
+		close;
+	}
+	mes "[?]";
+	mes "呃……是第一次见到弓箭手还是怎样？";
+	mes "你还是走你的路吧。";
+	mes "我只跟高等级的弓箭手说话。";
+	mes "不然我可不会开口！";
+	close;
+}
+
+payon,103,63,3	script	杰森	88,3,3,{
+	if (BaseClass == Job_Archer) {
+		if (getskilllv("AC_CHARGEARROW") == 1) {
+			mes "[杰森]";
+			mes "呃，又见面了。";
+			mes "呃呃呃，真奇怪。";
+			mes "每次再见到别人";
+			mes "我就会一直呃个不停。";
+			mes "呃……总之，很高兴再见到你。";
+			mes "呃呃……别再来了，呃……";
+			close;
+		}
+		else if (JobLevel >= 35 || (BaseJob == Job_Hunter || BaseJob == Job_Bard || BaseJob == Job_Dancer)) {
+			mes "[杰森]";
+			mes "可恶……我的伤一直不好。";
+			mes "啧……是我太大意了……";
+			mes "才会变成这样……呃……";
+			mes "可是，把我伤成这样";
+			mes "害我受了这么多伤……";
+			next;
+			mes "罗伯托的事该怎么办。";
+			mes "嗯……啊！";
+			mes "你？你在那儿多久了？";
+			mes "嗯……等级很高嘛。";
+			mes "像你这样的人一定";
+			mes "能学会使用箭矢击退。";
+			next;
+			switch (select("那是什么？:教教我。")) {
+			case 1:
+				mes "[杰森]";
+				mes "...you're kidding, right?";
+				mes "哎呀，你这个等级";
+				mes "竟然连箭矢击退都不知道？";
+				mes "你真是个怪人。";
+				next;
+				mes "[杰森]";
+				mes "（杰森走神了。）";
+				next;
+				mes "[杰森]";
+				mes "好吧。我就教教你";
+				mes "箭矢击退是什么。";
+				next;
+				mes "[杰森]";
+				mes "箭矢击退是一项能在攻击的同时";
+				mes "把对手推开的技能。";
+				mes "只有准确瞄准";
+				mes "目标时才能使用。不过与魔法不同，";
+				mes "它不会中断咏唱。";
+				next;
+				mes "[杰森]";
+				mes "对于不擅长近战的弓箭手来说";
+				mes "它非常实用。";
+				mes "如果你想学，";
+				mes "再来找我吧。";
+				mes "需要准备一些材料。";
+				next;
+				mes "[杰森]";
+				mes "首先，因为要改造弓，";
+				mes "带一把你不用的十字弓来。";
+				mes "10 个触须、10 个鸟嘴，";
+				mes "3 个猴子尾巴……这些很有弹性。";
+				mes "还有 2 颗绿宝石。最后还有……";
+				mes "36 瓶我最爱的香蕉汁！";
+				next;
+				mes "[杰森]";
+				mes "......Ehem!";
+				mes "如果你把这些全带来，";
+				mes "我就教你箭矢击退。";
+				mes "那么，再见。";
+				mes "（你要是不带香蕉汁来，我可要生气了。）";
+				close;
+			case 2:
+				if ((countitem(721) > 1) && (countitem(942) > 2) && (countitem(962) > 9) && (countitem(925) > 9) && (countitem(532) > 35)) {
+					mes "[杰森]";
+					mes "好！完美！";
+					mes "我就教你这项";
+					mes "全国闻名的技能——箭矢击退！";
+					next;
+					delitem 721,2; //Azure_Jewel
+					delitem 942,3; //Yoyo_Tail
+					delitem 962,10; //Tentacle
+					delitem 925,10; //Bill_Of_Birds
+					delitem 532,36; //Banana_Juice
+					skill "AC_CHARGEARROW",1,SKILL_PERM;
+					mes "[杰森]";
+					mes "哦，比我想的还好用！";
+					mes "看来不用改造弓了！";
+					mes "这个你拿回去吧～";
+					mes "好好用你新学到的";
+					mes "技能在原野和地下城里闯荡吧！";
+					mes "嘿～嘿嘿～！";
+					close;
+				}
+				mes "[杰森]";
+				mes "嗯……真可惜。";
+				mes "你还缺一些东西。";
+				mes "再说一次，你需要 2 颗绿宝石、";
+				mes "3 个猴子尾巴、10 个触须、";
+				mes "10 个鸟嘴，最后还有";
+				mes "36 瓶香蕉汁！";
+				next;
+				mes "[杰森]";
+				mes "把东西都凑齐了再来！";
+				close;
+			}
+		}
+		mes "[杰森]";
+		mes "哦……你是弓箭手啊。";
+		mes "再多努力一点";
+		mes "你一定会成为";
+		mes "名声大噪的弓箭手！";
+		mes "加油吧！";
+		close;
+	}
+	mes "[?]";
+	mes "人生对像我这样";
+	mes "孤独的少年有什么要求呢？";
+	close;
+
+OnTouch_:
+	mes "[???]";
+	mes "Errrrrrr...";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= 1.0 Roberto message text is based off RO npc.  Jason message
+//=     text is custom from old version.
+//=     All items are from official quests though.[kobra_k88]
+//= 1.0a Now using functions found in "Global_Functions.txt"
+//=     for class checks.[kobra_k88]
+//= 1.2 Added Baby Class Support [Lupus]
+//= 1.3 Removed callfunc Is_####_Class in favor of baseClass [Silentdragon]
+//= 1.4 Fixed exploits [Lupus]
+//= 1.4a Fixed some typos [IVBela]
+//= 1.4b changed perm. variables to temp ones [Lupus]
+//============================================================

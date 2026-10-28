@@ -1,0 +1,121 @@
+//===== rAthena Script =======================================
+//= Acolyte Skill Quest
+//===== By: ==================================================
+//= kobra_k88
+//===== Current Version: =====================================
+//= 1.8
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Quest for skills: Holy Light
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//= 1.6 Fixed a typo in job check. (Bugreport:1531) [L0ne_W0lf]
+//= 1.7 Updated to latest available official file. [Masao]
+//= 1.8 Fixed JobLevel requirements. [Euphy]
+//============================================================
+
+prt_church,173,23,4	script	祭司	79,{
+	mes "[服事克利夫特]";
+	mes "啊……兄弟们！侍奉迷途羔羊的";
+	mes "职责，是否让你们";
+	mes "感到疲惫？";
+	mes "我来协助你们。";
+	next;
+	switch (select("^3355FF' 服事的隐藏能力 '^000000 ..:^3355FF' 神圣之光 '^000000 修炼:结束对话")) {
+	case 1:
+		mes "[服事克利夫特]";
+		mes "我们的神职人员";
+		mes "会随着成长自然而然地";
+		mes "习得技能。当他们临近";
+		mes "身为服事的资深之年时";
+		mes "便能获得这项特殊技能。";
+		next;
+		mes "[服事克利夫特]";
+		mes "面对巨大的危险与";
+		mes "与邪恶无休止的斗争，";
+		mes "我们的弟兄极需援助。";
+		mes "^3355FF' 神圣之光 '^000000 正是这项技能。";
+		mes "若想为自己获得这份能力，";
+		mes "就需要付出一些努力。";
+		next;
+		mes "[服事克利夫特]";
+		mes "要获得这项技能，你必须找到这些物品。";
+		mes "^FF33551 <ITEM>白宝石<INFO>727</INFO></ITEM>^000000";
+		mes "^FF33551 <ITEM>水灵矿石<INFO>991</INFO></ITEM>^000000";
+		mes "^FF33551 <ITEM>幸运珠链<INFO>2608</INFO></ITEM>^000000";
+		next;
+		mes "[服事克利夫特]";
+		mes "要想能够使用这项技能，";
+		mes "必须拥有足够的经验。";
+		mes "^FF3355 Job等级 30^000000";
+		mes "是学习这项技能的必要条件。";
+		next;
+		mes "[服事克利夫特]";
+		mes "至于牧师，由于他们";
+		mes "早已拥有丰富的经验，";
+		mes "因此能在任何";
+		mes "Job等级获得这项技能。";
+		close;
+	case 2:
+		if (getskilllv("AL_HOLYLIGHT") == 1) {
+			mes "[服事克利夫特]";
+			mes "兄弟，你已经拥有";
+			mes "` 神圣之光 '这项技能。";
+			mes "你无法获得自己";
+			mes "已经拥有的技能……";
+			mes "我祈祷你能将";
+			mes "这项技能用于善行……";
+			close;
+		}
+		if ((countitem(727) > 0) && (countitem(991) > 0) && (countitem(2608) > 0) && (JobLevel > 29 || (BaseJob == Job_Priest || BaseJob == Job_Monk)) && (BaseClass == Job_Acolyte)) {
+			mes "[服事克利夫特]";
+			mes "你的信仰已证明";
+			mes "你配得' 神圣之光 '技能。";
+			mes "你的能力已足够";
+			mes "使用这项技能。";
+			mes "善加运用吧……";
+			next;
+			delitem 727,1; //White_Jewel
+			delitem 991,1; //Crystal_Blue
+			delitem 2608,1; //Rosary
+			skill "AL_HOLYLIGHT",1,SKILL_PERM;
+			mes "[服事克利夫特]";
+			mes "你现在已掌握' 神圣之光 '";
+			mes "愿你只以最端正的品行";
+			mes "来使用这项技能……";
+			close;
+		}
+		mes "[服事克利夫特]";
+		mes "哦，原因很清楚了……";
+		mes "你还未准备好";
+		mes "接受' 神圣之光 '技能。";
+		next;
+		mes "[服事克利夫特]";
+		mes "你应该仔细听清楚";
+		mes "这项技能所需的条件。";
+		mes "若你仔细聆听，";
+		mes "便能明白自己缺少什么。";
+		mes "从而得以精进自身。";
+		close;
+	case 3:
+		mes "[服事克利夫特]";
+		mes ". . . . .";
+		mes "我明白你的热忱。";
+		mes "你还有很多时间";
+		mes "去练习并积累经验。";
+		mes "愿祝福与你同在……";
+		close;
+	}
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= 1.0a Now using functions found in "Global_Functions.txt"
+//=     for class checks.
+//= 1.2 Added Baby Class Support [Lupus]
+//= 1.3 Removed callfunc Is_####_Class in favor of baseClass [Silentdragon]
+//= 1.4 Fixed an exploit [Lupus]
+//= 1.4a changed perm. variables to temp ones [Lupus]
+//============================================================

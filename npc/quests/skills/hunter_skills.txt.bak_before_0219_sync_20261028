@@ -1,0 +1,377 @@
+//===== rAthena Script ======================================= 
+//= Hunter Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen, Kisuka
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quests for skills: Phantasmic Arrow
+//===== Additional Comments: ================================= 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//=     Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//=     some of the items required and made them into real
+//=     quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//= 1.3c Fixed some typos [IVBela]
+//= 1.3d Changed NPC Name to the official [Lupus]
+//= 1.4 Moved Arpesto from tu_archer and added his script. [Kisuka]
+//============================================================
+
+pay_arche,109,169,3	script	阿尔佩斯托	712,{
+	if (BaseJob == Job_Hunter) {
+		if (qskill_hunter == 100) {
+			if (getskilllv("HT_PHANTASMIC")) {
+				mes "[阿尔佩斯托]";
+				mes "嗯，如果我刚才";
+				mes "因为你那一下不小心擦到我";
+				mes "就大吵大闹，真是抱歉。只是我修炼得太";
+				mes "投入，血糖低得厉害，加上疲劳……";
+				next;
+				mes "[雷丁·科斯]";
+				mes "哈哈！承认吧，";
+				mes "老头！你就是";
+				mes "被吓到了！至于我";
+				mes "嘛……";
+				emotion ET_KIK, getnpcid(0, "雷丁·科斯#tu");
+				next;
+				mes "[阿尔佩斯托]";
+				mes "你这个小";
+				mes "鬼头！";
+				mes "我根本不知道";
+				mes "你在说什么！";
+				close;
+			} else {
+				mes "[阿尔佩斯托]";
+				mes "我好像在哪";
+				mes "见过你，";
+				mes "我想想。雷丁，你";
+				mes "记得这家伙吗？";
+				next;
+				mes "[雷丁·科斯]";
+				mes "哎，得了吧，我们";
+				mes "见过成百上千的弓箭手、";
+				mes "猎人、神射手，还有……";
+				mes "我哪记得住那么多人。";
+				mes "不过我看这家伙";
+				mes "还算靠谱。相信我！";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "好吧，好吧。";
+				mes "既然雷丁觉得你";
+				mes "有资格，那你大概";
+				mes "确实有。既如此，我愿";
+				mes "教你我的秘传技能，";
+				mes "''幻影箭''。";
+				next;
+				mes "[雷丁·科斯]";
+				mes "等等，等等。这家伙";
+				mes "只需要复习一下。";
+				mes "对，我很确定你";
+				mes "以前来学过这个";
+				mes "技能。对，我";
+				mes "有这种直觉。";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "可恶。只是复习？";
+				mes "那不就意味着";
+				mes "你可以免费学。好吧……";
+				mes "你现在应该能";
+				mes "使用幻影箭技能了。";
+				mes "路上小心，听见没？";
+				skill "HT_PHANTASMIC",1,SKILL_PERM;
+				close;
+			}
+		}
+		else if (qskill_hunter == 1) {
+			if (countitem(724) > 4 && countitem(7115) > 4 && countitem(537) > 29) {
+				mes "[阿尔佩斯托]";
+				mes "嗯？你回来了？";
+				mes "哦，你把";
+				mes "东西都带来了？啊，带来了。";
+				mes "很好！现在我就传授";
+				mes "我的超级秘传技能……";
+				mes "阿尔佩斯托第一式！";
+				next;
+				mes "[雷丁·科斯]";
+				mes "等等！等等……";
+				mes "你之前不是叫它";
+				mes "阿尔佩斯托第三式";
+				mes "之类的吗？";
+				emotion ET_SWEAT, getnpcid(0, "雷丁·科斯#tu");
+				next;
+				mes "[阿尔佩斯托]";
+				mes "呃，对，阿尔佩斯托";
+				mes "第三式，没错。";
+				mes "只是这名号实在";
+				mes "太多了，所以……";
+				mes "总之，我这就教你";
+				mes "''紧急箭''技能。";
+				next;
+				mes "[雷丁·科斯]";
+				mes "哇，等等！";
+				mes "''紧急箭？！''";
+				mes "那是你以前";
+				mes "给这技能起的旧名字吧？";
+				mes "你不是改过名吗？";
+				emotion ET_HUK;
+				next;
+				emotion ET_HUK;
+				mes "[阿尔佩斯托]";
+				mes "你到底";
+				mes "在胡说八——";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "哦，你说得对。";
+				mes "我们说过那个名字";
+				mes "太俗气了。现在";
+				mes "叫它什么来着？嗯……";
+				mes "''幻影箭？''";
+				emotion ET_THINK;
+				next;
+				mes "[阿尔佩斯托]";
+				mes "...";
+				mes "......";
+				emotion ET_CRY;
+				next;
+				mes "[雷丁·科斯]";
+				mes "Umm....";
+				mes "Ummm........";
+				next;
+				mes "[雷丁·科斯]";
+				mes "对，就是这个名字！";
+				mes "''^3131FF幻影箭^000000''听起来";
+				mes "比你想出来的那个";
+				mes "名字酷多了！";
+				emotion ET_AHA, getnpcid(0, "雷丁·科斯#tu");
+				next;
+				mes "[阿尔佩斯托]";
+				mes "你有时候还挺";
+				mes "管用的，雷丁。现在，";
+				mes "回到正事上来。";
+				mes "我这就教你我的";
+				mes "绝技，幻影箭。现在……";
+				mes "集中精神，做好准备！";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "幻——！";
+				mes "影——！";
+				mes "之——！";
+				mes "箭——！";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "箭啊啊啊啊啊啊啊～！";
+				specialeffect EF_FLASHER;
+				specialeffect2 EF_FLASHER;
+				next;
+				mes "[阿尔佩斯托]";
+				mes "^333333*呼……呼……*^000000";
+				mes "好了，我用一种特殊的";
+				mes "方法，把这技能——";
+				mes "直接灌输进你的脑子。你现在应该";
+				mes "能用了。要不要试一下？";
+				next;
+				mes "^3355FF*嗖————！*";
+				mes "*砰！*^000000";
+				specialeffect EF_HIT2;
+				emotion ET_HUK;
+				emotion ET_HUK, playerattached();
+				next;
+				mes "[阿尔佩斯托]";
+				mes "^333333*呼……呼……*";
+				mes "*咳……咳……*";
+				mes "*咳……咳……*^000000";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "为什么是我啊啊啊啊？！";
+				emotion ET_HUK, getnpcid(0, "雷丁·科斯#tu");
+				next;
+				mes "^3355FF*咚！*^000000";
+				next;
+				mes "[雷丁·科斯]";
+				mes "阿、阿尔佩斯托，不要！";
+				mes "...........................";
+				mes "哦。哦，拜托！那支箭";
+				mes "只是擦过你而已！你";
+				mes "会没事的。别像个小孩一样。";
+				next;
+				mes "[雷丁·科斯]";
+				mes "唉，别担心";
+				mes "阿尔佩斯托。他只是个";
+				mes "疯老头。我会";
+				mes "照顾他的，你只要确保";
+				mes "好好运用";
+				mes "那个新技能就行。保重～";
+				delitem 724,5; //Cardinal_Jewel_
+				delitem 7115,5; //Harpy's_Feather
+				delitem 537,30; //Pet_Food
+				set qskill_hunter,100;
+				skill "HT_PHANTASMIC",1,SKILL_PERM;
+				close;
+			} else {
+				mes "[阿尔佩斯托]";
+				mes "快点把";
+				mes "^3131FF5 个诅咒红宝石^000000，";
+				mes "^3131FF30 个宠物饲料^000000和";
+				mes "^3131FF5 根哈比羽毛^000000。";
+				mes "然后，我就能教你";
+				mes "紧急箭技能了。";
+				close;
+			}
+		}
+		else {
+			if (getskilllv("HT_PHANTASMIC")) {
+				mes "[阿尔佩斯托]";
+				mes "啊，很好。";
+				mes "嗯，正如你刚才";
+				mes "演示的，我的教学法";
+				mes "很完美。不过下次，";
+				mes "要把技能用在值得";
+				mes "挨打的敌人身上，明白吗？很好。";
+				set qskill_hunter,100;
+				close;
+			}
+			if (BaseJob == Job_Hunter && JobLevel < 40) {
+				mes "[阿尔佩斯托]";
+				mes "是师父派你";
+				mes "来找我的吗？嗯……你还";
+				mes "太嫩了，一眼就看得出来。";
+				mes "是啊，我觉得现在还没什么能教你的。";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "再锻炼一阵子，";
+				mes "在你的职业上";
+				mes "多积累些经验。等你";
+				mes "更擅长狩猎时，";
+				mes "就能领会我一直在";
+				mes "教猎人和神射手的东西了。";
+				close;
+			} else {
+				mes "[阿尔佩斯托]";
+				mes "是师父派你来的吗？";
+				mes "啊，你确实有";
+				mes "真正猎人那种秃鹫般";
+				mes "锐利的眼睛。你应该";
+				mes "能够学会我的秘传";
+				mes "技能，阿尔佩斯托第三式……";
+				next;
+				mes "[阿尔佩斯托]";
+				mes "这是我在与美杜莎";
+				mes "战斗、箭矢耗尽时";
+				mes "开发出来的";
+				mes "实用技能。我把它叫作";
+				mes "''^3131FF紧急箭^000000''。你";
+				mes "有兴趣学吗？";
+				next;
+				switch(select("好的，拜托了！:嗯……")) {
+				case 1:
+					mes "[阿尔佩斯托]";
+					mes "很好，很好。当然，";
+					mes "只要你识得这技能的";
+					mes "价值，就肯定无法";
+					mes "拒绝。不过，我想";
+					mes "收一点学费，作为教你此技能的回报。";
+					next;
+					mes "[阿尔佩斯托]";
+					mes "虽然向同为猎人的你";
+					mes "收取费用，让我";
+					mes "有些愧疚，但创造";
+					mes "这个技能需要我";
+					mes "付出巨大的牺牲和";
+					mes "难以想象的流血……";
+					next;
+					mes "[雷丁·科斯]";
+					mes "喂！你这个骗子！";
+					mes "你无聊时";
+					mes "拿一把弓瞎摆弄，";
+					mes "不小心弄出那个";
+					mes "技能的时候，";
+					mes "我就在场！";
+					emotion ET_KIK, getnpcid(0, "雷丁·科斯#tu");
+					next;
+					emotion ET_HUK;
+					mes "[阿尔佩斯托]";
+					mes "^333333*咳咳*^000000 拜托，雷丁，";
+					mes "别理会那些";
+					mes "毫无根据的谣言。我是在";
+					mes "与虎王无数次战斗后，";
+					mes "才成功发明并";
+					mes "完善了紧急箭。";
+					next;
+					mes "[雷丁·科斯]";
+					mes "^333333*啧啧*^000000 呵。";
+					mes "我记得你说过";
+					mes "你是在和";
+					mes "美杜莎战斗时开发出它的。";
+					next;
+					mes "[阿尔佩斯托]";
+					mes "总、总之，请给我";
+					mes "带来下面这些东西";
+					mes "作为学费，换我";
+					mes "教你这项技能。";
+					next;
+					mes "[阿尔佩斯托]";
+					mes "请给我带来";
+					mes "^3131FF5 个诅咒红宝石^000000，";
+					mes "^3131FF30 个宠物饲料^000000和";
+					mes "^3131FF5 根哈比羽毛^000000。";
+					mes "然后我就能教你";
+					mes "这项技能了。";
+					next;
+					mes "[雷丁·科斯]";
+					mes "30 个宠物饲料？";
+					mes "你要那么多";
+					mes "到底干什么用？";
+					next;
+					mes "[阿尔佩斯托]";
+					mes "I...";
+					mes "我要用它们";
+					mes "来喂";
+					mes "我的宠物猎鹰。";
+					next;
+					mes "[雷丁·科斯]";
+					mes "...";
+					mes "......";
+					mes ".........";
+					mes "......Riiiight.";
+					emotion ET_THINK, getnpcid(0, "雷丁·科斯#tu");
+					set qskill_hunter,1;
+					close;
+				case 2:
+					mes "[阿尔佩斯托]";
+					mes "好吧，这是你的";
+					mes "决定。不过，我";
+					mes "相信你迟早会";
+					mes "非常需要我的技能，";
+					mes "所以改变主意的话，";
+					mes "就回来找我吧。";
+					close;
+				}
+			}
+		}
+	} else {
+		mes "[阿尔佩斯托]";
+		mes "天空看起来依然晴朗，但最近吹过这片土地的风，似乎带着一股不幸的气息。";
+		next;
+		emotion ET_HNG, getnpcid(0, "雷丁·科斯#tu");
+		mes "[雷丁·科斯]";
+		mes "So...";
+		mes "危险要来了？";
+		mes "嘿！放轻松，老爷子～";
+		mes "有我呢！";
+		next;
+		emotion ET_PROFUSELY_SWEAT;
+		mes "[阿尔佩斯托]";
+		mes "呵呵……";
+		mes "有活力，但";
+		mes "太自大了。现在的年轻人……";
+		close;
+	}
+}
+

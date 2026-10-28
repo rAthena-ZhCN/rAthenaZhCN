@@ -26,15 +26,15 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "是无用的知识，但其实并非如此";
 		mes "让我来解释。";
 		next;
-		switch (select("沙尘攻击:后侧滑行:寻找石头:投石:我稍后再来。")) {
+		switch (select("喷砂:后退回避:捡石头:投掷石头:我稍后再来。")) {
 		case 1:
 			switch (skill_thief_1) {
 			case 0:
 				if ((countitem(7041) > 4) && ((JobLevel > 24) || (BaseJob == Job_Assassin || BaseJob == Job_Rogue))) {
 					mes "[阿尔库斯库]";
 					mes "幸运的是，你带来了一些";
-					mes "沙子。对盗贼而言，";
-					mes "身边常备少量沙子";
+					mes "<ITEM>黄晶沙的一角<INFO>7041</INFO></ITEM>。对盗贼而言，";
+					mes "身边常备少量黄晶沙的一角";
 					mes "是非常重要的。多数人并不";
 					mes "明白这种寻常之物有何价值";
 					mes "substance.";
@@ -217,7 +217,7 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "花费无数小时练习才能掌握。";
 		mes "如果你想学习并练习，";
 		mes "就需要准备一些物品。";
-		mes "准备^3355FF20 个蝗虫后腿^";
+		mes "准备^3355FF20 个<ITEM>蝗虫后腿<INFO>940</INFO></ITEM>^";
 		mes "来开始你的训练。";
 		next;
 		mes "[阿尔库斯库]";
@@ -229,13 +229,16 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "若达不到，我就不能教你。";
 		close;
 	case 3:
+		mes "[阿尔库斯库]";
+		mes "我需要1个<ITEM>剎勒空结晶<INFO>912</INFO></ITEM>、1个<ITEM>熊掌<INFO>948</INFO></ITEM>和5个<ITEM>青蛙蛋<INFO>908</INFO></ITEM>。";
+		next;
 		if ((countitem(912) > 0) && (countitem(948) > 0) && (countitem(908) > 4) && ((JobLevel > 19) || (BaseJob == Job_Assassin || BaseJob == Job_Rogue))) {
 			mes "[阿尔库斯库]";
 			mes "哇，你已经准备好了？";
 			mes "很好，我看得出你有前途。——";
 			mes "你的热情确实真诚。";
 			mes "好，我们开始训练吧？";
-			mes "投石……";
+			mes "投掷石头……";
 			mes "找一块光滑、重量合适的石头。";
 			next;
 			mes "[阿尔库斯库]";
@@ -278,8 +281,8 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "传授给他人实在是一种浪费。——";
 		mes "于是他们成立了一个团体，";
 		mes "向他人传授这项技能……";
-		mes "^3355FF“寻找石头”^000000与";
-		mes "^3355FF“投石”^000000技能便由此而来。";
+		mes "^3355FF“捡石头”^000000与";
+		mes "^3355FF“投掷石头”^000000技能便由此而来。";
 		next;
 		mes "[阿尔库斯库]";
 		mes "能几乎在任何地方找到石头，";
@@ -295,7 +298,7 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes ". . . . . Hah Hah Hah . . . . . .";
 		next;
 		mes "[阿尔库斯库]";
-		mes "^3355FF“寻找石头！”^000000技能";
+		mes "^3355FF“捡石头！”^000000技能";
 		mes "几乎可以在任何地方使用。";
 		mes "从地上捡起光滑、";
 		mes "重量适合投掷的";
@@ -308,7 +311,7 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "全力……——";
 		mes ". . . . . *Ahem* . . . . .";
 		mes "首先，我们来练习如何拾取";
-		mes "一个^3355FF熊掌^000000，以熟悉这个动作。";
+		mes "一个^3355FF<ITEM>熊掌<INFO>948</INFO></ITEM>^000000，以熟悉这个动作。";
 		next;
 		mes "[阿尔库斯库]";
 		mes "至于代替石头的，试着拾取";
@@ -360,8 +363,8 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes "传授给他人实在是一种浪费。——";
 		mes "于是他们成立了一个团体，";
 		mes "向他人传授这项技能……";
-		mes "^3355FF“寻找石头”^000000与";
-		mes "^3355FF“投石”^000000技能便由此而来。";
+		mes "^3355FF“捡石头”^000000与";
+		mes "^3355FF“投掷石头”^000000技能便由此而来。";
 		next;
 		mes "[阿尔库斯库]";
 		mes "能几乎在任何地方找到石头，";
@@ -377,7 +380,7 @@ moc_prydb1,154,128,4	script	阿尔库斯库	118,{
 		mes ". . . . . Hah Hah Hah . . . . . .";
 		next;
 		mes "[阿尔库斯库]";
-		mes "^3355FF投石！！^000000";
+		mes "^3355FF投掷石头！！^000000";
 		mes "这项技能使用起来";
 		mes "非常方便，若你能熟练";
 		mes "捡石头，就不需要";
@@ -451,6 +454,9 @@ payon,91,77,3	script	皮袋商人	99,{
 		mes "他们常来我的店里。";
 		close;
 	case 1:
+		mes "[鲁鲁穆尼]";
+		mes "我需要1个<ITEM>仙人掌刺<INFO>952</INFO></ITEM>、1个<ITEM>蚯蚓皮<INFO>1055</INFO></ITEM>和1个<ITEM>蜘蛛丝<INFO>1025</INFO></ITEM>。";
+		next;
 		if ((countitem(952) > 0) && (countitem(1055) > 0) && (countitem(1025) > 0)) {
 			mes "[鲁鲁穆尼]";
 			mes "啊啊……你是来取皮革袋子的。";

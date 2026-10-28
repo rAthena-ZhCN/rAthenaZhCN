@@ -1,0 +1,529 @@
+//===== rAthena Script ======================================= 
+//= Knight Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen, Samuray22
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quests for skills: Charge Attack
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//============================================================
+
+prt_in,85,99,3	script	骑士#kabuto	734,{
+	if (BaseJob == Job_Knight) {
+		if (KNGT_SK == 10) {
+			mes "[艾索费特]";
+			mes "啊，能在这个世界里";
+			mes "当一名冒险的骑士，";
+			mes "一定很威风吧。你一定";
+			mes "遇到过各种各样的";
+			mes "危险魔物和";
+			mes "可怕的敌人，对吧？";
+			next;
+			mes "[艾索费特]";
+			mes "我几乎有些羡慕";
+			mes "你必定拥有的";
+			mes "那些精彩经历。";
+			mes "总有一天，你得把";
+			mes "你自己的英勇故事讲给我听。";
+			close;
+		}
+		if (KNGT_SK == 9 && getskilllv("KN_CHARGEATK") == 0) {
+			mes "[艾索费特]";
+			mes "啊，我看得出你在";
+			mes "追求力量的道路上";
+			mes "取得了巨大的进步。";
+			mes "转生绝非";
+			mes "易事，能达到领主骑士的";
+			mes "阶级更是莫大的荣耀。";
+			next;
+			mes "[艾索费特]";
+			mes "不过，我也明白";
+			mes "记忆消除的弊端。";
+			mes "因此，我猜你是来";
+			mes "再次学习冲锋攻击";
+			mes "技能的。我很乐意";
+			mes "再次指导你。";
+			next;
+			mes "[艾索费特]";
+			mes "冲锋攻击是消耗40 SP、对单一目标造成伤害的主动技能。";
+			mes "你与目标的距离越远，技能的伤害就越高，";
+			mes "而伤害产生前的";
+			mes "延迟也会越长。";
+			next;
+			mes "[艾索费特]";
+			mes "在这段延迟期间，你";
+			mes "将无法行动。因此，";
+			mes "提升伤害的代价";
+			mes "就是自身承受更大的风险。";
+			mes "目前，最好还是独自练习这个技能。";
+			set KNGT_SK,10;
+			skill "KN_CHARGEATK",1,SKILL_PERM;
+			next;
+			mes "[艾索费特]";
+			mes "祝你的冒险";
+			mes "一路顺风，领主骑士。";
+			mes "我相信你会好好";
+			mes "运用冲锋攻击，";
+			mes "为普隆德拉骑士团";
+			mes "带来荣耀。";
+			close;
+		}
+		if (KNGT_SK == 9) {
+			mes "[艾索费特]";
+			mes "啊，能在这个世界里";
+			mes "当一名冒险的骑士，";
+			mes "一定很威风吧。你一定";
+			mes "遇到过各种各样的";
+			mes "危险魔物和";
+			mes "可怕的敌人，对吧？";
+			next;
+			mes "[艾索费特]";
+			mes "我几乎有些羡慕";
+			mes "你必定拥有的";
+			mes "那些精彩经历。";
+			mes "总有一天，你得把";
+			mes "你自己的英勇故事讲给我听。";
+			close;
+		}
+		if (KNGT_SK == 8) {
+			mes "[艾索费特]";
+			mes "我把这个技能命名为";
+			mes "“冲锋攻击”。名字";
+			mes "并不花哨，但足够简洁";
+			mes "直接，能让你";
+			mes "明白它的原理。";
+			mes "现在，就让我来教你吧……";
+			next;
+			mes "[艾索费特]";
+			mes "冲锋攻击是消耗40 SP、对单一目标造成伤害的主动技能。";
+			mes "你与目标的距离越远，技能的伤害就越高，";
+			mes "而伤害产生前的";
+			mes "延迟也会越长。";
+			next;
+			mes "[艾索费特]";
+			mes "在这段延迟期间，你";
+			mes "将无法行动。因此，";
+			mes "提升伤害的代价";
+			mes "就是自身承受更大的风险。";
+			mes "目前，最好还是独自练习这个技能。";
+			set KNGT_SK,9;
+			skill "KN_CHARGEATK",1,SKILL_PERM;
+			next;
+			mes "[艾索费特]";
+			mes "希望你能好好";
+			mes "运用冲锋攻击";
+			mes "技能。我会像你一样，";
+			mes "竭尽全力，以我的";
+			mes "力量与勇气为骑士团";
+			mes "带来荣誉！";
+			close;
+		}
+		if (KNGT_SK == 7 && countitem(530) > 4 && countitem(748) > 2) {
+			mes "[艾索费特]";
+			mes "荣誉这一概念";
+			mes "似乎在如今的骑士中";
+			mes "已经荡然无存。他们";
+			mes "不再理解“骑士精神”";
+			mes "这个词的含义，也不再";
+			mes "追求那高尚的力量……";
+			next;
+			mes "[艾索费特]";
+			mes "在我那个年代，骑士";
+			mes "得强到能独自狩猎";
+			mes "取得至少5根拐杖糖和";
+			mes "3朵不凋玫瑰！可是";
+			mes "如今的骑士已经";
+			mes "变得软弱了……";
+			next;
+			if (select("给他拐杖糖和不凋玫瑰:取消") == 1) {
+				mes "["+ strcharinfo(0) +"]";
+				mes "世上仍有骑士";
+				mes "坚信应当光荣地";
+				mes "赌上性命，";
+				mes "去获得真正的力量……";
+				next;
+				mes "[艾索费特]";
+				mes "You...";
+				mes "你真的明白。";
+				mes "你真正懂得苦难的";
+				mes "价值。我很高兴能看到";
+				mes "像你这样的真正";
+				mes "骑士依然存在。";
+				next;
+				mes "[艾索费特]";
+				mes "哈哈哈，我终于";
+				mes "找到了一位能称为";
+				mes "真正同志的人。朋友，";
+				mes "你或许没发觉，我们已是";
+				mes "这日渐凋零的一族最后的传人。但";
+				mes "骑士仍存有希望……";
+				next;
+				mes "[艾索费特]";
+				mes "那就这么定了。";
+				mes "只要我们活着，";
+				mes "骑士精神就绝不会消亡！";
+				mes "多亏了你，我对";
+				mes "骑士团的信念";
+				mes "又重新燃起了。";
+				next;
+				mes "[艾索费特]";
+				mes "为了表彰你";
+				mes "作为一名真正的骑士，我将传授";
+				mes "你一个我最近";
+				mes "一直在研究的特殊技能。不如";
+				mes "等我完成准备之后，";
+				mes "你再来找我吧？";
+				delitem 530,5; //Candy_Striper
+				delitem 748,3; //Witherless_Rose
+				set KNGT_SK,8;
+				close;
+			}
+			mes "[艾索费特]";
+			mes "真是可耻……";
+			mes "普隆德拉骑士团的大多数";
+			mes "新兵，比起荣誉，";
+			mes "更关心的却是自己的";
+			mes "养老金！";
+			close;
+		}
+		if (KNGT_SK == 7) {
+			mes "[艾索费特]";
+			mes "也许我是在把过去";
+			mes "浪漫化，但我无法认同";
+			mes "如今普隆德拉骑士团中";
+			mes "存在的那些";
+			mes "官僚作风。";
+			next;
+			mes "[艾索费特]";
+			mes "不过，我承认";
+			mes "当年只要讲荣誉";
+			mes "就足够了，那时我";
+			mes "快乐得多。如今，";
+			mes "似乎谁都能当骑士。";
+			mes "呃，无意冒犯~";
+			close;
+		}
+		if (KNGT_SK == 6) {
+			mes "[艾索费特]";
+			mes "看来你已经见识了第七分队";
+			mes "那些骑士的真实";
+			mes "面目，是吧？身为同袍骑士，你或许能理解我";
+			mes "的失望之情。";
+			next;
+			mes "[艾索费特]";
+			mes "真令人心灰意冷……";
+			mes "我不明白我们为何要当骑士，";
+			mes "又为何而训练。";
+			mes "我在你这个年纪时，嗯，";
+			mes "我想赌上性命，";
+			mes "去获得真正的力量。";
+			next;
+			mes "[艾索费特]";
+			mes "可是……我确信你";
+			mes "不想听一个老人";
+			mes "吹嘘往事。那些";
+			mes "精彩的战斗，还有在对手之间结下的光荣情谊……";
+			mes "全都已成过去。";
+			next;
+			set KNGT_SK,7;
+			mes "[艾索费特]";
+			mes "也许我该把那些";
+			mes "老派的理想";
+			mes "全都忘掉。我想";
+			mes "时代已经变了，我心中的";
+			mes "骑士精神或许已经死去。";
+			close;
+		}
+		if (KNGT_SK == 1) {
+			mes "[艾索费特]";
+			mes "嗯，不如你去";
+			mes "第七分队参观一下，";
+			mes "亲眼看看我那些";
+			mes "同伴的态度？你会";
+			mes "看到马鲁杰大团长";
+			mes "正在外面训练新兵。";
+			close;
+		}
+		if (KNGT_SK == 0) {
+			mes "[艾索费特]";
+			mes "你好。我是艾索费特·";
+			mes "拉盖亚，隶属普隆德拉";
+			mes "骑士团第七分队。";
+			mes "身为一名秉持荣誉与";
+			mes "骑士精神原则的";
+			mes "骄傲骑士，我愿为你效劳。";
+			next;
+			mes "[艾索费特]";
+			mes "请问你来自哪个";
+			mes "分队？啊，你是";
+			mes "获得王室许可、";
+			mes "可以自由旅行的";
+			mes "骑士。你拥有的自由";
+			mes "一定很棒吧。";
+			next;
+			mes "[艾索费特]";
+			mes "遗憾的是，我所在的";
+			mes "分队太过";
+			mes "官僚。我认为我的";
+			mes "同伴们更关心";
+			mes "自己的养老金，而不是骑士精神，或保护弱者。";
+			next;
+			mes "[艾索费特]";
+			mes "即使我们想更";
+			mes "积极一些，也有太多";
+			mes "规章阻碍我们";
+			mes "行善。随着时间推移，";
+			mes "情况变得越来越糟。但别只听我的一面之词……";
+			next;
+			mes "[艾索费特]";
+			mes "或许你亲自去";
+			mes "第七分队看看，";
+			mes "和正在训练的其他";
+			mes "骑士谈谈会更好。希望你能看到";
+			mes "我长久以来所看到的景象……";
+			set KNGT_SK,1;
+			close;
+		}
+	}
+	mes "[艾索费特]";
+	mes "你好。我是艾索费特·";
+	mes "拉盖亚，隶属普隆德拉";
+	mes "骑士团第七分队。";
+	mes "身为一名秉持荣誉与";
+	mes "骑士精神原则的";
+	mes "骄傲骑士，我愿为你效劳。";
+	next;
+	mes "[艾索费特]";
+	mes "我只希望我分队的";
+	mes "其他人能认同";
+	mes "我的价值观，以及";
+	mes "流血的真正价值。他们或许";
+	mes "是我的同伴，但我发现";
+	mes "很难信任他们。";
+	close;
+}
+
+prontera,69,351,0	script	#tour	111,5,5,{
+OnTouch:
+	if (KNGT_SK > 2)
+		end;
+	if (KNGT_SK <= 2) {
+		mes "[?]";
+		mes "呀啊啊啊~！";
+		mes "呀啊啊啊啊！";
+		mes "呼！哈！嗨呀！";
+		next;
+		mes "[?]";
+		mes "嘿——呀！";
+		mes "吼吼吼";
+		mes "吼啊啊啊啊！";
+		next;
+		mes "^3355FF这些骑士似乎";
+		mes "正在让自己接受";
+		mes "某种极其艰苦的";
+		mes "训练。但当你再";
+		mes "仔细听一听，他们的";
+		mes "惨叫似乎有些夸张。^000000";
+		if (KNGT_SK == 1) set KNGT_SK,2;
+		close;
+	}
+	mes "^3355FF这群骑士";
+	mes "似乎正在接受";
+	mes "相当艰苦的训练，";
+	mes "从他们战斗呐喊的";
+	mes "凄厉音调来看。^000000";
+	close;
+}
+
+prontera,72,352,7	script	大团长	733,{
+	mes "[大团长]";
+	if (KNGT_SK == 2 || KNGT_SK == 3) {
+		mes "好了，各位，你们不必";
+		mes "在训练中投入^333333那么多^000000";
+		mes "精力。你们每天都得";
+		mes "这么做，所以务必";
+		mes "别让自己";
+		mes "无谓地累垮。";
+		next;
+		mes "[大团长]";
+		mes "最重要的是";
+		mes "别让自己受伤。";
+		mes "放轻松些，";
+		mes "务必注意";
+		mes "别拉伤肌肉。";
+		mes "嗯，这是命令！";
+		if (KNGT_SK == 2) set KNGT_SK,3;
+		close;
+	}
+	mes "加把劲，";
+	mes "兄弟们！我知道训练";
+	mes "很艰苦，但它会让";
+	mes "你们更坚韧、更优秀、更迅捷、";
+	mes "更强壮！普隆德拉的安全就靠你们了，骑士们！";
+	next;
+	mes "[大团长]";
+	mes "...";
+	mes "哦，我只是开个玩笑。";
+	mes "大家去休息一下吧。";
+	close;
+}
+
+prontera,78,354,3	script	骑士#zabii	734,{
+	if (KNGT_SK == 3 || KNGT_SK == 4) {
+		mes "[扎比]";
+		mes "我看我们更像是";
+		mes "公务员，";
+		mes "而不是真正的骑士。我们";
+		mes "薪水优厚，除了";
+		mes "装模作样地训练，";
+		mes "其实什么也不用做。";
+		next;
+		mes "[扎比]";
+		mes "我？我打算把这个";
+		mes "体制的好处榨干。在这里";
+		mes "干上几年，然后靠";
+		mes "丰厚的养老金度过";
+		mes "余生。";
+		mes "是啊，那一定会很棒。";
+		next;
+		mes "[扎比]";
+		mes "哇——哇——哇，";
+		mes "大团长正";
+		mes "往这边看！别";
+		mes "跟我说话了，让我";
+		mes "像得了疝气一样哼哼。";
+		mes "呼啊啊——！哇！嗨呀！";
+		if (KNGT_SK == 3) set KNGT_SK,4;
+		close;
+	}
+	mes "[骑士]";
+	mes "呼啊啊——！";
+	mes "哇！嗨呀！";
+	mes "天哪，这么艰苦的";
+	mes "训练让我几乎";
+	mes "喘不过气来。呃，";
+	mes "真是累得不行……";
+	close;
+}
+
+prontera,73,357,5	script	骑士#drake	734,{
+	if (KNGT_SK == 4 || KNGT_SK == 5) {
+		mes "[贡]";
+		mes "下一份薪水";
+		mes "我该买些什么呢？";
+		mes "啊~我该给妻子";
+		mes "买条漂亮的项链。";
+		mes "我知道她一定会喜欢的！";
+		next;
+		if (KNGT_SK == 4) set KNGT_SK,5;
+		mes "[贡]";
+		mes "让我算算，距离发薪日";
+		mes "还有几天？";
+		mes "一、二……嗯。不知为何，";
+		mes "它好像永远都不会";
+		mes "来得够快，你懂吧？";
+		close;
+	}
+	mes "[骑士]";
+	mes "也许我并不太擅长";
+	mes "战斗，也不擅保护";
+	mes "弱者，但骑士这个职位";
+	mes "还算不错。在这里工作";
+	mes "确实让我能存下钱";
+	mes "为将来投资。";
+	next;
+	mes "[骑士]";
+	mes "我们也许永远没机会";
+	mes "上阵，但至少";
+	mes "我还能为身为骑士";
+	mes "感到一些自豪。";
+	close;
+}
+
+prontera,78,357,3	script	骑士#sasword	734,{
+	mes "[吉娅]";
+	if (KNGT_SK == 5 || KNGT_SK == 6) {
+		mes "唉，骑士团的这个";
+		mes "分队似乎没多大";
+		mes "潜力。我们大多数人";
+		mes "都挺二流的，也许除了";
+		mes "那个叫艾索费特的";
+		mes "家伙。";
+		next;
+		set KNGT_SK,6;
+		mes "[吉娅]";
+		mes "至于我，我可没";
+		mes "什么野心。";
+		mes "只要照吩咐做事，";
+		mes "他们就会付我钱。只要";
+		mes "有钱拿，我就开心。";
+		close;
+	}
+	mes "别、别跟我说话！";
+	mes "得……鼓起……";
+	mes "力气……完、完成这些";
+	mes "……训练项目！";
+	mes "好吧，伙、伙计，集中精神……";
+	close;
+}
+
+prontera,66,358,5	script	骑士#gattack	733,{
+	mes "[加塔克]";
+	if (KNGT_SK == 7) {
+		mes "等等，艾索费特";
+		mes "去哪了？他不能";
+		mes "就这样跳过日常训练，";
+		mes "即使他有过";
+		mes "击杀无数^FF0000神秘箱子^000000";
+		mes "和^FF0000欧比安^000000的战绩。";
+		next;
+		mes "[加塔克]";
+		mes "天哪，我真是受够了他";
+		mes "总谈什么骑士精神。";
+		mes "艾索费特坚持认为，所有骑士，哪怕是完全的新手，都应该";
+		mes "能靠狩猎取得5根拐杖糖和3朵不凋玫瑰。";
+		next;
+		mes "[加塔克]";
+		mes "唉，我就是讨厌听";
+		mes "他吹嘘自己";
+		mes "打怪物的伟大经历。";
+		mes "可现在艾索费特只是在楼里做研究，";
+		mes "别的几乎什么都不干……";
+		close;
+	}
+	mes "唉，骑士训练";
+	mes "真够受的。他们";
+	mes "难道不知道我太";
+	mes "娇弱了，根本受不了这些";
+	mes "剧烈活动吗？";
+	next;
+	mes "[加塔克]";
+	mes "唉，如果我在战斗中";
+	mes "倒下，我也不会";
+	mes "太意外，毕竟";
+	mes "我是这里最弱的";
+	mes "家伙之一。不过真到那时，";
+	mes "我会忙着耍帅。";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//= 1.4 Updated to the Official One. [Samuray22]
+//= 1.4a replaced item "names" with item id [Lupus]
+//============================================================

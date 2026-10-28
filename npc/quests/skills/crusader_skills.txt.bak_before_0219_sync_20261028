@@ -1,0 +1,826 @@
+//===== rAthena Script ======================================= 
+//= Crusader Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quests for skills: Shrink
+//===== Additional Comments: ================================= 
+//= 1.4 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//============================================================
+
+geffen,110,117,3	script	福特#11	752,{
+	if (BaseJob == Job_Crusader) {
+		if (CRUS_SK == 8 && getskilllv("CR_SHRINK") == 0) {
+			mes "[福特]";
+			mes "嘿，好久不见～";
+			mes "而且你竟然已经";
+			mes "成为圣殿十字军了。你一定是";
+			mes "忘了该怎么施展";
+			mes "退缩技能，所以我再";
+			mes "快速教你一遍……好了！";
+			set CRUS_SK,10;
+			skill "CR_SHRINK",1,SKILL_PERM;
+			close;
+		}
+
+		else if (CRUS_SK == 0) {
+			mes "[福特]";
+			mes "可恶！怎么";
+			mes "这么久？";
+			mes "啊，你终于";
+			mes "来了！快让我看看";
+			mes "你带来的^FF0000报告^000000！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "不好意思……？";
+			mes "哦，你一定是";
+			mes "把我当成别人";
+			mes "了。我真的不知道";
+			mes "你在说什么。";
+			next;
+			mes "[福特]";
+			mes "什么？！你不是";
+			mes "驻守在";
+			mes "吉芬南部的守卫之一？哦，这";
+			mes "太糟糕了。我道歉，";
+			mes "我只是因为你";
+			if (Upper == 1)
+				mes "穿着像圣殿十字军……";
+			else
+				mes "穿着像十字军……";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "对不起……";
+			mes "发生什么事了？";
+			mes "有什么问题吗？";
+			mes "我是一名冒险者，";
+			mes "名叫"+ strcharinfo(0) +".";
+			next;
+			mes "[福特]";
+			mes "我是莱斯利·福特，";
+			mes "普隆德拉";
+			mes "十字军守卫队的指挥官。我们";
+			mes "肩负着";
+			mes "保护冒险者和";
+			mes "市民免受邪恶怪物侵害的职责。";
+			next;
+			mes "[福特]";
+			mes "最近";
+			mes "哥布灵无故施暴的事件";
+			mes "激增，给我们";
+			mes "添了不少麻烦。";
+			mes "我们的巡逻队本该";
+			mes "向我汇报它们的动向。";
+			next;
+			mes "[福特]";
+			mes "然而，今天的报告";
+			mes "还没送到，所以我";
+			mes "开始担心";
+			mes "巡逻队出了什么事。";
+			mes "可惜我的职责";
+			mes "不允许我离开岗位。";
+			next;
+			mes "[福特]";
+			mes "我已经走投无路了，";
+			mes "除了向外求助";
+			mes "别无选择。";
+			mes "既然你也是十字军，";
+			mes "我想请你";
+			mes "伸出援手。";
+			next;
+			switch(select("好的。:抱歉，我很忙……")) {
+			case 1:
+				mes "[福特]";
+				mes "太好了，非常感谢！";
+				mes "现在，请去找";
+				mes "应该驻守在吉芬南部的^0000FF斯劳蒂^000000，";
+				mes "把他";
+				mes "的报告交给我。";
+				mes "你的帮助让我松了一口气……";
+				set CRUS_SK,1;
+				close;
+			case 2:
+				mes "[福特]";
+				mes "嗯。我明白。";
+				mes "我不知道你";
+				mes "现在有什么";
+				mes "要事在身，但";
+				mes "如果你手头的事";
+				mes "不急，请再考虑一下……";
+				close;
+			}
+			close;
+		}
+		else if (CRUS_SK == 1) {
+			mes "[福特]";
+			mes "请去";
+			mes "吉芬南部一带寻找^0000FF斯劳蒂^000000，";
+			mes "他应该会";
+			mes "把他关于";
+			mes "哥布灵巡逻情况的报告";
+			mes "交给你带给我。";
+			close;
+		}
+		else if (CRUS_SK == 2) {
+			mes "[福特]";
+			mes "等等，你见过";
+			mes "斯劳蒂，却还没";
+			mes "拿到他的报告？";
+			mes "请回去找他";
+			mes "把报告带给我，我";
+			mes "必须读一读！";
+			close;
+		}
+		else if (CRUS_SK == 3) {
+			mes "[福特]";
+			mes "啊，你回来了！";
+			mes "斯劳蒂怎么样了？";
+			mes "一切还好吗？";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "我把";
+			mes "这份报告尽快";
+			mes "带来了！你最好";
+			mes "快读一下！我离开时";
+			mes "情况似乎很糟……";
+			next;
+			mes "[福特]";
+			mes "天哪，纸上";
+			mes "全是血！让我看看……";
+			mes "哦不。这是紧急";
+			mes "情况！我得向阿加大人报告并请求";
+			mes "立刻支援！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "等等，我们得";
+			mes "为斯劳蒂做点什么。";
+			mes "他被哥布灵";
+			mes "伤了，我想他";
+			mes "情况很不妙。";
+			next;
+			mes "[福特]";
+			mes "哥布灵……？";
+			mes "哦不，你需要";
+			mes "一种特制解毒剂，";
+			mes "可以从亚瑟神父那里";
+			mes "拿到，用来解";
+			mes "这些哥布灵刀刃上的毒。";
+			next;
+			mes "[福特]";
+			mes "我去请求支援，";
+			mes "请你前往^0000FF普隆德拉教堂^000000，";
+			mes "向^0000FF亚瑟^000000神父求取";
+			mes "哥布灵毒的解药。";
+			mes "如果你不快点，可能";
+			mes "就来不及救斯劳蒂了——！";
+			set CRUS_SK,4;
+			close;
+		}
+		else if (CRUS_SK == 4) {
+			mes "[福特]";
+			mes "请赶快去取得";
+			mes "哥布灵之毒的";
+			mes "解毒剂，找^0000FF亚瑟神父^000000，";
+			mes "他在^0000FF普隆德拉教堂^000000。斯劳蒂的";
+			mes "性命就靠你了。";
+			close;
+		}
+		else if (CRUS_SK == 5) {
+			mes "[福特]";
+			mes "你已经见过";
+			mes "亚瑟神父了？很好，";
+			mes "现在请赶快";
+			mes "去他那里拿解毒剂。";
+			mes "没有它，斯劳蒂会慢慢";
+			mes "在痛苦中死去！";
+			close;
+		}
+		else if (CRUS_SK == 6) {
+			mes "[福特]";
+			mes "你已经见过";
+			mes "亚瑟神父了？很好，";
+			mes "现在请赶快";
+			mes "去他那里拿解毒剂。";
+			mes "没有它，斯劳蒂会慢慢";
+			mes "在痛苦中死去！";
+			close;
+		}
+		else if (CRUS_SK == 7) {
+			mes "[福特]";
+			mes "太好了，你已经从";
+			mes "亚瑟神父那里";
+			mes "拿到解毒剂了！现在赶快";
+			mes "去给斯劳蒂服下，";
+			mes "他驻守在吉芬南部。";
+			mes "快，分秒必争！";
+			close;
+		}
+		else if (CRUS_SK == 8) {
+			mes "[福特]";
+			mes "听说你";
+			mes "救了斯劳蒂。";
+			mes "为此，我永远";
+			mes "感激。我们需要更多";
+			mes "像你这样的人加入";
+			mes "普隆德拉十字军守卫队……";
+			next;
+			mes "[福特]";
+			mes "我知道你们冒险者";
+			mes "不愿受这类组织";
+			mes "束缚，但";
+			mes "你的帮助永远";
+			mes "受到欢迎。希望";
+			mes "有朝一日能再见到你。";
+			next;
+			mes "[福特]";
+			mes "再次感谢你，";
+			mes "希望你";
+			mes "一路平安。那么现在，";
+			mes "就此告别，"+ strcharinfo(0) +".";
+			close;
+			}
+		else if (CRUS_SK == 10) {
+			mes "[福特]";
+			mes "嘿，好久不见～";
+			mes "你应该更常";
+			mes "来看看，如果你真的";
+			mes "有兴趣，可以加入";
+			mes "我的部队。我们真的很需要";
+			mes "你这样的人才。";
+			close;
+			}
+		else {
+			mes "[福特]";
+			mes "太好了，你已经从";
+			mes "亚瑟神父那里";
+			mes "拿到解毒剂了！现在赶快";
+			mes "去给斯劳蒂服下，";
+			mes "他驻守在吉芬南部。";
+			mes "快，分秒必争！";
+			close;
+			}
+	}
+	else {
+		mes "[福特]";
+		mes "啊，你好。";
+		mes "很抱歉我无法";
+		mes "协助你，冒险者，";
+		mes "但我有件";
+		mes "相当紧急的事要";
+		mes "处理。恕我失陪……";
+		close;
+	}
+}
+
+gef_fild13,297,242,3	script	士兵#277	751,{
+	if (BaseJob == Job_Crusader) {
+		if (Upper == 1 && getskilllv("CR_SHRINK")) {
+			if (CRUS_SK == 8) {
+				mes "[斯劳蒂]";
+				mes "嘿，朋友，好久";
+				mes "不见了。我还得";
+				mes "养伤，";
+				mes "所以如果你想";
+				mes "学退缩，就去找";
+				mes "福特大人，好吗？";
+				close;
+			}
+			else if (CRUS_SK == 10) {
+				mes "[斯劳蒂]";
+				mes "那个退缩";
+				mes "技能用得还顺手吗？";
+				mes "希望它救过你的";
+				mes "命，次数和我";
+				mes "一样多。总之，我";
+				mes "回头见，"+ strcharinfo(0) +"~";
+				close;
+			}
+		}
+		if (CRUS_SK == 1) {
+			mes "[士兵]";
+			mes "啊啊啊啊！";
+			mes "我、我的腿！";
+			mes "他们到底";
+			mes "对我的腿";
+			mes "做了什么？！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "怎、怎么了？";
+			mes "你被袭击了吗？";
+			next;
+			mes "[士兵]";
+			mes "是、是的，我正要去";
+			mes "向福特大人汇报我的";
+			mes "例行巡逻情况时，";
+			mes "遭到了这些哥布灵的袭击！";
+			mes "我得去警告上级！";
+			mes "它们要去袭击吉芬！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "我其实和";
+			mes "福特大人谈过了！你一定是";
+			mes "斯劳蒂，对吧？他派我";
+			mes "来看看你出了什么事！";
+			next;
+			mes "[斯劳蒂]";
+			mes "太好了，来、来得正是时候！";
+			mes "听着，你得把";
+			mes "这份报告送给他。里、里面写了";
+			mes "我巡逻的详情，还有";
+			mes "紧急支援请求。";
+			mes "呃、呃！没时间了！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "等等……！";
+			mes "可你";
+			mes "怎么办？你受伤了……";
+			next;
+			mes "[斯劳蒂]";
+			mes "我绝不会让援军";
+			mes "因为我的缘故被耽搁！";
+			mes "快把那份";
+			mes "报告送给福特大人！快走！";
+			mes "现在，只要我能把那份";
+			mes "报告拿出来——哎哟！不、不……";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "^333333（他痛苦地扭动着，";
+			mes "疼得连";
+			mes "报告都交不出来。我最好";
+			mes "给他带瓶红色药水，";
+			mes "减轻他的痛苦……）^000000";
+			set CRUS_SK,2;
+			close;
+		}
+		else if (CRUS_SK == 2) {
+			if (countitem(501) > 0) {
+				mes "["+ strcharinfo(0) +"]";
+				mes "来，请收下";
+				mes "这瓶红色药水。";
+				mes "也许会有帮助……";
+				next;
+				mes "[斯劳蒂]";
+				mes "哦，谢天谢地！";
+				mes "啊啊！快把它";
+				mes "倒进伤口！它、它……";
+				mes "烧得好厉害！那些";
+				mes "哥布灵一定是拿";
+				mes "涂了毒的东西砍了我！";
+				next;
+				mes "[斯劳蒂]";
+				mes "啊……啊……";
+				mes "血还没";
+				mes "止住，但至少";
+				mes "好点了。来，拿上";
+				mes "这份报告，把它";
+				mes "送给福特大人。快去！";
+				next;
+				mes "^3355FF你收到了斯劳蒂的";
+				mes "巡逻报告。有几页";
+				mes "被";
+				mes "他伤口的血弄脏了。^000000";
+				delitem 501,1; //Red_Potion
+				set CRUS_SK,3;
+				close;
+			}
+			else {
+				mes "[斯劳蒂]";
+				mes "快、快拿上";
+				mes "这份报告！让、让我";
+				mes "把它交给你，然——";
+				mes "啊啊啊！我、我动不了！";
+				mes "好……好痛啊！";
+				next;
+				mes "["+ strcharinfo(0) +"]";
+				mes "^333333（我最好给他";
+				mes "带瓶红色药水，不然";
+				mes "我别想";
+				mes "不弄疼他就拿到报告！）";
+				close;
+			}
+		}
+		else if (CRUS_SK == 3) {
+			mes "[斯劳蒂]";
+			mes "我们快没";
+			mes "时间了！快把";
+			mes "我的报告送给福特大人，";
+			mes "越快越好！";
+			close;
+		}
+		else if (CRUS_SK == 4) {
+			mes "[斯劳蒂]";
+			mes "呃啊啊啊——！";
+			mes "我的腿！全身";
+			mes "都开始疼了！";
+			next;
+			mes "^3355FF斯劳蒂昏了过去，";
+			mes "看来他腿上的";
+			mes "伤口让他";
+			mes "更加痛苦了。^000000";
+			close;
+		}
+		else if (CRUS_SK == 5) {
+			mes "[斯劳蒂]";
+			if (Upper == 1) {
+				mes "呃啊啊啊——！";
+				mes "我的腿！全身";
+				mes "都开始疼了！";
+				next;
+				mes "^3355FF斯劳蒂昏了过去，";
+				mes "看来他腿上的";
+				mes "伤口让他";
+				mes "更加痛苦了。^000000";
+			}
+			else {
+				mes "........";
+				mes ".........";
+				next;
+				mes "^3355FF斯劳蒂仍然";
+				mes "昏迷不醒。如果";
+				mes "伤势得不到";
+				mes "立刻治疗，他会死的。";
+				mes "你得帮他，";
+				mes "越快越好。^000000";
+			}
+			close;
+		}
+		else if (CRUS_SK == 6) {
+			mes "[斯劳蒂]";
+			mes "........";
+			mes ".........";
+			next;
+			mes "^3355FF斯劳蒂仍然";
+			mes "昏迷不醒。如果";
+			mes "伤势得不到";
+			mes "立刻治疗，他会死的。";
+			mes "你得帮他，";
+			mes "越快越好。^000000";
+			close;
+		}
+		else if (CRUS_SK == 7) {
+			set .@rand,rand(1,5);
+			if (.@rand == 1 || .@rand == 5) {
+				mes "^3355FF你小心地把";
+				mes "哥布灵毒解药";
+				mes "倒进斯劳蒂嘴里。";
+				mes "他的喉咙艰难地";
+				mes "吞咽着解药，但";
+				mes "总算咽了下去。^000000";
+				next;
+				mes "^3355FF奇迹般地，哥布灵";
+				mes "造成的伤口";
+				mes "开始迅速愈合。^000000";
+				next;
+				mes "[斯劳蒂]";
+				mes "哦，发、发生什么了？";
+				mes "我……我还活着吗？";
+				mes "嘿，是你！一定是你";
+				mes "救了我！我以为";
+				mes "我死定了！";
+				next;
+				mes "["+ strcharinfo(0) +"]";
+				mes "幸好";
+				mes "我及时赶到。福特大人";
+				mes "让我去找亚瑟神父";
+				mes "配制解药救你。";
+				mes "啊，而且我已经";
+				mes "把你的报告交给福特大人了。";
+				next;
+				mes "[斯劳蒂]";
+				mes "太好了！现在，让我教你";
+				mes "一项特殊技能，";
+				mes "作为报答。这是普隆德拉十字军守卫队开发的技能。使用它";
+				mes "让我在遭到那些";
+				mes "哥布灵袭击时活了下来。你准备好学了吗？";
+				next;
+				mes "[斯劳蒂]";
+				mes "这个技能叫做";
+				mes "“^0000FF退缩^000000”，它能";
+				mes "在成功格挡";
+				mes "敌人攻击时，";
+				mes "把敌人击退。";
+				next;
+				mes "[斯劳蒂]";
+				mes "现在仔细听……";
+				mes "要施展它，你必须";
+				mes "能够集中精神，";
+				mes "用正确的架势和心态";
+				mes "击退敌人……";
+				next;
+				mes "[斯劳蒂]";
+				mes "太好了！你学会了";
+				mes "这个技能！我希望你用";
+				mes "这份能力对抗邪恶，";
+				mes "保护弱者。啊，还有，";
+				mes "如果我学会新技能，一定会马上教你。";
+				set CRUS_SK,8;
+				skill "CR_SHRINK",1,SKILL_PERM;
+				close;
+			}
+			mes "^3355FF你小心地把";
+			mes "哥布灵毒解药";
+			mes "倒进斯劳蒂嘴里。";
+			mes "他的喉咙艰难地";
+			mes "吞咽着解药，但";
+			mes "总算咽了下去。^000000";
+			next;
+			mes "^3355FF可惜，什么";
+			mes "也没发生。解药";
+			mes "大概在从亚瑟神父";
+			mes "那里赶到斯劳蒂身边的";
+			mes "途中失效了。";
+			mes "你得回去找";
+			mes "亚瑟神父再配一瓶。^000000";
+			set CRUS_SK,9;
+			close;
+		}
+		else if (CRUS_SK == 8 || CRUS_SK == 10) {
+			mes "[斯劳蒂]";
+			mes "嘿，是你呀～";
+			mes "最近过得怎么样？";
+			mes "如果你有空，";
+			mes "就来看看，也许";
+			mes "我们可以切磋剑术。";
+			close;
+		}
+		else if (CRUS_SK == 9) {
+			mes "^3355FF你之前";
+			mes "用过的";
+			mes "解药没有效果。你得";
+			mes "再回去找";
+			mes "亚瑟神父，";
+			mes "为斯劳蒂配制新解药。^000000";
+			close;
+		}
+		else {
+			mes "[斯劳蒂]";
+			mes "请在这附近";
+			mes "多加小心。哥布灵会";
+			mes "袭击它们遇到的";
+			mes "任何人。而且最近";
+			mes "它们变得更加凶暴，请保持警惕。";
+			close;
+		}
+	}
+	else {
+		mes "[斯劳蒂]";
+		mes "请在这附近";
+		mes "多加小心。哥布灵会";
+		mes "袭击它们遇到的";
+		mes "任何人。而且最近";
+		mes "它们变得更加凶暴，请保持警惕。";
+		close;
+	}
+}
+
+prt_church,87,127,3	script	牧师#1011	755,{
+	if (BaseJob == Job_Crusader) {
+		if (Upper == 1 && getskilllv("CR_SHRINK")) {
+			if (CRUS_SK == 8) {
+				mes "[亚瑟神父]";
+				mes "哦，现在是圣殿十字军了，";
+				mes "是吗？啊，我";
+				mes "真为你骄傲。毕竟，我";
+				mes "认识你时，你还是";
+				mes "一名勇敢的十字军。";
+				next;
+				mes "[亚瑟神父]";
+				mes "希望你继续";
+				mes "用你的力量对抗";
+				mes "邪恶势力，";
+				mes "保护弱者。愿你的";
+				mes "心指引你的行动。";
+				close;
+			}
+			else if (CRUS_SK == 10) {
+				mes "[亚瑟神父]";
+				mes "啊，你过得好吗？";
+				mes "很高兴能在";
+				mes "更愉快的情形下见到你。";
+				mes "不过，如果你觉得";
+				mes "我能帮上忙，请立刻告诉我。";
+				close;
+			}
+		}
+		if (CRUS_SK == 4) {
+			mes "[亚瑟神父]";
+			mes "Greetings.";
+			mes "今天有什么";
+			mes "我能为你效劳的吗？";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "有人被哥布灵";
+			mes "伤了，福特大人";
+			mes "告诉我，你是";
+			mes "唯一能配制";
+			mes "哥布灵毒解药的人。";
+			next;
+			mes "[亚瑟神父]";
+			mes "愿圣者保佑我们，";
+			mes "哥布灵确实";
+			mes "残忍无情！";
+			mes "可惜，我刚好";
+			mes "用完了哥布灵毒解药，";
+			mes "必须从头配制。";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "告诉我你";
+			mes "需要什么材料，";
+			mes "我会立刻把";
+			mes "所有材料带来！";
+			next;
+			mes "[亚瑟神父]";
+			mes "啊，好的。给我带来";
+			mes "^0000FF20 个黏稠液体^000000，";
+			mes "^0000FF3 个空瓶^000000，";
+			mes "^0000FF5 个杰勒比结晶^000000……";
+			next;
+			mes "[亚瑟神父]";
+			mes "...^0000FF1 Coal^000000,";
+			mes "^0000FF1 个葡萄^000000，";
+			mes "^0000FF3 个赛法^000000和";
+			mes "^0000FF1 个青涩苹果^000000。";
+			mes "快去吧，他撑不了";
+			mes "多久的，他中毒了！";
+			set CRUS_SK,5;
+			close;
+		}
+		else if (CRUS_SK == 5) {
+			if (countitem(514) > 0 && countitem(619) > 0 && countitem(1003) > 0 && countitem(7053) > 2 && countitem(713) > 2 && countitem(909) > 4 && countitem(938) > 19) {
+				mes "[亚瑟神父]";
+				mes "啊，你回来了。";
+				mes "让我确认一下";
+				mes "你是否带来了";
+				mes "制作解药所需的";
+				mes "全部材料。";
+				next;
+				mes "[亚瑟神父]";
+				mes "很好，很好。看来";
+				mes "一切都准备好了。";
+				mes "在开始之前，我得先";
+				mes "告诉你，这解药有";
+				mes "一定的有效期限。";
+				next;
+				mes "[亚瑟神父]";
+				mes "不过，无法准确";
+				mes "预测解药何时";
+				mes "会失去";
+				mes "药效，除非你亲自试用。";
+				mes "因此，你可能得";
+				mes "回来找我取新的一批。";
+				next;
+				mes "[亚瑟神父]";
+				mes "这些材料应该";
+				mes "足够制作多份";
+				mes "剂量，所以你不用";
+				mes "再担心收集";
+				mes "材料了。现在，给";
+				mes "我一点时间提炼这个……";
+				delitem 938,20; //Sticky_Mucus
+				delitem 619,1; //Unripe_Apple
+				delitem 909,5; //Jellopy
+				delitem 514,1; //Grape
+				delitem 1003,1; //Coal
+				delitem 7053,3; //Cyfar
+				delitem 713,3; //Empty_Bottle
+				set CRUS_SK,6;
+				close;
+			}
+			else {
+				mes "[亚瑟神父]";
+				mes "抱歉，这些";
+				mes "材料不够";
+				mes "让我提炼";
+				mes "解药。嗯，需要的";
+				mes "材料是什么来着？";
+				next;
+				mes "[亚瑟神父]";
+				mes "啊，对。给我拿来";
+				mes "^0000FF20 个粘稠液体^000000，";
+				mes "^0000FF3 个空瓶^000000，";
+				mes "^0000FF5 个杰勒比结晶^000000……";
+				next;
+				mes "[亚瑟神父]";
+				mes "...^0000FF1 Coal^000000,";
+				mes "^0000FF1 个葡萄^000000，";
+				mes "^0000FF3 个Cyfar^000000和";
+				mes "^0000FF1 个青苹果^000000。";
+				mes "快去吧，他撑不了";
+				mes "多久的，他中毒了！";
+				close;
+			}
+		}
+		else if (CRUS_SK == 6) {
+			mes "[亚瑟神父]";
+			mes "你的时机真是";
+			mes "神助一般：我刚";
+			mes "完成了哥布林";
+			mes "解毒剂。现在请";
+			mes "仔细听我说……";
+			next;
+			mes "[亚瑟神父]";
+			mes "我不能保证这";
+			mes "解药一定有效。如果它";
+			mes "在你抵达前";
+			mes "失效了，你就得";
+			mes "回来取一份新的。";
+			next;
+			mes "[亚瑟神父]";
+			mes "你得赶快";
+			mes "赶到伤员那里，";
+			mes "越快越好。现在，等";
+			mes "我把这个交给你，你就要";
+			mes "以最快的速度";
+			mes "跑过去：人命关天！";
+			next;
+			mes "[亚瑟神父]";
+			mes "来，拿着";
+			mes "解药。快去吧！";
+			mes "愿神护佑你，冒险者！";
+			set CRUS_SK,7;
+			close;
+		}
+		else if (CRUS_SK == 7) {
+			mes "[亚瑟神父]";
+			mes "你还没出发？！";
+			mes "快赶到伤员那里";
+			mes "给他服下解药！";
+			mes "如果你到得太晚，";
+			mes "就得回来再取";
+			mes "一批新的解药！";
+			close;
+		}
+		else if (CRUS_SK == 8) {
+			mes "[亚瑟神父]";
+			mes "啊，看来解药";
+			mes "起效了，那个人";
+			mes "有望完全康复？";
+			mes "很好，很好。听到他";
+			mes "好多了，我很欣慰。";
+			close;
+		}
+		else if (CRUS_SK == 9) {
+			mes "[亚瑟神父]";
+			mes "解药失效了？！";
+			mes "我们别无选择，";
+			mes "只能再试一次。来，让";
+			mes "我赶紧为你提炼";
+			mes "一份新剂量。等等，等等……";
+			mes "啊！好了！我完成了！";
+			next;
+			mes "[亚瑟神父]";
+			mes "现在拿上这份";
+			mes "新的解药，尽快";
+			mes "赶到";
+			mes "伤员那里！快去！";
+			set CRUS_SK,7;
+			close;
+		}
+		else if (CRUS_SK == 10) {
+			mes "[亚瑟神父]";
+			mes "啊，你过得还好吗？";
+			mes "很高兴能在";
+			mes "更愉快的情形下见到你。";
+			mes "不过，如果你觉得";
+			mes "我能帮上你的忙，请立刻告诉我。";
+			close;
+		}
+		else {
+			mes "[亚瑟神父]";
+			mes "啊，你好~";
+			mes "欢迎来到普隆德拉";
+			mes "教堂。请在这里放松，";
+			mes "享受宁静，让心灵的";
+			mes "平静进入心中。";
+			close;
+		}
+	}
+	else {
+		mes "[亚瑟神父]";
+		mes "啊，你好~";
+		mes "欢迎来到普隆德拉";
+		mes "教堂。请在这里放松，";
+		mes "享受宁静，让心灵的";
+		mes "平静进入心中。";
+		close;
+	}
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//============================================================
