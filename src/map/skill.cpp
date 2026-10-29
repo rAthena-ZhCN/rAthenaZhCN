@@ -10878,8 +10878,17 @@ int32 skill_sit(map_session_data *sd, bool sitting)
 		return 0;
 
 	if (sitting) {
-		if (map_foreachinallrange(skill_sit_count, sd, range, BL_PC, flag) > 1)
+		int32 sit_count = map_foreachinallrange(skill_sit_count, sd, range, BL_PC, flag);
+
+		if (sit_count > 1) {
 			map_foreachinallrange(skill_sit_in, sd, range, BL_PC, flag);
+		} else if ((flag & 2) && sd->state.taekwon_auto) {
+			// Solo Taekwon: the automatic-combo toggle also removes the
+			// requirement for another Taekwon to be sitting nearby.
+			sd->state.rest = 1;
+			status_calc_regen(sd, &sd->battle_status, &sd->regen);
+			status_calc_regen_rate(sd, &sd->regen, &sd->sc);
+		}
 	} else
 		map_foreachinallrange(skill_sit_out, sd, range, BL_PC, flag, range);
 
