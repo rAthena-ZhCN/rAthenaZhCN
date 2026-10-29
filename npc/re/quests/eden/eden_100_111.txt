@@ -89,21 +89,21 @@ moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 				mes "我想知道你是否有能力完成委托。让我看看……";
 				next;
 				mes "[盖尔卡]";
-				mes "收集50个^ff0000Brigan。^000000 这既简单又复杂的考验。";
+				mes "收集50个^ff0000<ITEM>布里刊<INFO>7054</INFO></ITEM>。^000000 这既简单又复杂的考验。";
 				next;
 				mes "[盖尔卡]";
 				mes "在乌龟岛或克雷斯特汉姆古城的怪物身上很容易找到。";
 				next;
 				mes "[盖尔卡]";
 				mes "先完成这个简单的，再去做真正的委托。";
-				setquest 13002;// Brigan collecting
+				setquest 13002;// 布里刊 collecting
 				para_100lv01 = 1;
 				para_100lv02 += 1;
 			}
 		}
 		else if (para_100lv01 == 1) {
-			if (countitem(7054) > 49) {// Brigan
-				mes "我要求的Brigan都带来了吗？";
+			if (countitem(7054) > 49) {// 布里刊
+				mes "我要求的布里刊都带来了吗？";
 				next;
 				mes "[盖尔卡]";
 				mes "我不必一个一个数。这份委托是为了选出最优秀的冒险者。";
@@ -132,14 +132,14 @@ moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 				next;
 				mes "[盖尔卡]";
 				mes strcharinfo(0) +"会为你整理委托清单，现在就去见我师父，向他问个好吧。";
-				delitem 7054,50;// Brigan
-				completequest 13002;// Brigan collecting
+				delitem 7054,50;// 布里刊
+				completequest 13002;// 布里刊 collecting
 				para_100lv01 = 2;
 				getitem 6549,1;// Courtesy_Ticket
 			}
 			else {
 				cutin "gelca02",2;
-				mes "还没找到50个Brigan？师父说这任务明明很简单……";
+				mes "还没找到50个<ITEM>布里刊<INFO>7054</INFO></ITEM>？师父说这任务明明很简单……";
 				next;
 				mes "[盖尔卡]";
 				mes "请快点！我们需要真正的冒险者来执行委托。";
@@ -456,7 +456,7 @@ moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 				case 4:
 					mes "有一份在熔岩洞穴讨伐怪物的委托。提出委托的是在克魔岛的^DA26DA流浪美少女^000000。";
 					next;
-					if (select( "讨伐七彩梦魇","讨伐七彩地龙" ) == 1) {
+					if (select( "讨伐七彩梦魇","讨伐七彩飞龙" ) == 1) {
 						mes "[盖尔卡]";
 						if (checkquest(13024,PLAYTIME) == 0)
 							mes "你刚完成一份委托。谢谢你守护那份回忆……不过你该休息一下了。";
@@ -487,13 +487,13 @@ moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 							mes "你刚完成一份委托。有好好冷静下来吗？多休息一会儿吧。";
 						else if (checkquest(13025,HUNTING) == 1) {
 							cutin "傍吝掉府磐墨靛",3;  //flying_deleter_card
-							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩地龙的袭击。";
+							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩飞龙的袭击。";
 							next;
 							mes "[盖尔卡]";
 							mes "那次袭击毁了他们的舞，也最终毁了他们的感情，因为那男人怪她招来了袭击。";
 							next;
 							mes "[盖尔卡]";
-							mes "如今她把一切都怪到七彩地龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
+							mes "如今她把一切都怪到七彩飞龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
 							next;
 							cutin "gelca03",2;
 							mes "[盖尔卡]";
@@ -507,13 +507,13 @@ moc_para01,37,95,5	script	盖尔卡#1	4_F_GELKA,{
 						}
 						else {
 							cutin "傍吝掉府磐墨靛",3;  //flying_deleter_card
-							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩地龙的袭击。";
+							mes "有位委托人曾为恋人跳了一支美妙的舞。有一天，他们在熔岩洞穴跳舞时遭到了七彩飞龙的袭击。";
 							next;
 							mes "[盖尔卡]";
 							mes "那次袭击毁了他们的舞，也最终毁了他们的感情，因为那男人怪她招来了袭击。";
 							next;
 							mes "[盖尔卡]";
-							mes "如今她把一切都怪到七彩地龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
+							mes "如今她把一切都怪到七彩飞龙头上，于是提出了这份委托。请讨伐^FF000030只七彩飞龙^000000。";
 							callsub S_Quest,13026,13025;
 						}
 					}
