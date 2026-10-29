@@ -459,6 +459,7 @@ public:
 		bool roulette_open;
 		t_itemid item_reform;
 		uint64 item_enchant_index;
+		bool taekwon_auto; // Enables automatic Taekwon kick follow-ups (@taekwon_auto)
 	} state;
 	struct {
 		unsigned char no_weapon_damage, no_magic_damage, no_misc_damage;

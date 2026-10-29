@@ -1449,6 +1449,7 @@ void pc_setnewpc(map_session_data *sd, uint32 account_id, uint32 char_id, int32 
 	sd->login_id2 = 0; // at this point, we can not know the value :(
 	sd->client_tick = client_tick;
 	sd->state.active = 0; //to be set to 1 after player is fully authed and loaded.
+	sd->state.taekwon_auto = false;
 	sd->type = BL_PC;
 	if(battle_config.prevent_logout_trigger&PLT_LOGIN)
 		sd->canlog_tick = gettick();

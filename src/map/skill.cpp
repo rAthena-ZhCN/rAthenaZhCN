@@ -1229,28 +1229,49 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 		if (sc->getSCE(SC_READYSTORM) &&
 			sc_start4(src, src, SC_COMBO, 15, TK_STORMKICK,
 				0, 2, 0,
-				(2000 - 4 * sstatus->agi - 2 * sstatus->dex)))
-			; //Stance triggered
-		else if (sc->getSCE(SC_READYDOWN) &&
+				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
+			//Stance triggered
+			if (sd->state.taekwon_auto) {
+				uint16 auto_lv = pc_checkskill(sd, TK_STORMKICK);
+				if (auto_lv > 0)
+					unit_skilluse_id(src, bl->id, TK_STORMKICK, auto_lv);
+			}
+		} else if (sc->getSCE(SC_READYDOWN) &&
 			sc_start4(src, src, SC_COMBO, 15, TK_DOWNKICK,
 				0, 2, 0,
-				(2000 - 4 * sstatus->agi - 2 * sstatus->dex)))
-			; //Stance triggered
-		else if (sc->getSCE(SC_READYTURN) &&
+				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
+			//Stance triggered
+			if (sd->state.taekwon_auto) {
+				uint16 auto_lv = pc_checkskill(sd, TK_DOWNKICK);
+				if (auto_lv > 0)
+					unit_skilluse_id(src, bl->id, TK_DOWNKICK, auto_lv);
+			}
+		} else if (sc->getSCE(SC_READYTURN) &&
 			sc_start4(src, src, SC_COMBO, 15, TK_TURNKICK,
 				0, 2, 0,
-				(2000 - 4 * sstatus->agi - 2 * sstatus->dex)))
-			; //Stance triggered
-		else if (sc->getSCE(SC_READYCOUNTER)) { //additional chance from SG_FRIEND [Komurka]
+				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
+			//Stance triggered
+			if (sd->state.taekwon_auto) {
+				uint16 auto_lv = pc_checkskill(sd, TK_TURNKICK);
+				if (auto_lv > 0)
+					unit_skilluse_id(src, bl->id, TK_TURNKICK, auto_lv);
+			}
+		} else if (sc->getSCE(SC_READYCOUNTER)) { //additional chance from SG_FRIEND [Komurka]
 			int32 rate = 20;
 			if (sc->getSCE(SC_SKILLRATE_UP) && sc->getSCE(SC_SKILLRATE_UP)->val1 == TK_COUNTER) {
 				rate += rate*sc->getSCE(SC_SKILLRATE_UP)->val2 / 100;
 				status_change_end(src, SC_SKILLRATE_UP);
 			}
-			sc_start4(src, src, SC_COMBO, rate, TK_COUNTER,
+			if (sc_start4(src, src, SC_COMBO, rate, TK_COUNTER,
 				0, 2, 0,
-				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))
-				; //Stance triggered
+				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
+				//Stance triggered
+				if (sd->state.taekwon_auto) {
+					uint16 auto_lv = pc_checkskill(sd, TK_COUNTER);
+					if (auto_lv > 0)
+						unit_skilluse_id(src, bl->id, TK_COUNTER, auto_lv);
+				}
+			}
 		}
 	}
 

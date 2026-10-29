@@ -11483,6 +11483,31 @@ ACMD_FUNC(macrochecker){
 	return 0;
 }
 
+ACMD_FUNC(taekwon_auto)
+{
+	nullpo_retr(-1, sd);
+
+	if (message == nullptr || *message == '\0') {
+		clif_displaymessage(fd, "用法：@taekwon_auto on/off");
+		return -1;
+	}
+
+	if (strcmpi(message, "on") == 0) {
+		sd->state.taekwon_auto = true;
+		clif_displaymessage(fd, "跆拳道自动连招：已开启");
+		return 0;
+	}
+
+	if (strcmpi(message, "off") == 0) {
+		sd->state.taekwon_auto = false;
+		clif_displaymessage(fd, "跆拳道自动连招：已关闭");
+		return 0;
+	}
+
+	clif_displaymessage(fd, "用法：@taekwon_auto on/off");
+	return -1;
+}
+
 #include <custom/atcommand.inc>
 
 /**
@@ -11725,6 +11750,7 @@ void atcommand_basecommands(void) {
 		ACMD_DEF(fakename),
 		ACMD_DEF(size),
 		ACMD_DEF(showexp),
+		ACMD_DEF(taekwon_auto),
 		ACMD_DEF(showzeny),
 		ACMD_DEF(showdelay),
 		ACMD_DEF(autotrade),
