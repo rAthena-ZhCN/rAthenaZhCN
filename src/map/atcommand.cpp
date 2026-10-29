@@ -11488,23 +11488,23 @@ ACMD_FUNC(taekwon_auto)
 	nullpo_retr(-1, sd);
 
 	if (message == nullptr || *message == '\0') {
-		clif_displaymessage(fd, "用法：@taekwon_auto on/off");
+		clif_displaymessage(fd, "Usage: @taekwon_auto on/off");
 		return -1;
 	}
 
 	if (strcmpi(message, "on") == 0) {
 		sd->state.taekwon_auto = true;
-		clif_displaymessage(fd, "跆拳道自动连招：已开启");
+		clif_displaymessage(fd, "Taekwon auto combo: ON");
 		return 0;
 	}
 
 	if (strcmpi(message, "off") == 0) {
 		sd->state.taekwon_auto = false;
-		clif_displaymessage(fd, "跆拳道自动连招：已关闭");
+		clif_displaymessage(fd, "Taekwon auto combo: OFF");
 		return 0;
 	}
 
-	clif_displaymessage(fd, "用法：@taekwon_auto on/off");
+	clif_displaymessage(fd, "Usage: @taekwon_auto on/off");
 	return -1;
 }
 
