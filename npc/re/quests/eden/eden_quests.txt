@@ -3907,6 +3907,13 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 				close;
 			}
 			mes "[索恩]";
+			if (Class == Job_Novice || Class == Job_Swordman || Class == Job_Mage ||
+				Class == Job_Archer || Class == Job_Acolyte || Class == Job_Merchant ||
+				Class == Job_Thief || Class == Job_Taekwon) {
+				mes "这些是给二转职业准备的装备。";
+				mes "等你完成二转后再来领取吧。";
+				close;
+			}
 			if (BaseJob == Job_Knight || BaseJob == Job_Crusader) {
 				callsub L_Select,"One-handed sword, two-handed sword or spear.",
 					1197,"Eden Group Slayer III","Two-handed Sword, Attack 200",
@@ -3972,10 +3979,6 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 				getitem 13114,1; //P.Revolver III
 			else if (Class == Job_Summoner)
 				getitem 26101,1; //P.Foxtail III
-			else if (BaseJob == Job_Taekwon) {
-				mes "跆拳道以拳脚为主，没有额外的武器。";
-				mes "这套防具就当作你的装备吧。";
-			}
 			else {
 				mes "嗯，你已经有资格领取装备了。";
 				mes "嗯，我明白。";
