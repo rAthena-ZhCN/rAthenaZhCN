@@ -6,6 +6,7 @@
 #include <cstdlib> // atoi
 #include <cstring> // memset
 #include <map>
+#include <string>
 
 #include <common/cbasetypes.hpp> // uint16, uint32
 #include <common/malloc.hpp> // CREATE, RECREATE, aFree
