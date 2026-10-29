@@ -58,6 +58,7 @@ enum CASHSHOP_BUY_RESULT
 struct s_cash_item{
 	t_itemid nameid;
 	uint32 price;
+	uint32 max_per_character; ///< 0 = unlimited, otherwise lifetime purchase limit per character
 };
 
 struct s_cash_item_tab{

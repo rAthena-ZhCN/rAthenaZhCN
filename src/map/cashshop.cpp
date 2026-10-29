@@ -5,6 +5,7 @@
 
 #include <cstdlib> // atoi
 #include <cstring> // memset
+#include <map>
 
 #include <common/cbasetypes.hpp> // uint16, uint32
 #include <common/malloc.hpp> // CREATE, RECREATE, aFree
@@ -14,6 +15,7 @@
 #include "log.hpp"
 #include "pc.hpp" // s_map_session_data
 #include "pet.hpp" // pet_create_egg
+#include "script.hpp" // add_str
 
 #if PACKETVER_SUPPORTS_SALES
 struct sale_item_db sale_items;
@@ -106,6 +108,17 @@ uint64 CashShopDatabase::parseBodyNode( const ryml::NodeRef& node ){
 		}
 
 		cash_item->price = price;
+		cash_item->max_per_character = 0;
+
+		if (this->nodeExists(it, "MaxPerCharacter")) {
+			uint32 max_per_character;
+
+			if (!this->asUInt32(it, "MaxPerCharacter", max_per_character)) {
+				return 0;
+			}
+
+			cash_item->max_per_character = max_per_character;
+		}
 
 		if( !cash_item_exists ){
 			entry->items.push_back( cash_item );
@@ -442,6 +455,7 @@ bool cashshop_buylist( map_session_data* sd, uint32 kafrapoints, int32 n, const 
 	uint32 totalcash = 0;
 	uint32 totalweight = 0;
 	int32 i,new_;
+	std::map<t_itemid, uint32> pending_limits;
 
 	if( sd == nullptr || item_list == nullptr ){
 		clif_cashshop_result( sd, 0, CASHSHOP_RESULT_ERROR_UNKNOWN );
@@ -482,6 +496,19 @@ bool cashshop_buylist( map_session_data* sd, uint32 kafrapoints, int32 n, const 
 			// Client blocks buying more than 99 items of the same type at the same time, this means someone forged a packet with a higher quantity
 			clif_cashshop_result( sd, nameid, CASHSHOP_RESULT_ERROR_UNKNOWN );
 			return false;
+		}
+
+		if (cash_item->max_per_character > 0) {
+			std::string limit_reg = "CASHSHOP_LIMIT_" + std::to_string(nameid);
+			int64 purchased = pc_readregistry(sd, add_str(limit_reg.c_str()));
+			uint32 pending = pending_limits[nameid];
+
+			if (purchased + pending + quantity > cash_item->max_per_character) {
+				clif_cashshop_result(sd, nameid, CASHSHOP_RESULT_ERROR_EACHITEM_OVERCOUNT);
+				return false;
+			}
+
+			pending_limits[nameid] = pending + quantity;
 		}
 
 		if( tab == CASHSHOP_TAB_SALE ){
@@ -540,9 +567,7 @@ bool cashshop_buylist( map_session_data* sd, uint32 kafrapoints, int32 n, const 
 	for( i = 0; i < n; ++i ){
 		t_itemid nameid = item_list[i].itemId;
 		uint32 quantity = item_list[i].amount;
-#if PACKETVER_SUPPORTS_SALES
 		uint16 tab = item_list[i].tab;
-#endif
 		struct item_data *id = itemdb_search(nameid);
 
 		if (!id)
@@ -617,6 +642,15 @@ bool cashshop_buylist( map_session_data* sd, uint32 kafrapoints, int32 n, const 
 				}
 			}
 #endif
+		}
+
+		std::shared_ptr<s_cash_item> cash_item = cash_shop_db.findItemInTab(static_cast<e_cash_shop_tab>(tab), nameid);
+
+		if (cash_item != nullptr && cash_item->max_per_character > 0) {
+			std::string limit_reg = "CASHSHOP_LIMIT_" + std::to_string(nameid);
+			int64 purchased = pc_readregistry(sd, add_str(limit_reg.c_str()));
+
+			pc_setregistry(sd, add_str(limit_reg.c_str()), purchased + quantity);
 		}
 	}
 
