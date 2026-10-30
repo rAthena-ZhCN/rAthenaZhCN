@@ -418,7 +418,7 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "可以用";
 					mes "^8E6B23短裤^000000制作？";
 					next;
-					if (select("萨克帽:幽灵头巾:威严山羊:鹿角") == 1)
+					if (select("草帽:幽灵头巾:威严山羊:鹿角") == 1)
 						set .@black_q,.@black_q+10;
 					mes "[格舒彭施特]";
 					mes "10. 作为商人";
@@ -498,7 +498,7 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 				next;
 				mes "[格舒彭施特]";
 				mes "让我看看……你的分数是……" + .@black_q + "分。";
-				if (.@black_q == 100) {
+				if (.@black_q == 100 || (BSMITH_Q == 2 && .@black_q >= 90)) {
 					set BSMITH_Q,3;
 					if (checkquest(2001) != -1) {
 						changequest 2001,2002;
