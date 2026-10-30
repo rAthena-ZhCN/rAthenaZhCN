@@ -601,6 +601,8 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 			mes "^8E6B23"+.@items[7]+" <ITEM>"+getitemname(.@items[6])+"<INFO>"+.@items[6]+"</INFO></ITEM>^000000，就是从";
 			mes "NPC商店";
 			mes "能买到的那种。";
+			if (.@items[6] == 1610)
+				mes "注意：手杖必须是 ID 1610 的 Arc_Wand，其他同名手杖不算。";
 			next;
 			mes "[格舒彭施特]";
 			mes "收集这些物品就是你的考试内容。碰巧，这也能帮我省下一点钱。我再重复一遍你需要带回来的东西……";
@@ -804,12 +806,17 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 				mes "吗？给我拿来……";
 				next;
 				mes "[格舒彭施特]";
-				mes "^8E6B23"+.@items[1]+" "+getitemname(.@items[0])+"^000000，";
-				mes "^8E6B23"+.@items[3]+" "+getitemname(.@items[2])+"^000000，";
-				mes "^8E6B23"+.@items[5]+" "+getitemname(.@items[4])+"^000000，以及";
-				mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，也就是那种";
-				mes "在NPC商店";
-				mes "里能买到的。";
+				mes "你还缺少以下物品：";
+				if (countitem(.@items[0]) < .@items[1])
+					mes "·<ITEM>"+getitemname(.@items[0])+"<INFO>"+.@items[0]+"</INFO></ITEM> 还差 "+(.@items[1]-countitem(.@items[0]))+" 个";
+				if (countitem(.@items[2]) < .@items[3])
+					mes "·<ITEM>"+getitemname(.@items[2])+"<INFO>"+.@items[2]+"</INFO></ITEM> 还差 "+(.@items[3]-countitem(.@items[2]))+" 个";
+				if (countitem(.@items[4]) < .@items[5])
+					mes "·<ITEM>"+getitemname(.@items[4])+"<INFO>"+.@items[4]+"</INFO></ITEM> 还差 "+(.@items[5]-countitem(.@items[4]))+" 个";
+				if (countitem(.@items[6]) < .@items[7])
+					mes "·<ITEM>"+getitemname(.@items[6])+"<INFO>"+.@items[6]+"</INFO></ITEM> 还差 "+(.@items[7]-countitem(.@items[6]))+" 个";
+				if (.@items[6] == 1610)
+					mes "注意：手杖必须是 ID 1610 的 Arc_Wand，其他同名手杖不算。";
 				next;
 				mes "[格舒彭施特]";
 				mes "下次回来时，";
