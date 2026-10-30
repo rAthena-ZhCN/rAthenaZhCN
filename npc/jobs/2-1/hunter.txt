@@ -60,11 +60,11 @@
 in_hunter,99,99,4	script	猎人情报#hnt::HntNotice	727,{
 	mes "============ 公告 ============";
 	mes "特此通知，猎人转职地点";
-	mes "已迁至黑森林共和国的^ff0000休格尔^000000。";
+	mes "已迁至黑森林共和国的^ff0000<NAVI>[休格尔猎人转职考场]<INFO>hugel,208,222,0,101,0</INFO></NAVI>^000000。";
 	next;
 	mes "现在可以使用休格尔航线了，请搭乘飞空艇前往休格尔。";
 	next;
-	mes "你会在^ff0000 休格尔 208 222 ^000000找到新的转职地点。";
+	mes "你会在^ff0000<NAVI>[休格尔猎人转职考场]<INFO>hugel,208,222,0,101,0</INFO></NAVI>^000000找到新的转职地点。";
 	next;
 	mes "^804000（你在公告末尾发现了一行小字。）^000000";
 	mes " ";
@@ -78,24 +78,24 @@ pay_fild10,148,252,3	duplicate(HntNotice)	转职考场#hu	857
 
 // Actual Job quest start
 //============================================================
-hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
+hu_in01,386,373,4	script	猎人雪琳#hnt	727,{
 	if (Upper == 1) {
 		mes "[猎人雪琳]";
 		mes "哦，你最近过得怎么样？好久不见了吧？";
 		next;
 		mes "[猎人雪琳]";
-		mes "...Wait.";
+		mes "……等等。";
 		mes "哎呀！抱歉，我发誓我们以前见过面。咦，真奇怪。";
 		close;
 	}
 	if (BaseJob == Job_Archer && JobLevel < 40) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "咦？你作为弓箭手的修行还不够。要成为猎人，必须先积累一定的弓箭手经验。";
 		next;
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "再去多修炼一阵吧。至少要达到Job等级40，才具备成为猎人的条件。当然，想练得更高也可以。";
 		next;
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "下次见~";
 		close;
 	}
@@ -105,40 +105,40 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 		close;
 	}
 	if (BaseClass == Job_Novice) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "你一定是……";
 		mes "初心者？哇，你的路还长着呢。我看你在这里也做不了什么。";
 		close;
 	}
 	else if (BaseClass == Job_Swordman) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "你选择了剑之路。我敬重你剑刃的力量。当然，在远处你总不能把剑扔向敌人吧？";
 		close;
 	}
 	else if (BaseClass == Job_Mage) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "你是用魔法的？能施展神秘力量的感觉一定很棒。";
 		close;
 	}
 	else if (BaseClass == Job_Acolyte) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "哦，侍奉神明的人！很高兴见到你。像你这样的人很少会来这里~ 嘿嘿。";
 		close;
 	}
 	else if (BaseClass == Job_Merchant) {
-		mes "[猎人公会成员]";
-		mes "Oh...";
+		mes "[猎人雪琳]";
+		mes "哦……";
 		mes "你的生意做得怎么样了？";
 		close;
 	}
 	else if (BaseClass == Job_Thief) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "呃？！";
 		mes "这地方既没有值得偷的东西，也没有值得杀的人！！";
 		close;
 	}
 	else if (BaseJob == Job_Dancer || BaseJob == Job_Bard) {
-		mes "[猎人公会成员]";
+		mes "[猎人雪琳]";
 		mes "呼……有时候当猎人真的很辛苦啊……";
 		mes "那么你喜欢这种自由不羁的生活吗？是啊，我真羡慕你有那么多自由……";
 		close;
@@ -155,10 +155,10 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 	else if (BaseJob == Job_Archer) {
 		if (HNTR_Q == 17 && countitem(1007) == 0) {
 			mes "[猎人雪琳]";
-			mes "嗯……我听说你通过了考试。但你没有能证明这一成就的必需物品“慧眼（穿透）”。";
+			mes "嗯……我听说你通过了考试。但你没有能证明这一成就的必需物品<ITEM>慧眼<INFO>1007</INFO></ITEM>。";
 			next;
 			mes "[猎人雪琳]";
-			mes "我可以让你转职，但无论如何你都必须带回“慧眼（穿透）”。";
+			mes "我可以让你转职，但无论如何你都必须带回<ITEM>慧眼<INFO>1007</INFO></ITEM>。";
 			close;
 		}
 		else if (HNTR_Q == 17 && countitem(1007) > 0) {
@@ -187,31 +187,35 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 			next;
 			mes "[猎人雪琳]";
 			mes "另外，这是给你辛勤付出的一点小奖励。当然，是我私人送的~";
-			if (.@joblvl > 49)
+			if (.@joblvl > 49) {
 				getitem 1718,1; //Hunter_Bow
-			else
+				mes "这是给你的<ITEM>猎人之弓<INFO>1718</INFO></ITEM>。";
+			}
+			else {
 				getitem 1710,1; //CrossBow
+				mes "这是给你的<ITEM>十字弓<INFO>1710</INFO></ITEM>。";
+			}
 			close;
 		}
 		else if (HNTR_Q == 0 || HNTR_Q == 1) {
 			if (HNTR_Q == 0) {
-				mes "[猎人公会成员]";
+				mes "[猎人雪琳]";
 				mes "哦，你是弓箭手！看来你已经受过足够的弓箭手修行……你是来成为猎人的吧？";
 				next;
-				switch( select( "是的，我就是为此而来。", "What are the requirements to change jobs?", "....I don't want to change yet." ) ) {
+				switch( select( "是的，我就是为此而来。", "转职需要什么条件？", "……我暂时还不想转职。" ) ) {
 				case 1:
-					mes "[猎人公会成员]";
+					mes "[猎人雪琳]";
 					mes "嘿嘿~";
 					mes "果然没错！我把你登记到候选人名单里。让我看看~*";
 					next;
-					mes "[猎人公会成员]";
+					mes "[猎人雪琳]";
 					mes "嗯……先从面试开始吧。请稍等片刻，放松一下。不用担心，我会把一切准备好的~";
 					next;
 					mes "^3355FF*整理并翻阅文件*^000000";
 					next;
 					mes "^3355FF*翻找翻找*^000000";
 					next;
-					mes "[猎人公会成员]";
+					mes "[猎人雪琳]";
 					mes "啊！";
 					mes "找到了，面试题目~ 首先，我叫“雪琳”。很高兴见到你！";
 					next;
@@ -221,7 +225,7 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 					next;
 					if (select( "好~ 现在开始吧。", "不，我晚点再来。") == 2) {
 						mes "[猎人雪琳]";
-						mes "Okay...";
+						mes "好吧……";
 						mes "等你准备好";
 						mes "再来吧~";
 						close;
@@ -235,27 +239,27 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 					mes "我只是想知道你如何看待人生，以及为什么想成为猎人，所以不必紧张。";
 					break;
 				case 2:
-					mes "[猎人公会成员]";
+					mes "[猎人雪琳]";
 					mes "转职";
 					mes "条件是什么？";
-					mes "First...";
+					mes "第一……";
 					mes "必须是弓箭手。";
 					next;
-					mes "[猎人公会成员]";
-					mes "Second...";
+					mes "[猎人雪琳]";
+					mes "第二……";
 					mes "你一定";
 					mes "至少Job等级40。";
 					next;
-					mes "[猎人公会成员]";
-					mes "Third...";
+					mes "[猎人雪琳]";
+					mes "第三……";
 					mes "你必须带来公会要求的所有物品。那件事之后再操心吧。";
 					next;
-					mes "[猎人公会成员]";
-					mes "Fourth...";
+					mes "[猎人雪琳]";
+					mes "第四……";
 					mes "你必须通过公会举办的考试。只要作为弓箭手的修行足够，应该就能通过~";
 					close;
 				case 3:
-					mes "[猎人公会成员]";
+					mes "[猎人雪琳]";
 					mes "那么，";
 					mes "下次见~";
 					close;
@@ -353,7 +357,7 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 			mes "遇到了一位迷路的人。";
 			mes "你该怎么做？";
 			next;
-			switch( select( "告诉他该往哪边走。", "带他前往目的地。", "Ignore." ) ) {
+			switch( select( "告诉他该往哪边走。", "带他前往目的地。", "无视。" ) ) {
 			case 1:
 			case 2:
 				.@hunter_t += 10;
@@ -366,7 +370,7 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 			mes "[猎人雪琳]";
 			mes "你该怎么做？";
 			next;
-			if (select( "先观望，等对方求助时再出手。", "Attack and see what happens.", "Just go back to town." ) == 1)
+			if (select( "先观望，等对方求助时再出手。", "直接攻击，看看会发生什么。", "先回城镇。" ) == 1)
 				.@hunter_t += 10;
 			mes "[猎人雪琳]";
 			mes "狩猎了一整天，你现在非常疲惫。该回城了。";
@@ -441,20 +445,20 @@ hu_in01,386,373,4	script	猎人公会成员#hnt	727,{
 		mes "嗯，我想你该去找别人，而不是我。比如我们出门办事的会长，你懂吧？";
 		next;
 		mes "[猎人雪琳]";
-		mes "我听说他在裴扬中央宫殿……或者弓箭手村，总之是这两个地方之一。去那些地方找找他吧，好吗？";
+		mes "我听说他在裴扬中央宫殿……或者弓箭手村，总之是这两个地方之一。去那些地方找找他吧，好吗？<NAVI>[裴扬中央宫殿]<INFO>payon_in03,131,7,0,101,0</INFO></NAVI><NAVI>[弓箭手村]<INFO>payon_in02,21,31,0,101,0</INFO></NAVI>";
 		close;
 	}
-	mes "[猎人公会成员]";
+	mes "[猎人雪琳]";
 	mes "咦？你作为弓箭手的修行还不够。要成为猎人，必须先积累更多弓箭手经验。";
 	next;
-	mes "[猎人公会成员]";
+	mes "[猎人雪琳]";
 	mes "那么，再去多修炼吧。准确地说，至少要达到Job等级40。当然，练得更高也无妨。下次见~";
 	close;
 }
 
-hu_in01,382,382,4	script	公会接待员#hnt	732,{
+hu_in01,382,382,4	script	恶魔猎人#hnt	732,{
 	if (HNTR_Q == 2) {
-		mes "[猎人公会考试接待人员]";
+		mes "[恶魔猎人]";
 		mes "你好。人们叫我……^660000恶魔猎人^000000。我负责处理申请。你的名字是……" + strcharinfo(0) + "，对吗？";
 		next;
 		if (select( "是的，没错。", "不对~~（嘿嘿嘿）" ) == 2) {
@@ -462,7 +466,7 @@ hu_in01,382,382,4	script	公会接待员#hnt	732,{
 			mes "喂，别胡闹了。";
 			mes "你的名字是" + strcharinfo(0) + "，对吧？";
 			next;
-			if (select("Yes...", "嘿嘿嘿。我都说了不是啦~~") == 2) {
+			if (select("是的……", "嘿嘿嘿。我都说了不是啦~~") == 2) {
 				mes "[恶魔猎人]";
 				mes "如果你打算耍这种小把戏糊弄我，就请离开。你难道不知道自己在戏弄^660000恶魔猎人^000000吗？！'";
 				close2;
@@ -516,7 +520,7 @@ hu_in01,382,382,4	script	公会接待员#hnt	732,{
 			break;
 		}
 		mes "[恶魔猎人]";
-		mes "嗯。^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000用来做箭头。^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000 to use here and there. And ^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000 please.";
+		mes "嗯。^660000" + .@items[1] + " <ITEM>" + getitemname(.@items[0]) + "<INFO>" + .@items[0] + "</INFO></ITEM>^000000用来做箭头。^660000" + .@items[3] + " <ITEM>" + getitemname(.@items[2]) + "<INFO>" + .@items[2] + "</INFO></ITEM>^000000用来制作其他箭矢。还有^660000" + .@items[5] + " <ITEM>" + getitemname(.@items[4]) + "<INFO>" + .@items[4] + "</INFO></ITEM>^000000。也请带来。";
 		HNTR_Q = .@items[6];
 		next;
 		mes "[恶魔猎人]";
@@ -524,7 +528,7 @@ hu_in01,382,382,4	script	公会接待员#hnt	732,{
 			mes "顺便一提，我们猎人公会的一位成员正在弓箭手公会办公。我想你得去拜访他，因为他负责考试。";
 		else {
 			mes "对了。我们会长出差去了裴扬中央宫殿。你必须去拜访他，因为他是主持考试的人。";
-			mes "你可以在裴扬中央宫殿东边的一栋建筑里找到他。";
+			mes "你可以在裴扬中央宫殿东边的一栋建筑里找到他。<NAVI>[裴扬中央宫殿]<INFO>payon_in03,131,7,0,101,0</INFO></NAVI>";
 		}
 		next;
 		mes "[恶魔猎人]";
@@ -599,9 +603,9 @@ hu_in01,382,382,4	script	公会接待员#hnt	732,{
 		next;
 		mes "[恶魔猎人]";
 		mes "你需要的物品是";
-		mes "^660000" + .@items[1] + " " + getitemname(.@items[0]) + "^000000，";
-		mes "^660000" + .@items[3] + " " + getitemname(.@items[2]) + "^000000以及";
-		mes "^660000" + .@items[5] + " " + getitemname(.@items[4]) + "^000000。";
+		mes "^660000" + .@items[1] + " <ITEM>" + getitemname(.@items[0]) + "<INFO>" + .@items[0] + "</INFO></ITEM>^000000，";
+		mes "^660000" + .@items[3] + " <ITEM>" + getitemname(.@items[2]) + "<INFO>" + .@items[2] + "</INFO></ITEM>^000000以及";
+		mes "^660000" + .@items[5] + " <ITEM>" + getitemname(.@items[4]) + "<INFO>" + .@items[4] + "</INFO></ITEM>^000000。";
 		mes "等你集齐";
 		mes "所有物品再回来吧。";
 		close;
@@ -617,13 +621,13 @@ hu_in01,382,382,4	script	公会接待员#hnt	732,{
 		close;
 	}
 	else {
-		mes "[猎人公会考试接待人员]";
+		mes "[恶魔猎人]";
 		mes "如果你想转职为猎人，必须先登记。";
 		close;
 	}
 }
 
-payon_in03,131,7,3	script	猎人#htnGM	59,{
+payon_in03,131,7,3	script	猎人公会会长#htnGM	59,{
 	if (HNTR_Q == 10) {
 		mes "[猎人公会会长]";
 		mes "哼。你一定是来参加猎人转职考试的。让我给你讲讲考试流程。你想知道什么？";
@@ -691,7 +695,7 @@ payon_in03,131,7,3	script	猎人#htnGM	59,{
 		close;
 	}
 	else if (HNTR_Q == 11) {
-		mes "[猎人]";
+		mes "[猎人公会会长]";
 		mes "嗯？有什么事吗？如果你想转职，应该去找弓箭手公会的那个人，而不是我。";
 		close;
 	}
@@ -754,14 +758,14 @@ payon_in03,131,7,3	script	猎人#htnGM	59,{
 	else if (HNTR_Q == 16) {
 		mes "[猎人公会会长]";
 		mes "哇，你完好无损地回来了！";
-		mes "我是说，干得好。我会给你能证明你通过考试的物品。";
+		mes "我是说，干得好。我会给你能证明你通过考试的<ITEM>慧眼<INFO>1007</INFO></ITEM>。";
 		HNTR_Q = 17;
 		savepoint "payon",104,99,1,1;
 		getitem 1007,1; // Penetration
 		changequest 4012,4013;
 		next;
 		mes "[猎人公会会长]";
-		mes "好，给你。现在回猎人公会去吧。我在这里还有些事要办，但希望你能早日成为猎人。";
+		mes "好，给你。现在回猎人公会去吧。<NAVI>[猎人雪琳]<INFO>hu_in01,386,373,0,101,0</INFO></NAVI>我在这里还有些事要办，但希望你能早日成为猎人。";
 		close;
 	}
 	else if (HNTR_Q == 17) {
@@ -773,14 +777,14 @@ payon_in03,131,7,3	script	猎人#htnGM	59,{
 		close;
 	}
 	else {
-		mes "[猎人]";
-		mes "...Can I help you?";
+		mes "[猎人公会会长]";
+		mes "……有什么需要帮忙的吗？";
 		mes "我是来办公事的，现在很忙。恕我失陪……";
 		close;
 	}
 }
 
-payon_in02,21,31,1	script	猎人#htnGM2	59,{
+payon_in02,21,31,1	script	猎人公会会长#htnGM2	59,{
 	cutin "job_huntermaster",2;
 	if (HNTR_Q == 11) {
 		mes "[猎人公会会长]";
@@ -815,7 +819,7 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 			// Note: aegis typo
 			// if (.@a0) {
 			// 	mes "[Hunter Guildmaster]";
-			// 	mes "...Okay. I'll send you to the testing area right now. Don't blame me if you get lost or confused because you didn't listen to the explanation.";
+			// 	mes "……好。我现在就把你送到考场。如果你因为没听说明而迷路或困惑，可别怪我。";
 			// 	next;
 			// }
 			// else {
@@ -825,7 +829,7 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 			// }
 			// next;
 			mes "[猎人公会会长]";
-			mes "...Okay. I'll send you to the testing area right now. Don't blame me if you get lost or confused because you didn't listen to the explanation.";
+			mes "……好。我现在就把你送到考场。如果你因为没听说明而迷路或困惑，可别怪我。";
 			next;
 		}
 		mes "[猎人公会会长]";
@@ -853,14 +857,14 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 		close3;
 	}
 	else if (HNTR_Q == 10) {
-		mes "[猎人]";
+		mes "[猎人公会会长]";
 		mes "嗯？";
 		mes "有什么";
 		mes "需要帮忙的吗？";
 		mes "哦，你一定是";
 		mes "来报考猎人的吧。";
 		next;
-		mes "[猎人]";
+		mes "[猎人公会会长]";
 		mes "如果你想转职，我想你得去裴扬中央宫殿找那个人。";
 		close3;
 	}
@@ -908,7 +912,7 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 		mes "咦？为什么我不给你银箭矢？这个嘛，你连材料都没带，就别指望能拿到东西了。";
 		next;
 		mes "[猎人公会会长]";
-		mes "Well...";
+		mes "这个……";
 		mes "我相信";
 		mes "你已经准备好了。";
 		mes "开始吧。";
@@ -940,7 +944,7 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 		changequest 4012,4013;
 		next;
 		mes "[猎人公会会长]";
-		mes "Well...";
+		mes "这个……";
 		mes "拿去吧。";
 		mes "现在快回猎人公会，加入我们吧~";
 		close3;
@@ -957,7 +961,7 @@ payon_in02,21,31,1	script	猎人#htnGM2	59,{
 		close3;
 	}
 	else {
-		mes "[猎人]";
+		mes "[猎人公会会长]";
 		mes "有什么事？我正在出差，现在很忙。恕我失陪了。";
 		close3;
 	}
@@ -985,7 +989,7 @@ OnTouch_:
 	}
 	else if (HNTR_Q > 12 && HNTR_Q < 16) {
 		mes "[引导员]";
-		mes "Hmm...";
+		mes "嗯……";
 		mes "搞砸了吗？";
 		mes "我先帮你恢复一些";
 		mes "HP和SP。";
@@ -994,7 +998,7 @@ OnTouch_:
 		mes "[引导员]";
 		mes "如果觉得太难，下次再挑战也无妨。你现在要放弃吗？";
 		next;
-		if (select( "继续挑战。", "Resign." ) == 1) {
+		if (select( "继续挑战。", "放弃。" ) == 1) {
 			mes "[引导员]";
 			mes "好。加油，成为一位出色的猎人吧。请进入等候室。如果已经有人在考试，你必须等到那个人结束。";
 			close;
