@@ -12,29 +12,29 @@
 //= 1.0 First Version. [Kisuka]
 //= 1.1 Added support for Baby classes. [Euphy]
 //============================================================ 
-alberta_in,53,43,6	script	商人#mer	86,{
+alberta_in,53,43,6	script	曼苏#mer	86,{
 	if (Upper == 1) {
 		if (Class == Job_Novice_High && (ADVJOB == Job_Whitesmith || ADVJOB == Job_Creator)) {
-			mes "[曼苏会长]";
+			mes "[曼苏]";
 			mes "好久不见！";
 			mes "嘿，你没有放弃";
 			mes "你的生意，是吧？";
 			mes "发生什么事了？";
 			next;
-			mes "[曼苏会长]";
-			mes "Whoa...";
+			mes "[曼苏]";
+			mes "哇……";
 			mes "你真的去过瓦尔哈拉？！哇，你成长了不少……";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[曼苏会长]";
-				mes "Hmmm...";
+				mes "[曼苏]";
+				mes "嗯……";
 				mes "看来你还没准备好再次成为商人。先去把初心者的基础技能学完吧。";
 				next;
-				mes "[曼苏会长]";
+				mes "[曼苏]";
 				mes "别担心，商人的位置永远为你留着。准备好了再来找我，好吗？";
 				close;
 			}
-			mes "[曼苏会长]";
+			mes "[曼苏]";
 			mes "看来我们再次这样相遇是命中注定。好吧。让我再一次把你变成商人！";
 			next;
 			skill "NV_TRICKDEAD",0,SKILL_PERM;
@@ -42,33 +42,33 @@ alberta_in,53,43,6	script	商人#mer	86,{
 			skill "MC_CARTREVOLUTION",1,SKILL_PERM;
 			skill "MC_CHANGECART",1,SKILL_PERM;
 			skill "MC_LOUD",1,SKILL_PERM;
-			mes "[曼苏会长]";
+			mes "[曼苏]";
 			mes "啊～真让人怀念。就像从前一样！好，加油吧！";
 			close;
 		}else{
-			mes "[曼苏会长]";
+			mes "[曼苏]";
 			mes "^333333*叹气*^000000";
 			mes "好无聊啊……";
 			mes "我可爱的布洛森什么时候才会来信呢？";
 			close;
 		}
 	}
-	mes "[公会会员曼苏]";
+	mes "[曼苏]";
 	mes "嘿，你怎么会在这里？";
 	next;
 	switch(select("我想成为商人。:我想更了解商人。:询问成为商人的条件。:没什么。")) {
 	case 1:
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		if(BaseJob != Job_Novice) {
 			if(BaseJob == Job_Merchant) {
-				mes ".....? Sorry? What are you saying?";
+				mes "……？抱歉？你在说什么？";
 				mes "你已经是商人了。天哪……";
 				mes "咦？！……我现在该笑吗？！";
 			}else{
 				mes "啊？你是想两头都占吗？";
 				mes "不如就专心投入你原本的职业吧？";
 				next;
-				mes "[公会会员曼苏]";
+				mes "[曼苏]";
 				mes "我们可是有商业道德的。";
 			}
 			close;
@@ -76,46 +76,46 @@ alberta_in,53,43,6	script	商人#mer	86,{
 			mes "想成为商人？嗯……";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[公会会员曼苏]";
+				mes "[曼苏]";
 				mes "不过若想成为商人，你的基础技能等级必须达到9级，或者把技能点全部用完。";
 				next;
-				mes "[公会会员曼苏]";
+				mes "[曼苏]";
 				mes "虽然我们只是和钱打交道，你不觉得也该学点基础技能吗？";
 				close;
 			}
-			mes "[公会会员曼苏]";
+			mes "[曼苏]";
 			mes "很好，你的基础技能等级已经达标，我想你完全准备好了。";
 			mes "现在我允许你成为商人。";
 			next;
-			mes "[公会会员曼苏]";
+			mes "[曼苏]";
 			mes "恭喜你成为商人！";
 			mes "再次恭喜你成为商人公会的成员，也成为我们的同事。今后期待你的积极参与！";
 			callfunc "Job_Change",Job_Merchant;
 			getitem 1381,1;	// N_Battle_Axe
 			next;
-			mes "[公会会员曼苏]";
+			mes "[曼苏]";
 			mes "当然，我们需要有热情的年轻人，来实现掌握全世界货币总量20%的伟大目标。你懂吗？嗯？";
 			mes "呃，我只是说……意思就是最后大家一起赚大钱。你们都懂的吧～";
 			close;
 		}
 	case 2:
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		mes "商人？简单来说，卖东西赚钱的人就是商人。";
 		mes "不擅长战斗，也没有特殊的攻击或恢复技能……但商人可以低价买入再卖出，从中赚钱。";
 		next;
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		mes "这个嘛，商人有个叫“金钱攻击”的终极技能，可以用钱砸向敌人……除了弓、法杖和双手剑，我们什么都能装备。不过那些东西我们随时可以买卖。";
 		mes "是的……我们商人脑子里总是想着钱，明白吗？";
 		close;
 	case 3:
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		mes "要成为商人，虽然我们的工作只是卖东西收钱，但你的基础技能等级至少要达到9级。";
 		next;
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		mes "说起来，以前我们是要收开业费的。赚那些钱不容易吧？";
 		mes "有太多人凑不出那笔钱，只能一直哭。";
 		next;
-		mes "[公会会员曼苏]";
+		mes "[曼苏]";
 		mes "所以最近我们决定，任何想成为商人的初心者都可以成为商人。";
 		mes "因为以后能不能活下去，全看个人本事。";
 		close;
