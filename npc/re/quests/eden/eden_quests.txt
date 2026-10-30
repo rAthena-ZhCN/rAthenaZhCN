@@ -1778,7 +1778,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 	case 1:
 		if (para_suv01 == 11) {
 			mes "如果你已完成第 1 步";
-			mes "我们可以为你提供伊甸园集团帽子、制服、披肩和长靴。";
+			mes "我们可以为你提供伊甸园集团头盔、盔甲、斗篷和鞋子。";
 			mes "^4d4dff请先检查你的背包。^000000";
 			next;
 			if (select("让我检查一下背包:我的空间足够。") == 1) {
@@ -1787,18 +1787,18 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 				close;
 			}
 			mes "[迈克尔]";
-			mes "其中两件补给品，^4d4dff帽子与披肩^000000，";
+			mes "其中两件补给品，^4d4dff头盔与斗篷^000000，";
 			mes "只会发放一次。";
 			mes "所以请小心爱护它们。";
 			next;
 			mes "[迈克尔]";
-			mes "至于长靴和制服，你将根据课程成绩获得品质更好的。";
+			mes "至于鞋子和盔甲，你将根据课程成绩获得品质更好的。";
 			next;
 			mes "[迈克尔]";
-			mes "一顶伊甸园集团帽子。";
-			mes "一件伊甸园集团制服 I。";
-			mes "一双伊甸园集团长靴 I。";
-			mes "一件伊甸园集团披肩。";
+			mes "一顶伊甸园集团<ITEM>头盔<INFO>5583</INFO></ITEM>。";
+			mes "一件伊甸园集团<ITEM>盔甲<INFO>15009</INFO></ITEM> I。";
+			mes "一双伊甸园集团<ITEM>鞋子<INFO>2456</INFO></ITEM> I。";
+			mes "一件伊甸园集团<ITEM>斗篷<INFO>2560</INFO></ITEM>。";
 			mes "一共 4 件补给品，就这些。";
 			para_suv01 = 12;
 			para_suv02 = 1;
@@ -1825,7 +1825,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			mes "我们无法制造世上所有的武器，你同意吧？";
 			next;
 			mes "[迈克尔]";
-			mes "我们将提供 1 件武器、鞋子和制服，共三样东西。";
+			mes "我们将提供 1 件武器、鞋子和盔甲，共三样东西。";
 			mes "此外，考虑到有些成员无法使用部分补给品，我们还会提供额外物品。";
 			next;
 			mes "[迈克尔]";
@@ -1838,42 +1838,42 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			}
 			mes "[迈克尔]";
 			if (Class == Job_Swordman || Class == Job_Swordman_High || Class == Job_Knight || Class == Job_Crusader) {
-				callsub S_Select,"We have one and Two-handed swords",
-					1192,"Eden Slayer I","Two-handed sword","Attack 162","",//P_Slayer1
-					13423,"Eden Saber I","One-handed sword","Attack 147","This is what we strive for.";//P_Sabre1
+				callsub S_Select,"我们提供单手剑和双手剑",
+					1192,"双手剑","双手剑","攻击 162","",//P_Slayer1
+					13423,"剑","单手剑","攻击 147","这就是我们追求的目标。";//P_Sabre1
 			}
 			if (Class == Job_Thief || Class == Job_Thief_High || Class == Job_Assassin || Class == Job_Rogue || Class == Job_Ninja || Class == Job_Novice || Class == Job_Novice_High) {
 				callsub S_Select,"",
-					13050,"Eden Dagger I","Dagger","MATK+60, attack 124","This is what we strive for.";//P_Dagger1
+					13050,"短剑","短剑","MATK+60，攻击 124","这就是我们追求的目标。";//P_Dagger1
 			}
 			if (Class == Job_Merchant || Class == Job_Merchant_High || Class == Job_Blacksmith || Class == Job_Alchemist) {
-				callsub S_Select,"We have a mace and a One-handed sword",
-					13423,"Eden Saber I","One-handed sword","Attack 147","This is what we strive for.",// P_Sabre1
-					16004,"Eden Mace I","Mace","Attack 142","";// P_Mace1
+				callsub S_Select,"我们提供锤和单手剑",
+					13423,"剑","单手剑","攻击 147","这就是我们追求的目标。",// P_Sabre1
+					16004,"锤","锤","攻击 142","";// P_Mace1
 			}
 			if (Class == Job_Archer || Class == Job_Archer_High || Class == Job_Hunter || Class == Job_Dancer || Class == Job_Bard) {
 				callsub S_Select,"",
-					1747,"Eden Bow I","Bow","Attack 82","";//P_Bow1
+					1747,"弓","弓","攻击 82","";//P_Bow1
 			}
 			if (Class == Job_Acolyte || Class == Job_Acolyte_High || Class == Job_Priest || Class == Job_Monk) {
-				callsub S_Select,"We have a mace and a staff",
-					16004,"Eden Mace I","Mace","Attack 142","", //P_Mace1
-					1650,"Eden Staff I","Staff","INT+2, MATK+125, attack 60",""; //P_Staff1
+				callsub S_Select,"我们提供锤和法杖",
+					16004,"锤","锤","攻击 142","", //P_Mace1
+					1650,"杖","法杖","INT+2，MATK+125，攻击 60",""; //P_Staff1
 			}
 			if (Class == Job_Mage || Class == Job_Mage_High || Class == Job_Wizard || Class == Job_Sage) {
 				callsub S_Select,"",
-					1650,"Eden Staff I","Staff","INT+2, MATK+125, attack 60","";//P_Staff1
+					1650,"杖","法杖","INT+2，MATK+125，攻击 60","";//P_Staff1
 			}
 			if (Class == Job_Gunslinger) {
 				callsub S_Select,"",
-					13112,"Eden Revolver I","Revolver","HIT-5, attack 44","";//P_Revolver1
+					13112,"手枪","手枪","命中-5，攻击 44","";//P_Revolver1
 			}
 			if (Class == Job_Summoner) {
 				callsub S_Select,"",
-					1699,"Eden Foxtail Staff I","Staff","MATK+135, attack 120","";//P_Foxtail1
+					1699,"魔杖","法杖","MATK+135，攻击 120","";//P_Foxtail1
 			}
 			mes "让我看看……你将获得……";
-			mes "伊甸园集团长靴 II 和制服 II。";
+			mes "伊甸园集团<ITEM>鞋子<INFO>2457</INFO></ITEM> II 和<ITEM>盔甲<INFO>15010</INFO></ITEM> II。";
 			next;
 			mes "[迈克尔]";
 			para_suv01 = 23;
@@ -1883,7 +1883,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			if (para_suv02 == 0) {
 				mes "我不知道什么武器适合你，所以你会得到一把短剑。";
 				mes "你没有领取过任何补给品的记录";
-				mes "所以，你也会获得伊甸园集团帽子和披肩。";
+				mes "所以，你也会获得伊甸园集团头盔和斗篷。";
 				getitem 5583,1; //Para_Team_Hat
 				getitem 2560,1; //Para_Team_Manteau
 				para_suv02 = 2;
@@ -1893,7 +1893,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 				close;
 			}
 			para_suv02 = 2;
-			mes "武器、制服和长靴，共 3 件补给品。";
+			mes "武器、盔甲和鞋子，共 3 件补给品。";
 			mes "我不知道什么武器适合你，所以你会得到一把短剑。";
 			mes "请再检查一次。";
 			next;
@@ -1905,7 +1905,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			mes "该领取新武器了。";
 			next;
 			mes "[迈克尔]";
-			mes "我们有更多强化过的武器、制服和长靴。";
+			mes "我们有更多强化过的武器、盔甲和鞋子。";
 			mes "啊，至于那些只为初级职业制作的武器。";
 			mes "所以，我无法把它们提供给高阶职业。";
 			next;
@@ -1919,42 +1919,42 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			}
 			mes "[迈克尔]";
 			if (Class == Job_Swordman || Class == Job_Swordman_High || Class == Job_Knight || Class == Job_Crusader) {
-				callsub S_Select,"We have one and Two-handed swords",
-					13424,"Eden Saber II","One-handed sword","Attack 170","",///P_Sabre2
-					1193,"Eden Slayer II","Two-handed sword","Attack 185","";//P_Slayer2
+				callsub S_Select,"我们提供单手剑和双手剑",
+					13424,"剑","单手剑","攻击 170","",///P_Sabre2
+					1193,"双手剑","双手剑","攻击 185","";//P_Slayer2
 			}
 			if (Class == Job_Thief || Class == Job_Thief_High || Class == Job_Assassin || Class == Job_Rogue || Class == Job_Novice || Class == Job_Novice_High || Class == Job_Super_Novice || Class == Job_Soul_Linker || Class == Job_Ninja) {
 				callsub S_Select,"",
-					13051,"Eden Dagger II","Dagger","MATK+70, attack 158","";//P_Dagger2
+					13051,"短剑","短剑","MATK+70，攻击 158","";//P_Dagger2
 			}
 			if (Class == Job_Acolyte || Class == Job_Acolyte_High || Class == Job_Priest || Class == Job_Monk) {
-				callsub S_Select,"We have a mace and a staff",
-					16005,"Eden Mace II","Mace","Attack 163","", //P_Mace2
-					1651,"Eden Staff II","Staff","INT+3, MATK+150, attack 60",""; //P_Staff2
+				callsub S_Select,"我们提供锤和法杖",
+					16005,"锤","锤","攻击 163","", //P_Mace2
+					1651,"杖","法杖","INT+3，MATK+150，攻击 60",""; //P_Staff2
 			}
 			if (Class == Job_Archer || Class == Job_Archer_High || Class == Job_Hunter || Class == Job_Dancer || Class == Job_Bard) {
 				callsub S_Select,"",
-					1748,"Eden Bow II","Bow","Attack 82","";//P_Bow2
+					1748,"弓","弓","攻击 82","";//P_Bow2
 			}
 			if (Class == Job_Mage || Class == Job_Mage_High || Class == Job_Wizard || Class == Job_Sage) {
 				callsub S_Select,"",
-					1651,"Eden Staff II","Staff","INT+3, MATK+155, attack 60","";//P_Staff2
+					1651,"杖","法杖","INT+3，MATK+155，攻击 60","";//P_Staff2
 			}
 			if (Class == Job_Merchant || Class == Job_Merchant_High || Class == Job_Blacksmith || Class == Job_Alchemist) {
-				callsub S_Select,"We have a mace and a One-handed sword",
-					13424,"Eden Saber II","One-handed sword","Attack 170","",//P_Sabre2
-					16005,"Eden Mace II","Mace","Attack 163","";// P_Mace2
+				callsub S_Select,"我们提供锤和单手剑",
+					13424,"剑","单手剑","攻击 170","",//P_Sabre2
+					16005,"锤","锤","攻击 163","";// P_Mace2
 			}
 			if (Class == Job_Gunslinger) {
 				callsub S_Select,"",
-					13113,"Eden Revolver II","Revolver","HIT-5, attack 60","";//P_Revolver2
+					13113,"手枪","手枪","命中-5，攻击 60","";//P_Revolver2
 			}
 			if (Class == Job_Summoner) {
 				callsub S_Select,"",
-					26100,"Eden Foxtail Staff II","Staff","MATK+165, attack 135","";//P_Foxtail1
+					26100,"魔杖","法杖","MATK+165，攻击 135","";//P_Foxtail1
 			}
 			mes "让我看看……你将获得……";
-			mes "伊甸园集团长靴 III 和制服 III。";
+			mes "伊甸园集团<ITEM>鞋子<INFO>2458</INFO></ITEM> III 和<ITEM>盔甲<INFO>15011</INFO></ITEM> III。";
 			next;
 			para_suv01 = 38;
 			getitem 2458,1; //Para_Team_Boots3
@@ -1962,7 +1962,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			mes "[迈克尔]";
 			if (para_suv02 == 0) {
 				mes "你没有领取过任何补给品的记录";
-				mes "所以，你也会获得伊甸园集团帽子和披肩。";
+				mes "所以，你也会获得伊甸园集团头盔和斗篷。";
 				para_suv02 = 3;
 				getitem 5583,1; //Para_Team_Hat
 				getitem 2560,1; //Para_Team_Manteau
@@ -1972,7 +1972,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 				close;
 			}
 			para_suv02 = 3;
-			mes "制服和长靴，共 2 件补给品。";
+			mes "盔甲和鞋子，共 2 件补给品。";
 			mes "请再检查一次。";
 			next;
 			mes "[迈克尔]";
@@ -1981,7 +1981,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 		else {
 			mes "等等……我查一下记录……";
 			mes "...";
-			mes "...hummmm.";
+			mes "……嗯……";
 			next;
 			mes "[迈克尔]";
 			mes "抱歉，我找不到任何你可以领取补给品的记录。";
@@ -2004,7 +2004,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 		close;
 	case 3:
 		mes "你是说强化装备，对吧？";
-		mes "我们只能强化伊甸园集团帽子。";
+		mes "我们只能强化伊甸园集团头盔。";
 		next;
 		mes "[迈克尔]";
 		if (para_suv02 == 3) {
@@ -2012,31 +2012,31 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 				disable_items;
 				mes "你想强化哪项属性加成？";
 				next;
-				switch (select("强化 STR:强化 AGI:强化 VIT:强化 INT:强化 DEX:强化 LUK:算了。")) {
-				case 1: callsub S_Upgrade,"STR",4701;
-				case 2: callsub S_Upgrade,"AGI",4731;
-				case 3: callsub S_Upgrade,"VIT",4741;
-				case 4: callsub S_Upgrade,"INT",4711;
-				case 5: callsub S_Upgrade,"DEX",4721;
-				case 6: callsub S_Upgrade,"LUK",4751;
+				switch (select("强化 力量:强化 敏捷:强化 体质:强化 智力:强化 灵巧:强化 幸运:算了。")) {
+				case 1: callsub S_Upgrade,"力量",4701;
+				case 2: callsub S_Upgrade,"敏捷",4731;
+				case 3: callsub S_Upgrade,"体质",4741;
+				case 4: callsub S_Upgrade,"智力",4711;
+				case 5: callsub S_Upgrade,"灵巧",4721;
+				case 6: callsub S_Upgrade,"幸运",4751;
 				case 7:
 					mes "[迈克尔]";
 					mes "为什么？它会比现在更好。";
-					mes "总之，我们只能提供一顶帽子。";
+					mes "总之，我们只能提供一顶头盔。";
 					next;
 					mes "[迈克尔]";
 					mes "你要怎么处理它，随你。";
 					close;
 				}
 			}
-			mes "先带着你想让我强化的帽子过来。";
+			mes "先带着你想让我强化的头盔过来。";
 			mes "确保它在你的背包里，明白吗？";
 			close;
 		}
 		if (para_suv02 == 4) {
 			mes "嗯，你不是已经强化过这个了吗？";
 			mes "根据记录";
-			mes ""+strcharinfo(0)+"：已经强化过帽子了。";
+			mes ""+strcharinfo(0)+"：已经强化过头盔了。";
 			next;
 			mes "[迈克尔]";
 			mes "我们只能提供 1 次强化。";
@@ -2044,7 +2044,7 @@ moc_para01,112,96,5	script	管理员迈克尔	4_M_RUSMAN1,{
 			close;
 		}
 		mes "你还没有领取完第 3 步之前的全部补给品。";
-		mes "强化帽子是一项特殊服务。";
+		mes "强化头盔是一项特殊服务。";
 		next;
 		mes "[迈克尔]";
 		mes "抱歉，我帮不了你。";
@@ -2086,40 +2086,40 @@ S_Select:
 	mes "[迈克尔]";
 	for ( .@i = 1; .@i < .@total_arg; .@i += 5 ) {
 		set .@menu$, .@menu$ + getarg(.@i+1) + ":";
-		mes getarg(.@i+1)+"："+ getarg(.@i+2) +". "+ getarg(.@i+3) +".";
+		mes "<ITEM>"+getarg(.@i+1)+"<INFO>"+getarg(.@i)+"</INFO></ITEM>："+ getarg(.@i+2) +"，"+ getarg(.@i+3) +"。";
 	}
 	if (.@total_arg < 7)
-		mes "它是 Lv. 2，需求等级为"+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "它是 2 级武器，需求等级为"+ (para_suv01 == 22 ? "26" : "40") +"级。";
 	else
-		mes "两者都是 Lv. 2 武器，需求等级为"+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "两者都是 2 级武器，需求等级为"+ (para_suv01 == 22 ? "26" : "40") +"级。";
 	next;
 	mes "[迈克尔]";
 	mes "它们也不能与其他玩家交易，且无法精炼。";
 	next;
-	//			callsub S_Select,"We have one and Two-handed swords",
-		//			13424,"Eden Saber II","One-handed sword","Attack 170","",///P_Sabre2
-			//		1193,"Eden Slayer II","Two-handed sword","Attack 185","";//P_Slayer2
+	//			callsub S_Select,"我们提供单手剑和双手剑",
+		//			13424,"剑","单手剑","攻击 170","",///P_Sabre2
+			//		1193,"双手剑","双手剑","攻击 185","";//P_Slayer2
 	if (.@total_arg < 7) {
 		.@i = 1;
 		mes "[迈克尔]";
-		mes "你将获得"+ getarg(.@i+1) +".";
+		mes "你将获得<ITEM>"+getarg(.@i+1)+"<INFO>"+getarg(.@i)+"</INFO></ITEM>。";
 		next;
 		mes "[迈克尔]";
 	}
 	else {
 		.@i = (select(.@menu$) -1) *5 +1;
 		mes "[迈克尔]";
-		mes "你选择了"+ getarg(.@i+1) +".";
+		mes "你选择了<ITEM>"+getarg(.@i+1)+"<INFO>"+getarg(.@i)+"</INFO></ITEM>。";
 	}
 	if (para_suv01 == 22) {
-		mes "此外，你还会获得伊甸园集团长靴 II 和制服 II。";
+		mes "此外，你还会获得伊甸园集团<ITEM>鞋子<INFO>2457</INFO></ITEM> II 和<ITEM>盔甲<INFO>15010</INFO></ITEM> II。";
 		next;
 		getitem 2457,1;	// Para_Team_Boots2
 		getitem 15010,1;// Para_Team_Uniform2
 		para_suv01 = 23;
 	}
 	else {
-		mes "此外，你还会获得伊甸园集团长靴 III 和制服 III。";
+		mes "此外，你还会获得伊甸园集团<ITEM>鞋子<INFO>2458</INFO></ITEM> III 和<ITEM>盔甲<INFO>15011</INFO></ITEM> III。";
 		next;
 		getitem 2458,1;// Para_Team_Boots3
 		getitem 15011,1;// Para_Team_Uniform3
@@ -2129,7 +2129,7 @@ S_Select:
 	mes "[迈克尔]";
 	if (para_suv02 == 0) {
 		mes "你没有领取过任何补给品的记录";
-		mes "所以，你也会获得伊甸园集团帽子和披肩。";
+		mes "所以，你也会获得伊甸园集团头盔和斗篷。";
 		getitem 5583,1;// Para_Team_Hat
 		getitem 2560,1;// Para_Team_Manteau
 		if (para_suv01 == 22)
@@ -2145,7 +2145,7 @@ S_Select:
 			para_suv02 = 2;
 		else
 			para_suv02 = 3;
-		mes "一件"+ getarg(.@i+2) +"、制服和长靴，共 3 件补给品。";
+		mes "一件"+ getarg(.@i+2) +"、盔甲和鞋子，共 3 件补给品。";
 		mes "请再检查一次。";
 		next;
 		mes "[迈克尔]";
