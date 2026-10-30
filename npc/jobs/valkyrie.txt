@@ -118,7 +118,7 @@ valkyrie,48,86,4	script	巴基力#	811,{
 			mes "我将请求";
 			mes "乌尔德女神抹去";
 			mes "你今世的全部";
-			mes "memories.";
+			mes "记忆。";
 			next;
 			mes "[巴基力]";
 			mes "其二，";
@@ -134,16 +134,16 @@ valkyrie,48,86,4	script	巴基力#	811,{
 			mes "来世。";
 			next;
 			mes "[巴基力]";
-			mes "One...";
+			mes "其一……";
 			callfunc "F_ClearJobVar";
 			next;
 			mes "[巴基力]";
-			mes "One...";
-			mes "Two......";
+			mes "其一……";
+			mes "其二……";
 			next;
 			mes "[巴基力]";
-			mes "One...";
-			mes "Two......";
+			mes "其一……";
+			mes "其二……";
 			mes "以及其三。";
 			set ADVJOB, Class+Job_Novice_High; //memo the target 3rd Job ID
 			if(ADVJOB == Job_Lord_Knight2) set ADVJOB,Job_Lord_Knight;
@@ -156,13 +156,14 @@ valkyrie,48,86,4	script	巴基力#	811,{
 			completequest 1000;
 			next;
 			mes "[巴基力]";
-			mes "Congratulations.";
+			mes "恭喜。";
 			mes "你如今已重生，";
 			mes "迈入崭新的人生。";
 			mes "请收下这些小小的礼物";
 			mes "为你的新冒险做准备。";
 			getitem 1202,1; //Knife_
 			getitem 2302,1; //Cotton_Shirt_
+			mes "这是给你的<ITEM>短剑<INFO>1202</INFO></ITEM>和<ITEM>棉衬衫<INFO>2302</INFO></ITEM>。";
 			next;
 			mes "[巴基力]";
 			mes "但愿乌尔德女神赐予你的解脱成为祝福。愿贝露丹迪所记录的记忆永远为你带来荣耀。";
@@ -250,7 +251,7 @@ yuno_in02,88,164,5	script	梅修斯·希尔芙#Library	742,{
 			close;
 		}
 		mes "[梅修斯·希尔芙]";
-		mes "再次感谢你的慷慨捐赠。请随意阅读《伊美乐之书》的抄本。";
+		mes "再次感谢你的慷慨捐赠。请随意阅读<NAVI>[伊美乐之书]<INFO>yuno_in02,93,207,0,101,0</INFO></NAVI>的抄本。";
 		close;
 	}
 	mes "[梅修斯·希尔芙]";
@@ -262,7 +263,7 @@ yuno_in02,88,164,5	script	梅修斯·希尔芙#Library	742,{
 yuno_in02,93,207,1	script	伊美乐之书	111,{
 	if (ADVJOB != 0 || Upper == 1) {
 		mes "[伊美乐之书]";
-		mes "...The entrance to the Hall of Honor is open to anyone who has moved forward into their next life. It is there to help heroes decide what they want to do, and can lead them to anywhere in this world.";
+		mes "……荣誉之殿的入口，向所有迈向来世的人敞开。它会帮助英雄们决定前路，也能将他们引导到世界各处。";
 		next;
 		mes "[伊美乐之书]";
 		mes "在荣誉之殿中，一切都为英雄们准备妥当。传说现世中无法实现的愿望，都能在荣誉之殿中实现。";
@@ -281,7 +282,7 @@ yuno_in02,93,207,1	script	伊美乐之书	111,{
 	else if (BaseLevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
 		if (valkyrie_Q != 0) {
 			mes "[伊美乐之书]";
-			mes "...Therefore, ancient heroes were";
+			mes "……因此，古代的勇士们";
 			mes "始终在痛苦之中，因为他们知道";
 			mes "终有一天，身为凡人的他们";
 			mes "将会离开这个世界……";
@@ -292,7 +293,7 @@ yuno_in02,93,207,1	script	伊美乐之书	111,{
 			mes "关于巴基力……";
 			next;
 			mes "[伊美乐之书]";
-			mes "Valkyrie...";
+			mes "巴基力……";
 			mes "传说中的";
 			mes "守护天使。";
 			mes "仙境传说的天使。";
@@ -357,7 +358,7 @@ valkyrie,44,33,5	script	传送员	124,{
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
 			mes "[传送员]";
-			mes "Congratulations.";
+			mes "恭喜。";
 			mes "向勇士们致敬！";
 			close;
 		}
@@ -400,4 +401,3 @@ S_WarpChar:
 //============================================================ 
 valkyrie,48,73,0	warp	valk01#1	1,1,valkyrie,48,64
 valkyrie,48,66,0	warp	valk01#2	1,1,valkyrie,48,75
-
