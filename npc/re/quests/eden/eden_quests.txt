@@ -3773,10 +3773,12 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 			mes "[索恩]";
 			mes "那么你想强化哪件装备？";
 			next;
-			switch( select( "乐园团斗篷 II", "乐园团铠甲 IV", "乐园团战靴 IV" ) ) {
-				case 1: callsub S_Enchant,2571,"Manteau";// Para_Team_Manteau2
-				case 2: callsub S_Enchant,15031,"Armor";// Para_Team_Armor
-				case 3: callsub S_Enchant,2473,"Boots";// Para_Team_Boots4
+			mes "可以强化：<ITEM>乐园团斗篷 Ⅱ<INFO>2571</INFO></ITEM>、<ITEM>乐园团制服 Ⅳ<INFO>15031</INFO></ITEM>、<ITEM>乐园团短靴 Ⅳ<INFO>2473</INFO></ITEM>。";
+			next;
+			switch( select( "乐园团斗篷 Ⅱ", "乐园团制服 Ⅳ", "乐园团短靴 Ⅳ" ) ) {
+				case 1: callsub S_Enchant,2571,"斗篷";// Para_Team_Manteau2
+				case 2: callsub S_Enchant,15031,"制服";// Para_Team_Armor
+				case 3: callsub S_Enchant,2473,"短靴";// Para_Team_Boots4
 			}
 		}
 		else {
@@ -3800,7 +3802,7 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 			next;
 			mes "[索恩]";
 			mes "当然，最后会有报酬的……";
-			mes "So...";
+			mes "那么……";
 			next;
 			mes "[索恩]";
 			if (BaseLevel < 80) {
@@ -3845,7 +3847,7 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 			if (.@countitem[0] >= .@amount[0] && .@countitem[1] >= .@amount[1]) {
 				mes "让我猜猜……";
 				mes "你带来了品质最好的材料。";
-				mes "Good.";
+				mes "不错。";
 				next;
 				mes "[索恩]";
 				mes "铁材料我永远不嫌多。";
@@ -3872,7 +3874,7 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 			next;
 			mes "[索恩]";
 			mes "如果你有其中一件，就带来给我。";
-			mes "乐园团斗篷 II、乐园团铠甲 IV、乐园团战靴 IV。";
+			mes "乐园团斗篷 Ⅱ、乐园团制服 Ⅳ、乐园团短靴 Ⅳ。";
 		}
 		else if (para_2nd04 == 4) {
 			if (checkquest(7241,PLAYTIME) == 0) {
@@ -3915,65 +3917,65 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 				close;
 			}
 			if (BaseJob == Job_Knight || BaseJob == Job_Crusader) {
-				callsub L_Select,"One-handed sword, two-handed sword or spear.",
-					1197,"Eden Group Slayer III","Two-handed Sword, Attack 200",
-					13434,"Eden Group Saber III","One-handed Sword, Attack 185",
-					1434,"Eden Group Spear I","One-handed, Attack 165";
+				callsub L_Select,"单手剑、双手剑或长矛。",
+					1197,"P.双手剑 Ⅲ","双手剑，攻击力 200",
+					13434,"P.骑兵剑 Ⅲ","单手剑，攻击力 185",
+					1434,"P.长矛 Ⅰ","单手武器，攻击力 165";
 			}
 			else if (BaseJob == Job_Assassin) {
-				callsub L_Select,"You have your choice of dagger or katar.",
-					13066,"Eden Group Dagger III","Dagger, MATK +80, ATK 165",
-					1289,"Eden Group Katar I","Katar, ATK 155";
+				callsub L_Select,"可以选择短剑或拳刃。",
+					13066,"P.短剑 Ⅲ","短剑，MATK +80，攻击力 165",
+					1289,"P.拳刃 Ⅰ","拳刃，攻击力 155";
 			}
 			else if (BaseJob == Job_Rogue || BaseClass == Job_Novice)
 				getitem 13066,1;// P.Dagger III
 			else if (BaseJob == Job_Alchemist || BaseJob == Job_Blacksmith) {
-				callsub L_Select,"Your options are Mace, Saber and Axe.",
-					16014,"Eden Group Mace III","Mace, Attack 172",// P_Mace3
-					13434,"Eden Group Saber III","Sword, Attack 185",//P.Saber III
-					1391,"Eden Group Axe I","Axe, Attack 195"; //P.Two-Handed Axe I
+				callsub L_Select,"可以选择锤、剑或斧。",
+					16014,"P.铁锤 Ⅲ","锤，攻击力 172",// P_Mace3
+					13434,"P.骑兵剑 Ⅲ","剑，攻击力 185",//P.Saber III
+					1391,"P.双手斧 Ⅰ","斧，攻击力 195"; //P.Two-Handed Axe I
 			}
 			else if (BaseJob == Job_Wizard)
 				getitem 1658,1;// P.Staff III
 			else if (BaseJob == Job_Sage) {
 				callsub L_Select,"",
-					1658,"Eden Group Staff III","Staff, MATK + 170, INT +4, Attack 60", //P.Staff III
-					1583,"Eden Group Dictionary I","Book, MATK +100, Attack 135"; //P.Book I
+					1658,"P.魔杖 Ⅲ","手杖，MATK +170，INT +4，攻击力 60", //P.Staff III
+					1583,"P.字典 Ⅰ","书，MATK +100，攻击力 135"; //P.Book I
 			}
 			else if (BaseJob == Job_Priest) {
 				callsub L_Select,"",
-					1658,"Eden Group Staff III","Staff, MATK + 170, INT +4, Attack 60", //P.Staff III
-					1583,"Eden Group Dictionary I","Book, MATK +100, Attack 135", //P.Book I
-					16014,"Eden Group Mace III","Mace, Attack 172"; //P.Mace III
+					1658,"P.魔杖 Ⅲ","手杖，MATK +170，INT +4，攻击力 60", //P.Staff III
+					1583,"P.字典 Ⅰ","书，MATK +100，攻击力 135", //P.Book I
+					16014,"P.铁锤 Ⅲ","锤，攻击力 172"; //P.Mace III
 			}
 			else if (BaseJob == Job_Monk) {
 				callsub L_Select,"",
-					1831,"Eden Group Knuckles I","Knuckle, Attack 120", //P.Knuckle I
-					16014,"Eden Group Mace III","Mace, Attack 172"; //P.Mace III
+					1831,"P.拳套 I","拳套，攻击力 120", //P.Knuckle I
+					16014,"P.铁锤 Ⅲ","锤，攻击力 172"; //P.Mace III
 			}
 			else if (BaseJob == Job_Hunter)
 				getitem 18106,1;// P.Bow III
 			else if (BaseJob == Job_Bard) {
 				callsub L_Select,"",
-					18106,"Eden Group Bow III","Bow, Attack 140", //P.Bow III
-					1931,"Eden Group Guitar I","Guitar, Attack 125"; //P.Guitar I
+					18106,"P.弓 Ⅲ","弓，攻击力 140", //P.Bow III
+					1931,"P.弦乐器 Ⅰ","弦乐器，攻击力 125"; //P.Guitar I
 			}
 			else if (BaseJob == Job_Dancer) {
 				callsub L_Select,"",
-					18106,"Eden Group Bow III","Bow, Attack 140", //P.Bow III
-					1986,"Eden Group Whip I","Whip, Attack 125"; //P.Tail I
+					18106,"P.弓 Ⅲ","弓，攻击力 140", //P.Bow III
+					1986,"P.鞭子 Ⅰ","鞭子，攻击力 125"; //P.Tail I
 			}
 			else if (Class == Job_Ninja) {
 				callsub L_Select,"",
-					13066,"Eden Group Dagger III","Dagger, MATK +80, ATK 165", //P.Dagger III
-					13310,"Eden Group Huuma Shuriken I","Huuma Suriken, MATK +50, ATK 170"; //P.Huuma Suriken I
+					13066,"P.短剑 Ⅲ","短剑，MATK +80，攻击力 165", //P.Dagger III
+					13310,"P.风魔飞镖 Ⅰ","风魔飞镖，MATK +50，攻击力 170"; //P.Huuma Suriken I
 			}
 			else if (Class == Job_Star_Gladiator)
 				getitem 1583,1; //P.Book I
 			else if (Class == Job_Soul_Linker) {
 				callsub L_Select,"",
-					13066,"Eden Group Dagger III","Dagger, MATK +80, ATK 165", //P.Dagger III
-					1658,"Eden Group Staff III","Staff, MATK +170, INT +4, ATK 60"; //P.Staff III
+					13066,"P.短剑 Ⅲ","短剑，MATK +80，攻击力 165", //P.Dagger III
+					1658,"P.魔杖 Ⅲ","手杖，MATK +170，INT +4，攻击力 60"; //P.Staff III
 			}
 			else if (Class == Job_Gunslinger)
 				getitem 13114,1; //P.Revolver III
@@ -3992,7 +3994,8 @@ moc_para01,111,83,3	script	铁匠索恩#2nd10	2_M_OLDBLSMITH,{
 			getitem 2571,1;// Paradise Mantle II
 			getitem 2473,1;// Paradise Boots IV
 			getitem 15031,1;// Paradise Uniform IV
-			mes "这是你的装备。";
+			mes "这是你的装备：";
+			mes "<ITEM>乐园团圆帽 Ⅱ<INFO>18514</INFO></ITEM>、<ITEM>乐园团斗篷 Ⅱ<INFO>2571</INFO></ITEM>、<ITEM>乐园团短靴 Ⅳ<INFO>2473</INFO></ITEM>、<ITEM>乐园团制服 Ⅳ<INFO>15031</INFO></ITEM>。";
 			mes "这套配套的其他装备我也一并给你。";
 		}
 		else if (para_2nd02 == 2) {
@@ -4018,7 +4021,7 @@ L_Select:
 	mes "从下列选项中选择。";
 	for ( .@i = 1; .@i < getargcount(); .@i += 3 ) {
 		set .@menu$, .@menu$ + getarg(.@i+1) + ":";
-		mes getarg(.@i+1)+"："+ getarg(.@i+2);
+		mes "<ITEM>"+getarg(.@i+1)+"<INFO>"+getarg(.@i)+"</INFO></ITEM>："+ getarg(.@i+2);
 	}
 	next;
 	.@i = (select(.@menu$) -1) *3 +1;
@@ -4071,7 +4074,7 @@ S_Enchant:
 			4741;// Vitality2
 		.@1st = .@bonus[ rand(1,12) ];
 		.@2nd = .@bonus[ rand(1,12) ];
-		mes "乐园团"+ getarg(1) +"？";
+		mes "<ITEM>乐园团"+ getarg(1) +"<INFO>"+ getarg(0) +"</INFO></ITEM>？";
 		mes "我明白了。";
 		mes "记住，被提升的能力值是随机的。";
 		mes "你确定要我强化这个吗？";
@@ -4188,11 +4191,11 @@ moc_para01,112,79,3	script	武器专家BK#2nd11	4_M_REPAIR,{
 				mes "之后就不能反悔了，仔细选择吧。";
 				next;
 				if (select( "ATK +3%","MATK +3%" ) == 1) {
-					.@string$ = "Ok, you've chosen to raise physical attack.";
+					.@string$ = "好的，你选择了提升物理攻击。";
 					.@card = 4767;
 				}
 				else {
-					.@string$ = "Ok, you've chosen to raise magical attack.";
+					.@string$ = "好的，你选择了提升魔法攻击。";
 					.@card = 4806;
 					.@add = 1;
 				}
