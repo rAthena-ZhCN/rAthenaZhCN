@@ -399,7 +399,7 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "商人无法";
 					mes "使用？";
 					next;
-					if (select("短剑:环柄军刀:锁链:圣书") == 4)
+					if (select("短剑:剑:锁链:圣书") == 4)
 						set .@black_q,.@black_q+10;
 					mes "[格舒彭施特]";
 					mes "7. 以下哪种";
@@ -595,10 +595,10 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 			}
 			set BSMITH_Q,.@items[8];
 			mes "[格舒彭施特]";
-			mes "^8E6B23"+.@items[1]+" "+getitemname(.@items[0])+"^000000，";
-			mes "^8E6B23"+.@items[3]+" "+getitemname(.@items[2])+"^000000，";
-			mes "^8E6B23"+.@items[5]+" "+getitemname(.@items[4])+"^000000，以及";
-			mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，就是从";
+			mes "^8E6B23"+.@items[1]+" <ITEM>"+getitemname(.@items[0])+"<INFO>"+.@items[0]+"</INFO></ITEM>^000000，";
+			mes "^8E6B23"+.@items[3]+" <ITEM>"+getitemname(.@items[2])+"<INFO>"+.@items[2]+"</INFO></ITEM>^000000，";
+			mes "^8E6B23"+.@items[5]+" <ITEM>"+getitemname(.@items[4])+"<INFO>"+.@items[4]+"</INFO></ITEM>^000000，以及";
+			mes "^8E6B23"+.@items[7]+" <ITEM>"+getitemname(.@items[6])+"<INFO>"+.@items[6]+"</INFO></ITEM>^000000，就是从";
 			mes "NPC商店";
 			mes "能买到的那种。";
 			next;
@@ -638,7 +638,7 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 				mes "现在，稍等我一下。";
 				next;
 				mes "[格舒彭施特]";
-				mes "哦，你要确认自己没有携带^FF0000一个以上的"+getitemname(.@items[6])+"^000000，你身上应该只有一个"+getitemname(.@items[6])+"是在NPC商店买的，而且必须放在背包里。";
+				mes "哦，你要确认自己没有携带^FF0000一个以上的<ITEM>"+getitemname(.@items[6])+"<INFO>"+.@items[6]+"</INFO></ITEM>^000000，你身上应该只有一个<ITEM>"+getitemname(.@items[6])+"<INFO>"+.@items[6]+"</INFO></ITEM>是在NPC商店买的，而且必须放在背包里。";
 				next;
 				if (select("哦，能等我一下吗？:哦，我把你要的东西带来了。") == 1) {
 					mes "[格舒彭施特]";
@@ -677,12 +677,11 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "[格舒彭施特]";
 					mes "嗯……？";
 					mes "你这是什么表情？";
-					mes "这可不是普通的";
-					mes "弧光法杖！你仔细看看";
+					mes "这可不是普通的<ITEM>手杖<INFO>1610</INFO></ITEM>！你仔细看看";
 					mes "杖柄……";
 					next;
 					mes "^3355FF杖柄上刻着：";
-					mes "'超级弧光法杖";
+					mes "'超级手杖";
 					mes "·格舒彭施特出品";
 					mes "二代'。它确实";
 					mes "有着完全";
@@ -702,12 +701,11 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "[格舒彭施特]";
 					mes "嗯……？";
 					mes "你这是什么表情？";
-					mes "这可不是普通的";
-					mes "罗马短剑！你仔细看看";
+					mes "这可不是普通的<ITEM>短剑<INFO>1219</INFO></ITEM>！你仔细看看";
 					mes "剑柄……";
 					next;
 					mes "^3355FF剑柄上刻着：";
-					mes "'超级罗马短剑";
+					mes "'超级短剑";
 					mes "·格舒彭施特出品";
 					mes "二代'。它确实";
 					mes "有着完全";
@@ -727,17 +725,16 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "[格舒彭施特]";
 					mes "嗯……？";
 					mes "你这是什么表情？";
-					mes "这可不是普通的";
-					mes "日本刀！你仔细看看";
+					mes "这可不是普通的<ITEM>剑<INFO>1119</INFO></ITEM>！你仔细看看";
 					mes "刀身……";
 					next;
 					mes "^3355FF刀身上刻着：";
 					mes "'锋利的";
 					mes "格舒彭施特";
-					mes "日本刀·特制'";
+					mes "剑·特制'";
 					mes "这手感";
 					mes "似乎和普通的";
-					mes "日本刀完全不同……^000000";
+					mes "剑完全不同……^000000";
 					next;
 					mes "[格舒彭施特]";
 					mes "总之，把这个";
@@ -753,15 +750,14 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "[格舒彭施特]";
 					mes "嗯……？";
 					mes "你这是什么表情？";
-					mes "这可不是普通的";
-					mes "强弩！你仔细看看";
+					mes "这可不是普通的<ITEM>弓<INFO>1713</INFO></ITEM>！你仔细看看";
 					mes "弓身……";
 					next;
 					mes "^3355FF弓身上刻着：";
 					mes "格舒彭施特";
-					mes "强弩·豪华版。";
+					mes "弓·豪华版。";
 					mes "看起来确实更加豪华";
-					mes "比普通十字弩更豪华。^000000";
+					mes "比普通弓更豪华。^000000";
 					next;
 					mes "[格舒彭施特]";
 					mes "总之，把这个";
@@ -777,14 +773,13 @@ ein_in01,201,27,3	script	格舒彭施特#alberta	63,{
 					mes "[格舒彭施特]";
 					mes "嗯……？";
 					mes "那是什么表情？";
-					mes "这可不是普通的";
-					mes "环柄军刀！";
+					mes "这可不是普通的<ITEM>剑<INFO>1122</INFO></ITEM>！";
 					mes "仔细看看";
 					mes "这个刀柄……";
 					next;
 					mes "^3355FF刀柄上刻着：";
 					mes "'绿色药草";
-					mes "环柄军刀";
+					mes "剑";
 					mes "格舒彭施特出品";
 					mes "2号。'看起来";
 					mes "确实有着完全";
@@ -954,7 +949,7 @@ geffen,46,164,1	script	拜苏利斯特#BLS	69,{
 		mes "哦，你好！";
 		mes "你是来";
 		mes "送我的";
-		mes "弧光法杖吗？";
+		mes "手杖吗？";
 		next;
 		mes "[拜苏利斯特]";
 		mes "你确定这是我订的没错吧？我是说，如果这是用过的，";
@@ -1018,7 +1013,7 @@ geffen,46,164,1	script	拜苏利斯特#BLS	69,{
 		next;
 		mes "[拜苏利斯特]";
 		mes "我什么时候才能拿到";
-		mes "我订做的弧光法杖？";
+		mes "我订做的手杖？";
 		close;
 	}
 }
@@ -1032,14 +1027,14 @@ morocc,27,112,4	script	薇克拜恩#BLS	725,{
 		next;
 		mes "[薇克拜恩]";
 		mes "这是我订的东西，对吧？";
-		mes "我可不要你手头那些用过的旧罗马短剑！";
+		mes "我可不要你手头那些用过的旧短剑！";
 		next;
 		if (select("哎呀，不是那个。:我向你保证这是新的。") == 1) {
 			cutin "Job_Black_hucke03",2;
 			mes "[薇克拜恩]";
 			mes "哦哦……！";
 			mes "快点把";
-			mes "我的罗马短剑拿来～";
+			mes "我的短剑拿来～";
 			next;
 			mes "- 她似乎有些生气。 -";
 			close2;
@@ -1210,7 +1205,7 @@ payon,214,79,4	script	塔尔皮兹#BLS	59,{
 		mes "我订的包裹？";
 		next;
 		mes "[塔尔皮兹]";
-		mes "呃，这是我订的东西，对吧？我可不要用过的十字弩。";
+		mes "呃，这是我订的东西，对吧？我可不要用过的弓。";
 		next;
 		if (select("哎呀，这是用过的。:我确定这是新的。") == 1) {
 			mes "[塔尔皮兹]";
@@ -1265,7 +1260,7 @@ payon,214,79,4	script	塔尔皮兹#BLS	59,{
 		mes "订单什么时候到？";
 		next;
 		mes "[塔尔皮兹]";
-		mes "定制的十字弩";
+		mes "定制的弓";
 		mes "还配有一个做工精良的眼罩盒。只有那个人才能做出这样的东西……";
 		next;
 		mes "[塔尔皮兹]";
@@ -1283,13 +1278,13 @@ hugel,168,183,1	script	比斯马克#BLS	118,{
 		mes "你是上天派来的";
 		mes "天使吗……？";
 		mes "那就是我订的";
-		mes "环柄军刀吗？这是我唯一的希望……";
+		mes "剑吗？这是我唯一的希望……";
 		next;
 		mes "[比斯马克]";
 		mes "^666666*咳呃*^000000 这是我订的东西，对吧？我特别需要一把";
 		mes "专门打造来压制这毒的……";
 		next;
-		if (select("哎呀，这是我自己的环柄军刀。:我确定就是这把。") == 1) {
+		if (select("哎呀，这是我自己的剑。:我确定就是这把。") == 1) {
 			mes "[比斯马克]";
 			mes "不、不要……";
 			mes "快……！";
@@ -1313,7 +1308,7 @@ hugel,168,183,1	script	比斯马克#BLS	118,{
 		mes "一次又一次地刺向自己，";
 		mes "用的正是那把";
 		mes "蕴含着";
-		mes "绿色药草之力的环柄军刀。^000000";
+		mes "绿色药草之力的剑。^000000";
 		next;
 		mes "[比斯马克]";
 		mes "^666666*咯咳*^000000";
