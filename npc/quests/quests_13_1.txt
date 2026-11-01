@@ -60,7 +60,7 @@ function	script	Promotional_Staff	{
 		mes "这项任务的挑战。";
 		next;
 		mes "[宣传员]";
-		mes "我不确定你的实力是否足够，但你看起来很有勇气。要不要去见见王国接待员？他应该在普隆德拉城堡的第一个房间。";
+		mes "我不确定你的实力是否足够，但你看起来很有勇气。要不要去见见王国接待员？他应该在<NAVI>[普隆德拉城堡招募员]<INFO>prt_cas,207,165,0,101,0</INFO></NAVI>。";
 		next;
 		mes "[宣传员]";
 		mes "据我听说关于那个地方的消息……那并不是新大陆。";
@@ -109,7 +109,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 	}
 	if (ep13_ryu == 12) {
 		mes "[联盟管理者]";
-		mes "...Do you have any business with me?";
+		mes "……你找我有事吗？";
 		next;
 		mes "[联盟管理者]";
 		mes "嗯……是老板让你来找我的，";
@@ -237,7 +237,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 		mes "信不信由你，";
 		mes "这绝对是真的。";
 		mes "所以仔细听好。";
-		mes "Please.";
+		mes "拜托了。";
 		next;
 		mes "[招募员]";
 		mes "灰烬真空……是个有生命的地方……与我们如今居住的世界截然不同。";
@@ -253,7 +253,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 		mes "只有像你这样勇敢的人才配前往那里。你周围会有许多危险之物，但你必须代表米德加尔特去探索它。";
 		next;
 		mes "[招募员]";
-		mes "Hmm......";
+		mes "嗯……";
 		next;
 		mes "[招募员]";
 		mes "总之，我确信那里有许多获得名声与财富的机会……";
@@ -268,7 +268,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 		mes "我能做的都做了。去那里，开始行动吧！";
 		next;
 		mes "[招募员]";
-		mes "记住，去^FF0000里希塔乐镇^000000，然后按照那里向导的指示行动。";
+		mes "记住，去<NAVI>[里希塔乐镇]<INFO>lighthalzen,220,292,0,101,0</INFO></NAVI>，然后按照那里向导的指示行动。";
 		next;
 		changequest 10064,10065;
 		set ep13_ryu,9;
@@ -286,7 +286,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 	if (ep13_ryu > 0) {
 		mes "[招募员]";
 		mes "你在这里做什么？";
-		mes "去^FF0000阿尔德巴兰^000000，找到^FF0000宣传员^000000。正如我劝你的，最好节省时间。";
+		mes "去<NAVI>[艾尔帕兰宣传员]<INFO>aldebaran,127,138,0,101,0</INFO></NAVI>。正如我劝你的，最好节省时间。";
 		close;
 	}
 	mes "[招募员]";
@@ -330,7 +330,7 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 		mes "我就会把一切都告诉你。";
 		next;
 		mes "[招募员]";
-		mes "去阿尔德巴兰找^FF0000宣传员^000000取得许可。他们能比我更仔细地评判你。去吧。";
+		mes "去艾尔帕兰找^FF0000宣传员^000000取得许可。他们能比我更仔细地评判你。去吧。";
 		next;
 		mes "[招募员]";
 		mes "如果你说是普隆德拉的招募员派你来的，他们会处理好一切。";
@@ -352,6 +352,8 @@ prontera,163,53,3	script	宣传人员#prt	100,{
 		mes "-低声嘟囔着抱怨……-";
 		close;
 	}
+OnInit:
+	end;
 }
 
 aldebaran,127,138,3	script	宣传人员#alde	100,{
@@ -362,14 +364,14 @@ aldebaran,127,138,3	script	宣传人员#alde	100,{
 	}
 	if (ep13_ryu == 3) {
 		mes "[宣传员]";
-		mes "去拜访^FF0000吉芬的宣传员^000000吧。你和我已经没什么事了。祝福你。愿你冒险平安。";
+		mes "去拜访<NAVI>[吉芬宣传员]<INFO>geffen,90,67,0,101,0</INFO></NAVI>吧。你和我已经没什么事了。祝福你。愿你冒险平安。";
 		close;
 	}
 	if (ep13_ryu == 2) {
 		if (countitem(909) < 300) {
 			mes "[宣传员]";
-			mes "别忘了带上……^FF0000300 个杰勒比结晶^000000。";
-			mes "明白了吗？^FF0000300 个杰勒比结晶^000000！";
+			mes "别忘了带上……^FF0000300 个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>^000000。";
+			mes "明白了吗？^FF0000300 个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>^000000！";
 			mes "拿到后告诉我。";
 			close;
 		}
@@ -380,7 +382,7 @@ aldebaran,127,138,3	script	宣传人员#alde	100,{
 		mes "[宣传员]";
 		mes "嗯？你都带来了吗？";
 		mes "不！这差事真够烦人的";
-		mes "你居然真能干这种琐碎的事，带来300个杰勒比结晶，真让我佩服！";
+		mes "你居然真能干这种琐碎的事，带来300个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>，真让我佩服！";
 		next;
 		mes "[宣传员]";
 		mes "小子，你很有胆量！";
@@ -427,7 +429,7 @@ aldebaran,127,138,3	script	宣传人员#alde	100,{
 		mes "[宣传员]";
 		mes "啊……我就感觉到会接到你的请求。";
 		mes "是招募员派你来接受测试的？";
-		mes "Hmm.";
+		mes "嗯。";
 		next;
 		mes "[宣传员]";
 		mes "啊！他们总是把事推给我，";
@@ -439,18 +441,22 @@ aldebaran,127,138,3	script	宣传人员#alde	100,{
 		mes "真麻烦！";
 		next;
 		mes "[宣传员]";
-		mes "如果你给我带来^FF0000300 个杰勒比结晶^000000，我就接受你。";
+		mes "如果你给我带来^FF0000300 个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>^000000，我就接受你。";
 		mes "我相信你能把它们带给我。";
 		mes "准备好了吗？";
 		next;
 		changequest 10057,10058;
 		set ep13_ryu,2;
 		mes "[宣传员]";
-		mes "去猎杀魔物之类的，收集300个杰勒比结晶吧。";
+		mes "去猎杀魔物之类的，收集300个<ITEM>杰勒比结晶<INFO>909</INFO></ITEM>吧。";
 		mes "然后我们就能继续前进了。";
 		close;
 	}
 	callfunc "Promotional_Staff";
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10058) == 1 || isbegin_quest(10057) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10059) || !isbegin_quest(10058)");
 	end;
 }
 
@@ -470,7 +476,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 	if (ep13_ryu == 5) {
 		if (countitem(723) == 0) {
 			mes "[宣传员]";
-			mes "^FF00001 颗红宝石！！^000000。";
+			mes "^FF00001 颗<ITEM>红宝石<INFO>723</INFO></ITEM>！！^000000。";
 			mes "可别忘了！";
 			mes "快点！时间就是Zeny！";
 			close;
@@ -490,7 +496,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		mes "干得好！！";
 		next;
 		mes "[宣传员]";
-		mes "下一步是伊斯鲁得！";
+		mes "下一步是<NAVI>[伊斯鲁得宣传员]<INFO>izlude,102,171,0,101,0</INFO></NAVI>！";
 		mes "你可以在那里接受宣传员的测试。";
 		mes "快点！";
 		next;
@@ -511,20 +517,20 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		if (countitem(721) == 0) {
 			mes "[宣传员]";
 			mes "你要给我带来的是";
-			mes "^FF0000绿宝石^000000。你能弄到吗？";
+			mes "^FF0000<ITEM>绿宝石<INFO>721</INFO></ITEM>^000000。你能弄到吗？";
 			close;
 		}
 		mes "[宣传员]";
 		mes "你这么快就带来了！";
 		mes "你是个真正的冒险者！";
-		mes "我就收下这颗绿宝石作为证明。";
+		mes "我就收下这颗<ITEM>绿宝石<INFO>721</INFO></ITEM>作为证明。";
 		next;
 		mes "[宣传员]";
 		mes "这可不是我想私自留下的东西。";
 		mes "你明白吧？";
 		next;
 		mes "[宣传员]";
-		mes "接下来给我带^FF00001 颗红宝石^000000。";
+		mes "接下来给我带^FF00001 颗<ITEM>红宝石<INFO>723</INFO></ITEM>^000000。";
 		mes "只凭一颗宝石我无法评判你。";
 		mes "所以我还要再一颗石头。";
 		next;
@@ -532,7 +538,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		changequest 10060,10061;
 		set ep13_ryu,5;
 		mes "[宣传员]";
-		mes "请给我带一颗红宝石。";
+		mes "请给我带一颗<ITEM>红宝石<INFO>723</INFO></ITEM>。";
 		mes "正如我所说，这是第二个要求。";
 		mes "我会等你再带一颗石头来。";
 		close;
@@ -544,7 +550,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		mes "[宣传员]";
 		mes "嘿，你是个见多识广的人吧？对我的故事有兴趣吗？";
 		next;
-		select("是阿尔德巴兰的宣传员派我来的。");
+		select("是艾尔帕兰的宣传员派我来的。");
 		mes "[宣传员]";
 		mes "哦，是吗？";
 		next;
@@ -555,18 +561,22 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		mes "我需要你为我收集一些石头。";
 		next;
 		mes "[宣传员]";
-		mes "如果你带来^FF00001 颗绿宝石^000000，我就接受你。";
+		mes "如果你带来^FF00001 颗<ITEM>绿宝石<INFO>721</INFO></ITEM>^000000，我就接受你。";
 		mes "准备好了吗？";
 		next;
 		changequest 10059,10060;
 		set ep13_ryu,4;
 		mes "[宣传员]";
-		mes "给我带^ff00001 颗绿宝石^000000来就行。";
+		mes "给我带^ff00001 颗<ITEM>绿宝石<INFO>721</INFO></ITEM>^000000来就行。";
 		mes "这对你来说不难吧？";
 		mes "然后我们就能继续前进了。";
 		close;
 	}
 	callfunc "Promotional_Staff";
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10061) == 1 || isbegin_quest(10060) == 1 || isbegin_quest(10059) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10062) || !isbegin_quest(10061) || !isbegin_quest(10060)");
 	end;
 }
 
@@ -579,7 +589,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 	if (ep13_ryu == 8) {
 		mes "[宣传员]";
 		mes "测试结束了！";
-		mes "如果你还有别的事，就去王宫吧。";
+		mes "如果你还有别的事，就去<NAVI>[普隆德拉城堡]<INFO>prt_cas,207,165,0,101,0</INFO></NAVI>吧。";
 		close;
 	}
 	if (ep13_ryu == 7) {
@@ -616,7 +626,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		mes "我们背负着相当高的期望。";
 		mes "虽然那个新地方很危险，";
 		mes "也不必彻底探查";
-		mes "anymore.";
+		mes "……不再了。";
 		next;
 		mes "[宣传员]";
 		mes "那可不是地狱深渊！";
@@ -666,7 +676,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 			next;
 			mes "[宣传员]";
 			mes "那可不是地狱深渊！";
-			mes "Ukk...";
+			mes "唔……";
 			next;
 			mes "[宣传员]";
 			mes "总之，回去找招募员吧。";
@@ -682,7 +692,7 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 		}
 		else {
 			mes "[宣传人员]";
-			mes "Hmm...";
+			mes "嗯……";
 			next;
 			mes "[宣传人员]";
 			mes "你看起来没那么强。";
@@ -701,6 +711,8 @@ geffen,90,67,3	script	宣传人员#gef	100,{
 	}
 	callfunc "Promotional_Staff";
 	end;
+OnInit:
+	end;
 }
 
 lighthalzen,220,292,3	script	向导#ep13_1	899,{
@@ -709,7 +721,7 @@ lighthalzen,220,292,3	script	向导#ep13_1	899,{
 		mes "欢迎！您已抵达里希塔乐镇，这里是三国的根据地。";
 		next;
 		mes "[向导]";
-		mes "您必须登记姓名。请前往西北侧的雷肯贝尔大楼2楼。";
+		mes "您必须登记姓名。请前往<NAVI>[雷肯贝尔大楼]<INFO>lhz_in01,136,260,0,101,0</INFO></NAVI>。";
 		next;
 		mes "[向导]";
 		mes "请小心不要迷路！";
@@ -724,24 +736,24 @@ lhz_in01,136,260,5	script	蒙肯罗#1	967,{
 	if (ep13_ryu == 20) {
 		mes "-在这个位置，似乎能偷听到什么。仔细贴墙听听……-";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "你真是个好伙伴！";
-		mes "But...";
+		mes "但是……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "这是躲不过的……";
 		mes "你比我更清楚！";
 		mes "我们过不去，";
 		mes "以现在的状态。";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "能做的我都做了……";
-		mes "Please...";
+		mes "拜托……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "......";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "............";
 		next;
 		mes "..................";
@@ -752,46 +764,46 @@ lhz_in01,136,260,5	script	蒙肯罗#1	967,{
 		close;
 	}
 	if ((ep13_ryu == 18) || (ep13_ryu == 19)) {
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "你已经准备好尝试了吗……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "哦！我的朋友……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "已经什么都控制不了了……我真的要试吗……？";
 		close;
 	}
 	if ((ep13_ryu == 15) || (ep13_ryu == 16) || (ep13_ryu == 17)) {
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "三国的和平……？";
 		mes "这不可能吧……？";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "你确定";
 		mes "你能做到吗？";
 		close;
 	}
 	if (ep13_ryu == 14) {
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "任何事物都不能阻止我履行职责。任何事物！";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "希凯兹是个善良正直的人。但他不可能对每件事都谨慎。这可能会引发严重的问题。";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "所以我才来帮他。我总是在为他担心……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "要是出了什么事，我真不知道该怎么办……";
 		close;
 	}
-	mes "[蒙肯洛]";
+	mes "[蒙肯罗]";
 	mes "......";
 	close;
 }
 
-lhz_in01,132,259,5	script	西凯兹#1	868,{
+lhz_in01,132,259,5	script	希凯兹#1	868,{
 	if ((ep13_ryu == 18) || (ep13_ryu == 19)) {
 		mes "[希凯兹]";
 		mes "请尽快来找我。";
@@ -817,7 +829,7 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 		}
 		else {
 			mes "[希凯兹]";
-			mes "好的，我记下你的名字了，" + strcharinfo(0) + ". Great name! Registration is done!";
+			mes "好的，我记下你的名字了，" + strcharinfo(0) + "。好名字！登记完成了！";
 			mes "你已成为三国的一员！";
 			next;
 			mes "[希凯兹]";
@@ -896,17 +908,17 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 		mes "我们应该完成的任务。";
 		mes "大概就是这些……";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "嘿，抱歉打断你。我也有情报要送往阿鲁纳佩尔兹。";
 		next;
-		mes "[蒙肯洛]";
+		mes "[蒙肯罗]";
 		mes "我们时间紧迫。";
 		next;
 		mes "[希凯兹]";
 		mes "嘿！你听到了吗？抱歉，我知道你有很多事要忙。我能再拜托你一件事吗？我自己处理不了。";
 		next;
 		mes "[希凯兹]";
-		mes "我觉得像是在勉强你，但还是希望得到你的帮助。去拉赫的^FF0000切斯鲁姆尼尔守卫^000000那里，替我转达蒙肯洛的口信。";
+		mes "我觉得像是在勉强你，但还是希望得到你的帮助。去拉赫的^FF0000切斯鲁姆尼尔守卫^000000那里，替我转达蒙肯罗的口信。";
 		next;
 		changequest 10070,10071;
 		set ep13_ryu,15;
@@ -957,7 +969,7 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 		mes "[希凯兹]";
 		mes "他就是我左边的那个人。";
 		mes "我们叫他蒙克。";
-		mes "他的真名是……蒙肯洛。";
+		mes "他的真名是……蒙肯罗。";
 		next;
 		mes "[希凯兹]";
 		mes "他算是修瓦兹瓦德的管理者，也是该国人民的主要联络人，因为他与他们往来相当密切。";
@@ -970,7 +982,7 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 	}
 	if (ep13_ryu == 12) {
 		mes "[希凯兹]";
-		mes "去卢恩米德加兹的普隆德拉，找到那里的管理者。告诉他同盟进展顺利，我们即将进入裂缝。";
+		mes "去卢恩米德加兹的<NAVI>[普隆德拉同盟管理人]<INFO>prt_cas,19,98,0,101,0</INFO></NAVI>，找到那里的管理者。告诉他同盟进展顺利，我们即将进入裂缝。";
 		close;
 	}
 	if (ep13_ryu == 11) {
@@ -995,7 +1007,7 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 	}
 	if (ep13_ryu == 10) {
 		mes "[希凯兹]";
-		mes "Whew......";
+		mes "呼……";
 		next;
 		mes "[希凯兹]";
 		mes "你是来登记成为冒险者的？那你该找我。我是希凯兹，米德加兹联合同盟的盟主。";
@@ -1009,7 +1021,7 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 		mes "[希凯兹]";
 		mes "登记现在也很重要，但我会先跟你讲讲我们这里的状况。我可以开始了吗？";
 		next;
-		select("Sure.");
+		select("当然。");
 		mes "[希凯兹]";
 		mes "好。让我跟你说说灰烬真空。故事很长。请耐心听。";
 		next;
@@ -1098,6 +1110,10 @@ lhz_in01,132,259,5	script	西凯兹#1	868,{
 	mes "[希凯兹]";
 	mes "......";
 	close;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10073) == 1 || isbegin_quest(10072) == 1 || isbegin_quest(10070) == 1 || isbegin_quest(10069) == 1 || isbegin_quest(10067) == 1 || isbegin_quest(10066) == 1 || isbegin_quest(10065) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10074) || !isbegin_quest(10073) || !isbegin_quest(10071) || !isbegin_quest(10070) || !isbegin_quest(10068) || !isbegin_quest(10067) || !isbegin_quest(10066)");
+	end;
 }
 
 function	script	Guard_13_1	{
@@ -1118,7 +1134,7 @@ function	script	Guard_13_1	{
 		mes "登记成为三国的一员的吗？";
 		next;
 		mes "[守卫]";
-		mes "Enter.";
+		mes "进来。";
 		close;
 	}
 	else {
@@ -1129,6 +1145,8 @@ function	script	Guard_13_1	{
 		warp "lhz_in01",getarg(1),getarg(2);
 		end;
 	}
+	end;
+OnInit:
 	end;
 }
 
@@ -1199,7 +1217,7 @@ lhz_in01,130,232,5	script	守卫#ep13_1-9	899,{
 		mes "登记成为三国的一员的吗？";
 		next;
 		mes "[守卫]";
-		mes "Enter.";
+		mes "进来。";
 		close;
 	}
 	else {
@@ -1212,7 +1230,7 @@ lhz_in01,130,232,5	script	守卫#ep13_1-9	899,{
 
 lhz_in01,128,249,1	script	同盟成员#1	904,{
 	if (ep13_ryu > 19) {
-		mes "-蒙肯洛和希凯兹似乎已经不再那么和睦了。-";
+		mes "-蒙肯罗和希凯兹似乎已经不再那么和睦了。-";
 		close;
 	}
 	mes "[同盟成员]";
@@ -1227,7 +1245,7 @@ lhz_in01,136,245,1	script	同盟成员#2	869,{
 		close;
 	}
 	mes "[同盟成员]";
-	mes "同盟的首领，希凯兹和蒙肯洛……";
+	mes "同盟的首领，希凯兹和蒙肯罗……";
 	next;
 	mes "[同盟成员]";
 	mes "他们的理念不同，";
@@ -1267,7 +1285,7 @@ lhz_in01,136,249,1	script	同盟成员#4	865,{
 	mes "Hm...";
 	next;
 	mes "[同盟成员]";
-	mes "Whoosh...";
+	mes "唰……";
 	next;
 	mes "[同盟成员]";
 	mes "我正在集中精神！！";
@@ -1288,7 +1306,7 @@ lhz_in01,124,245,1	script	同盟成员#5	932,{
 	mes "相当可靠。";
 	next;
 	mes "[同盟成员]";
-	mes "蒙肯洛看起来为了成功什么都愿意做。而且他似乎也很灵活……";
+	mes "蒙肯罗看起来为了成功什么都愿意做。而且他似乎也很灵活……";
 	close;
 }
 
@@ -1373,6 +1391,10 @@ ra_temple,119,113,3	script	同盟管理人#ra	935,{
 	mes "它很快就会属于我……";
 	mes "呵呵呵！";
 	close;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10071) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10072)");
+	end;
 }
 
 lhz_in01,32,22,3	script	警官A	109,{
@@ -1386,8 +1408,8 @@ lhz_in01,32,22,3	script	警官A	109,{
 		mes "回会议室去吧。";
 		mes "你的同伴都在那里。";
 		mes "呵呵呵！";
-		mes "Nevermind.";
-		mes "Bye.";
+		mes "算了。";
+		mes "再见。";
 		close;
 	}
 	if (ep13_ryu == 19) {
@@ -1414,12 +1436,12 @@ lhz_in01,32,22,3	script	警官A	109,{
 		next;
 		mes "[军官B]";
 		mes "尽力去做吧";
-		mes "...or whatever you do...";
+		mes "……或者你想干什么……";
 		next;
 		changequest 10075,10076;
 		set ep13_ryu,20;
 		mes "[军官A]";
-		mes "回那里去吧。干得好。";
+		mes "回那里去吧。干得好。<NAVI>[次元裂缝守卫]<INFO>moc_fild20,349,179,0,101,0</INFO></NAVI>";
 		close;
 	}
 	if (ep13_ryu == 18) {
@@ -1457,8 +1479,8 @@ lhz_in01,32,22,3	script	警官A	109,{
 		mes "那又怎样……？";
 		next;
 		mes "[军官B]";
-		mes "像西凯兹一样老实……";
-		mes "像西凯兹一样变通……";
+		mes "像希凯兹一样老实……";
+		mes "像希凯兹一样变通……";
 		mes "但也很容易被绕过……";
 		next;
 		mes "[军官B]";
@@ -1468,7 +1490,7 @@ lhz_in01,32,22,3	script	警官A	109,{
 		mes "[军官A]";
 		mes "哦！！";
 		mes "这主意不错。";
-		mes "Anyway...";
+		mes "总之……";
 		mes "有人来了。";
 		mes "以后再谈吧。";
 		next;
@@ -1482,6 +1504,10 @@ lhz_in01,32,22,3	script	警官A	109,{
 	mes "为了我们自己的利益，";
 	mes "我们必须舍弃其他王国。";
 	close;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10075) == 1 || isbegin_quest(10074) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10076) || !isbegin_quest(10075)");
+	end;
 }
 
 lhz_in01,30,24,5	script	警官B	109,{
@@ -1495,8 +1521,8 @@ lhz_in01,30,24,5	script	警官B	109,{
 		mes "回会议室去吧。";
 		mes "你的同伴都在那里。";
 		mes "呵呵呵！";
-		mes "Nevermind.";
-		mes "Bye.";
+		mes "算了。";
+		mes "再见。";
 		close;
 	}
 	if (ep13_ryu == 19) {
@@ -1513,7 +1539,7 @@ lhz_in01,30,24,5	script	警官B	109,{
 		mes "我说得对吗？";
 		next;
 		mes "[军官B]";
-		mes "你是西凯兹派来的……";
+		mes "你是希凯兹派来的……";
 		mes "对吧？";
 		next;
 		mes "[军官A]";
@@ -1523,17 +1549,17 @@ lhz_in01,30,24,5	script	警官B	109,{
 		next;
 		mes "[军官B]";
 		mes "尽力就好";
-		mes "...or whatever you do...";
+		mes "……或者你想干什么……";
 		next;
 		changequest 10075,10076;
 		set ep13_ryu,20;
 		mes "[军官A]";
-		mes "回那边去吧。干得好。";
+		mes "回那边去吧。干得好。<NAVI>[次元裂缝守卫]<INFO>moc_fild20,349,179,0,101,0</INFO></NAVI>";
 		close;
 	}
 	if (ep13_ryu == 18) {
 		mes "[军官A]";
-		mes "西凯兹真让人无法理解……";
+		mes "希凯兹真让人无法理解……";
 		mes "我也没有办法……";
 		next;
 		mes "[军官B]";
@@ -1566,8 +1592,8 @@ lhz_in01,30,24,5	script	警官B	109,{
 		mes "那又怎样……？";
 		next;
 		mes "[军官B]";
-		mes "像西凯兹一样老实……";
-		mes "像西凯兹一样变通……";
+		mes "像希凯兹一样老实……";
+		mes "像希凯兹一样变通……";
 		mes "但也很容易被绕过……";
 		next;
 		mes "[军官B]";
@@ -1577,7 +1603,7 @@ lhz_in01,30,24,5	script	警官B	109,{
 		mes "[军官A]";
 		mes "哦！！";
 		mes "这主意不错。";
-		mes "Anyway...";
+		mes "总之……";
 		mes "有人来了。";
 		mes "以后再谈吧。";
 		next;
@@ -1590,6 +1616,10 @@ lhz_in01,30,24,5	script	警官B	109,{
 	mes "[军官B]";
 	mes "最重要的就是金钱和权力。要是连一样都得不到，我们和贫民窟的穷鬼没什么两样。";
 	close;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10075) == 1 || isbegin_quest(10074) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10076) || !isbegin_quest(10075)");
+	end;
 }
 
 moc_fild20,349,179,3	script	次元裂缝守卫#1	707,{
@@ -1697,7 +1727,7 @@ moc_fild22b,230,197,5	script	蒙肯罗#2	967,{
 		mes "我记得你。";
 		next;
 		mes "[蒙肯罗]";
-		mes "西凯兹紧急卸任了。我是他的继任者。";
+		mes "希凯兹紧急卸任了。我是他的继任者。";
 		next;
 		mes "[蒙肯罗]";
 		mes "你现在不必了解全部细节。那对你并不重要，不是吗？";
@@ -1779,7 +1809,7 @@ moc_fild22b,230,197,5	script	蒙肯罗#2	967,{
 		mes "你大概觉得我太严格了……我只是在履行同盟长的职责。";
 		next;
 		mes "[蒙肯罗]";
-		mes "如果我不能管好同盟，我会感到愧疚，觉得对不起西凯兹的托付。总之，我会尽力而为。";
+		mes "如果我不能管好同盟，我会感到愧疚，觉得对不起希凯兹的托付。总之，我会尽力而为。";
 		next;
 		mes "[蒙肯罗]";
 		mes "嗯？我只是在发牢骚。";
@@ -1797,6 +1827,10 @@ moc_fild22b,230,197,5	script	蒙肯罗#2	967,{
 		mes "准备好了就告诉我。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(10076) == 1 || isbegin_quest(10077) == 1 || isbegin_quest(10078) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(10077) || !isbegin_quest(10078)");
+	end;
 }
 
 moc_fild22b,1,1,0	script	同盟首领#moo	-1,{
@@ -1809,7 +1843,7 @@ OnEnable:
 	enablenpc "同盟首领#moo";
 	set $@ep13_test,1;
 	initnpctimer;
-	monster "moc_fild22b",0,0,"Allied Soldier",1851,80,"同盟首领#moo::OnMyMobDead";
+	monster "moc_fild22b",0,0,"同盟士兵",1851,80,"同盟首领#moo::OnMyMobDead";
 	end;
 
 OnReset:
@@ -1824,7 +1858,7 @@ OnDisable:
 	end;
 
 OnMyMobDead:
-	if (mobcount("moc_fild22b","Head of the Alliance#moo::OnMyMobDead") < 41) {
+	if (mobcount("moc_fild22b","同盟首领#moo::OnMyMobDead") < 41) {
 		donpcevent "同盟首领#moo::OnDisable";
 	}
 	end;
@@ -2109,10 +2143,14 @@ mid_camp,222,283,4	script	玛丽安#ep13bs	727,{
 		mes "祖国送来的补给是……";
 		mes "Ah...";
 		mes "没什么，别在意……";
-		mes "Hohoho...";
+		mes "呵呵呵……";
 		emotion ET_HUK;
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11091) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11084) || !isbegin_quest(11092)");
+	end;
 }
 
 mid_camp,261,284,4	script	教官#ep13bs	405,{
@@ -2251,17 +2289,20 @@ mid_camp,261,284,4	script	教官#ep13bs	405,{
 		mes "[卢根教官]";
 		mes "你需要和其他人共用军营，";
 		mes "所以记得在那边";
-		mes "和他们聊聊。";
+		mes "和他们聊聊。<NAVI>[迭戈]<INFO>mid_camp,266,263,0,101,0</INFO></NAVI>";
 		set ep13_newbs,5;
 		getitem 12322,1; //Chocolate_Pie
 		completequest 11086;
+		setquest 11087;
 		close;
 	}
 	if ((ep13_newbs > 4) && (ep13_newbs < 12)) {
 		mes "[卢根教官]";
 		mes "你需要和其他人共用军营，";
 		mes "所以记得在那边";
-		mes "和他们聊聊。";
+		mes "和他们聊聊。<NAVI>[迭戈]<INFO>mid_camp,266,263,0,101,0</INFO></NAVI>";
+		if (ep13_newbs == 5)
+			setquest 11087;
 		close;
 	}
 	if (ep13_newbs == 12) {
@@ -2305,7 +2346,7 @@ mid_camp,261,284,4	script	教官#ep13bs	405,{
 			mes "能给我看看吗？";
 			next;
 			mes "[卢根教官]";
-			mes "Hmm...";
+			mes "嗯……";
 			next;
 			mes "[卢根教官]";
 			mes "好，那么请把这些";
@@ -2401,7 +2442,7 @@ mid_camp,261,284,4	script	教官#ep13bs	405,{
 		mes "之后就失踪了，";
 		mes "我一直很担心";
 		mes "他的情况。";
-		mes "investigation.";
+		mes "调查。";
 		next;
 		if (countitem(6045) > 0) {
 			mes "[卢根教官]";
@@ -2611,7 +2652,7 @@ mid_camp,261,284,4	script	教官#ep13bs	405,{
 			close;
 		case 2:
 			mes "["+ strcharinfo(0) +"]";
-			mes "Hmm...";
+			mes "嗯……";
 			close;
 		}
 	}
@@ -2712,6 +2753,10 @@ mid_camp,261,284,4	script	教官#ep13bs	405,{
 		mes "看来我这周没时间休息了。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11084) == 1 || isbegin_quest(11092) == 1 || isbegin_quest(11094) == 1 || isbegin_quest(11096) == 1 || isbegin_quest(11086) == 1 || isbegin_quest(11098) == 1 || isbegin_quest(11100) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11087) || !isbegin_quest(11091) || !isbegin_quest(11099) || !isbegin_quest(11085) || !isbegin_quest(11093) || !isbegin_quest(11095) || !isbegin_quest(11097)");
+	end;
 }
 
 mid_camp,123,290,4	script	奥托#ep13bs	967,{
@@ -2824,37 +2869,41 @@ mid_camp,123,290,4	script	奥托#ep13bs	967,{
 		mes "还是人工的？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11099) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11100)");
+	end;
 }
 
 mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 	if (ep13_newbs < 3) {
 		mes "[布林克]";
 		mes "嗯……喂……";
-		mes "...I mean...";
-		mes "Hmm...";
-		mes "...I would...";
+		mes "……我是说……";
+		mes "嗯……";
+		mes "……我会……";
 		emotion ET_PROFUSELY_SWEAT;
 		close;
 	}
 	if (ep13_newbs == 3) {
 		mes "[布林克]";
 		mes "嗯……喂……";
-		mes "...What makes...";
-		mes "Hmm...";
-		mes "...I would...";
+		mes "……什么让你……";
+		mes "嗯……";
+		mes "……我会……";
 		emotion ET_PROFUSELY_SWEAT;
 		next;
 		mes "[布林克]";
 		mes "嗯……喂……";
-		mes "...register...";
+		mes "……登记……";
 		mes "我是说……";
 		next;
 		switch(select("我是来登记的。:只是站着。")) {
 		case 1:
 			mes "[布林克]";
 			mes "啊……我是说……";
-			mes "Hmm...";
-			mes "...Hey...";
+			mes "嗯……";
+			mes "……喂……";
 			mes "什么……你的名字……";
 			emotion ET_PROFUSELY_SWEAT;
 			next;
@@ -2864,19 +2913,19 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			mes "[布林克]";
 			mes "...Ah...";
 			mes ""+ strcharinfo(0) +"...";
-			mes "You...";
-			mes "...registered...Hmm...";
+			mes "你……";
+			mes "……登记了……嗯……";
 			mes "...";
 			emotion ET_PROFUSELY_SWEAT;
 			next;
 			mes "[布林克]";
-			mes "Here...";
-			mes "Hmm...";
-			mes "sign...";
+			mes "这里……";
+			mes "嗯……";
+			mes "签字……";
 			next;
 			mes "[布林克]";
-			mes "Hmmm...";
-			mes "and...";
+			mes "嗯……";
+			mes "还有……";
 			mes "我是说……";
 			emotion ET_PROFUSELY_SWEAT;
 			next;
@@ -2885,13 +2934,13 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			next;
 			mes "[布林克]";
 			mes "Hm...";
-			mes "...Yes...";
-			mes "Then...";
+			mes "……是的……";
+			mes "那么……";
 			next;
 			mes "[布林克]";
-			mes "And...";
-			mes "......This thing...";
-			mes "...Ehh...";
+			mes "然后……";
+			mes "……这东西……";
+			mes "……诶……";
 			next;
 			mes "——我想我登记好了——";
 			mes "——我最好回去找卢根——";
@@ -2901,60 +2950,64 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			close;
 		case 2:
 			mes "[布林克]";
-			mes "And...";
-			mes "......This thing...";
-			mes "...Ehh...";
+			mes "然后……";
+			mes "……这东西……";
+			mes "……诶……";
 			emotion ET_PROFUSELY_SWEAT;
 			close;
 		}
 	}
 	else {
 		mes "[布林克]";
-		mes "...Hey...";
+		mes "……喂……";
 		mes "我是说……";
-		mes "...Well...nice...";
-		mes "Then...";
+		mes "……嗯……不错……";
+		mes "那么……";
 		next;
 		mes "[布林克]";
-		mes "...Life...";
-		mes "...Hmmm...";
+		mes "……人生……";
+		mes "……嗯……";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11085) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11086)");
+	end;
 }
 
 -	script	Diego#ep13bs_	-1,{
 	if (ep13_newbs < 5) {
-		mes "[迪亚哥]";
+		mes "[迭戈]";
 		mes "我现在很忙！";
 		emotion ET_PROFUSELY_SWEAT;
 		close;
 	}
 	if (ep13_newbs == 5) {
-		mes "[迪亚哥]";
+		mes "[迭戈]";
 		mes "哇，这帐篷真大！";
 		mes "喂，那边的冒险者。请帮帮我。";
 		emotion ET_CRY;
 		next;
 		switch(select("帮他。:不帮。")) {
 		case 1:
-			mes "[迪亚哥]";
-			mes "Thanks.";
+			mes "[迭戈]";
+			mes "谢谢。";
 			emotion ET_THANKS;
 			next;
 			mes "["+ strcharinfo(0) +"]";
 			mes "你需要什么？";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "Ah...";
 			mes "我经过这里的时候……";
 			mes "不小心踢到了柱子，";
 			mes "现在它断了。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "我得去请别人帮忙，";
 			mes "这里我先扶着柱子。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "嗯，让我想想……";
 			mes "能遇到你真是幸运，";
 			mes "路过的"+ strcharinfo(0) +".";
@@ -2963,30 +3016,30 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			mes "哈！！你怎么知道我的名字？！";
 			emotion ET_HUK, playerattached();
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "你的名牌上写着。";
 			emotion ET_THINK;
 			next;
 			select("那我该怎么帮你。");
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "我扶着这根柱子，";
 			mes "请去找修好它的材料。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "我需要木条撑住";
 			mes "这根柱子，还要绳子绑好。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "营地西边有很多树，";
 			mes "可以找到树枝";
 			mes "用来当柱子。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "还能在营地东边的原野";
 			mes "找到一种叫^0000FF猪笼草^000000的";
 			mes "奇怪植物，它的藤非常结实。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "我想用";
 			mes "这些应该就能修好";
 			mes "^0000FF20根普通的树枝和20根结实的藤^000000。";
@@ -2995,24 +3048,24 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			setquest 11087;
 			close;
 		case 2:
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "...";
 			mes "你也太狠了。";
-			mes "Sob...";
+			mes "呜……";
 			emotion ET_CRY;
 			close;
 		}
 	}
 	if (ep13_newbs == 6) {
 		if ((countitem(6041) > 19) && (countitem(6042) > 19)) {
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "哦！！";
 			mes "你终于把";
 			mes "材料带来了！";
 			mes "太感谢你了！！";
 			emotion ET_CRY;
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "好，我扶着这根柱子，";
 			mes "请你把树枝接上";
 			mes "再用藤绑好。";
@@ -3023,7 +3076,7 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			close;
 		}
 		else {
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "我想用";
 			mes "这些应该就能修好";
 			mes "^0000FF20根普通的树枝和20根结实的藤^000000。";
@@ -3032,14 +3085,14 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 		}
 	}
 	if (ep13_newbs == 7) {
-		mes "[迪亚哥]";
+		mes "[迭戈]";
 		mes "好，我扶着这根柱子，";
 		mes "请你把树枝接上";
 		mes "再用藤绑好。";
 		close;
 	}
 	if (ep13_newbs == 8) {
-		mes "[迪亚哥]";
+		mes "[迭戈]";
 		mes "另一根也请照这样处理。";
 		close;
 	}
@@ -3053,7 +3106,7 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			close;
 		}
 		else {
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "多亏你的帮忙，";
 			mes "我才能守住军营。";
 			mes "我遇到麻烦的时候，";
@@ -3066,14 +3119,14 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 			mes "留守这个军营的。";
 			emotion ET_PROFUSELY_SWEAT, playerattached();
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "哦！！！";
 			mes "那这真的是缘分啊！！！";
 			mes "这是这个营地的";
 			mes "特产，";
 			mes "^0000FF巧克力派^000000。";
 			next;
-			mes "[迪亚哥]";
+			mes "[迭戈]";
 			mes "请进来";
 			mes "好好休息，为明天的";
 			mes "远征做准备！！";
@@ -3086,7 +3139,7 @@ mid_campin,106,122,4	script	接待员布林克#ep13b	89,{
 		}
 	}
 	else {
-		mes "[迪亚哥]";
+		mes "[迭戈]";
 		mes "我现在很忙！";
 		emotion ET_PROFUSELY_SWEAT;
 		close;
@@ -3137,7 +3190,7 @@ mid_campin,295,128,4	script	卢卡斯#ep13bs	884,{
 		mes "......";
 		next;
 		mes "[卢卡斯]";
-		mes "...Hmm...";
+		mes "……嗯……";
 		mes "替补？";
 		mes "......";
 		next;
@@ -3194,27 +3247,27 @@ mid_campin,292,120,4	script	达维#ep13bs	849,{
 	close;
 }
 
-mid_camp,160,298,4	script	扬#ep13bs	865,{
+mid_camp,160,298,4	script	扎安#ep13bs	865,{
 	if (ep13_newbs == 15) {
 		if (countitem(6045) > 0) {
-			mes "[扬]";
+			mes "[扎安]";
 			mes "哇哇，这是什么呀~";
 			mes "嘿，是给我的吗？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "Yes...";
+			mes "是的……";
 			emotion ET_SWEAT, playerattached();
 			next;
-			mes "[扬]";
+			mes "[扎安]";
 			mes "啊啊，好激动呀~";
 			mes "我喜欢。";
 			emotion ET_COOL;
 			next;
-			mes "[扬]";
+			mes "[扎安]";
 			mes "我现在就想把它拆开~";
 			mes "请转告教官";
 			mes "我很感激~";
-			mes "Uhuhu.";
+			mes "呵呵。";
 			delitem 6045,1; //Supply_Box
 			set ep13_newbs,16;
 			getitem 12322,1; //Chocolate_Pie
@@ -3222,7 +3275,7 @@ mid_camp,160,298,4	script	扬#ep13bs	865,{
 			close;
 		}
 		else {
-			mes "[扬]";
+			mes "[扎安]";
 			mes "我一个月前";
 			mes "订的东西，";
 			mes "怎么还没到？";
@@ -3231,32 +3284,36 @@ mid_camp,160,298,4	script	扬#ep13bs	865,{
 		}
 	}
 	else if (ep13_newbs == 16) {
-		mes "[扬]";
+		mes "[扎安]";
 		mes "我真的很想要。";
 		mes "我真的很喜欢~~";
 		next;
 		mes "["+ strcharinfo(0) +"]";
 		mes "那是……什么呀~~？";
 		next;
-		mes "[扬]";
+		mes "[扎安]";
 		mes "......";
 		mes "......";
 		next;
-		mes "[扬]";
+		mes "[扎安]";
 		mes "那、那是秘密……";
 		emotion ET_SHY;
 		close;
 	}
 	else {
-		mes "[扬]";
+		mes "[扎安]";
 		mes "我在这里研究得越多，";
 		mes "就越发现奇怪的东西。";
 		next;
-		mes "[扬]";
+		mes "[扎安]";
 		mes "这好像激起了我";
 		mes "身为科学家的热情？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11093) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11094)");
+	end;
 }
 
 mid_camp,30,168,4	script	杰拉德#ep13bs	939,{
@@ -3290,7 +3347,7 @@ mid_camp,30,168,4	script	杰拉德#ep13bs	939,{
 			mes "你却没回营地？";
 			next;
 			mes "[杰拉德]";
-			mes "Yes.";
+			mes "是的。";
 			mes "这地方真的很有意思，";
 			mes "我一点都不想离开。";
 			next;
@@ -3333,6 +3390,10 @@ mid_camp,30,168,4	script	杰拉德#ep13bs	939,{
 		mes "蘑菇还是树？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11095) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11096)");
+	end;
 }
 
 man_fild01,80,248,4	script	阿尔贝托#ep13bs	934,{
@@ -3353,7 +3414,7 @@ man_fild01,80,248,4	script	阿尔贝托#ep13bs	934,{
 			emotion ET_CRY;
 			next;
 			mes "[阿尔贝托]";
-			mes "Sniff...";
+			mes "抽噎……";
 			mes "——窸窣声——";
 			next;
 			mes "[阿尔贝托]";
@@ -3378,7 +3439,7 @@ man_fild01,80,248,4	script	阿尔贝托#ep13bs	934,{
 			mes "[阿尔贝托]";
 			mes "请转告教官，";
 			mes "我还活着。";
-			mes "Sniff.";
+			mes "抽噎。";
 			emotion ET_CRY;
 			delitem 6045,1; //Supply_Box
 			set ep13_newbs,20;
@@ -3408,6 +3469,10 @@ man_fild01,80,248,4	script	阿尔贝托#ep13bs	934,{
 		mes "是什么？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11097) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11098)");
+	end;
 }
 
 mid_camp,159,282,4	script	炊事士兵#ep13bs	886,{
@@ -3427,7 +3492,7 @@ mid_camp,159,282,4	script	炊事士兵#ep13bs	886,{
 
 mid_camp,166,248,4	script	巫师#ep13bs	937,{
 	mes "[比奥莱]";
-	mes "Sob...";
+	mes "呜……";
 	mes "她在哪里？";
 	next;
 	mes "[比奥莱]";
@@ -3440,6 +3505,9 @@ mid_camp,166,248,4	script	巫师#ep13bs	937,{
 	mes "我想回家。";
 	emotion ET_CRY;
 	close;
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "ep13_newbs == 5");
+	end;
 }
 
 spl_fild02,348,76,0	script	树#ep13bs1::ep13tree	111,{
@@ -3454,13 +3522,13 @@ spl_fild02,348,76,0	script	树#ep13bs1::ep13tree	111,{
 	if (ep13_newbs == 6) {
 		if (rand(1,3) == 3) {
 			mes "——窸窣声——";
-			mes "——你找到一根树枝——";
+			mes "——你找到了五根树枝——";
 			next;
 			if (rand(1,3) == 2) {
 				mes "——折断！——";
 				mes "——砰，砰~~——";
-				mes "——你拿到了树枝。——";
-				getitem 6042,1; //Ordinary_Branch
+				mes "——你拿到了五根树枝。——";
+				getitem 6042,5; //Ordinary_Branch
 				close;
 			}
 			else {
@@ -3480,6 +3548,9 @@ spl_fild02,348,76,0	script	树#ep13bs1::ep13tree	111,{
 			close;
 		}
 	}
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "ep13_newbs == 6 && countitem(6042) < 20");
 	end;
 }
 
@@ -3549,8 +3620,8 @@ mid_camp,267,263,0	script	木桩#ep13bs1	111,{
 				else {
 					mes "——你修好了断裂的柱子——";
 					mes "——用藤蔓。——";
-					mes "——看来你……";
-					mes "——还需要更多树枝。——";
+					mes "——看来这次没修好……";
+					mes "——再试一次吧。——";
 					next;
 				}
 				break;
@@ -3570,6 +3641,10 @@ mid_camp,267,263,0	script	木桩#ep13bs1	111,{
 		mes "——不过我修得很好。——";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11088) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11089)");
+	end;
 }
 
 mid_camp,267,258,0	script	木桩#ep13bs2	111,{
@@ -3578,11 +3653,16 @@ mid_camp,267,258,0	script	木桩#ep13bs2	111,{
 		mes "柱子断了。——";
 		close;
 	}
-	else if (ep13_newbs == 6 || ep13_newbs == 7) {
+	else if (ep13_newbs == 6) {
 		mes "——兵营的";
 		mes "柱子断了。——";
 		mes "——你最好出去";
 		mes "找些材料来修好它。——";
+		close;
+	}
+	else if (ep13_newbs == 7) {
+		mes "——这根柱子先等等。——";
+		mes "——先去修好另一根柱子。——<NAVI>[木桩]<INFO>mid_camp,267,263,0,101,0</INFO></NAVI>";
 		close;
 	}
 	else if (ep13_newbs == 8) {
@@ -3633,8 +3713,8 @@ mid_camp,267,258,0	script	木桩#ep13bs2	111,{
 				else {
 					mes "——你修好了断裂的柱子——";
 					mes "——用藤蔓。——";
-					mes "——看来你……";
-					mes "——还需要更多树枝。——";
+					mes "——看来这次没修好……";
+					mes "——再试一次吧。——";
 					next;
 				}
 				break;
@@ -3647,6 +3727,10 @@ mid_camp,267,258,0	script	木桩#ep13bs2	111,{
 		mes "——不过我修得很好。——";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(11089) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11090)");
+	end;
 }
 
 // Attitude to the New :: ep13_ecology
@@ -3807,7 +3891,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 			mes "它们看起来就像";
 			mes "想用那些尖刺";
 			mes "扎我！";
-			mes "Argh...";
+			mes "呃啊……";
 			next;
 			mes "[鲁米斯·布洛克]";
 			mes "我宁愿饿死，";
@@ -3850,7 +3934,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 				next;
 				mes "[鲁米斯·布洛克]";
 				mes "唉……我听起来像个疯子，对吧？";
-				mes "...This is why I didn't want";
+				mes "……这就是为什么我不想";
 				mes "离开我的实验室……";
 				next;
 				switch(select("展示猪笼草的战利品。:斥责他。:安慰他。")) {
@@ -3862,7 +3946,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 					mes "更残暴或丑陋。";
 					next;
 					mes "[鲁米斯·布洛克]";
-					mes "...What's this?";
+					mes "……这是什么？";
 					mes "这不是从";
 					mes "猪笼草身上来的吗？";
 					next;
@@ -3892,7 +3976,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 					mes "你就是其中之一吧？";
 					next;
 					mes "[鲁米斯·布洛克]";
-					mes "...That's great!";
+					mes "……那太好了！";
 					mes "我想我终于";
 					mes "看到一线希望了。上帝";
 					mes "给我送来了救星。";
@@ -3919,7 +4003,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 					mes "而他正好完全相反。";
 					next;
 					mes "[鲁米斯·布洛克]";
-					mes "...Oh, that's not what I wanted";
+					mes "……哦，那不是我想的";
 					mes "要说的话。我本想向哥哥";
 					mes "展示我关于";
 					mes "猪笼草的发现。";
@@ -4068,7 +4152,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 		}
 		else if (ep13_animal == 10) {
 			mes "[鲁米斯·布洛克]";
-			mes "...Welcome back.";
+			mes "……欢迎回来。";
 			mes "哦，你不用告诉我哥哥说了什么，";
 			mes "因为他那边已经有人来过了。他的报告让管理层印象深刻吧？";
 			next;
@@ -4076,7 +4160,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 			mes "是啊，那是我哥哥……";
 			next;
 			mes "[鲁米斯·布洛克]";
-			mes "...Anyways, one of the soldiers that captured Nepentheses for me has given me some interesting information.";
+			mes "……总之，为我抓住尼彭泰斯的一名士兵给了我一些有趣的情报。";
 			next;
 			mes "[鲁米斯·布洛克]";
 			mes "他在东边的桥对岸发现了一种新型怪物。";
@@ -4162,7 +4246,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 					mes "这顶三角帽的主人";
 					mes "是一种叫做……的怪物";
 					input .@input$;
-					if (compare(.@input$,"Tatacho")) {
+					if (compare(.@input$,"塔塔丘") || compare(.@input$,"Tatacho")) {
 						mes "^FF0000塔塔丘^000000";
 						next;
 						break;
@@ -4170,14 +4254,14 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 					else {
 						next;
 						mes "["+strcharinfo(0)+"]";
-						mes ""+.@input$+"...? I don't think that was the name...";
+						mes ""+.@input$+"……？我记得不叫这个名字……";
 						next;
 					}
 				}
 				mes "["+strcharinfo(0)+"]";
 				mes "塔塔丘的体型大约是……";
 				input .@input$;
-				mes "^3131FF"+.@input$+"^000000, I guess...";
+				mes "^3131FF"+.@input$+"^000000，我想……";
 				next;
 				mes "["+strcharinfo(0)+"]";
 				mes "塔塔丘通常坐在地上，但如果因为寒冷导致体温过低，它们就会到处打滚。";
@@ -4228,7 +4312,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 				mes "鲁米斯先生！你看看这个！";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "...Oh, hello.";
+				mes "……哦，你好。";
 				mes "我非常沮丧。上次没能回家，让我感到很无助……";
 				next;
 				mes "["+strcharinfo(0)+"]";
@@ -4237,23 +4321,23 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 				next;
 				mes "[鲁米斯·布洛克]";
 				mes "哦……覆盖着青草？";
-				mes "...I know you're excited, but that doesn't sound interesting to me. Sorry.";
+				mes "……我知道你很兴奋，但对我来说那听起来没什么意思。抱歉。";
 				next;
 				mes "[鲁米斯·布洛克]";
 				mes "让我看看这只角。";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "Hmm.";
+				mes "嗯。";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "Uhmm...";
+				mes "呃……";
 				next;
 				mes "[鲁米斯·布洛克]";
 				mes "咦……？";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "...This is remarkable.";
-				mes "...This horn looks very similar to that of the Hillsrions that inhabit the Manuk area.";
+				mes "……这真了不起。";
+				mes "……这只角看起来和栖息在马努克地区的希尔斯里昂的角非常相似。";
 				next;
 				mes "[鲁米斯·布洛克]";
 				mes "不知它们是否有亲缘关系，";
@@ -4263,7 +4347,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 				mes "啊，还有可能是环境导致的变异。";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "...What do you mean?";
+				mes "……你什么意思？";
 				mes "你是说那只怪物因环境因素而发生了变异？";
 				next;
 				mes "["+strcharinfo(0)+"]";
@@ -4286,7 +4370,7 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 				mes "人造装置造成的变异体……那么除了滕德里昂，可能还有更多变异生物。";
 				next;
 				mes "[鲁米斯·布洛克]";
-				mes "...Now I'm very curious.";
+				mes "……现在我非常好奇。";
 				mes "可是……我想回家……如果管理层命令我回去，研究它们也没用。";
 				next;
 				mes "[鲁米斯·布洛克]";
@@ -4315,8 +4399,8 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 			}
 			else {
 				mes "[鲁米斯·布洛克]";
-				mes "...I submitted the report to the management, but they have not yet ordered me to go back home...";
-				mes "...*Sigh* I guess nothing's as easy as I'd hoped.";
+				mes "……我已经把报告提交给管理层，但他们还没有命令我回家……";
+				mes "……*叹气* 看来事情没有我希望的那么容易。";
 				close;
 			}
 		}
@@ -4330,6 +4414,10 @@ mid_camp,188,254,3	script	怪物学者#ep13	883,{
 			close;
 		}
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(2147) == 1 || isbegin_quest(2148) == 1 || isbegin_quest(2153) == 1 || isbegin_quest(2156) == 1 || isbegin_quest(2157) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2147) || !isbegin_quest(2148) || !isbegin_quest(2149) || !isbegin_quest(2154) || !isbegin_quest(2157)");
+	end;
 }
 
 mid_camp,240,270,3	script	植物学者#ep13	750,{
@@ -4403,7 +4491,7 @@ mid_camp,240,270,3	script	植物学者#ep13	750,{
 			next;
 			emotion ET_HUK, playerattached();
 			mes "[植物学家]";
-			mes "...Well, I've got a ton of samples of this specimen. Sorry.";
+			mes "……嗯，我已经有很多这个标本的样本了。抱歉。";
 			next;
 			mes "- 他指着帐篷里的一堆标本。 -";
 			next;
@@ -4482,7 +4570,7 @@ mid_camp,240,270,3	script	植物学者#ep13	750,{
 			next;
 			select("你在说什么？");
 			mes "[植物学家]";
-			mes "Well...";
+			mes "嗯……";
 			mes "我想我找不到言语来真正描述那样奇妙的景象。";
 			next;
 			mes "[植物学家]";
@@ -4490,7 +4578,7 @@ mid_camp,240,270,3	script	植物学者#ep13	750,{
 			next;
 			mes "[植物学家]";
 			mes "当然，我提供这么非凡的服务，是因为我想得到一些回报。啊哈哈！";
-			mes "...Truth be told, I'm having some trouble. And I need someone to help me.";
+			mes "……说实话，我遇到了些麻烦。我需要有人帮我。";
 			next;
 			mes "[植物学家]";
 			mes "现在，你该去左边的桥对岸。跟那里的守卫说一声，然后直接往前走。";
@@ -4611,6 +4699,10 @@ mid_camp,240,270,3	script	植物学者#ep13	750,{
 			close;
 		}
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(2149) == 1 || isbegin_quest(2150) == 1 || isbegin_quest(2151) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2150) || !isbegin_quest(2151) || !isbegin_quest(2152)");
+	end;
 }
 
 mid_camp,336,171,1	script	营地守卫#man1	852,{
@@ -4658,7 +4750,7 @@ OnTouch:
 		mes "就是这里。";
 		next;
 		mes "[植物学家]";
-		mes "Look.";
+		mes "看。";
 		mes "你能看出这菌盖正在生成光滴，滴落到地面。";
 		next;
 		mes "[植物学家]";
@@ -4714,6 +4806,8 @@ mid_camp,45,148,7	script	植物学者#ep13_1	750,{
 	end;
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(2152) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2153)");
 	disablenpc "植物学者#ep13_1";
 	end;
 }
@@ -4760,7 +4854,7 @@ man_fild01,92,230,3	script	冰封之树#evt_lumis	111,1,1,{
 		mes "- 树顶附近有什么东西在发出巨响。 -";
 		next;
 		mes "[鲁米斯·布洛克]";
-		mes "...Oh, yes. Yes!";
+		mes "……哦，对。对！";
 		mes "怪物们都在盯着我，我想都没想就爬上这棵树了！";
 		mes "现在我要怎么下去啊？";
 		next;
@@ -4769,16 +4863,16 @@ man_fild01,92,230,3	script	冰封之树#evt_lumis	111,1,1,{
 		mes "我想待在这里研究怪物会安全得多，也方便得多。";
 		next;
 		mes "[鲁米斯·布洛克]";
-		mes "...I'm looking at Hillsrion, the creature that people are talking about.";
+		mes "……我在看希尔斯里昂，大家谈论的那种生物。";
 		mes "它身上覆盖着柔软的毛，让我想起空气中飘浮的柔软冰屑。";
-		mes "...Oh, sorry.. I was just talking to myself.";
+		mes "……哦，抱歉……我只是在自言自语。";
 		next;
 		mes "[鲁米斯·布洛克]";
 		mes "我会在这棵树上观察丘陵狮。"+strcharinfo(0)+"，你能去帮我收集^3131FF丘陵狮的角^000000吗？";
 		next;
 		mes "[鲁米斯·布洛克]";
 		mes "它们的角可能拥有特殊的力量。我想弄到一些来做进一步研究。";
-		mes "...5 horns will be enough.";
+		mes "……5只角就够了。";
 		set ep13_animal,12;
 		changequest 2154,2155;
 		close;
@@ -4791,20 +4885,20 @@ man_fild01,92,230,3	script	冰封之树#evt_lumis	111,1,1,{
 		}
 		else {
 			mes "[鲁米斯·布洛克]";
-			mes "...*Shiver*...";
+			mes "……*发抖*……";
 			next;
 			mes "[鲁米斯·布洛克]";
-			mes "...*Shiver*...";
-			mes "...*Shiver*...";
+			mes "……*发抖*……";
+			mes "……*发抖*……";
 			next;
 			mes "[鲁米斯·布洛克]";
-			mes "...*Shiver*...";
-			mes "...*Shiver*...";
-			mes "...*Shiver*...";
+			mes "……*发抖*……";
+			mes "……*发抖*……";
+			mes "……*发抖*……";
 			next;
 			mes "[鲁米斯·布洛克]";
 			mes "啊！你回来了！";
-			mes "Phew...";
+			mes "呼……";
 			next;
 			mes "[鲁米斯·布洛克]";
 			mes "你没事吧？它们的獠牙看起来又尖又亮……";
@@ -4841,6 +4935,10 @@ man_fild01,92,230,3	script	冰封之树#evt_lumis	111,1,1,{
 			close;
 		}
 	}
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(2154) == 1 || isbegin_quest(2155) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2155) || !isbegin_quest(2156)");
 	end;
 }
 
@@ -4882,6 +4980,9 @@ spl_fild02,34,223,5	script	小妖精#spl	442,{
 		mes "你是谁？！你在找沙帕吗？！";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2158)");
+	end;
 }
 
 man_fild03,236,105,3	script	树巨人#man	454,{
@@ -4919,6 +5020,9 @@ man_fild03,236,105,3	script	树巨人#man	454,{
 		mes "拉皮内的增援在哪里？我可能有麻烦了。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(2159)");
+	end;
 }
 
 mid_camp,212,237,5	script	营地守卫队长#man1	852,{
@@ -4978,6 +5082,9 @@ mid_camp,212,237,5	script	营地守卫队长#man1	852,{
 			}
 		}
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(2158) == 1 || isbegin_quest(2159) == 1");
+	end;
 }
 
 // The Tripartite Union's Feud :: ep13_1_rhea
@@ -4993,7 +5100,7 @@ OnTouch_:
 	if (ep13_ryu > 99 || ep13_start > 99) {
 		if (ep13_1_rhea < 1) {
 			mes "[联合研究官]";
-			mes "Hmmmm...mmm...";
+			mes "嗯……嗯……";
 			next;
 			mes "[联合研究官]";
 			mes "哦！你好！";
@@ -5164,16 +5271,16 @@ OnTouch_:
 			mes "[联合研究官]";
 			mes "好，我明白了。灰烬虚空的研究进展如何？";
 			next;
-			mes "[汉吉纳]";
-			mes "你好，我是来自阿鲁纳贝兹的汉吉纳。我们已经得出结论：这个灰烬虚空世界与米德加尔特大陆毫无关联，它位于一个完全独立的世界次元中。";
+			mes "[汉森]";
+			mes "你好，我是来自阿鲁纳贝兹的汉森。我们已经得出结论：这个灰烬虚空世界与米德加尔特大陆毫无关联，它位于一个完全独立的世界次元中。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我们能够开展研究的东部和西部原野环境，与三方联合军营边界内的环境毫无共同之处。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我也接到报告说，调查区域的生态系统有所不同。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "由于一些在米德加尔特大陆上从未见过的凶猛生物，我们无法进一步研究生态系统。";
 			next;
 			mes "[联合研究官]";
@@ -5185,14 +5292,14 @@ OnTouch_:
 			mes "[休]";
 			mes "......................";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "......................";
 			next;
 			mes "- 房间里陷入了短暂的尴尬沉默…… -";
 			next;
 			mes "[联合研究官]";
 			mes "哈……哈哈哈哈……";
-			mes "... Then, anything you need to request, or suggest, perhaps? Anything you want to complain about?";
+			mes "……那么，你有什么需要请求或建议的吗？有什么想抱怨的吗？";
 			next;
 			mes "- 一直在摆弄 -";
 			mes "- 文件的廖森，忽然停下 -";
@@ -5239,7 +5346,7 @@ OnTouch_:
 			mes "[廖森]";
 			mes "嗯哼！抱歉弄得这么乱。";
 			mes "我……出了点急事……";
-			mes "............Aaaaaaaaahhhhhhhhh!";
+			mes "…………啊啊啊啊啊啊！";
 			next;
 			mes "[联合研究官]";
 			mes "什什什什么！！！！怎么回事！！？";
@@ -5282,20 +5389,20 @@ OnTouch_:
 			mes "["+ strcharinfo(0) +"]";
 			mes "呃……你们几个，我觉得你们该冷静一下……这太荒唐了。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "呃啊啊啊！是我干的！！！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "对不起，我只是被那只盗虫吓坏了，不小心用手指碰到了你的蛋糕！";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "...Huh? No. Wait...";
+			mes "……啊？不。等等……";
 			next;
 			mes "[廖森]";
 			mes "又是你？！";
 			mes "我真不敢相信你总是这么粗心，就像那些要交的数据之类的事！！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "啊，我忘了说谢谢。";
 			mes "休，非常感谢你修复了我的文件！！！";
 			mes "谢谢！！！";
@@ -5333,16 +5440,16 @@ OnTouch_:
 			mes "你能想出什么办法让那些人和睦相处吗？？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "... Actually... Hansenne is not the one who ruined that cake.";
+			mes "……其实……弄坏那个蛋糕的不是汉森。";
 			next;
 			mes "[联合研究官]";
 			mes "咦？你说什么？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "可是……我不明白汉吉纳为什么要背这个黑锅……";
+			mes "可是……我不明白汉森为什么要背这个黑锅……";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "... Well, I should go now.";
+			mes "……嗯，我该走了。";
 			next;
 			mes "[联合研究官]";
 			mes "什么？啊，冒险者？！";
@@ -5352,16 +5459,16 @@ OnTouch_:
 		}
 		else if ((ep13_1_rhea > 21) && (ep13_1_rhea < 26)) {
 			mes "["+ strcharinfo(0) +"]";
-			mes "... Actually... Hansenne is not the one who ruined that cake.";
+			mes "……其实……弄坏那个蛋糕的不是汉森。";
 			next;
 			mes "[联合研究官]";
 			mes "咦？你说什么？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "可是……我不明白汉吉纳为什么要背这个黑锅……";
+			mes "可是……我不明白汉森为什么要背这个黑锅……";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "... Well, I should go now.";
+			mes "……嗯，我该走了。";
 			next;
 			mes "[联合研究官]";
 			mes "什么？啊，冒险者？！";
@@ -5420,7 +5527,7 @@ OnTouch_:
 	}
 	else {
 		mes "[联合研究官员]";
-		mes "...Mmmm? What brings you here?";
+		mes "……嗯？是什么风把你吹来了？";
 		next;
 		mes "[联合研究官员]";
 		mes "如果我是你，就不会这样在这地方到处乱晃。";
@@ -5437,6 +5544,8 @@ OnTouch_:
 	close;
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8198) == 1 || isbegin_quest(8205) == 1 || isbegin_quest(8206) == 1 || isbegin_quest(8210) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(8196) || !isbegin_quest(8199) || !isbegin_quest(8206) || !isbegin_quest(8207)");
 	enablenpc "研究官#ep131";
 	end;
 
@@ -5456,16 +5565,16 @@ OnMeet:
 
 OnCall:
 	initnpctimer;
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
-	monster "mid_campin",376,134,"Thief Bug",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
+	monster "mid_campin",376,134,"盗虫",1051,1,"研究官#ep131::OnMyMobDead";
 	donpcevent "研究官#ep131::OnDisable";
 	donpcevent "廖森#ep131_rhea05::OnDisable";
 	donpcevent "休#ep131_rhea06::OnDisable";
@@ -5589,7 +5698,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			next;
 			if(select("为什么是我？:好吧。") == 1) {
 				mes "[廖森]";
-				mes "... Eh? Didn't you come to help us?";
+				mes "……诶？你不是来帮我们的吗？";
 				close;
 			}
 			mes "[廖森]";
@@ -5597,7 +5706,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "我们研究组里没人愿意去别国的办公室！";
 			next;
 			mes "[廖森]";
-			mes "好，现在请把文件送去给休和汉吉纳。休负责黑森林的文件，汉吉纳负责阿鲁纳贝兹的。";
+			mes "好，现在请把文件送去给休和汉森。休负责黑森林的文件，汉森负责阿鲁纳贝兹的。";
 			next;
 			mes "[廖森]";
 			mes "文件里有简短的介绍和会议日程。";
@@ -5634,7 +5743,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "[廖森]";
 			mes "快点，你得抓紧，不然就尝不到这美味的蛋糕了！";
 			next;
-			mes "——你拿到了会议邀请函——";
+			mes "——你拿到了<ITEM>会议邀请函<INFO>6036</INFO></ITEM>——";
 			mes "——廖森的邀请函，——";
 			mes "——上面简要说明了——";
 			mes "——议程与日程——";
@@ -5646,7 +5755,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 		}
 		else if ((ep13_1_rhea > 3) && (ep13_1_rhea < 8)) {
 			mes "[廖森]";
-			mes "快把文件送去给休和汉吉纳！";
+			mes "快把文件送去给休和汉森！";
 			next;
 			mes "[廖森]";
 			mes "别忘了！必须先给黑森林的休，不然他会没完没了地念叨。";
@@ -5667,7 +5776,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 				mes "让他们全都签好名一定很不容易。干得好！";
 				next;
 				mes "[廖森]";
-				mes "休又自大又固执。他以为自己是什么王族……还有汉吉纳……呼~ 谁也听不懂他到底在说什么。";
+				mes "休又自大又固执。他以为自己是什么王族……还有汉森……呼~ 谁也听不懂他到底在说什么。";
 				mes "他真是可笑。";
 				next;
 				mes "[廖森]";
@@ -5678,7 +5787,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			}
 			else {
 				mes "[廖森]";
-				mes "请让休和汉吉纳在邀请函上签名，然后再回来。";
+				mes "请让休和汉森在邀请函上签名，然后再回来。";
 				next;
 				mes "[廖森]";
 				mes "快点，你得抓紧，不然就尝不到这美味的蛋糕了！";
@@ -5690,13 +5799,13 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "呵呵呵呵，真是难得一见……！";
 			next;
 			mes "[廖森]";
-			mes "这个签名看起来是休的。你看，笔画都因为他的怒气而压得那么重。这个应该是汉吉纳的，随手乱涂的。";
+			mes "这个签名看起来是休的。你看，笔画都因为他的怒气而压得那么重。这个应该是汉森的，随手乱涂的。";
 			next;
 			mes "[廖森]";
 			mes "怎么样？你有没有机会弄清楚我们这些研究员之间的问题出在哪？";
 			next;
 			mes "[廖森]";
-			mes "这并不全是因为性格不同。很多其他成员也有类似的问题。不过我们三个——休、汉吉纳和我——之间的问题……只是比别人更明显罢了。";
+			mes "这并不全是因为性格不同。很多其他成员也有类似的问题。不过我们三个——休、汉森和我——之间的问题……只是比别人更明显罢了。";
 			next;
 			mes "[廖森]";
 			mes "于是，就成了现在这样。我们终于被命令开会，还得找出解决问题的办法。";
@@ -5744,7 +5853,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			next;
 			mes "[廖森]";
 			mes "来得正是时候。";
-			mes "我向阿鲁纳贝兹办公室要了点东西，可到现在还没拿到。你能去汉吉纳那里取一下吗？";
+			mes "我向阿鲁纳贝兹办公室要了点东西，可到现在还没拿到。你能去汉森那里取一下吗？";
 			next;
 			mes "[廖森]";
 			mes "开会要用那个，可他从来不送来给我。他肯定又忘了！你会帮我这个忙吧！？";
@@ -5754,7 +5863,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 		}
 		else if (ep13_1_rhea == 12) {
 			mes "[廖森]";
-			mes "我向阿鲁纳贝兹办公室要了点东西，可到现在还没拿到。你能去汉吉纳那里取一下吗？";
+			mes "我向阿鲁纳贝兹办公室要了点东西，可到现在还没拿到。你能去汉森那里取一下吗？";
 			next;
 			mes "[廖森]";
 			mes "开会要用那个，可他从来不送来给我。他肯定又忘了！你会帮我这个忙吧！？";
@@ -5765,7 +5874,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "什么？你说真的？？？？玩寻宝游戏时把它掉在桥上了？？？";
 			next;
 			mes "[廖森]";
-			mes "汉吉纳！这个白痴！我就知道！他的脑子准是被热气融化了！";
+			mes "汉森！这个白痴！我就知道！他的脑子准是被热气融化了！";
 			mes "啊啊啊啊！！！！简直不敢相信！！";
 			next;
 			mes "[廖森]";
@@ -5777,7 +5886,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 		else if (ep13_1_rhea == 14) {
 			if (countitem(6037) > 0) {
 				mes "[廖森]";
-				mes ".....Whew... completely soaked, so loosely binded...torn here and there... I can't even read this thing!";
+				mes "……呼……全湿透了，装订也松了……这里那里都撕破了……我根本读不了这东西！";
 				next;
 				mes "[廖森]";
 				mes "他给我这个到底指望我做什么！！！！";
@@ -5791,7 +5900,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 				mes "什么？你说真的？？？？玩寻宝游戏时把它掉在桥上了？？？";
 				next;
 				mes "[廖森]";
-				mes "汉吉纳！这个白痴！我就知道！他的脑子准是被热气融化了！";
+				mes "汉森！这个白痴！我就知道！他的脑子准是被热气融化了！";
 				mes "啊啊啊啊！！！！简直不敢相信！！";
 				next;
 				mes "[廖森]";
@@ -5804,7 +5913,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 		else if (ep13_1_rhea == 18) {
 			if (countitem(6038) > 0) {
 				mes "[廖森]";
-				mes "...Oh, this is...";
+				mes "……哦，这是……";
 				next;
 				mes "[廖森]";
 				mes "这就是我要的文件。";
@@ -5860,7 +5969,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "唔呃呃呃呃！唉……！";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "Uhhhh...";
+			mes "呃……";
 			next;
 			mes "[廖森]";
 			mes "我知道，我知道！我做得太过分了！";
@@ -5980,7 +6089,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 			mes "我不需要！";
 			next;
 			mes "[廖森]";
-			mes "... Haha, I'm joking...";
+			mes "……哈哈，我开玩笑的……";
 			next;
 			if (countitem(6023) > 1) {
 				mes "[廖森]";
@@ -5988,7 +6097,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 				next;
 				if(select("才不。:嗯……我换。") == 1) {
 					mes "[廖森]";
-					mes "Ahhh...";
+					mes "啊……";
 					next;
 					mes "[廖森]";
 					mes "改变主意的话随时回来。";
@@ -5996,7 +6105,7 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 				}
 				mes "[廖森]";
 				mes "我不需要！";
-				mes "... Haha, I'm joking...";
+				mes "……哈哈，我开玩笑的……";
 				next;
 				mes "[廖森]";
 				mes "我听说可以从魔力之角里提取魔力来使用。总之，谢谢你！";
@@ -6030,6 +6139,10 @@ mid_camp,165,245,0	script	廖森#ep131_rhea01	748,{
 		mes "还有，别盯着次元裂缝看……否则你会被拖到某个神秘的地方，再也回不来……呵呵呵呵……";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8196) == 1 || isbegin_quest(8197) == 1 || isbegin_quest(8199) == 1 || isbegin_quest(8204) == 1 || isbegin_quest(8209) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(8197) || !isbegin_quest(8198) || !isbegin_quest(8200) || !isbegin_quest(8205) || !isbegin_quest(8210)");
+	end;
 }
 
 mid_camp,247,255,1	script	休#ep131_rhea02	868,{
@@ -6066,7 +6179,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "那是什么？";
 				next;
 				mes "[休]";
-				mes "...An invitation to the meeting... ?";
+				mes "……会议的邀请函……？";
 				next;
 				mes "[休]";
 				mes "哈哈。你以为我会接受这个？";
@@ -6104,7 +6217,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 			set .@shu_agree00,rand(1,4);
 			if (.@shu_agree00 == 2) {
 				mes "[休]";
-				mes "...Meeting Schedule, on the Xth day, from hh:mm to hh:mm...";
+				mes "……会议日程，X日，hh:mm至hh:mm……";
 				mes "地点……卢恩-米德加尔特的营地……";
 				mes "哈！我就知道。又是卢恩-米德加尔特的营地！";
 				next;
@@ -6123,7 +6236,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 					close;
 				}
 				mes "[休]";
-				mes "... Sign this thing???";
+				mes "……签这个？？？";
 				next;
 				mes "[休]";
 				mes "你是说这个会议是真的？？？";
@@ -6138,7 +6251,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "嗯，至少我佩服廖森还没忘记通报顺序。那么，你现在要去阿鲁纳贝兹了？";
 				next;
 				mes "[休]";
-				mes "你跟汉吉纳说话会很费劲……那就像在考验你的耐心。";
+				mes "你跟汉森说话会很费劲……那就像在考验你的耐心。";
 				mes "祝你好运！";
 				set ep13_1_rhea,6;
 				getitem 6036,1; //Invite_To_Meeting
@@ -6158,7 +6271,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 		}
 		else if (ep13_1_rhea == 6) {
 			mes "[休]";
-			mes "我不确定阿鲁纳贝兹教国的人是不是都像他这样，不过要等汉吉纳读完这东西，简直就是在考验你的耐心。";
+			mes "我不确定阿鲁纳贝兹教国的人是不是都像他这样，不过要等汉森读完这东西，简直就是在考验你的耐心。";
 			mes "这点你尽管相信我。祝你好运。";
 			close;
 		}
@@ -6168,7 +6281,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "这堆难看的文件是什么？";
 				next;
 				mes "[休]";
-				mes "这就是廖森向汉吉纳要的文件？？？那堆全毁了的……？";
+				mes "这就是廖森向汉森要的文件？？？那堆全毁了的……？";
 				next;
 				mes "[休]";
 				mes "哈！啧啧！这是开玩笑吗？！谁会这样管理文件？我真是搞不懂！";
@@ -6183,7 +6296,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "嗯。全湿透了。得先把它弄干，再把皱褶熨平。然后才能修复文字。";
 				next;
 				mes "[休]";
-				mes "我需要一些材料。这事你得帮我。我需要^0000ff1把扇子、1个旧平底锅、1块火焰石、1瓶墨汁^000000。";
+				mes "我需要一些材料。这事你得帮我。我需要^0000ff1把<ITEM>折扇<INFO>7262</INFO></ITEM>、1个<ITEM>破旧平底锅<INFO>7031</INFO></ITEM>、1块<ITEM>热火石<INFO>7521</INFO></ITEM>、1瓶<ITEM>墨汁<INFO>1024</INFO></ITEM>^000000。";
 				next;
 				mes "[休]";
 				mes "喂，喂……别这样看着我。我知道你不乐意做这些事，可你想想，我呢？我为什么要修复这种垃圾？";
@@ -6202,7 +6315,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "不知道会议的准备工作顺不顺利。";
 				next;
 				mes "[休]";
-				mes "我听廖森说，他向汉吉纳要的文件全毁了。希望别把我卷进那麻烦里。";
+				mes "我听廖森说，他向汉森要的文件全毁了。希望别把我卷进那麻烦里。";
 				close;
 			}
 		}
@@ -6230,7 +6343,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				mes "嗯。全湿透了。得先把它弄干，再把皱褶熨平。然后才能修复文字。";
 				next;
 				mes "[休]";
-				mes "我需要一些材料。这事你得帮我。我需要^0000ff1把扇子、1个旧平底锅、1块火焰石、1瓶墨汁^000000。";
+				mes "我需要一些材料。这事你得帮我。我需要^0000ff1把<ITEM>折扇<INFO>7262</INFO></ITEM>、1个<ITEM>破旧平底锅<INFO>7031</INFO></ITEM>、1块<ITEM>热火石<INFO>7521</INFO></ITEM>、1瓶<ITEM>墨汁<INFO>1024</INFO></ITEM>^000000。";
 				next;
 				mes "[休]";
 				mes "只是别忘了，你把那些东西准备得越快，文件就修复得越快。";
@@ -6282,7 +6395,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 			mes "..................";
 			next;
 			mes "[休]";
-			mes ".....Ittt....Is... it still there... ?";
+			mes "……它……它……还在那里吗……？";
 			close;
 		}
 		else if ((ep13_1_rhea > 20) && (ep13_1_rhea < 24)) {
@@ -6294,7 +6407,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 			mes "我刚决定，不能再这样下去了。";
 			next;
 			mes "[休]";
-			mes "汉吉纳说蛋糕是他而不是我弄坏的时候，我没能说出真相。";
+			mes "汉森说蛋糕是他而不是我弄坏的时候，我没能说出真相。";
 			next;
 			mes "[休]";
 			mes "我当时慌得什么话都没能说出口……可是……我真是太懦弱了，不敢承认闯祸的人是我。";
@@ -6384,7 +6497,7 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 				next;
 				if(select("绝对不要。:当然。") == 1) {
 					mes "[休]";
-					mes "Ahhhhh...";
+					mes "啊啊啊……";
 					next;
 					mes "[休]";
 					mes "要是改变主意，随时回来。";
@@ -6423,150 +6536,155 @@ mid_camp,247,255,1	script	休#ep131_rhea02	868,{
 		mes "毕竟，最后有麻烦的会是你。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8202) == 1 || isbegin_quest(8203) == 1 || isbegin_quest(8208) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(8203) || !isbegin_quest(8204) || !isbegin_quest(8209)");
+	end;
 }
 
 mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 3500) {
-		mes "[汉吉纳]";
+		mes "[汉森]";
 		mes "你怎么带了这么多东西？";
 		mes "你该不会是在修行什么的吧？";
 		close;
 	}
 	if (ep13_ryu > 99 || ep13_start > 99) {
 		if (ep13_1_rhea < 6) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "谁在那里？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "谁在这儿？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			close;
 		}
 		else if (ep13_1_rhea == 6) {
 			if (countitem(6036) > 0) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯？你怎么来了？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "当然是你的脚把你带过来的！？！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				next;
-				switch(select("......:Come and look at this.")) {
+				switch(select("……:过来看看这个。")) {
 				case 1:
-					mes "[汉吉纳]";
+					mes "[汉森]";
 					mes "你在看什么？";
 					mes "我说了什么吗？";
 					close;
 				case 2:
 					break;
 				}
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "那是什么？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "会议的邀请函？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯，是卢恩-米德加尔特的廖森做的，而且……黑森林的休也同意签字了？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯，这一点也不好笑。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "他们太无聊了。总是先做好所有决定，再来向我报告。一点幽默感都没有……又固执又死板……完全不是我的风格。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "总之，给我吧。";
 				mes "至少我得看一眼。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "我看这个的时候，你休息一下吧。哦，尝尝卢恩-米德加尔特的波利糖果。非常酸，有时候还咸咸的。味道很怪吧？";
 				delitem 6036,1; //Invite_To_Meeting
 				set ep13_1_rhea,7;
 				close;
 			}
 			else {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯？你是卢恩-米德加尔特来的？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "那么无礼-米德加尔特的人在哪里？哈哈哈哈，听懂我的笑话了吗？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				close;
 			}
 		}
 		else if (ep13_1_rhea == 7) {
+			// 固定进入正式签字分支，避免随机的无关台词分支让玩家误以为卡住
 			set .@shu_agree00,rand(1,5);
 			if (.@shu_agree00 == 1) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯嗯嗯~";
 				next;
-				mes "- 汉吉纳拿起文件 -";
+				mes "- 汉森拿起文件 -";
 				mes "- 忽然变得严肃起来 -";
 				mes "- 一边翻着书页…… -";
 				close;
 			}
 			else if (.@shu_agree00 == 2) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯嗯嗯~";
 				next;
-				mes "- 汉吉纳往文件上滴了某种液体，仔细地端详着。 -";
+				mes "- 汉森往文件上滴了某种液体，仔细地端详着。 -";
 				close;
 			}
 			else if (.@shu_agree00 == 3) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "会议日程……于“某某”日，从“那时”点到“晚些时候”";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				mes "会议日程，什么鬼日程……挨揍日程！！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "地点……卢恩-米德加尔特的营地！";
 				mes "无礼-米德加尔特营地！？！？";
 				mes "他们要在那个地方扎营？？";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "目的……报告追踪魔王梦罗克以及灰暗的尘世的研究进展！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "灰暗的尘世！";
 				mes "灰暗的尘世……那是什么，主妇用的家电吗？？？";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				next;
-				mes "[汉吉纳]";
-				mes "...and a very useless one which vacuums only ash!";
+				mes "[汉森]";
+				mes "……还有一个非常没用的，只能吸灰烬！";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "诶诶诶？这是什么？还安排了互相了解的时间？？？……噗哈哈哈哈……";
-				mes "Aaahahahahaha.";
+				mes "啊哈哈哈哈哈哈。";
 				next;
 				switch(select("有什么好笑的？！:喂，快把这东西签了。")) {
 				case 1:
-					mes "[汉吉纳]";
+					mes "[汉森]";
 					mes "哈哈……互相了解……";
-					mes "Pffftahahaha.";
+					mes "噗哈哈哈哈。";
 					mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 					close;
 				case 2:
 					break;
 				}
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "呼！失陪一下！";
 				mes "我忍不住了！受不了了！搞什么啊！！！我们之间有什么好互相了解的？？？";
 				mes "哈哈哈！";
 				next;
-				mes "- 汉吉纳在纸上签了字 -";
+				mes "- 汉森在纸上签了字 -";
 				mes "- 手抖个不停 -";
 				mes "- 依然放声大笑。 -";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "噗哈哈，真是难以置信。";
 				mes "廖森真是个有趣的家伙。不过，他自己大概不知道他有多好笑……";
 				mes "哈哈，你该把这话告诉他。";
@@ -6576,18 +6694,18 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 				close;
 			}
 			else if (.@shu_agree00 == 4) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "啊，等等。我还没看完。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "我还没看完。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				close;
 			}
 			else {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嘘！请不要说话！我们现在必须祈祷！";
 				next;
 				mes "- 他默默地鞠了一躬， -";
@@ -6597,59 +6715,59 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 			}
 		}
 		else if (ep13_1_rhea == 8) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "知道了，知道了。我该去开会了。廖森真是个有趣的家伙，你懂我的意思吧。";
 			mes "请代我谢谢他逗我开心。哈哈，哈哈哈，";
-			mes "hahahahahahahahaha.";
+			mes "哈哈哈哈哈哈哈哈。";
 			close;
 		}
 		else if (ep13_1_rhea == 12) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯？又是你？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "你在这里做什么？";
 			next;
 			switch(select("我想你了。:我来取委托的文件。")) {
 			case 1:
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "你什么？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "你想我了？别指望我会亲你！";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				close;
 			case 2:
 				break;
 			}
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "委托的文件？是廖森叫你来的？";
 			next;
-			mes "[汉吉纳]";
-			mes "Hmmmmm.";
+			mes "[汉森]";
+			mes "嗯……";
 			mes "在这里等我。我把东西放哪儿了……？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯嗯嗯嗯~？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "啊啊啊！";
 			mes "嗯嗯嗯，对，对！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "不见了！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我弄丢了。我想可能是我在桥上玩寻宝游戏时，把它掉进河里什么的了！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "不过你知道吗，有趣的是……听说我小时候就是父母在桥上捡到的，而现在我又把文件丢在了桥上！真是巧啊！哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "要全部重做可得花不少时间。不过……嗯……我是不是该去钓鱼，把那东西钓上来呢~？";
 			mes "你知道的，西南边那些猫咪可以教我们钓鱼。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "运气好的话，也许我们能用钓竿把那份文件钓上来！";
 			mes "哇！";
 			set ep13_1_rhea,13;
@@ -6657,32 +6775,32 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 			close;
 		}
 		else if (ep13_1_rhea == 13) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我弄丢了。我想可能是我在桥上玩寻宝游戏时，把它掉进河里什么的了！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "不过你知道吗，有趣的是……听说我小时候就是父母在桥上捡到的，而现在我又把文件丢在了桥上！真是巧啊！哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "要全部重做可得花不少时间。不过……嗯……我是不是该去钓鱼，把那东西钓上来呢~？";
 			mes "你知道的，西南边那些猫咪可以教我们钓鱼。";
 			close;
 		}
 		else if (ep13_1_rhea == 14) {
 			if (countitem(6037) > 0) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "太棒了，你找到了！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯嗯，光看这整体的形状，我确定这就是我做的那份。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "嗯嗯嗯，可是这样的话……我怕廖森看到这个会气炸的！砰！！！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "黑森林的人多少有修复这种东西的本事……你何不去找休来修复这个呢？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "他会叫得很大声，说不定窗户都会震破。不过他会干的。";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				set ep13_1_rhea,15;
@@ -6690,102 +6808,102 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 				close;
 			}
 			else {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "我弄丢了。我想可能是我在桥上玩寻宝游戏时，把它掉进河里什么的了！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "不过你知道吗，有趣的是……听说我小时候就是父母在桥上捡到的，而现在我又把文件丢在了桥上！真是巧啊！哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "要全部重做可得花不少时间。不过……嗯……我是不是该去钓鱼，把那东西钓上来呢~？";
 				mes "你知道的，西南边那些猫咪可以教我们钓鱼。";
 				close;
 			}
 		}
 		else if (ep13_1_rhea == 15) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯嗯嗯，全搞砸了。我怕廖森看到这个会气炸的！砰！！！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "黑森林的人多少有修复这种东西的本事……你何不去找休来修复这个呢？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "他会叫得很大声，说不定窗户都会震破。不过他会干的。";
 			mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			close;
 		}
 		else if (ep13_1_rhea == 19) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯嗯嗯~ 差不多到时间了。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我可不想惹上麻烦。得快点。";
 			close;
 		}
 		else if (ep13_1_rhea == 20) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "哈哈，哈哈哈……";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "你那位朋友从来听不懂我的笑话……我的幽默感……对他来说……实在是太高深了！！哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			close;
 		}
 		else if ((ep13_1_rhea == 21) || (ep13_1_rhea == 22)) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯？又是你？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
 			mes "你为什么要那么做？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "诶诶诶？？？你在说什么？要是想怪罪我什么，先告诉我理由啊~";
 			mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			next;
 			mes "["+ strcharinfo(0) +"]";
 			mes "我知道弄坏蛋糕的人不是你。我看见了。是休！盗虫钻出来的时候，他用手按在蛋糕上，我看得清清楚楚。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯……谁干的又有什么关系？";
 			mes "那只是个失误。就算查出是谁干的，也改变不了什么。蛋糕还是毁了，不是吗？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯嗯嗯……或者……我不知道。也许我该感谢他修复了我那份像垃圾一样的文件……？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
 			mes "可是……你被怪罪了啊。";
 			mes "你不觉得难受吗？这不公平！";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯，倒也不会。";
 			mes "廖森一慌起来可能会很粗鲁，不过他很快就会把那些都忘掉的……";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我明白。他当时很心烦。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "你看，他把那个蛋糕带来分给我们所有人。他平时不会这样，我猜他是想表现一下好意。可是接着，噗~ 蛋糕就毁了。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "他一定是太难过了，因为我们都吃不到那个蛋糕。是不是有点可爱？";
 			mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			set ep13_1_rhea,23;
 			close;
 		}
 		else if (ep13_1_rhea == 23) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "嗯，这没什么大不了的。你不觉得吗？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "他很快就会没事的。他会慢慢觉得那其实没什么大不了的。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "但问题是……廖森和休的关系看起来一点都不好。";
 			mes "你何不帮他们好好相处呢？";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "抱歉要拜托你这些事。还有……这是阿鲁纳贝兹教国的沙漠三明治。没什么特别的，不过……味道还不错。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "谢谢你帮我这个忙。";
 			mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 			set ep13_1_rhea,24;
@@ -6794,69 +6912,69 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 			close;
 		}
 		else if ((ep13_1_rhea > 23) && (ep13_1_rhea < 100)) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "廖森和休的关系看起来一点都不好。";
 			mes "你何不帮他们好好相处呢？";
 			close;
 		}
 		else if (ep13_1_rhea > 99) {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "啊，是你啊，冒险者。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "我从官员那里听说了你的事。非常感谢你帮助我们。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "总之……不知你有没有见过^0000ff红色高帽^000000。听说‘幽灵塔塔丘’有那顶帽子。";
 			next;
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "如果你有^0000ff红色高帽^000000，能给我吗？我不会白要的。";
 			mes "用^0000ff2顶红色高帽^000000，我就把我的特制甜点给你！";
 			next;
 			switch(select("绝对不要。:当然。")) {
 			case 1:
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "绝对不要？";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "我倒想说，当然要？";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				close;
 			case 2:
 				if (countitem(12321) > 4) {
-					mes "[汉吉纳]";
-					mes "... Huh?";
+					mes "[汉森]";
+					mes "……啊？";
 					next;
-					mes "[汉吉纳]";
+					mes "[汉森]";
 					mes "哦，看来你已经有阿鲁纳贝兹教国的沙漠三明治了。";
 					next;
-					mes "[汉吉纳]";
+					mes "[汉森]";
 					mes "你该在它坏掉之前吃掉。说不定已经变质了。";
 					mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 					close;
 				}
 				break;
 			}
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "啊！！！你有？";
 			next;
 			if (countitem(6021) > 1) {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "哦，你真的有那些！";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "你确定要把这些给我吗？";
 				next;
 				switch(select("绝对不要。:当然。")) {
 				case 1:
-					mes "[汉吉纳]";
+					mes "[汉森]";
 					mes "绝对不要。当然要。这边走。那边走。";
 					mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 					close;
 				case 2:
 					break;
 				}
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "哦哦哦哦，谢谢你！";
 				mes "嗯嗯，谢谢你！";
 				mes "哇哇哇，谢谢你！";
@@ -6866,17 +6984,17 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 				close;
 			}
 			else {
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "你一个也没有。";
 				next;
-				mes "[汉吉纳]";
+				mes "[汉森]";
 				mes "去弄一些来怎么样？";
 				mes "哈哈，哈哈哈，哈哈哈哈哈哈哈哈哈哈。";
 				close;
 			}
 		}
 		else {
-			mes "[汉吉纳]";
+			mes "[汉森]";
 			mes "雪熊海德拉！！！";
 			next;
 			mes "[汉森]";
@@ -6892,6 +7010,10 @@ mid_camp,222,218,3	script	汉森#ep131_rhea03	931,{
 		mes "哈哈，哈哈哈，哈哈哈哈哈哈。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8200) == 1 || isbegin_quest(8201) == 1 || isbegin_quest(8207) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(8201) || !isbegin_quest(8202) || !isbegin_quest(8208)");
+	end;
 }
 
 mid_campin,379,123,5	script	廖森#ep131_rhea05	748,{
@@ -6960,7 +7082,7 @@ mid_camp,1,1,0	script	#timer_alba01	844,{
 	} else {
 		mes "当前状态：";
 		if ($@PartTimeOn == 1) {
-			mes "Recruiting.";
+			mes "招募中。";
 		}
 		else {
 			mes "未在招募。";
@@ -6983,7 +7105,7 @@ mid_camp,1,1,0	script	#timer_alba01	844,{
 			donpcevent "#timer_alba01::OnEnable";
 			close;
 		case 2:
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 	}
@@ -7043,7 +7165,7 @@ mid_camp,143,306,5	script	饲养员塔布#ep13_alba	946,{
 				mes "危险的魔物。";
 				next;
 				mes "[塔布]";
-				mes "...I hope I can carry them";
+				mes "……希望我拿得动它们";
 				mes "把它们当作宠物带在身边。";
 				mes "希斯利安真是太可爱了。";
 				mes "在大陆上可找不到";
@@ -7062,7 +7184,7 @@ mid_camp,143,306,5	script	饲养员塔布#ep13_alba	946,{
 					if ($@PartTimeSlots < 5) {
 						set $@PartTimeSlots,$@PartTimeSlots+1;
 						mes "[塔布]";
-						mes "Welcome.";
+						mes "欢迎。";
 						mes "你的工作很简单：";
 						mes "帮我收集";
 						mes "动物的饲料，或者";
@@ -7449,6 +7571,9 @@ mid_camp,143,306,5	script	饲养员塔布#ep13_alba	946,{
 		mes "待在这里。请离开。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7042) || !isbegin_quest(7043) || !isbegin_quest(7044) || !isbegin_quest(7045) || !isbegin_quest(7046) || !isbegin_quest(7047)");
+	end;
 }
 
 mid_camp,152,316,3	script	希尔斯里昂#alba01	1989,3,3,{
@@ -7518,17 +7643,17 @@ OnStop:
 OnTimer3600000:
 	set .@monster,rand(1,3);
 	if (.@monster == 1) {
-		monster "mid_camp",149,291,"Escaped Tatacho",1986,1,"#monster_master::OnMyMobDead";
+		monster "mid_camp",149,291,"逃跑的塔塔丘",1986,1,"#monster_master::OnMyMobDead";
 		mapannounce "mid_camp", "饲养员塔布：啊啊！我的塔塔丘跑了！",bc_map,"0x00ff00";
 		donpcevent "塔塔乔#alba02::OnDisable";
 	}
 	else if (.@monster == 2) {
-		monster "mid_camp",154,273,"Escaped Hillsrion",1989,1,"#monster_master::OnMyMobDead";
+		monster "mid_camp",154,273,"逃跑的三角幼狮兽",1989,1,"#monster_master::OnMyMobDead";
 		mapannounce "mid_camp", "饲养员塔布：啊啊！我的希斯利安跑了！",bc_map,"0x00ff00";
 		donpcevent "希尔斯里昂#alba01::OnDisable";
 	}
 	else {
-		monster "mid_camp",184,246,"Escaped Cornus",1992,1,"#monster_master::OnMyMobDead";
+		monster "mid_camp",184,246,"逃跑的独角飞马",1992,1,"#monster_master::OnMyMobDead";
 		mapannounce "mid_camp", "饲养员塔布：啊啊！我的科努斯跑了！",bc_map,"0x00ff00";
 		donpcevent "科努斯#alba03::OnDisable";
 	}
@@ -7975,7 +8100,7 @@ mid_camp,72,94,4	script	毛茸茸的加鲁克	421,{
 		mes "嗯？";
 		mes "哦，是猫爪业务员派你来的吗？";
 		next;
-		select("Yes.");
+		select("是的。");
 		mes "[毛茸茸的加鲁克]";
 		mes "哦，好吧……";
 		mes "那么，该从哪里说起呢。";
@@ -7987,7 +8112,7 @@ mid_camp,72,94,4	script	毛茸茸的加鲁克	421,{
 		mes "我可以从那里说起。";
 		mes "你在米德加尔特大陆用过卡普拉公司的服务，对吧？";
 		next;
-		select("Yes.");
+		select("是的。");
 		mes "[毛茸茸的加鲁克]";
 		mes "猫咪贸易是一家立足于这片未开发大陆的新贸易公司。";
 		next;
@@ -8054,7 +8179,7 @@ mid_camp,72,94,4	script	毛茸茸的加鲁克	421,{
 		switch(select("好的。:我得先去准备一下。")) {
 		case 1:
 			mes "[毛茸茸的加鲁克]";
-			mes "Excellent.";
+			mes "太好了。";
 			mes "想了解钓鱼和采矿的更多信息，请去问站在那边河边的两位猫爪业务员。";
 			set ep13_yong1,4;
 			close;
@@ -8089,7 +8214,7 @@ mid_camp,69,144,0	script	凶猛的戈鲁格	421,{
 	if (checkquest(12060,PLAYTIME) == -1) {
 		if (ep13_yong1 < 4) {
 			mes "[凶猛的戈鲁鲁格]";
-			mes "Grrr....";
+			mes "呃啊……";
 			next;
 			mes "一只像狮子般低吼的猫";
 			mes "正注视着水面。";
@@ -8251,9 +8376,12 @@ mid_camp,69,144,0	script	凶猛的戈鲁格	421,{
 		mes "现在你钓到鱼就可以拿来给我了。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(12060)");
+	end;
 }
 
-spl_fild02,314,165,0	script	鱼群#1::Fishinghole	844,{
+spl_fild02,314,165,0	script	鱼群#1::Fishinghole	844,3,3,{
 	if ((checkquest(12060,PLAYTIME) == -1) && (countitem(6039) < 20)) {
 		specialeffect2 EF_BUBBLE;
 		specialeffect2 EF_INVENOM;
@@ -8276,7 +8404,7 @@ spl_fild02,314,165,0	script	鱼群#1::Fishinghole	844,{
 				getitem 6037,1; //Rough_File
 				set ep13_1_rhea,14;
 				specialeffect EF_BUBBLE;
-				mapannounce strcharinfo(3),strcharinfo(0) + "钓到了破烂的文件册！！",bc_map,"0xff77ff";
+				mapannounce strcharinfo(3),strcharinfo(0) + "钓到了<ITEM>破烂的文件册<INFO>6037</INFO></ITEM>！！",bc_map,"0xff77ff";
 			}
 		}
 		set .@rhea_ran,rand(1,70);
@@ -8313,6 +8441,9 @@ spl_fild02,314,165,0	script	鱼群#1::Fishinghole	844,{
 		mes "鱼儿在水中游动。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "ep13_1_rhea == 13");
+	end;
 }
 
 spl_fild02,321,169,0	duplicate(Fishinghole)	鱼群#2	844
@@ -8418,9 +8549,12 @@ mid_camp,88,100,55	script	猫爪采矿代理人	876,{
 		mes "你愿意帮我去采集矿物吗？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(12062)");
+	end;
 }
 
--	script	Mysterious Rock#0::manukrock	-1,{
+-	script	神秘岩石#0::manukrock	-1,{
 	if ((countitem(6048) < 3) && (checkquest(12062,PLAYTIME) == -1)) {
 		specialeffect2 EF_REPAIRWEAPON;
 		progressbar "ffff00",10;
@@ -8446,25 +8580,27 @@ OnTimer120000:
 	enablenpc();
 	stopnpctimer;
 	end;
+OnInit:
+	end;
 }
-man_fild01,180,170,0	duplicate(manukrock)	Mysterious Rock#1	844
-man_fild01,147,157,0	duplicate(manukrock)	Mysterious Rock#2	844
-man_fild01,114,174,0	duplicate(manukrock)	Mysterious Rock#3	844
-man_fild01,92,155,0	duplicate(manukrock)	Mysterious Rock#4	844
-man_fild01,170,318,0	duplicate(manukrock)	Mysterious Rock#5	844
-man_fild01,146,269,0	duplicate(manukrock)	Mysterious Rock#6	844
-man_fild01,118,238,0	duplicate(manukrock)	Mysterious Rock#7	844
-man_fild01,70,246,0	duplicate(manukrock)	Mysterious Rock#8	844
-man_fild01,64,197,0	duplicate(manukrock)	Mysterious Rock#9	844
-man_fild03,82,134,0	duplicate(manukrock)	Mysterious Rock#10	844
-man_fild03,67,160,0	duplicate(manukrock)	Mysterious Rock#11	844
-man_fild03,66,171,0	duplicate(manukrock)	Mysterious Rock#12	844
-man_fild03,81,198,0	duplicate(manukrock)	Mysterious Rock#13	844
-man_fild03,82,216,0	duplicate(manukrock)	Mysterious Rock#14	844
-man_fild03,98,226,0	duplicate(manukrock)	Mysterious Rock#15	844
-man_fild03,104,248,0	duplicate(manukrock)	Mysterious Rock#16	844
-man_fild03,91,272,0	duplicate(manukrock)	Mysterious Rock#17	844
-man_fild03,95,301,0	duplicate(manukrock)	Mysterious Rock#18	844
+man_fild01,180,170,0	duplicate(manukrock)	神秘岩石#1	844
+man_fild01,147,157,0	duplicate(manukrock)	神秘岩石#2	844
+man_fild01,114,174,0	duplicate(manukrock)	神秘岩石#3	844
+man_fild01,92,155,0	duplicate(manukrock)	神秘岩石#4	844
+man_fild01,170,318,0	duplicate(manukrock)	神秘岩石#5	844
+man_fild01,146,269,0	duplicate(manukrock)	神秘岩石#6	844
+man_fild01,118,238,0	duplicate(manukrock)	神秘岩石#7	844
+man_fild01,70,246,0	duplicate(manukrock)	神秘岩石#8	844
+man_fild01,64,197,0	duplicate(manukrock)	神秘岩石#9	844
+man_fild03,82,134,0	duplicate(manukrock)	神秘岩石#10	844
+man_fild03,67,160,0	duplicate(manukrock)	神秘岩石#11	844
+man_fild03,66,171,0	duplicate(manukrock)	神秘岩石#12	844
+man_fild03,81,198,0	duplicate(manukrock)	神秘岩石#13	844
+man_fild03,82,216,0	duplicate(manukrock)	神秘岩石#14	844
+man_fild03,98,226,0	duplicate(manukrock)	神秘岩石#15	844
+man_fild03,104,248,0	duplicate(manukrock)	神秘岩石#16	844
+man_fild03,91,272,0	duplicate(manukrock)	神秘岩石#17	844
+man_fild03,95,301,0	duplicate(manukrock)	神秘岩石#18	844
 
 sec_in02,80,171,0	script	裂缝碎片#sec	406,{
 	callfunc "F_GM_NPC";
@@ -8503,7 +8639,7 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 		next;
 		mes "[参谋阿比达尔]";
 		mes "你们能不能别抱怨了？";
-		mes "God...";
+		mes "天啊……";
 		next;
 		mes "[教官伊格丽德]";
 		mes "你是谁？找阿吉普司令官有什么事？";
@@ -8611,7 +8747,7 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 	}
 	else if (ep13_1_edq == 4) {
 		mes "[希巴·阿吉普]";
-		mes "Hmm...";
+		mes "嗯……";
 		next;
 		mes "[参谋阿比达尔]";
 		mes "......";
@@ -8677,7 +8813,7 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 		mes "啊，还有……我收到报告说，事情发生时你曾试图把报告交给我们的敌人。";
 		next;
 		mes "[教官伊格丽德]";
-		mes "Argh...";
+		mes "呃啊……";
 		next;
 		mes "[希巴·阿吉普]";
 		mes "哈哈哈！你很聪明，朋友。当然，我不喜欢聪明的士兵。";
@@ -8694,7 +8830,7 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 	}
 	else if (ep13_1_edq == 5) {
 		mes "[希巴·阿吉普]";
-		mes "Hmm...";
+		mes "嗯……";
 		next;
 		mes "[参谋阿比达尔]";
 		mes "......";
@@ -8760,7 +8896,7 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 		mes "啊，还有……我收到报告说，你为了保护报告不被敌人夺走，与他们奋力战斗。";
 		next;
 		mes "[教官伊格里德]";
-		mes "Umm...";
+		mes "嗯……";
 		next;
 		mes "[希巴·阿吉普]";
 		mes "哈哈哈，你无所畏惧，像你这样的士兵，我随时都用得上。";
@@ -9227,6 +9363,10 @@ mid_campin,90,121,5	script	希巴·阿吉普	459,{
 		cutin "ep13_captin_edq",255;
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3086) == 1 || isbegin_quest(3088) == 1 || isbegin_quest(3092) == 1 || isbegin_quest(3094) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3085) || !isbegin_quest(3087) || !isbegin_quest(3089) || !isbegin_quest(3093)");
+	end;
 }
 
 mid_campin,94,118,3	script	参谋阿比达尔	755,{
@@ -9733,7 +9873,7 @@ mid_campin,94,118,3	script	参谋阿比达尔	755,{
 		mes "呼，真高兴我们能重新开始任务。";
 		next;
 		mes "[参谋官阿比达]";
-		mes "...Aren't you leaving? I think you should.";
+		mes "……你不走吗？我觉得你该走了。";
 		close;
 	}
 	else if (ins_nyd > 0) {
@@ -9742,7 +9882,7 @@ mid_campin,94,118,3	script	参谋阿比达尔	755,{
 		mes "听说你从阿吉普司令官那里接到了新任务。";
 		next;
 		mes "[参谋官阿比达]";
-		mes "...Aren't you leaving? I think you should.";
+		mes "……你不走吗？我觉得你该走了。";
 		close;
 	}
 	else {
@@ -9750,6 +9890,10 @@ mid_campin,94,118,3	script	参谋阿比达尔	755,{
 		mes "你好，我是参谋官阿比达。祝你旅途平安，冒险者。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3085) == 1 || isbegin_quest(3089) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3092) || !isbegin_quest(3086) || !isbegin_quest(3090)");
+	end;
 }
 
 mid_campin,85,118,7	script	教官伊格丽德	751,{
@@ -9808,7 +9952,7 @@ mid_camp,206,286,3	script	远征队信使	997,{
 	if ((ep13_1_edq == 3) && (countitem(11012) > 0)) {
 		mes "[远征队传令官]";
 		mes "欢迎，我一直在等你。";
-		mes "你一定是" + strcharinfo(0) + ". Nice to meet you.";
+		mes "你一定是" + strcharinfo(0) + "。很高兴见到你。";
 		next;
 		mes "[远征队传令官]";
 		mes "让我快速确认一下。你是直接从司令官那里收到报告书的，对吧？可以让我看看吗？";
@@ -9851,7 +9995,7 @@ mid_camp,206,286,3	script	远征队信使	997,{
 		case 1:
 			mes "[远征队传令官]";
 			mes "什……你在做什么？你不能放弃报告书……";
-			mes "Awww...";
+			mes "哎呀……";
 			next;
 			mes "[???]";
 			mes "现在，把它给我！";
@@ -9860,7 +10004,7 @@ mid_camp,206,286,3	script	远征队信使	997,{
 			emotion ET_SURPRISE, getnpcid(0, "远征队信使#3");
 			cutin "ep13_shadow_edq",2;
 			mes "[???]";
-			mes "Argh...";
+			mes "呃啊……";
 			next;
 			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
 			specialeffect EF_SOULBREAKER,AREA,"远征队信使#3";
@@ -9981,6 +10125,8 @@ mid_camp,206,286,3	script	远征队信使	997,{
 	}
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3087) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3088)");
 	donpcevent "远征队信使#2::OnDisable";
 	donpcevent "远征队信使#3::OnDisable";
 	donpcevent "指挥计时器#edq::OnEnable";
@@ -10069,7 +10215,7 @@ man_fild01,315,95,3	script	远征队侦察兵#1	707,{
 	case 1:
 		if (ep13_1_edq == 71 || ep13_1_edq == 72) {
 			mes "[远征队斥候]";
-			mes "哦，你一定是"+strcharinfo(0)+". I heard that you'll be delivering the report.";
+			mes "哦，你一定是"+strcharinfo(0)+"。我听说你要去送报告。";
 			next;
 			if (.@playtime == 0 || .@playtime == 1) {
 				mes "[远征队斥候]";
@@ -10128,6 +10274,10 @@ man_fild01,315,95,3	script	远征队侦察兵#1	707,{
 	case 3:
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3090) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3091)");
+	end;
 }
 man_fild03,202,251,3	duplicate(远征队侦察兵#1)	远征队侦察兵#2	707
 spl_fild02,295,368,3	duplicate(远征队侦察兵#1)	远征队侦察兵#3	707
@@ -10139,7 +10289,7 @@ spl_fild03,172,71,3	duplicate(远征队侦察兵#1)	远征队侦察兵#4	707
 		mes "我是劳尔，卢恩-米德加尔特王国内政大臣的辅佐官。你找我有事吗？";
 		next;
 		mes "[劳尔]";
-		mes "哦，你把米德加尔特远征队的报告书带来了。怎么去了这么久？我很久以前就收到你出发的消息了。";
+		mes "哦，你把<ITEM>米德加尔特远征队的报告书<INFO>11012</INFO></ITEM>带来了。怎么去了这么久？我很久以前就收到你出发的消息了。";
 		next;
 		mes "[劳尔]";
 		mes "嗯，告诉司令官，我对你的拖延很不满。现在，把报告书给我。";
@@ -10188,6 +10338,8 @@ spl_fild03,172,71,3	duplicate(远征队侦察兵#1)	远征队侦察兵#4	707
 		mes "混乱之外仍有希望与机遇，而我把时空裂缝彼端的世界视为新希望的来源。";
 		close;
 	}
+OnInit:
+	end;
 }
 
 ra_temple,122,174,3	script	努莉亚	918,{
@@ -10233,12 +10385,16 @@ ra_temple,122,174,3	script	努莉亚	918,{
 		mes "你好，异乡人。愿菲依雅保佑你。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3093) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3094)");
+	end;
 }
 
 lhz_in01,110,174,5	script	格哈特	903,{
 	mes "[格哈特]";
 	if (ep13_1_edq == 9 || ep13_1_edq == 101 || ep13_1_edq == 111 || ep13_1_edq == 102 || ep13_1_edq == 112) {
-		mes "欢迎，" + strcharinfo(0) + ". What took you so long?";
+		mes "欢迎，" + strcharinfo(0) + "。你怎么这么久？";
 		next;
 		mes "[格哈特]";
 		mes "哦，我是谁？这么说吧……你能糊口，全靠我。";
@@ -10287,6 +10443,10 @@ lhz_in01,110,174,5	script	格哈特	903,{
 		mes "如果你有事找我，请先和我的秘书预约。我的办公室在二楼。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(3093) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(3094)");
+	end;
 }
 
 spl_fild02,1,1,0	script	ep13_spl_fild02_mon_edq	-1,{
@@ -10296,8 +10456,8 @@ OnInit:
 	end;
 
 OnEnable:
-	monster "spl_fild02",0,0,"Luciola Vespa",1994,7,"ep13_spl_fild02_mon_edq::OnMyMobDead";
-	monster "spl_fild02",0,0,"Pinguicula",1995,7,"ep13_spl_fild02_mon_edq::OnMyMobDead";
+	monster "spl_fild02",0,0,"鲁修拉黄蜂",1994,7,"ep13_spl_fild02_mon_edq::OnMyMobDead";
+	monster "spl_fild02",0,0,"捕虫堇妖",1995,7,"ep13_spl_fild02_mon_edq::OnMyMobDead";
 	initnpctimer;
 	end;
 
@@ -10326,9 +10486,9 @@ OnInit:
 	end;
 
 OnEnable:
-	monster "spl_fild03",0,0,"Luciola Vespa",1994,4,"ep13_spl_fild03_mon_edq::OnMyMobDead";
-	monster "spl_fild03",0,0,"Cornus",1992,5,"ep13_spl_fild03_mon_edq::OnMyMobDead";
-	monster "spl_fild03",0,0,"Naga",1993,5,"ep13_spl_fild03_mon_edq::OnMyMobDead";
+	monster "spl_fild03",0,0,"鲁修拉黄蜂",1994,4,"ep13_spl_fild03_mon_edq::OnMyMobDead";
+	monster "spl_fild03",0,0,"独角飞马",1992,5,"ep13_spl_fild03_mon_edq::OnMyMobDead";
+	monster "spl_fild03",0,0,"那迦",1993,5,"ep13_spl_fild03_mon_edq::OnMyMobDead";
 	initnpctimer;
 	end;
 
@@ -10357,8 +10517,8 @@ OnInit:
 	end;
 
 OnEnable:
-	monster "man_fild01",0,0,"Nepenthes",1988,7,"ep13_man_fild01_mon_edq::OnMyMobDead";
-	monster "man_fild01",0,0,"Hillslion",1989,7,"ep13_man_fild01_mon_edq::OnMyMobDead";
+	monster "man_fild01",0,0,"猪笼草",1988,7,"ep13_man_fild01_mon_edq::OnMyMobDead";
+	monster "man_fild01",0,0,"三角幼狮兽",1989,7,"ep13_man_fild01_mon_edq::OnMyMobDead";
 	initnpctimer;
 	end;
 
@@ -10387,8 +10547,8 @@ OnInit:
 	end;
 
 OnEnable:
-	monster "man_fild03",0,0,"Centipede",1987,7,"ep13_man_fild03_mon_edq::OnMyMobDead";
-	monster "man_fild03",0,0,"Tatacho",1986,7,"ep13_man_fild03_mon_edq::OnMyMobDead";
+	monster "man_fild03",0,0,"变异蜈蚣",1987,7,"ep13_man_fild03_mon_edq::OnMyMobDead";
+	monster "man_fild03",0,0,"塔塔丘",1986,7,"ep13_man_fild03_mon_edq::OnMyMobDead";
 	initnpctimer;
 	end;
 
@@ -10436,7 +10596,7 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 				mes "你的任务是协助我们，并证明你能成为我们探险队中优秀的一员。";
 				next;
 				mes "[艾基娜西亚]";
-				mes "... Umm... So, you'll have to.. Let me think which job would be perfect for you.";
+				mes "……嗯……那么，你得……让我想想哪份工作最适合你。";
 				mes "嗯……我记得有人说过他需要帮手……";
 				next;
 				select("嘿，打扰一下。");
@@ -10562,7 +10722,7 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 			next;
 			mes "[艾基娜西亚]";
 			mes "原来如此……";
-			mes "...Basically it all comes down to Rayan.";
+			mes "……基本上这都归结到拉扬身上。";
 			mes "他被撒旦摩洛克掳走了。";
 			mes "如果我们用这个定位追踪魔法找到拉扬，";
 			next;
@@ -10582,7 +10742,7 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		mes "[艾基娜西亚]";
 		mes "[" + .@input$ + "]";
 		if (.@input$ == .@pattern$[.@quest-23]) {
-			mes "...Ah, there it is.";
+			mes "……啊，找到了。";
 			next;
 			mes "[艾基娜西亚]";
 			mes "这个定位追踪魔法会使用一对波长相同的魔法石……";
@@ -10639,7 +10799,7 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		next;
 		mes "[艾基娜西亚]";
 		mes "我已经让他们把这项任务列为最优先，运气好的话，他们现在应该已经完成了。";
-		mes "..What are you doing? I said, go ask the building manager about the trace results.";
+		mes "……你在干什么？我说了，去问大楼管理员关于追踪结果的事。";
 		close;
 	}
 	else if (mao_morocc2 == 31) {
@@ -10658,10 +10818,10 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		next;
 		mes "[艾基娜西亚]";
 		mes "追击撒旦摩洛克本该是我们的最后手段……";
-		mes "...I guess we have no choice now..";
+		mes "……看来我们现在别无选择了……";
 		next;
 		mes "[艾基娜西亚]";
-		mes "...I should log a report entry into this journal.";
+		mes "……我该在这本日志里记一条报告。";
 		mes "我们对撒旦摩洛克的追击暂时到此为止了。";
 		next;
 		mes "[艾基娜西亚]";
@@ -10685,11 +10845,11 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		next;
 		select(".....");
 		mes "[艾基娜西亚]";
-		mes "Hmm..";
+		mes "嗯……";
 		next;
 		select("... . ..");
 		mes "[艾基娜西亚]";
-		mes "...Grr...!";
+		mes "……呃啊……！";
 		mes "什么？！你想干什么？";
 		mes "你为什么一直用那种眼神看我？！";
 		next;
@@ -10715,8 +10875,8 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 			mes "哦，你一定对最后那件事有疑问，对吧？";
 			next;
 			mes "[艾基娜西亚]";
-			mes "...Wait, are you worried because of him?";
-			mes "...I see, you're worried about him being supported by the country.";
+			mes "……等等，你是因为他而担心吗？";
+			mes "……我明白了，你担心他得到国家的支持。";
 			next;
 			mes "[艾基娜西亚]";
 			mes "现在不是公开真相的好时机。那只会造成更多混乱。";
@@ -10747,7 +10907,7 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		if (countitem(549) > 1) {
 			mes "[艾基娜西亚]";
 			mes "什么事？我以为你已经被我解职了。";
-			mes "..What are these sweet potatoes?";
+			mes "……这些红薯是什么？";
 			mes "这些是那位老人送来的吗？";
 			mes "不会吧……！你是……？";
 			next;
@@ -10807,6 +10967,10 @@ mid_campin,68,185,3	script	追击队队长#1	803,{
 		mes "继续保持，好吗？";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7013) == 1 || isbegin_quest(7022) == 1 || isbegin_quest(7034) == 1 || isbegin_quest(7040) == 1 || isbegin_quest(7036) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7012) || !isbegin_quest(7037) || !isbegin_quest(7014) || !isbegin_quest(7023) || !isbegin_quest(7035) || !isbegin_quest(7041)");
+	end;
 }
 
 mid_camp,191,206,3	script	管理员#moc2_finder	852,{
@@ -10873,6 +11037,10 @@ mid_camp,191,206,3	script	管理员#moc2_finder	852,{
 		mes "并为任何可能的威胁做好准备。";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7035) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7036)");
+	end;
 }
 
 mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
@@ -10888,7 +11056,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		mes "太危险了。";
 		next;
 		mes "[基德先生]";
-		mes "......Do you have any business here?";
+		mes "……你在这里有事吗？";
 		next;
 		switch(select("艾基娜西亚……:不。")) {
 		case 1:
@@ -10988,7 +11156,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		cutin "moc2_kid03",2;
 		mes "[基德先生]";
 		mes "你在帮琳做事吗？";
-		mes "..I see.";
+		mes "……我明白了。";
 		close2;
 	}
 	else if (mao_morocc2 == 9) {
@@ -11001,8 +11169,8 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			mes "- 你没有回答，而是把琳的日志和那颗血水晶交给了他。-";
 			next;
 			mes "[基德先生]";
-			mes "...A journal? I see. Hopefully this'll help me understand the situation..";
-			mes "Hmm...";
+			mes "……日志？我明白了。希望这能帮我了解情况……";
+			mes "嗯……";
 			next;
 			mes "......";
 			next;
@@ -11014,7 +11182,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			mes "*叹气*……";
 			mes "所以拉扬终于有下落了，是吗？";
 			mes "山那边发生了一场小规模冲突，还有……一场突袭……";
-			mes "..So, how is she?";
+			mes "……那么，她怎么样了？";
 			next;
 			select("嗯？");
 			cutin "mocseal_kid01",2;
@@ -11035,7 +11203,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			next;
 			cutin "moc2_kid03",2;
 			mes "[基德先生]";
-			mes "..Wh.. Who said I'm worried?";
+			mes "……谁……谁说我在担心？";
 			mes "我打听她，是因为不想让她的伤势影响我们的计划。";
 			next;
 			mes "[基德先生]";
@@ -11092,13 +11260,13 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 	else if ((mao_morocc2 == 11) || (mao_morocc2 == 12)) {
 		cutin "moc2_kid02",2;
 		mes "[基德先生]";
-		mes "..Are.. Are you alright?";
+		mes "……你……你还好吗？";
 		mes "刚才发生了什么？";
 		next;
 		select("呃……咦？！");
 		mes "[" + strcharinfo(0) + "]";
-		mes "..Err?";
-		mes "..Kidd? Someone was calling my name...";
+		mes "……呃？";
+		mes "……基德？有人在叫我的名字……";
 		mes "琳！琳在哪里？拉扬呢？";
 		next;
 		mes "[基德先生]";
@@ -11109,7 +11277,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		mes "[" + strcharinfo(0) + "]";
 		mes "你什么意思……";
 		mes "我去哪儿了？";
-		mes "..Oh yeah, I saw Rin fighting Rayan.";
+		mes "……哦对，我看见凛在和拉扬战斗。";
 		mes "她被魔法击败，然后就消失了……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
@@ -11125,7 +11293,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		cutin "mocseal_kid01",2;
 		mes "[基德先生]";
 		mes "... ..";
-		mes ".. Basically,";
+		mes "……基本上，";
 		mes "这是你从拉扬一伙的成员那里找到的？";
 		next;
 		mes "[基德先生]";
@@ -11148,7 +11316,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		next;
 		mes "[基德先生]";
 		mes "恐怕这道空间缝隙隐藏的秘密比我们想象的更大。";
-		mes "..It not only warps space, but also time ...";
+		mes "……它不仅扭曲空间，也扭曲时间……";
 		next;
 		select("它能扭曲时空？");
 		cutin "moc2_kid03",2;
@@ -11206,7 +11374,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			mes "[基德先生]";
 			mes "你说你听到雷安命令其他人前往某个地方。";
 			mes "如果这张卷轴的魔法通向那个地方……";
-			mes ".... . No, it's too dangerous.";
+			mes "……不，太危险了。";
 			next;
 			cutin "mocseal_kid01",2;
 			mes "[基德先生]";
@@ -11224,7 +11392,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			next;
 			cutin "moc2_kid04",2;
 			mes "[基德先生]";
-			mes ".Alright, then. Would you rather capture reincarnations of Morocc and collect their remnants?";
+			mes "。那么好吧。你宁愿去捕获梦罗克的转世并收集它们的残骸吗？";
 			mes "学者们怀疑最近的时空现象是“血色黑暗结晶体”造成的，";
 			mes "所以他们想研究这些结晶，他们认为那是梦洛克转世留下的残骸。";
 			next;
@@ -11257,7 +11425,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 				mes "到了那里之后，你要收集一些线索。";
 				next;
 				mes "[基德先生]";
-				mes "..I guess you haven't found any clues.";
+				mes "……看来你还没找到任何线索。";
 				mes "你还记得那个地方的位置吗？";
 				mes "你为什么不再去调查一次？";
 				next;
@@ -11290,9 +11458,9 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		mes "——你打断了基德先生，把你在国境附近空屋地下室里听到的事告诉了他。——";
 		next;
 		mes "[基德先生]";
-		mes "..Are you sure?";
+		mes "……你确定吗？";
 		mes "地点是……好，我明白了。";
-		mes "Thanks.";
+		mes "谢谢。";
 		next;
 		cutin "moc2_kid03",2;
 		mes "[基德先生]";
@@ -11313,7 +11481,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 	else if (mao_morocc2 == 20) {
 		cutin "mocseal_kid01",2;
 		mes "[基德先生]";
-		mes "..Phew, now I've seen everything.";
+		mes "……呼，现在我算是长见识了。";
 		mes "哦，嘿！";
 		next;
 		select("雷安在哪里？");
@@ -11324,7 +11492,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		next;
 		cutin "moc2_kid05",2;
 		mes "[基德先生]";
-		mes "..Wait, what if the same thing happens..?";
+		mes "……等等，要是同样的事再发生怎么办……？";
 		mes "不可能，这不可能……";
 		next;
 		mes "[基德先生]";
@@ -11338,7 +11506,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		select("无法解释？");
 		cutin "mocseal_kid01",2;
 		mes "[基德先生]";
-		mes "..I guess not. It might have resonated to your mana or wavelength.";
+		mes "……我想没有。它可能对你的魔力或波长产生了共鸣。";
 		mes "你为什么不把它带在身上？如果再遇到奇怪的现象就告诉我。";
 		next;
 		mes "[基德先生]";
@@ -11350,13 +11518,13 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		changequest 7029,7030;
 		next;
 		mes "[基德先生]";
-		mes "..Do you have any questions?";
+		mes "……你有什么问题吗？";
 		next;
 		switch(select("这是交换日志吗？:我为什么要带着水晶？:最后一项任务是什么？")) {
 		case 1:
 			cutin "moc2_kid04",2;
 			mes "[基德先生]";
-			mes "..No, not at all.";
+			mes "……不，完全没有。";
 			mes "我们只是共用一本日志来记录彼此的工作。";
 			next;
 			mes "[" + strcharinfo(0) + "]";
@@ -11385,8 +11553,8 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		case 2:
 			cutin "moc2_kid04",2;
 			mes "[基德先生]";
-			mes "... Intuition... I guess?";
-			mes "... These kind of things.";
+			mes "……直觉……大概吧？";
+			mes "……这类事情。";
 			next;
 			break;
 		case 3:
@@ -11401,7 +11569,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 		mes "[基德先生]";
 		mes "总之，请把日志安全地送到她手上。";
 		mes "我还没忙完；艾奇娜西亚又给我安排了另一项任务……";
-		mes "..*Sigh*..";
+		mes "……*叹气*……";
 		close2;
 	}
 	else if (mao_morocc2 == 21) {
@@ -11430,7 +11598,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 	else if ((mao_morocc2 > 30) && (mao_morocc2 < 104)) {
 		cutin "moc2_kid05",2;
 		mes "[基德先生]";
-		mes "..Things didn't turn out exactly as we hoped, but there's nothing we can do for now.";
+		mes "……事情没有完全如我们所愿，但目前我们无能为力。";
 		mes "感谢你的付出；";
 		mes "你帮了我们大忙。";
 		close2;
@@ -11445,7 +11613,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			select("要来点零食吗？:德帕里亚先生让我来的。");
 			cutin "moc2_kid05",2;
 			mes "[基德先生]";
-			mes "..I guess he's finally made a fire, huh?";
+			mes "……看来他终于生了火，是吧？";
 			mes "替我谢谢他的这些红薯。";
 			delitem 549,2; //Nice_Sweet_Potato
 			set mao_morocc2,105;
@@ -11473,7 +11641,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 			case 2:
 				cutin "mocseal_kid01",2;
 				mes "[基德先生]";
-				mes "Nothing.";
+				mes "没什么。";
 				mes "我无可奉告。";
 				mes "最近也没有发生什么冲突。";
 				next;
@@ -11503,7 +11671,7 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 	else {
 		cutin "mocseal_kid01",2;
 		mes "[基德先生]";
-		mes "...You'd better not approach the space gap off the official route.";
+		mes "……你最好别靠近正式路线之外的空间裂隙。";
 		mes "如果没有获得许可，就请离开。这东西太危险，不能随意探索。";
 		close2;
 	}
@@ -11511,6 +11679,8 @@ mid_camp,199,311,7	script	基德先生#ep13_dan01	884,{
 	end;
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7012) == 1 || isbegin_quest(7014) == 1 || isbegin_quest(7018) == 1 || isbegin_quest(7021) == 1 || isbegin_quest(7027) == 1 || isbegin_quest(7029) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7013) || !isbegin_quest(7015) || !isbegin_quest(7019) || !isbegin_quest(7022) || !isbegin_quest(7028) || !isbegin_quest(7030)");
 	set $@moc_mao_gate1,0; //Global Variable
 	end;
 }
@@ -11547,7 +11717,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		next;
 		mes "[德帕里亚]";
 		mes "等等，那是第九十四次还是第九十五次？";
-		mes "..I've.. I've lost count.";
+		mes "……我……我数不清了。";
 		close;
 	}
 	else if (mao_morocc2 == 14) {
@@ -11567,30 +11737,30 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		next;
 		select("...No.");
 		mes "[德帕里亚]";
-		mes "...No? Then what brings you here?";
-		mes "...Huh?";
+		mes "……没有？那你来这里做什么？";
+		mes "……啊？";
 		mes "魔法卷轴？能让我看看吗？";
 		next;
 		mes "[德帕里亚]";
-		mes "...Isn't... Isn't this?!";
-		mes "...Hmm...";
+		mes "……这不……这不是吗？！";
+		mes "……嗯……";
 		mes "咦……原来是艾奇娜西亚让你来找我的？";
-		mes "...Does that means she knows everything...?";
+		mes "……那是不是意味着她什么都知道……？";
 		next;
 		mes "[德帕里亚]";
-		mes "...Alright then, I'll tell you.";
+		mes "……那好吧，我告诉你。";
 		mes "如你所见，这张卷轴被封印了。";
 		mes "只有用秘密的方法才能解开封印。";
-		mes "...And...";
+		mes "……还有……";
 		next;
 		mes "[德帕里亚]";
-		mes "...It is from....";
-		mes "...Arunafeltz?";
+		mes "……它来自……";
+		mes "……阿鲁纳佩尔兹？";
 		mes "它的封印方式和神殿所用的是同一种方法……";
 		next;
 		mes "[德帕里亚]";
 		mes "我不知道你是怎么得到这张卷轴的，";
-		mes "...but I'll try to help you on behalf of the respectable scholars of Arunafeltz.";
+		mes "……但我会代表阿鲁纳佩尔兹可敬的学者们尽力帮你。";
 		next;
 		mes "[德帕里亚]";
 		mes "但记住；我不是以官方身份做这件事。请不要因为帮了你而让我给国家丢脸。你明白我的意思吗？";
@@ -11664,7 +11834,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 			next;
 			mes "[" + strcharinfo(0) + "]";
 			mes "“为了召集成员……？”";
-			mes "...Right! I remember";
+			mes "……对！我记得";
 			mes "雷安提到过在某个地方集合！";
 			mes "所以这张卷轴会把我带到那个集会？";
 			next;
@@ -11695,12 +11865,12 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		mes "....";
 		next;
 		mes "[德帕里亚]";
-		mes "..Huh? What do you want?";
+		mes "……啊？你想要什么？";
 		next;
 		input .@input$;
 		if (.@input$ == "Dandelion") {
 			mes "[德帕里亚]";
-			mes "..I know they're involved in this case, but";
+			mes "……我知道他们卷入了这件事，但是";
 			mes "我们不该谈论他们。";
 			next;
 			switch(select("把你知道的告诉我。:好吧……:")) {
@@ -11732,19 +11902,19 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 					next;
 					mes "[德帕里亚]";
 					mes "你以为我用湿柴生火就是傻子吗？！";
-					mes "..*Pant Pant*.. Phew, even yelling tires me out..";
+					mes "……*喘气*……呼，光是喊叫就让我累坏了……";
 					close;
 				case 2:
 					mes "[德帕里亚]";
-					mes "Then...";
-					mes "...Umm... Can you bring me some Logs?";
-					mes "...And some sweet potatoes too, if you don't mind.";
+					mes "那么……";
+					mes "……嗯……你能给我带些原木来吗？";
+					mes "……如果不介意的话，再来点红薯。";
 					next;
 					select("没问题。要多少？");
 					mes "[德帕里亚]";
-					mes "...Let's see...";
+					mes "……让我看看……";
 					mes "我需要给我、基德先生和艾奇……嗯……准备红薯……";
-					mes "...And then I need... Yes!";
+					mes "……然后我需要……对！";
 					next;
 					mes "[德帕里亚]";
 					mes "请给我带来^4d4dff20个红薯和30根木头^000000。";
@@ -11761,13 +11931,13 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 				next;
 				mes "[德帕里亚]";
 				mes "比如，那些懂得在什么时候放弃奶酪——也就是陷阱里的诱饵——的白鼠，是最难抓的。你懂吧？";
-				mes "..Hahaha!";
+				mes "……哈哈哈！";
 				close;
 			}
 		}
 		else if (.@input$ == "Arunafeltz") {
 			mes "[德帕里亚]";
-			mes "...Arunafeltz...?";
+			mes "……阿鲁纳佩尔兹……？";
 			mes "是的，我来自阿鲁纳贝兹……";
 			mes "那又怎样？";
 			close;
@@ -11821,7 +11991,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "你是不是忘了什么？";
-		mes "... Dandelion? I wanted you to tell me what you knew.";
+		mes "……蒲公英？我本想让你告诉我你知道的事。";
 		mes "我本来希望你能想起一些关于蒲公英团的事。";
 		next;
 		mes "[德帕里亚]";
@@ -11833,7 +12003,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		mes "嗯……我不知道该说什么……我不太想谈政治。";
 		next;
 		mes "[德帕里亚]";
-		mes "...Do you mind delivering these to Mr. Kidd?";
+		mes "……你介意把这些送给基德先生吗？";
 		next;
 		mes "——德帕里亚给了你2个上等红薯。——";
 		set mao_morocc2,104;
@@ -11849,7 +12019,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 	else if (mao_morocc2 == 105) {
 		mes "[德帕里亚]";
 		mes "对了，他还喜欢吗？";
-		mes "Hahaha...";
+		mes "哈哈哈……";
 		mes "... ... ";
 		next;
 		mes "[德帕里亚]";
@@ -11912,7 +12082,7 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		next;
 		mes "[德帕里亚]";
 		mes "我不过是个无法预知未来的普通人，你知道吗？";
-		mes "..Hahaha..";
+		mes "……哈哈哈……";
 		next;
 		mes "[德帕里亚]";
 		mes "啊，你的红薯已经烤得很好了。";
@@ -11939,6 +12109,10 @@ mid_camp,256,272,3	script	德法利亚#moc2	897,{
 		mes "我还有很多想做的事……";
 		close;
 	}
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7023) == 1 || isbegin_quest(7024) == 1 || isbegin_quest(7025) == 1 || isbegin_quest(7037) == 1 || isbegin_quest(7038) == 1 || isbegin_quest(7039) == 1 || isbegin_quest(7041) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7024) || !isbegin_quest(7025) || !isbegin_quest(7026) || !isbegin_quest(7038) || !isbegin_quest(7039) || !isbegin_quest(7040)");
+	end;
 }
 
 mid_camp,255,269,0	script	潮湿的柴火#moc2	844,{
@@ -11982,7 +12156,7 @@ OnTouch_:
 		mes "[杰克]";
 		mes "哦，那地方可不是谁都能进去的……！";
 		mes "...";
-		mes "Nevermind.";
+		mes "算了。";
 		next;
 		mes "[杰克]";
 		mes "既然一切都变了，";
@@ -12009,7 +12183,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 	}
 	if (BaseClass == Job_Assassin) {
 		mes "[卡雷德]";
-		mes "Welcome.";
+		mes "欢迎。";
 		mes "想喝一杯吗？";
 	}
 	else {
@@ -12127,7 +12301,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 			next;
 			if (mao_morocc2 == 4) {
 				mes "[卡雷德]";
-				mes "...Rin? I see. So you're assisting Mr. Kidd.";
+				mes "……凛？我明白了。所以你在协助基德先生。";
 				mes "琳……她在里面的房间。";
 				mes "她不久前受了重伤……";
 				next;
@@ -12159,7 +12333,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 			if (mao_morocc2 > 4) {
 				mes "[卡雷德]";
 				mes "琳需要在床上休养一阵子。希望你能帮她完成职责。";
-				mes "...This is quite embarrassing to admit, but I see her like my own daughter.";
+				mes "……承认这点挺不好意思的，但我把她当成自己的女儿。";
 				next;
 				mes "[利瑟隆]";
 				mes "啊，忘了我说的吧。那话太失礼了。";
@@ -12174,7 +12348,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 					next;
 					select("我是来找琳的！");
 					mes "[卡雷德]";
-					mes "...? Why are you looking for Rin?";
+					mes "……？你为什么找凛？";
 					next;
 					mes "......";
 					mes ".........";
@@ -12182,7 +12356,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 					mes "[卡雷德]";
 					mes "原来如此。你是灰暗的尘世远征队的成员。";
 					mes "琳在里面那个房间。";
-					mes "...She's been badly injured and is resting in bed. Don't do anything to shock her, alright?";
+					mes "……她受了重伤，正在床上休息。别做任何让她受惊的事，好吗？";
 					set mao_morocc2,5;
 					close;
 				}
@@ -12194,7 +12368,7 @@ que_job01,82,95,3	script	酒吧老板#moc2_01	46,{
 		break;
 	case 3:
 		mes "[卡雷德]";
-		mes "Hmmm.";
+		mes "嗯。";
 		close;
 	}
 }
@@ -12268,7 +12442,7 @@ OnTouch_:
 					end;
 				}
 				else {
-					mes "Huh...";
+					mes "啊……";
 					mes "哦，你连";
 					mes "在这里买水喝的";
 					mes "Zeny都不够。天哪……";
@@ -12336,7 +12510,7 @@ que_job01,49,49,5	script	陶#dan_09	877,{
 			case 2:
 				mes "[陶]";
 				mes "这里可不是玩的地方喵……";
-				mes "... Hey, it's awkward you looking at me like that, meow..";
+				mes "……喂，你这样看着我怪尴尬的，喵……";
 				close;
 			}
 		}
@@ -12376,7 +12550,7 @@ que_job01,49,49,5	script	陶#dan_09	877,{
 		case 2:
 			mes "[陶]";
 			mes "你是在取笑陶当看门的吗喵？！";
-			mes "Grrr...";
+			mes "呃啊……";
 			next;
 			mes "[陶]";
 			mes "你气死陶了喵。滚开！！";
@@ -12538,7 +12712,7 @@ que_job01,16,21,5	script	瓦尔德斯#moc_master_1	55,{
 		close;
 	}
 	else {
-		mes "...Sorry, but could you please leave?";
+		mes "……抱歉，能请你离开吗？";
 		mes "我现在压力很大。";
 		mes "如果你是为我们之前的委托而来，那就忘了吧。";
 		if (countitem(6029) > 0)
@@ -12748,14 +12922,14 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 			cutin "moc2_rin02",2;
 			mes "[琳]";
 			mes "...?";
-			mes "...Ah.. Ahh, I see.";
+			mes "……啊……啊，我明白了。";
 			mes "我有一阵子没跟他联络了，所以他就派你来了……";
 			mes "*叹气*……*咳嗽*。";
 			next;
 			cutin "moc2_rin01",2;
 			mes "[琳]";
 			mes "如你所见，我身体不太舒服。实在没力气联络他。";
-			mes "...Let me think. Where I should start..?";
+			mes "……让我想想。该从哪里说起呢……？";
 			next;
 			if (((mao_request > 25) && (mao_request < 31)) || ((mao_request > 125) && (mao_request < 129))) {
 				mes "不知你是否知道，在魔王梦罗克复活之前，这座城镇曾发生过一场灾难。";
@@ -12826,7 +13000,7 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 				cutin "moc2_rin01",2;
 				mes "[琳]";
 				mes "谢谢你的好意。";
-				mes "...*Pant Pant*...";
+				mes "……*喘气*……";
 				next;
 				break;
 			}
@@ -12860,7 +13034,7 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 			cutin "moc2_rin03",2;
 			mes "[琳]";
 			mes "你只是无缘无故过来的吗？";
-			mes "...God, I can't believe just let you come here!";
+			mes "……天啊，我简直不敢相信竟然让你来了这里！";
 			mes "唔……我得教训教训他们。就不能让我好好休息吗！";
 			next;
 			mes "[琳]";
@@ -12920,14 +13094,14 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 		if (countitem(6027) > 0) {
 			cutin "moc2_rin01",2;
 			mes "[琳]";
-			mes "..This is...it.";
+			mes "……就是……这个。";
 			mes "光是看着它就能感受到邪气。";
 			mes "这……毫无疑问。这和魔王梦罗克及其手下身上发现的晶体是同一种。";
 			next;
 			cutin "moc2_rin04",2;
 			mes "[琳]";
 			mes "可是……这晶体……被留在那里……";
-			mes "..Was it them who dropped it?";
+			mes "……是他们掉的吗？";
 			mes "看来雷安和魔王梦罗克之间……确实有些瓜葛。";
 			next;
 			cutin "moc2_rin01",2;
@@ -12965,7 +13139,7 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 		else {
 			cutin "moc2_rin01",2;
 			mes "[林]";
-			mes "..A bloody Crystal of the Darkness?";
+			mes "……一块血淋淋的黑暗结晶？";
 			mes "能让我看看吗？";
 			next;
 			mes "[" + strcharinfo(0) + "]";
@@ -12989,10 +13163,14 @@ que_job01,84,17,3	script	凛#moc_room2_1	885,{
 	else {
 		cutin "moc2_rin03",2;
 		mes "[林]";
-		mes "..Argh.. I'm still recovering .. I'm not supposed to move~";
+		mes "……呃啊……我还在恢复……我不该乱动的~";
 		close2;
 	}
 	cutin "moc2_rin03",255;
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7015) == 1 || isbegin_quest(7017) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7016) || !isbegin_quest(7018)");
 	end;
 }
 
@@ -13011,7 +13189,7 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			cutin "moc2_dan02",0;
 			mes "[雷安]";
 			mes "我知道自己所做的事不可饶恕，无论我的理由有多么正当。";
-			mes "..But... *Sigh*... It's too late to regret it now, isn't it?";
+			mes "……但是……*叹气*……现在后悔已经太晚了，不是吗？";
 			next;
 			select("这是谁？");
 			cutin "moc2_rin01",2;
@@ -13024,8 +13202,8 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			next;
 			cutin "moc2_dan02",0;
 			mes "[雷安]";
-			mes "...Waaah!";
-			mes "..I.. I.. I killed them with my own hands!";
+			mes "……哇啊！";
+			mes "……我……我……我亲手杀了他们！";
 			mes "*抽泣*……";
 			mes "我……我很抱歉……";
 			next;
@@ -13051,11 +13229,11 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			next;
 			cutin "moc2_dan02",0;
 			mes "[雷安]";
-			mes "..It was me.. I was only going to pretend to break the seal of Satan Morocc...";
+			mes "……是我……我本来只是打算假装打破魔王梦罗克的封印……";
 			mes "你还不明白吗？我本来只想演一场戏！我原本打算让镇上陷入恐慌……";
 			next;
 			mes "[雷安]";
-			mes "..That would be my chance to spread the teachings of Freya, our messiah.";
+			mes "……那将是我传播我们救世主芙蕾雅教义的机会。";
 			mes "然后事情就失控了……";
 			next;
 			cutin "moc2_rin04",2;
@@ -13070,16 +13248,16 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			mes "就在那时，我变成了一个完全不同的人……*抽泣*";
 			next;
 			mes "[雷安]";
-			mes "..My plan.. It was like I wasn't myself anymore. I wanted to release Satan Morocc for real.";
+			mes "……我的计划……那就像我已经不再是我自己了。我想真正释放魔王梦罗克。";
 			mes "我绑架了孩子……还威胁了我的同伴。";
 			next;
 			mes "[雷安]";
-			mes "..I held the true ritual to break the seal and release Satan Morocc...";
+			mes "……我举行了真正的仪式来打破封印、释放魔王梦罗克……";
 			mes "哇……我……我的头好痛……这个……不，你不能……哇啊！";
 			next;
 			mes "[雷安]";
-			mes "..Grr.. You.. You foolish weaklings..";
-			mes "..I shall kill you.. No... Nooo!";
+			mes "……呃……你们……你们这些愚蠢的弱者……";
+			mes "……我要杀了你们……不……不——！";
 			next;
 			mes "- 雷安突然开始胡言乱语，然后痛苦地揪着自己的头发。";
 			mes "他似乎正在试图抵抗体内的邪恶人格。-";
@@ -13106,8 +13284,8 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			next;
 			cutin "moc2_dan02",0;
 			mes "[雷安]";
-			mes "Ahh....";
-			mes "....? Isn't.. Isn't this?!....";
+			mes "啊……";
+			mes "……？这不……这不是吗？！……";
 			specialeffect EF_POISON,AREA,"拉扬#moc_room2_2";
 			next;
 			mes "[林]";
@@ -13156,12 +13334,12 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			cutin "moc2_rin03",2;
 			mes "[林]";
 			mes "............";
-			mes "....Huh...?";
+			mes "……啊……？";
 			mes "刚才发生了什么？";
 			next;
 			mes "[" + strcharinfo(0) + "]";
-			mes "...I don't know...";
-			mes "...I think he's gone...?";
+			mes "……我不知道……";
+			mes "……我想他走了……？";
 			delitem 6029,1; //Morocc_Tracing_Log
 			delitem 6027,1; //Crystal_Of_Feardoom
 			set mao_morocc2,22;
@@ -13174,8 +13352,8 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 			mes "我现在有点忙。";
 			next;
 			mes "[" + strcharinfo(0) + "]";
-			mes "..I've brought back the journal and something else..";
-			mes "..Er, sorry. I forgot to bring the journal! I'll be right back.";
+			mes "……我把日志还有别的东西带回来了……";
+			mes "……呃，抱歉。我忘了带日志！我马上回来。";
 			close2;
 		}
 	}
@@ -13186,7 +13364,7 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 		next;
 		cutin "moc2_rin01",2;
 		mes "[林]";
-		mes "..Maybe.";
+		mes "……也许吧。";
 		mes "根据那个比较正常的雷安告诉我们的，";
 		mes "他体内的另一个人格似乎是被魔王梦罗克强行创造出来的。";
 		next;
@@ -13214,7 +13392,7 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 		next;
 		cutin "moc2_rin03",2;
 		mes "[林]";
-		mes "..Damn it.";
+		mes "……该死。";
 		next;
 		select("我们现在该怎么办？");
 		cutin "moc2_rin02",2;
@@ -13299,6 +13477,8 @@ que_job01,144,54,3	script	凛#moc_room2_2	885,{
 	end;
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7030) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7030)");
 OnDisable:
 	disablenpc "凛#moc_room2_2";
 	end;
@@ -13347,7 +13527,7 @@ hu_fild04,235,103,0	script	土堆#mao2_01	844,4,4,{
 		mes "[" + strcharinfo(0) + "]";
 		mes "我一直在这一带感觉到某种异样……";
 		mes "感觉像是微弱的魔力……？！……没错，我勉强能看到一点灵气。";
-		mes "...What is this?";
+		mes "……这是什么？";
 		next;
 		switch(select("无视它。:仔细查看。")) {
 		case 1:
@@ -13385,6 +13565,10 @@ OnTouch:
 	if (mao_morocc2 == 7) {
 		specialeffect EF_LEVEL99_4;
 	}
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7016) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7017)");
 	end;
 }
 
@@ -13444,11 +13628,11 @@ OnTouch_:
 	end;
 
 OnTimer300000:
-	mapannounce "que_dan01", "...Hey-!!... Where are you?!!.... Hey-!",bc_map,"0xdda0dd";
+	mapannounce "que_dan01", "……喂——！！……你在哪？！！……喂——！",bc_map,"0xdda0dd";
 	end;
 
 OnTimer303000:
-	mapannounce "que_dan01", "...Isn't this voice...? ...Kidd?",bc_map,"0xdda0dd";
+	mapannounce "que_dan01", "……这声音不是……？……基德？",bc_map,"0xdda0dd";
 	end;
 
 OnTimer306000:
@@ -13498,7 +13682,7 @@ OnTouch_:
 	mapannounce "que_dan01", "女声：将军！你再也逃不掉了！",bc_map,"0x7b68ee";
 	next;
 	mes "[" + strcharinfo(0) + "]";
-	mes ".. ? Wh... What's going on?";
+	mes "……？怎……怎么了？";
 	mes "我看不清了……头好晕……";
 	mes "刚才发生了什么？";
 	mapannounce "que_dan01", "男声：*嘿嘿* 你以为只有我一个人吗？你错了！啊！",bc_map,"0xA8A8A8";
@@ -13605,7 +13789,7 @@ que_dan01,49,36,5	script	尸体#moc2_dead01	457,{
 			case 2:
 				mes "触碰尸体让人发毛，但你还是决定摇晃并翻动尸体，";
 				mes "寻找任何可能的线索。";
-				mes "And...";
+				mes "然后……";
 				next;
 				break;
 			}
@@ -13641,6 +13825,8 @@ que_dan01,49,36,5	script	尸体#moc2_dead01	457,{
 	end;
 
 OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7020) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7021)");
 OnDisable:
 	disablenpc "尸体#moc2_dead01";
 	end;
@@ -13650,11 +13836,11 @@ OnEnable:
 	end;
 
 OnCall:
-	monster "que_dan01",26,40,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",21,35,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",25,32,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",34,34,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
-	monster "que_dan01",36,34,"Dandelion Member",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",26,40,"蒲公英成员",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",21,35,"蒲公英成员",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",25,32,"蒲公英成员",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",34,34,"蒲公英成员",1985,1,"尸体#moc2_dead01::OnMyMobDead";
+	monster "que_dan01",36,34,"蒲公英成员",1985,1,"尸体#moc2_dead01::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -13665,7 +13851,7 @@ OnReset:
 	end;
 
 OnTimer4000:
-	mapannounce "que_dan01", "...Hey!... Where are you?!... Where did you go?!!!",bc_map,"0xdda0dd";
+	mapannounce "que_dan01", "……喂！……你在哪？！……你去哪了？！！！",bc_map,"0xdda0dd";
 	end;
 
 OnTimer7000:
@@ -13726,10 +13912,10 @@ OnTouch:
 		mes "[男声]";
 		mes "嘿，雷安，说句话啊。";
 		mes "你要求的事我们都做了，";
-		mes "but...";
+		mes "但是……";
 		next;
 		mes "[男声]";
-		mes "...This is totally wrong.";
+		mes "……这完全不对。";
 		mes "我们做了一件不该做的事。";
 		mes "拜托，再考虑一下吧。";
 		next;
@@ -13745,19 +13931,19 @@ OnTouch:
 		mes "我们现在连国都回不去了！";
 		next;
 		mes "[焦急的声音]";
-		mes "...We all knew that we would be disposed after we stopped being useful.. Just like pawns in a chess match.";
+		mes "……我们都知道，一旦不再有用，我们就会被处理掉……就像棋盘上的棋子。";
 		mes "但我很好奇。";
-		mes "Rayan...";
+		mes "拉扬……";
 		next;
 		mes "[焦急的声音]";
 		mes "雷安，说句话啊！";
 		mes "你到底怎么了？";
 		mes "怎么，你还忘不了那个刺客吗？";
-		mes "...Hey, tell us. What should we do now?";
+		mes "……喂，告诉我们。我们现在该怎么办？";
 		next;
 		mes "[焦急的声音]";
 		mes "让我问你一个问题。";
-		mes "...Did you... Did you really summon Satan Morocc?";
+		mes "……你……你真的召唤了魔王梦罗克吗？";
 		mes "是你吗？";
 		mes "你真的要我们帮你复活魔王梦罗克吗？！";
 		next;
@@ -13779,13 +13965,13 @@ OnTouch:
 		mes "听起来他们之间发生了激烈的争执。-";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "...Rayan? ...Morocc? ...Resurrect...?";
+		mes "……拉扬？……梦罗克？……复活……？";
 		mes "我完全不知道他们在说什么。他们为什么打起来？";
 		next;
 		mes "[雷安]";
 		mes "你们这些无知的傀儡……";
 		mes "你们太愚蠢了，根本无法理解我主人伟大的意志……";
-		mes "...Oh, right. I completely forgot about 'it.' It's time to take it back.";
+		mes "……哦，对。我完全忘了‘它’。是时候拿回来了。";
 		mes "你们意下如何？*嘿嘿*";
 		next;
 		mes "[" + strcharinfo(0) + "]";
@@ -13837,15 +14023,15 @@ que_dan02,115,53,3	script	男子#moc2_crazyR01	456,{
 		mes "哇！你从哪儿冒出来的？";
 		next;
 		mes "[基德先生]";
-		mes "...From somewhere.";
-		mes "Anyways...";
+		mes "……从某个地方。";
+		mes "总之……";
 		mes "发生了什么？";
 		mes "你是谁？";
 		next;
 		cutin "moc2_dan01",2;
 		mes "[男人]";
-		mes "...Who am I...?";
-		mes "...I think I forgot...";
+		mes "……我是谁……？";
+		mes "……我想我忘了……";
 		mes "他们都死了……是我杀了他们。";
 		mes "嘿嘿嘿，我只是遵从主人的意志罢了。";
 		mes "哇哈哈哈哈！！";
@@ -13862,17 +14048,17 @@ que_dan02,115,53,3	script	男子#moc2_crazyR01	456,{
 		next;
 		cutin "moc2_dan02",2;
 		mes "[雷安]";
-		mes "...Ray... Rayan? That's my name? That's right...";
+		mes "……雷……拉扬？那是我的名字？没错……";
 		mes "我是雷安。雷安·摩尔。";
 		mes "你是谁……？";
 		next;
 		mes "[雷安]";
 		mes "我在哪里？这些血是怎么回事？！";
-		mes "...Huh? Where am I? What happened to my friends?";
+		mes "……啊？我在哪？我的朋友们怎么了？";
 		next;
 		cutin "mocseal_kid01",0;
 		mes "[基德先生]";
-		mes "...I guess I was right. He really is Rayan Moore.";
+		mes "……看来我是对的。他真的是拉扬·摩尔。";
 		mes "他怎么了？";
 		mes "他看起来……他看起来非常混乱。甚至可能精神不太稳定。";
 		next;
@@ -13903,6 +14089,10 @@ que_dan02,115,53,3	script	男子#moc2_crazyR01	456,{
 		end;
 	}
 	cutin "mocseal_kid01",255;
+	end;
+OnInit:
+	questinfo(QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(7028) == 1");
+	questinfo(QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7029)");
 	end;
 }
 
@@ -13954,27 +14144,27 @@ que_dan02,102,42,3	script	面目全非的尸体#moc2	457,{
 /*
 // Event NPC, now disabled on official servers.
 prontera,161,192,5	script	灰烬真空传送员	707,{
-	mes "[Warp Soldier]";
-	mes "For a limited period.";
-	mes "I can send you to Ash-Vacuum without any fee.";
+	mes "[传送士兵]";
+	mes "限时期间。";
+	mes "我可以免费送你去灰烬真空。";
 	next;
-	mes "[Warp Soldier]";
-	mes "Do you want to go to Ash-Vacuum right now?";
+	mes "[传送士兵]";
+	mes "你想现在去灰烬真空吗？";
 	next;
-	switch(select("Yes, please:Not yet")) {
+	switch(select("是的，拜托:还没有")) {
 	case 1:
-		mes "[Warp Soldier]";
-		mes "Ok. I hope you";
-		mes "enjoy your trip.";
+		mes "[传送士兵]";
+		mes "好的。希望你";
+		mes "旅途愉快。";
 		close2;
 		set ep13_ryu,100;
 		warp "mid_camp",210,291;
 		end;
 	case 2:
-		mes "[Warp Soldier]";
-		mes "No problem. I understand.";
-		mes "Tell me when you change your mind.";
-		mes "See you.";
+		mes "[传送士兵]";
+		mes "没问题。我明白。";
+		mes "改变主意了就告诉我。";
+		mes "再见。";
 		close;
 	}
 }
