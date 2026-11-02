@@ -30,7 +30,7 @@ dali02,97,142,3	script	邦海德博士#a1	4_LGTSCIENCE,{
 			mes "[伯恩哈德教授]";
 			if (is_party_leader() == false) {
 				mes "这是我作为真正的教授，渴望完成一件强大武器的执念！";
-				mes "为了达成此事，我们需要基勘特斯的碎片，它曾出现在过去芬里尔与莎拉的那场战斗中。";
+				mes "为了达成此事，我们需要基勘特斯的碎片，它曾出现在过去潘利尔与莎拉的那场战斗中。";
 				next;
 				mes "[伯恩哈德教授]";
 				mes "我不能离开我的岗位。";
@@ -55,7 +55,7 @@ dali02,97,142,3	script	邦海德博士#a1	4_LGTSCIENCE,{
 				close;
 			}
 			mes "[伯恩哈德教授]";
-			mes "我已将次元装置设定在过去芬里尔与莎拉交战的克雷斯特汉姆古城。";
+			mes "我已将次元装置设定在过去潘利尔与莎拉交战的克雷斯特汉姆古城。";
 			mes "装置运行时间不长，快去快回。";
 			instance_create("Fenrir and Sarah");
 			close;
@@ -113,7 +113,7 @@ dali02,97,142,3	script	邦海德博士#a1	4_LGTSCIENCE,{
 		next;
 		mes "[伯恩哈德教授]";
 		mes "这是我作为真正的教授，渴望完成一件强大武器的执念！";
-		mes "为了达成此事，我们需要基勘特斯的碎片，它曾出现在过去芬里尔与莎拉的那场战斗中。";
+		mes "为了达成此事，我们需要基勘特斯的碎片，它曾出现在过去潘利尔与莎拉的那场战斗中。";
 		next;
 		mes "[伯恩哈德教授]";
 		mes "因为我不能离开岗位，";
@@ -128,7 +128,7 @@ dali02,97,142,3	script	邦海德博士#a1	4_LGTSCIENCE,{
 			next;
 			if (select( "否", "是" ) == 1) {
 				mes "[伯恩哈德教授]";
-				mes "我已将次元装置设定在过去芬里尔与莎拉所在的克雷斯特汉姆古城。";
+				mes "我已将次元装置设定在过去潘利尔与莎拉所在的克雷斯特汉姆古城。";
 				mes "维持不了多久，快去快回。";
 				close;
 			}
@@ -505,9 +505,9 @@ OnTouch:
 	unittalk getcharid(3), "" + strcharinfo(0) + "：嗯？那边有人吗？你好～你一定是位旅行者。";
 	sleep2 3000;
 	cutin "fenrir_a.bmp",2;
-	npctalk "芬里兹·芬里尔：真奇怪……我不记得克雷斯特汉姆古城城堡里会弥漫着如此浓重的黑暗气息……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：真奇怪……我不记得克雷斯特汉姆古城城堡里会弥漫着如此浓重的黑暗气息……", 'fenrir_1$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：寒暄稍后再说！小心！似乎有人召唤了怪物！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：寒暄稍后再说！小心！似乎有人召唤了怪物！", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
@@ -522,7 +522,7 @@ OnTouch:
 	monster 'map_glast$,364,291, "Mutant Galion",3198,1, .@label$;
 	monster 'map_glast$,353,290, "Mutant Galion",3198,1, .@label$;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：这些东西是什么？";
-	npctalk "芬里兹·芬里尔：在我施法时帮我争取点时间！这里交给我！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：在我施法时帮我争取点时间！这里交给我！", 'fenrir_1$;
 	donpcevent instance_npcname("#glast_event_1") + "::OnBar";
 	donpcevent instance_npcname("#glast_event_1") + "::OnEvent";
 	setpcblock PCBLOCK_NPC, false;
@@ -534,24 +534,24 @@ OnBar:
 OnEvent:
 	// npctalk "Fenrith Fenrir: Buy me some time while I cast magic! I will handle this!", 'fenrir_1$;// double on official
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：真实天空的愤怒。", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：真实天空的愤怒。", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：足以劈开大地的雷霆！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：足以劈开大地的雷霆！", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：现在就在我面前倒下吧！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：现在就在我面前倒下吧！", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：啊啊！！雷鸣术！！！！！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：啊啊！！雷鸣术！！！！！", 'fenrir_1$;
 	for ( .@i = 1; .@i < 8; .@i++ )
 		specialeffect EF_THUNDERSTORM, AREA, instance_npcname( "#effect_glast_event01_" + .@i );
 	killmonster 'map_glast$, instance_npcname("#glast_event_1") + "::OnMobDead";
 	sleep 4000;
-	npctalk "芬里兹·芬里尔：克雷斯特汉姆古城，曾是阿斯加德众神的圣堂……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：克雷斯特汉姆古城，曾是阿斯加德众神的圣堂……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：如今它已彻底沦为怪物的巢穴……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：如今它已彻底沦为怪物的巢穴……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：等等……这么说来，确实有些古怪……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：等等……这么说来，确实有些古怪……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "芬里兹·芬里尔：加里安是栖息在这一带的怪物……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：加里安是栖息在这一带的怪物……", 'fenrir_1$;
 	sleep 3000;
 	enablenpc instance_npcname("#glast_event_3");
 	end;
@@ -566,27 +566,27 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_3");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "芬里兹·芬里尔：对了，虽然很突然，但谢谢你出手相助。", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：对了，虽然很突然，但谢谢你出手相助。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：话说回来，你是谁？", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：话说回来，你是谁？", 'fenrir_1$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：啊……那个……";
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：……我是个在世界各地游历的旅行者！";
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：是这样吗……？原来如此……我想那也不重要。", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：是这样吗……？原来如此……我想那也不重要。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：这里现在相当危险。现在回头还不算晚。", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：这里现在相当危险。现在回头还不算晚。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：有件东西我必须找到。我得赶在来不及之前行动。", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：有件东西我必须找到。我得赶在来不及之前行动。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：或许你能帮我……", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：或许你能帮我……", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：不……那就谢谢你了！希望我们日后还能再见！", 'fenrir_1$;
+	npctalk "芬里兹·潘利尔：不……那就谢谢你了！希望我们日后还能再见！", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
-	unittalk getcharid(3), "" + strcharinfo(0) + "：那个……人……真的是……那位……芬里尔……？不会吧……大概不是……";
+	unittalk getcharid(3), "" + strcharinfo(0) + "：那个……人……真的是……那位……潘利尔……？不会吧……大概不是……";
 
 	disablenpc 'fenrir_1$;
 	for ( .@i = 1; .@i < 8; .@i++ )
@@ -606,7 +606,7 @@ OnTouch:
 1@glast,356,284,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_6	CLEAR_NPC
 1@glast,345,283,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_7	CLEAR_NPC
 
-1@glast,359,294,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_01	4_F_FENRIR
+1@glast,359,294,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_01	4_F_FENRIR
 
 // Warps
 // From entrance
@@ -629,13 +629,13 @@ OnTimer2000:
 	specialeffect EF_WHITEBODY, AREA, 'sarah_ego$;
 	end;
 OnTimer3000:
-	npctalk "莎拉艾琳：真了不起，芬里兹·芬里尔，你巧妙地逃掉了", 'sarah_ego$;
+	npctalk "莎拉艾琳：真了不起，芬里兹·潘利尔，你巧妙地逃掉了", 'sarah_ego$;
 	end;
 OnTimer7500:
 	npctalk "莎拉艾琳：嗯……今天就让你退场", 'sarah_ego$;
 	end;
 OnTimer8000:
-	npctalk "芬里兹·芬里尔：希望今天能了结我们这段孽缘。", 'fenrir_11$;
+	npctalk "芬里兹·潘利尔：希望今天能了结我们这段孽缘。", 'fenrir_11$;
 	end;
 OnTimer11000:
 	npctalk "莎拉艾琳：不过，别以为这就是结束", 'sarah_ego$;
@@ -644,7 +644,7 @@ OnTimer14000:
 	npctalk "莎拉艾琳：你一定会再次见到我！！！", 'sarah_ego$;
 	end;
 OnTimer14500:
-	npctalk "芬里兹·芬里尔：嗯……我期待着，莎拉艾琳……", 'fenrir_11$;
+	npctalk "芬里兹·潘利尔：嗯……我期待着，莎拉艾琳……", 'fenrir_11$;
 	specialeffect EF_FIREPILLARON2, AREA, 'sarah_ego$;
 	end;
 OnTimer15500:
@@ -714,26 +714,26 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_5");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "芬里兹·芬里尔：你还在克雷斯特汉姆古城？为什么还不离开这个危险的地方？", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：你还在克雷斯特汉姆古城？为什么还不离开这个危险的地方？", 'fenrir_2$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：我知道很危险，但觉得好像很有趣，就忍不住来了……";
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：嗯……冒险者啊……", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：嗯……冒险者啊……", 'fenrir_2$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：你不用操心～！我自己还挺强的！";
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：哦……真的吗？那你愿意帮我吗？", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：哦……真的吗？那你愿意帮我吗？", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：我在找的东西就在克雷斯特汉姆古城的某处！", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：我在找的东西就在克雷斯特汉姆古城的某处！", 'fenrir_2$;
 	viewpoint 1,47,270,1,0xFF0000;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：但其他寻找那件东西的人很快也会赶到！", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：但其他寻找那件东西的人很快也会赶到！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：时间紧迫，来不及了。我们必须尽快赶到那里。最迟5分钟！", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：时间紧迫，来不及了。我们必须尽快赶到那里。最迟5分钟！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：我会等你！要是你来晚了，我就只好自己去了！", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：我会等你！要是你来晚了，我就只好自己去了！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "芬里兹·芬里尔：好，我先走一步，你自己决定要不要帮我！", 'fenrir_2$;
+	npctalk "芬里兹·潘利尔：好，我先走一步，你自己决定要不要帮我！", 'fenrir_2$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_2$;
@@ -752,20 +752,20 @@ OnTouch:
 	end;
 }
 
-1@glast,216,52,6	script	芬里尔#glast_02	4_F_FENRIR,{ end; }
+1@glast,216,52,6	script	潘利尔#glast_02	4_F_FENRIR,{ end; }
 
 // Fenrir left side, entrance
 1@glast,47,270,0	script	#glast_event_7	HIDDEN_WARP_NPC,5,5,{
 	end;
 OnTouch:
 	if (is_party_leader() == false)
-		npctalk "芬里兹·芬里尔：我希望你的队长来帮我！", 'fenrir_3$;
+		npctalk "芬里兹·潘利尔：我希望你的队长来帮我！", 'fenrir_3$;
 	else {
 		setpcblock PCBLOCK_NPC, true;
 		disablenpc instance_npcname("#glast_event_7");
-		npctalk "芬里兹·芬里尔：你来了！我一直在等！", 'fenrir_3$;
+		npctalk "芬里兹·潘利尔：你来了！我一直在等！", 'fenrir_3$;
 		sleep2 2000;
-		npctalk "芬里兹·芬里尔：我们时间不多了！现在就得去找！进去吧！", 'fenrir_3$;
+		npctalk "芬里兹·潘利尔：我们时间不多了！现在就得去找！进去吧！", 'fenrir_3$;
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		if ('skip_left_part == 0 && is_party_leader() == true) {// 5 mins have passed?
@@ -780,7 +780,7 @@ OnTouch:
 	end;
 }
 
-1@glast,47,270,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_03	4_F_FENRIR
+1@glast,47,270,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_03	4_F_FENRIR
 
 // Fenrir left side, inside
 1@glast,44,357,0	script	#glast_event_9	HIDDEN_WARP_NPC,3,3,{
@@ -789,13 +789,13 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_9");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "芬里兹·芬里尔：巴德尔的剑，哨兵之风……即使过了1000年……", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：巴德尔的剑，哨兵之风……即使过了1000年……", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：我能感觉到此地怪物的邪恶气息……仿佛被什么人操控着……", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：我能感觉到此地怪物的邪恶气息……仿佛被什么人操控着……", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：那么这里除了我，还有别人？", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：那么这里除了我，还有别人？", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：这样就行了……接下来只要用哨兵之风找出巴德尔的下落……", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：这样就行了……接下来只要用哨兵之风找出巴德尔的下落……", 'fenrir_4$;
 	sleep2 3000;
 	enablenpc 'sarah_10$;
 	enablenpc instance_npcname("Gigantes#semi1");
@@ -806,21 +806,21 @@ OnTouch:
 	sleep2 3000;
 	npctalk "莎拉艾琳：那把剑就是线索吗？", 'sarah_10$;
 	sleep2 3000;
-	npctalk "莎拉艾琳：那么，芬里兹·芬里尔，也就是说能用它解开千年的封印？", 'sarah_10$;
+	npctalk "莎拉艾琳：那么，芬里兹·潘利尔，也就是说能用它解开千年的封印？", 'sarah_10$;
 	sleep2 3500;
-	unittalk getcharid(3), "" + strcharinfo(0) + "：难道他真的是芬里尔？";
-	npctalk "芬里兹·芬里尔：难道你是……瓦尔基里！这下可不好玩了", 'fenrir_4$;
+	unittalk getcharid(3), "" + strcharinfo(0) + "：难道他真的是潘利尔？";
+	npctalk "芬里兹·潘利尔：难道你是……瓦尔基里！这下可不好玩了", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 5000;
 	npctalk "莎拉艾琳：失礼了，我叫莎拉艾琳，是巴哈拉宫12位瓦尔基里之一。", 'sarah_10$;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 3000;
 	npctalk "莎拉艾琳：总之，这也是为了实现芙蕾雅的意志……呵呵……", 'sarah_10$;
-	npctalk "芬里兹·芬里尔：两只基勘特斯！这一战不会轻松。来帮我打倒基勘特斯！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：两只基勘特斯！这一战不会轻松。来帮我打倒基勘特斯！", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 3000;
 	npctalk "莎拉艾琳：上吧！基勘特斯！还有我忠实的怪物们！", 'sarah_10$;
-	npctalk "芬里兹·芬里尔：莎拉会躲起来不断召唤怪物！那只怪物交给我，你去对付基勘特斯！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：莎拉会躲起来不断召唤怪物！那只怪物交给我，你去对付基勘特斯！", 'fenrir_4$;
 	cutin "fenrir_b.bmp",255;
 	sleep2 2000;
 	disablenpc 'sarah_10$;
@@ -840,11 +840,11 @@ OnEvent:
 
 OnStart:
 	initnpctimer;
-	npctalk "芬里兹·芬里尔：在大气中震动的电流啊！展现你的力量吧！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：在大气中震动的电流啊！展现你的力量吧！", 'fenrir_4$;
 	callsub S_Spawn,1,3198;// MM_M_GALION
 
 	progressbar_npc "000000",5, 'fenrir_4$;	// note: display effect after dead of Gigantes
-	npctalk "芬里兹·芬里尔：雷光箭！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：雷光箭！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -852,10 +852,10 @@ OnTimer6000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer15000:
-	npctalk "芬里兹·芬里尔：用宇宙的熔炉吞噬这邪恶的存在！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：用宇宙的熔炉吞噬这邪恶的存在！", 'fenrir_4$;
 	callsub S_Spawn,2,3198;// MM_M_GALION
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "芬里兹·芬里尔：连空间都能吞噬的地狱之火！陨石术～！！！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：连空间都能吞噬的地狱之火！陨石术～！！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_METEORSTORM, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -863,10 +863,10 @@ OnTimer21000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer30000:
-	npctalk "芬里兹·芬里尔：在大气中震动的电流啊！展现你的力量吧！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：在大气中震动的电流啊！展现你的力量吧！", 'fenrir_4$;
 	callsub S_Spawn,1,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "芬里兹·芬里尔：雷光箭！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：雷光箭！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -874,10 +874,10 @@ OnTimer36000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer45000:
-	npctalk "芬里兹·芬里尔：用霜风冻结这邪恶的存在！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：用霜风冻结这邪恶的存在！！！", 'fenrir_4$;
 	callsub S_Spawn,2,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "芬里兹·芬里尔：连灵魂都能冻结的风暴！！暴风雪～！！！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：连灵魂都能冻结的风暴！！暴风雪～！！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_STORMGUST, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -933,21 +933,21 @@ S_Spawn:
 OnEvent:
 	enablenpc instance_npcname("#fenrir_left_vermilion");
 	initnpctimer;
-	npctalk "芬里兹·芬里尔：它们无穷无尽。我必须彻底了结这一切。", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：它们无穷无尽。我必须彻底了结这一切。", 'fenrir_4$;
 	progressbar_npc "000000",10, 'fenrir_4$;
 	end;
 OnTimer2000:
-	npctalk "芬里兹·芬里尔：拥有美丽绯红吐息的无限遥远之君王！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：拥有美丽绯红吐息的无限遥远之君王！！", 'fenrir_4$;
 	end;
 OnTimer4000:
-	npctalk "芬里兹·芬里尔：你所经过之处，将只余虚无。", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：你所经过之处，将只余虚无。", 'fenrir_4$;
 	end;
 OnTimer7000:
-	npctalk "芬里兹·芬里尔：撼动地轴之力！就在此处展现你的威仪！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：撼动地轴之力！就在此处展现你的威仪！！！", 'fenrir_4$;
 	end;
 OnTimer10000:
 	stopnpctimer;
-	npctalk "芬里兹·芬里尔：朱红之路！！！！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：朱红之路！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LORD, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	killmonster 'map_glast$, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";
@@ -966,14 +966,14 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "芬里兹·芬里尔：好！我们打倒了一只基勘特斯！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：好！我们打倒了一只基勘特斯！", 'fenrir_4$;
 	enablenpc 'sarah_10$;
 	end;
 OnTimer4000:
-	npctalk "莎拉艾琳：果然，芬里兹·芬里尔，你不会轻易屈服！", 'sarah_10$;
+	npctalk "莎拉艾琳：果然，芬里兹·潘利尔，你不会轻易屈服！", 'sarah_10$;
 	end;
 OnTimer7000:
-	npctalk "芬里兹·芬里尔：立刻离开哨兵之风！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：立刻离开哨兵之风！", 'fenrir_4$;
 	end;
 OnTimer9000:
 	npctalk "莎拉艾琳：呵呵……那可不行！", 'sarah_10$;
@@ -989,10 +989,10 @@ OnTimer14000:
 	disablenpc 'sarah_10$;
 	end;
 OnTimer16000:
-	npctalk "芬里兹·芬里尔：我们必须赶快追上去夺回剑！我要使用群体空间移动魔法！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：我们必须赶快追上去夺回剑！我要使用群体空间移动魔法！", 'fenrir_4$;
 	end;
 OnTimer19000:
-	npctalk "芬里兹·芬里尔：同时大规模传送！", 'fenrir_4$;
+	npctalk "芬里兹·潘利尔：同时大规模传送！", 'fenrir_4$;
 	end;
 OnTimer20000:
 	stopnpctimer;
@@ -1017,7 +1017,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,44,357,8	duplicate(#effect_glast_event01_1)	芬里尔#glast_04	4_F_FENRIR
+1@glast,44,357,8	duplicate(#effect_glast_event01_1)	潘利尔#glast_04	4_F_FENRIR
 1@glast,49,363,4	duplicate(#effect_glast_event01_1)	Gigantes#semi1	4_GIGANTES_SMALL
 1@glast,41,363,4	duplicate(#effect_glast_event01_1)	Gigantes#semi2	4_GIGANTES_SMALL
 1@glast,46,364,4	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_10	4_F_SARAH
@@ -1042,18 +1042,18 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
 	sleep2 1000;
-	npctalk "芬里兹·芬里尔：我得去克雷斯特汉姆古城城堡夺回巴德尔的剑。", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：我得去克雷斯特汉姆古城城堡夺回巴德尔的剑。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：独自前往恐怕很难，我会很感激你的帮助。", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：独自前往恐怕很难，我会很感激你的帮助。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：时间不够，我们不能等太久。", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：时间不够，我们不能等太久。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：我会在克雷斯特汉姆古城的中央城堡等大约5分钟。", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：我会在克雷斯特汉姆古城的中央城堡等大约5分钟。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：这里很危险，你不必觉得有义务帮我。实在不行我会自己去试。", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：这里很危险，你不必觉得有义务帮我。实在不行我会自己去试。", 'fenrir_5$;
 	viewpoint 1,199,237,1,0xFF0000;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：那么我先走了！传送！", 'fenrir_5$;
+	npctalk "芬里兹·潘利尔：那么我先走了！传送！", 'fenrir_5$;
 	cutin "",255;
 	donpcevent instance_npcname("#glast_event_13") + "::OnBar";
 	setpcblock PCBLOCK_NPC, false;
@@ -1068,7 +1068,7 @@ OnBar:
 	end;
 }
 
-1@glast,133,365,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_05	4_F_FENRIR
+1@glast,133,365,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_05	4_F_FENRIR
 
 // Skipped left side
 1@glast,1,1,0	script	#fenrir_left_final_2	HIDDEN_WARP_NPC,{
@@ -1081,13 +1081,13 @@ OnTimer300000:
 	'skip_left_part = 1;
 	disablenpc instance_npcname("#glast_event_7");
 	disablenpc 'fenrir_3$;
-	mapannounce 'map_glast$, "芬里兹·芬里尔：好！我们打倒了一只基勘特斯！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：好！我们打倒了一只基勘特斯！", bc_map,0xEBFF;
 	end;
 OnTimer302000:
-	mapannounce 'map_glast$, "莎拉艾琳：果然，芬里兹·芬里尔，你不会轻易屈服！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉艾琳：果然，芬里兹·潘利尔，你不会轻易屈服！", bc_map,0xEBFF;
 	end;
 OnTimer305000:
-	mapannounce 'map_glast$, "芬里兹·芬里尔：立刻离开哨兵之风！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：立刻离开哨兵之风！", bc_map,0xEBFF;
 	end;
 OnTimer307000:
 	mapannounce 'map_glast$, "莎拉艾琳：呵呵……那可不行！", bc_map,0xEBFF;
@@ -1096,20 +1096,20 @@ OnTimer309000:
 	mapannounce 'map_glast$, "莎拉艾琳：想要回它就来克雷斯特汉姆古城城堡！我会等着你！", bc_map,0xEBFF;
 	end;
 OnTimer311000:
-	mapannounce 'map_glast$, "芬里兹·芬里尔：我得去克雷斯特汉姆古城城堡夺回巴德尔的剑", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：我得去克雷斯特汉姆古城城堡夺回巴德尔的剑", bc_map,0xEBFF;
 	end;
 OnTimer313000:
-	mapannounce 'map_glast$, "芬里兹·芬里尔：独自前往或许很难。如果你听到了，我会很感激你的帮助。", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：独自前往或许很难。如果你听到了，我会很感激你的帮助。", bc_map,0xEBFF;
 	end;
 OnTimer315000:
-	mapannounce 'map_glast$, "芬里兹·芬里尔：时间不够，我们不能等太久。", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：时间不够，我们不能等太久。", bc_map,0xEBFF;
 	end;
 OnTimer317000:
-	mapannounce 'map_glast$, "芬里兹·芬里尔：我会在克雷斯特汉姆古城的中央城堡等大约5分钟。", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：我会在克雷斯特汉姆古城的中央城堡等大约5分钟。", bc_map,0xEBFF;
 	end;
 OnTimer319000:
 	stopnpctimer;
-	mapannounce 'map_glast$, "芬里兹·芬里尔：这里很危险，你不必觉得有义务帮我。实在不行我会自己去试。", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬里兹·潘利尔：这里很危险，你不必觉得有义务帮我。实在不行我会自己去试。", bc_map,0xEBFF;
 	enablenpc instance_npcname("#glast_move_03");
 	enablenpc 'fenrir_6$;
 	enablenpc instance_npcname("#glast_event_15");
@@ -1131,9 +1131,9 @@ OnTouch:
 	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStop";
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1000;
-	npctalk "芬里兹·芬里尔：我一直在等。谢谢你没有迟到。", 'fenrir_6$;
+	npctalk "芬里兹·潘利尔：我一直在等。谢谢你没有迟到。", 'fenrir_6$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：我们登上城堡去夺回哨兵之风！莎拉一定在等着！", 'fenrir_6$;
+	npctalk "芬里兹·潘利尔：我们登上城堡去夺回哨兵之风！莎拉一定在等着！", 'fenrir_6$;
 	sleep2 3000;
 	disablenpc 'fenrir_6$;
 	enablenpc instance_npcname("#glast_move_03a");
@@ -1144,7 +1144,7 @@ OnTouch:
 	end;
 }
 
-1@glast,200,268,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_06	4_F_FENRIR
+1@glast,200,268,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_06	4_F_FENRIR
 
 // Final room
 1@glast,199,336,0	script	#glast_event_18	HIDDEN_WARP_NPC,10,10,{
@@ -1154,31 +1154,31 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 1000;
-	npctalk "莎拉艾琳：等你等得好像过了永恒～芬里兹·芬里尔。", 'sarah_17$;
+	npctalk "莎拉艾琳：等你等得好像过了永恒～芬里兹·潘利尔。", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "芬里兹·芬里尔：废话少说，现在就把哨兵之风交出来！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：废话少说，现在就把哨兵之风交出来！", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3.bmp",0;
 	npctalk "莎拉艾琳：有本事就来试试。", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "芬里兹·芬里尔：莎拉恐怕不是你一个人能应付的。我必须亲自面对她！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：莎拉恐怕不是你一个人能应付的。我必须亲自面对她！", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：纯白的枷锁，永恒的牢狱，现在与我立下契约！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：纯白的枷锁，永恒的牢狱，现在与我立下契约！", 'fenrir_7$;
 	donpcevent instance_npcname("#glast_event_18") + "::OnBar";
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：白色监狱！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：白色监狱！！", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	sleep2 3000;
 	npctalk "莎拉艾琳：呃……呵……", 'sarah_17$;
-	npctalk "芬里兹·芬里尔：我会用白色监狱削弱莎拉，趁她被束缚时与她交手，", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：我会用白色监狱削弱莎拉，趁她被束缚时与她交手，", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "芬里兹·芬里尔：她召唤的怪物就交给你了。拜托了。", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：她召唤的怪物就交给你了。拜托了。", 'fenrir_7$;
 	sleep2 3000;
 	unittalk getcharid(3), "" + strcharinfo(0) + "：没问题。强大的敌人让我热血沸腾。";
 	sleep2 6000;
-	npctalk "芬里兹·芬里尔：这是趁莎拉陷入危急状态时一举进攻、将她解决掉的战术。记住，我们的对手很强。", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：这是趁莎拉陷入危急状态时一举进攻、将她解决掉的战术。记住，我们的对手很强。", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3_2.bmp",0;
 	npctalk "莎拉艾琳：原来你的计划是用这种把戏把我绑起来？", 'sarah_17$;
@@ -1201,7 +1201,7 @@ OnBar:
 
 1@glast,200,336,4	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_17	4_F_SARAH
 
-1@glast,197,330,8	script	芬里尔#glast_07	4_F_FENRIR,{
+1@glast,197,330,8	script	潘利尔#glast_07	4_F_FENRIR,{
 	end;
 OnStart:
 	initnpctimer;
@@ -1222,7 +1222,7 @@ OnEvent:
 	enablenpc instance_npcname("#fenrir_boss_final_1");
 	initnpctimer;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "芬里兹·芬里尔：致命的剧毒，漆黑的乌云，现身于我面前，展现最痛苦的死亡吧！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：致命的剧毒，漆黑的乌云，现身于我面前，展现最痛苦的死亡吧！", 'fenrir_7$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1232,14 +1232,14 @@ OnTimer1000:
 	end;
 OnTimer10000:
 	callsub S_Hit,1;
-	npctalk "芬里兹·芬里尔：去吧！云杀！！！！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：去吧！云杀！！！！！", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_POISONSMOKE, AREA, instance_npcname("#effect_glast_event03_" + .@i);
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer10500:
-	unittalk 'boss_id, "莎拉艾琳：太突然了，芬里尔。你就这点本事吗？";
+	unittalk 'boss_id, "莎拉艾琳：太突然了，潘利尔。你就这点本事吗？";
 	end;
 OnTimer11000:
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
@@ -1253,7 +1253,7 @@ OnTimer11000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer13000:
-	npctalk "芬里兹·芬里尔：致命的剧毒，漆黑的乌云，现身于我面前，展现最痛苦的死亡吧！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：致命的剧毒，漆黑的乌云，现身于我面前，展现最痛苦的死亡吧！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1267,7 +1267,7 @@ OnTimer13000:
 	end;
 OnTimer20000:
 	callsub S_Hit,2;
-	npctalk "芬里兹·芬里尔：去吧！云杀！！！！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：去吧！云杀！！！！！", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1289,7 +1289,7 @@ OnTimer21000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer23000:
-	npctalk "芬里兹·芬里尔：我向掌控火焰的你呼唤，我芬里兹渴望永不熄灭之火……", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：我向掌控火焰的你呼唤，我芬里兹渴望永不熄灭之火……", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1302,13 +1302,13 @@ OnTimer23000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer36000:
-	npctalk "芬里兹·芬里尔：无尽燃烧的大火，连灵魂都能灼烧的火焰！！现在现身于我面前！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：无尽燃烧的大火，连灵魂都能灼烧的火焰！！现在现身于我面前！！", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer50000:
 	callsub S_Hit,3;
-	npctalk "芬里兹·芬里尔：显现吧！！火之纹章！！！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：显现吧！！火之纹章！！！！", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
@@ -1319,27 +1319,27 @@ OnTimer51000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer53000:
-	npctalk "芬里兹·芬里尔：撼动大地的力量之根源！！畏惧大地之力吧！！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：撼动大地的力量之根源！！畏惧大地之力吧！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	end;
 OnTimer60000:
 	callsub S_Hit,4;
-	npctalk "芬里兹·芬里尔：去吧！！大地之击！！！", 'fenrir_7$;
+	npctalk "芬里兹·潘利尔：去吧！！大地之击！！！", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer60500:
-	unittalk 'boss_id, "莎拉艾琳：你何不停止这种幼稚的魔法，芬里尔？";
+	unittalk 'boss_id, "莎拉艾琳：你何不停止这种幼稚的魔法，潘利尔？";
 	end;
 OnTimer63000:
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "芬里尔：撼动大地的力量之根源！！畏惧大地之力吧！！！", 'fenrir_7$;
+	npctalk "潘利尔：撼动大地的力量之根源！！畏惧大地之力吧！！！", 'fenrir_7$;
 	end;
 OnTimer70000:
 	callsub S_Hit,5;
-	npctalk "芬里尔：去吧！！崩裂术！！！", 'fenrir_7$;
+	npctalk "潘利尔：去吧！！崩裂术！！！", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
@@ -1348,16 +1348,16 @@ OnTimer70500:
 	unittalk 'boss_id, "莎拉·艾琳：你以为凭这点本事就能打倒我？";
 	end;
 OnTimer73000:
-	npctalk "芬里尔：凛冽无情的北风之息，", 'fenrir_7$;
+	npctalk "潘利尔：凛冽无情的北风之息，", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer85000:
-	npctalk "芬里尔：如寂静的晨雾般降临，冻结一切！！", 'fenrir_7$;
+	npctalk "潘利尔：如寂静的晨雾般降临，冻结一切！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer100000:
 	callsub S_Hit,6;
-	npctalk "芬里尔：出现吧！！！寒冰浓雾！！！！！", 'fenrir_7$;
+	npctalk "潘利尔：出现吧！！！寒冰浓雾！！！！！", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
@@ -1367,26 +1367,26 @@ OnTimer100500:
 	unittalk 'boss_id, "莎拉·艾琳：还不错，但……还差得远！";
 	end;
 OnTimer103000:
-	npctalk "芬里尔：怀疑之力，强大的力量，深藏于心底的秘密之力！！！", 'fenrir_7$;
+	npctalk "潘利尔：怀疑之力，强大的力量，深藏于心底的秘密之力！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer110000:
 	callsub S_Hit,7;
-	npctalk "芬里尔：现在！！！超自然波！！！！", 'fenrir_7$;
+	npctalk "潘利尔：现在！！！超自然波！！！！", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer110500:
-	unittalk 'boss_id, "莎拉·艾琳：呃……没用的，芬里尔！";
+	unittalk 'boss_id, "莎拉·艾琳：呃……没用的，潘利尔！";
 	end;
 OnTimer113000:
-	npctalk "芬里尔：怀疑之力，强大的力量，深藏于心底的秘密之力！！！", 'fenrir_7$;
+	npctalk "潘利尔：怀疑之力，强大的力量，深藏于心底的秘密之力！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer120000:
 	callsub S_Hit,8;
-	npctalk "芬里尔：现在！！！超自然波！！！！", 'fenrir_7$;
+	npctalk "潘利尔：现在！！！超自然波！！！！", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
@@ -1396,17 +1396,17 @@ OnTimer120500:
 	unittalk 'boss_id, "莎拉·艾琳：呃……真是烦人的魔法轰炸！！";
 	end;
 OnTimer123000:
-	npctalk "芬里尔：我向掌控火焰的你呼唤，我，芬里尔，渴望永不熄灭的火焰……", 'fenrir_7$;
+	npctalk "潘利尔：我向掌控火焰的你呼唤，我，潘利尔，渴望永不熄灭的火焰……", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	end;
 OnTimer135000:
-	npctalk "芬里尔：无尽燃烧的烈火，足以灼烧灵魂的火焰！！现在出现在我面前吧！！", 'fenrir_7$;
+	npctalk "潘利尔：无尽燃烧的烈火，足以灼烧灵魂的火焰！！现在出现在我面前吧！！", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer150000:
 	callsub S_Hit,9;
-	npctalk "芬里尔：现身吧！！火之纹章！！！！", 'fenrir_7$;
+	npctalk "潘利尔：现身吧！！火之纹章！！！！", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1415,26 +1415,26 @@ OnTimer150500:
 	unittalk 'boss_id, "莎拉·艾琳：我是莎拉·艾琳！我不会这么轻易倒下！！！";
 	end;
 OnTimer153000:
-	npctalk "芬里尔：天空真正的怒火，足以劈开大地的雷霆……现在降临于我面前吧！！", 'fenrir_7$;
+	npctalk "潘利尔：天空真正的怒火，足以劈开大地的雷霆……现在降临于我面前吧！！", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer160000:
 	callsub S_Hit,10;
-	npctalk "芬里尔：来吧！！雷暴术！！！！！", 'fenrir_7$;
+	npctalk "潘利尔：来吧！！雷暴术！！！！！", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
-	unittalk 'boss_id, "莎拉·艾琳：呃……你……比我想象的更强，芬里尔……";
+	unittalk 'boss_id, "莎拉·艾琳：呃……你……比我想象的更强，潘利尔……";
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer160500:
-	unittalk 'boss_id, "莎拉·艾琳：呃……你……比我想象的更强，芬里尔……";
+	unittalk 'boss_id, "莎拉·艾琳：呃……你……比我想象的更强，潘利尔……";
 	end;
 OnTimer163000:
-	npctalk "芬里尔：天空真正的怒火，足以劈开大地的雷霆……现在降临于我面前吧！！", 'fenrir_7$;
+	npctalk "潘利尔：天空真正的怒火，足以劈开大地的雷霆……现在降临于我面前吧！！", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer170000:
 	callsub S_Hit,11;
-	npctalk "芬里尔：来吧！！雷暴术！！！！！", 'fenrir_7$;
+	npctalk "潘利尔：来吧！！雷暴术！！！！！", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
@@ -1443,7 +1443,7 @@ OnTimer170500:
 	unittalk 'boss_id, "莎拉·艾琳：呃啊！！！！！！啊啊！！！！！";
 	end;
 OnTimer173000:
-	npctalk "芬里尔：凛冽无情的北风之息，", 'fenrir_7$;
+	npctalk "潘利尔：凛冽无情的北风之息，", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer180000:
@@ -1453,13 +1453,13 @@ OnTimer180000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer185000:
-	npctalk "芬里尔：如寂静的晨雾般降临，冻结一切！！", 'fenrir_7$;
+	npctalk "潘利尔：如寂静的晨雾般降临，冻结一切！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer200000:
 	callsub S_Hit,12;
-	npctalk "芬里尔：出现吧！！！寒冰浓雾！！！！！", 'fenrir_7$;
+	npctalk "潘利尔：出现吧！！！寒冰浓雾！！！！！", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	donpcevent 'fenrir_7$ + "::OnStart";
 	progressbar_npc "000000",50, 'fenrir_7$;
@@ -1470,15 +1470,15 @@ OnTimer200500:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer203000:
-	npctalk "芬里尔：贯穿天空的天之剑", 'fenrir_7$;
+	npctalk "潘利尔：贯穿天空的天之剑", 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	end;
 OnTimer216000:
-	npctalk "芬里尔：我想暂且借用你的力量！！", 'fenrir_7$;
+	npctalk "潘利尔：我想暂且借用你的力量！！", 'fenrir_7$;
 	end;
 OnTimer230000:
-	npctalk "芬里尔：将你足以撕裂真空的极致之力降临于此吧！！", 'fenrir_7$;
+	npctalk "潘利尔：将你足以撕裂真空的极致之力降临于此吧！！", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer239000:
@@ -1488,10 +1488,10 @@ OnTimer239000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer240000:
-	npctalk "芬里尔：掌控生死、贯穿时空之剑！！！", 'fenrir_7$;
+	npctalk "潘利尔：掌控生死、贯穿时空之剑！！！", 'fenrir_7$;
 	end;
 OnTimer250000:
-	npctalk "芬里尔：出来吧，巴雷蒂斯之枪！！！！！！", 'fenrir_7$;
+	npctalk "潘利尔：出来吧，巴雷蒂斯之枪！！！！！！", 'fenrir_7$;
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1502,31 +1502,31 @@ OnTimer253000:
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
-	npctalk "芬里尔：现在！我已让莎拉身受重伤！你必须了结她！快攻击她！莎拉很强！", 'fenrir_7$;
-	mapannounce 'map_glast$, "芬里尔：现在！我已让莎拉身受重伤！你必须了结她！！快攻击她！莎拉很强！", bc_map,0xEBFF;
+	npctalk "潘利尔：现在！我已让莎拉身受重伤！你必须了结她！快攻击她！莎拉很强！", 'fenrir_7$;
+	mapannounce 'map_glast$, "潘利尔：现在！我已让莎拉身受重伤！你必须了结她！！快攻击她！莎拉很强！", bc_map,0xEBFF;
 	npctalk "莎拉·艾琳：呃……这……不可能！！！我不能输！！！！！", 'sarah_17$;
 	end;
 OnTimer263000:
-	npctalk "芬里尔：既然你一个人可能无法了结她，我就准备最后一招法术！！", 'fenrir_7$;
+	npctalk "潘利尔：既然你一个人可能无法了结她，我就准备最后一招法术！！", 'fenrir_7$;
 	progressbar_npc "000000",50, 'fenrir_7$;
 	end;
 OnTimer273000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
-	npctalk "芬里尔：贯穿天空的天之剑", 'fenrir_7$;
+	npctalk "潘利尔：贯穿天空的天之剑", 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	end;
 OnTimer283000:
-	npctalk "芬里尔：我想暂且借用你的力量！！", 'fenrir_7$;
+	npctalk "潘利尔：我想暂且借用你的力量！！", 'fenrir_7$;
 	end;
 OnTimer293000:
-	npctalk "芬里尔：将你足以撕裂真空的极致之力降临于此吧！！";
+	npctalk "潘利尔：将你足以撕裂真空的极致之力降临于此吧！！";
 	end;
 OnTimer303000:
-	npctalk "芬里尔：掌控生死、贯穿时空之剑！！！";
+	npctalk "潘利尔：掌控生死、贯穿时空之剑！！！";
 	end;
 OnTimer313000:
-	npctalk "芬里尔：出来吧，巴雷蒂斯之枪！！！！！！";
+	npctalk "潘利尔：出来吧，巴雷蒂斯之枪！！！！！！";
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1568,13 +1568,13 @@ OnTimer6000:
 	enablenpc 'sarah_20$;
 	end;
 OnTimer9000:
-	npctalk "芬里尔：哨兵之风！它已经在我手中了！", 'fenrir_8$;
+	npctalk "潘利尔：哨兵之风！它已经在我手中了！", 'fenrir_8$;
 	end;
 OnTimer12000:
 	npctalk "莎拉·艾琳：呃……", 'sarah_20$;
 	end;
 OnTimer15000:
-	npctalk "芬里尔：用这个我就能找到巴德尔！", 'fenrir_8$;
+	npctalk "潘利尔：用这个我就能找到巴德尔！", 'fenrir_8$;
 	end;
 OnTimer18000:
 	npctalk "莎拉·艾琳：还没完！！", 'sarah_20$;
@@ -1596,11 +1596,11 @@ OnTimer30000:
 	progressbar_npc "000000",15, 'sarah_20$;
 	end;
 OnTimer33000:
-	npctalk "芬里尔：她打算让这里崩塌！我必须发动大规模传送术！！！", 'fenrir_9$;
+	npctalk "潘利尔：她打算让这里崩塌！我必须发动大规模传送术！！！", 'fenrir_9$;
 	progressbar_npc "000000",6, 'fenrir_9$;
 	end;
 OnTimer36000:
-	npctalk "芬里尔：再见了，瓦尔基里！！哨兵之风我就带走了！后会有期！", 'fenrir_9$;
+	npctalk "潘利尔：再见了，瓦尔基里！！哨兵之风我就带走了！后会有期！", 'fenrir_9$;
 	end;
 OnTimer39000:
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1624,8 +1624,8 @@ OnMobDead:
 	end;
 }
 
-1@glast,199,348,8	duplicate(#effect_glast_event01_1)	芬里尔#glast_08	4_F_FENRIR
-1@glast,201,346,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_09	4_F_FENRIR
+1@glast,199,348,8	duplicate(#effect_glast_event01_1)	潘利尔#glast_08	4_F_FENRIR
+1@glast,201,346,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_09	4_F_FENRIR
 1@glast,197,339,8	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_20	4_F_SARAH
 
 1@glast,201,336,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_1	CLEAR_NPC
@@ -1645,19 +1645,19 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1500;
 	cutin "fenrir_b.bmp",2;
-	npctalk "芬里尔：呵呵……你确实有些本事，但我想你低估了我，瓦尔基里。", 'fenrir_10$;
+	npctalk "潘利尔：呵呵……你确实有些本事，但我想你低估了我，瓦尔基里。", 'fenrir_10$;
 	sleep2 3000;
-	mapannounce 'map_glast$, "莎拉·艾琳：你倒是让我很开心，芬里尔……", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳：你倒是让我很开心，潘利尔……", bc_map,0xEBFF;
 	sleep2 3000;
 	mapannounce 'map_glast$, "莎拉·艾琳：你以为能这么轻易逃掉吗？", bc_map,0xEBFF;
 	sleep2 3000;
 	mapannounce 'map_glast$, "莎拉·艾琳：我要把克雷斯特汉姆古城变成地狱！！", bc_map,0xEBFF;
 	sleep2 3000;
-	npctalk "芬里尔：如果现在不逃，我们就会被莎拉的怪物和魔法折磨得生不如死！", 'fenrir_10$;
+	npctalk "潘利尔：如果现在不逃，我们就会被莎拉的怪物和魔法折磨得生不如死！", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "芬里尔：我们在初次见面的克雷斯特汉姆古城入口会合吧！逃到那里应该就安全了！", 'fenrir_10$;
+	npctalk "潘利尔：我们在初次见面的克雷斯特汉姆古城入口会合吧！逃到那里应该就安全了！", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "芬里尔：没时间了！快！", 'fenrir_10$;
+	npctalk "潘利尔：没时间了！快！", 'fenrir_10$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_10$;
@@ -1666,7 +1666,7 @@ OnTouch:
 	end;
 }
 
-1@glast,200,224,4	duplicate(#effect_glast_event01_1)	芬里尔#glast_10	4_F_FENRIR
+1@glast,200,224,4	duplicate(#effect_glast_event01_1)	潘利尔#glast_10	4_F_FENRIR
 
 // Skipped final room
 1@glast,1,1,0	script	#fenrir_boss_final_2	HIDDEN_WARP_NPC,{
@@ -1681,16 +1681,16 @@ OnTimer300000:
 	disablenpc 'fenrir_6$;
 	end;
 OnTimer305000:
-	mapannounce 'map_glast$, "芬里尔：哨兵之风！它已经在我手中了！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "潘利尔：哨兵之风！它已经在我手中了！", bc_map,0xEBFF;
 	end;
 OnTimer308000:
 	mapannounce 'map_glast$, "莎拉·艾琳：呃……", bc_map,0xEBFF;
 	end;
 OnTimer311000:
-	mapannounce 'map_glast$, "芬里尔：呵呵……你确实有些本事，但我想你低估了我，瓦尔基里。", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "潘利尔：呵呵……你确实有些本事，但我想你低估了我，瓦尔基里。", bc_map,0xEBFF;
 	end;
 OnTimer314000:
-	mapannounce 'map_glast$, "莎拉·艾琳：你倒是让我很开心，芬里尔……", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳：你倒是让我很开心，潘利尔……", bc_map,0xEBFF;
 	end;
 OnTimer317000:
 	mapannounce 'map_glast$, "莎拉·艾琳：你以为能这么轻易逃掉吗？", bc_map,0xEBFF;
@@ -1699,14 +1699,14 @@ OnTimer320000:
 	mapannounce 'map_glast$, "莎拉·艾琳：我要把克雷斯特汉姆古城变成地狱！！", bc_map,0xEBFF;
 	end;
 OnTimer323000:
-	mapannounce 'map_glast$, "芬里尔：如果现在不逃，我们就会被莎拉的怪物和魔法折磨得生不如死！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "潘利尔：如果现在不逃，我们就会被莎拉的怪物和魔法折磨得生不如死！", bc_map,0xEBFF;
 	end;
 OnTimer326000:
-	mapannounce 'map_glast$, "芬里尔：我们在初次见面的克雷斯特汉姆古城入口会合吧！逃到那里应该就安全了！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "潘利尔：我们在初次见面的克雷斯特汉姆古城入口会合吧！逃到那里应该就安全了！", bc_map,0xEBFF;
 	end;
 OnTimer329000:
 	stopnpctimer;
-	mapannounce 'map_glast$, "芬里尔：没时间了！快！", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "潘利尔：没时间了！快！", bc_map,0xEBFF;
 	donpcevent instance_npcname("#sarah_wrath") + "::OnStart";
 	end;
 OnStop:
@@ -1743,7 +1743,7 @@ OnTimer80000:
 	callsub S_Spawn,2;
 	end;
 OnTimer110000:
-	mapannounce 'map_glast$, "莎拉·艾琳：芬里尔……你以为逃走了，我就追踪不到你吗？", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳：潘利尔……你以为逃走了，我就追踪不到你吗？", bc_map,0xEBFF;
 	callsub S_Spawn,3;
 	end;
 OnTimer150000:
@@ -1885,22 +1885,22 @@ OnTouch:
 
 // Back to entrance
 // event in #glast_move_01
-1@glast,359,294,4	script	芬里尔#glast_11	4_F_FENRIR,{
+1@glast,359,294,4	script	潘利尔#glast_11	4_F_FENRIR,{
 	if (isbegin_quest(9337) == 0) {
 		cutin "fenrir_a.bmp",2;
-		mes "[芬里尔]";
+		mes "[潘利尔]";
 		mes "你平安到达了！";
 		mes "危险的情况";
 		mes "让我担心不已。";
 		mes "那是艰难又危险的工作";
 		mes "所以我感谢你的帮助。";
 		next;
-		mes "[芬里尔]";
+		mes "[潘利尔]";
 		mes "我感觉我们还会再见";
 		mes "不过也许只是我的错觉？";
 		mes "嗯……那样也不错。";
 		next;
-		mes "[芬里尔]";
+		mes "[潘利尔]";
 		mes "我们合作得很愉快";
 		mes "所以我希望我们还能再见。";
 		mes "还有，要提防莎拉，";
@@ -1912,7 +1912,7 @@ OnTouch:
 		cutin "",255;
 		end;
 	}
-	mes "[芬里尔]";
+	mes "[潘利尔]";
 	mes "我们合作得很愉快";
 	mes "所以我希望我们还能再见。";
 	close;

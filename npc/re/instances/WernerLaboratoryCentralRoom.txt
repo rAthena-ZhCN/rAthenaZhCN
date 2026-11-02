@@ -2,7 +2,7 @@
 //= Instances Werner Laboratory central room.
 //===== Description: =========================================
 //- [Walkthrough conversion]
-//- Require Terra Gloria main quest.
+//- Require 大地荣耀 main quest.
 //- Note: For now there are 2 instances (officially one) to
 //  avoid exploit, the warp entry being the same. The first
 //  (main quest) is a solo instance and the 2nd (daily) a
@@ -98,7 +98,7 @@ slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 		next;
 		mes "[新兵]";
 		mes "这是什么样的设施？";
-		mes "Ssss.";
+		mes "嘶……";
 		mes "等适当鉴定之后，我或许会请你做个了结……";
 		mes "我又得去守中枢室的门了。";
 		close;
@@ -201,12 +201,12 @@ OnTouch:
 		end;
 	disablenpc instance_npcname("#sl_evt01");
 	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")	// terra_gloria_main == 21
-		enablenpc instance_npcname("Eisen Werner#werner01");
+		enablenpc instance_npcname("艾森·维尔纳#werner01");
 	else {
-		enablenpc instance_npcname("Guard#gard01");
-		enablenpc instance_npcname("Guard#gard02");
-		enablenpc instance_npcname("Guard#gard03");
-		enablenpc instance_npcname("Guard#gard04");
+		enablenpc instance_npcname("守卫#gard01");
+		enablenpc instance_npcname("守卫#gard02");
+		enablenpc instance_npcname("守卫#gard03");
+		enablenpc instance_npcname("守卫#gard04");
 	}
 	end;
 
@@ -218,30 +218,30 @@ OnInstanceInit:
 
 	disablenpc instance_npcname("#slwwarp01");
 	disablenpc instance_npcname("#slwwarp02");
-	disablenpc instance_npcname("Central Entrance#door");
-	disablenpc instance_npcname("Emergency exit#exit_war");
+	disablenpc instance_npcname("中央入口#door");
+	disablenpc instance_npcname("紧急出口#exit_war");
 
-	disablenpc instance_npcname("Eisen Werner#werner01");
-	disablenpc instance_npcname("Eisen Werner#werner02");
-	disablenpc instance_npcname("Eisen Werner#werner03");
-	disablenpc instance_npcname("Eisen Werner#werner04");
-	disablenpc instance_npcname("Eisen Werner#werner05");
+	disablenpc instance_npcname("艾森·维尔纳#werner01");
+	disablenpc instance_npcname("艾森·维尔纳#werner02");
+	disablenpc instance_npcname("艾森·维尔纳#werner03");
+	disablenpc instance_npcname("艾森·维尔纳#werner04");
+	disablenpc instance_npcname("艾森·维尔纳#werner05");
 
-	disablenpc instance_npcname("Security device#switch01");
-	disablenpc instance_npcname("Security device#switch02");
-	disablenpc instance_npcname("Security device#switch11");
-	disablenpc instance_npcname("Security device#switch12");
+	disablenpc instance_npcname("安保装置#switch01");
+	disablenpc instance_npcname("安保装置#switch02");
+	disablenpc instance_npcname("安保装置#switch11");
+	disablenpc instance_npcname("安保装置#switch12");
 
-	disablenpc instance_npcname("Guard#gard01");
-	disablenpc instance_npcname("Guard#gard02");
-	disablenpc instance_npcname("Guard#gard03");
-	disablenpc instance_npcname("Guard#gard04");
-	disablenpc instance_npcname("Guard#gard05");
-	disablenpc instance_npcname("Guard#gard06");
-	disablenpc instance_npcname("Guard#gard07");
+	disablenpc instance_npcname("守卫#gard01");
+	disablenpc instance_npcname("守卫#gard02");
+	disablenpc instance_npcname("守卫#gard03");
+	disablenpc instance_npcname("守卫#gard04");
+	disablenpc instance_npcname("守卫#gard05");
+	disablenpc instance_npcname("守卫#gard06");
+	disablenpc instance_npcname("守卫#gard07");
 
 	disablenpc instance_npcname("Seyren Windsor#seiren");
-	disablenpc instance_npcname("Pet child#boss_master");
+	disablenpc instance_npcname("小可爱#boss_master");
 	disablenpc instance_npcname("#boss_master_dummy");
 	end;
 }
@@ -290,7 +290,7 @@ OnInstanceInit:
 	next;
 	mes "[艾森·维尔纳]";
 	mes "算了，随便吧。";
-	mes "Welcome.";
+	mes "欢迎。";
 	mes "欢迎来到艾森·维尔纳的世界。";
 	next;
 	cutin "ep16_eisen02.bmp",1;
@@ -340,8 +340,8 @@ OnInstanceInit:
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
-		disablenpc instance_npcname("Eisen Werner#werner01");
-		enablenpc instance_npcname("Eisen Werner#werner02");
+		disablenpc instance_npcname("艾森·维尔纳#werner01");
+		enablenpc instance_npcname("艾森·维尔纳#werner02");
 	}
 	end;
 }
@@ -388,9 +388,9 @@ OnInstanceInit:
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
-		disablenpc instance_npcname("Eisen Werner#werner02");
-		enablenpc instance_npcname("Security device#switch01");
-		enablenpc instance_npcname("Security device#switch02");
+		disablenpc instance_npcname("艾森·维尔纳#werner02");
+		enablenpc instance_npcname("安保装置#switch01");
+		enablenpc instance_npcname("安保装置#switch02");
 	}
 	end;
 }
@@ -429,18 +429,18 @@ OnInstanceInit:
 	case 0:
 		enablenpc instance_npcname("#slwwarp01");
 		if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")	// terra_gloria_main == 21
-			enablenpc instance_npcname("Eisen Werner#werner03");
+			enablenpc instance_npcname("艾森·维尔纳#werner03");
 		else {
-			enablenpc instance_npcname("Guard#gard05");
-			enablenpc instance_npcname("Guard#gard06");
-			enablenpc instance_npcname("Guard#gard07");
+			enablenpc instance_npcname("守卫#gard05");
+			enablenpc instance_npcname("守卫#gard06");
+			enablenpc instance_npcname("守卫#gard07");
 		}
 		break;
 	case 1:
 		if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")
-			enablenpc instance_npcname("Eisen Werner#werner04");
+			enablenpc instance_npcname("艾森·维尔纳#werner04");
 		else
-			enablenpc instance_npcname("Central Entrance#door");
+			enablenpc instance_npcname("中央入口#door");
 		enablenpc instance_npcname("#slwwarp02");
 		break;
 	}
@@ -478,27 +478,27 @@ OnTouch:
 	getmapxy .@map$,.@x,.@y, BL_NPC;
 	switch( .@num ) {
 	case 1:	// 2 spawn area
-		npctalk ".. Dang, how did you get in here?";
+		npctalk "……可恶，你怎么进来的？";
 		areamonster .@map$, 186,92,190,94, "Special Guard", 3622,3;	// EP16_2_MM_S_GUARDS
 		.@mob_count = 3;
 		break;
 	case 2:	// 3 spawn area
-		npctalk ".. Dang, how did you get in here?";
+		npctalk "……可恶，你怎么进来的？";
 		areamonster .@map$, 186,142,190,143, "Special Guard", 3622,3;	// EP16_2_MM_S_GUARDS
 		areamonster .@map$, 186,160,190,162, "Special Guard", 3622,3;
 		.@mob_count = 3;
 		break;
 	case 5:
-		npctalk ".. Dang, how did you get in here?";
+		npctalk "……可恶，你怎么进来的？";
 		.@mob_count = 3;
 		break;
 	case 3:
-		npctalk ".. Dang, how did you get in here?";
+		npctalk "……可恶，你怎么进来的？";
 		.@mob_count = 1;
 		.@label$ = instance_npcname("#security_device_lab") + "::OnLeft1";
 		break;
 	case 4:
-		npctalk ".. Dang, how did you get in here?";
+		npctalk "……可恶，你怎么进来的？";
 		.@mob_count = 3;
 		.@label$ = instance_npcname("#security_device_lab") + "::OnRight1";
 		break;
@@ -529,25 +529,25 @@ OnTouch:
 OnLeft1:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft1" ) < 1) {
 		mapannounce 'map_slw$, "安全装置 L-01 已启动。", bc_map,0xFF99;
-		enablenpc instance_npcname("Security device#switch01");
+		enablenpc instance_npcname("安保装置#switch01");
 	}
 	end;
 OnRight1:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight1" ) < 1) {
 		mapannounce 'map_slw$, "安全装置 R-01 已启动。", bc_map,0xFF99;
-		enablenpc instance_npcname("Security device#switch02");
+		enablenpc instance_npcname("安保装置#switch02");
 	}
 	end;
 OnLeft2:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft2" ) < 1) {
 		mapannounce 'map_slw$, "安全装置 L-02 已启动。", bc_map,0xFF99;
-		enablenpc instance_npcname("Security device#switch11");
+		enablenpc instance_npcname("安保装置#switch11");
 	}
 	end;
 OnRight2:
 	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight2" ) < 1) {
 		mapannounce 'map_slw$, "安全装置 R-02 已启动。", bc_map,0xFF99;
-		enablenpc instance_npcname("Security device#switch12");
+		enablenpc instance_npcname("安保装置#switch12");
 	}
 	end;
 }
@@ -606,9 +606,9 @@ OnRight2:
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
-		disablenpc instance_npcname("Eisen Werner#werner03");
-		enablenpc instance_npcname("Security device#switch11");
-		enablenpc instance_npcname("Security device#switch12");
+		disablenpc instance_npcname("艾森·维尔纳#werner03");
+		enablenpc instance_npcname("安保装置#switch11");
+		enablenpc instance_npcname("安保装置#switch12");
 	}
 	end;
 }
@@ -632,7 +632,7 @@ OnRight2:
 	mes "它可不是仿制品能比的。";
 	next;
 	mes "[艾森·维尔纳]";
-	mes "... The fools in the kingdom cannot even utilize the power they already have.";
+	mes "……王国的蠢货连自己拥有的力量都不会用。";
 	mes "真可惜。";
 	mes "所以我决定用它……";
 	next;
@@ -643,7 +643,7 @@ OnRight2:
 	mes "[艾森·维尔纳]";
 	mes "我再告诉你一次。别吃惊。";
 	mes "不，你要是吃惊，我反而高兴。";
-	mes "Huhuhuhuhu....";
+	mes "呵呵呵呵……";
 	next;
 	cutin "ep16_eisen03.bmp",1;
 	mes "[艾森·维尔纳]";
@@ -651,8 +651,8 @@ OnRight2:
 	close2;
 	cutin "",255;
 	if (is_party_leader() == true) {
-		disablenpc instance_npcname("Eisen Werner#werner04");
-		enablenpc instance_npcname("Central Entrance#door");
+		disablenpc instance_npcname("艾森·维尔纳#werner04");
+		enablenpc instance_npcname("中央入口#door");
 	}
 	end;
 }
@@ -667,7 +667,7 @@ OnTouch:
 	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1") {
 		if ('event_final == 0) {
 			'event_final = 1;
-			enablenpc instance_npcname("Eisen Werner#werner05");
+			enablenpc instance_npcname("艾森·维尔纳#werner05");
 		}
 		warp 'map_slw$,55,153;
 		end;
@@ -690,7 +690,7 @@ OnTouch:
 		close2;
 		if ('event_final == 0) {
 			'event_final = 1;
-			enablenpc instance_npcname("Eisen Werner#werner05");
+			enablenpc instance_npcname("艾森·维尔纳#werner05");
 		}
 		warp 'map_slw$,55,153;
 		end;
@@ -699,7 +699,7 @@ OnTouch:
 	close2;
 	if ('event_final == 0) {
 		'event_final = 2;
-		enablenpc instance_npcname("Pet child#boss_master");
+		enablenpc instance_npcname("小可爱#boss_master");
 		enablenpc instance_npcname("#boss_master_dummy");
 	}
 	warp 'map_slw$,55,153;
@@ -744,7 +744,7 @@ OnTouch:
 	next;
 	cutin "ep16_eisen03.bmp",1;
 	mes "[艾森·维尔纳]";
-	mes "... Certainly, some of them get killed due to chapped cells. Ha ha!";
+	mes "……确实有些因为细胞干裂而死。哈哈！";
 	next;
 	select("你想说的就这些吗？");
 	unittalk getcharid(3), "" + strcharinfo(0) + "：你想说的就这些吗？";
@@ -756,7 +756,7 @@ OnTouch:
 	next;
 	cutin "ep16_eisen01.bmp",1;
 	mes "[艾森·维尔纳]";
-	mes "Something...";
+	mes "某种东西……";
 	mes "一份会让你吃惊的礼物。";
 	close2;
 	setpcblock PCBLOCK_NPC, true;
@@ -862,8 +862,8 @@ OnTouch:
 	next;
 	cutin "ep16_seiren02.bmp",2;
 	mes "[赛依连]";
-	mes "...... Is it the end of your will?";
-	npctalk "...... Is it the end of your will?", .@seyren$;
+	mes "……你的意志就止于此吗？";
+	npctalk "……你的意志就止于此吗？", .@seyren$;
 	next;
 	cutin "ep16_eisen03.bmp",0;
 	mes "[艾森·维尔纳]";
@@ -877,9 +877,9 @@ OnTouch:
 	next;
 	cutin "ep16_seiren02.bmp",2;
 	mes "[赛依连]";
-	mes "... Eisen Werner.";
+	mes "……艾森·维尔纳。";
 	mes "我再问你一次。你的意志就止于此吗？";
-	npctalk "... Eisen Werner. Let me ask you again. Is it the end of your will?", .@seyren$;
+	npctalk "……艾森·维尔纳。我再问你一次，你的意志就止于此吗？", .@seyren$;
 	next;
 	cutin "ep16_eisen01.bmp",0;
 	mes "[艾森·维尔纳]";
@@ -898,13 +898,13 @@ OnTouch:
 	specialeffect EF_SCREEN_QUAKE;
 	sleep2 1000;
 	specialeffect EF_LORD;
-	disablenpc instance_npcname("Eisen Werner#werner05");
+	disablenpc instance_npcname("艾森·维尔纳#werner05");
 	sleep2 2000;
 	setpcblock PCBLOCK_NPC, false;
-	npctalk "Oh....", .@seyren$;
+	npctalk "哦……", .@seyren$;
 	mes "[赛依连]";
-	mes "... Eisen. You have abandoned everything like this.";
-	npctalk "... Eisen. You have abandoned everything like this.", .@seyren$;
+	mes "……艾森，你就这样放弃了一切。";
+	npctalk "……艾森，你就这样放弃了一切。", .@seyren$;
 	specialeffect2 EF_DEVIL3;
 	cutin "ep16_seiren01.bmp",2;
 	next;
@@ -946,14 +946,14 @@ OnTouch:
 	mes "我想一定有其原因。";
 	next;
 	mes "[赛依连]";
-	mes "而我在看到^4d4dffTerra Gloria^000000之后明白了。";
+	mes "而我在看到^4d4dff大地荣耀^000000之后明白了。";
 	mes "神明给我这个机会的原因。";
 	next;
 	specialeffect2 EF_DEVIL6;
 	cutin "ep16_seiren01.bmp",2;
 	mes "[赛依连]";
 	mes "你是来取回这个的吗？";
-	mes "... The land is gone and only the star remains.";
+	mes "……大地已逝，只剩星辰。";
 	next;
 	specialeffect2 EF_DEVIL7;
 	cutin "ep16_seiren02.bmp",2;
@@ -1044,7 +1044,7 @@ OnTouch:
 }
 
 // * Battle
-1@slw,55,170,3	duplicate(dummy_npc)	Pet child#boss_master	3621
+1@slw,55,170,3	duplicate(dummy_npc)	小可爱#boss_master	3621
 
 1@slw,55,170,3	script	#boss_master_dummy	HIDDEN_WARP_NPC,5,5,{
 	end;
@@ -1052,25 +1052,25 @@ OnTouch:
 	if (is_party_leader() == false)	// officially player can spawn multiple boss changing party leader
 		end;
 	setpcblock PCBLOCK_NPC, true;
-	.@npc_name$ = instance_npcname("Pet child#boss_master");
+	.@npc_name$ = instance_npcname("小可爱#boss_master");
 	npctalk "你竟敢进来！真够勇敢的！", .@npc_name$;
 	sleep2 3000;
 	npctalk "能与我战斗，你该感到荣幸！", .@npc_name$;
 	sleep2 3000;
 	npctalk ".......", .@npc_name$;
 	sleep2 3000;
-	npctalk ".. Damn Werner. Why did you mix me with a wolf?", .@npc_name$;
+	npctalk "……该死的维尔纳，为什么把我跟狼混在一起？", .@npc_name$;
 	sleep2 3000;
 	npctalk "反……反正，你死定了。", .@npc_name$;
 	sleep2 3000;
 	setpcblock PCBLOCK_NPC, false;
 	disablenpc instance_npcname("#boss_master_dummy");
 	npctalk "准——备——好——了——吗！！！", .@npc_name$;
-	specialeffect EF_DANCE_BLADE_ATK, AREA, instance_npcname("Pet child#boss_master");
-	specialeffect EF_ALL_FULL_THROTTLE, AREA, instance_npcname("Pet child#boss_master");
+	specialeffect EF_DANCE_BLADE_ATK, AREA, instance_npcname("小可爱#boss_master");
+	specialeffect EF_ALL_FULL_THROTTLE, AREA, instance_npcname("小可爱#boss_master");
 	donpcevent instance_npcname("#boss_master_lab") + "::OnStart";
 	mapannounce 'map_slw$, "魔法领域已启动。", bc_map,0xFF99;
-	cloakonnpc instance_npcname("Pet child#boss_master");
+	cloakonnpc instance_npcname("小可爱#boss_master");
 	end;
 }
 
@@ -1079,12 +1079,12 @@ OnTouch:
 OnStart:
 	enablenpc instance_npcname("#boss_master_lab");
 	if (mobcount( 'map_slw$, instance_npcname("#boss_master_lab") + "::OnMobDead" ) < 1)
-		monster 'map_slw$,55,170, "Pet child", 3621, 1, instance_npcname("#boss_master_lab") + "::OnMobDead";	// EP16_2_MM_CUTIE
+		monster 'map_slw$,55,170, "小可爱", 3621, 1, instance_npcname("#boss_master_lab") + "::OnMobDead";	// EP16_2_MM_CUTIE
 	end;
 OnMobDead:
 	if (mobcount( 'map_slw$, instance_npcname("#boss_master_lab") + "::OnMobDead" ) < 1) {
 		mapannounce 'map_slw$, "魔法领域已消除。入口已生成。", bc_map,0xFF99;
-		enablenpc instance_npcname("Emergency exit#exit_war");
+		enablenpc instance_npcname("紧急出口#exit_war");
 		disablenpc instance_npcname("#boss_master_lab");
 	}
 	end;

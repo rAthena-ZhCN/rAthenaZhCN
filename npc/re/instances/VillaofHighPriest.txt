@@ -73,7 +73,7 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 
 
 1@adv,122,20,5	script	艾拉#aira01	4_M_BRZ_JACI,{
-	npctalk "不用担心我。我会待在门附近，如果有危险就立刻离开。", "Ira#aira01";
+	npctalk "不用担心我。我会待在门附近，如果有危险就立刻离开。", "艾拉#aira01";
 	end;
 
 OnInstanceInit:
@@ -97,7 +97,7 @@ OnInstanceInit:
 	if ('adv_step == 0) {
 		'adv_step = 1;
 		// note: player can move and talk to other npc
-		.@ira$ = instance_npcname("Ira#aira01");
+		.@ira$ = instance_npcname("艾拉#aira01");
 
 		sleep 2500;
 		npctalk "艾拉：就是这里。一楼只有使用者会上去，应该没问题。", .@ira$;
@@ -123,38 +123,38 @@ OnInstanceInit:
 	if ('adv_step == 2) {
 		mes "[米里亚姆]";
 		mes "我想我应该确认是否还有其他雇员，然后上二楼。";
-		npctalk "米里亚姆：我想我应该确认是否还有其他雇员，然后上二楼。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：我想我应该确认是否还有其他雇员，然后上二楼。", instance_npcname("米里亚姆#miriam01");
 		cutin "ep18_miriam_01.png",0;
 		next;
 		mes "[米里亚姆]";
 		mes "我感到中央楼梯那边有尖锐的气息。";
 		mes "大概是在神殿战斗过的邪心猎人。";
-		npctalk "米里亚姆：我感到一股强烈的气息。大概是邪心猎人。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：我感到一股强烈的气息。大概是邪心猎人。", instance_npcname("米里亚姆#miriam01");
 		cutin "ep18_miriam_03.png",0;
 		next;
 		mes "[米里亚姆]";
 		mes "我担心依美乐心脏缺失的那一块。";
 		mes "若说到引发事端，神殿发生的事已经足够了。";
-		npctalk "米里亚姆：我担心缺失的依美乐心脏。神殿发生的事已经足够了。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：我担心缺失的依美乐心脏。神殿发生的事已经足够了。", instance_npcname("米里亚姆#miriam01");
 		next;
 		mes "[米里亚姆]";
 		mes "如果父亲另有图谋……";
 		mes "如果他再次走上歧途，我必须阻止他。";
-		npctalk "米里亚姆：如果父亲另有图谋并走上歧途，我必须阻止他。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：如果父亲另有图谋并走上歧途，我必须阻止他。", instance_npcname("米里亚姆#miriam01");
 		next;
 		mes "[米里亚姆]";
 		mes "首先，我们向别墅的雇员打听些消息吧？";
 		mes "我看到那边有一名男雇员。";
-		npctalk "米里亚姆：首先，我们向剩下的雇员打听些消息吧？", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：首先，我们向剩下的雇员打听些消息吧？", instance_npcname("米里亚姆#miriam01");
 		cutin "ep18_miriam_02.png",0;
 		next;
 		mes "[米里亚姆]";
 		mes "我去找那名雇员。";
 		mes "冒险者，请另找一名雇员，向他打听这座宅邸的事。";
-		npctalk "米里亚姆：我去找那名雇员。冒险者，请另找一名雇员。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：我去找那名雇员。冒险者，请另找一名雇员。", instance_npcname("米里亚姆#miriam01");
 		close2;
 		cutin "",255;
-		npctalk "那我去找那边的雇员。", instance_npcname("Miriam#miriam01");
+		npctalk "那我去找那边的雇员。", instance_npcname("米里亚姆#miriam01");
 		if ('adv_step == 2) {
 			'adv_step = 3;
 			npcwalkto 136,46;
@@ -168,35 +168,35 @@ OnInstanceInit:
 	if ('adv_step == 4) {
 		'adv_step = 5;
 
-		.@extra01$ = instance_npcname("Villa Employee#extra01");
-		.@extra02$ = instance_npcname("Villa Employee#extra02");
-		.@rh01$ = instance_npcname("Heart Hunter#rh01");
-		.@rh02$ = instance_npcname("Heart Hunter#rh02");
+		.@extra01$ = instance_npcname("别墅雇员#extra01");
+		.@extra02$ = instance_npcname("别墅雇员#extra02");
+		.@rh01$ = instance_npcname("心之猎人#rh01");
+		.@rh02$ = instance_npcname("心之猎人#rh02");
 
-		npctalk "米里亚姆：毕竟，那一定是伪装成神官的邪心猎人吧？", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：毕竟，那一定是伪装成神官的邪心猎人吧？", instance_npcname("米里亚姆#miriam01");
 		specialeffect EF_SCREEN_QUAKE;
 		sleep 2000;
-		emotion ET_SURPRISE, getnpcid(0, instance_npcname("Miriam#miriam01"));
+		emotion ET_SURPRISE, getnpcid(0, instance_npcname("米里亚姆#miriam01"));
 		emotion ET_HUK, getnpcid(0, .@extra02$);
 		mapannounce 'map_adv$, "哭声：哎呀！你怎么这样！救救我！", bc_map, 0xFF99;
 		sleep 1000;
-		npctalk "米里亚姆：现在传来惨叫声！发生什么了？", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：现在传来惨叫声！发生什么了？", instance_npcname("米里亚姆#miriam01");
 		sleep 1000;
 		mapannounce 'map_adv$, "呀啊啊啊啊啊啊——！", bc_map, 0xFF99;
 		sleep 1000;
-		npctalk "米里亚姆：艾拉！！", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：艾拉！！", instance_npcname("米里亚姆#miriam01");
 		sleep 2500;
-		npctalk "米里亚姆：看来出事了。我们去找艾拉。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：看来出事了。我们去找艾拉。", instance_npcname("米里亚姆#miriam01");
 		sleep 2500;
 		npctalk "汉斯：小姐！请带上我！", .@extra02$;
 		sleep 2500;
-		npctalk "米里亚姆：那我过去看看艾拉他们是否平安。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：那我过去看看艾拉他们是否平安。", instance_npcname("米里亚姆#miriam01");
 		sleep 2500;
-		npctalk "米里亚姆：冒险者，请先进去。汉斯先生，我们一起走。", instance_npcname("Miriam#miriam01");
+		npctalk "米里亚姆：冒险者，请先进去。汉斯先生，我们一起走。", instance_npcname("米里亚姆#miriam01");
 		sleep 2500;
 		disablenpc .@extra01$;
 		disablenpc .@extra02$;
-		disablenpc instance_npcname("Miriam#miriam01");
+		disablenpc instance_npcname("米里亚姆#miriam01");
 		enablenpc .@rh01$;
 		enablenpc .@rh02$;
 		sleep 1000;
@@ -253,7 +253,7 @@ OnInstanceInit:
 		mes "这是米里亚姆决定调查的人。我们另找一个吧。";
 		close;
 	}
-	npctalk "汉斯：别墅的气氛不寻常。所有随侍的神官都带着武器。", instance_npcname("Villa Employee#extra02");
+	npctalk "汉斯：别墅的气氛不寻常。所有随侍的神官都带着武器。", instance_npcname("别墅雇员#extra02");
 	end;
 }
 
@@ -269,9 +269,9 @@ OnMobDead:
 		end;
 	if (mobcount('map_adv$, instance_npcname("adv_extra_02") + "::OnMobDead") < 1) {
 		'adv_step = 7;
-		enablenpc instance_npcname("Ira#aira02");
-		enablenpc instance_npcname("Anna#anna01");
-		enablenpc instance_npcname("Hans#hans01");
+		enablenpc instance_npcname("艾拉#aira02");
+		enablenpc instance_npcname("安娜#anna01");
+		enablenpc instance_npcname("汉斯#hans01");
 		enablenpc instance_npcname("Miriam#miriam02");
 	}
 	end;
@@ -290,11 +290,11 @@ OnMobDead:
 		.@miriam$ = instance_npcname("Miriam#miriam02");
 		.@label$ = .@miriam$ + "::OnMobDead";
 
-		enablenpc instance_npcname("Heart Hunter#rh03");
+		enablenpc instance_npcname("心之猎人#rh03");
 		enablenpc instance_npcname("Heart Hunter#rh04");
 		enablenpc instance_npcname("Heart Hunter#rh05");
 		enablenpc instance_npcname("Heart Hunter#rh06");
-		enablenpc instance_npcname("Heart Hunter#rh07");
+		enablenpc instance_npcname("心之猎人#rh07");
 
 		npctalk "哈……我不是明确说过要清理干净吗？怎么还有老鼠？", instance_npcname("Heart Hunter#rh05");
 		sleep2 2500;
@@ -303,8 +303,8 @@ OnMobDead:
 		npctalk "米里亚姆：冒险者，请突破大厅。我们分头处理。", instance_npcname("Miriam#miriam02");
 		sleep2 2000;
 		npctalk "不能让你就这样走掉。堵住楼梯！", instance_npcname("Heart Hunter#rh05");
-		unitwalk getnpcid(0,instance_npcname("Heart Hunter#rh03")), 124,40, .@miriam$ + "::OnMove1";
-		unitwalk getnpcid(0,instance_npcname("Heart Hunter#rh07")), 124,41, .@miriam$ + "::OnMove2";
+		unitwalk getnpcid(0,instance_npcname("心之猎人#rh03")), 124,40, .@miriam$ + "::OnMove1";
+		unitwalk getnpcid(0,instance_npcname("心之猎人#rh07")), 124,41, .@miriam$ + "::OnMove2";
 		sleep2 3000;
 		npctalk "米里亚姆：冒险者！请拦住他们！我处理这里，带大家撤离！", instance_npcname("Miriam#miriam02");
 		sleep2 1500;
@@ -357,10 +357,10 @@ OnMobDead:
 	end;
 
 OnMove1:
-	disablenpc instance_npcname("Heart Hunter#rh03");
+	disablenpc instance_npcname("心之猎人#rh03");
 	end;
 OnMove2:
-	disablenpc instance_npcname("Heart Hunter#rh07");
+	disablenpc instance_npcname("心之猎人#rh07");
 	end;
 OnMiddle1:
 	unitwalk getnpcid(0), 124,77, instance_npcname("Miriam#miriam02") + "::OnMiddle2";
@@ -383,9 +383,9 @@ OnMobDead:
 		disablenpc instance_npcname("Heart Hunter#rh04");
 		disablenpc instance_npcname("Heart Hunter#rh05");
 		disablenpc instance_npcname("Heart Hunter#rh06");
-		disablenpc instance_npcname("Ira#aira02");
-		disablenpc instance_npcname("Anna#anna01");
-		disablenpc instance_npcname("Hans#hans01");
+		disablenpc instance_npcname("艾拉#aira02");
+		disablenpc instance_npcname("安娜#anna01");
+		disablenpc instance_npcname("汉斯#hans01");
 		unitwalk getnpcid(0), 124,47, instance_npcname("Miriam#miriam02") + "::OnMiddle1";
 	}
 	end;
@@ -434,7 +434,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_adv$, instance_npcname("adv_key_left") + "::OnMobDead") < 1) {
 		'adv_step = 13;
-		enablenpc instance_npcname("Silver Key#key01");
+		enablenpc instance_npcname("紧锁的门#key01");
 	}
 	end;
 }
@@ -446,7 +446,7 @@ OnMobDead:
 	if ('adv_step != 13)
 		end;
 	'adv_step = 14;
-	disablenpc instance_npcname("Silver Key#key01");
+	disablenpc instance_npcname("紧锁的门#key01");
 	unittalk getcharid(3), "" + strcharinfo(0) + "：我找到一把小银钥匙。";
 	end;
 }
@@ -462,7 +462,7 @@ OnMobDead:
 	if ('adv_step != 14)
 		end;
 	'adv_step = 15;
-	disablenpc instance_npcname("Locked Door#key01");
+	disablenpc instance_npcname("紧锁的门#key01");
 	enablenpc instance_npcname("#left_room_in");
 	enablenpc instance_npcname("#left_room_out");
 	donpcevent instance_npcname("adv_get_key02") + "::OnStart";
@@ -536,7 +536,7 @@ OnMobDead:
 		mes "[米里亚姆]";
 		mes "那么，礼拜堂的调查就交给冒险者了。";
 		mes "我会带那些人撤离。";
-		mes "Please.";
+		mes "拜托了。";
 		npctalk "米里亚姆：里面的人，我来护送你们。我们出去吧。", instance_npcname("Miriam#miriam03");
 		close2;
 		cutin "",255;
@@ -600,7 +600,7 @@ OnMobDead:
 	if ('adv_step != 19)
 		close;
 	'adv_step = 20;
-	disablenpc instance_npcname("Locked Door#key03");
+	disablenpc instance_npcname("紧锁的门#key03");
 	enablenpc instance_npcname("#center_room_in");
 	enablenpc instance_npcname("#center_room_out");
 	donpcevent instance_npcname("adv_center") + "::OnStart";
@@ -651,7 +651,7 @@ OnMobDead:
 	if ('adv_step < 20)
 		end;
 	specialeffect EF_BLUELINE;
-	specialeffect EF_SPELLBREAKER, AREA, instance_npcname("Ornate Door#door01");
+	specialeffect EF_SPELLBREAKER, AREA, instance_npcname("华丽之门#door01");
 	if ('adv_step != 21)
 		end;
 	if ('Knight_left == 1)
@@ -674,7 +674,7 @@ OnMobDead:
 	if ('adv_step < 20)
 		end;
 	specialeffect EF_BLUELINE;
-	specialeffect EF_SPELLBREAKER, AREA, instance_npcname("Ornate Door#door01");
+	specialeffect EF_SPELLBREAKER, AREA, instance_npcname("华丽之门#door01");
 	if ('adv_step != 21)
 		end;
 	if ('Knight_righ == 1)
@@ -841,7 +841,7 @@ OnMobDead:
 	.@bagot01$ = instance_npcname("Illusion Bagot#bagot01");
 	.@demigod$ = instance_npcname("Twisted God#demigod");
 	.@shulang02$ = instance_npcname("Schulang#shulang02");
-	.@miriam04$ = instance_npcname("Miriam#miriam04");
+	.@miriam04$ = instance_npcname("米里亚姆#miriam04");
 
 	mes "[阿马尔]";
 	mes "这些可憎的异端竟然走到了这里。";
@@ -1097,7 +1097,7 @@ OnMobDead2:
 		next;
 		select( "这个艾普理欧掉了出来。" );
 		mes "[米里亚姆]";
-		mes "Indeed...";
+		mes "确实……";
 		mes "它和教皇的很相似……";
 		mes "看看掉出来的艾普理欧，这一定是那个叫巴格的人造出来的。";
 		next;

@@ -64,7 +64,7 @@ ein_fild04,275,342,5	script	突击队指挥官#	4_M_REBELLION3,{
 		mes "发生了未知错误。";
 		close;
 	case IE_OK:
-		mapannounce "ein_fild04", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "ein_fild04", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + "，正在进入" + .@md_name$ + "。", bc_map, 0xFF99;
 		setquest 12375;// Base maintenance
 		// if (terra_gloria_main == 20)
 		// 	warp "1@swat",35,65;
@@ -598,8 +598,8 @@ OnTimer17000:
 	end;
 OnTimer17300:
 	stopnpctimer;
-	disablenpc instance_npcname("Julian#0_1");
-	enablenpc instance_npcname("Julian#1");
+	disablenpc instance_npcname("朱利安#0_1");
+	enablenpc instance_npcname("朱利安#1");
 	enablenpc instance_npcname("#start_npc2");
 	donpcevent instance_npcname("#hunter_instance_1_mob_1") + "::OnWave1";
 	end;
@@ -609,7 +609,7 @@ OnTimer17300:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start_npc");
-	donpcevent instance_npcname("Julian#0_1") + "::OnStart";
+	donpcevent instance_npcname("朱利安#0_1") + "::OnStart";
 	end;
 }
 
@@ -636,7 +636,7 @@ OnMobDead:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start_npc2");
-	donpcevent instance_npcname("Julian#1") + "::OnStart";
+	donpcevent instance_npcname("朱利安#1") + "::OnStart";
 	end;
 }
 
@@ -656,7 +656,7 @@ OnTouch:
 	if ('event == 1) {
 		'event = 2;
 		delitem 25154, countitem(25154);// Antique_Powder
-		donpcevent instance_npcname("Julian#1_1") + "::OnStart";
+		donpcevent instance_npcname("朱利安#1_1") + "::OnStart";
 	}
 	end;
 
@@ -670,15 +670,15 @@ OnTimer3000:
 OnTimer7000:
 	stopnpctimer;
 	npctalk "朱利安：一开始就遇上麻烦了。";
-	enablenpc instance_npcname("Pile of gunpowder#1");
+	enablenpc instance_npcname("火药堆#1");
 	end;
 }
 
 1@swat,105,50,6	script	朱利安#1_1	4_M_REBELLION2,{
 	end;
 OnStart:
-	disablenpc instance_npcname("Julian#1");
-	enablenpc instance_npcname("Julian#1_1");
+	disablenpc instance_npcname("朱利安#1");
+	enablenpc instance_npcname("朱利安#1_1");
 	initnpctimer;
 	npctalk "朱利安：嗯，是上好的火药。";
 	end;
@@ -708,8 +708,8 @@ OnTimer12000:
 OnTimer17000:
 	stopnpctimer;
 	mapannounce 'map_swat$, "朱利安：我先走。我得处理前面的障碍。", bc_map,0xFFFF77;
-	disablenpc instance_npcname("Julian#1_1");
-	enablenpc instance_npcname("Julian#1_2");
+	disablenpc instance_npcname("朱利安#1_1");
+	enablenpc instance_npcname("朱利安#1_2");
 	enablenpc instance_npcname("#start_npc3");
 	end;
 }
@@ -719,7 +719,7 @@ OnTimer17000:
 		end;
 	'event = 1;
 	specialeffect EF_COIN;
-	disablenpc instance_npcname("Pile of gunpowder#1");
+	disablenpc instance_npcname("火药堆#1");
 	for ( .@i = 0; .@i < 5; .@i++ )
 		makeitem 25154,1,'map_swat$, rand(56,60), rand(84,86);// Antique_Powder
 	initnpctimer;
@@ -742,20 +742,20 @@ OnTouch:
 	if ('event == 2)
 		donpcevent instance_npcname("#start_npc3") + "::OnStart";
 	else if ('event == 3)
-		donpcevent instance_npcname("Julian#1_2") + "::OnStart";
+		donpcevent instance_npcname("朱利安#1_2") + "::OnStart";
 	end;
 
 OnStart:
 	initnpctimer;
-	npctalk "朱利安：这里不用担心。我用剩下的火药就能应付。", instance_npcname("Julian#1_2");
+	npctalk "朱利安：这里不用担心。我用剩下的火药就能应付。", instance_npcname("朱利安#1_2");
 	end;
 OnTimer5000:
-	npctalk "朱利安：你上去看看还有没有残余兵力或威胁。", instance_npcname("Julian#1_2");
+	npctalk "朱利安：你上去看看还有没有残余兵力或威胁。", instance_npcname("朱利安#1_2");
 	end;
 OnTimer10000:
 	stopnpctimer;
-	npctalk "朱利安：别磨蹭，快出发", instance_npcname("Julian#1_2");
-	enablenpc instance_npcname("Suspicious instrument#1");
+	npctalk "朱利安：别磨蹭，快出发", instance_npcname("朱利安#1_2");
+	enablenpc instance_npcname("可疑的装置#1");
 	end;
 }
 
@@ -795,8 +795,8 @@ OnTimer7000:
 OnTimer15000:
 	stopnpctimer;
 	mapannounce 'map_swat$, "朱利安：很好。继续前进。", bc_map,0xFF99;
-	disablenpc instance_npcname("Julian#1_2");
-	enablenpc instance_npcname("Julian#2_ep16_2");
+	disablenpc instance_npcname("朱利安#1_2");
+	enablenpc instance_npcname("朱利安#2_ep16_2");
 	enablenpc instance_npcname("#start_npc4");
 	end;
 }
@@ -814,7 +814,7 @@ OnTimer15000:
 	}
 	if ('event == 2) {
 		'event = 3;
-		disablenpc instance_npcname("Suspicious instrument#1");
+		disablenpc instance_npcname("可疑的装置#1");
 		mapannounce 'map_swat$, "在第2区域检测到入侵者。心猎者们，加强警戒！", bc_map,0xFF5555;
 		initnpctimer;
 	}
@@ -865,21 +865,21 @@ OnTimer1000:
 OnTouch:
 	disablenpc instance_npcname("#start_npc4");
 	initnpctimer;
-	npctalk "朱利安：这可能是最后的安保系统了。但我们的火药已经用完了。", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：这可能是最后的安保系统了。但我们的火药已经用完了。", instance_npcname("朱利安#2_ep16_2");
 	end;
 OnTimer4000:
-	npctalk "朱利安：我们必须为清扫部队确保一条通路。在附近找找火药。", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：我们必须为清扫部队确保一条通路。在附近找找火药。", instance_npcname("朱利安#2_ep16_2");
 	end;
 OnTimer7000:
 	mapannounce 'map_swat$, "在第3区域深处检测到入侵者。心猎者们，不惜一切代价守住基地！", bc_map,0xFF5555;
 	end;
 OnTimer10000:
-	npctalk "朱利安：看来他们开始与我们分散的成员交战了。我们可能很快也会有危险。", instance_npcname("Julian#2_ep16_2");
+	npctalk "朱利安：看来他们开始与我们分散的成员交战了。我们可能很快也会有危险。", instance_npcname("朱利安#2_ep16_2");
 	end;
 OnTimer14000:
 	stopnpctimer;
-	npctalk "朱利安：在你寻找火药期间战斗就可能开始。做好准备。", instance_npcname("Julian#2_ep16_2");
-	enablenpc instance_npcname("Pile of gunpowder#2");
+	npctalk "朱利安：在你寻找火药期间战斗就可能开始。做好准备。", instance_npcname("朱利安#2_ep16_2");
+	enablenpc instance_npcname("火药堆#2");
 	donpcevent instance_npcname("#hunter_instance_1_mob_3") + "::OnStart";
 	end;
 }
@@ -889,7 +889,7 @@ OnTimer14000:
 		end;
 	'event = 4;
 	specialeffect EF_COIN;
-	disablenpc instance_npcname("Pile of gunpowder#2");
+	disablenpc instance_npcname("火药堆#2");
 	initnpctimer;
 	end;
 OnTimer1000:
@@ -930,7 +930,7 @@ OnMobDead:
 	if ('event == 4) {
 		'event = 5;
 		delitem 25154, countitem(25154);// Antique_Powder
-		donpcevent instance_npcname("Julian#2_ep16_2") + "::OnStart";	// officially player can re-trigger the event
+		donpcevent instance_npcname("朱利安#2_ep16_2") + "::OnStart";	// officially player can re-trigger the event
 	}
 	end;
 
@@ -959,13 +959,13 @@ OnTimer9000:
 	end;
 OnTimer14000:
 	mapannounce 'map_swat$, "朱利安：很好。那我们出发吧！", bc_map,0xFF99;
-	disablenpc instance_npcname("Julian#2_ep16_2");
+	disablenpc instance_npcname("朱利安#2_ep16_2");
 	enablenpc instance_npcname("#expl1");
 	enablenpc instance_npcname("#expl2");
 	enablenpc instance_npcname("#expl3");
 	enablenpc instance_npcname("#expl4");
 	enablenpc instance_npcname("#start_boss1");
-	enablenpc instance_npcname("Julian#3");
+	enablenpc instance_npcname("朱利安#3");
 	stopnpctimer;
 	end;
 }
@@ -992,7 +992,7 @@ OnTouch:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start_boss1");
-	donpcevent instance_npcname("Julian#3") + "::OnStart";
+	donpcevent instance_npcname("朱利安#3") + "::OnStart";
 	end;
 }
 
@@ -1020,24 +1020,24 @@ OnTimer24000:
 	end;
 OnTimer28000:
 	specialeffect EF_LORD, AREA, "朱利安#3";
-	cloakonnpc instance_npcname("Julian#3");	// cloakonnpc to display EF_LORD properly
-	enablenpc instance_npcname("Ebel#1_1");
-	npctalk "艾贝尔：我失手了吗……", instance_npcname("Ebel#1_1");
+	cloakonnpc instance_npcname("朱利安#3");	// cloakonnpc to display EF_LORD properly
+	enablenpc instance_npcname("艾贝尔#1_1");
+	npctalk "艾贝尔：我失手了吗……", instance_npcname("艾贝尔#1_1");
 	end;
 OnTimer32000:
-	npctalk "艾贝尔：……你是谁？", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：……你是谁？", instance_npcname("艾贝尔#1_1");
 	end;
 OnTimer36000:
 	mapannounce 'map_swat$, "朱利安：快避开！她不是普通人。", bc_map,0xFF99;
 	end;
 OnTimer40000:
-	npctalk "艾贝尔：想逃？", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：想逃？", instance_npcname("艾贝尔#1_1");
 	end;
 OnTimer45000:
-	npctalk "艾贝尔：抱歉，你逃不掉的。", instance_npcname("Ebel#1_1");
+	npctalk "艾贝尔：抱歉，你逃不掉的。", instance_npcname("艾贝尔#1_1");
 	end;
 OnTimer50000:
-	disablenpc instance_npcname("Ebel#1_1");
+	disablenpc instance_npcname("艾贝尔#1_1");
 	enablenpc instance_npcname("#wp_b1_1");
 	enablenpc instance_npcname("#wp_b1_2");
 	enablenpc instance_npcname("#wp_b1_3");
@@ -1073,7 +1073,7 @@ OnTimer84000:
 OnTimer85000:
 	specialeffect EF_LORD, AREA, instance_npcname("#expl4");
 	stopnpctimer;
-	donpcevent instance_npcname("Julian#3_1") + "::OnStart";
+	donpcevent instance_npcname("朱利安#3_1") + "::OnStart";
 	end;
 }
 
@@ -1081,7 +1081,7 @@ OnTimer85000:
 	end;
 OnStart:
 	enablenpc instance_npcname("#hunter_instance_ebel");
-	monster 'map_swat$,315,47, "Heart Hunter Ebel",3628,1, instance_npcname("#hunter_instance_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
+	monster 'map_swat$,315,47, "Heart Hunter 艾贝尔",3628,1, instance_npcname("#hunter_instance_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
 	'boss_id = $@mobid[0];
 	initnpctimer;
 	end;
@@ -1117,19 +1117,19 @@ OnMobDead:
 1@swat,320,47,4	script	朱利安#3_1	4_M_REBELLION2,{
 	end;
 OnStart:
-	enablenpc instance_npcname("Julian#3_1");
-	enablenpc instance_npcname("Ebel#1_3");
+	enablenpc instance_npcname("朱利安#3_1");
+	enablenpc instance_npcname("艾贝尔#1_3");
 	npctalk "朱利安：你们都平安无事，太好了。";
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "艾贝尔：你刚才用的是什么？", instance_npcname("Ebel#1_3");
+	npctalk "艾贝尔：你刚才用的是什么？", instance_npcname("艾贝尔#1_3");
 	end;
 OnTimer6000:
 	npctalk "朱利安：那是麻痹弹。击中后会使神经系统紊乱。";
 	end;
 OnTimer10000:
-	npctalk "艾贝尔：为什么不杀我？", instance_npcname("Ebel#1_3");
+	npctalk "艾贝尔：为什么不杀我？", instance_npcname("艾贝尔#1_3");
 	end;
 OnTimer13000:
 	npctalk "朱利安：我不想同时杀掉自己人。而且……你对我们来说是未知的势力";
@@ -1158,11 +1158,11 @@ OnTimer36000:
 	end;
 OnTimer40000:
 	stopnpctimer;
-	disablenpc instance_npcname("Ebel#1_3");
+	disablenpc instance_npcname("艾贝尔#1_3");
 	disablenpc instance_npcname("#ext1_1");
 	disablenpc instance_npcname("#ext1_2");
-	disablenpc instance_npcname("Julian#3_1");
-	enablenpc instance_npcname("Julian#3_2");
+	disablenpc instance_npcname("朱利安#3_1");
+	enablenpc instance_npcname("朱利安#3_2");
 	end;
 }
 
@@ -1194,22 +1194,22 @@ OnInstanceInit:
 		disablenpc instance_npcname("#start_npc");
 
 	// Step 1
-	disablenpc instance_npcname("Julian#1_1");
+	disablenpc instance_npcname("朱利安#1_1");
 	disablenpc instance_npcname("#start_npc2");
-	disablenpc instance_npcname("Julian#1");
-	disablenpc instance_npcname("Pile of gunpowder#1");
+	disablenpc instance_npcname("朱利安#1");
+	disablenpc instance_npcname("火药堆#1");
 	disablenpc instance_npcname("#hunter_instance_1_mob_1");
 
 	// Step 2
-	disablenpc instance_npcname("Julian#1_2");
+	disablenpc instance_npcname("朱利安#1_2");
 	disablenpc instance_npcname("#start_npc3");
-	disablenpc instance_npcname("Suspicious instrument#1");
+	disablenpc instance_npcname("可疑的装置#1");
 	disablenpc instance_npcname("#hunter_instance_1_mob_2");
 
 	// Step 3
-	disablenpc instance_npcname("Julian#2_ep16_2");
+	disablenpc instance_npcname("朱利安#2_ep16_2");
 	disablenpc instance_npcname("#start_npc4");
-	disablenpc instance_npcname("Pile of gunpowder#2");
+	disablenpc instance_npcname("火药堆#2");
 	disablenpc instance_npcname("#hunter_instance_1_mob_3");
 
 	// Boss
@@ -1218,17 +1218,17 @@ OnInstanceInit:
 	disablenpc instance_npcname("#expl3");
 	disablenpc instance_npcname("#expl4");
 	disablenpc instance_npcname("#start_boss1");
-	disablenpc instance_npcname("Julian#3");
-	disablenpc instance_npcname("Julian#3_1");
-	disablenpc instance_npcname("Julian#3_2");
-	disablenpc instance_npcname("Ebel#1_1");
+	disablenpc instance_npcname("朱利安#3");
+	disablenpc instance_npcname("朱利安#3_1");
+	disablenpc instance_npcname("朱利安#3_2");
+	disablenpc instance_npcname("艾贝尔#1_1");
 	disablenpc instance_npcname("#wp_b1_1");
 	disablenpc instance_npcname("#wp_b1_2");
 	disablenpc instance_npcname("#wp_b1_3");
 	disablenpc instance_npcname("#wp_b1_4");
 	disablenpc instance_npcname("#wp_b1_5");
 	disablenpc instance_npcname("#hunter_instance_ebel");
-	disablenpc instance_npcname("Ebel#1_3");
+	disablenpc instance_npcname("艾贝尔#1_3");
 	disablenpc instance_npcname("#ext1_1");
 	disablenpc instance_npcname("#ext1_2");
 
@@ -1260,23 +1260,23 @@ OnInstanceInit:
 		end;
 	'status_instance = 1;
 	if (.@s == 1)
-		donpcevent instance_npcname("Julian#4_1") + "::OnStart";
+		donpcevent instance_npcname("朱利安#4_1") + "::OnStart";
 	else
-		donpcevent instance_npcname("Julian#4") + "::OnStart";
+		donpcevent instance_npcname("朱利安#4") + "::OnStart";
 	end;
 
 OnStart:
-	disablenpc instance_npcname("Julian#4");
-	enablenpc instance_npcname("Julian#4_1");
-	npctalk "朱利安：哦，到目前为止我们进行过几次训练了？", instance_npcname("Julian#4_1");
+	disablenpc instance_npcname("朱利安#4");
+	enablenpc instance_npcname("朱利安#4_1");
+	npctalk "朱利安：哦，到目前为止我们进行过几次训练了？", instance_npcname("朱利安#4_1");
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "朱利安：和之前一样，请毫不留情地进攻，就像实战一样。", instance_npcname("Julian#4_1");
+	npctalk "朱利安：和之前一样，请毫不留情地进攻，就像实战一样。", instance_npcname("朱利安#4_1");
 	end;
 OnTimer9000:
 	stopnpctimer;
-	disablenpc instance_npcname("Julian#4_1");
+	disablenpc instance_npcname("朱利安#4_1");
 	donpcevent instance_npcname("#remaining_hunter2_step1") + "::OnStart";
 	end;
 }
@@ -1284,8 +1284,8 @@ OnTimer9000:
 1@swat,53,122,1	script	朱利安#4_1	4_M_REBELLION2,{
 	end;
 OnStart:
-	disablenpc instance_npcname("Julian#4");
-	enablenpc instance_npcname("Julian#4_1");
+	disablenpc instance_npcname("朱利安#4");
+	enablenpc instance_npcname("朱利安#4_1");
 	npctalk "朱利安：你可能对这里不太熟悉。";
 	initnpctimer;
 	end;
@@ -1309,7 +1309,7 @@ OnTimer27000:
 	end;
 OnTimer33000:
 	stopnpctimer;
-	disablenpc instance_npcname("Julian#4_1");
+	disablenpc instance_npcname("朱利安#4_1");
 	donpcevent instance_npcname("#remaining_hunter2_step1") + "::OnStart";
 	end;
 }
@@ -1363,7 +1363,7 @@ OnTouch:
 	specialeffect EF_LORD, AREA, instance_npcname("#wl92");
 	cloakonnpc instance_npcname("#wl92");
 	enablenpc instance_npcname("#start2_2_1");
-	enablenpc instance_npcname("Julian#5");
+	enablenpc instance_npcname("朱利安#5");
 	setcell 'map_swat$,23,222,40,222,cell_walkable,1;
 	end;
 }
@@ -1373,7 +1373,7 @@ OnTouch:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start2_2_1");
-	donpcevent instance_npcname("Julian#5") + "::OnStart";
+	donpcevent instance_npcname("朱利安#5") + "::OnStart";
 	end;
 }
 
@@ -1393,7 +1393,7 @@ OnTimer7000:
 	end;
 OnTimer11000:
 	stopnpctimer;
-	disablenpc instance_npcname("Julian#5");
+	disablenpc instance_npcname("朱利安#5");
 	mapannounce 'map_swat$, "敌人正在接近第2防御基地。现宣布进入第2阶段。", bc_map,0xFF5555;
 	donpcevent instance_npcname("#remaining_hunter2_step2") + "::OnStart";
 	end;
@@ -1439,9 +1439,9 @@ OnTimer1000:
 	setcell 'map_swat$,22,272,52,272,cell_walkable,1;
 
 	enablenpc instance_npcname("#start2_2_2");
-	enablenpc instance_npcname("Julian#6");
+	enablenpc instance_npcname("朱利安#6");
 	enablenpc instance_npcname("SWT_8309#1");
-	enablenpc instance_npcname("Pile of gunpowder#4");
+	enablenpc instance_npcname("火药堆#4");
 	end;
 }
 
@@ -1450,7 +1450,7 @@ OnTimer1000:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start2_2_2");
-	donpcevent instance_npcname("Julian#6") + "::OnStart";
+	donpcevent instance_npcname("朱利安#6") + "::OnStart";
 	end;
 }
 
@@ -1544,9 +1544,9 @@ OnTimer1000:
 	disablenpc instance_npcname("#hunter_instance_2_maze");
 	mapannounce 'map_swat$, "敌人使第3安保系统失效。基地防御失败。", bc_map,0xFF5555;
 	killmonster 'map_swat$, instance_npcname("#hunter_instance_2_maze") + "::OnMobDead";
-	enablenpc instance_npcname("Julian#7");
-	enablenpc instance_npcname("Ebel#3");
-	enablenpc instance_npcname("Julian#8_0");
+	enablenpc instance_npcname("朱利安#7");
+	enablenpc instance_npcname("艾贝尔#3");
+	enablenpc instance_npcname("朱利安#8_0");
 	enablenpc instance_npcname("#start2_boss");
 	enablenpc instance_npcname("#wp_boss");
 	end;
@@ -1554,7 +1554,7 @@ OnTimer1000:
 
 1@swat,82,248,0	script	火药堆#4	4_ENERGY_YELLOW,{
 	specialeffect EF_COIN;
-	disablenpc instance_npcname("Pile of gunpowder#4");
+	disablenpc instance_npcname("火药堆#4");
 	for ( .@i = 0; .@i < 4; .@i++ )
 		makeitem 25154,1,'map_swat$, rand(78,82), rand(250,251);	// Antique_Powder
 	initnpctimer;
@@ -1575,7 +1575,7 @@ OnTimer1000:
 	end;
 OnTouch:
 	disablenpc instance_npcname("#start2_boss");	// note: this npc is only disabled from here
-	npctalk "朱利安：很好。干得漂亮，艾贝尔。不，别踢那只狗……它不是敌人。", instance_npcname("Julian#8_0");
+	npctalk "朱利安：很好。干得漂亮，艾贝尔。不，别踢那只狗……它不是敌人。", instance_npcname("朱利安#8_0");
 	end;
 }
 
@@ -1602,26 +1602,26 @@ OnTouch:
 		mes "不，别用那种眼神看我。这女孩从不跟其他男人说话。所以我就成了负责她的人。";
 		next;
 		mes "[朱利安]";
-		mes "... It's real.";
+		mes "……是真的。";
 		close2;
 		if (is_party_leader() == true && 'status_instance == 2)
-			donpcevent instance_npcname("Julian#8") + "::OnStart";
+			donpcevent instance_npcname("朱利安#8") + "::OnStart";
 		end;
 	}
 	mes "[朱利安]";
 	mes "嗯。很好。我们马上开始吧。";
 	if (is_party_leader() == true && 'status_instance == 2)
-		donpcevent instance_npcname("Julian#8_0") + "::OnStart";
+		donpcevent instance_npcname("朱利安#8_0") + "::OnStart";
 	close;
 OnStart:
 	'status_instance = 3;
-	disablenpc instance_npcname("Julian#8_0");
-	enablenpc instance_npcname("Julian#8");
+	disablenpc instance_npcname("朱利安#8_0");
+	enablenpc instance_npcname("朱利安#8");
 	initnpctimer;
-	npctalk "朱利安：艾贝尔～你上次和这家伙交过手。还记得吗？", instance_npcname("Julian#8");
+	npctalk "朱利安：艾贝尔～你上次和这家伙交过手。还记得吗？", instance_npcname("朱利安#8");
 	end;
 OnTimer4000:
-	npctalk "艾贝尔：我不记得了。他是来摧毁这里的吗？", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：我不记得了。他是来摧毁这里的吗？", instance_npcname("艾贝尔#3");
 	stopnpctimer;
 	donpcevent instance_npcname("#hunter_instance_2_talk") + "::OnStart";
 	end;
@@ -1631,8 +1631,8 @@ OnTimer4000:
 	end;
 OnStart:
 	'status_instance = 3;
-	disablenpc instance_npcname("Julian#8_0");
-	enablenpc instance_npcname("Julian#8");
+	disablenpc instance_npcname("朱利安#8_0");
+	enablenpc instance_npcname("朱利安#8");
 	initnpctimer;
 	npctalk "朱利安：这就是我们上次抓到的女孩。";
 	end;
@@ -1649,14 +1649,14 @@ OnTimer18000:
 	npctalk "朱利安：你必须帮我查明她的潜在能力。";
 	end;
 OnTimer22000:
-	npctalk "艾贝尔：朱利安，那是敌人吗？", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：朱利安，那是敌人吗？", instance_npcname("艾贝尔#3");
 	end;
 OnTimer25000:
 	npctalk "朱利安：哦，你面前的人只是暂时当你的敌人。";
 	end;
 OnTimer29000:
 	stopnpctimer;
-	npctalk "艾贝尔：他是来摧毁这里的吗？", instance_npcname("Ebel#3");
+	npctalk "艾贝尔：他是来摧毁这里的吗？", instance_npcname("艾贝尔#3");
 	donpcevent instance_npcname("#hunter_instance_2_talk") + "::OnStart";
 	end;
 }
@@ -1667,23 +1667,23 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "朱利安：嗯……差不多吧。", instance_npcname("Julian#8");
+	npctalk "朱利安：嗯……差不多吧。", instance_npcname("朱利安#8");
 	end;
 OnTimer5000:
-	specialeffect EF_INCAGILITY, AREA, instance_npcname("Ebel#3");
-	npctalk "艾贝尔：那么……", instance_npcname("Ebel#3");
+	specialeffect EF_INCAGILITY, AREA, instance_npcname("艾贝尔#3");
+	npctalk "艾贝尔：那么……", instance_npcname("艾贝尔#3");
 	end;
 OnTimer7000:
-	specialeffect EF_SIGNUM, AREA, instance_npcname("Ebel#3");
-	npctalk "艾贝尔：我会阻止他。", instance_npcname("Ebel#3");
+	specialeffect EF_SIGNUM, AREA, instance_npcname("艾贝尔#3");
+	npctalk "艾贝尔：我会阻止他。", instance_npcname("艾贝尔#3");
 	end;
 OnTimer8000:
 	mapannounce 'map_swat$, "安保系统：现宣布进入紧急状态第2阶段。自动防御装置已启动。", bc_map,0xFF5555;
 	end;
 OnTimer12000:
 	stopnpctimer;
-	disablenpc instance_npcname("Julian#8");
-	disablenpc instance_npcname("Ebel#3");
+	disablenpc instance_npcname("朱利安#8");
+	disablenpc instance_npcname("艾贝尔#3");
 	for ( .@i = 141; .@i <= 152; .@i++ )
 		enablenpc instance_npcname( "#tr" + .@i );
 	donpcevent instance_npcname("#hunter_instance_2_ebel") + "::OnStart";
@@ -1694,7 +1694,7 @@ OnTimer12000:
 	end;
 OnStart:
 	enablenpc instance_npcname("#hunter_instance_2_ebel");
-	monster 'map_swat$,129,258, "Heart_Hunter Ebel",3628,1, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
+	monster 'map_swat$,129,258, "Heart_Hunter 艾贝尔",3628,1, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
 	end;
 OnMobDead:
 	if (mobcount( 'map_swat$, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead" ) < 1)
@@ -1704,14 +1704,14 @@ OnTimer1000:
 	mapannounce 'map_swat$, "安保系统：紧急状态已解除。正在终止自动防御装置。", bc_map,0xFF5555;
 	end;
 OnTimer4000:
-	enablenpc instance_npcname("Julian#8_1");
-	enablenpc instance_npcname("Ebel#3_1");
+	enablenpc instance_npcname("朱利安#8_1");
+	enablenpc instance_npcname("艾贝尔#3_1");
 	for ( .@i = 141; .@i <= 152; .@i++ )
 		disablenpc instance_npcname( "#tr" + .@i );
 	end;
 OnTimer7000:
 	stopnpctimer;
-	donpcevent instance_npcname("Julian#8_1") + "::OnStart";
+	donpcevent instance_npcname("朱利安#8_1") + "::OnStart";
 	end;
 }
 
@@ -1755,34 +1755,34 @@ OnTimer10000:
 	npctalk "朱利安：我们还得再观察她一段时间……";
 	end;
 OnTimer13000:
-	npctalk "艾贝尔：我……要被处理掉了吗？", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：我……要被处理掉了吗？", instance_npcname("艾贝尔#3_1");
 	end;
 OnTimer16000:
 	npctalk "朱利安：你在说什么？处理掉只适用于机器。";
 	end;
 OnTimer20000:
-	npctalk "艾贝尔：那么，你不会处理掉我？", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：那么，你不会处理掉我？", instance_npcname("艾贝尔#3_1");
 	end;
 OnTimer23000:
 	npctalk "朱利安：别啰嗦了。训练结束了，准备吃饭吧。到吃饭时间了。";
 	end;
 OnTimer28000:
-	npctalk "艾贝尔：吃饭……", instance_npcname("Ebel#3_1");
-	emotion ET_SURPRISE, getnpcid(0, instance_npcname("Ebel#3_1") );
+	npctalk "艾贝尔：吃饭……", instance_npcname("艾贝尔#3_1");
+	emotion ET_SURPRISE, getnpcid(0, instance_npcname("艾贝尔#3_1") );
 	end;
 OnTimer31000:
 	npctalk "朱利安：对。去换上便服吧。";
 	end;
 OnTimer35000:
-	npctalk "艾贝尔：艾贝尔听从朱利安的指示。", instance_npcname("Ebel#3_1");
+	npctalk "艾贝尔：艾贝尔听从朱利安的指示。", instance_npcname("艾贝尔#3_1");
 	emotion ET_OK;
 	end;
 OnTimer41000:
-	disablenpc instance_npcname("Ebel#3_1");
+	disablenpc instance_npcname("艾贝尔#3_1");
 	end;
 OnTimer42000:
 	stopnpctimer;
-	npctalk "朱利安：嗯。干得好。我们离开训练场吧。出口在楼上。从我身后的楼梯上去。", instance_npcname("Julian#8_1");
+	npctalk "朱利安：嗯。干得好。我们离开训练场吧。出口在楼上。从我身后的楼梯上去。", instance_npcname("朱利安#8_1");
 	enablenpc instance_npcname("#wp_out");
 	end;
 
@@ -1793,44 +1793,44 @@ OnInstanceInit:
 	'map_swat$ = instance_mapname("1@swat");
 
 	if (instance_live_info(ILI_NAME) != "Heart Hunter War Base 2")
-		disablenpc instance_npcname("Julian#4");
+		disablenpc instance_npcname("朱利安#4");
 
 	// warps
 	disablenpc instance_npcname("#wp_boss");
 	disablenpc instance_npcname("#wp_out");
 
 	// Entrance
-	disablenpc instance_npcname("Julian#4_1");
+	disablenpc instance_npcname("朱利安#4_1");
 
 	// Step 1
 	disablenpc instance_npcname("#remaining_hunter2_step1");
 	disablenpc instance_npcname("#start2_1_1");
 
 	// Step 2
-	disablenpc instance_npcname("Julian#5");
+	disablenpc instance_npcname("朱利安#5");
 	disablenpc instance_npcname("#start2_2_1");
 	disablenpc instance_npcname("#remaining_hunter2_step2");
 
 	// Step 3 - Maze
 	disablenpc instance_npcname("#start2_2_2");
-	disablenpc instance_npcname("Julian#6");
+	disablenpc instance_npcname("朱利安#6");
 	disablenpc instance_npcname("SWT_8309#1");
 	disablenpc instance_npcname("#hunter_instance_2_maze");
-	disablenpc instance_npcname("Pile of gunpowder#4");
+	disablenpc instance_npcname("火药堆#4");
 
 	// Step 4 - Boss
-	disablenpc instance_npcname("Julian#7");
-	disablenpc instance_npcname("Ebel#3");
-	disablenpc instance_npcname("Julian#8_0");
-	disablenpc instance_npcname("Julian#8");
+	disablenpc instance_npcname("朱利安#7");
+	disablenpc instance_npcname("艾贝尔#3");
+	disablenpc instance_npcname("朱利安#8_0");
+	disablenpc instance_npcname("朱利安#8");
 	disablenpc instance_npcname("#start2_boss");
 	disablenpc instance_npcname("#hunter_instance_2_talk");
 	disablenpc instance_npcname("#hunter_instance_2_ebel");
 
 	for ( .@i = 141; .@i <= 152; .@i++ )
 		disablenpc instance_npcname( "#tr" + .@i );
-	disablenpc instance_npcname("Julian#8_1");
-	disablenpc instance_npcname("Ebel#3_1");
+	disablenpc instance_npcname("朱利安#8_1");
+	disablenpc instance_npcname("艾贝尔#3_1");
 
 	setcell 'map_swat$,23,222,40,222,cell_walkable,0;
 	setcell 'map_swat$,22,272,52,272,cell_walkable,0;

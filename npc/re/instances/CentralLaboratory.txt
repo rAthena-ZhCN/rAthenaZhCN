@@ -80,7 +80,7 @@ verus01,149,155,5	script	文明探索者#pa0829_01	4_LGTSCIENCE,{
 		next;
 		if (select( "这不是我感兴趣的话题。", "有意思。有什么结果吗？" ) == 1) {
 			mes "[文明探索者]";
-			mes "Unfortunate.";
+			mes "真遗憾。";
 			close;
 		}
 		mes "[文明探索者]";
@@ -97,7 +97,7 @@ verus01,149,155,5	script	文明探索者#pa0829_01	4_LGTSCIENCE,{
 		next;
 		if (select( "不感兴趣。", "Ok." ) == 1) {
 			mes "[文明探索者]";
-			mes "Unfortunate.";
+			mes "真遗憾。";
 			close;
 		}
 		mes "[文明探索者]";
@@ -184,11 +184,11 @@ verus01,149,155,5	script	文明探索者#pa0829_01	4_LGTSCIENCE,{
 		enablenpc instance_npcname("lab_warp#1");
 		enablenpc instance_npcname("lab_warp#2");
 		enablenpc instance_npcname("lab_warp#3");
-		enablenpc instance_npcname("Main Switch#");
-		enablenpc instance_npcname("Senior researcher#pa082");
+		enablenpc instance_npcname("主开关#");
+		enablenpc instance_npcname("资深研究员#pa082");
 		enablenpc instance_npcname("#eff_nc");
 		for ( .@i = 1; .@i <= 8; ++.@i )
-			enablenpc instance_npcname( "Switch" + .@i + "#" );
+			enablenpc instance_npcname( "开关" + .@i + "#" );
 	}
 	end;
 
@@ -205,18 +205,18 @@ OnInstanceInit:
 	disablenpc instance_npcname("lab_warp#4");
 	disablenpc instance_npcname("lab_warp#5");
 
-	// Switchs
-	disablenpc instance_npcname("Main Switch#");
-	disablenpc instance_npcname("Senior researcher#pa082");
+	// 开关s
+	disablenpc instance_npcname("主开关#");
+	disablenpc instance_npcname("资深研究员#pa082");
 	disablenpc instance_npcname("#eff_nc");
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname( "Switch" + .@i + "#" );
+		disablenpc instance_npcname( "开关" + .@i + "#" );
 
 	// Experiments
-	disablenpc instance_npcname("DR Silvia#pa0829");
-	disablenpc instance_npcname("DR Federico#pa0829");
-	disablenpc instance_npcname("DR Artemia#pa0829");
-	disablenpc instance_npcname("DR Vincent#pa0829");
+	disablenpc instance_npcname("西尔维娅博士#pa0829");
+	disablenpc instance_npcname("费德里科博士#pa0829");
+	disablenpc instance_npcname("阿特米娅博士#pa0829");
+	disablenpc instance_npcname("文森特博士#pa0829");
 	disablenpc instance_npcname("#wp01");
 	disablenpc instance_npcname("#npc_con01");
 	disablenpc instance_npcname("#npc_con03");
@@ -233,7 +233,7 @@ OnInstanceInit:
 }
 // 1@lab,104,34,4	script	Probationary researcher#pa0829_2	4_LGTSCIENCE
 
-// Switchs
+// 开关s
 1@lab,37,37,3	script	开关1#	CLEAR_NPC,{
 	.@num = charat( strnpcinfo(1),6 );
 	setarray .@position$[0], "OFF", "ON";
@@ -243,13 +243,13 @@ OnInstanceInit:
 	'switch_position[.@num] = !( select( "开启","关闭" ) - 1 );
 	close;
 }
-1@lab,39,37,3	duplicate(开关1#)	Switch2#	CLEAR_NPC
-1@lab,41,37,3	duplicate(开关1#)	Switch3#	CLEAR_NPC
-1@lab,43,37,3	duplicate(开关1#)	Switch4#	CLEAR_NPC
-1@lab,46,37,3	duplicate(开关1#)	Switch5#	CLEAR_NPC
-1@lab,48,37,3	duplicate(开关1#)	Switch6#	CLEAR_NPC
-1@lab,50,37,3	duplicate(开关1#)	Switch7#	CLEAR_NPC
-1@lab,52,37,3	duplicate(开关1#)	Switch8#	CLEAR_NPC
+1@lab,39,37,3	duplicate(开关1#)	开关2#	CLEAR_NPC
+1@lab,41,37,3	duplicate(开关1#)	开关3#	CLEAR_NPC
+1@lab,43,37,3	duplicate(开关1#)	开关4#	CLEAR_NPC
+1@lab,46,37,3	duplicate(开关1#)	开关5#	CLEAR_NPC
+1@lab,48,37,3	duplicate(开关1#)	开关6#	CLEAR_NPC
+1@lab,50,37,3	duplicate(开关1#)	开关7#	CLEAR_NPC
+1@lab,52,37,3	duplicate(开关1#)	开关8#	CLEAR_NPC
 
 1@lab,34,37,3	script	主开关#	CLEAR_NPC,{
 	.@string$ = 'switch_position[1] + "" + 'switch_position[2] + "" + 'switch_position[3] + "" + 'switch_position[4] + "" +
@@ -267,14 +267,14 @@ OnInstanceInit:
 		npctalk "通行码正确。正在开门。";
 		enablenpc instance_npcname("lab_warp#4");
 		enablenpc instance_npcname("lab_warp#5");
-		enablenpc instance_npcname("DR Silvia#pa0829");
-		enablenpc instance_npcname("DR Federico#pa0829");
-		enablenpc instance_npcname("DR Artemia#pa0829");
-		enablenpc instance_npcname("DR Vincent#pa0829");
+		enablenpc instance_npcname("西尔维娅博士#pa0829");
+		enablenpc instance_npcname("费德里科博士#pa0829");
+		enablenpc instance_npcname("阿特米娅博士#pa0829");
+		enablenpc instance_npcname("文森特博士#pa0829");
 		enablenpc instance_npcname("#wp01");
 		donpcevent instance_npcname("#eff_nc") + "::OnStop";
 		for ( .@i = 1; .@i <= 8; ++.@i )
-			disablenpc instance_npcname( "Switch" + .@i + "#" );
+			disablenpc instance_npcname( "开关" + .@i + "#" );
 	}
 	end;
 }
@@ -296,7 +296,7 @@ OnInstanceInit:
 	mes "[资深研究员]";
 	mes "输入通行码后，按下入口附近的主按钮。";
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		specialeffect EF_STEAL, AREA, instance_npcname("Switch" + .@i + "#");
+		specialeffect EF_STEAL, AREA, instance_npcname("开关" + .@i + "#");
 	close2;
 	donpcevent instance_npcname("#eff_nc") + "::OnStart";
 	end;
@@ -306,9 +306,9 @@ OnInstanceInit:
 	end;
 OnStart:
 OnTimer2000:
-	specialeffect 203,AREA, instance_npcname("Main Switch#");
+	specialeffect 203,AREA, instance_npcname("主开关#");
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		specialeffect (203+.@i),AREA, instance_npcname("Switch" + .@i + "#");
+		specialeffect (203+.@i),AREA, instance_npcname("开关" + .@i + "#");
 	initnpctimer;
 	end;
 OnStop:
@@ -374,10 +374,10 @@ OnTouch:
 1@lab,4,1,3	script	#npc_con01	CLEAR_NPC,{
 	end;
 OnStart:
-	'vincent$ = instance_npcname("DR Vincent#pa0829");
-	'federico$ = instance_npcname("DR Federico#pa0829");
-	'silvia$ = instance_npcname("DR Silvia#pa0829");
-	'artemia$ = instance_npcname("DR Artemia#pa0829");
+	'vincent$ = instance_npcname("文森特博士#pa0829");
+	'federico$ = instance_npcname("费德里科博士#pa0829");
+	'silvia$ = instance_npcname("西尔维娅博士#pa0829");
+	'artemia$ = instance_npcname("阿特米娅博士#pa0829");
 	'gen_01$ = instance_npcname("#gen_01");
 	'gen_02$ = instance_npcname("#gen_02");
 	'gen_03$ = instance_npcname("#gen_03");

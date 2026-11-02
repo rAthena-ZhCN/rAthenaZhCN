@@ -16,15 +16,15 @@ OnInstanceInit:
 	'map$ = instance_mapname("1@os_a");
 	for (.@i = 1; .@i < 26; .@i++)
 		disablenpc instance_npcname("#ocp_rebel_" + .@i);
-	hideonnpc instance_npcname("Est#171_ocp_0");
+	hideonnpc instance_npcname("艾丝特#171_ocp_0");
 	disablenpc instance_npcname("#171_ocp_dev_0");
 	disablenpc instance_npcname("#171_ocp_dev_1");
 	disablenpc instance_npcname("#171_ocp_wrp_0");
 	disablenpc instance_npcname("#171_ocp_wrp_1");
 	disablenpc instance_npcname("#171_ocp_wrp_2");
 	disablenpc instance_npcname("#171_ocp_miguel");
-	disablenpc instance_npcname("Est#171_ocp_1");
-	disablenpc instance_npcname("Operation Officer#171_osd");
+	disablenpc instance_npcname("艾丝特#171_ocp_1");
+	disablenpc instance_npcname("作战军官#171_osd");
 	end;
 
 OnStory01:
@@ -33,14 +33,14 @@ OnStory01:
 		enablenpc instance_npcname("#ocp_rebel_" + .@i);
 	enablenpc instance_npcname("#171_ocp_dev_0");
 	sleep2 1000;
-	hideoffnpc instance_npcname("Est#171_ocp_0");
-	doevent instance_npcname("Est#171_ocp_0") + "::OnEvent";
+	hideoffnpc instance_npcname("艾丝特#171_ocp_0");
+	doevent instance_npcname("艾丝特#171_ocp_0") + "::OnEvent";
 	end;
 
 OnStory02:
 	for (.@i = 1; .@i < 26; .@i++)
 		hideonnpc instance_npcname("#ocp_rebel_" + .@i);
-	disablenpc instance_npcname("Est#171_ocp_0");
+	disablenpc instance_npcname("艾丝特#171_ocp_0");
 	sleep2 3000;
 	donpcevent instance_npcname("#171_ocp_mob") + "::OnSummonStory01";
 	doevent instance_npcname("#171_ocp_dev_0") + "::OnEvent01";
@@ -80,7 +80,7 @@ OnTouch:
 	disablenpc();
 	disablenpc instance_npcname("#os_occupation_ev_0");
 	doevent instance_npcname("#os_occupation_control") + "::OnDaily01";
-	disablenpc instance_npcname("Est#171_ocp_0");
+	disablenpc instance_npcname("艾丝特#171_ocp_0");
 	end;
 }
 
@@ -118,14 +118,14 @@ OnEvent:
 
 1@os_a,29,360,3	script	#171_ocp_dev_0	4_SCR_MT_ROBOTS,{
 	if ('ocp >= 5) {
-		mes "## Received Message ##";
-		mes "## Team Alpha's last communication was at Oscar Sierra 52 177 ##";
+		mes "## 收到讯息 ##";
+		mes "## 阿尔法小队最后通讯位置：奥斯卡·塞拉 52 177 ##";
 		navigateto("1@os_a",52,177);
 		close;
 	}
 	switch ('ocp) {
 	case 1:
-		mes "## Enter Message Input ##";
+		mes "## 输入讯息 ##";
 		next;
 		setarray .@input$,
 		"Engaging with mutants on north.","Engaging with small mutants.","Ah~! I want to go home!";
@@ -136,7 +136,7 @@ OnEvent:
 		doevent instance_npcname(strnpcinfo(0)) + "::OnEvent02";
 		close;
 	case 3:
-		mes "## Enter Message Input ##";
+		mes "## 输入讯息 ##";
 		next;
 		setarray .@input$,
 		"Echo is fighting too. Requesting for support.","There was an engagement, but it's over.","Save me!";
@@ -147,7 +147,7 @@ OnEvent:
 		doevent instance_npcname(strnpcinfo(0)) + "::OnEvent03";
 		close;
 	default:
-		mes "## No Communication Status ##";
+		mes "## 无通讯状态 ##";
 		close;
 	}
 	end;
@@ -221,7 +221,7 @@ OnEvent03:
 
 1@os_a,52,177,3	script	#171_ocp_dev_1	4_SCR_MT_ROBOTS,3,3,{
 	if ('ocp == 5) {
-		mes "## Send Message Input ##";
+		mes "## 发送讯息 ##";
 		next;
 		select("没有阿尔法的踪迹。只有无线电。");
 		'ocp = 6;
@@ -235,7 +235,7 @@ OnEvent03:
 		mapannounce 'map$,"艾丝特：布拉沃已完成东侧的搜索。",bc_map,0x00EEEE;
 		sleep2 4000;
 		mapannounce 'map$,"艾丝特：我们要向南移动。我会发送新坐标。请做好战斗准备。",bc_map,0x00EEEE;
-		mes "## Coordinates Received ##";
+		mes "## 已接收坐标 ##";
 		enablenpc instance_npcname("#171_ocp_wrp_0");
 		hideonnpc instance_npcname("#171_ocp_wrp_0");
 		donpcevent instance_npcname("#171_ocp_wrp_0") + "::OnMobSpawn";
@@ -376,7 +376,7 @@ OnTimer10000:
 		next;
 		cutin "ep171_miguel03",0;
 		mes "[？？？]";
-		mes "... Est?";
+		mes "……艾斯特？";
 		next;
 		cutin "ep162_est01",2;
 		mes "[艾丝特]";
@@ -404,7 +404,7 @@ OnTimer10000:
 		next;
 		cutin "ep171_miguel03",0;
 		mes "[米古尔]";
-		mes "... Est, the last thing I'll see... is your face... That's a relief.";
+		mes "……艾斯特，我最后看到的……是你的脸……太好了。";
 		next;
 		cutin "ep162_est01",2;
 		mes "[艾丝特]";
@@ -608,14 +608,14 @@ OnSummonBoss:
 
 OnBossKillStory:
 	enablenpc instance_npcname("#171_ocp_miguel");
-	enablenpc instance_npcname("Est#171_ocp_1");
+	enablenpc instance_npcname("艾丝特#171_ocp_1");
 	end;
 
 OnBossKill:
 	.@event$ = instance_npcname(strnpcinfo(0)) + "::OnSummonKill";
 	killmonster 'map$,.@event$;
 	mapannounce 'map$,"作战军官：看来我来晚了一点！",bc_map,0x00EEEE;
-	enablenpc instance_npcname("Operation Officer#171_osd");
+	enablenpc instance_npcname("作战军官#171_osd");
 	end;
 
 OnBossSkill:

@@ -40,7 +40,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		mes "[机器人]";
 		mes "你好，" + strcharinfo(0) + "？";
 		mes "你是来看农场设施的吗？";
-		npctalk "Meow.", "Kitty#greeen", bc_self;
+		npctalk "喵。", "Kitty#greeen", bc_self;
 		next;
 		if (select( "Huh.", "No." ) == 2) {
 			mes "[机器人]";
@@ -53,11 +53,11 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		mes "喵喵，乖乖别动。好孩子~";
 		mes "我负责管理这里的农场设施。";
 		mes "我照料植物、施肥，还喂养这里的喵喵和它的伙伴们。";
-		npctalk "Purr.", "Kitty#greeen", bc_self;
+		npctalk "呼噜。", "Kitty#greeen", bc_self;
 		next;
 		mes "[机器人]";
 		mes "食堂供应的甜点原料就是在这里采收的。";
-		mes "Ehem.";
+		mes "咳咳。";
 		next;
 		mes "[机器人]";
 		mes "最近客人很多，我们接到的采收订单也增加了。";
@@ -74,7 +74,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		mes "不知道这算不算奇怪，我虽然不是肉食人火龙果，却很擅长倾听。";
 		next;
 		mes "- 露依纳轻抚着肉食人火龙果。-";
-		npctalk "Purr.", "Kitty#greeen", bc_self;
+		npctalk "呼噜。", "Kitty#greeen", bc_self;
 		next;
 		mes "[露依纳]";
 		mes "主人吩咐过我，要给可爱的小家伙们取名字。";
@@ -156,18 +156,18 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		mes "[露依纳]";
 		mes "小家伙们来找你玩了吗？";
 		mes "真奇怪……我听得很清楚啊。";
-		mes "... what? Even Silk?";
+		mes "……什么？连希尔克也？";
 		mes "怎么了？";
 		next;
 		select( "它在假装自己是猫。" );
 		emotion ET_FRET, getnpcid(0,"Kitty#greeen");
 		mes "[喵喵]";
-		mes "Cluck.";
+		mes "咕。";
 		next;
 		mes "-- 那只猫在露依纳伸手之前就躲到了她身后。--";
 		next;
 		mes "[露依纳]";
-		mes "What...";
+		mes "什么……";
 		next;
 		mes "[露依纳]";
 		mes "也许……只是也许？";
@@ -175,7 +175,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		next;
 		select( "我想是吧。" );
 		mes "[露依纳]";
-		mes "Kitty.";
+		mes "小猫。";
 		npctalk "*低吼*", "Kitty#greeen", bc_self;
 		next;
 		mes "[露依纳]";
@@ -188,7 +188,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		mes "- 露依纳抚摸着猫，脸上浮现出满足又复杂的神情。-";
 		next;
 		mes "[露依纳]";
-		mes "Hmm...";
+		mes "嗯……";
 		mes "客人总有一天也能和喵喵成为朋友吧？";
 		next;
 		mes "[露依纳]";
@@ -204,7 +204,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		getexp 3094009,0;
 		next;
 		mes "[露依纳]";
-		mes "Probably.";
+		mes "大概吧。";
 		npctalk "嘎嘎。", "Kitty#greeen", bc_self;
 		next;
 		mes "- 那猫兴奋似地发出高亢的叫声。-";
@@ -298,8 +298,8 @@ OnTouch:
 		end;
 	disablenpc();
 	'lost_farm = 0;
-	enablenpc instance_npcname("Wooden Box#01");
-	npctalk "哦！客人！这边！！", instance_npcname("Wooden Box#01");
+	enablenpc instance_npcname("大喵喵#01");
+	npctalk "哦！客人！这边！！", instance_npcname("大喵喵#01");
 	end;
 }
 
@@ -321,7 +321,7 @@ OnTouch:
 		close2;
 		if ('lost_farm == 0) {
 			'lost_farm = 1;
-			donpcevent instance_npcname("Wooden Box#01") + "::OnStart";
+			donpcevent instance_npcname("大喵喵#01") + "::OnStart";
 		}
 		end;
 	}
@@ -330,7 +330,7 @@ OnTouch:
 
 OnStart:
 	sleep 1000;
-	.@event$ = instance_npcname("Wooden Box#01") + "::OnMobDead";
+	.@event$ = instance_npcname("大喵喵#01") + "::OnMobDead";
 	monster 'map_lost$,155,43,"King Eyes",20660,1, .@event$;
 	monster 'map_lost$,154,50,"Happy",20664,1, .@event$;
 	monster 'map_lost$,158,49,"Toto",20661,1, .@event$;
@@ -340,12 +340,12 @@ OnStart:
 	monster 'map_lost$,165,42,"Rusk",20664,1, .@event$;
 	end;
 OnMobDead:
-	if (mobcount('map_lost$, instance_npcname("Wooden Box#01") + "::OnMobDead") == 0) {
+	if (mobcount('map_lost$, instance_npcname("大喵喵#01") + "::OnMobDead") == 0) {
 		'lost_farm = 2;
 		disablenpc();
-		enablenpc instance_npcname("Silk#01");
+		enablenpc instance_npcname("大喵喵#01");
 		sleep 1000;
-		npctalk "席克：！！", instance_npcname("Silk#01");
+		npctalk "席克：！！", instance_npcname("大喵喵#01");
 	}
 	end;
 }
@@ -393,7 +393,7 @@ OnMobDead:
 	npctalk "席克：但像你那样抱起它陪它玩，会比抚摸五分钟快得多。";
 	next;
 	mes "[席克]";
-	mes "... though I can't hold onto it.";
+	mes "……但我抓不住它。";
 	npctalk "席克：……不过我可抓不住它。";
 	next;
 	mes "[席克]";
@@ -403,7 +403,7 @@ OnMobDead:
 	if ('lost_farm == 2) {
 		'lost_farm = 3;
 		disablenpc();
-		enablenpc instance_npcname("Silk#02");
+		enablenpc instance_npcname("大喵喵#02");
 		instance_warpall 'map_lost$,218,149,instance_id();
 	}
 	end;
@@ -442,7 +442,7 @@ OnMobDead:
 			'lost_farm = 4;
 			npctalk "席克：食物已经撒好了，它们很快就会出来！";
 			disablenpc();
-			donpcevent instance_npcname("Wooden Box#02") + "::OnStart";
+			donpcevent instance_npcname("大喵喵#02") + "::OnStart";
 		}
 		end;
 	}
@@ -484,7 +484,7 @@ OnMobDead:
 OnStart:
 	enablenpc();
 	sleep 1000;
-	.@event$ = instance_npcname("Wooden Box#02") + "::OnMobDead";
+	.@event$ = instance_npcname("大喵喵#02") + "::OnMobDead";
 	monster 'map_lost$,210,148,"Lucy",20662,1, .@event$;
 	monster 'map_lost$,208,153,"Elizabeth",20660,1, .@event$;
 	monster 'map_lost$,215,151,"Dorothy",20664,1, .@event$;
@@ -498,12 +498,12 @@ OnStart:
 	npctalk "席克：救救机器人~~~~~";
 	end;
 OnMobDead:
-	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#02") + "::OnMobDead");
+	.@count = mobcount('map_lost$, instance_npcname("大喵喵#02") + "::OnMobDead");
 	if (.@count == 0) {
 		'lost_farm = 4;
 		disablenpc();
-		enablenpc instance_npcname("Silk#02");
-		npctalk "席克：……结束了吗？", instance_npcname("Silk#02");
+		enablenpc instance_npcname("大喵喵#02");
+		npctalk "席克：……结束了吗？", instance_npcname("大喵喵#02");
 		end;
 	}
 	npctalk "席克：剩下" + (.@count == 1 ? "的" : "的") + " " + .@count + "只！";
@@ -545,7 +545,7 @@ OnMobDead:
 	}
 	if ('lost_farm == 7) {
 		mes "[席克]";
-		mes "Woo...";
+		mes "呜……";
 		npctalk "席克：呜……";
 		next;
 		mes "[席克]";
@@ -565,7 +565,7 @@ OnMobDead:
 		npctalk "席克：机器人……我可以生气吗？……嗯……";
 		next;
 		mes "[席克]";
-		mes "...not now, but I feel like I can... hmmm.";
+		mes "……现在不行，但感觉能做到……嗯。";
 		npctalk "席克：……现在不行，不过我觉得我可以……嗯。";
 		next;
 		mes "[席克]";
@@ -753,7 +753,7 @@ OnMobDead:
 		npctalk "席克：不是用肺，不过……说起来，肉食人火龙果是怎么发出声音的？";
 		next;
 		mes "[席克]";
-		mes "...I don't want to be afraid.";
+		mes "……我不想害怕。";
 		npctalk "席克：……我不想害怕。";
 		next;
 		mes "[席克]";
@@ -769,7 +769,7 @@ OnMobDead:
 	}
 	if ('lost_farm == 13) {
 		mes "[席克]";
-		mes "Phew...";
+		mes "呼……";
 		npctalk "席克：呼……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
@@ -893,7 +893,7 @@ OnMobDead:
 	}
 	if ('lost_farm == 16) {
 		mes "[席尔克]";
-		mes "Sigh...";
+		mes "唉……";
 		npctalk "席尔克：唉……";
 		next;
 		mes "[席尔克]";
@@ -913,7 +913,7 @@ OnMobDead:
 		npctalk "席尔克：如果可爱的条件是咬人，那大王喵喵就是最可爱的，咬起来也不输给其他家伙……";
 		next;
 		mes "[席尔克]";
-		mes "...will bite well...?";
+		mes "……会咬得好吗……？";
 		npctalk "席尔克：……它会咬得很好……？";
 		next;
 		mes "[席尔克]";
@@ -1002,7 +1002,7 @@ OnMobDead:
 // traps left side
 1@lost,38,257,3	script	大喵喵#01	MD_PITAYA_B,{
 	mes "[大喵喵]";
-	mes "Purr.";
+	mes "呼噜。";
 	next;
 	mes "-- 大喵喵正在打盹。 --";
 	close;
@@ -1013,8 +1013,8 @@ OnMobDead:
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("Big Meow#01");
-		disablenpc instance_npcname("Big Meow#01");
+		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("大喵喵#01");
+		disablenpc instance_npcname("大喵喵#01");
 		disablenpc instance_npcname("#cat01warp");
 		disablenpc instance_npcname("#compass01");
 		disablenpc instance_npcname("Silk#06");
@@ -1118,8 +1118,8 @@ OnTouch_:
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("Big Meow#02");
-		disablenpc instance_npcname("Big Meow#02");
+		npctalk "大喵喵：咕噜噜噜噜。", instance_npcname("大喵喵#02");
+		disablenpc instance_npcname("大喵喵#02");
 		disablenpc instance_npcname("#cat02warp");
 		disablenpc instance_npcname("#compass01");
 		disablenpc instance_npcname("Silk#06");
@@ -1224,7 +1224,7 @@ OnTouch_:
 	}
 	if ('lost_farm == 19) {
 		mes "[席尔克]";
-		mes ".... come this way.";
+		mes "……这边来。";
 		npctalk "席尔克：……请往这边来。";
 		next;
 		mes "[席尔克]";
