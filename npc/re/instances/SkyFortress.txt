@@ -366,19 +366,20 @@ prt_q,243,75,3	script	要塞入口传送门#1	PORTAL,{
 		break;
 	}
 	.@md_name$ = "Sky Fortress Invasion";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
 		mes "发生了未知错误。";
 		close;
 	case IE_NOINSTANCE:
-		mes "纪念迷宫" + .@md_name$ + "不存在。";
+		mes "纪念迷宫" + .@md_display$ + "不存在。";
 		mes "队长尚未创建纪念迷宫。";
 		close;
 	case IE_NOMEMBER:
 		mes "只有队伍成员才能进入纪念迷宫。";
 		close;
 	case IE_OK:
-		mapannounce "prt_q", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + "，进入了" + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "prt_q", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + "，进入了" + .@md_display$ + "", bc_map,0xFF99;
 		if (.@type == 1) {
 			if (isbegin_quest(9419) > 0)
 				erasequest 9419;
@@ -420,19 +421,20 @@ dali02,115,61,3	script	要塞入口传送门#2	PORTAL,{
 		close;
 	}
 	.@md_name$ = "Sky Fortress Invasion";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
 		mes "发生了未知错误。";
 		close;
 	case IE_NOINSTANCE:
-		mes "纪念迷宫" + .@md_name$ + "不存在。";
+		mes "纪念迷宫" + .@md_display$ + "不存在。";
 		mes "队长尚未创建纪念迷宫。";
 		close;
 	case IE_NOMEMBER:
 		mes "只有队伍成员才能进入纪念迷宫。";
 		close;
 	case IE_OK:
-		mapannounce "prt_q", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + "，进入了" + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "prt_q", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + "，进入了" + .@md_display$ + "", bc_map,0xFF99;
 		// warp "1@sthb",54,67;
 		fortress_entrance_loc = 1;	// warp back to dali02 on exit
 		// note: no quest change when using tickets

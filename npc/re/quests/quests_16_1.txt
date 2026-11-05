@@ -14328,7 +14328,7 @@ prt_cas,165,260,6	script	贵族操作员#ext161	4_F_CRU,{
 
 prt_cas,165,255,7	script	军需官#ep16	4_M_JOB_KNIGHT2,{
 	mes "[军需官阿纳]";
-	mes "你可以用卢恩-米德加尔特贵族们作为信任象征赠予的荣誉证明，兑换普隆德拉的一些贵重物品。";
+	mes "你可以用卢恩-米德加尔特贵族们作为信任象征赠予的<ITEM>荣誉徽章<INFO>6919</INFO></ITEM>，兑换普隆德拉的一些贵重物品。";
 	next;
 	switch( select( "消耗品", "防具", "查看物品说明" ) ) {
 	case 1:
@@ -14354,6 +14354,26 @@ prt_cas,165,255,7	script	军需官#ep16	4_M_JOB_KNIGHT2,{
 	case 3:
 		mes "[军需官阿纳]";
 		mes "要查看物品说明吗？";
+		next;
+		mes "[军需官阿纳]";
+		mes "可用<ITEM>荣誉徽章<INFO>6919</INFO></ITEM>兑换的物品如下。";
+		mes "^3131FF消耗品^000000";
+		mes "<ITEM>城市地图 卷轴<INFO>22899</INFO></ITEM> — 2个";
+		mes "<ITEM>明亮的圣水<INFO>11600</INFO></ITEM> — 6个";
+		mes "<ITEM>监狱钥匙<INFO>22848</INFO></ITEM> — 6个";
+		mes "<ITEM>普隆德拉徽章<INFO>22847</INFO></ITEM> — 6个";
+		next;
+		mes "[军需官阿纳]";
+		mes "^3131FF防具^000000";
+		mes "<ITEM>城市地图<INFO>28354</INFO></ITEM> — 300个";
+		mes "<ITEM>明亮的圣水<INFO>28355</INFO></ITEM> — 800个";
+		mes "<ITEM>近卫兵的盾牌<INFO>28900</INFO></ITEM> — 800个";
+		mes "<ITEM>普隆德拉徽章<INFO>28356</INFO></ITEM> — 300个";
+		mes "<ITEM>恭维法袍<INFO>15146</INFO></ITEM> — 1200个";
+		mes "<ITEM>谴责法袍<INFO>15147</INFO></ITEM> — 1200个";
+		mes "<ITEM>(时装)时间的装饰<INFO>20246</INFO></ITEM> — 2200个";
+		mes "<ITEM>(时装)命运的黑手<INFO>20247</INFO></ITEM> — 2200个";
+		next;
 		close2;
 		readbook 11061,1;
 		end;
@@ -14362,7 +14382,7 @@ prt_cas,165,255,7	script	军需官#ep16	4_M_JOB_KNIGHT2,{
 	for ( .@i = 0; .@i < .@size; .@i += 2 )
 		.@menu$ = .@menu$ + getitemname(.@data[.@i]) + ":";
 	mes "[军需官阿纳]";
-	mes "可用荣誉证明兑换的^3131FF" + .@type$ + "^000000类物品如下。";
+	mes "可用<ITEM>荣誉徽章<INFO>6919</INFO></ITEM>兑换的^3131FF" + .@type$ + "^000000类物品如下。";
 	next;
 	.@s = (select(.@menu$) - 1) * 2;
 	mes "[军需官阿纳]";

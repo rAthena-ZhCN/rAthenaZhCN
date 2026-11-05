@@ -150,6 +150,7 @@ verus04,81,112,5	script	机械#mcd	PORTAL,{
 	.@p_name$ = getpartyname(.@party_id);
 	.@p_leader$ = getpartyleader(.@party_id);
 	.@md_name$ = "Charleston in Distress";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	if (is_party_leader() == true)
 		.@menu$ = "开启次元传送门。";
 
@@ -158,7 +159,7 @@ verus04,81,112,5	script	机械#mcd	PORTAL,{
 		if (instance_create(.@md_name$) < 0) {
 			mes "队伍：" + .@p_name$ + "";
 			mes "队长：" + .@p_leader$ + "";
-			mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
+			mes "^0000ff" + .@md_display$ + "^000000- 未知错误";
 			close;
 		}
 		mes "^ff0000正在准备传送……^000000";
@@ -190,7 +191,7 @@ verus04,81,112,5	script	机械#mcd	PORTAL,{
 			setquest 13185;
 			specialeffect2 EF_READYPORTAL2;
 			specialeffect2 EF_PORTAL2;
-			mapannounce "verus04", strcharinfo(0) + "所在的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0x00ff99;
+			mapannounce "verus04", strcharinfo(0) + "所在的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0x00ff99;
 			end;
 		}
 		end;

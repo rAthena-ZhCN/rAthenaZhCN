@@ -306,6 +306,7 @@ dali02,141,120,3	script	次元装置#tnm0	PORTAL,{
 		close;
 	}
 	.@md_name$ = "Devil's Tower";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
 		mes "发生了未知错误。";
@@ -324,7 +325,7 @@ dali02,141,120,3	script	次元装置#tnm0	PORTAL,{
 		mes "请务必做好准备。";
 		close;
 	case IE_OK:
-		mapannounce "dali02", "队伍成员" + strcharinfo(0) + "所属队伍" + getpartyname( getcharid(1) ) + "进入了房间" + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "dali02", "队伍成员" + strcharinfo(0) + "所属队伍" + getpartyname( getcharid(1) ) + "进入了房间" + .@md_display$ + "", bc_map,0xFF99;
 		// warp "1@tnm1",50,104;
 		devil_tower_enter = 1;
 		end;

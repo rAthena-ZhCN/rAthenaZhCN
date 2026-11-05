@@ -23,7 +23,7 @@ glast_01,191,273,3	script	魔法师尼勒姆#glabyss01	4_M_JOB_WIZARD,{
 	mes "[尼勒姆]";
 	mes "我想我有了一项重大发现，你要不要跟我一起来？";
 	next;
-	switch( select( "走吧！", "请说明一下。", "我的发现", "Refuse." )) {
+	switch( select( "走吧！", "请说明一下。", "我的发现", "拒绝。" )) {
 	case 1:
 		mes "[尼勒姆]";
 		mes "这就是我的宝贝！";
@@ -301,7 +301,7 @@ yuno_fild03,38,146,5	script	莉莉·布朗	-1,{
 	if (BaseLevel < 175) {
 		mes "[莉莉]";
 		mes "...?";
-		mes "...well, I don't think the guards will let you in...";
+		mes "……好吧，我觉得守卫不会让你进去……";
 		next;
 		mes "[莉莉]";
 		mes "如果你有资格进入诺可罗德3层，愿意接受一个任务吗？";
@@ -313,7 +313,7 @@ yuno_fild03,38,146,5	script	莉莉·布朗	-1,{
 	mes "友善的冒险者，你愿意协助我们进行学会报告的研究吗？";
 	mes "只有冒险者的眼睛，才是我们生存的唯一依靠。";
 	next;
-	switch( select( "听听委托", "Suspicious...", "拒绝" ) ) {
+	switch( select( "听听委托", "可疑……", "拒绝" ) ) {
 	case 1:
 		mes "[莉莉]";
 		mes "慷慨的冒险者！谢谢你。";
@@ -413,7 +413,7 @@ yuno_fild03,38,146,5	script	莉莉·布朗	-1,{
 			case -1:
 				if (.@quest_ongoing == .@quest_first) {
 					mes "[莉莉]";
-					mes "我听说熔岩巨石和" + getmonsterinfo("LAVA_GOLEM_H", MOB_NAME) + ".";
+					mes "我听说熔岩巨石和" + getmonsterinfo("LAVA_GOLEM_H", MOB_NAME) + "的密度差异很大。";
 				}
 				else {
 					mes "[莉莉]";
@@ -445,7 +445,7 @@ yuno_fild03,38,146,5	script	莉莉·布朗	-1,{
 				if (.@quest_ongoing == .@quest_first) {
 					mes "[莉莉]";
 					mes "" + getmonsterinfo("EXPLOSION_H", MOB_NAME) + "和" + getmonsterinfo("BLAZZER_H", MOB_NAME) + "据说比普通的爆炎蝙蝠和火焰妖崩解得更好。";
-					mes "...our professor.";
+					mes "……我们教授是这么说的。";
 					next;
 					mes "[莉莉]";
 					mes "出没于诺可罗德3层，";
@@ -482,7 +482,7 @@ yuno_fild03,38,146,5	script	莉莉·布朗	-1,{
 			end;
 		case 5:
 			mes "[莉莉]";
-			mes "Ah...";
+			mes "啊……";
 			mes "我什么时候才能摆脱博士的魔法……";
 			close;
 		}
@@ -617,7 +617,7 @@ einbech,143,244,3	script	见习研究员莎莉#extdq01	4_F_LGTGIRL,{
 	}
 	if (checkquest(7879,HUNTING) == 2) {
 		mes "[莎莉]";
-		mes "我们已经收集到了足够的数据：" + getmonsterinfo("POISONOUS", MOB_NAME) + " and " + getmonsterinfo("TOXIOUS", MOB_NAME) + "!";
+		mes "我们已经收集到了足够的数据：" + getmonsterinfo("POISONOUS", MOB_NAME) + "和" + getmonsterinfo("TOXIOUS", MOB_NAME) + "！";
 		erasequest 7879;
 		setquest 7880;
 		getexp 27512240,19258560;
@@ -625,7 +625,7 @@ einbech,143,244,3	script	见习研究员莎莉#extdq01	4_F_LGTGIRL,{
 	}
 	if (checkquest(7881,HUNTING) == 2) {
 		mes "[莎莉]";
-		mes "我已收集到足够的数据：" + getmonsterinfo("MINERAL_G", MOB_NAME) + " and " + getmonsterinfo("MINERAL_R", MOB_NAME) + "!";
+		mes "我已收集到足够的数据：" + getmonsterinfo("MINERAL_G", MOB_NAME) + "和" + getmonsterinfo("MINERAL_R", MOB_NAME) + "！";
 		erasequest 7881;
 		setquest 7882;
 		getexp 27836640,19485600;
@@ -633,7 +633,7 @@ einbech,143,244,3	script	见习研究员莎莉#extdq01	4_F_LGTGIRL,{
 	}
 	if (checkquest(7883,HUNTING) == 2) {
 		mes "[莎莉]";
-		mes "关于" + getmonsterinfo("MINERAL_W", MOB_NAME) + " and " + getmonsterinfo("MINERAL_P", MOB_NAME) + " are as follows. It was very helpful.";
+		mes "关于" + getmonsterinfo("MINERAL_W", MOB_NAME) + "和" + getmonsterinfo("MINERAL_P", MOB_NAME) + "的数据如下。非常有用。";
 		erasequest 7883;
 		setquest 7884;
 		getexp 27838400,19486880;
@@ -685,7 +685,7 @@ einbech,143,244,3	script	见习研究员莎莉#extdq01	4_F_LGTGIRL,{
 			mes "以这里的人手很难对付占据矿山的怪物，所以我们必须两边兼顾。";
 			next;
 			mes "[莎莉]";
-			mes "我会在冒险者与^4d4dff" + getmonsterinfo("POISONOUS", MOB_NAME) + " and " + getmonsterinfo("TOXIOUS", MOB_NAME) + "^000000.";
+			mes "我会在冒险者与^4d4dff" + getmonsterinfo("POISONOUS", MOB_NAME) + "和" + getmonsterinfo("TOXIOUS", MOB_NAME) + "^000000。";
 			mes "这不是很划算吗？";
 			next;
 			if (select( "接受委托", "拒绝" ) == 2) {

@@ -55,6 +55,7 @@ rachel,169,245,3	script	普通市民#sms04	4_EP18_GW_WOMAN01,{
 		next;
 
 		.@md_name$ = "Wolves Gathering Place";
+		.@md_display$ = instance_getdisplayname(.@md_name$);
 
 		if (is_party_leader()) {
 			.@menu$[0] = "好，发信号吧。";
@@ -95,7 +96,7 @@ rachel,169,245,3	script	普通市民#sms04	4_EP18_GW_WOMAN01,{
 					ep18_main = 51;
 				}
 				cutin "",255;
-				mapannounce "rachel", "冒险者" + strcharinfo(0) + "的" + getpartyname( getcharid(1) ) + "队伍将率先进入" + .@md_name$ + "。所有狼族，请依次集结。", bc_map, 0xFF99;
+				mapannounce "rachel", "冒险者" + strcharinfo(0) + "的" + getpartyname( getcharid(1) ) + "队伍将率先进入" + .@md_display$ + "。所有狼族，请依次集结。", bc_map, 0xFF99;
 				// warp "1@nyr",194,30;
 				close;
 			}
@@ -159,6 +160,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		close;
 	}
 	.@md_name$ = "Sanctuary Purification";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	switch( checkquest(17527,PLAYTIME) ) {
 	case -1:
@@ -188,7 +190,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		if (instance_create(.@md_name$) < 0) {
 			mes "队伍：" + getpartyname(getcharid(1)) + "";
 			mes "队长：" + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
+			mes "^0000ff" + .@md_display$ + "^000000- 未知错误";
 			close;
 		}
 		end;
@@ -207,7 +209,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		case IE_OK:
 			mes "[祭司]";
 			mes "信号到了，行动吧。我们马上进入会合地点。";
-			mapannounce "rachel", "" + strcharinfo(0) + "，队伍为" + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
+			mapannounce "rachel", "" + strcharinfo(0) + "，队伍为" + getpartyname( getcharid(1) ) + ", is entering " + .@md_display$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
 			setquest 17527;
 			// warp "1@nyr",194,30;
 			end;

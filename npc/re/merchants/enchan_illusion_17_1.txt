@@ -20,7 +20,7 @@ sp_cor,152,158,4	script	蝴蝶商人#sp_cor	4_M_ORIENT01,{
 
 sp_cor,136,156,3	script	恩典装备兑换员#ext162	4_M_REPAIR,{
 	mes "[恩典装备兑换员]";
-	mes "Hello.";
+	mes "你好。";
 	mes "我们有可用^4d4dff恩典^000000装备兑换的" + mesitemlink( 25723 ) + ".";
 	mes "我会根据你的职业引导你兑换物品。";
 	close2;
@@ -122,10 +122,10 @@ sp_cor,108,130,5	script	反叛者#rm171_7	4_F_REBELLION3,{
 	}
 	if (isbegin_quest(16353) < 2) {
 		mes "[反叛者]";
-		mes "看来你收到消息了。队长们正在里面开会。应该是艾莲娜·沃尔科娃队长叫你来的。";
-		mes "... I was going to call her, but she's already here.";
-		cloakoffnpcself( "Elena Volkova#rm171_0" );
-		npctalk "艾莲娜·沃尔科娃：啊，我一直在找你，冒险家。", "Elena Volkova#rm171_0", bc_self;
+		mes "看来你收到消息了。队长们正在里面开会。应该是埃琳娜·沃尔科娃队长叫你来的。";
+		mes "……我正要叫她，她就已经来了。";
+		cloakoffnpcself( "埃琳娜·沃尔科娃#rm171_0" );
+		npctalk "埃琳娜·沃尔科娃：啊，我一直在找你，冒险家。", "埃琳娜·沃尔科娃#rm171_0", bc_self;
 		if (isbegin_quest(16352) == 0)
 			setquest 16352;
 		close;
@@ -144,20 +144,20 @@ sp_cor,108,130,5	script	反叛者#rm171_7	4_F_REBELLION3,{
 		end;
 	}
 	mes "[反叛者]";
-	mes "你带破损武器来了吗？想见那个科学罪犯吗？他就在里面。要我帮你叫他出来吗？";
+	mes "你带武器残骸来了吗？想见那个科学罪犯吗？他就在里面。要我帮你叫他出来吗？";
 	mes "还是说你找我有事？我可以兑换武器改造装置和防具改造模块。";
-	cloakoffnpcself( "Elyumina#rm171_4" );
-	npctalk "反叛者：喂，罪犯。有人找你。", "Rebellion#rm171_7", bc_self;
-	npctalk "艾露米娜：好，好！我来了！你们真是没用，没有我，你们只能拿豆袋打仗。", "Elyumina#rm171_4", bc_self;
+	cloakoffnpcself( "爱鲁梅纳#rm171_4" );
+	npctalk "反叛者：喂，罪犯。有人找你。", "反叛者#rm171_7", bc_self;
+	npctalk "爱鲁梅纳：好，好！我来了！你们真是没用，没有我，你们只能拿豆袋打仗。", "爱鲁梅纳#rm171_4", bc_self;
 	next;
-	switch (select("见艾露米娜。", "领取武器改造装置。", "领取防具改造模块。")) {
+	switch (select("见爱鲁梅纳。", "领取武器改造装置。", "领取防具改造模块。")) {
 	case 1:
 		mes "[反叛者]";
 		mes "好，你们慢慢聊。";
 		mes "费了好大劲才说服他，他最终答应改造我们的武器和防具。他手艺也相当不错，每天都从早干到晚。";
 		close;
 	case 2:
-		npctalk "艾露米娜：什么？既然只是让我像雕像一样站在这里，那干嘛还叫我过来？你们这些混蛋！", "Elyumina#rm171_4", bc_self;
+		npctalk "爱鲁梅纳：什么？既然只是让我像雕像一样站在这里，那干嘛还叫我过来？你们这些混蛋！", "爱鲁梅纳#rm171_4", bc_self;
 		if (checkweight(1201,3) == 0) {
 			mes "[反叛者]";
 			mes "你要武器改造装置吗？需要5个" + mesitemlink( 25723 ) + "或100万Zeny。";
@@ -166,7 +166,7 @@ sp_cor,108,130,5	script	反叛者#rm171_7	4_F_REBELLION3,{
 		}
 		mes "[反叛者]";
 		mes "你要武器改造装置吗？需要5个" + mesitemlink( 25723 ) + "或100万Zeny。";
-		mes "如果你想要武器，可以去找艾露米娜谈。";
+		mes "如果你想要武器，可以去找爱鲁梅纳谈。";
 		next;
 		if (select("领取武器改造装置（物理）。", "领取武器改造装置（魔法）。") == 1) {
 			// .@item_id = 23773;	// EP17_1_SPC02
@@ -218,7 +218,7 @@ sp_cor,108,130,5	script	反叛者#rm171_7	4_F_REBELLION3,{
 		mes "如果你想精炼它，我旁边的<NAVI>[铁罐]<INFO>sp_cor,106,136,0,101,0</INFO></NAVI>会好好照顾你。";
 		close;
 	case 3:
-		npctalk "艾露米娜：什么？既然只是让我像雕像一样站在这里，那干嘛还叫我过来？你们这些野蛮人！", "Elyumina#rm171_4", bc_self;
+		npctalk "爱鲁梅纳：什么？既然只是让我像雕像一样站在这里，那干嘛还叫我过来？你们这些野蛮人！", "爱鲁梅纳#rm171_4", bc_self;
 		mes "[反叛者]";
 		mes "你要防具改造模块吗？需要30个" + mesitemlink( 25669 ) + "和5个" + mesitemlink( 25723 ) + ".";
 		if (checkweight(1201,3) == 0) {
@@ -227,7 +227,7 @@ sp_cor,108,130,5	script	反叛者#rm171_7	4_F_REBELLION3,{
 		}
 		mes "你得到的种类是随机决定的。";
 		next;
-		if (select("领取防具改造模块。", "Cancel.") == 2) {
+		if (select( "领取防具改造模块。", "取消。") == 2) {
 			mes "[反叛者]";
 			mes "想要防具改造模块的话，随时来找我。";
 			close;
@@ -260,11 +260,11 @@ OnInit:
 }
 
 // Equipment Exchange NPC - Official iRO Conversion
-sp_cor,111,130,3	script	艾露米娜#rm171_4	4_EP17_ELYUMINA,{
+sp_cor,111,130,3	script	爱鲁梅纳#rm171_4	4_EP17_ELYUMINA,{
 	if (isbegin_quest(16360) < 2) {
 		cutin "ep171_elyumina02",0;
-		mes "[艾露米娜]";
-		mes "啊！我正专心研究，你为什么老叫我？我很忙，明白吗？要是闲得慌，就多给我带些破损武器来！";
+		mes "[爱鲁梅纳]";
+		mes "啊！我正专心研究，你为什么老叫我？我很忙，明白吗？要是闲得慌，就多给我带些武器残骸来！";
 		close2;
 		cloakonnpcself( "爱鲁梅纳#rm171_3" );
 		cutin "",255;
@@ -272,65 +272,65 @@ sp_cor,111,130,3	script	艾露米娜#rm171_4	4_EP17_ELYUMINA,{
 	}
 	if (checkweight(28136,2) == 0) {
 		cutin "ep171_elyumina03",0;
-		mes "[艾露米娜]";
+		mes "[爱鲁梅纳]";
 		mes "你不是来拿武器或防具的吗？你的背包满了。我可没时间等你翻背包，晚点再来。";
 		next;
 		mes "- 你的背包满了。请整理出空间后再来找我。 -";
 		close3;
 	}
 	cutin "ep171_elyumina01",0;
-	mes "[艾露米娜]";
+	mes "[爱鲁梅纳]";
 	mes "有什么事重要到要打断我的研究？最好真的重要。";
 	next;
 	cutin "",255;
-	switch (select("领取OS武器。", "领取幻影铠甲。")) {
+	switch (select("领取OS武器。", "领取幻象机甲。")) {
 	case 1:
 		cutin "ep171_elyumina01",0;
-		mes "[艾露米娜]";
-		mes "OS武器？只要你带来1个" + mesitemlink( 25668 ) + " and 50 " + mesitemlink( 25669 ) + ".";
+		mes "[爱鲁梅纳]";
+		mes "OS武器？只要你带来1个" + mesitemlink( 25668 ) + " 和 50 个 " + mesitemlink( 25669 ) + ".";
 		mes "我有什么就给你什么，凭什么让你挑？";
 		next;
 		cutin "",255;
 		if (select("兑换OS武器。", "查看可兑换列表。") == 2) {
 			cutin "ep171_elyumina03",0;
-			mes "[艾露米娜]";
+			mes "[爱鲁梅纳]";
 			mes "啧啧。我说过我做的都是好东西。非得挑吗？好吧，那听好了。";
 			next;
-			mes "[艾露米娜]";
+			mes "[爱鲁梅纳]";
 			mes "单手剑：" + mesitemlink( 13493 );
 			mes "双手剑：" + mesitemlink( 21047 );
-			mes "法杖：" + mesitemlink( 26151 );
+			mes "单手杖：" + mesitemlink( 26151 );
 			mes "书：" + mesitemlink( 28629 );
-			mes "斧头：" + mesitemlink( 28136 );
+			mes "双手斧：" + mesitemlink( 28136 );
 			mes "钝器：" + mesitemlink( 16088 );
 			mes "弓：" + mesitemlink( 18178 );
-			mes "十字弓：" + mesitemlink( 18179 );
+			mes "弓：" + mesitemlink( 18179 );
 			mes "拳刃：" + mesitemlink( 28038 );
 			mes "拳套：" + mesitemlink( 1862 );
-			mes "狙击步枪：" + mesitemlink( 28253 );
+			mes "来福枪：" + mesitemlink( 28253 );
 			mes "短剑：" + mesitemlink( 28755 );
 			mes "弓：" + mesitemlink( 18180 );
-			mes "长枪：" + mesitemlink( 32019 );
+			mes "单手矛：" + mesitemlink( 32019 );
 			mes "钝器：" + mesitemlink( 16089 );
 			close3;
 		}
 		disable_items;
 		if (countitem(25668) < 1 || countitem(25669) < 50) {
 			cutin "ep171_elyumina03",0;
-			mes "[艾露米娜]";
-			mes "我说过，给我带1把破损武器和50个神秘零件。别人说话时你该好好听。";
+			mes "[爱鲁梅纳]";
+			mes "我说过，给我带1把武器残骸和50个神秘零件。别人说话时你该好好听。";
 			close3;
 		}
 		if (checkweight(28136,2) == 0) {
 			cutin "ep171_elyumina03",0;
-			mes "[艾露米娜]";
-			mes "... What the? There's a problem.";
+			mes "[爱鲁梅纳]";
+			mes "……怎么回事？出问题了。";
 			mes "当然不是我这边的问题，是你的问题。检查你的背包是不是满了，或者材料是不是齐全。";
 			close3;
 		}
 		cutin "ep171_elyumina04",0;
-		mes "[艾露米娜]";
-		mes "给你。还想要的话，就再带些破损武器和神秘零件来。";
+		mes "[爱鲁梅纳]";
+		mes "给你。还想要的话，就再带些武器残骸和神秘零件来。";
 		mes "就是因为你，我才被关在这里修玩具。你能处理好这事吧？";
 		delitem 25668,1;	// EP17_1_EVT01
 		delitem 25669,50;	// EP17_1_EVT02
@@ -339,12 +339,12 @@ sp_cor,111,130,3	script	艾露米娜#rm171_4	4_EP17_ELYUMINA,{
 		close3;
 	case 2:
 		cutin "ep171_elyumina04",0;
-		mes "[艾露米娜]";
-		mes "想要幻影防具的话，给我带50个" + mesitemlink( 25723 ) + ". I'll give you a piece.";
+		mes "[爱鲁梅纳]";
+		mes "想要幻象防具的话，给我带50个" + mesitemlink( 25723 ) + "。我会给你一件。";
 		mes "让我看看……哦，我什么时候做了这么多种？好吧，我今天心情好。你要哪个？";
 		next;
 		cutin "",255;
-		switch (select("幻影铠甲", "幻影引擎翅膀", "幻影护腿", "幻影推进器", "幻影战斗芯片")) {
+		switch (select("幻象机甲", "幻象推进翼", "幻象战靴", "幻象助推器", "幻象战斗晶片")) {
 		case 1:
 			setarray .@item[0],15376,15377;
 			break;
@@ -362,7 +362,7 @@ sp_cor,111,130,3	script	艾露米娜#rm171_4	4_EP17_ELYUMINA,{
 			break;
 		}
 		cutin "ep171_elyumina01",0;
-		mes "[艾露米娜]";
+		mes "[爱鲁梅纳]";
 		mes mesitemlink( .@item[0] );
 		mes mesitemlink( .@item[1] );
 		mes "哪一个？";
@@ -370,27 +370,27 @@ sp_cor,111,130,3	script	艾露米娜#rm171_4	4_EP17_ELYUMINA,{
 		cutin "",255;
 		.@id = .@item[ select( getitemname(.@item[0]), getitemname(.@item[1]) ) -1 ];
 		cutin "ep171_elyumina04",0;
-		mes "[艾露米娜]";
+		mes "[爱鲁梅纳]";
 		mes "好，" + getitemname(.@id) + "，对吧？你真的要用50个核心元件换它吗？";
 		next;
 		cutin "",255;
-		if (select( "Exchange.", "不兑换。" ) == 2) {
+		if (select( "兑换。", "不兑换。" ) == 2) {
 			cutin "ep171_elyumina03",0;
-			mes "[艾露米娜]";
+			mes "[爱鲁梅纳]";
 			mes "喂，你在开玩笑吗？喂，我本来想对你好的！";
 			close3;
 		}
 		disable_items;
 		if (countitem(25723) < 50) {
 			cutin "ep171_elyumina02",0;
-			mes "[艾露米娜]";
+			mes "[爱鲁梅纳]";
 			mes "喂，你在开玩笑吗？你的核心元件不够！喂，我本来想对你好的！";
 			enable_items;
 			close3;
 		}
 		cutin "ep171_elyumina04",0;
-		mes "[艾露米娜]";
-		mes "来，拿着这个" + getitemname(.@id) + ". I bet it's probably the best armor you've ever had. You really ought to be grateful.";
+		mes "[爱鲁梅纳]";
+		mes "来，拿着这个" + getitemname(.@id) + "。我敢说这可能是你拥有过的最好的防具。你真该感激我。";
 		delitem 25723,50;	// EP17_1_EVT390
 		getitem .@id,1;
 		enable_items;
@@ -415,7 +415,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 	mes strcharinfo(0)+".";
 	mes "欢迎，欢迎！";
 	next;
-	switch (select("探索装置。:附魔幻影铠甲。:附魔幻影引擎翅膀。:附魔幻影护腿。:附魔幻影饰品[R]。:附魔幻影饰品[L]。")) {
+	switch (select("探索装置。:附魔幻象机甲。:附魔幻象推进翼。:附魔幻象战靴。:附魔幻象饰品[R]。:附魔幻象饰品[L]。")) {
 	case 1:
 		mes "^0000FF# 我是最新的全息投影技术，能完美呈现自然的反应与动作。 #^000000";
 		next;
@@ -424,7 +424,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 		npctalk "反叛者：哦，那台机器没有模块就没用。","Rebellion#171_cor_merchant",bc_self;
 		next;
 		mes "[RS26]";
-		mes "如果你带来装有强化模块的幻影装备，我会按你的意愿进行强化。";
+		mes "如果你带来装有强化模块的幻象装备，我会按你的意愿进行强化。";
 		next;
 		mes "[RS26]";
 		mes "这些模块适用于标准装备，不会损坏物品。不过可强化的次数会因装备而异。";
@@ -484,11 +484,12 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 		.@max = 25705;
 		break;
 	}
-	.@menu$ = "Cancel.:";
+	.@menu$ = "取消.:";
 	for(.@i = .@min; .@i < (.@max + 1); .@i++){
 		.@module_id[getarraysize(.@module_id)] = .@i;
 		.@item_name$ = getitemname(.@i);
-		.@item_name$ = replacestr(.@item_name$,"Modification Module (","");
+		.@item_name$ = replacestr(.@item_name$,"特殊改造模组(","");
+		.@item_name$ = replacestr(.@item_name$,"改造模组(","");
 		.@item_name$ = replacestr(.@item_name$,")","");
 		.@menu$ += (!countitem(.@i) ? "^AAAAAA":"") + .@item_name$ + (!countitem(.@i) ? "^000000:":":");
 	}
@@ -529,11 +530,12 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 				close;
 			case 4:
 				mes "[RS26]";
-				mes "该模块的能力最多可附魔" + .@s$[1] + " " + (atoi(.@s$[1]) > 1 ? "次":"次") +". It seems that the module threshold is already at it's limit.";
+				mes "该模块的能力最多可附魔" + .@s$[1] + " " + (atoi(.@s$[1]) > 1 ? "次":"次") +"。看来模块的阈值已经到极限了。";
 				close;
 			case 5:
 				.@item_name$ = getitemname(.@module_id[.@s]);
-				.@item_name$ = replacestr(.@item_name$,"Modification Module (","");
+				.@item_name$ = replacestr(.@item_name$,"特殊改造模组(","");
+				.@item_name$ = replacestr(.@item_name$,"改造模组(","");
 				.@item_name$ = replacestr(.@item_name$,")","");
 				mes "[RS26]";
 				mes "^0000FF你选择了" + getitemname(.@equip_id) + " " + .@item_name$ + "^000000";

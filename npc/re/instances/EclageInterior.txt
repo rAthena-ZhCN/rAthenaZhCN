@@ -17,6 +17,7 @@
 ecl_hub01,132,12,3	script	首席参谋#tl02	435,{
 	.@party_id = getcharid(1);
 	.@md_name$ = "Eclage Interior";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (.@party_id == 0 || is_party_leader() == false){
 		mes "-! 警告 !-";
@@ -62,6 +63,7 @@ ecl_hub01,130,15,0	script	紧闭的门	844,{
 		if (select("进入。:算了。") == 1) {
 			.@party_id = getcharid(1);
 			.@md_name$ = "Eclage Interior";
+			.@md_display$ = instance_getdisplayname(.@md_name$);
 			if (.@party_id == 0 || is_party_leader() == false) {
 				mes "-! 警告 !-";
 				mes "本次任务将在回忆副本中进行。";
@@ -82,7 +84,7 @@ ecl_hub01,130,15,0	script	紧闭的门	844,{
 				mes "门紧紧关着。";
 				close;
 			case IE_OK:
-				mapannounce "ecl_hub01",getpartyname(.@party_id) + "队长" + strcharinfo(0) + "正在进入" + .@md_name$,bc_map,"0x00ff99";
+				mapannounce "ecl_hub01",getpartyname(.@party_id) + "队长" + strcharinfo(0) + "正在进入" + .@md_display$,bc_map,"0x00ff99";
 				end;
 			default:
 			}

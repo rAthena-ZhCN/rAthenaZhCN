@@ -17019,6 +17019,7 @@ BUILDIN_FUNC(setbattleflag)
 		ShowWarning("buildin_setbattleflag: unknown battle_config flag '%s'\n",flag);
 	else {
 		ShowInfo("buildin_setbattleflag: battle_config flag '%s' is now set to '%s'.\n",flag,value);
+		if( strcmpi(flag, "stylist_class_lineage") == 0 || strcmpi(flag, "stylist_costume_jobs") == 0 ) pc_stylist_revalidate_all();
 
 		if (script_hasdata(st, 4) && script_getnum(st, 4)) { // Only attempt to reload monster data if told to
 			const char *expdrop_flags[] = { // Only certain flags require a reload, check for those types
@@ -21699,6 +21700,20 @@ int32 script_instancegetid(struct script_state* st, e_instance_mode mode)
  * Creates the instance
  * Returns Instance ID if created successfully
  *------------------------------------------*/
+BUILDIN_FUNC(instance_getdisplayname)
+{
+	std::shared_ptr<s_instance_db> db = instance_search_db_name(script_getstr(st, 2));
+
+	if (!db) {
+		script_pushstrcopy(st, script_getstr(st, 2));
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	std::string display = instance_get_display_name(db);
+	script_pushstrcopy(st, display.c_str());
+	return SCRIPT_CMD_SUCCESS;
+}
+
 BUILDIN_FUNC(instance_create)
 {
 	e_instance_mode mode = IM_PARTY;
@@ -26877,25 +26892,15 @@ BUILDIN_FUNC(mob_setidleevent){
 }
 
 BUILDIN_FUNC( openstylist ){
-#if PACKETVER >= 20151104
-	if( !battle_config.feature_stylist ){
-		ShowError( "buildin_openstylist: stylist is disabled.\n" );
-		return SCRIPT_CMD_FAILURE;
-	}
-
 	map_session_data* sd;
 
 	if( !script_charid2sd( 2, sd ) ){
+		script_pushint( st, 0 );
 		return SCRIPT_CMD_FAILURE;
 	}
 
-	clif_ui_open( *sd, OUT_UI_STYLIST, 0 );
-
+	script_pushint( st, clif_stylist_open( *sd ) ? 1 : 0 );
 	return SCRIPT_CMD_SUCCESS;
-#else
-	ShowError( "buildin_openstylist: This command requires packet version 2015-11-04 or newer.\n" );
-	return SCRIPT_CMD_FAILURE;
-#endif
 }
 
 BUILDIN_FUNC(navihide) {
@@ -28418,6 +28423,7 @@ struct script_function buildin_func[] = {
 
 	// Instancing
 	BUILDIN_DEF(instance_create,"s??"),
+	BUILDIN_DEF(instance_getdisplayname,"s"),
 	BUILDIN_DEF(instance_destroy,"?"),
 	BUILDIN_DEF(instance_id,"?"),
 	BUILDIN_DEF(instance_enter,"s????"),

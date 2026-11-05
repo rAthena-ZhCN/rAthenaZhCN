@@ -31,6 +31,7 @@ gef_tower,57,170,3	script	玛丽·杰伊	4_F_JOB_BLACKSMITH,{
 		close;
 	}
 	.@md_name$ = "Friday Dungeon";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	switch(checkquest(12379,PLAYTIME)) {
 	case -1:
@@ -38,7 +39,7 @@ gef_tower,57,170,3	script	玛丽·杰伊	4_F_JOB_BLACKSMITH,{
 	case 0:
 	case 1:
 		mes "[玛丽·杰伊]";
-		mes "很抱歉，前往" + .@md_name$ + "的入场时间已经结束。";
+		mes "很抱歉，前往" + .@md_display$ + "的入场时间已经结束。";
 		mes "在等待副本再次开放期间，请好好休息。";
 		close;
 	case 2:
@@ -85,7 +86,7 @@ gef_tower,57,170,3	script	玛丽·杰伊	4_F_JOB_BLACKSMITH,{
 		case IE_OK:
 			mes "[玛丽·杰伊]";
 			mes "出发吧！";
-			mapannounce "gef_tower", "" + strcharinfo(0) + "，所属队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+			mapannounce "gef_tower", "" + strcharinfo(0) + "，所属队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0xFF99;
 			if (isbegin_quest(12379) < 1)
 				setquest 12379;
 			end;

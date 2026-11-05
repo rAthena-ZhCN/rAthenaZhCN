@@ -54,7 +54,7 @@ moro_cav,41,73,4	script	守护者尼德霍格#epeom01	4_F_NYDHOG,{
 		next;
 		if (select( "现在进入。", "不进入。" ) == 2) {
 			mes "[尼德霍格]";
-			mes "Okay.";
+			mes "好。";
 			mes "如果需要时间，我理解。";
 			mes "慢慢来。你想让我等多久，我就能等多久。";
 			cutin "ep14_nyd04.bmp",2;
@@ -63,7 +63,7 @@ moro_cav,41,73,4	script	守护者尼德霍格#epeom01	4_F_NYDHOG,{
 		if (instance_create("Temple of the Demon God") < 1) {	// todo, custom text
 			mes "队伍名称：" + getpartyname(.@party_id);
 			mes "队长：" + strcharinfo(0);
-			mes "^0000ff" + .@md_name$ + "^000000 - 预约失败。";
+			mes "^0000ff" + .@md_display$ + "^000000 - 预约失败。";
 			close;
 		}
 		if (isbegin_quest(7596) == 1)
@@ -88,7 +88,7 @@ moro_cav,41,73,4	script	守护者尼德霍格#epeom01	4_F_NYDHOG,{
 		mes "[尼德霍格]";
 		mes "结果不过是人类的模样，";
 		mes "他逃不出所谓的神之框架，";
-		mes "...you can only say that you are eating bad luck!";
+		mes "……只能说你是倒了八辈子霉！";
 		cutin "ep14_nyd02.bmp",2;
 		next;
 		cutin "ep14_nyd04.bmp",2;
@@ -123,9 +123,9 @@ moro_cav,45,75,0	script	尤格德拉希尔仿制品#eom_gate	CLEAR_NPC,{
 		mes "你触碰了树，感到一股奇异的魔力流动。";
 		mes "或许魔力的流动会引导你前往神殿深处。";
 		next;
-		if (select( "Enter.", "Quit." ) == 2) {
+		if (select( "进入。", "退出。" ) == 2) {
 			mes "[尼德霍格]";
-			mes "Okay.";
+			mes "好。";
 			mes "如果需要时间，我理解。";
 			mes "慢慢来。你想让我等多久，我就能等多久。";
 			cutin "ep14_nyd04.bmp",2;
@@ -175,7 +175,7 @@ moro_cav,45,75,0	script	尤格德拉希尔仿制品#eom_gate	CLEAR_NPC,{
 		mes "[尼德霍格]";
 		mes "结果不过是人类的模样，";
 		mes "他逃不出所谓的神之框架，";
-		mes "...you can only say that you are eating bad luck!";
+		mes "……只能说你是倒了八辈子霉！";
 		cutin "ep14_nyd03.bmp",2;
 		next;
 		cutin "ep14_nyd04.bmp",2;
@@ -223,50 +223,50 @@ OnInstanceInit:
 
 	// Entrance
 	disablenpc instance_npcname("#door_mobmaster");
-	disablenpc instance_npcname("Empty Soul Globe#ahat01");
-	disablenpc instance_npcname("Empty Soul Globe#shnaim01");
+	disablenpc instance_npcname("空的灵魂球#ahat01");
+	disablenpc instance_npcname("空的灵魂球#shnaim01");
 	disablenpc instance_npcname("Filled Soul Globe#ahat02");
 	disablenpc instance_npcname("Filled Soul Globe#shnaim02");
 	disablenpc instance_npcname("#gate_to_center");
 
 	// Center to Ice
-	disablenpc instance_npcname("Strange Boy#mockid01");
+	disablenpc instance_npcname("奇怪的少年#mockid01");
 	disablenpc instance_npcname("#gate_to_ice");
-	disablenpc instance_npcname("Loki#eomloki01");
-	disablenpc instance_npcname("Nidhogg#eomnyd01");
-	disablenpc instance_npcname("Brinaranea#brinpc01");
+	disablenpc instance_npcname("洛基#eomloki01");
+	disablenpc instance_npcname("尼德霍格#eomnyd01");
+	disablenpc instance_npcname("布里纳拉尼亚#brinpc01");
 	disablenpc instance_npcname("#ice_hpcheck");
-	disablenpc instance_npcname("Nidhogg#eomnyd02");
+	disablenpc instance_npcname("尼德霍格#eomnyd02");
 	disablenpc instance_npcname("#ice_to_center");
 
 	// Center to Fire
-	disablenpc instance_npcname("Morroc#mockid02");
+	disablenpc instance_npcname("莫洛克#mockid02");
 	disablenpc instance_npcname("#gate_to_fire");
 	disablenpc instance_npcname("#fire_event01");
 	disablenpc instance_npcname("#skollmaster");
 	disablenpc instance_npcname("#loco_call");
 	disablenpc instance_npcname("#fire_combo");
-	disablenpc instance_npcname("Flowing Lava#lavapond01");
-	disablenpc instance_npcname("Flowing Lava#lavapond02");
-	disablenpc instance_npcname("Hardened Lava#lavaseal01");
-	disablenpc instance_npcname("Hardened Lava#lavaseal02");
+	disablenpc instance_npcname("流动的熔岩#lavapond01");
+	disablenpc instance_npcname("流动的熔岩#lavapond02");
+	disablenpc instance_npcname("凝固的熔岩#lavaseal01");
+	disablenpc instance_npcname("凝固的熔岩#lavaseal02");
 	disablenpc instance_npcname("#lavazone11");
 	disablenpc instance_npcname("#lavazone12");
 	disablenpc instance_npcname("#lavazone21");
 	disablenpc instance_npcname("#lavazone22");
-	disablenpc instance_npcname("Nidhogg#eomnyd03");
+	disablenpc instance_npcname("尼德霍格#eomnyd03");
 	disablenpc instance_npcname("#fire_to_center");
 
 	// Center to Last
 	disablenpc instance_npcname("#gate_to_last");
-	disablenpc instance_npcname("Strange Young Man#mocadt01");
+	disablenpc instance_npcname("奇怪的青年#mocadt01");
 	disablenpc instance_npcname("#moc_master");
 	disablenpc instance_npcname("#despair_god_main");
 	disablenpc instance_npcname("#mk_hpcheck");
 	disablenpc instance_npcname("#moc_origin");
 	disablenpc instance_npcname("#morocc_god");
 	disablenpc instance_npcname("#despair_main");
-	disablenpc instance_npcname("Nidhogg#eomnyd04");
+	disablenpc instance_npcname("尼德霍格#eomnyd04");
 
 	// mimic permanent spawn
 	.@event$ = instance_npcname("#demon_god_variables") + "::OnMyMobDead";
@@ -286,7 +286,7 @@ OnInstanceInit:
 		mes "今天能担任各位的向导，是我的荣幸。";
 		close3;
 	}
-	.@ahat$ = instance_npcname("Demon God's Apostle Aha#ahat");
+	.@ahat$ = instance_npcname("魔神使徒阿哈#ahat");
 	mes "[阿哈特]";
 	mes "那么，你来了。";
 	mes "哎呀，你可真是执着。";
@@ -340,20 +340,20 @@ OnStart:
 	'apostle = 10;
 	enablenpc instance_npcname("#door_mobmaster");
 	.@label$ = instance_npcname("#door_mobmaster") + "::OnMyMobDead";
-	monster 'map_eom$,102,30, "Demon God's Apostle Ahat",3105,1, .@label$;	// MM_GB_MOROCC_1
+	monster 'map_eom$,102,30, "魔神的门徒 阿哈特",3105,1, .@label$;	// MM_GB_MOROCC_1
 	setunitdata $@mobid[0], UMOB_HP, 5000000;
-	monster 'map_eom$, 98,30, "Demon God Fragment",1918,1, .@label$;
-	monster 'map_eom$,100,30, "Demon God Fragment",1918,1, .@label$;
-	monster 'map_eom$,104,30, "Demon God Fragment",1918,1, .@label$;
-	monster 'map_eom$,106,30, "Demon God Fragment",1918,1, .@label$;
+	monster 'map_eom$, 98,30, "梦罗克门徒之邪灵",1918,1, .@label$;
+	monster 'map_eom$,100,30, "梦罗克门徒之邪灵",1918,1, .@label$;
+	monster 'map_eom$,104,30, "梦罗克门徒之邪灵",1918,1, .@label$;
+	monster 'map_eom$,106,30, "梦罗克门徒之邪灵",1918,1, .@label$;
 	sleep 2000;
 	mapannounce 'map_eom$, "消灭魔神使徒阿哈特与什奈姆，并收集他们的灵魂。", bc_map, 0x00ff00;
-	monster 'map_eom$,102,40, "Demon God's Apostle Shnaim",3106,1, .@label$;	// MM_GB_MOROCC_4
+	monster 'map_eom$,102,40, "魔神的门徒 什奈姆",3106,1, .@label$;	// MM_GB_MOROCC_4
 	setunitdata $@mobid[0], UMOB_HP, 5000000;
-	monster 'map_eom$, 98,40, "Demon God Fragment",1921,1, .@label$;
-	monster 'map_eom$,100,40, "Demon God Fragment",1921,1, .@label$;
-	monster 'map_eom$,104,40, "Demon God Fragment",1921,1, .@label$;
-	monster 'map_eom$,106,40, "Demon God Fragment",1921,1, .@label$;
+	monster 'map_eom$, 98,40, "梦罗克门徒之邪灵",1921,1, .@label$;
+	monster 'map_eom$,100,40, "梦罗克门徒之邪灵",1921,1, .@label$;
+	monster 'map_eom$,104,40, "梦罗克门徒之邪灵",1921,1, .@label$;
+	monster 'map_eom$,106,40, "梦罗克门徒之邪灵",1921,1, .@label$;
 	sleep 3000;
 	mapannounce 'map_eom$, "使徒的灵魂是开启魔神神殿的钥匙。", bc_map, 0x00ff00;
 	end;
@@ -362,8 +362,8 @@ OnMyMobDead:
 	if ('apostle == 0) {
 		'step = 2;
 		disablenpc instance_npcname("#door_mobmaster");
-		enablenpc instance_npcname("Empty Soul Globe#shnaim01");
-		enablenpc instance_npcname("Empty Soul Globe#ahat01");
+		enablenpc instance_npcname("空的灵魂球#shnaim01");
+		enablenpc instance_npcname("空的灵魂球#ahat01");
 		mapannounce 'map_eom$, "已启动用于开启魔神神殿的灵魂球。", bc_map, 0x00ff00;
 	}
 	end;
@@ -372,9 +372,9 @@ OnMyMobDead:
 1@eom,104,56,0	script	空的灵魂球#ahat01	CLEAR_NPC,{
 	if ('step == 2) {
 		if (strnpcinfo(2) == "ahat01")
-			callsub( S_Globe, 1, "Ahat", 6713, "ahat02" );
+			callsub( S_Globe, 1, "阿哈特", 6713, "ahat02" );
 		else
-			callsub( S_Globe, 2, "Shnaim", 6714, "shnaim02" );
+			callsub( S_Globe, 2, "什奈姆", 6714, "shnaim02" );
 	}
 	end;
 S_Globe:
@@ -410,7 +410,7 @@ S_Globe:
 			if (isbegin_quest(7596) == 1)
 				erasequest 7596;// Qualifications of the Guests
 			enablenpc instance_npcname("#gate_to_center");
-			enablenpc instance_npcname("Strange Boy#mockid01");
+			enablenpc instance_npcname("奇怪的少年#mockid01");
 			specialeffect EF_MAPPILLAR,AREA, instance_npcname("#gate_to_center");
 			specialeffect EF_LEVEL99_3,AREA, instance_npcname("#gate_to_center");
 		}
@@ -490,8 +490,8 @@ OnTouch_:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "",255;
 	sleep2 1000;
-	.@loki$ = instance_npcname("Loki#eomloki01");
-	.@nidhogg$ = instance_npcname("Nidhogg#eomnyd01");
+	.@loki$ = instance_npcname("洛基#eomloki01");
+	.@nidhogg$ = instance_npcname("尼德霍格#eomnyd01");
 	enablenpc .@loki$;
 	enablenpc .@nidhogg$;
 	npctalk "洛基：别说这些废话了。直接说你喜欢毁灭东西吧。", .@loki$;
@@ -525,10 +525,10 @@ OnTouch_:
 	specialeffect EF_ENTRY;
 	if ('step == 3) {
 		'step = 4;
-		disablenpc instance_npcname("Strange Boy#mockid01");
+		disablenpc instance_npcname("奇怪的少年#mockid01");
 		donpcevent instance_npcname("#gate_to_ice") + "::OnEnable";
-		enablenpc instance_npcname("Nidhogg#eomnyd01");
-		enablenpc instance_npcname("Brinaranea#brinpc01");
+		enablenpc instance_npcname("尼德霍格#eomnyd01");
+		enablenpc instance_npcname("布里纳拉尼亚#brinpc01");
 		npctalk "洛基：你要逃吗？", .@loki$;
 		sleep2 2000;
 		disablenpc .@loki$;
@@ -582,7 +582,7 @@ OnTouch_:
 		erasequest 7605;
 		break;
 	}
-	setnpcdisplay instance_npcname("Nidhogg#eomnyd01"), 3087;
+	setnpcdisplay instance_npcname("尼德霍格#eomnyd01"), 3087;
 	mes "[尼德霍格]";
 	mes "" + strcharinfo(0) + "，";
 	mes "请让我在这场战斗中助你一臂之力。";
@@ -596,7 +596,7 @@ OnTouch_:
 	mercenary_create 3087,1800000;// M_NYDHOG
 	mes "^4d4dff守护者尼德霍格加入了你的队伍。^000000";
 	setquest 7605;// Guardian's Blessing
-	disablenpc instance_npcname("Nidhogg#eomnyd01");
+	disablenpc instance_npcname("尼德霍格#eomnyd01");
 	close;
 
 OnTouch:
@@ -625,7 +625,7 @@ OnTouch:
 OnTouch_:
 	if ('step >= 4) {
 		disablenpc instance_npcname("#icemob01");
-		areamonster 'map_eom$,40,93,48,101, "Frost Spider",3088,4;	// MM_BRINARANEA_BABY
+		areamonster 'map_eom$,40,93,48,101, "冰霜蜘蛛",3088,4;	// MM_BRINARANEA_BABY
 	}
 	end;
 }
@@ -634,9 +634,9 @@ OnTouch_:
 	end;
 OnTouch_:
 	if ('step >= 4) {
-		disablenpc instance_npcname("Frost Spider#icemob02");
-		monster 'map_eom$,22,116, "Frost Spider",3088,1;	// MM_BRINARANEA_BABY
-		areamonster 'map_eom$,22,113,28,119, "Frost Spider",3088,3;
+		disablenpc instance_npcname("霜蜘蛛#icemob02");
+		monster 'map_eom$,22,116, "冰霜蜘蛛",3088,1;	// MM_BRINARANEA_BABY
+		areamonster 'map_eom$,22,113,28,119, "冰霜蜘蛛",3088,3;
 	}
 	end;
 }
@@ -645,9 +645,9 @@ OnTouch_:
 	end;
 OnTouch_:
 	if ('step >= 4) {
-		disablenpc instance_npcname("Frost Spider#icemob03");
-		monster 'map_eom$,53,134, "Frost Spider",3088,1;	// MM_BRINARANEA_BABY
-		areamonster 'map_eom$,47,133,53,139, "Frost Spider",3088,3;
+		disablenpc instance_npcname("霜蜘蛛#icemob03");
+		monster 'map_eom$,53,134, "冰霜蜘蛛",3088,1;	// MM_BRINARANEA_BABY
+		areamonster 'map_eom$,47,133,53,139, "冰霜蜘蛛",3088,3;
 	}
 	end;
 }
@@ -663,7 +663,7 @@ OnTouch_:
 	end;
 OnTimer3000:
 	npctalk "布里纳拉尼亚：我的孩子们今晚要大饱口福了。呵呵呵！";
-	disablenpc instance_npcname("Brinaranea#brinpc01");
+	disablenpc instance_npcname("布里纳拉尼亚#brinpc01");
 	donpcevent instance_npcname("#ice_hpcheck") + "::OnSpawn";
 	end;
 OnTimer5000:
@@ -678,7 +678,7 @@ OnTimer5000:
 	end;
 OnSpawn:
 	enablenpc instance_npcname("#ice_hpcheck");
-	monster 'map_eom$,38,123, "Brinaranea",3091,1, instance_npcname("#ice_hpcheck") + "::OnMyMobDead";	// MM_BRINARANEA
+	monster 'map_eom$,38,123, "布里纳拉尼亚",3091,1, instance_npcname("#ice_hpcheck") + "::OnMyMobDead";	// MM_BRINARANEA
 	'boss_id = $@mobid[0];
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_MAXHP];
@@ -723,19 +723,19 @@ OnTimer3000:
 
 OnMyMobDead:
 	donpcevent instance_npcname("#ice_hpcheck") + "::OnEnd";
-	disablenpc instance_npcname("Brinaranea#brinpc01");
+	disablenpc instance_npcname("布里纳拉尼亚#brinpc01");
 	stopnpctimer instance_npcname("#ice_combo");
 	stopnpctimer instance_npcname("#brinaranea_event_1");
 	stopnpctimer instance_npcname("#brinaranea_event_2");
 	stopnpctimer instance_npcname("#brinaranea_event_3");
 	stopnpctimer instance_npcname("#brinaranea_event_4");
-	stopnpctimer instance_npcname("Brinaranea#brinpc01");
+	stopnpctimer instance_npcname("布里纳拉尼亚#brinpc01");
 	stopnpctimer instance_npcname("#super_heal");
 	// stopnpctimer instance_npcname("#icestunami");
 
-	enablenpc instance_npcname("Nidhogg#eomnyd02");
+	enablenpc instance_npcname("尼德霍格#eomnyd02");
 	enablenpc instance_npcname("#ice_to_center");
-	enablenpc instance_npcname("Morroc#mockid02");
+	enablenpc instance_npcname("莫洛克#mockid02");
 	mapannounce 'map_eom$, "尼德霍格：布里纳拉尼亚的影响力已经消散，新的传送门出现了。", bc_map, 0x00ff00;
 	'step = 6;
 
@@ -755,7 +755,7 @@ OnCallBaby:
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_HP];
 	killmonster 'map_eom$, instance_npcname("#ice_hpcheck") + "::OnMyMobDead";
-	monster 'map_eom$,38,123, "Brinaranea",3091,1, instance_npcname("#ice_hpcheck") + "::OnMyMobDead";	// MM_BRINARANEA
+	monster 'map_eom$,38,123, "布里纳拉尼亚",3091,1, instance_npcname("#ice_hpcheck") + "::OnMyMobDead";	// MM_BRINARANEA
 	'boss_id = $@mobid[0];
 	setunitdata 'boss_id, UMOB_HP, 'boss_hp;
 	if ('spawn == true)
@@ -1014,7 +1014,7 @@ OnTouch_:
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		specialeffect EF_ENTRY;
-		cloakonnpc instance_npcname("Morroc#mockid02");	// cloakonnpc to properly display the previous effect
+		cloakonnpc instance_npcname("莫洛克#mockid02");	// cloakonnpc to properly display the previous effect
 	}
 	end;
 }
@@ -1039,27 +1039,27 @@ OnEnable:
 OnTouch_:
 	disablenpc instance_npcname("#fire_event01");
 	sleep 1000;
-	mapannounce 'map_eom$, "Grr...", bc_map, 0xff0000;
+	mapannounce 'map_eom$, "咕噜……", bc_map, 0xff0000;
 	sleep 3000;
 	mapannounce 'map_eom$, "我闻到人类的味道了……吼……", bc_map, 0xff0000;
-	monster 'map_eom$,139,101, "Frenzied Kasa",3089,1;	// MM_LOCO_KASA
+	monster 'map_eom$,139,101, "疯狂卡萨",3089,1;	// MM_LOCO_KASA
 	sleep 1000;
-	monster 'map_eom$,142, 98, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,142, 98, "疯狂卡萨",3089,1;
 	sleep 1000;
-	monster 'map_eom$,144, 92, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,144, 92, "疯狂卡萨",3089,1;
 	sleep 3000;
-	monster 'map_eom$,145,104, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,145,104, "疯狂卡萨",3089,1;
 	sleep 1000;
-	monster 'map_eom$,148, 98, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,148, 98, "疯狂卡萨",3089,1;
 	sleep 1000;
-	monster 'map_eom$,150, 93, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,150, 93, "疯狂卡萨",3089,1;
 	sleep 3000;
-	monster 'map_eom$,151,106, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,151,106, "疯狂卡萨",3089,1;
 	sleep 1000;
-	monster 'map_eom$,153,100, "Frenzied Kasa",3089,1;
+	monster 'map_eom$,153,100, "疯狂卡萨",3089,1;
 	sleep 1000;
-	monster 'map_eom$,156, 95, "Frenzied Kasa",3089,1;
-	mapannounce 'map_eom$, "...BURN!", bc_map, 0xff0000;
+	monster 'map_eom$,156, 95, "疯狂卡萨",3089,1;
+	mapannounce 'map_eom$, "……燃烧吧！", bc_map, 0xff0000;
 	donpcevent instance_npcname("#skollmaster") + "::OnStart";
 	end;
 }
@@ -1068,15 +1068,15 @@ OnTouch_:
 	end;
 OnStart:
 	enablenpc instance_npcname("#skollmaster");
-	enablenpc instance_npcname("Flowing Lava#lavapond01");
-	enablenpc instance_npcname("Flowing Lava#lavapond02");
+	enablenpc instance_npcname("流动的熔岩#lavapond01");
+	enablenpc instance_npcname("流动的熔岩#lavapond02");
 	enablenpc instance_npcname("#lavazone11");
 	enablenpc instance_npcname("#lavazone12");
 	enablenpc instance_npcname("#lavazone21");
 	enablenpc instance_npcname("#lavazone22");
 	'flowing_lava_deactivate[0] = 'flowing_lava_deactivate[1] = false;
 
-	monster 'map_eom$,148,98, "Muspellskoll",3092,1, instance_npcname("#skollmaster") + "::OnMobDead";	// MM_MUSPELLSKOLL
+	monster 'map_eom$,148,98, "穆斯佩尔斯科尔",3092,1, instance_npcname("#skollmaster") + "::OnMobDead";	// MM_MUSPELLSKOLL
 	'boss_id = $@mobid[0];
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_MAXHP];
@@ -1114,7 +1114,7 @@ S_ReSpawn:
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_HP];
 	killmonster 'map_eom$, instance_npcname("#skollmaster") + "::OnMobDead";
-	monster 'map_eom$,getarg(0),getarg(1), "Muspellskoll",3092,1, instance_npcname("#skollmaster") + "::OnMobDead";	// MM_MUSPELLSKOLL
+	monster 'map_eom$,getarg(0),getarg(1), "穆斯佩尔斯科尔",3092,1, instance_npcname("#skollmaster") + "::OnMobDead";	// MM_MUSPELLSKOLL
 	'boss_id = $@mobid[0];
 	setunitdata 'boss_id, UMOB_HP, 'boss_hp;
 	return;
@@ -1146,9 +1146,9 @@ OnMobDead:
 	killmonster 'map_eom$, instance_npcname("#skollmaster") + "::OnMobDead";
 	mapannounce 'map_eom$, "尼德霍格：穆斯佩尔斯科尔的影响力已经消散，新的传送门出现了。", bc_map, 0x00ff00;
 
-	enablenpc instance_npcname("Nidhogg#eomnyd03");
+	enablenpc instance_npcname("尼德霍格#eomnyd03");
 	enablenpc instance_npcname("#fire_to_center");
-	enablenpc instance_npcname("Strange Young Man#mocadt01");
+	enablenpc instance_npcname("奇怪的青年#mocadt01");
 
 	'step = 8;
 	donpcevent instance_npcname("#demon_god_variables") + "::OnVariableReset";
@@ -1269,7 +1269,7 @@ OnTimer3000:
 	end;
 OnEvent:
 	initnpctimer;
-	unittalk 'boss_id, "Grr...";
+	unittalk 'boss_id, "咕噜……";
 	end;
 OnTimer1000:
 	getunitdata 'boss_id, .@data;
@@ -1409,17 +1409,17 @@ OnMobDead:
 		end;
 	'flowing_lava_deactivate[0] = true;
 	delitem 22566,1;// Frost_Crystal
-	disablenpc instance_npcname("Flowing Lava#lavapond01");
-	donpcevent instance_npcname("Hardened Lava#lavaseal01") + "::OnEnable";
+	disablenpc instance_npcname("流动的熔岩#lavapond01");
+	donpcevent instance_npcname("凝固的熔岩#lavaseal01") + "::OnEnable";
 	initnpctimer;
 	end;
 OnTimer300:
-	donpcevent instance_npcname("Hardened Lava#lavaseal01") + "::OnEffect";
+	donpcevent instance_npcname("凝固的熔岩#lavaseal01") + "::OnEffect";
 	end;
 OnTimer120000:
 	'flowing_lava_deactivate[0] = false;
-	donpcevent instance_npcname("Hardened Lava#lavaseal01") + "::OnDisable";
-	enablenpc instance_npcname("Flowing Lava#lavapond01");
+	donpcevent instance_npcname("凝固的熔岩#lavaseal01") + "::OnDisable";
+	enablenpc instance_npcname("流动的熔岩#lavapond01");
 	mapannounce 'map_eom$, "尼德霍格：霜已经融化。熔岩又开始流动了！", bc_map, 0x00ff00;
 	stopnpctimer;
 	end;
@@ -1436,17 +1436,17 @@ OnTimer120000:
 		end;
 	'flowing_lava_deactivate[1] = true;
 	delitem 22566,1;// Frost_Crystal
-	disablenpc instance_npcname("Flowing Lava#lavapond02");
-	donpcevent instance_npcname("Hardened Lava#lavaseal02") + "::OnEnable";
+	disablenpc instance_npcname("流动的熔岩#lavapond02");
+	donpcevent instance_npcname("凝固的熔岩#lavaseal02") + "::OnEnable";
 	initnpctimer;
 	end;
 OnTimer300:
-	donpcevent instance_npcname("Hardened Lava#lavaseal02") + "::OnEffect";
+	donpcevent instance_npcname("凝固的熔岩#lavaseal02") + "::OnEffect";
 	end;
 OnTimer120000:
 	'flowing_lava_deactivate[1] = false;
-	donpcevent instance_npcname("Hardened Lava#lavaseal02") + "::OnDisable";
-	enablenpc instance_npcname("Flowing Lava#lavapond02");
+	donpcevent instance_npcname("凝固的熔岩#lavaseal02") + "::OnDisable";
+	enablenpc instance_npcname("流动的熔岩#lavapond02");
 	mapannounce 'map_eom$, "尼德霍格：霜已经融化。熔岩又开始流动了！", bc_map, 0x00ff00;
 	stopnpctimer;
 	end;
@@ -1455,13 +1455,13 @@ OnTimer120000:
 1@eom,154,119,0	script	凝固的熔岩#lavaseal01	CLEAR_NPC,{
 	end;
 OnEnable:
-	enablenpc instance_npcname("Hardened Lava#lavaseal01");
+	enablenpc instance_npcname("凝固的熔岩#lavaseal01");
 	disablenpc instance_npcname("#lavazone11");
 	disablenpc instance_npcname("#lavazone12");
 	end;
 OnDisable:
 	stopnpctimer;
-	disablenpc instance_npcname("Hardened Lava#lavaseal01");
+	disablenpc instance_npcname("凝固的熔岩#lavaseal01");
 	enablenpc instance_npcname("#lavazone11");
 	enablenpc instance_npcname("#lavazone12");
 	end;
@@ -1477,13 +1477,13 @@ OnTimer3000:
 1@eom,182,129,0	script	凝固的熔岩#lavaseal02	CLEAR_NPC,{
 	end;
 OnEnable:
-	enablenpc instance_npcname("Hardened Lava#lavaseal02");
+	enablenpc instance_npcname("凝固的熔岩#lavaseal02");
 	disablenpc instance_npcname("#lavazone21");
 	disablenpc instance_npcname("#lavazone22");
 	end;
 OnDisable:
 	stopnpctimer;
-	disablenpc instance_npcname("Hardened Lava#lavaseal02");
+	disablenpc instance_npcname("凝固的熔岩#lavaseal02");
 	enablenpc instance_npcname("#lavazone21");
 	enablenpc instance_npcname("#lavazone22");
 	end;
@@ -1574,7 +1574,7 @@ OnTimer10000:
 OnTimer12000:
 	stopnpctimer;
 	specialeffect EF_ENTRY;
-	disablenpc instance_npcname("Strange Young Man#mocadt01");
+	disablenpc instance_npcname("奇怪的青年#mocadt01");
 	end;
 }
 
@@ -1603,7 +1603,7 @@ OnStart:
 	enablenpc instance_npcname("#despair_god_main");
 	'boss_phase = 1;
 
-	monster 'map_eom$,101,194, "Demigod",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
+	monster 'map_eom$,101,194, "半神",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
 	'boss_id = $@mobid[0];
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_MAXHP];
@@ -1631,7 +1631,7 @@ OnPhase02:
 	getunitdata 'boss_id, .@data;
 	'boss_hp = .@data[UMOB_HP];
 	killmonster 'map_eom$, instance_npcname("#despair_god_main") + "::OnMobDead";
-	monster 'map_eom$,101,207, "Demigod",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
+	monster 'map_eom$,101,207, "半神",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
 	'boss_id = $@mobid[0];
 	setunitdata 'boss_id, UMOB_HP, 'boss_hp;
 	setunitdata 'boss_id, UMOB_MODE, (MD_MVP|MD_STATUSIMMUNE|MD_KNOCKBACKIMMUNE|MD_MVP|MD_DETECTOR);	// todo: MD_SKILL_IMMUNE ?
@@ -1649,7 +1649,7 @@ OnPhase03:
 	.@hp = .@data[UMOB_HP] + ('boss_hp - .@data[UMOB_HP]) * 10;
 	'boss_hp = min(80000000,.@hp);
 	killmonster 'map_eom$, instance_npcname("#despair_god_main") + "::OnMobDead";
-	monster 'map_eom$,101,194, "Demigod",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
+	monster 'map_eom$,101,194, "半神",3096,1, instance_npcname("#despair_god_main") + "::OnMobDead";	// MM_MOROCC_KID
 	'boss_id = $@mobid[0];
 	setunitdata 'boss_id, UMOB_HP, 'boss_hp;
 	unittalk 'boss_id, "别这么纠缠不休！";
@@ -1869,7 +1869,7 @@ OnTimer13000:
 	end;
 OnEnable:
 	enablenpc instance_npcname("#moc_origin");
-	monster 'map_eom$,114,198, "Morroc of the Genesis", 3098,1, instance_npcname("#moc_origin") + "::OnMobDead1";	// MM_MOROCC_ORIGIN
+	monster 'map_eom$,114,198, "太初的梦罗克", 3098,1, instance_npcname("#moc_origin") + "::OnMobDead1";	// MM_MOROCC_ORIGIN
 	'miniboss_id[0] = $@mobid[0];
 	'miniboss_id[1] = 0;
 	initnpctimer;
@@ -1881,7 +1881,7 @@ OnTimer1000:
 	getunitdata 'miniboss_id[0], .@data;
 	if (.@data[UMOB_HP] < 2200000) {
 		if ('miniboss_id[1] == 0) {
-			monster 'map_eom$,86,199, "Morroc of the Sabbath", 3099,1, instance_npcname("#moc_origin") + "::OnMobDead2";	// MM_MOROCC_REST
+			monster 'map_eom$,86,199, "恢复的梦罗克", 3099,1, instance_npcname("#moc_origin") + "::OnMobDead2";	// MM_MOROCC_REST
 			'miniboss_id[1] = $@mobid[0];
 		}
 	}
@@ -1950,10 +1950,10 @@ OnTrap:
 	.@label$ = instance_npcname("#mk_trap") + "::OnMobDead";
 	if (mobcount( 'map_eom$, .@label$ ) < 3) {
 		getunitdata 'boss_id, .@data;
-		monster 'map_eom$,.@data[UMOB_X]-4,.@data[UMOB_Y], "Frenzied Kasa", 3089,1, .@label$;	// MM_LOCO_KASA
-		monster 'map_eom$,.@data[UMOB_X],.@data[UMOB_Y]-4, "Frenzied Kasa", 3089,1, .@label$;
-		monster 'map_eom$,.@data[UMOB_X]+4,.@data[UMOB_Y], "Frenzied Kasa", 3089,1, .@label$;
-		monster 'map_eom$,.@data[UMOB_X],.@data[UMOB_Y]+4, "Frenzied Kasa", 3089,1, .@label$;
+		monster 'map_eom$,.@data[UMOB_X]-4,.@data[UMOB_Y], "疯狂卡萨", 3089,1, .@label$;	// MM_LOCO_KASA
+		monster 'map_eom$,.@data[UMOB_X],.@data[UMOB_Y]-4, "疯狂卡萨", 3089,1, .@label$;
+		monster 'map_eom$,.@data[UMOB_X]+4,.@data[UMOB_Y], "疯狂卡萨", 3089,1, .@label$;
+		monster 'map_eom$,.@data[UMOB_X],.@data[UMOB_Y]+4, "疯狂卡萨", 3089,1, .@label$;
 	}
 	end;
 OnMobDead:
@@ -1999,7 +1999,7 @@ OnTimer17000:
 	end;
 OnStart:
 	enablenpc instance_npcname("#despair_main");
-	monster 'map_eom$,101,194, "Despair God Morroc",3097,1, instance_npcname("#despair_main") + "::OnMobDead";	// MM_MOROCC_ADT
+	monster 'map_eom$,101,194, "绝望之神梦罗克",3097,1, instance_npcname("#despair_main") + "::OnMobDead";	// MM_MOROCC_ADT
 	'boss_id = $@mobid[0];
 	end;
 OnMobDead:
@@ -2020,7 +2020,7 @@ OnMobDead:
 	end;
 OnTimer2000:
 	stopnpctimer;
-	enablenpc instance_npcname("Nidhogg#eomnyd04");
+	enablenpc instance_npcname("尼德霍格#eomnyd04");
 	end;
 
 OnTest_hp:
@@ -2248,13 +2248,13 @@ OnTimer8000:
 	}
 	else {	// todo, custom text
 		mes "[尼德霍格]";
-		mes "...It feels like things are not over yet,";
+		mes "……看来事情还没结束，";
 		mes "这里已经非常接近莫洛克的精神世界了，";
 		mes "他应该就在这里，不断回想着过去！";
 		cutin "ep14_nyd03.bmp",2;
 	}
 	next;
-	select("Exit.");
+	select("退出。");
 	mes "[尼德霍格]";
 	mes "当然。你一定累坏了。";
 	mes "让我免费送你到远征队的其他成员那里吧。";
@@ -2267,7 +2267,7 @@ OnTimer8000:
 	mes "什么？";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) < 1) {
-		mes "Wrong.";
+		mes "错了。";
 		close;
 	}
 	mes "什么首领？";
@@ -2275,7 +2275,7 @@ OnTimer8000:
 	switch( select( "布里纳拉尼亚", "穆斯佩尔斯科尔", "半神", "绝望之神" ) ) {
 	case 1:
 		mes "布里纳拉尼亚的体力已设定为 2.000.000。";
-		donpcevent instance_npcname("Brinaranea#brinpc01") + "::OnTest_hp";
+		donpcevent instance_npcname("布里纳拉尼亚#brinpc01") + "::OnTest_hp";
 		close;
 	case 2:
 		mes "穆斯佩尔斯科尔的体力已设定为 2.000.000。";

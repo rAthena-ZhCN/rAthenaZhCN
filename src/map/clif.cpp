@@ -3,6 +3,7 @@
 // For more information, see LICENCE in the main folder
 
 #include "clif.hpp"
+#include "stylist.hpp"
 
 #include <cstdarg>
 #include <cstdio>
@@ -35,6 +36,7 @@
 #include "chrif.hpp"
 #include "clan.hpp"
 #include "clif.hpp"
+#include "stylist.hpp"
 #include "elemental.hpp"
 #include "guild.hpp"
 #include "homunculus.hpp"
@@ -3973,6 +3975,8 @@ void clif_changelook(block_list *bl,int32 type,int32 val) {
 	sd = BL_CAST(BL_PC, bl);
 	sc = status_get_sc(bl);
 	vd = status_get_viewdata(bl);
+	// A selected outfit belongs to the character, not to a temporary disguise.
+	if( type == LOOK_BODY2 && sd != nullptr && sd->disguise ) return;
 
 	if( vd ) //temp hack to let Warp Portal change appearance
 		switch(type) {
@@ -4018,7 +4022,11 @@ void clif_changelook(block_list *bl,int32 type,int32 val) {
 					}
 
 					if( vd->look[LOOK_BODY2] != 0 && sc->option&OPTION_COSTUME ){
+#if PACKETVER >= 20231220
+						if( sd != nullptr ) vd->look[LOOK_BODY2] = pc_stylist_view_body(*sd);
+#else
 						vd->look[LOOK_BODY2] = 0;
+#endif
 					}
 				}
 				break;
@@ -4073,9 +4081,13 @@ void clif_changelook(block_list *bl,int32 type,int32 val) {
 #if PACKETVER < 20150513
 				return;
 #else
-				if( sc != nullptr && sc->option&OPTION_COSTUME ){
+#if PACKETVER >= 20231220
+				if( sd != nullptr ) val = pc_stylist_view_body(*sd);
+#else
+				if( sd != nullptr && sc != nullptr && sc->option&OPTION_COSTUME ){
  					val = sd->status.class_;
 				}
+#endif
 
  				vd->look[LOOK_BODY2] = val;
 				break;
@@ -11844,7 +11856,7 @@ void clif_parse_Restart(int32 fd, map_session_data *sd)
 		break;
 	case 0x01:
 		/*	Rovert's Prevent logout option - Fixed [Valaris]	*/
-		if( !sd->sc.getSCE(SC_CLOAKING) && !sd->sc.getSCE(SC_HIDING) && !sd->sc.getSCE(SC_CHASEWALK) && !sd->sc.getSCE(SC_CLOAKINGEXCEED) && !sd->sc.getSCE(SC_SUHIDE) && !sd->sc.getSCE(SC_NEWMOON) &&
+		if( sd->stylist_purchase == nullptr && !sd->sc.getSCE(SC_CLOAKING) && !sd->sc.getSCE(SC_HIDING) && !sd->sc.getSCE(SC_CHASEWALK) && !sd->sc.getSCE(SC_CLOAKINGEXCEED) && !sd->sc.getSCE(SC_SUHIDE) && !sd->sc.getSCE(SC_NEWMOON) &&
 			(!battle_config.prevent_logout || sd->canlog_tick == 0 || DIFF_TICK(gettick(), sd->canlog_tick) > battle_config.prevent_logout) )
 		{	//Send to char-server for character selection.
 			chrif_charselectreq(sd, session[fd]->client_addr);
@@ -17371,7 +17383,8 @@ void clif_cashshop_list( map_session_data& sd ){
 #ifdef ENABLE_CASHSHOP_PREVIEW_PATCH
 			struct item_data* id = itemdb_search( item->nameid );
 
-			if( id == nullptr ){
+			if( id == nullptr || ( id->type != IT_WEAPON && id->type != IT_ARMOR ) ){
+				// Non-equipment items do not have a meaningful preview.
 				p->items[p->count].location = 0;
 				p->items[p->count].viewSprite = 0;
 			}else{
@@ -18807,7 +18820,7 @@ void clif_instance_create( int32 instance_id, size_t num ){
 		return;
 
 	WBUFW(buf,0) = 0x2cb;
-	safestrncpy(WBUFCP(buf,2), db->name.c_str(), INSTANCE_NAME_LENGTH);
+	{ std::string display = instance_get_display_name(db); safestrncpy(WBUFCP(buf,2), display.c_str(), INSTANCE_NAME_LENGTH); }
 	WBUFW( buf, 63 ) = static_cast<int16>( num );
 
 	clif_send(buf,packet_len(0x2cb),sd,target);
@@ -18856,7 +18869,7 @@ void clif_instance_status(int32 instance_id, uint32 limit1, uint32 limit2)
 		return;
 
 	WBUFW(buf,0) = 0x2cd;
-	safestrncpy(WBUFCP(buf,2), db->name.c_str(), INSTANCE_NAME_LENGTH);
+	{ std::string display = instance_get_display_name(db); safestrncpy(WBUFCP(buf,2), display.c_str(), INSTANCE_NAME_LENGTH); }
 	WBUFL(buf,63) = limit1;
 	WBUFL(buf,67) = limit2;
 	clif_send(buf,packet_len(0x2cd),sd,target);
@@ -21243,6 +21256,7 @@ void clif_merge_item_open( const map_session_data& sd ){
  * @param sd
  **/
 void clif_parse_merge_item_req( int32 fd, map_session_data* sd ){
+	if( sd->stylist_purchase != nullptr ) return;
 	const PACKET_CZ_REQ_MERGE_ITEM* p = reinterpret_cast<PACKET_CZ_REQ_MERGE_ITEM*>( RFIFOP( fd, 0 ) );
 
 	int32 count = ( p->packetLength - sizeof( *p ) ) / sizeof( p->indices[0] );
@@ -21961,6 +21975,8 @@ void clif_parse_changedress( int32 fd, map_session_data* sd ){
 #endif
 }
 
+
+
 /// Opens an UI window of the given type and initializes it with the given data
 /// 0AE2 <type>.B <data>.L
 void clif_ui_open( map_session_data& sd, enum out_ui_type ui_type, int32 data ){
@@ -21968,8 +21984,8 @@ void clif_ui_open( map_session_data& sd, enum out_ui_type ui_type, int32 data ){
 	// If the UI requires state tracking
 	switch( ui_type ){
 		case OUT_UI_STYLIST:
-			sd.state.stylist_open = true;
-			break;
+			clif_stylist_open( sd, data );
+			return;
 		case OUT_UI_ENCHANTGRADE:
 #if PACKETVER_MAIN_NUM >= 20200916 || PACKETVER_RE_NUM >= 20200724
 			sd.state.enchantgrade_open = true;
@@ -22908,7 +22924,7 @@ bool clif_parse_stylist_buy_sub( map_session_data* sd, _look look, int16 index )
 			}
 		}
 	}else if( costs->requiredItemBox != 0 ){
-		inventoryIndex = pc_search_inventory( sd, costs->requiredItem );
+		inventoryIndex = pc_search_inventory( sd, costs->requiredItemBox );
 
 		if( inventoryIndex < 0 ){
 			return false;
@@ -22956,8 +22972,12 @@ bool clif_parse_stylist_buy_sub( map_session_data* sd, _look look, int16 index )
 	return true;
 }
 
+
+
 void clif_parse_stylist_buy( int32 fd, map_session_data* sd ){
-#if PACKETVER >= 20151104
+#if PACKETVER >= 20231220
+	clif_stylist_buy_modern( fd, sd );
+#elif PACKETVER >= 20151104
 #if PACKETVER >= 20180516
 	const PACKET_CZ_REQ_STYLE_CHANGE2* p = reinterpret_cast<PACKET_CZ_REQ_STYLE_CHANGE2*>( RFIFOP( fd, 0 ) );
 #else
@@ -25785,6 +25805,15 @@ static int32 clif_parse(int32 fd)
 		sd->cryptKey = ((sd->cryptKey * clif_cryptKey[1]) + clif_cryptKey[2]) & 0xFFFFFFFF; // Update key for the next packet
 #endif
 
+	// A pending purchase owns reserved resources. Keep the connection alive and
+	// allow logout/loading, but do not dispatch another gameplay mutation.
+	if( sd != nullptr && sd->stylist_purchase != nullptr &&
+		packet_db[cmd].func != clif_parse_TickSend && packet_db[cmd].func != clif_parse_QuitGame &&
+		packet_db[cmd].func != clif_parse_Restart && packet_db[cmd].func != clif_parse_LoadEndAck &&
+		packet_db[cmd].func != clif_parse_stylist_close ) {
+		RFIFOSKIP(fd, packet_len);
+		continue;
+	}
 	if( packet_db[cmd].func == clif_parse_debug )
 		packet_db[cmd].func(fd, sd);
 	else if( packet_db[cmd].func != nullptr ) {

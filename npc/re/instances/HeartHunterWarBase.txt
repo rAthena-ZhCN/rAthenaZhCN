@@ -42,17 +42,19 @@ ein_fild04,275,342,5	script	突击队指挥官#	4_M_REBELLION3,{
 	mes "[突击队指挥官]";
 	mes "等作战准备完毕，你就和我一起进去。";
 	next;
-	if (terra_gloria_main == 19)
+	if (terra_gloria_main == 19) {
 		.@md_name$ = "Heart Hunter War Base 1";
-	else
+	} else {
 		.@md_name$ = "Heart Hunter War Base 2";
+	}
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_NOMEMBER:
 		mes "^0000ff看来没有所属部队（队伍）的冒险者无法进入。^000000";
 		close;
 	case IE_NOINSTANCE:
 		mes "[突击队指挥官]";
-		mes "作战区域是" + .@md_name$ + "请确认作战是否已正确应用。";
+		mes "作战区域是" + .@md_display$ + "请确认作战是否已正确应用。";
 		next;
 		mes "^ff0000未通关心猎者战争基地时，禁止前往心猎者战争基地外围。此外，已经通关的心猎者战争基地也无法进入。请确认你的作战进度^000000";
 		next;
@@ -64,7 +66,7 @@ ein_fild04,275,342,5	script	突击队指挥官#	4_M_REBELLION3,{
 		mes "发生了未知错误。";
 		close;
 	case IE_OK:
-		mapannounce "ein_fild04", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + "，正在进入" + .@md_name$ + "。", bc_map, 0xFF99;
+		mapannounce "ein_fild04", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + "，正在进入" + .@md_display$ + "。", bc_map, 0xFF99;
 		setquest 12375;// Base maintenance
 		// if (terra_gloria_main == 20)
 		// 	warp "1@swat",35,65;
@@ -617,13 +619,13 @@ OnTouch:
 	end;
 OnWave1:
 	enablenpc instance_npcname("#hunter_instance_1_mob_1");
-	areamonster 'map_swat$, 55,49,89,77, "Heart Hunter Guard",3627,24, instance_npcname("#hunter_instance_1_mob_1") + "::OnMobDead";		// EP16_2_H_HUNTER_MD
+	areamonster 'map_swat$, 55,49,89,77, "猎心者卫兵",3627,24, instance_npcname("#hunter_instance_1_mob_1") + "::OnMobDead";		// EP16_2_H_HUNTER_MD
 	end;
 OnWave2:
 	.@label$ = instance_npcname("#hunter_instance_1_mob_1") + "::OnMobDead";
 	for ( .@x = 93; .@x >= 81; .@x -= 4 ) {
 		for ( .@y = 54; .@y >= 39; .@y -= 3 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	end;
@@ -837,7 +839,7 @@ OnStart:
 	.@label$ = instance_npcname("#hunter_instance_1_mob_2") + "::OnMobDead";
 	for ( .@y = 120; .@y >= 99; .@y -= 7 ) {
 		for ( .@x = 140; .@x >= 122; .@x -= 6 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	end;
@@ -845,7 +847,7 @@ OnStart:
 OnMobDead:
 	.@label$ = instance_npcname("#hunter_instance_1_mob_2") + "::OnMobDead";
 	if (rand(100) < 5)
-		areamonster 'map_swat$, 122,99,140,120, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
+		areamonster 'map_swat$, 122,99,140,120, "强化猎心者",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
 	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
@@ -906,7 +908,7 @@ OnStart:
 	.@label$ = instance_npcname("#hunter_instance_1_mob_3") + "::OnMobDead";
 	for ( .@y = 35; .@y <= 75; .@y += 8 ) {
 		for ( .@x = 188; .@x >= 168; .@x -= 10 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	end;
@@ -1081,7 +1083,7 @@ OnTimer85000:
 	end;
 OnStart:
 	enablenpc instance_npcname("#hunter_instance_ebel");
-	monster 'map_swat$,315,47, "Heart Hunter 艾贝尔",3628,1, instance_npcname("#hunter_instance_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
+	monster 'map_swat$,315,47, "猎心者 艾贝尔",3628,1, instance_npcname("#hunter_instance_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
 	'boss_id = $@mobid[0];
 	initnpctimer;
 	end;
@@ -1323,14 +1325,14 @@ OnStart:
 	mapannounce 'map_swat$, "检测到对基地的攻击。全体人员，开始防御战术。", bc_map,0xFF5555;
 	for ( .@y = 145; .@y <= 199; .@y += 9 ) {
 		for ( .@x = 28; .@x <= 48; .@x += 10 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	end;
 OnMobDead:
 	.@label$ = instance_npcname("#remaining_hunter2_step1") + "::OnMobDead";
 	if (rand(100) < 5)
-		areamonster 'map_swat$, 28,145,48,199, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
+		areamonster 'map_swat$, 28,145,48,199, "强化猎心者",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
 	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
@@ -1406,14 +1408,14 @@ OnStart:
 	.@label$ = instance_npcname("#remaining_hunter2_step2") + "::OnMobDead";
 	for ( .@y = 250; .@y <= 265; .@y += 5 ) {
 		for ( .@x = 25; .@x <= 60; .@x += 7 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	end;
 OnMobDead:
 	.@label$ = instance_npcname("#remaining_hunter2_step2") + "::OnMobDead";
 	if (rand(100) < 10)
-		areamonster 'map_swat$, 25,250,60,265, "Upgraded Heart Hunter",3626,1, .@label$;		// EP16_2_H_HUNTER_V
+		areamonster 'map_swat$, 25,250,60,265, "强化猎心者",3626,1, .@label$;		// EP16_2_H_HUNTER_V
 	.@count = mobcount( 'map_swat$, .@label$ );
 	mapannounce 'map_swat$, "剩余" + .@count + "名心猎者", bc_map,0xFFFFFF;
 	if (.@count < 1)
@@ -1516,7 +1518,7 @@ OnStart:
 	.@label$ = instance_npcname("#hunter_instance_2_maze") + "::OnMobDead";
 	for ( .@y = 300; .@y <= 330; .@y += 10 ) {
 		for ( .@x = 30; .@x <= 120; .@x += 10 ) {
-			monster 'map_swat$,.@x,.@y, "Heart Hunter Guard",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
+			monster 'map_swat$,.@x,.@y, "猎心者卫兵",3627,1, .@label$;	// EP16_2_H_HUNTER_MD
 		}
 	}
 	// maze - pregenerated ?
@@ -1694,7 +1696,7 @@ OnTimer12000:
 	end;
 OnStart:
 	enablenpc instance_npcname("#hunter_instance_2_ebel");
-	monster 'map_swat$,129,258, "Heart_Hunter 艾贝尔",3628,1, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
+	monster 'map_swat$,129,258, "猎心者 艾贝尔",3628,1, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead";	// EP16_2_H_HUNTER_EV
 	end;
 OnMobDead:
 	if (mobcount( 'map_swat$, instance_npcname("#hunter_instance_2_ebel") + "::OnMobDead" ) < 1)

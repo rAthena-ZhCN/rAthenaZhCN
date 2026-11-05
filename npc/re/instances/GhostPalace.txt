@@ -106,6 +106,7 @@ dali02,40,134,5	script	次元装置#dk	PORTAL,{
 	}
 
 	.@md_name$ = "Ghost Palace";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
 		mes "发生了未知错误。";
@@ -114,7 +115,7 @@ dali02,40,134,5	script	次元装置#dk	PORTAL,{
 		mes "^ff0000装置中有一个黑洞。若要进入，必须先与不悦的皇家守卫交谈。^000000";
 		close;
 	case IE_NOMEMBER:
-		mes "只有已登记的成员才能进入" + .@md_name$ + "副本。";
+		mes "只有已登记的成员才能进入" + .@md_display$ + "副本。";
 		close;
 	case IE_OK:
 		mapannounce "dali", "" + strcharinfo(0) + "，队伍：" + getpartyname(.@party_id) + ", is entering the Ghost Palace.", bc_map, 0x00ff99;

@@ -11,6 +11,7 @@
 oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 	if (ep18_main == 54) {
 		.@md_name$ = "High Priest's Villa";
+		.@md_display$ = instance_getdisplayname(.@md_name$);
 
 		mes "[艾拉]";
 		mes "别墅的入口吗？钥匙就在入口处。";
@@ -21,7 +22,7 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 		mes "还有……我们不知道里面会发生什么。";
 		mes "如果有同伴，建议结伴同行。";
 		next;
-		switch( select( "申请'" + .@md_name$ + "'.", "Enter '" + .@md_name$ + "'." ) ) {
+		switch( select( "申请'" + .@md_display$ + "'.", "Enter '" + .@md_display$ + "'." ) ) {
 		case 1:
 			if (getcharid(1) == 0 || is_party_leader() == false) {
 				mes "^4d4dff 这是追悼活动。";
@@ -33,7 +34,7 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 			if (instance_create(.@md_name$) < 0) {
 				mes "队伍：" + getpartyname(getcharid(1)) + "";
 				mes "队长：" + strcharinfo(0) + "";
-				mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
+				mes "^0000ff" + .@md_display$ + "^000000- 未知错误";
 				close;
 			}
 			close;
@@ -52,7 +53,7 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 				mes "^ff0000只有队伍成员才能进入记忆副本。^000000";
 				close;
 			case IE_OK:
-				mapannounce "oz_dun01", "" + strcharinfo(0) + "来自" + getpartyname( getcharid(1) ) + "的队伍进入了" + .@md_name$ + ".", bc_map, 0xFF99;
+				mapannounce "oz_dun01", "" + strcharinfo(0) + "来自" + getpartyname( getcharid(1) ) + "的队伍进入了" + .@md_display$ + ".", bc_map, 0xFF99;
 				// warp "1@adv",123,17;
 				end;
 			}
@@ -261,8 +262,8 @@ OnInstanceInit:
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_extra_02") + "::OnMobDead";
-	monster 'map_adv$,133,43,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,135,41,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,133,43,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,135,41,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 	end;
 OnMobDead:
 	if ('adv_step != 6)
@@ -321,21 +322,21 @@ OnMobDead:
 			end;
 		'adv_step = 9;
 
-		monster 'map_adv$,125,42,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,121,42,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,126,43,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,121,43,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,125,42,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,121,42,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,126,43,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,121,43,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 
-		monster 'map_adv$,123,63,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,124,63,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,122,65,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,123,63,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,124,63,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,122,65,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 
-		monster 'map_adv$,102,64,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,102,64,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,102,64,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,102,64,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 
-		monster 'map_adv$,144,65,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,146,66,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-		monster 'map_adv$,146,63,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,144,65,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,146,66,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+		monster 'map_adv$,146,63,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 		end;
 	}
 	if (is_party_leader() == false)
@@ -416,18 +417,18 @@ OnMobDead:
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_key_left") + "::OnMobDead";
-	monster 'map_adv$,69,117,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,65,118,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,65,118,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,68,140,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,68,140,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,69,141,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,69,117,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,65,118,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,65,118,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,68,140,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,68,140,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,69,141,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 
-	monster 'map_adv$,66,159,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,68,160,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,68,160,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,65,182,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,67,182,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,66,159,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,68,160,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,68,160,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,65,182,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,67,182,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 	end;
 OnMobDead:
 	if ('adv_step != 12)
@@ -473,9 +474,9 @@ OnMobDead:
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_get_key02") + "::OnMobDead";
-	monster 'map_adv$,40,142,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,40,141,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,39,143,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,40,142,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,40,141,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,39,143,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 	end;
 OnMobDead:
 	if ('adv_step != 15)
@@ -611,17 +612,17 @@ OnMobDead:
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_center") + "::OnMobDead";
-	monster 'map_adv$,156,133,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,156,132,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,155,132,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,156,154,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,155,156,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,124,124,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,123,124,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,122,126,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,126,182,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,122,182,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,126,183,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,156,133,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,156,132,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,155,132,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,156,154,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,155,156,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,124,124,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,123,124,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,122,126,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,126,182,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,122,182,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,126,183,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 	end;
 OnMobDead:
 	if ('adv_step != 20)
@@ -803,8 +804,8 @@ OnStart:
 		end;
 	.@label$ = instance_npcname("adv_middle_boss") + "::OnMobDead";
 	monster 'map_adv$,124,301,"Schulang the Traitor",21314,1, .@label$;	// EP18_MD_SCHULANG
-	monster 'map_adv$,120,303,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
-	monster 'map_adv$,127,303,"Heart Hunter",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,120,303,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
+	monster 'map_adv$,127,303,"猎心者",21312,1, .@label$;	// EP18_MD_HEARTHUNTER_R
 	end;
 OnMobDead:
 	if ('adv_step != 24)

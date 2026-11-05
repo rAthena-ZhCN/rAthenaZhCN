@@ -17,6 +17,15 @@
 #include <common/timer.hpp>
 #include <common/utilities.hpp>
 
+#if defined(_WIN32) || defined(WIN32)
+#include <windows.h>
+#ifndef CP_UTF8
+#define CP_UTF8 65001
+#endif
+extern "C" __declspec(dllimport) int __stdcall MultiByteToWideChar(unsigned int CodePage, unsigned long dwFlags, const char* lpMultiByteStr, int cbMultiByte, wchar_t* lpWideCharStr, int cchWideChar);
+extern "C" __declspec(dllimport) int __stdcall WideCharToMultiByte(unsigned int CodePage, unsigned long dwFlags, const wchar_t* lpWideCharStr, int cchWideChar, char* lpMultiByteStr, int cbMultiByte, const char* lpDefaultChar, int* lpUsedDefaultChar);
+#endif
+
 #include "clan.hpp"
 #include "clif.hpp"
 #include "guild.hpp"
@@ -85,6 +94,17 @@ uint64 InstanceDatabase::parseBodyNode(const ryml::NodeRef& node) {
 		}
 
 		instance->name = name;
+	}
+
+	if (this->nodeExists(node, "DisplayName")) {
+		std::string display_name;
+
+		if (!this->asString(node, "DisplayName", display_name))
+			return 0;
+
+		instance->display_name = display_name;
+	} else if (!exists) {
+		instance->display_name = instance->name;
 	}
 
 	if (this->nodeExists(node, "TimeLimit")) {
@@ -275,6 +295,32 @@ InstanceDatabase instance_db;
  * @param instance_name: Instance to search for
  * @return shared_ptr of instance or nullptr on failure
  */
+std::string instance_get_display_name(const std::shared_ptr<s_instance_db>& db) {
+	if (!db)
+		return "";
+
+	if (db->display_name.empty())
+		return db->name;
+
+#if defined(_WIN32) || defined(WIN32)
+	// YAML is UTF-8, but the Chinese client expects GBK/CP936 bytes in packets.
+	int wlen = MultiByteToWideChar(CP_UTF8, 0, db->display_name.c_str(), -1, nullptr, 0);
+	if (wlen > 0) {
+		std::wstring wide(wlen, L'\0');
+		MultiByteToWideChar(CP_UTF8, 0, db->display_name.c_str(), -1, wide.data(), wlen);
+		int len = WideCharToMultiByte(936, 0, wide.c_str(), -1, nullptr, 0, nullptr, nullptr);
+		if (len > 0) {
+			std::string out(len, '\0');
+			WideCharToMultiByte(936, 0, wide.c_str(), -1, out.data(), len, nullptr, nullptr);
+			if (!out.empty() && out.back() == '\0')
+				out.pop_back();
+			return out;
+		}
+	}
+#endif
+	return db->display_name;
+}
+
 std::shared_ptr<s_instance_db> instance_search_db_name(const char *instance_name)
 {
 	for (const auto &it : instance_db) {

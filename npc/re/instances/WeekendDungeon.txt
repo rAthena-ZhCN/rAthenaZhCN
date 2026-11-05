@@ -41,6 +41,7 @@ pay_arche,44,124,5	script	玛丽·杰	4_F_JOB_BLACKSMITH,{
 		close;
 	}
 	.@md_name$ = "Weekend Dungeon";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (getcharid(1) < 1) {
 		mes "[玛丽·杰]";
@@ -56,7 +57,7 @@ pay_arche,44,124,5	script	玛丽·杰	4_F_JOB_BLACKSMITH,{
 		case -1:
 		case 2:
 			mes "[玛丽·杰]";
-			mes "抱歉，进入" + .@md_name$ + "的期限已过。";
+			mes "抱歉，进入" + .@md_display$ + "的期限已过。";
 			mes "请休息一下，等待副本再次开放。";
 			close;
 		case 0:
@@ -100,7 +101,7 @@ pay_arche,44,124,5	script	玛丽·杰	4_F_JOB_BLACKSMITH,{
 		case IE_OK:
 			mes "[玛丽·杰]";
 			mes "出发吧！";
-			mapannounce "pay_arche", "" + strcharinfo(0) + "，队伍" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+			mapannounce "pay_arche", "" + strcharinfo(0) + "，队伍" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0xFF99;
 			if (isbegin_quest(12377) == 0)
 				setquest 12377;
 			if (isbegin_quest(12378) == 0)

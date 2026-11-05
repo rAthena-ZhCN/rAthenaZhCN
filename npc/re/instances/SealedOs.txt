@@ -58,6 +58,11 @@ OnEvent02:
 	disablenpc instance_npcname("莉德希#171_os_1");
 	disablenpc instance_npcname("柯特内斯#171_os_1");
 	disablenpc instance_npcname("#171_os_warp_0");
+	if ('lock >= 3) {
+		'seal_os = 3;
+		donpcevent instance_npcname("#171_sealedos_control") + "::OnEvent03";
+		end;
+	}
 	enablenpc instance_npcname("粗电线#171_os_0");
 	enablenpc instance_npcname("粗电线#171_os_1");
 	enablenpc instance_npcname("粗电线#171_os_2");
@@ -199,8 +204,8 @@ OnSummon00:
 	npctalk "狄恩：哎呀……真是吓我一跳！",instance_npcname("狄恩#171_os_1");
 	sleep 1000;
 	npctalk "狄恩：这边交给我们。那边那些恶心的家伙就拜托你了！",instance_npcname("狄恩#171_os_1");
-	monster 'map$,205,46,"Dolor",20361,1,.@event$;
-	monster 'map$,200,45,"Twin Caput",20365,1,.@event$;
+	monster 'map$,205,46,"朵洛尔",20361,1,.@event$;
+	monster 'map$,200,45,"双头卡夫特",20365,1,.@event$;
 	end;
 
 OnMobKill:
@@ -246,7 +251,7 @@ OnTouch:
 	.@id = atoi(replacestr(strnpcinfo(2),"171_os_",""));
 	'lock += 1;
 	disablenpc();
-	disablenpc instance_npcname("Dangerous-Looking Device#s_os_" + .@id);
+	disablenpc instance_npcname("看起来很危险的装置#s_os_" + .@id);
 	if ('lock < 3)
 		mapannounce 'map$,"莉德希：装置还没关掉。请你上去帮我看看。",bc_map,0xFF0000;
 	else {

@@ -232,6 +232,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		close;
 	}
 	.@md_name$ = "Farm Lost in Time";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	setarray .@item[0],1000093,1000094,1000095,1000096,1000097,1000098;
 	for ( .@i = 0; .@i < 6; ++.@i ) {
@@ -251,10 +252,10 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 	mes "你好，" + strcharinfo(0) + ".";
 	mes "你今天要进入农场设施吗？";
 	next;
-	switch( select( (is_party_leader() ? "创建" + .@md_name$ : ""), "进入副本。", "取消" ) ) {
+	switch( select( (is_party_leader() ? "创建" + .@md_display$ : ""), "进入副本。", "取消" ) ) {
 	case 1:
 		if (instance_create(.@md_name$) == -3)
-			dispbottom "The reservation of the instance '" + .@md_name$ + "' has failed due to an active instance.";
+			dispbottom "The reservation of the instance '" + .@md_display$ + "' has failed due to an active instance.";
 		mes "[露依纳]";
 		mes "请稍等一会儿~";
 		mes "我来准备今天的食物。";
@@ -268,7 +269,7 @@ ba_maison,311,206,3	script	露依纳#greeen	4_EP17_BASIC_B,{
 		if (isbegin_quest(8588) > 0)
 			erasequest 8588;
 		setquest 8588;
-		mapannounce "ba_maison", "" + strcharinfo(0) + "的队伍，" + .@party_name$ + ", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
+		mapannounce "ba_maison", "" + strcharinfo(0) + "的队伍，" + .@party_name$ + ", is entering the " + .@md_display$ + ".", bc_map, "0x00FF99";
 		end;
 	case 3:
 		end;

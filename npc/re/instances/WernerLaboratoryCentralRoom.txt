@@ -13,7 +13,7 @@
 //============================================================
 
 slabw01,232,91,5	duplicate(dummy_cloaked_npc)	斯琪亚#ep162_06	4_EP16_SKIA
-slabw01,233,92,3	duplicate(dummy_cloaked_npc)	Scared researcher#ep162	4_M_ALCHE_A
+slabw01,233,92,3	duplicate(dummy_cloaked_npc)	害怕的研究员#ep162	4_M_ALCHE_A
 
 // Werner Laboratory central room (solo instance)
 slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
@@ -26,8 +26,8 @@ slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 		mes "难怪看起来他们有所依仗。";
 		mes "要不要用炸药把它炸开？";
 		next;
-		cloakoffnpc( "Skia#ep162_06", getcharid(0) );
-		cloakoffnpc( "Scared researcher#ep162", getcharid(0) );
+		cloakoffnpc( "斯琪亚#ep162_06", getcharid(0) );
+		cloakoffnpc( "害怕的研究员#ep162", getcharid(0) );
 		npctalk "等等！", "斯琪亚#ep162_06", bc_self;
 		mes "[斯琪亚]";
 		mes "别用这么粗鲁的办法！";
@@ -51,8 +51,8 @@ slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 		mes "真的吗？那我就把这位研究员带到外面的部队去。";
 		mes "关于中枢室，" + strcharinfo(0) + "就拜托你了！";
 		next;
-		cloakonnpc( "Skia#ep162_06", getcharid(0) );
-		cloakonnpc( "Scared researcher#ep162", getcharid(0) );
+		cloakonnpc( "斯琪亚#ep162_06", getcharid(0) );
+		cloakonnpc( "害怕的研究员#ep162", getcharid(0) );
 		mes "[新兵]";
 		mes "哈哈，他们让我们打开中枢室的门！";
 		mes "准备好进去之后，请再来跟我说一声。";
@@ -81,7 +81,7 @@ slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 		mes "[新兵]";
 		mes "哇！就是这样！我学东西一向很快！";
 		mes "好，现在就请进去吧！";
-		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
+		cloakoffnpc( "中枢室#evt_gate01", getcharid(0) );
 		instance_create("Werner Laboratory central room#1");	// officially there is only one 'Werner Laboratory central room' instance
 		close;
 	}
@@ -129,7 +129,7 @@ slabw01,236,91,3	script	新兵#ep162_04	4_M_ROOKIE,{
 		mes "[新兵]";
 		mes "哇！就是这样！我学东西一向很快！";
 		mes "好，现在就请进去吧！";
-		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
+		cloakoffnpc( "中枢室#evt_gate01", getcharid(0) );
 		instance_create("Werner Laboratory central room#2");
 		close;
 	case 2:
@@ -250,18 +250,18 @@ OnInstanceInit:
 // * Samples and devices
 1@slw,174,145,3	script	展示样本#01	CLEAR_NPC,{
 	setarray .@sample$[0],
-		"^ff0000Purity^000000", "MT-Wxx0s57b",
-		"^4d4dffRose^000000", "MT-Wxx00b21",
-		"^4d4dffContradiction^000000", "MT-Wxx023-f1",
-		"^4d4dffJoy^000000", "OT-Wxx01-c",
-		"^4d4dffSea^000000", "MT-Wxc1c1b",
-		"^ff0000Eternity^000000", "MT-Wx267b",
-		"^4d4dffWay back home^000000", "OTM-Wxff01",
-		"^4d4dffLoneliness^000000", "MT-Wxx00c46",
-		"^4d4dffGlow^000000", "OT-Wxx4d4dff",
-		"^ff0000Dawn^000000", "MT-Wff_01v",
-		"^4d4dffTwilight^000000", "OT-Wxx00c3b",
-		"^4d4dffGirl^000000's ^ff0000dream^000000", "MT-Wxx0ax2-1";
+		"^ff0000纯真^000000", "MT-Wxx0s57b",
+		"^4d4dff玫瑰^000000", "MT-Wxx00b21",
+		"^4d4dff矛盾^000000", "MT-Wxx023-f1",
+		"^4d4dff喜悦^000000", "OT-Wxx01-c",
+		"^4d4dff海^000000", "MT-Wxc1c1b",
+		"^ff0000永恒^000000", "MT-Wx267b",
+		"^4d4dff归途^000000", "OTM-Wxff01",
+		"^4d4dff孤独^000000", "MT-Wxx00c46",
+		"^4d4dff光辉^000000", "OT-Wxx4d4dff",
+		"^ff0000黎明^000000", "MT-Wff_01v",
+		"^4d4dff黄昏^000000", "OT-Wxx00c3b",
+		"^4d4dff少女^000000的^ff0000梦^000000", "MT-Wxx0ax2-1";
 	.@num = (atoi(strnpcinfo(2)) - 1) * 2;
 	mes "[" + .@sample$[.@num] + "]";
 	mes "实验体编号：" + .@sample$[.@num+1] + "";
@@ -448,17 +448,18 @@ OnInstanceInit:
 
 S_Code:
 	setarray .@sample$[0],
-		"Purity", 2,
-		"Eternity", 2,
-		"Dawn", 2,
-		"Rose", 1,
-		"Contradiction", 1,
-		"Joy", 1,
-		"Sea", 1,
-		"Way back home", 1,
-		"Loneliness", 1,
-		"Glow", 1,
-		"Twilight", 1;
+		"纯真", 2,
+		"永恒", 2,
+		"黎明", 2,
+		"玫瑰", 1,
+		"矛盾", 1,
+		"喜悦", 1,
+		"海", 1,
+		"归途", 1,
+		"孤独", 1,
+		"光辉", 1,
+		"黄昏", 1,
+		"少女的梦", 2;
 	.@size = getarraysize(.@sample$) / 2;
 	.@r = rand(.@size) * 2;
 	set getarg(0), .@sample$[.@r];

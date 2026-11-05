@@ -21,6 +21,7 @@ bif_fild01,158,340,5	script	拉皮内士兵#mist	447,{
 
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Mistwood Maze";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	mes "[拉皮内士兵]";
 	mes "你要进入森林吗？";
@@ -35,17 +36,17 @@ bif_fild01,158,340,5	script	拉皮内士兵#mist	447,{
 	if (is_party_leader() == true) {
 		if (.@playtime == 0 || .@playtime == 1) {
 			mes "[拉皮内士兵]";
-			mes "...Are you sure you're not doing too much?";
+			mes "……你确定自己没有做得太过火吗？";
 			mes "我看你最好先休息一下。";
 			mes "勉强做太多只会把自己累垮。";
 			next;
 			mes "[拉皮内士兵]";
 			mes "我想管理当局也不会批准你。";
-			mes "...Even a Sapha would be stopped from entering the forest.";
+			mes "……就算是沙帕族，也会被阻止进入森林。";
 			next;
 			select("你挺会讲我们的话，不是吗？");
 			mes "[拉皮内士兵]";
-			mes "...Do I?";
+			mes "……是吗？";
 			mes "其实我并不是在说你们的语言。";
 			mes "我说的是拉皮内语。";
 			next;
@@ -84,14 +85,14 @@ bif_fild01,158,340,5	script	拉皮内士兵#mist	447,{
 			mes "队伍名称"+getpartyname(.@party_id)+"...";
 			mes "队长"+strcharinfo(0)+"...";
 			if (instance_create(.@md_name$) < 0) {
-				mes "Hmm...";
+				mes "嗯……";
 				next;
 				mes "[拉皮内士兵]";
 				if (.@playtime == -1)
 					mes "森林里很危险。";
 				else
 					mes "森林里的气氛有些紧张。";
-				mes "...Why don't you just go back today?";
+				mes "……你今天还是先回去吧？";
 				close;
 			}
 			mes "我知道了。我已经把它们写在这份报告里了。";
@@ -122,7 +123,7 @@ bif_fild01,158,340,5	script	拉皮内士兵#mist	447,{
 			mes "[拉皮内士兵]";
 			mes "看来你以前进过森林。";
 			mes "好吧，至少森林不会排斥你。";
-			mes "However...";
+			mes "不过……";
 			erasequest 7211;
 			next;
 		}
@@ -212,7 +213,7 @@ function	script	F_Mora_Mist	{
 			initnpctimer;
 		close;
 	} else
-		mapannounce .@map$,((getarg(3,0))?getarg(2):getarg(2)+"'s Cry: Huh? Who's doing bad things to my tree?!"),bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
+		mapannounce .@map$,((getarg(3,0))?getarg(2):getarg(2)+"的哭喊：咦？谁在欺负我的树？！"),bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 	end;
 }
 
@@ -220,11 +221,11 @@ function	script	F_Mora_Mist	{
 1@mist,247,123,0	script	汤姆的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a25_a18-1",
-		"Roaring Cry: Tom's bolt is broken! Watch out, Tomba! Watch out, Tomba!",
-		"Tom";
+		"咆哮：汤姆的螺栓断了！小心，汤巴！小心，汤巴！",
+		"汤姆";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),249,120,"Tom",2136,1,instance_npcname("Tom's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),249,120,"汤姆",2136,1,instance_npcname("汤姆的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -234,11 +235,11 @@ OnMyMobDead:
 1@mist,225,98,0	script	汤巴的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a27-2_af1-2",
-		"Roaring Cry: Tomba's Garden Tree is gone with Tomba. Remi, what are you going to do now?",
-		"Tomba";
+		"咆哮：汤巴的花园之树随着汤巴消失了。雷米，你现在打算怎么办？",
+		"汤巴";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),200,64,"Tomba",2136,1,instance_npcname("Tomba's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),200,64,"汤巴",2136,1,instance_npcname("汤巴的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -248,11 +249,11 @@ OnMyMobDead:
 1@mist,159,184,0	script	雷米的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a15-2_a4-1",
-		"Roaring Cry: Remi, Remi's Garden Tree was chopped down- Rem, it's your turn next. Poor Rem!",
+		"咆哮：雷米，雷米的花园之树被砍倒了——雷姆，下一个轮到你了。可怜的雷姆！",
 		"Remi";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),154,184,"Remi the Tired",2137,1,instance_npcname("Remi's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),154,184,"疲惫的雷米",2137,1,instance_npcname("雷米的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -262,12 +263,12 @@ OnMyMobDead:
 1@mist,61,39,0	script	疲惫的雷姆的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"a4-2_a11",
-		"Rem's Desperate Cry: Argh... Rem will sleep. Rem will sleep now, and won't wake up forever!",
+		"雷姆绝望的哭喊：唉……雷姆要睡了。雷姆现在就要睡，永远不再醒来！",
 		"Rem",
 		0,1;
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),101,107,"Rem the Gardener",2136,1,instance_npcname("Tired Rem's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),101,107,"园丁雷姆",2136,1,instance_npcname("疲惫的雷姆的花园之树")+"::OnMyMobDead";
 	end;
 OnTimer10000:
 	mapannounce instance_mapname("1@mist"),"森林的低语：这么说，汤姆、汤巴、雷米和雷姆的花园之树都被砍倒了？",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
@@ -287,11 +288,11 @@ OnMyMobDead:
 1@mist,230,179,0	script	罗恩的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b4-2_b2",
-		"Ron the Gardener's Cry: I'm getting off work! Don't look for Ron, the second gardener, any more!!",
+		"园丁罗恩的哭喊：我下班了！别再找第二园丁罗恩了！！",
 		"Ron";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),227,178,"Ron the Gardener",2134,1,instance_npcname("Ron's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),227,178,"园丁罗恩",2134,1,instance_npcname("罗恩的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -301,11 +302,11 @@ OnMyMobDead:
 1@mist,285,225,0	script	罗伯的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b7_bf1-2",
-		"Roaring Whisper: Ron's, and Rover's trees were chopped down as well. Who is forcing his way into the forest? Who is it?",
+		"咆哮的低语：罗恩和罗伯的树也被砍倒了。是谁在强行闯入森林？是谁？",
 		"Rover";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),304,237,"Rover the Strutter",2134,1,instance_npcname("Rover's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),304,237,"昂首阔步的罗伯",2134,1,instance_npcname("罗伯的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -315,11 +316,11 @@ OnMyMobDead:
 1@mist,161,316,0	script	莫娜的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b31_b16",
-		"Clamoring Whisper: Mona the Seedseeker's garden tree is gone! Mona is gone too! Namon will be okay, because he is brave, right? Namon, are you okay?",
+		"喧闹的低语：寻种者莫娜的花园之树不见了！莫娜也不见了！纳蒙会没事的，因为他是勇敢的，对吧？纳蒙，你还好吗？",
 		"Mona";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),239,253,"Mona the Seedseeker",2133,1,instance_npcname("Mona's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),239,253,"寻种者莫娜",2133,1,instance_npcname("莫娜的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -329,11 +330,11 @@ OnMyMobDead:
 1@mist,204,299,0	script	纳蒙的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b27-3_bN-1",
-		"Clamoring Whisper: Brave Namon met his fate not so bravely... *giggle*",
+		"喧闹的低语：勇敢的纳蒙并没有那么勇敢地迎接命运……*轻笑*",
 		"Namon";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),89,173,"Brave Namon",2134,1,instance_npcname("Namon's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),89,173,"勇敢的纳蒙",2134,1,instance_npcname("纳蒙的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -343,11 +344,11 @@ OnMyMobDead:
 1@mist,221,236,0	script	悲伤的尼奥龙的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b6-1_b33",
-		"Lamenting Whisper: Sad Neoron has become cheerful! Spyder the Superior Spider, what are you going to do? What are you going to do now?",
+		"哀叹的低语：悲伤的尼奥龙变得开朗了！超级蜘蛛斯派德，你打算怎么办？你现在打算怎么办？",
 		"Neoron";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),143,265,"Sad Neoron",2137,1,instance_npcname("Sad Neoron's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),143,265,"悲伤的尼奥龙",2137,1,instance_npcname("悲伤的尼奥龙的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -357,12 +358,12 @@ OnMyMobDead:
 1@mist,206,200,0	script	斯派德的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"b5_b14",
-		"Depressed Whisper: Now it's all over with the second deepest forest. Gardeners are dying out-",
+		"沮丧的低语：第二深的森林已经完了。园丁们正在灭绝——",
 		"Spyder",
 		0,1;
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),209,200,"Spyder the Eight-Legged",2132,1,instance_npcname("Spyder's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),209,200,"八脚斯派德",2132,1,instance_npcname("斯派德的花园之树")+"::OnMyMobDead";
 	end;
 OnTimer5000:
 	mapannounce instance_mapname("1@mist"),"咆哮的低语：道路即将开启。紧锁的门闩已经被卸下了！",bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
@@ -385,11 +386,11 @@ OnMyMobDead:
 1@mist,95,287,0	script	蒂托的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c1_c13-1",
-		"Tito's Cry: *sob* *sob* Tito's gone now! Tito's done for! Boo hoo!!",
+		"蒂托的哭喊：*抽泣* *抽泣* 蒂托不见了！蒂托完蛋了！呜呜！！",
 		"Tito";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),264,291,"Tito the Flipper",2133,1,instance_npcname("Tito's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),264,291,"蹦跳的蒂托",2133,1,instance_npcname("蒂托的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -399,11 +400,11 @@ OnMyMobDead:
 1@mist,324,325,0	script	蓬巴的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c13-3_c4",
-		"Roaring Whisper: Tito the Hard Worker was defeated! Stop playing and go to work, Tete! Start working!",
+		"咆哮的低语：勤劳的蒂托被打败了！别玩了，去干活，泰特！开始工作！",
 		"Pumba";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),309,165,"Diligent Pumba",2134,1,instance_npcname("Pumba's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),309,165,"勤劳的蓬巴",2134,1,instance_npcname("蓬巴的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -413,11 +414,11 @@ OnMyMobDead:
 1@mist,280,344,0	script	泰特的花园之树	527,{
 	callfunc "F_Mora_Mist",
 		"c19_c4",
-		"Whisper: They are strong, strong indeed. What are we going to do now? Are there any gardeners left? Are there any?",
+		"低语：他们很强，真的很强。我们现在怎么办？还有园丁活着吗？还有吗？",
 		"Tete";
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),277,343,"Carefree Tete",2136,1,instance_npcname("Tete's Garden Tree")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),277,343,"无忧的泰特",2136,1,instance_npcname("泰特的花园之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -426,24 +427,24 @@ OnMyMobDead:
 1@mist,345,186,0	script	园丁之树	527,{
 	callfunc "F_Mora_Mist",
 		"#to_bif02",
-		"Roaring Whisper: The forest will remember you! It will remember you, the one who broke the clippers of all the gardeners!",
-		"Gardeners: We're not dead, yet!!!!",1;
+		"咆哮的低语：森林会记住你！它会记住你，那个打断所有园丁剪刀的人！",
+		"园丁们：我们还没死呢！！！！",1;
 	end;
 OnInstanceInit:
 	set .@map$, instance_mapname("1@mist");
-	monster .@map$,318,137,"Baby Tom",2136,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,321,137,"Tomba the Baby",2136,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,324,137,"Exhausted Remi",2137,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,319,135,"Rem the Exhausted",2136,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,323,135,"Ron the Ex-Gardener",2134,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,320,133,"Rover the Strutter",2134,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,323,133,"Mona the Seedpicker",2133,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,317,132,"Timid Namon",2134,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,326,132,"Indifferent Neoron",2137,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,317,129,"Spyder the Seven-Legged",2132,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,320,129,"Tito the Flapper",2133,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,324,129,"Lazy Pumba",2134,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
-	monster .@map$,327,129,"Careless Tete",2136,1,instance_npcname("The Gardeners' Tree")+"::OnMyMobDead";
+	monster .@map$,318,137,"幼年汤姆",2136,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,321,137,"幼年汤巴",2136,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,324,137,"筋疲力尽的雷米",2137,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,319,135,"筋疲力尽的雷姆",2136,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,323,135,"前园丁罗恩",2134,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,320,133,"昂首阔步的罗伯",2134,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,323,133,"采种者莫娜",2133,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,317,132,"胆小的纳蒙",2134,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,326,132,"冷漠的尼奥龙",2137,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,317,129,"七脚斯派德",2132,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,320,129,"拍翼的蒂托",2133,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,324,129,"懒惰的蓬巴",2134,1,instance_npcname("园丁之树")+"::OnMyMobDead";
+	monster .@map$,327,129,"粗心的泰特",2136,1,instance_npcname("园丁之树")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	end;
@@ -519,7 +520,7 @@ OnInstanceInit:
 		case 5: setarray .@c[0],268,183; break;
 		case 6: setarray .@c[0],65,278; break;
 	}
-	monster instance_mapname("1@mist"),.@c[0],.@c[1],"Wandering Purple Dragon",2131,1,instance_npcname("#Dragon Herder")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),.@c[0],.@c[1],"游荡的紫龙",2131,1,instance_npcname("#Dragon Herder")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
@@ -542,7 +543,7 @@ OnTimer3000:
 	if (BaseLevel < 98) {
 		mes "[神秘青年]";
 		mes "嗯？你打算从这里过去？";
-		mes ".....I'm afraid it's beyond your ability, but I won't meddle in your affairs.";
+		mes "……这恐怕超出了你的能力，但我不会干涉你的事。";
 		mes "如果你能活下来，我们还会再见。";
 		close;
 	}
@@ -598,9 +599,9 @@ OnTimer3000:
 				break;
 			case 2:
 				mes "[洛奇]";
-				mes "Wait.";
+				mes "等等。";
 				mes "（洛奇走近了。）";
-				mes "... No.";
+				mes "……不。";
 				mes "你说的是实话。";
 				next;
 				break;
@@ -644,9 +645,9 @@ OnTimer3000:
 				break;
 			case 2:
 				mes "[洛奇]";
-				mes "Wait.";
+				mes "等等。";
 				mes "（洛奇走近了。）";
-				mes "... No.";
+				mes "……不。";
 				mes "你说的是实话。";
 				next;
 				break;
@@ -804,7 +805,7 @@ mora,46,152,5	script	花香女子	510,{
 		mes "我会一直有你这样的新朋友……";
 		next;
 		mes "[守护者尼德霍格]";
-		mes "...I've lost everything, but I'm happy now.";
+		mes "……我虽然失去了一切，但现在很幸福。";
 		close;
 	}
 }
@@ -853,7 +854,7 @@ mora,48,152,3	script	目光锐利的男子	512,{
 		mes "太久……太久了……";
 		next;
 		mes "[守护者尼德霍格]";
-		mes "...I wanted to be relieved of my thousands of years of loneliness.";
+		mes "……我想摆脱这数千年的孤独。";
 		mes "那时我已失去了理智。";
 		mes "斩断我与世界树羁绊的，正是我自己。";
 		next;
@@ -878,7 +879,7 @@ mora,48,152,3	script	目光锐利的男子	512,{
 		mes "你还有该做的事。";
 		next;
 		mes "[守护者尼德霍格]";
-		mes "...Oh, yes. It's late, but I have to fulfill my duties as a guardian.";
+		mes "……哦，对了。虽然很晚了，但我必须履行守护者的职责。";
 		mes "现在我明白了。我会亲手消灭梦洛克。";
 		mes "我会履行守护者的职责。";
 		next;
@@ -934,65 +935,65 @@ mora,48,152,3	script	目光锐利的男子	512,{
 1@mist,1,1,0	script	#Mist Mobs Respawn1	844,{
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),0,0,"Miming",2137,15,instance_npcname("#Mist Mobs Respawn1")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),0,0,"米明",2137,15,instance_npcname("#Mist Mobs Respawn1")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
 	set .@num_mobs, 15 - mobcount(.@map$,instance_npcname("#Mist Mobs Respawn1")+"::OnMyMobDead");
 	if (.@num_mobs > 0)
-		monster .@map$,0,0,"Miming",2137,.@num_mobs,instance_npcname("#Mist Mobs Respawn1")+"::OnMyMobDead";
+		monster .@map$,0,0,"米明",2137,.@num_mobs,instance_npcname("#Mist Mobs Respawn1")+"::OnMyMobDead";
 	end;
 }
 
 1@mist,1,2,0	script	#Mist Mobs Respawn2	844,{
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),0,0,"Pom Spider",2132,35,instance_npcname("#Mist Mobs Respawn2")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),0,0,"蓬蓬蜘蛛",2132,35,instance_npcname("#Mist Mobs Respawn2")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
 	set .@num_mobs, 35 - mobcount(.@map$,instance_npcname("#Mist Mobs Respawn2")+"::OnMyMobDead");
 	if (.@num_mobs > 0)
-		monster .@map$,0,0,"Pom Spider",2132,.@num_mobs,instance_npcname("#Mist Mobs Respawn2")+"::OnMyMobDead";
+		monster .@map$,0,0,"蓬蓬蜘蛛",2132,.@num_mobs,instance_npcname("#Mist Mobs Respawn2")+"::OnMyMobDead";
 	end;
 }
 
 1@mist,1,3,0	script	#Mist Mobs Respawn3	844,{
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),0,0,"Angra Mantis",2133,35,instance_npcname("#Mist Mobs Respawn3")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),0,0,"安格拉螳螂",2133,35,instance_npcname("#Mist Mobs Respawn3")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
 	set .@num_mobs, 35 - mobcount(.@map$,instance_npcname("#Mist Mobs Respawn3")+"::OnMyMobDead");
 	if (.@num_mobs > 0)
-		monster .@map$,0,0,"Angra Mantis",2133,.@num_mobs,instance_npcname("#Mist Mobs Respawn3")+"::OnMyMobDead";
+		monster .@map$,0,0,"安格拉螳螂",2133,.@num_mobs,instance_npcname("#Mist Mobs Respawn3")+"::OnMyMobDead";
 	end;
 }
 
 1@mist,1,4,0	script	#Mist Mobs Respawn4	844,{
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),0,0,"Parus",2134,35,instance_npcname("#Mist Mobs Respawn4")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),0,0,"帕鲁斯",2134,35,instance_npcname("#Mist Mobs Respawn4")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
 	set .@num_mobs, 35 - mobcount(.@map$,instance_npcname("#Mist Mobs Respawn4")+"::OnMyMobDead");
 	if (.@num_mobs > 0)
-		monster .@map$,0,0,"Parus",2134,.@num_mobs,instance_npcname("#Mist Mobs Respawn4")+"::OnMyMobDead";
+		monster .@map$,0,0,"帕鲁斯",2134,.@num_mobs,instance_npcname("#Mist Mobs Respawn4")+"::OnMyMobDead";
 	end;
 }
 
 1@mist,1,5,0	script	#Mist Mobs Respawn5	844,{
 	end;
 OnInstanceInit:
-	monster instance_mapname("1@mist"),0,0,"Little Fatum",2136,15,instance_npcname("#Mist Mobs Respawn5")+"::OnMyMobDead";
+	monster instance_mapname("1@mist"),0,0,"小法图姆",2136,15,instance_npcname("#Mist Mobs Respawn5")+"::OnMyMobDead";
 	end;
 OnMyMobDead:
 	set .@map$, instance_mapname("1@mist");
 	set .@num_mobs, 15 - mobcount(.@map$,instance_npcname("#Mist Mobs Respawn5")+"::OnMyMobDead");
 	if (.@num_mobs > 0)
-		monster .@map$,0,0,"Little Fatum",2136,.@num_mobs,instance_npcname("#Mist Mobs Respawn5")+"::OnMyMobDead";
+		monster .@map$,0,0,"小法图姆",2136,.@num_mobs,instance_npcname("#Mist Mobs Respawn5")+"::OnMyMobDead";
 	end;
 }
 
@@ -1000,7 +1001,7 @@ OnMyMobDead:
 	end;
 OnInstanceInit:
 	disablenpc instance_npcname("#Fragments of Memory");
-	monster instance_mapname("1@mist"),0,0,"Guardian's Fragments of Memory",2138,15;
+	monster instance_mapname("1@mist"),0,0,"守护者的记忆碎片",2138,15;
 	end;
 }
 

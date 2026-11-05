@@ -33,6 +33,7 @@ dali02,142,81,3	script	次元装置#air1	PORTAL,{
 	.@party_id = getcharid(1);
 	.@p_name$ = getpartyname(.@party_id);
 	.@md_name$ = "Assault on the Airship";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (BaseLevel < 125) {
 		mes "^ff0000等级低于125级的玩家无法进入此副本^000000";
@@ -56,7 +57,7 @@ dali02,142,81,3	script	次元装置#air1	PORTAL,{
 		if (instance_create(.@md_name$) < 0) {
 			mes "队伍名称：" + getpartyname( getcharid(1) );
 			mes "角色名称：" + strcharinfo(0);
-			mes "^0000ff" + .@md_name$ + "^000000 - 创建失败！";
+			mes "^0000ff" + .@md_display$ + "^000000 - 创建失败！";
 			close;
 		}
 		mes "^ff0000次元装置已形成^000000";
@@ -69,7 +70,7 @@ dali02,142,81,3	script	次元装置#air1	PORTAL,{
 				setquest 15050;// Memorial Dungeon: Airship Assault
 				setquest 15051;// Memorial Dungeon: Airship Assault
 			}
-			mapannounce "dali02", "" + strcharinfo(0) + "，所属队伍：" + getpartyname( getcharid(1) ) + " entered the instance " + .@md_name$ + ".", bc_map,"0x00ff99";
+			mapannounce "dali02", "" + strcharinfo(0) + "，所属队伍：" + getpartyname( getcharid(1) ) + " entered the instance " + .@md_display$ + ".", bc_map,"0x00ff99";
 			specialeffect2 EF_WARP;
 			// warp "1@air1",244,73;
 			end;

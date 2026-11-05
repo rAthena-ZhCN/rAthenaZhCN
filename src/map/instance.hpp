@@ -90,7 +90,8 @@ struct s_instance_data {
 /// Instance DB entry
 struct s_instance_db {
 	int32 id; ///< Instance DB ID
-	std::string name; ///< Instance name
+	std::string name; ///< Instance name (internal lookup key)
+	std::string display_name; ///< Client display name
 	int64 limit, ///< Duration limit
 		timeout; ///< Timeout limit
 	bool nonpc;
@@ -117,6 +118,7 @@ extern InstanceDatabase instance_db;
 extern std::unordered_map<int32, std::shared_ptr<s_instance_data>> instances;
 
 std::shared_ptr<s_instance_db> instance_search_db_name(const char* name);
+std::string instance_get_display_name(const std::shared_ptr<s_instance_db>& db);
 void instance_getsd(int32 instance_id, map_session_data *&sd, enum send_target *target);
 
 int32 instance_create(int32 owner_id, const char *name, e_instance_mode mode);

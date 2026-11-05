@@ -10,6 +10,7 @@
 // Main Quest: Step 28.
 ra_fild10,179,176,5	script	商人#ep18_gorge	4_EP18_MERCHANT,{
 	.@md_name$ = "Oz Labyrinth";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (ep18_main == 29) {
 		mes "[伪装的米里亚姆]";
@@ -23,7 +24,7 @@ ra_fild10,179,176,5	script	商人#ep18_gorge	4_EP18_MERCHANT,{
 	}
 	if (ep18_main == 30) {
 		mes "[伪装的米里亚姆]";
-		mes "那么，我们前往 ^e5555e" + .@md_name$ + "^000000";
+		mes "那么，我们前往 ^e5555e" + .@md_display$ + "^000000";
 		next;
 		if (getcharid(1) == 0 || is_party_leader() == false) {
 			mes "[伪装的米里亚姆]";
@@ -35,7 +36,7 @@ ra_fild10,179,176,5	script	商人#ep18_gorge	4_EP18_MERCHANT,{
 			if (instance_create(.@md_name$) < 0) {
 				mes "队伍：" + getpartyname(getcharid(1)) + "";
 				mes "队长：" + strcharinfo(0) + "";
-				mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
+				mes "^0000ff" + .@md_display$ + "^000000- 未知错误";
 				close;
 			}
 			mes "[伪装的米里亚姆]";
@@ -56,7 +57,7 @@ ra_fild10,179,176,5	script	商人#ep18_gorge	4_EP18_MERCHANT,{
 				mes "^ff0000只有队伍成员才能进入回忆副本。^000000";
 				close;
 			case IE_OK:
-				mapannounce "ra_fild10", "" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".",bc_map,"0x00ff99",FW_NORMAL ,12;
+				mapannounce "ra_fild10", "" + strcharinfo(0) + "，所属队伍" + getpartyname( getcharid(1) ) + ", is entering " + .@md_display$ + ".",bc_map,"0x00ff99",FW_NORMAL ,12;
 				end;
 			}
 		case 3:

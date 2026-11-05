@@ -41,6 +41,7 @@ ma_scene01,174,179,4	script	塔霍	541,{
 
 	set .@party_id,getcharid(1);
 	set .@md_name$, "Bakonawa Lake";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	set .@baku_time, checkquest(12278,PLAYTIME);
 	if (.@baku_time == -1) {
@@ -88,7 +89,7 @@ ma_scene01,174,179,4	script	塔霍	541,{
 				mes "平民不可进入。";
 				close;
 			case IE_OK:
-				mapannounce "ma_scene01","队伍成员，"+strcharinfo(0)+" of the party "+getpartyname(.@party_id)+" is entering the dungeon, "+.@md_name$+".",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+				mapannounce "ma_scene01","队伍成员，"+strcharinfo(0)+" of the party "+getpartyname(.@party_id)+" is entering the dungeon, "+.@md_display$+".",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 				setquest 12278;
 				//warp "1@ma_b",64,51;
 				close;

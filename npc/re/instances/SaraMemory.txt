@@ -172,6 +172,7 @@ dali,139,118,4	script	次元装置#sara#sara	10007,{
 		set .@party_id,getcharid(1);
 		set .@p_name$,getpartyname(.@party_id);
 		set .@md_name$,"Sara's Memories";
+		.@md_display$ = instance_getdisplayname(.@md_name$);
 
 		if (!.@party_id) {
 			mes "[冒险家莱昂]";
@@ -189,7 +190,7 @@ dali,139,118,4	script	次元装置#sara#sara	10007,{
 			if (instance_create(.@md_name$) < 0) {
 				mes "队伍名称："+.@p_name$;
 				mes "队长："+strcharinfo(0);
-				mes "^0000ff"+.@md_name$+"^000000- 预约失败！";
+				mes "^0000ff"+.@md_display$+"^000000- 预约失败！";
 				close;
 			}
 			mes "^FF0000次元装置顺利启动。使用该装置即可进入时空裂缝。^000000";
@@ -200,14 +201,14 @@ dali,139,118,4	script	次元装置#sara#sara	10007,{
 				mes "发生了未知错误。";
 				close;
 			case IE_NOINSTANCE:
-				mes "纪念副本"+.@md_name$+"不存在。";
+				mes "纪念副本"+.@md_display$+"不存在。";
 				mes "队长尚未生成副本。";
 				close;
 			case IE_NOMEMBER:
-				mes "只有已登记的成员才能进入副本"+.@md_name$+".";
+				mes "只有已登记的成员才能进入副本"+.@md_display$+".";
 				close;
 			case IE_OK:
-				mapannounce "dali",strcharinfo(0)+"，队伍"+.@p_name$+" entered the instance "+.@md_name$+".",bc_map,"0x00ff99";
+				mapannounce "dali",strcharinfo(0)+"，队伍"+.@p_name$+" entered the instance "+.@md_display$+".",bc_map,"0x00ff99";
 				setquest 15002;
 				end;
 			}

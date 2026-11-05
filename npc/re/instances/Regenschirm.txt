@@ -17,23 +17,23 @@ OnInstanceInit:
 	deletearray 'rescued;
 	deletearray 'rsgr_c;
 
-	disablenpc instance_npcname("Researcher#rgsr_ev_0");
-	disablenpc instance_npcname("Access Controller#rgsr");
+	disablenpc instance_npcname("研究员#rgsr_ev_0");
+	disablenpc instance_npcname("门禁控制器#rgsr");
 	disablenpc instance_npcname("#rgsr_touch_mob_0");
 	disablenpc instance_npcname("#rgsr_touch_mob_1");
 	disablenpc instance_npcname("#rgsr_warp_0");
-	disablenpc instance_npcname("Est#rgsr");
-	disablenpc instance_npcname("Rebellion Crew#rgsr_dum01");
-	disablenpc instance_npcname("Aas#rgsr3");
-	disablenpc instance_npcname("Goni#rgsr");
-	disablenpc instance_npcname("Est#rgsr2");
-	disablenpc instance_npcname("Central Room#rgsr");
-	disablenpc instance_npcname("Restrained Specimen#rgsr");
-	disablenpc instance_npcname("Control Device#rgsr0");
-	disablenpc instance_npcname("Control Device#rgsr1");
-	disablenpc instance_npcname("Control Device#rgsr2");
-	disablenpc instance_npcname("Control Device#rgsr3");
-	disablenpc instance_npcname("Aas#rgsr4");
+	disablenpc instance_npcname("艾丝特#rgsr");
+	disablenpc instance_npcname("反叛军成员#rgsr_dum01");
+	disablenpc instance_npcname("亚斯#rgsr3");
+	disablenpc instance_npcname("格尼#rgsr");
+	disablenpc instance_npcname("艾丝特#rgsr2");
+	disablenpc instance_npcname("中央控制室#rgsr");
+	disablenpc instance_npcname("被束缚的实验体#rgsr");
+	disablenpc instance_npcname("控制装置#rgsr0");
+	disablenpc instance_npcname("控制装置#rgsr1");
+	disablenpc instance_npcname("控制装置#rgsr2");
+	disablenpc instance_npcname("控制装置#rgsr3");
+	disablenpc instance_npcname("亚斯#rgsr4");
 	end;
 
 OnEvent01:
@@ -48,11 +48,11 @@ OnEvent02:
 	end;
 
 OnEvent03:
-	enablenpc instance_npcname("Restrained Specimen#rgsr");
-	enablenpc instance_npcname("Control Device#rgsr0");
-	enablenpc instance_npcname("Control Device#rgsr1");
-	enablenpc instance_npcname("Control Device#rgsr2");
-	enablenpc instance_npcname("Control Device#rgsr3");
+	enablenpc instance_npcname("被束缚的实验体#rgsr");
+	enablenpc instance_npcname("控制装置#rgsr0");
+	enablenpc instance_npcname("控制装置#rgsr1");
+	enablenpc instance_npcname("控制装置#rgsr2");
+	enablenpc instance_npcname("控制装置#rgsr3");
 	end;
 
 OnEvent04:
@@ -105,7 +105,7 @@ OnEvent04:
 }
 
 1@rgsr,60,138,0	script	门禁控制器#rgsr	4_ENERGY_WHITE,{
-	enablenpc instance_npcname("Researcher#rgsr_ev_0");
+	enablenpc instance_npcname("研究员#rgsr_ev_0");
 	if ('rgsr == 2) {
 		'rgsr = 3;
 		npctalk "请求通信。";
@@ -130,7 +130,7 @@ OnEvent04:
 		sleep2 2750;
 		hideonnpc();
 		enablenpc();
-		npctalk "研究员：你介意我打开门吗？",instance_npcname("Researcher#rgsr_ev_0");
+		npctalk "研究员：你介意我打开门吗？",instance_npcname("研究员#rgsr_ev_0");
 		'rgsr = 4;
 	}
 	end;
@@ -223,7 +223,7 @@ OnEvent04:
 		sleep2 2750;
 		npctalk "亚斯：优先确保实验室，然后是警卫室……*咔哒*";
 		sleep2 2000;
-		npctalk "艾丝特：咦，那是什么声音？",instance_npcname("Est#rgsr");
+		npctalk "艾丝特：咦，那是什么声音？",instance_npcname("艾丝特#rgsr");
 		if ('rgsr == 6)
 			'rgsr = 7;
 		end;
@@ -280,7 +280,7 @@ OnEvent04:
 		close2;
 		cutin "",255;
 		if ('rgsr == 7) {
-			enablenpc instance_npcname("Central Room#rgsr");
+			enablenpc instance_npcname("中央控制室#rgsr");
 			'rgsr = 8;
 			disablenpc instance_npcname("#rgsr_mob_2");
 		}
@@ -428,12 +428,12 @@ OnInstanceInit:
 1@rgsr,125,157,0	script	中央控制室#rgsr	4_ENERGY_BLUE,{
 	if ('rgsr == 8) {
 		'rgsr = 9;
-		enablenpc instance_npcname("Aas#rgsr3");
-		enablenpc instance_npcname("Goni#rgsr");
-		enablenpc instance_npcname("Est#rgsr2");
-		npctalk "我迟到了吗？",instance_npcname("Aas#rgsr3");
+		enablenpc instance_npcname("亚斯#rgsr3");
+		enablenpc instance_npcname("格尼#rgsr");
+		enablenpc instance_npcname("艾丝特#rgsr2");
+		npctalk "我迟到了吗？",instance_npcname("亚斯#rgsr3");
 		sleep2 1800;
-		npctalk "没有，你来得正是时候。",instance_npcname("Est#rgsr2");
+		npctalk "没有，你来得正是时候。",instance_npcname("艾丝特#rgsr2");
 		end;
 	}
 	mes "装置没有反应。";
@@ -445,9 +445,9 @@ OnInstanceInit:
 		end;
 	if ('rgsr == 9) {
 		'rgsr = 10;
-		.@aas$ = instance_npcname("Aas#rgsr3");
-		.@gonie$ = instance_npcname("Goni#rgsr");
-		.@erst$ = instance_npcname("Est#rgsr2");
+		.@aas$ = instance_npcname("亚斯#rgsr3");
+		.@gonie$ = instance_npcname("格尼#rgsr");
+		.@erst$ = instance_npcname("艾丝特#rgsr2");
 		npctalk "亚斯：中央控制室似乎是空的。我进去查看一下。",.@aas$;
 		sleep2 3000;
 		npctalk "亚斯：我先带研究员们离开这里。可以吗？",.@erst$;
@@ -464,8 +464,8 @@ OnInstanceInit:
 		sleep2 3000;
 		npctalk "格尼：*点头*",.@gonie$;
 		sleep2 3000;
-		disablenpc instance_npcname("Goni#rgsr");
-		disablenpc instance_npcname("Est#rgsr2");
+		disablenpc instance_npcname("格尼#rgsr");
+		disablenpc instance_npcname("艾丝特#rgsr2");
 		npctalk "亚斯：那么冒险者，我们去查看中央控制室吧。",.@aas$;
 		if ('rgsr == 10)
 			'rgsr = 11;
@@ -542,7 +542,7 @@ OnFail:
 			mes "房间里有四个按钮。";
 			next;
 			select("按下按钮。");
-			donpcevent instance_npcname("Restrained Specimen#rgsr") + "::OnFail";
+			donpcevent instance_npcname("被束缚的实验体#rgsr") + "::OnFail";
 			close;
 		}
 	}
@@ -558,9 +558,9 @@ OnFail:
 		next;
 		.@s = select("红色按钮。:蓝色按钮。:白色按钮。:黄色按钮。");
 		if (.@s != .@answer)
-			donpcevent instance_npcname("Restrained Specimen#rgsr") + "::OnFail";
+			donpcevent instance_npcname("被束缚的实验体#rgsr") + "::OnFail";
 		else {
-			specialeffect EF_BEGINSPELL3,AREA,instance_npcname("Restrained Specimen#rgsr");
+			specialeffect EF_BEGINSPELL3,AREA,instance_npcname("被束缚的实验体#rgsr");
 			if (.@index < 3) {
 				mapannounce 'map$,"重力控制调整……完成……还剩" + .@string$ +"个。",bc_map,0x0D98BA;
 				'rsgr_c[.@index] = 1;
@@ -630,7 +630,7 @@ OnSummon:
 	58,65,56,57,44,59,31,53,15,55, //= Bottom Room
 	59,94,48,98,53,103,36,110,33,126,46,132,55,131; //= Upper Room
 	for (.@i = 0; .@i < getarraysize(.@xy); .@i += 2)
-		monster 'map$,.@xy[.@i],.@xy[.@i+1],"Special Guard",3627,1,.@event$;
+		monster 'map$,.@xy[.@i],.@xy[.@i+1],"强化猎心者",3627,1,.@event$;
 	end;
 
 OnMobKill:
@@ -638,7 +638,7 @@ OnMobKill:
 	if (!mobcount('map$,.@event$) && 'rgsr == 1) {
 		'rgsr = 2;
 		disablenpc();
-		enablenpc instance_npcname("Access Controller#rgsr");
+		enablenpc instance_npcname("门禁控制器#rgsr");
 	}
 	end;
 }
@@ -652,21 +652,21 @@ OnSummon:
 	187,69,187,67,188,67,201,74,202,77,207,76,211,74,187,48,188,45,186,46,197,45,202,45,208,42,211,42;
 	setarray .@top_xy,169,217,169,214,172,217,172,214,176,217,176,214,180,217,180,214,184,217,184,214,167,204,168,203,168,203,167,176,167,176,166,175;
 	for (.@i = 0; .@i < getarraysize(.@xy); .@i += 2)
-		monster 'map$,.@xy[.@i],.@xy[.@i+1],"Special Guard",3627,1;
+		monster 'map$,.@xy[.@i],.@xy[.@i+1],"强化猎心者",3627,1;
 	for (.@i = 0; .@i < getarraysize(.@left_xy); .@i += 2)
-		monster 'map$,.@left_xy[.@i],.@left_xy[.@i+1],"Poisonous Gas",20352,1,instance_npcname(strnpcinfo(0))+"::OnLeftKill";
+		monster 'map$,.@left_xy[.@i],.@left_xy[.@i+1],"毒雾",20352,1,instance_npcname(strnpcinfo(0))+"::OnLeftKill";
 	for (.@i = 0; .@i < getarraysize(.@right_xy); .@i += 2)
-		monster 'map$,.@right_xy[.@i],.@right_xy[.@i+1],"Poisonous Gas",20352,1,instance_npcname(strnpcinfo(0))+"::OnRightKill";
+		monster 'map$,.@right_xy[.@i],.@right_xy[.@i+1],"毒雾",20352,1,instance_npcname(strnpcinfo(0))+"::OnRightKill";
 	for (.@i = 0; .@i < getarraysize(.@top_xy); .@i += 2)
-		monster 'map$,.@top_xy[.@i],.@top_xy[.@i+1],"Poisonous Gas",20352,1,instance_npcname(strnpcinfo(0))+"::OnTopKill";
+		monster 'map$,.@top_xy[.@i],.@top_xy[.@i+1],"毒雾",20352,1,instance_npcname(strnpcinfo(0))+"::OnTopKill";
 	end;
 
 OnLeftKill:
 	.@event$ = instance_npcname(strnpcinfo(0))+"::OnLeftKill";
 	if (!mobcount('map$,.@event$)) {
 		mapannounce 'map$,"艾丝特：是谁？是亚斯吗？还是那位冒险者？",bc_map,0x0D98BA;
-		enablenpc instance_npcname("Est#rgsr");
-		enablenpc instance_npcname("Rebellion Crew#rgsr_dum01");
+		enablenpc instance_npcname("艾丝特#rgsr");
+		enablenpc instance_npcname("反叛军成员#rgsr_dum01");
 	}
 	end;
 
@@ -683,17 +683,17 @@ OnSummon:
 	mapannounce 'map$,"亚斯：怎么回事？*咔哒*锁是……！！",bc_map;
 	sleep 2000;
 	mapannounce 'map$,"我不是残次品！我不是怪物！",bc_map,0x00FF00;
-	specialeffect EF_LORD,AREA,instance_npcname("Restrained Specimen#rgsr");
-	disablenpc instance_npcname("Restrained Specimen#rgsr");
-	monster 'map$,125,188,"Failed Specimen",20353,1,instance_npcname(strnpcinfo(0))+"::OnBossKill";
+	specialeffect EF_LORD,AREA,instance_npcname("被束缚的实验体#rgsr");
+	disablenpc instance_npcname("被束缚的实验体#rgsr");
+	monster 'map$,125,188,"绝望朵洛尔",20353,1,instance_npcname(strnpcinfo(0))+"::OnBossKill";
 	end;
 
 OnBossKill:
 	if ('rgsr == 14) {
 		'rgsr = 15;
-		hideonnpc instance_npcname("Aas#rgsr3");
-		disablenpc instance_npcname("Aas#rgsr3");
-		enablenpc instance_npcname("Aas#rgsr4");
+		hideonnpc instance_npcname("亚斯#rgsr3");
+		disablenpc instance_npcname("亚斯#rgsr3");
+		enablenpc instance_npcname("亚斯#rgsr4");
 		disablenpc();
 	}
 	end;
@@ -710,7 +710,7 @@ OnTouch:
 	else
 		setarray .@xy,91,91,91,93,95,93,94,97,97,92;
 	for (.@i = 0; .@i < getarraysize(.@xy); .@i += 2)
-		monster 'map$,.@xy[.@i],.@xy[.@i+1],"Special Guard",3622,1;
+		monster 'map$,.@xy[.@i],.@xy[.@i+1],"强化猎心者",3622,1;
 	end;
 }
 

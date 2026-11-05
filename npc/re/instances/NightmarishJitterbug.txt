@@ -127,6 +127,7 @@ moc_para01,29,95,5	script	鲁那茵#sara	4_F_RUNAIN,{
 	}
 	.@party_id = getcharid(1);
 	.@md_name$ = "Nightmarish Jitterbug";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	if (.@party_id < 1) {
 		mes "[鲁纳内]";
 		mes "^ff0000必须先组建或加入一个至少1人的队伍，才能进入这个副本。^000000";
@@ -148,12 +149,12 @@ moc_para01,29,95,5	script	鲁那茵#sara	4_F_RUNAIN,{
 	}
 	if (is_party_leader() == true)
 		.@menu$ = "打开次元传送门。";
-	switch( select( .@menu$, "进入" + .@md_name$ + ".", "Cancel." ) ) {
+	switch( select( .@menu$, "进入" + .@md_display$ + ".", "Cancel." ) ) {
 	case 1:
 		if (instance_create(.@md_name$) < 0) {
 			mes "队伍名称：" + getpartyname( getcharid(1) );
 			mes "队长：" + strcharinfo(0);
-			mes "^0000ff" + .@md_name$ + "^000000- 预约失败！";
+			mes "^0000ff" + .@md_display$ + "^000000- 预约失败！";
 			close3;
 		}
 		mes "[鲁纳内]";
@@ -181,7 +182,7 @@ moc_para01,29,95,5	script	鲁那茵#sara	4_F_RUNAIN,{
 			close3;
 		case IE_OK:
 			setquest 13182;// Nightmarish Jitterbug: Waiting
-			mapannounce "moc_para01", "" + strcharinfo(0) + "，队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+			mapannounce "moc_para01", "" + strcharinfo(0) + "，队伍为" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0xFF99;
 			specialeffect2 EF_READYPORTAL2;
 			specialeffect2 EF_PORTAL2;
 			// warp "1@jtb",16,17;

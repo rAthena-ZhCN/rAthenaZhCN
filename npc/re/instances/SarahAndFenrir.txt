@@ -170,19 +170,20 @@ dali02,99,148,3	script	次元装置#XX1	PORTAL,{
 		close;
 	}
 	.@md_name$ = "Fenrir and Sarah";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
 		mes "发生了未知错误。";
 		close;
 	case IE_NOINSTANCE:
-		mes "回忆副本" + .@md_name$ + "不存在。";
+		mes "回忆副本" + .@md_display$ + "不存在。";
 		mes "队长尚未创建回忆副本。";
 		close;
 	case IE_NOMEMBER:
 		mes "只有队伍成员才能进入回忆副本。";
 		close;
 	case IE_OK:
-		mapannounce "dali02", "队伍成员" + strcharinfo(0) + "所在队伍" + getpartyname( getcharid(1) ) + "进入了房间" + .@md_name$ + "", bc_map,0xFF99,FW_NORMAL,12;
+		mapannounce "dali02", "队伍成员" + strcharinfo(0) + "所在队伍" + getpartyname( getcharid(1) ) + "进入了房间" + .@md_display$ + "", bc_map,0xFF99,FW_NORMAL,12;
 		setquest 9335;// Search for shards of Gigantes
 		if (isbegin_quest(9336) > 0)
 			erasequest 9336;

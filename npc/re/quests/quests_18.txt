@@ -5250,8 +5250,9 @@ oz_dun01,223,116,3	script	Appointment Point#c12_evt01	4_POINT_BLUE,5,5,{
 	mes "Would you like to enter together for your companion?";
 	next;
 	.@md_name$ = "High Priest's Villa";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
-	select( "Enter the " + .@md_name$ + "" );
+	select( "Enter the " + .@md_display$ + "" );
 
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
@@ -5264,7 +5265,7 @@ oz_dun01,223,116,3	script	Appointment Point#c12_evt01	4_POINT_BLUE,5,5,{
 		mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
 		close;
 	case IE_OK:
-		mapannounce "oz_dun01", "" + strcharinfo(0) + " from the " + getpartyname( getcharid(1) ) + "'s party has entered the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "oz_dun01", "" + strcharinfo(0) + " from the " + getpartyname( getcharid(1) ) + "'s party has entered the " + .@md_display$ + ".", bc_map, 0xFF99;
 		// warp "1@adv",123,17;
 		end;
 	}

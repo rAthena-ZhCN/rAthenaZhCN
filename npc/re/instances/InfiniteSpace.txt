@@ -88,6 +88,7 @@ cmd_fild07,58,278,3	script	鲁莽的探险家#pa0829_01	4_F_GON,{
 	}
 	next;
 	.@md_name$ = "Infinite Space";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	.@party_id = getcharid(1);
 	if (!.@party_id) {
 		mes "[ 鲁莽的探险家 ]";
@@ -99,7 +100,7 @@ cmd_fild07,58,278,3	script	鲁莽的探险家#pa0829_01	4_F_GON,{
 	mes "[ 鲁莽的探险家 ]";
 	mes "通道打开后，先休息一会儿，再来找我。";
 	if (instance_create(.@md_name$) == -3)
-		dispbottom "The reservation of the instance '" + .@md_name$ + "' has failed due to an active instance.";
+		dispbottom "The reservation of the instance '" + .@md_display$ + "' has failed due to an active instance.";
 	close;
 }
 
@@ -120,10 +121,11 @@ cmd_fild07,54,280,5	script	临时入口#pa0829_01	PORTAL,{
 	.@party_id = getcharid(1);
 	.@party_name = getpartyname(.@party_id);
 	.@md_name$ = "Infinite Space";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	switch (instance_enter(.@md_name$)) {
 		case IE_OK:
 			setquest 12365;
-			mapannounce "cmd_fild07", strcharinfo(0) + "的队伍，"+ .@party_name$ +", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
+			mapannounce "cmd_fild07", strcharinfo(0) + "的队伍，"+ .@party_name$ +", is entering the " + .@md_display$ + ".", bc_map, "0x00FF99";
 			end;
 
 		default:

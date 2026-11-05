@@ -384,6 +384,7 @@ mal_in01,160,34,4	script	清洁工米辛	545,{
 	}
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Culvert";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	if (!.@party_id) {
 		mes "^0000ff你必须组建一支";
 		mes "成员超过1名的队伍，或成为队伍";
@@ -405,10 +406,10 @@ mal_in01,160,34,4	script	清洁工米辛	545,{
 				if (instance_create(.@md_name$) < 0) {
 					mes "队伍名称："+getpartyname(.@party_id);
 					mes "队长："+strcharinfo(0);
-					mes "^0000ff"+.@md_name$+"^000000 - 预约失败！";
+					mes "^0000ff"+.@md_display$+"^000000 - 预约失败！";
 					close;
 				}
-				mes "^3333FF"+.@md_name$+"^000000 - 预约中";
+				mes "^3333FF"+.@md_display$+"^000000 - 预约中";
 				mes "完成预约后，你";
 				mes "必须选择进入排水沟。";
 				close;

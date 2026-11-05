@@ -39,6 +39,7 @@ que_thr,133,53,5	script	玛拉姆#Armybase1	4_EP18_MARAM,{
 	}
 
 	.@md_name$ = "Thor Military Base";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 	cutin "",255;
 	mes "^FF0000注意：如果在副本内进行驯服怪物等任意操作，将不会被视为正常通关。^000000";
 	next;
@@ -47,15 +48,15 @@ que_thr,133,53,5	script	玛拉姆#Armybase1	4_EP18_MARAM,{
 		// player is leader of the party
 		.@create$ = "Apply for entry to " + .@md_name$ + "";
 
-	switch( select( .@create$, "进入" + .@md_name$ + "" ) ) {
+	switch( select( .@create$, "进入" + .@md_display$ + "" ) ) {
 	case 1:
 		cutin "ep18_maram_01.png",2;
 		mes "[玛拉姆]";
-		mes "申请完成后，再来找我，选择 ^0000CD" + .@md_name$ + "进入^000000";
+		mes "申请完成后，再来找我，选择 ^0000CD" + .@md_display$ + "进入^000000";
 		if (instance_create(.@md_name$) < 0) {
 			mes "队伍：" + getpartyname(getcharid(1)) + "";
 			mes "队长：" + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name$ + "^000000- 未知错误";
+			mes "^0000ff" + .@md_display$ + "^000000- 未知错误";
 			close3;
 		}
 		close3;
@@ -76,7 +77,7 @@ que_thr,133,53,5	script	玛拉姆#Armybase1	4_EP18_MARAM,{
 			mes "^ff0000只有队伍成员才能进入记忆副本。^000000";
 			close;
 		case IE_OK:
-			mapannounce "que_thr", "" + strcharinfo(0) + "，所属队伍：" + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".", bc_map, 0xFF99;
+			mapannounce "que_thr", "" + strcharinfo(0) + "，所属队伍：" + getpartyname( getcharid(1) ) + ", is entering " + .@md_display$ + ".", bc_map, 0xFF99;
 			// warp 1@tcamp,103,237;
 			end;
 		}

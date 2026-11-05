@@ -20,6 +20,7 @@ mal_dun01,151,235,5	script	海星	551,{
 
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Octopus Cave";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (!.@party_id) {
 		mes "[海星]";
@@ -88,12 +89,12 @@ mal_dun01,151,235,5	script	海星	551,{
 					mes "[海星]";
 					mes "队伍名称是……"+getpartyname(.@party_id)+".";
 					mes "队长是……"+strcharinfo(0)+".";
-					mes "^0000ff"+.@md_name$+"^000000，我现在打不开，嘿嘿。";
+					mes "^0000ff"+.@md_display$+"^000000，我现在打不开，嘿嘿。";
 					mes "现在还不是时候，请稍等。";
 					close;
 				}
 				mes "[海星]";
-				mes "我会暂时为你打开通往 ^0000ff"+.@md_name$+"^000000.";
+				mes "我会暂时为你打开通往 ^0000ff"+.@md_display$+"^000000.";
 				mes "请抓住那只变态章鱼，";
 				mes "把它串在签子上带回来，嘿嘿。";
 				close;

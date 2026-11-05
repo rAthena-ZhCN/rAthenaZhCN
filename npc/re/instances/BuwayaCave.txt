@@ -27,6 +27,7 @@ ma_fild02,312,317,5	script	守卫#buwaya_cave	570,{
 
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Buwaya Cave";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (!.@party_id) {
 		mes "[守卫]";
@@ -79,12 +80,12 @@ ma_fild02,312,317,5	script	守卫#buwaya_cave	570,{
 					mes "[守卫]";
 					mes "队伍名称是……"+getpartyname(.@party_id)+".";
 					mes "队长是……"+strcharinfo(0);
-					mes "^0000ff"+.@md_name$+"^000000 现在无法开启。";
+					mes "^0000ff"+.@md_display$+"^000000 现在无法开启。";
 					mes "请稍后再试。";
 					close;
 				}
 				mes "[守卫]";
-				mes "我将开启通往 ^0000ff"+.@md_name$+"^000000。";
+				mes "我将开启通往 ^0000ff"+.@md_display$+"^000000。";
 				mes "祝你好运。";
 				close;
 			case 3:

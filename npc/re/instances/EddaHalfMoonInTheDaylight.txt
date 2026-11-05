@@ -256,6 +256,7 @@ rachel,174,138,6	script	大祭司妮伦#HM	4_F_MADAME,{
 		if (isbegin_quest(14587) == 2)
 			erasequest 14587;
 		.@md_name$ = "Half Moon In The Daylight";
+		.@md_display$ = instance_getdisplayname(.@md_name$);
 		instance_create(.@md_name$);
 		close3;
 	case 0:
@@ -303,6 +304,7 @@ rachel,176,145,6	script	梦境#poent	PORTAL,{
 		close;
 	}
 	.@md_name$ = "Half Moon In The Daylight";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	switch( instance_enter(.@md_name$) ) {
 	case IE_NOMEMBER:
@@ -317,7 +319,7 @@ rachel,176,145,6	script	梦境#poent	PORTAL,{
 		mes "[梦境之路]";
 		mes "我将开启我的梦境。";
 		mes "愿你做一个好梦。";
-		mapannounce "rachel", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "rachel", "" + strcharinfo(0) + "的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0xFF99;
 		if (BaseLevel < 130) {
 			if (isbegin_quest(14585) == 0)
 				setquest 14585;

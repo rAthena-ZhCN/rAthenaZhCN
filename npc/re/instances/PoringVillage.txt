@@ -232,6 +232,7 @@ prt_fild05,145,235,5	script	艾米莉#0	4_GEFFEN_03,4,4,{
 		close;
 	}
 	.@md_name$ = "Poring Village";
+	.@md_display$ = instance_getdisplayname(.@md_name$);
 
 	if (is_party_leader())
 		.@menu$[0] = "创建入口";
@@ -255,7 +256,7 @@ prt_fild05,145,235,5	script	艾米莉#0	4_GEFFEN_03,4,4,{
 		case IE_NOMEMBER:
 			end;
 		case IE_OK:
-			mapannounce "prt_fild05", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname(getcharid(0)) + "进入了" + .@md_name$ + ".", bc_map,0xFF9900;
+			mapannounce "prt_fild05", "队伍成员" + strcharinfo(0) + "，所属队伍" + getpartyname(getcharid(0)) + "进入了" + .@md_display$ + ".", bc_map,0xFF9900;
 			setquest 12417;	// Overcoming fatigue
 			// warp "1@begi",100,22;
 			end;

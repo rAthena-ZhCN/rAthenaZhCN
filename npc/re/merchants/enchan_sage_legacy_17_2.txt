@@ -18,10 +18,10 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 	mes "[莉莎]";
 	mes "欢迎光临~";
 	next;
-	switch( select( "探索装置", "自动引擎机翼强化", "自动铠甲强化", "自动腿部强化", "自动饰品（右）强化", "自动饰品（左）强化" ) ) {
+	switch( select( "探索装置", "全自动推进翼强化", "全自动机甲强化", "全自动战靴强化", "全自动饰品（右）强化", "全自动饰品（左）强化" ) ) {
 	case 1:
 		mes "[莉莎]";
-		mes "如果你带来自动装备和强化模块，我们可以把对应的模块附魔到装备上。";
+		mes "如果你带来全自动装备和强化模块，我们可以把对应的模块附魔到装备上。";
 		next;
 		mes "[莉莎]";
 		mes "这是按照规格模块进行的，因此装备不会被破坏。不过，可强化的次数会因模块而异。";
@@ -57,7 +57,7 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 		.@card[.@i] = getequipcardid(.@part,.@i);
 
 	mes "[莉莎]";
-	mes "如果你带来自动装备和强化模块，我们可以把对应的模块附魔到装备上。";
+	mes "如果你带来全自动装备和强化模块，我们可以把对应的模块附魔到装备上。";
 	next;
 	mes "[莉莎]";
 	mes strcharinfo(0) + ".";
@@ -95,14 +95,14 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 
 	// Build the menu according to all the modules with the given grade in inventory
 	for ( .@i = 0; .@i < .@size; ++.@i ) {
+		.@item_name$ = getitemname(.@module_etc[.@i]);
+		.@item_name$ = replacestr(.@item_name$, "全自动改造模组(", "");
+		.@item_name$ = replacestr(.@item_name$, "全自动模组(", "");
+		.@item_name$ = replacestr(.@item_name$, ")", "");
 		if (countitem(.@module_etc[.@i]) < 1)
-			.@menu$ += "^808080（模块数量 0）^000000" + ":";
-		else {
-			.@item_name$ = getitemname(.@module_etc[.@i]);
-			.@item_name$ = replacestr(.@item_name$, "Automatic Modification Module(", "");
-			.@item_name$ = replacestr(.@item_name$, ")", "");
+			.@menu$ += "^808080" + .@item_name$ + "(未持有)^000000:";
+		else
 			.@menu$ += .@item_name$ + ":";
-		}
 	}
 	.@s = select(.@menu$) - 2;
 	if (.@s == -1) {
@@ -119,13 +119,13 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 	}
 	if (.@equip_required[0] != .@equip_id && .@equip_required[1] != .@equip_id) {
 		mes "[莉莎]";
-		mes "请确认你已装备想要强化的对应自动装备。";
+		mes "请确认你已装备想要强化的对应全自动装备。";
 		close;
 	}
 	if (.@card[1] > 0) {
 		mes "[莉莎]";
-		mes "这件自动装备已经达到最大容量。";
-		mes "请换一件自动装备试试。";
+		mes "这件全自动装备已经达到最大容量。";
+		mes "请换一件全自动装备试试。";
 		close;
 	}
 	if (.@module_id < 1000105 || .@module_id == 1000150 || .@module_id == 1000151 || (.@module_id >= 1000203 && .@module_id != 1000207 && .@module_id != 1000208)) {
@@ -164,7 +164,7 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 
 	if (.@data_index == -1) {
 		mes "[莉莎]";
-		mes "无法将这种模块附魔到这件自动装备上。";
+		mes "无法将这种模块附魔到这件全自动装备上。";
 		close;
 	}
 	// Max number of the selected module allowed
@@ -189,7 +189,7 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 	}
 	if (countinarray(.@card[0], .@enchant_id) >= .@max_module) {
 		mes "[莉莎]";
-		mes "这件自动装备通过该模块获得的强化已达到上限。";
+		mes "这件全自动装备通过该模块获得的强化已达到上限。";
 		mes "请换一个模块试试。";
 		close;
 	}
@@ -215,39 +215,40 @@ ba_in01,87,370,3	script	莉莎#ep172_merchant	20698,{
 	delequip .@part;
 	getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
 	mes "[莉莎]";
-	mes "哇啊~ 我已经能感受到你自动装备的力量了~！";
+	mes "哇啊~ 我已经能感受到你全自动装备的力量了~！";
 	close;
 }
 
 //= Merchants
 -	marketshop	ep172littlemanager00	-1,1000227:172:999999
 
-ba_in01,87,386,3	script	儿童管理员 ┈#ep172_pet	EP17_2_CHILD_ADMIN1,{
+ba_in01,87,386,3	script	小不点管理员 ┈#ep172_pet	EP17_2_CHILD_ADMIN1,{
 	if (checkweight(1201,3) == 0) {
 		mes "- 你的道具太多了。";
 		mes "请清理背包后再试。 -";
 		close;
 	}
-	mes "[儿童管理员 ┈]";
+	mes "[小不点管理员 ┈]";
 	mes "我有一大堆小玩意儿！";
 	next;
-	switch( select( "小管理员", "云朵棉花", "小头饰", "取消" ) ) {
+	switch( select( "小不点管理员", "云朵棉花", "小头饰", "取消" ) ) {
 	case 1:
-		mes "[儿童管理员 ┈]";
-		mes "想和小管理员玩的话，需要30张巴米尔餐券。";
+		mes "[小不点管理员 ┈]";
+		mes "想和小不点管理员玩的话，需要30张" + mesitemlink(1000103) + "。";
 		next;
-		if (select( "Exchange.", "Stop." ) == 2) {
-			mes "[儿童管理员 ┈]";
+		if (select( "兑换。", "取消。" ) == 2) {
+			mes "[小不点管理员 ┈]";
 			mes "那么，到我玩的时候了！";
 			close;
 		}
 		if (countitem(1000103) < 30) {
-			mes "[儿童管理员 ┈]";
-			mes "就像我说的，想和小管理员玩，需要30张巴米尔餐券！";
+			mes "[小不点管理员 ┈]";
+			mes "就像我说的，想和小不点管理员玩，需要30张" + mesitemlink(1000103) + "！";
 			close;
 		}
-		mes "[儿童管理员 ┈]";
+		mes "[小不点管理员 ┈]";
 		mes "和你的新朋友玩得开心！";
+		mes "小不点管理员： " + mesitemlink(9123);
 		delitem 1000103,30;
 		getitem 9123,1;
 		close;
@@ -258,7 +259,7 @@ ba_in01,87,386,3	script	儿童管理员 ┈#ep172_pet	EP17_2_CHILD_ADMIN1,{
 		callshop "barter_Ep_17_2_C_Admin_Acc";
 		end;
 	case 4:
-		mes "[儿童管理员 ┈]";
+		mes "[小不点管理员 ┈]";
 		mes "那么，到我玩的时候了！";
 		close;
 	}
@@ -270,8 +271,10 @@ ba_in01,87,386,3	script	儿童管理员 ┈#ep172_pet	EP17_2_CHILD_ADMIN1,{
 
 ba_in01,87,376,3	script	立方巷#ep172cube	4_EP17_GUARD_B,{
 	mes "[立方巷]";
-	mes "我们提供强化方块，能瞬间将你的^0000CD+4^000000幻影装备和自动装备精炼至^FF0000+7^000000！";
-	mes "巴蒙德毫无疑问是世界上最厉害的人！";
+	mes "我们提供强化方块，能瞬间将你的^0000CD+4^000000幻象装备和全自动装备精炼至^FF0000+7^000000！";
+	mes "幻象强化箱： " + mesitemlink(100251);
+	mes "全自动强化箱： " + mesitemlink(100252);
+	mes "霸肋门德毫无疑问是世界上最厉害的人！";
 	close2;
 	callshop "ep172cubeshop00";
 	end;
@@ -294,16 +297,18 @@ ba_in01,87,383,3	script	延青#equipment_exchange	4_EP17_CLEANER_W,{
 	disable_items;
 	cutin "ep172_omega",2;
 	mes "[延青]";
-	mes "我们接受巴米尔餐券，可将你的幻影装备升级为自动装备。";
+	mes "我们接受霸肋门德餐券，可将你的幻象装备升级为全自动装备。";
 	mes "你想兑换什么？";
 	next;
-	switch( select( "兑换说明", "自动装备兑换", "自动饰品兑换", "退出" ) ) {
+	switch( select( "兑换说明", "全自动装备兑换", "全自动饰品兑换", "退出" ) ) {
 	case 1:
 		mes "[延青]";
-		mes "你可以用^0000CD+9幻影铠甲、引擎或腿部与900张巴米尔餐券^000000兑换^FF0000自动铠甲、引擎或腿部^000000。";
+		mes "你可以用^0000CD+9幻影铠甲、引擎或腿部与900张霸肋门德餐券^000000兑换^FF0000全自动机甲、引擎或腿部^000000。";
 		next;
 		mes "[延青]";
-		mes "^FF0000自动饰品^000000可以用^0000CD幻影饰品和1500张巴米尔餐券^000000兑换。";
+		mes "^FF0000全自动饰品^000000可以用^0000CD幻影饰品和1500张霸肋门德餐券^000000兑换。";
+		mes "幻象饰品： " + mesitemlink(32207) + " / " + mesitemlink(32208) + " / " + mesitemlink(32209) + " / " + mesitemlink(32210);
+		mes "全自动饰品： " + mesitemlink(490024) + " / " + mesitemlink(490025) + " / " + mesitemlink(490026) + " / " + mesitemlink(490027);
 		next;
 		mes "[延青]";
 		mes "你想兑换的装备必须放在背包中，再来找我。";
@@ -340,17 +345,17 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 	disable_items;
 	cutin "ep172_omega",2;
 	mes "[礼泉]";
-	mes "我可以提供自动模块、物理自动改良装置和魔法自动改良装置。它们能帮助你提升自动装备的能力。";
+	mes "我可以提供全自动模块、物理全自动改良装置和魔法全自动改良装置。它们能帮助你提升全自动装备的能力。";
 	next;
 	cutin "",255;
-	switch( select( "更多信息。", "获取自动模块", "获取物理自动改良装置", "获取魔法自动改良装置", "取消" ) ) {
+	switch( select( "更多信息。", "获取全自动模块", "获取物理全自动改良装置", "获取魔法全自动改良装置", "取消" ) ) {
 	case 1:
 		cutin "ep172_omega",2;
 		mes "[礼泉]";
-		mes "你可以用^0000CD90张巴米尔餐券^000000获得一个^FF0000自动模块^000000。我会给你一个随机自动模块，不包含史诗等级模块。";
+		mes "你可以用^0000CD90张霸肋门德餐券^000000获得一个^FF0000全自动模块^000000。我会给你一个随机全自动模块，不包含史诗等级模块。";
 		next;
 		mes "[礼泉]";
-		mes "我也提供^FF0000物理自动改良装置和魔法自动改良装置^000000。你可以用^0000CD45张巴米尔餐券^000000或^0000CD1500000 Zeny^000000兑换。";
+		mes "我也提供^FF0000物理全自动改良装置和魔法全自动改良装置^000000。你可以用^0000CD45张霸肋门德餐券^000000或^0000CD1500000 Zeny^000000兑换。";
 		next;
 		mes "[礼泉]";
 		mes "那么，专精战斗的客人，请安全地提升你的能力吧。";
@@ -359,10 +364,10 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 		.@price = 90;
 		cutin "ep172_omega",2;
 		mes "[礼泉]";
-		mes "我将用以下物品兑换1个随机自动模块（不含史诗等级模块）：" + .@price + " " + mesitemlink(1000103) + ".";
+		mes "我将用以下物品兑换1个随机全自动模块（不含史诗等级模块）：" + .@price + " " + mesitemlink(1000103) + ".";
 		next;
 		cutin "",255;
-		if (select( "兑换巴米尔餐券。", "不兑换" ) == 2) {
+		if (select( "兑换霸肋门德餐券。", "不兑换" ) == 2) {
 			mes "[礼泉]";
 			mes "交易已结束。";
 			close3;
@@ -370,11 +375,11 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 		cutin "ep172_omega",2;
 		if (countitem(1000103) < .@price) {
 			mes "[礼泉]";
-			mes "你的巴米尔餐券不足，无法兑换。";
+			mes "你的霸肋门德餐券不足，无法兑换。";
 			close3;
 		}
 		mes "[礼泉]";
-		mes "已兑换为1个随机自动模块。";
+		mes "已兑换为1个随机全自动模块。";
 		delitem 1000103,.@price;
 		getitem rand(1000105,1000149),1;
 		close3;
@@ -383,15 +388,15 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 		.@zeny = 1500000;
 		cutin "ep172_omega",2;
 		mes "[礼泉]";
-		mes "我将用以下物品兑换^FF00001个物理自动改良装置^000000：" + .@price + " " + mesitemlink(1000103) + " or " + .@zeny + " Zeny.";
+		mes "我将用以下物品兑换^FF00001个物理全自动改良装置^000000：" + .@price + " " + mesitemlink(1000103) + " 或 " + .@zeny + " Zeny。";
 		next;
 		cutin "",255;
-		switch( select( "用巴米尔餐券兑换。", "Exchange for 1500000 Zeny.", "Do not exchange." ) ) {
+		switch( select( "用霸肋门德餐券兑换。", "用1500000 Zeny兑换。", "不兑换。" ) ) {
 		case 1:
 			cutin "ep172_omega",2;
 			if (countitem(1000103) < .@price) {
 				mes "[礼泉]";
-				mes "你的巴米尔餐券不足，无法兑换。";
+				mes "你的霸肋门德餐券不足，无法兑换。";
 				close3;
 			}
 			delitem 1000103,.@price;
@@ -411,7 +416,7 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 			close3;
 		}
 		mes "[礼泉]";
-		mes "已兑换为1个随机的物理自动改良装置。";
+		mes "已兑换为1个随机的物理全自动改良装置。";
 		.@r = rand(100);
 		if (.@r < 50)
 			getitem 100164,1;
@@ -425,15 +430,15 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 		.@zeny = 1500000;
 		cutin "ep172_omega",2;
 		mes "[礼泉]";
-		mes "我将用以下物品兑换^FF00001个魔法自动改良装置^000000：" + .@price + " " + mesitemlink(1000103) + " or " + .@zeny + " Zeny.";
+		mes "我将用以下物品兑换^FF00001个魔法全自动改良装置^000000：" + .@price + " " + mesitemlink(1000103) + " 或 " + .@zeny + " Zeny。";
 		next;
 		cutin "",255;
-		switch( select( "用巴米尔餐券兑换。", "Exchange for 1500000 Zeny.", "Do not exchange." ) ) {
+		switch( select( "用霸肋门德餐券兑换。", "用1500000 Zeny兑换。", "不兑换。" ) ) {
 		case 1:
 			cutin "ep172_omega",2;
 			if (countitem(1000103) < .@price) {
 				mes "[礼泉]";
-				mes "你的巴米尔餐券不足，无法兑换。";
+				mes "你的霸肋门德餐券不足，无法兑换。";
 				close3;
 			}
 			delitem 1000103,.@price;
@@ -453,7 +458,7 @@ ba_in01,87,380,3	script	礼泉#ep172module_trader	4_EP17_CLEANER_W,{
 			close3;
 		}
 		mes "[礼泉]";
-		mes "已兑换为1个随机的魔法自动改良装置。";
+		mes "已兑换为1个随机的魔法全自动改良装置。";
 		.@r = rand(100);
 		if (.@r < 50)
 			getitem 100167,1;
@@ -477,9 +482,15 @@ ba_in01,87,389,2	script	蝴蝶商人#ba_in01	4_EP17_MASTER_A,{
 		close;
 	}
 	mes "[蝴蝶商人]";
-	mes "Welcome.";
-	mes "你需要翅膀前往巴蒙德宅邸吗？";
+	mes "欢迎。";
+	mes "你需要翅膀前往霸肋门德宅邸吗？";
 	close2;
 	callshop "barter_Teleport_Ep17_02";
+	end;
+}
+
+//= Booster Module Shop
+ba_maison,136,103,3	script	斯皮拉β	MD_ASSISTANT,{
+	callshop "barter_speela_beta";
 	end;
 }
