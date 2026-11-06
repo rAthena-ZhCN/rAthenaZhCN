@@ -507,21 +507,32 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 		mes "请清理出一些背包空间后再来。";
 		close;
 	}
+	.@eq_top = getequipid(EQI_COSTUME_HEAD_TOP);
+	.@eq_mid = getequipid(EQI_COSTUME_HEAD_MID);
+	.@eq_low = getequipid(EQI_COSTUME_HEAD_LOW);
+
+	if (.@eq_top <= 0 && .@eq_mid <= 0 && .@eq_low <= 0) {
+		mes "[艾佛·德·多修]";
+		mes "您必须穿上想要附魔的时装。";
+		mes "那样我才能帮您。";
+		close;
+	}
+
 	.@menu$ = "";
 	.@slot_count = 0;
-	if (.@eq_top > -1) {
+	if (.@eq_top > 0) {
 		.@menu$ += "上段:";
 		.@slot_parts[.@slot_count] = 0;
 		.@slot_equips[.@slot_count] = .@eq_top;
 		.@slot_count++;
 	}
-	if (.@eq_mid > -1) {
+	if (.@eq_mid > 0) {
 		.@menu$ += "中段:";
 		.@slot_parts[.@slot_count] = 1;
 		.@slot_equips[.@slot_count] = .@eq_mid;
 		.@slot_count++;
 	}
-	if (.@eq_low > -1) {
+	if (.@eq_low > 0) {
 		.@menu$ += "下段:";
 		.@slot_parts[.@slot_count] = 2;
 		.@slot_equips[.@slot_count] = .@eq_low;
@@ -762,7 +773,7 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 	.@stone = .@stone_id[.@s];
 	.@enchant = .@stone_id[.@s+1];
 
-	if (getequipid(.@part) < 0 || countitem(.@stone) < 1) {
+	if (getequipid(.@part) < 1 || countitem(.@stone) < 1) {
 		mes "[艾佛·德·多修]";
 		mes "嗯？您缺少材料。";
 		mes "这次升级必须同时拥有时装和附魔石。";
@@ -828,7 +839,7 @@ mal_in01,20,107,3	script	蕾丝·拉·扎德#cos_ect	4_FROG,{
 	}
 	.@part = EQI_COSTUME_GARMENT;
 	.@equip_id = getequipid(.@part);
-	if (.@equip_id == -1) {
+	if (.@equip_id <= 0) {
 		mes "[蕾丝·拉·扎德]";
 		mes "把披肩穿在肩上。";
 		mes "我得先看看，才能判断它是否值得升级..";
@@ -903,7 +914,7 @@ mal_in01,20,107,3	script	蕾丝·拉·扎德#cos_ect	4_FROG,{
 	}
 	.@id = atoi(.@data$[.@s]);
 	.@enchant = atoi(.@data$[.@s+1]);
-	if (getequipid(.@part) < 0 || countitem(.@id) < 1) {
+	if (getequipid(.@part) < 1 || countitem(.@id) < 1) {
 		mes "[蕾丝·拉·扎德]";
 		mes "这次升级必须同时拥有时装和附魔石。";
 		close;
