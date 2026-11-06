@@ -144,13 +144,13 @@ job_ko,25,115,4	script	老人#ko	588,{
 		mes "一个忠于主君的家族，他们侍奉主君如同侍奉明亮的太阳。";
 		next;
 		mes "[老人]";
-		mes "...a very trustworthy clan...";
+		mes "……一个非常值得信赖的家族……";
 		next;
 		mes "[老人]";
-		mes "....loyal to their core...";
+		mes "……一个对主君忠心不二的家族……";
 		next;
 		mes "[老人]";
-		mes "...a clan of integrity...";
+		mes "……一个正直的家族……";
 		next;
 		select("他们后来怎么样了？");
 		mes "^1A95E6老人带着忧郁的神情看着你。^1A95E6";
@@ -248,7 +248,7 @@ job_ko,25,115,4	script	老人#ko	588,{
 		}
 		cutin "job_ko02",2;
 		mes "[吉恩首领]";
-		mes "Teaching...";
+		mes "教导……";
 		mes "好久没听到那个词了。";
 		next;
 		mes "[吉恩首领]";
@@ -605,11 +605,11 @@ job_ko,25,115,4	script	老人#ko	588,{
 		} else if (.@ko_test == 1 || .@ko_test == 3 || .@ko_test == 5) {
 			cutin "job_ko04",2;
 			if (.@ko_test_01 == 1)
-				set .@test_ko$, "Knowledge";
+				set .@test_ko$, "知识";
 			else if (.@ko_test_02 == 1)
-				set .@test_ko$, "Survival";
+				set .@test_ko$, "生存";
 			else if (.@ko_test_03 == 1)
-				set .@test_ko$, "Weaponry";
+				set .@test_ko$, "武器";
 			mes "[吉恩首领]";
 			mes "你刚才不是在参加" + .@test_ko$ + "考验吗？"; //custom translation
 			next;
@@ -1082,7 +1082,7 @@ function	script	F_KO_Survival_dice2	{
 	next;
 	set @job_ko_dice1, rand(1,6);
 	emotion ET_OTL + @job_ko_dice1, playerattached();
-	mes "第一个骰子的结果是" + @job_ko_dice1 + ". Do you want to roll the second dice?";
+	mes "第一个骰子的结果是" + @job_ko_dice1 + "。要掷第二个骰子吗？";
 	next;
 	select("掷第二个骰子。");
 	set @job_ko_dice2, rand(1,6);
@@ -1998,18 +1998,18 @@ job_ko,127,125,4	script	红豹乔伊#ko	730,{
 		next;
 		specialeffect EF_GUIDEDATTACK,AREA,"制作工具#ko_02";
 		mes "[红豹乔]";
-		mes "...there...";
+		mes "……这里……";
 		next;
 		specialeffect EF_GUIDEDATTACK,AREA,"制作工具#ko_03";
 		setquest 5142;
 		mes "[红豹乔]";
-		mes "...and everywhere else. Now let's begin!!";
+		mes "……还有所有地方。现在开始吧！！";
 		close;
 	} else if (.@ko_test_03_1 == 1 && .@ko_test_03_2 == 1 && .@ko_test_03_3 == 0 && .@ko_test_03_4 == 0 && .@ko_test_03_5 == 0) {
 		callsub L_Weapon,":";
 		end;
 	} else if (.@ko_test_03_1 == 1 && .@ko_test_03_2 == 0 && (.@ko_test_03_3 == 1 || .@ko_test_03_4 == 1) && .@ko_test_03_5 == 0) {
-		callsub L_Weapon,":Yes, I'm done.";
+		callsub L_Weapon,":是，我完成了。";
 		if (countitem(13074)) {
 			mes "[红豹乔]";
 			mes "嗯……有意思……这是做成苦无形状的短剑吗？";
@@ -2194,11 +2194,11 @@ L_Weapon:
 		next;
 		specialeffect EF_GUIDEDATTACK,AREA,"制作工具#ko_02";
 		mes "[红豹乔]";
-		mes "...there...";
+		mes "……这里……";
 		next;
 		specialeffect EF_GUIDEDATTACK,AREA,"制作工具#ko_03";
 		mes "[红豹乔]";
-		mes "...and everywhere else.";
+		mes "……还有所有地方。";
 		close;
 	case 2:
 		mes "[红豹乔]";
@@ -2600,10 +2600,10 @@ job_ko,148,46,4	script	吉恩首领#ko2	588,{
 		next;
 		if (isbegin_quest(5143) == 2) {
 			set .@item,13075; //Kurenai
-			set .@weapon$,"dagger";
+			set .@weapon$,"短剑";
 		} else {
 			set .@item,13311; //Huuma_Shadow
-			set .@weapon$,"shuriken";
+			set .@weapon$,"手里剑";
 		}
 		mes "[红豹乔伊]";
 		mes "我对你做的试作品" + .@weapon$ + "做了些加工。";
@@ -2699,7 +2699,7 @@ OnEnable:
 		case 6: set .@mob,1049; break;
 		case 7: set .@mob,1050; break;
 	}
-	areamonster "job_ko",120,30,160,70,"Clan Secret",.@mob,1,"召唤目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族秘密",.@mob,1,"召唤目标#ko::OnMyMobDead";
 	end;
 OnDisable:
 	initnpctimer;
@@ -2721,27 +2721,27 @@ OnInit:
 	donpcevent "召唤假目标#ko::OnEnable";
 	end;
 OnEnable:
-	areamonster "job_ko",120,30,160,70,"Clan's Legacy",1002,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Memory",1002,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Memory",1002,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Mistake",1031,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Mistake",1031,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Mistake",1031,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Memory",1113,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Past",1113,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Past",1113,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Legacy",1063,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Legacy",1063,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Legacy",1063,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Mistake",1010,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Memory",1010,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Memory",1010,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Past",1049,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Mistake",1049,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Mistake",1049,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Clan's Memory",1050,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Oboro's Past",1050,5,"召唤假目标#ko::OnMyMobDead";
-	areamonster "job_ko",120,30,160,70,"Kagerou's Past",1050,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的遗产",1002,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的记忆",1002,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的记忆",1002,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的失误",1031,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的失误",1031,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的失误",1031,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的记忆",1113,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的过去",1113,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的过去",1113,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的遗产",1063,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的遗产",1063,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的遗产",1063,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的失误",1010,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的记忆",1010,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的记忆",1010,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的过去",1049,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的失误",1049,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的失误",1049,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"家族的记忆",1050,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"胧的过去",1050,5,"召唤假目标#ko::OnMyMobDead";
+	areamonster "job_ko",120,30,160,70,"影狼的过去",1050,5,"召唤假目标#ko::OnMyMobDead";
 	end;
 OnDisable:
 	killmonster "job_ko","召唤假目标#ko::OnMyMobDead";
@@ -2803,8 +2803,8 @@ job_ko,4,1,4	script	向导#ko_helper	588,{
 	switch(select("当前状态:测试设置:转职前:初始化")) {
 	case 1:
 		mes "变量状态（当前/最大）";
-		mes "job_kagero (" + job_kagero + "/9)";
-		mes "job_kagero_lp (" + job_kagero_lp + "/100)";
+		mes "转职变量 job_kagero (" + job_kagero + "/9)";
+		mes "转职变量 job_kagero_lp (" + job_kagero_lp + "/100)";
 		next;
 		mes "任务状态（当前/最大）";
 		mes "5131 (" + isbegin_quest(5131) + "/1)";
