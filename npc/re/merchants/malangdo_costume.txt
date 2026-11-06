@@ -732,28 +732,32 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 		close;
 	}
 	.@size = getarraysize(.@stone_id);
-	.@max_menu_size = 2047;	// temporary fix the menu length until new data
-	.@i = 0;
-
-	do {
+	.@max_menu_size = 1800;
+	.@offset = 0;
+	while (1) {
 		.@menu$ = "";
-		.@offset += .@i;
-
+		.@page_count = 0;
+		.@next = 0;
 		for ( .@i = .@offset; .@i < .@size; .@i += 2 ) {
 			.@str$ = sprintf( "%d. %s [%d] left:", (.@i/2)+1, getitemname(.@stone_id[.@i]), countitem(.@stone_id[.@i]) );
 			if (countitem(.@stone_id[.@i]) < 1)
 				.@str$ = "^808080" + .@str$ + "^000000";
 			if ((getstrlen(.@menu$ + .@str$) + 4) >= .@max_menu_size) {
 				.@menu$ += "^0000ff下一页^000000:";
+				.@next = .@i;
 				break;
 			}
 			.@menu$ += .@str$;
+			.@page_count++;
 		}
-		.@s = (select(.@menu$) - 1) * 2;
+		.@sel = select(.@menu$);
+		if (.@sel > .@page_count && .@next > 0) {
+			.@offset = .@next;
+			continue;
+		}
+		.@s = .@offset + (.@sel - 1) * 2;
+		break;
 	}
-	while(.@i < .@size && .@i == .@s);
-
-	.@s += .@offset;
 
 	.@stone = .@stone_id[.@s];
 	.@enchant = .@stone_id[.@s+1];
@@ -775,11 +779,8 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 		mes "也请看看我们的其他升级服务~";
 		close;
 	}
-	delitem .@stone, 1;
 
 	// anti-hack
-	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
-		close;
 
 	delequip .@part;
 	if (rand(1,100) < 51) {
@@ -796,6 +797,7 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 		.@card[.@slot] = 0;
 	}
 	getitem2 .@equip_id,1,1,.@equip_refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+	delitem .@stone, 1;
 	close;
 }
 
