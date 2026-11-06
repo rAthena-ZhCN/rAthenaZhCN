@@ -436,21 +436,21 @@ job_ko,25,115,4	script	老人#ko	588,{
 			cutin "job_ko01",2;
 			mes "[吉恩首领]";
 			if (.@ko_test_01 == 2) {
-				set .@menu$,":Test of Survival:Test of Weaponry";
+				set .@menu$,":生存考验:武器考验";
 				mes "你通过了知识考验。";
 				next;
 				mes "[吉恩首领]";
 				mes "我的朋友不会轻易认可别人，不过看来他挺中意你。";
 				next;
 			} else if (.@ko_test_02 == 2) {
-				set .@menu$,"知识考验::Test of Weaponry";
+				set .@menu$,"知识考验::武器考验";
 				mes "你通过了生存考验。";
 				next;
 				mes "[吉恩首领]";
 				mes "看来这项考验让你吃尽了苦头。";
 				next;
 			} else if (.@ko_test_03 == 2) {
-				set .@menu$,"知识考验:Test of Survival:";
+				set .@menu$,"知识考验:生存考验:";
 				mes "你通过了武器考验。";
 				next;
 				mes "[吉恩首领]";
@@ -621,7 +621,7 @@ job_ko,25,115,4	script	老人#ko	588,{
 				if (.@ko_test_01 == 1)
 					warp "job_ko",72,128;
 				else if (.@ko_test_02 == 1)
-					warp "job_ko",62,16;
+					warp "job_ko",57,16;
 				else if (.@ko_test_03 == 1)
 					warp "job_ko",121,129;
 				end;
@@ -712,9 +712,9 @@ job_ko,25,115,4	script	老人#ko	588,{
 //callsub L_StartTest,<1=Knowledge,2=Survival,3=Weaponry>,<test number [1..3]>;
 L_StartTest:
 	switch (getarg(1)) {
-		case 1: set .@str$,"You are starting with the ^339CCCTest of %s^000000? "; break;
-		case 2: set .@str$,"You are taking the ^339CCCTest of %s^000000 as the second test? "; break; //custom translation
-		case 3: set .@str$,"Your third test is the ^339CCCTest of %s^000000! "; break;
+		case 1: set .@str$,"你准备开始^339CCC%s考验^000000吗？ "; break;
+		case 2: set .@str$,"你准备把^339CCC%s考验^000000作为第二项考验吗？ "; break; //custom translation
+		case 3: set .@str$,"你的第三项考验是^339CCC%s考验^000000！ "; break;
 	}
 	mes "[吉恩首领]";
 	switch (getarg(0)) {
@@ -735,7 +735,7 @@ L_StartTest:
 		mes "[吉恩首领]";
 		mes "但我相信你能应付。生存考验在这边进行。";
 		close2;
-		warp "job_ko",62,16;
+		warp "job_ko",57,16;
 		end;
 	case 3:
 		mes sprintf(.@str$ + "出发前，我有样东西要给你。","武器");
@@ -994,7 +994,7 @@ function	script	F_KO_Survival_mes	{
 function	script	F_KO_Survival_warp	{
 	close2;
 	switch (getarg(0)) {
-		case  0: warp "job_ko",63,16; break;
+		case  0: warp "job_ko",57,16; break;
 		case  1: warp "job_ko",54,16; break;
 		case  2: warp "job_ko",46,16; break;
 		case  3: warp "job_ko",38,16; break;
@@ -1092,7 +1092,7 @@ function	script	F_KO_Survival_dice2	{
 
 //Return: 1:win, 0:draw, -1:lose
 function	script	F_KO_Survival_rps	{
-	setarray .@rps$[1], "Scissors", "Rock", "Paper";
+	setarray .@rps$[1], "剪刀", "石头", "布";
 	setarray .@emote[1], ET_SCISSOR, ET_ROCK, ET_WRAP;  //might be iRO custom(?)
 
 	mes "石头！剪刀！布！";
