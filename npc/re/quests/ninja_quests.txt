@@ -17,55 +17,57 @@
 // Armor and Weapon NPCs :: kaboro_gearmix
 //============================================================
 que_ng,21,72,6	script	防具名匠	4_M_RASWORD,{
-	mes "[吉奥]";
+	mes "[防具名匠]";
 	mes "你如何定义胜利？";
 	mes "击倒敌人……";
 	mes "然而，最重要的是……";
 	mes "自己绝不能倒下！";
 	next;
-	mes "[吉奥]";
+	mes "[防具名匠]";
 	mes "为此，你必须更好地保护自己。";
 	mes "若连“自己”都护不住，便无法保护“他人”。";
 	next;
+	mes "可合成：<ITEM>狼纹护手<INFO>2172</INFO></ITEM>、<ITEM>月纹护手<INFO>2173</INFO></ITEM>、<ITEM>忍者鳞甲<INFO>15054</INFO></ITEM>、<ITEM>雾中暗影<INFO>15055</INFO></ITEM>。";
+	next;
 	if(select("合成防具。:结束对话。") == 2) {
-		mes "[吉奥]";
+		mes "[防具名匠]";
 		mes "谨慎也是战斗中重要的美德。";
 		close;
 	}
-	switch(select("狼臂甲[1]:新月臂甲[1]:忍者鳞甲[1]:暗影潜藏者[1]:退出。")) {
+	switch(select("狼纹护手[1]:月纹护手[1]:忍者鳞甲[1]:雾中暗影[1]:退出。")) {
 	case 1:
-		mes "[吉奥]";
-		mes "狼臂甲……一件充满野性的防具。";
+		mes "[防具名匠]";
+		mes "<ITEM>狼纹护手<INFO>2172</INFO></ITEM>……一件充满野性的防具。";
 		next;
 		callsub L_Select,2172;
 		if (countitem(2171) > 0 && countitem(6252) > 9) {  //custom translation
 			delitem 2171,1; //Fox_Armguard
 			delitem 6252,10; //Wolf_Blood
 			getitem 2172,1; //Wolf_Armguard
-			mes "[吉奥]";
+			mes "[防具名匠]";
 			mes "你能感受到狼的本性吗？";
 			mes "既狂野又迷人……";
 			close;
 		}
 		break;
 	case 2:
-		mes "[吉奥]";
-		mes "新月臂甲……兼具美感与力量……二者皆不逊色。";
+		mes "[防具名匠]";
+		mes "<ITEM>月纹护手<INFO>2173</INFO></ITEM>……兼具美感与力量……二者皆不逊色。";
 		next;
 		callsub L_Select,2173;
 		if (countitem(2171) > 0 && countitem(7321) > 99) {  //custom translation
 			delitem 2171,1; //Fox_Armguard
 			delitem 7321,100; //Fragment_Of_Crystal
 			getitem 2173,1; //Crescent_Armguard
-			mes "[吉奥]";
+			mes "[防具名匠]";
 			mes "何等美丽……";
 			mes "仿佛全身都充盈着魔力。";
 			close;
 		}
 		break;
 	case 3:
-		mes "[吉奥]";
-		mes "忍者鳞甲……据说曾有一位传说中的忍者穿过它。";
+		mes "[防具名匠]";
+		mes "<ITEM>忍者鳞甲<INFO>15054</INFO></ITEM>……据说曾有一位传说中的忍者穿过它。";
 		next;
 		callsub L_Select,15054;
 		if (countitem(7451) > 29 && countitem(7562) > 29 && countitem(6091) > 29) {  //custom translation
@@ -73,22 +75,22 @@ que_ng,21,72,6	script	防具名匠	4_M_RASWORD,{
 			delitem 7562,30; //Ice_Scale
 			delitem 6091,30; //Dark_Red_Scale
 			getitem 15054,1; //Ninja_Scale_Armor
-			mes "[吉奥]";
+			mes "[防具名匠]";
 			mes "这真是一件传说中的防具……";
 			mes "即便我不相信传说……";
 			close;
 		}
 		break;
 	case 4:
-		mes "[吉奥]";
-		mes "影王铠甲……它是为了保护他人而造的。";
+		mes "[防具名匠]";
+		mes "<ITEM>雾中暗影<INFO>15055</INFO></ITEM>……它是为了保护他人而造的。";
 		next;
 		callsub L_Select,15055;
 		if (countitem(15056) > 0 && countitem(6089) > 9) {  //custom translation
 			delitem 15056,1; //Special_Ninja_Suit_
 			delitem 6089,10; //Piece_Of_Darkness
 			getitem 15055,1; //Tenebris_Latitantes
-			mes "[吉奥]";
+			mes "[防具名匠]";
 			mes "怎么样？";
 			mes "这防具看起来是不是像有两件？";
 			close;
@@ -97,16 +99,16 @@ que_ng,21,72,6	script	防具名匠	4_M_RASWORD,{
 	case 5:
 		close;
 	}
-	mes "[吉奥]";
+	mes "[防具名匠]";
 	mes "你的材料不够。";
 	mes "再仔细看看吧……";
 	close;
 
 L_Select:
-	.@string1$ = "Check Ingredients.";
-	.@string2$ = "Check Stats.";
+	.@string1$ = "查看材料。";
+	.@string2$ = "查看属性。";
 	while(1) {
-		switch(select(.@string1$,.@string2$,"Combine.","Quit.")) {
+		switch(select(.@string1$,.@string2$,"合成。","退出。")) {
 		case 1:
 			.@string1$ = "";
 			callsub L_Ingredients, getarg(0);
@@ -119,29 +121,29 @@ L_Select:
 			callsub L_Combine;
 			return;
 		case 4:
-			mes "[吉奥]";
+			mes "[防具名匠]";
 			mes "看来你需要更多时间考虑。";
 			close;
 		}
 	}
 
 L_Ingredients:
-	mes "[吉奥]";
+	mes "[防具名匠]";
 	switch (getarg(0)) {
 	case 2172:	//Wolf_Armguard
-		mes "要制作^ff0000狼臂甲，需要1件狐臂甲与10份狼血^000000。";
-		mes "你能感觉到吗？狼血在搏动……";
+		mes "要制作^ff0000<ITEM>狼纹护手<INFO>2172</INFO></ITEM>，需要1件<ITEM>狐纹护手<INFO>2171</INFO></ITEM>与10份<ITEM>狼血<INFO>6252</INFO></ITEM>^000000。";
+		mes "你能感觉到吗？<ITEM>狼血<INFO>6252</INFO></ITEM>在搏动……";
 		break;
 	case 2173:	//Crescent_Armguard
-		mes "要制作^ff0000新月臂甲，需要1件狐臂甲与100个水晶碎片^000000。";
+		mes "要制作^ff0000<ITEM>月纹护手<INFO>2173</INFO></ITEM>，需要1件<ITEM>狐纹护手<INFO>2171</INFO></ITEM>与100个<ITEM>水晶碎片<INFO>7321</INFO></ITEM>^000000。";
 		mes "其上将刻下一弯如水晶般美丽清澈的新月。";
 		break;
 	case 15054:	//Ninja_Scale_Armor
-		mes "要制作^ff0000忍者鳞甲，需要30片火龙鳞片、30片冰块鳞片与30片暗红鳞片^000000。";
+		mes "要制作^ff0000<ITEM>忍者鳞甲<INFO>15054</INFO></ITEM>，需要30片<ITEM>脱落的红色龙鳞<INFO>7451</INFO></ITEM>、30片<ITEM>冰块鳞片<INFO>7562</INFO></ITEM>与30片<ITEM>红鳞碎片<INFO>6091</INFO></ITEM>^000000。";
 		mes "你能感受到它传说般的力量。";
 		break;
 	case 15055:	//Tenebris_Latitantes
-		mes "要制作^ff0000影王铠甲，需要1件带洞的特殊忍者服与10个黑暗碎片^000000。";
+		mes "要制作^ff0000<ITEM>雾中暗影<INFO>15055</INFO></ITEM>，需要1件带洞的<ITEM>特攻忍装<INFO>15056</INFO></ITEM>与10个<ITEM>黑暗碎片<INFO>6089</INFO></ITEM>^000000。";
 		mes "借由黑暗，它连存在本身都能抹去……";
 		break;
 	}
@@ -176,7 +178,7 @@ L_Stats:
 	return;
 
 L_Combine:
-	mes "[吉奥]";
+	mes "[防具名匠]";
 	mes "请务必确保^ff0000你手边备齐了正确的材料与装备^000000。";
 	mes "事后再后悔也没用。";
 	next;
@@ -192,7 +194,7 @@ L_Combine:
 		}
 		return;
 	case 2:
-		mes "[吉奥]";
+		mes "[防具名匠]";
 		mes "看来你需要更多时间考虑。";
 		close;
 	}
@@ -200,39 +202,41 @@ L_Combine:
 }
 
 que_ng,23,70,3	script	武器名匠	4_DST_SOLDIER,{
-	mes "[基]";
+	mes "[武器名匠]";
 	mes "攻击是最好的防御手段。";
 	mes "一把强大的武器会让你真正完整。";
 	next;
-	mes "[基]";
+	mes "[武器名匠]";
 	mes "当然，手边有件特别的东西会更好。";
 	next;
+	mes "可合成：<ITEM>罗钗短剑<INFO>13076</INFO></ITEM>、<ITEM>三日月<INFO>13078</INFO></ITEM>、<ITEM>风魔手里剑乱华<INFO>13313</INFO></ITEM>。";
+	next;
 	if(select("合成武器。:结束对话。") == 2) {
-		mes "[基]";
+		mes "[武器名匠]";
 		mes "过于谨慎有时也会致命。";
 		close;
 	}
-	switch(select("罗刹短剑[1]:三日月[1]:风魔旋花飞镖[2]:退出。")) {
+	switch(select("罗钗短剑[1]:三日月[1]:风魔手里剑乱华[2]:退出。")) {
 	case 1:
-		mes "[基]";
-		mes "罗刹短剑唯有经过充分修炼才能使用。";
+		mes "[武器名匠]";
+		mes "<ITEM>罗钗短剑<INFO>13076</INFO></ITEM>唯有经过充分修炼才能使用。";
 		next;
 		callsub L_Select,13076;
 		if (countitem(13013) > 0 && countitem(718) > 0) {  //custom translation
 			delitem 13013,1; //Murasame_
 			delitem 718,1; //Dark_Red_Jewel
 			getitem 13076,1; //Raksasa_Dagger
-			mes "[基]";
+			mes "[武器名匠]";
 			mes "Ah...";
 			mes "多么美丽的光泽……";
 			close;
 		}
-		mes "[基]";
-		mes "嗯……你的材料不足以制作罗刹短剑。";
+		mes "[武器名匠]";
+		mes "嗯……你的材料不足以制作<ITEM>罗钗短剑<INFO>13076</INFO></ITEM>。";
 		break;
 	case 2:
-		mes "[基]";
-		mes "三日月……如新月般优美的弧线……";
+		mes "[武器名匠]";
+		mes "<ITEM>三日月<INFO>13078</INFO></ITEM>……如新月般优美的弧线……";
 		mes "能打造它的人并不多。";
 		next;
 		callsub L_Select,13078;
@@ -240,29 +244,29 @@ que_ng,23,70,3	script	武器名匠	4_DST_SOLDIER,{
 			delitem 13015,1; //Hakujin_
 			delitem 727,1; //White_Jewel
 			getitem 13078,1; //Mikatsuki
-			mes "[基]";
+			mes "[武器名匠]";
 			mes "真是美丽……";
 			mes "能见到如此出色的短剑，我真是幸运。";
 			close;
 		}
-		mes "[基]";
-		mes "嗯……你的材料不足以制作三日月。";
+		mes "[武器名匠]";
+		mes "嗯……你的材料不足以制作<ITEM>三日月<INFO>13078</INFO></ITEM>。";
 		break;
 	case 3:
-		mes "[基]";
-		mes "风魔旋花飞镖……你可曾见过花瓣旋舞？";
+		mes "[武器名匠]";
+		mes "<ITEM>风魔手里剑乱华<INFO>13313</INFO></ITEM>……你可曾见过花瓣旋舞？";
 		next;
 		callsub L_Select,13313;
 		if (countitem(13304) > 0 && countitem(7156) > 99) {  //custom translation
 			delitem 13304,1; //Huuma_Calm_Mind
 			delitem 7156,100; //Broken_Shuriken
 			getitem 13313,1; //Huuma_Swirling_Petal
-			mes "[基]";
+			mes "[武器名匠]";
 			mes "飞舞的……花瓣！！";
 			close;
 		}
-		mes "[基]";
-		mes "嗯……你的材料不足以制作风魔旋花飞镖。";
+		mes "[武器名匠]";
+		mes "嗯……你的材料不足以制作<ITEM>风魔手里剑乱华<INFO>13313</INFO></ITEM>。";
 		break;
 	case 4:
 		close;
@@ -272,10 +276,10 @@ que_ng,23,70,3	script	武器名匠	4_DST_SOLDIER,{
 	close;
 
 L_Select:
-	.@string1$ = "Check Ingredients.";
-	.@string2$ = "Check Stats.";
+	.@string1$ = "查看材料。";
+	.@string2$ = "查看属性。";
 	while(1) {
-		switch(select(.@string1$,.@string2$,"Combine.","Quit.")) {
+		switch(select(.@string1$,.@string2$,"合成。","退出。")) {
 		case 1:
 			.@string1$ = "";
 			callsub L_Ingredients, getarg(0);
@@ -288,25 +292,25 @@ L_Select:
 			callsub L_Combine;
 			return;
 		case 4:
-			mes "[基]";
+			mes "[武器名匠]";
 			mes "仔细想清楚~~";
 			close;
 		}
 	}
 
 L_Ingredients:
-	mes "[基]";
+	mes "[武器名匠]";
 	switch (getarg(0)) {
 	case 13076:	//Raksasa_Dagger
-		mes "要制作^ff0000罗刹短剑，需要1把2洞村雨与1颗深红宝石^000000。";
-		mes "深红宝石赋予了罗刹短剑独特的色泽。";
+		mes "要制作^ff0000<ITEM>罗钗短剑<INFO>13076</INFO></ITEM>，需要1把2洞<ITEM>流水剑<INFO>13013</INFO></ITEM>与1颗<ITEM>深红宝石<INFO>718</INFO></ITEM>^000000。";
+		mes "<ITEM>深红宝石<INFO>718</INFO></ITEM>赋予了<ITEM>罗钗短剑<INFO>13076</INFO></ITEM>独特的色泽。";
 		break;
 	case 13078:	//Mikatsuki
-		mes "要制作^ff0000三日月，需要1把带洞的白刃与1颗蛋白石^000000。";
-		mes "那种半透明的光芒正是蛋白石带来的。";
+		mes "要制作^ff0000<ITEM>三日月<INFO>13078</INFO></ITEM>，需要1把带洞的<ITEM>骨头剑<INFO>13015</INFO></ITEM>与1颗<ITEM>白宝石<INFO>727</INFO></ITEM>^000000。";
+		mes "那种半透明的光芒正是<ITEM>白宝石<INFO>727</INFO></ITEM>带来的。";
 		break;
 	case 13313:	//Huuma_Swirling_Petal
-		mes "要制作^ff0000风魔旋花飞镖，需要1枚风魔静心手里剑与100枚破旧之手里剑^000000。";
+		mes "要制作^ff0000<ITEM>风魔手里剑乱华<INFO>13313</INFO></ITEM>，需要1枚<ITEM>风魔飞镖:启明星<INFO>13304</INFO></ITEM>与100枚<ITEM>破旧之手里剑<INFO>7156</INFO></ITEM>^000000。";
 		mes "需要的飞镖似乎太多了……但这对那美丽的纷飞效果不可或缺。";
 		break;
 	}
@@ -327,7 +331,7 @@ L_Stats:
 		mes "要求等级100，仅限忍者系";
 		break;
 	case 13313:	//Huuma_Swirling_Petal
-		mes "魔法攻击+50，风魔旋花飞镖技能伤害增加20%。";
+		mes "魔法攻击+50，<ITEM>风魔手里剑乱华<INFO>13313</INFO></ITEM>技能伤害增加20%。";
 		mes "手里剑类，攻击150";
 		mes "武器等级3，2洞";
 		mes "要求等级110，仅限忍者系";
@@ -337,7 +341,7 @@ L_Stats:
 	return;
 
 L_Combine:
-	mes "[基]";
+	mes "[武器名匠]";
 	mes "请务必确保^ff0000你手边备齐了正确的材料与装备^000000。";
 	mes "一旦完成，便无法挽回。";
 	next;
@@ -353,7 +357,7 @@ L_Combine:
 		}
 		return;
 	case 2:
-		mes "[基]";
+		mes "[武器名匠]";
 		mes "仔细想清楚~~";
 		close;
 	}
