@@ -507,29 +507,44 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 		mes "请清理出一些背包空间后再来。";
 		close;
 	}
-	.@eq_top = getequipid(EQI_COSTUME_HEAD_TOP);
-	.@eq_mid = getequipid(EQI_COSTUME_HEAD_MID);
-	.@eq_low = getequipid(EQI_COSTUME_HEAD_LOW);
-
-	if (.@eq_top == -1 && .@eq_mid == -1 && .@eq_low == -1) {
+	.@menu$ = "";
+	.@slot_count = 0;
+	if (.@eq_top > -1) {
+		.@menu$ += "上段:";
+		.@slot_parts[.@slot_count] = 0;
+		.@slot_equips[.@slot_count] = .@eq_top;
+		.@slot_count++;
+	}
+	if (.@eq_mid > -1) {
+		.@menu$ += "中段:";
+		.@slot_parts[.@slot_count] = 1;
+		.@slot_equips[.@slot_count] = .@eq_mid;
+		.@slot_count++;
+	}
+	if (.@eq_low > -1) {
+		.@menu$ += "下段:";
+		.@slot_parts[.@slot_count] = 2;
+		.@slot_equips[.@slot_count] = .@eq_low;
+		.@slot_count++;
+	}
+	.@menu$ += "取消";
+	mes "[艾佛·德·多修]";
+	mes "请选择要附魔的时装部位。";
+	next;
+	.@choice = select(.@menu$) - 1;
+	if (.@choice == .@slot_count) {
 		mes "[艾佛·德·多修]";
-		mes "您必须穿上想要附魔的时装。";
-		mes "那样我才能帮您。";
+		mes "好吧，等您准备好再来。";
 		close;
 	}
-	if (.@eq_top > -1) {
+	.@slot = .@slot_parts[.@choice];
+	.@equip_id = .@slot_equips[.@choice];
+	if (.@slot == 0)
 		.@part = EQI_COSTUME_HEAD_TOP;
-		.@equip_id = .@eq_top;
-	}
-	else if (.@eq_mid > -1) {
+	else if (.@slot == 1)
 		.@part = EQI_COSTUME_HEAD_MID;
-		.@equip_id = .@eq_mid;
-	}
-	else if (.@eq_low > -1) {
+	else if (.@slot == 2)
 		.@part = EQI_COSTUME_HEAD_LOW;
-		.@equip_id = .@eq_low;
-	}
-
 
 	.@location = getiteminfo(.@equip_id, ITEMINFO_LOCATIONS);
 	.@equip_refine = getequiprefinerycnt(.@part);
@@ -539,12 +554,6 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 	mes "哇~这件 ^0000FF" + getitemname(.@equip_id) + "^000000！！！您穿起来太好看了！！";
 	mes "您想用哪种石头来升级？";
 	next;
-	if (.@part == EQI_COSTUME_HEAD_TOP)
-		.@slot = select( "上段", "中段", "下段", "取消" ) - 1;	// the slot enchanted changes according to the location
-	else if (.@part == EQI_COSTUME_HEAD_MID)
-		.@slot = select( "", "中段", "下段", "取消" ) - 1;
-	else if (.@part == EQI_COSTUME_HEAD_LOW)
-		.@slot = 2;
 
 	switch(.@slot) {
 	case 0:
@@ -732,6 +741,8 @@ mal_in01,22,113,3	script	艾佛·德·多修#cos_ect	4_WHITETIGER,{
 
 		for ( .@i = .@offset; .@i < .@size; .@i += 2 ) {
 			.@str$ = sprintf( "%d. %s [%d] left:", (.@i/2)+1, getitemname(.@stone_id[.@i]), countitem(.@stone_id[.@i]) );
+			if (countitem(.@stone_id[.@i]) < 1)
+				.@str$ = "^808080" + .@str$ + "^000000";
 			if ((getstrlen(.@menu$ + .@str$) + 4) >= .@max_menu_size) {
 				.@menu$ += "^0000ff下一页^000000:";
 				break;
