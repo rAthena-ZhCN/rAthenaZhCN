@@ -8,7 +8,7 @@
 
 -	script	ZondaTeleportationServices	HIDDEN_NPC,{
 	cutin "zonda_do01", 2;
-	mes "[猫猫卡普拉]";
+	mes "[炫酷传送员]";
 	mes "欢迎光临。";
 	mes "我们始终努力提供超越期待的服务。";
 	mes "请选择目的地。";
@@ -51,12 +51,12 @@
 	.@sel = select(.@menu$);
 	if (.@sel > 6) {
 		if (.@sel == 7 + .@free_count) {
-			mes "[猫猫卡普拉]";
+			mes "[炫酷传送员]";
 			mes "感谢使用我们的服务。";
 			close3;
 		}
 		.@idx = .@sel - 7;
-		mes "[猫猫卡普拉]";
+		mes "[炫酷传送员]";
 		mes "正在为你传送。";
 		close2;
 		warp .@free_map$[.@idx], .@free_x[.@idx], .@free_y[.@idx];
@@ -95,12 +95,12 @@ S_Zone:
 	.@quest_req = getarg(3);
 	
 	if (isbegin_quest(.@quest_req) == 0) {
-		mes "[猫猫卡普拉]";
+		mes "[炫酷传送员]";
 		//mes getarg(0);
 		mes "在使用传送服务前，必须先完成前往" + getarg(0) + "的通行任务。";
 		close3;
 	}
-	mes "[猫猫卡普拉]";
+	mes "[炫酷传送员]";
 	mes getarg(0) + "的传送费用为 ^ff0000" + .@zeny_req + " Zeny^000000，或 ^ff0000" + .@item_req + " 个绵绵岛特制罐头^000000。";
 	next;
 	switch( select( "支付 " + .@zeny_req + " Zeny", "使用 " + .@item_req + " 个绵绵岛特制罐头", "取消" ) ) {
@@ -115,24 +115,24 @@ S_Zone:
 		delitem 12636,.@item_req; // Malang_Sp_Can
 		return;
 	case 3:
-		mes "[猫猫卡普拉]";
+		mes "[炫酷传送员]";
 		mes "请选择其他服务区域。";
 		close3;
 	}
-	mes "[猫猫卡普拉]";
+	mes "[炫酷传送员]";
 	mes "客人，您的费用不足。";
 	mes "请准备好后再来。";
 	close3;
 }
 
-alberta,35,239,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#alberta	4_M_DRZONDA01
-aldebaran,138,122,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#aldebaran	4_M_DRZONDA01
-einbroch,248,205,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#einbroch	4_M_DRZONDA01
-geffen,117,66,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#geffen	4_M_DRZONDA01
-lighthalzen,169,103,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#lighthalzen	4_M_DRZONDA01
-morocc,157,257,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#morocc	4_M_DRZONDA01
-payon,178,104,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#payon	4_M_DRZONDA01
-prontera,145,87,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#prontera	4_M_DRZONDA01
-rachel,118,139,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#rachel	4_M_DRZONDA01
-veins,198,133,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#veins	4_M_DRZONDA01
-yuno,145,184,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#yuno	4_M_DRZONDA01
+alberta,35,239,3	duplicate(ZondaTeleportationServices)	炫酷传送员#alberta	4_M_DRZONDA01
+aldebaran,138,122,3	duplicate(ZondaTeleportationServices)	炫酷传送员#aldebaran	4_M_DRZONDA01
+einbroch,248,205,3	duplicate(ZondaTeleportationServices)	炫酷传送员#einbroch	4_M_DRZONDA01
+geffen,117,66,3	duplicate(ZondaTeleportationServices)	炫酷传送员#geffen	4_M_DRZONDA01
+lighthalzen,169,103,3	duplicate(ZondaTeleportationServices)	炫酷传送员#lighthalzen	4_M_DRZONDA01
+morocc,157,257,3	duplicate(ZondaTeleportationServices)	炫酷传送员#morocc	4_M_DRZONDA01
+payon,178,104,3	duplicate(ZondaTeleportationServices)	炫酷传送员#payon	4_M_DRZONDA01
+prontera,145,87,3	duplicate(ZondaTeleportationServices)	炫酷传送员#prontera	4_M_DRZONDA01
+rachel,118,139,3	duplicate(ZondaTeleportationServices)	炫酷传送员#rachel	4_M_DRZONDA01
+veins,198,133,3	duplicate(ZondaTeleportationServices)	炫酷传送员#veins	4_M_DRZONDA01
+yuno,145,184,3	duplicate(ZondaTeleportationServices)	炫酷传送员#yuno	4_M_DRZONDA01
