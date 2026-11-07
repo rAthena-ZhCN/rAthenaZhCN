@@ -8,41 +8,85 @@
 
 -	script	ZondaTeleportationServices	HIDDEN_NPC,{
 	cutin "zonda_do01", 2;
-	mes "[Zonda职员]";
-	mes "Welcome.";
-	mes "我们的团队始终致力于超越您对服务品质的期待。";
+	mes "[猫猫卡普拉]";
+	mes "欢迎光临。";
+	mes "我们始终努力提供超越期待的服务。";
 	mes "请选择目的地。";
 	next;
-	switch( select( "彩虹桥北部", "埃克拉珠", "辉煌领域", "米德加尔特联合驻地", "马努克", "卡米达山麓", "Cancel.") ) {
+	.@menu$ = "彩虹桥北部:埃克拉珠:辉煌领域:米德加尔特联合驻地:马努克:卡米达山麓";
+	.@free_count = 0;
+	if (PRT_1QUE >= 25 || ep16_royal >= 17) {
+		.@free_map$[.@free_count] = "lighthalzen";
+		.@free_x[.@free_count] = 169;
+		.@free_y[.@free_count] = 103;
+		.@free_count++;
+		.@free_map$[.@free_count] = "rebel_in";
+		.@free_x[.@free_count] = 74;
+		.@free_y[.@free_count] = 67;
+		.@free_count++;
+		.@menu$ += ":里希塔乐镇:反叛者总部";
+	}
+	if (terra_gloria_main >= 25) {
+		.@free_map$[.@free_count] = "pub_cat";
+		.@free_x[.@free_count] = 93;
+		.@free_y[.@free_count] = 105;
+		.@free_count++;
+		.@menu$ += ":喵星人酒吧";
+	}
+	if (ep_illusion >= 47) {
+		.@free_map$[.@free_count] = "sp_cor";
+		.@free_x[.@free_count] = 107;
+		.@free_y[.@free_count] = 129;
+		.@free_count++;
+		.@menu$ += ":柯尔特别警戒区";
+	}
+	if (ep17_2_main >= 200) {
+		.@free_map$[.@free_count] = "ba_maison";
+		.@free_x[.@free_count] = 75;
+		.@free_y[.@free_count] = 146;
+		.@free_count++;
+		.@menu$ += ":霸肋门德宅邸";
+	}
+	.@menu$ += ":取消";
+	.@sel = select(.@menu$);
+	if (.@sel > 6) {
+		if (.@sel == 7 + .@free_count) {
+			mes "[猫猫卡普拉]";
+			mes "感谢使用我们的服务。";
+			close3;
+		}
+		.@idx = .@sel - 7;
+		mes "[猫猫卡普拉]";
+		mes "正在为你传送。";
+		close2;
+		warp .@free_map$[.@idx], .@free_x[.@idx], .@free_y[.@idx];
+		end;
+	}
+	switch(.@sel) {
 	case 1:
-		callsub( S_Zone, "North Bifrost", 17000,850, 7213 ); // Teleport value not confirmed
-		warp "bif_fild02",160,230; // Unverified Coordinates
+		callsub( S_Zone, "彩虹桥北部", 17000,850, 7213 );
+		warp "bif_fild02",160,230;
 		end;
 	case 2:
-		callsub( S_Zone, "Eclage", 17000,850, 11311 );
+		callsub( S_Zone, "埃克拉珠", 17000,850, 11311 );
 		warp "eclage",111,39;
 		end;
 	case 3:
-		callsub( S_Zone, "Splendide", 17000,850, 10078 );
+		callsub( S_Zone, "辉煌领域", 17000,850, 10078 );
 		warp "splendide",171,115;
 		end;
 	case 4:
-		callsub( S_Zone, "Midgard Expedition Camp", 19000,950, 10078 );
+		callsub( S_Zone, "米德加尔特联合驻地", 19000,950, 10078 );
 		warp "mid_camp",210,288;
 		end;
 	case 5:
-		callsub( S_Zone, "Manuk", 22000,1100, 10078 );
+		callsub( S_Zone, "马努克", 22000,1100, 10078 );
 		warp "manuk",263,177;
 		end;
 	case 6:
-		callsub( S_Zone, "Outskirts of Kamidal Mountain", 24000,1200, 7184 );
+		callsub( S_Zone, "卡米达山麓", 24000,1200, 7184 );
 		warp "dic_fild01",188,187;
 		end;
-	case 7:
-		mes "[Zonda职员]";
-		mes "我们始终努力为客户提供最好的服务。";
-		mes "感谢您使用我们的服务。";
-		close3;
 	}
 
 S_Zone:
@@ -51,15 +95,15 @@ S_Zone:
 	.@quest_req = getarg(3);
 	
 	if (isbegin_quest(.@quest_req) == 0) {
-		mes "[Zonda职员]";
+		mes "[猫猫卡普拉]";
 		//mes getarg(0);
-		mes "在使用我们的传送服务之前，您必须先完成前往" + getarg(0) + "的通行任务。";
+		mes "在使用传送服务前，必须先完成前往" + getarg(0) + "的通行任务。";
 		close3;
 	}
-	mes "[Zonda职员]";
-	mes getarg(0) + "的费用为^ff0000" + .@zeny_req + " Zenys^000000 or ^ff0000" + .@item_req + " Malang Sp Can^000000.";
+	mes "[猫猫卡普拉]";
+	mes getarg(0) + "的传送费用为 ^ff0000" + .@zeny_req + " Zeny^000000，或 ^ff0000" + .@item_req + " 个绵绵岛特制罐头^000000。";
 	next;
-	switch( select( .@zeny_req + "Zeny", .@item_req + "绵绵岛特制罐头", "取消" ) ) {
+	switch( select( "支付 " + .@zeny_req + " Zeny", "使用 " + .@item_req + " 个绵绵岛特制罐头", "取消" ) ) {
 	case 1:
 		if (Zeny < .@zeny_req)
 			break;
@@ -71,24 +115,24 @@ S_Zone:
 		delitem 12636,.@item_req; // Malang_Sp_Can
 		return;
 	case 3:
-		mes "[Zonda职员]";
-		mes "能告诉我其他服务区域吗？";
+		mes "[猫猫卡普拉]";
+		mes "请选择其他服务区域。";
 		close3;
 	}
-	mes "[Zonda职员]";
-	mes "先生！您拥有的价值不足以支付我们的要求。";
-	mes "请稍后再来确认。";
+	mes "[猫猫卡普拉]";
+	mes "客人，您的费用不足。";
+	mes "请准备好后再来。";
 	close3;
 }
 
-alberta,35,239,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#alberta	4_M_DRZONDA01
-aldebaran,138,122,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#aldebaran	4_M_DRZONDA01
-einbroch,248,205,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#einbroch	4_M_DRZONDA01
-geffen,117,66,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#geffen	4_M_DRZONDA01
-lighthalzen,169,103,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#lighthalzen	4_M_DRZONDA01
-morocc,157,257,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#morocc	4_M_DRZONDA01
-payon,178,104,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#payon	4_M_DRZONDA01
-prontera,145,87,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#prontera	4_M_DRZONDA01
-rachel,118,139,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#rachel	4_M_DRZONDA01
-veins,198,133,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#veins	4_M_DRZONDA01
-yuno,145,184,3	duplicate(ZondaTeleportationServices)	Zonda Teleportation#yuno	4_M_DRZONDA01
+alberta,35,239,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#alberta	4_M_DRZONDA01
+aldebaran,138,122,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#aldebaran	4_M_DRZONDA01
+einbroch,248,205,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#einbroch	4_M_DRZONDA01
+geffen,117,66,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#geffen	4_M_DRZONDA01
+lighthalzen,169,103,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#lighthalzen	4_M_DRZONDA01
+morocc,157,257,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#morocc	4_M_DRZONDA01
+payon,178,104,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#payon	4_M_DRZONDA01
+prontera,145,87,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#prontera	4_M_DRZONDA01
+rachel,118,139,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#rachel	4_M_DRZONDA01
+veins,198,133,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#veins	4_M_DRZONDA01
+yuno,145,184,3	duplicate(ZondaTeleportationServices)	猫猫卡普拉#yuno	4_M_DRZONDA01
