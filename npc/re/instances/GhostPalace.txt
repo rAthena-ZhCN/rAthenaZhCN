@@ -30,7 +30,22 @@ dali02,43,129,5	script	不悦的皇家守卫#	4_M_SAKRAYROYAL,{
 	case 1:
 		mes "[不悦的皇家守卫]";
 		mes "你找到公主了吗？！她平安吗？";
-		close;
+		next;
+		mes "[不悦的皇家守卫]";
+		mes "通往宫殿的通道今天已经开启过了。";
+		mes "如果你有" + mesitemlink(1000254) + "，我可以消耗1个为你突破限制。";
+		if (select("消耗1个蹦级币突破限制","取消") == 2)
+			close;
+		if (countitem(1000254) < 1) {
+			mes "[不悦的皇家守卫]";
+			mes "你没有蹦级币。";
+			close;
+		}
+		delitem 1000254,1;
+		erasequest 1261;
+		mes "[不悦的皇家守卫]";
+		mes "已为你突破今日限制。";
+		break;
 	case 2:
 		mes "[不悦的皇家守卫]";
 		mes "秘密通道周围的怪物都消失了。现在正是我们救出公主的机会！";
