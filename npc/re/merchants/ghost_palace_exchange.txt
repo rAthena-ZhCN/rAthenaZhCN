@@ -72,11 +72,16 @@ dali02,51,130,4	script	次元旅行者	4_F_SHABBY,{
 		break;
 	}
 	.@size = getarraysize(.@items);
+
+	mes "[次元旅行者]";
+	mes "可兑换物品如下：";
+	for ( .@i = 0; .@i < .@size; .@i += 2 )
+		mes mesitemlink(.@items[.@i]) + " - " + .@items[.@i+1] + " " + .@item_name_req$;
+	next;
 	for ( .@i = 0; .@i < .@size; .@i += 2 )
 		.@menu$ += getitemname(.@items[.@i]) + " - " + .@items[.@i+1] + ":";
 
 	while(true) {
-		next;
 		.@s = (select(.@menu$) - 1) * 2;
 		mes "[次元旅行者]";
 		if (.@type != 1)	// armor type doesn't display item info
@@ -108,7 +113,7 @@ dali02,51,130,4	script	次元旅行者	4_F_SHABBY,{
 		if (countitem(6672) < .@items[.@s+1]) {
 			mes "[次元旅行者]";
 			mes "朋友，您让我很为难。";
-			mes "我需要" + .@item_name_req$ + ". I will exchange it for ^006400" + .@items[.@s+1] + " " + .@item_name_req$ + "^000000.";
+			mes "我需要 " + .@items[.@s+1] + " " + .@item_name_req$ + "。";
 			close;
 		}
 		mes "[次元旅行者]";
