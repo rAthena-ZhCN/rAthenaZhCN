@@ -849,7 +849,7 @@ OnMyMobDead:
 	if (.@mob_dead_num > 35) {
 		mapannounce 'map_name$[0], "希梅尔梅兹的诅咒正在减弱。快去寻找幸存者！", bc_map,0xFFFFFF;
 		killmonster 'map_name$[0], .@label$;
-		enablenpc instance_npcname("Altar boy Domun#1");
+		enablenpc instance_npcname("祭坛侍童多蒙#1");
 		disablenpc instance_npcname("#ghmemorialmob01");
 	}
 	end;
@@ -899,7 +899,7 @@ OnMyMobDead:
 	npctalk "祭坛侍童多蒙：好，我……我试试。";
 	if ('step == 2) {
 		'step = 3;
-		disablenpc instance_npcname("Altar boy Domun#1");
+		disablenpc instance_npcname("祭坛侍童多蒙#1");
 		donpcevent instance_npcname("#ghmemorialmob02") + "::OnStart";
 	}
 	close;
@@ -930,7 +930,7 @@ OnMyMobDead:
 	if (.@mob_dead_num > 56) {
 		mapannounce 'map_name$[0], "希梅尔梅兹的诅咒正在减弱。快去寻找幸存者！", bc_map,0xFFFFFF;
 		killmonster 'map_name$[0],.@label$;
-		enablenpc instance_npcname("Holgren the Destroyer#1");
+		enablenpc instance_npcname("破坏者霍尔格伦#1");
 		disablenpc instance_npcname("#ghmemorialmob02");
 	}
 	end;
@@ -977,7 +977,7 @@ OnMyMobDead:
 	npctalk "破坏者霍尔格伦：没关系。你已经做得够多了。我自己能行。也祝你好运。";
 	if ('step == 3) {
 		'step = 4;
-		disablenpc instance_npcname("Holgren the Destroyer#1");
+		disablenpc instance_npcname("破坏者霍尔格伦#1");
 		donpcevent instance_npcname("#ghmemorialmob03") + "::OnEnable";
 	}
 	close;
@@ -1600,7 +1600,7 @@ OnTouch_:
 	enablenpc instance_npcname("希梅尔梅兹#22");
 	enablenpc instance_npcname("霸肋门德#23");
 	enablenpc instance_npcname("海因里希#23");
-	enablenpc instance_npcname("Gerhalt#23");
+	enablenpc instance_npcname("盖尔哈特#23");
 	end;
 }
 
@@ -1707,7 +1707,7 @@ OnStart:
 	enablenpc instance_npcname("希梅尔梅兹#23");
 	initnpctimer;
 	'npc_himelmez$ = instance_npcname("希梅尔梅兹#23");
-	'npc_gerhalt$ = instance_npcname("Gerhalt#23");
+	'npc_gerhalt$ = instance_npcname("盖尔哈特#23");
 	'npc_heinrich$ = instance_npcname("海因里希#23");
 	'npc_varmundt$ = instance_npcname("霸肋门德#23");
 	end;
@@ -1809,7 +1809,7 @@ OnStart:
 	enablenpc instance_npcname("希梅尔梅兹#23");
 	initnpctimer;
 	'npc_himelmez$ = instance_npcname("希梅尔梅兹#23");
-	'npc_gerhalt$ = instance_npcname("Gerhalt#23");
+	'npc_gerhalt$ = instance_npcname("盖尔哈特#23");
 	'npc_heinrich$ = instance_npcname("海因里希#23");
 	'npc_varmundt$ = instance_npcname("霸肋门德#23");
 
@@ -2175,11 +2175,11 @@ OnInstanceInit:
 
 	// Rescue 1
 	disablenpc instance_npcname("#ghmemorialmob01");
-	disablenpc instance_npcname("Altar boy Domun#1");
+	disablenpc instance_npcname("祭坛侍童多蒙#1");
 
 	// Rescue 2
 	disablenpc instance_npcname("#ghmemorialmob02");
-	disablenpc instance_npcname("Holgren the Destroyer#1");
+	disablenpc instance_npcname("破坏者霍尔格伦#1");
 	for ( .@i = 1; .@i <= 26; .@i++ )
 		disablenpc instance_npcname("死去的男人#" + .@i);
 
@@ -2213,7 +2213,7 @@ OnInstanceInit:
 		disablenpc instance_npcname("腐烂的尸体#" + .@i);
 
 	// 阿姆达莱斯 Spawn
-	disablenpc instance_npcname("Gerhalt#23");
+	disablenpc instance_npcname("盖尔哈特#23");
 	disablenpc instance_npcname("希梅尔梅兹#22");
 	disablenpc instance_npcname("希梅尔梅兹#23");
 	disablenpc instance_npcname("霸肋门德#23");
