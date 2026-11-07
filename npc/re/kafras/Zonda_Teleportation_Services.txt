@@ -13,49 +13,39 @@
 	mes "我们始终努力提供超越期待的服务。";
 	mes "请选择目的地。";
 	next;
+	// 6 个固定收费目的地 + 5 个章节传送目的地
 	.@menu$ = "彩虹桥北部:埃克拉珠:辉煌领域:米德加尔特联合驻地:马努克:卡米达山麓";
-	.@free_count = 0;
-	if (PRT_1QUE >= 25 || ep16_royal >= 17) {
-		.@free_map$[.@free_count] = "lighthalzen";
-		.@free_x[.@free_count] = 169;
-		.@free_y[.@free_count] = 103;
-		.@free_count++;
-		.@free_map$[.@free_count] = "rebel_in";
-		.@free_x[.@free_count] = 74;
-		.@free_y[.@free_count] = 67;
-		.@free_count++;
-		.@menu$ += ":里希塔乐镇:反叛者总部";
-	}
-	if (terra_gloria_main >= 25) {
-		.@free_map$[.@free_count] = "pub_cat";
-		.@free_x[.@free_count] = 93;
-		.@free_y[.@free_count] = 105;
-		.@free_count++;
-		.@menu$ += ":喵星人酒吧";
-	}
-	if (ep_illusion >= 47) {
-		.@free_map$[.@free_count] = "sp_cor";
-		.@free_x[.@free_count] = 107;
-		.@free_y[.@free_count] = 129;
-		.@free_count++;
-		.@menu$ += ":柯尔特别警戒区";
-	}
-	if (ep17_2_main >= 200) {
-		.@free_map$[.@free_count] = "ba_maison";
-		.@free_x[.@free_count] = 75;
-		.@free_y[.@free_count] = 146;
-		.@free_count++;
-		.@menu$ += ":霸肋门德宅邸";
+	setarray .@free_map$[0], "lighthalzen", "rebel_in", "pub_cat", "sp_cor", "ba_maison";
+	setarray .@free_x[0], 169, 74, 93, 107, 75;
+	setarray .@free_y[0], 103, 67, 105, 129, 146;
+	setarray .@free_label$[0], "里希塔乐镇", "反叛者总部", "喵星人酒吧", "柯尔特别警戒区", "霸肋门德大宅";
+	setarray .@free_req$[0], "通关EP16.1解锁", "通关EP16.1解锁", "通关EP16.2解锁", "通关EP17.1解锁", "通关EP17.2解锁";
+	.@ok[0] = (PRT_1QUE >= 25 || ep16_royal >= 17);
+	.@ok[1] = (PRT_1QUE >= 25 || ep16_royal >= 17);
+	.@ok[2] = (terra_gloria_main >= 25);
+	.@ok[3] = (ep_illusion >= 47);
+	.@ok[4] = (ep17_2_main >= 200);
+	for (.@i = 0; .@i < 5; .@i++) {
+		if (.@ok[.@i])
+			.@menu$ += ":" + .@free_label$[.@i];
+		else
+			.@menu$ += ":^808080" + .@free_label$[.@i] + " [" + .@free_req$[.@i] + "]^000000";
 	}
 	.@menu$ += ":取消";
 	.@sel = select(.@menu$);
+	if (.@sel == 12) {
+		mes "[炫酷传送员]";
+		mes "感谢使用我们的服务。";
+		close3;
+	}
 	if (.@sel > 6) {
-		if (.@sel == 7 + .@free_count) {
+		.@idx = .@sel - 7;
+		if (!.@ok[.@idx]) {
 			mes "[炫酷传送员]";
-			mes "感谢使用我们的服务。";
+			mes "你尚未满足该目的地的进入条件。";
+			mes "需要：" + .@free_req$[.@idx] + "。";
 			close3;
 		}
-		.@idx = .@sel - 7;
 		mes "[炫酷传送员]";
 		mes "正在为你传送。";
 		close2;
@@ -88,7 +78,6 @@
 		warp "dic_fild01",188,187;
 		end;
 	}
-
 S_Zone:
 	.@zeny_req = getarg(1);
 	.@item_req = getarg(2);
