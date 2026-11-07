@@ -146,7 +146,49 @@ glast_01,204,273,5	script	福金	4_M_SAGE_C,{
 		mes "时间旅行的后遗症仍未消退。以你现在的状态无法再次旅行。";
 		next;
 		mes "[福金]";
-		mes "保持健康很重要，请先休息一下，之后再回来吧。";
+		mes "如果你有" + mesitemlink(1000254) + "，我可以帮你稳定时空，让你再次进入。";
+		if (select("消耗1个蹦级币再次进入","取消") == 2)
+			close;
+		if (countitem(1000254) < 1) {
+			mes "[福金]";
+			mes "你没有蹦级币。";
+			close;
+		}
+		if (!instance_check_party(getcharid(1))) {
+			mes "[福金]";
+			mes "必须先组建队伍，才能再次进入。";
+			close;
+		}
+		.@md_name$ = "Old Glast Heim";
+		.@md_display$ = instance_getdisplayname(.@md_name$);
+		if (is_party_leader()) {
+			.@create = instance_create(.@md_name$);
+			if (.@create != 0 && .@create != -3) {
+				mes "[福金]";
+				mes "时空裂隙生成失败。";
+				close;
+			}
+		}
+		switch (instance_enter(.@md_name$)) {
+		case IE_OK:
+			delitem 1000254,1;
+			erasequest 12317;
+			setquest 12317;
+			mapannounce "glast_01", "" + getpartyname(getcharid(1)) + "队伍成员" + strcharinfo(0) + "消耗蹦级币进入了" + .@md_display$ + ".", bc_map,0x00FF99;
+			end;
+		case IE_NOINSTANCE:
+			mes "[福金]";
+			mes "时空裂隙尚未开启，无法进入。";
+			close;
+		case IE_NOMEMBER:
+			mes "[福金]";
+			mes "你不属于该副本队伍，无法进入。";
+			close;
+		default:
+			mes "[福金]";
+			mes "发生了未知错误。";
+			close;
+		}
 		close;
 	case 2:
 		mes "^0000ff所有进入旧克雷斯特汉姆的痕迹都已清除。现在你可以再次与福金交谈了。^000000";
