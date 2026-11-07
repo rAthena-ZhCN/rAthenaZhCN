@@ -731,26 +731,26 @@ OnStart:
 	disablenpc instance_npcname("宫殿五层");
 	sleep 2000;
 	.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead1";
-	monster 'map_spa$,217,52, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
+	monster 'map_spa$,217,52, "被遗忘的名字" ,2957,1, .@label$;	// FORGOTTEN_NAME
 	unittalk $@mobid[0], "醒醒！看看我们……我们是怪物吗？";
 	monster 'map_spa$,190,21, "黯淡的誓言" ,2954,1, .@label$;	// COLORLESS_VOW
 	unittalk $@mobid[0], "萨克莱杀了国王，还想杀了我们！";
 	monster 'map_spa$,198,49, "黯淡的誓言" ,2954,1, .@label$;	// COLORLESS_VOW
 	unittalk $@mobid[0], "这是怎么回事……？？";
-	monster 'map_spa$,212,28, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
+	monster 'map_spa$,212,28, "宿命之日" ,2958,1, .@label$;		// FATAL_DAYS
 	unittalk $@mobid[0], "萨克莱杀了公主！";
 	end;
 OnMyMobDead1:
 	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead1") < 1) {
 		sleep 2000;
 		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead2";
-		monster 'map_spa$,217,43, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		monster 'map_spa$,217,43, "被遗忘的名字" ,2957,1, .@label$;	// FORGOTTEN_NAME
 		unittalk $@mobid[0], "醒醒！看看我们……我们是怪物吗？";
-		monster 'map_spa$,193,24, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		monster 'map_spa$,193,24, "被遗忘的名字" ,2957,1, .@label$;	// FORGOTTEN_NAME
 		unittalk $@mobid[0], "萨克莱……？？为什么……萨克莱！";
 		monster 'map_spa$,216,59, "黯淡的誓言" ,2954,1, .@label$;	// COLORLESS_VOW
 		unittalk $@mobid[0], "萨克莱杀了国王，还想杀了我们！";
-		monster 'map_spa$,197,57, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
+		monster 'map_spa$,197,57, "宿命之日" ,2958,1, .@label$;		// FATAL_DAYS
 		unittalk $@mobid[0], "萨克莱杀了公主！";
 	}
 	end;
@@ -758,13 +758,13 @@ OnMyMobDead2:
 	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead2") < 1) {
 		sleep 2000;
 		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead3";
-		monster 'map_spa$,193,39, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		monster 'map_spa$,193,39, "被遗忘的名字" ,2957,1, .@label$;	// FORGOTTEN_NAME
 		unittalk $@mobid[0], "醒醒！看看我们……我们是怪物吗？";
-		monster 'map_spa$,212,34, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		monster 'map_spa$,212,34, "被遗忘的名字" ,2957,1, .@label$;	// FORGOTTEN_NAME
 		unittalk $@mobid[0], "萨克莱……？？为什么……萨克莱！";
 		monster 'map_spa$,201,64, "黯淡的誓言" ,2954,1, .@label$;	// COLORLESS_VOW
 		unittalk $@mobid[0], "萨克莱杀了国王，还想杀了我们！";
-		monster 'map_spa$,175,44, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
+		monster 'map_spa$,175,44, "宿命之日" ,2958,1, .@label$;		// FATAL_DAYS
 		unittalk $@mobid[0], "萨克莱杀了公主！";
 	}
 	end;
@@ -923,10 +923,10 @@ OnTimer28500:
 	mes "请帮我拯救萨克莱的灵魂。";
 	next;
 	setarray .@item_name$[0],
-		"Thanos Sword", "Thanos Broadsword", "Thanos Spear", "Thanos Two-Handed Spear", "Thanos Staff",
-		"Thanos Two-handed Staff", "Thanos Bow", "Thanos Dagger", "Thanos Katar", "Thanos Knuckle",
-		"Thanos Hammer", "Thanos Axe", "Thanos Violin", "Thanos Whip",
-		"Gray Shield", "Gray Armor", "Gray Robe", "Gray Cloak", "Gray Shoes", "Gray Helmet";
+		"塔诺斯的剑", "塔诺斯的巨剑", "塔诺斯的枪", "塔诺斯的双手枪", "塔诺斯的杖",
+		"塔诺斯的双手杖", "塔诺斯的弓", "塔诺斯的短剑", "塔诺斯的拳刃", "塔诺斯的拳套",
+		"塔诺斯的锤子", "塔诺斯的斧头", "塔诺斯的小提琴", "塔诺斯的鞭刃",
+		"土色盾牌", "土色盔甲", "土色外袍", "土色披风", "土色鞋子", "土色帽子";
 	setarray .@items_list[0],13441,21009,1438,1496,1669,2023,18119,13093,28000,1836,16028,28100,1933,1988,2187,15090,15091,20721,22033,18820;
 
 	for ( .@i = 0; .@i < 20; .@i++ )
