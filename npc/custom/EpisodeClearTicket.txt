@@ -1,0 +1,200 @@
+//===== rAthena Script =======================================
+//= Episode Clear Ticket NPC - Bahiri (official location)
+//= prt_cas 373,77
+//============================================================
+prt_cas,373,77,5	script	巴希里	4_F_VALKYRIE2,{
+	mes "[巴希里]";
+	mes "我是负责章节通关券的巴希里。";
+	mes "你可以使用对应的跳过礼券，直接完成章节主线。";
+	next;
+	mes "[巴希里]";
+	mes "使用后不会获得该章节的任务奖励。";
+	mes "请选择要跳过的章节。";
+	next;
+	// 修复旧版EP16跳过券未设置EP16.2支线状态的角色
+	if (terra_gloria_main >= 25 && terra_gloria_lady_part == 0) {
+		terra_gloria_lady_part = 13;
+		mes "[巴希里]";
+		mes "检测到 EP16.2 支线状态缺失，已为你补齐。";
+		close;
+	}
+
+	// 修复旧版EP16.1跳过券未完成邀请任务
+	if (terra_gloria_main >= 25) {
+		if (isbegin_quest(7681) == 1)
+			completequest 7681;
+		if (ep16_royal < 17)
+			ep16_royal = 17;
+		if (PRT_1QUE < 25)
+			PRT_1QUE = 25;
+	}
+	// 修复旧版跳过券留下的半完成状态
+	if (PRT_1QUE == 24 && ep16_royal < 17) {
+		PRT_1QUE = 25;
+		ep16_royal = 17;
+		if (isbegin_quest(7681) == 1)
+			completequest 7681;
+	}
+	if (PRT_2QUE == 26 && terra_gloria_main < 25) {
+		PRT_2QUE = 27;
+		terra_gloria_main = 25;
+		if (terra_gloria_lady_part == 0)
+			terra_gloria_lady_part = 13;
+	}
+
+
+	switch(select("EP14","EP16","EP17","取消")) {
+	case 1:
+		mes "[巴希里]";
+		mes "EP14 跳过礼券。";
+		mes "本服目前仅实装 EP14.3 主线，EP14.1/14.2 尚无对应任务脚本。";
+		next;
+		if (select("跳过 EP14.3","返回") == 2) close;
+		if (countitem(1000285) < 1) {
+			mes "[巴希里]";
+			mes "你没有 Ep.14跳过礼券。";
+			close;
+		}
+		delitem 1000285,1;
+		ep14_2_mylord = 34;
+		ep14_3_newerabs = 24;
+		ep14_3_fall_bless = 13;
+		mes "[巴希里]";
+		mes "已为你完成 EP14.3 主线。";
+		close2;
+		warp "moro_vol",91,105;
+		end;
+	case 2:
+		mes "[巴希里]";
+		mes "EP16 跳过礼券可以完成 EP16.1 或 EP16.2。";
+		next;
+		switch(select("EP16.1","EP16.2","返回")) {
+		case 1:
+			if (ep13_ryu != 100) {
+				mes "[巴希里]";
+				mes "请先完成 EP13 主线。";
+				close;
+			}
+			if (PRT_1QUE >= 25 || ep16_royal >= 17) {
+				mes "[巴希里]";
+				mes "你已经完成 EP16.1 主线，无需重复使用。";
+				close;
+			}
+			// 修复旧版跳过券只设置 PRT_1QUE、没有设置 ep16_royal 的存档
+			if (PRT_1QUE == 24 && ep16_royal < 17) {
+				PRT_1QUE = 25;
+				ep16_royal = 17;
+				completequest 7681;
+				mes "[巴希里]";
+				mes "检测到你之前使用过 EP16 跳过券。";
+				mes "已补发 EP16.1 主线完成状态。";
+				close;
+			}
+			if (countitem(1000282) < 1) {
+				mes "[巴希里]";
+				mes "你没有 Ep.16跳过礼券。";
+				close;
+			}
+			delitem 1000282,1;
+			PRT_1QUE = 25;
+			ep16_royal = 17;
+			completequest 7681;
+			mes "[巴希里]";
+			mes "已为你完成 EP16.1 主线。";
+			mes "可以直接继续后续章节。";
+			close;
+		case 2:
+			if (ep16_royal < 17) {
+				mes "[巴希里]";
+				mes "请先完成 EP16.1 主线。";
+				close;
+			}
+			if (terra_gloria_main >= 25) {
+				mes "[巴希里]";
+				mes "你已经完成 EP16.2 主线，无需重复使用。";
+				close;
+			}
+			// 修复旧版跳过券只设置 PRT_2QUE 的存档
+			if (PRT_2QUE == 26 && terra_gloria_main < 25) {
+				PRT_2QUE = 27;
+				terra_gloria_main = 25;
+				terra_gloria_lady_part = 13;
+				mes "[巴希里]";
+				mes "检测到你之前使用过 EP16 跳过券。";
+				mes "已补发 EP16.2 主线完成状态。";
+				close;
+			}
+			if (countitem(1000282) < 1) {
+				mes "[巴希里]";
+				mes "你没有 Ep.16跳过礼券。";
+				close;
+			}
+			delitem 1000282,1;
+			PRT_2QUE = 27;
+			terra_gloria_main = 25;
+			terra_gloria_lady_part = 13;
+			mes "[巴希里]";
+			mes "已为你完成 EP16.2 主线。";
+			mes "可以直接继续 EP17 章节。";
+			close;
+		default:
+			close;
+		}
+	case 3:
+		mes "[巴希里]";
+		mes "EP17 跳过礼券可以完成 EP17.1 或 EP17.2。";
+		next;
+		switch(select("EP17.1","EP17.2","返回")) {
+		case 1:
+			if (PRT_2QUE < 27 && terra_gloria_main < 25) {
+				mes "[巴希里]";
+				mes "请先完成 EP16.2 主线。";
+				close;
+			}
+			if (ep_illusion >= 47) {
+				mes "[巴希里]";
+				mes "你已经完成 EP17.1 主线，无需重复使用。";
+				close;
+			}
+			if (countitem(1000287) < 1) {
+				mes "[巴希里]";
+				mes "你没有 Ep.17跳过礼券。";
+				close;
+			}
+			delitem 1000287,1;
+			ep_illusion = 47;
+			mes "[巴希里]";
+			mes "已为你完成 EP17.1 主线。";
+			close2;
+			warp "sp_cor",107,129;
+			end;
+		case 2:
+			if (ep_illusion != 47) {
+				mes "[巴希里]";
+				mes "请先完成 EP17.1 主线。";
+				close;
+			}
+			if (ep17_2_main >= 200) {
+				mes "[巴希里]";
+				mes "你已经完成 EP17.2 主线，无需重复使用。";
+				close;
+			}
+			if (countitem(1000287) < 1) {
+				mes "[巴希里]";
+				mes "你没有 Ep.17跳过礼券。";
+				close;
+			}
+			delitem 1000287,1;
+			ep17_2_main = 200;
+			mes "[巴希里]";
+			mes "已为你完成 EP17.2 主线。";
+			close2;
+			warp "ba_maison",75,146;
+			end;
+		default:
+			close;
+		}
+	default:
+		close;
+	}
+}
