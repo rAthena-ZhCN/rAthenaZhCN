@@ -36,6 +36,7 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		mes "森林深处有一座青蛙雕像，那里是入口。";
 		mes "记住，风不会等你。";
 		set WH_STAGE, 1;
+			set WH_LEAVE, 0;
 		set WH_KEY, 0;
 		setquest 5901;
 		completequest 5901;
@@ -69,6 +70,7 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			.@old = instance_id(IM_PARTY);
 			if (.@old) instance_destroy(.@old);
 			set WH_STAGE, 1;
+			set WH_LEAVE, 0;
 			set WH_KEY, 0;
 			set WH_DAY, 0;
 			set WH_FOOD, 0;
@@ -159,8 +161,10 @@ OnTouch:
 OnTouch:
 	if (WH_STAGE == 1) {
 		if (WH_KEY != 1) {
-			dispbottom "门锁住了。钥匙应该就在房屋周围。";
-			end;
+			mes "[房屋门]";
+			mes "门锁住了。";
+			mes "钥匙应该就在房屋周围。";
+			close;
 		}
 		set WH_STAGE, 2;
 		warp "1@4win",345,19;
@@ -182,31 +186,11 @@ OnTouch:
 1@4win,352,37,0	script	床铺#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE == 1) set WH_STAGE, 2;
 	if (WH_STAGE == 2) {
-		mes "[几米]";
-		mes "刚刚是什么声音？巨大的响声？";
-		next;
-		mes "[几米]";
-		mes "现在又安静了，怎么回事？出去看看吧。";
-		next;
-		mes "[风之猎鹰]";
-		mes "回去的路被塌方的石头堵住了。";
-		mes "看来你必须在这里生存十天。";
-		mes "每天十分钟，去屋外准备食物、水和柴火。";
-		completequest 5904;
-		setquest 5905;
-		set WH_STAGE, 3;
-		set WH_DAY, 1;
-		set WH_FOOD, 50;
-		set WH_WATER, 40;
-		set WH_WOOD, 0;
-		set WH_FIRE, 0;
-		set WH_POINTS, 100;
-		set WH_TOOL, 0;
-		set WH_CARRY, 0;
-		set WH_TRAP, 0;
-		set WH_ANIMAL, 0;
-	// 第二张室外传送光点常驻
-	// 室内出口传送光点常驻
+		unittalk getcharid(0), "刚刚是什么声音？巨大的响声？";
+		sleep2 1800;
+		unittalk getcharid(0), "现在又安静了，怎么回事？出去看看吧。";
+		sleep2 1800;
+		set WH_LEAVE, 1;
 		close;
 	}
 	if (WH_STAGE != 3) {
@@ -227,8 +211,6 @@ OnTouch:
 		completequest 5905;
 		setquest 5906;
 		set WH_STAGE, 4;
-	// 室内出口传送光点常驻
-	// 出口传送光点根据阶段判断目标
 		close;
 	}
 	if (WH_FOOD < 40 || WH_WATER < 30 || WH_FIRE != 1) {
@@ -245,6 +227,7 @@ OnTouch:
 			set WH_WOOD, 0;
 			set WH_FIRE, 0;
 			set WH_POINTS, 0;
+			set WH_LEAVE, 0;
 			erasequest 5901;
 			erasequest 5902;
 			erasequest 5903;
@@ -468,7 +451,12 @@ OnTouch:
 1@4win,345,14,0	script	室内出口#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE == 2) {
-		dispbottom "先看看屋里的情况。";
+		if (WH_LEAVE != 1) {
+			mes "[门口]";
+			mes "先看看屋里的情况。";
+			close;
+		}
+		warp "1@4win",201,169;
 		end;
 	}
 	if (WH_STAGE == 3) {
@@ -483,6 +471,56 @@ OnTouch:
 	end;
 }
 
+// 第二张室外下方塌方触发点（坐标待你确认）
+1@4win,201,180,0	script	Windhawk_Disaster	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE != 2 || WH_LEAVE != 1 || WH_STAGE == 3) end;
+	unittalk getcharid(0), "怎么会这样？回程的路都被堵住了？";
+	sleep2 1800;
+	unittalk getcharid(0), "是有山体滑坡吗？出不去了，我该不会……";
+	sleep2 1800;
+	unittalk getcharid(0), "出不去了吧？";
+	sleep2 1200;
+	mes "[在噜噜卡森林遇到灾害]";
+	mes "要查看相关说明吗？";
+	switch(select("查看说明:立即进行")) {
+		case 1:
+			switch(select("噜噜卡森林深处的一天:解决粮食和饮用水:噜噜卡森林生存失败")) {
+				case 1:
+					mes "[噜噜卡森林深处的一天]";
+					mes "每天有十分钟。走出小屋开始计算当天时间。";
+					mes "在小屋的床上睡觉，可以提前结束当天。";
+					break;
+				case 2:
+					mes "[解决粮食和饮用水]";
+					mes "食物仓库至少保持 40%，饮用水至少 30%。";
+					mes "壁炉需要木柴点燃，否则晚上会扣生存意志。";
+					break;
+				case 3:
+					mes "[噜噜卡森林生存失败]";
+					mes "粮食、饮水或温度不足会扣生存意志。";
+					mes "生存意志降到 0，就会被送出试炼。";
+					break;
+			}
+			break;
+	}
+	completequest 5904;
+	setquest 5905;
+	set WH_STAGE, 3;
+	set WH_LEAVE, 0;
+	set WH_DAY, 1;
+	set WH_FOOD, 50;
+	set WH_WATER, 40;
+	set WH_WOOD, 0;
+	set WH_FIRE, 0;
+	set WH_POINTS, 100;
+	set WH_TOOL, 0;
+	set WH_CARRY, 0;
+	set WH_TRAP, 0;
+	set WH_ANIMAL, 0;
+	close;
+}
+
 1@4win,310,93,0	script	离开试炼#windhawk	4_4job_sealstone,{
 	if (WH_STAGE != 5) {
 		mes "现在还不能离开。";
@@ -490,6 +528,7 @@ OnTouch:
 	}
 	mes "你沿着南边的路走出了森林。";
 	set WH_STAGE, 0;
+	set WH_LEAVE, 0;
 	set WH_KEY, 0;
 	set WH_DAY, 0;
 	set WH_FOOD, 0;
