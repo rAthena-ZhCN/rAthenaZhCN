@@ -19,7 +19,8 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 	}
 	if (WH_STAGE == 5) {
 		mes "[醉酒的老人]";
-		mes "你已经是一名风鹰了，天空才是你的归宿。";
+		mes "测试流程已经完成。";
+		mes "从南边出口离开后，可以再次开始测试。";
 		close;
 	}
 	if (WH_STAGE == 0) {
@@ -382,13 +383,13 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 		mes "[帐篷的主人]";
 		mes "弓箭不只是武器。";
 		mes "它是你与风对话的方式。";
-		mes "从今天起，你就是风鹰。";
-		jobchange JOB_WINDHAWK;
+		mes "测试版暂不执行转职。";
+		// 测试期间不执行最终转职
 		set WH_STAGE, 5;
 		completequest 70000;
 		next;
 		mes "[风之猎鹰]";
-		mes "转职完成。";
+		mes "测试流程完成。";
 		mes "从南边的路离开吧。";
 		close;
 	}
@@ -408,6 +409,19 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 		close;
 	}
 	mes "你沿着南边的路走出了森林。";
+	set WH_STAGE, 0;
+	set WH_KEY, 0;
+	set WH_DAY, 0;
+	set WH_FOOD, 0;
+	set WH_WATER, 0;
+	set WH_WOOD, 0;
+	set WH_FIRE, 0;
+	set WH_POINTS, 0;
+	set WH_TOOL, 0;
+	set WH_CARRY, 0;
+	set WH_TRAP, 0;
+	set WH_ANIMAL, 0;
+	erasequest 70000;
 	warp "payon",106,175;
 	close;
 }
