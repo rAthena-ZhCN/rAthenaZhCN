@@ -162,6 +162,7 @@ OnTouch:
 			dispbottom "门锁住了。钥匙应该就在房屋周围。";
 			end;
 		}
+		set WH_STAGE, 2;
 		warp "1@4win",345,19;
 		end;
 	}
@@ -179,6 +180,7 @@ OnTouch:
 
 // 室内：床铺
 1@4win,352,37,0	script	床铺#windhawk	HIDDEN_NPC,{
+	if (WH_STAGE == 1) set WH_STAGE, 2;
 	if (WH_STAGE == 2) {
 		mes "[几米]";
 		mes "刚刚是什么声音？巨大的响声？";
@@ -271,6 +273,11 @@ OnTouch:
 
 // 室内：粮食仓库
 1@4win,334,23,0	script	粮食仓库#windhawk	HIDDEN_NPC,{
+	if (WH_STAGE == 2) {
+		mes "[粮食仓库]";
+		mes "仓库是空的，现在没有食物。";
+		close;
+	}
 	if (WH_STAGE != 3) close;
 	mes "[粮食仓库]";
 	mes "当前食物存量：" + WH_FOOD + "%";
@@ -285,6 +292,11 @@ OnTouch:
 
 // 室内：饮用水桶
 1@4win,333,38,0	script	饮用水桶#windhawk	HIDDEN_NPC,{
+	if (WH_STAGE == 2) {
+		mes "[饮用水桶]";
+		mes "水桶是空的，现在还不能使用。";
+		close;
+	}
 	if (WH_STAGE != 3) close;
 	mes "[饮用水桶]";
 	mes "当前饮水存量：" + WH_WATER + "%";
