@@ -235,7 +235,7 @@ OnInstanceInit:
 
 // 开关s
 1@lab,37,37,3	script	开关1#	CLEAR_NPC,{
-	.@num = charat( strnpcinfo(1),6 );
+	.@num = atoi( replacestr( strnpcinfo(1), "开关", "" ) );
 	setarray .@position$[0], "OFF", "ON";
 	mes "[开关" + .@num + "]";
 	mes "开关当前处于" + .@position$[ 'switch_position[.@num] ] + "位置。你要怎么做？";
