@@ -14,6 +14,7 @@
 #include <common/socket.hpp>
 #include <common/strlib.hpp>
 #include <common/timer.hpp>
+#include "stylist.hpp"
 
 #include "battle.hpp"
 #include "clan.hpp"
@@ -31,6 +32,7 @@
 #include "pc_groups.hpp"
 #include "pet.hpp"
 #include "script.hpp" // script_config
+#include "status.hpp"
 #include "storage.hpp"
 
 static TIMER_FUNC(check_connect_char_server);
@@ -47,6 +49,7 @@ static const int32 packet_len_table[0x3d] = { // U - used, F - free
 	 2,10, 2,-1,-1,-1, 2, 7,	// 2b18-2b1f: U->2b18, U->2b19, U->2b1a, U->2b1b, U->2b1c, U->2b1d, U->2b1e, U->2b1f
 	-1,10, 8, 2, 2,14,19,19,	// 2b20-2b27: U->2b20, U->2b21, U->2b22, U->2b23, U->2b24, U->2b25, U->2b26, U->2b27
 	-1, 0, 6,15, 0, 6,-1,-1,	// 2b28-2b2f: U->2b28, F->2b29, U->2b2a, U->2b2b, F->2b2c, U->2b2d, U->2b2e, U->2b2f
+	-1, sizeof(s_stylist_reply), // 2b30-2b31: Stylist purchase / durable result
  };
 
 //Used Packets:
@@ -115,6 +118,8 @@ static char userid[NAME_LENGTH], passwd[NAME_LENGTH];
 static int32 chrif_state = 0;
 int32 other_mapserver_count=0; //Holds count of how many other map servers are online (apart of this instance) [Skotlex]
 char charserver_name[NAME_LENGTH];
+
+
 
 //Interval at which map server updates online listing. [Valaris]
 #define CHECK_INTERVAL 3600000
@@ -290,6 +295,10 @@ int32 chrif_save(map_session_data *sd, int32 flag) {
 			ShowError("chrif_save: Failed to set up player %d:%d for proper quitting!\n", sd->status.account_id, sd->status.char_id);
 	}
 
+	if( sd->stylist_purchase != nullptr ) {
+		chrif_stylist_defer_save(*sd, flag);
+		return 0;
+	}
 	chrif_check(-1); //Character is saved on reconnect.
 
 	chrif_bsdata_save(sd, ((flag&CSAVE_QUITTING) && !(flag&CSAVE_AUTOTRADE)));
@@ -545,6 +554,7 @@ void chrif_on_ready(void) {
 
 	//If there are players online, send them to the char-server. [Skotlex]
 	send_users_tochar();
+	chrif_stylist_retry_all();
 
 	//Auth db reconnect handling
 	auth_db->foreach(auth_db,chrif_reconnect);
@@ -774,7 +784,7 @@ TIMER_FUNC(auth_db_cleanup){
  *------------------------------------------*/
 int32 chrif_charselectreq(map_session_data* sd, uint32 s_ip) {
 	nullpo_retr(-1, sd);
-
+	if( sd->stylist_purchase != nullptr ) return -1;
 	if( !sd || !sd->id || !sd->login_id1 )
 		return -1;
 
@@ -866,6 +876,7 @@ int32 chrif_req_login_operation(int32 aid, const char* character_name, enum chri
  * @sd : Player requesting operation
  */
 int32 chrif_changesex(map_session_data *sd, bool change_account) {
+	if( sd->stylist_purchase != nullptr ) return -1;
 	chrif_check(-1);
 
 	WFIFOHEAD(char_fd,44);
@@ -1001,8 +1012,8 @@ int32 chrif_changedsex(int32 fd) {
 			else// Changed from male version of job.
 				sd->status.class_ += 1;
 			//sd->class_ Does not need to be updated as both versions of the job are the same.
-			sd->status.body = sd->status.class_;
 		}
+		pc_stylist_revalidate(*sd);
 		// save character
 		sd->login_id1++; // change identify, because if player come back in char within the 5 seconds, he can change its characters
 							  // do same modify in login-server for the account, but no in char-server (it ask again login_id1 to login, and don't remember it)
@@ -1574,12 +1585,21 @@ void chrif_parse_ack_vipActive(int32 fd) {
 				sd->storage.max_amount = MAX_STORAGE;
 			}
 			sd->special_state.no_gemstone = battle_config.vip_gemstone;
+			time_t now = time(nullptr);
+			t_tick vip_remain = (vip_time > static_cast<uint32>(now)) ? static_cast<t_tick>(vip_time - now) * 1000 : 0;
+			if (vip_remain > 0)
+				status_change_start(nullptr, sd, SC_VIP, 10000, 1, 0, 0, 0, vip_remain, SCSTART_NOAVOID);
+			else
+				status_change_end(sd, SC_VIP);
 		} else if (sd->vip.enabled) {
 			sd->vip.enabled = 0;
 			sd->vip.time = 0;
 			sd->storage.max_amount = MIN_STORAGE;
 			sd->special_state.no_gemstone = 0;
+			status_change_end(sd, SC_VIP);
 			clif_displaymessage(sd->fd,msg_txt(sd,438)); // You are no longer VIP.
+		} else {
+			status_change_end(sd, SC_VIP);
 		}
 	}
 	// Show info if status changed
@@ -1792,6 +1812,7 @@ int32 chrif_parse(int32 fd) {
 			case 0x2b27: chrif_authfail(fd); break;
 			case 0x2b2b: chrif_parse_ack_vipActive(fd); break;
 			case 0x2b2f: chrif_bsdata_received(fd); break;
+			case 0x2b31: chrif_stylist_reply(fd); break;
 			default:
 				ShowError("chrif_parse : unknown packet (session #%d): 0x%x. Disconnecting.\n", fd, cmd);
 				set_eof(fd);
@@ -1873,8 +1894,10 @@ static TIMER_FUNC(check_connect_char_server){
 		chrif_connect(char_fd);
 		chrif_connected = (chrif_state == 2);
 	}
-	if ( chrif_isconnected() )
+	if ( chrif_isconnected() ) {
 		displayed = 0;
+		chrif_stylist_retry_all();
+	}
 	return 0;
 }
 

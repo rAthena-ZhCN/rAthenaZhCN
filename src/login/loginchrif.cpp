@@ -689,6 +689,8 @@ int32 logchrif_parse_reqvipdata(int32 fd) {
 					acc.char_slots += login_config.vip_sys.char_increase;
 				}
 				acc.group_id = login_config.vip_sys.group;
+				if( acc.char_slots < MIN_CHARS + login_config.vip_sys.char_increase )
+					acc.char_slots = MIN_CHARS + login_config.vip_sys.char_increase;
 				isvip = true;
 			} else { //expired or @vip -xx
 				vip_time = 0;
@@ -697,7 +699,7 @@ int32 logchrif_parse_reqvipdata(int32 fd) {
 					if( acc.char_slots == 0 ){
 						acc.char_slots = MIN_CHARS;
 					}else{
-						acc.char_slots -= login_config.vip_sys.char_increase;
+						acc.char_slots = MIN_CHARS;
 					}
 				}
 				acc.old_group = 0;

@@ -6528,7 +6528,7 @@ int32 pc_useitem(map_session_data *sd,int32 n)
 	// Store information for later use before it is lost (via pc_delitem) [Paradox924X]
 	nameid = id->nameid;
 
-	if (nameid == 50000 && pc_isvip(sd)) {
+	if (nameid == 50000 && (pc_isvip(sd) || sd->sc.getSCE(SC_VIP) != nullptr)) {
 		clif_displaymessage(sd->fd, "无限VIP状态中，无法重复使用。");
 		return 0;
 	}
