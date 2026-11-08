@@ -88679,4 +88679,11 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
+      if (vip_status(VIP_STATUS_ACTIVE)) {
+        dispbottom "你已经处于无限VIP状态，无法重复使用。";
+        end;
+      }
       vip_time 43200;
+      set #CASHPOINTS, #CASHPOINTS + 200;
+      sc_start SC_VIP, 2592000000, 1;
+      dispbottom "无限VIP已生效：30天，角色栏位+30，并获得200 Cash点。";

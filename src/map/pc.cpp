@@ -1349,6 +1349,38 @@ bool pc_can_trade_item( const map_session_data* sd, int32 index ) {
  * Prepares character for saving.
  * @param sd
  *------------------------------------------*/
+#include "stylist.hpp"
+
+uint16 pc_stylist_view_body(const map_session_data& sd) {
+	const bool temporary = (sd.sc.option & (OPTION_COSTUME | OPTION_RIDING | OPTION_DRAGON | OPTION_WUGRIDER | OPTION_MADOGEAR | OPTION_FLYING)) != 0 || sd.sc.getSCE(SC_ALL_RIDING) != nullptr;
+	return stylist::visible_body(sd.status.class_, sd.status.body, temporary);
+}
+
+void pc_stylist_revalidate(map_session_data& sd) {
+#if PACKETVER >= 20231220
+	if( sd.stylist_purchase != nullptr ) return; // Reconcile after its durable ACK.
+	const auto body = stylist::reconcile_body(sd.status.class_, sd.status.body, sd.status.sex, stylist_body_allowed);
+	if( body != sd.status.body ){
+		sd.status.body = body;
+		if( !sd.disguise ) clif_changelook(&sd, LOOK_BODY2, body);
+	}
+#endif
+}
+
+void pc_stylist_refresh(map_session_data& sd) {
+#if PACKETVER >= 20231220
+	if( !sd.disguise && sd.vd.look[LOOK_BODY2] != pc_stylist_view_body(sd) )
+		clif_changelook(&sd, LOOK_BODY2, sd.status.body);
+#endif
+}
+
+void pc_stylist_revalidate_all() {
+	auto iter = mapit_getallusers();
+	for( auto sd = static_cast<map_session_data*>(mapit_first(iter)); mapit_exists(iter); sd = static_cast<map_session_data*>(mapit_next(iter)) )
+		pc_stylist_revalidate(*sd);
+	mapit_free(iter);
+}
+
 void pc_makesavestatus(map_session_data *sd) {
 	nullpo_retv(sd);
 
@@ -1356,7 +1388,11 @@ void pc_makesavestatus(map_session_data *sd) {
 		sd->status.clothes_color = 0;
 
 	if(!battle_config.save_body_style)
+#if PACKETVER >= 20231220
+		sd->status.body = sd->status.class_;
+#else
 		sd->status.body = 0;
+#endif
 
 	//Only copy the Cart/Peco/Falcon options, the rest are handled via
 	//status change load/saving. [Skotlex]
@@ -2112,9 +2148,13 @@ bool pc_authok(map_session_data *sd, uint32 login_id2, time_t expiration_time, i
 	sd->status.hair_color = cap_value(sd->status.hair_color,MIN_HAIR_COLOR,MAX_HAIR_COLOR);
 	sd->status.clothes_color = cap_value(sd->status.clothes_color,MIN_CLOTH_COLOR,MAX_CLOTH_COLOR);
 
+#if PACKETVER >= 20231220
+	sd->status.body = stylist::reconcile_body(sd->status.class_, sd->status.body, sd->status.sex, stylist_body_allowed);
+#else
 	if( !job_db.exists( sd->status.body ) ){
 		sd->status.body = sd->status.class_;
 	}
+#endif
 
 	//Initializations to null/0 unneeded since map_session_data was filled with 0 upon allocation.
 	sd->state.connect_new = 1;
@@ -5804,7 +5844,7 @@ char pc_payzeny(map_session_data *sd, int32 zeny, enum e_log_pick_type type, uin
 		return 1;
 	}
 
-	if( sd->status.zeny < zeny )
+	if( static_cast<int64>(sd->status.zeny) - chrif_stylist_reserved_zeny(*sd) < zeny )
 		return 1; //Not enough.
 
 	sd->status.zeny -= zeny;
@@ -6105,8 +6145,9 @@ char pc_delitem(map_session_data *sd,int32 n,int32 amount,int32 type, int16 reas
 {
 	nullpo_retr(1, sd);
 
-	if(n < 0 || sd->inventory.u.items_inventory[n].nameid == 0 || amount <= 0 || sd->inventory.u.items_inventory[n].amount<amount || sd->inventory_data[n] == nullptr)
+	if(n < 0 || n >= MAX_INVENTORY || sd->inventory.u.items_inventory[n].nameid == 0 || amount <= 0 || sd->inventory.u.items_inventory[n].amount<amount || sd->inventory_data[n] == nullptr)
 		return 1;
+	if( sd->inventory.u.items_inventory[n].amount - chrif_stylist_reserved_item(*sd, n) < amount ) return 1;
 
 	log_pick_pc(sd, log_type, -amount, &sd->inventory.u.items_inventory[n]);
 
@@ -6486,6 +6527,11 @@ int32 pc_useitem(map_session_data *sd,int32 n)
 
 	// Store information for later use before it is lost (via pc_delitem) [Paradox924X]
 	nameid = id->nameid;
+
+	if (nameid == 50000 && pc_isvip(sd)) {
+		clif_displaymessage(sd->fd, "无限VIP状态中，无法重复使用。");
+		return 0;
+	}
 
 	if (nameid != ITEMID_NAUTHIZ && sd->sc.opt1 > 0 && sd->sc.opt1 != OPT1_STONEWAIT && sd->sc.opt1 != OPT1_BURNING)
 		return 0;
@@ -6940,16 +6986,19 @@ enum e_setpos pc_setpos(map_session_data* sd, uint16 mapindex, int32 x, int32 y,
 	if ( sd->state.autotrade && (sd->vender_id || sd->buyer_id) ) // Player with autotrade just causes clif glitch! @ FIXME
 		return SETPOS_AUTOTRADE;
 
+	int16 m = map_mapindex2mapid(mapindex);
+	if( m < 0 && sd->stylist_purchase != nullptr ) return SETPOS_NO_MAPSERVER;
+
 	if( battle_config.revive_onwarp && pc_isdead(sd) ) { //Revive dead people before warping them
 		pc_setstand(sd, true);
 		pc_setrestartvalue(sd,1);
 	}
 
-	int16 m = map_mapindex2mapid(mapindex);
 	struct map_data *mapdata = map_getmapdata(m);
 	status_change *sc = status_get_sc(sd);
 
 	sd->state.changemap = (sd->mapindex != mapindex);
+	pc_stylist_revalidate(*sd);
 	sd->state.warping = 1;
 	sd->state.workinprogress = WIP_DISABLE_NONE;
 	sd->state.mail_writing = false;
@@ -10461,6 +10510,7 @@ bool pc_setparam(map_session_data *sd,int64 type,int64 val_tmp)
 	case SP_ZENY:
 		if( val < 0 )
 			return false;// can't set negative zeny
+		if( static_cast<uint32>(val) < chrif_stylist_reserved_zeny(*sd) ) return false;
 		log_zeny(*sd, LOG_TYPE_SCRIPT, sd->status.char_id, -(sd->status.zeny - cap_value(val, 0, MAX_ZENY)));
 		sd->status.zeny = cap_value(val, 0, MAX_ZENY);
 		break;
@@ -10849,6 +10899,7 @@ bool pc_jobchange(map_session_data *sd,int32 job, char upper)
 	int32 i, fame_flag = 0;
 
 	nullpo_retr(false,sd);
+	if( sd->stylist_purchase != nullptr ) return false;
 
 	if (job < 0)
 		return false;
@@ -10911,9 +10962,16 @@ bool pc_jobchange(map_session_data *sd,int32 job, char upper)
 		pc_resethate(sd);
 	}
 
+#if PACKETVER >= 20231220
+	const auto previous_job = sd->status.class_;
+#endif
 	sd->status.class_ = job;
-	// Reset body style before changing job to avoid errors since not every job has a alternate outfit.
+#if PACKETVER >= 20231220
+	// Original follows the new job; a selected outfit survives only if authorized.
+	sd->status.body = stylist::body_after_job_change(previous_job, sd->status.class_, sd->status.body, sd->status.sex, stylist_body_allowed);
+#else
 	sd->status.body = sd->status.class_;
+#endif
 
 	fame_flag = pc_famerank(sd->status.char_id,sd->class_&MAPID_SECONDMASK);
 	uint64 previous_class = sd->class_;
@@ -11112,6 +11170,7 @@ void pc_equiplookall(map_session_data *sd)
  *------------------------------------------*/
 void pc_changelook(map_session_data *sd,int32 type,int32 val) {
 	nullpo_retv(sd);
+	if( sd->stylist_purchase != nullptr && (type == LOOK_HAIR || type == LOOK_HAIR_COLOR || type == LOOK_CLOTHES_COLOR || type == LOOK_BODY2) ) return;
 
 	switch(type) {
 	case LOOK_HAIR:	//Use the battle_config limits! [Skotlex]
@@ -11164,7 +11223,11 @@ void pc_changelook(map_session_data *sd,int32 type,int32 val) {
 		sd->setlook_robe = val;
 		break;
 	case LOOK_BODY2:
+#if PACKETVER >= 20231220
+		if( val < 0 || !stylist_body_allowed( sd->status.class_, val, sd->status.sex ) ){
+#else
 		if( !job_db.exists( val ) ){
+#endif
 			return;
 		}
 
@@ -11186,6 +11249,7 @@ void pc_setoption(map_session_data *sd,int32 type, int32 subtype)
 	//Option has to be changed client-side before the class sprite or it won't always work (eg: Wedding sprite) [Skotlex]
 	sd->sc.option=type;
 	clif_changeoption(sd);
+	pc_stylist_refresh(*sd);
 
 	if( (type&OPTION_RIDING && !(p_type&OPTION_RIDING)) || (type&OPTION_DRAGON && !(p_type&OPTION_DRAGON) && pc_checkskill(sd,RK_DRAGONTRAINING) > 0) )
 	{ // Mounting
@@ -11354,6 +11418,10 @@ void pc_setmadogear(map_session_data *sd, bool flag, e_mado_type type)
 /*==========================================
  * Check if player can drop an item
  *------------------------------------------*/
+bool pc_has_unlimited_arsenal( const map_session_data* sd ){
+	return sd != nullptr && pc_search_inventory( sd, ITEMID_UNLIMITED_ARSENAL ) >= 0;
+}
+
 bool pc_candrop(map_session_data *sd, struct item *item)
 {
 	if (sd->sc.cant.drop)

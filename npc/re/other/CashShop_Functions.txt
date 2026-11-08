@@ -39,3 +39,16 @@ function	script	VIP_Third_Class	{
 	}
 	return;
 }
+
+// Infinite VIP status icon
+-	script	VIP_Status_Icon	-1,{
+OnPCLoginEvent:
+	if (vip_status(VIP_STATUS_ACTIVE)) {
+		.@remain = vip_status(VIP_STATUS_REMAINING);
+		if (.@remain > 0) {
+			if (.@remain > 2592000) .@remain = 2592000;
+			sc_start SC_VIP, .@remain * 1000, 1;
+		}
+	}
+	end;
+}
