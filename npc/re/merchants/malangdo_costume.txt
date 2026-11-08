@@ -1142,6 +1142,8 @@ mal_in01,20,107,3	script	蕾丝·拉·扎德#cos_ect	4_FROG,{
 		.@next = 0;
 		for ( .@i = .@offset; .@i < .@size; .@i += 3 ) {
 			.@str$ = sprintf( "%d. %s（剩余%d）:", (.@i/3)+1, getitemname(atoi(.@data$[.@i])), countitem(atoi(.@data$[.@i])) );
+		if (countitem(atoi(.@data$[.@i])) < 1)
+			.@str$ = "^808080" + .@str$ + "^000000";
 			if ((getstrlen(.@menu$ + .@str$) + 4) >= .@max_menu_size) {
 				.@menu$ += "^0000ff下一页^000000:";
 				.@next = .@i;
