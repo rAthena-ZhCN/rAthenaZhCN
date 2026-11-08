@@ -121,35 +121,60 @@ verus01,149,155,5	script	文明探索者#pa0829_01	4_LGTSCIENCE,{
 		mes "请先组建至少1人的队伍，或加入队伍后再来找我。";
 		close;
 	}
+	.@bypass = 0;
 	switch( checkquest(12347,PLAYTIME) ) {
 	case -1:
-		if (is_party_leader() == false) {
-			mes "[文明探索者]";
-			mes "啊，你不是队长。带我去见你们的队长！或者把队长带到我这里来。";
-			close;
-		}
-		if (select( "制造时间裂缝", "取消" ) == 2)
-			close;
-		if (instance_create("Central Laboratory") < 1) {
-			mes "队伍：" + getpartyname( getcharid(1) ) + "";
-			mes "队长：" + getpartyleader( getcharid(1) ) + "";
-			mes "^0000ff中央实验室 ^000000 - 未知错误";
-			close;
-		}
-		mes "[文明探索者]";
-		mes "等时间裂缝开启后，深吸一口气再与我交谈。";
-		close;
+		.@bypass = 1;
+		break;
 	case 0:
 	case 1:
 		mes "[文明探索者]";
 		mes "啊，糟了。";
 		mes "次元移动还有残留的影响。在这种情况下，我们无法再次移动。";
-		close;
+		next;
+		mes "[文明探索者]";
+		mes "如果你有" + mesitemlink(1000254) + "，我可以消耗1个为你刷新中央实验室。";
+		if (is_party_leader() == false) {
+			mes "[文明探索者]";
+			mes "请让队长来和我交谈。";
+			close;
+		}
+		if (select("消耗1个蹦级币刷新","取消") == 2)
+			close;
+		if (countitem(1000254) < 1) {
+			mes "[文明探索者]";
+			mes "你没有蹦级币。";
+			close;
+		}
+		delitem 1000254,1;
+		erasequest 12347;// Trace of Laboratory Access
+		mes "[文明探索者]";
+		mes "已为你刷新中央实验室。";
+		.@bypass = 1;
+		break;
 	case 2:
 		mes "^0000ff进入中央实验室的所有痕迹都已消除。似乎可以与文明探索者交谈了。^000000";
 		erasequest 12347;// Trace of Laboratory Access
 		close;
 	}
+	if (.@bypass == 0)
+		close;
+	if (is_party_leader() == false) {
+		mes "[文明探索者]";
+		mes "啊，你不是队长。带我去见你们的队长！或者把队长带到我这里来。";
+		close;
+	}
+	if (select( "制造时间裂缝", "取消" ) == 2)
+		close;
+	if (instance_create("Central Laboratory") < 1) {
+		mes "队伍：" + getpartyname( getcharid(1) ) + "";
+		mes "队长：" + getpartyleader( getcharid(1) ) + "";
+		mes "^0000ff中央实验室 ^000000 - 未知错误";
+		close;
+	}
+	mes "[文明探索者]";
+	mes "等时间裂缝开启后，深吸一口气再与我交谈。";
+	close;
 }
 
 // Entrance
