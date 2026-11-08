@@ -13,7 +13,46 @@
 	mes "我们始终努力提供超越期待的服务。";
 	mes "请选择目的地。";
 	next;
-	// 6 个固定收费目的地 + 6 个章节/地区传送目的地
+	.@page = select( "收费传送目的地", "章节/地区传送目的地", "取消" );
+	if (.@page == 3) {
+		mes "[炫酷传送员]";
+		mes "感谢使用我们的服务。";
+		close3;
+	}
+	if (.@page == 1) {
+		.@sel = select( "彩虹桥北部:埃克拉珠:辉煌领域:米德加尔特联合驻地:马努克:卡米达山麓:取消" );
+		if (.@sel == 7) {
+			mes "[炫酷传送员]";
+			mes "感谢使用我们的服务。";
+			close3;
+		}
+		switch(.@sel) {
+		case 1:
+			callsub( S_Zone, "彩虹桥北部", 17000,850, 7213 );
+			warp "bif_fild02",160,230;
+			end;
+		case 2:
+			callsub( S_Zone, "埃克拉珠", 17000,850, 11311 );
+			warp "eclage",111,39;
+			end;
+		case 3:
+			callsub( S_Zone, "辉煌领域", 17000,850, 10078 );
+			warp "splendide",171,115;
+			end;
+		case 4:
+			callsub( S_Zone, "米德加尔特联合驻地", 19000,950, 10078 );
+			warp "mid_camp",210,288;
+			end;
+		case 5:
+			callsub( S_Zone, "马努克", 22000,1100, 10078 );
+			warp "manuk",263,177;
+			end;
+		case 6:
+			callsub( S_Zone, "卡米达山麓", 24000,1200, 7184 );
+			warp "dic_fild01",188,187;
+			end;
+		}
+	}
 	setarray .@free_map$[0], "lighthalzen", "rebel_in", "pub_cat", "sp_cor", "ba_maison", "verus04";
 	setarray .@free_x[0], 169, 74, 93, 107, 75, 115;
 	setarray .@free_y[0], 103, 67, 105, 129, 146, 243;
@@ -25,59 +64,33 @@
 	.@ok[3] = (ep_illusion >= 47);
 	.@ok[4] = (ep17_2_main >= 200);
 	.@ok[5] = (checkquest(7610) == 2 || ep15_1_atnad >= 5);
+	.@menu$ = "";
 	for (.@i = 0; .@i < 6; .@i++) {
 		if (.@ok[.@i])
-			.@menu$ += ":" + .@free_label$[.@i];
+			.@menu$ += .@free_label$[.@i] + ":";
 		else
-			.@menu$ += ":^808080" + .@free_label$[.@i] + " [" + .@free_req$[.@i] + "]^000000";
+			.@menu$ += "^808080" + .@free_label$[.@i] + " [" + .@free_req$[.@i] + "]^000000:";
 	}
-	.@menu$ += ":取消";
+	.@menu$ += "取消";
 	.@sel = select(.@menu$);
-	if (.@sel == 13) {
+	if (.@sel == 7) {
 		mes "[炫酷传送员]";
 		mes "感谢使用我们的服务。";
 		close3;
 	}
-	if (.@sel > 6) {
-		.@idx = .@sel - 7;
-		if (!.@ok[.@idx]) {
-			mes "[炫酷传送员]";
-			mes "你尚未满足该目的地的进入条件。";
-			mes "需要：" + .@free_req$[.@idx] + "。";
-			close3;
-		}
+	.@idx = .@sel - 1;
+	if (!.@ok[.@idx]) {
 		mes "[炫酷传送员]";
-		mes "正在为你传送。";
-		close2;
-		warp .@free_map$[.@idx], .@free_x[.@idx], .@free_y[.@idx];
-		end;
+		mes "你尚未满足该目的地的进入条件。";
+		mes "需要：" + .@free_req$[.@idx] + "。";
+		close3;
 	}
-	switch(.@sel) {
-	case 1:
-		callsub( S_Zone, "彩虹桥北部", 17000,850, 7213 );
-		warp "bif_fild02",160,230;
-		end;
-	case 2:
-		callsub( S_Zone, "埃克拉珠", 17000,850, 11311 );
-		warp "eclage",111,39;
-		end;
-	case 3:
-		callsub( S_Zone, "辉煌领域", 17000,850, 10078 );
-		warp "splendide",171,115;
-		end;
-	case 4:
-		callsub( S_Zone, "米德加尔特联合驻地", 19000,950, 10078 );
-		warp "mid_camp",210,288;
-		end;
-	case 5:
-		callsub( S_Zone, "马努克", 22000,1100, 10078 );
-		warp "manuk",263,177;
-		end;
-	case 6:
-		callsub( S_Zone, "卡米达山麓", 24000,1200, 7184 );
-		warp "dic_fild01",188,187;
-		end;
-	}
+	mes "[炫酷传送员]";
+	mes "正在为你传送。";
+	close2;
+	warp .@free_map$[.@idx], .@free_x[.@idx], .@free_y[.@idx];
+	end;
+
 S_Zone:
 	.@zeny_req = getarg(1);
 	.@item_req = getarg(2);
