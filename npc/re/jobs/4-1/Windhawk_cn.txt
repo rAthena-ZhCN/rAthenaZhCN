@@ -107,9 +107,12 @@ um_fild01,47,345,5	script	«‡Õ‹µÒœÒ#windhawk	4_FROG,{
 	}
 }
 
-um_fild01,35,342,0	script	Windhawk_Portal#windhawk	4_4job_sealstone,{
+um_fild01,35,342,0	script	Windhawk_Portal#windhawk	WARPNPC,2,2,{
 OnInit:
 	disablenpc strnpcinfo(0);
+	end;
+OnActive:
+	specialeffect EF_READYPORTAL2;
 	end;
 OnTouch:
 	instance_enter("Windhawk");
