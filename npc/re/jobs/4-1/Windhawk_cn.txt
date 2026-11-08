@@ -107,7 +107,10 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	}
 }
 
-um_fild01,35,342,0	script(DISABLED)	Windhawk_Portal#windhawk	4_4job_sealstone,{
+um_fild01,35,342,0	script	Windhawk_Portal#windhawk	4_4job_sealstone,{
+OnInit:
+	disablenpc strnpcinfo(0);
+	end;
 OnTouch:
 	instance_enter("Windhawk");
 	end;
@@ -130,7 +133,7 @@ OnTouch:
 }
 
 // 第一张室外：花丛钥匙
-1@4win,76,173,0	script	花丛#windhawk	RED_PLANT,{
+1@4win,75,173,0	script	花丛#windhawk	-1,{
 	if (WH_STAGE != 1) {
 		mes "花丛在风中轻轻摇晃。";
 		close;
@@ -172,46 +175,39 @@ OnTouch:
 }
 
 // 室内：搜寻屋内，触发巨响
-1@4win,345,17,0	script	屋内搜寻#windhawk	4_4job_phantombook1,{
-	if (WH_STAGE == 1) {
-		mes "门打不开，先去找钥匙。";
-		close;
-	}
-	if (WH_STAGE != 2) {
-		mes "屋里已经没有什么可搜查的了。";
-		close;
-	}
-	mes "你检查了屋内的桌椅和书架。";
-	next;
-	mes "突然，屋外传来一声巨响！";
-	mes "整个房子都震动了一下，随后又安静下来。";
-	next;
-	mes "[风之猎鹰]";
-	mes "回去的路被塌方的石头堵住了。";
-	mes "看来你必须在这里生存十天。";
-	mes "每天十分钟，去屋外准备食物、水和柴火。";
-	completequest 5904;
-	setquest 5905;
-	set WH_STAGE, 3;
-	enablenpc instance_npcname("房屋门传送2#windhawk");
-	enablenpc instance_npcname("室内出口传送#windhawk");
-	set WH_DAY, 1;
-	set WH_FOOD, 50;
-	set WH_WATER, 40;
-	set WH_WOOD, 0;
-	set WH_FIRE, 0;
-	set WH_POINTS, 100;
-	set WH_TOOL, 0;
-	set WH_CARRY, 0;
-	set WH_TRAP, 0;
-	set WH_ANIMAL, 0;
-	close;
-}
 
 // 室内：出口
 
 // 室内：床铺
 1@4win,352,37,0	script	床铺#windhawk	-1,{
+	if (WH_STAGE == 2) {
+		mes "[几米]";
+		mes "刚刚是什么声音？巨大的响声？";
+		next;
+		mes "[几米]";
+		mes "现在又安静了，怎么回事？出去看看吧。";
+		next;
+		mes "[风之猎鹰]";
+		mes "回去的路被塌方的石头堵住了。";
+		mes "看来你必须在这里生存十天。";
+		mes "每天十分钟，去屋外准备食物、水和柴火。";
+		completequest 5904;
+		setquest 5905;
+		set WH_STAGE, 3;
+		set WH_DAY, 1;
+		set WH_FOOD, 50;
+		set WH_WATER, 40;
+		set WH_WOOD, 0;
+		set WH_FIRE, 0;
+		set WH_POINTS, 100;
+		set WH_TOOL, 0;
+		set WH_CARRY, 0;
+		set WH_TRAP, 0;
+		set WH_ANIMAL, 0;
+		enablenpc instance_npcname("房屋门传送2#windhawk");
+		enablenpc instance_npcname("室内出口传送#windhawk");
+		close;
+	}
 	if (WH_STAGE != 3) {
 		mes "现在还不能休息。";
 		close;
@@ -255,8 +251,8 @@ OnTouch:
 			erasequest 5905;
 			erasequest 5906;
 			erasequest 5907;
-			setnpcdisplay instance_npcname("壁炉#windhawk"), JT_4_WOODPILE;
-			warp "payon",106,175;
+			disablenpc instance_npcname("壁炉火焰#windhawk");
+			warp "um_fild01",45,345;
 			close;
 		}
 		next;
@@ -267,7 +263,7 @@ OnTouch:
 	if (WH_WATER < 0) set WH_WATER, 0;
 	set WH_FIRE, 0;
 	set WH_WOOD, 0;
-	setnpcdisplay instance_npcname("壁炉#windhawk"), JT_4_WOODPILE;
+	disablenpc instance_npcname("壁炉火焰#windhawk");
 	set WH_DAY, WH_DAY + 1;
 	mes "你睡了一觉。";
 	mes "第 " + WH_DAY + " 天开始了。";
@@ -305,34 +301,40 @@ OnTouch:
 }
 
 // 室内：壁炉
-1@4win,337,36,0	script	壁炉#windhawk	4_WOODPILE,{
-	if (WH_STAGE != 3) close;
+1@4win,337,36,0	script	壁炉#windhawk	-1,{
+	if (WH_STAGE != 2 && WH_STAGE != 3) close;
 	mes "[壁炉]";
 	if (WH_FIRE == 1) {
-		mes "壁炉已经点燃。";
+		mes "壁炉正在燃烧。";
 		close;
 	}
+	mes "这是一个壁炉，没有点燃。";
+	if (WH_STAGE != 3) close;
 	if (WH_WOOD == 0) {
 		mes "没有木柴，先去屋外劈柴。";
 		close;
 	}
 	set WH_FIRE, 1;
 	set WH_WOOD, 0;
-	setnpcdisplay strnpcinfo(0), JT_4_BONFIRE;
+	enablenpc instance_npcname("壁炉火焰#windhawk");
 	mes "你点燃了壁炉，屋里暖和起来。";
+	close;
+}
+
+1@4win,337,36,0	script(DISABLED)	壁炉火焰#windhawk	4_BONFIRE,{
+	mes "[壁炉]";
+	mes "壁炉正在燃烧。";
 	close;
 }
 
 // 室内：炕，处理猎物
 1@4win,335,37,0	script	炕#windhawk	4_ED_FENCE,{
-	if (WH_STAGE != 3) close;
+	if (WH_STAGE != 2 && WH_STAGE != 3) close;
 	mes "[炕]";
-	if (WH_ANIMAL == 0) {
-		mes "炕上现在没有猎物。";
-		close;
+	mes "看起来这里可以关野生动物。";
+	if (WH_STAGE == 3 && WH_ANIMAL == 1) {
+		mes "你把带回来的小动物放在炕上取暖。";
 	}
-	mes "你把带回来的小动物放在炕上取暖。";
-	set WH_ANIMAL, 1;
 	close;
 }
 
@@ -441,10 +443,29 @@ OnTouch:
 
 // 第三张室外：离开副本
 // 房门使用普通传送点 warp
-1@4win,79,169,0	warp(DISABLED)	房屋门传送#windhawk	2,2,1@4win,345,19
-1@4win,201,169,0	warp(DISABLED)	房屋门传送2#windhawk	2,2,1@4win,345,19
-1@4win,345,14,0	warp(DISABLED)	室内出口传送#windhawk	2,2,1@4win,201,169
-1@4win,345,14,0	warp(DISABLED)	室内出口传送2#windhawk	2,2,1@4win,323,169
+
+// 传送点控制器：参照 Old Glast Heim 的 OnInstanceInit 写法
+1@4win,1,1,0	script	Windhawk_Controller	HIDDEN_WARP_NPC,{
+OnInit:
+	disablenpc "房屋门传送#windhawk";
+	disablenpc "房屋门传送2#windhawk";
+	disablenpc "室内出口传送#windhawk";
+	disablenpc "室内出口传送2#windhawk";
+	disablenpc "壁炉火焰#windhawk";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname("房屋门传送#windhawk");
+	disablenpc instance_npcname("房屋门传送2#windhawk");
+	disablenpc instance_npcname("室内出口传送#windhawk");
+	disablenpc instance_npcname("室内出口传送2#windhawk");
+	disablenpc instance_npcname("壁炉火焰#windhawk");
+	end;
+}
+
+1@4win,79,169,0	warp	房屋门传送#windhawk	2,2,1@4win,345,19
+1@4win,201,169,0	warp	房屋门传送2#windhawk	2,2,1@4win,345,19
+1@4win,345,14,0	warp	室内出口传送#windhawk	2,2,1@4win,201,169
+1@4win,345,14,0	warp	室内出口传送2#windhawk	2,2,1@4win,323,169
 
 1@4win,310,93,0	script	离开试炼#windhawk	4_4job_sealstone,{
 	if (WH_STAGE != 5) {
@@ -477,7 +498,7 @@ OnTouch:
 	disablenpc instance_npcname("室内出口传送#windhawk");
 	disablenpc instance_npcname("室内出口传送2#windhawk");
 	enablenpc instance_npcname("房屋门#windhawk");
-	setnpcdisplay instance_npcname("壁炉#windhawk"), JT_4_WOODPILE;
+	disablenpc instance_npcname("壁炉火焰#windhawk");
 	warp "um_fild01",45,345;
 	close;
 }
