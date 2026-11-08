@@ -46,19 +46,40 @@ glast_01,196,235,4	script	独特的小丑#nogh	4_CH1_NEUMANN,{
 		next;
 	}
 	mes "[独特的小丑]";
-	mes "你想进入新手古城吗？";
-	mes "进入后限时60分钟。";
+	mes "最近福金那边的观测记录显示，不稳定的时空裂缝正在出现新的波动。";
+	mes "企业最新研究发现，裂缝中有时会出现不同版本的克雷斯特汉姆。";
 	next;
-	if (select("进入","取消") == 2)
-		close;
-	if (instance_enter("Old Glast Heim (Beginner)") == IE_NOINSTANCE) {
+	mes "[独特的小丑]";
+	mes "其中一处较为稳定的时间片段，就是适合新手调查的旧古城。";
+	mes "我把入口设置在这里，但每次开启都需要重新稳定裂缝。";
+	next;
+	mes "[独特的小丑]";
+	mes "进入条件：^0000ffBaseLevel 65以上^000000，需组队并由队长操作。";
+	mes "调查时限：^0000ff60分钟^000000。";
+	mes "重置时间：^0000ff每周四凌晨4点^000000，每个角色每周一次。";
+	next;
+	switch(select("创建副本","进入副本","取消")) {
+	case 1:
 		if (instance_create("Old Glast Heim (Beginner)") < 1) {
 			mes "[独特的小丑]";
-			mes "时间缝隙暂时无法开启。";
+			mes "裂缝已经开启，或暂时无法创建新的副本。";
 			close;
 		}
+		mes "[独特的小丑]";
+		mes "副本已创建。再次与我对话即可进入。";
+		close;
+	case 2:
+		.@ret = instance_enter("Old Glast Heim (Beginner)");
+		if (.@ret == IE_NOINSTANCE) {
+			mes "[独特的小丑]";
+			mes "副本尚未创建，请先选择“创建副本”。";
+			close;
+		}
+		break;
+	case 3:
+		close;
 	}
-	switch(instance_enter("Old Glast Heim (Beginner)")) {
+	switch(.@ret) {
 	case IE_NOMEMBER:
 		mes "[独特的小丑]";
 		mes "只有已登记的队伍成员才能进入。";
