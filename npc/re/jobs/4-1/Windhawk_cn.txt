@@ -1,0 +1,413 @@
+//===== rAthena Script =======================================
+//= 风鹰转职任务（中文复刻）
+//= 地图：1@4win
+//= 流程：斐扬接任务 -> 噜噜卡森林 -> 副本 -> 生存10天 -> 转职
+//============================================================
+
+// 接任务：斐扬
+payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
+	if (BaseLevel < 200 || JobLevel < 70) {
+		mes "[醉酒的老人]";
+		mes "你的箭术还不足以驾驭风。";
+		mes "回去把基础练到 200 级、职业等级 70 再来吧。";
+		close;
+	}
+	if (Class != JOB_RANGER && Class != JOB_RANGER_T && Class != JOB_RANGER2 && Class != JOB_RANGER_T2) {
+		mes "[醉酒的老人]";
+		mes "风只回应游侠的箭。";
+		close;
+	}
+	if (WH_STAGE == 5) {
+		mes "[醉酒的老人]";
+		mes "你已经是一名风鹰了，天空才是你的归宿。";
+		close;
+	}
+	if (WH_STAGE == 0) {
+		mes "[醉酒的老人]";
+		mes "很久以前，我也曾以为自己能完全掌控风。";
+		mes "因为我的傲慢，我失去了最重要的同伴。";
+		next;
+		mes "[醉酒的老人]";
+		mes "后来我躲在自己的秘密基地里，成了一个胆小鬼。";
+		mes "如果你真的想成为风鹰，就去噜噜卡森林找我吧。";
+		next;
+		mes "[醉酒的老人]";
+		mes "森林深处有一座青蛙雕像，那里是入口。";
+		mes "记住，风不会等你。";
+		set WH_STAGE, 1;
+		set WH_KEY, 0;
+		setquest 70000;
+		close;
+	}
+	mes "[醉酒的老人]";
+	mes "去噜噜卡森林，找到青蛙雕像。";
+	mes "入口就在雕像背后。";
+	close;
+}
+
+// 噜噜卡森林：青蛙雕像
+um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
+	if (WH_STAGE < 1) {
+		mes "一座被苔藓覆盖的青蛙雕像。";
+		close;
+	}
+	if (getcharid(1) == 0) {
+		mes "青蛙雕像的眼睛微微发亮。";
+		mes "进入试炼需要组队，即使队伍里只有你一个人。";
+		close;
+	}
+	if (getpartyleader(getcharid(1), 2) != getcharid(0)) {
+		mes "只有队长才能启动青蛙雕像。";
+		close;
+	}
+	mes "青蛙雕像发出低沉的鸣叫。";
+	if (select("往东转动:离开") == 2) close;
+	.@iid = instance_create("Windhawk", IM_PARTY);
+	if (.@iid < 0 && .@iid != -3) {
+		mes "试炼暂时无法开始，请稍后再试。";
+		close;
+	}
+	instance_enter("Windhawk");
+	close;
+}
+
+// 第一张室外：风之猎鹰
+1@4win,66,60,4	script	风之猎鹰#windhawk	4_4job_serang,{
+	if (WH_STAGE != 1) {
+		mes "猎鹰在你头顶盘旋，随后向北飞去。";
+		close;
+	}
+	mes "[风之猎鹰]";
+	mes "风从北边吹来。";
+	mes "跟着我，穿过森林，去那座小屋。";
+	next;
+	mes "[风之猎鹰]";
+	mes "记住，风不会直接告诉你答案。";
+	mes "你需要自己找到打开门的办法。";
+	close;
+}
+
+// 第一张室外：花丛钥匙
+1@4win,76,173,0	script	花丛#windhawk	RED_PLANT,{
+	if (WH_STAGE != 1) {
+		mes "花丛在风中轻轻摇晃。";
+		close;
+	}
+	if (WH_KEY == 1) {
+		mes "你已经拿走了这里的钥匙。";
+		close;
+	}
+	mes "花丛里似乎藏着什么。";
+	if (select("翻找花丛:离开") == 2) close;
+	set WH_KEY, 1;
+	mes "[风之猎鹰]";
+	mes "你从花丛中找到了房屋钥匙。";
+	close;
+}
+
+// 第一张室外：房屋门
+1@4win,79,169,0	script	房屋门#windhawk	4_4job_sealstone,{
+	if (WH_STAGE == 1) {
+		if (WH_KEY != 1) {
+			mes "门锁住了。";
+			mes "钥匙应该就在房屋周围。";
+			close;
+		}
+		mes "你用钥匙打开了门。";
+		set WH_STAGE, 2;
+		warp "1@4win",345,19;
+		close;
+	}
+	if (WH_STAGE == 2) {
+		warp "1@4win",345,19;
+		close;
+	}
+	mes "房屋的门紧闭着。";
+	close;
+}
+
+// 室内：搜寻屋内，触发巨响
+1@4win,345,17,0	script	屋内搜寻#windhawk	4_4job_phantombook1,{
+	if (WH_STAGE == 1) {
+		mes "门打不开，先去找钥匙。";
+		close;
+	}
+	if (WH_STAGE != 2) {
+		mes "屋里已经没有什么可搜查的了。";
+		close;
+	}
+	mes "你检查了屋内的桌椅和书架。";
+	next;
+	mes "突然，屋外传来一声巨响！";
+	mes "整个房子都震动了一下，随后又安静下来。";
+	next;
+	mes "[风之猎鹰]";
+	mes "回去的路被塌方的石头堵住了。";
+	mes "看来你必须在这里生存十天。";
+	mes "每天十分钟，去屋外准备食物、水和柴火。";
+	set WH_STAGE, 3;
+	set WH_DAY, 1;
+	set WH_FOOD, 50;
+	set WH_WATER, 40;
+	set WH_WOOD, 0;
+	set WH_FIRE, 0;
+	set WH_POINTS, 100;
+	set WH_TOOL, 0;
+	set WH_CARRY, 0;
+	set WH_TRAP, 0;
+	set WH_ANIMAL, 0;
+	close;
+}
+
+// 室内：出口
+1@4win,345,14,0	script	室内出口#windhawk	4_4job_sealstone,{
+	if (WH_STAGE == 2) {
+		mes "先查看屋内的情况。";
+		close;
+	}
+	if (WH_STAGE == 3) {
+		warp "1@4win",201,169;
+		close;
+	}
+	if (WH_STAGE == 4) {
+		warp "1@4win",323,169;
+		close;
+	}
+	mes "门外的风很大。";
+	close;
+}
+
+// 室内：床铺
+1@4win,348,19,0	script	床铺#windhawk	4_4job_silla,{
+	if (WH_STAGE != 3) {
+		mes "现在还不能休息。";
+		close;
+	}
+	mes "[生存日记]";
+	mes "第 " + WH_DAY + " 天";
+	mes "食物：" + WH_FOOD + "%";
+	mes "饮水：" + WH_WATER + "%";
+	mes "壁炉：" + ((WH_FIRE == 1) ? "已点燃" : "未点燃");
+	next;
+	if (select("睡觉，结束这一天:再准备一下") == 2) close;
+	if (WH_DAY >= 10) {
+		mes "[风之猎鹰]";
+		mes "十天过去了。";
+		mes "南边的路已经通了，去第三片林地找帐篷的主人吧。";
+		set WH_STAGE, 4;
+		warp "1@4win",323,169;
+		close;
+	}
+	if (WH_FOOD < 40 || WH_WATER < 30 || WH_FIRE != 1) {
+		set WH_POINTS, WH_POINTS - 15;
+		mes "食物、饮水或壁炉温度不足。";
+		mes "你损失了 15 点生存意志。";
+		if (WH_POINTS <= 0) {
+			mes "你再也撑不住了，被送出了试炼。";
+			set WH_STAGE, 0;
+			set WH_KEY, 0;
+			set WH_DAY, 0;
+			set WH_FOOD, 0;
+			set WH_WATER, 0;
+			set WH_WOOD, 0;
+			set WH_FIRE, 0;
+			set WH_POINTS, 0;
+			erasequest 70000;
+			warp "payon",106,175;
+			close;
+		}
+		next;
+	}
+	set WH_FOOD, WH_FOOD - 40;
+	if (WH_FOOD < 0) set WH_FOOD, 0;
+	set WH_WATER, WH_WATER - 30;
+	if (WH_WATER < 0) set WH_WATER, 0;
+	set WH_FIRE, 0;
+	set WH_WOOD, 0;
+	set WH_DAY, WH_DAY + 1;
+	mes "你睡了一觉。";
+	mes "第 " + WH_DAY + " 天开始了。";
+	close;
+}
+
+// 室内：粮食仓库
+1@4win,342,19,0	script	粮食仓库#windhawk	4_4job_maura,{
+	if (WH_STAGE != 3) close;
+	mes "[粮食仓库]";
+	mes "当前食物存量：" + WH_FOOD + "%";
+	if (WH_ANIMAL == 1) {
+		mes "你把带回来的猎物处理成了食物。";
+		set WH_FOOD, WH_FOOD + 30;
+		if (WH_FOOD > 100) set WH_FOOD, 100;
+		set WH_ANIMAL, 0;
+	}
+	close;
+}
+
+// 室内：饮用水桶
+1@4win,351,19,0	script	饮用水桶#windhawk	4_4job_einhar,{
+	if (WH_STAGE != 3) close;
+	mes "[饮用水桶]";
+	mes "当前饮水存量：" + WH_WATER + "%";
+	if (WH_CARRY == 1) {
+		set WH_WATER, WH_WATER + 10;
+		if (WH_WATER > 100) set WH_WATER, 100;
+		set WH_CARRY, 0;
+		mes "你把桶里的水倒了进去。";
+	} else {
+		mes "你没有携带装水的桶。";
+	}
+	close;
+}
+
+// 室内：壁炉
+1@4win,342,23,0	script	壁炉#windhawk	4_4job_sealstone,{
+	if (WH_STAGE != 3) close;
+	mes "[壁炉]";
+	if (WH_FIRE == 1) {
+		mes "壁炉已经点燃。";
+		close;
+	}
+	if (WH_WOOD == 0) {
+		mes "没有木柴，先去屋外劈柴。";
+		close;
+	}
+	set WH_FIRE, 1;
+	set WH_WOOD, 0;
+	mes "你点燃了壁炉，屋里暖和起来。";
+	close;
+}
+
+// 室内：炕，处理猎物
+1@4win,351,23,0	script	炕#windhawk	4_4job_silla,{
+	if (WH_STAGE != 3) close;
+	mes "[炕]";
+	if (WH_ANIMAL == 0) {
+		mes "炕上现在没有猎物。";
+		close;
+	}
+	mes "你把带回来的小动物放在炕上取暖。";
+	set WH_ANIMAL, 1;
+	close;
+}
+
+// 第二张室外：房屋门
+1@4win,201,169,0	script	房屋门#windhawk2	4_4job_sealstone,{
+	if (WH_STAGE == 3 || WH_STAGE == 4) {
+		warp "1@4win",345,19;
+		close;
+	}
+	mes "门锁着。";
+	close;
+}
+
+// 第二张室外：工具仓库
+1@4win,195,175,0	script	工具仓库#windhawk	4_4job_maggi,{
+	if (WH_STAGE != 3) close;
+	mes "[工具仓库]";
+	mes "借用工具可以采集资源。";
+	switch(select("锄头:水桶:斧头:离开")) {
+		case 1: set WH_TOOL, 1; mes "你借了锄头。"; break;
+		case 2: set WH_TOOL, 2; mes "你借了水桶。"; break;
+		case 3: set WH_TOOL, 3; mes "你借了斧头。"; break;
+		case 4: close;
+	}
+	close;
+}
+
+// 第二张室外：堆放杂木
+1@4win,205,175,0	script	堆放杂木#windhawk	4_4job_sealstone,{
+	if (WH_STAGE != 3) close;
+	if (WH_TOOL != 3) {
+		mes "需要先去仓库借斧头。";
+		close;
+	}
+	set WH_WOOD, 1;
+	mes "你劈好了一份木柴。";
+	close;
+}
+
+// 第二张室外：小泉
+1@4win,210,180,0	script	小泉#windhawk	4_4job_serang,{
+	if (WH_STAGE != 3) close;
+	if (WH_TOOL != 2) {
+		mes "需要先去仓库借水桶。";
+		close;
+	}
+	set WH_CARRY, 1;
+	mes "你把水桶装满了水。";
+	close;
+}
+
+// 第二张室外：红色药草
+1@4win,190,180,0	script	红色药草#windhawk	RED_PLANT,{
+	if (WH_STAGE != 3) close;
+	if (WH_TOOL != 1) {
+		mes "需要先去仓库借锄头。";
+		close;
+	}
+	set WH_FOOD, WH_FOOD + 15;
+	if (WH_FOOD > 100) set WH_FOOD, 100;
+	mes "你挖出了一株红色药草，食物存量增加了。";
+	close;
+}
+
+// 第二张室外：野生动物痕迹
+1@4win,180,175,0	script	野生动物痕迹#windhawk	4_4job_robin,{
+	if (WH_STAGE != 3) close;
+	mes "[野生动物痕迹]";
+	if (WH_TRAP == 0) {
+		mes "你在这里布置了陷阱。";
+		set WH_TRAP, 1;
+		close;
+	}
+	if (WH_ANIMAL == 0) {
+		mes "陷阱里抓到了一只小动物。";
+		mes "你把它带回了小屋的炕上。";
+		set WH_ANIMAL, 1;
+		set WH_TRAP, 0;
+	} else {
+		mes "陷阱里没有新的猎物。";
+	}
+	close;
+}
+
+// 第三张室外：帐篷主人
+1@4win,325,160,0	script	帐篷主人#windhawk	4_4job_robin,{
+	if (WH_STAGE == 4) {
+		mes "[帐篷的主人]";
+		mes "你真的在这里活了十天。";
+		mes "风已经认可你了。";
+		next;
+		mes "[帐篷的主人]";
+		mes "弓箭不只是武器。";
+		mes "它是你与风对话的方式。";
+		mes "从今天起，你就是风鹰。";
+		jobchange JOB_WINDHAWK;
+		set WH_STAGE, 5;
+		completequest 70000;
+		next;
+		mes "[风之猎鹰]";
+		mes "转职完成。";
+		mes "从南边的路离开吧。";
+		close;
+	}
+	if (WH_STAGE == 5) {
+		mes "[帐篷的主人]";
+		mes "风会一直陪着你。";
+		close;
+	}
+	mes "帐篷的主人背对着你，望着天空。";
+	close;
+}
+
+// 第三张室外：离开副本
+1@4win,310,93,0	script	离开试炼#windhawk	4_4job_sealstone,{
+	if (WH_STAGE != 5) {
+		mes "现在还不能离开。";
+		close;
+	}
+	mes "你沿着南边的路走出了森林。";
+	warp "payon",106,175;
+	close;
+}
