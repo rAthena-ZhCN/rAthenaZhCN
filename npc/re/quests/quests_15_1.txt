@@ -3897,23 +3897,6 @@ verus03,127,145,0	script	机械残骸#atnd01	4_ENERGY_RED,3,3,{
 		mes "- 你携带的道具过多，无法继续任务。 -";
 		close;
 	}
-	// 收集核心任务：机械残骸中可取得启动控制装置
-	if (isbegin_quest(7615) == 1 || isbegin_quest(7616) == 1) {
-		if (countitem(6749) >= 20) {
-			mes "你已经收集了足够的^4d4dff启动控制装置^000000。";
-			close;
-		}
-		mes "杂乱的机械残骸堆成一堆。";
-		mes "在机械残骸中发现了^4d4dff启动控制装置^000000。";
-		next;
-		progressbar "00ff00",3;
-		getitem 6749,1;// Power_Control_Device
-		mes "获得了^4d4dff启动控制装置^000000！";
-		initnpctimer;
-		disablenpc();
-		close;
-	}
-
 	if (isbegin_quest(7621) != 1 && isbegin_quest(7628) != 1) {
 		mes "你现在不必再收集更多能量了。";
 		close;
