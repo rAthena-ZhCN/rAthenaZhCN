@@ -17,35 +17,6 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		mes "风只回应游侠的箭。";
 		close;
 	}
-	if (WH_STAGE > 0 && WH_STAGE < 5) {
-		mes "[醉酒的老人]";
-		mes "测试模式：是否从第一步重新开始？";
-		if (select("重新开始:继续当前进度") == 2) {
-			mes "那就继续去噜噜卡森林吧。";
-			close;
-		}
-		set WH_STAGE, 0;
-		set WH_KEY, 0;
-		set WH_DAY, 0;
-		set WH_FOOD, 0;
-		set WH_WATER, 0;
-		set WH_WOOD, 0;
-		set WH_FIRE, 0;
-		set WH_POINTS, 0;
-		set WH_TOOL, 0;
-		set WH_CARRY, 0;
-		set WH_TRAP, 0;
-		set WH_ANIMAL, 0;
-		erasequest 5901;
-		erasequest 5902;
-		erasequest 5903;
-		erasequest 5904;
-		erasequest 5905;
-		erasequest 5906;
-		erasequest 5907;
-		mes "进度已重置。再次对话即可重新接任务。";
-		close;
-	}
 	if (WH_STAGE == 5) {
 		mes "[醉酒的老人]";
 		mes "测试流程已经完成。";
@@ -81,10 +52,6 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 
 // 噜噜卡森林：青蛙雕像
 um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
-	if (WH_STAGE < 1) {
-		mes "一座被苔藓覆盖的青蛙雕像。";
-		close;
-	}
 	if (getcharid(1) == 0) {
 		mes "青蛙雕像的眼睛微微发亮。";
 		mes "进入试炼需要组队，即使队伍里只有你一个人。";
@@ -98,6 +65,33 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	mes "选择转动的方向。";
 	switch(select("往东转:往西转:往南转:往北转")) {
 		case 1:
+			// 测试用：点击青蛙即重置进度并开启新副本
+			.@old = instance_id(IM_PARTY);
+			if (.@old) instance_destroy(.@old);
+			set WH_STAGE, 1;
+			set WH_KEY, 0;
+			set WH_DAY, 0;
+			set WH_FOOD, 0;
+			set WH_WATER, 0;
+			set WH_WOOD, 0;
+			set WH_FIRE, 0;
+			set WH_POINTS, 0;
+			set WH_TOOL, 0;
+			set WH_CARRY, 0;
+			set WH_TRAP, 0;
+			set WH_ANIMAL, 0;
+			erasequest 5901;
+			erasequest 5902;
+			erasequest 5903;
+			erasequest 5904;
+			erasequest 5905;
+			erasequest 5906;
+			erasequest 5907;
+			setquest 5901;
+			completequest 5901;
+			setquest 5902;
+			completequest 5902;
+			setquest 5903;
 			.@iid = instance_create("Windhawk", IM_PARTY);
 			if (.@iid < 0 && .@iid != -3) {
 				mes "试炼暂时无法开始，请稍后再试。";
@@ -113,7 +107,7 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	}
 }
 
-um_fild01,35,342,0	script(DISABLED)	Windhawk_Portal#windhawk	-1,{
+um_fild01,35,342,0	script(DISABLED)	Windhawk_Portal#windhawk	4_4job_sealstone,{
 OnTouch:
 	instance_enter("Windhawk");
 	end;
@@ -484,7 +478,7 @@ OnTouch:
 	disablenpc instance_npcname("室内出口传送2#windhawk");
 	enablenpc instance_npcname("房屋门#windhawk");
 	setnpcdisplay instance_npcname("壁炉#windhawk"), JT_4_WOODPILE;
-	warp "payon",106,175;
+	warp "um_fild01",45,345;
 	close;
 }
 
