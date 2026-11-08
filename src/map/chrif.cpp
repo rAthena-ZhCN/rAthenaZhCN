@@ -1573,7 +1573,7 @@ void chrif_parse_ack_vipActive(int32 fd) {
 	sd->group_id = groupid;
 	pc_group_pc_load(sd);
 
-	if (!(flag&0x2)){ //isgm
+	if (!(flag&0x2) || (flag&0x1)){ //isgm, still apply active VIP
 		changed = (sd->vip.enabled != (flag&0x1));
 		if((flag&0x1)) { //isvip
 			sd->vip.enabled = 1;
