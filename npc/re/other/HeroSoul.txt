@@ -32,7 +32,7 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 		close;
 	delitem 50001,1;
 	hero_soul_expire = gettimetick(2) + 2592000;
-	sc_start SC_HERO_SOUL, 2592000000, 1;
+	sc_start SC_HERO_SOUL, 2147000000, 1;
 	mes "[英灵之魂]";
 	mes "「跆拳英灵」已觉醒。";
 	mes "有效期30天，重新登录也会保留。";
@@ -43,7 +43,33 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 OnPCLoginEvent:
 	if (hero_soul_expire > gettimetick(2)) {
 		.@remain = hero_soul_expire - gettimetick(2);
-		sc_start SC_HERO_SOUL, .@remain * 1000, 1;
+		.@tick = .@remain * 1000;
+		if (.@tick > 2147000000) .@tick = 2147000000;
+		sc_start SC_HERO_SOUL, .@tick, 1;
 	}
 	end;
+}
+
+-	script	HeroSoul_Refresh	-1,{
+OnInit:
+	initnpctimer;
+OnTimer43200000:
+	.@n = getunits(BL_PC, .@rid);
+	for ( .@i = 0; .@i < .@n; ++.@i ) {
+		if (!attachrid(.@rid[.@i])) continue;
+		if (hero_soul_expire > gettimetick(2)) {
+			.@remain = hero_soul_expire - gettimetick(2);
+			.@tick = .@remain * 1000;
+			if (.@tick > 2147000000) .@tick = 2147000000;
+			sc_start SC_HERO_SOUL, .@tick, 1;
+		}
+		if (vip_status(VIP_STATUS_ACTIVE)) {
+			.@remain = vip_status(VIP_STATUS_REMAINING);
+			.@tick = .@remain * 1000;
+			if (.@tick > 2147000000) .@tick = 2147000000;
+			sc_start SC_VIP, .@tick, 1;
+		}
+		detachrid;
+	}
+	initnpctimer;
 }
