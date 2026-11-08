@@ -9429,7 +9429,11 @@ void status_set_viewdata(block_list *bl, int32 class_)
 				sd->vd.look[LOOK_HAIR] = cap_value(sd->status.hair, MIN_HAIR_STYLE, MAX_HAIR_STYLE);
 				sd->vd.look[LOOK_HAIR_COLOR] = cap_value(sd->status.hair_color, MIN_HAIR_COLOR, MAX_HAIR_COLOR);
 				sd->vd.look[LOOK_CLOTHES_COLOR] = cap_value(sd->status.clothes_color, MIN_CLOTH_COLOR, MAX_CLOTH_COLOR);
+#if PACKETVER >= 20231220
+				sd->vd.look[LOOK_BODY2] = pc_stylist_view_body(*sd);
+#else
 				sd->vd.look[LOOK_BODY2] = sd->status.body;
+#endif
 				sd->vd.sex = sd->status.sex;
 				sd->vd.look[LOOK_ROBE] = sd->status.robe;
 
@@ -10231,7 +10235,7 @@ bool status_change_start(block_list* src, block_list* bl, sc_type type, int32 ra
 			return false;
 	}
 
-	int32 tick = (int32)duration;
+	t_tick tick = duration;
 
 	// Type-specific checks that need to happen before the delay
 	switch (type) {
@@ -13349,6 +13353,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 	if( opt_flag[SCF_ONTOUCH] && sd && !sd->npc_ontouch_.empty() )
 		npc_touchnext_areanpc(sd,false); // Run OnTouch_ on next char in range
 
+	if( sd ) pc_stylist_refresh(*sd);
 	return true;
 }
 
@@ -14116,6 +14121,7 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 	if (type == SC_STONEWAIT && tid != INVALID_TIMER)
 		status_change_start(bl, bl, SC_STONE, 100, val1, val2, 0, 0, val3, SCSTART_NOAVOID);
 
+	if( sd ) pc_stylist_refresh(*sd);
 	return 1;
 }
 
