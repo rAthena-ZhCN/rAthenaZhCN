@@ -25,7 +25,7 @@ rachel,177,139,3	script	神殿道具管理员#0hmoon	4_M_TRAINEE,{
 		mes "[神殿道具管理员]";
 		mes "女神的力量是什么？你刚才是在问女神的力量吗？";
 		next;
-		if (select( "No.", "是的，我问了。" ) == 1) {
+		if (select( "不是。", "是的，我问了。" ) == 1) {
 			 mes "[神殿道具管理员]";
 			 mes "我想跟你聊聊，请听我说。";
 			 close;
@@ -191,10 +191,6 @@ rachel,177,139,3	script	神殿道具管理员#0hmoon	4_M_TRAINEE,{
 		}
 		.@card = getequipcardid(.@part,3);
 
-		if (getiteminfo(.@card, ITEMINFO_SUBTYPE) == CARD_ENCHANT) {
-			npctalk "你的这条项链已经附过魔了。";
-			end;
-		}
 		mes "[神殿道具管理员]";
 		mes "你想为项链附上什么特殊能力？";
 		next;
@@ -225,7 +221,12 @@ rachel,177,139,3	script	神殿道具管理员#0hmoon	4_M_TRAINEE,{
 				break;
 			}
 			mes "[神殿道具管理员]";
+			if (getiteminfo(.@card, ITEMINFO_SUBTYPE) == CARD_ENCHANT && .@class == 1) {
+				mes "这条项链已经附过魔了，无法重复附魔。";
+				close;
+			}
 			mes "项链将附上" + mesitemlink(.@enchant, false) + "";
+			mes "这次附魔需要消耗 ^0000cd" + .@cost + "个" + mesitemlink(25088, false) + "^000000。";
 			mes "你真的确定要进行这次附魔吗？";
 			next;
 			if (select( "不，我需要时间考虑。","好，请开始吧。" ) == 1)
