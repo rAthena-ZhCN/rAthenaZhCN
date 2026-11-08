@@ -236,8 +236,9 @@ OnTouch:
 			if (checkquest(5906) != -1) erasequest 5906;
 			if (checkquest(5907) != -1) erasequest 5907;
 			disablenpc instance_npcname("壁炉火焰#windhawk");
+			.@iid = instance_id(IM_PARTY);
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i);
+		disablenpc instance_npcname("红草#" + .@i, .@iid);
 			warp "um_fild01",45,345;
 			close;
 		}
@@ -251,9 +252,10 @@ OnTouch:
 	set WH_WOOD, 0;
 	disablenpc instance_npcname("壁炉火焰#windhawk");
 	set WH_DAY, WH_DAY + 1;
+	.@iid = instance_id(IM_PARTY);
 	// 每天随机生成 3-6 株红草
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i);
+		disablenpc instance_npcname("红草#" + .@i, .@iid);
 	for ( .@i = 0; .@i < 8; ++.@i )
 		set .@used[.@i], 0;
 	.@want = rand(3, 6);
@@ -262,7 +264,7 @@ OnTouch:
 		.@idx = rand(8);
 		if (.@used[.@idx] == 0) {
 			set .@used[.@idx], 1;
-			enablenpc instance_npcname("红草#" + (.@idx + 1));
+			enablenpc instance_npcname("红草#" + (.@idx + 1), .@iid);
 			.@got = .@got + 1;
 		}
 	}
@@ -533,9 +535,10 @@ OnTouch:
 			}
 			break;
 	}
+	.@iid = instance_id(IM_PARTY);
 	// 每天随机生成 3-6 株红草
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i);
+		disablenpc instance_npcname("红草#" + .@i, .@iid);
 	for ( .@i = 0; .@i < 8; ++.@i )
 		set .@used[.@i], 0;
 	.@want = rand(3, 6);
@@ -544,7 +547,7 @@ OnTouch:
 		.@idx = rand(8);
 		if (.@used[.@idx] == 0) {
 			set .@used[.@idx], 1;
-			enablenpc instance_npcname("红草#" + (.@idx + 1));
+			enablenpc instance_npcname("红草#" + (.@idx + 1), .@iid);
 			.@got = .@got + 1;
 		}
 	}
@@ -598,8 +601,9 @@ OnTouch:
 	// 传送光点常驻，不需要额外开关
 	// 传送光点常驻，不需要额外开关
 	disablenpc instance_npcname("壁炉火焰#windhawk");
+	.@iid = instance_id(IM_PARTY);
 	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i);
+		disablenpc instance_npcname("红草#" + .@i, .@iid);
 	warp "um_fild01",45,345;
 	close;
 }
