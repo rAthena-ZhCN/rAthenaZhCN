@@ -136,7 +136,7 @@ OnTouch:
 }
 
 // 第一张室外：花丛钥匙
-1@4win,75,173,0	script	花丛#windhawk	-1,{
+1@4win,75,173,0	script	花丛#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 1) {
 		mes "花丛在风中轻轻摇晃。";
 		close;
@@ -148,33 +148,29 @@ OnTouch:
 	mes "花丛里似乎藏着什么。";
 	if (select("翻找花丛:离开") == 2) close;
 	set WH_KEY, 1;
-	enablenpc instance_npcname("房屋门传送#windhawk");
+	// 钥匙已取得，门的传送光点会自行检查
 	mes "[风之猎鹰]";
 	mes "你从花丛中找到了房屋钥匙，门锁已经打开。";
 	close;
 }
 
 // 第一张室外：房屋门
-1@4win,79,169,0	script	房屋门#windhawk	4_4job_sealstone,{
+1@4win,79,169,0	script	房屋门#windhawk	WARPNPC,2,2,{
+OnTouch:
 	if (WH_STAGE == 1) {
 		if (WH_KEY != 1) {
-			mes "门锁住了。";
-			mes "钥匙应该就在房屋周围。";
-			close;
+			dispbottom "门锁住了。钥匙应该就在房屋周围。";
+			end;
 		}
-		disablenpc strnpcinfo(0);
-		enablenpc instance_npcname("房屋门传送#windhawk");
-		mes "你用钥匙打开了门。";
-		set WH_STAGE, 2;
 		warp "1@4win",345,19;
-		close;
+		end;
 	}
 	if (WH_STAGE == 2) {
 		warp "1@4win",345,19;
-		close;
+		end;
 	}
-	mes "房屋的门紧闭着。";
-	close;
+	dispbottom "房屋的门紧闭着。";
+	end;
 }
 
 // 室内：搜寻屋内，触发巨响
@@ -182,7 +178,7 @@ OnTouch:
 // 室内：出口
 
 // 室内：床铺
-1@4win,352,37,0	script	床铺#windhawk	-1,{
+1@4win,352,37,0	script	床铺#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE == 2) {
 		mes "[几米]";
 		mes "刚刚是什么声音？巨大的响声？";
@@ -207,8 +203,8 @@ OnTouch:
 		set WH_CARRY, 0;
 		set WH_TRAP, 0;
 		set WH_ANIMAL, 0;
-		enablenpc instance_npcname("房屋门传送2#windhawk");
-		enablenpc instance_npcname("室内出口传送#windhawk");
+	// 第二张室外传送光点常驻
+	// 室内出口传送光点常驻
 		close;
 	}
 	if (WH_STAGE != 3) {
@@ -229,8 +225,8 @@ OnTouch:
 		completequest 5905;
 		setquest 5906;
 		set WH_STAGE, 4;
-		enablenpc instance_npcname("室内出口传送2#windhawk");
-		disablenpc instance_npcname("室内出口传送#windhawk");
+	// 室内出口传送光点常驻
+	// 出口传送光点根据阶段判断目标
 		close;
 	}
 	if (WH_FOOD < 40 || WH_WATER < 30 || WH_FIRE != 1) {
@@ -274,7 +270,7 @@ OnTouch:
 }
 
 // 室内：粮食仓库
-1@4win,334,23,0	script	粮食仓库#windhawk	-1,{
+1@4win,334,23,0	script	粮食仓库#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	mes "[粮食仓库]";
 	mes "当前食物存量：" + WH_FOOD + "%";
@@ -288,7 +284,7 @@ OnTouch:
 }
 
 // 室内：饮用水桶
-1@4win,333,38,0	script	饮用水桶#windhawk	-1,{
+1@4win,333,38,0	script	饮用水桶#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	mes "[饮用水桶]";
 	mes "当前饮水存量：" + WH_WATER + "%";
@@ -304,7 +300,7 @@ OnTouch:
 }
 
 // 室内：壁炉
-1@4win,337,36,0	script	壁炉#windhawk	-1,{
+1@4win,337,36,0	script	壁炉#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 2 && WH_STAGE != 3) close;
 	mes "[壁炉]";
 	if (WH_FIRE == 1) {
@@ -447,28 +443,33 @@ OnTouch:
 // 第三张室外：离开副本
 // 房门使用普通传送点 warp
 
-// 传送点控制器：参照 Old Glast Heim 的 OnInstanceInit 写法
-1@4win,1,1,0	script	Windhawk_Controller	HIDDEN_WARP_NPC,{
-OnInit:
-	disablenpc "房屋门传送#windhawk";
-	disablenpc "房屋门传送2#windhawk";
-	disablenpc "室内出口传送#windhawk";
-	disablenpc "室内出口传送2#windhawk";
-	disablenpc "壁炉火焰#windhawk";
-	end;
-OnInstanceInit:
-	disablenpc instance_npcname("房屋门传送#windhawk");
-	disablenpc instance_npcname("房屋门传送2#windhawk");
-	disablenpc instance_npcname("室内出口传送#windhawk");
-	disablenpc instance_npcname("室内出口传送2#windhawk");
-	disablenpc instance_npcname("壁炉火焰#windhawk");
+1@4win,201,169,0	script	房屋门2#windhawk	WARPNPC,2,2,{
+OnTouch:
+	if (WH_STAGE == 3 || WH_STAGE == 4) {
+		warp "1@4win",345,19;
+		end;
+	}
+	dispbottom "现在还不能进入。";
 	end;
 }
 
-1@4win,79,169,0	warp	房屋门传送#windhawk	2,2,1@4win,345,19
-1@4win,201,169,0	warp	房屋门传送2#windhawk	2,2,1@4win,345,19
-1@4win,345,14,0	warp	室内出口传送#windhawk	2,2,1@4win,201,169
-1@4win,345,14,0	warp	室内出口传送2#windhawk	2,2,1@4win,323,169
+1@4win,345,14,0	script	室内出口#windhawk	WARPNPC,2,2,{
+OnTouch:
+	if (WH_STAGE == 2) {
+		dispbottom "先看看屋里的情况。";
+		end;
+	}
+	if (WH_STAGE == 3) {
+		warp "1@4win",201,169;
+		end;
+	}
+	if (WH_STAGE == 4) {
+		warp "1@4win",323,169;
+		end;
+	}
+	dispbottom "门外的风很大。";
+	end;
+}
 
 1@4win,310,93,0	script	离开试炼#windhawk	4_4job_sealstone,{
 	if (WH_STAGE != 5) {
@@ -496,11 +497,11 @@ OnInstanceInit:
 	erasequest 5905;
 	erasequest 5906;
 	erasequest 5907;
-	disablenpc instance_npcname("房屋门传送#windhawk");
-	disablenpc instance_npcname("房屋门传送2#windhawk");
-	disablenpc instance_npcname("室内出口传送#windhawk");
-	disablenpc instance_npcname("室内出口传送2#windhawk");
-	enablenpc instance_npcname("房屋门#windhawk");
+	// 传送光点常驻，不需要额外开关
+	// 传送光点常驻，不需要额外开关
+	// 出口传送光点根据阶段判断目标
+	// 传送光点常驻，不需要额外开关
+	// 传送光点常驻，不需要额外开关
 	disablenpc instance_npcname("壁炉火焰#windhawk");
 	warp "um_fild01",45,345;
 	close;
