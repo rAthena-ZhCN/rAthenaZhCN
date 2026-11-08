@@ -236,6 +236,8 @@ OnTouch:
 			if (checkquest(5906) != -1) erasequest 5906;
 			if (checkquest(5907) != -1) erasequest 5907;
 			disablenpc instance_npcname("壁炉火焰#windhawk");
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname("红草#" + .@i);
 			warp "um_fild01",45,345;
 			close;
 		}
@@ -249,6 +251,21 @@ OnTouch:
 	set WH_WOOD, 0;
 	disablenpc instance_npcname("壁炉火焰#windhawk");
 	set WH_DAY, WH_DAY + 1;
+	// 每天随机生成 3-6 株红草
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname("红草#" + .@i);
+	for ( .@i = 0; .@i < 8; ++.@i )
+		set .@used[.@i], 0;
+	.@want = rand(3, 6);
+	.@got = 0;
+	while ( .@got < .@want ) {
+		.@idx = rand(8);
+		if (.@used[.@idx] == 0) {
+			set .@used[.@idx], 1;
+			enablenpc instance_npcname("红草#" + (.@idx + 1));
+			.@got = .@got + 1;
+		}
+	}
 	mes "你睡了一觉。";
 	mes "第 " + WH_DAY + " 天开始了。";
 	close;
@@ -335,7 +352,7 @@ OnTouch:
 // 第二张室外：房屋门
 
 // 第二张室外：工具仓库
-1@4win,195,175,0	script	工具仓库#windhawk	4_4job_maggi,{
+1@4win,211,170,0	script	工具仓库#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	mes "[工具仓库]";
 	mes "借用工具可以采集资源。";
@@ -349,7 +366,7 @@ OnTouch:
 }
 
 // 第二张室外：堆放杂木
-1@4win,205,175,0	script	堆放杂木#windhawk	4_4job_sealstone,{
+1@4win,228,186,0	script	堆放杂木#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	if (WH_TOOL != 3) {
 		mes "需要先去仓库借斧头。";
@@ -361,7 +378,7 @@ OnTouch:
 }
 
 // 第二张室外：小泉
-1@4win,210,180,0	script	小泉#windhawk	4_4job_serang,{
+1@4win,215,195,0	script	小泉#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	if (WH_TOOL != 2) {
 		mes "需要先去仓库借水桶。";
@@ -373,8 +390,11 @@ OnTouch:
 }
 
 // 第二张室外：红色药草
-1@4win,190,180,0	script	红色药草#windhawk	RED_PLANT,{
-	if (WH_STAGE != 3) close;
+1@4win,160,177,0	script(DISABLED)	红草#1	RED_PLANT,{
+	if (WH_STAGE != 3) {
+		mes "红色药草在风中摇晃。";
+		close;
+	}
 	if (WH_TOOL != 1) {
 		mes "需要先去仓库借锄头。";
 		close;
@@ -382,11 +402,19 @@ OnTouch:
 	set WH_FOOD, WH_FOOD + 15;
 	if (WH_FOOD > 100) set WH_FOOD, 100;
 	mes "你挖出了一株红色药草，食物存量增加了。";
+	disablenpc strnpcinfo(0);
 	close;
 }
+1@4win,155,167,0	duplicate(红草#1)	红草#2	RED_PLANT
+1@4win,173,159,0	duplicate(红草#1)	红草#3	RED_PLANT
+1@4win,186,163,0	duplicate(红草#1)	红草#4	RED_PLANT
+1@4win,200,159,0	duplicate(红草#1)	红草#5	RED_PLANT
+1@4win,206,157,0	duplicate(红草#1)	红草#6	RED_PLANT
+1@4win,211,182,0	duplicate(红草#1)	红草#7	RED_PLANT
+1@4win,215,206,0	duplicate(红草#1)	红草#8	RED_PLANT
 
 // 第二张室外：野生动物痕迹
-1@4win,180,175,0	script	野生动物痕迹#windhawk	4_4job_robin,{
+1@4win,155,192,0	script	野生动物痕迹#windhawk	ambernite,{
 	if (WH_STAGE != 3) close;
 	mes "[野生动物痕迹]";
 	if (WH_TRAP == 0) {
@@ -404,6 +432,7 @@ OnTouch:
 	}
 	close;
 }
+1@4win,148,189,0	duplicate(野生动物痕迹#windhawk)	野生动物痕迹2#windhawk	ambernite
 
 // 第三张室外：帐篷主人
 1@4win,325,160,0	script	帐篷主人#windhawk	4_4job_robin,{
@@ -472,7 +501,7 @@ OnTouch:
 }
 
 // 第二张室外下方塌方触发点（坐标待你确认）
-1@4win,201,180,0	script	Windhawk_Disaster	HIDDEN_WARP_NPC,1,1,{
+1@4win,189,145,0	script	Windhawk_Disaster	HIDDEN_WARP_NPC,1,1,{
 OnTouch:
 	if (WH_STAGE != 2 || WH_LEAVE != 1 || WH_STAGE == 3) end;
 	unittalk getcharid(3), "怎么会这样？回程的路都被堵住了？";
@@ -503,6 +532,21 @@ OnTouch:
 					break;
 			}
 			break;
+	}
+	// 每天随机生成 3-6 株红草
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname("红草#" + .@i);
+	for ( .@i = 0; .@i < 8; ++.@i )
+		set .@used[.@i], 0;
+	.@want = rand(3, 6);
+	.@got = 0;
+	while ( .@got < .@want ) {
+		.@idx = rand(8);
+		if (.@used[.@idx] == 0) {
+			set .@used[.@idx], 1;
+			enablenpc instance_npcname("红草#" + (.@idx + 1));
+			.@got = .@got + 1;
+		}
 	}
 	completequest 5904;
 	setquest 5905;
@@ -554,6 +598,8 @@ OnTouch:
 	// 传送光点常驻，不需要额外开关
 	// 传送光点常驻，不需要额外开关
 	disablenpc instance_npcname("壁炉火焰#windhawk");
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname("红草#" + .@i);
 	warp "um_fild01",45,345;
 	close;
 }
@@ -562,5 +608,17 @@ OnTouch:
 -	script	Windhawk_QuestCleanup	-1,{
 OnPCLoginEvent:
 	if (checkquest(70000) != -1) erasequest 70000;
+	end;
+}
+
+// 红草初始隐藏控制器
+1@4win,1,1,0	script	Windhawk_HerbController	HIDDEN_WARP_NPC,{
+OnInit:
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc "红草#" + .@i;
+	end;
+OnInstanceInit:
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname("红草#" + .@i);
 	end;
 }
