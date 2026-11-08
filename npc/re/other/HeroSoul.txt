@@ -1,0 +1,49 @@
+//===== Hero Soul System =====================================
+//= NPC: 英灵之魂 / prontera 146,106
+//============================================================
+
+prontera,146,106,4	script	英灵之魂#hero_soul	4_F_TAEKWON,{
+	mes "[英灵之魂]";
+	mes "我是英灵之魂，负责唤醒职业的潜在记忆。";
+	mes "目前可以唤醒的是跆拳系列职业的「跆拳英灵」。";
+	next;
+	mes "[英灵之魂]";
+	mes "「跆拳英灵」持续30天，效果包括：";
+	mes "跆拳道自动连招、单人休息、太阳月亮星星的感觉任意场所、";
+	mes "憎恶目标可更改、恶魔不牺牲视力、融合无需灵魂状态。";
+	next;
+	mes "[英灵之魂]";
+	if (Class != JOB_TAEKWON && Class != JOB_STAR_GLADIATOR && Class != JOB_STAR_GLADIATOR2 && Class != JOB_SOUL_LINKER && Class != JOB_STAR_EMPEROR && Class != JOB_STAR_EMPEROR2) {
+		mes "你的职业无法接受「跆拳英灵」。";
+		close;
+	}
+	if (hero_soul_expire > gettimetick(2)) {
+		.@left = hero_soul_expire - gettimetick(2);
+		mes "你已经拥有「跆拳英灵」。";
+		mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
+		close;
+	}
+	if (countitem(50001) < 1) {
+		mes "你需要携带1个「英灵之魂器」。";
+		mes "可在CashShop第一、第二分类购买。";
+		close;
+	}
+	if (select("兑换「跆拳英灵」30天","取消") == 2)
+		close;
+	delitem 50001,1;
+	hero_soul_expire = gettimetick(2) + 2592000;
+	sc_start SC_HERO_SOUL, 2592000000, 1;
+	mes "[英灵之魂]";
+	mes "「跆拳英灵」已觉醒。";
+	mes "有效期30天，重新登录也会保留。";
+	close;
+}
+
+-	script	HeroSoul_Login	-1,{
+OnPCLoginEvent:
+	if (hero_soul_expire > gettimetick(2)) {
+		.@remain = hero_soul_expire - gettimetick(2);
+		sc_start SC_HERO_SOUL, .@remain * 1000, 1;
+	}
+	end;
+}

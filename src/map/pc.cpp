@@ -2367,7 +2367,7 @@ bool pc_set_hate_mob(map_session_data *sd, int32 pos, block_list *bl)
 	int32 class_;
 	if (!sd || !bl || pos < 0 || pos > 2)
 		return false;
-	if (sd->hate_mob[pos] != -1)
+	if (sd->hate_mob[pos] != -1 && sd->sc.getSCE(SC_HERO_SOUL) == nullptr)
 	{	//Can't change hate targets.
 		clif_hate_info(sd, pos, sd->hate_mob[pos], 0); //Display current
 		return false;
@@ -8395,7 +8395,7 @@ int32 pc_checkjoblevelup(map_session_data *sd)
 	clif_updatestatus(*sd,SP_SKILLPOINT);
 	status_calc_pc(sd,SCO_FORCE);
 	clif_misceffect( *sd, NOTIFYEFFECT_JOB_LEVEL_UP );
-	if (pc_checkskill(sd, SG_DEVIL) && ((sd->class_&MAPID_THIRDMASK) == MAPID_STAR_EMPEROR || pc_is_maxjoblv(sd)) )
+	if (sd->sc.getSCE(SC_HERO_SOUL) == nullptr && pc_checkskill(sd, SG_DEVIL) && ((sd->class_&MAPID_THIRDMASK) == MAPID_STAR_EMPEROR || pc_is_maxjoblv(sd)) )
 		clif_status_change(sd, EFST_DEVIL1, 1, 0, 0, 0, 1); //Permanent blind effect from SG_DEVIL.
 
 	npc_script_event( *sd, NPCE_JOBLVUP );

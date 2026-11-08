@@ -1448,6 +1448,8 @@ enum sc_type : int16 {
 
 	SC_VIP,
 
+	SC_HERO_SOUL,
+
 	SC_MAX, //Automatically updated max, used in for's to check we are within bounds.
 };
 

@@ -1231,7 +1231,7 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 				0, 2, 0,
 				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
 			//Stance triggered
-			if (sd->state.taekwon_auto) {
+			if (sd->sc.getSCE(SC_HERO_SOUL) != nullptr) {
 				uint16 auto_lv = pc_checkskill(sd, TK_STORMKICK);
 				if (auto_lv > 0)
 					unit_skilluse_id(src, bl->id, TK_STORMKICK, auto_lv);
@@ -1241,7 +1241,7 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 				0, 2, 0,
 				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
 			//Stance triggered
-			if (sd->state.taekwon_auto) {
+			if (sd->sc.getSCE(SC_HERO_SOUL) != nullptr) {
 				uint16 auto_lv = pc_checkskill(sd, TK_DOWNKICK);
 				if (auto_lv > 0)
 					unit_skilluse_id(src, bl->id, TK_DOWNKICK, auto_lv);
@@ -1251,7 +1251,7 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 				0, 2, 0,
 				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
 			//Stance triggered
-			if (sd->state.taekwon_auto) {
+			if (sd->sc.getSCE(SC_HERO_SOUL) != nullptr) {
 				uint16 auto_lv = pc_checkskill(sd, TK_TURNKICK);
 				if (auto_lv > 0)
 					unit_skilluse_id(src, bl->id, TK_TURNKICK, auto_lv);
@@ -1266,7 +1266,7 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 				0, 2, 0,
 				(2000 - 4 * sstatus->agi - 2 * sstatus->dex))) {
 				//Stance triggered
-				if (sd->state.taekwon_auto) {
+				if (sd->sc.getSCE(SC_HERO_SOUL) != nullptr) {
 					uint16 auto_lv = pc_checkskill(sd, TK_COUNTER);
 					if (auto_lv > 0)
 						unit_skilluse_id(src, bl->id, TK_COUNTER, auto_lv);
@@ -8644,12 +8644,16 @@ bool skill_check_condition_castbegin( map_session_data& sd, uint16 skill_id, uin
 			if (sc && sc->getSCE(SC_MIRACLE))
 				break;
 			i = skill_id-SG_SUN_COMFORT;
+			if (sd.sc.getSCE(SC_HERO_SOUL) != nullptr)
+				break;
 			if (sd.m == sd.feel_map[i].m &&
 				(battle_config.allow_skill_without_day || sg_info[i].day_func()))
 				break;
 			clif_skill_fail( sd, skill_id );
 			return false;
 		case SG_FUSION:
+			if (sd.sc.getSCE(SC_HERO_SOUL) != nullptr)
+				break;
 			if (sc && sc->getSCE(SC_SPIRIT) && sc->getSCE(SC_SPIRIT)->val2 == SL_STAR)
 				break;
 			//Auron insists we should implement SP consumption when you are not Soul Linked. [Skotlex]
@@ -9432,7 +9436,7 @@ bool skill_check_condition_castend( map_session_data& sd, uint16 skill_id, uint1
 				if (sc->getSCE(SC_MIRACLE))
 					break;
 			}
-			if (sd.m == sd.feel_map[skill_id - SG_SUN_WARM].m)
+			if (sd.sc.getSCE(SC_HERO_SOUL) != nullptr || sd.m == sd.feel_map[skill_id - SG_SUN_WARM].m)
 				break;
 			clif_skill_nodamage(&sd, sd, skill_id, skill_lv, 0);
 			return false;
@@ -9738,6 +9742,9 @@ void skill_consume_requirement(map_session_data *sd, uint16 skill_id, uint16 ski
 						continue;
 					break;
 			}
+
+			if( pc_has_unlimited_arsenal( sd ) && itemdb_is_unlimited_arsenal_item( require.itemid[i] ) )
+				continue;
 
 			if( (n = pc_search_inventory(sd,require.itemid[i])) >= 0 )
 				pc_delitem(sd,n,require.amount[i],0,1,LOG_TYPE_CONSUME);
@@ -10882,7 +10889,7 @@ int32 skill_sit(map_session_data *sd, bool sitting)
 
 		if (sit_count > 1) {
 			map_foreachinallrange(skill_sit_in, sd, range, BL_PC, flag);
-		} else if ((flag & 2) && sd->state.taekwon_auto) {
+		} else if ((flag & 2) && sd->sc.getSCE(SC_HERO_SOUL) != nullptr) {
 			// Solo Taekwon: the automatic-combo toggle also removes the
 			// requirement for another Taekwon to be sitting nearby.
 			sd->state.rest = 1;
