@@ -37,7 +37,11 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		mes "记住，风不会等你。";
 		set WH_STAGE, 1;
 		set WH_KEY, 0;
-	// 测试版不使用客户端任务栏，避免缺失 questinfo 数据
+		setquest 5901;
+		completequest 5901;
+		setquest 5902;
+		completequest 5902;
+		setquest 5903;
 		close;
 	}
 	mes "[醉酒的老人]";
@@ -63,6 +67,8 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	}
 	mes "青蛙雕像发出低沉的鸣叫。";
 	if (select("往东转动:离开") == 2) close;
+	completequest 5903;
+	setquest 5904;
 	.@iid = instance_create("Windhawk", IM_PARTY);
 	if (.@iid < 0 && .@iid != -3) {
 		mes "试炼暂时无法开始，请稍后再试。";
@@ -146,6 +152,8 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	mes "回去的路被塌方的石头堵住了。";
 	mes "看来你必须在这里生存十天。";
 	mes "每天十分钟，去屋外准备食物、水和柴火。";
+	completequest 5904;
+	setquest 5905;
 	set WH_STAGE, 3;
 	set WH_DAY, 1;
 	set WH_FOOD, 50;
@@ -195,6 +203,8 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 		mes "[风之猎鹰]";
 		mes "十天过去了。";
 		mes "南边的路已经通了，去第三片林地找帐篷的主人吧。";
+		completequest 5905;
+		setquest 5906;
 		set WH_STAGE, 4;
 		warp "1@4win",323,169;
 		close;
@@ -213,7 +223,13 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			set WH_WOOD, 0;
 			set WH_FIRE, 0;
 			set WH_POINTS, 0;
-	// 测试版不使用客户端任务栏，避免缺失 questinfo 数据
+			erasequest 5901;
+			erasequest 5902;
+			erasequest 5903;
+			erasequest 5904;
+			erasequest 5905;
+			erasequest 5906;
+			erasequest 5907;
 			warp "payon",106,175;
 			close;
 		}
@@ -385,8 +401,9 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 		mes "它是你与风对话的方式。";
 		mes "测试版暂不执行转职。";
 		// 测试期间不执行最终转职
+		completequest 5906;
+		setquest 5907;
 		set WH_STAGE, 5;
-	// 测试版不使用客户端任务栏，避免缺失 questinfo 数据
 		next;
 		mes "[风之猎鹰]";
 		mes "测试流程完成。";
@@ -421,7 +438,14 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	set WH_CARRY, 0;
 	set WH_TRAP, 0;
 	set WH_ANIMAL, 0;
-	// 测试版不使用客户端任务栏，避免缺失 questinfo 数据
+	completequest 5907;
+	erasequest 5901;
+	erasequest 5902;
+	erasequest 5903;
+	erasequest 5904;
+	erasequest 5905;
+	erasequest 5906;
+	erasequest 5907;
 	warp "payon",106,175;
 	close;
 }
