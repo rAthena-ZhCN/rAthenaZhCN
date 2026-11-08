@@ -82,13 +82,13 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			set WH_CARRY, 0;
 			set WH_TRAP, 0;
 			set WH_ANIMAL, 0;
-			erasequest 5901;
-			erasequest 5902;
-			erasequest 5903;
-			erasequest 5904;
-			erasequest 5905;
-			erasequest 5906;
-			erasequest 5907;
+			if (checkquest(5901) != -1) erasequest 5901;
+			if (checkquest(5902) != -1) erasequest 5902;
+			if (checkquest(5903) != -1) erasequest 5903;
+			if (checkquest(5904) != -1) erasequest 5904;
+			if (checkquest(5905) != -1) erasequest 5905;
+			if (checkquest(5906) != -1) erasequest 5906;
+			if (checkquest(5907) != -1) erasequest 5907;
 			setquest 5901;
 			completequest 5901;
 			setquest 5902;
@@ -186,12 +186,12 @@ OnTouch:
 1@4win,352,37,0	script	床铺#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE == 1) set WH_STAGE, 2;
 	if (WH_STAGE == 2) {
-		unittalk getcharid(0), "刚刚是什么声音？巨大的响声？";
+		unittalk getcharid(3), "刚刚是什么声音？巨大的响声？";
 		sleep2 1800;
-		unittalk getcharid(0), "现在又安静了，怎么回事？出去看看吧。";
+		unittalk getcharid(3), "现在又安静了，怎么回事？出去看看吧。";
 		sleep2 1800;
 		set WH_LEAVE, 1;
-		close;
+		end;
 	}
 	if (WH_STAGE != 3) {
 		mes "现在还不能休息。";
@@ -228,13 +228,13 @@ OnTouch:
 			set WH_FIRE, 0;
 			set WH_POINTS, 0;
 			set WH_LEAVE, 0;
-			erasequest 5901;
-			erasequest 5902;
-			erasequest 5903;
-			erasequest 5904;
-			erasequest 5905;
-			erasequest 5906;
-			erasequest 5907;
+			if (checkquest(5901) != -1) erasequest 5901;
+			if (checkquest(5902) != -1) erasequest 5902;
+			if (checkquest(5903) != -1) erasequest 5903;
+			if (checkquest(5904) != -1) erasequest 5904;
+			if (checkquest(5905) != -1) erasequest 5905;
+			if (checkquest(5906) != -1) erasequest 5906;
+			if (checkquest(5907) != -1) erasequest 5907;
 			disablenpc instance_npcname("壁炉火焰#windhawk");
 			warp "um_fild01",45,345;
 			close;
@@ -475,11 +475,11 @@ OnTouch:
 1@4win,201,180,0	script	Windhawk_Disaster	HIDDEN_WARP_NPC,1,1,{
 OnTouch:
 	if (WH_STAGE != 2 || WH_LEAVE != 1 || WH_STAGE == 3) end;
-	unittalk getcharid(0), "怎么会这样？回程的路都被堵住了？";
+	unittalk getcharid(3), "怎么会这样？回程的路都被堵住了？";
 	sleep2 1800;
-	unittalk getcharid(0), "是有山体滑坡吗？出不去了，我该不会……";
+	unittalk getcharid(3), "是有山体滑坡吗？出不去了，我该不会……";
 	sleep2 1800;
-	unittalk getcharid(0), "出不去了吧？";
+	unittalk getcharid(3), "出不去了吧？";
 	sleep2 1200;
 	mes "[在噜噜卡森林遇到灾害]";
 	mes "要查看相关说明吗？";
@@ -541,13 +541,13 @@ OnTouch:
 	set WH_TRAP, 0;
 	set WH_ANIMAL, 0;
 	completequest 5907;
-	erasequest 5901;
-	erasequest 5902;
-	erasequest 5903;
-	erasequest 5904;
-	erasequest 5905;
-	erasequest 5906;
-	erasequest 5907;
+	if (checkquest(5901) != -1) erasequest 5901;
+	if (checkquest(5902) != -1) erasequest 5902;
+	if (checkquest(5903) != -1) erasequest 5903;
+	if (checkquest(5904) != -1) erasequest 5904;
+	if (checkquest(5905) != -1) erasequest 5905;
+	if (checkquest(5906) != -1) erasequest 5906;
+	if (checkquest(5907) != -1) erasequest 5907;
 	// 传送光点常驻，不需要额外开关
 	// 传送光点常驻，不需要额外开关
 	// 出口传送光点根据阶段判断目标
@@ -561,6 +561,6 @@ OnTouch:
 // 清理测试期间误加到角色上的客户端任务数据
 -	script	Windhawk_QuestCleanup	-1,{
 OnPCLoginEvent:
-	erasequest 70000;
+	if (checkquest(70000) != -1) erasequest 70000;
 	end;
 }
