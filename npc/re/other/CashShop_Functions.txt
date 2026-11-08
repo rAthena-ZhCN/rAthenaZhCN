@@ -47,7 +47,9 @@ OnPCLoginEvent:
 		.@remain = vip_status(VIP_STATUS_REMAINING);
 		if (.@remain > 0) {
 			if (.@remain > 2592000) .@remain = 2592000;
-			sc_start SC_VIP, .@remain * 1000, 1;
+			.@tick = .@remain * 1000;
+		if (.@tick > 2147000000) .@tick = 2147000000;
+		sc_start SC_VIP, .@tick, 1;
 		}
 	}
 	end;
