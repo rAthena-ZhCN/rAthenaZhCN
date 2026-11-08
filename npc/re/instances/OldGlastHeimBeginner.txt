@@ -104,14 +104,26 @@ OnTimer1000:
 	.@n = getmapunits(BL_MOB, 'B_scalemap$, .@mobs);
 	for ( .@i = 0; .@i < .@n; ++.@i ) {
 		getunitdata .@mobs[.@i], .@data;
-		if (.@data[UMOB_LEVEL] > 65) {
+		if (.@data[UMOB_LEVEL] > 65 || .@data[UMOB_MAXHP] > 8000 || .@data[UMOB_ATKMAX] > 250 || .@data[UMOB_DEF] > 8 || .@data[UMOB_MDEF] > 8) {
+			.@hp = .@data[UMOB_MAXHP];
+			if (.@hp > 8000) .@hp = 8000;
+			.@chp = .@data[UMOB_HP];
+			if (.@chp > 8000) .@chp = 8000;
+			.@atkmin = .@data[UMOB_ATKMIN];
+			if (.@atkmin > 120) .@atkmin = 120;
+			.@atkmax = .@data[UMOB_ATKMAX];
+			if (.@atkmax > 250) .@atkmax = 250;
+			.@def = .@data[UMOB_DEF];
+			if (.@def > 8) .@def = 8;
+			.@mdef = .@data[UMOB_MDEF];
+			if (.@mdef > 8) .@mdef = 8;
 			setunitdata .@mobs[.@i], UMOB_LEVEL, 65;
-			setunitdata .@mobs[.@i], UMOB_MAXHP, max(1, .@data[UMOB_MAXHP] / 3);
-			setunitdata .@mobs[.@i], UMOB_HP, max(1, .@data[UMOB_HP] / 3);
-			setunitdata .@mobs[.@i], UMOB_ATKMIN, max(1, .@data[UMOB_ATKMIN] / 2);
-			setunitdata .@mobs[.@i], UMOB_ATKMAX, max(1, .@data[UMOB_ATKMAX] / 2);
-			setunitdata .@mobs[.@i], UMOB_DEF, max(0, .@data[UMOB_DEF] / 2);
-			setunitdata .@mobs[.@i], UMOB_MDEF, max(0, .@data[UMOB_MDEF] / 2);
+			setunitdata .@mobs[.@i], UMOB_MAXHP, .@hp;
+			setunitdata .@mobs[.@i], UMOB_HP, .@chp;
+			setunitdata .@mobs[.@i], UMOB_ATKMIN, .@atkmin;
+			setunitdata .@mobs[.@i], UMOB_ATKMAX, .@atkmax;
+			setunitdata .@mobs[.@i], UMOB_DEF, .@def;
+			setunitdata .@mobs[.@i], UMOB_MDEF, .@mdef;
 		}
 	}
 	initnpctimer;
