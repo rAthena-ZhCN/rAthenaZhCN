@@ -96,7 +96,7 @@ glast_01,196,235,4	script	¶ÀÌØµÄÐ¡³ó#nogh	4_CH1_NEUMANN,{
 	close;
 }
 // Beginner difficulty scaling: reduce mobs to roughly level 65 strength
--	script	#B_beginner_scale	-1,{
+1@gl_k2,1,1,0	script	#B_beginner_scale	CLEAR_NPC,{
 OnInstanceInit:
 	'B_scalemap$ = instance_mapname("1@gl_k2");
 	initnpctimer;
@@ -104,7 +104,7 @@ OnTimer1000:
 	.@n = getmapunits(BL_MOB, 'B_scalemap$, .@mobs);
 	for ( .@i = 0; .@i < .@n; ++.@i ) {
 		getunitdata .@mobs[.@i], .@data;
-		if (.@data[UMOB_LEVEL] > 65 || .@data[UMOB_MAXHP] > 8000 || .@data[UMOB_ATKMAX] > 250 || .@data[UMOB_DEF] > 8 || .@data[UMOB_MDEF] > 8) {
+		if (.@data[UMOB_LEVEL] > 65 || .@data[UMOB_MAXHP] > 8000 || .@data[UMOB_ATKMAX] > 250 || .@data[UMOB_DEF] > 8 || .@data[UMOB_MDEF] > 8 || .@data[UMOB_MATKMAX] > 200) {
 			.@hp = .@data[UMOB_MAXHP];
 			if (.@hp > 8000) .@hp = 8000;
 			.@chp = .@data[UMOB_HP];
@@ -122,8 +122,16 @@ OnTimer1000:
 			setunitdata .@mobs[.@i], UMOB_HP, .@chp;
 			setunitdata .@mobs[.@i], UMOB_ATKMIN, .@atkmin;
 			setunitdata .@mobs[.@i], UMOB_ATKMAX, .@atkmax;
+			setunitdata .@mobs[.@i], UMOB_MATKMIN, 100;
+			setunitdata .@mobs[.@i], UMOB_MATKMAX, 200;
 			setunitdata .@mobs[.@i], UMOB_DEF, .@def;
 			setunitdata .@mobs[.@i], UMOB_MDEF, .@mdef;
+			setunitdata .@mobs[.@i], UMOB_STR, 30;
+			setunitdata .@mobs[.@i], UMOB_AGI, 30;
+			setunitdata .@mobs[.@i], UMOB_VIT, 30;
+			setunitdata .@mobs[.@i], UMOB_INT, 30;
+			setunitdata .@mobs[.@i], UMOB_DEX, 30;
+			setunitdata .@mobs[.@i], UMOB_LUK, 30;
 		}
 	}
 	initnpctimer;
