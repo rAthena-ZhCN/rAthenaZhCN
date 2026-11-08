@@ -14,7 +14,7 @@ void SkillFeelingtheSunMoonandStars::castendNoDamageId(block_list *src, block_li
 
 	//AuronX reported you CAN memorize the same map as all three. [Skotlex]
 	if (sd) {
-		if(!sd->feel_map[skill_lv-1].index)
+		if(!sd->feel_map[skill_lv-1].index || sd->sc.getSCE(SC_HERO_SOUL) != nullptr)
 			clif_feel_req(sd->fd,sd, skill_lv);
 		else
 			clif_feel_info(sd, skill_lv-1, 1);

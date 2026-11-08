@@ -5341,6 +5341,20 @@ void status_calc_regen(block_list *bl, struct status_data *status, struct regen_
 		if( (skill=pc_checkskill(sd,MO_SPIRITSRECOVERY)) > 0 )
 			val += skill*2 + skill*status->max_sp/500;
 		sregen->sp = cap_value(val, 0, SHRT_MAX);
+
+		// Hero Soul: Taekwon rest recovery also works while standing or fighting.
+		if (sc && sc->getSCE(SC_HERO_SOUL) && regen->sregen) {
+			if ((skill=pc_checkskill(sd,TK_HPTIME)) > 0) {
+				val = skill*30 + skill*status->max_hp/500;
+				regen->sregen->hp = cap_value(regen->sregen->hp + val, 0, SHRT_MAX);
+			}
+			if ((skill=pc_checkskill(sd,TK_SPTIME)) > 0) {
+				val = skill*3 + skill*status->max_sp/500;
+				if ((skill=pc_checkskill(sd,SL_KAINA)) > 0)
+					val += (30+10*skill)*val/100;
+				regen->sregen->sp = cap_value(regen->sregen->sp + val, 0, SHRT_MAX);
+			}
+		}
 	}
 
 	if( bl->type == BL_HOM ) {
