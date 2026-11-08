@@ -966,6 +966,7 @@ OnTouch_:
 	else if (.@i == 3) .@mobs = 5;
 	else if (.@i < 7) .@mobs = 6;
 	else .@mobs = 7;
+	.@mobs = 1; // 每具尸体只生成1只蛆虫
 	getmapxy .@map$,.@x,.@y, BL_NPC;
 	specialeffect EF_VENOMDUST;
 	monster .@map$,.@x,.@y,"蛆虫",2467,.@mobs;
@@ -1586,6 +1587,7 @@ OnTouch_:
 	else if (.@i == 3) .@mobs = 5;
 	else if (.@i < 7) .@mobs = 6;
 	else .@mobs = 7;
+	.@mobs = 1; // 每具尸体只生成1只蛆虫
 	.@event$ = instance_npcname( strnpcinfo(0) ) + "::OnMobDead";
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
