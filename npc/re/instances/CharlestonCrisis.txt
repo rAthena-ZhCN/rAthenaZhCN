@@ -168,7 +168,7 @@ verus04,81,112,5	script	机械#mcd	PORTAL,{
 	case 2:
 		if (is_party_leader() == false) {
 			mes "[机器]";
-			mes "Teleporting...";
+			mes "传送中……";
 			next;
 			mes "[机器]";
 			mes "^ff0000上次使用后20小时内无法再次使用这台机器。^000000";
@@ -191,7 +191,7 @@ verus04,81,112,5	script	机械#mcd	PORTAL,{
 			setquest 13185;
 			specialeffect2 EF_READYPORTAL2;
 			specialeffect2 EF_PORTAL2;
-			mapannounce "verus04", strcharinfo(0) + "所在的队伍，" + getpartyname( getcharid(1) ) + ", is entering the " + .@md_display$ + ".", bc_map, 0x00ff99;
+			mapannounce "verus04", strcharinfo(0) + "所在的队伍，" + getpartyname( getcharid(1) ) + "，进入了" + .@md_display$ + ".", bc_map, 0x00ff99;
 			end;
 		}
 		end;
@@ -271,17 +271,17 @@ OnTouch_:
 	npctalk "维博士会把一切都告诉你。快去吧！";
 	emotion 19;
 	'ep15_1_mcd01 = 1;
-	monster 'map_name$,24,275, "Security Robot", 3127,1, instance_npcname("Charleston 1#0") + "::OnMyMobDead";	// KICK_STEP
+	monster 'map_name$,24,275, "通道保全设施", 3127,1, instance_npcname("查尔斯顿1号#0") + "::OnMyMobDead";	// KICK_STEP
 	close3;
 
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("Charleston 1#0") + "::OnMyMobDead" ) < 1) {
+	if (mobcount( 'map_name$, instance_npcname("查尔斯顿1号#0") + "::OnMyMobDead" ) < 1) {
 		initnpctimer;
 		mapannounce 'map_name$, "查尔斯顿1号：1号闸门已解除武装。请向西南方前进，前往下一道闸门。", bc_map, 0xffff00;
 	}
 	end;
 OnTimer1000:
-	donpcevent instance_npcname("1gate#1") + "::OnStart";
+	donpcevent instance_npcname("1号门#1") + "::OnStart";
 	stopnpctimer;
 	end;
 }
@@ -331,7 +331,7 @@ OnTouch_:
 		close;
 	}
 	if ('ep15_1_mcd01 == 1) {
-		.@charleston_1$ = instance_npcname("Charleston 1#1");
+		.@charleston_1$ = instance_npcname("查尔斯顿1号#1");
 		mes "[维博士]";
 		mes "查尔斯顿1号。查尔斯顿2号被强行连接到主计算机的一部分，我无法控制她。";
 		npctalk "维博士：查尔斯顿1号。查尔斯顿2号被强行连接到主计算机的一部分，我无法控制她。";
@@ -413,7 +413,7 @@ OnTouch_:
 	if ('ep15_1_mcd01 == 4) {
 		cutin "dalle01.bmp",2;
 		mes "[查尔斯顿1号]";
-		mes "Steps 和 Locksteps 正在工厂里大肆破坏。请先摧毁3个 Locksteps。我可以告诉你们它们的大致位置。";
+		mes "Steps 和 变异机器人s 正在工厂里大肆破坏。请先摧毁3个 变异机器人s。我可以告诉你们它们的大致位置。";
 		viewpoint 1,84,226,1,0xFF00FF;
 		viewpoint 1,126,84,2,0xFF00FF;
 		viewpoint 1,111,68,3,0xFF00FF;
@@ -446,8 +446,8 @@ OnTouch_:
 		npctalk "查尔斯顿1号：我告诉查尔斯顿2号她正处于延长维护中，但我们不知道这个延长维护状态会持续多久。";
 		next;
 		mes "[查尔斯顿1号]";
-		mes "Steps 和 Locksteps 正在工厂里大肆破坏。请先摧毁3个 Locksteps。我可以告诉你们它们的大致位置。";
-		npctalk "查尔斯顿1号：Steps 和 Locksteps 正在工厂里大肆破坏。请先摧毁3个 Locksteps。我可以告诉你们它们的大致位置。";
+		mes "Steps 和 变异机器人s 正在工厂里大肆破坏。请先摧毁3个 变异机器人s。我可以告诉你们它们的大致位置。";
+		npctalk "查尔斯顿1号：Steps 和 变异机器人s 正在工厂里大肆破坏。请先摧毁3个 变异机器人s。我可以告诉你们它们的大致位置。";
 		next;
 		mes "[查尔斯顿1号]";
 		mes "要是能把它们全部清除当然好，但现在我们应该先让工厂重新运转起来。";
@@ -460,14 +460,14 @@ OnTouch_:
 		if ('ep15_1_mcd01 != 3)
 			close3;
 		'ep15_1_mcd01 = 4;
-		.@label$ = instance_npcname("Charleston 1#1") + "::OnMyMobDead";
-		monster 'map_name$, 84,226, "Lockstep", 3126,1, .@label$;	// ROCK_STEP
-		monster 'map_name$,126, 84, "Lockstep", 3126,1, .@label$;
-		monster 'map_name$,111, 68, "Lockstep", 3126,1, .@label$;
-		monster 'map_name$,210,181, "Lockstep", 3126,1, .@label$;
-		monster 'map_name$,183,192, "Lockstep", 3126,1, .@label$;
-		monster 'map_name$,130,124, "Lockstep", 3126,1, .@label$;
-		monster 'map_name$, 54,108, "Lockstep", 3126,1, .@label$;
+		.@label$ = instance_npcname("查尔斯顿1号#1") + "::OnMyMobDead";
+		monster 'map_name$, 84,226, "变异机器人", 3126,1, .@label$;	// ROCK_STEP
+		monster 'map_name$,126, 84, "变异机器人", 3126,1, .@label$;
+		monster 'map_name$,111, 68, "变异机器人", 3126,1, .@label$;
+		monster 'map_name$,210,181, "变异机器人", 3126,1, .@label$;
+		monster 'map_name$,183,192, "变异机器人", 3126,1, .@label$;
+		monster 'map_name$,130,124, "变异机器人", 3126,1, .@label$;
+		monster 'map_name$, 54,108, "变异机器人", 3126,1, .@label$;
 		viewpoint 1,84,226,1,0xFF00FF;
 		viewpoint 1,126,84,2,0xFF00FF;
 		viewpoint 1,111,68,3,0xFF00FF;
@@ -476,7 +476,7 @@ OnTouch_:
 		viewpoint 1,130,124,6,0xFF00FF;
 		viewpoint 1,54,108,7,0xFF00FF;
 		close2;
-		disablenpc instance_npcname("5gate#1");
+		disablenpc instance_npcname("5号门#1");
 		cutin "",255;
 		end;
 	}
@@ -492,15 +492,15 @@ OnTouch_:
 	close3;
 
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("Charleston 1#1") + "::OnMyMobDead" ) == 4)
+	if (mobcount( 'map_name$, instance_npcname("查尔斯顿1号#1") + "::OnMyMobDead" ) == 4)
 		initnpctimer;
 	end;
 OnTimer300:
-	enablenpc instance_npcname("Charleston 1#2");
-	disablenpc instance_npcname("Charleston 1#1");
+	enablenpc instance_npcname("查尔斯顿1号#2");
+	disablenpc instance_npcname("查尔斯顿1号#1");
 	mapannounce 'map_name$, "查尔斯顿1号：啊，啊。麦克风测试。", bc_map, 0xffff00;
 	sleep 3000;
-	mapannounce 'map_name$, "查尔斯顿1号：看来你们已经解决了大部分 Locksteps。", bc_map, 0xffff00;
+	mapannounce 'map_name$, "查尔斯顿1号：看来你们已经解决了大部分 变异机器人s。", bc_map, 0xffff00;
 	sleep 3000;
 	mapannounce 'map_name$, "查尔斯顿1号：请回到实验室。", bc_map, 0xffff00;
 	stopnpctimer;
@@ -547,14 +547,14 @@ OnTimer300:
 		viewpoint 1,172,196,9,0xFF00FF;
 		viewpoint 1,126,84,10,0xFF00FF;
 		if ('ep15_1_mcd01 == 4) {
-			enablenpc instance_npcname("Backup Generator#1");
-			enablenpc instance_npcname("Backup Generator#2");
-			enablenpc instance_npcname("Backup Generator#3");
-			monster 'map_name$, 86,231, "Security Robot", 3127,1;	// KICK_STEP
-			monster 'map_name$,172,196, "Security Robot", 3127,1;
-			monster 'map_name$,126, 84, "Security Robot", 3127,1;
-			monster 'map_name$, 97,149, "Security Robot", 3127,1;
-			monster 'map_name$,160,151, "Security Robot", 3127,1;
+			enablenpc instance_npcname("备用发电机#1");
+			enablenpc instance_npcname("备用发电机#2");
+			enablenpc instance_npcname("备用发电机#3");
+			monster 'map_name$, 86,231, "通道保全设施", 3127,1;	// KICK_STEP
+			monster 'map_name$,172,196, "通道保全设施", 3127,1;
+			monster 'map_name$,126, 84, "通道保全设施", 3127,1;
+			monster 'map_name$, 97,149, "通道保全设施", 3127,1;
+			monster 'map_name$,160,151, "通道保全设施", 3127,1;
 			'ep15_1_mcd01 = 5;
 		}
 		close3;
@@ -581,8 +581,8 @@ OnTimer300:
 	if ('ep15_1_mcd01 > 11)
 		end;
 	if ('ep15_1_mcd01 == 8) {
-		.@npc2$ = instance_npcname("Charleston 2#0");
-		.@npc5$ = instance_npcname("Dr. Ve#1");
+		.@npc2$ = instance_npcname("查尔斯顿2号#0");
+		.@npc5$ = instance_npcname("维博士#1");
 		cutin "dalle01.bmp",2;
 		mes "[查尔斯顿1号]";
 		mes "你回来了。查尔斯顿2号就快可以重新启动了，这全亏了你。请稍等一下。";
@@ -605,7 +605,7 @@ OnTimer300:
 		next;
 		cutin "nale03.bmp",0;
 		mes "[查尔斯顿2号]";
-		mes "...Did I fail?";
+		mes "……我失败了吗？";
 		npctalk "查尔斯顿2号：……我失败了吗？", .@npc2$;
 		emotion 9, .@npc2$;
 		next;
@@ -655,7 +655,7 @@ OnTimer300:
 		next;
 		cutin "nale03.bmp",0;
 		mes "[查尔斯顿2号]";
-		mes "...Don't mock me.";
+		mes "……别嘲弄我。";
 		npctalk "查尔斯顿2号：……别嘲笑我。", .@npc2$;
 		emotion 9, .@npc2$;
 		next;
@@ -696,7 +696,7 @@ OnTimer300:
 		next;
 		cutin "dalle03.bmp",2;
 		mes "[查尔斯顿1号]";
-		mes "But...";
+		mes "但是……";
 		npctalk "查尔斯顿1号：可是……";
 		next;
 		cutin "nale03.bmp",0;
@@ -716,9 +716,9 @@ OnTimer300:
 		npctalk "查尔斯顿1号：她的长寿装置已经耗尽了，她跑不远的。请跟上她。";
 		close2;
 		cutin "",255;
-		disablenpc instance_npcname("Charleston 1#3");
-		enablenpc instance_npcname("Charleston 1#4");
-		enablenpc instance_npcname("Charleston 2#1");
+		disablenpc instance_npcname("查尔斯顿1号#3");
+		enablenpc instance_npcname("查尔斯顿1号#4");
+		enablenpc instance_npcname("查尔斯顿2号#1");
 		end;
 	}
 	cutin "dalle01.bmp",2;
@@ -746,7 +746,7 @@ OnTimer300:
 		cutin "dalle01.bmp",2;
 		mes "[查尔斯顿1号]";
 		mes "你会把我们也一起毁掉的！我们的主电源长寿装置还不完善！";
-		npctalk "查尔斯顿1号：你会把我们也一起毁掉的！我们的主电源长寿装置还不完善！！", instance_npcname("Charleston 1#4");
+		npctalk "查尔斯顿1号：你会把我们也一起毁掉的！我们的主电源长寿装置还不完善！！", instance_npcname("查尔斯顿1号#4");
 		next;
 		cutin "nale03.bmp",0;
 		mes "[查尔斯顿2号]";
@@ -761,9 +761,9 @@ OnTimer300:
 			close;
 		'ep15_1_mcd01 = 9;
 		close2;
-		donpcevent instance_npcname("battle#1") + "::OnStart";
-		disablenpc instance_npcname("6gate#1");
-		disablenpc instance_npcname("7gate#1");
+		donpcevent instance_npcname("战斗#1") + "::OnStart";
+		disablenpc instance_npcname("6号门#1");
+		disablenpc instance_npcname("7号门#1");
 		end;
 	}
 	cutin "nale01.bmp",0;
@@ -787,70 +787,70 @@ OnTimer300:
 	close3;
 }
 
-1@mcd,144,212,5,0	script	battle#1	HIDDEN_WARP_NPC,{
+1@mcd,144,212,5,0	script	战斗#1	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
 	sleep 2000;
-	.@npc1$ = instance_npcname("Charleston 2#1");
-	.@npc4$ = instance_npcname("Charleston 1#4");
+	.@npc1$ = instance_npcname("查尔斯顿2号#1");
+	.@npc4$ = instance_npcname("查尔斯顿1号#4");
 	npctalk "查尔斯顿2号：别插手！我不想伤害你！", .@npc1$;
 	sleep 3000;
 	npctalk "查尔斯顿1号：那就别再闹脾气了！", .@npc4$;
 	sleep 3000;
 	npctalk "查尔斯顿2号：你还是不把我当回事。等着瞧我向主计算机发出信号后会怎样。", .@npc1$;
 	specialeffect EF_BASH3D2, AREA, .@npc1$;
-	areamonster 'map_name$,134,202,154,222,"C-TYPE", 3128,4;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,4;// KICK_AND_KICK
 	sleep 3000;
 	npctalk "查尔斯顿2号：我的喽啰无穷无尽！", .@npc1$;
-	areamonster 'map_name$,134,202,154,222,"H-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,3;// KICK_AND_KICK
 	sleep 9000;
 	npctalk "查尔斯顿2号：放弃吧。不管你们愿不愿意，我都要毁掉这座工厂！", .@npc1$;
-	areamonster 'map_name$,134,202,154,222,"A-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"霹雳机器人", 3128,3;// KICK_AND_KICK
 	sleep 6000;
 	npctalk "查尔斯顿1号：哦，我们的实验室撑不住的！", .@npc4$;
-	areamonster 'map_name$,134,202,154,222,"L-TYPE", 3128,4;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,4;// KICK_AND_KICK
 	sleep 6000;
 	npctalk "查尔斯顿2号：我要毁掉一切！", .@npc1$;
-	areamonster 'map_name$,134,208,154,228,"N-TYPE", 3126,1;// ROCK_STEP
-	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,208,154,228,"变异机器人", 3126,1;// ROCK_STEP
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,3;// KICK_AND_KICK
 	sleep 2000;
-	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,3;// KICK_AND_KICK
 	sleep 2000;
-	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,3;// KICK_AND_KICK
 	sleep 2000;
-	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
+	areamonster 'map_name$,134,202,154,222,"变异机器人", 3128,3;// KICK_AND_KICK
 	sleep 5000;
 	npctalk "查尔斯顿2号：*喘气 喘气* 我好虚弱……", .@npc1$;
-	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,4;// KICK_AND_KICK
+	areamonster 'map_name$,136,204,152,220,"变异机器人", 3128,4;// KICK_AND_KICK
 	sleep 3000;
 	npctalk "查尔斯顿1号：要运行工厂数据，需要庞大的电力和数据处理能力。", .@npc4$;
-	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,4;// KICK_AND_KICK
+	areamonster 'map_name$,136,204,152,220,"变异机器人", 3128,4;// KICK_AND_KICK
 	sleep 3000;
 	npctalk "查尔斯顿2号：咕，你们阻止不了我！", .@npc1$;
-	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,5;// KICK_AND_KICK
+	areamonster 'map_name$,136,204,152,220,"变异机器人", 3128,5;// KICK_AND_KICK
 	sleep 3000;
-	donpcevent instance_npcname("battle#2") + "::OnStart";
+	donpcevent instance_npcname("战斗#2") + "::OnStart";
 	end;
 }
 
-1@mcd,144,212,5,0	script	battle#2	HIDDEN_WARP_NPC,{
+1@mcd,144,212,5,0	script	战斗#2	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
-	enablenpc instance_npcname("battle#2");
-	areamonster 'map_name$,136,205,152,221,"N-TYPE", 3127,3, instance_npcname("battle#2") + "::OnMyMobDead";// KICK_STEP
+	enablenpc instance_npcname("战斗#2");
+	areamonster 'map_name$,136,205,152,221,"变异机器人", 3127,3, instance_npcname("战斗#2") + "::OnMyMobDead";// KICK_STEP
 	end;
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("battle#2") + "::OnMyMobDead" ) < 1)
+	if (mobcount( 'map_name$, instance_npcname("战斗#2") + "::OnMyMobDead" ) < 1)
 		initnpctimer;
 	end;
 OnTimer300:
-	disablenpc instance_npcname("battle#2");
-	disablenpc instance_npcname("Charleston 2#1");
-	disablenpc instance_npcname("Charleston 1#4");
-	enablenpc instance_npcname("Charleston 2#2");
-	enablenpc instance_npcname("Charleston 1#5");
-	enablenpc instance_npcname("Dr. Ve#2");
-	disablenpc instance_npcname("Dr. Ve#1");
+	disablenpc instance_npcname("战斗#2");
+	disablenpc instance_npcname("查尔斯顿2号#1");
+	disablenpc instance_npcname("查尔斯顿1号#4");
+	enablenpc instance_npcname("查尔斯顿2号#2");
+	enablenpc instance_npcname("查尔斯顿1号#5");
+	enablenpc instance_npcname("维博士#2");
+	disablenpc instance_npcname("维博士#1");
 	stopnpctimer;
 	end;
 }
@@ -865,8 +865,8 @@ OnTimer300:
 	if ('ep15_1_mcd01 > 20)
 		end;
 	if ('ep15_1_mcd01 == 9) {
-		.@npc1$ = instance_npcname("Charleston 1#5");
-		.@npc5$ = instance_npcname("Dr. Ve#2");
+		.@npc1$ = instance_npcname("查尔斯顿1号#5");
+		.@npc5$ = instance_npcname("维博士#2");
 		cutin "dalle01.bmp",2;
 		mes "[查尔斯顿1号]";
 		mes "够了！我明白你正经历巨大的情绪波动，但这已经太过分了。";
@@ -937,7 +937,7 @@ OnTimer300:
 		npctalk "查尔斯顿2号：我要带走查尔斯顿3号。";
 		if ('ep15_1_mcd01 == 9) {
 			'ep15_1_mcd01 = 10;
-			disablenpc instance_npcname("Charleston 2#2");
+			disablenpc instance_npcname("查尔斯顿2号#2");
 		}
 		next;
 		cutin "dalle01.bmp",2;
@@ -953,14 +953,14 @@ OnTimer300:
 		close2;
 		cutin "",255;
 		disablenpc .@npc1$;
-		enablenpc instance_npcname("Charleston 2#3");
-		enablenpc instance_npcname("Charleston 1#6");
-		enablenpc instance_npcname("6gate#1");
-		enablenpc instance_npcname("7gate#1");
+		enablenpc instance_npcname("查尔斯顿2号#3");
+		enablenpc instance_npcname("查尔斯顿1号#6");
+		enablenpc instance_npcname("6号门#1");
+		enablenpc instance_npcname("7号门#1");
 		end;
 	}
 	mes "[查尔斯顿2号]";
-	mes "...I am responsible for the 3rd machine.";
+	mes "……我负责第3台机器。";
 	close2;
 	//cutin "dalle01.bmp",2;
 	cutin "",255;
@@ -1002,7 +1002,7 @@ OnTimer300:
 			mes "你能带来1个爆破粉末吗？如你所见，我被卡在访问装置上了。";
 			close3;
 		}
-		.@npc2$ = instance_npcname("Charleston 2#31");
+		.@npc2$ = instance_npcname("查尔斯顿2号#31");
 		cutin "dalle01.bmp",2;
 		delitem 6213,1;	// Explosive_Powder
 		mes "[查尔斯顿1号]";
@@ -1016,11 +1016,11 @@ OnTimer300:
 		mes "[查尔斯顿1号]";
 		npctalk "查尔斯顿1号：瞧！！！";
 		mes "瞧！！！";
-		specialeffect EF_LORD, AREA, instance_npcname("8gate#1");
+		specialeffect EF_LORD, AREA, instance_npcname("8号门#1");
 		next;
 		cutin "nale01.bmp",0;
 		mes "[查尔斯顿2号]";
-		mes "...You just blew up the door.";
+		mes "……你刚把门炸开了。";
 		npctalk "查尔斯顿2号：……你刚刚把门炸开了。", .@npc2$;
 		next;
 		cutin "dalle01.bmp",2;
@@ -1034,13 +1034,13 @@ OnTimer300:
 		npctalk "查尔斯顿2号：我们比赛谁先到查尔斯顿3号那里。先到她的人获胜。", .@npc2$;
 		close2;
 		cutin "",255;
-		if (isnpccloaked( instance_npcname("8gate#1") ) == true) {
-			disablenpc instance_npcname("Charleston 1#61");
+		if (isnpccloaked( instance_npcname("8号门#1") ) == true) {
+			disablenpc instance_npcname("查尔斯顿1号#61");
 			disablenpc .@npc2$;
-			cloakoffnpc instance_npcname("8gate#1");
-			enablenpc instance_npcname("Charleston 3#0");
-			enablenpc instance_npcname("Charleston 2#4");
-			enablenpc instance_npcname("Charleston 1#7");
+			cloakoffnpc instance_npcname("8号门#1");
+			enablenpc instance_npcname("查尔斯顿3号#0");
+			enablenpc instance_npcname("查尔斯顿2号#4");
+			enablenpc instance_npcname("查尔斯顿1号#7");
 		}
 		end;
 	}
@@ -1060,7 +1060,7 @@ OnTimer300:
 	close3;
 OnTouch_:
 	if ('ep15_1_mcd01 == 10) {
-		donpcevent instance_npcname("CoreDialog#3") + "::OnStart";
+		donpcevent instance_npcname("核心对话#3") + "::OnStart";
 		'ep15_1_mcd01 = 11;
 	}
 	end;
@@ -1076,8 +1076,8 @@ OnTouch_:
 1@mcd,15,15,5	script	核心对话#3	CLEAR_NPC,{
 	end;
 OnStart:
-	.@npc1$ = instance_npcname("Charleston 1#6");
-	.@npc2$ = instance_npcname("Charleston 2#3");
+	.@npc1$ = instance_npcname("查尔斯顿1号#6");
+	.@npc2$ = instance_npcname("查尔斯顿2号#3");
 	npctalk "查尔斯顿2号：查尔斯顿工厂现在由我控制。我要摧毁一切，这样就不会再有像我一样悲伤的机器人诞生在这世上了。", .@npc2$;
 	sleep 3000;
 	npctalk "查尔斯顿1号：我想理解你，但我无法感受到悲伤。", .@npc1$;
@@ -1121,8 +1121,8 @@ OnStart:
 	npctalk "查尔斯顿1号：我现在动不了。请给我带1个爆破粉末来。", .@npc1$;
 	disablenpc .@npc1$;
 	disablenpc .@npc2$;
-	enablenpc instance_npcname("Charleston 1#61");
-	enablenpc instance_npcname("Charleston 2#31");
+	enablenpc instance_npcname("查尔斯顿1号#61");
+	enablenpc instance_npcname("查尔斯顿2号#31");
 	end;
 }
 
@@ -1131,25 +1131,25 @@ OnStart:
 		end;
 	if ('ep15_1_mcd01 == 11) {
 		'ep15_1_mcd01 = 12;
-		donpcevent instance_npcname("boss#1") + "::OnStart";
+		donpcevent instance_npcname("首领#1") + "::OnStart";
 	}
 	end;
 }
 
 1@mcd,133,148,4	script	查尔斯顿1号#8	4_F_CHARLESTON01,{ end; }
 1@mcd,127,148,5	duplicate(查尔斯顿1号#8)	查尔斯顿2号#4	4_F_CHARLESTON02
-1@mcd,130,153,5	duplicate(查尔斯顿1号#8)	Charleston 3#0	4_F_CHARLESTON03
+1@mcd,130,153,5	duplicate(查尔斯顿1号#8)	查尔斯顿3号#0	4_F_CHARLESTON03
 
 // Dummy npc
-//1@mcd,7,7,5	script	boss#0	4_F_CHARLESTON03
+//1@mcd,7,7,5	script	首领#0	4_F_CHARLESTON03
 
 1@mcd,129,155,0	script	首领#1	HIDDEN_WARP_NPC,1,1,{
 	end;
 OnStart:
-	.@npc1$ = instance_npcname("Charleston 1#7");
-	.@npc2$ = instance_npcname("Charleston 2#4");
-	.@npc3$ = instance_npcname("Charleston 3#0");
-	.@npc4$ = instance_npcname("Charleston 1#8");
+	.@npc1$ = instance_npcname("查尔斯顿1号#7");
+	.@npc2$ = instance_npcname("查尔斯顿2号#4");
+	.@npc3$ = instance_npcname("查尔斯顿3号#0");
+	.@npc4$ = instance_npcname("查尔斯顿1号#8");
 	npctalk "查尔斯顿2号：这就是查尔斯顿3号。", .@npc2$;
 	sleep 3000;
 	npctalk "查尔斯顿1号：这个战斗单元装备了重型武器，攻防兼备。", .@npc1$;
@@ -1202,10 +1202,10 @@ OnStart:
 	end;
 OnTimer1000:
 	stopnpctimer;
-	disablenpc instance_npcname("boss#1");
-	donpcevent instance_npcname("boss#2") + "::OnStart";
-	disablenpc instance_npcname("Charleston 3#0");
-	disablenpc instance_npcname("Charleston 1#8");
+	disablenpc instance_npcname("首领#1");
+	donpcevent instance_npcname("首领#2") + "::OnStart";
+	disablenpc instance_npcname("查尔斯顿3号#0");
+	disablenpc instance_npcname("查尔斯顿1号#8");
 	'boss_status = 1;
 	end;
 }
@@ -1214,26 +1214,26 @@ OnTimer1000:
 	end;
 OnStart:
 	initnpctimer;
-	donpcevent instance_npcname("BOSS#23") + "::OnStart";
-	donpcevent instance_npcname("Bomb#23") + "::OnStart";
-	monster 'map_name$,129,149, "Charleston 3", 3124,1, instance_npcname("boss#2") + "::OnMyMobDead";	// CHARLESTON3
+	donpcevent instance_npcname("首领#23") + "::OnStart";
+	donpcevent instance_npcname("炸弹#23") + "::OnStart";
+	monster 'map_name$,129,149, "查尔斯顿3号", 3124,1, instance_npcname("首领#2") + "::OnMyMobDead";	// CHARLESTON3
 	end;
 OnTimer10000:
-	if (mobcount( 'map_name$, instance_npcname("boss#2") + "::OnMyMobDead" ) > 0) {
+	if (mobcount( 'map_name$, instance_npcname("首领#2") + "::OnMyMobDead" ) > 0) {
 		initnpctimer;
 		end;
 	}
 	stopnpctimer;
 	'boss_status = 0;
-	enablenpc instance_npcname("Charleston 2#5");
-	enablenpc instance_npcname("Charleston 1#9");
-	donpcevent instance_npcname("BOSS#23") + "::OnStop";
-	donpcevent instance_npcname("Bomb#23") + "::OnStop";
-	disablenpc instance_npcname("boss#2");
+	enablenpc instance_npcname("查尔斯顿2号#5");
+	enablenpc instance_npcname("查尔斯顿1号#9");
+	donpcevent instance_npcname("首领#23") + "::OnStop";
+	donpcevent instance_npcname("炸弹#23") + "::OnStop";
+	disablenpc instance_npcname("首领#2");
 	end;
 OnStop:
 	stopnpctimer;
-	disablenpc instance_npcname("boss#2");
+	disablenpc instance_npcname("首领#2");
 	end;
 OnMyMobDead:
 	end;
@@ -1251,16 +1251,16 @@ OnTimer10000:
 	}
 	.@r = rand(1,3);
 	if (.@r == 1)
-		areamonster 'map_name$,119,146,125,152,"A-TYPE", 3128,1;// KICK_AND_KICK
+		areamonster 'map_name$,119,146,125,152,"霹雳机器人", 3128,1;// KICK_AND_KICK
 	else if (.@r == 2)
-		areamonster 'map_name$,126,139,132,145,"A-TYPE", 3128,1;
+		areamonster 'map_name$,126,139,132,145,"霹雳机器人", 3128,1;
 	else
-		areamonster 'map_name$,133,146,139,152,"A-TYPE", 3128,1;
+		areamonster 'map_name$,133,146,139,152,"霹雳机器人", 3128,1;
 	initnpctimer;
 	end;
 OnStop:
 	stopnpctimer;
-	disablenpc instance_npcname("BOSS#23");
+	disablenpc instance_npcname("首领#23");
 	end;
 }
 
@@ -1274,24 +1274,24 @@ OnTimer30000:
 		stopnpctimer;
 		end;
 	}
-	.@label$ = instance_npcname("Bomb#23") + "::OnMyMobDead";
+	.@label$ = instance_npcname("炸弹#23") + "::OnMyMobDead";
 	killmonster 'map_name$, .@label$;
-	areamonster 'map_name$,127,162,131,166,"Bomb", 3161,1, .@label$;// BOMB
-	areamonster 'map_name$,120,159,124,163,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,116,152,120,156,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,116,145,120,149,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,119,139,123,143,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,124,134,128,138,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,137,157,141,161,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,132,135,136,139,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,137,138,141,142,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,139,143,143,147,"Bomb", 3161,1, .@label$;
-	areamonster 'map_name$,140,151,144,155,"Bomb", 3161,1, .@label$;
+	areamonster 'map_name$,127,162,131,166,"炸弹", 3161,1, .@label$;// BOMB
+	areamonster 'map_name$,120,159,124,163,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,116,152,120,156,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,116,145,120,149,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,119,139,123,143,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,124,134,128,138,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,137,157,141,161,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,132,135,136,139,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,137,138,141,142,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,139,143,143,147,"炸弹", 3161,1, .@label$;
+	areamonster 'map_name$,140,151,144,155,"炸弹", 3161,1, .@label$;
 	initnpctimer;
 	end;
 OnStop:
 	stopnpctimer;
-	disablenpc instance_npcname("Bomb#23");
+	disablenpc instance_npcname("炸弹#23");
 	end;
 OnMyMobDead:
 	end;
@@ -1301,7 +1301,7 @@ OnMyMobDead:
 	if ('ep15_1_mcd01 > 13) {
 		cutin "dalle04.bmp",2;
 		mes "[查尔斯顿1号]";
-		mes "#%@EGD&#(@#... Reinitializing the OS...";
+		mes "#%@EGD&#(@#……正在重新初始化OS……";
 		next;
 		cutin "",255;
 		mes "她发出奇怪的声音，无法运转了。";
@@ -1310,7 +1310,7 @@ OnMyMobDead:
 	if ('ep15_1_mcd01 == 14) {
 		cutin "dalle04.bmp",2;
 		mes "[查尔斯顿1号]";
-		mes "#%@EGD&#(@#... Reinitializing the OS...";
+		mes "#%@EGD&#(@#……正在重新初始化OS……";
 		next;
 		mes "她发出奇怪的声音，无法运转了。";
 		close3;
@@ -1323,7 +1323,7 @@ OnMyMobDead:
 		end;
 	if ('ep15_1_mcd01 == 12) {
 		'ep15_1_mcd01 = 13;
-		donpcevent instance_npcname("boss#3") + "::OnStart";
+		donpcevent instance_npcname("首领#3") + "::OnStart";
 	}
 	end;
 }
@@ -1342,11 +1342,11 @@ OnMyMobDead:
 		close2;
 		cutin "",255;
 		if ('ep15_1_mcd01 == 14) {
-			enablenpc instance_npcname("Charleston 2#7");
-			enablenpc instance_npcname("Dr. Ve#3");
-			enablenpc instance_npcname("9gate#1");
-			disablenpc instance_npcname("Charleston 2#6");
-			disablenpc instance_npcname("Dr. Ve#2");
+			enablenpc instance_npcname("查尔斯顿2号#7");
+			enablenpc instance_npcname("维博士#3");
+			enablenpc instance_npcname("9号门#1");
+			disablenpc instance_npcname("查尔斯顿2号#6");
+			disablenpc instance_npcname("维博士#2");
 		}
 		end;
 	}
@@ -1356,9 +1356,9 @@ OnMyMobDead:
 1@mcd,129,149,0	script	首领#3	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
-	.@npc1$ = instance_npcname("Charleston 1#9");
-	.@npc2$ = instance_npcname("Charleston 2#5");
-	.@npc3$ = instance_npcname("Charleston 2#6");
+	.@npc1$ = instance_npcname("查尔斯顿1号#9");
+	.@npc2$ = instance_npcname("查尔斯顿2号#5");
+	.@npc3$ = instance_npcname("查尔斯顿2号#6");
 	npctalk "查尔斯顿1号：查尔斯顿3号已摧毁。查尔斯顿2号已逃脱。查尔斯顿1号在战斗中受损。", .@npc1$;
 	sleep 3000;
 	npctalk "查尔斯顿2号：你为什么要这么做？你和我们一样是机器人。", .@npc2$;
@@ -1422,13 +1422,13 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer300:
-	disablenpc instance_npcname("Charleston 2#5");
-	enablenpc instance_npcname("Charleston 2#6");
-	donpcevent instance_npcname("boss#2") + "::OnStop";
+	disablenpc instance_npcname("查尔斯顿2号#5");
+	enablenpc instance_npcname("查尔斯顿2号#6");
+	donpcevent instance_npcname("首领#2") + "::OnStop";
 	stopnpctimer;
 	end;
 OnStop:
-	disablenpc instance_npcname("boss#2");
+	disablenpc instance_npcname("首领#2");
 	stopnpctimer;
 	end;
 }
@@ -1457,7 +1457,7 @@ OnStop:
 		end;
 	if ('ep15_1_mcd01 == 14) {
 		'ep15_1_mcd01 = 15;
-		donpcevent instance_npcname("end#1") + "::OnStart";
+		donpcevent instance_npcname("终点#1") + "::OnStart";
 	}
 	end;
 }
@@ -1465,8 +1465,8 @@ OnStop:
 1@mcd,129,149,0	script	终点#1	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
-	.@npc1$ = instance_npcname("Dr. Ve#3");
-	.@npc2$ = instance_npcname("Charleston 2#7");
+	.@npc1$ = instance_npcname("维博士#3");
+	.@npc2$ = instance_npcname("查尔斯顿2号#7");
 	npctalk "查尔斯顿2号：维博士，你早就知道会这样吗？告诉我！", .@npc2$;
 	sleep 3000;
 	npctalk "维博士：查尔斯顿1号已经告诉你了。她是你的制造者。", .@npc1$;
@@ -1514,11 +1514,11 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer300:
-	disablenpc instance_npcname("end#1");
-	disablenpc instance_npcname("Charleston 2#7");
-	disablenpc instance_npcname("Dr. Ve#3");
-	enablenpc instance_npcname("Charleston 2#8");
-	enablenpc instance_npcname("Dr. Ve#4");
+	disablenpc instance_npcname("终点#1");
+	disablenpc instance_npcname("查尔斯顿2号#7");
+	disablenpc instance_npcname("维博士#3");
+	enablenpc instance_npcname("查尔斯顿2号#8");
+	enablenpc instance_npcname("维博士#4");
 	stopnpctimer;
 	end;
 }
@@ -1548,7 +1548,7 @@ OnTimer300:
 	}
 	if ('ep15_1_mcd01 == 15) {
 		mes "[维博士]";
-		mes "Whew.";
+		mes "呼……";
 		next;
 		mes "[维博士]";
 		mes "我最好重置查尔斯顿2号并清除数据。这次真是千钧一发。";
@@ -1764,9 +1764,9 @@ OnTouch_:
 		mes "发电机应该已经运转了。工厂里充满了忙碌的声响。";
 		if ('ep15_1_mcd01 == 7) {
 			'ep15_1_mcd01 = 8;
-			donpcevent instance_npcname("GeneratorBroadcast#1") + "::OnStart";
-			disablenpc instance_npcname("Charleston 1#2");
-			enablenpc instance_npcname("Charleston 1#3");
+			donpcevent instance_npcname("发电机广播#1") + "::OnStart";
+			disablenpc instance_npcname("查尔斯顿1号#2");
+			enablenpc instance_npcname("查尔斯顿1号#3");
 			disablenpc();
 		}
 		close;
@@ -1800,17 +1800,17 @@ OnTimer1000:
 1@mcd,44,211,0	script	1号门#1	WARPNPC,3,3,{
 	end;
 OnStart:
-	enablenpc instance_npcname("1gate#1");
-	monster 'map_name$,33,59, "2nd Security Robot", 3127,1, instance_npcname("1gate#1") + "::OnMyMobDead";	// KICK_STEP
+	enablenpc instance_npcname("1号门#1");
+	monster 'map_name$,33,59, "第2号通道保全设施", 3127,1, instance_npcname("1号门#1") + "::OnMyMobDead";	// KICK_STEP
 	end;
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("1gate#1") + "::OnMyMobDead" ) < 1) {
+	if (mobcount( 'map_name$, instance_npcname("1号门#1") + "::OnMyMobDead" ) < 1) {
 		mapannounce 'map_name$, "查尔斯顿1号：2号闸门已解除。请向东南方前往下一道闸门。", bc_map, 0xffff00;
 		initnpctimer;
 	}
 	end;
 OnTimer1000:
-	donpcevent instance_npcname("2gate#1") + "::OnStart";
+	donpcevent instance_npcname("2号门#1") + "::OnStart";
 	stopnpctimer;
 	end;
 OnTouch_:
@@ -1821,17 +1821,17 @@ OnTouch_:
 1@mcd,58,72,0	script	2号门#1	WARPNPC,3,3,{
 	end;
 OnStart:
-	enablenpc instance_npcname("2gate#1");
-	monster 'map_name$,239,30, "3rd Security Robot", 3127,1, instance_npcname("2gate#1") + "::OnMyMobDead";	// KICK_STEP
+	enablenpc instance_npcname("2号门#1");
+	monster 'map_name$,239,30, "第3号通道保全设施", 3127,1, instance_npcname("2号门#1") + "::OnMyMobDead";	// KICK_STEP
 	end;
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("2gate#1") + "::OnMyMobDead" ) < 1) {
+	if (mobcount( 'map_name$, instance_npcname("2号门#1") + "::OnMyMobDead" ) < 1) {
 		mapannounce 'map_name$, "查尔斯顿1号：3号闸门已解除。请向东前往下一道闸门。", bc_map, 0xffff00;
 		initnpctimer;
 	}
 	end;
 OnTimer1000:
-	donpcevent instance_npcname("3gate#1") + "::OnStart";
+	donpcevent instance_npcname("3号门#1") + "::OnStart";
 	stopnpctimer;
 	end;
 OnTouch_:
@@ -1842,17 +1842,17 @@ OnTouch_:
 1@mcd,104,50,0	script	3号门#1	WARPNPC,3,3,{
 	end;
 OnStart:
-	enablenpc instance_npcname("3gate#1");
-	monster 'map_name$,281,183, "4th Security Robot", 3127,1, instance_npcname("3gate#1") + "::OnMyMobDead";	// KICK_STEP
+	enablenpc instance_npcname("3号门#1");
+	monster 'map_name$,281,183, "第4号通道保全设施", 3127,1, instance_npcname("3号门#1") + "::OnMyMobDead";	// KICK_STEP
 	end;
 OnMyMobDead:
-	if (mobcount( 'map_name$, instance_npcname("3gate#1") + "::OnMyMobDead" ) < 1) {
+	if (mobcount( 'map_name$, instance_npcname("3号门#1") + "::OnMyMobDead" ) < 1) {
 		mapannounce 'map_name$, "查尔斯顿1号：4号闸门已解除。请前往中央3号线附近的实验室。", bc_map, 0xffff00;
 		initnpctimer;
 	}
 	end;
 OnTimer1000:
-	enablenpc instance_npcname("4gate#1");
+	enablenpc instance_npcname("4号门#1");
 	stopnpctimer;
 	end;
 OnTouch_:
@@ -1894,77 +1894,77 @@ OnTouch_:
 	disablenpc();
 	switch( atoi(strnpcinfo(2)) ) {
 	case 1:
-		areamonster 'map_name$,106,246,115,256,"Security robot", 3128,5;	// KICK_AND_KICK
-		areamonster 'map_name$,108,248,114,254,"Security robot", 3128,2;
+		areamonster 'map_name$,106,246,115,256,"通道保全设施", 3128,5;	// KICK_AND_KICK
+		areamonster 'map_name$,108,248,114,254,"通道保全设施", 3128,2;
 		end;
 	case 2:
-		areamonster 'map_name$,47,223,57,233,"Security robot", 3128,5;
-		areamonster 'map_name$,49,225,55,231,"Security robot", 3128,2;
+		areamonster 'map_name$,47,223,57,233,"通道保全设施", 3128,5;
+		areamonster 'map_name$,49,225,55,231,"通道保全设施", 3128,2;
 		end;
 	case 3:
-		areamonster 'map_name$, 21,158, 31,168,"Security robot", 3128,5;
-		areamonster 'map_name$, 32, 93, 42,103,"Security robot", 3128,2;
-		areamonster 'map_name$, 49, 72, 59, 82,"Security robot", 3128,5;
-		areamonster 'map_name$, 34, 60, 44, 70,"Security robot", 3128,3;
+		areamonster 'map_name$, 21,158, 31,168,"通道保全设施", 3128,5;
+		areamonster 'map_name$, 32, 93, 42,103,"通道保全设施", 3128,2;
+		areamonster 'map_name$, 49, 72, 59, 82,"通道保全设施", 3128,5;
+		areamonster 'map_name$, 34, 60, 44, 70,"通道保全设施", 3128,3;
 		end;
 	case 4:
-		areamonster 'map_name$, 85, 39,101, 55,"Security robot", 3128,8;
+		areamonster 'map_name$, 85, 39,101, 55,"通道保全设施", 3128,8;
 		end;
 	case 5:
-		areamonster 'map_name$,120, 23,130, 33,"Security robot", 3128,5;
-		areamonster 'map_name$,147, 26,151, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,175, 26,179, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,194, 26,198, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,208, 26,212, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,221, 26,225, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,203, 26,207, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,128, 26,132, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,153, 26,157, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,163, 26,167, 30,"Security robot", 3128,1;
-		areamonster 'map_name$,229, 19,249, 39,"Security robot", 3128,10;
+		areamonster 'map_name$,120, 23,130, 33,"通道保全设施", 3128,5;
+		areamonster 'map_name$,147, 26,151, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,175, 26,179, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,194, 26,198, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,208, 26,212, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,221, 26,225, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,203, 26,207, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,128, 26,132, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,153, 26,157, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,163, 26,167, 30,"通道保全设施", 3128,1;
+		areamonster 'map_name$,229, 19,249, 39,"通道保全设施", 3128,10;
 		end;
 	case 6:
-		areamonster 'map_name$,161, 48,169, 56,"Security robot", 3128,5;
-		areamonster 'map_name$,187, 59,195, 67,"Security robot", 3128,2;
-		areamonster 'map_name$,213, 82,221, 90,"Security robot", 3128,2;
+		areamonster 'map_name$,161, 48,169, 56,"通道保全设施", 3128,5;
+		areamonster 'map_name$,187, 59,195, 67,"通道保全设施", 3128,2;
+		areamonster 'map_name$,213, 82,221, 90,"通道保全设施", 3128,2;
 		end;
 	case 7:
-		areamonster 'map_name$,224,195,232,203,"Security robot", 3128,5;
-		areamonster 'map_name$,218, 94,226,102,"Security robot", 3128,2;
-		areamonster 'map_name$,231,136,239,144,"Security robot", 3128,2;
-		areamonster 'map_name$,228,172,236,180,"Security robot", 3128,2;
-		areamonster 'map_name$,272,173,292,193,"Security robot", 3128,8;
+		areamonster 'map_name$,224,195,232,203,"通道保全设施", 3128,5;
+		areamonster 'map_name$,218, 94,226,102,"通道保全设施", 3128,2;
+		areamonster 'map_name$,231,136,239,144,"通道保全设施", 3128,2;
+		areamonster 'map_name$,228,172,236,180,"通道保全设施", 3128,2;
+		areamonster 'map_name$,272,173,292,193,"通道保全设施", 3128,8;
 		end;
 	case 8:
-		areamonster 'map_name$,129,228,137,236,"Security robot", 3128,5;
-		areamonster 'map_name$,177,233,179,235,"Security robot", 3128,1;
-		areamonster 'map_name$,154,247,162,255,"Security robot", 3128,2;
-		areamonster 'map_name$,154,227,162,235,"Security robot", 3128,1;
-		areamonster 'map_name$,174,216,182,224,"Security robot", 3128,3;
-		areamonster 'map_name$,199,196,207,204,"Security robot", 3128,3;
+		areamonster 'map_name$,129,228,137,236,"通道保全设施", 3128,5;
+		areamonster 'map_name$,177,233,179,235,"通道保全设施", 3128,1;
+		areamonster 'map_name$,154,247,162,255,"通道保全设施", 3128,2;
+		areamonster 'map_name$,154,227,162,235,"通道保全设施", 3128,1;
+		areamonster 'map_name$,174,216,182,224,"通道保全设施", 3128,3;
+		areamonster 'map_name$,199,196,207,204,"通道保全设施", 3128,3;
 		end;
 	case 9:
-		areamonster 'map_name$,127, 65,135, 73,"Security robot", 3128,5;
-		areamonster 'map_name$,181,110,189,118,"Security robot", 3128,3;
-		areamonster 'map_name$,122, 86,130, 94,"Security robot", 3128,3;
-		areamonster 'map_name$,183,140,203,160,"Security robot", 3128,8;
+		areamonster 'map_name$,127, 65,135, 73,"通道保全设施", 3128,5;
+		areamonster 'map_name$,181,110,189,118,"通道保全设施", 3128,3;
+		areamonster 'map_name$,122, 86,130, 94,"通道保全设施", 3128,3;
+		areamonster 'map_name$,183,140,203,160,"通道保全设施", 3128,8;
 		end;
 	case 10:
-		areamonster 'map_name$,123,105,131,113,"Security robot", 3128,4;
-		areamonster 'map_name$, 79,146, 87,154,"Security robot", 3128,3;
-		areamonster 'map_name$,110,188,118,196,"Security robot", 3128,3;
-		areamonster 'map_name$,148,183,156,191,"Security robot", 3128,3;
-		areamonster 'map_name$,127,172,131,176,"Security robot", 3128,1;
-		areamonster 'map_name$,108,168,112,172,"Security robot", 3128,1;
-		areamonster 'map_name$, 96,151,100,155,"Security robot", 3128,1;
-		areamonster 'map_name$,106,128,110,132,"Security robot", 3128,1;
-		areamonster 'map_name$,146,128,150,132,"Security robot", 3128,1;
-		areamonster 'map_name$,158,148,162,152,"Security robot", 3128,1;
-		areamonster 'map_name$, 91,117, 99,125,"Security robot", 3128,3;
-		areamonster 'map_name$, 77,150, 85,158,"Security robot", 3128,3;
-		areamonster 'map_name$, 64, 81, 94,111,"Security robot", 3128,10;
-		areamonster 'map_name$, 40,145, 48,153,"Security robot", 3128,4;
-		areamonster 'map_name$, 58, 99, 66,107,"Security robot", 3128,4;
+		areamonster 'map_name$,123,105,131,113,"通道保全设施", 3128,4;
+		areamonster 'map_name$, 79,146, 87,154,"通道保全设施", 3128,3;
+		areamonster 'map_name$,110,188,118,196,"通道保全设施", 3128,3;
+		areamonster 'map_name$,148,183,156,191,"通道保全设施", 3128,3;
+		areamonster 'map_name$,127,172,131,176,"通道保全设施", 3128,1;
+		areamonster 'map_name$,108,168,112,172,"通道保全设施", 3128,1;
+		areamonster 'map_name$, 96,151,100,155,"通道保全设施", 3128,1;
+		areamonster 'map_name$,106,128,110,132,"通道保全设施", 3128,1;
+		areamonster 'map_name$,146,128,150,132,"通道保全设施", 3128,1;
+		areamonster 'map_name$,158,148,162,152,"通道保全设施", 3128,1;
+		areamonster 'map_name$, 91,117, 99,125,"通道保全设施", 3128,3;
+		areamonster 'map_name$, 77,150, 85,158,"通道保全设施", 3128,3;
+		areamonster 'map_name$, 64, 81, 94,111,"通道保全设施", 3128,10;
+		areamonster 'map_name$, 40,145, 48,153,"通道保全设施", 3128,4;
+		areamonster 'map_name$, 58, 99, 66,107,"通道保全设施", 3128,4;
 		end;
 	}
 }
@@ -1981,11 +1981,11 @@ OnTouch_:
 1@mcd,114,82,4	script	伊古#01	4_F_IU,{
 	cutin "igu04.bmp",2;
 	if (isbegin_quest(13186) == 0) {
-		mes "[IGU]";
+		mes "[伊古]";
 		mes "我跟着纽沃兹来的。他现在在哪儿？";
 		close3;
 	}
-	mes "[IGU]";
+	mes "[伊古]";
 	mes "享受这场冒险吗？这里到处都是机械。这里以前是书房。看到那边的那些书了吗？";
 	close3;
 }
@@ -2072,11 +2072,11 @@ OnTouch_:
 	case 2:
 		mes "[帮手！]";
 		mes "开启传送点。";
-		enablenpc instance_npcname("1gate");
-		enablenpc instance_npcname("2gate");
-		enablenpc instance_npcname("3gate");
-		enablenpc instance_npcname("4gate");
-		enablenpc instance_npcname("5gate");
+		enablenpc instance_npcname("1号门#1");
+		enablenpc instance_npcname("2号门#1");
+		enablenpc instance_npcname("3号门#1");
+		enablenpc instance_npcname("4号门#1");
+		enablenpc instance_npcname("5号门#1");
 		close;
 	case 3:
 		close2;
@@ -2088,8 +2088,8 @@ OnTouch_:
 			'ep15_1_mcd01 = 0;
 			break;
 		case 2:
-			enablenpc instance_npcname("Charleston 1#2");
-			disablenpc instance_npcname("Charleston 1#1");
+			enablenpc instance_npcname("查尔斯顿1号#2");
+			disablenpc instance_npcname("查尔斯顿1号#1");
 			mapannounce 'map_name$, "查尔斯顿1号：啊，啊。麦克风测试。", bc_map, 0xffff00;
 			sleep2 3000;
 			mapannounce 'map_name$, "查尔斯顿1号：看来你已经解决掉大部分变异机器人了。", bc_map, 0xffff00;
@@ -2098,29 +2098,29 @@ OnTouch_:
 			'ep15_1_mcd01 = 4;
 			break;
 		case 3:
-			enablenpc instance_npcname("Charleston 1#2");
-			disablenpc instance_npcname("Charleston 1#1");
+			enablenpc instance_npcname("查尔斯顿1号#2");
+			disablenpc instance_npcname("查尔斯顿1号#1");
 			'ep15_1_mcd01 = 8;
 			break;
 		case 4:
-			enablenpc instance_npcname("Charleston 1#6");
-			enablenpc instance_npcname("Charleston 2#3");
+			enablenpc instance_npcname("查尔斯顿1号#6");
+			enablenpc instance_npcname("查尔斯顿2号#3");
 			'ep15_1_mcd01 = 10;
 			close2;
 			warp 'map_name$,130,120;
 			end;
 		case 5:
 			'ep15_1_mcd01 = 11;
-			enablenpc instance_npcname("Charleston 1#7");
-			enablenpc instance_npcname("Charleston 2#4");
-			enablenpc instance_npcname("Charleston 3#0");
+			enablenpc instance_npcname("查尔斯顿1号#7");
+			enablenpc instance_npcname("查尔斯顿2号#4");
+			enablenpc instance_npcname("查尔斯顿3号#0");
 			close2;
 			warp 'map_name$,130,145;
 			end;
 		case 6:
 			'ep15_1_mcd01 = 12;
-			enablenpc instance_npcname("Charleston 2#5");
-			enablenpc instance_npcname("Charleston 1#9");
+			enablenpc instance_npcname("查尔斯顿2号#5");
+			enablenpc instance_npcname("查尔斯顿1号#9");
 			break;
 		}
 		break;
@@ -2134,51 +2134,51 @@ OnInstanceInit:
 	'boss_status = 0;
 	'map_name$ = instance_mapname("1@mcd");
 
-	disablenpc instance_npcname("Charleston 1#2");
-	disablenpc instance_npcname("Charleston 1#3");
-	disablenpc instance_npcname("Charleston 2#1");
-	disablenpc instance_npcname("Charleston 1#4");
-	disablenpc instance_npcname("battle#1");
-	disablenpc instance_npcname("battle#2");
-	disablenpc instance_npcname("Charleston 2#2");
-	disablenpc instance_npcname("Charleston 1#5");
-	disablenpc instance_npcname("Dr. Ve#2");
-	disablenpc instance_npcname("Charleston 1#6");
-	disablenpc instance_npcname("Charleston 1#61");
-	disablenpc instance_npcname("Charleston 2#3");
-	disablenpc instance_npcname("Charleston 2#31");
-	disablenpc instance_npcname("CoreDialog#3");
-	disablenpc instance_npcname("Charleston 1#7");
-	disablenpc instance_npcname("Charleston 1#8");
-	disablenpc instance_npcname("Charleston 2#4");
-	disablenpc instance_npcname("Charleston 3#0");
-	// disablenpc instance_npcname("boss#0");
-	disablenpc instance_npcname("boss#1");
-	disablenpc instance_npcname("BOSS#23");
-	disablenpc instance_npcname("Bomb#23");
-	disablenpc instance_npcname("Charleston 1#9");
-	disablenpc instance_npcname("Charleston 2#5");
-	disablenpc instance_npcname("Charleston 2#6");
-	disablenpc instance_npcname("boss#3");
-	disablenpc instance_npcname("Dr. Ve#3");
-	disablenpc instance_npcname("Charleston 2#7");
-	disablenpc instance_npcname("end#1");
-	disablenpc instance_npcname("Dr. Ve#4");
-	disablenpc instance_npcname("Charleston 2#8");
-	disablenpc instance_npcname("Backup Generator#1");
-	disablenpc instance_npcname("Backup Generator#2");
-	disablenpc instance_npcname("Backup Generator#3");
-	disablenpc instance_npcname("1gate#1");
-	disablenpc instance_npcname("2gate#1");
-	disablenpc instance_npcname("3gate#1");
-	disablenpc instance_npcname("4gate#1");
-	cloakonnpc instance_npcname("8gate#1");
-	disablenpc instance_npcname("9gate#1");
+	disablenpc instance_npcname("查尔斯顿1号#2");
+	disablenpc instance_npcname("查尔斯顿1号#3");
+	disablenpc instance_npcname("查尔斯顿2号#1");
+	disablenpc instance_npcname("查尔斯顿1号#4");
+	disablenpc instance_npcname("战斗#1");
+	disablenpc instance_npcname("战斗#2");
+	disablenpc instance_npcname("查尔斯顿2号#2");
+	disablenpc instance_npcname("查尔斯顿1号#5");
+	disablenpc instance_npcname("维博士#2");
+	disablenpc instance_npcname("查尔斯顿1号#6");
+	disablenpc instance_npcname("查尔斯顿1号#61");
+	disablenpc instance_npcname("查尔斯顿2号#3");
+	disablenpc instance_npcname("查尔斯顿2号#31");
+	disablenpc instance_npcname("核心对话#3");
+	disablenpc instance_npcname("查尔斯顿1号#7");
+	disablenpc instance_npcname("查尔斯顿1号#8");
+	disablenpc instance_npcname("查尔斯顿2号#4");
+	disablenpc instance_npcname("查尔斯顿3号#0");
+	// disablenpc instance_npcname("首领#0");
+	disablenpc instance_npcname("首领#1");
+	disablenpc instance_npcname("首领#23");
+	disablenpc instance_npcname("炸弹#23");
+	disablenpc instance_npcname("查尔斯顿1号#9");
+	disablenpc instance_npcname("查尔斯顿2号#5");
+	disablenpc instance_npcname("查尔斯顿2号#6");
+	disablenpc instance_npcname("首领#3");
+	disablenpc instance_npcname("维博士#3");
+	disablenpc instance_npcname("查尔斯顿2号#7");
+	disablenpc instance_npcname("终点#1");
+	disablenpc instance_npcname("维博士#4");
+	disablenpc instance_npcname("查尔斯顿2号#8");
+	disablenpc instance_npcname("备用发电机#1");
+	disablenpc instance_npcname("备用发电机#2");
+	disablenpc instance_npcname("备用发电机#3");
+	disablenpc instance_npcname("1号门#1");
+	disablenpc instance_npcname("2号门#1");
+	disablenpc instance_npcname("3号门#1");
+	disablenpc instance_npcname("4号门#1");
+	cloakonnpc instance_npcname("8号门#1");
+	disablenpc instance_npcname("9号门#1");
 
 	// workaround for permanent monsters
-	.@event$ = instance_npcname("Charleston Assistant#1") + "::OnMyMobDead";
-	monster 'map_name$,0,0,"--ja--", 3125,100, .@event$;	// STEP
-	monster 'map_name$,0,0,"--ja--", 3128,20, .@event$;		// KICK_AND_KICK
+	.@event$ = instance_npcname("查尔斯顿助手#1") + "::OnMyMobDead";
+	monster 'map_name$,0,0,"实验体", 3125,100, .@event$;	// STEP
+	monster 'map_name$,0,0,"实验体", 3128,20, .@event$;		// KICK_AND_KICK
 	end;
 
 OnMyMobDead:
@@ -2187,6 +2187,6 @@ OnMyMobDead:
 	.@time = 120000 + rand(60000);
 	.@mob_id = killedrid;
 	sleep .@time;
-	monster 'map_name$,0,0,"--ja--", .@mob_id,1, instance_npcname("Charleston Assistant#1") + "::OnMyMobDead";
+	monster 'map_name$,0,0,"实验体", .@mob_id,1, instance_npcname("查尔斯顿助手#1") + "::OnMyMobDead";
 	end;
 }
