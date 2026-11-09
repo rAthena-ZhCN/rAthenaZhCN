@@ -169,14 +169,18 @@ OnTouch:
 			mes "[房屋门]";
 			mes "门锁住了。";
 			mes "钥匙应该就在房屋周围。";
+			getmapxy(.@map$, .@x, .@y, BL_PC);
+			warp .@map$,79,166;
 			close;
 		}
 		set WH_STAGE, 2;
-		warp instance_mapname("1@4win"),345,19;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,345,19;
 		end;
 	}
 	if (WH_STAGE == 2) {
-		warp instance_mapname("1@4win"),345,19;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,345,19;
 		end;
 	}
 	dispbottom "房屋的门紧闭着。";
@@ -287,7 +291,8 @@ OnTouch:
 	mes "食物存量：" + WH_FOOD + "%。";
 	mes "饮水存量：" + WH_WATER + "%。";
 	next;
-	warp instance_mapname("1@4win"),352,33;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,352,33;
 	dispbottom "你睡了一觉。第" + WH_DAY + "天开始了。";
 	close;
 }
@@ -450,7 +455,7 @@ OnTouch:
 }
 
 // 第二张室外：红色药草
-1@4win,160,177,0	script(DISABLED)	红草#1	RED_PLANT,{
+1@4win,160,177,0	script	红草#1	RED_PLANT,{
 	if (WH_STAGE != 3) {
 		mes "红色药草在风中摇晃。";
 		close;
@@ -462,7 +467,7 @@ OnTouch:
 	set WH_FOOD_CARRY, WH_FOOD_CARRY + 15;
 	mes "你采集了一株红色药草。";
 	mes "身上的食物量 +15%。回屋放进粮食仓库才算入仓。";
-	disablenpc instance_npcname("红草#" + strnpcinfo(2), instance_id(IM_PARTY));
+	disablenpc();
 	close;
 }
 1@4win,155,167,0	duplicate(红草#1)	红草#2	RED_PLANT
@@ -481,7 +486,7 @@ OnTouch:
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP1, 1;
-		setnpcdisplay strnpcinfo(3), JT_4_CREEPER;
+		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -492,25 +497,25 @@ OnTouch:
 	if (WH_TRAP1 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP1, 0;
-		setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
@@ -526,7 +531,7 @@ OnTouch:
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP2, 1;
-		setnpcdisplay strnpcinfo(3), JT_4_CREEPER;
+		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -537,25 +542,25 @@ OnTouch:
 	if (WH_TRAP2 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP2, 0;
-		setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
@@ -597,10 +602,11 @@ OnTouch:
 // 第三张室外：离开副本
 // 房门使用普通传送点 warp
 
-1@4win,201,169,0	script	房屋门2#windhawk	WARPNPC,2,2,{
+1@4win,200,168,0	script	房屋门2#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE == 3 || WH_STAGE == 4) {
-		warp instance_mapname("1@4win"),345,19;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,345,19;
 		end;
 	}
 	dispbottom "现在还不能进入。";
@@ -615,15 +621,18 @@ OnTouch:
 			mes "先看看屋里的情况。";
 			close;
 		}
-		warp instance_mapname("1@4win"),201,175;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,199,165;
 		end;
 	}
 	if (WH_STAGE == 3) {
-		warp instance_mapname("1@4win"),201,169;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,199,165;
 		end;
 	}
 	if (WH_STAGE == 4) {
-		warp instance_mapname("1@4win"),323,169;
+	getmapxy(.@map$, .@x, .@y, BL_PC);
+	warp .@map$,323,169;
 		end;
 	}
 	dispbottom "门外的风很大。";
