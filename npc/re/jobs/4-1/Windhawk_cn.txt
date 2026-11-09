@@ -216,6 +216,16 @@ OnInit:
 
 // 噜噜卡森林：青蛙雕像
 um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
+	if (WH_TALK < 2) {
+		mes "[青蛙雕像]";
+		mes "现在还不是启动试炼的时候。";
+		close;
+	}
+	if (WH_STAGE < 1 || WH_STAGE >= 5) {
+		mes "[青蛙雕像]";
+		mes "这条试炼之路已经结束了。";
+		close;
+	}
 	if (getcharid(1) == 0) {
 		mes "青蛙雕像的眼睛微微发亮。";
 		mes "进入试炼需要组队，即使队伍里只有你一个人。";
@@ -229,44 +239,6 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 	mes "选择转动的方向。";
 	switch(select("往东转:往西转:往南转:往北转")) {
 		case 1:
-			// 测试用：点击青蛙即重置进度并开启新副本
-			.@old = instance_id(IM_PARTY);
-			if (.@old) instance_destroy(.@old);
-			set WH_STAGE, 1;
-			set WH_TALK, 0;
-			set WH_INTRO, 0;
-			set WH_LEAVE, 0;
-			set WH_KEY, 0;
-			set WH_DAY, 0;
-			set WH_FOOD, 0;
-			set WH_WATER, 0;
-			set WH_WOOD, 0;
-	set WH_FOOD_CARRY, 0;
-	set WH_CARRY, 0;
-	set WH_ANIMAL_CARRY, 0;
-			set WH_FIRE, 0;
-			set WH_POINTS, 0;
-			set WH_TOOL, 0;
-			set WH_CARRY, 0;
-			set WH_TRAP, 0;
-			set WH_ANIMAL, 0;
-			set WH_FOOD_CARRY, 0;
-			set WH_ANIMAL_CARRY, 0;
-			set WH_TRAP1, 0;
-			set WH_TRAP2, 0;
-			set WH_PET, 0;
-			if (checkquest(5901) != -1) erasequest 5901;
-			if (checkquest(5902) != -1) erasequest 5902;
-			if (checkquest(5903) != -1) erasequest 5903;
-			if (checkquest(5904) != -1) erasequest 5904;
-			if (checkquest(5905) != -1) erasequest 5905;
-			if (checkquest(5906) != -1) erasequest 5906;
-			if (checkquest(5907) != -1) erasequest 5907;
-		// 5901/5902 已在第一段处理
-		// 5901/5902 已在第一段处理
-		// 5901/5902 已在第一段处理
-		// 5901/5902 已在第一段处理
-			setquest 5903;
 			.@iid = instance_create("Windhawk", IM_PARTY);
 			if (.@iid < 0 && .@iid != -3) {
 				mes "试炼暂时无法开始，请稍后再试。";
@@ -1143,7 +1115,12 @@ um_fild01,50,340,4	script	帐篷主人#outside	4_4job_robin,{
 					mes "恭喜你成为能边驾驭风边战斗的风鹰狩猎者。";
 					next;
 					set WH_STAGE, 6;
-					mes "测试版暂不执行最终转职。";
+					jobchange JOB_WINDHAWK;
+					getitem 1000311, 1;
+					getitem 490087, 1;
+					if (checkquest(5907) != -1) completequest 5907;
+					mes "[帐篷的主人]";
+					mes "从现在起，你就是风鹰狩猎者了。";
 					close;
 				}
 				mes "[帐篷的主人]";
