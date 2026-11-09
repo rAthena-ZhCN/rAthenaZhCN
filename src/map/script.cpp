@@ -15600,6 +15600,31 @@ BUILDIN_FUNC(skillposeffect)
 
 /// npcskilleffect <skill id>,<level>,<x>,<y>
 /// npcskilleffect "<skill name>",<level>,<x>,<y>
+/// skillnodamage <skill id>,<level>{,<game id>} - sends ZC_USE_SKILL visual packet
+BUILDIN_FUNC(skillnodamage)
+{
+	block_list* bl;
+	map_session_data* sd;
+
+	if (script_hasdata(st, 4)) {
+		if (!script_rid2bl(4, bl))
+			return SCRIPT_CMD_SUCCESS;
+	} else {
+		if (!script_rid2sd(sd))
+			return SCRIPT_CMD_SUCCESS;
+		bl = sd;
+	}
+
+	uint16 skill_id = ( script_isstring(st, 2) ? skill_name2id(script_getstr(st, 2)) : script_getnum(st, 2) );
+	if (skill_db.find(skill_id) == nullptr) {
+		ShowError("buildin_skillnodamage: Invalid skill defined (%s)!\n", script_getstr(st, 2));
+		return SCRIPT_CMD_FAILURE;
+	}
+	uint16 skill_lv = script_getnum(st, 3);
+	clif_skill_nodamage(bl, *bl, skill_id, skill_lv);
+	return SCRIPT_CMD_SUCCESS;
+}
+
 BUILDIN_FUNC(npcskilleffect)
 {
 	block_list *bl= map_id2bl(st->oid);
@@ -28247,6 +28272,7 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(petskillsupport,"viiii"), // [Skotlex]
 	BUILDIN_DEF(skilleffect,"vi?"), // skill effect [Celest]
 	BUILDIN_DEF(skillposeffect,"vi?"), // client-only skill poseffect
+	BUILDIN_DEF(skillnodamage,"vi?"), // client visual skill use
 	BUILDIN_DEF(npcskilleffect,"viii"), // npc skill effect [Valaris]
 	BUILDIN_DEF(specialeffect,"i??"), // npc skill effect [Valaris]
 	BUILDIN_DEF(specialeffect2,"i??"), // skill effect on players[Valaris]
