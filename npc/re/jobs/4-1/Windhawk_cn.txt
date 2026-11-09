@@ -39,9 +39,9 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 			set WH_LEAVE, 0;
 		set WH_KEY, 0;
 		setquest 5901;
-		completequest 5901;
+		if (checkquest(5901) != -1) completequest 5901;
 		setquest 5902;
-		completequest 5902;
+		if (checkquest(5902) != -1) completequest 5902;
 		setquest 5903;
 		close;
 	}
@@ -95,9 +95,9 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			if (checkquest(5906) != -1) erasequest 5906;
 			if (checkquest(5907) != -1) erasequest 5907;
 			setquest 5901;
-			completequest 5901;
+			if (checkquest(5901) != -1) completequest 5901;
 			setquest 5902;
-			completequest 5902;
+			if (checkquest(5902) != -1) completequest 5902;
 			setquest 5903;
 			.@iid = instance_create("Windhawk", IM_PARTY);
 			if (.@iid < 0 && .@iid != -3) {
@@ -217,7 +217,7 @@ OnTouch:
 		mes "[风之猎鹰]";
 		mes "十天过去了。";
 		mes "南边的路已经通了，从室内出口离开，去第三片林地找帐篷的主人。";
-		completequest 5905;
+		if (checkquest(5905) != -1) completequest 5905;
 		setquest 5906;
 		set WH_STAGE, 4;
 		close;
@@ -581,7 +581,7 @@ OnTouch:
 		mes "它是你与风对话的方式。";
 		mes "测试版暂不执行转职。";
 		// 测试期间不执行最终转职
-		completequest 5906;
+		if (checkquest(5906) != -1) completequest 5906;
 		setquest 5907;
 		set WH_STAGE, 5;
 		next;
@@ -697,7 +697,7 @@ OnTouch:
 			.@got = .@got + 1;
 		}
 	}
-	completequest 5904;
+	if (checkquest(5904) != -1) completequest 5904;
 	setquest 5905;
 	set WH_STAGE, 3;
 	set WH_LEAVE, 0;
@@ -754,7 +754,7 @@ OnTouch:
 	set WH_TRAP2, 0;
 	set WH_PET, 0;
 	disablenpc instance_npcname("炕上动物#windhawk");
-	completequest 5907;
+	if (checkquest(5907) != -1) completequest 5907;
 	if (checkquest(5901) != -1) erasequest 5901;
 	if (checkquest(5902) != -1) erasequest 5902;
 	if (checkquest(5903) != -1) erasequest 5903;
