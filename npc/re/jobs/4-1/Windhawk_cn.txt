@@ -76,6 +76,9 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			set WH_FOOD, 0;
 			set WH_WATER, 0;
 			set WH_WOOD, 0;
+	set WH_FOOD_CARRY, 0;
+	set WH_CARRY, 0;
+	set WH_ANIMAL_CARRY, 0;
 			set WH_FIRE, 0;
 			set WH_POINTS, 0;
 			set WH_TOOL, 0;
@@ -216,9 +219,11 @@ OnTouch:
 	next;
 	if (select("睡觉，结束这一天:再准备一下") == 2) close;
 	if (WH_DAY >= 10) {
+		getmapxy(.@map$, .@x, .@y, BL_PC);
+		warp .@map$,352,33;
 		mes "[风之猎鹰]";
-		mes "十天过去了。";
-		mes "南边的路已经通了，从室内出口离开，去第三片林地找帐篷的主人。";
+		mes "十天一晃而过。不知不觉在无人之境，竟然有种不同的感觉。";
+		mes "先出去吧。";
 		if (checkquest(5905) != -1) completequest 5905;
 		setquest 5906;
 		set WH_STAGE, 4;
@@ -581,29 +586,44 @@ OnTouch:
 }
 
 // 第三张室外：帐篷主人
-1@4win,325,160,0	script	帐篷主人#windhawk	4_4job_robin,{
+1@4win,313,140,0	script	帐篷主人#windhawk	4_4job_robin,{
 	if (WH_STAGE == 4) {
-		mes "[帐篷的主人]";
-		mes "你真的在这里活了十天。";
-		mes "风已经认可你了。";
+		.@name$ = strcharinfo(0);
+		mes "[" + .@name$ + "] 老人家，很高兴见到你。";
 		next;
-		mes "[帐篷的主人]";
-		mes "弓箭不只是武器。";
-		mes "它是你与风对话的方式。";
-		mes "测试版暂不执行转职。";
-		// 测试期间不执行最终转职
+		mes "[帐篷的主人] 咦？你是谁？你怎么会出现在我家？";
+		next;
+		mes "[" + .@name$ + "] 怎么回事？怎么感觉和上次完全不同？原本是位挺有趣的老人家呢。";
+		next;
+		mes "[帐篷的主人] 等等……好像有点面熟……";
+		mes "[帐篷的主人] 啊！你是上次在克魔岛跟我换钱的人？";
+		mes "[帐篷的主人] 时间到了我就会换钱给你的，为什么还跟到这里来了？";
+		mes "[帐篷的主人] 我用朋友借我的钱好好吃了顿饭，也喝了好喝的饮料。";
+		mes "[帐篷的主人] 别担心，我说我会还你钱。但你是怎么进来的？最近的债主真的厉害！";
+		next;
+		mes "[" + .@name$ + "] 说明了在斐扬遇到老人家的过程，以及来到这里的期间发生的事情。";
+		next;
+		mes "[帐篷的主人] 咦？你不是债主啊？我们在斐扬遇到的？";
+		mes "[帐篷的主人] 真抱歉，我完全想不起来了。";
+		mes "[帐篷的主人] 啊？所以我喝酒醒后才会去找分道扬镳的伙伴吗？真丢人，一喝酒我就什么都不记得了。";
+		next;
+		mes "[帐篷的主人] 算了！就别管细节了。我在你走出小屋前稍微四处检查了一下，你挺厉害的呀！";
+		mes "[帐篷的主人] 虽然看起来外表普通，只是个路人弓箭手。";
+		mes "[帐篷的主人] 这森林里的风可不简单。若驾驭风的能力不被肯定，就会被风劈成两半！";
+		mes "[帐篷的主人] 什么？你足足在这里过了10天？时间过得这么快吗？果然，你不是一个普通的弓箭手。";
+		next;
+		mes "[帐篷的主人] 剩下的出去再说，路我已经挖通了。非出自本意被迫关在这个无聊的地方，该有多郁闷啊？";
+		mes "[帐篷的主人] 不是吗？";
+		mes "[帐篷的主人] 先出去吧，这里我会整理。";
+		set WH_STAGE, 5;
 		if (checkquest(5906) != -1) completequest 5906;
 		setquest 5907;
-		set WH_STAGE, 5;
-		next;
-		mes "[风之猎鹰]";
-		mes "测试流程完成。";
-		mes "从南边的路离开吧。";
+		enablenpc instance_npcname("南侧传送门#windhawk");
+		mes "南侧的道路已经打开。";
 		close;
 	}
 	if (WH_STAGE == 5) {
-		mes "[帐篷的主人]";
-		mes "风会一直陪着你。";
+		mes "[帐篷的主人] 先出去吧。";
 		close;
 	}
 	mes "帐篷的主人背对着你，望着天空。";
@@ -740,49 +760,65 @@ OnTouch:
 	close;
 }
 
-1@4win,310,93,0	script	离开试炼#windhawk	4_4job_sealstone,{
-	if (WH_STAGE != 5) {
-		mes "现在还不能离开。";
-		close;
+1@4win,310,93,0	script(DISABLED)	南侧传送门#windhawk	WARPNPC,2,2,{
+OnTouch:
+	if (WH_STAGE != 5) end;
+	enablenpc "帐篷主人#outside";
+	warp "um_fild01",50,340;
+	end;
+}
+
+um_fild01,50,340,4	script(DISABLED)	帐篷主人#outside	4_4job_robin,{
+	.@name$ = strcharinfo(0);
+	if (WH_STAGE == 5) {
+		mes "[帐篷的主人] 你终于出现了，我在这等到箭都快被磨钝了。";
+		next;
+		mes "[帐篷的主人] 我们刚刚说到哪了？";
+		mes "[帐篷的主人] 对对对，说到你不是个普通的弓箭手对吧？这也不是普通的森林。";
+		mes "[帐篷的主人] 话说我为了让动物出去逛逛才制作的通道，朋友却说动物们都被随便制作的陷阱困住了。你知道这是为什么吗？";
+		mes "[帐篷的主人] 因为没有被森林的风认可的关系。在森林中没有被风和森林认可的生物，都会受到危险。";
+		mes "[帐篷的主人] 在这广大森林中生活的生物，最终都不平凡。";
+		mes "[帐篷的主人] 虽然是莫名其妙来到别人家，又莫名其妙被困住，对生存的坚定还是愧疚都罢了。这样才能克服苦难。";
+		next;
+		mes "[帐篷的主人] 一看就知道是无法变得更强大、停滞不前的状态吧？我给你一个建议。";
+		mes "[帐篷的主人] 要不跟我一样成为风鹰狩猎者？你现在的状态岌岌可危，也撑不了多久了。";
+		mes "[帐篷的主人] 你已经得到了森林的认可。我再训练一下，马上就可以突破极限。";
+		next;
+		mes "[" + .@name$ + "] 若变成风鹰狩猎者能让我变得更强大，多少训练都没问题。";
+		mes "[帐篷的主人] 很好，很好！我其实只有一点点担心你拒绝的话怎么办。先从姿势开始调整吧？";
+		mes "[帐篷的主人] 让……我……好……好……看……看……";
+		if (SkillPoint > 0) {
+			mes "[帐篷的主人] 喂，好歹先把游侠时学到的技能点数都用完吧？";
+			close;
+		}
+		mes "[帐篷的主人] 新地方新气象，游侠时得到的技能点数都用完了吧？";
+		mes "[帐篷的主人] 射箭的时候脚要这样……这样更能感受风的感觉……";
+		mes "[帐篷的主人] 拉弓的时候要轻轻地，没错！就是这样，果然基本功很棒呢。";
+		.@chance = 0;
+		while (1) {
+			mes "[帐篷的主人] 现在感受一下森林吹拂的风，知道感受到风的时候再放箭。";
+			if (select("放箭:再等一下") == 1) {
+				unittalk getcharid(3), "放箭！";
+				sleep2 1000;
+				if (.@chance > 0 && rand(100) < .@chance) {
+					specialeffect EF_STORMGUST;
+					mes "[帐篷的主人] 恭喜你成为能边驾驭风边战斗的风鹰狩猎者。";
+					set WH_STAGE, 6;
+					mes "测试版暂不执行最终转职。";
+					close;
+				}
+				mes "[帐篷的主人] 不对，再多感受一下风吧！";
+				.@chance = .@chance + 5;
+			} else {
+				unittalk getcharid(3), "再感受一下……";
+				sleep2 1000;
+				mes "[帐篷的主人] 不对，再多感受一下风吧！";
+				.@chance = .@chance + rand(-5, 15);
+				if (.@chance < 0) .@chance = 0;
+			}
+		}
 	}
-	mes "你沿着南边的路走出了森林。";
-	set WH_STAGE, 0;
-	set WH_LEAVE, 0;
-	set WH_KEY, 0;
-	set WH_DAY, 0;
-	set WH_FOOD, 0;
-	set WH_WATER, 0;
-	set WH_WOOD, 0;
-	set WH_FIRE, 0;
-	set WH_POINTS, 0;
-	set WH_TOOL, 0;
-	set WH_CARRY, 0;
-	set WH_TRAP, 0;
-	set WH_ANIMAL, 0;
-	set WH_FOOD_CARRY, 0;
-	set WH_ANIMAL_CARRY, 0;
-	set WH_TRAP1, 0;
-	set WH_TRAP2, 0;
-	set WH_PET, 0;
-	disablenpc instance_npcname("小动物#windhawk");
-	if (checkquest(5907) != -1) completequest 5907;
-	if (checkquest(5901) != -1) erasequest 5901;
-	if (checkquest(5902) != -1) erasequest 5902;
-	if (checkquest(5903) != -1) erasequest 5903;
-	if (checkquest(5904) != -1) erasequest 5904;
-	if (checkquest(5905) != -1) erasequest 5905;
-	if (checkquest(5906) != -1) erasequest 5906;
-	if (checkquest(5907) != -1) erasequest 5907;
-	// 传送光点常驻，不需要额外开关
-	// 传送光点常驻，不需要额外开关
-	// 出口传送光点根据阶段判断目标
-	// 传送光点常驻，不需要额外开关
-	// 传送光点常驻，不需要额外开关
-	disablenpc instance_npcname("壁炉火焰#windhawk");
-	.@iid = instance_id(IM_PARTY);
-	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i, .@iid);
-	warp "um_fild01",45,345;
+	mes "[帐篷的主人] 风会一直陪着你。";
 	close;
 }
 
