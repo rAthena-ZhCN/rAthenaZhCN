@@ -82,6 +82,11 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			set WH_CARRY, 0;
 			set WH_TRAP, 0;
 			set WH_ANIMAL, 0;
+			set WH_FOOD_CARRY, 0;
+			set WH_ANIMAL_CARRY, 0;
+			set WH_TRAP1, 0;
+			set WH_TRAP2, 0;
+			set WH_PET, 0;
 			if (checkquest(5901) != -1) erasequest 5901;
 			if (checkquest(5902) != -1) erasequest 5902;
 			if (checkquest(5903) != -1) erasequest 5903;
@@ -167,11 +172,11 @@ OnTouch:
 			close;
 		}
 		set WH_STAGE, 2;
-		warp 'wh_map$,345,19;
+		warp instance_mapname("1@4win"),345,19;
 		end;
 	}
 	if (WH_STAGE == 2) {
-		warp 'wh_map$,345,19;
+		warp instance_mapname("1@4win"),345,19;
 		end;
 	}
 	dispbottom "房屋的门紧闭着。";
@@ -252,6 +257,19 @@ OnTouch:
 	set WH_WOOD, 0;
 	disablenpc instance_npcname("壁炉火焰#windhawk");
 	set WH_DAY, WH_DAY + 1;
+	if (WH_PET == 1) {
+		set WH_FOOD, WH_FOOD - 10;
+		if (WH_FOOD < 0) set WH_FOOD, 0;
+		mes "炕上的小动物消耗了 10% 食物。";
+	}
+	if (WH_TRAP1 == 1) {
+		if (rand(100) < 50) set WH_TRAP1, 2;
+		else set WH_TRAP1, 3;
+	}
+	if (WH_TRAP2 == 1) {
+		if (rand(100) < 50) set WH_TRAP2, 2;
+		else set WH_TRAP2, 3;
+	}
 	.@iid = instance_id(IM_PARTY);
 	// 每天随机生成 3-6 株红草
 	for ( .@i = 1; .@i <= 8; ++.@i )
@@ -283,11 +301,26 @@ OnTouch:
 	if (WH_STAGE != 3) close;
 	mes "[粮食仓库]";
 	mes "当前食物存量：" + WH_FOOD + "%";
-	if (WH_ANIMAL == 1) {
-		mes "你把带回来的猎物处理成了食物。";
-		set WH_FOOD, WH_FOOD + 30;
-		if (WH_FOOD > 100) set WH_FOOD, 100;
-		set WH_ANIMAL, 0;
+	if (WH_FOOD_CARRY > 0) {
+		mes "你身上带着 " + WH_FOOD_CARRY + "% 的食物。";
+		mes "要把食物放进仓库吗？";
+		if (select("放进仓库:先留着") == 1) {
+			.@old = WH_FOOD;
+			set WH_FOOD, WH_FOOD + WH_FOOD_CARRY;
+			if (WH_FOOD > 100) set WH_FOOD, 100;
+			mes "食物量增加 " + (WH_FOOD - .@old) + "%。";
+			set WH_FOOD_CARRY, 0;
+		}
+	}
+	if (WH_ANIMAL_CARRY == 1) {
+		mes "你带回来一只动物。";
+		mes "是否把动物当做粮食？";
+		if (select("当做粮食:先留着") == 1) {
+			set WH_FOOD, WH_FOOD + 80;
+			if (WH_FOOD > 100) set WH_FOOD, 100;
+			set WH_ANIMAL_CARRY, 0;
+			mes "食物量大幅增加。";
+		}
 	}
 	close;
 }
@@ -345,8 +378,32 @@ OnTouch:
 	if (WH_STAGE != 2 && WH_STAGE != 3) close;
 	mes "[炕]";
 	mes "看起来这里可以关野生动物。";
-	if (WH_STAGE == 3 && WH_ANIMAL == 1) {
-		mes "你把带回来的小动物放在炕上取暖。";
+	if (WH_STAGE == 3 && WH_ANIMAL_CARRY == 1) {
+		mes "要把动物养在炕内吗？";
+		mes "每天会消耗 10% 粮食。";
+		if (select("养在炕内:不养") == 1) {
+			set WH_ANIMAL_CARRY, 0;
+			set WH_PET, 1;
+			enablenpc instance_npcname("炕上动物#windhawk");
+			mes "你把小动物放在了炕上。";
+		}
+	}
+	close;
+}
+
+1@4win,335,36,0	script(DISABLED)	炕上动物#windhawk	1167,{
+	if (WH_PET != 1) {
+		mes "炕上现在没有动物。";
+		close;
+	}
+	mes "[小动物]";
+	mes "它蜷在炕上，看起来暖和多了。";
+	if (select("继续喂养:宰了吃肉") == 2) {
+		set WH_PET, 0;
+		disablenpc instance_npcname("炕上动物#windhawk");
+		set WH_FOOD, WH_FOOD + 80;
+		if (WH_FOOD > 100) set WH_FOOD, 100;
+		mes "你把动物处理成了食物。";
 	}
 	close;
 }
@@ -401,9 +458,9 @@ OnTouch:
 		mes "需要先去仓库借锄头。";
 		close;
 	}
-	set WH_FOOD, WH_FOOD + 15;
-	if (WH_FOOD > 100) set WH_FOOD, 100;
-	mes "你挖出了一株红色药草，食物存量增加了。";
+	set WH_FOOD_CARRY, WH_FOOD_CARRY + 15;
+	mes "你采集了一株红色药草。";
+	mes "身上的食物量 +15%。回屋放进粮食仓库才算入仓。";
 	disablenpc strnpcinfo(0);
 	close;
 }
@@ -416,25 +473,95 @@ OnTouch:
 1@4win,215,206,0	duplicate(红草#1)	红草#8	RED_PLANT
 
 // 第二张室外：野生动物痕迹
-1@4win,155,192,0	script	野生动物痕迹#windhawk	ambernite,{
+1@4win,155,192,0	script	野生动物痕迹#windhawk	4_SOIL,{
 	if (WH_STAGE != 3) close;
 	mes "[野生动物痕迹]";
-	if (WH_TRAP == 0) {
-		mes "你在这里布置了陷阱。";
-		set WH_TRAP, 1;
+	if (WH_TRAP1 == 0) {
+		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
+		if (select("设置陷阱:不管它") == 2) close;
+		set WH_TRAP1, 1;
+		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
+		mes "你在这里设置了一个陷阱。";
 		close;
 	}
-	if (WH_ANIMAL == 0) {
-		mes "陷阱里抓到了一只小动物。";
-		mes "你把它带回了小屋的炕上。";
-		set WH_ANIMAL, 1;
-		set WH_TRAP, 0;
-	} else {
-		mes "陷阱里没有新的猎物。";
+	if (WH_TRAP1 == 1) {
+		mes "陷阱已经设置好了，明天再来看看吧。";
+		close;
+	}
+	if (WH_TRAP1 == 3) {
+		mes "没有捉到任何动物。";
+		set WH_TRAP1, 0;
+		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+		close;
+	}
+	mes "陷阱里抓到了一只小动物。";
+	switch(select("放生:带回去:当做粮食")) {
+		case 1:
+			set WH_TRAP1, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			mes "你把小动物放生了。";
+			break;
+		case 2:
+			set WH_TRAP1, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			set WH_ANIMAL_CARRY, 1;
+			mes "你把小动物抱了起来，准备带回小屋。";
+			break;
+		case 3:
+			set WH_TRAP1, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			set WH_FOOD, WH_FOOD + 80;
+			if (WH_FOOD > 100) set WH_FOOD, 100;
+			mes "你把动物处理成了食物。";
+			break;
 	}
 	close;
 }
-1@4win,148,189,0	duplicate(野生动物痕迹#windhawk)	野生动物痕迹2#windhawk	ambernite
+
+1@4win,148,189,0	script	野生动物痕迹2#windhawk	4_SOIL,{
+	if (WH_STAGE != 3) close;
+	mes "[野生动物痕迹]";
+	if (WH_TRAP2 == 0) {
+		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
+		if (select("设置陷阱:不管它") == 2) close;
+		set WH_TRAP2, 1;
+		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
+		mes "你在这里设置了一个陷阱。";
+		close;
+	}
+	if (WH_TRAP2 == 1) {
+		mes "陷阱已经设置好了，明天再来看看吧。";
+		close;
+	}
+	if (WH_TRAP2 == 3) {
+		mes "没有捉到任何动物。";
+		set WH_TRAP2, 0;
+		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+		close;
+	}
+	mes "陷阱里抓到了一只小动物。";
+	switch(select("放生:带回去:当做粮食")) {
+		case 1:
+			set WH_TRAP2, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			mes "你把小动物放生了。";
+			break;
+		case 2:
+			set WH_TRAP2, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			set WH_ANIMAL_CARRY, 1;
+			mes "你把小动物抱了起来，准备带回小屋。";
+			break;
+		case 3:
+			set WH_TRAP2, 0;
+			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			set WH_FOOD, WH_FOOD + 80;
+			if (WH_FOOD > 100) set WH_FOOD, 100;
+			mes "你把动物处理成了食物。";
+			break;
+	}
+	close;
+}
 
 // 第三张室外：帐篷主人
 1@4win,325,160,0	script	帐篷主人#windhawk	4_4job_robin,{
@@ -472,7 +599,7 @@ OnTouch:
 1@4win,201,169,0	script	房屋门2#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE == 3 || WH_STAGE == 4) {
-		warp 'wh_map$,345,19;
+		warp instance_mapname("1@4win"),345,19;
 		end;
 	}
 	dispbottom "现在还不能进入。";
@@ -487,15 +614,15 @@ OnTouch:
 			mes "先看看屋里的情况。";
 			close;
 		}
-		warp 'wh_map$,201,169;
+		warp instance_mapname("1@4win"),201,169;
 		end;
 	}
 	if (WH_STAGE == 3) {
-		warp 'wh_map$,201,169;
+		warp instance_mapname("1@4win"),201,169;
 		end;
 	}
 	if (WH_STAGE == 4) {
-		warp 'wh_map$,323,169;
+		warp instance_mapname("1@4win"),323,169;
 		end;
 	}
 	dispbottom "门外的风很大。";
@@ -505,35 +632,44 @@ OnTouch:
 // 第二张室外下方塌方触发点（坐标待你确认）
 1@4win,189,145,0	script	Windhawk_Disaster	HIDDEN_WARP_NPC,1,1,{
 OnTouch:
-	if (WH_STAGE != 2 || WH_LEAVE != 1 || WH_STAGE == 3) end;
+	if (WH_STAGE != 2 || WH_LEAVE != 1) end;
 	unittalk getcharid(3), "怎么会这样？回程的路都被堵住了？";
 	sleep2 1800;
 	unittalk getcharid(3), "是有山体滑坡吗？出不去了，我该不会……";
 	sleep2 1800;
 	unittalk getcharid(3), "出不去了吧？";
 	sleep2 1200;
-	mes "[在噜噜卡森林遇到灾害]";
-	mes "要查看相关说明吗？";
-	switch(select("查看说明:立即进行")) {
-		case 1:
-			switch(select("噜噜卡森林深处的一天:解决粮食和饮用水:噜噜卡森林生存失败")) {
-				case 1:
-					mes "[噜噜卡森林深处的一天]";
-					mes "每天有十分钟。走出小屋开始计算当天时间。";
-					mes "在小屋的床上睡觉，可以提前结束当天。";
-					break;
-				case 2:
-					mes "[解决粮食和饮用水]";
-					mes "食物仓库至少保持 40%，饮用水至少 30%。";
-					mes "壁炉需要木柴点燃，否则晚上会扣生存意志。";
-					break;
-				case 3:
-					mes "[噜噜卡森林生存失败]";
-					mes "粮食、饮水或温度不足会扣生存意志。";
-					mes "生存意志降到 0，就会被送出试炼。";
-					break;
-			}
-			break;
+	.@view = 1;
+	while (.@view == 1) {
+		mes "[在噜噜卡森林遇到灾害]";
+		mes "要查看相关说明吗？";
+		switch(select("查看说明:立即进行")) {
+			case 1:
+				switch(select("噜噜卡森林深处的一天:解决粮食和饮用水:噜噜卡森林生存失败:返回")) {
+					case 1:
+						mes "[噜噜卡森林深处的一天]";
+						mes "每天有十分钟。走出小屋开始计算当天时间。";
+						mes "在小屋的床上睡觉，可以提前结束当天。";
+						break;
+					case 2:
+						mes "[解决粮食和饮用水]";
+						mes "食物仓库至少保持 40%，饮用水至少 30%。";
+						mes "壁炉需要木柴点燃，否则晚上会扣生存意志。";
+						break;
+					case 3:
+						mes "[噜噜卡森林生存失败]";
+						mes "粮食、饮水或温度不足会扣生存意志。";
+						mes "生存意志降到 0，就会被送出试炼。";
+						break;
+					case 4:
+						break;
+				}
+				break;
+			case 2:
+				.@view = 0;
+				break;
+		}
+		if (.@view == 1) next;
 	}
 	.@iid = instance_id(IM_PARTY);
 	// 每天随机生成 3-6 株红草
@@ -565,6 +701,21 @@ OnTouch:
 	set WH_CARRY, 0;
 	set WH_TRAP, 0;
 	set WH_ANIMAL, 0;
+			set WH_FOOD_CARRY, 0;
+			set WH_ANIMAL_CARRY, 0;
+			set WH_TRAP1, 0;
+			set WH_TRAP2, 0;
+			set WH_PET, 0;
+	set WH_FOOD_CARRY, 0;
+	set WH_ANIMAL_CARRY, 0;
+	set WH_TRAP1, 0;
+	set WH_TRAP2, 0;
+	set WH_PET, 0;
+	set WH_FOOD_CARRY, 0;
+	set WH_ANIMAL_CARRY, 0;
+	set WH_TRAP1, 0;
+	set WH_TRAP2, 0;
+	set WH_PET, 0;
 	close;
 }
 
@@ -587,6 +738,12 @@ OnTouch:
 	set WH_CARRY, 0;
 	set WH_TRAP, 0;
 	set WH_ANIMAL, 0;
+	set WH_FOOD_CARRY, 0;
+	set WH_ANIMAL_CARRY, 0;
+	set WH_TRAP1, 0;
+	set WH_TRAP2, 0;
+	set WH_PET, 0;
+	disablenpc instance_npcname("炕上动物#windhawk");
 	completequest 5907;
 	if (checkquest(5901) != -1) erasequest 5901;
 	if (checkquest(5902) != -1) erasequest 5902;
