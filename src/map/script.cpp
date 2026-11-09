@@ -15562,6 +15562,42 @@ BUILDIN_FUNC(skilleffect)
 /*==========================================
  * NPC skill effects [Valaris]
  *------------------------------------------*/
+/// skillposeffect <skill id>,<level>{,<game id>} - sends only the client skill poseffect packet
+BUILDIN_FUNC(skillposeffect)
+{
+	block_list* bl;
+	map_session_data* sd;
+
+	if (script_hasdata(st, 4)) {
+		if (!script_rid2bl(4, bl))
+			return SCRIPT_CMD_SUCCESS;
+	} else {
+		if (!script_rid2sd(sd))
+			return SCRIPT_CMD_SUCCESS;
+		bl = sd;
+	}
+
+	uint16 skill_id = ( script_isstring(st, 2) ? skill_name2id(script_getstr(st, 2)) : script_getnum(st, 2) );
+
+	if (skill_db.find(skill_id) == nullptr) {
+		ShowError("buildin_skillposeffect: Invalid skill defined (%s)!\n", script_getstr(st, 2));
+		return SCRIPT_CMD_FAILURE;
+	}
+
+	uint16 skill_lv = script_getnum(st, 3);
+
+	if (bl->type == BL_PC) {
+		sd = reinterpret_cast<map_session_data*>( bl );
+		if (pc_issit(sd) && pc_setstand(sd, false)) {
+			skill_sit(sd, 0);
+			clif_standing(*sd);
+		}
+	}
+
+	clif_skill_poseffect(*bl, skill_id, skill_lv, bl->x, bl->y, gettick());
+	return SCRIPT_CMD_SUCCESS;
+}
+
 /// npcskilleffect <skill id>,<level>,<x>,<y>
 /// npcskilleffect "<skill name>",<level>,<x>,<y>
 BUILDIN_FUNC(npcskilleffect)
@@ -28210,6 +28246,7 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(petskillattack2,"viiii"), // [Valaris]
 	BUILDIN_DEF(petskillsupport,"viiii"), // [Skotlex]
 	BUILDIN_DEF(skilleffect,"vi?"), // skill effect [Celest]
+	BUILDIN_DEF(skillposeffect,"vi?"), // client-only skill poseffect
 	BUILDIN_DEF(npcskilleffect,"viii"), // npc skill effect [Valaris]
 	BUILDIN_DEF(specialeffect,"i??"), // npc skill effect [Valaris]
 	BUILDIN_DEF(specialeffect2,"i??"), // skill effect on players[Valaris]
