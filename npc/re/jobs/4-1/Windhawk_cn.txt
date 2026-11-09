@@ -150,9 +150,7 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		specialeffect EF_TRANSBLUEBODY, AREA, strnpcinfo(0);
 		sleep2 2000;
 		specialeffect EF_WHITEBODY, AREA, strnpcinfo(0);
-		setnpcdisplay strnpcinfo(0), HIDDEN_NPC;
-		sleep2 2000;
-		setnpcdisplay strnpcinfo(0), 4_4JOB_ROBIN_DRUNK;
+		hideonnpc strnpcinfo(0), getcharid(0);
 		// 测试版：此处后续可加老人消失特效
 		next;
 		mes "刚刚好像看到了什么？";
@@ -1045,7 +1043,7 @@ OnTouch:
 1@4win,310,93,0	script(DISABLED)	南侧传送门#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE != 5) end;
-	enablenpc "帐篷主人#outside";
+	hideoffnpc "帐篷主人#outside", getcharid(0);
 	warp "um_fild01",50,340;
 	end;
 }
@@ -1171,5 +1169,19 @@ OnInstanceInit:
 	'wh_map$ = instance_mapname("1@4win");
 	for ( .@i = 1; .@i <= 8; ++.@i )
 		disablenpc instance_npcname("红草#" + .@i);
+	end;
+}
+
+// 每角色 NPC 可见性恢复
+-	script	Windhawk_Visibility	-1,{
+OnPCLoginEvent:
+	if (WH_TALK >= 2)
+		hideonnpc "醉酒的老人#windhawk", getcharid(0);
+	else
+		hideoffnpc "醉酒的老人#windhawk", getcharid(0);
+	if (WH_STAGE >= 5)
+		hideoffnpc "帐篷主人#outside", getcharid(0);
+	else
+		hideonnpc "帐篷主人#outside", getcharid(0);
 	end;
 }
