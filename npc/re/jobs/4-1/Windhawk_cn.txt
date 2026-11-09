@@ -310,7 +310,7 @@ OnTouch:
 }
 
 // 猎鹰
-1@4win,64,60,4	script	Windhawk_Falcon#windhawk	20830,{
+1@4win,64,70,4	script	Windhawk_Falcon#windhawk	20830,{
 	if (WH_STAGE != 1) end;
 	if (WH_INTRO == 1) {
 		unittalk getcharid(3), "[" + strcharinfo(0) + "] 恩？是我的错觉吗？森林里的风好像感觉不太一样？";
@@ -325,7 +325,7 @@ OnTouch:
 		unittalk getcharid(3), "[" + strcharinfo(0) + "] 仔细一看，好像是猎人那个时候携带的猎鹰呢？";
 		emotion ET_QUESTION;
 		sleep2 1200;
-		unitwalk getnpcid(0),64,20;
+		unitwalk getnpcid(0),64,130;
 		sleep2 1800;
 		disablenpc();
 		unittalk getcharid(3), "[" + strcharinfo(0) + "] 咦？！飞走了";
@@ -509,11 +509,11 @@ OnTouch:
 		if (WH_FOOD < 0) set WH_FOOD, 0;
 	}
 	if (WH_TRAP1 == 1) {
-		if (rand(100) < 50) set WH_TRAP1, 2;
+		if (rand(100) < 30) set WH_TRAP1, 2;
 		else set WH_TRAP1, 3;
 	}
 	if (WH_TRAP2 == 1) {
-		if (rand(100) < 50) set WH_TRAP2, 2;
+		if (rand(100) < 30) set WH_TRAP2, 2;
 		else set WH_TRAP2, 3;
 	}
 	set WH_DAY, WH_DAY + 1;
@@ -663,7 +663,7 @@ OnTouch:
 // 第二张室外：房屋门
 
 // 第二张室外：工具仓库
-1@4win,211,170,0	script	工具仓库#windhawk	HIDDEN_NPC,{
+1@4win,213,174,0	script	工具仓库#windhawk	HIDDEN_NPC,{
 	if (WH_STAGE != 3) close;
 	mes "[工具仓库]";
 	mes "借用工具可以采集资源。";
@@ -1044,8 +1044,15 @@ OnTouch:
 1@4win,310,93,0	script(DISABLED)	南侧传送门#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE != 5) end;
-	cloakoffnpc "帐篷主人#outside", getcharid(0);
 	warp "um_fild01",50,340;
+	cloakoffnpc "帐篷主人#outside", getcharid(0);
+	end;
+}
+
+um_fild01,49,340,0	script	Windhawk_OwnerReveal	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE >= 5)
+		cloakoffnpc "帐篷主人#outside", getcharid(0);
 	end;
 }
 
