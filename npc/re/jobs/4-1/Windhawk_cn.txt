@@ -167,11 +167,11 @@ OnTouch:
 			close;
 		}
 		set WH_STAGE, 2;
-		warp "1@4win",345,19;
+		warp 'wh_map$,345,19;
 		end;
 	}
 	if (WH_STAGE == 2) {
-		warp "1@4win",345,19;
+		warp 'wh_map$,345,19;
 		end;
 	}
 	dispbottom "房屋的门紧闭着。";
@@ -472,7 +472,7 @@ OnTouch:
 1@4win,201,169,0	script	房屋门2#windhawk	WARPNPC,2,2,{
 OnTouch:
 	if (WH_STAGE == 3 || WH_STAGE == 4) {
-		warp "1@4win",345,19;
+		warp 'wh_map$,345,19;
 		end;
 	}
 	dispbottom "现在还不能进入。";
@@ -487,15 +487,15 @@ OnTouch:
 			mes "先看看屋里的情况。";
 			close;
 		}
-		warp "1@4win",201,169;
+		warp 'wh_map$,201,169;
 		end;
 	}
 	if (WH_STAGE == 3) {
-		warp "1@4win",201,169;
+		warp 'wh_map$,201,169;
 		end;
 	}
 	if (WH_STAGE == 4) {
-		warp "1@4win",323,169;
+		warp 'wh_map$,323,169;
 		end;
 	}
 	dispbottom "门外的风很大。";
@@ -622,6 +622,7 @@ OnInit:
 		disablenpc "红草#" + .@i;
 	end;
 OnInstanceInit:
+	'wh_map$ = instance_mapname("1@4win");
 	for ( .@i = 1; .@i <= 8; ++.@i )
 		disablenpc instance_npcname("红草#" + .@i);
 	end;
