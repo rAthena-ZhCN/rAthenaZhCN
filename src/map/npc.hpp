@@ -56,6 +56,10 @@ struct s_stylist_entry{
 	uint16 look;
 	int16 index;
 	uint32 value;
+	int32 required_job = -1; // -1 means unrestricted; zero is Novice.
+	bool colorable_doram = true;
+	bool lineage_only = false;
+	uint8 required_sex = SEX_BOTH;
 	std::shared_ptr<s_stylist_costs> human;
 	std::shared_ptr<s_stylist_costs> doram;
 };
@@ -70,7 +74,7 @@ private:
 	bool parseCostNode( std::shared_ptr<s_stylist_entry> entry, bool doram, const ryml::NodeRef& node );
 
 public:
-	StylistDatabase() : TypesafeYamlDatabase( "STYLIST_DB", 1 ){
+	StylistDatabase() : TypesafeYamlDatabase( "STYLIST_DB", 2, 1 ){
 
 	}
 
@@ -79,6 +83,7 @@ public:
 };
 
 extern StylistDatabase stylist_db;
+bool stylist_body_allowed( uint16 job, uint32 body, uint8 sex = SEX_BOTH );
 
 struct s_npc_barter_requirement{
 	uint16 index;
@@ -1577,6 +1582,9 @@ enum e_job_types
 	JT_ROZ_MQ_SKULD,
 
 	JT_NEW_NPC_3RD_END = 19999,
+	JT_4JOB_H_FALCON = 20830,
+	JT_4JOB_S_FALCON,
+	JT_4JOB_R_FALCON,
 	NPC_RANGE3_END, // Official: JT_NEW_NPC_3RD_END=19999
 
 	// Unofficial

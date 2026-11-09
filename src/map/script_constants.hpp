@@ -8541,6 +8541,9 @@
 	export_constant_npc(JT_4_4JOB_PHANTOMBOOK1);
 	export_constant_npc(JT_4_4JOB_PHANTOMBOOK2);
 	export_constant_npc(JT_4_4JOB_PHANTOMBOOK3);
+	export_constant_npc(JT_4JOB_H_FALCON);
+	export_constant_npc(JT_4JOB_S_FALCON);
+	export_constant_npc(JT_4JOB_R_FALCON);
 	export_constant_npc(JT_4_VENDING_MACHINE2);
 	export_constant_npc(JT_4_EP18_MARAM);
 	export_constant_npc(JT_4_EP18_MIRIAM);
