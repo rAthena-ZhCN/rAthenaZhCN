@@ -1046,7 +1046,6 @@ OnTouch:
 	if (WH_STAGE != 5) end;
 	warp "um_fild01",50,340;
 	cloakoffnpc "帐篷主人#outside", getcharid(0);
-	cloakoffnpc "帐篷主人#outside";
 	end;
 }
 
@@ -1054,7 +1053,6 @@ um_fild01,50,340,0	script	Windhawk_OwnerReveal	HIDDEN_WARP_NPC,1,1,{
 OnTouch:
 	if (WH_STAGE >= 5)
 		cloakoffnpc "帐篷主人#outside", getcharid(0);
-	cloakoffnpc "帐篷主人#outside";
 	end;
 }
 
@@ -1186,7 +1184,19 @@ OnInstanceInit:
 // 每角色 NPC 可见性恢复
 -	script	Windhawk_Visibility	-1,{
 OnInit:
-	cloakonnpc "帐篷主人#outside";
+	initnpctimer;
+	end;
+OnTimer1000:
+	.@n = getunits(BL_PC, .@rids);
+	for ( .@i = 0; .@i < .@n; ++.@i ) {
+		if (!attachrid(.@rids[.@i])) continue;
+		if (WH_STAGE >= 5)
+			cloakoffnpc "帐篷主人#outside", getcharid(0);
+		else
+			cloakonnpc "帐篷主人#outside", getcharid(0);
+		detachrid;
+	}
+	initnpctimer;
 	end;
 OnPCLoginEvent:
 	if (WH_TALK >= 2)
