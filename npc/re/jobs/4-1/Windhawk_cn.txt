@@ -241,6 +241,7 @@ OnTouch:
 		mes "[试炼失败]";
 		mes "食物、饮水或温度长期不足，你失去了生存意志。";
 		mes "你被送出了噜噜卡森林。";
+		next;
 		set WH_STAGE, 0;
 		set WH_KEY, 0;
 		set WH_DAY, 0;
@@ -383,7 +384,7 @@ OnTouch:
 	close;
 }
 
-1@4win,337,35,0	script(DISABLED)	壁炉火焰#windhawk	4_BONFIRE,{
+1@4win,337,37,0	script(DISABLED)	壁炉火焰#windhawk	4_BONFIRE,{
 	mes "[壁炉]";
 	mes "壁炉正在燃烧。";
 	close;
@@ -407,7 +408,7 @@ OnTouch:
 	close;
 }
 
-1@4win,335,36,0	script(DISABLED)	小动物#windhawk	1167,{
+1@4win,335,38,0	script(DISABLED)	小动物#windhawk	1167,{
 	if (WH_PET != 1) {
 		mes "炕上现在没有动物。";
 		close;
@@ -489,14 +490,14 @@ OnTouch:
 1@4win,215,206,0	duplicate(红草#1)	红草#8	RED_PLANT
 
 // 第二张室外：野生动物痕迹
-1@4win,155,194,0	script	野生动物痕迹#windhawk	4_SOIL,{
+1@4win,155,192,0	script	野生动物痕迹#windhawk	4_SOIL,{
 	if (WH_STAGE != 3) close;
 	mes "[野生动物痕迹]";
 	if (WH_TRAP1 == 0) {
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP1, 1;
-		setnpcdisplay strnpcinfo(0), 4_CREEPER;
+		setnpcdisplay strnpcinfo(3), 4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -507,25 +508,25 @@ OnTouch:
 	if (WH_TRAP1 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP1, 0;
-		setnpcdisplay strnpcinfo(0), 4_SOIL;
+		setnpcdisplay strnpcinfo(3), 4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
@@ -534,14 +535,14 @@ OnTouch:
 	close;
 }
 
-1@4win,148,191,0	script	野生动物痕迹2#windhawk	4_SOIL,{
+1@4win,148,189,0	script	野生动物痕迹2#windhawk	4_SOIL,{
 	if (WH_STAGE != 3) close;
 	mes "[野生动物痕迹]";
 	if (WH_TRAP2 == 0) {
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP2, 1;
-		setnpcdisplay strnpcinfo(0), 4_CREEPER;
+		setnpcdisplay strnpcinfo(3), 4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -552,25 +553,25 @@ OnTouch:
 	if (WH_TRAP2 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP2, 0;
-		setnpcdisplay strnpcinfo(0), 4_SOIL;
+		setnpcdisplay strnpcinfo(3), 4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), 4_SOIL;
+			setnpcdisplay strnpcinfo(3), 4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
