@@ -6,37 +6,131 @@
 
 // 接任务：斐扬
 payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
+	.@name$ = strcharinfo(0);
+	.@m$ = (Sex == 1) ? "小伙子" : "小姑娘";
 	if (BaseLevel < 200 || JobLevel < 70) {
-		mes "[醉酒的老人]";
-		mes "你的箭术还不足以驾驭风。";
+		mes "[醉酒的老人] 你的箭术还不足以驾驭风。";
 		mes "回去把基础练到 200 级、职业等级 70 再来吧。";
 		close;
 	}
 	if (Class != JOB_RANGER && Class != JOB_RANGER_T && Class != JOB_RANGER2 && Class != JOB_RANGER_T2) {
-		mes "[醉酒的老人]";
-		mes "风只回应游侠的箭。";
-		close;
-	}
-	if (WH_STAGE == 5) {
-		mes "[醉酒的老人]";
-		mes "测试流程已经完成。";
-		mes "从南边出口离开后，可以再次开始测试。";
+		mes "[醉酒的老人] 风只回应游侠的箭。";
 		close;
 	}
 	if (WH_STAGE == 0) {
-		mes "[醉酒的老人]";
-		mes "很久以前，我也曾以为自己能完全掌控风。";
-		mes "因为我的傲慢，我失去了最重要的同伴。";
-		next;
-		mes "[醉酒的老人]";
-		mes "后来我躲在自己的秘密基地里，成了一个胆小鬼。";
-		mes "如果你真的想成为风鹰，就去噜噜卡森林找我吧。";
-		next;
-		mes "[醉酒的老人]";
-		mes "森林深处有一座青蛙雕像，那里是入口。";
-		mes "记住，风不会等你。";
+		mes "[" + .@name$ + "] 那个……老人家，你在这边很危险。";
 		set WH_STAGE, 1;
-			set WH_LEAVE, 0;
+		close;
+	}
+	if (WH_STAGE == 1) {
+		mes "虽然老人家只是无意间看了我一眼，却莫名被老人家吸引。";
+		next;
+		mes "怎么会？怎么回事？为什么会被吸引？我是不是该好好睡一觉？";
+		next;
+		mes "继续和老人家说话。";
+		close;
+	}
+	if (WH_STAGE == 2) {
+		mes "[醉酒的老人]；" + .@m$ + "，瞎管闲事。";
+		next;
+		mes "[醉酒的老人] 年轻" + .@m$ + "担心我无所谓，但是……";
+		next;
+		mes "[醉酒的老人] 我只是为了找回我对于这个生我养我的村庄的回忆，才会四处看看。";
+		next;
+		mes "[" + .@name$ + "] 对不起，我逾矩了。";
+		next;
+		mes "[醉酒的老人] 呵呵呵……仔细一看，是个靠射箭吃饭的" + .@m$ + "啊？和风一样自由自在地生活，跟随波逐流的命运一样。";
+		next;
+		mes "说完话的老人，又盯着我看很长一段时间。老人开口了。";
+		next;
+		mes "[醉酒的老人] 你长期以来因为停止成长而有点着急，对吧" + .@m$ + "？";
+		next;
+		mes "[" + .@name$ + "] 对，没错。好像只有我停滞不前，大家都不断成长……";
+		next;
+		mes "[醉酒的老人] 不要急，心急只会落后其他人而已……啊！对啊，我应该跟你说说我年轻时的故事。";
+		next;
+		mes "[醉酒的老人] 是呀，先从这个故事开始说起。";
+		next;
+		mes "是不是盯着老人的眼睛看了太久？觉得老人的眼眸中好像闪过一丝悲伤的情绪。";
+		next;
+		mes "[醉酒的老人] 虽然我小时候是胆小鬼，但和大多数的斐扬人一样自然而然地学会了射箭。";
+		next;
+		mes "[醉酒的老人] 没错，好像真的不是我自己学会射箭。没有想要变强、努力的想法，只是过一天算一天的胆小鬼。";
+		next;
+		mes "[醉酒的老人] 只是时间和经验的累积逐渐改变了我这个胆小鬼。出现了和我能够交心的伙伴，他也是一名出色而有名的弓箭手。";
+		next;
+		mes "[醉酒的老人] 曾是胆小鬼的我，可笑的是居然产生自大的心理。最终失去了我第一个伙伴，对自满的我来说是个非常大的打击。";
+		next;
+		mes "[醉酒的老人] 我认为我的能力足以在任何情况下保护我的伙伴，但因为我的傲慢与失误，我失去了他。";
+		next;
+		mes "[醉酒的老人] 不仅对伙伴而言失去了我，剩下的人也失去了他。世上又少了一名优秀的弓箭手。";
+		next;
+		mes "[醉酒的老人] 这件事之后我又变成胆小鬼，归隐于只有我自己知道的秘密基地。";
+		next;
+		mes "[" + .@name$ + "] 秘密基地？";
+		next;
+		mes "[醉酒的老人] 哈哈哈，年轻的时候在很偶然的情况下发现的地方。要把在入口的青蛙石往东边转才能进入那个地方……";
+		next;
+		mes "[醉酒的老人] 我居然会说出这么荒谬的话。";
+		next;
+		mes "[醉酒的老人] 当时的我胆怯又卑微，只想着我自己。因为我突如其来的隐退，剩下的伙伴们也一一散去。";
+		next;
+		mes "[" + .@name$ + "] 他们现在过得怎么样？";
+		next;
+		mes "[醉酒的老人] 虽然有不再联络的朋友，但大家都过得很好。就算没有我，大家的生活也没有问题。";
+		next;
+		mes "[" + .@name$ + "] 不想念他们吗？";
+		next;
+		mes "[醉酒的老人] 老了之后有点想他们，特别想那个当时失去的朋友。";
+		next;
+		mes "[醉酒的老人] 在噜噜卡森林那春风和煦的地方修炼时，好像没有想念他。";
+		next;
+		mes "[醉酒的老人] 真的完全不担心只专注于修炼，多亏那时候才能控制风、获得重新站起来的勇气。";
+		next;
+		mes "[醉酒的老人] ……………………";
+		next;
+		mes "[醉酒的老人] 呵呵，求学不分年纪，我向年轻人学到一件事了。";
+		next;
+		mes "[醉酒的老人] 我不能再继续喝酒了，要去找找很久不见的老朋友们。";
+		next;
+		mes "[醉酒的老人] 希望年轻人你也能如愿以偿。";
+		next;
+		mes "老人带着兴奋的表情，像风一样消失了。老人离去的地方留下一道光束……";
+		// 测试版：此处后续可加老人消失特效
+		next;
+		mes "刚刚好像看到了什么？是我看错了吧？要不要去看看老人修炼的地方呢？他说在哪里来着？";
+		next;
+		.@ok = 0;
+		while (.@ok == 0) {
+			switch(select("莉莉卡森林:艾莉卡森林:噜噜卡森林:克尼卡森林")) {
+				case 3: .@ok = 1; break;
+				default: mes "好像说的不是这个。"; break;
+			}
+		}
+		mes "对！是噜噜卡森林。他说噜噜卡森林有个什么形状的石头。";
+		next;
+		.@ok = 0;
+		while (.@ok == 0) {
+			switch(select("蟾蜍:青蛙:老虎:小狗")) {
+				case 2: .@ok = 1; break;
+				default: mes "好像说的不是这个。"; break;
+			}
+		}
+		mes "没错！就是青蛙形状的石头！！把石头朝哪个方向转动，就会出现入口了呢？";
+		next;
+		.@ok = 0;
+		while (.@ok == 0) {
+			switch(select("东边:西边:南边:北边")) {
+				case 1: .@ok = 1; break;
+				default: mes "好像说的不是这个。"; break;
+			}
+		}
+		mes "没错！就是东边。前往噜噜卡森林，找到青蛙石，将它往东边转，老人修炼的场所应该就是那里！";
+		next;
+		mes "在噜噜卡森林寻找青蛙形状的石头。";
+	set WH_STAGE, 1;
+		set WH_INTRO, 0;
+		set WH_LEAVE, 0;
 		set WH_KEY, 0;
 		setquest 5901;
 		if (checkquest(5901) != -1) completequest 5901;
@@ -45,11 +139,12 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		setquest 5903;
 		close;
 	}
-	mes "[醉酒的老人]";
-	mes "去噜噜卡森林，找到青蛙雕像。";
-	mes "入口就在雕像背后。";
+	mes "[醉酒的老人] 去噜噜卡森林，找到青蛙雕像。";
 	close;
 }
+OnInit:
+	questinfo QTYPE_JOB;
+	end;
 
 // 噜噜卡森林：青蛙雕像
 um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
@@ -70,6 +165,7 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			.@old = instance_id(IM_PARTY);
 			if (.@old) instance_destroy(.@old);
 			set WH_STAGE, 1;
+			set WH_INTRO, 0;
 			set WH_LEAVE, 0;
 			set WH_KEY, 0;
 			set WH_DAY, 0;
@@ -131,19 +227,81 @@ OnTouch:
 }
 
 // 第一张室外：风之猎鹰
-1@4win,66,60,4	script	风之猎鹰#windhawk	4_4job_serang,{
-	if (WH_STAGE != 1) {
-		mes "猎鹰在你头顶盘旋，随后向北飞去。";
-		close;
+// 副本入口自动剧情
+1@4win,66,53,0	script	Windhawk_Intro	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE != 1 || WH_INTRO != 0) end;
+	unittalk getcharid(3), "长长的森林大道的尽头啊？";
+	sleep2 1500;
+	unittalk getcharid(3), "[" + strcharinfo(0) + "] 已经好久没人来了，树木非常茂密丛生。";
+	sleep2 1500;
+	unittalk getcharid(3), "[" + strcharinfo(0) + "] 先进去看看吧？";
+	set WH_INTRO, 1;
+	end;
+}
+
+// 猎鹰
+1@4win,64,60,4	script	Windhawk_Falcon#windhawk	4_4job_serang,{
+	if (WH_STAGE != 1) end;
+	if (WH_INTRO == 1) {
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 恩？是我的错觉吗？森林里的风好像感觉不太一样？";
+		sleep2 1500;
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 咦？那只猎鹰怎么了？走近点看看？";
+		set WH_INTRO, 2;
+		end;
 	}
-	mes "[风之猎鹰]";
-	mes "风从北边吹来。";
-	mes "跟着我，穿过森林，去那座小屋。";
-	next;
-	mes "[风之猎鹰]";
-	mes "记住，风不会直接告诉你答案。";
-	mes "你需要自己找到打开门的办法。";
-	close;
+	if (WH_INTRO == 2) {
+		emotion ET_EXCLAMATION;
+		sleep2 500;
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 仔细一看，好像是猎人那个时候携带的猎鹰呢？";
+		emotion ET_QUESTION;
+		sleep2 1200;
+		disablenpc();
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 咦？！飞走了";
+		set WH_INTRO, 3;
+		end;
+	}
+	end;
+}
+
+1@4win,65,67,0	script	Windhawk_Intro2	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE == 1 && WH_INTRO == 3) {
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 刚刚那只猎鹰和那阵风好像都在指引我走进森林？";
+		set WH_INTRO, 4;
+	}
+	end;
+}
+
+1@4win,66,107,0	script	Windhawk_Intro3	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE == 1 && WH_INTRO == 4) {
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 越走进森林，越觉得和煦的风包围着自己。";
+		set WH_INTRO, 5;
+	}
+	end;
+}
+
+1@4win,65,140,0	script	Windhawk_Intro4	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE == 1 && WH_INTRO == 5) {
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 刚刚看到的猎鹰不见了。";
+		sleep2 1200;
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 森林中居然有这么宽阔的空间。";
+		sleep2 1200;
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 既然都收到指引了，就来搜查看看吧。";
+		set WH_INTRO, 6;
+	}
+	end;
+}
+
+1@4win,69,158,0	script	Windhawk_Intro5	HIDDEN_WARP_NPC,1,1,{
+OnTouch:
+	if (WH_STAGE == 1 && WH_INTRO == 6) {
+		unittalk getcharid(3), "[" + strcharinfo(0) + "] 一间小屋？不知道有没有人住。";
+		set WH_INTRO, 7;
+	}
+	end;
 }
 
 // 第一张室外：花丛钥匙
@@ -160,7 +318,7 @@ OnTouch:
 	if (select("翻找花丛:离开") == 2) close;
 	set WH_KEY, 1;
 	// 钥匙已取得，门的传送光点会自行检查
-	mes "[风之猎鹰]";
+	mes "[" + strcharinfo(0) + "] 我找到了房屋钥匙。";
 	mes "你从花丛中找到了房屋钥匙，门锁已经打开。";
 	close;
 }
@@ -170,9 +328,7 @@ OnTouch:
 OnTouch:
 	if (WH_STAGE == 1) {
 		if (WH_KEY != 1) {
-			mes "[房屋门]";
-			mes "门锁住了。";
-			mes "钥匙应该就在房屋周围。";
+			mes "[" + strcharinfo(0) + "] 门锁上了，不知道附近能不能找到钥匙。";
 			next;
 			getmapxy(.@map$, .@x, .@y, BL_PC);
 			warp .@map$,79,166;
@@ -794,6 +950,7 @@ um_fild01,50,340,4	script(DISABLED)	帐篷主人#outside	4_4job_robin,{
 		mes "[帐篷的主人] 新地方新气象，游侠时得到的技能点数都用完了吧？";
 		mes "[帐篷的主人] 射箭的时候脚要这样……这样更能感受风的感觉……";
 		mes "[帐篷的主人] 拉弓的时候要轻轻地，没错！就是这样，果然基本功很棒呢。";
+		specialeffect EF_VIOLENTGALE;
 		.@chance = 0;
 		while (1) {
 			mes "[帐篷的主人] 现在感受一下森林吹拂的风，知道感受到风的时候再放箭。";
@@ -801,7 +958,8 @@ um_fild01,50,340,4	script(DISABLED)	帐篷主人#outside	4_4job_robin,{
 				unittalk getcharid(3), "放箭！";
 				sleep2 1000;
 				if (.@chance > 0 && rand(100) < .@chance) {
-					specialeffect EF_STORMGUST;
+					specialeffect EF_ARROWSTORM_STR;
+					specialeffect EF_ARROWSHOT;
 					mes "[帐篷的主人] 恭喜你成为能边驾驭风边战斗的风鹰狩猎者。";
 					set WH_STAGE, 6;
 					mes "测试版暂不执行最终转职。";
