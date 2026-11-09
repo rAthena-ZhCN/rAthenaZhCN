@@ -6,6 +6,7 @@
 
 // 接任务：斐扬
 payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
+	if (WH_TALK >= 2) end;
 	.@name$ = strcharinfo(0);
 	.@m$ = (Sex == 1) ? "小伙子" : "小姑娘";
 	if (BaseLevel < 200 || JobLevel < 70) {
@@ -1049,6 +1050,7 @@ OnTouch:
 }
 
 um_fild01,50,340,4	script	帐篷主人#outside	4_4job_robin,{
+	if (WH_STAGE < 5) end;
 	.@name$ = strcharinfo(0);
 	if (WH_STAGE == 5) {
 		mes "[帐篷的主人]";
