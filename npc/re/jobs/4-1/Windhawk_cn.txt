@@ -218,36 +218,34 @@ OnTouch:
 		set WH_STAGE, 4;
 		close;
 	}
+	.@lost = 0;
 	if (WH_FOOD < 40 || WH_WATER < 30 || WH_FIRE != 1) {
 		set WH_POINTS, WH_POINTS - 15;
-		mes "食物、饮水或壁炉温度不足。";
-		mes "你损失了 15 点生存意志。";
-		if (WH_POINTS <= 0) {
-			mes "你再也撑不住了，被送出了试炼。";
-			set WH_STAGE, 0;
-			set WH_KEY, 0;
-			set WH_DAY, 0;
-			set WH_FOOD, 0;
-			set WH_WATER, 0;
-			set WH_WOOD, 0;
-			set WH_FIRE, 0;
-			set WH_POINTS, 0;
-			set WH_LEAVE, 0;
-			if (checkquest(5901) != -1) erasequest 5901;
-			if (checkquest(5902) != -1) erasequest 5902;
-			if (checkquest(5903) != -1) erasequest 5903;
-			if (checkquest(5904) != -1) erasequest 5904;
-			if (checkquest(5905) != -1) erasequest 5905;
-			if (checkquest(5906) != -1) erasequest 5906;
-			if (checkquest(5907) != -1) erasequest 5907;
-			disablenpc instance_npcname("壁炉火焰#windhawk");
-			.@iid = instance_id(IM_PARTY);
-	for ( .@i = 1; .@i <= 8; ++.@i )
-		disablenpc instance_npcname("红草#" + .@i, .@iid);
-			warp "um_fild01",45,345;
-			close;
-		}
-		next;
+		.@lost = 15;
+	}
+	if (WH_POINTS <= 0) {
+		mes "[试炼失败]";
+		mes "食物、饮水或温度长期不足，你失去了生存意志。";
+		mes "你被送出了噜噜卡森林。";
+		set WH_STAGE, 0;
+		set WH_KEY, 0;
+		set WH_DAY, 0;
+		set WH_FOOD, 0;
+		set WH_WATER, 0;
+		set WH_WOOD, 0;
+		set WH_FIRE, 0;
+		set WH_POINTS, 0;
+		set WH_LEAVE, 0;
+		if (checkquest(5901) != -1) erasequest 5901;
+		if (checkquest(5902) != -1) erasequest 5902;
+		if (checkquest(5903) != -1) erasequest 5903;
+		if (checkquest(5904) != -1) erasequest 5904;
+		if (checkquest(5905) != -1) erasequest 5905;
+		if (checkquest(5906) != -1) erasequest 5906;
+		if (checkquest(5907) != -1) erasequest 5907;
+		disablenpc instance_npcname("壁炉火焰#windhawk");
+		warp "um_fild01",45,345;
+		close;
 	}
 	set WH_FOOD, WH_FOOD - 40;
 	if (WH_FOOD < 0) set WH_FOOD, 0;
@@ -256,11 +254,9 @@ OnTouch:
 	set WH_FIRE, 0;
 	set WH_WOOD, 0;
 	disablenpc instance_npcname("壁炉火焰#windhawk");
-	set WH_DAY, WH_DAY + 1;
 	if (WH_PET == 1) {
 		set WH_FOOD, WH_FOOD - 10;
 		if (WH_FOOD < 0) set WH_FOOD, 0;
-		mes "炕上的小动物消耗了 10% 食物。";
 	}
 	if (WH_TRAP1 == 1) {
 		if (rand(100) < 50) set WH_TRAP1, 2;
@@ -270,8 +266,8 @@ OnTouch:
 		if (rand(100) < 50) set WH_TRAP2, 2;
 		else set WH_TRAP2, 3;
 	}
+	set WH_DAY, WH_DAY + 1;
 	.@iid = instance_id(IM_PARTY);
-	// 每天随机生成 3-6 株红草
 	for ( .@i = 1; .@i <= 8; ++.@i )
 		disablenpc instance_npcname("红草#" + .@i, .@iid);
 	for ( .@i = 0; .@i < 8; ++.@i )
@@ -286,8 +282,13 @@ OnTouch:
 			.@got = .@got + 1;
 		}
 	}
-	mes "你睡了一觉。";
-	mes "第 " + WH_DAY + " 天开始了。";
+	mes "[第" + WH_DAY + "天结算]";
+	mes "生存意志损失：" + .@lost + " 点。";
+	mes "食物存量：" + WH_FOOD + "%。";
+	mes "饮水存量：" + WH_WATER + "%。";
+	next;
+	warp instance_mapname("1@4win"),352,33;
+	dispbottom "你睡了一觉。第" + WH_DAY + "天开始了。";
 	close;
 }
 
@@ -461,7 +462,7 @@ OnTouch:
 	set WH_FOOD_CARRY, WH_FOOD_CARRY + 15;
 	mes "你采集了一株红色药草。";
 	mes "身上的食物量 +15%。回屋放进粮食仓库才算入仓。";
-	disablenpc strnpcinfo(0);
+	disablenpc instance_npcname("红草#" + strnpcinfo(2), instance_id(IM_PARTY));
 	close;
 }
 1@4win,155,167,0	duplicate(红草#1)	红草#2	RED_PLANT
@@ -480,7 +481,7 @@ OnTouch:
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP1, 1;
-		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
+		setnpcdisplay strnpcinfo(3), JT_4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -491,25 +492,25 @@ OnTouch:
 	if (WH_TRAP1 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP1, 0;
-		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+		setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP1, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
@@ -525,7 +526,7 @@ OnTouch:
 		mes "有野生动物的活动痕迹，希望不是凶猛的动物。";
 		if (select("设置陷阱:不管它") == 2) close;
 		set WH_TRAP2, 1;
-		setnpcdisplay strnpcinfo(0), JT_4_CREEPER;
+		setnpcdisplay strnpcinfo(3), JT_4_CREEPER;
 		mes "你在这里设置了一个陷阱。";
 		close;
 	}
@@ -536,25 +537,25 @@ OnTouch:
 	if (WH_TRAP2 == 3) {
 		mes "没有捉到任何动物。";
 		set WH_TRAP2, 0;
-		setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+		setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 		close;
 	}
 	mes "陷阱里抓到了一只小动物。";
 	switch(select("放生:带回去:当做粮食")) {
 		case 1:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			mes "你把小动物放生了。";
 			break;
 		case 2:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			set WH_ANIMAL_CARRY, 1;
 			mes "你把小动物抱了起来，准备带回小屋。";
 			break;
 		case 3:
 			set WH_TRAP2, 0;
-			setnpcdisplay strnpcinfo(0), JT_4_SOIL;
+			setnpcdisplay strnpcinfo(3), JT_4_SOIL;
 			set WH_FOOD, WH_FOOD + 80;
 			if (WH_FOOD > 100) set WH_FOOD, 100;
 			mes "你把动物处理成了食物。";
@@ -614,7 +615,7 @@ OnTouch:
 			mes "先看看屋里的情况。";
 			close;
 		}
-		warp instance_mapname("1@4win"),201,169;
+		warp instance_mapname("1@4win"),201,175;
 		end;
 	}
 	if (WH_STAGE == 3) {
