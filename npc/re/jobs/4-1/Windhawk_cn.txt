@@ -19,21 +19,22 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		mes "风只回应游侠的箭。";
 		close;
 	}
-	if (WH_STAGE == 0) {
+	if (WH_TALK == 0) {
 		mes "[" + .@name$ + "]";
 		mes "那个……老人家，你在这边很危险。";
-		set WH_STAGE, 1;
-		close;
-	}
-	if (WH_STAGE == 1) {
+		next;
 		mes "虽然老人家只是无意间看了我一眼，却莫名被老人家吸引。";
 		next;
 		mes "怎么会？怎么回事？为什么会被吸引？我是不是该好好睡一觉？";
 		next;
 		mes "继续和老人家说话。";
+		set WH_TALK, 1;
+		setquest 5901;
+		if (checkquest(5901) != -1) completequest 5901;
+		setquest 5902;
 		close;
 	}
-	if (WH_STAGE == 2) {
+	if (WH_TALK == 1) {
 		mes "[醉酒的老人]；" + .@m$ + "，瞎管闲事。";
 		next;
 		mes "[醉酒的老人]";
@@ -160,14 +161,15 @@ payon,106,175,4	script	醉酒的老人#windhawk	4_4job_robin_drunk,{
 		mes "没错！就是东边。前往噜噜卡森林，找到青蛙石，将它往东边转，老人修炼的场所应该就是那里！";
 		next;
 		mes "在噜噜卡森林寻找青蛙形状的石头。";
-	set WH_STAGE, 1;
+		set WH_TALK, 2;
+		set WH_STAGE, 1;
 		set WH_INTRO, 0;
 		set WH_LEAVE, 0;
 		set WH_KEY, 0;
-		setquest 5901;
-		if (checkquest(5901) != -1) completequest 5901;
-		setquest 5902;
-		if (checkquest(5902) != -1) completequest 5902;
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
 		setquest 5903;
 		close;
 	}
@@ -198,6 +200,7 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			.@old = instance_id(IM_PARTY);
 			if (.@old) instance_destroy(.@old);
 			set WH_STAGE, 1;
+			set WH_TALK, 0;
 			set WH_INTRO, 0;
 			set WH_LEAVE, 0;
 			set WH_KEY, 0;
@@ -226,10 +229,10 @@ um_fild01,47,345,5	script	青蛙雕像#windhawk	4_FROG,{
 			if (checkquest(5905) != -1) erasequest 5905;
 			if (checkquest(5906) != -1) erasequest 5906;
 			if (checkquest(5907) != -1) erasequest 5907;
-			setquest 5901;
-			if (checkquest(5901) != -1) completequest 5901;
-			setquest 5902;
-			if (checkquest(5902) != -1) completequest 5902;
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
+		// 5901/5902 已在第一段处理
 			setquest 5903;
 			.@iid = instance_create("Windhawk", IM_PARTY);
 			if (.@iid < 0 && .@iid != -3) {
