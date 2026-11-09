@@ -1124,7 +1124,7 @@ um_fild01,50,340,4	script	帐篷主人#outside	4_4job_robin,{
 		next;
 		specialeffect EF_VIOLENTGALE;
 		sc_start SC_CALAMITYGALE, 180000, 1;
-		unitskilluseid getcharid(3), WH_CALAMITYGALE, 1;
+		skilleffect "WH_CALAMITYGALE", 1;
 		.@chance = 0;
 		while (1) {
 			mes "[帐篷的主人]";
@@ -1135,7 +1135,7 @@ um_fild01,50,340,4	script	帐篷主人#outside	4_4job_robin,{
 				sleep2 1000;
 				if (.@chance > 0 && rand(100) < .@chance) {
 					sc_end SC_CALAMITYGALE;
-					unitskilluseid getcharid(3), WH_GALESTORM, 1, getcharid(3), 0, 0, 0, 1;
+					skilleffect "WH_GALESTORM", 10;
 					mes "[帐篷的主人]";
 					mes "恭喜你成为能边驾驭风边战斗的风鹰狩猎者。";
 					next;
