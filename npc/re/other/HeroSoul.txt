@@ -3,49 +3,89 @@
 //============================================================
 
 prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
+	.@name$ = strcharinfo(0);
+	.@tk = (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER || Class == JOB_STAR_EMPEROR || Class == JOB_STAR_EMPEROR2);
+	.@nj = (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO);
 	mes "[英灵之魂]";
-	mes "我是英灵之魂，负责唤醒职业的潜在记忆。";
-	mes "目前可以唤醒的是跆拳系列职业的「跆拳英灵」。";
+	mes "您好，我负责给不同职业的玩家";
+	mes "召唤远古时空中最强的英灵之魂。";
+	mes "召唤英灵需要" + mesitemlink(50001) + "。";
+	mes "目前支持的职业有：";
+	mes "跆拳英灵";
+	mes "忍者英灵";
 	next;
-	mes "[英灵之魂]";
-	mes "「跆拳英灵」持续30天，效果包括：";
-	mes "跆拳踢技自动连招；";
-	mes "平安/快乐休息随时激活；日月星地图自由更改；";
-	mes "日月星憎恶自由更改；日月星恶魔视力恢复；日月星融合无需灵魂；";
-	mes "日月星温暖自由使用；日月星平安感自由使用；";
-	mes "艾斯麻无需前置要求；";
-	mes "艾斯麻范围提升至3×3。";
-	mes "艾斯诬取消晕眩且时长x5；";
-	mes "凯阿希HP恢复升至5倍；";
-	mes "灵魂积蓄速度升至3-30s/个；";
-	mes "灵魂收割几率与时长翻倍；";
-	mes "灵魂集结HP恢复量提升。";
-	next;
-	mes "[英灵之魂]";
-	if (Class != JOB_TAEKWON && Class != JOB_STAR_GLADIATOR && Class != JOB_STAR_GLADIATOR2 && Class != JOB_SOUL_LINKER && Class != JOB_STAR_EMPEROR && Class != JOB_STAR_EMPEROR2) {
-		mes "你的职业无法接受「跆拳英灵」。";
+	switch(select("查看英灵之魂buff介绍","召唤英灵")) {
+	case 1:
+		switch(select("跆拳英灵介绍","忍者英灵介绍")) {
+		case 1:
+			mes "[跆拳英灵介绍]";
+			mes "跆拳系列职业可召唤。";
+			mes "持续30天，重新登录也会保留。";
+			mes "效果包括：";
+			mes "跆拳踢技自动连招；";
+			mes "平安/快乐休息随时激活；";
+			mes "日月星地图、憎恶自由更改；";
+			mes "日月星融合、温暖、平安感自由使用。";
+			next;
+			mes "[跆拳英灵介绍]";
+			mes "艾斯麻无需前置要求，范围3×3；";
+			mes "艾斯诬取消晕眩且时长x5；";
+			mes "凯阿希HP恢复升至5倍；";
+			mes "灵魂积蓄速度升至3-30秒/个；";
+			mes "灵魂收割几率与时长翻倍；";
+			mes "灵魂集结HP恢复量提升。";
+			close;
+		case 2:
+			mes "[忍者英灵介绍]";
+			mes "忍者系列职业可召唤。";
+			mes "持续30天，重新登录也会保留。";
+			mes "效果包括：";
+			mes "忍术修炼恢复效果随时生效；";
+			mes "金蝉脱壳、幻影分身次数与时长翻倍；";
+			mes "火炎花、冰闪枪、风刃范围5×5；";
+			mes "爆炎龙7×7、冰晶落9×9；";
+			mes "朔风射程12，判定范围提升；";
+			mes "上弦月只增不减；";
+			mes "十六夜冷却减半；";
+			mes "明镜止水可正常移动攻击；";
+			mes "炸弹飞刀7×7；";
+			mes "投掷硬币消耗降至10%。";
+			close;
+		}
+	case 2:
+		.@sel = select("跆拳英灵","忍者英灵");
+		if (.@sel == 1 && !.@tk) {
+			mes "[英灵之魂]";
+			mes "你的职业不能召唤" + .@name$ + "。";
+			close;
+		}
+		if (.@sel == 2 && !.@nj) {
+			mes "[英灵之魂]";
+			mes "你的职业不能召唤忍者英灵。";
+			close;
+		}
+		if (hero_soul_expire > gettimetick(2)) {
+			.@left = hero_soul_expire - gettimetick(2);
+			mes "[英灵之魂]";
+			mes "你已经拥有英灵之魂。";
+			mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
+			close;
+		}
+		if (countitem(50001) < 1) {
+			mes "[英灵之魂]";
+			mes "你需要携带1个英灵之魂器。";
+			mes "可在CashShop购买。";
+			close;
+		}
+		if (select("兑换英灵之魂30天","取消") == 2) close;
+		delitem 50001,1;
+		hero_soul_expire = gettimetick(2) + 2592000;
+		sc_start SC_HERO_SOUL, 2592000000, 1;
+		mes "[英灵之魂]";
+		mes "英灵之魂已觉醒。";
+		mes "有效期30天，重新登录也会保留。";
 		close;
 	}
-	if (hero_soul_expire > gettimetick(2)) {
-		.@left = hero_soul_expire - gettimetick(2);
-		mes "你已经拥有「跆拳英灵」。";
-		mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
-		close;
-	}
-	if (countitem(50001) < 1) {
-		mes "你需要携带1个「英灵之魂器」。";
-	mes "可在CashShop购买。";
-		close;
-	}
-	if (select("兑换「跆拳英灵」30天","取消") == 2)
-		close;
-	delitem 50001,1;
-	hero_soul_expire = gettimetick(2) + 2592000;
-	sc_start SC_HERO_SOUL, 2592000000, 1;
-	mes "[英灵之魂]";
-	mes "「跆拳英灵」已觉醒。";
-	mes "有效期30天，重新登录也会保留。";
-	close;
 }
 
 -	script	HeroSoul_Login	-1,{
