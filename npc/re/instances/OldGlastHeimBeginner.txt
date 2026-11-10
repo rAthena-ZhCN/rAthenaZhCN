@@ -1417,7 +1417,7 @@ OnStop:
 OnStart:
 	enablenpc instance_npcname("#B_ghmemorialmob05");
 	for ( .@i = 1; .@i <= 7; .@i++ )
-		enablenpc instance_npcname("#ogh_2-" + .@i);
+		enablenpc instance_npcname("#B_ogh_2-" + .@i);
 	end;
 
 OnMyMobDead1:
@@ -1452,7 +1452,7 @@ OnBossDead:
 
 	// Event stopped and monsters in this sector killed
 	for ( .@i = 1; .@i <= 7; .@i++ )
-		donpcevent instance_npcname("#ogh_2-" + .@i) + "::OnStop";
+		donpcevent instance_npcname("#B_ogh_2-" + .@i) + "::OnStop";
 
 	.@npc_name$ = instance_npcname("#B_ghmemorialmob05");
 	for ( .@i = 1; .@i <= 7; .@i++ )
@@ -1466,7 +1466,7 @@ OnBossDead:
 OnStart:
 	enablenpc instance_npcname("#B_ghmemorialmob06");
 	for ( .@i = 1; .@i <= 7; .@i++ )
-		enablenpc instance_npcname("#ogh_3-" + .@i);
+		enablenpc instance_npcname("#B_ogh_3-" + .@i);
 
 	// Fix spawn
 	.@label$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead";
@@ -1551,7 +1551,7 @@ OnBossDead:
 
 	// Event stopped and monsters in this sector killed
 	for ( .@i = 1; .@i <= 7; .@i++ )
-		donpcevent instance_npcname("#ogh_3-" + .@i) + "::OnStop";
+		donpcevent instance_npcname("#B_ogh_3-" + .@i) + "::OnStop";
 
 	.@npc_name$ = instance_npcname("#B_ghmemorialmob06");
 	killmonster 'B_map_name$[1], .@npc_name$ + "::OnMyMobDead";
@@ -2185,8 +2185,8 @@ OnInstanceInit:
 	disablenpc instance_npcname("#B_ghmemorialmob05");
 	disablenpc instance_npcname("#B_ghmemorialmob06");
 	for ( .@i = 1; .@i <= 7; .@i++ ) {
-		disablenpc instance_npcname("#ogh_2-" + .@i);
-		disablenpc instance_npcname("#ogh_3-" + .@i);
+		disablenpc instance_npcname("#B_ogh_2-" + .@i);
+		disablenpc instance_npcname("#B_ogh_3-" + .@i);
 	}
 
 	// °¢Ä·´ïÀ³Ë¹ Room Entrance
