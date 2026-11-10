@@ -17,12 +17,22 @@ void SkillEsma::calculateSkillRatio(const Damage *wd, const block_list *src, con
 
 void SkillEsma::castendDamageId(block_list *src, block_list *target, uint16 skill_lv, t_tick tick, int32& flag) const {
 	map_session_data* sd = BL_CAST( BL_PC, src );
+	status_change* sc = status_get_sc(src);
+	bool hero_soul = sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr;
 
-	status_change_end(src, SC_SMA);
+	if (!hero_soul)
+		status_change_end(src, SC_SMA);
+
 	if (sd && !battle_config.allow_es_magic_pc && target->type != BL_MOB) {
 		status_change_start(src,src,SC_STUN,10000,skill_lv,0,0,0,500,SCSTART_NOTICKDEF|SCSTART_NORATEDEF);
 		clif_skill_fail( *sd, getSkillId() );
 		return;
 	}
-	skill_attack(BF_MAGIC,src,src,target,getSkillId(),skill_lv,tick,flag);
+
+	if (hero_soul) {
+		// Hero Soul: Esma hits the target and all enemies in the surrounding 3x3 area.
+		map_foreachinrange(skill_area_sub, target, 1, BL_CHAR, src, getSkillId(), skill_lv, tick, flag | BCT_ENEMY | SD_SPLASH | 1, skill_castend_damage_id);
+	} else {
+		skill_attack(BF_MAGIC,src,src,target,getSkillId(),skill_lv,tick,flag);
+	}
 }

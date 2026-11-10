@@ -8570,7 +8570,7 @@ bool skill_check_condition_castbegin( map_session_data& sd, uint16 skill_id, uin
 			}
 			break;
 		case SL_SMA:
-			if(!sc || !(sc->getSCE(SC_SMA) || sc->getSCE(SC_USE_SKILL_SP_SHA)))
+			if(!sc || !(sc->getSCE(SC_SMA) || sc->getSCE(SC_USE_SKILL_SP_SHA) || sc->getSCE(SC_HERO_SOUL)))
 				return false;
 			break;
 		case HT_POWER:
