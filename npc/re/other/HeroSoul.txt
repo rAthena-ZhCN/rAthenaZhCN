@@ -64,6 +64,17 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 			mes "你的职业不能召唤忍者英灵。";
 			close;
 		}
+		if (hero_soul_expire > gettimetick(2) && .@sel == 2) {
+			.@left = hero_soul_expire - gettimetick(2);
+			.@tick = .@left * 1000;
+			if (.@tick > 2592000000) .@tick = 2592000000;
+			sc_end SC_HERO_SOUL;
+			sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+			mes "[英灵之魂]";
+			mes "忍者英灵状态已更新。";
+			mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
+			close;
+		}
 		if (hero_soul_expire > gettimetick(2)) {
 			.@left = hero_soul_expire - gettimetick(2);
 			mes "[英灵之魂]";
