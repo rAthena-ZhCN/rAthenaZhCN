@@ -20,6 +20,12 @@ void SkillEsma::castendDamageId(block_list *src, block_list *target, uint16 skil
 	status_change* sc = status_get_sc(src);
 	bool hero_soul = sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr;
 
+	// Area callback: apply the hit to this target only, never recurse into the splash loop.
+	if (flag & 1) {
+		skill_attack(BF_MAGIC,src,src,target,getSkillId(),skill_lv,tick,flag);
+		return;
+	}
+
 	if (!hero_soul)
 		status_change_end(src, SC_SMA);
 
