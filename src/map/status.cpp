@@ -5524,8 +5524,12 @@ void status_calc_regen_rate(block_list *bl, struct regen_data *regen, status_cha
 void status_calc_state_sub( block_list& bl, status_change& sc, bool start, std::shared_ptr<s_status_change_db> scdb_main, bool& restriction, e_scs_flag flag, e_scs_flag flag_conditional, std::function<bool ( block_list&, status_change&, bool&, const sc_type, const status_change_entry& )> func_switch ){
 	// If starting and unconditional no further checks are needed
 	if( start && scdb_main->state[flag] ){
-		restriction = true;
-		return;
+		if (flag == SCS_NOMOVE && scdb_main == status_db.find(SC_MEIKYOUSISUI) && sc.getSCE(SC_HERO_SOUL) != nullptr) {
+			restriction = false;
+		} else {
+			restriction = true;
+			return;
+		}
 	}
 
 	// Otherwise remove the restriction
@@ -5541,6 +5545,8 @@ void status_calc_state_sub( block_list& bl, status_change& sc, bool start, std::
 
 		// If it is unconditional we can already restore the restriction and return early
 		if( scdb_other->state[flag] ){
+			if (flag == SCS_NOMOVE && it.first == SC_MEIKYOUSISUI && sc.getSCE(SC_HERO_SOUL) != nullptr)
+				continue;
 			restriction = true;
 			return;
 		}

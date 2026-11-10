@@ -7,6 +7,7 @@
 
 #include "map/pc.hpp"
 #include "map/status.hpp"
+#include "map/status.hpp"
 
 SkillKunaiExplosion::SkillKunaiExplosion() : SkillImplRecursiveDamageSplash(KO_BAKURETSU) {
 }
@@ -21,4 +22,11 @@ void SkillKunaiExplosion::calculateSkillRatio(const Damage *wd, const block_list
 	skillratio += 10 * (sd ? sd->status.job_level : 1);
 	if (sc && sc->getSCE(SC_KAGEMUSYA))
 		skillratio += skillratio * sc->getSCE(SC_KAGEMUSYA)->val2 / 100;
+}
+
+int16 SkillKunaiExplosion::getSplashSearchSize(block_list* src, uint16 skill_lv) const {
+	const status_change* sc = status_get_sc(src);
+	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL))
+		return 3; // Ninja Hero Soul: 7x7
+	return SkillImplRecursiveDamageSplash::getSplashSearchSize(src, skill_lv);
 }

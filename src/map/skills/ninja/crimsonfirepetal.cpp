@@ -3,6 +3,7 @@
 
 #include "crimsonfirepetal.hpp"
 
+#include "map/map.hpp"
 #include "map/pc.hpp"
 
 SkillCrimsonFirePetal::SkillCrimsonFirePetal() : SkillImpl(NJ_KOUENKA) {
@@ -17,5 +18,16 @@ void SkillCrimsonFirePetal::calculateSkillRatio(const Damage *wd, const block_li
 }
 
 void SkillCrimsonFirePetal::castendDamageId(block_list *src, block_list *target, uint16 skill_lv, t_tick tick, int32& flag) const {
+	status_change *sc = status_get_sc(src);
+
+	if (flag & 1) {
+		skill_attack(BF_MAGIC, src, src, target, getSkillId(), skill_lv, tick, flag);
+		return;
+	}
+	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) {
+		// Ninja Hero Soul: 5x5 splash around the target.
+		map_foreachinrange(skill_area_sub, target, 2, BL_CHAR, src, getSkillId(), skill_lv, tick, flag | BCT_ENEMY | SD_SPLASH | 1, skill_castend_damage_id);
+		return;
+	}
 	skill_attack(BF_MAGIC, src, src, target, getSkillId(), skill_lv, tick, flag);
 }

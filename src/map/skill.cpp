@@ -327,6 +327,11 @@ int32 skill_get_range2(const block_list* bl, uint16 skill_id, uint16 skill_lv, b
 
 	int32 range = skill_get_range(skill_id, skill_lv);
 
+	if (bl->type == BL_PC && skill_id == NJ_KAMAITACHI) {
+		const status_change* sc = status_get_sc(bl);
+		if (sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr)
+			range = 12;
+	}
 	if( range < 0 ) {
 		if( battle_config.use_weapon_skill_range&bl->type )
 			return status_get_range(bl);
@@ -1158,6 +1163,15 @@ bool skill_isNotOk_npcRange(block_list *src, uint16 skill_id, uint16 skill_lv, i
 struct s_skill_unit_layout *skill_get_unit_layout(uint16 skill_id, uint16 skill_lv, block_list* src, int32 x, int32 y)
 {
 	int32 pos = skill_get_unit_layout_type(skill_id,skill_lv);
+	if (src != nullptr && src->type == BL_PC) {
+		const status_change* sc = status_get_sc(src);
+		if (sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr) {
+			if (skill_id == NJ_BAKUENRYU)
+				pos = 3;
+			else if (skill_id == NJ_HYOUSYOURAKU)
+				pos = 4;
+		}
+	}
 	uint8 dir;
 
 	if (pos < -1 || pos >= MAX_SKILL_UNIT_LAYOUT) {
