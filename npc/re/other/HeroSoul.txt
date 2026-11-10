@@ -107,7 +107,7 @@ OnPCLoginEvent:
 	if (hero_soul_expire > gettimetick(2)) {
 		.@remain = hero_soul_expire - gettimetick(2);
 		.@tick = .@remain * 1000;
-		if (.@tick > 2147000000) .@tick = 2147000000;
+		if (.@tick > 2592000000) .@tick = 2592000000;
 		if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
 			sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
 		else
@@ -126,7 +126,7 @@ OnTimer43200000:
 		if (hero_soul_expire > gettimetick(2)) {
 			.@remain = hero_soul_expire - gettimetick(2);
 			.@tick = .@remain * 1000;
-			if (.@tick > 2147000000) .@tick = 2147000000;
+			if (.@tick > 2592000000) .@tick = 2592000000;
 			if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
 				sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
 			else
@@ -135,7 +135,7 @@ OnTimer43200000:
 		if (vip_status(VIP_STATUS_ACTIVE)) {
 			.@remain = vip_status(VIP_STATUS_REMAINING);
 			.@tick = .@remain * 1000;
-			if (.@tick > 2147000000) .@tick = 2147000000;
+			if (.@tick > 2592000000) .@tick = 2592000000;
 			sc_start SC_VIP, .@tick, 1;
 		}
 		detachrid;
