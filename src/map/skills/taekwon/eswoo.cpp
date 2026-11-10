@@ -16,12 +16,18 @@ void SkillEswoo::castendNoDamageId(block_list *src, block_list *target, uint16 s
 	status_change_entry *tsce = (tsc && type != SC_NONE)?tsc->getSCE(type):nullptr;
 	map_session_data* sd = BL_CAST( BL_PC, src );
 
+	bool hero_soul = sd != nullptr && sd->sc.getSCE(SC_HERO_SOUL) != nullptr;
+
 	if (tsce) {
-		if(sd)
-			clif_skill_fail( *sd, getSkillId() );
-		status_change_start(src,src,SC_STUN,10000,skill_lv,0,0,0,10000,SCSTART_NORATEDEF);
+		if (!hero_soul) {
+			if(sd)
+				clif_skill_fail( *sd, getSkillId() );
+			status_change_start(src,src,SC_STUN,10000,skill_lv,0,0,0,10000,SCSTART_NORATEDEF);
+			status_change_end(target, SC_SWOO);
+			return;
+		}
+		// Hero Soul: no self-stun, refresh the debuff and apply the 5x duration.
 		status_change_end(target, SC_SWOO);
-		return;
 	}
 	if (sd && !battle_config.allow_es_magic_pc && target->type != BL_MOB) {
 		clif_skill_fail( *sd, getSkillId() );

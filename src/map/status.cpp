@@ -121,7 +121,7 @@ static uint32 status_calc_maxhp_pc( map_session_data& sd, uint32 vit );
 static uint32 status_calc_maxsp_pc( map_session_data& sd, uint32 int_ );
 static uint32 status_calc_maxap_pc( map_session_data& sd );
 static int32 status_get_sc_interval(enum sc_type type);
-static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_type type, int32 val1, int32 val2, int32 val3, int32 val4, int32 tick, uint8 flag);
+static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_type type, int32 val1, int32 val2, int32 val3, int32 val4, t_tick tick, uint8 flag);
 
 static bool status_change_isDisabledOnMap_(sc_type type, bool mapIsVS, bool mapIsPVP, bool mapIsGVG, bool mapIsBG, uint32 mapZone, bool mapIsTE);
 #define status_change_isDisabledOnMap(type, m) ( status_change_isDisabledOnMap_((type), mapdata_flag_vs2((m)), m->getMapFlag(MF_PVP) != 0, mapdata_flag_gvg2_no_te((m)), m->getMapFlag(MF_BATTLEGROUND) != 0, (m->zone << 3) != 0, mapdata_flag_gvg2_te((m))) )
@@ -10299,7 +10299,7 @@ bool status_change_start(block_list* src, block_list* bl, sc_type type, int32 ra
 	entry->val4 = val4;
 #ifdef RENEWAL
 	// In renewal, the delay is substracted from the duration
-	entry->tick = std::max<int32>(1, tick - delay);
+	entry->tick = std::max<t_tick>(1, tick - delay);
 #else
 	entry->tick = tick;
 #endif
@@ -10325,7 +10325,7 @@ bool status_change_start(block_list* src, block_list* bl, sc_type type, int32 ra
  * @param flag: Value which determines what parts to calculate. See e_status_change_start_flags
  * @return Whether the status change was resisted (false) or applied (true)
  */
-static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_type type, int32 val1, int32 val2, int32 val3, int32 val4, int32 tick, uint8 flag)
+static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_type type, int32 val1, int32 val2, int32 val3, int32 val4, t_tick tick, uint8 flag)
 {
 	map_session_data* sd = BL_CAST(BL_PC, bl);
 	status_change* sc = status_get_sc(bl);
@@ -11580,6 +11580,8 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 		}
 		case SC_KAAHI:
 			val2 = 200*val1; // HP heal
+			if (sc != nullptr && sc->getSCE(SC_HERO_SOUL))
+				val2 *= 5; // Hero Soul: 5x HP recovery
 			val3 = 5*val1; // SP cost
 			break;
 		case SC_BLESSING:
@@ -11749,6 +11751,11 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val3= 20*val1; // Int increase
 			break;
 		case SC_SWOO:
+			if (src != nullptr) {
+				status_change *ssc = status_get_sc(src);
+				if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL))
+					tick *= 5; // Hero Soul: 5x duration
+			}
 			if(status_has_mode(status,MD_STATUSIMMUNE))
 				tick /= 5; // !TODO: Reduce skill's duration. But for how long?
 			break;
@@ -12796,11 +12803,26 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			break;
 		case SC_SOULREAPER:
 			val2 = 10 + 5 * val1; // Chance of Getting A Soul Sphere.
+			if (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) {
+				val2 = 20 + 10 * val1; // Hero Soul: double chance
+				tick *= 2; // Hero Soul: double duration
+			}
 			break;
 		case SC_SOULCOLLECT:
 			val2 = 5 + 3 * val2; // Max Soul Sphere's.
 			val3 = tick > 0 ? tick : 60000;
 			tick_time = tick;
+			if (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) {
+				switch (val1) {
+					case 1: val3 = 30000; break;
+					case 2: val3 = 20000; break;
+					case 3: val3 = 10000; break;
+					case 4: val3 = 5000; break;
+					case 5: val3 = 3000; break;
+					default: break;
+				}
+				tick_time = val3;
+			}
 			tick = INFINITE_TICK; // Duration sent to the client should be infinite
 			break;
 		case SC_SP_SHA:
@@ -15116,7 +15138,20 @@ TIMER_FUNC(status_change_timer){
 			if (!unity_src || status_isdead(*unity_src) || unity_src->m != bl->m || !check_distance_bl(bl, unity_src, 11))
 				break;
 
-			status_heal(bl, 150 * sce->val1, 0, 2);
+			int32 heal = 150 * sce->val1;
+			if (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) {
+				switch (sce->val1) {
+					case 1: heal = 300; break;
+					case 2: heal = 600; break;
+					case 3: heal = 900; break;
+					case 4: heal = 1500; break;
+					case 5: heal = 2500; break;
+					case 6: heal = 3000; break;
+					case 7: heal = 3888; break;
+					default: break;
+				}
+			}
+			status_heal(bl, heal, 0, 2);
 			sc_timer_next(3000 + tick);
 			return 0;
 		}
