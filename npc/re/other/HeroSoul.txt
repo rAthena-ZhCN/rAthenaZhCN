@@ -80,7 +80,10 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 		if (select("兑换英灵之魂30天","取消") == 2) close;
 		delitem 50001,1;
 		hero_soul_expire = gettimetick(2) + 2592000;
-		sc_start SC_HERO_SOUL, 2592000000, 1;
+		if (.@sel == 1)
+			sc_start SC_HERO_SOUL, 2592000000, 1;
+		else
+			sc_start SC_HERO_SOUL_NINJA, 2592000000, 1;
 		mes "[英灵之魂]";
 		mes "英灵之魂已觉醒。";
 		mes "有效期30天，重新登录也会保留。";
@@ -94,7 +97,10 @@ OnPCLoginEvent:
 		.@remain = hero_soul_expire - gettimetick(2);
 		.@tick = .@remain * 1000;
 		if (.@tick > 2592000000) .@tick = 2592000000;
-		sc_start SC_HERO_SOUL, .@tick, 1;
+		if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
+			sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+		else
+			sc_start SC_HERO_SOUL, .@tick, 1;
 	}
 	end;
 }
@@ -110,7 +116,10 @@ OnTimer43200000:
 			.@remain = hero_soul_expire - gettimetick(2);
 			.@tick = .@remain * 1000;
 			if (.@tick > 2592000000) .@tick = 2592000000;
-			sc_start SC_HERO_SOUL, .@tick, 1;
+			if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
+				sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+			else
+				sc_start SC_HERO_SOUL, .@tick, 1;
 		}
 		if (vip_status(VIP_STATUS_ACTIVE)) {
 			.@remain = vip_status(VIP_STATUS_REMAINING);

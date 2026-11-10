@@ -9870,7 +9870,7 @@ struct s_skill_condition skill_get_requirement(map_session_data* sd, uint16 skil
 		req.ap += (status->max_ap * (-ap_rate)) / 100;
 
 	req.zeny = skill->require.zeny[skill_lv-1];
-	if (skill_id == NJ_ZENYNAGE && sc != nullptr && sc->getSCE(SC_HERO_SOUL))
+	if (skill_id == NJ_ZENYNAGE && sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA))
 		req.zeny /= 10; // Ninja Hero Soul: Throw Zeny costs 10%
 
 	if( sc && sc->getSCE(SC__UNLUCKY) ) {
@@ -13966,7 +13966,7 @@ TIMER_FUNC(skill_blockpc_end){
  * @return True if successful, false otherwise
  */
 bool skill_blockpc_start(map_session_data &sd, uint16 skill_id, t_tick tick) {
-	if (skill_id == KO_IZAYOI && sd.sc.getSCE(SC_HERO_SOUL))
+	if (skill_id == KO_IZAYOI && sd.sc.getSCE(SC_HERO_SOUL_NINJA))
 		tick /= 2; // Ninja Hero Soul: 16th Night cooldown halved
 	if (!skill_db.exists(skill_id) || tick < 1)
 		return false;

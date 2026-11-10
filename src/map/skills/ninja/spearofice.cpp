@@ -33,7 +33,7 @@ void SkillSpearOfIce::castendDamageId(block_list* src, block_list* target, uint1
 		skill_attack(BF_MAGIC, src, src, target, getSkillId(), skill_lv, tick, flag);
 		return;
 	}
-	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) {
+	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA)) {
 		// Ninja Hero Soul: 5x5 splash around the target.
 		map_foreachinrange(skill_area_sub, target, 2, BL_CHAR, src, getSkillId(), skill_lv, tick, flag | BCT_ENEMY | SD_SPLASH | 1, skill_castend_damage_id);
 		return;

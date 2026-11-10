@@ -26,7 +26,7 @@ void SkillKunaiExplosion::calculateSkillRatio(const Damage *wd, const block_list
 
 int16 SkillKunaiExplosion::getSplashSearchSize(block_list* src, uint16 skill_lv) const {
 	const status_change* sc = status_get_sc(src);
-	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL))
+	if (sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA))
 		return 3; // Ninja Hero Soul: 7x7
 	return SkillImplRecursiveDamageSplash::getSplashSearchSize(src, skill_lv);
 }

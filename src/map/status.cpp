@@ -5524,7 +5524,7 @@ void status_calc_regen_rate(block_list *bl, struct regen_data *regen, status_cha
 void status_calc_state_sub( block_list& bl, status_change& sc, bool start, std::shared_ptr<s_status_change_db> scdb_main, bool& restriction, e_scs_flag flag, e_scs_flag flag_conditional, std::function<bool ( block_list&, status_change&, bool&, const sc_type, const status_change_entry& )> func_switch ){
 	// If starting and unconditional no further checks are needed
 	if( start && scdb_main->state[flag] ){
-		if (flag == SCS_NOMOVE && scdb_main == status_db.find(SC_MEIKYOUSISUI) && sc.getSCE(SC_HERO_SOUL) != nullptr) {
+		if (flag == SCS_NOMOVE && scdb_main == status_db.find(SC_MEIKYOUSISUI) && sc.getSCE(SC_HERO_SOUL_NINJA) != nullptr) {
 			restriction = false;
 		} else {
 			restriction = true;
@@ -5545,7 +5545,7 @@ void status_calc_state_sub( block_list& bl, status_change& sc, bool start, std::
 
 		// If it is unconditional we can already restore the restriction and return early
 		if( scdb_other->state[flag] ){
-			if (flag == SCS_NOMOVE && it.first == SC_MEIKYOUSISUI && sc.getSCE(SC_HERO_SOUL) != nullptr)
+			if (flag == SCS_NOMOVE && it.first == SC_MEIKYOUSISUI && sc.getSCE(SC_HERO_SOUL_NINJA) != nullptr)
 				continue;
 			restriction = true;
 			return;
@@ -11746,26 +11746,26 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			}
 			break;
 		case SC_UTSUSEMI:
-			if (src != nullptr) {
-				status_change *ssc = status_get_sc(src);
-				if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL)) {
-					val2 *= 2;
-					tick *= 2;
-				}
+		val2=(val1+1)/2; // Number of hits blocked
+		val3=skill_get_blewcount(NJ_UTSUSEMI, val1); // knockback value.
+		if (src != nullptr) {
+			status_change *ssc = status_get_sc(src);
+			if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL_NINJA)) {
+				val2 *= 2;
+				tick *= 2;
 			}
-			val2=(val1+1)/2; // Number of hits blocked
-			val3=skill_get_blewcount(NJ_UTSUSEMI, val1); // knockback value.
-			break;
+		}
+		break;
 		case SC_BUNSINJYUTSU:
-			if (src != nullptr) {
-				status_change *ssc = status_get_sc(src);
-				if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL)) {
-					val2 *= 2;
-					tick *= 2;
-				}
+		val2=(val1+1)/2; // Number of hits blocked
+		if (src != nullptr) {
+			status_change *ssc = status_get_sc(src);
+			if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL_NINJA)) {
+				val2 *= 2;
+				tick *= 2;
 			}
-			val2=(val1+1)/2; // Number of hits blocked
-			break;
+		}
+		break;
 		case SC_CHANGE:
 			val2= 30*val1; // Vit increase
 			val3= 20*val1; // Int increase
@@ -12392,12 +12392,12 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val4 = tick / tick_time;
 			break;
 		case SC_ZANGETSU:
-			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) || status_get_hp(bl) % 2 == 0 )
+			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA)) || status_get_hp(bl) % 2 == 0 )
 				val2 = (status_get_lv(bl) / 3) + (20 * val1); //+Watk
 			else
 				val2 -= (status_get_lv(bl) / 3) + (30 * val1); //-Watk
 
-			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) || status_get_sp(bl) % 2 == 0 )
+			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA)) || status_get_sp(bl) % 2 == 0 )
 				val3 = (status_get_lv(bl) / 3) + (20 * val1); //+Matk
 			else
 				val3 -= (status_get_lv(bl) / 3) + (30 * val1); //-Matk
@@ -15536,7 +15536,7 @@ static int32 status_natural_heal(block_list* bl, va_list args)
 	if (sc != nullptr && sc->empty())
 		sc = nullptr;
 	sd = BL_CAST(BL_PC,bl);
-	if (sd != nullptr && sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr && pc_checkskill(sd, NJ_NINPOU) > 0) {
+	if (sd != nullptr && sc != nullptr && sc->getSCE(SC_HERO_SOUL_NINJA) != nullptr && pc_checkskill(sd, NJ_NINPOU) > 0 && (gettick() / 10000) != ((gettick() - natural_heal_diff_tick) / 10000)) {
 		status_heal(bl, max(1, status->max_hp / 200), max(1, status->max_sp / 200), 3);
 	}
 
