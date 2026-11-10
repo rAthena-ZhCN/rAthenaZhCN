@@ -1587,7 +1587,7 @@ void chrif_parse_ack_vipActive(int32 fd) {
 			sd->special_state.no_gemstone = battle_config.vip_gemstone;
 			time_t now = time(nullptr);
 			t_tick vip_remain = (vip_time > static_cast<uint32>(now)) ? static_cast<t_tick>(vip_time - now) * 1000 : 0;
-			if (vip_remain > 2592000000) vip_remain = 2592000000;
+			if (vip_remain > 2147000000) vip_remain = 2147000000;
 			if (vip_remain > 0)
 				status_change_start(nullptr, sd, SC_VIP, 10000, 1, 0, 0, 0, vip_remain, SCSTART_NOAVOID);
 			else
