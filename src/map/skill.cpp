@@ -9856,6 +9856,8 @@ struct s_skill_condition skill_get_requirement(map_session_data* sd, uint16 skil
 		req.ap += (status->max_ap * (-ap_rate)) / 100;
 
 	req.zeny = skill->require.zeny[skill_lv-1];
+	if (skill_id == NJ_ZENYNAGE && sc != nullptr && sc->getSCE(SC_HERO_SOUL))
+		req.zeny /= 10; // Ninja Hero Soul: Throw Zeny costs 10%
 
 	if( sc && sc->getSCE(SC__UNLUCKY) ) {
 		if(sc->getSCE(SC__UNLUCKY)->val1 < 3)

@@ -11740,10 +11740,24 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			}
 			break;
 		case SC_UTSUSEMI:
+			if (src != nullptr) {
+				status_change *ssc = status_get_sc(src);
+				if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL)) {
+					val2 *= 2;
+					tick *= 2;
+				}
+			}
 			val2=(val1+1)/2; // Number of hits blocked
 			val3=skill_get_blewcount(NJ_UTSUSEMI, val1); // knockback value.
 			break;
 		case SC_BUNSINJYUTSU:
+			if (src != nullptr) {
+				status_change *ssc = status_get_sc(src);
+				if (ssc != nullptr && ssc->getSCE(SC_HERO_SOUL)) {
+					val2 *= 2;
+					tick *= 2;
+				}
+			}
 			val2=(val1+1)/2; // Number of hits blocked
 			break;
 		case SC_CHANGE:
