@@ -12386,12 +12386,12 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val4 = tick / tick_time;
 			break;
 		case SC_ZANGETSU:
-			if( status_get_hp(bl) % 2 == 0 )
+			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) || status_get_hp(bl) % 2 == 0 )
 				val2 = (status_get_lv(bl) / 3) + (20 * val1); //+Watk
 			else
 				val2 -= (status_get_lv(bl) / 3) + (30 * val1); //-Watk
 
-			if( status_get_sp(bl) % 2 == 0 )
+			if( (sc != nullptr && sc->getSCE(SC_HERO_SOUL)) || status_get_sp(bl) % 2 == 0 )
 				val3 = (status_get_lv(bl) / 3) + (20 * val1); //+Matk
 			else
 				val3 -= (status_get_lv(bl) / 3) + (30 * val1); //-Matk
@@ -15530,6 +15530,9 @@ static int32 status_natural_heal(block_list* bl, va_list args)
 	if (sc != nullptr && sc->empty())
 		sc = nullptr;
 	sd = BL_CAST(BL_PC,bl);
+	if (sd != nullptr && sc != nullptr && sc->getSCE(SC_HERO_SOUL) != nullptr && pc_checkskill(sd, NJ_NINPOU) > 0) {
+		status_heal(bl, max(1, status->max_hp / 200), max(1, status->max_sp / 200), 3);
+	}
 
 	flag = regen->flag;
 	if (flag&RGN_HP && (regen->state.block&1))

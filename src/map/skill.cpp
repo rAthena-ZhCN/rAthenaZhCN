@@ -13952,6 +13952,8 @@ TIMER_FUNC(skill_blockpc_end){
  * @return True if successful, false otherwise
  */
 bool skill_blockpc_start(map_session_data &sd, uint16 skill_id, t_tick tick) {
+	if (skill_id == KO_IZAYOI && sd.sc.getSCE(SC_HERO_SOUL))
+		tick /= 2; // Ninja Hero Soul: 16th Night cooldown halved
 	if (!skill_db.exists(skill_id) || tick < 1)
 		return false;
 
