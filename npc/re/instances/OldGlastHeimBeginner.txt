@@ -95,50 +95,7 @@ glast_01,196,235,4	script	独特的小丑#nogh	4_CH1_NEUMANN,{
 	}
 	close;
 }
-// Beginner difficulty scaling: reduce mobs to roughly level 65 strength
-1@gl_k2,1,1,0	script	#B_beginner_scale	CLEAR_NPC,{
-OnInstanceInit:
-	'B_scalemap$[0] = instance_mapname("1@gl_k2");
-	'B_scalemap$[1] = instance_mapname("2@gl_k2");
-	initnpctimer;
-OnTimer1000:
-	for ( .@m = 0; .@m < 2; ++.@m ) {
-		.@n = getmapunits(BL_MOB, 'B_scalemap$[.@m], .@mobs);
-		for ( .@i = 0; .@i < .@n; ++.@i ) {
-			getunitdata .@mobs[.@i], .@data;
-			if (.@data[UMOB_LEVEL] > 65 || .@data[UMOB_MAXHP] > 8000 || .@data[UMOB_ATKMAX] > 250 || .@data[UMOB_DEF] > 8 || .@data[UMOB_MDEF] > 8 || .@data[UMOB_MATKMAX] > 200) {
-				.@hp = .@data[UMOB_MAXHP];
-				if (.@hp > 8000) .@hp = 8000;
-				.@chp = .@data[UMOB_HP];
-				if (.@chp > 8000) .@chp = 8000;
-				.@atkmin = .@data[UMOB_ATKMIN];
-				if (.@atkmin > 120) .@atkmin = 120;
-				.@atkmax = .@data[UMOB_ATKMAX];
-				if (.@atkmax > 250) .@atkmax = 250;
-				.@def = .@data[UMOB_DEF];
-				if (.@def > 8) .@def = 8;
-				.@mdef = .@data[UMOB_MDEF];
-				if (.@mdef > 8) .@mdef = 8;
-				setunitdata .@mobs[.@i], UMOB_LEVEL, 65;
-				setunitdata .@mobs[.@i], UMOB_MAXHP, .@hp;
-				setunitdata .@mobs[.@i], UMOB_HP, .@chp;
-				setunitdata .@mobs[.@i], UMOB_ATKMIN, .@atkmin;
-				setunitdata .@mobs[.@i], UMOB_ATKMAX, .@atkmax;
-				setunitdata .@mobs[.@i], UMOB_MATKMIN, 100;
-				setunitdata .@mobs[.@i], UMOB_MATKMAX, 200;
-				setunitdata .@mobs[.@i], UMOB_DEF, .@def;
-				setunitdata .@mobs[.@i], UMOB_MDEF, .@mdef;
-				setunitdata .@mobs[.@i], UMOB_STR, 30;
-				setunitdata .@mobs[.@i], UMOB_AGI, 30;
-				setunitdata .@mobs[.@i], UMOB_VIT, 30;
-				setunitdata .@mobs[.@i], UMOB_INT, 30;
-				setunitdata .@mobs[.@i], UMOB_DEX, 30;
-				setunitdata .@mobs[.@i], UMOB_LUK, 30;
-			}
-		}
-	}
-	initnpctimer;
-}
+// 新手古城使用 iRO 新手版常规怪物与BOSS
 
 
 1@gl_k2,96,80,0	warp	#B_2Control	2,2,1@gl_k2,80,80
@@ -482,40 +439,40 @@ OnTimer46000:
 	hideonnpc instance_npcname("卡利斯格骑士团#B_22");
 
 	.@label$ = instance_npcname("#B_talkinstance1") + "::OnMyMobDead";
-	monster 'B_map_name$[0],145,59,"深渊骑士",2470,1,.@label$;// MG_KNIGHT_OF_ABYSS
-	monster 'B_map_name$[0],154,59,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,69,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,69,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,79,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,79,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,89,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,89,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,99,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,99,"深渊骑士",2470,1,.@label$;
+	monster 'B_map_name$[0],145,59,"幽灵剑士",1163,1,.@label$;// MG_KNIGHT_OF_ABYSS
+	monster 'B_map_name$[0],154,59,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,69,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,69,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,79,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,79,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,89,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,89,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,99,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,99,"幽灵剑士",1163,1,.@label$;
 
-	monster 'B_map_name$[0],145,54,"卡利斯格",2471,1,.@label$;// G_MG_KHALITZBURG
+	monster 'B_map_name$[0],145,54,"卡利斯格",1132,1,.@label$;// G_MG_KHALITZBURG
 	unittalk $@mobid[0],"水……谁来给我水……";
-	monster 'B_map_name$[0],154,54,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,54,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"呃啊啊啊……";
-	monster 'B_map_name$[0],145,64,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,64,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"海因里希爵士。救救我……";
-	monster 'B_map_name$[0],154,64,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,64,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我想我姐姐……";
-	monster 'B_map_name$[0],145,74,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,74,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"别丢下我一个人，救救我。";
-	monster 'B_map_name$[0],154,74,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,74,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"啊啊啊啊啊啊";
-	monster 'B_map_name$[0],145,84,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,84,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我好渴。";
-	monster 'B_map_name$[0],154,84,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,84,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"哦……不……我还不能死……";
-	monster 'B_map_name$[0],145,94,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,94,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我的胃好难受，呃啊";
-	monster 'B_map_name$[0],154,94,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,94,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"谁能来……";
-	monster 'B_map_name$[0],145,104,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,104,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"呃啊……我的身体";
-	monster 'B_map_name$[0],154,104,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,104,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我的喉咙在燃烧！";
 	end;
 OnTimer47000:
@@ -680,40 +637,40 @@ OnTimer8250:
 	hideonnpc instance_npcname("卡利斯格骑士团#B_22");
 
 	.@label$ = instance_npcname("#B_talkinstance1") + "::OnMyMobDead";
-	monster 'B_map_name$[0],145,59,"深渊骑士",2470,1,.@label$;// MG_KNIGHT_OF_ABYSS
-	monster 'B_map_name$[0],154,59,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,69,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,69,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,79,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,79,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,89,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,89,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],145,99,"深渊骑士",2470,1,.@label$;
-	monster 'B_map_name$[0],154,99,"深渊骑士",2470,1,.@label$;
+	monster 'B_map_name$[0],145,59,"幽灵剑士",1163,1,.@label$;// MG_KNIGHT_OF_ABYSS
+	monster 'B_map_name$[0],154,59,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,69,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,69,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,79,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,79,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,89,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,89,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],145,99,"幽灵剑士",1163,1,.@label$;
+	monster 'B_map_name$[0],154,99,"幽灵剑士",1163,1,.@label$;
 
-	monster 'B_map_name$[0],145,54,"卡利斯格",2471,1,.@label$;// G_MG_KHALITZBURG
+	monster 'B_map_name$[0],145,54,"卡利斯格",1132,1,.@label$;// G_MG_KHALITZBURG
 	unittalk $@mobid[0],"水……谁来给我水……";
-	monster 'B_map_name$[0],154,54,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,54,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"呃啊啊啊……";
-	monster 'B_map_name$[0],145,64,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,64,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"海因里希爵士。救救我……";
-	monster 'B_map_name$[0],154,64,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,64,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我想我姐姐……";
-	monster 'B_map_name$[0],145,74,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,74,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"别丢下我一个人，救救我。";
-	monster 'B_map_name$[0],154,74,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,74,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"啊啊啊啊啊啊";
-	monster 'B_map_name$[0],145,84,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,84,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我好渴。";
-	monster 'B_map_name$[0],154,84,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,84,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"哦……不……我还不能死……";
-	monster 'B_map_name$[0],145,94,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,94,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我的胃好难受，呃啊";
-	monster 'B_map_name$[0],154,94,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,94,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"谁能来……";
-	monster 'B_map_name$[0],145,104,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],145,104,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"呃啊……我的身体";
-	monster 'B_map_name$[0],154,104,"卡利斯格",2471,1,.@label$;
+	monster 'B_map_name$[0],154,104,"卡利斯格",1132,1,.@label$;
 	unittalk $@mobid[0],"我的喉咙在燃烧！";
 	end;
 OnTimer8750:
@@ -1022,12 +979,12 @@ OnEnable:
 
 	// note: x50 MG_RAYDRIC / x50 MG_RAYDRIC_ARCHER
 	.@label$ = instance_npcname("#B_ghmemorialmob03") + "::OnMyMobDead";
-	areamonster 'B_map_name$[0],16,186,43,280,"愤怒的弓箭手",2469,25,.@label$;
-	areamonster 'B_map_name$[0],44,191,89,225,"饥饿的宫殿守卫",2468,25,.@label$;
-	areamonster 'B_map_name$[0],115,215,188,273,"堕落的宫殿守卫",2468,20,.@label$;
-	areamonster 'B_map_name$[0],108,232,193,281,"堕落的宫殿守卫",2468,5,.@label$;
-	areamonster 'B_map_name$[0],158,236,230,250,"流浪弓箭手",2469,12,.@label$;
-	areamonster 'B_map_name$[0],65,231,155,256,"流浪弓箭手",2469,13,.@label$;
+	areamonster 'B_map_name$[0],16,186,43,280,"幽灵弓箭手",1276,25,.@label$;
+	areamonster 'B_map_name$[0],44,191,89,225,"绿腐尸",1036,25,.@label$;
+	areamonster 'B_map_name$[0],115,215,188,273,"绿腐尸",1036,20,.@label$;
+	areamonster 'B_map_name$[0],108,232,193,281,"绿腐尸",1036,5,.@label$;
+	areamonster 'B_map_name$[0],158,236,230,250,"幽灵弓箭手",1276,12,.@label$;
+	areamonster 'B_map_name$[0],65,231,155,256,"幽灵弓箭手",1276,13,.@label$;
 	end;
 OnMyMobDead:
 	.@label$ = instance_npcname("#B_ghmemorialmob03") + "::OnMyMobDead";
@@ -1191,7 +1148,7 @@ OnTimer7250:
 	end;
 OnStart:
 	enablenpc instance_npcname("#B_ghmemorialmob04");
-	monster 'B_map_name$[0],150,259,"堕落的灵魂",2475,1, instance_npcname("#B_ghmemorialmob04") + "::OnMyMobDead";// MG_CORRUPTION_ROOT
+	monster 'B_map_name$[0],150,259,"血腥骑士",1268,1, instance_npcname("#B_ghmemorialmob04") + "::OnMyMobDead";// MG_CORRUPTION_ROOT
 	unittalk $@mobid[0],"呜噜噜噜噜～～";
 	end;
 OnMyMobDead:
@@ -1383,11 +1340,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1412,11 +1369,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1441,11 +1398,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1470,11 +1427,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1499,11 +1456,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1528,11 +1485,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1557,11 +1514,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1587,11 +1544,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1616,11 +1573,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1645,11 +1602,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1674,11 +1631,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1703,11 +1660,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1732,11 +1689,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1761,11 +1718,11 @@ OnTouch_:
 		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
 	killmonster 'B_map_name$[1], .@event$;
 	getmapxy .@map$,.@x,.@y, BL_NPC;
-	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
-	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
-	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
-	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
-	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	monster .@map$,.@x,.@y, "绿腐尸", 1036,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵弓箭手", 1276,1, .@event$;
+	monster .@map$,.@x,.@y, "幽灵剑士", 1163,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
+	monster .@map$,.@x,.@y, "卡利斯格", 1132,1, .@event$;
 	initnpctimer;
 	end;
 OnTimer15000:
@@ -1806,7 +1763,7 @@ OnMyMobDead7:
 
 		.@r = rand(4) * 2;
 		setarray .@coord[0], 41,146, 58,44, 122,148, 131,64;
-		monster 'B_map_name$[1],.@coord[.@r],.@coord[.@r+1], "第一毁灭指挥官",2473,1, instance_npcname("#B_ghmemorialmob05") + "::OnBossDead";
+		monster 'B_map_name$[1],.@coord[.@r],.@coord[.@r+1], "血腥骑士",1268,1, instance_npcname("#B_ghmemorialmob05") + "::OnBossDead";
 	}
 	end;
 
@@ -1837,50 +1794,50 @@ OnStart:
 
 	// Fix spawn
 	.@label$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead";
-	monster 'B_map_name$[1],252, 75, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],253, 76, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],247, 77, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],248, 80, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],236,100, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],240,100, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],242,100, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],244,100, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],199,111, "堕落的宫殿守卫",2468,1, .@label$;
-	monster 'B_map_name$[1],181,107, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],177,110, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],236, 27, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],242, 27, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],252, 26, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],172,130, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],171,127, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],173,127, "流浪弓箭手",2469,1, .@label$;
-	monster 'B_map_name$[1],177, 69, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],186, 66, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],189, 67, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],190, 68, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],257,157, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],246,159, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],237,158, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],206,159, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],172,120, "堕落的深渊骑士",2470,1, .@label$;
-	monster 'B_map_name$[1],226, 30, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],226, 38, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],228, 29, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],226, 63, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],268,137, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],263,138, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],259,138, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],259,138, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],187,121, "受难的卡利斯格",2471,1, .@label$;
-	monster 'B_map_name$[1],265, 52, "血腥骑士",2472,1, .@label$;
-	monster 'B_map_name$[1],265, 55, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],264, 79, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],225, 92, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],237, 92, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],249, 92, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],256, 93, "血腥骑士",2472,1, .@label$; 
-	monster 'B_map_name$[1],264,100, "血腥骑士",2472,1, .@label$;
-	monster 'B_map_name$[1],181,120, "血腥骑士",2472,1, .@label$;
+	monster 'B_map_name$[1],252, 75, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],253, 76, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],247, 77, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],248, 80, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],236,100, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],240,100, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],242,100, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],244,100, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],199,111, "绿腐尸",1036,1, .@label$;
+	monster 'B_map_name$[1],181,107, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],177,110, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],236, 27, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],242, 27, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],252, 26, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],172,130, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],171,127, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],173,127, "幽灵弓箭手",1276,1, .@label$;
+	monster 'B_map_name$[1],177, 69, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],186, 66, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],189, 67, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],190, 68, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],257,157, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],246,159, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],237,158, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],206,159, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],172,120, "幽灵剑士",1163,1, .@label$;
+	monster 'B_map_name$[1],226, 30, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],226, 38, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],228, 29, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],226, 63, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],268,137, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],263,138, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],259,138, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],259,138, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],187,121, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],265, 52, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],265, 55, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],264, 79, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],225, 92, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],237, 92, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],249, 92, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],256, 93, "卡利斯格",1132,1, .@label$; 
+	monster 'B_map_name$[1],264,100, "卡利斯格",1132,1, .@label$;
+	monster 'B_map_name$[1],181,120, "卡利斯格",1132,1, .@label$;
 	end;
 
 OnMyMobDead:
@@ -1903,7 +1860,7 @@ OnMyMobDead7:
 
 		.@r = rand(4) * 2;
 		setarray .@coord[0], 166,119, 211,45, 227,139, 245,74;
-		monster 'B_map_name$[1],.@coord[.@r],.@coord[.@r+1], "第二毁灭指挥官",2474,1, instance_npcname("#B_ghmemorialmob06") + "::OnBossDead";
+		monster 'B_map_name$[1],.@coord[.@r],.@coord[.@r+1], "血腥骑士",1268,1, instance_npcname("#B_ghmemorialmob06") + "::OnBossDead";
 	}
 	end;
 
@@ -2219,7 +2176,7 @@ OnTimer10250:
 	end;
 OnStart:
 	enablenpc instance_npcname("#B_ghmemorialmob07");
-	monster 'B_map_name$[1],158,255,"阿姆达莱斯",2476,1,instance_npcname("#B_ghmemorialmob07") + "::OnMyMobDead";// MG_AMDARAIS
+	monster 'B_map_name$[1],158,255,"毁灭的第1骑士团长",2473,1,instance_npcname("#B_ghmemorialmob07") + "::OnMyMobDead";// MG_AMDARAIS
 	'B_boss_id = $@mobid[0];
 	unittalk 'B_boss_id, "快逃……快逃离我……";
 	initnpctimer;
@@ -2280,38 +2237,38 @@ OnTimer2500:
 		break;
 	case 8:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"受难的卡利斯格",2471,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"卡利斯格",1132,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 7:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"深渊骑士",2470,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"幽灵剑士",1163,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 6:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"血腥骑士",2472,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"卡利斯格",1132,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 5:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff2") + "::OnEvent";
 		break;
 	case 4:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"流浪弓箭手",2469,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"幽灵弓箭手",1276,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 3:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff1") + "::OnEvent";
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"血腥骑士",2472,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"卡利斯格",1132,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 2:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff1") + "::OnEvent";
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff3") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"深渊骑士",2470,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"幽灵剑士",1163,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	case 1:
 	case 0:
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff1") + "::OnEvent";
 		donpcevent instance_npcname("霸肋门德的幽灵#B_Buff4") + "::OnEvent";
-		areamonster 'B_map_name$[1],140,220,175,255,"流浪弓箭手",2469,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
+		areamonster 'B_map_name$[1],140,220,175,255,"幽灵弓箭手",1276,6, instance_npcname("#B_ghmemorialmob08") + "::OnMobDead";
 		break;
 	}
 	end;
