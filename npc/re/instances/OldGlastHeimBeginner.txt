@@ -1396,20 +1396,384 @@ OnStop:
 	stopnpctimer;
 	end;
 }
-2@gl_k2,128,81,0	duplicate(#B_ogh_2-1)	#B_ogh_2-2	HIDDEN_WARP_NPC,20,20
-2@gl_k2,131,54,0	duplicate(#B_ogh_2-1)	#B_ogh_2-3	HIDDEN_WARP_NPC,20,20
-2@gl_k2,89,48,0	duplicate(#B_ogh_2-1)	#B_ogh_2-4	HIDDEN_WARP_NPC,20,20
-2@gl_k2,64,117,0	duplicate(#B_ogh_2-1)	#B_ogh_2-5	HIDDEN_WARP_NPC,20,20
-2@gl_k2,62,82,0	duplicate(#B_ogh_2-1)	#B_ogh_2-6	HIDDEN_WARP_NPC,20,20
-2@gl_k2,38,138,0	duplicate(#B_ogh_2-1)	#B_ogh_2-7	HIDDEN_WARP_NPC,20,20
+2@gl_k2,128,81,0	script	#B_ogh_2-2	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,131,54,0	script	#B_ogh_2-3	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,89,48,0	script	#B_ogh_2-4	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,64,117,0	script	#B_ogh_2-5	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,62,82,0	script	#B_ogh_2-6	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,38,138,0	script	#B_ogh_2-7	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
 
-2@gl_k2,171,120,0	duplicate(#B_ogh_2-1)	#B_ogh_3-1	HIDDEN_WARP_NPC,20,20
-2@gl_k2,232,133,0	duplicate(#B_ogh_2-1)	#B_ogh_3-2	HIDDEN_WARP_NPC,20,20
-2@gl_k2,256,149,0	duplicate(#B_ogh_2-1)	#B_ogh_3-3	HIDDEN_WARP_NPC,20,20
-2@gl_k2,212,106,0	duplicate(#B_ogh_2-1)	#B_ogh_3-4	HIDDEN_WARP_NPC,20,20
-2@gl_k2,243,73,0	duplicate(#B_ogh_2-1)	#B_ogh_3-5	HIDDEN_WARP_NPC,20,20
-2@gl_k2,229,26,0	duplicate(#B_ogh_2-1)	#B_ogh_3-6	HIDDEN_WARP_NPC,20,20
-2@gl_k2,181,34,0	duplicate(#B_ogh_2-1)	#B_ogh_3-7	HIDDEN_WARP_NPC,20,20
+2@gl_k2,171,120,0	script	#B_ogh_3-1	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,232,133,0	script	#B_ogh_3-2	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,256,149,0	script	#B_ogh_3-3	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,212,106,0	script	#B_ogh_3-4	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,243,73,0	script	#B_ogh_3-5	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,229,26,0	script	#B_ogh_3-6	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
+2@gl_k2,181,34,0	script	#B_ogh_3-7	HIDDEN_WARP_NPC,20,20,{
+	end;
+OnTouch_:
+	disablenpc();
+	.@hidden_name$ = strnpcinfo(2);
+	.@event_type = atoi( charat(.@hidden_name$,4) );
+	.@event_number = atoi( charat(.@hidden_name$,6) );
+	if (.@event_type == 2)
+		.@event$ = instance_npcname("#B_ghmemorialmob05") + "::OnMyMobDead" + .@event_number;	// left side
+	else
+		.@event$ = instance_npcname("#B_ghmemorialmob06") + "::OnMyMobDead" + .@event_number;	// right side
+	killmonster 'B_map_name$[1], .@event$;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	monster .@map$,.@x,.@y, "堕落的宫殿守卫", 2468,1, .@event$;
+	monster .@map$,.@x,.@y, "死亡弓箭手", 2469,1, .@event$;
+	monster .@map$,.@x,.@y, "堕落的深渊骑士", 2470,1, .@event$;
+	monster .@map$,.@x,.@y, "受难的卡利斯格", 2471,1, .@event$;
+	monster .@map$,.@x,.@y, "血腥骑士", 2472,1, .@event$;
+	initnpctimer;
+	end;
+OnTimer15000:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnStop:
+	disablenpc();
+	stopnpctimer;
+	end;
+}
 
 // Commander 1
 2@gl_k2,1,1,0	script	#B_ghmemorialmob05	HIDDEN_WARP_NPC,{
