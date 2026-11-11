@@ -1,0 +1,419 @@
+// TEMPORAL001 - 时光超越者之靴附魔
+// 附魔槽位：card[3] = 第4洞强化阶段，card[2] = 第3洞特殊附魔
+// 普通卡片 card[0]、card[1] 以及精炼、随机选项、词条均保留
+
+function	script	F_TemporalBootsIdx	{
+	getinventorylist;
+	for (.@i = 0; .@i < @inventorylist_count; .@i++) {
+		if (@inventorylist_id[.@i] == 22202 && (@inventorylist_equip[.@i] & EQP_SHOES))
+			return .@i;
+	}
+	return -1;
+}
+
+function	script	F_TemporalApply	{
+	.@new_special = getarg(0);
+	.@new_stage = getarg(1);
+	.@idx = F_TemporalBootsIdx();
+	if (.@idx < 0) return 0;
+
+	getinventorylist;
+	.@refine = @inventorylist_refine[.@idx];
+	.@identify = @inventorylist_identify[.@idx];
+	.@attribute = @inventorylist_attribute[.@idx];
+	.@card1 = @inventorylist_card1[.@idx];
+	.@card2 = @inventorylist_card2[.@idx];
+	.@bound = @inventorylist_bound[.@idx];
+	.@grade = @inventorylist_enchantgrade[.@idx];
+
+	.@oid[0] = @inventorylist_option_id1[.@idx];
+	.@oval[0] = @inventorylist_option_value1[.@idx];
+	.@opar[0] = @inventorylist_option_parameter1[.@idx];
+	.@oid[1] = @inventorylist_option_id2[.@idx];
+	.@oval[1] = @inventorylist_option_value2[.@idx];
+	.@opar[1] = @inventorylist_option_parameter2[.@idx];
+	.@oid[2] = @inventorylist_option_id3[.@idx];
+	.@oval[2] = @inventorylist_option_value3[.@idx];
+	.@opar[2] = @inventorylist_option_parameter3[.@idx];
+	.@oid[3] = @inventorylist_option_id4[.@idx];
+	.@oval[3] = @inventorylist_option_value4[.@idx];
+	.@opar[3] = @inventorylist_option_parameter4[.@idx];
+	.@oid[4] = @inventorylist_option_id5[.@idx];
+	.@oval[4] = @inventorylist_option_value5[.@idx];
+	.@opar[4] = @inventorylist_option_parameter5[.@idx];
+
+	.@before = countitem(22202);
+	if (.@bound)
+		getitembound4(22202,1,.@identify,.@refine,.@attribute,.@card1,.@card2,.@new_special,.@new_stage,.@bound,.@grade,.@oid,.@oval,.@opar);
+	else
+		getitem4(22202,1,.@identify,.@refine,.@attribute,.@card1,.@card2,.@new_special,.@new_stage,.@grade,.@oid,.@oval,.@opar);
+	if (countitem(22202) <= .@before)
+		return 0;
+
+	unequip EQP_SHOES;
+	delitemidx .@idx,1;
+	if (countitem(22202) == 1)
+		equip 22202;
+	return 1;
+}
+
+function	script	F_TemporalRemove	{
+	.@idx = F_TemporalBootsIdx();
+	if (.@idx < 0) return 0;
+	unequip EQP_SHOES;
+	delitemidx .@idx,1;
+	return 1;
+}
+
+function	script	F_TemporalStage	{
+	.@c = getarg(0);
+	if (!.@c) return -1;
+
+	setarray .@s1[0],4808,4832,4814,4775,4869,4785;
+	setarray .@s2[0],4820,4833,4813,4776,4872,4753;
+	setarray .@s3[0],4821,4834,4812,4861,4873,4754;
+	setarray .@s4[0],4822,4835,4826,4862,4881,4755;
+
+	for (.@i = 0; .@i < 6; .@i++) {
+		if (.@c == .@s1[.@i]) return 10 + .@i;
+		if (.@c == .@s2[.@i]) return 20 + .@i;
+		if (.@c == .@s3[.@i]) return 30 + .@i;
+		if (.@c == .@s4[.@i]) return 40 + .@i;
+	}
+	return -1;
+}
+
+function	script	F_TemporalNormal	{
+	.@stage = getarg(0);
+	.@series = getarg(1);
+	setarray .@s1[0],4808,4832,4814,4775,4869,4785;
+	setarray .@s2[0],4820,4833,4813,4776,4872,4753;
+	setarray .@s3[0],4821,4834,4812,4861,4873,4754;
+	setarray .@s4[0],4822,4835,4826,4862,4881,4755;
+	if (.@stage == 1) return .@s1[.@series];
+	if (.@stage == 2) return .@s2[.@series];
+	if (.@stage == 3) return .@s3[.@series];
+	return .@s4[.@series];
+}
+
+function	script	F_TemporalCrit	{
+	.@series = getarg(0);
+	setarray .@c0[0],4823,4824,4825;
+	setarray .@c1[0],4836,4837,4838,4839;
+	setarray .@c2[0],4827,4828,4829,4830;
+	setarray .@c3[0],4867,4868,4900;
+	setarray .@c4[0],311422;
+	setarray .@c5[0],4756,4757,4758,4759;
+	if (.@series == 0) return .@c0[rand(0,2)];
+	if (.@series == 1) return .@c1[rand(0,3)];
+	if (.@series == 2) return .@c2[rand(0,3)];
+	if (.@series == 3) return .@c3[rand(0,2)];
+	if (.@series == 4) return 311422;
+	return .@c5[rand(0,3)];
+}
+
+function	script	F_TemporalPay	{
+	.@need_p = getarg(0);
+	.@need_c = getarg(1);
+	.@coin = getarg(2);
+
+	if (countitem(6755) >= .@need_p && countitem(6608) >= .@need_c) {
+		if (countitem(1000620) < 1 || Zeny < 100000) {
+			mes "[TEMPORAL001]";
+			mes "你身上的强化材料不够哦。";
+			return 0;
+		}
+		delitem 6755,.@need_p;
+		delitem 6608,.@need_c;
+		delitem 1000620,1;
+		Zeny -= 100000;
+		return 1;
+	}
+
+	mes "[TEMPORAL001]";
+	mes "你身上的强化材料不够哦，要用" + .@coin + "个蹦级币代替吗？";
+	if (select("使用蹦级币" + .@coin + "个:取消") != 1)
+		return 0;
+	if (countitem(1000254) < .@coin) {
+		mes "[TEMPORAL001]";
+		mes "蹦级币不够。";
+		return 0;
+	}
+	if (countitem(1000620) < 1) {
+		mes "[TEMPORAL001]";
+		mes "时光超越者的气息不够。";
+		return 0;
+	}
+	delitem 1000254,.@coin;
+	delitem 1000620,1;
+	return 2;
+}
+
+glast_01,177,266,6	script	TEMPORAL001	2_drop_machine,{
+	if (getequipid(EQP_SHOES) != 22202) {
+		mes "[TEMPORAL001]";
+		mes "请先装备时光超越者之靴。";
+		close;
+	}
+
+	.@c2 = getequipcardid(EQP_SHOES,2);
+	.@c3 = getequipcardid(EQP_SHOES,3);
+	.@st = F_TemporalStage(.@c3);
+
+	mes "[TEMPORAL001]";
+	mes "你可以对时光超越者之靴进行附魔或者重置附魔哦！";
+	mes "你想做哪一种呢？";
+	switch (select("附魔:重置附魔:取消")) {
+		case 1:
+			goto L_Enchant;
+		case 2:
+			goto L_Reset;
+		case 3:
+			close;
+	}
+
+L_Enchant:
+	mes "[TEMPORAL001]";
+	mes "你选择对时光超越者之靴进行附魔，";
+	mes "在第4洞可进行共4阶段的强化，自第1阶段开始依序强化。";
+	mes "4洞4阶段成功率依次为100%/75%/60%/50%；";
+	mes "强化到第4阶段时，可于第3洞附加追加能力，第3洞成功率25%。";
+	next;
+
+	if (.@st < 0) goto L_Stage1;
+	if (.@st >= 40) goto L_Special;
+	if (.@st >= 30) goto L_Stage4;
+	if (.@st >= 20) goto L_Stage3;
+	if (.@st >= 10) goto L_Stage2;
+	goto L_Stage1;
+
+L_Stage1:
+	mes "[TEMPORAL001]";
+	mes "1阶段强化材料：";
+	mes "被污染的魔力 1个、凝固的魔力（6608） 3个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "你要选择哪个系列呢？";
+	switch (select("斗志:名弓:魔力:体力:攻速:幸运:取消")) {
+		case 1: .@series = 0; break;
+		case 2: .@series = 1; break;
+		case 3: .@series = 2; break;
+		case 4: .@series = 3; break;
+		case 5: .@series = 4; break;
+		case 6: .@series = 5; break;
+		case 7: close;
+	}
+
+	.@pay = F_TemporalPay(1,3,1);
+	if (!.@pay) close;
+	if (rand(1,100) <= 100) {
+		.@new = F_TemporalNormal(1,.@series);
+		if (F_TemporalApply(.@c2,.@new)) {
+			specialeffect2 EF_REFINEOK;
+			mes "[TEMPORAL001]";
+			mes "强化成功了";
+		} else {
+			mes "[TEMPORAL001]";
+			mes "附魔写入失败，请联系管理员。";
+		}
+	} else {
+		specialeffect2 EF_REFINEFAIL;
+		mes "[TEMPORAL001]";
+		mes "哦不，附魔失败了，再接再厉。";
+	}
+	close;
+
+L_Stage2:
+	.@series = .@st % 10;
+	mes "[TEMPORAL001]";
+	mes "2阶段强化材料：";
+	mes "被污染的魔力 2个、凝固的魔力（6608） 10个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "本阶段成功率75%，强化失败装备不会消失。";
+	if (select("强化:取消") != 1) close;
+
+	.@pay = F_TemporalPay(2,10,2);
+	if (!.@pay) close;
+	if (rand(1,100) <= 75) {
+		.@new = F_TemporalNormal(2,.@series);
+		if (F_TemporalApply(.@c2,.@new)) {
+			specialeffect2 EF_REFINEOK;
+			mes "[TEMPORAL001]";
+			mes "强化成功了";
+		} else {
+			mes "[TEMPORAL001]";
+			mes "附魔写入失败，请联系管理员。";
+		}
+	} else {
+		specialeffect2 EF_REFINEFAIL;
+		mes "[TEMPORAL001]";
+		mes "哦不，附魔失败了，再接再厉。";
+	}
+	close;
+
+L_Stage3:
+	.@series = .@st % 10;
+	mes "[TEMPORAL001]";
+	mes "3阶段强化材料：";
+	mes "被污染的魔力 4个、凝固的魔力（6608） 20个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "本阶段成功率60%，强化失败装备不会消失。";
+	if (select("强化:取消") != 1) close;
+
+	.@pay = F_TemporalPay(4,20,3);
+	if (!.@pay) close;
+	if (rand(1,100) <= 60) {
+		.@new = F_TemporalNormal(3,.@series);
+		if (F_TemporalApply(.@c2,.@new)) {
+			specialeffect2 EF_REFINEOK;
+			mes "[TEMPORAL001]";
+			mes "强化成功了";
+		} else {
+			mes "[TEMPORAL001]";
+			mes "附魔写入失败，请联系管理员。";
+		}
+	} else {
+		specialeffect2 EF_REFINEFAIL;
+		mes "[TEMPORAL001]";
+		mes "哦不，附魔失败了，再接再厉。";
+	}
+	close;
+
+L_Stage4:
+	.@series = .@st % 10;
+	mes "[TEMPORAL001]";
+	mes "4阶段强化材料：";
+	mes "被污染的魔力 7个、凝固的魔力（6608） 40个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "本阶段成功率50%，强化失败装备不会消失。有25%概率出暴击!";
+	if (select("强化:取消") != 1) close;
+
+	.@pay = F_TemporalPay(7,40,4);
+	if (!.@pay) close;
+
+	.@success = 0;
+	.@crit = 0;
+	if (rand(1,100) <= 25) {
+		.@success = 1;
+		.@crit = 1;
+	} else if (rand(1,100) <= 50) {
+		.@success = 1;
+	}
+
+	if (.@success) {
+		if (.@crit)
+			.@new = F_TemporalCrit(.@series);
+		else
+			.@new = F_TemporalNormal(4,.@series);
+		if (F_TemporalApply(.@c2,.@new)) {
+			specialeffect2 EF_REFINEOK;
+			mes "[TEMPORAL001]";
+			mes "强化成功了";
+		} else {
+			mes "[TEMPORAL001]";
+			mes "附魔写入失败，请联系管理员。";
+		}
+	} else {
+		specialeffect2 EF_REFINEFAIL;
+		mes "[TEMPORAL001]";
+		mes "哦不，附魔失败了，再接再厉。";
+	}
+	close;
+
+L_Special:
+	if (.@c2 != 0) {
+		mes "[TEMPORAL001]";
+		mes "第3洞已经附加过能力了。";
+		close;
+	}
+	mes "[TEMPORAL001]";
+	mes "战靴强化到第4阶段后，可于第3洞附加追加能力。";
+	mes "特殊阶段强化材料：";
+	mes "被污染的魔力 10个、凝固的魔力（6608） 50个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "本阶段成功率25%，强化失败装备不会消失。";
+	if (select("强化:取消") != 1) close;
+
+	.@pay = F_TemporalPay(10,50,5);
+	if (!.@pay) close;
+	if (rand(1,100) <= 25) {
+		.@new = 4875 + rand(0,5);
+		if (F_TemporalApply(.@new,.@c3)) {
+			specialeffect2 EF_REFINEOK;
+			mes "[TEMPORAL001]";
+			mes "强化成功了";
+		} else {
+			mes "[TEMPORAL001]";
+			mes "附魔写入失败，请联系管理员。";
+		}
+	} else {
+		specialeffect2 EF_REFINEFAIL;
+		mes "[TEMPORAL001]";
+		mes "哦不，附魔失败了，再接再厉。";
+	}
+	close;
+
+L_Reset:
+	if (.@c2 == 0 && .@c3 == 0) {
+		mes "[TEMPORAL001]";
+		mes "当前没有可以重置的附魔。";
+		close;
+	}
+	mes "[TEMPORAL001]";
+	mes "重置会清除第3洞和第4洞的附魔，卡片、精炼、词条都会保留。";
+	mes "你要使用哪一种重置方式？";
+	switch (select("材料重置(70%):强力精华球x1(100%):蹦级币x1(100%):取消")) {
+		case 1:
+			if (countitem(6755) < 3 || countitem(25867) < 10) {
+				mes "[TEMPORAL001]";
+				mes "你身上的重置材料不够哦。";
+				close;
+			}
+			delitem 6755,3;
+			delitem 25867,10;
+			if (rand(1,100) <= 70) {
+				if (F_TemporalApply(0,0)) {
+					specialeffect2 EF_REFINEOK;
+					mes "[TEMPORAL001]";
+					mes "重置成功了";
+				} else {
+					mes "[TEMPORAL001]";
+					mes "重置失败，请稍后再试。";
+				}
+			} else {
+				specialeffect2 EF_REFINEFAIL;
+				F_TemporalRemove();
+				mes "[TEMPORAL001]";
+				mes "重置失败了，装备消失了。";
+			}
+			close;
+		case 2:
+			if (countitem(7925) < 1) {
+				mes "[TEMPORAL001]";
+				mes "强力精华球不够。";
+				close;
+			}
+			delitem 7925,1;
+			if (F_TemporalApply(0,0)) {
+				specialeffect2 EF_REFINEOK;
+				mes "[TEMPORAL001]";
+				mes "重置成功了";
+			} else {
+				mes "[TEMPORAL001]";
+				mes "重置失败，请稍后再试。";
+			}
+			close;
+		case 3:
+			if (countitem(1000254) < 1) {
+				mes "[TEMPORAL001]";
+				mes "蹦级币不够。";
+				close;
+			}
+			delitem 1000254,1;
+			if (F_TemporalApply(0,0)) {
+				specialeffect2 EF_REFINEOK;
+				mes "[TEMPORAL001]";
+				mes "重置成功了";
+			} else {
+				mes "[TEMPORAL001]";
+				mes "重置失败，请稍后再试。";
+			}
+			close;
+		case 4:
+			close;
+	}
+}
