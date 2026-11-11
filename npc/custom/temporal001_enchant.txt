@@ -331,6 +331,24 @@ L_Stage4:
 	mes "[TEMPORAL001]";
 	mes "当前附魔：" + .@cur$;
 	mes "本阶段附魔：" + .@target$;
+	setarray .@critid[0],0,0,0,0;
+	if (.@series == 0) setarray .@critid[0],4823,4824,4825;
+	if (.@series == 1) setarray .@critid[0],4836,4837,4838,4839;
+	if (.@series == 2) setarray .@critid[0],4827,4828,4829,4830;
+	if (.@series == 3) setarray .@critid[0],4867,4868,4900;
+	if (.@series == 4) setarray .@critid[0],311422;
+	if (.@series == 5) setarray .@critid[0],4756,4757,4758,4759;
+	.@crit$ = "";
+	for (.@i = 0; .@i < 4; .@i++) {
+		if (!.@critid[.@i]) continue;
+		if (.@crit$) .@crit$ += "、";
+		.@crit$ += "<ITEM>" + getitemname(.@critid[.@i]) + "<INFO>" + .@critid[.@i] + "</INFO></ITEM>";
+	}
+	next;
+	mes "[TEMPORAL001]";
+	mes "可能出现的暴击附魔：";
+	mes .@crit$;
+	mes "祝你好运！";
 	next;
 	mes "[TEMPORAL001]";
 	mes "4阶段强化材料：";
