@@ -133,17 +133,17 @@ function	script	F_TemporalPay	{
 	}
 
 	mes "[TEMPORAL001]";
-	mes "你身上的强化材料不够哦，可以改为" + .@coin + "个蹦级币 + 1个时光超越者的气息，是否使用？";
+	mes "你身上的强化材料不够哦，可以改为" + .@coin + "个蹦级币 + 1个<ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>，是否使用？";
 	if (select("使用" + .@coin + "个蹦级币+1个气息:取消") != 1)
 		return 0;
 	if (countitem(1000254) < .@coin) {
 		mes "[TEMPORAL001]";
-		mes "蹦级币不够。";
+		mes "<ITEM>蹦级币<INFO>1000254</INFO></ITEM>不够。";
 		return 0;
 	}
 	if (countitem(1000620) < 1) {
 		mes "[TEMPORAL001]";
-		mes "时光超越者的气息不够。";
+		mes "<ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>不够。";
 		return 0;
 	}
 	delitem 1000254,.@coin;
@@ -166,6 +166,7 @@ glast_01,177,266,6	script	TEMPORAL001	2_drop_machine,{
 	mes "[TEMPORAL001]";
 	mes "你可以对时光超越者之靴进行附魔或者重置附魔哦！";
 	next;
+	mes "[TEMPORAL001]";
 	mes "你想做哪一种呢？";
 	switch (select("附魔:重置附魔:取消")) {
 		case 1:
@@ -180,6 +181,7 @@ L_Enchant:
 	mes "[TEMPORAL001]";
 	mes "你选择对时光超越者之靴进行附魔，";
 	next;
+	mes "[TEMPORAL001]";
 	mes "在第4洞可进行共4阶段的强化，自第1阶段开始依序强化。";
 	mes "4洞4阶段成功率依次为100%/75%/60%/50%；";
 	mes "强化到第4阶段时，可于第3洞附加追加能力，第3洞成功率25%。";
@@ -194,9 +196,16 @@ L_Enchant:
 
 L_Stage1:
 	mes "[TEMPORAL001]";
-	mes "1阶段强化材料：";
-	mes "被污染的魔力 1个、凝固的魔力（6608） 3个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "当前第4洞附魔：无";
 	next;
+	mes "[TEMPORAL001]";
+	mes "1阶段强化材料：";
+	mes "被污染的魔力×1  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "凝固的魔力×3  <ITEM>凝固的魔力<INFO>6608</INFO></ITEM>";
+	mes "时光超越者的气息×1  <ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>";
+	mes "10万Zeny。";
+	next;
+	mes "[TEMPORAL001]";
 	mes "你要选择哪个系列呢？";
 	switch (select("斗志:名弓:魔力:体力:攻速:幸运:取消")) {
 		case 1: .@series = 0; break;
@@ -232,11 +241,22 @@ L_Stage1:
 
 L_Stage2:
 	.@series = .@st % 10;
+	.@cur$ = "<ITEM>" + getitemname(.@c3) + "<INFO>" + .@c3 + "</INFO></ITEM>";
+	.@target = F_TemporalNormal(2,.@series);
+	.@target$ = "<ITEM>" + getitemname(.@target) + "<INFO>" + .@target + "</INFO></ITEM>";
+	mes "[TEMPORAL001]";
+	mes "当前附魔：" + .@cur$;
+	mes "本阶段附魔：" + .@target$;
+	next;
 	mes "[TEMPORAL001]";
 	mes "2阶段强化材料：";
-	mes "被污染的魔力 2个、凝固的魔力（6608） 10个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "被污染的魔力×2  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "凝固的魔力×10  <ITEM>凝固的魔力<INFO>6608</INFO></ITEM>";
+	mes "时光超越者的气息×1  <ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>";
+	mes "10万Zeny。";
 	mes "本阶段成功率75%，强化失败装备不会消失。";
 	next;
+	mes "[TEMPORAL001]";
 	if (select("强化:取消") != 1) close;
 	next;
 
@@ -263,11 +283,22 @@ L_Stage2:
 
 L_Stage3:
 	.@series = .@st % 10;
+	.@cur$ = "<ITEM>" + getitemname(.@c3) + "<INFO>" + .@c3 + "</INFO></ITEM>";
+	.@target = F_TemporalNormal(3,.@series);
+	.@target$ = "<ITEM>" + getitemname(.@target) + "<INFO>" + .@target + "</INFO></ITEM>";
+	mes "[TEMPORAL001]";
+	mes "当前附魔：" + .@cur$;
+	mes "本阶段附魔：" + .@target$;
+	next;
 	mes "[TEMPORAL001]";
 	mes "3阶段强化材料：";
-	mes "被污染的魔力 4个、凝固的魔力（6608） 20个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "被污染的魔力×4  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "凝固的魔力×20  <ITEM>凝固的魔力<INFO>6608</INFO></ITEM>";
+	mes "时光超越者的气息×1  <ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>";
+	mes "10万Zeny。";
 	mes "本阶段成功率60%，强化失败装备不会消失。";
 	next;
+	mes "[TEMPORAL001]";
 	if (select("强化:取消") != 1) close;
 	next;
 
@@ -294,11 +325,22 @@ L_Stage3:
 
 L_Stage4:
 	.@series = .@st % 10;
+	.@cur$ = "<ITEM>" + getitemname(.@c3) + "<INFO>" + .@c3 + "</INFO></ITEM>";
+	.@target = F_TemporalNormal(4,.@series);
+	.@target$ = "<ITEM>" + getitemname(.@target) + "<INFO>" + .@target + "</INFO></ITEM>";
+	mes "[TEMPORAL001]";
+	mes "当前附魔：" + .@cur$;
+	mes "本阶段附魔：" + .@target$;
+	next;
 	mes "[TEMPORAL001]";
 	mes "4阶段强化材料：";
-	mes "被污染的魔力 7个、凝固的魔力（6608） 40个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "被污染的魔力×7  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "凝固的魔力×40  <ITEM>凝固的魔力<INFO>6608</INFO></ITEM>";
+	mes "时光超越者的气息×1  <ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>";
+	mes "10万Zeny。";
 	mes "本阶段成功率50%，强化失败装备不会消失。有25%概率出暴击!";
 	next;
+	mes "[TEMPORAL001]";
 	if (select("强化:取消") != 1) close;
 	next;
 
@@ -342,12 +384,20 @@ L_Special:
 		mes "第3洞已经附加过能力了。";
 		close;
 	}
+	.@cur$ = "<ITEM>" + getitemname(.@c3) + "<INFO>" + .@c3 + "</INFO></ITEM>";
 	mes "[TEMPORAL001]";
+	mes "当前第4洞附魔：" + .@cur$;
 	mes "战靴强化到第4阶段后，可于第3洞附加追加能力。";
+	next;
+	mes "[TEMPORAL001]";
 	mes "特殊阶段强化材料：";
-	mes "被污染的魔力 10个、凝固的魔力（6608） 50个、时光超越者的气息（1000620）1个、10万Zeny。";
+	mes "被污染的魔力×10  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "凝固的魔力×50  <ITEM>凝固的魔力<INFO>6608</INFO></ITEM>";
+	mes "时光超越者的气息×1  <ITEM>时光超越者的气息<INFO>1000620</INFO></ITEM>";
+	mes "10万Zeny。";
 	mes "本阶段成功率25%，强化失败装备不会消失。";
 	next;
+	mes "[TEMPORAL001]";
 	if (select("强化:取消") != 1) close;
 	next;
 
@@ -379,9 +429,22 @@ L_Reset:
 		close;
 	}
 	mes "[TEMPORAL001]";
-	mes "重置会清除第3洞和第4洞的附魔，卡片、精炼、词条都会保留。";
-	mes "你要使用哪一种重置方式？";
+	mes "重置会清除第3洞和第4洞的附魔。";
+	mes "卡片、精炼、词条都会保留。";
 	next;
+	mes "[TEMPORAL001]";
+	mes "^ff0000注意：使用材料重置有30%概率失败，失败时装备会完全消失。^000000";
+	mes "材料重置需要：";
+	mes "被污染的魔力×3  <ITEM>被污染的魔力<INFO>6755</INFO></ITEM>";
+	mes "超时空魔力碎片×10  <ITEM>超时空魔力碎片<INFO>25867</INFO></ITEM>";
+	next;
+	mes "[TEMPORAL001]";
+	mes "100%重置需要：";
+	mes "强力精华球×1  <ITEM>强力精华球<INFO>7925</INFO></ITEM>";
+	mes "或蹦级币×1  <ITEM>蹦级币<INFO>1000254</INFO></ITEM>";
+	next;
+	mes "[TEMPORAL001]";
+	mes "你要使用哪一种重置方式？";
 	switch (select("材料重置(70%):强力精华球x1(100%):蹦级币x1(100%):取消")) {
 		case 1:
 			next;
@@ -407,7 +470,7 @@ L_Reset:
 				F_TemporalRemove();
 				next;
 				mes "[TEMPORAL001]";
-				mes "重置失败了，装备消失了。";
+				mes "重置失败了，装备完全消失了。";
 			}
 			close;
 		case 2:
