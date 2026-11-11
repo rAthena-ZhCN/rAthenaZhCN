@@ -390,9 +390,11 @@ L_Stage4:
 			.@new = F_TemporalNormal(4,.@series);
 		if (F_TemporalApply(.@c2,.@new)) {
 			specialeffect2 EF_REFINEOK;
+			if (.@crit) specialeffect2 EF_BASH3D;
 			next;
 			mes "[TEMPORAL001]";
-			mes "强化成功了";
+			if (.@crit) mes "^ff0000恭喜暴击成功！^000000";
+			else mes "强化成功了";
 		} else {
 			mes "[TEMPORAL001]";
 			mes "附魔写入失败，请联系管理员。";
