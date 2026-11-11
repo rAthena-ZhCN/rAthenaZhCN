@@ -51,7 +51,7 @@ function	script	F_TemporalApply	{
 		return 0;
 
 	unequip EQI_SHOES;
-	delitemidx .@idx,1;
+	delitemidx @inventorylist_idx[.@idx],1;
 	if (countitem(22202) == 1)
 		equip 22202;
 	return 1;
@@ -60,8 +60,10 @@ function	script	F_TemporalApply	{
 function	script	F_TemporalRemove	{
 	.@idx = F_TemporalBootsIdx();
 	if (.@idx < 0) return 0;
+	getinventorylist;
+	.@inv_idx = @inventorylist_idx[.@idx];
 	unequip EQI_SHOES;
-	delitemidx .@idx,1;
+	delitemidx .@inv_idx,1;
 	return 1;
 }
 
@@ -163,6 +165,7 @@ glast_01,177,266,6	script	TEMPORAL001	2_drop_machine,{
 
 	mes "[TEMPORAL001]";
 	mes "你可以对时光超越者之靴进行附魔或者重置附魔哦！";
+	next;
 	mes "你想做哪一种呢？";
 	switch (select("附魔:重置附魔:取消")) {
 		case 1:
@@ -176,6 +179,7 @@ glast_01,177,266,6	script	TEMPORAL001	2_drop_machine,{
 L_Enchant:
 	mes "[TEMPORAL001]";
 	mes "你选择对时光超越者之靴进行附魔，";
+	next;
 	mes "在第4洞可进行共4阶段的强化，自第1阶段开始依序强化。";
 	mes "4洞4阶段成功率依次为100%/75%/60%/50%；";
 	mes "强化到第4阶段时，可于第3洞附加追加能力，第3洞成功率25%。";
@@ -192,6 +196,7 @@ L_Stage1:
 	mes "[TEMPORAL001]";
 	mes "1阶段强化材料：";
 	mes "被污染的魔力 1个、凝固的魔力（6608） 3个、时光超越者的气息（1000620）1个、10万Zeny。";
+	next;
 	mes "你要选择哪个系列呢？";
 	switch (select("斗志:名弓:魔力:体力:攻速:幸运:取消")) {
 		case 1: .@series = 0; break;
@@ -202,6 +207,7 @@ L_Stage1:
 		case 6: .@series = 5; break;
 		case 7: close;
 	}
+	next;
 
 	.@pay = F_TemporalPay(1,3,1);
 	if (!.@pay) close;
@@ -209,6 +215,7 @@ L_Stage1:
 		.@new = F_TemporalNormal(1,.@series);
 		if (F_TemporalApply(.@c2,.@new)) {
 			specialeffect2 EF_REFINEOK;
+			next;
 			mes "[TEMPORAL001]";
 			mes "强化成功了";
 		} else {
@@ -217,6 +224,7 @@ L_Stage1:
 		}
 	} else {
 		specialeffect2 EF_REFINEFAIL;
+		next;
 		mes "[TEMPORAL001]";
 		mes "哦不，附魔失败了，再接再厉。";
 	}
@@ -228,7 +236,9 @@ L_Stage2:
 	mes "2阶段强化材料：";
 	mes "被污染的魔力 2个、凝固的魔力（6608） 10个、时光超越者的气息（1000620）1个、10万Zeny。";
 	mes "本阶段成功率75%，强化失败装备不会消失。";
+	next;
 	if (select("强化:取消") != 1) close;
+	next;
 
 	.@pay = F_TemporalPay(2,10,2);
 	if (!.@pay) close;
@@ -236,6 +246,7 @@ L_Stage2:
 		.@new = F_TemporalNormal(2,.@series);
 		if (F_TemporalApply(.@c2,.@new)) {
 			specialeffect2 EF_REFINEOK;
+			next;
 			mes "[TEMPORAL001]";
 			mes "强化成功了";
 		} else {
@@ -244,6 +255,7 @@ L_Stage2:
 		}
 	} else {
 		specialeffect2 EF_REFINEFAIL;
+		next;
 		mes "[TEMPORAL001]";
 		mes "哦不，附魔失败了，再接再厉。";
 	}
@@ -255,7 +267,9 @@ L_Stage3:
 	mes "3阶段强化材料：";
 	mes "被污染的魔力 4个、凝固的魔力（6608） 20个、时光超越者的气息（1000620）1个、10万Zeny。";
 	mes "本阶段成功率60%，强化失败装备不会消失。";
+	next;
 	if (select("强化:取消") != 1) close;
+	next;
 
 	.@pay = F_TemporalPay(4,20,3);
 	if (!.@pay) close;
@@ -263,6 +277,7 @@ L_Stage3:
 		.@new = F_TemporalNormal(3,.@series);
 		if (F_TemporalApply(.@c2,.@new)) {
 			specialeffect2 EF_REFINEOK;
+			next;
 			mes "[TEMPORAL001]";
 			mes "强化成功了";
 		} else {
@@ -271,6 +286,7 @@ L_Stage3:
 		}
 	} else {
 		specialeffect2 EF_REFINEFAIL;
+		next;
 		mes "[TEMPORAL001]";
 		mes "哦不，附魔失败了，再接再厉。";
 	}
@@ -282,7 +298,9 @@ L_Stage4:
 	mes "4阶段强化材料：";
 	mes "被污染的魔力 7个、凝固的魔力（6608） 40个、时光超越者的气息（1000620）1个、10万Zeny。";
 	mes "本阶段成功率50%，强化失败装备不会消失。有25%概率出暴击!";
+	next;
 	if (select("强化:取消") != 1) close;
+	next;
 
 	.@pay = F_TemporalPay(7,40,4);
 	if (!.@pay) close;
@@ -303,6 +321,7 @@ L_Stage4:
 			.@new = F_TemporalNormal(4,.@series);
 		if (F_TemporalApply(.@c2,.@new)) {
 			specialeffect2 EF_REFINEOK;
+			next;
 			mes "[TEMPORAL001]";
 			mes "强化成功了";
 		} else {
@@ -311,6 +330,7 @@ L_Stage4:
 		}
 	} else {
 		specialeffect2 EF_REFINEFAIL;
+		next;
 		mes "[TEMPORAL001]";
 		mes "哦不，附魔失败了，再接再厉。";
 	}
@@ -327,7 +347,9 @@ L_Special:
 	mes "特殊阶段强化材料：";
 	mes "被污染的魔力 10个、凝固的魔力（6608） 50个、时光超越者的气息（1000620）1个、10万Zeny。";
 	mes "本阶段成功率25%，强化失败装备不会消失。";
+	next;
 	if (select("强化:取消") != 1) close;
+	next;
 
 	.@pay = F_TemporalPay(10,50,5);
 	if (!.@pay) close;
@@ -335,6 +357,7 @@ L_Special:
 		.@new = 4875 + rand(0,5);
 		if (F_TemporalApply(.@new,.@c3)) {
 			specialeffect2 EF_REFINEOK;
+			next;
 			mes "[TEMPORAL001]";
 			mes "强化成功了";
 		} else {
@@ -343,6 +366,7 @@ L_Special:
 		}
 	} else {
 		specialeffect2 EF_REFINEFAIL;
+		next;
 		mes "[TEMPORAL001]";
 		mes "哦不，附魔失败了，再接再厉。";
 	}
@@ -357,8 +381,10 @@ L_Reset:
 	mes "[TEMPORAL001]";
 	mes "重置会清除第3洞和第4洞的附魔，卡片、精炼、词条都会保留。";
 	mes "你要使用哪一种重置方式？";
+	next;
 	switch (select("材料重置(70%):强力精华球x1(100%):蹦级币x1(100%):取消")) {
 		case 1:
+			next;
 			if (countitem(6755) < 3 || countitem(25867) < 10) {
 				mes "[TEMPORAL001]";
 				mes "你身上的重置材料不够哦。";
@@ -369,6 +395,7 @@ L_Reset:
 			if (rand(1,100) <= 70) {
 				if (F_TemporalApply(0,0)) {
 					specialeffect2 EF_REFINEOK;
+					next;
 					mes "[TEMPORAL001]";
 					mes "重置成功了";
 				} else {
@@ -378,11 +405,13 @@ L_Reset:
 			} else {
 				specialeffect2 EF_REFINEFAIL;
 				F_TemporalRemove();
+				next;
 				mes "[TEMPORAL001]";
 				mes "重置失败了，装备消失了。";
 			}
 			close;
 		case 2:
+			next;
 			if (countitem(7925) < 1) {
 				mes "[TEMPORAL001]";
 				mes "强力精华球不够。";
@@ -391,6 +420,7 @@ L_Reset:
 			delitem 7925,1;
 			if (F_TemporalApply(0,0)) {
 				specialeffect2 EF_REFINEOK;
+				next;
 				mes "[TEMPORAL001]";
 				mes "重置成功了";
 			} else {
@@ -399,6 +429,7 @@ L_Reset:
 			}
 			close;
 		case 3:
+			next;
 			if (countitem(1000254) < 1) {
 				mes "[TEMPORAL001]";
 				mes "蹦级币不够。";
@@ -407,6 +438,7 @@ L_Reset:
 			delitem 1000254,1;
 			if (F_TemporalApply(0,0)) {
 				specialeffect2 EF_REFINEOK;
+				next;
 				mes "[TEMPORAL001]";
 				mes "重置成功了";
 			} else {
