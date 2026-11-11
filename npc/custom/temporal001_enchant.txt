@@ -50,7 +50,7 @@ function	script	F_TemporalApply	{
 	if (countitem(22202) <= .@before)
 		return 0;
 
-	unequip EQP_SHOES;
+	unequip EQI_SHOES;
 	delitemidx .@idx,1;
 	if (countitem(22202) == 1)
 		equip 22202;
@@ -60,7 +60,7 @@ function	script	F_TemporalApply	{
 function	script	F_TemporalRemove	{
 	.@idx = F_TemporalBootsIdx();
 	if (.@idx < 0) return 0;
-	unequip EQP_SHOES;
+	unequip EQI_SHOES;
 	delitemidx .@idx,1;
 	return 1;
 }
@@ -150,15 +150,15 @@ function	script	F_TemporalPay	{
 }
 
 glast_01,177,266,6	script	TEMPORAL001	2_drop_machine,{
-	if (getequipid(EQP_SHOES) != 22202) {
+	if (getequipid(EQI_SHOES) != 22202) {
 		mes "[TEMPORAL001]";
 		mes "请先装备时光超越者之靴。";
-		mes "当前鞋子ID：" + getequipid(EQP_SHOES);
+		mes "当前鞋子ID：" + getequipid(EQI_SHOES);
 		close;
 	}
 
-	.@c2 = getequipcardid(EQP_SHOES,2);
-	.@c3 = getequipcardid(EQP_SHOES,3);
+	.@c2 = getequipcardid(EQI_SHOES,2);
+	.@c3 = getequipcardid(EQI_SHOES,3);
 	.@st = F_TemporalStage(.@c3);
 
 	mes "[TEMPORAL001]";
