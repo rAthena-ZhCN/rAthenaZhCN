@@ -205,6 +205,7 @@ enum poison_item_list : t_itemid
 	ITEMID_PYREXIA,
 	ITEMID_MAGICMUSHROOM,
 	ITEMID_VENOMBLEED,
+	ITEMID_UNLIMITED_ARSENAL = 22500,
 };
 
 ///Item job
@@ -1648,6 +1649,7 @@ enum e_random_item_group {
 	IG_CACHUA_COSTUME_BOX,
 	IG_KR_B_SPECIAL03,
 	IG_BIOWEAPON_HELM_BOX,
+	IG_TIME_SPROUT_SYNTHESIS,
 	IG_TREE_OF_SPROUT_BOX,
 	IG_SPECIAL_COSTUME_BOX,
 	IG_SPECIAL_COSTUME_BOX_,
@@ -3831,6 +3833,7 @@ const char *itemdb_typename_ammo (e_ammo_type ammo);
 #define itemdb_value_sell(n) itemdb_search(n)->value_sell
 //Item trade restrictions [Skotlex]
 bool itemdb_isdropable_sub( const item_data *itd, int32 gmlv, int32 unused );
+bool itemdb_is_unlimited_arsenal_item( t_itemid nameid );
 bool itemdb_cantrade_sub( const item_data *itd, int32 gmlv, int32 gmlv2 );
 bool itemdb_canpartnertrade_sub( const item_data *itd, int32 gmlv, int32 gmlv2 );
 bool itemdb_cansell_sub( const item_data *itd, int32 gmlv, int32 unused );

@@ -5825,6 +5825,7 @@
 	export_constant(IG_CACHUA_COSTUME_BOX);
 	export_constant(IG_KR_B_SPECIAL03);
 	export_constant(IG_BIOWEAPON_HELM_BOX);
+	export_constant(IG_TIME_SPROUT_SYNTHESIS);
 	export_constant(IG_TREE_OF_SPROUT_BOX);
 	export_constant(IG_SPECIAL_COSTUME_BOX);
 	export_constant(IG_SPECIAL_COSTUME_BOX_);
