@@ -59560,3 +59560,44 @@ Body:
     Script: |
       bonus2 bMagicAtkEle,Ele_Ghost,30;
       bonus2 bMagicAddSize,Size_All,15;
+
+  - Combos:
+      - Combo:
+          - Magic_Circle_LT
+          - Magic_Star_TW_LT
+    Script: |
+      bonus bMatkRate,readparam(bStr) / 12;
+      bonus bDelayrate,-(readparam(bAgi) / 12);
+      bonus2 bMagicAddRace,RC_All,readparam(bVit) / 12;
+      bonus2 bMagicAddClass,Class_All,readparam(bInt) / 12;
+      bonus2 bMagicAddSize,Size_All,readparam(bDex) / 12;
+      bonus2 bMagicAddEle,Ele_All,readparam(bLuk) / 12;
+      if ((readparam(bPow)+readparam(bSta)+readparam(bWis)+readparam(bSpl)+readparam(bCon)+readparam(bCrt)) >= 160)
+        bonus bMatk,100;
+
+  - Combos:
+      - Combo:
+          - Star_Force_Ring_LT
+          - Magic_Circle_LT
+    Script: |
+      bonus bVariableCastrate,-10;
+      bonus bFixedCast,-100;
+      bonus bSMatk,5;
+
+  - Combos:
+      - Combo:
+          - Star_Force_Ring_LT
+          - Magic_Star_TW_LT
+    Script: |
+      bonus bVariableCastrate,-10;
+      bonus bFixedCast,-100;
+      bonus bSMatk,5;
+
+  - Combos:
+      - Combo:
+          - Star_Force_Ring_LT
+          - Magic_Star_TW_LT
+          - Magic_Circle_LT
+    Script: |
+      bonus3 bAutoSpell,"WL_RECOGNIZEDSPELL",1,100;
+      bonus2 bMagicAddClass,Class_All,20;

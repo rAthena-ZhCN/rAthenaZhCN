@@ -272384,9 +272384,9 @@ Body:
     AegisName: Violent_D_S_Armor
     Name: ´Ö±©ÕßÁúÓ°îø¼×
     Type: Armor
-    Weight: 100
+    Weight: 1000
     Defense: 50
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 130
     ArmorLevel: 1
     Refineable: true
@@ -272417,9 +272417,9 @@ Body:
     AegisName: Abbys_L_H_Armor
     Name: ÉîÔ¨ºþË®ÅØÐ¥îø¼×
     Type: Armor
-    Weight: 100
+    Weight: 1000
     Defense: 50
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 130
     ArmorLevel: 1
     Refineable: true
@@ -272451,9 +272451,9 @@ Body:
     AegisName: Violent_D_S_Armor_LT
     Name: ´Ö±©ÕßÁúÓ°îø¼×-LT
     Type: Armor
-    Weight: 100
+    Weight: 1000
     Defense: 50
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 200
     ArmorLevel: 2
     Refineable: true
@@ -272498,9 +272498,9 @@ Body:
     AegisName: Abbys_L_H_Armor_LT
     Name: ÉîÔ¨ºþË®ÅØÐ¥îø¼×-LT
     Type: Armor
-    Weight: 100
+    Weight: 1000
     Defense: 50
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 200
     ArmorLevel: 2
     Refineable: true
@@ -272546,9 +272546,9 @@ Body:
     AegisName: Devil_Flame_Manteau_LT
     Name: Ä§¹í¶ñ»ð¶·Åñ-LT
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 0
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 150
     ArmorLevel: 2
     Refineable: true
@@ -272583,9 +272583,9 @@ Body:
     AegisName: Ultio_Cape_LT_TW
     Name: ÎÚ¶ûµÙ°ÂÊ¥Ä§·¨¶·Åñ-LT
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 0
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 150
     ArmorLevel: 2
     Refineable: true
@@ -272619,9 +272619,9 @@ Body:
     AegisName: Tristan_Cape
     Name: ÌØÀïË¹Ì¹Íõ¹ú¶·Åñ
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 20
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 100
     ArmorLevel: 1
     Refineable: true
@@ -272641,9 +272641,9 @@ Body:
     AegisName: Morocc_Thief_Shawl
     Name: ÃÎÂÞ¿ËµÁÄ¹ÕßÅû½í
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 20
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 100
     ArmorLevel: 1
     Refineable: true
@@ -272663,9 +272663,9 @@ Body:
     AegisName: Morocc_Thief_Shawl_LT
     Name: ÃÎÂÞ¿ËµÁÄ¹ÕßÅû½í-LT
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 20
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 190
     ArmorLevel: 2
     Refineable: true
@@ -272697,9 +272697,9 @@ Body:
     AegisName: Tele_WG_Cape_LT
     Name: Äî¶¯·çÉñ¶·Åñ-LT
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 0
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 150
     ArmorLevel: 2
     Refineable: true
@@ -272734,9 +272734,9 @@ Body:
     AegisName: C_M_Cape_LT
     Name: ±ä»ÃÄª²âÄ§Êõ¶·Åñ-LT
     Type: Armor
-    Weight: 10
+    Weight: 100
     Defense: 0
-    Slots: 0
+    Slots: 1
     EquipLevelMin: 150
     ArmorLevel: 2
     Refineable: true
@@ -272769,3 +272769,37 @@ Body:
       if (.@g >= ENCHANTGRADE_A) skill "WL_RECOGNIZEDSPELL",1;
     UnEquipScript: |
       sc_end SC_RECOGNIZEDSPELL;
+
+
+  - Id: 420301
+    AegisName: Magic_Circle_LT
+    Name: Ä§Á¦ÐÇÕó-LT
+    Type: Armor
+    Weight: 100
+    Defense: 0
+    Slots: 1
+    EquipLevelMin: 100
+    ArmorLevel: 2
+    Locations:
+      Head_Low: true
+    Script: |
+      bonus bFixedCast,-200;
+      bonus bAspd,1;
+
+  - Id: 490619
+    AegisName: Star_Force_Ring_LT
+    Name: Ä§Á¦ÐÇ»·-LT
+    Type: Armor
+    Weight: 300
+    Defense: 0
+    Slots: 1
+    EquipLevelMin: 100
+    ArmorLevel: 2
+    Locations:
+      Both_Accessory: true
+    Script: |
+      bonus bVariableCastrate,-25;
+      bonus bAspd,2;
+      bonus bFixedCast,-100;
+      autobonus "{ bonus bSMatk,10; }",500,5000,BF_MAGIC,"{ specialeffect2 EF_ENHANCE; }";
+      autobonus "{ bonus bSMatk,10; }",500,5000,BF_WEAPON,"{ specialeffect2 EF_ENHANCE; }";
