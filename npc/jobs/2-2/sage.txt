@@ -146,13 +146,13 @@ yuno_in02,38,61,5	script	学院院长#sa	743,{
 			mes "让我看看。";
 			next;
 			mes "[凯伦·格里克]";
-			mes "Hmm...";
+			mes "唔……";
 			next;
 			mes "[凯伦·格里克]";
-			mes "Huh...";
+			mes "嗯……？";
 			next;
 			mes "[凯伦·格里克]";
-			mes "Interesting...";
+			mes "有意思……";
 			next;
 			mes "[凯伦·格里克]";
 			mes "虽然写得粗糙，但对初学者来说已经很不错了。";
@@ -321,7 +321,7 @@ yuno_in03,154,35,4	script	学院职员#a	742,{
 				next;
 				select(strcharinfo(0));
 				mes "[梅图斯·希尔菲]";
-				mes "你的名字是……" + strcharinfo(0) + ". It's a very nice name.";
+				mes "你的名字是……" + strcharinfo(0) +"。真是个好名字。";
 				next;
 				if (JobLevel == 50) {
 					mes "[梅图斯·希尔菲]";
@@ -402,7 +402,7 @@ yuno_in03,154,35,4	script	学院职员#a	742,{
 					next;
 					select(strcharinfo(0));
 					mes "[梅图斯·希尔菲]";
-					mes "你的名字是……" + strcharinfo(0) + ". It's a very nice name.";
+					mes "你的名字是……" + strcharinfo(0) +"。真是个好名字。";
 					next;
 					mes "[梅图斯·希尔菲]";
 					mes "好，一切准备就绪。";
@@ -541,7 +541,7 @@ yuno_in03,154,35,4	script	学院职员#a	742,{
 				setarray .@count[0], 50,50,50,50;
 				break;
 			}
-			set .@size, (getarraysize(.@item)-1); 
+			set .@size, getarraysize(.@item); 
 			for( set .@i,0 ; .@i < .@size && countitem(.@item[.@i]) >= .@count[.@i] ; set .@i,.@i+1 );
 			if(.@i == .@size) {  
 				if (Zeny > 29999) {
@@ -588,9 +588,9 @@ yuno_in03,154,35,4	script	学院职员#a	742,{
 		select(strcharinfo(0));
 		mes "[梅图斯·希尔菲]";
 		switch (.@SAGE_Q_T) {
-		case 1: mes "你的名字是……" + strcharinfo(0) + ". It's a very nice name."; break;
-		case 2: mes "你的名字是……" + strcharinfo(0) + ". It sounds very sagacious."; break;
-		case 3: mes "你的名字是……" + strcharinfo(0) + ". Interesting name."; break;
+		case 1: mes "你的名字是……" + strcharinfo(0) +"。真是个好名字。"; break;
+		case 2: mes "你的名字是……" + strcharinfo(0) +"。听起来很有贤者的气质。"; break;
+		case 3: mes "你的名字是……" + strcharinfo(0) +"。真是个有趣的名字。"; break;
 		}
 		next;
 		mes "[梅图斯·希尔菲]";
@@ -1298,7 +1298,7 @@ yuno_in03,62,176,2	script	历史教授#sa	109,{
 	}
 	if (SAGE_Q == 9) {
 		if (SAGE_Q2 == 0) {
-			mes "欢迎，" + strcharinfo(0) + ". I am glad to meet you.";
+			mes "欢迎，" + strcharinfo(0) +"。很高兴见到你。";
 			mes "我是斯必安莱利斯·雷利斯，接下来一段时间由我负责你的课程。";
 			next;
 			mes "[斯必安莱利斯·雷利斯]";
@@ -1383,7 +1383,7 @@ yuno_in03,62,176,2	script	历史教授#sa	109,{
 				next;
 				mes "[斯必安莱利斯·雷利斯]";
 				mes "这个物品在艾尔帕兰就能买到！你根本没用心。";
-				mes "所以，我必须扣你10分，" + strcharinfo(0) + ".";
+				mes "所以，我必须扣你10分，" + strcharinfo(0) + "。";
 				next;
 				mes "[斯必安莱利斯·雷利斯]";
 				mes "好，现在开始上课。";
@@ -1498,7 +1498,7 @@ yuno_in03,62,176,2	script	历史教授#sa	109,{
 			next;
 			mes ".................................";
 			next;
-			mes ".....There is a ocean around the continent,";
+			mes "……大陆的四周是一片海洋，";
 			mes "盘踞在海洋之中的是";
 			switch(select("一棵巨大的梣树。:巨蛇耶梦加得。:一只巨大的乌龟与大象。:一条巨龙。")) {
 			case 1:
@@ -1581,7 +1581,7 @@ yuno_in03,62,176,2	script	历史教授#sa	109,{
 				mes "回去好好用功，再来一次吧！";
 				close;
 			}
-			mes ".....as we studied from the last class,";
+			mes "……正如上节课所学，";
 			mes "天地树是……";
 			switch(select("一棵巨大的梣树。:一棵绝美的玛斯特拉树。:一棵巨大的柳树。:一根巨大的枯枝。")) {
 			case 1:
@@ -1828,7 +1828,7 @@ yuno_in03,32,102,1	script	生物教授#sa	755,{
 				case 3:
 					set sage_m4,4;
 					mes "[路西伍司·凯莎斯]";
-					mes "...I didn't know Phens were aggressive nowadays?";
+					mes "……我不知道现在的水母居然会主动攻击人？";
 					mes "还是说水母和漂浮虫会联手找你打架？";
 					next;
 					mes "[路西伍司·凯莎斯]";
@@ -2030,7 +2030,7 @@ yuno_in03,32,102,1	script	生物教授#sa	755,{
 			mes "5 ^3355FF"+getitemname(.@items[2])+"^000000，";
 			close;
 		}
-		mes "Zzz...Zzz...";
+		mes "呼……呼……";
 		close;
 	}
 	else if (SAGE_Q == 12) {
@@ -2057,14 +2057,14 @@ yuno_in03,32,102,1	script	生物教授#sa	755,{
 			next;
 			mes ".................................";
 			next;
-			select(".....Monsters vary by physical appearance,");
-			mes ".....Monsters vary by physical appearance,";
-			select("...and possess various elemental properties.");
-			mes "...and possess various elemental properties.";
+			select("……魔物在外观上各不相同，");
+			mes "……魔物在外观上各不相同，";
+			select("……并且拥有不同的属性。");
+			mes "……并且拥有不同的属性。";
 			select("你必须了解每种魔物的属性，");
 			mes "你必须了解每种魔物的属性，";
-			select("...and be aware that certain spells work differently on different monsters.");
-			mes "...and be aware that certain spells work differently on different monsters.";
+			select("……还要注意，不同魔法对不同魔物的效果也不同。");
+			mes "……还要注意，不同魔法对不同魔物的效果也不同。";
 			select("对圣属性与暗属性魔物尤其要小心。");
 			mes "对圣属性与暗属性魔物尤其要小心。";
 			select("这些魔物最为危险，不过偶尔也很可爱。");
@@ -2159,7 +2159,7 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 			mes "那么，如果你不是来办事的，那你一定是来……";
 			next;
 			mes "[艾贝西·乔治]";
-			mes "...for PLEASURE.";
+			mes "……为了找乐子。";
 			mes "哎，等等！回来呀～！";
 		}
 		close;
@@ -2267,7 +2267,7 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 				mes "只要想想从土里长出的木头，在温暖的壁炉里燃烧。在熊皮上，在黑暗中～";
 				next;
 				mes "[艾贝西·乔治]";
-				mes "...Oh my gosh! Time flies sooo fast!";
+				mes "……天哪！时间过得真快！";
 				mes "今天就到这里吧，亲爱的，嘻嘻～";
 				next;
 				delitem 1754,50; //Crystal_Arrow
@@ -2372,7 +2372,7 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 			next;
 			mes ".................................";
 			next;
-			mes ".....Magic spells are varied into 4 elements such as";
+			mes "……魔法分为四种属性，例如";
 			switch(select("水、地、火、风。:地、水、火、风。:水、风、地、火。")) {
 			case 1:
 				mes "水、地、火、风。";
@@ -2420,9 +2420,9 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 				break;
 			}
 			next;
-			switch(select("普隆德拉最可爱的NPC是YuPi:据说红色药水是用波利做的:魔法的极限无人知晓")) {
+			switch(select("普隆德拉最可爱的NPC是尤皮:据说红色药水是用波利做的:魔法的极限无人知晓")) {
 			case 1:
-				mes "普隆德拉最可爱的NPC是YuPi";
+				mes "普隆德拉最可爱的NPC是尤皮";
 				break;
 			case 2:
 				mes "据说红色药水是用波利做的";
@@ -2431,9 +2431,9 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 				mes "魔法的极限无人知晓";
 				break;
 			}
-			switch(select("梦罗克的商人小姐也和YuPi一样可爱。:没人知道红色药水为什么尝起来像草莓。:不建议过度沉迷于魔法。")) {
+			switch(select("梦罗克的商人小姐也和尤皮一样可爱。:没人知道红色药水为什么尝起来像草莓。:不建议过度沉迷于魔法。")) {
 			case 1:
-				mes "梦罗克的商人小姐也和YuPi一样可爱。";
+				mes "梦罗克的商人小姐也和尤皮一样可爱。";
 				break;
 			case 2:
 				mes "没人知道红色药水为什么尝起来像草莓。";
@@ -2539,7 +2539,7 @@ yuno_in03,244,31,3	script	物理教授#sa	120,{
 		mes "既然你不是来办事的，那你一定是来……";
 		next;
 		mes "[艾贝西·乔治]";
-		mes "...PLEASURE. Wait, where are you going, hon?";
+		mes "……为了找乐子。等等，亲爱的，你要去哪儿？";
 		close;
 	}
 }
