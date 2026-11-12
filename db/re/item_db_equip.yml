@@ -49178,12 +49178,10 @@ Body:
     Trade:
       NoDrop: true
     Script: |
-      bonus bInt,3;
+      bonus bInt,2;
       bonus bMdef,9;
-      bonus2 bMagicAddRace,RC_Undead,10;
-      .@t = 2+(getrefine()/3)*1000;
-      autobonus "{ .@r = max(1,getrefine()); bonus bMatk,30*.@r; bonus bFixedCast,-80*.@r; bonus2 bSPLossRate,10,1000; }",15,.@t,BF_MAGIC,"{ active_transform 1518,3000; specialeffect2 EF_POTION_BERSERK; showscript \"This is my magic Power!\"; }";
-      autobonus2 "{ .@r = max(1,getrefine()); bonus bMatk,30*.@r; bonus bFixedCast,-80*.@r; bonus2 bSPLossRate,10,1000; }",15,.@t,BF_MAGIC,"{ active_transform 1518,3000; specialeffect2 EF_POTION_BERSERK; showscript \"How dare you! I punish you to endless sleep!\"; }";
+      skill "MG_MAGNIFICAT",3;
+
   - Id: 5465
     AegisName: Celestial_Hat
     Name: Í·¿ø
@@ -98178,6 +98176,7 @@ Body:
       bonus2 bMagicAtkEle,Ele_Fire,2*(readparam(bInt)/12);
       bonus2 bMagicAtkEle,Ele_Earth,2*(readparam(bDex)/12);
       bonus2 bMagicAtkEle,Ele_Holy,2*(readparam(bLuk)/12);
+      bonus bVariableCastrate,-5;
       hateffect(HAT_EF_Magic_Star_TW,true);
     UnEquipScript: |
       hateffect(HAT_EF_Magic_Star_TW,false);
@@ -98316,7 +98315,7 @@ Body:
     Script: |
       .@r = getrefine();
       bonus bDelayrate,-3-(3*(.@r/3));
-      bonus bMaxHPrate,3+(.@r);
+      bonus bMaxHPrate,3+(.@r/3);
   - Id: 19402
     AegisName: Many_StarsJ
     Name: Many Stars
@@ -121102,9 +121101,9 @@ Body:
          }
          if (.@vit>=100) {
             if (.@vit>=120)
-               bonus2 bAddSize,Size_Medium,15;
+               bonus2 bSubSize,Size_Medium,15;
             else
-               bonus2 bAddSize,Size_Medium,10;
+               bonus2 bSubSize,Size_Medium,10;
          }
          if (.@int>=100) {
             if (.@int>=120)
@@ -121802,7 +121801,7 @@ Body:
             bonus bLongAtkRate,5;
          }
          if (readparam(bLuk)>=108)
-            bonus bCriticalRate,30;
+            bonus bCritAtkRate,30;
       }
     Trade:
       NoDrop: true
@@ -171951,10 +171950,10 @@ Body:
       .@r = getrefine();
       .@g = getenchantgrade();
       bonus bMaxHPrate,10;
-      bonus bDelayrate,8-(2*(.@r/2));
+      bonus bDelayrate,-8-(2*(.@r/2));
       bonus bMaxHP,3000*(.@r/3);
       if (.@r>=7) {
-         bonus bDelayrate,-10;
+         bonus bAspdRate,10;
          if (.@r>=9) {
              bonus bAtkRate,10;
              bonus bMatkRate,10;
@@ -211721,8 +211720,8 @@ Body:
       bonus bLongAtkRate,.@r/2;
       bonus bCritical,3*(.@r/2);
       bonus bCritAtkRate,.@r/2;
-      bonus2 bAddEle,Ele_All,3*(.@r/4);
-      bonus2 bMagicAddEle,Ele_All,3*(.@r/4);
+      bonus2 bAddSize,Size_All,3*(.@r/4);
+      bonus2 bMagicAddSize,Size_All,3*(.@r/4);
       bonus bMaxHPrate,3*(.@r/4);
       bonus bAspdRate,3*(.@r/4);
       bonus bDelayrate,-3*(.@r/4);
@@ -214315,11 +214314,11 @@ Body:
       if (.@r>=7)
          bonus bMatkRate,10;
       if (.@r>=9)
-         bonus2 bMagicAddRace,RC_All,10;
+         bonus2 bMagicAddSize,Size_All,10;
       if (.@r>=11)
          bonus bDelayrate,-12;
       if (.@r>=13)
-         bonus2 bIgnoreDefClassRate,Class_Boss,10;
+         bonus2 bIgnoreMdefClassRate,Class_Boss,10;
   - Id: 480243
     AegisName: C_JP_EV16
     Name: Costume Cinnamon Backpack
@@ -226618,7 +226617,7 @@ Body:
     EquipLevelMin: 190
     Script: |
       skill "MG_SIGHT",1;
-      bonus bMaxHP,15;
+      bonus bMaxHPrate,15;
       bonus bShortAtkRate,10;
       bonus bLongAtkRate,10;
       bonus2 bMagicAtkEle,Ele_All,10;
@@ -227302,7 +227301,7 @@ Body:
       .@a = (readparam(bStr)/10);
       .@b = (readparam(bInt)/10);
       bonus bMdef,20;
-      bonus bVariableCastrate,-10+.@b;
+      bonus bVariableCastrate,-10-.@b;
       bonus2 bAddClass,Class_All,10+.@a;
       bonus bMatkRate,10+.@b;
       bonus bAllStats,8;
