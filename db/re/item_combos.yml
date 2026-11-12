@@ -23301,7 +23301,7 @@ Body:
     Script: |
       bonus2 bMagicAddEle,Ele_All,10;
       bonus bNoCastCancel;
-      if (getequiprefinerycnt(EQI_HEAD_TOP) >= 12) {
+      if (getequiprefinerycnt(EQI_HEAD_TOP) >= 11) {
          bonus bDelayrate,-12;
       }
   - Combos:
@@ -31406,10 +31406,15 @@ Body:
           - Garm_Card   # 4324
           - lunar_eclipse_Armor_   # 15374
     Script: |
-      .@r = getequiprefinerycnt(EQI_ARMOR);
       bonus2 bResEff,Eff_Freeze,10000;
+      bonus bMaxHPrate,50;
       bonus2 bAddEffWhenHit,Eff_Freeze,2000;
-      bonus2 bAddEle,Ele_Water,5*.@r;
+      bonus2 bSubSize,Size_Medium,15;
+      bonus2 bSubSize,Size_Large,15;
+      bonus2 bMagicSubSize,Size_Medium,15;
+      bonus2 bMagicSubSize,Size_Large,15;
+      bonus2 bSubSkill,"SJ_NEWMOONKICK",20;
+      bonus2 bSubSkill,"SJ_FULLMOONKICK",20;
   - Combos:
       - Combo:
           - SLD_Garm_Card_J   # 300400
@@ -31419,6 +31424,24 @@ Body:
       bonus2 bResEff,Eff_Freeze,10000;
       bonus2 bAddEffWhenHit,Eff_Freeze,1000;
       bonus2 bAddEle,Ele_Water,2*.@r;
+  - Combos:
+      - Combo:
+          - lunar_eclipse_Armor_    # 15374 月全蝕魔力外袍
+          - Eclipsedefmind_TW       # 490086 月蝕守護之心
+    Script: |
+      bonus bFixedCast,-300;
+
+  - Combos:
+      - Combo:
+          - lunar_eclipse_Armor_    # 15374 月全蝕魔力外袍
+          - Marc_Card               # 4105 馬克卡片
+    Script: |
+      bonus2 bSubSize,Size_Medium,10;
+      bonus2 bSubSize,Size_Large,10;
+      bonus2 bMagicSubSize,Size_Medium,10;
+      bonus2 bMagicSubSize,Size_Large,10;
+      bonus2 bSubSkill,"SJ_NEWMOONKICK",15;
+      bonus2 bSubSkill,"SJ_FULLMOONKICK",15;
   - Combos:
       - Combo:
           - WindHawk_Snip_Ring   # 490284
@@ -43715,8 +43738,8 @@ Body:
           - Temporal_Cape_TW_LT    # 480312
     Script: |
       if (getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_GARMENT) >= 22) {
-         bonus2 bAddSize,Size_All,10;
-         bonus2 bMagicAddSize,Size_All,10;
+         bonus2 bAddSize,Size_All,12;
+         bonus2 bMagicAddSize,Size_All,12;
       }
   - Combos:
       - Combo:
@@ -43735,11 +43758,12 @@ Body:
           - Temporal_Boots_LT_TW    # 470183
           - Temporal_Cape_TW_LT    # 480312
     Script: |
-      if (getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_SHOES)+getequiprefinerycnt(EQI_GARMENT) >= 37)
-         bonus bDelayrate,-10;
-      if (getenchantgrade(EQI_SHOES) && getenchantgrade(EQI_GARMENT) >= ENCHANTGRADE_A) {
-         bonus bPAtk,10;
-         bonus bSMatk,10;
+      if (getequiprefinerycnt(EQI_ARMOR) + getequiprefinerycnt(EQI_SHOES) + getequiprefinerycnt(EQI_GARMENT) >= 37) {
+        bonus bDelayrate,-10;
+        if (getenchantgrade(EQI_SHOES) >= ENCHANTGRADE_A && getenchantgrade(EQI_GARMENT) >= ENCHANTGRADE_A) {
+          bonus bPAtk,10;
+          bonus bSMatk,10;
+        }
       }
   - Combos:
       - Combo:
@@ -53321,9 +53345,7 @@ Body:
           - Astraea_Helm_LT    # 400699
           - Astraea_Armor_LT    # 450385
     Script: |
-      bonus bHealPower,20;
-      bonus bAddItemHealRate,20;
-      autobonus2 "{ bonus bVit,200; }",30,10000,BF_WEAPON;
+      autobonus2 "{ bonus bHealPower,20; bonus bAddItemHealRate,20; bonus bVit,200; }",30,10000,BF_WEAPON;
       if (eaclass()&EAJL_THIRD && (BaseJob == Job_Priest))
          skill "MG_ENERGYCOAT",1;
   - Combos:
@@ -53341,7 +53363,7 @@ Body:
           - Star_Cluster_Of_Wis3    # 310691
           - Astraea_Helm_LT    # 400699
     Script: |
-      bonus2 bMagicSubSize,Size_All,15;
+      bonus2 bMagicSubSize,Size_Medium,15;
       if (readparam(bWis)>=90) {
          bonus bLongAtkDef,-10;
          bonus bNearAtkDef,10;
@@ -55724,7 +55746,7 @@ Body:
     Script: |
       .@r = getequiprefinerycnt(EQI_HEAD_TOP);
       bonus2 bSkillAtk,"IQ_SECOND_FLAME",15*(.@r/3);
-      bonus2 bSkillAtk,"IQ_THIRD_FLAME_BOMB",15*(.@r/3);
+      bonus2 bSkillAtk,"IQ_THIRD_FLAME_BOMB",10*(.@r/3);
       if (.@r>=13)
          bonus bMaxHPrate,25;
   - Combos:
@@ -55747,7 +55769,7 @@ Body:
           - Old_Protect_Of_Crown    # 18983
           - Tristan_Cape_LT    # 480453
     Script: |
-      .@r = getequiprefinerycnt(EQI_GARMENT);
+      .@r = getequiprefinerycnt(EQI_HEAD_TOP);
       bonus2 bSkillAtk,"LG_BANISHINGPOINT",25*(.@r/3);
       bonus2 bSkillAtk,"LG_CANNONSPEAR",25*(.@r/3);
       if (.@r>=13)
@@ -55759,7 +55781,7 @@ Body:
     Script: |
       bonus2 bAddClass,Class_Boss,30;
       skill "LG_REFLECTDAMAGE",3;
-      bonus2 bSubRace,RC_Undead,50;
+      bonus2 bSubEle,Ele_Undead,50;
       bonus2 bSubEle,Ele_Ghost,-30;
   - Combos:
       - Combo:

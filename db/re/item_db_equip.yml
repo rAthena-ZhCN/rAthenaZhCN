@@ -49173,7 +49173,7 @@ Body:
     Locations:
       Head_Top: true
     ArmorLevel: 1
-    Refineable: true
+    Refineable: false
     View: 461
     Trade:
       NoDrop: true
@@ -74796,12 +74796,20 @@ Body:
     Refineable: true
     Script: |
       .@r = getrefine();
-      bonus bUnbreakableArmor;
       bonus bMdef,10;
-      bonus bMaxHPrate,15;
-      bonus bMaxSPrate,15;
+      bonus2 bSubSize,Size_Medium,10;
+      bonus2 bSubSize,Size_Large,10;
+      bonus2 bMagicSubSize,Size_Medium,10;
+      bonus2 bMagicSubSize,Size_Large,10;
+      bonus2 bSkillAtk,"SJ_SOLARBURST",30;
+      bonus2 bSubSkill,"SJ_NEWMOONKICK",20;
+      bonus2 bSubSkill,"SJ_FULLMOONKICK",20;
       bonus bDelayrate,-.@r;
-      bonus bFixedCastrate,-((.@r>=9)?70:(.@r>=7?50:0));
+      bonus bBaseAtk,10*.@r;
+      bonus bMatk,10*.@r;
+      bonus bMaxHPrate,5*(.@r/4);
+      bonus bAtkRate,5*(.@r/4);
+      bonus bMatkRate,5*(.@r/4);
   - Id: 15375
     AegisName: lunar_eclipse_Armor
     Name: Old Eclipse Outfit
@@ -166657,7 +166665,7 @@ Body:
       }
   - Id: 400152
     AegisName: Smoky_TransformHat_LT
-    Name: Smokey's Transformation Leaf-LT
+    Name: 狸猫变身树叶-LT
     Type: Armor
     Weight: 600
     Defense: 7
@@ -166742,7 +166750,7 @@ Body:
       autobonus "{ bonus2 bIgnoreMdefRaceRate,RC_All,100; bonus2 bIgnoreMdefRaceRate,RC_Player_Human,-100; bonus2 bIgnoreMdefRaceRate,RC_Player_Doram,-100; }",1,10000,BF_MAGIC;
   - Id: 400154
     AegisName: Survive_Circlet_K_LT
-    Name: Survival Circlet-LT
+    Name: 生存者头箍-LT
     Type: Armor
     Weight: 500
     Defense: 10
@@ -183647,8 +183655,8 @@ Body:
     ArmorLevel: 2
     EquipLevelMin: 100
     Script: |
-      .@a = (readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/600;
-      .@b = (readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/160;
+      .@basic = readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk);
+      .@trait = readparam(bPow)+readparam(bSta)+readparam(bWis)+readparam(bSpl)+readparam(bCon)+readparam(bCrt);
       bonus bVariableCastrate,-10;
       bonus2 bMagicAtkEle,Ele_Neutral,2*(readparam(bStr)/12);
       bonus2 bMagicAtkEle,Ele_Wind,2*(readparam(bAgi)/12);
@@ -183656,11 +183664,14 @@ Body:
       bonus2 bMagicAtkEle,Ele_Fire,2*(readparam(bInt)/12);
       bonus2 bMagicAtkEle,Ele_Earth,2*(readparam(bDex)/12);
       bonus2 bMagicAtkEle,Ele_Holy,2*(readparam(bLuk)/12);
-      bonus bMatkRate,10*.@a;
-      bonus bAspd,.@a;
-      bonus bSpl,5*.@b;
-      bonus bSMatk,5*.@b;
-      hateffect(HAT_EF_Magic_Star_TW,true);
+      if (.@basic >= 600) {
+         bonus2 bMagicAtkEle,Ele_All,10;
+         bonus bAspd,1;
+      }
+      if (.@trait >= 160) {
+         bonus bSpl,5;
+         bonus bSMatk,5;
+      }
     UnEquipScript: |
       hateffect(HAT_EF_Magic_Star_TW,false);
   - Id: 410257
@@ -184740,31 +184751,31 @@ Body:
     EquipLevelMin: 100
     View: 2544
     Script: |
-      .@a = (readparam(bStr)/20)*2;
-      .@b = (readparam(bAgi)/20)*2;
-      .@c = (readparam(bVit)/20)*2;
-      .@d = (readparam(bInt)/20)*2;
-      .@e = (readparam(bDex)/20)*2;
-      .@f = (readparam(bLuk)/20)*2;
-      .@g = (((readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/160)*5);
-      .@h = (((readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/600)*10);
-      bonus bHit,20+.@h;
-      bonus2 bAddRace,RC_Formless,.@a;
-      bonus2 bAddRace,RC_Undead,.@a;
-      bonus2 bAddRace,RC_Brute,.@b;
-      bonus2 bAddRace,RC_Plant,.@b;
-      bonus2 bAddRace,RC_Insect,.@c;
-      bonus2 bAddRace,RC_Fish,.@c;
-      bonus2 bAddRace,RC_Demon,.@d;
-      bonus2 bAddRace,RC_DemiHuman,.@d;
-      bonus2 bAddRace,RC_Angel,.@e;
-      bonus2 bAddRace,RC_Dragon,.@e;
-      bonus2 bAddRace,RC_Player_Doram,.@f;
-      bonus2 bAddRace,RC_Player_Human,.@f;
-      bonus2 bAddRace,RC_All,.@h;
-      bonus bRes,.@h;
-      bonus bPow,.@g;
-      bonus bPAtk,.@g;
+      .@basic = readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk);
+      .@trait = readparam(bPow)+readparam(bSta)+readparam(bWis)+readparam(bSpl)+readparam(bCon)+readparam(bCrt);
+      bonus bHit,20;
+      bonus2 bAddRace,RC_Formless,2*(readparam(bStr)/20);
+      bonus2 bAddRace,RC_Undead,2*(readparam(bStr)/20);
+      bonus2 bAddRace,RC_Brute,2*(readparam(bAgi)/20);
+      bonus2 bAddRace,RC_Plant,2*(readparam(bAgi)/20);
+      bonus2 bAddRace,RC_Insect,2*(readparam(bVit)/20);
+      bonus2 bAddRace,RC_Fish,2*(readparam(bVit)/20);
+      bonus2 bAddRace,RC_Demon,2*(readparam(bInt)/20);
+      bonus2 bAddRace,RC_DemiHuman,2*(readparam(bInt)/20);
+      bonus2 bAddRace,RC_Angel,2*(readparam(bDex)/20);
+      bonus2 bAddRace,RC_Dragon,2*(readparam(bDex)/20);
+      bonus2 bAddRace,RC_Player_Doram,2*(readparam(bLuk)/20);
+      bonus2 bAddRace,RC_Player_Human,2*(readparam(bLuk)/20);
+      if (.@basic >= 600) {
+         bonus2 bAddRace,RC_All,10;
+         bonus bHit,10;
+         bonus bRes,10;
+      }
+      if (.@trait >= 160) {
+         bonus bPow,5;
+         bonus bPAtk,5;
+      }
+
   - Id: 410340
     AegisName: Interdimensional_Rift2
     Name: Interdimensional Rift (Effect Off)
@@ -188620,18 +188631,25 @@ Body:
     EquipLevelMin: 100
     View: 2545
     Script: |
-      .@a = (((readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/160)*5);
-      .@b = (((readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk))/600)*10);
-      bonus bFlee,20+.@b;
-      bonus2 bAddEle,Ele_All,.@b+((readparam(bStr)/20)*2);
-      bonus2 bAddEle,Ele_Neutral,(readparam(bAgi)/20)*2;
-      bonus2 bAddEle,Ele_Water,(readparam(bVit)/20)*2;
-      bonus2 bAddEle,Ele_Earth,(readparam(bInt)/20)*2;
-      bonus2 bAddEle,Ele_Fire,(readparam(bDex)/20)*2;
-      bonus2 bAddEle,Ele_Wind,(readparam(bLuk)/20)*2;
-      bonus bMRes,.@b;
-      bonus bCon,.@a;
-      bonus bPAtk,.@a;
+      .@basic = readparam(bStr)+readparam(bAgi)+readparam(bVit)+readparam(bInt)+readparam(bDex)+readparam(bLuk);
+      .@trait = readparam(bPow)+readparam(bSta)+readparam(bWis)+readparam(bSpl)+readparam(bCon)+readparam(bCrt);
+      bonus bFlee,20;
+      bonus2 bAddEle,Ele_All,2*(readparam(bStr)/20);
+      bonus2 bAddEle,Ele_Neutral,2*(readparam(bAgi)/20);
+      bonus2 bAddEle,Ele_Water,2*(readparam(bVit)/20);
+      bonus2 bAddEle,Ele_Earth,2*(readparam(bInt)/20);
+      bonus2 bAddEle,Ele_Fire,2*(readparam(bDex)/20);
+      bonus2 bAddEle,Ele_Wind,2*(readparam(bLuk)/20);
+      if (.@basic >= 600) {
+         bonus2 bAddEle,Ele_All,10;
+         bonus bFlee,10;
+         bonus bMRes,10;
+      }
+      if (.@trait >= 160) {
+         bonus bCon,5;
+         bonus bPAtk,5;
+      }
+
   - Id: 420344
     AegisName: C_Book_of_Sorcery
     Name: Costume Book of Sorcery
@@ -197600,7 +197618,7 @@ Body:
              if (.@r>=11) {
                  bonus bUnbreakableArmor;
                  if (.@r>=13) {
-                     bonus2 bAddClass,Class_Boss,10;
+                     bonus2 bMagicAddClass,Class_Boss,10;
                  }
              }
          }
@@ -198511,6 +198529,7 @@ Body:
     Script: |
       .@r = getrefine();
       .@g = getenchantgrade();
+      bonus bMdef,10;
       bonus bBaseAtk,150+(15*(.@r/2));
       bonus bMatk,150+(15*(.@r/2));
       bonus bAtkRate,2*(.@r/3);
@@ -208808,7 +208827,7 @@ Body:
              if (.@g>=ENCHANTGRADE_B) {
                   bonus bSpl,.@r/2;
                   bonus bCon,.@r/2;
-                  if (.@r>=ENCHANTGRADE_A) {
+                  if (.@g>=ENCHANTGRADE_A) {
                       bonus2 bAddEle,Ele_All,12;
                       bonus2 bMagicAddEle,Ele_All,12;
                   }
@@ -215334,8 +215353,8 @@ Body:
          bonus bMatkRate,7;
       }
       if (.@r>=9) {
-         bonus2 bAddRace,RC_All,15;
-         bonus2 bMagicAddRace,RC_All,15;
+         bonus2 bAddSize,Size_All,15;
+         bonus2 bMagicAddSize,Size_All,15;
       }
       if (.@r>=12) {
          bonus2 bAddEle,Ele_All,15;
@@ -217801,7 +217820,7 @@ Body:
     AegisName: Tristan_Cape_LT
     Name: 特里斯坦王国斗篷-LT
     Type: Armor
-    Weight: 100
+    Weight: 10
     Defense: 20
     Slots: 1
     Locations:
