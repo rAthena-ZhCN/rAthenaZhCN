@@ -272378,3 +272378,165 @@ Body:
       bonus bMaxHP,.@r*10;
       bonus2 bSkillAtk,"NW_WILD_FIRE",8+2*(.@r/3);
       bonus bBaseAtk,10*(.@r/2);
+
+
+  - Id: 450355
+    AegisName: Violent_D_S_Armor
+    Name: ´Ö±©ÕßÁúÓ°îø¼×
+    Type: Armor
+    Weight: 100
+    Defense: 50
+    Slots: 0
+    EquipLevelMin: 130
+    ArmorLevel: 1
+    Refineable: true
+    Locations:
+      Armor: true
+    Script: |
+      .@r = getrefine();
+      bonus bMdef,10;
+      bonus bAllStats,10;
+      bonus bMaxHPrate,15;
+      bonus bMaxSPrate,15;
+      bonus bMatk,10 * (BaseLevel / 10);
+      bonus bMatkRate,2 * (.@r / 2);
+      bonus bSpl,1 * (.@r / 3);
+      bonus bCon,1 * (.@r / 3);
+      if (.@r >= 9) {
+        bonus2 bMagicAtkEle,Ele_All,20;
+      }
+      if (.@r >= 11) {
+        bonus2 bMagicAddSize,Size_Medium,25;
+        bonus2 bMagicAddSize,Size_Large,25;
+      }
+      if (.@r >= 13) {
+        bonus bDelayrate,-15;
+      }
+
+  - Id: 450356
+    AegisName: Abbys_L_H_Armor
+    Name: ÉîÔ¨ºþË®ÅØÐ¥îø¼×
+    Type: Armor
+    Weight: 100
+    Defense: 50
+    Slots: 0
+    EquipLevelMin: 130
+    ArmorLevel: 1
+    Refineable: true
+    Locations:
+      Armor: true
+    Script: |
+      .@r = getrefine();
+      bonus bMdef,10;
+      bonus bAllStats,10;
+      bonus bMaxHPrate,15;
+      bonus bMaxSPrate,15;
+      bonus bBaseAtk,10 * (BaseLevel / 10);
+      bonus bAtkRate,2 * (.@r / 2);
+      bonus bPow,1 * (.@r / 3);
+      bonus bCon,1 * (.@r / 3);
+      if (.@r >= 9) {
+        bonus bShortAtkRate,15;
+        bonus bLongAtkRate,15;
+      }
+      if (.@r >= 11) {
+        bonus2 bAddSize,Size_Medium,25;
+        bonus2 bAddSize,Size_Large,25;
+      }
+      if (.@r >= 13) {
+        bonus bDelayrate,-15;
+      }
+
+  - Id: 450357
+    AegisName: Violent_D_S_Armor_LT
+    Name: ´Ö±©ÕßÁúÓ°îø¼×-LT
+    Type: Armor
+    Weight: 100
+    Defense: 50
+    Slots: 0
+    EquipLevelMin: 200
+    ArmorLevel: 2
+    Refineable: true
+    Gradable: true
+    Locations:
+      Armor: true
+    Script: |
+      .@r = getrefine();
+      .@g = getenchantgrade();
+      bonus bMdef,10;
+      bonus bAllStats,12;
+      bonus bMaxHPrate,15;
+      bonus bMaxSPrate,15;
+      bonus bMatk,12 * (BaseLevel / 10);
+      bonus bMatkRate,2 * (.@r / 2);
+      bonus bSpl,2 * (.@r / 3);
+      bonus bCon,2 * (.@r / 3);
+      if (.@r >= 9) {
+        bonus2 bMagicAtkEle,Ele_All,25;
+      }
+      if (.@r >= 11) {
+        bonus2 bMagicAddSize,Size_Medium,30;
+        bonus2 bMagicAddSize,Size_Large,30;
+      }
+      if (.@r >= 13) {
+        bonus bDelayrate,-15;
+      }
+      if (.@g >= ENCHANTGRADE_D) {
+        bonus bMatk,120;
+      }
+      if (.@g >= ENCHANTGRADE_C) {
+        bonus2 bMagicAtkEle,Ele_All,12;
+      }
+      if (.@g >= ENCHANTGRADE_B) {
+        bonus bFixedCast,-300;
+      }
+      if (.@g >= ENCHANTGRADE_A) {
+        bonus2 bMagicAddRace,RC_All,15;
+      }
+
+  - Id: 450358
+    AegisName: Abbys_L_H_Armor_LT
+    Name: ÉîÔ¨ºþË®ÅØÐ¥îø¼×-LT
+    Type: Armor
+    Weight: 100
+    Defense: 50
+    Slots: 0
+    EquipLevelMin: 200
+    ArmorLevel: 2
+    Refineable: true
+    Gradable: true
+    Locations:
+      Armor: true
+    Script: |
+      .@r = getrefine();
+      .@g = getenchantgrade();
+      bonus bMdef,10;
+      bonus bAllStats,12;
+      bonus bMaxHPrate,15;
+      bonus bMaxSPrate,15;
+      bonus bBaseAtk,12 * (BaseLevel / 10);
+      bonus bAtkRate,4 * (.@r / 2);
+      bonus bPow,2 * (.@r / 3);
+      bonus bCon,2 * (.@r / 3);
+      if (.@r >= 9) {
+        bonus bLongAtkRate,25;
+      }
+      if (.@r >= 11) {
+        bonus2 bAddSize,Size_Medium,30;
+        bonus2 bAddSize,Size_Large,30;
+      }
+      if (.@r >= 13) {
+        bonus bDelayrate,-15;
+      }
+      if (.@g >= ENCHANTGRADE_D) {
+        bonus bAtkRate,12;
+      }
+      if (.@g >= ENCHANTGRADE_C) {
+        bonus2 bAddEle,Ele_All,12;
+      }
+      if (.@g >= ENCHANTGRADE_B) {
+        bonus bFixedCast,-300;
+      }
+      if (.@g >= ENCHANTGRADE_A) {
+        bonus2 bAddRace,RC_All,15;
+      }

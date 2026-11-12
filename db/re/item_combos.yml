@@ -59340,3 +59340,81 @@ Body:
     Script: |
       bonus2 bExpAddRace,RC_All,5;
       bonus bFixedCast,-200;
+
+  - Combos:
+      - Combo:
+          - Violent_D_S_Armor
+          - Nidhogg_Shadow_Card
+    Script: |
+      bonus bSMatk,15;
+      bonus2 bMagicAddClass,Class_All,30;
+
+  - Combos:
+      - Combo:
+          - Violent_D_S_Armor
+          - Piece_Of_Angent_Skin
+    Script: |
+      .@r_g = getequiprefinerycnt(EQI_GARMENT);
+      .@r_a = getequiprefinerycnt(EQI_ARMOR);
+      bonus2 bMagicAtkEle,Ele_All,1 * (.@r_g / 2);
+      bonus2 bMagicAtkEle,Ele_All,6 * ((.@r_g + .@r_a) / 6);
+
+  - Combos:
+      - Combo:
+          - Abbys_L_H_Armor
+          - Detale_Card
+    Script: |
+      bonus bPAtk,15;
+      bonus2 bAddClass,Class_All,30;
+
+  - Combos:
+      - Combo:
+          - Abbys_L_H_Armor
+          - Dragon_Manteau
+    Script: |
+      .@r_g = getequiprefinerycnt(EQI_GARMENT);
+      .@r_a = getequiprefinerycnt(EQI_ARMOR);
+      bonus2 bAddEle,Ele_All,1 * (.@r_g / 2);
+      bonus2 bAddClass,Class_Boss,6 * ((.@r_g + .@r_a) / 6);
+
+  - Combos:
+      - Combo:
+          - Violent_D_S_Armor_LT
+          - Nidhogg_Shadow_Card
+    Script: |
+      bonus bSMatk,15;
+      bonus2 bMagicAddClass,Class_All,30;
+      bonus2 bIgnoreMdefClassRate,Class_All,50;
+      bonus2 bSubEle,Ele_All,-20;
+
+  - Combos:
+      - Combo:
+          - Violent_D_S_Armor_LT
+          - Piece_Of_Angent_Skin
+    Script: |
+      .@r_g = getequiprefinerycnt(EQI_GARMENT);
+      .@r_a = getequiprefinerycnt(EQI_ARMOR);
+      bonus2 bMagicAddRace,RC_All,12;
+      bonus2 bMagicAtkEle,Ele_All,2 * (.@r_g / 2);
+      bonus2 bMagicAddClass,Class_Boss,7 * ((.@r_g + .@r_a) / 6);
+
+  - Combos:
+      - Combo:
+          - Abbys_L_H_Armor_LT
+          - Detale_Card
+    Script: |
+      bonus bPAtk,15;
+      bonus2 bAddSize,Size_All,30;
+      bonus2 bIgnoreDefClassRate,Class_Normal,50;
+      bonus2 bSubEle,Ele_All,-20;
+
+  - Combos:
+      - Combo:
+          - Abbys_L_H_Armor_LT
+          - Salvage_Cape
+    Script: |
+      .@r_g = getequiprefinerycnt(EQI_GARMENT);
+      .@r_a = getequiprefinerycnt(EQI_ARMOR);
+      bonus2 bAddRace,RC_All,12;
+      bonus2 bAddEle,Ele_All,2 * (.@r_g / 2);
+      bonus2 bAddClass,Class_Boss,7 * ((.@r_g + .@r_a) / 6);
