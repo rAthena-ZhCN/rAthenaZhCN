@@ -59418,3 +59418,145 @@ Body:
       bonus2 bAddRace,RC_All,12;
       bonus2 bAddEle,Ele_All,2 * (.@r_g / 2);
       bonus2 bAddClass,Class_Boss,7 * ((.@r_g + .@r_a) / 6);
+
+  - Combos:
+      - Combo:
+          - Devil_Flame_Manteau_LT
+          - Rutilus_Stick_OS
+    Script: |
+      .@r_w = getequiprefinerycnt(EQI_HAND_R);
+      bonus2 bMagicAtkEle,Ele_Fire,15;
+      bonus2 bMagicAtkEle,Ele_Dark,15;
+      bonus2 bSkillAtk,"WL_HELLINFERNO",20 * (.@r_w / 3);
+      bonus2 bSkillAtk,"WL_CRIMSONROCK",20 * (.@r_w / 3);
+      if (.@r_w >= 13) {
+        bonus2 bSkillCooldown,"WL_HELLINFERNO",-2000;
+        bonus2 bSkillCooldown,"WL_CRIMSONROCK",-2000;
+      }
+
+  - Combos:
+      - Combo:
+          - Devil_Flame_Manteau_LT
+          - Rutilus_Stick_AD
+    Script: |
+      .@r_w = getequiprefinerycnt(EQI_HAND_R);
+      bonus2 bMagicAtkEle,Ele_Fire,15;
+      bonus2 bMagicAtkEle,Ele_Dark,15;
+      bonus2 bSkillAtk,"WL_HELLINFERNO",20 * (.@r_w / 3);
+      bonus2 bSkillAtk,"WL_CRIMSONROCK",20 * (.@r_w / 3);
+      if (.@r_w >= 13) {
+        bonus2 bSkillCooldown,"WL_HELLINFERNO",-2000;
+        bonus2 bSkillCooldown,"WL_CRIMSONROCK",-2000;
+      }
+
+  - Combos:
+      - Combo:
+          - Ultio_Cape_LT_TW
+          - Ultio_Spes_OS
+    Script: |
+      .@r_w = getequiprefinerycnt(EQI_HAND_R);
+      bonus2 bMagicAtkEle,Ele_Holy,10;
+      bonus2 bMagicAtkEle,Ele_Neutral,10;
+      bonus2 bSkillCooldown,"AB_ADORAMUS",-500;
+      bonus2 bIgnoreMdefRaceRate,RC_All,15;
+      bonus2 bSkillAtk,"AB_ADORAMUS",20 * (.@r_w / 3);
+
+  - Combos:
+      - Combo:
+          - Ultio_Cape_LT_TW
+          - Ultio_Spes_AD
+    Script: |
+      .@r_w = getequiprefinerycnt(EQI_HAND_R);
+      bonus2 bMagicAtkEle,Ele_Holy,10;
+      bonus2 bMagicAtkEle,Ele_Neutral,10;
+      bonus2 bSkillCooldown,"AB_ADORAMUS",-500;
+      bonus2 bIgnoreMdefRaceRate,RC_All,15;
+      bonus2 bSkillAtk,"AB_ADORAMUS",20 * (.@r_w / 3);
+
+  - Combos:
+      - Combo:
+          - Tristan_Cape
+          - Old_Protect_Of_Crown
+    Script: |
+      .@r_h = getequiprefinerycnt(EQI_HEAD_TOP);
+      bonus2 bSkillAtk,"LG_BANISHINGPOINT",15 * (.@r_h / 3);
+      bonus2 bSkillAtk,"LG_CANNONSPEAR",15 * (.@r_h / 3);
+      if (.@r_h >= 13) bonus2 bSkillCooldown,"LG_CANNONSPEAR",-700;
+
+  - Combos:
+      - Combo:
+          - Tristan_Cape
+          - Berzebub_Card
+    Script: |
+      bonus2 bAddClass,Class_Boss,20;
+      bonus2 bSubEle,Ele_Undead,50;
+      bonus2 bSubEle,Ele_Ghost,-30;
+
+  - Combos:
+      - Combo:
+          - Morocc_Thief_Shawl
+          - Old_Shadow_Handicraft
+    Script: |
+      .@r_h = getequiprefinerycnt(EQI_HEAD_TOP);
+      skill "GC_CROSSRIPPERSLASHER",5;
+      bonus2 bSkillAtk,"SC_FATALMENACE",30 * (.@r_h / 3);
+      bonus2 bSkillAtk,"GC_CROSSRIPPERSLASHER",20 * (.@r_h / 3);
+      if (.@r_h >= 13) {
+        skill "GC_DARKCROW",1;
+        bonus2 bSkillCooldown,"GC_CROSSRIPPERSLASHER",-500;
+        bonus2 bSkillCooldown,"GC_DARKCROW",30000;
+      }
+
+  - Combos:
+      - Combo:
+          - Morocc_Thief_Shawl
+          - IFN_Osiris_Card
+    Script: |
+      bonus bRestartFullRecover;
+      bonus bNoSizeFix;
+      bonus2 bSubEle,Ele_Dark,50;
+      bonus2 bSubEle,Ele_Fire,-30;
+
+  - Combos:
+      - Combo:
+          - Morocc_Thief_Shawl_LT
+          - Old_Shadow_Handicraft
+    Script: |
+      .@r_h = getequiprefinerycnt(EQI_HEAD_TOP);
+      skill "GC_CROSSRIPPERSLASHER",5;
+      bonus2 bSkillAtk,"SC_FATALMENACE",30 * (.@r_h / 3);
+      bonus2 bSkillAtk,"GC_CROSSRIPPERSLASHER",30 * (.@r_h / 3);
+      bonus2 bSkillAtk,"SC_FEINTBOMB",20 * (.@r_h / 3);
+      if (.@r_h >= 13) {
+        skill "GC_DARKCROW",5;
+        bonus2 bSkillCooldown,"GC_CROSSRIPPERSLASHER",-1000;
+        bonus2 bSkillCooldown,"GC_DARKCROW",-30000;
+      }
+
+  - Combos:
+      - Combo:
+          - Morocc_Thief_Shawl_LT
+          - IFN_Osiris_Card
+    Script: |
+      bonus bRestartFullRecover;
+      bonus bNoSizeFix;
+      bonus2 bAddClass,Class_Boss,20;
+      bonus2 bSubEle,Ele_Dark,50;
+      bonus2 bSubEle,Ele_Fire,-30;
+
+  - Combos:
+      - Combo:
+          - Tele_WG_Cape_LT
+          - Pyuriel_Card
+    Script: |
+      .@r_g = getequiprefinerycnt(EQI_GARMENT);
+      bonus2 bMagicAtkEle,Ele_Wind,10 + (3 * (.@r_g / 2));
+      if (.@r_g >= 12) bonus3 bAutoSpellWhenHit,"SO_WIND_INSIGNIA",3,20;
+
+  - Combos:
+      - Combo:
+          - Tele_WG_Cape_LT
+          - B_Katrinn_Card
+    Script: |
+      bonus2 bMagicAtkEle,Ele_Ghost,30;
+      bonus2 bMagicAddSize,Size_All,15;
