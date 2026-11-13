@@ -6,6 +6,7 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 	.@name$ = strcharinfo(0);
 	.@tk = (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER || Class == JOB_STAR_EMPEROR || Class == JOB_STAR_EMPEROR2);
 	.@nj = (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO);
+	.@mg = (Class == JOB_MAGE || Class == JOB_WIZARD || Class == JOB_HIGH_WIZARD || Class == JOB_WARLOCK || Class == JOB_WARLOCK_T || Class == JOB_WARLOCK_2ND || Class == JOB_ARCH_MAGE || Class == JOB_SAGE || Class == JOB_PROFESSOR || Class == JOB_SORCERER || Class == JOB_SORCERER_T || Class == JOB_SORCERER_2ND || Class == JOB_ELEMENTAL_MASTER);
 	mes "[英灵之魂]";
 	mes "您好，我负责给不同职业的玩家";
 	mes "召唤远古时空中最强的英灵之魂。";
@@ -13,10 +14,11 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 	mes "目前支持的职业有：";
 	mes "跆拳英灵";
 	mes "忍者英灵";
+	mes "魔法师英灵";
 	next;
 	switch(select("查看英灵之魂buff介绍","召唤英灵")) {
 	case 1:
-		switch(select("跆拳英灵介绍","忍者英灵介绍")) {
+		switch(select("跆拳英灵介绍","忍者英灵介绍","魔法师英灵介绍")) {
 		case 1:
 			mes "[跆拳英灵介绍]";
 			mes "跆拳系列职业可召唤。";
@@ -55,9 +57,30 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 			mes "炸弹飞刀范围升至7x7；";
 			mes "投掷金钱消耗降至1/10；";
 			close;
+		case 3:
+			mes "[魔法师英灵介绍]";
+			mes "魔法师、贤者系列职业可召唤。";
+			mes "持续30天，重新登录也会保留。";
+			mes "效果包括：";
+			mes "[魔法师]";
+			mes "元素箭类变咏/技延减半；";
+			mes "石化/冰冻成功率+20%；";
+			mes "禅心随时回复等量HP；";
+			mes "能量外套追加减伤-20%；";
+			mes "火焰之壁范围增大；";
+			next;
+			mes "[贤者]";
+			mes "自由施法移动速度+20%；";
+			mes "自动念咒魔法攻击生效；";
+			mes "自动念咒触发几率翻倍；";
+			mes "自动念咒等级翻倍/零消耗；";
+			mes "属性附加法伤增幅翻倍；";
+			mes "念咒拆除BOSS级成功率50%；";
+			mes "念咒拆除75%概率自动发动；";
+			close;
 		}
 	case 2:
-		.@sel = select("跆拳英灵","忍者英灵");
+		.@sel = select("跆拳英灵","忍者英灵","魔法师英灵");
 		if (.@sel == 1 && !.@tk) {
 			mes "[英灵之魂]";
 			mes "你的职业不能召唤" + .@name$ + "。";
@@ -68,21 +91,26 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 			mes "你的职业不能召唤忍者英灵。";
 			close;
 		}
-		if (hero_soul_expire > gettimetick(2) && .@sel == 2) {
-			.@left = hero_soul_expire - gettimetick(2);
-			.@tick = .@left * 1000;
-			if (.@tick > 2592000000) .@tick = 2592000000;
-			sc_end SC_HERO_SOUL;
-			sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+		if (.@sel == 3 && !.@mg) {
 			mes "[英灵之魂]";
-			mes "忍者英灵状态已更新。";
-			mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
+			mes "你的职业不能召唤魔法师英灵。";
 			close;
 		}
 		if (hero_soul_expire > gettimetick(2)) {
 			.@left = hero_soul_expire - gettimetick(2);
+			.@tick = .@left * 1000;
+			if (.@tick > 2592000000) .@tick = 2592000000;
+			sc_end SC_HERO_SOUL;
+			sc_end SC_HERO_SOUL_NINJA;
+			sc_end SC_HERO_SOUL_MAGE;
+			if (.@sel == 1)
+				sc_start SC_HERO_SOUL, .@tick, 1;
+			else if (.@sel == 2)
+				sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+			else
+				sc_start SC_HERO_SOUL_MAGE, .@tick, 1;
 			mes "[英灵之魂]";
-			mes "你已经拥有英灵之魂。";
+			mes "英灵状态已更新。";
 			mes "剩余时间：" + (.@left/86400) + "天" + ((.@left%86400)/3600) + "小时。";
 			close;
 		}
@@ -97,8 +125,10 @@ prontera,146,106,5	script	英灵之魂#hero_soul	4_em_procella,{
 		hero_soul_expire = gettimetick(2) + 2592000;
 		if (.@sel == 1)
 			sc_start SC_HERO_SOUL, 2592000000, 1;
-		else
+		else if (.@sel == 2)
 			sc_start SC_HERO_SOUL_NINJA, 2592000000, 1;
+		else
+			sc_start SC_HERO_SOUL_MAGE, 2592000000, 1;
 		mes "[英灵之魂]";
 		mes "英灵之魂已觉醒。";
 		mes "有效期30天，重新登录也会保留。";
@@ -114,6 +144,8 @@ OnPCLoginEvent:
 		if (.@tick > 2592000000) .@tick = 2592000000;
 		if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
 			sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+		else if (Class == JOB_MAGE || Class == JOB_WIZARD || Class == JOB_HIGH_WIZARD || Class == JOB_WARLOCK || Class == JOB_WARLOCK_T || Class == JOB_WARLOCK_2ND || Class == JOB_ARCH_MAGE || Class == JOB_SAGE || Class == JOB_PROFESSOR || Class == JOB_SORCERER || Class == JOB_SORCERER_T || Class == JOB_SORCERER_2ND || Class == JOB_ELEMENTAL_MASTER)
+			sc_start SC_HERO_SOUL_MAGE, .@tick, 1;
 		else
 			sc_start SC_HERO_SOUL, .@tick, 1;
 	}
@@ -133,6 +165,8 @@ OnTimer43200000:
 			if (.@tick > 2592000000) .@tick = 2592000000;
 			if (Class == JOB_NINJA || Class == JOB_KAGEROU || Class == JOB_OBORO)
 				sc_start SC_HERO_SOUL_NINJA, .@tick, 1;
+			else if (Class == JOB_MAGE || Class == JOB_WIZARD || Class == JOB_HIGH_WIZARD || Class == JOB_WARLOCK || Class == JOB_WARLOCK_T || Class == JOB_WARLOCK_2ND || Class == JOB_ARCH_MAGE || Class == JOB_SAGE || Class == JOB_PROFESSOR || Class == JOB_SORCERER || Class == JOB_SORCERER_T || Class == JOB_SORCERER_2ND || Class == JOB_ELEMENTAL_MASTER)
+				sc_start SC_HERO_SOUL_MAGE, .@tick, 1;
 			else
 				sc_start SC_HERO_SOUL, .@tick, 1;
 		}
